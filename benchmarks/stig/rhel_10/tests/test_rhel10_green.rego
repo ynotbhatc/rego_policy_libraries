@@ -11,7 +11,9 @@ green_fixture := {
 			"FIPSR = p+i+n+u+g+s+m+ftype+growing+acl+selinux+xattrs+sha512",
 			"NORMAL = FIPSR+sha512",
 		],
-		"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"],
+		"schedule": [
+			"/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil",
+		],
 	},
 	"audit_rules": [
 		"-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k",
@@ -34,6 +36,63 @@ green_fixture := {
 		"-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity",
 		"-w /etc/passwd -p wa -k identity",
 		"-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/bin/umount -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-mount",
+		"-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+		"-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+		"-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+		"-a always,exit -S all -F path=/usr/sbin/semanage -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/setfiles -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/setsebool -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged",
+		"-a always,exit -S all -F path=/usr/bin/chage -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-chage",
+		"-a always,exit -S all -F path=/usr/bin/chsh -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/bin/crontab -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-crontab",
+		"-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=modules",
+		"-a always,exit -S all -F path=/usr/bin/newgrp -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/sbin/pam_timestamp_check -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-pam_timestamp_check",
+		"-a always,exit -S all -F path=/usr/sbin/postdrop -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/postqueue -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/bin/ssh-agent -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-ssh",
+		"-a always,exit -S all -F path=/usr/libexec/openssh/ssh-keysign -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-ssh",
+		"-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-priv_change",
+		"-a always,exit -S all -F path=/usr/bin/sudoedit -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/sbin/unix_chkpwd -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/unix_update -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/userhelper -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-usermod",
+		"-a always,exit -S all -F path=/usr/sbin/useradd -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-useradd",
+		"-a always,exit -S all -F path=/usr/bin/mount -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-mount",
+		"-a always,exit -S all -F path=/usr/sbin/init -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-init",
+		"-a always,exit -S all -F path=/usr/sbin/poweroff -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-poweroff",
+		"-a always,exit -S all -F path=/usr/sbin/reboot -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-reboot",
+		"-a always,exit -F arch=b32 -S execve -F path=/usr/bin/gpasswd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b64 -S execve -F path=/usr/bin/gpasswd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/usr/bin/passwd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/usr/bin/passwd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/group -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/gshadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/security/opasswd -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/shadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/var/log/faillock -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b64 -F path=/var/log/faillock -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b32 -F path=/var/log/lastlog -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b32 -F path=/etc/sudoers.d -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/sudoers.d -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b32 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -F key=k",
+		"-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -F key=k",
+		"-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k",
+		"-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k",
+		"-a always,exit -F arch=b32 -S umount -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b32 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k",
 	],
 	"auditd_config": {
 		"log_file": "/var/log/audit/audit.log",
@@ -57,7 +116,9 @@ green_fixture := {
 		},
 	],
 	"crypto_policy": "FIPS",
-	"crypto_policy_check": {"output": "The configured policy matches the generated policy"},
+	"crypto_policy_check": {
+		"output": "The configured policy matches the generated policy",
+	},
 	"crypto_policy_state": {
 		"hash": [
 			"SHA2-256",
@@ -71,7 +132,9 @@ green_fixture := {
 		],
 		"min_rsa_size": 2048,
 	},
-	"dnf_config": {"localpkg_gpgcheck": "1"},
+	"dnf_config": {
+		"localpkg_gpgcheck": "1",
+	},
 	"duplicate_gids": [],
 	"duplicate_uid_accounts": [],
 	"faillock_conf": {
@@ -79,14 +142,24 @@ green_fixture := {
 		"fail_interval": 900,
 	},
 	"file_permissions": {
-		"etc_group": {"mode": "0644"},
-		"etc_gshadow": {"mode": "0000"},
-		"etc_passwd": {"mode": "0644"},
-		"etc_shadow": {"mode": "0000"},
-		"interactive_home_dirs": [{
-			"mode": "700",
-			"path": "/home/disauser",
-		}],
+		"etc_group": {
+			"mode": "0644",
+		},
+		"etc_gshadow": {
+			"mode": "0000",
+		},
+		"etc_passwd": {
+			"mode": "0644",
+		},
+		"etc_shadow": {
+			"mode": "0000",
+		},
+		"interactive_home_dirs": [
+			{
+				"mode": "700",
+				"path": "/home/disauser",
+			},
+		],
 		"library_dir_files_group_or_world_writable": [],
 		"library_dir_files_not_owned_by_root": [],
 		"system_commands_group_or_world_writable": [],
@@ -138,10 +211,71 @@ green_fixture := {
 				"noexec",
 			],
 		},
+		{
+			"device": "/dev/mapper/rhel-var",
+			"fstype": "xfs",
+			"mount": "/var",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/mapper/rhel-var_tmp",
+			"fstype": "xfs",
+			"mount": "/var/tmp",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/sda2",
+			"fstype": "xfs",
+			"mount": "/boot",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/sda1",
+			"fstype": "vfat",
+			"mount": "/boot/efi",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "tmpfs",
+			"fstype": "tmpfs",
+			"mount": "/dev/shm",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
 	],
-	"fips": {"fips_enabled": "1"},
-	"gnome": {"media_keys_logout": "['']"},
-	"grub": {"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF"},
+	"fips": {
+		"fips_enabled": "1",
+	},
+	"gnome": {
+		"media_keys_logout": "['']",
+	},
+	"grub": {
+		"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF",
+	},
 	"kernel_params": {
 		"kernel.dmesg_restrict": "1",
 		"kernel.kexec_load_disabled": "1",
@@ -158,8 +292,12 @@ green_fixture := {
 		"net.ipv4.tcp_syncookies": "1",
 	},
 	"local_accounts_with_empty_passwords": [],
-	"login_banner": {"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."},
-	"login_defs": {"ENCRYPT_METHOD": "SHA512"},
+	"login_banner": {
+		"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
+	},
+	"login_defs": {
+		"ENCRYPT_METHOD": "SHA512",
+	},
 	"modprobe": {
 		"bluetooth": {
 			"blacklisted": true,
@@ -174,10 +312,12 @@ green_fixture := {
 		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
 		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
 	},
-	"openssl_cnf": {"lines": [
-		"[ crypto_policy ]",
-		".include = /etc/crypto-policies/back-ends/opensslcnf.config",
-	]},
+	"openssl_cnf": {
+		"lines": [
+			"[ crypto_policy ]",
+			".include = /etc/crypto-policies/back-ends/opensslcnf.config",
+		],
+	},
 	"packages": {
 		"aide": true,
 		"nfs-utils": false,
@@ -197,11 +337,13 @@ green_fixture := {
 		"ucredit": -1,
 	},
 	"promiscuous_interfaces": [],
-	"redhat_release_key_file": {"fingerprints": [
-		"567E347AD0044ADE55BA8A5F199E2F91FD431D51",
-		"7E4624258C406535D56D6F135054E4A45A6340B3",
-		"FCD355B305707A62DA143AB6E422397E50FE8467A2A95343D246D6276AFEDF8F",
-	]},
+	"redhat_release_key_file": {
+		"fingerprints": [
+			"567E347AD0044ADE55BA8A5F199E2F91FD431D51",
+			"7E4624258C406535D56D6F135054E4A45A6340B3",
+			"FCD355B305707A62DA143AB6E422397E50FE8467A2A95343D246D6276AFEDF8F",
+		],
+	},
 	"rpm_gpg_pubkeys": [
 		"Red Hat, Inc. (release key 2) <security@redhat.com> public key",
 		"Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key",
@@ -217,52 +359,74 @@ green_fixture := {
 		"firewalld": "active",
 		"rsyslog": "active",
 	},
-	"ssh_banner_file": {"exists": true},
+	"ssh_banner_file": {
+		"exists": true,
+	},
 	"ssh_config": {
 		"Banner": "/etc/issue",
 		"UsePAM": "yes",
 	},
 	"sshd_config_files": {
-		"ClientAliveCountMax": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "1",
-		}],
-		"ClientAliveInterval": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "600",
-		}],
-		"HostbasedAuthentication": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
-		"IgnoreRhosts": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"IgnoreUserKnownHosts": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"PermitEmptyPasswords": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
-		"PermitRootLogin": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
-		"PrintLastLog": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"StrictModes": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"X11Forwarding": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
+		"ClientAliveCountMax": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "1",
+			},
+		],
+		"ClientAliveInterval": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "600",
+			},
+		],
+		"HostbasedAuthentication": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
+		"IgnoreRhosts": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"IgnoreUserKnownHosts": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"PermitEmptyPasswords": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
+		"PermitRootLogin": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
+		"PrintLastLog": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"StrictModes": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"X11Forwarding": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
 	},
 	"sshd_runtime": {
 		"clientalivecountmax": "1",
@@ -278,71 +442,89 @@ green_fixture := {
 	},
 	"sssd": {
 		"certificate_verification": "ocsp_dgst=sha512",
-		"certmap_rules": [{
-			"domains": "testing.test",
-			"maprule": "(userCertificate;binary={cert!bin})",
-			"matchrule": "<SAN>.*EDIPI@mil",
-			"section": "certmap/testing.test/rule_name",
-		}],
+		"certmap_rules": [
+			{
+				"domains": "testing.test",
+				"maprule": "(userCertificate;binary={cert!bin})",
+				"matchrule": "<SAN>.*EDIPI@mil",
+				"section": "certmap/testing.test/rule_name",
+			},
+		],
 		"pam_cert_auth": "True",
 	},
-	"sssd_ca_db": {"certificates": [{
-		"issuer_rdns": [
-			[
-				"C",
-				"US",
-			],
-			[
-				"O",
-				"U.S. Government",
-			],
-			[
-				"OU",
-				"DoD",
-			],
-			[
-				"OU",
-				"PKI",
-			],
-			[
-				"CN",
-				"DoD Root CA 3",
-			],
+	"sssd_ca_db": {
+		"certificates": [
+			{
+				"issuer_rdns": [
+					[
+						"C",
+						"US",
+					],
+					[
+						"O",
+						"U.S. Government",
+					],
+					[
+						"OU",
+						"DoD",
+					],
+					[
+						"OU",
+						"PKI",
+					],
+					[
+						"CN",
+						"DoD Root CA 3",
+					],
+				],
+				"not_after": "2099-12-30T18:46:41Z",
+				"not_before": "2012-03-20T18:46:41Z",
+				"subject_rdns": [
+					[
+						"C",
+						"US",
+					],
+					[
+						"O",
+						"U.S. Government",
+					],
+					[
+						"OU",
+						"DoD",
+					],
+					[
+						"OU",
+						"PKI",
+					],
+					[
+						"CN",
+						"DoD Root CA 3",
+					],
+				],
+			},
 		],
-		"not_after": "2099-12-30T18:46:41Z",
-		"not_before": "2012-03-20T18:46:41Z",
-		"subject_rdns": [
-			[
-				"C",
-				"US",
-			],
-			[
-				"O",
-				"U.S. Government",
-			],
-			[
-				"OU",
-				"DoD",
-			],
-			[
-				"OU",
-				"PKI",
-			],
-			[
-				"CN",
-				"DoD Root CA 3",
-			],
+	},
+	"sysctl_config": {
+		"kernel.randomize_va_space": [
+			"2",
 		],
-	}]},
-	"sysctl_config": {"kernel.randomize_va_space": ["2"]},
-	"systemd_units": {"ctrl-alt-del.target": {"load_state": "masked"}},
-	"unit_enabled": {"autofs": "masked"},
+	},
+	"systemd_units": {
+		"ctrl-alt-del.target": {
+			"load_state": "masked",
+		},
+	},
+	"unit_enabled": {
+		"autofs": "masked",
+	},
 	"wireless_interfaces": [],
-	"yum_repos": [{
-		"file": "/etc/yum.repos.d/redhat.repo",
-		"gpgcheck": "1",
-		"name": "rhel-9-for-x86_64-baseos-rpms",
-	}],
+	"yum_repos": [
+		{
+			"file": "/etc/yum.repos.d/redhat.repo",
+			"gpgcheck": "1",
+			"name": "rhel-9-for-x86_64-baseos-rpms",
+		},
+	],
 }
 
 test_every_rule_not_a_finding_on_green_fixture if {

@@ -23,69 +23,115 @@ green_fixture := {
 			"target": null,
 		},
 	],
-	"crypto_policy_check": {"output": "The configured policy matches the generated policy"},
-	"gnome": {"smartcard_removal_action": "'lock-screen'"},
-	"openssl_cnf": {"lines": [
-		"[ crypto_policy ]",
-		".include = /etc/crypto-policies/back-ends/opensslcnf.config",
-	]},
-	"sssd": {
-		"certificate_verification": "ocsp_dgst=sha512",
-		"certmap_rules": [{
-			"domains": "testing.test",
-			"maprule": "(userCertificate;binary={cert!bin})",
-			"matchrule": "<SAN>.*EDIPI@mil",
-			"section": "certmap/testing.test/rule_name",
-		}],
+	"crypto_policy_check": {
+		"output": "The configured policy matches the generated policy",
 	},
-	"sssd_ca_db": {"certificates": [{
-		"issuer_rdns": [
-			[
-				"C",
-				"US",
-			],
-			[
-				"O",
-				"U.S. Government",
-			],
-			[
-				"OU",
-				"DoD",
-			],
-			[
-				"OU",
-				"PKI",
-			],
-			[
-				"CN",
-				"DoD Root CA 3",
-			],
+	"gnome": {
+		"smartcard_removal_action": "'lock-screen'",
+	},
+	"gnome_writable": {
+		"smartcard_removal_action": "false",
+	},
+	"ipsec": {
+		"include_lines": [
+			"include /etc/crypto-policies/back-ends/libreswan.config",
 		],
-		"not_after": "2099-12-30T18:46:41Z",
-		"not_before": "2012-03-20T18:46:41Z",
-		"subject_rdns": [
-			[
-				"C",
-				"US",
-			],
-			[
-				"O",
-				"U.S. Government",
-			],
-			[
-				"OU",
-				"DoD",
-			],
-			[
-				"OU",
-				"PKI",
-			],
-			[
-				"CN",
-				"DoD Root CA 3",
-			],
+	},
+	"named": {
+		"include_lines": [
+			"include \"/etc/crypto-policies/back-ends/bind.config\";",
 		],
-	}]},
+	},
+	"opensc": {
+		"card_drivers": "cac",
+	},
+	"openssl_cnf": {
+		"lines": [
+			"[ crypto_policy ]",
+			".include = /etc/crypto-policies/back-ends/opensslcnf.config",
+		],
+	},
+	"packages": {
+		"bind": true,
+		"crypto-policies": true,
+		"gnutls-utils": true,
+		"libreswan": true,
+		"nss-tools": true,
+		"opensc": true,
+		"openssl-pkcs11": true,
+		"pcsc-lite": true,
+	},
+	"services": {
+		"pcscd.socket": "active",
+	},
+	"ssh_private_keys_without_passphrase": [],
+	"sssd": {
+		"cache_credentials_values": [
+			"true",
+		],
+		"certificate_verification": "ocsp_dgst=sha512",
+		"certmap_rules": [
+			{
+				"domains": "testing.test",
+				"maprule": "(userCertificate;binary={cert!bin})",
+				"matchrule": "<SAN>.*EDIPI@mil",
+				"section": "certmap/testing.test/rule_name",
+			},
+		],
+		"offline_credentials_expiration": "1",
+	},
+	"sssd_ca_db": {
+		"certificates": [
+			{
+				"issuer_rdns": [
+					[
+						"C",
+						"US",
+					],
+					[
+						"O",
+						"U.S. Government",
+					],
+					[
+						"OU",
+						"DoD",
+					],
+					[
+						"OU",
+						"PKI",
+					],
+					[
+						"CN",
+						"DoD Root CA 3",
+					],
+				],
+				"not_after": "2099-12-30T18:46:41Z",
+				"not_before": "2012-03-20T18:46:41Z",
+				"subject_rdns": [
+					[
+						"C",
+						"US",
+					],
+					[
+						"O",
+						"U.S. Government",
+					],
+					[
+						"OU",
+						"DoD",
+					],
+					[
+						"OU",
+						"PKI",
+					],
+					[
+						"CN",
+						"DoD Root CA 3",
+					],
+				],
+			},
+		],
+	},
 }
 
 test_every_finding_open_on_empty_input if {
@@ -314,5 +360,337 @@ test_rhel_09_631015_evidence_missing_1 if {
 
 test_rhel_09_631015_not_applicable_1 if {
 	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631015 with input as object.union(green_fixture, {"sssd": {"certmap_rules": null}, "attest": {"rhel_09_631015_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_215075_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_215075 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215075_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215075 with input as object.union(green_fixture, {"packages": {"openssl-pkcs11": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215075: check failed")
+}
+
+test_rhel_09_215075_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215075 with input as json.remove(green_fixture, [["packages", "openssl-pkcs11"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215075: evidence missing — packages.openssl-pkcs11")
+}
+
+test_rhel_09_215075_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215075 with input as object.union(green_fixture, {"packages": {"openssl-pkcs11": false}, "attest": {"rhel_09_215075_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_215080_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_215080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215080_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215080 with input as object.union(green_fixture, {"packages": {"gnutls-utils": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215080: check failed")
+}
+
+test_rhel_09_215080_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215080 with input as json.remove(green_fixture, [["packages", "gnutls-utils"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215080: evidence missing — packages.gnutls-utils")
+}
+
+test_rhel_09_215085_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_215085 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215085_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215085 with input as object.union(green_fixture, {"packages": {"nss-tools": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215085: check failed")
+}
+
+test_rhel_09_215085_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215085 with input as json.remove(green_fixture, [["packages", "nss-tools"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215085: evidence missing — packages.nss-tools")
+}
+
+test_rhel_09_215100_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_215100 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215100_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215100 with input as object.union(green_fixture, {"packages": {"crypto-policies": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215100: check failed")
+}
+
+test_rhel_09_215100_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_215100 with input as json.remove(green_fixture, [["packages", "crypto-policies"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215100: evidence missing — packages.crypto-policies")
+}
+
+test_rhel_09_271050_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_271050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271050_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271050 with input as object.union(green_fixture, {"gnome_writable": {"smartcard_removal_action": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271050: check failed")
+}
+
+test_rhel_09_271050_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271050 with input as object.union(green_fixture, {"gnome_writable": {"smartcard_removal_action": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271050: check failed")
+}
+
+test_rhel_09_271050_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271050 with input as json.remove(green_fixture, [["gnome_writable", "smartcard_removal_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271050: evidence missing — gnome_writable.smartcard_removal_action")
+}
+
+test_rhel_09_271050_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271050 with input as object.union(green_fixture, {"gnome_writable": {"smartcard_removal_action": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271050_pass_2 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_271050 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"smartcard_removal_action": false}})
+}
+
+test_rhel_09_271050_pass_3 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_271050 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"smartcard_removal_action": "False"}})
+}
+
+test_rhel_09_611160_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611160 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611160_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611160 with input as object.union(green_fixture, {"opensc": {"card_drivers": "PIV-II"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611160: check failed")
+}
+
+test_rhel_09_611160_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611160 with input as object.union(green_fixture, {"opensc": {"card_drivers": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611160: check failed")
+}
+
+test_rhel_09_611160_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611160 with input as json.remove(green_fixture, [["opensc", "card_drivers"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611160: evidence missing — opensc.card_drivers")
+}
+
+test_rhel_09_611160_pass_2 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611160 == "Not_a_Finding" with input as object.union(green_fixture, {"opensc": {"card_drivers": "cac, PIV-II"}})
+}
+
+test_rhel_09_611175_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611175 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611175_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611175 with input as object.union(green_fixture, {"packages": {"pcsc-lite": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611175: check failed")
+}
+
+test_rhel_09_611175_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611175 with input as json.remove(green_fixture, [["packages", "pcsc-lite"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611175: evidence missing — packages.pcsc-lite")
+}
+
+test_rhel_09_611175_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611175 with input as object.union(green_fixture, {"packages": {"pcsc-lite": false}, "attest": {"rhel_09_611175_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_611180_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611180 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611180_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611180 with input as object.union(green_fixture, {"services": {"pcscd.socket": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611180: check failed")
+}
+
+test_rhel_09_611180_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611180 with input as json.remove(green_fixture, [["services", "pcscd.socket"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611180: evidence missing — services.pcscd.socket")
+}
+
+test_rhel_09_611185_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611185 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611185_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611185 with input as object.union(green_fixture, {"packages": {"opensc": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611185: check failed")
+}
+
+test_rhel_09_611185_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611185 with input as json.remove(green_fixture, [["packages", "opensc"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611185: evidence missing — packages.opensc")
+}
+
+test_rhel_09_611190_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611190 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611190_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611190 with input as object.union(green_fixture, {"ssh_private_keys_without_passphrase": ["/home/djohnson/.ssh/id_rsa"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611190: check failed")
+}
+
+test_rhel_09_611190_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611190 with input as json.remove(green_fixture, [["ssh_private_keys_without_passphrase"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611190: evidence missing — ssh_private_keys_without_passphrase")
+}
+
+test_rhel_09_611190_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611190 with input as object.union(green_fixture, {"ssh_private_keys_without_passphrase": ["/home/djohnson/.ssh/id_rsa"], "attest": {"rhel_09_611190_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_631020_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_631020_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631020 with input as object.union(green_fixture, {"sssd": {"offline_credentials_expiration": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631020: check failed")
+}
+
+test_rhel_09_631020_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631020 with input as object.union(green_fixture, {"sssd": {"offline_credentials_expiration": null}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631020: check failed")
+}
+
+test_rhel_09_631020_fail_3 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631020 with input as object.union(green_fixture, {"sssd": {"cache_credentials_values": ["false", "True"], "offline_credentials_expiration": "7"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631020: check failed")
+}
+
+test_rhel_09_631020_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631020 with input as json.remove(green_fixture, [["sssd", "cache_credentials_values"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631020: evidence missing — sssd.cache_credentials_values")
+}
+
+test_rhel_09_631020_pass_2 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631020 == "Not_a_Finding" with input as object.union(green_fixture, {"sssd": {"cache_credentials_values": [], "offline_credentials_expiration": null}})
+}
+
+test_rhel_09_631020_pass_3 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631020 == "Not_a_Finding" with input as object.union(green_fixture, {"sssd": {"cache_credentials_values": ["False"], "offline_credentials_expiration": null}})
+}
+
+test_rhel_09_631020_pass_4 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631020 == "Not_a_Finding" with input as object.union(green_fixture, {"sssd": {"offline_credentials_expiration": 1}})
+}
+
+test_rhel_09_671020_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_671020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_671020_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as object.union(green_fixture, {"ipsec": {"include_lines": ["#include /etc/crypto-policies/back-ends/libreswan.config"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671020: check failed")
+}
+
+test_rhel_09_671020_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as object.union(green_fixture, {"ipsec": {"include_lines": ["include /etc/ipsec.d/*.conf"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671020: check failed")
+}
+
+test_rhel_09_671020_fail_3 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as object.union(green_fixture, {"ipsec": {"include_lines": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671020: check failed")
+}
+
+test_rhel_09_671020_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as json.remove(green_fixture, [["packages", "libreswan"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671020: evidence missing — packages.libreswan")
+}
+
+test_rhel_09_671020_evidence_missing_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as json.remove(green_fixture, [["ipsec", "include_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671020: evidence missing — ipsec.include_lines")
+}
+
+test_rhel_09_671020_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as object.union(green_fixture, {"packages": {"libreswan": false}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_671020_not_applicable_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_671020 with input as object.union(green_fixture, {"packages": {"libreswan": false}, "ipsec": {"include_lines": null}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_672050_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_672050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_672050_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as object.union(green_fixture, {"named": {"include_lines": ["//include \"/etc/crypto-policies/back-ends/bind.config\";"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-672050: check failed")
+}
+
+test_rhel_09_672050_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as object.union(green_fixture, {"named": {"include_lines": ["include \"/etc/named.rfc1912.zones\";"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-672050: check failed")
+}
+
+test_rhel_09_672050_fail_3 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as object.union(green_fixture, {"named": {"include_lines": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-672050: check failed")
+}
+
+test_rhel_09_672050_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as json.remove(green_fixture, [["packages", "bind"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-672050: evidence missing — packages.bind")
+}
+
+test_rhel_09_672050_evidence_missing_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as json.remove(green_fixture, [["named", "include_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-672050: evidence missing — named.include_lines")
+}
+
+test_rhel_09_672050_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as object.union(green_fixture, {"packages": {"bind": false}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_672050_not_applicable_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672050 with input as object.union(green_fixture, {"packages": {"bind": false}, "named": {"include_lines": null}})
 	f.status == "Not_Applicable"
 }

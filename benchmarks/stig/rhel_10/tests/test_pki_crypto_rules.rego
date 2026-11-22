@@ -23,68 +23,78 @@ green_fixture := {
 			"target": null,
 		},
 	],
-	"crypto_policy_check": {"output": "The configured policy matches the generated policy"},
-	"openssl_cnf": {"lines": [
-		"[ crypto_policy ]",
-		".include = /etc/crypto-policies/back-ends/opensslcnf.config",
-	]},
+	"crypto_policy_check": {
+		"output": "The configured policy matches the generated policy",
+	},
+	"openssl_cnf": {
+		"lines": [
+			"[ crypto_policy ]",
+			".include = /etc/crypto-policies/back-ends/opensslcnf.config",
+		],
+	},
 	"sssd": {
 		"certificate_verification": "ocsp_dgst=sha512",
-		"certmap_rules": [{
-			"domains": "testing.test",
-			"maprule": "(userCertificate;binary={cert!bin})",
-			"matchrule": "<SAN>.*EDIPI@mil",
-			"section": "certmap/testing.test/rule_name",
-		}],
+		"certmap_rules": [
+			{
+				"domains": "testing.test",
+				"maprule": "(userCertificate;binary={cert!bin})",
+				"matchrule": "<SAN>.*EDIPI@mil",
+				"section": "certmap/testing.test/rule_name",
+			},
+		],
 	},
-	"sssd_ca_db": {"certificates": [{
-		"issuer_rdns": [
-			[
-				"C",
-				"US",
-			],
-			[
-				"O",
-				"U.S. Government",
-			],
-			[
-				"OU",
-				"DoD",
-			],
-			[
-				"OU",
-				"PKI",
-			],
-			[
-				"CN",
-				"DoD Root CA 3",
-			],
+	"sssd_ca_db": {
+		"certificates": [
+			{
+				"issuer_rdns": [
+					[
+						"C",
+						"US",
+					],
+					[
+						"O",
+						"U.S. Government",
+					],
+					[
+						"OU",
+						"DoD",
+					],
+					[
+						"OU",
+						"PKI",
+					],
+					[
+						"CN",
+						"DoD Root CA 3",
+					],
+				],
+				"not_after": "2099-12-30T18:46:41Z",
+				"not_before": "2012-03-20T18:46:41Z",
+				"subject_rdns": [
+					[
+						"C",
+						"US",
+					],
+					[
+						"O",
+						"U.S. Government",
+					],
+					[
+						"OU",
+						"DoD",
+					],
+					[
+						"OU",
+						"PKI",
+					],
+					[
+						"CN",
+						"DoD Root CA 3",
+					],
+				],
+			},
 		],
-		"not_after": "2099-12-30T18:46:41Z",
-		"not_before": "2012-03-20T18:46:41Z",
-		"subject_rdns": [
-			[
-				"C",
-				"US",
-			],
-			[
-				"O",
-				"U.S. Government",
-			],
-			[
-				"OU",
-				"DoD",
-			],
-			[
-				"OU",
-				"PKI",
-			],
-			[
-				"CN",
-				"DoD Root CA 3",
-			],
-		],
-	}]},
+	},
 }
 
 test_every_finding_open_on_empty_input if {

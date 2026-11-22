@@ -6,13 +6,29 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"dnf_config": {"localpkg_gpgcheck": "1"},
-	"kernel_params": {"kernel.kexec_load_disabled": "1"},
-	"oracle_release_key_file": {"fingerprints": ["76FD 3DB1 3AB6 7410 B89D  B10E 8256 2EA9 AD98 6DA3"]},
-	"packages": {"rsyslog": true},
-	"rpm_gpg_pubkeys": ["gpg(Oracle OSS group (Open Source Software group) <build@oss.oracle.com>)"],
-	"services": {"rsyslog": "active"},
-	"unit_enabled": {"rsyslog": "enabled"},
+	"dnf_config": {
+		"localpkg_gpgcheck": "1",
+	},
+	"kernel_params": {
+		"kernel.kexec_load_disabled": "1",
+	},
+	"oracle_release_key_file": {
+		"fingerprints": [
+			"76FD 3DB1 3AB6 7410 B89D  B10E 8256 2EA9 AD98 6DA3",
+		],
+	},
+	"packages": {
+		"rsyslog": true,
+	},
+	"rpm_gpg_pubkeys": [
+		"gpg(Oracle OSS group (Open Source Software group) <build@oss.oracle.com>)",
+	],
+	"services": {
+		"rsyslog": "active",
+	},
+	"unit_enabled": {
+		"rsyslog": "enabled",
+	},
 	"yum_repos": [
 		{
 			"gpgcheck": "1",

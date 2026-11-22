@@ -6,10 +6,10 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 6
-#     cited: 5
-#     density: section
-#     basis: role
+#     checks: 20
+#     cited: 19
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -74,6 +74,18 @@ _truthy(v) if {
 
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
+
+# a maxpoll value the check accepts: a number (or decimal string) not greater than 16
+_maxpoll_ok(p) if {
+	is_number(p)
+	p <= 16
+}
+
+_maxpoll_ok(p) if {
+	is_string(p)
+	regex.match(`^\s*-?[0-9]+\s*$`, p)
+	to_number(trim_space(p)) <= 16
+}
 
 # =============================================================================
 # CAT I - HIGH SEVERITY
@@ -255,6 +267,542 @@ finding_rhel_09_231040 := {
 	"fix_text": "Disable and mask the automounter: systemctl mask --now autofs.service",
 }
 
+# RHEL-09-213115 | V-257818 | CAT II
+# LoadState of kdump.service (systemctl show kdump) and systemctl is-active kdump
+missing_rhel_09_213115 := [concat(".", p) | some p in [["systemd_units", "kdump.service", "load_state"], ["services", "kdump"]]; not _collected(p)]
+
+default kdump_disabled := false
+
+kdump_disabled if {
+	count(missing_rhel_09_213115) == 0
+	_kw(["systemd_units", "kdump.service", "load_state"]) == "masked"
+}
+
+kdump_disabled if {
+	count(missing_rhel_09_213115) == 0
+	_kw(["systemd_units", "kdump.service", "load_state"]) == "not-found"
+	_kw(["services", "kdump"]) != "active"
+}
+
+status_rhel_09_213115 := "Not_a_Finding" if kdump_disabled
+
+else := "Open"
+
+detail_rhel_09_213115 := "RHEL-09-213115: Not_a_Finding" if kdump_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213115", concat(", ", missing_rhel_09_213115)]) if count(missing_rhel_09_213115) > 0
+
+else := "RHEL-09-213115: check failed — kdump.service must be masked (systemctl show kdump: LoadState=masked); a service that is loaded or active and not masked is a finding"
+
+finding_rhel_09_213115 := {
+	"vuln_id": "V-257818",
+	"stig_id": "RHEL-09-213115",
+	"severity": "CAT II",
+	"rule_title": "The kdump service on RHEL 9 must be disabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_213115,
+	"detail": detail_rhel_09_213115,
+	"fix_text": "Disable and mask the service: systemctl disable --now kdump && systemctl mask --now kdump",
+}
+
+# RHEL-09-215020 | V-257827 | CAT II
+# the sendmail package must not be installed (dnf list --installed sendmail)
+missing_rhel_09_215020 := [concat(".", p) | some p in [["packages", "sendmail"]]; not _collected(p)]
+
+default sendmail_absent := false
+
+sendmail_absent if {
+	count(missing_rhel_09_215020) == 0
+	input.packages.sendmail == false
+}
+
+status_rhel_09_215020 := "Not_a_Finding" if sendmail_absent
+
+else := "Open"
+
+detail_rhel_09_215020 := "RHEL-09-215020: Not_a_Finding" if sendmail_absent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215020", concat(", ", missing_rhel_09_215020)]) if count(missing_rhel_09_215020) > 0
+
+else := "RHEL-09-215020: check failed — the sendmail package must not be installed"
+
+finding_rhel_09_215020 := {
+	"vuln_id": "V-257827",
+	"stig_id": "RHEL-09-215020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not have the sendmail package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215020,
+	"detail": detail_rhel_09_215020,
+	"fix_text": "Remove the package: dnf remove sendmail",
+}
+
+# RHEL-09-215045 | V-257832 | CAT II
+# the gssproxy package must not be installed (dnf list --installed gssproxy); Not Applicable on input.attest.rhel_09_215045_nfs_authorized
+missing_rhel_09_215045 := [concat(".", p) | some p in [["packages", "gssproxy"]]; not _collected(p)]
+
+default gssproxy_absent := false
+
+gssproxy_absent if {
+	count(missing_rhel_09_215045) == 0
+	input.packages.gssproxy == false
+}
+
+gssproxy_absent if {
+	_attested("rhel_09_215045_gssproxy_documented")
+}
+
+default na_rhel_09_215045 := false
+
+na_rhel_09_215045 if {
+	_attested("rhel_09_215045_nfs_authorized")
+}
+
+status_rhel_09_215045 := "Not_a_Finding" if gssproxy_absent
+
+else := "Not_Applicable" if na_rhel_09_215045
+
+else := "Open"
+
+detail_rhel_09_215045 := "RHEL-09-215045: Not_a_Finding" if gssproxy_absent
+
+else := "RHEL-09-215045: Not_Applicable — NFS mounts are authorized and in use on the system" if na_rhel_09_215045
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215045", concat(", ", missing_rhel_09_215045)]) if count(missing_rhel_09_215045) > 0
+
+else := "RHEL-09-215045: check failed — the gssproxy package must not be installed, or its use must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215045_gssproxy_documented)"
+
+finding_rhel_09_215045 := {
+	"vuln_id": "V-257832",
+	"stig_id": "RHEL-09-215045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not have the gssproxy package installed.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_215045,
+	"detail": detail_rhel_09_215045,
+	"fix_text": "Remove the package: dnf remove gssproxy",
+}
+
+# RHEL-09-215050 | V-257833 | CAT II
+# the iprutils package must not be installed (dnf list --installed iprutils)
+missing_rhel_09_215050 := [concat(".", p) | some p in [["packages", "iprutils"]]; not _collected(p)]
+
+default iprutils_absent := false
+
+iprutils_absent if {
+	count(missing_rhel_09_215050) == 0
+	input.packages.iprutils == false
+}
+
+iprutils_absent if {
+	_attested("rhel_09_215050_iprutils_documented")
+}
+
+status_rhel_09_215050 := "Not_a_Finding" if iprutils_absent
+
+else := "Open"
+
+detail_rhel_09_215050 := "RHEL-09-215050: Not_a_Finding" if iprutils_absent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215050", concat(", ", missing_rhel_09_215050)]) if count(missing_rhel_09_215050) > 0
+
+else := "RHEL-09-215050: check failed — the iprutils package must not be installed, or its use must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215050_iprutils_documented)"
+
+finding_rhel_09_215050 := {
+	"vuln_id": "V-257833",
+	"stig_id": "RHEL-09-215050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not have the iprutils package installed.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_215050,
+	"detail": detail_rhel_09_215050,
+	"fix_text": "Remove the package: dnf remove iprutils",
+}
+
+# RHEL-09-215055 | V-257834 | CAT II
+# the tuned package must not be installed (dnf list --installed tuned)
+missing_rhel_09_215055 := [concat(".", p) | some p in [["packages", "tuned"]]; not _collected(p)]
+
+default tuned_absent := false
+
+tuned_absent if {
+	count(missing_rhel_09_215055) == 0
+	input.packages.tuned == false
+}
+
+tuned_absent if {
+	_attested("rhel_09_215055_tuned_documented")
+}
+
+status_rhel_09_215055 := "Not_a_Finding" if tuned_absent
+
+else := "Open"
+
+detail_rhel_09_215055 := "RHEL-09-215055: Not_a_Finding" if tuned_absent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215055", concat(", ", missing_rhel_09_215055)]) if count(missing_rhel_09_215055) > 0
+
+else := "RHEL-09-215055: check failed — the tuned package must not be installed, or its use must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215055_tuned_documented)"
+
+finding_rhel_09_215055 := {
+	"vuln_id": "V-257834",
+	"stig_id": "RHEL-09-215055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not have the tuned package installed.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_215055,
+	"detail": detail_rhel_09_215055,
+	"fix_text": "Remove the package: dnf remove tuned",
+}
+
+# RHEL-09-215070 | V-257837 | CAT II
+# the xorg-x11-server-common package must not be installed (dnf list --installed xorg-x11-server-common)
+missing_rhel_09_215070 := [concat(".", p) | some p in [["packages", "xorg-x11-server-common"]]; not _collected(p)]
+
+default graphical_display_manager_absent := false
+
+graphical_display_manager_absent if {
+	count(missing_rhel_09_215070) == 0
+	input.packages["xorg-x11-server-common"] == false
+}
+
+graphical_display_manager_absent if {
+	_attested("rhel_09_215070_gui_documented")
+}
+
+status_rhel_09_215070 := "Not_a_Finding" if graphical_display_manager_absent
+
+else := "Open"
+
+detail_rhel_09_215070 := "RHEL-09-215070: Not_a_Finding" if graphical_display_manager_absent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215070", concat(", ", missing_rhel_09_215070)]) if count(missing_rhel_09_215070) > 0
+
+else := "RHEL-09-215070: check failed — the xorg-x11-server-common package must not be installed, or the use of a graphical user interface must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215070_gui_documented)"
+
+finding_rhel_09_215070 := {
+	"vuln_id": "V-257837",
+	"stig_id": "RHEL-09-215070",
+	"severity": "CAT II",
+	"rule_title": "A graphical display manager must not be installed on RHEL 9 unless approved.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_215070,
+	"detail": detail_rhel_09_215070,
+	"fix_text": "Remove the xorg packages (dnf remove \"xorg*\") and set the default target: systemctl set-default multi-user.target",
+}
+
+# RHEL-09-252010 | V-257943 | CAT II
+# input.packages.chrony (dnf list --installed chrony)
+missing_rhel_09_252010 := [concat(".", p) | some p in [["packages", "chrony"]]; not _collected(p)]
+
+default chrony_installed := false
+
+chrony_installed if {
+	count(missing_rhel_09_252010) == 0
+	input.packages.chrony == true
+}
+
+status_rhel_09_252010 := "Not_a_Finding" if chrony_installed
+
+else := "Open"
+
+detail_rhel_09_252010 := "RHEL-09-252010: Not_a_Finding" if chrony_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252010", concat(", ", missing_rhel_09_252010)]) if count(missing_rhel_09_252010) > 0
+
+else := "RHEL-09-252010: check failed — the chrony package must be installed"
+
+finding_rhel_09_252010 := {
+	"vuln_id": "V-257943",
+	"stig_id": "RHEL-09-252010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the chrony package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_252010,
+	"detail": detail_rhel_09_252010,
+	"fix_text": "Install chrony: dnf install chrony",
+}
+
+# RHEL-09-252015 | V-257944 | CAT II
+# systemctl is-active chronyd
+missing_rhel_09_252015 := [concat(".", p) | some p in [["services", "chronyd"]]; not _collected(p)]
+
+default chronyd_active := false
+
+chronyd_active if {
+	count(missing_rhel_09_252015) == 0
+	_kw(["services", "chronyd"]) == "active"
+}
+
+status_rhel_09_252015 := "Not_a_Finding" if chronyd_active
+
+else := "Open"
+
+detail_rhel_09_252015 := "RHEL-09-252015: Not_a_Finding" if chronyd_active
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252015", concat(", ", missing_rhel_09_252015)]) if count(missing_rhel_09_252015) > 0
+
+else := "RHEL-09-252015: check failed — chronyd must be active (systemctl is-active chronyd)"
+
+finding_rhel_09_252015 := {
+	"vuln_id": "V-257944",
+	"stig_id": "RHEL-09-252015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 chronyd service must be enabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_252015,
+	"detail": detail_rhel_09_252015,
+	"fix_text": "Enable the service: systemctl enable --now chronyd",
+}
+
+# RHEL-09-252020 | V-257945 | CAT II
+# uncommented server / pool / peer lines of /etc/chrony.conf: input.chrony_conf.sources[{directive, address, maxpoll}] (maxpoll null when the line has none); whether the server is an authoritative DoW source is an attestation
+missing_rhel_09_252020 := [concat(".", p) | some p in [["chrony_conf", "sources"]]; not _collected(p)]
+
+default chrony_maxpoll_and_source := false
+
+chrony_maxpoll_and_source if {
+	count(missing_rhel_09_252020) == 0
+	srcs := input.chrony_conf.sources
+	is_array(srcs)
+	count([s | some s in srcs; s.directive == "server"]) > 0
+	polls := [p | some s in srcs; p := object.get(s, "maxpoll", null); p != null]
+	count(polls) > 0
+	every p in polls {
+		_maxpoll_ok(p)
+	}
+	_attested("rhel_09_252020_authoritative_time_source")
+}
+
+status_rhel_09_252020 := "Not_a_Finding" if chrony_maxpoll_and_source
+
+else := "Open"
+
+detail_rhel_09_252020 := "RHEL-09-252020: Not_a_Finding" if chrony_maxpoll_and_source
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252020", concat(", ", missing_rhel_09_252020)]) if count(missing_rhel_09_252020) > 0
+
+else := "RHEL-09-252020: check failed — an uncommented time source line in /etc/chrony.conf must set maxpoll, no maxpoll may exceed 16, a server must be configured, and it must be attested as an authoritative DoW time source (input.attest.rhel_09_252020_authoritative_time_source)"
+
+finding_rhel_09_252020 := {
+	"vuln_id": "V-257945",
+	"stig_id": "RHEL-09-252020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must securely compare internal information system clocks at least every 24 hours.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_252020,
+	"detail": detail_rhel_09_252020,
+	"fix_text": "Set in /etc/chrony.conf: server [ntp.server.name] iburst maxpoll 16",
+}
+
+# RHEL-09-252050 | V-257951 | CAT II
+# the value postconf -n smtpd_client_restrictions prints (input.postfix.smtpd_client_restrictions); postfix not installed is Not Applicable
+missing_rhel_09_252050 := [concat(".", p) | some p in [["packages", "postfix"]]; not _collected(p)]
+
+default postfix_relay_restricted := false
+
+postfix_relay_restricted if {
+	count(missing_rhel_09_252050) == 0
+	input.packages.postfix == true
+	s := _str(["postfix", "smtpd_client_restrictions"])
+	entries := [e | some e in regex.split(`[\s,]+`, s); e != ""]
+	count(entries) > 0
+	every e in entries {
+		e in {"permit_mynetworks", "reject"}
+	}
+}
+
+postfix_relay_restricted if {
+	_attested("rhel_09_252050_restrictions_documented")
+}
+
+default na_rhel_09_252050 := false
+
+na_rhel_09_252050 if {
+	input.packages.postfix == false
+}
+
+status_rhel_09_252050 := "Not_a_Finding" if postfix_relay_restricted
+
+else := "Not_Applicable" if na_rhel_09_252050
+
+else := "Open"
+
+detail_rhel_09_252050 := "RHEL-09-252050: Not_a_Finding" if postfix_relay_restricted
+
+else := "RHEL-09-252050: Not_Applicable — postfix is not installed" if na_rhel_09_252050
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252050", concat(", ", missing_rhel_09_252050)]) if count(missing_rhel_09_252050) > 0
+
+else := "RHEL-09-252050: check failed — postfix is installed: postconf -n smtpd_client_restrictions must list only permit_mynetworks and reject, or the additional entries must be documented with the ISSO (input.attest.rhel_09_252050_restrictions_documented)"
+
+finding_rhel_09_252050 := {
+	"vuln_id": "V-257951",
+	"stig_id": "RHEL-09-252050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured to prevent unrestricted mail relaying.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_252050,
+	"detail": detail_rhel_09_252050,
+	"fix_text": "Restrict client connections: postconf -e 'smtpd_client_restrictions = permit_mynetworks,reject'",
+}
+
+# RHEL-09-252060 | V-257953 | CAT II
+# the value of the uncommented postmaster entry of /etc/aliases (grep "postmaster:\s*root$"; null when there is none)
+missing_rhel_09_252060 := [concat(".", p) | some p in [["mail_aliases", "postmaster"]]; not _collected(p)]
+
+default postmaster_alias_root := false
+
+postmaster_alias_root if {
+	count(missing_rhel_09_252060) == 0
+	_str(["mail_aliases", "postmaster"]) == "root"
+}
+
+postmaster_alias_root if {
+	_attested("rhel_09_252060_audit_failure_notification")
+}
+
+status_rhel_09_252060 := "Not_a_Finding" if postmaster_alias_root
+
+else := "Open"
+
+detail_rhel_09_252060 := "RHEL-09-252060: Not_a_Finding" if postmaster_alias_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252060", concat(", ", missing_rhel_09_252060)]) if count(missing_rhel_09_252060) > 0
+
+else := "RHEL-09-252060: check failed — /etc/aliases must carry an uncommented 'postmaster: root' line, or the SA must show how the SA and ISSO are notified of an audit processing failure (input.attest.rhel_09_252060_audit_failure_notification)"
+
+finding_rhel_09_252060 := {
+	"vuln_id": "V-257953",
+	"stig_id": "RHEL-09-252060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must forward mail from postmaster to the root account using a postfix alias.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_252060,
+	"detail": detail_rhel_09_252060,
+	"fix_text": "Append 'postmaster: root' to /etc/aliases and run newaliases",
+}
+
+# =============================================================================
+# CAT III - LOW SEVERITY
+# =============================================================================
+
+# RHEL-09-211035 | V-257782 | CAT III
+# systemctl is-active rngd; kernel FIPS mode enabled (/proc/sys/crypto/fips_enabled = 1) is Not Applicable
+missing_rhel_09_211035 := [concat(".", p) | some p in [["services", "rngd"]]; not _collected(p)]
+
+default rngd_active := false
+
+rngd_active if {
+	count(missing_rhel_09_211035) == 0
+	_kw(["services", "rngd"]) == "active"
+}
+
+default na_rhel_09_211035 := false
+
+na_rhel_09_211035 if {
+	_str(["fips", "fips_enabled"]) == "1"
+}
+
+status_rhel_09_211035 := "Not_a_Finding" if rngd_active
+
+else := "Not_Applicable" if na_rhel_09_211035
+
+else := "Open"
+
+detail_rhel_09_211035 := "RHEL-09-211035: Not_a_Finding" if rngd_active
+
+else := "RHEL-09-211035: Not_Applicable — the kernel runs in FIPS mode (RHEL-09-671010)" if na_rhel_09_211035
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211035", concat(", ", missing_rhel_09_211035)]) if count(missing_rhel_09_211035) > 0
+
+else := "RHEL-09-211035: check failed — rngd must be active (systemctl is-active rngd)"
+
+finding_rhel_09_211035 := {
+	"vuln_id": "V-257782",
+	"stig_id": "RHEL-09-211035",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must enable the hardware random number generator entropy gatherer service.",
+	"check_type": "machine",
+	"status": status_rhel_09_211035,
+	"detail": detail_rhel_09_211035,
+	"fix_text": "Install rng-tools and enable the service: dnf install rng-tools && systemctl enable --now rngd",
+}
+
+# RHEL-09-252025 | V-257946 | CAT III
+# the port directive as configured in /etc/chrony.conf (grep -w port; null when missing or commented out)
+missing_rhel_09_252025 := [concat(".", p) | some p in [["chrony_conf", "port"]]; not _collected(p)]
+
+default chrony_server_disabled := false
+
+chrony_server_disabled if {
+	count(missing_rhel_09_252025) == 0
+	_str(["chrony_conf", "port"]) == "0"
+}
+
+default na_rhel_09_252025 := false
+
+na_rhel_09_252025 if {
+	_attested("rhel_09_252025_ntp_server")
+}
+
+status_rhel_09_252025 := "Not_a_Finding" if chrony_server_disabled
+
+else := "Not_Applicable" if na_rhel_09_252025
+
+else := "Open"
+
+detail_rhel_09_252025 := "RHEL-09-252025: Not_a_Finding" if chrony_server_disabled
+
+else := "RHEL-09-252025: Not_Applicable — the system is serving as an NTP server" if na_rhel_09_252025
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252025", concat(", ", missing_rhel_09_252025)]) if count(missing_rhel_09_252025) > 0
+
+else := "RHEL-09-252025: check failed — port in /etc/chrony.conf must be 0 (uncommented) to disable the chrony daemon from acting as a server"
+
+finding_rhel_09_252025 := {
+	"vuln_id": "V-257946",
+	"stig_id": "RHEL-09-252025",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must disable the chrony daemon from acting as a server.",
+	"check_type": "machine",
+	"status": status_rhel_09_252025,
+	"detail": detail_rhel_09_252025,
+	"fix_text": "Set port 0 in /etc/chrony.conf",
+}
+
+# RHEL-09-252030 | V-257947 | CAT III
+# the cmdport directive as configured in /etc/chrony.conf (grep -w cmdport; null when missing or commented out)
+missing_rhel_09_252030 := [concat(".", p) | some p in [["chrony_conf", "cmdport"]]; not _collected(p)]
+
+default chrony_cmdport_disabled := false
+
+chrony_cmdport_disabled if {
+	count(missing_rhel_09_252030) == 0
+	_str(["chrony_conf", "cmdport"]) == "0"
+}
+
+status_rhel_09_252030 := "Not_a_Finding" if chrony_cmdport_disabled
+
+else := "Open"
+
+detail_rhel_09_252030 := "RHEL-09-252030: Not_a_Finding" if chrony_cmdport_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252030", concat(", ", missing_rhel_09_252030)]) if count(missing_rhel_09_252030) > 0
+
+else := "RHEL-09-252030: check failed — cmdport in /etc/chrony.conf must be 0 (uncommented) to disable network management of the chrony daemon"
+
+finding_rhel_09_252030 := {
+	"vuln_id": "V-257947",
+	"stig_id": "RHEL-09-252030",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must disable network management of the chrony daemon.",
+	"check_type": "machine",
+	"status": status_rhel_09_252030,
+	"detail": detail_rhel_09_252030,
+	"fix_text": "Set cmdport 0 in /etc/chrony.conf",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -268,11 +816,24 @@ cat_ii_findings := [
 	finding_rhel_09_215040,
 	finding_rhel_09_215025,
 	finding_rhel_09_231040,
+	finding_rhel_09_213115,
+	finding_rhel_09_215020,
+	finding_rhel_09_215045,
+	finding_rhel_09_215050,
+	finding_rhel_09_215055,
+	finding_rhel_09_215070,
+	finding_rhel_09_252010,
+	finding_rhel_09_252015,
+	finding_rhel_09_252020,
+	finding_rhel_09_252050,
+	finding_rhel_09_252060,
 ]
 
-# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
-# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
-cat_iii_findings := array.concat([], [])
+cat_iii_findings := [
+	finding_rhel_09_211035,
+	finding_rhel_09_252025,
+	finding_rhel_09_252030,
+]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 

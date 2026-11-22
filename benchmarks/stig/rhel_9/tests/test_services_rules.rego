@@ -6,14 +6,55 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
+	"attest": {
+		"rhel_09_252020_authoritative_time_source": true,
+	},
+	"chrony_conf": {
+		"cmdport": "0",
+		"port": "0",
+		"sources": [
+			{
+				"address": "0.us.pool.ntp.mil",
+				"directive": "server",
+				"maxpoll": "16",
+			},
+		],
+	},
+	"mail_aliases": {
+		"postmaster": "root",
+	},
 	"packages": {
+		"chrony": true,
+		"gssproxy": false,
+		"iprutils": false,
 		"nfs-utils": false,
+		"postfix": true,
+		"sendmail": false,
 		"telnet-server": false,
 		"tftp-server": true,
+		"tuned": false,
 		"vsftpd": false,
+		"xorg-x11-server-common": false,
 	},
-	"tftp": {"execstart": "/usr/sbin/in.tftpd -s /var/lib/tftpboot"},
-	"unit_enabled": {"autofs": "masked"},
+	"postfix": {
+		"smtpd_client_restrictions": "permit_mynetworks,reject",
+	},
+	"services": {
+		"chronyd": "active",
+		"kdump": "inactive",
+		"rngd": "active",
+	},
+	"systemd_units": {
+		"kdump.service": {
+			"load_state": "masked",
+		},
+	},
+	"tftp": {
+		"execstart": "/usr/sbin/in.tftpd -s /var/lib/tftpboot",
+	},
+	"unit_enabled": {
+		"autofs": "masked",
+	},
 }
 
 test_every_finding_open_on_empty_input if {
@@ -128,4 +169,390 @@ test_rhel_09_231040_pass_2 if {
 
 test_rhel_09_231040_pass_3 if {
 	data.stig.rhel_9.services.status_rhel_09_231040 == "Not_a_Finding" with input as object.union(green_fixture, {"unit_enabled": {"autofs": "not-found"}})
+}
+
+test_rhel_09_211035_pass if {
+	data.stig.rhel_9.services.status_rhel_09_211035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211035_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_211035 with input as object.union(green_fixture, {"services": {"rngd": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211035: check failed")
+}
+
+test_rhel_09_211035_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_211035 with input as object.union(green_fixture, {"services": {"rngd": "failed"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211035: check failed")
+}
+
+test_rhel_09_211035_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_211035 with input as json.remove(green_fixture, [["services", "rngd"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211035: evidence missing — services.rngd")
+}
+
+test_rhel_09_211035_not_applicable_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_211035 with input as object.union(green_fixture, {"services": {"rngd": "inactive"}, "fips": {"fips_enabled": "1"}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_213115_pass if {
+	data.stig.rhel_9.services.status_rhel_09_213115 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213115_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_213115 with input as object.union(green_fixture, {"systemd_units": {"kdump.service": {"load_state": "loaded"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213115: check failed")
+}
+
+test_rhel_09_213115_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_213115 with input as object.union(green_fixture, {"systemd_units": {"kdump.service": {"load_state": "loaded"}}, "services": {"kdump": "active"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213115: check failed")
+}
+
+test_rhel_09_213115_fail_3 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_213115 with input as object.union(green_fixture, {"systemd_units": {"kdump.service": {"load_state": "not-found"}}, "services": {"kdump": "active"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213115: check failed")
+}
+
+test_rhel_09_213115_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_213115 with input as json.remove(green_fixture, [["systemd_units", "kdump.service", "load_state"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213115: evidence missing — systemd_units.kdump.service.load_state")
+}
+
+test_rhel_09_213115_evidence_missing_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_213115 with input as json.remove(green_fixture, [["services", "kdump"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213115: evidence missing — services.kdump")
+}
+
+test_rhel_09_213115_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_213115 == "Not_a_Finding" with input as object.union(green_fixture, {"systemd_units": {"kdump.service": {"load_state": "not-found"}}, "services": {"kdump": "inactive"}})
+}
+
+test_rhel_09_213115_pass_3 if {
+	data.stig.rhel_9.services.status_rhel_09_213115 == "Not_a_Finding" with input as object.union(green_fixture, {"services": {"kdump": "masked"}})
+}
+
+test_rhel_09_215020_pass if {
+	data.stig.rhel_9.services.status_rhel_09_215020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215020_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215020 with input as object.union(green_fixture, {"packages": {"sendmail": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215020: check failed")
+}
+
+test_rhel_09_215020_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215020 with input as json.remove(green_fixture, [["packages", "sendmail"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215020: evidence missing — packages.sendmail")
+}
+
+test_rhel_09_215045_pass if {
+	data.stig.rhel_9.services.status_rhel_09_215045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215045_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215045 with input as object.union(green_fixture, {"packages": {"gssproxy": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215045: check failed")
+}
+
+test_rhel_09_215045_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215045 with input as json.remove(green_fixture, [["packages", "gssproxy"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215045: evidence missing — packages.gssproxy")
+}
+
+test_rhel_09_215045_not_applicable_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215045 with input as object.union(green_fixture, {"packages": {"gssproxy": true}, "attest": {"rhel_09_215045_nfs_authorized": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_215045_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_215045 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"gssproxy": true}, "attest": {"rhel_09_215045_gssproxy_documented": true}})
+}
+
+test_rhel_09_215050_pass if {
+	data.stig.rhel_9.services.status_rhel_09_215050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215050_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215050 with input as object.union(green_fixture, {"packages": {"iprutils": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215050: check failed")
+}
+
+test_rhel_09_215050_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215050 with input as json.remove(green_fixture, [["packages", "iprutils"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215050: evidence missing — packages.iprutils")
+}
+
+test_rhel_09_215050_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_215050 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"iprutils": true}, "attest": {"rhel_09_215050_iprutils_documented": true}})
+}
+
+test_rhel_09_215055_pass if {
+	data.stig.rhel_9.services.status_rhel_09_215055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215055_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215055 with input as object.union(green_fixture, {"packages": {"tuned": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215055: check failed")
+}
+
+test_rhel_09_215055_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215055 with input as json.remove(green_fixture, [["packages", "tuned"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215055: evidence missing — packages.tuned")
+}
+
+test_rhel_09_215055_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_215055 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"tuned": true}, "attest": {"rhel_09_215055_tuned_documented": true}})
+}
+
+test_rhel_09_215070_pass if {
+	data.stig.rhel_9.services.status_rhel_09_215070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215070_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215070 with input as object.union(green_fixture, {"packages": {"xorg-x11-server-common": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215070: check failed")
+}
+
+test_rhel_09_215070_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_215070 with input as json.remove(green_fixture, [["packages", "xorg-x11-server-common"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215070: evidence missing — packages.xorg-x11-server-common")
+}
+
+test_rhel_09_215070_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_215070 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"xorg-x11-server-common": true}, "attest": {"rhel_09_215070_gui_documented": true}})
+}
+
+test_rhel_09_252010_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252010_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252010 with input as object.union(green_fixture, {"packages": {"chrony": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252010: check failed")
+}
+
+test_rhel_09_252010_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252010 with input as json.remove(green_fixture, [["packages", "chrony"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252010: evidence missing — packages.chrony")
+}
+
+test_rhel_09_252015_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252015_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252015 with input as object.union(green_fixture, {"services": {"chronyd": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252015: check failed")
+}
+
+test_rhel_09_252015_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252015 with input as object.union(green_fixture, {"services": {"chronyd": "failed"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252015: check failed")
+}
+
+test_rhel_09_252015_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252015 with input as json.remove(green_fixture, [["services", "chronyd"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252015: evidence missing — services.chronyd")
+}
+
+test_rhel_09_252020_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252020_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": 17}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: check failed")
+}
+
+test_rhel_09_252020_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": "sixteen"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: check failed")
+}
+
+test_rhel_09_252020_fail_3 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: check failed")
+}
+
+test_rhel_09_252020_fail_4 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "pool", "address": "2.rhel.pool.ntp.org", "maxpoll": 10}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: check failed")
+}
+
+test_rhel_09_252020_fail_5 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: check failed")
+}
+
+test_rhel_09_252020_fail_6 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"attest": {"rhel_09_252020_authoritative_time_source": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: check failed")
+}
+
+test_rhel_09_252020_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as json.remove(green_fixture, [["chrony_conf", "sources"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: evidence missing — chrony_conf.sources")
+}
+
+test_rhel_09_252020_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_252020 == "Not_a_Finding" with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": 10}, {"directive": "server", "address": "1.us.pool.ntp.mil"}]}})
+}
+
+test_rhel_09_252025_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252025_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252025 with input as object.union(green_fixture, {"chrony_conf": {"port": "123"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252025: check failed")
+}
+
+test_rhel_09_252025_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252025 with input as object.union(green_fixture, {"chrony_conf": {"port": "323"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252025: check failed")
+}
+
+test_rhel_09_252025_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252025 with input as json.remove(green_fixture, [["chrony_conf", "port"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252025: evidence missing — chrony_conf.port")
+}
+
+test_rhel_09_252025_not_applicable_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252025 with input as object.union(green_fixture, {"chrony_conf": {"port": "123"}, "attest": {"rhel_09_252025_ntp_server": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_252025_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_252025 == "Not_a_Finding" with input as object.union(green_fixture, {"chrony_conf": {"port": 0}})
+}
+
+test_rhel_09_252030_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252030_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252030 with input as object.union(green_fixture, {"chrony_conf": {"cmdport": "123"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252030: check failed")
+}
+
+test_rhel_09_252030_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252030 with input as object.union(green_fixture, {"chrony_conf": {"cmdport": "323"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252030: check failed")
+}
+
+test_rhel_09_252030_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252030 with input as json.remove(green_fixture, [["chrony_conf", "cmdport"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252030: evidence missing — chrony_conf.cmdport")
+}
+
+test_rhel_09_252030_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_252030 == "Not_a_Finding" with input as object.union(green_fixture, {"chrony_conf": {"cmdport": 0}})
+}
+
+test_rhel_09_252050_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252050_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252050 with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": "permit_mynetworks,permit_sasl_authenticated,reject"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252050: check failed")
+}
+
+test_rhel_09_252050_fail_2 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252050 with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": "permit"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252050: check failed")
+}
+
+test_rhel_09_252050_fail_3 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252050 with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252050: check failed")
+}
+
+test_rhel_09_252050_fail_4 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252050 with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": null}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252050: check failed")
+}
+
+test_rhel_09_252050_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252050 with input as json.remove(green_fixture, [["packages", "postfix"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252050: evidence missing — packages.postfix")
+}
+
+test_rhel_09_252050_not_applicable_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252050 with input as object.union(green_fixture, {"packages": {"postfix": false}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_252050_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_252050 == "Not_a_Finding" with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": "permit_mynetworks, reject"}})
+}
+
+test_rhel_09_252050_pass_3 if {
+	data.stig.rhel_9.services.status_rhel_09_252050 == "Not_a_Finding" with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": "reject"}})
+}
+
+test_rhel_09_252050_pass_4 if {
+	data.stig.rhel_9.services.status_rhel_09_252050 == "Not_a_Finding" with input as object.union(green_fixture, {"postfix": {"smtpd_client_restrictions": "permit_sasl_authenticated,reject"}, "attest": {"rhel_09_252050_restrictions_documented": true}})
+}
+
+test_rhel_09_252060_pass if {
+	data.stig.rhel_9.services.status_rhel_09_252060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252060_fail_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252060 with input as object.union(green_fixture, {"mail_aliases": {"postmaster": "admin@example.mil"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252060: check failed")
+}
+
+test_rhel_09_252060_evidence_missing_1 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252060 with input as json.remove(green_fixture, [["mail_aliases", "postmaster"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252060: evidence missing — mail_aliases.postmaster")
+}
+
+test_rhel_09_252060_pass_2 if {
+	data.stig.rhel_9.services.status_rhel_09_252060 == "Not_a_Finding" with input as object.union(green_fixture, {"mail_aliases": {"postmaster": "admin@example.mil"}, "attest": {"rhel_09_252060_audit_failure_notification": true}})
 }

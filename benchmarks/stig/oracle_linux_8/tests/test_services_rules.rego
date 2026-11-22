@@ -12,7 +12,9 @@ green_fixture := {
 		"telnet-server": false,
 		"tftp-server": false,
 	},
-	"unit_enabled": {"autofs": "masked"},
+	"unit_enabled": {
+		"autofs": "masked",
+	},
 }
 
 test_every_finding_open_on_empty_input if {

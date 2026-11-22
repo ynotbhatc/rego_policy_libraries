@@ -32,7 +32,7 @@ is not read by any rule: RHEL-09-671010 reports `evidence missing — fips.fips_
 
 | Platform | Table | Rules | Fact paths read | Attestation keys |
 |---|---|---:|---:|---:|
-| RHEL 9 (`rhel_9`) | `rhel9_rules.py` | 104 | 133 | 24 |
+| RHEL 9 (`rhel_9`) | `rhel9_rules.py` | 445 | 484 | 98 |
 | Oracle Linux 9 (`oracle_linux_9`) | `ol9_rules.py` | 114 | 143 | 20 |
 | Oracle Linux 8 (`oracle_linux_8`) | `ol8_rules.py` | 95 | 135 | 20 |
 | RHEL 10 (`rhel_10`) | `rhel10_rules.py` | 100 | 164 | 21 |
@@ -43,18 +43,40 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 
 | Path | Type | Accepted | Req | Example (pass) | Meaning (first rule that requires it) | Read by |
 |---|---|---|---|---|---|---|
+| `aide.audit_tool_lines` | array of string |  | R9 | `["/usr/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512", "/us…` | RHEL-09-651025: the uncommented lines of /etc/aide.conf naming /usr/sbin/au* (grep /usr/sbin/au /etc/aide.conf); empty when none | R9: RHEL-09-651025 |
 | `aide.check_output` | string | _str | OL9 R10 | `"AIDE found NO differences between database and filesystem.…` | OL09-00-000300: input.packages.aide; input.aide.check_output: output of /usr/sbin/aide --check (read when AIDE is installed) | OL9: OL09-00-000300<br>R10: RHEL-10-200630 |
-| `aide.rule_lines` | array of string |  | R9 OL9 R10 | `["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"]` | RHEL-09-651020: the uncommented rule / selection lines of /etc/aide.conf | R9: RHEL-09-651020<br>OL9: OL09-00-000302<br>R10: RHEL-10-200632 |
+| `aide.rule_lines` | array of string |  | R9 OL9 R10 | `["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"]` | RHEL-09-651020: the uncommented rule / selection lines of /etc/aide.conf | R9: RHEL-09-651020, RHEL-09-651030, RHEL-09-651035<br>OL9: OL09-00-000302<br>R10: RHEL-10-200632 |
 | `aide.schedule` | array of string |  | R9 OL9 OL8 R10 | `["/etc/cron.daily/aide: /usr/sbin/aide --check \| /bin/mail…` | RHEL-09-651015: the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA | R9: RHEL-09-651015<br>OL9: OL09-00-000301<br>OL8: OL08-00-010360<br>R10: RHEL-10-200633 |
-| `audit_rules` | array of string |  | R9 OL9 R10 | `["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid…` | RHEL-09-654010: execve rules (auditctl -l) for both arches and both setuid/setgid conditions | R9: RHEL-09-654010, RHEL-09-654015, RHEL-09-654020, RHEL-09-654025, RHEL-09-654070 … (+4)<br>OL9: OL09-00-000500, OL09-00-000525, OL09-00-000545, OL09-00-000635, OL09-00-000640 … (+4)<br>R10: RHEL-10-500300, RHEL-10-500310, RHEL-10-500390, RHEL-10-500410, RHEL-10-500550 … (+4) |
-| `audit_rules_file` | array of string |  | OL8 | `["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid…` | OL08-00-030000: execve rules (auditctl -l) for both arches and both setuid/setgid conditions | OL8: OL08-00-030000, OL08-00-030150, OL08-00-030171, OL08-00-030200, OL08-00-030360 … (+4) |
-| `auditd_config.disk_error_action` | string | _kw | OL8 | `"HALT"` | OL08-00-030040: grep disk_error_action /etc/audit/auditd.conf | OL8: OL08-00-030040 |
+| `audit_rules` | array of string |  | R9 OL9 R10 | `["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid…` | RHEL-09-654010: execve rules (auditctl -l) for both arches and both setuid/setgid conditions | R9: RHEL-09-654010, RHEL-09-654015, RHEL-09-654020, RHEL-09-654025, RHEL-09-654030 … (+47)<br>OL9: OL09-00-000500, OL09-00-000525, OL09-00-000545, OL09-00-000635, OL09-00-000640 … (+4)<br>R10: RHEL-10-500300, RHEL-10-500310, RHEL-10-500390, RHEL-10-500410, RHEL-10-500550 … (+4) |
+| `audit_rules_d` | array of string |  | R9 | `["-a always,exit -F path=/usr/sbin/shutdown -F perm=x -F au…` | RHEL-09-654200: the uncommented lines of /etc/audit/rules.d/* (cat /etc/audit/rules.d/*), one string per line | R9: RHEL-09-654200 |
+| `audit_rules_file` | array of string |  | R9 OL8 | `["-D", "-b 8192", "-f 2", "--loginuid-immutable", "-e 2"]` | RHEL-09-654265: the uncommented lines of /etc/audit/audit.rules (input.audit_rules_file): the -f lines | R9: RHEL-09-654265, RHEL-09-654270, RHEL-09-654275<br>OL8: OL08-00-030000, OL08-00-030150, OL08-00-030171, OL08-00-030200, OL08-00-030360 … (+4) |
+| `auditd_config.action_mail_acct` | string | _str | R9 | `"root"` | RHEL-09-653070: action_mail_acct as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653070 |
+| `auditd_config.admin_space_left` | string |  | R9 | `"5%"` | RHEL-09-653045: admin_space_left as written in /etc/audit/auditd.conf, with its % sign (null when missing or commented out) | R9: RHEL-09-653045 |
+| `auditd_config.admin_space_left_action` | string | _kw | R9 | `"SINGLE"` | RHEL-09-653050: admin_space_left_action as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653050 |
+| `auditd_config.disk_error_action` | string | _kw | R9 OL8 | `"HALT"` | RHEL-09-653020: disk_error_action as configured in /etc/audit/auditd.conf | R9: RHEL-09-653020<br>OL8: OL08-00-030040 |
 | `auditd_config.disk_full_action` | string | _kw | R9 OL9 OL8 | `"SYSLOG"` | RHEL-09-653025: disk_full_action as configured in /etc/audit/auditd.conf | R9: RHEL-09-653025<br>OL9: OL09-00-000765<br>OL8: OL08-00-030060 |
+| `auditd_config.freq` | number/string | _num | R9 | `100` | RHEL-09-653095: freq as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653095 |
+| `auditd_config.local_events` | string | _kw | R9 | `"yes"` | RHEL-09-653075: local_events as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653075 |
 | `auditd_config.log_file` | string | _str | R9 OL9 OL8 R10 | `"/var/log/audit/audit.log"` | RHEL-09-231030: the audit data path is the directory of auditd.conf log_file; it must be its own mount | R9: RHEL-09-231030<br>OL9: OL09-00-000002<br>OL8: OL08-00-010542<br>R10: RHEL-10-000520 |
+| `auditd_config.log_format` | string | _kw | R9 | `"ENRICHED"` | RHEL-09-653100: log_format as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653100 |
+| `auditd_config.log_group` | string | _str |  | `"auditlog"` |  | R9: RHEL-09-653080 |
 | `auditd_config.max_log_file_action` | string | _kw | R9 OL9 | `"ROTATE"` | RHEL-09-653055: max_log_file_action as configured in /etc/audit/auditd.conf | R9: RHEL-09-653055<br>OL9: OL09-00-000770 |
+| `auditd_config.name_format` | string | _kw | R9 | `"hostname"` | RHEL-09-653060: name_format as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653060 |
+| `auditd_config.overflow_action` | string | _kw | R9 | `"SYSLOG"` | RHEL-09-653065: overflow_action as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653065 |
+| `auditd_config.space_left` | string |  | R9 | `"25%"` | RHEL-09-653035: space_left as written in /etc/audit/auditd.conf, with its % sign (null when missing or commented out) | R9: RHEL-09-653035 |
 | `auditd_config.space_left_action` | string | _kw | R9 OL9 OL8 R10 | `"EMAIL"` | RHEL-09-653040: space_left_action as configured in /etc/audit/auditd.conf | R9: RHEL-09-653040<br>OL9: OL09-00-000870<br>OL8: OL08-00-030731<br>R10: RHEL-10-500205 |
+| `auditd_config.write_logs` | string | _kw | R9 | `"yes"` | RHEL-09-653105: write_logs as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653105 |
 | `bluetooth_adapter_present` | boolean |  |  | `false` |  | OL8: OL08-00-040111 |
-| `boot_firmware` | string | _kw |  | `"uefi"` |  | OL8: OL08-00-010140, OL08-00-010150 |
+| `boot_firmware` | string | _kw |  | `"bios"` |  | R9: RHEL-09-231105<br>OL8: OL08-00-010140, OL08-00-010150 |
+| `chrony_conf.cmdport` | number/string | _str | R9 | `"0"` | RHEL-09-252030: the cmdport directive as configured in /etc/chrony.conf (grep -w cmdport; null when missing or commented out) | R9: RHEL-09-252030 |
+| `chrony_conf.port` | number/string | _str | R9 | `"0"` | RHEL-09-252025: the port directive as configured in /etc/chrony.conf (grep -w port; null when missing or commented out) | R9: RHEL-09-252025 |
+| `chrony_conf.sources` | array of object |  | R9 | `[{"directive": "server", "address": "0.us.pool.ntp.mil", "m…` | RHEL-09-252020: uncommented server / pool / peer lines of /etc/chrony.conf: input.chrony_conf.sources[{directive, address, maxpoll}] (maxpo… | R9: RHEL-09-252020 |
+| `chrony_conf.sources[].address` | string |  |  | `"0.us.pool.ntp.mil"` |  | R9: RHEL-09-252020 |
+| `chrony_conf.sources[].directive` | string |  |  | `"server"` |  | R9: RHEL-09-252020 |
+| `chrony_conf.sources[].maxpoll` | number/string |  |  | `"16"` |  | R9: RHEL-09-252020 |
+| `coredump_conf.ProcessSizeMax` | string | _str | R9 | `"0"` | RHEL-09-213085: ProcessSizeMax as configured in /etc/systemd/coredump.conf (grep -i; null when missing or commented out) | R9: RHEL-09-213085 |
+| `coredump_conf.Storage` | string | _str | R9 | `"none"` | RHEL-09-213090: Storage as configured in /etc/systemd/coredump.conf (grep -i; null when missing or commented out) | R9: RHEL-09-213090 |
+| `cpuinfo.flags` | array of string |  | R9 | `["flags : fpu vme de pse nx lm", "flags : fpu vme de pse nx…` | RHEL-09-213110: input.cpuinfo.flags: the flags lines of /proc/cpuinfo (grep ^flags), one string per processor; input.grub.kernel_args as ab… | R9: RHEL-09-213110 |
 | `crypto_backends` | array of object |  | R9 OL9 R10 | `[{"name": "openssh.config", "is_symlink": true, "target": "…` | RHEL-09-672020: update-crypto-policies --check output and the back-end symlinks (input.crypto_backends[{name, is_symlink, target}]) | R9: RHEL-09-672020<br>OL9: OL09-00-000242<br>R10: RHEL-10-300090 |
 | `crypto_backends[].is_symlink` | boolean |  |  | `true` |  | R9: RHEL-09-672020<br>OL9: OL09-00-000242<br>R10: RHEL-10-300090 |
 | `crypto_backends[].name` | string |  |  | `"openssh.config"` |  | R9: RHEL-09-672020<br>OL9: OL09-00-000242<br>R10: RHEL-10-300090 |
@@ -67,108 +89,347 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `crypto_policy_state.min_rsa_size` | number/string | _num | R9 OL9 OL8 R10 | `2048` | RHEL-09-215105: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size | R9: RHEL-09-215105<br>OL9: OL09-00-000241<br>OL8: OL08-00-010182<br>R10: RHEL-10-300010 |
 | `dconf_db.removal_action` | array of string |  | OL9 OL8 | `["'lock-screen'"]` | OL09-00-002160: input.dconf_db.removal_action: the values of the uncommented removal-action= lines found by grep -R removal-action /etc/dco… | OL9: OL09-00-002160<br>OL8: OL08-00-020050 |
 | `dconf_local.logout` | array of string |  | OL8 | `["''"]` | OL08-00-040171: input.dconf_local.logout: values of uncommented logout= lines in /etc/dconf/db/local.d/*; the rule title applies it only wh… | OL8: OL08-00-040171 |
-| `dnf_config.gpgcheck` | string | _str | OL9 | `"1"` | OL09-00-000497: gpgcheck in /etc/dnf/dnf.conf (grep gpgcheck /etc/dnf/dnf.conf); only "1" passes; the SA clause is an attestation | OL9: OL09-00-000497 |
+| `dconf_locks.automount_open` | array of string |  | R9 | `["/org/gnome/desktop/media-handling/automount-open"]` | RHEL-09-271025: lines returned by grep 'automount-open' /etc/dconf/db/<db>.d/locks/* for the system-db named in /etc/dconf/profile/user (in… | R9: RHEL-09-271025 |
+| `dconf_outdated_databases` | array |  | R9 | `[]` | RHEL-09-271090: output lines of the check's dconf_needs_update function (a database whose mtime is below its newest keyfile's); no GUI inst… | R9: RHEL-09-271090 |
+| `device_file_labels.device_t` | array of object |  | R9 | `[]` | RHEL-09-232260: find /dev -context *:device_t:* / *:unlabeled_t:* \( -type c -o -type b \) -printf "%p %Z\n": input.device_file_labels.{dev… | R9: RHEL-09-232260 |
+| `device_file_labels.device_t[].context` | string |  |  | `"system_u:object_r:device_t:s0"` |  | R9: RHEL-09-232260 |
+| `device_file_labels.device_t[].path` | string |  |  | `"/dev/vmci"` |  | R9: RHEL-09-232260 |
+| `device_file_labels.unlabeled_t` | array |  | R9 | `[]` | RHEL-09-232260: find /dev -context *:device_t:* / *:unlabeled_t:* \( -type c -o -type b \) -printf "%p %Z\n": input.device_file_labels.{dev… | R9: RHEL-09-232260 |
+| `disk_encryption.filesystems` | array of object |  | R9 | `[{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt":…` | RHEL-09-231190: input.disk_encryption.filesystems[{mount, device, crypt: [{name, type}]}]: each persistent file system and the crypt-type p… | R9: RHEL-09-231190 |
+| `disk_encryption.filesystems[].crypt` | array of object |  |  | `[{"name": "luks-b74f6910", "type": "LUKS2"}]` |  | R9: RHEL-09-231190 |
+| `disk_encryption.filesystems[].crypt[].name` | string |  |  | `"luks-b74f6910"` |  | R9: RHEL-09-231190 |
+| `disk_encryption.filesystems[].crypt[].type` | string |  |  | `"LUKS2"` |  | R9: RHEL-09-231190 |
+| `disk_encryption.filesystems[].device` | string |  |  | `"/dev/mapper/rhel-root"` |  | R9: RHEL-09-231190 |
+| `disk_encryption.filesystems[].mount` | string |  |  | `"/"` |  | R9: RHEL-09-231190 |
+| `dnf_config.clean_requirements_on_remove` | string |  | R9 | `"True"` | RHEL-09-214035: clean_requirements_on_remove as written in /etc/dnf/dnf.conf (grep -i; null when missing or commented out) | R9: RHEL-09-214035 |
+| `dnf_config.gpgcheck` | string | _str | R9 OL9 | `"1"` | RHEL-09-214015: gpgcheck as written in /etc/dnf/dnf.conf (grep -w gpgcheck; null when missing or commented out) | R9: RHEL-09-214015<br>OL9: OL09-00-000497 |
 | `dnf_config.localpkg_gpgcheck` | number/string | _str | R9 OL9 OL8 R10 | `"1"` | RHEL-09-214020: localpkg_gpgcheck as written in /etc/dnf/dnf.conf | R9: RHEL-09-214020<br>OL9: OL09-00-000496<br>OL8: OL08-00-010371<br>R10: RHEL-10-001040 |
+| `dnf_repolist` | array of object |  | R9 | `[{"id": "rhel-9-for-x86_64-appstream-rpms", "name": "Red Ha…` | RHEL-09-215035: the repositories printed by dnf repolist: [{id, name}] (the enabled ones; not the .repo files, which also list disabled rep… | R9: RHEL-09-215035 |
+| `dnf_repolist[].id` | string |  |  | `"rhel-9-for-x86_64-appstream-rpms"` |  | R9: RHEL-09-215035 |
+| `dnf_repolist[].name` | string |  |  | `"Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)"` |  | R9: RHEL-09-215035 |
 | `duplicate_gids` | array |  | R9 OL9 R10 | `[]` | RHEL-09-411110: GIDs printed by cut -d : -f 3 /etc/group \| uniq -d | R9: RHEL-09-411110<br>OL9: OL09-00-003006<br>R10: RHEL-10-600470 |
 | `duplicate_uid_accounts` | array of object |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-411030: accounts printed by awk -F: 'list[$3]++{print $1, $3}' /etc/passwd, each {name, uid, interactive} | R9: RHEL-09-411030<br>OL9: OL09-00-003001<br>OL8: OL08-00-020240<br>R10: RHEL-10-600130 |
 | `duplicate_uid_accounts[].interactive` | boolean |  |  | `false` |  | R9: RHEL-09-411030<br>OL9: OL09-00-003001<br>OL8: OL08-00-020240<br>R10: RHEL-10-600130 |
 | `duplicate_uid_accounts[].name` | string |  |  | `"toor"` |  | R9: RHEL-09-411030<br>OL9: OL09-00-003001<br>OL8: OL08-00-020240<br>R10: RHEL-10-600130 |
 | `duplicate_uid_accounts[].uid` | number |  |  | `0` |  | R9: RHEL-09-411030<br>OL9: OL09-00-003001<br>OL8: OL08-00-020240<br>R10: RHEL-10-600130 |
+| `faillock_conf.audit` | boolean |  | R9 | `true` | RHEL-09-412045: audit option present and uncommented in /etc/security/faillock.conf (boolean) | R9: RHEL-09-412045 |
 | `faillock_conf.deny` | number/string | _num | R9 OL9 OL8 R10 | `3` | RHEL-09-411075: deny as configured in /etc/security/faillock.conf | R9: RHEL-09-411075<br>OL9: OL09-00-003020<br>OL8: OL08-00-020011<br>R10: RHEL-10-600410 |
+| `faillock_conf.dir` | string | _str | R9 | `"/var/log/faillock"` | RHEL-09-411105: dir as configured in /etc/security/faillock.conf (null when missing or commented out); the default /var/run/faillock does n… | R9: RHEL-09-411105 |
+| `faillock_conf.even_deny_root` | boolean |  | R9 | `true` | RHEL-09-411080: even_deny_root option present and uncommented in /etc/security/faillock.conf (boolean) | R9: RHEL-09-411080 |
 | `faillock_conf.fail_interval` | number/string | _num | R9 OL9 OL8 R10 | `900` | RHEL-09-411085: fail_interval as configured in /etc/security/faillock.conf | R9: RHEL-09-411085<br>OL9: OL09-00-002416<br>OL8: OL08-00-020013<br>R10: RHEL-10-600420 |
+| `faillock_conf.unlock_time` | number/string | _num | R9 | `0` | RHEL-09-411090: unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out) | R9: RHEL-09-411090 |
+| `faillock_dir.path` | string |  |  | `"/var/log/faillock"` |  | R9: RHEL-09-431020 |
+| `faillock_dir.selinux_type` | string | _str | R9 | `"faillog_t"` | RHEL-09-431020: SELinux type from ls -Zd of the directory named by dir in /etc/security/faillock.conf (input.faillock_dir {path, selinux_ty… | R9: RHEL-09-431020 |
+| `fapolicyd.compiled_rules` | array of string |  | R9 | `["allow perm=any uid=0 : dir=/var/tmp/", "allow perm=open a…` | RHEL-09-433016: permissive as configured in /etc/fapolicyd/fapolicyd.conf; the uncommented rules of /etc/fapolicyd/compiled.rules in file o… | R9: RHEL-09-433016 |
+| `fapolicyd.permissive` | number/string | _str | R9 | `"0"` | RHEL-09-433016: permissive as configured in /etc/fapolicyd/fapolicyd.conf; the uncommented rules of /etc/fapolicyd/compiled.rules in file o… | R9: RHEL-09-433016 |
+| `file_permissions.audit_config_files` | array of object |  | R9 | `[{"path": "/etc/audit/auditd.conf", "mode": "600"}]` | RHEL-09-653110: stat -c '%a %n' of /etc/audit/rules.d/*.rules, /etc/audit/audit.rules and /etc/audit/auditd.conf: [{path, mode}] | R9: RHEL-09-653110 |
+| `file_permissions.audit_config_files[].mode` | string |  |  | `"600"` |  | R9: RHEL-09-653110 |
+| `file_permissions.audit_config_files[].path` | string |  |  | `"/etc/audit/auditd.conf"` |  | R9: RHEL-09-653110 |
+| `file_permissions.audit_log.group` | string | _str | R9 | `"root"` | RHEL-09-653080: group of the auditd.conf log_file (stat -c %G); input.auditd_config.log_group is read when the group is not root | R9: RHEL-09-653080 |
+| `file_permissions.audit_log_dir.owner` | string | _str | R9 | `"root"` | RHEL-09-653085: owner of the directory of the auditd.conf log_file (stat -c %U /var/log/audit) | R9: RHEL-09-653085 |
+| `file_permissions.audit_log_files` | array of object |  | R9 | `[{"path": "/var/log/audit/audit.log", "mode": "600"}]` | RHEL-09-653090: find <directory of auditd.conf log_file> -type f -exec stat -c '%a %n': [{path, mode}] | R9: RHEL-09-653090 |
+| `file_permissions.audit_log_files[].mode` | string |  |  | `"600"` |  | R9: RHEL-09-653090 |
+| `file_permissions.audit_log_files[].path` | string |  |  | `"/var/log/audit/audit.log"` |  | R9: RHEL-09-653090 |
+| `file_permissions.audit_tools` | array of object |  | R9 | `[{"path": "/sbin/auditctl", "mode": "755", "owner": "root",…` | RHEL-09-232035: mode of each audit tool (stat -c on /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd … | R9: RHEL-09-232035, RHEL-09-232220, RHEL-09-232225 |
+| `file_permissions.audit_tools[].group` | string |  |  | `"root"` |  | R9: RHEL-09-232035, RHEL-09-232220, RHEL-09-232225 |
+| `file_permissions.audit_tools[].mode` | string |  |  | `"755"` |  | R9: RHEL-09-232035, RHEL-09-232220, RHEL-09-232225 |
+| `file_permissions.audit_tools[].owner` | string |  |  | `"root"` |  | R9: RHEL-09-232035, RHEL-09-232220, RHEL-09-232225 |
+| `file_permissions.audit_tools[].path` | string |  |  | `"/sbin/auditctl"` |  | R9: RHEL-09-232035, RHEL-09-232220, RHEL-09-232225 |
+| `file_permissions.cron_config` | array of object |  | R9 | `[{"path": "/etc/cron.d", "owner": "root", "group": "root"},…` | RHEL-09-232230: stat -c "%U %n" /etc/cron*: input.file_permissions.cron_config[{path, owner, group}] | R9: RHEL-09-232230, RHEL-09-232235 |
+| `file_permissions.cron_config[].group` | string |  |  | `"root"` |  | R9: RHEL-09-232230, RHEL-09-232235 |
+| `file_permissions.cron_config[].owner` | string |  |  | `"root"` |  | R9: RHEL-09-232230, RHEL-09-232235 |
+| `file_permissions.cron_config[].path` | string |  |  | `"/etc/cron.d"` |  | R9: RHEL-09-232230, RHEL-09-232235 |
+| `file_permissions.cron_rpm_verify_deviations` | array |  | R9 | `[]` | RHEL-09-232040: lines of rpm --verify cronie crontabs \| awk '! ($2 == "c" && $1 ~ /^.\..\.\.\.\..\./) {print $0}' | R9: RHEL-09-232040 |
+| `file_permissions.etc_audit_dir.group` | string | _str | R9 | `"root"` | RHEL-09-232104: group of /etc/audit/ (stat -c "%G %n" /etc/audit/) | R9: RHEL-09-232104 |
+| `file_permissions.etc_audit_dir.owner` | string | _str | R9 | `"root"` | RHEL-09-232103: owner of /etc/audit/ (stat -c "%U %n" /etc/audit/) | R9: RHEL-09-232103 |
+| `file_permissions.etc_group.group` | string | _str | R9 | `"root"` | RHEL-09-232095: group of /etc/group (stat -c "%G %n" /etc/group) | R9: RHEL-09-232095 |
 | `file_permissions.etc_group.mode` | string |  | R9 OL9 R10 | `"0644"` | RHEL-09-232055: mode of /etc/group (stat -c %a) as an octal string | R9: RHEL-09-232055<br>OL9: OL09-00-002536<br>R10: RHEL-10-400245 |
+| `file_permissions.etc_group.owner` | string | _str | R9 | `"root"` | RHEL-09-232090: owner of /etc/group (stat -c "%U %n" /etc/group) | R9: RHEL-09-232090 |
+| `file_permissions.etc_group_backup.group` | string | _str | R9 | `"root"` | RHEL-09-232105: group of /etc/group- (stat -c "%G %n" /etc/group-) | R9: RHEL-09-232105 |
+| `file_permissions.etc_group_backup.mode` | string |  | R9 | `"0644"` | RHEL-09-232060: mode of /etc/group- (stat -c %a) as an octal string | R9: RHEL-09-232060 |
+| `file_permissions.etc_group_backup.owner` | string | _str | R9 | `"root"` | RHEL-09-232100: owner of /etc/group- (stat -c "%U %n" /etc/group-) | R9: RHEL-09-232100 |
+| `file_permissions.etc_gshadow.group` | string | _str | R9 | `"root"` | RHEL-09-232115: group of /etc/gshadow (stat -c "%G %n" /etc/gshadow) | R9: RHEL-09-232115 |
 | `file_permissions.etc_gshadow.mode` | string |  | R9 OL9 R10 | `"0000"` | RHEL-09-232065: mode of /etc/gshadow (stat -c %a) as an octal string | R9: RHEL-09-232065<br>OL9: OL09-00-002542<br>R10: RHEL-10-400255 |
-| `file_permissions.etc_gshadow.owner` | string | _str | OL9 | `"root"` | OL09-00-002540: owner of /etc/gshadow (stat -c "%U %n" /etc/gshadow) | OL9: OL09-00-002540 |
+| `file_permissions.etc_gshadow.owner` | string | _str | R9 OL9 | `"root"` | RHEL-09-232110: owner of /etc/gshadow (stat -c "%U %n" /etc/gshadow) | R9: RHEL-09-232110<br>OL9: OL09-00-002540 |
+| `file_permissions.etc_gshadow_backup.group` | string | _str | R9 | `"root"` | RHEL-09-232125: group of /etc/gshadow- (stat -c "%G %n" /etc/gshadow-) | R9: RHEL-09-232125 |
+| `file_permissions.etc_gshadow_backup.mode` | string |  | R9 | `"0000"` | RHEL-09-232070: mode of /etc/gshadow- (stat -c %a) as an octal string | R9: RHEL-09-232070 |
+| `file_permissions.etc_gshadow_backup.owner` | string | _str | R9 | `"root"` | RHEL-09-232120: owner of /etc/gshadow- (stat -c "%U %n" /etc/gshadow-) | R9: RHEL-09-232120 |
+| `file_permissions.etc_passwd.group` | string | _str | R9 | `"root"` | RHEL-09-232135: group of /etc/passwd (stat -c "%G %n" /etc/passwd) | R9: RHEL-09-232135 |
 | `file_permissions.etc_passwd.mode` | string |  | R9 OL9 R10 | `"0644"` | RHEL-09-232075: mode of /etc/passwd (stat -c %a) as an octal string | R9: RHEL-09-232075<br>OL9: OL09-00-002548<br>R10: RHEL-10-400265 |
+| `file_permissions.etc_passwd.owner` | string | _str | R9 | `"root"` | RHEL-09-232130: owner of /etc/passwd (stat -c "%U %n" /etc/passwd) | R9: RHEL-09-232130 |
+| `file_permissions.etc_passwd_backup.group` | string | _str | R9 | `"root"` | RHEL-09-232145: group of /etc/passwd- (stat -c "%G %n" /etc/passwd-) | R9: RHEL-09-232145 |
+| `file_permissions.etc_passwd_backup.mode` | string |  | R9 | `"0644"` | RHEL-09-232080: mode of /etc/passwd- (stat -c %a) as an octal string | R9: RHEL-09-232080 |
+| `file_permissions.etc_passwd_backup.owner` | string | _str | R9 | `"root"` | RHEL-09-232140: owner of /etc/passwd- (stat -c "%U %n" /etc/passwd-) | R9: RHEL-09-232140 |
+| `file_permissions.etc_shadow.group` | string | _str | R9 | `"root"` | RHEL-09-232155: group of /etc/shadow (stat -c "%G %n" /etc/shadow) | R9: RHEL-09-232155 |
 | `file_permissions.etc_shadow.mode` | string |  | R9 OL9 R10 | `"0000"` | RHEL-09-232270: mode of /etc/shadow (stat -c %a) as an octal string | R9: RHEL-09-232270<br>OL9: OL09-00-002555<br>R10: RHEL-10-400295 |
-| `file_permissions.etc_shadow.owner` | string | _str | OL9 | `"root"` | OL09-00-002552: owner of /etc/shadow (stat -c "%U %n" /etc/shadow) | OL9: OL09-00-002552 |
+| `file_permissions.etc_shadow.owner` | string | _str | R9 OL9 | `"root"` | RHEL-09-232150: owner of /etc/shadow (stat -c "%U %n" /etc/shadow) | R9: RHEL-09-232150<br>OL9: OL09-00-002552 |
+| `file_permissions.etc_shadow_backup.group` | string | _str | R9 | `"root"` | RHEL-09-232165: group of /etc/shadow- (stat -c "%G %n" /etc/shadow-) | R9: RHEL-09-232165 |
+| `file_permissions.etc_shadow_backup.mode` | string |  | R9 | `"0000"` | RHEL-09-232085: mode of /etc/shadow- (stat -c %a) as an octal string | R9: RHEL-09-232085 |
+| `file_permissions.etc_shadow_backup.owner` | string | _str | R9 | `"root"` | RHEL-09-232160: owner of /etc/shadow- (stat -c "%U %n" /etc/shadow-) | R9: RHEL-09-232160 |
+| `file_permissions.grub_cfg.group` | string | _str | R9 | `"root"` | RHEL-09-212025: group of /boot/grub2/grub.cfg (stat -c "%G %n" /boot/grub2/grub.cfg) | R9: RHEL-09-212025 |
+| `file_permissions.grub_cfg.owner` | string | _str | R9 | `"root"` | RHEL-09-212030: owner of /boot/grub2/grub.cfg (stat -c "%U %n" /boot/grub2/grub.cfg) | R9: RHEL-09-212030 |
 | `file_permissions.home_dirs_uid_1000` | array of object |  | OL8 | `[{"path": "/home/disauser", "mode": "700"}]` | OL08-00-010730: input.file_permissions.home_dirs_uid_1000 [{path, mode}]: users with UID >= 1000 other than nobody (OL 8's awk; RHEL 9 excl… | OL8: OL08-00-010730 |
 | `file_permissions.home_dirs_uid_1000[].mode` | string |  |  | `"700"` |  | OL8: OL08-00-010730 |
 | `file_permissions.home_dirs_uid_1000[].path` | string |  |  | `"/home/disauser"` |  | OL8: OL08-00-010730 |
+| `file_permissions.init_files_more_permissive_than_0740` | array |  | R9 | `[]` | RHEL-09-232045: output of find /home /root -maxdepth 2 -type f -name '.*' -perm /037 | R9: RHEL-09-232045 |
 | `file_permissions.interactive_home_dirs` | array of object |  | R9 OL9 R10 | `[{"path": "/home/disauser", "mode": "700"}]` | RHEL-09-232050: stat -L -c '%a %n' of each interactive user's home directory: [{path, mode}] | R9: RHEL-09-232050<br>OL9: OL09-00-002515<br>R10: RHEL-10-400240 |
 | `file_permissions.interactive_home_dirs[].mode` | string |  |  | `"700"` |  | R9: RHEL-09-232050<br>OL9: OL09-00-002515<br>R10: RHEL-10-400240 |
 | `file_permissions.interactive_home_dirs[].path` | string |  |  | `"/home/disauser"` |  | R9: RHEL-09-232050<br>OL9: OL09-00-002515<br>R10: RHEL-10-400240 |
 | `file_permissions.library_dir_files_group_or_world_writable` | array |  | R10 | `[]` | RHEL-10-400215: input.file_permissions.library_dir_files_group_or_world_writable: the offender list of the RHEL 10 find command (every file… | R10: RHEL-10-400215 |
 | `file_permissions.library_dir_files_not_owned_by_root` | array |  | R10 | `[]` | RHEL-10-400110: input.file_permissions.library_dir_files_not_owned_by_root: the offender list of the RHEL 10 find command (every file, not … | R10: RHEL-10-400110 |
+| `file_permissions.library_dirs_group_or_world_writable` | array |  | R9 | `[]` | RHEL-09-232015: output of find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type d | R9: RHEL-09-232015 |
+| `file_permissions.library_dirs_not_group_owned_by_root` | array of object |  | R9 | `[]` | RHEL-09-232215: find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%G %g %n": input.file_permissions.library_dirs_no… | R9: RHEL-09-232215 |
+| `file_permissions.library_dirs_not_group_owned_by_root[].gid` | number/string |  |  | `5` |  | R9: RHEL-09-232215 |
+| `file_permissions.library_dirs_not_group_owned_by_root[].group` | string |  |  | `"tty"` |  | R9: RHEL-09-232215 |
+| `file_permissions.library_dirs_not_group_owned_by_root[].path` | string |  |  | `"/usr/bin/write"` |  | R9: RHEL-09-232215 |
+| `file_permissions.library_dirs_not_owned_by_root` | array |  | R9 | `[]` | RHEL-09-232210: output of find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type d | R9: RHEL-09-232210 |
 | `file_permissions.library_files_group_or_world_writable` | array |  | R9 OL9 OL8 | `[]` | RHEL-09-232020: output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 | R9: RHEL-09-232020<br>OL9: OL09-00-002525<br>OL8: OL08-00-010330 |
+| `file_permissions.library_files_not_group_owned_by_root` | array |  | R9 | `[]` | RHEL-09-232205: output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root | R9: RHEL-09-232205 |
 | `file_permissions.library_files_not_owned_by_root` | array |  | R9 OL9 OL8 | `[]` | RHEL-09-232200: output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root | R9: RHEL-09-232200<br>OL9: OL09-00-002524<br>OL8: OL08-00-010340 |
+| `file_permissions.ssh_private_host_keys` | array of object |  | R9 | `[{"path": "/etc/ssh/ssh_host_ed25519_key", "mode": "600"}]` | RHEL-09-255120: stat -c "%a %n" /etc/ssh/*_key: input.file_permissions.ssh_private_host_keys [{path, mode}] | R9: RHEL-09-255120 |
+| `file_permissions.ssh_private_host_keys[].mode` | string |  |  | `"600"` |  | R9: RHEL-09-255120 |
+| `file_permissions.ssh_private_host_keys[].path` | string |  |  | `"/etc/ssh/ssh_host_ed25519_key"` |  | R9: RHEL-09-255120 |
+| `file_permissions.ssh_public_host_keys` | array of object |  | R9 | `[{"path": "/etc/ssh/ssh_host_ed25519_key.pub", "mode": "644…` | RHEL-09-255125: stat -c "%a %n" /etc/ssh/*.pub: input.file_permissions.ssh_public_host_keys [{path, mode}] | R9: RHEL-09-255125 |
+| `file_permissions.ssh_public_host_keys[].mode` | string |  |  | `"644"` |  | R9: RHEL-09-255125 |
+| `file_permissions.ssh_public_host_keys[].path` | string |  |  | `"/etc/ssh/ssh_host_ed25519_key.pub"` |  | R9: RHEL-09-255125 |
+| `file_permissions.sshd_config_paths` | array of object |  | R9 | `[{"path": "/etc/ssh/sshd_config", "owner": "root", "group":…` | RHEL-09-255105: find /etc/ssh/sshd_config /etc/ssh/sshd_config.d -exec stat -c "%G %n": input.file_permissions.sshd_config_paths [{path, ow… | R9: RHEL-09-255105, RHEL-09-255110 |
+| `file_permissions.sshd_config_paths[].group` | string |  |  | `"root"` |  | R9: RHEL-09-255105, RHEL-09-255110 |
+| `file_permissions.sshd_config_paths[].owner` | string |  |  | `"root"` |  | R9: RHEL-09-255105, RHEL-09-255110 |
+| `file_permissions.sshd_config_paths[].path` | string |  |  | `"/etc/ssh/sshd_config"` |  | R9: RHEL-09-255105, RHEL-09-255110 |
 | `file_permissions.system_commands_group_or_world_writable` | array of string |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-232010: output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin -perm /022 | R9: RHEL-09-232010<br>OL9: OL09-00-002506<br>OL8: OL08-00-010300<br>R10: RHEL-10-400205 |
+| `file_permissions.system_commands_not_group_owned_by_root` | array of object |  | R9 | `[]` | RHEL-09-232195: find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -group root -exec stat -L -c "%G %g %n"… | R9: RHEL-09-232195 |
+| `file_permissions.system_commands_not_group_owned_by_root[].gid` | number/string |  |  | `5` |  | R9: RHEL-09-232195 |
+| `file_permissions.system_commands_not_group_owned_by_root[].group` | string |  |  | `"tty"` |  | R9: RHEL-09-232195 |
+| `file_permissions.system_commands_not_group_owned_by_root[].path` | string |  |  | `"/usr/bin/write"` |  | R9: RHEL-09-232195 |
+| `file_permissions.system_commands_not_owned_by_root` | array |  | R9 | `[]` | RHEL-09-232190: output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -user root | R9: RHEL-09-232190 |
 | `file_permissions.ungrouped_files` | array |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-232250: files found by find <local mounts> -xdev -nogroup | R9: RHEL-09-232250<br>OL9: OL09-00-002511<br>OL8: OL08-00-010790<br>R10: RHEL-10-400285 |
 | `file_permissions.unowned_files` | array |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-232255: files found by find <local mounts> -xdev -nouser | R9: RHEL-09-232255<br>OL9: OL09-00-002512<br>OL8: OL08-00-010780<br>R10: RHEL-10-400290 |
-| `filesystem_mounts` | array of object |  | R9 OL9 R10 | `[{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstyp…` | RHEL-09-231015: the mount table (findmnt / mount): a separate entry for /tmp | R9: RHEL-09-231015, RHEL-09-231025, RHEL-09-231030, RHEL-09-231045, RHEL-09-231050, RHEL-09-231055<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
-| `filesystem_mounts[].device` | string |  |  | `"/dev/mapper/rhel-tmp"` |  | R9: RHEL-09-231015, RHEL-09-231025, RHEL-09-231030, RHEL-09-231045, RHEL-09-231050, RHEL-09-231055<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
-| `filesystem_mounts[].fstype` | string |  |  | `"xfs"` |  | R9: RHEL-09-231015, RHEL-09-231025, RHEL-09-231030, RHEL-09-231045, RHEL-09-231050, RHEL-09-231055<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
-| `filesystem_mounts[].mount` | string |  |  | `"/tmp"` |  | R9: RHEL-09-231015, RHEL-09-231025, RHEL-09-231030, RHEL-09-231045, RHEL-09-231050, RHEL-09-231055<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
-| `filesystem_mounts[].options` | array of string |  |  | `["rw", "nodev", "nosuid", "noexec"]` |  | R9: RHEL-09-231015, RHEL-09-231025, RHEL-09-231030, RHEL-09-231045, RHEL-09-231050, RHEL-09-231055<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
-| `fips.fips_enabled` | string | _str | R9 OL8 R10 | `"1"` | RHEL-09-671010: content of /proc/sys/crypto/fips_enabled must be 1 | R9: RHEL-09-671010<br>OL8: OL08-00-010020<br>R10: RHEL-10-000500 |
+| `file_permissions.var_log.group` | string | _str | R9 | `"root"` | RHEL-09-232175: group of /var/log (stat -c "%G %n" /var/log) | R9: RHEL-09-232175 |
+| `file_permissions.var_log.mode` | string |  | R9 | `"0755"` | RHEL-09-232025: mode of /var/log (stat -c %a) as an octal string | R9: RHEL-09-232025 |
+| `file_permissions.var_log.owner` | string | _str | R9 | `"root"` | RHEL-09-232170: owner of /var/log (stat -c "%U %n" /var/log) | R9: RHEL-09-232170 |
+| `file_permissions.var_log_messages.group` | string | _str | R9 | `"root"` | RHEL-09-232185: group of /var/log/messages (stat -c "%G %n" /var/log/messages) | R9: RHEL-09-232185 |
+| `file_permissions.var_log_messages.mode` | string |  | R9 | `"0640"` | RHEL-09-232030: mode of /var/log/messages (stat -c %a) as an octal string | R9: RHEL-09-232030 |
+| `file_permissions.var_log_messages.owner` | string | _str | R9 | `"root"` | RHEL-09-232180: owner of /var/log/messages (stat -c "%U %n" /var/log/messages) | R9: RHEL-09-232180 |
+| `file_permissions.world_writable_dirs_owned_by_uid_1000_plus` | array of string |  | R9 | `[]` | RHEL-09-232240: output of find / -xdev -type d -perm -0002 -uid +999 -exec stat -c "%U, %u, %A, %n" | R9: RHEL-09-232240 |
+| `file_permissions.world_writable_dirs_without_sticky_bit` | array |  | R9 | `[]` | RHEL-09-232245: output of find / -type d \( -perm -0002 -a ! -perm -1000 \) -print | R9: RHEL-09-232245 |
+| `filesystem_mounts` | array of object |  | R9 OL9 R10 | `[{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstyp…` | RHEL-09-231015: the mount table (findmnt / mount): a separate entry for /tmp | R9: RHEL-09-231010, RHEL-09-231015, RHEL-09-231020, RHEL-09-231025, RHEL-09-231030 … (+24)<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
+| `filesystem_mounts[].device` | string |  |  | `"/dev/mapper/rhel-tmp"` |  | R9: RHEL-09-231010, RHEL-09-231015, RHEL-09-231020, RHEL-09-231025, RHEL-09-231030 … (+24)<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
+| `filesystem_mounts[].fstype` | string |  |  | `"xfs"` |  | R9: RHEL-09-231010, RHEL-09-231015, RHEL-09-231020, RHEL-09-231025, RHEL-09-231030 … (+24)<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
+| `filesystem_mounts[].mount` | string |  |  | `"/tmp"` |  | R9: RHEL-09-231010, RHEL-09-231015, RHEL-09-231020, RHEL-09-231025, RHEL-09-231030 … (+24)<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
+| `filesystem_mounts[].options` | array of string |  |  | `["rw", "nodev", "nosuid", "noexec"]` |  | R9: RHEL-09-231010, RHEL-09-231015, RHEL-09-231020, RHEL-09-231025, RHEL-09-231030 … (+24)<br>OL9: OL09-00-000002, OL09-00-000004, OL09-00-000006, OL09-00-002070, OL09-00-002071, OL09-00-002072<br>R10: RHEL-10-000520, RHEL-10-000540, RHEL-10-000560, RHEL-10-400355, RHEL-10-400360, RHEL-10-400365 |
+| `fips.fips_enabled` | string | _str | R9 OL8 R10 | `"1"` | RHEL-09-671010: content of /proc/sys/crypto/fips_enabled must be 1 | R9: RHEL-09-211035, RHEL-09-671010<br>OL8: OL08-00-010020<br>R10: RHEL-10-000500 |
 | `fips.mode_setup_check` | string | _str | OL9 OL8 | `"FIPS mode is enabled."` | OL09-00-000070: output of fips-mode-setup --check (OL 9; RHEL 9 reads /proc/sys/crypto/fips_enabled) | OL9: OL09-00-000070<br>OL8: OL08-00-010020 |
-| `fstab` | array of object |  | OL8 | `[{"mount_point": "/", "fs_type": "xfs", "options": "default…` | OL08-00-010543: an uncommented /etc/fstab entry mounting /tmp (grep /tmp /etc/fstab) | OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
-| `fstab[].fs_type` | string |  |  | `"xfs"` |  | OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
-| `fstab[].mount_point` | string |  |  | `"/"` |  | OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
-| `fstab[].options` | string |  |  | `"defaults"` |  | OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
+| `firewalld.active_zones` | array of string |  | R9 | `["drop"]` | RHEL-09-251020: firewall-cmd --get-active-zones (zone names; empty when none or firewalld is not running) and the target of the default zon… | R9: RHEL-09-251020 |
+| `firewalld.default_zone.target_permanent` | string | _str | R9 | `"DROP"` | RHEL-09-251020: firewall-cmd --get-active-zones (zone names; empty when none or firewalld is not running) and the target of the default zon… | R9: RHEL-09-251020 |
+| `firewalld.default_zone.target_runtime` | string | _str | R9 | `"DROP"` | RHEL-09-251020: firewall-cmd --get-active-zones (zone names; empty when none or firewalld is not running) and the target of the default zon… | R9: RHEL-09-251020 |
+| `firewalld.zone_services` | array of string |  | R9 | `["drop (active)", "  services: ssh"]` | RHEL-09-251035: document review: the lines of firewall-cmd --list-all-zones \| grep -e "active" -e "services" are collected for the reviewe… | R9: RHEL-09-251035 |
+| `firewalld_conf.FirewallBackend` | string | _str | R9 | `"nftables"` | RHEL-09-251030: FirewallBackend as configured in /etc/firewalld/firewalld.conf (null when missing or commented out) | R9: RHEL-09-251030 |
+| `fstab` | array of object |  | R9 OL8 | `[{"mount_point": "/", "fs_type": "xfs", "options": "default…` | RHEL-09-231065: NFS entries of /etc/fstab (grep nfs /etc/fstab) must carry nodev; no NFS entry is Not Applicable | R9: RHEL-09-231065, RHEL-09-231070, RHEL-09-231075<br>OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
+| `fstab[].fs_type` | string |  |  | `"xfs"` |  | R9: RHEL-09-231065, RHEL-09-231070, RHEL-09-231075<br>OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
+| `fstab[].mount_point` | string |  |  | `"/"` |  | R9: RHEL-09-231065, RHEL-09-231070, RHEL-09-231075<br>OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
+| `fstab[].options` | string |  |  | `"defaults"` |  | R9: RHEL-09-231065, RHEL-09-231070, RHEL-09-231075<br>OL8: OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590 |
 | `ftpd_packages` | array of string |  | OL8 | `[]` | OL08-00-040360: input.ftpd_packages: installed package names matching ftpd | OL8: OL08-00-040360 |
+| `gdm_custom_conf.AutomaticLoginEnable` | string | _kw | R9 | `"false"` | RHEL-09-271040: AutomaticLoginEnable as set (uncommented) in /etc/gdm/custom.conf, null when not set; no GUI installed is Not Applicable | R9: RHEL-09-271040 |
+| `gnome.automount_open` | boolean/string |  | R9 | `"false"` | RHEL-09-271020: gsettings get org.gnome.desktop.media-handling automount-open; no GUI installed is Not Applicable | R9: RHEL-09-271020 |
+| `gnome.autorun_never` | boolean/string |  | R9 | `"true"` | RHEL-09-271030: gsettings get org.gnome.desktop.media-handling autorun-never; no GUI installed is Not Applicable | R9: RHEL-09-271030 |
+| `gnome.banner_message_enable` | boolean/string |  | R9 | `"true"` | RHEL-09-271010: gsettings get org.gnome.login-screen banner-message-enable; no GUI installed is Not Applicable | R9: RHEL-09-271010 |
+| `gnome.banner_message_text` | string |  | R9 | `"'You are accessing a U.S. Government (USG) Information Sys…` | RHEL-09-271011: gsettings get org.gnome.login-screen banner-message-text, compared with the banner text of the check; no GUI installed is N… | R9: RHEL-09-271011 |
+| `gnome.disable_restart_buttons` | boolean/string |  | R9 | `"true"` | RHEL-09-271095: gsettings get org.gnome.login-screen disable-restart-buttons; no GUI installed is Not Applicable | R9: RHEL-09-271095 |
+| `gnome.disable_user_list` | boolean/string |  | R9 | `"true"` | RHEL-09-271115: gsettings get org.gnome.login-screen disable-user-list; no GUI installed is Not Applicable | R9: RHEL-09-271115 |
 | `gnome.media_keys_logout` | string | _str | R9 OL9 R10 | `"['']"` | RHEL-09-271105: gsettings get org.gnome.settings-daemon.plugins.media-keys logout; no GUI installed is Not Applicable | R9: RHEL-09-271105<br>OL9: OL09-00-002107<br>R10: RHEL-10-700830 |
+| `gnome.screensaver_lock_delay` | number/string |  | R9 | `"uint32 5"` | RHEL-09-271075: gsettings get org.gnome.desktop.screensaver lock-delay ("uint32 <n>"); no GUI installed is Not Applicable | R9: RHEL-09-271075 |
+| `gnome.screensaver_lock_enabled` | boolean/string |  | R9 | `"true"` | RHEL-09-271055: gsettings get org.gnome.desktop.screensaver lock-enabled; no GUI installed is Not Applicable | R9: RHEL-09-271055 |
+| `gnome.session_idle_delay` | number/string |  | R9 | `"uint32 600"` | RHEL-09-271065: gsettings get org.gnome.desktop.session idle-delay ("uint32 <n>"); no GUI installed is Not Applicable | R9: RHEL-09-271065 |
 | `gnome.smartcard_removal_action` | string | _str | R9 | `"'lock-screen'"` | RHEL-09-271045: gsettings get org.gnome.settings-daemon.peripherals.smartcard removal-action; no GUI is Not Applicable | R9: RHEL-09-271045 |
+| `gnome_writable.autorun_never` | boolean/string |  | R9 | `"false"` | RHEL-09-271035: gsettings writable org.gnome.desktop.media-handling autorun-never; no GUI installed is Not Applicable | R9: RHEL-09-271035 |
+| `gnome_writable.banner_message_enable` | boolean/string |  | R9 | `"false"` | RHEL-09-271015: gsettings writable org.gnome.login-screen banner-message-enable; no GUI installed is Not Applicable | R9: RHEL-09-271015 |
+| `gnome_writable.disable_restart_buttons` | boolean/string |  | R9 | `"false"` | RHEL-09-271100: gsettings writable org.gnome.login-screen disable-restart-buttons; no GUI installed is Not Applicable | R9: RHEL-09-271100 |
+| `gnome_writable.media_keys_logout` | boolean/string |  | R9 | `"false"` | RHEL-09-271110: gsettings writable org.gnome.settings-daemon.plugins.media-keys logout; no GUI installed is Not Applicable | R9: RHEL-09-271110 |
+| `gnome_writable.screensaver_lock_delay` | boolean/string |  | R9 | `"false"` | RHEL-09-271080: gsettings writable org.gnome.desktop.screensaver lock-delay; no GUI installed is Not Applicable | R9: RHEL-09-271080 |
+| `gnome_writable.screensaver_lock_enabled` | boolean/string |  | R9 | `"false"` | RHEL-09-271060: gsettings writable org.gnome.desktop.screensaver lock-enabled; no GUI installed is Not Applicable | R9: RHEL-09-271060 |
+| `gnome_writable.screensaver_picture_uri` | boolean/string |  | R9 | `"false"` | RHEL-09-271085: gsettings writable org.gnome.desktop.screensaver picture-uri; no GUI installed is Not Applicable | R9: RHEL-09-271085 |
+| `gnome_writable.session_idle_delay` | boolean/string |  | R9 | `"false"` | RHEL-09-271070: gsettings writable org.gnome.desktop.session idle-delay; no GUI installed is Not Applicable | R9: RHEL-09-271070 |
+| `gnome_writable.smartcard_removal_action` | boolean/string |  | R9 | `"false"` | RHEL-09-271050: gsettings writable org.gnome.settings-daemon.peripherals.smartcard removal-action; no GUI installed is Not Applicable | R9: RHEL-09-271050 |
+| `grub.default_cmdline_linux` | string | _str | R9 | `"root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_p…` | RHEL-09-212035: vsyscall=none in every boot entry's args (grubby --info=ALL) and in the uncommented GRUB_CMDLINE_LINUX of /etc/default/grub | R9: RHEL-09-212035, RHEL-09-212040, RHEL-09-212045, RHEL-09-212050, RHEL-09-212055 |
 | `grub.efi_user_cfg_password` | string | _str | OL8 | `"grub.pbkdf2.sha512.10000.ABCD"` | OL08-00-010140: GRUB2_PASSWORD in /boot/efi/EFI/redhat/user.cfg (UEFI) | OL8: OL08-00-010140 |
+| `grub.kernel_args` | array of string |  | R9 | `["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_…` | RHEL-09-212015: input.grub.kernel_args: the args value of every boot entry printed by grubby --info=ALL, one string per entry | R9: RHEL-09-212015, RHEL-09-212035, RHEL-09-212040, RHEL-09-212050, RHEL-09-212055 … (+2) |
 | `grub.kernelopts` | string | _str | OL8 | `"root=/dev/mapper/ol-root ro crashkernel=auto fips=1 boot=U…` | OL08-00-010020: fips-mode-setup --check, the kernelopts of grub2-editenv list, and /proc/sys/crypto/fips_enabled | OL8: OL08-00-010020 |
+| `grub.superusers` | string | _kw | R9 | `"bootmgr9"` | RHEL-09-212020: the value of set superusers= in /etc/grub2.cfg (grep -A1 superusers; null when not set); the common names the check lists a… | R9: RHEL-09-212020 |
 | `grub.user_cfg_password` | string | _str | R9 OL9 OL8 R10 | `"grub.pbkdf2.sha512.10000.ABCDEF"` | RHEL-09-212010: the GRUB2_PASSWORD value from /boot/grub2/user.cfg, else /boot/efi/EFI/redhat/user.cfg (null if absent or commented) | R9: RHEL-09-212010<br>OL9: OL09-00-001115<br>OL8: OL08-00-010150<br>R10: RHEL-10-600000 |
-| `gui_installed` | boolean |  |  | `false` |  | R9: RHEL-09-271045, RHEL-09-271105<br>OL9: OL09-00-002107, OL09-00-002160<br>OL8: OL08-00-020050, OL08-00-040171<br>R10: RHEL-10-700830 |
+| `gui_installed` | boolean |  |  | `false` |  | R9: RHEL-09-271010, RHEL-09-271011, RHEL-09-271015, RHEL-09-271020, RHEL-09-271025 … (+18)<br>OL9: OL09-00-002107, OL09-00-002160<br>OL8: OL08-00-020050, OL08-00-040171<br>R10: RHEL-10-700830 |
 | `home_dir_mount_points` | array of string |  | OL8 | `["/home"]` | OL08-00-010570: input.home_dir_mount_points: the fstab mount points holding the home directories of users with UID >= 1000 (not nobody); ea… | OL8: OL08-00-010570, OL08-00-010590 |
-| `ipv6_disabled` | boolean |  |  | `false` |  | OL9: OL09-00-006041, OL09-00-006042<br>OL8: OL08-00-040240, OL08-00-040280 |
+| `interactive_shadow_hashes` | array of object |  | R9 | `[{"name": "nsauser", "hash": "$6$"}, {"name": "svcacct", "h…` | RHEL-09-671015: for each interactive user, the /etc/shadow password field cut to its scheme prefix ("$6$", "$y$", "!", "*"; the hash itself… | R9: RHEL-09-671015 |
+| `interactive_shadow_hashes[].hash` | string |  |  | `"$6$"` |  | R9: RHEL-09-671015 |
+| `interactive_shadow_hashes[].name` | string |  |  | `"nsauser"` |  | R9: RHEL-09-671015 |
+| `interactive_users` | array of object |  | R9 | `[{"name": "disauser", "uid": 1000, "primary_gid": 1002, "sh…` | RHEL-09-411060: home (field 6 of /etc/passwd) of each entry of input.interactive_users | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].home` | string |  |  | `"/home/disauser"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].home_exists` | boolean |  |  | `true` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].home_gid` | number/string |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].name` | string |  |  | `"disauser"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].primary_gid` | number |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].shell` | string |  |  | `"/bin/bash"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].uid` | number |  |  | `1000` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `ipsec.conn_lines` | array of string |  |  | `[]` |  | R9: RHEL-09-252045 |
+| `ipsec.include_lines` | array of string |  | R9 | `["include /etc/crypto-policies/back-ends/libreswan.config"]` | RHEL-09-671020: input.packages.libreswan; the lines of /etc/ipsec.conf and /etc/ipsec.d/*.conf that contain include (grep include), with th… | R9: RHEL-09-671020 |
+| `ipv6_disabled` | boolean |  |  | `true` |  | R9: RHEL-09-254010, RHEL-09-254015, RHEL-09-254020, RHEL-09-254025, RHEL-09-254030 … (+2)<br>OL9: OL09-00-006041, OL09-00-006042<br>OL8: OL08-00-040240, OL08-00-040280 |
 | `kernel_info.uek_release` | number | _num |  | `7` |  | OL8: OL08-00-010372 |
+| `kernel_params["fs.protected_hardlinks"]` | number/string | _str | R9 | `"1"` | RHEL-09-213030: runtime fs.protected_hardlinks (sysctl) | R9: RHEL-09-213030 |
+| `kernel_params["fs.protected_symlinks"]` | number/string | _str | R9 | `"1"` | RHEL-09-213035: runtime fs.protected_symlinks (sysctl) | R9: RHEL-09-213035 |
+| `kernel_params["kernel.core_pattern"]` | string | _str | R9 | `"\|/bin/false"` | RHEL-09-213040: runtime kernel.core_pattern (sysctl) | R9: RHEL-09-213040, RHEL-09-213085, RHEL-09-213090, RHEL-09-213095, RHEL-09-213100 |
 | `kernel_params["kernel.dmesg_restrict"]` | number/string | _str | R9 OL9 OL8 R10 | `"1"` | RHEL-09-213010: runtime kernel.dmesg_restrict (sysctl) | R9: RHEL-09-213010<br>OL9: OL09-00-002406<br>OL8: OL08-00-010375<br>R10: RHEL-10-701030 |
 | `kernel_params["kernel.kexec_load_disabled"]` | number/string | _str | R9 OL9 OL8 R10 | `"1"` | RHEL-09-213020: runtime kernel.kexec_load_disabled (sysctl) | R9: RHEL-09-213020<br>OL9: OL09-00-002428<br>OL8: OL08-00-010372<br>R10: RHEL-10-701050 |
+| `kernel_params["kernel.kptr_restrict"]` | number/string | _str | R9 | `"1"` | RHEL-09-213025: runtime kernel.kptr_restrict (sysctl) | R9: RHEL-09-213025 |
 | `kernel_params["kernel.perf_event_paranoid"]` | number/string | _str | R9 OL9 OL8 R10 | `"2"` | RHEL-09-213015: runtime kernel.perf_event_paranoid (sysctl) | R9: RHEL-09-213015<br>OL9: OL09-00-002407<br>OL8: OL08-00-010376<br>R10: RHEL-10-701040 |
 | `kernel_params["kernel.randomize_va_space"]` | string | _str | R9 OL9 OL8 R10 | `"2"` | RHEL-09-213070: runtime value (sysctl) and every value configured in the sysctl.d / sysctl.conf files the check greps | R9: RHEL-09-213070<br>OL9: OL09-00-002423<br>OL8: OL08-00-010430<br>R10: RHEL-10-701130 |
 | `kernel_params["kernel.unprivileged_bpf_disabled"]` | number/string | _str | R9 OL9 OL8 R10 | `"1"` | RHEL-09-213075: runtime kernel.unprivileged_bpf_disabled (sysctl) | R9: RHEL-09-213075<br>OL9: OL09-00-002409<br>OL8: OL08-00-040281<br>R10: RHEL-10-800030 |
-| `kernel_params["kernel.yama.ptrace_scope"]` | string | _str | OL9 OL8 | `"1"` | OL09-00-002410: sysctl kernel.yama.ptrace_scope (runtime value) | OL9: OL09-00-002410<br>OL8: OL08-00-040282 |
+| `kernel_params["kernel.yama.ptrace_scope"]` | number/string | _str | R9 OL9 OL8 | `"1"` | RHEL-09-213080: runtime kernel.yama.ptrace_scope (sysctl) | R9: RHEL-09-213080<br>OL9: OL09-00-002410<br>OL8: OL08-00-040282 |
 | `kernel_params["net.core.bpf_jit_harden"]` | number/string | _str | R9 OL9 OL8 R10 | `"2"` | RHEL-09-251045: runtime net.core.bpf_jit_harden (sysctl) | R9: RHEL-09-251045<br>OL9: OL09-00-002430<br>OL8: OL08-00-040286<br>R10: RHEL-10-800050 |
 | `kernel_params["net.ipv4.conf.all.accept_redirects"]` | number/string | _str | R9 OL9 OL8 R10 | `"0"` | RHEL-09-253015: runtime net.ipv4.conf.all.accept_redirects (sysctl) | R9: RHEL-09-253015<br>OL9: OL09-00-006020<br>OL8: OL08-00-040279<br>R10: RHEL-10-800090 |
 | `kernel_params["net.ipv4.conf.all.accept_source_route"]` | number/string | _str | R9 OL9 OL8 R10 | `"0"` | RHEL-09-253020: runtime net.ipv4.conf.all.accept_source_route (sysctl) | R9: RHEL-09-253020<br>OL9: OL09-00-006021<br>OL8: OL08-00-040239<br>R10: RHEL-10-800100 |
 | `kernel_params["net.ipv4.conf.all.forwarding"]` | number/string | _str | R9 OL9 OL8 R10 | `"0"` | RHEL-09-253075: runtime net.ipv4.conf.all.forwarding (sysctl) | R9: RHEL-09-253075<br>OL9: OL09-00-006028<br>OL8: OL08-00-040259<br>R10: RHEL-10-800210 |
+| `kernel_params["net.ipv4.conf.all.log_martians"]` | number/string | _str | R9 | `"1"` | RHEL-09-253025: runtime net.ipv4.conf.all.log_martians (sysctl) | R9: RHEL-09-253025 |
 | `kernel_params["net.ipv4.conf.all.rp_filter"]` | number/string | _str | R9 OL9 OL8 R10 | `"1"` | RHEL-09-253035: runtime net.ipv4.conf.all.rp_filter (sysctl) | R9: RHEL-09-253035<br>OL9: OL09-00-006024<br>OL8: OL08-00-040285<br>R10: RHEL-10-800130 |
 | `kernel_params["net.ipv4.conf.all.send_redirects"]` | number/string | _str | R9 OL9 OL8 R10 | `"0"` | RHEL-09-253065: runtime net.ipv4.conf.all.send_redirects (sysctl) | R9: RHEL-09-253065<br>OL9: OL09-00-006032<br>OL8: OL08-00-040220<br>R10: RHEL-10-800190 |
+| `kernel_params["net.ipv4.conf.default.accept_redirects"]` | number/string | _str | R9 | `"0"` | RHEL-09-253040: runtime net.ipv4.conf.default.accept_redirects (sysctl) | R9: RHEL-09-253040 |
+| `kernel_params["net.ipv4.conf.default.accept_source_route"]` | number/string | _str | R9 | `"0"` | RHEL-09-253045: runtime net.ipv4.conf.default.accept_source_route (sysctl) | R9: RHEL-09-253045 |
+| `kernel_params["net.ipv4.conf.default.log_martians"]` | number/string | _str | R9 | `"1"` | RHEL-09-253030: runtime net.ipv4.conf.default.log_martians (sysctl) | R9: RHEL-09-253030 |
+| `kernel_params["net.ipv4.conf.default.rp_filter"]` | number/string | _str | R9 | `"1"` | RHEL-09-253050: runtime net.ipv4.conf.default.rp_filter (sysctl) | R9: RHEL-09-253050 |
+| `kernel_params["net.ipv4.conf.default.send_redirects"]` | number/string | _str | R9 | `"0"` | RHEL-09-253070: runtime net.ipv4.conf.default.send_redirects (sysctl) | R9: RHEL-09-253070 |
+| `kernel_params["net.ipv4.icmp_echo_ignore_broadcasts"]` | number/string | _str | R9 | `"1"` | RHEL-09-253055: runtime net.ipv4.icmp_echo_ignore_broadcasts (sysctl) | R9: RHEL-09-253055 |
 | `kernel_params["net.ipv4.icmp_ignore_bogus_error_responses"]` | number/string | _str | R9 OL9 R10 | `"1"` | RHEL-09-253060: runtime net.ipv4.icmp_ignore_bogus_error_responses (sysctl) | R9: RHEL-09-253060<br>OL9: OL09-00-006031<br>R10: RHEL-10-800180 |
 | `kernel_params["net.ipv4.tcp_syncookies"]` | number/string | _str | R9 OL9 R10 | `"1"` | RHEL-09-253010: runtime net.ipv4.tcp_syncookies (sysctl) | R9: RHEL-09-253010<br>OL9: OL09-00-006050<br>R10: RHEL-10-800080 |
-| `kernel_params["net.ipv6.conf.all.accept_redirects"]` | string | _str | OL9 OL8 | `"0"` | OL09-00-006041: sysctl net.ipv6.conf.all.accept_redirects; IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true) | OL9: OL09-00-006041<br>OL8: OL08-00-040280 |
-| `kernel_params["net.ipv6.conf.all.accept_source_route"]` | string | _str | OL9 OL8 | `"0"` | OL09-00-006042: sysctl net.ipv6.conf.all.accept_source_route; IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true) | OL9: OL09-00-006042<br>OL8: OL08-00-040240 |
+| `kernel_params["net.ipv6.conf.all.accept_ra"]` | number/string | _str | R9 | `"0"` | RHEL-09-254010: runtime net.ipv6.conf.all.accept_ra (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true) | R9: RHEL-09-254010 |
+| `kernel_params["net.ipv6.conf.all.accept_redirects"]` | number/string | _str | R9 OL9 OL8 | `"0"` | RHEL-09-254015: runtime net.ipv6.conf.all.accept_redirects (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == … | R9: RHEL-09-254015<br>OL9: OL09-00-006041<br>OL8: OL08-00-040280 |
+| `kernel_params["net.ipv6.conf.all.accept_source_route"]` | number/string | _str | R9 OL9 OL8 | `"0"` | RHEL-09-254020: runtime net.ipv6.conf.all.accept_source_route (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled … | R9: RHEL-09-254020<br>OL9: OL09-00-006042<br>OL8: OL08-00-040240 |
+| `kernel_params["net.ipv6.conf.all.forwarding"]` | number/string | _str | R9 | `"0"` | RHEL-09-254025: runtime net.ipv6.conf.all.forwarding (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true) | R9: RHEL-09-254025 |
+| `kernel_params["net.ipv6.conf.default.accept_ra"]` | number/string | _str | R9 | `"0"` | RHEL-09-254030: runtime net.ipv6.conf.default.accept_ra (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == tru… | R9: RHEL-09-254030 |
+| `kernel_params["net.ipv6.conf.default.accept_redirects"]` | number/string | _str | R9 | `"0"` | RHEL-09-254035: runtime net.ipv6.conf.default.accept_redirects (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled… | R9: RHEL-09-254035 |
+| `kernel_params["net.ipv6.conf.default.accept_source_route"]` | number/string | _str | R9 | `"0"` | RHEL-09-254040: runtime net.ipv6.conf.default.accept_source_route (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disab… | R9: RHEL-09-254040 |
+| `kernel_params["user.max_user_namespaces"]` | number/string | _str | R9 | `"0"` | RHEL-09-213105: runtime user.max_user_namespaces (sysctl) | R9: RHEL-09-213105 |
+| `libuser_conf` | object |  |  |  |  | R9: RHEL-09-611135 |
+| `libuser_conf.defaults.crypt_style` | string | _str |  | `"sha512"` |  | R9: RHEL-09-611135 |
+| `limits_conf.core` | array of object |  | R9 | `[{"domain": "*", "type": "hard", "value": "0"}]` | RHEL-09-213095: uncommented core items found by grep -rs core /etc/security/limits.conf /etc/security/limits.d/*.conf: [{domain, type, valu… | R9: RHEL-09-213095 |
+| `limits_conf.core[].domain` | string |  |  | `"*"` |  | R9: RHEL-09-213095 |
+| `limits_conf.core[].type` | string |  |  | `"hard"` |  | R9: RHEL-09-213095 |
+| `limits_conf.core[].value` | number/string |  |  | `"0"` |  | R9: RHEL-09-213095 |
+| `limits_maxlogins` | array of object |  | R9 | `[{"file": "/etc/security/limits.conf", "domain": "*", "type…` | RHEL-09-412040: uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}] | R9: RHEL-09-412040 |
+| `limits_maxlogins[].domain` | string |  |  | `"*"` |  | R9: RHEL-09-412040 |
+| `limits_maxlogins[].file` | string |  |  | `"/etc/security/limits.conf"` |  | R9: RHEL-09-412040 |
+| `limits_maxlogins[].type` | string |  |  | `"hard"` |  | R9: RHEL-09-412040 |
+| `limits_maxlogins[].value` | number/string |  |  | `"10"` |  | R9: RHEL-09-412040 |
 | `local_accounts_with_empty_passwords` | array |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-611155: accounts whose /etc/shadow password field is empty (awk -F: '!$2 {print $1}' /etc/shadow) | R9: RHEL-09-611155<br>OL9: OL09-00-001130<br>OL8: OL08-00-010121<br>R10: RHEL-10-600460 |
+| `local_interactive_users` | array of string |  | R9 | `[]` | RHEL-09-411095: local interactive accounts in /etc/passwd (UID >= 1000, interactive shell); the comparison with the authorized list is an a… | R9: RHEL-09-411095 |
 | `login_banner.issue` | string | _str | R9 OL9 OL8 R10 | `"You are accessing a U.S. Government (USG) Information Syst…` | RHEL-09-211020: content of /etc/issue, compared with the banner text in the check (whitespace runs collapsed) | R9: RHEL-09-211020<br>OL9: OL09-00-000090<br>OL8: OL08-00-010060<br>R10: RHEL-10-700040 |
+| `login_defs.CREATE_HOME` | string | _kw | R9 | `"yes"` | RHEL-09-411020: CREATE_HOME as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-411020 |
 | `login_defs.ENCRYPT_METHOD` | string | _str | R9 OL9 OL8 R10 | `"SHA512"` | RHEL-09-611140: ENCRYPT_METHOD as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-611140<br>OL9: OL09-00-001055<br>OL8: OL08-00-010110<br>R10: RHEL-10-600740 |
-| `modprobe` | object |  |  |  |  | R9: RHEL-09-213055, RHEL-09-291010, RHEL-09-291035<br>OL9: OL09-00-000046, OL09-00-000047<br>OL8: OL08-00-040026, OL08-00-040080, OL08-00-040111<br>R10: RHEL-10-700850, RHEL-10-700860 |
+| `login_defs.FAIL_DELAY` | number/string | _num | R9 | `4` | RHEL-09-412050: FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-412050 |
+| `login_defs.UMASK` | string | _str | R9 | `"077"` | RHEL-09-412065: UMASK as configured in /etc/login.defs, a string so the leading zero survives (null when missing or commented out) | R9: RHEL-09-412065 |
+| `logind_conf.StopIdleSessionSec` | number/string | _str | R9 | `"600"` | RHEL-09-412080: effective (last uncommented) StopIdleSessionSec from systemd-analyze cat-config systemd/logind.conf; a cloud-hosted system … | R9: RHEL-09-412080 |
+| `mail_aliases.postmaster` | string | _str | R9 | `"root"` | RHEL-09-252060: the value of the uncommented postmaster entry of /etc/aliases (grep "postmaster:\s*root$"; null when there is none) | R9: RHEL-09-252060 |
+| `modprobe` | object |  |  |  |  | R9: RHEL-09-213045, RHEL-09-213050, RHEL-09-213055, RHEL-09-213060, RHEL-09-213065 … (+3)<br>OL9: OL09-00-000046, OL09-00-000047<br>OL8: OL08-00-040026, OL08-00-040080, OL08-00-040111<br>R10: RHEL-10-700850, RHEL-10-700860 |
+| `modprobe.atm` | object |  | R9 |  | RHEL-09-213045: uncommented modprobe lines for atm: input.modprobe["atm"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-213045 |
+| `modprobe.atm.blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-213045 |
+| `modprobe.atm.install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-213045 |
 | `modprobe.bluetooth` | object |  | R9 OL9 OL8 R10 |  | RHEL-09-291035: uncommented modprobe lines for bluetooth: input.modprobe["bluetooth"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-291035<br>OL9: OL09-00-000046<br>OL8: OL08-00-040111<br>R10: RHEL-10-700860 |
 | `modprobe.bluetooth.blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-291035<br>OL9: OL09-00-000046<br>OL8: OL08-00-040111<br>R10: RHEL-10-700860 |
 | `modprobe.bluetooth.install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-291035<br>OL9: OL09-00-000046<br>OL8: OL08-00-040111<br>R10: RHEL-10-700860 |
+| `modprobe.can` | object |  | R9 |  | RHEL-09-213050: uncommented modprobe lines for can: input.modprobe["can"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-213050 |
+| `modprobe.can.blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-213050 |
+| `modprobe.can.install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-213050 |
+| `modprobe.cramfs` | object |  | R9 |  | RHEL-09-231195: uncommented modprobe lines for cramfs: input.modprobe["cramfs"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-231195 |
+| `modprobe.cramfs.blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-231195 |
+| `modprobe.cramfs.install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-231195 |
 | `modprobe["firewire-core"]` | object |  | R9 OL9 OL8 |  | RHEL-09-213055: uncommented modprobe lines for firewire-core: input.modprobe["firewire-core"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-213055<br>OL9: OL09-00-000042<br>OL8: OL08-00-040026 |
 | `modprobe["firewire-core"].blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-213055<br>OL9: OL09-00-000042<br>OL8: OL08-00-040026 |
 | `modprobe["firewire-core"].install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-213055<br>OL9: OL09-00-000042<br>OL8: OL08-00-040026 |
+| `modprobe.sctp` | object |  | R9 |  | RHEL-09-213060: uncommented modprobe lines for sctp: input.modprobe["sctp"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-213060 |
+| `modprobe.sctp.blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-213060 |
+| `modprobe.sctp.install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-213060 |
+| `modprobe.tipc` | object |  | R9 |  | RHEL-09-213065: uncommented modprobe lines for tipc: input.modprobe["tipc"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-213065 |
+| `modprobe.tipc.blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-213065 |
+| `modprobe.tipc.install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-213065 |
 | `modprobe["usb-storage"]` | object |  | R9 OL9 OL8 R10 |  | RHEL-09-291010: uncommented modprobe lines for usb-storage: input.modprobe["usb-storage"] = {install: <command>, blacklisted: bool} | R9: RHEL-09-291010<br>OL9: OL09-00-000047<br>OL8: OL08-00-040080<br>R10: RHEL-10-700850 |
 | `modprobe["usb-storage"].blacklisted` | boolean |  |  | `true` |  | R9: RHEL-09-291010<br>OL9: OL09-00-000047<br>OL8: OL08-00-040080<br>R10: RHEL-10-700850 |
 | `modprobe["usb-storage"].install` | string |  |  | `"/bin/false"` |  | R9: RHEL-09-291010<br>OL9: OL09-00-000047<br>OL8: OL08-00-040080<br>R10: RHEL-10-700850 |
+| `named.include_lines` | array of string |  | R9 | `["include \"/etc/crypto-policies/back-ends/bind.config\";"]` | RHEL-09-672050: input.packages.bind; the lines of /etc/named.conf that contain include (grep include), with the file name prefix removed | R9: RHEL-09-672050 |
+| `networkmanager.main.dns` | string | _str | R9 | `"none"` | RHEL-09-252040: dns key under [main] in NetworkManager --print-config (null when the key does not exist) | R9: RHEL-09-252040 |
+| `opensc.card_drivers` | string |  | R9 | `"cac"` | RHEL-09-611160: output of opensc-tool --get-conf-entry app:default:card_drivers (comma-separated drivers; empty string when no line is retu… | R9: RHEL-09-611160 |
+| `openssh_config.Ciphers` | string |  | R9 | `"aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,a…` | RHEL-09-255064: Ciphers line of /etc/crypto-policies/back-ends/openssh.config (the SSH client back-end; null when missing or commented out) | R9: RHEL-09-255064 |
+| `openssh_config.MACs` | string |  | R9 | `"hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.co…` | RHEL-09-255070: MACs line of /etc/crypto-policies/back-ends/openssh.config (the SSH client back-end; null when missing or commented out) | R9: RHEL-09-255070 |
 | `opensshserver_config.Ciphers` | string |  | R9 OL9 OL8 R10 | `"aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,a…` | RHEL-09-255065: Ciphers line of /etc/crypto-policies/back-ends/opensshserver.config (not sshd_config) | R9: RHEL-09-255065<br>OL9: OL09-00-000254<br>OL8: OL08-00-010291<br>R10: RHEL-10-300040 |
 | `opensshserver_config.MACs` | string |  | R9 OL9 OL8 R10 | `"hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.co…` | RHEL-09-255075: MACs line of /etc/crypto-policies/back-ends/opensshserver.config (not sshd_config) | R9: RHEL-09-255075<br>OL9: OL09-00-000255<br>OL8: OL08-00-010290<br>R10: RHEL-10-300060 |
 | `openssl_cnf.lines` | array of string |  | R9 OL9 OL8 R10 | `["[ crypto_policy ]", ".include = /etc/crypto-policies/back…` | RHEL-09-672055: the lines of /etc/pki/tls/openssl.cnf must include the crypto-policy opensslcnf.config back-end | R9: RHEL-09-672055<br>OL9: OL09-00-002424<br>OL8: OL08-00-010293<br>R10: RHEL-10-300085 |
 | `oracle_release_key_file.fingerprints` | array of string |  | OL9 OL8 | `["3E6D 826D 3FBA B389 C2F3  8E34 BC4D 06A0 8D8B 756F", "982…` | OL09-00-000499: input.rpm_gpg_pubkeys: rpm -q --queryformat "%{SUMMARY}" gpg-pubkey; input.oracle_release_key_file.fingerprints: gpg --with… | OL9: OL09-00-000499<br>OL8: OL08-00-010019 |
+| `os_release.redhat_release` | string | _str | R9 | `"Red Hat Enterprise Linux release 9.6 (Plow)"` | RHEL-09-211010: content of /etc/redhat-release; whether that minor release is still supported is an attestation (the supported set changes … | R9: RHEL-09-211010 |
 | `os_release.version_id` | string | _str |  | `"8.1"` |  | OL8: OL08-00-020011, OL08-00-020013 |
-| `packages.aide` | boolean |  | R9 OL9 OL8 R10 | `true` | RHEL-09-651015: the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA | R9: RHEL-09-651010, RHEL-09-651015<br>OL9: OL09-00-000300, OL09-00-000301<br>OL8: OL08-00-010360<br>R10: RHEL-10-200630, RHEL-10-200633 |
+| `packages.aide` | boolean |  | R9 OL9 OL8 R10 | `true` | RHEL-09-651015: the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA | R9: RHEL-09-651010, RHEL-09-651015, RHEL-09-651025<br>OL9: OL09-00-000300, OL09-00-000301<br>OL8: OL08-00-010360<br>R10: RHEL-10-200630, RHEL-10-200633 |
+| `packages["audispd-plugins"]` | boolean |  | R9 | `true` | RHEL-09-653130: dnf list --installed audispd-plugins (input.packages["audispd-plugins"]) | R9: RHEL-09-653130 |
+| `packages.audit` | boolean |  | R9 | `true` | RHEL-09-653010: audit package installed (dnf list --installed audit) | R9: RHEL-09-653010 |
 | `packages.autofs` | boolean |  |  | `false` |  | OL8: OL08-00-040070<br>R10: RHEL-10-701210 |
-| `packages.firewalld` | boolean |  | OL9 | `true` | OL09-00-000220: input.packages.firewalld (dnf list --installed firewalld) | OL9: OL09-00-000220 |
+| `packages.bind` | boolean |  | R9 | `true` | RHEL-09-672050: input.packages.bind; the lines of /etc/named.conf that contain include (grep include), with the file name prefix removed | R9: RHEL-09-672050 |
+| `packages.chrony` | boolean |  | R9 | `true` | RHEL-09-252010: input.packages.chrony (dnf list --installed chrony) | R9: RHEL-09-252010 |
+| `packages["crypto-policies"]` | boolean |  | R9 | `true` | RHEL-09-215100: the crypto-policies package must be installed (dnf list --installed crypto-policies) | R9: RHEL-09-215100 |
+| `packages.fapolicyd` | boolean |  | R9 | `true` | RHEL-09-433010: fapolicyd package installed (dnf list --installed fapolicyd) | R9: RHEL-09-433010 |
+| `packages.firewalld` | boolean |  | R9 OL9 | `true` | RHEL-09-251010: input.packages.firewalld (dnf list --installed firewalld) | R9: RHEL-09-251010<br>OL9: OL09-00-000220 |
+| `packages["gnutls-utils"]` | boolean |  | R9 | `true` | RHEL-09-215080: the gnutls-utils package must be installed (dnf list --installed gnutls-utils) | R9: RHEL-09-215080 |
+| `packages.gssproxy` | boolean |  | R9 | `false` | RHEL-09-215045: the gssproxy package must not be installed (dnf list --installed gssproxy); Not Applicable on input.attest.rhel_09_215045_n… | R9: RHEL-09-215045 |
+| `packages.iprutils` | boolean |  | R9 | `false` | RHEL-09-215050: the iprutils package must not be installed (dnf list --installed iprutils) | R9: RHEL-09-215050 |
+| `packages.libreswan` | boolean |  | R9 | `true` | RHEL-09-252065: libreswan package installed (dnf list --installed libreswan); no operational need is Not Applicable (attested) | R9: RHEL-09-252065, RHEL-09-671020 |
+| `packages.libuser` | boolean |  | R9 | `true` | RHEL-09-611135: uncommented crypt_style of the [defaults] section of /etc/libuser.conf, read when libuser is installed; not installed is No… | R9: RHEL-09-611135 |
 | `packages["nfs-utils"]` | boolean |  | R9 OL9 R10 | `false` | RHEL-09-215025: the nfs-utils package must not be installed (dnf list --installed nfs-utils) | R9: RHEL-09-215025<br>OL9: OL09-00-000100<br>R10: RHEL-10-200010 |
+| `packages["nss-tools"]` | boolean |  | R9 | `true` | RHEL-09-215085: the nss-tools package must be installed (dnf list --installed nss-tools) | R9: RHEL-09-215085 |
+| `packages.opensc` | boolean |  | R9 | `true` | RHEL-09-611185: opensc package installed (dnf list --installed opensc) | R9: RHEL-09-611185 |
+| `packages["openssh-clients"]` | boolean |  | R9 | `true` | RHEL-09-255020: openssh-clients package installed (dnf list --installed openssh-clients) | R9: RHEL-09-255020 |
+| `packages["openssh-server"]` | boolean |  | R9 | `true` | RHEL-09-255010: openssh-server package installed (dnf list --installed openssh-server) | R9: RHEL-09-255010 |
+| `packages["openssl-pkcs11"]` | boolean |  | R9 | `true` | RHEL-09-215075: the openssl-pkcs11 package must be installed (dnf list --installed openssl-pkcs11); Not Applicable on input.attest.rhel_09_… | R9: RHEL-09-215075 |
+| `packages["pcsc-lite"]` | boolean |  | R9 | `true` | RHEL-09-611175: pcsc-lite package installed (dnf list --installed pcsc-lite); an approved alternate MFA method is Not Applicable | R9: RHEL-09-611175 |
+| `packages.policycoreutils` | boolean |  | R9 | `true` | RHEL-09-431025: policycoreutils package installed (dnf list --installed policycoreutils) | R9: RHEL-09-431025 |
+| `packages["policycoreutils-python-utils"]` | boolean |  | R9 | `true` | RHEL-09-431030: policycoreutils-python-utils package installed (dnf list --installed policycoreutils-python-utils) | R9: RHEL-09-431030 |
+| `packages.postfix` | boolean |  | R9 | `true` | RHEL-09-215101: the postfix package must be installed (dnf list --installed postfix); Not Applicable on input.attest.rhel_09_215101_other_n… | R9: RHEL-09-215101, RHEL-09-252050 |
+| `packages["rng-tools"]` | boolean |  | R9 | `true` | RHEL-09-215090: the rng-tools package must be installed (dnf list --installed rng-tools) | R9: RHEL-09-215090 |
 | `packages.rsyslog` | boolean |  | R9 OL9 OL8 R10 | `true` | RHEL-09-652010: rsyslog package installed | R9: RHEL-09-652010<br>OL9: OL09-00-000350<br>OL8: OL08-00-030670<br>R10: RHEL-10-200640 |
-| `packages.sendmail` | boolean |  | OL8 | `false` | OL08-00-040002: yum list installed sendmail | OL8: OL08-00-040002 |
+| `packages["rsyslog-gnutls"]` | boolean |  | R9 | `true` | RHEL-09-652015: rsyslog-gnutls package installed (dnf list --installed rsyslog-gnutls) | R9: RHEL-09-652015 |
+| `packages["s-nail"]` | boolean |  | R9 | `true` | RHEL-09-215095: the s-nail package must be installed (dnf list --installed s-nail) | R9: RHEL-09-215095 |
+| `packages.sendmail` | boolean |  | R9 OL8 | `false` | RHEL-09-215020: the sendmail package must not be installed (dnf list --installed sendmail) | R9: RHEL-09-215020<br>OL8: OL08-00-040002 |
+| `packages["subscription-manager"]` | boolean |  | R9 | `true` | RHEL-09-215010: the subscription-manager package must be installed (dnf list --installed subscription-manager); Not Applicable on input.att… | R9: RHEL-09-215010 |
+| `packages.sudo` | boolean |  | R9 | `true` | RHEL-09-432010: sudo package installed (dnf list --installed sudo) | R9: RHEL-09-432010 |
 | `packages["telnet-server"]` | boolean |  | R9 OL9 OL8 R10 | `false` | RHEL-09-215040: the telnet-server package must not be installed (dnf list --installed telnet-server) | R9: RHEL-09-215040<br>OL9: OL09-00-000110<br>OL8: OL08-00-040000<br>R10: RHEL-10-200020 |
 | `packages["tftp-server"]` | boolean |  | R9 OL9 OL8 R10 | `true` | RHEL-09-215060: if tftp-server is installed, tftp.service ExecStart must carry -s; not installed is Not Applicable | R9: RHEL-09-215060<br>OL9: OL09-00-000135, OL09-00-002426<br>OL8: OL08-00-040190, OL08-00-040350<br>R10: RHEL-10-800310 |
-| `packages.tuned` | boolean |  | OL9 | `false` | OL09-00-000125: input.packages.tuned (dnf list --installed tuned); ISSO documentation of an operational need is an attestation | OL9: OL09-00-000125 |
+| `packages.tuned` | boolean |  | R9 OL9 | `false` | RHEL-09-215055: the tuned package must not be installed (dnf list --installed tuned) | R9: RHEL-09-215055<br>OL9: OL09-00-000125 |
+| `packages.usbguard` | boolean |  | R9 | `true` | RHEL-09-291015: usbguard package installed (dnf list installed usbguard); SA evidence of another blocking method is an attestation | R9: RHEL-09-291015 |
 | `packages.vsftpd` | boolean |  | R9 OL9 R10 | `false` | RHEL-09-215015: the vsftpd package must not be installed (input.packages.vsftpd == false) | R9: RHEL-09-215015<br>OL9: OL09-00-000130<br>R10: RHEL-10-200090 |
+| `packages["xorg-x11-server-common"]` | boolean |  | R9 | `false` | RHEL-09-215070: the xorg-x11-server-common package must not be installed (dnf list --installed xorg-x11-server-common) | R9: RHEL-09-215070 |
+| `pam.password_auth.pam_unix_password_lines` | array of string |  | R9 | `["password    sufficient    pam_unix.so sha512 shadow use_a…` | RHEL-09-671025: the lines of /etc/pam.d/password-auth that match ^password.*pam_unix.so (grep '^password.*pam_unix.so') | R9: RHEL-09-671025 |
+| `pam_d` | object |  |  |  |  | R9: RHEL-09-431020, RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035 … (+5) |
+| `pam_d["password-auth"]` | array of string |  | R9 | `["auth required pam_env.so", "auth required pam_faillock.so…` | RHEL-09-611025: uncommented lines of /etc/pam.d/system-auth and /etc/pam.d/password-auth carrying nullok (case-insensitive) | R9: RHEL-09-431020, RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035 … (+5) |
+| `pam_d.su` | array of string |  | R9 | `["auth sufficient pam_rootok.so", "auth required pam_wheel.…` | RHEL-09-432035: uncommented lines of /etc/pam.d/su (input.pam_d.su) naming pam_wheel.so | R9: RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035, RHEL-09-611040 … (+4) |
+| `pam_d.sudo` | array of string |  | R9 | `["auth include system-auth", "account include system-auth",…` | RHEL-09-611145: uncommented lines of /etc/pam.d/sudo (input.pam_d.sudo) naming pam_succeed_if | R9: RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035, RHEL-09-611040 … (+4) |
+| `pam_d["system-auth"]` | array of string |  | R9 | `["auth required pam_env.so", "auth required pam_faillock.so…` | RHEL-09-611025: uncommented lines of /etc/pam.d/system-auth and /etc/pam.d/password-auth carrying nullok (case-insensitive) | R9: RHEL-09-431020, RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035 … (+5) |
 | `password_policy.dcredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611070: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611070<br>OL9: OL09-00-001020<br>R10: RHEL-10-600310 |
+| `password_policy.dictcheck` | number/string | _num | R9 | `1` | RHEL-09-611105: effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out) | R9: RHEL-09-611105 |
+| `password_policy.difok` | number/string | _num | R9 | `8` | RHEL-09-611115: effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611115 |
+| `password_policy.enforce_for_root` | boolean |  | R9 | `true` | RHEL-09-611060: enforce_for_root option present and uncommented in /etc/security/pwquality.conf or pwquality.conf.d/*.conf (boolean) | R9: RHEL-09-611060 |
 | `password_policy.inactive_days` | number/string | _num | R9 OL9 R10 | `35` | RHEL-09-411050: INACTIVE as configured in /etc/default/useradd | R9: RHEL-09-411050<br>OL9: OL09-00-003065<br>R10: RHEL-10-600160 |
 | `password_policy.lcredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611065: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611065<br>OL9: OL09-00-001015<br>R10: RHEL-10-600240 |
+| `password_policy.maxclassrepeat` | number/string | _num | R9 | `4` | RHEL-09-611120: effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611120 |
 | `password_policy.maxdays` | number/string | _num | R9 OL9 OL8 R10 | `180` | RHEL-09-411010: PASS_MAX_DAYS as configured in /etc/login.defs | R9: RHEL-09-411010<br>OL9: OL09-00-001095<br>OL8: OL08-00-020200<br>R10: RHEL-10-600100 |
+| `password_policy.maxrepeat` | number/string | _num | R9 | `3` | RHEL-09-611125: effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611125 |
+| `password_policy.minclass` | number/string | _num | R9 | `4` | RHEL-09-611130: effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611130 |
 | `password_policy.mindays` | number/string | _num | R9 OL9 OL8 R10 | `1` | RHEL-09-611075: PASS_MIN_DAYS as configured in /etc/login.defs | R9: RHEL-09-611075<br>OL9: OL09-00-001085<br>OL8: OL08-00-020190<br>R10: RHEL-10-600210 |
 | `password_policy.minlen` | number/string | _num | R9 OL9 R10 | `15` | RHEL-09-611090: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611090<br>OL9: OL09-00-001105<br>R10: RHEL-10-600220 |
 | `password_policy.ocredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611100: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611100<br>OL9: OL09-00-001120<br>R10: RHEL-10-600230 |
+| `password_policy.retry` | number/string | _num | R9 | `3` | RHEL-09-611010: effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out) | R9: RHEL-09-611010 |
 | `password_policy.ucredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611110: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611110<br>OL9: OL09-00-001005<br>R10: RHEL-10-600250 |
+| `postfix.root_alias` | string | _str | R9 | `"isso"` | RHEL-09-653125: output of postmap -q root <each map of postconf alias_maps>; an empty string when no alias is set | R9: RHEL-09-653125 |
+| `postfix.smtpd_client_restrictions` | string | _str |  | `"permit_mynetworks,reject"` |  | R9: RHEL-09-252050 |
+| `profile_tmout` | array of object |  | R9 | `[{"file": "/etc/profile.d/tmout.sh", "value": "600"}]` | RHEL-09-412035: uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value as written) | R9: RHEL-09-412035 |
+| `profile_tmout[].file` | string |  |  | `"/etc/profile.d/tmout.sh"` |  | R9: RHEL-09-412035 |
+| `profile_tmout[].value` | number/string |  |  | `"600"` |  | R9: RHEL-09-412035 |
 | `promiscuous_interfaces` | array of string |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-251040: interfaces flagged PROMISC by ip link | R9: RHEL-09-251040<br>OL9: OL09-00-006004<br>OL8: OL08-00-040330<br>R10: RHEL-10-800020 |
+| `pwck_no_group_accounts` | array of object |  | R9 | `[]` | RHEL-09-411045: accounts pwck -r reports with "no group <gid>", each {name, gid, interactive} | R9: RHEL-09-411045 |
+| `pwck_no_group_accounts[].gid` | number |  |  | `990` |  | R9: RHEL-09-411045 |
+| `pwck_no_group_accounts[].interactive` | boolean |  |  | `false` |  | R9: RHEL-09-411045 |
+| `pwck_no_group_accounts[].name` | string |  |  | `"svc"` |  | R9: RHEL-09-411045 |
 | `pwquality_values` | object |  |  |  |  | OL8: OL08-00-020110, OL08-00-020120, OL08-00-020130, OL08-00-020230, OL08-00-020280 |
 | `pwquality_values.dcredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020130: every dcredit = value line found by grep -r dcredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020130 |
 | `pwquality_values.lcredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020120: every lcredit = value line found by grep -r lcredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020120 |
@@ -176,30 +437,68 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `pwquality_values.ocredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020280: every ocredit = value line found by grep -r ocredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020280 |
 | `pwquality_values.ucredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020110: every ucredit = value line found by grep -r ucredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020110 |
 | `redhat_release_key_file.fingerprints` | array of string |  | R9 R10 | `["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51", "7E4…` | RHEL-09-214010: installed gpg-pubkey summaries and the fingerprints in /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (null if the file is mis… | R9: RHEL-09-214010<br>R10: RHEL-10-001020 |
+| `removable_media_fstab` | array of object |  | R9 | `[{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "optio…` | RHEL-09-231080: input.removable_media_fstab: the /etc/fstab entries that refer to removable media (USB, optical, flash), [{mount_point, fs_… | R9: RHEL-09-231080, RHEL-09-231085, RHEL-09-231090 |
+| `removable_media_fstab[].fs_type` | string |  |  | `"vfat"` |  | R9: RHEL-09-231080, RHEL-09-231085, RHEL-09-231090 |
+| `removable_media_fstab[].mount_point` | string |  |  | `"/mnt/usbflash"` |  | R9: RHEL-09-231080, RHEL-09-231085, RHEL-09-231090 |
+| `removable_media_fstab[].options` | string |  |  | `"noauto,owner,ro,nosuid,nodev,noexec"` |  | R9: RHEL-09-231080, RHEL-09-231085, RHEL-09-231090 |
+| `resolv_conf.nameservers` | array of string |  | R9 | `["ns1.example.mil", "ns2.example.mil"]` | RHEL-09-252035: the value of each uncommented nameserver line of /etc/resolv.conf, in file order; a cloud platform whose provider gives a s… | R9: RHEL-09-252035 |
 | `rpm_gpg_pubkeys` | array of string |  | R9 OL9 OL8 R10 | `["Red Hat, Inc. (release key 2) <security@redhat.com> publi…` | RHEL-09-214010: installed gpg-pubkey summaries and the fingerprints in /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (null if the file is mis… | R9: RHEL-09-214010<br>OL9: OL09-00-000499<br>OL8: OL08-00-010019<br>R10: RHEL-10-001020 |
+| `rpm_verify.hash_mismatch_files` | array |  | R9 | `[]` | RHEL-09-214030: output lines of rpm -Va --noconfig \| awk '$1 ~ /..5/ && $2 != "c"' | R9: RHEL-09-214030 |
+| `rpm_verify["openssh-server"]` | array of string |  | R9 | `["S.5....T.  c /etc/ssh/sshd_config"]` | RHEL-09-255115: the output lines of rpm --verify openssh-server (input.rpm_verify["openssh-server"]); the policy applies the check's awk fi… | R9: RHEL-09-255115 |
+| `rsyslog.config_lines` | array of string |  | R9 | `["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMo…` | RHEL-09-652025: rsyslog sockets from ss -tulnp \| grep rsyslog (input.rsyslog.listening_sockets) and the uncommented rsyslog configuration … | R9: RHEL-09-652025, RHEL-09-652030, RHEL-09-652040, RHEL-09-652045, RHEL-09-652050 … (+2) |
+| `rsyslog.listening_sockets` | array of string |  | R9 | `[]` | RHEL-09-652025: rsyslog sockets from ss -tulnp \| grep rsyslog (input.rsyslog.listening_sockets) and the uncommented rsyslog configuration … | R9: RHEL-09-652025, RHEL-09-652030, RHEL-09-652040, RHEL-09-652045, RHEL-09-652050 … (+2) |
 | `secureboot_enabled` | boolean |  |  | `true` |  | OL8: OL08-00-010372 |
 | `selinux.config_selinux` | string | _kw | R9 OL9 R10 | `"enforcing"` | RHEL-09-431010: SELinux enforcing at runtime (getenforce) and at boot (SELINUX= in /etc/selinux/config) | R9: RHEL-09-431010<br>OL9: OL09-00-000060<br>R10: RHEL-10-700420 |
 | `selinux.config_selinuxtype` | string | _str | OL8 | `"targeted"` | OL08-00-010450: Loaded policy name (sestatus) and the uncommented SELINUXTYPE in /etc/selinux/config | OL8: OL08-00-010450 |
-| `selinux.getenforce` | string | _kw | R9 OL9 OL8 R10 | `"Enforcing"` | RHEL-09-431010: SELinux enforcing at runtime (getenforce) and at boot (SELINUX= in /etc/selinux/config) | R9: RHEL-09-431010<br>OL9: OL09-00-000060<br>OL8: OL08-00-010170<br>R10: RHEL-10-700420 |
-| `selinux.policy` | string | _str | R9 OL9 OL8 R10 | `"targeted"` | RHEL-09-431015: Loaded policy name from sestatus | R9: RHEL-09-431015<br>OL9: OL09-00-000065<br>OL8: OL08-00-010450<br>R10: RHEL-10-700400 |
+| `selinux.getenforce` | string | _kw | R9 OL9 OL8 R10 | `"Enforcing"` | RHEL-09-431010: SELinux enforcing at runtime (getenforce) and at boot (SELINUX= in /etc/selinux/config) | R9: RHEL-09-431010, RHEL-09-431020<br>OL9: OL09-00-000060<br>OL8: OL08-00-010170<br>R10: RHEL-10-700420 |
+| `selinux.policy` | string | _str | R9 OL9 OL8 R10 | `"targeted"` | RHEL-09-431015: Loaded policy name from sestatus | R9: RHEL-09-431015, RHEL-09-431020<br>OL9: OL09-00-000065<br>OL8: OL08-00-010450<br>R10: RHEL-10-700400 |
 | `services.auditd` | string | _kw | R9 OL9 OL8 R10 | `"active"` | RHEL-09-653015: systemctl is-active auditd | R9: RHEL-09-653015<br>OL9: OL09-00-000441<br>OL8: OL08-00-030181<br>R10: RHEL-10-200661 |
+| `services.chronyd` | string | _kw | R9 | `"active"` | RHEL-09-252015: systemctl is-active chronyd | R9: RHEL-09-252015 |
+| `services.fapolicyd` | string | _kw | R9 | `"active"` | RHEL-09-433015: systemctl is-active fapolicyd | R9: RHEL-09-433015 |
 | `services.firewalld` | string | _kw | R9 OL9 OL8 R10 | `"active"` | RHEL-09-251015: systemctl is-active firewalld | R9: RHEL-09-251015<br>OL9: OL09-00-000221<br>OL8: OL08-00-040101<br>R10: RHEL-10-200531 |
+| `services.ipsec` | string | _kw | R9 | `"inactive"` | RHEL-09-252045: systemctl is-active ipsec; when active, the lines of grep -rni conn /etc/ipsec.conf /etc/ipsec.d/ (input.ipsec.conn_lines) | R9: RHEL-09-252045 |
+| `services.kdump` | string | _kw | R9 | `"inactive"` | RHEL-09-213115: LoadState of kdump.service (systemctl show kdump) and systemctl is-active kdump | R9: RHEL-09-213115 |
+| `services["pcscd.socket"]` | string | _kw | R9 | `"active"` | RHEL-09-611180: systemctl is-active pcscd.socket | R9: RHEL-09-611180 |
+| `services.rngd` | string | _kw | R9 | `"active"` | RHEL-09-211035: systemctl is-active rngd; kernel FIPS mode enabled (/proc/sys/crypto/fips_enabled = 1) is Not Applicable | R9: RHEL-09-211035 |
 | `services.rsyslog` | string | _kw | R9 OL9 OL8 R10 | `"active"` | RHEL-09-652020: systemctl is-active rsyslog | R9: RHEL-09-652020<br>OL9: OL09-00-000351<br>OL8: OL08-00-010561<br>R10: RHEL-10-200641 |
-| `services.sshd` | string | _kw | OL9 OL8 | `"active"` | OL09-00-000251: systemctl is-active sshd | OL9: OL09-00-000251<br>OL8: OL08-00-040160 |
+| `services.sshd` | string | _kw | R9 OL9 OL8 | `"active"` | RHEL-09-255015: systemctl is-active sshd | R9: RHEL-09-255015<br>OL9: OL09-00-000251<br>OL8: OL08-00-040160 |
+| `services["systemd-journald"]` | string | _kw | R9 | `"active"` | RHEL-09-211040: systemctl is-active systemd-journald | R9: RHEL-09-211040 |
+| `services.usbguard` | string | _kw | R9 | `"active"` | RHEL-09-291020: systemctl is-active usbguard; SA evidence of another blocking method is an attestation | R9: RHEL-09-291020 |
+| `shadow_maxdays_out_of_range` | array of object |  | R9 | `[]` | RHEL-09-411015: accounts printed by awk -F: '$5 > 180' and awk -F: '$5 <= 0' on /etc/shadow, each {name, max_days, system_account} | R9: RHEL-09-411015 |
+| `shadow_maxdays_out_of_range[].max_days` | string |  |  | `"99999"` |  | R9: RHEL-09-411015 |
+| `shadow_maxdays_out_of_range[].name` | string |  |  | `"bin"` |  | R9: RHEL-09-411015 |
+| `shadow_maxdays_out_of_range[].system_account` | boolean |  |  | `true` |  | R9: RHEL-09-411015 |
+| `shadow_min_age_below_one` | array of object |  | R9 | `[]` | RHEL-09-611080: accounts printed by awk -F: '$4 < 1 {printf "%s %d\n", $1, $4}' /etc/shadow, each {name, min_days, system_account} | R9: RHEL-09-611080 |
+| `shadow_min_age_below_one[].min_days` | number |  |  | `0` |  | R9: RHEL-09-611080 |
+| `shadow_min_age_below_one[].name` | string |  |  | `"bin"` |  | R9: RHEL-09-611080 |
+| `shadow_min_age_below_one[].system_account` | boolean |  |  | `true` |  | R9: RHEL-09-611080 |
+| `shell_umask.etc_bashrc` | array of string |  | R9 | `["077"]` | RHEL-09-412055: the values of the uncommented umask commands in /etc/bashrc, as written (e.g. ["077"]); empty when none | R9: RHEL-09-412055 |
+| `shell_umask.etc_csh_cshrc` | array of string |  | R9 | `["077"]` | RHEL-09-412060: the values of the uncommented umask commands in /etc/csh.cshrc, as written (e.g. ["077"]); empty when none | R9: RHEL-09-412060 |
+| `shell_umask.etc_profile` | array of string |  | R9 | `["077"]` | RHEL-09-412070: the values of the uncommented umask commands in /etc/profile, as written (e.g. ["077"]); empty when none | R9: RHEL-09-412070 |
+| `shosts_equiv_files` | array |  | R9 | `[]` | RHEL-09-252070: files found by find / -name shosts.equiv | R9: RHEL-09-252070 |
+| `shosts_files` | array |  | R9 | `[]` | RHEL-09-252075: files found by find / -name .shosts | R9: RHEL-09-252075 |
 | `ssh_banner_file.exists` | boolean |  | OL9 R10 | `true` | OL09-00-000256: Banner keyword in the sshd configuration; input.ssh_banner_file.exists: the file it names exists | OL9: OL09-00-000256<br>R10: RHEL-10-700010 |
 | `ssh_banner_file.text` | string | _str | OL8 | `"You are accessing a U.S. Government (USG) Information Syst…` | OL08-00-010040: input.sshd_config_lines.Banner (every Banner line sshd reads) and input.ssh_banner_file.text (the file it names) | OL8: OL08-00-010040 |
 | `ssh_config.Banner` | string | _kw | R9 OL9 R10 | `"/etc/issue"` | RHEL-09-255025: effective sshd Banner keyword (sshd -T or the config files sshd -dd reads) | R9: RHEL-09-255025<br>OL9: OL09-00-000256<br>R10: RHEL-10-700010 |
 | `ssh_config.ClientAliveCountMax` | number/string | _num | R9 OL9 | `1` | RHEL-09-255095: effective sshd ClientAliveCountMax (sshd -T) | R9: RHEL-09-255095<br>OL9: OL09-00-002346 |
-| `ssh_config.ClientAliveInterval` | number/string | _num | R9 OL9 | `600` | RHEL-09-255100: effective sshd ClientAliveInterval (sshd -T) | R9: RHEL-09-255100<br>OL9: OL09-00-002347 |
+| `ssh_config.ClientAliveInterval` | number/string | _num | R9 OL9 | `600` | RHEL-09-255100: effective sshd ClientAliveInterval (sshd -T) | R9: RHEL-09-255100, RHEL-09-412080<br>OL9: OL09-00-002347 |
+| `ssh_config.GSSAPIAuthentication` | string | _kw | R9 | `"no"` | RHEL-09-255135: sshd GSSAPIAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255135 |
 | `ssh_config.HostbasedAuthentication` | string | _kw | R9 OL9 | `"no"` | RHEL-09-255080: effective sshd HostbasedAuthentication (case-insensitive) must be no | R9: RHEL-09-255080<br>OL9: OL09-00-002357 |
 | `ssh_config.IgnoreRhosts` | string | _kw | R9 OL9 | `"yes"` | RHEL-09-255145: effective sshd IgnoreRhosts (case-insensitive) must be yes | R9: RHEL-09-255145<br>OL9: OL09-00-002348 |
 | `ssh_config.IgnoreUserKnownHosts` | string | _kw | R9 OL9 | `"yes"` | RHEL-09-255150: effective sshd IgnoreUserKnownHosts (case-insensitive) must be yes | R9: RHEL-09-255150<br>OL9: OL09-00-002349 |
+| `ssh_config.KerberosAuthentication` | string | _kw | R9 | `"no"` | RHEL-09-255140: sshd KerberosAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255140 |
+| `ssh_config.LogLevel` | string | _kw | R9 | `"verbose"` | RHEL-09-255030: sshd LogLevel as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255030 |
 | `ssh_config.PermitEmptyPasswords` | string | _kw | R9 OL9 | `"no"` | RHEL-09-255040: effective sshd PermitEmptyPasswords (case-insensitive) must be no | R9: RHEL-09-255040<br>OL9: OL09-00-002343 |
 | `ssh_config.PermitRootLogin` | string | _kw | R9 OL9 | `"no"` | RHEL-09-255045: effective sshd PermitRootLogin (case-insensitive) must be no | R9: RHEL-09-255045<br>OL9: OL09-00-002345 |
+| `ssh_config.PermitUserEnvironment` | string | _kw | R9 | `"no"` | RHEL-09-255085: sshd PermitUserEnvironment as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255085 |
 | `ssh_config.PrintLastLog` | string | _kw | R9 OL9 | `"yes"` | RHEL-09-255165: effective sshd PrintLastLog (case-insensitive) must be yes | R9: RHEL-09-255165<br>OL9: OL09-00-002352 |
+| `ssh_config.PubkeyAuthentication` | string | _kw | R9 | `"yes"` | RHEL-09-255035: sshd PubkeyAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255035 |
+| `ssh_config.RekeyLimit` | string | _kw | R9 | `"1G 1h"` | RHEL-09-255090: sshd RekeyLimit as set (uncommented) in sshd_config / sshd_config.d: <data amount> <time>; null when no line sets it | R9: RHEL-09-255090 |
 | `ssh_config.StrictModes` | string | _kw | R9 OL9 | `"yes"` | RHEL-09-255160: effective sshd StrictModes (case-insensitive) must be yes | R9: RHEL-09-255160<br>OL9: OL09-00-002351 |
 | `ssh_config.UsePAM` | string | _kw | R9 OL9 R10 | `"yes"` | RHEL-09-255050: effective sshd UsePAM (case-insensitive) must be yes | R9: RHEL-09-255050<br>OL9: OL09-00-002344<br>R10: RHEL-10-600640 |
 | `ssh_config.X11Forwarding` | string | _kw | R9 OL9 | `"no"` | RHEL-09-255155: effective sshd X11Forwarding | R9: RHEL-09-255155<br>OL9: OL09-00-002350 |
+| `ssh_config.X11UseLocalhost` | string | _kw | R9 | `"yes"` | RHEL-09-255175: sshd X11UseLocalhost as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255175 |
+| `ssh_private_keys_without_passphrase` | array of string |  | R9 | `[]` | RHEL-09-611190: paths of the private keys for which ssh-keygen -y -f <key> printed the public key without a passphrase prompt; an approved … | R9: RHEL-09-611190 |
 | `sshd_config_files` | object |  |  |  |  | R10: RHEL-10-700530, RHEL-10-700540, RHEL-10-700550, RHEL-10-700560, RHEL-10-700570 … (+5) |
 | `sshd_config_files.ClientAliveCountMax` | array of object |  | R10 | `[{"file": "/etc/ssh/sshd_config.d/10-stig.conf", "value": "…` | RHEL-10-700660: ClientAliveCountMax: first value sshd reads must come from a drop-in before 50-redhat.conf; sshd -T must agree | R10: RHEL-10-700660 |
 | `sshd_config_files.ClientAliveCountMax[].file` | string |  |  | `"/etc/ssh/sshd_config.d/10-stig.conf"` |  | R10: RHEL-10-700660 |
@@ -252,12 +551,14 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `sshd_runtime.printlastlog` | string |  | R10 | `"yes"` | RHEL-10-700570: PrintLastLog: first value sshd reads must come from a drop-in before 50-redhat.conf; sshd -T must agree | R10: RHEL-10-700570 |
 | `sshd_runtime.strictmodes` | string |  | R10 | `"yes"` | RHEL-10-700560: StrictModes: first value sshd reads must come from a drop-in before 50-redhat.conf; sshd -T must agree | R10: RHEL-10-700560 |
 | `sshd_runtime.x11forwarding` | string |  | R10 | `"no"` | RHEL-10-700550: X11Forwarding: first value sshd reads must come from a drop-in before 50-redhat.conf; sshd -T must agree | R10: RHEL-10-700550 |
+| `sssd.cache_credentials_values` | array of string |  | R9 | `["true"]` | RHEL-09-631020: every uncommented cache_credentials value in /etc/sssd/sssd.conf and conf.d (empty list when the option is missing); offlin… | R9: RHEL-09-631020 |
 | `sssd.certificate_verification` | string |  | R9 OL9 OL8 R10 | `"ocsp_dgst=sha512"` | RHEL-09-611170: certificate_verification from the [sssd] section of sssd.conf / conf.d (uncommented) | R9: RHEL-09-611170<br>OL9: OL09-00-000930<br>OL8: OL08-00-010400<br>R10: RHEL-10-701230 |
 | `sssd.certmap_rules` | array of object |  | R9 R10 | `[{"section": "certmap/testing.test/rule_name", "matchrule":…` | RHEL-09-631015: [certmap/...] sections of sssd.conf and conf.d: [{section, matchrule, maprule, domains}] | R9: RHEL-09-631015<br>R10: RHEL-10-701280 |
 | `sssd.certmap_rules[].domains` | string |  |  | `"testing.test"` |  | R9: RHEL-09-631015<br>R10: RHEL-10-701280 |
 | `sssd.certmap_rules[].maprule` | string |  |  | `"(userCertificate;binary={cert!bin})"` |  | R9: RHEL-09-631015<br>R10: RHEL-10-701280 |
 | `sssd.certmap_rules[].matchrule` | string |  |  | `"<SAN>.*EDIPI@mil"` |  | R9: RHEL-09-631015<br>R10: RHEL-10-701280 |
 | `sssd.certmap_rules[].section` | string |  |  | `"certmap/testing.test/rule_name"` |  | R9: RHEL-09-631015<br>R10: RHEL-10-701280 |
+| `sssd.offline_credentials_expiration` | number/string | _str |  | `"1"` |  | R9: RHEL-09-631020 |
 | `sssd.pam_cert_auth` | string | _kw | R9 R10 | `"True"` | RHEL-09-611165: pam_cert_auth as configured in /etc/sssd/sssd.conf or /etc/sssd/conf.d/ (null when missing or commented out) | R9: RHEL-09-611165<br>R10: RHEL-10-701220 |
 | `sssd_ca_db` | object |  |  |  |  | R9: RHEL-09-631010<br>OL8: OL08-00-010090<br>R10: RHEL-10-701270 |
 | `sssd_ca_db.certificates` | array of object |  | R9 OL9 OL8 R10 | `[{"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["…` | RHEL-09-631010: certificates in /etc/sssd/pki/sssd_auth_ca_db.pem: issuer / subject RDNs and validity dates | R9: RHEL-09-631010<br>OL9: OL09-00-000900<br>OL8: OL08-00-010090<br>R10: RHEL-10-701270 |
@@ -271,12 +572,40 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `sssd_conf_file.certmap_rules[].matchrule` | string |  |  | `"<SAN>.*EDIPI@mil"` |  | OL9: OL09-00-000910<br>OL8: OL08-00-020090 |
 | `sssd_conf_file.certmap_rules[].section` | string |  |  | `"certmap/testing.test/rule_name"` |  | OL9: OL09-00-000910<br>OL8: OL08-00-020090 |
 | `sssd_conf_file.pam_cert_auth` | string | _kw | OL9 | `"True"` | OL09-00-000925: pam_cert_auth as written in /etc/sssd/sssd.conf itself (OL 9 greps that file only; RHEL 9 also reads conf.d) | OL9: OL09-00-000925 |
+| `sudoers.lines` | array of object |  | R9 | `[{"file": "/etc/sudoers", "line": "Defaults timestamp_timeo…` | RHEL-09-432015: uncommented timestamp_timeout lines of /etc/sudoers and /etc/sudoers.d/* (input.sudoers.lines[{file, line}]) | R9: RHEL-09-431016, RHEL-09-432015, RHEL-09-432020, RHEL-09-432025, RHEL-09-432030, RHEL-09-611085 |
+| `sudoers.lines[].file` | string |  |  | `"/etc/sudoers"` |  | R9: RHEL-09-431016, RHEL-09-432015, RHEL-09-432020, RHEL-09-432025, RHEL-09-432030, RHEL-09-611085 |
+| `sudoers.lines[].line` | string |  |  | `"Defaults timestamp_timeout=0"` |  | R9: RHEL-09-431016, RHEL-09-432015, RHEL-09-432020, RHEL-09-432025, RHEL-09-432030, RHEL-09-611085 |
+| `sulogin_lines["emergency.service"].drop_ins` | array of string |  | R9 | `[]` | RHEL-09-611195: lines returned by grep sulogin on /usr/lib/systemd/system/emergency.service (unit_file) and /etc/systemd/system/emergency.s… | R9: RHEL-09-611195 |
+| `sulogin_lines["emergency.service"].unit_file` | array of string |  | R9 | `["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergen…` | RHEL-09-611195: lines returned by grep sulogin on /usr/lib/systemd/system/emergency.service (unit_file) and /etc/systemd/system/emergency.s… | R9: RHEL-09-611195 |
+| `sulogin_lines["rescue.service"].drop_ins` | array of string |  | R9 | `[]` | RHEL-09-611200: lines returned by grep sulogin on /usr/lib/systemd/system/rescue.service (unit_file) and /etc/systemd/system/rescue.service… | R9: RHEL-09-611200 |
+| `sulogin_lines["rescue.service"].unit_file` | array of string |  | R9 | `["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"]` | RHEL-09-611200: lines returned by grep sulogin on /usr/lib/systemd/system/rescue.service (unit_file) and /etc/systemd/system/rescue.service… | R9: RHEL-09-611200 |
 | `sysctl_config["kernel.randomize_va_space"]` | array of string |  | R9 OL9 OL8 R10 | `["2"]` | RHEL-09-213070: runtime value (sysctl) and every value configured in the sysctl.d / sysctl.conf files the check greps | R9: RHEL-09-213070<br>OL9: OL09-00-002423<br>OL8: OL08-00-010430<br>R10: RHEL-10-701130 |
+| `system_accounts_with_interactive_shell` | array |  | R9 | `[]` | RHEL-09-411035: output of awk -F: '(($3 > 0 && $3 < 1000) && $1 !~ /^(halt\|sync\|shutdown)$/ && $7 !~ /(nologin\|false)$/) {print $1 ":" $… | R9: RHEL-09-411035 |
+| `systemd.default_target` | string | _str | R9 | `"multi-user.target"` | RHEL-09-211030: output of systemctl get-default | R9: RHEL-09-211030 |
+| `systemd_system_conf.CtrlAltDelBurstAction` | string | _str | R9 | `"none"` | RHEL-09-211045: CtrlAltDelBurstAction as configured under /etc/systemd/system* (grep -iR; null when missing or commented out) | R9: RHEL-09-211045 |
 | `systemd_units["ctrl-alt-del.target"].load_state` | string | _kw | R9 OL9 OL8 R10 | `"masked"` | RHEL-09-211050: ctrl-alt-del.target load state (systemctl show -p LoadState) must be masked | R9: RHEL-09-211050<br>OL9: OL09-00-002413<br>OL8: OL08-00-040170<br>R10: RHEL-10-700960 |
+| `systemd_units["debug-shell.service"].load_state` | string | _kw | R9 | `"masked"` | RHEL-09-211055: debug-shell.service load state (systemctl show -p LoadState): masked, or not-found when the unit does not exist | R9: RHEL-09-211055 |
+| `systemd_units["kdump.service"].load_state` | string | _kw | R9 | `"masked"` | RHEL-09-213115: LoadState of kdump.service (systemctl show kdump) and systemctl is-active kdump | R9: RHEL-09-213115 |
+| `systemd_units["systemd-coredump.socket"].load_state` | string | _kw | R9 | `"masked"` | RHEL-09-213100: systemd-coredump.socket load state (systemctl show -p LoadState): masked, or not-found when the unit does not exist | R9: RHEL-09-213100 |
+| `temporary_accounts` | array of object |  | R9 | `[{"name": "tempuser", "expires": "2020-01-04"}]` | RHEL-09-411040: the organization's temporary accounts with their expiration date (chage -l -i <name>, "Account expires": YYYY-MM-DD or neve… | R9: RHEL-09-411040 |
+| `temporary_accounts[].expires` | string |  |  | `"2020-01-04"` |  | R9: RHEL-09-411040 |
+| `temporary_accounts[].name` | string |  |  | `"tempuser"` |  | R9: RHEL-09-411040 |
 | `tftp.execstart` | string | _str |  | `"/usr/sbin/in.tftpd -s /var/lib/tftpboot"` |  | R9: RHEL-09-215060<br>OL8: OL08-00-040350 |
 | `tftp.unit_execstart` | string | _str |  | `"ExecStart=/usr/sbin/in.tftpd -s /var/lib/tftpboot"` |  | OL9: OL09-00-002426<br>R10: RHEL-10-800310 |
+| `uid_zero_accounts` | array of string |  | R9 | `["root"]` | RHEL-09-411100: account names printed by awk -F: '$3 == 0 {print $1}' /etc/passwd | R9: RHEL-09-411100 |
 | `unit_enabled.autofs` | string | _kw | R9 OL9 OL8 R10 | `"masked"` | RHEL-09-231040: systemctl is-enabled autofs (input.unit_enabled[<unit>] is that command's output) | R9: RHEL-09-231040<br>OL9: OL09-00-002000<br>OL8: OL08-00-040070<br>R10: RHEL-10-701210 |
 | `unit_enabled.rsyslog` | string | _kw | OL8 | `"enabled"` | OL08-00-010561: systemctl is-enabled rsyslog and systemctl is-active rsyslog | OL8: OL08-00-010561 |
+| `usb_peripherals` | array |  |  | `[]` |  | R9: RHEL-09-291015, RHEL-09-291020, RHEL-09-291025, RHEL-09-291030 |
+| `usbguard_daemon_conf.AuditBackend` | string | _str | R9 | `"LinuxAudit"` | RHEL-09-291025: AuditBackend as set (uncommented) in /etc/usbguard/usbguard-daemon.conf, null when not set | R9: RHEL-09-291025 |
+| `usbguard_rules` | array of string |  | R9 | `["1: allow id 1d6b:0001 serial \"0000:00:01.2\""]` | RHEL-09-291030: output lines of usbguard list-rules (null when the command returns an error); a virtual machine with no USB peripherals is … | R9: RHEL-09-291030 |
+| `user_init_files.path_statements` | array of object |  | R9 | `[{"file": "/home/disauser/.bash_profile", "home": "/home/di…` | RHEL-09-411055: uncommented PATH= statements in the interactive users' initialization files (find <home> -maxdepth 2 -type f -name '.[^.]*'… | R9: RHEL-09-411055 |
+| `user_init_files.path_statements[].entries` | array of string |  |  | `["$HOME/.local/bin", "$HOME/bin", "$PATH"]` |  | R9: RHEL-09-411055 |
+| `user_init_files.path_statements[].file` | string |  |  | `"/home/disauser/.bash_profile"` |  | R9: RHEL-09-411055 |
+| `user_init_files.path_statements[].home` | string |  |  | `"/home/disauser"` |  | R9: RHEL-09-411055 |
+| `user_init_files.umask_statements` | array of object |  | R9 | `[{"file": "/home/disauser/.bashrc", "umask": "077"}]` | RHEL-09-411025: uncommented umask statements in the interactive users' initialization files (find <home> -maxdepth 2 -type f -name '.[^.]*'… | R9: RHEL-09-411025 |
+| `user_init_files.umask_statements[].file` | string |  |  | `"/home/disauser/.bashrc"` |  | R9: RHEL-09-411025 |
+| `user_init_files.umask_statements[].umask` | string |  |  | `"077"` |  | R9: RHEL-09-411025 |
+| `virtual_machine` | boolean |  |  | `true` |  | R9: RHEL-09-291015, RHEL-09-291020, RHEL-09-291025, RHEL-09-291030 |
 | `wireless_interfaces` | array of string |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-291040: configured wireless devices (nmcli device status, TYPE wifi); no physical radio is Not Applicable | R9: RHEL-09-291040<br>OL9: OL09-00-006001<br>OL8: OL08-00-040110<br>R10: RHEL-10-700870 |
 | `wireless_radios_present` | boolean |  |  | `false` |  | R9: RHEL-09-291040<br>OL9: OL09-00-006001<br>OL8: OL08-00-040110<br>R10: RHEL-10-700870 |
 | `yum_repos` | array of object |  | R9 OL9 OL8 R10 | `[{"file": "/etc/yum.repos.d/redhat.repo", "name": "rhel-9-f…` | RHEL-09-214025: gpgcheck as written in each /etc/yum.repos.d/*.repo section (input.yum_repos[{file, name, gpgcheck}]) | R9: RHEL-09-214025<br>OL9: OL09-00-000498<br>OL8: OL08-00-010370<br>R10: RHEL-10-001050 |
@@ -330,20 +659,79 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | `ol09_00_006004_promisc_approved` | OL9 |
 | `ol09_00_006028_router_documented` | OL9 |
 | `ol09_00_006032_redirects_documented` | OL9 |
+| `rhel_09_211010_release_supported` | R9 |
+| `rhel_09_211015_patching_current` | R9 |
+| `rhel_09_211030_gui_required` | R9 |
+| `rhel_09_212035_vsyscall_documented` | R9 |
+| `rhel_09_213040_core_dumps_documented` | R9 |
+| `rhel_09_213045_atm_documented` | R9 |
+| `rhel_09_213050_can_documented` | R9 |
 | `rhel_09_213055_firewire_documented` | R9 |
+| `rhel_09_213060_sctp_documented` | R9 |
+| `rhel_09_213065_tipc_documented` | R9 |
+| `rhel_09_213085_core_dumps_documented` | R9 |
+| `rhel_09_213090_core_dumps_documented` | R9 |
+| `rhel_09_213095_core_dumps_documented` | R9 |
+| `rhel_09_213100_core_dumps_documented` | R9 |
+| `rhel_09_213105_namespaces_documented` | R9 |
+| `rhel_09_214015_gpg_process` | R9 |
 | `rhel_09_214020_gpg_process` | R9 |
 | `rhel_09_214025_gpg_process` | R9 |
+| `rhel_09_215010_not_internet_connected` | R9 |
+| `rhel_09_215045_gssproxy_documented` | R9 |
+| `rhel_09_215045_nfs_authorized` | R9 |
+| `rhel_09_215050_iprutils_documented` | R9 |
+| `rhel_09_215055_tuned_documented` | R9 |
+| `rhel_09_215070_gui_documented` | R9 |
+| `rhel_09_215075_alternate_mfa` | R9 |
+| `rhel_09_215101_other_notification` | R9 |
+| `rhel_09_231190_encryption_evidence` | R9 |
+| `rhel_09_231190_no_os_encryption_approved` | R9 |
+| `rhel_09_231195_cramfs_documented` | R9 |
+| `rhel_09_232240_owners_approved` | R9 |
+| `rhel_09_232260_vm_device_files` | R9 |
+| `rhel_09_251035_ppsm_clsa_match` | R9 |
 | `rhel_09_251040_promisc_approved` | R9 |
+| `rhel_09_252020_authoritative_time_source` | R9 |
+| `rhel_09_252025_ntp_server` | R9 |
+| `rhel_09_252035_cloud_single_dns` | R9 |
+| `rhel_09_252040_other_resolver_approved` | R9 |
+| `rhel_09_252045_tunnels_approved` | R9 |
+| `rhel_09_252050_restrictions_documented` | R9 |
+| `rhel_09_252060_audit_failure_notification` | R9 |
+| `rhel_09_252065_no_operational_need` | R9 |
 | `rhel_09_253065_redirects_documented` | R9 |
+| `rhel_09_253070_redirects_documented` | R9 |
 | `rhel_09_253075_router_documented` | R9 |
+| `rhel_09_255035_alternate_mfa` | R9 |
+| `rhel_09_255135_gssapi_documented` | R9 |
+| `rhel_09_255140_kerberos_documented` | R9 |
 | `rhel_09_255155_x11_documented` | R9 |
+| `rhel_09_271020_automount_documented` | R9 |
+| `rhel_09_271030_autorun_documented` | R9 |
+| `rhel_09_271035_autorun_writable_documented` | R9 |
 | `rhel_09_291010_usb_storage_documented` | R9 |
+| `rhel_09_291015_peripherals_blocked` | R9 |
+| `rhel_09_291020_peripherals_blocked` | R9 |
+| `rhel_09_291030_peripherals_blocked` | R9 |
 | `rhel_09_291035_bluetooth_documented` | R9 |
 | `rhel_09_291040_wireless_approved` | R9 |
+| `rhel_09_411055_path_documented` | R9 |
 | `rhel_09_411085_central_lockout` | R9 |
+| `rhel_09_411095_accounts_authorized` | R9 |
+| `rhel_09_412040_maxlogins_documented` | R9 |
+| `rhel_09_412080_cloud_hosted` | R9 |
+| `rhel_09_611025_included_pam_config` | R9 |
+| `rhel_09_611030_included_pam_config` | R9 |
+| `rhel_09_611035_included_pam_config` | R9 |
+| `rhel_09_611040_included_pam_config` | R9 |
+| `rhel_09_611045_included_pam_config` | R9 |
+| `rhel_09_611085_nopasswd_mfa_documented` | R9 |
 | `rhel_09_611165_alternate_mfa` | R9 |
 | `rhel_09_611170_alternate_mfa` | R9 |
 | `rhel_09_611170_status_checking` | R9 |
+| `rhel_09_611175_alternate_mfa` | R9 |
+| `rhel_09_611190_alternate_mfa` | R9 |
 | `rhel_09_631010_alternate_mfa` | R9 |
 | `rhel_09_631015_alternate_mfa` | R9 |
 | `rhel_09_631015_certificate_mapping` | R9 |
@@ -351,9 +739,24 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | `rhel_09_651015_notification` | R9 |
 | `rhel_09_651015_other_tool` | R9 |
 | `rhel_09_651020_other_tool` | R9 |
+| `rhel_09_651025_other_mechanism` | R9 |
+| `rhel_09_651030_other_tool` | R9 |
+| `rhel_09_651035_other_tool` | R9 |
+| `rhel_09_652025_log_aggregation_server` | R9 |
+| `rhel_09_652025_other_log_tool` | R9 |
+| `rhel_09_652040_offload_encrypted` | R9 |
+| `rhel_09_652055_offload_documented` | R9 |
+| `rhel_09_652060_cron_test_logged` | R9 |
+| `rhel_09_653020_disk_error_action` | R9 |
 | `rhel_09_653025_disk_full_action` | R9 |
+| `rhel_09_653030_audit_capacity_sufficient` | R9 |
 | `rhel_09_653040_realtime_alerts` | R9 |
+| `rhel_09_653050_realtime_alerts` | R9 |
 | `rhel_09_653055_storage_action` | R9 |
+| `rhel_09_653065_audit_offload` | R9 |
+| `rhel_09_653070_failure_notification` | R9 |
+| `rhel_09_654265_availability_overriding` | R9 |
+| `rhel_09_671025_included_pam_file` | R9 |
 | `rhel_10_001040_gpg_process` | R10 |
 | `rhel_10_001050_gpg_process` | R10 |
 | `rhel_10_200630_other_tool` | R10 |
@@ -376,113 +779,454 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | `rhel_10_800210_router_documented` | R10 |
 | `rhel_10_800310_tftp_documented` | R10 |
 
-## RHEL 9 rules (104)
+## RHEL 9 rules (445)
 
 | Rule | Section | Required evidence | The check requires |
 |---|---|---|---|
+| RHEL-09-211010 | configuration_management | `os_release.redhat_release` | /etc/redhat-release must name a RHEL 9 release and the SA must attest that this release is vendor supported (input.attest.rhel_09_211010_release_supported) |
+| RHEL-09-211015 | software_integrity | (attestation / Not Applicable facts only) | the SA must attest that security patches and updates are installed in line with the organizational patching policy (dnf history list compared with Red Hat erra… |
 | RHEL-09-211020 | configuration_management | `login_banner.issue` | /etc/issue must contain exactly the Standard Mandatory DoW Notice and Consent Banner (whitespace aside) |
+| RHEL-09-211030 | configuration_management | `systemd.default_target` | systemctl get-default must return multi-user.target, or the ISSO must have a documented requirement for a graphical user interface (input.attest.rhel_09_211030… |
+| RHEL-09-211035 | services | `services.rngd` | rngd must be active (systemctl is-active rngd) |
+| RHEL-09-211040 | audit_logging | `services["systemd-journald"]` | systemd-journald must be active (systemctl is-active systemd-journald) |
+| RHEL-09-211045 | configuration_management | `systemd_system_conf.CtrlAltDelBurstAction` | CtrlAltDelBurstAction must be set to none (uncommented) in /etc/systemd/system.conf or /etc/systemd/system.conf.d/ |
 | RHEL-09-211050 | configuration_management | `systemd_units["ctrl-alt-del.target"].load_state` | ctrl-alt-del.target must be masked (systemctl status: Loaded: masked) |
+| RHEL-09-211055 | configuration_management | `systemd_units["debug-shell.service"].load_state` | debug-shell.service must be masked (systemctl status: Loaded: masked), not loaded and unmasked |
 | RHEL-09-212010 | configuration_management | `grub.user_cfg_password` | GRUB2_PASSWORD in /boot/grub2/user.cfg (or the legacy /boot/efi/EFI/redhat/user.cfg) must begin with grub.pbkdf2.sha512 |
+| RHEL-09-212015 | configuration_management | `grub.kernel_args` | no boot entry (grubby --info=ALL, args) may carry systemd.confirm_spawn |
+| RHEL-09-212020 | configuration_management | `grub.superusers` | set superusers= in /etc/grub2.cfg must name an account that is not root, admin or administrator |
+| RHEL-09-212025 | file_permissions | `file_permissions.grub_cfg.group` | /boot/grub2/grub.cfg must have group root |
+| RHEL-09-212030 | file_permissions | `file_permissions.grub_cfg.owner` | /boot/grub2/grub.cfg must have owner root |
+| RHEL-09-212035 | configuration_management | `grub.kernel_args`, `grub.default_cmdline_linux` | every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry vsyscall=none, or the use of virtual system calls must be doc… |
+| RHEL-09-212040 | configuration_management | `grub.kernel_args`, `grub.default_cmdline_linux` | every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry page_poison=1 |
+| RHEL-09-212045 | configuration_management | `grub.default_cmdline_linux` | GRUB_CMDLINE_LINUX in /etc/default/grub must carry init_on_free=1 (uncommented) |
+| RHEL-09-212050 | configuration_management | `grub.kernel_args`, `grub.default_cmdline_linux` | every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry pti=on |
+| RHEL-09-212055 | configuration_management | `grub.kernel_args`, `grub.default_cmdline_linux` | every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry audit=1 |
 | RHEL-09-213010 | configuration_management | `kernel_params["kernel.dmesg_restrict"]` | kernel.dmesg_restrict must be 1 |
 | RHEL-09-213015 | configuration_management | `kernel_params["kernel.perf_event_paranoid"]` | kernel.perf_event_paranoid must be 2 |
 | RHEL-09-213020 | software_integrity | `kernel_params["kernel.kexec_load_disabled"]` | kernel.kexec_load_disabled must be 1 |
+| RHEL-09-213025 | configuration_management | `kernel_params["kernel.kptr_restrict"]` | kernel.kptr_restrict must be 1 |
+| RHEL-09-213030 | configuration_management | `kernel_params["fs.protected_hardlinks"]` | fs.protected_hardlinks must be 1 |
+| RHEL-09-213035 | configuration_management | `kernel_params["fs.protected_symlinks"]` | fs.protected_symlinks must be 1 |
+| RHEL-09-213040 | configuration_management | `kernel_params["kernel.core_pattern"]` | kernel.core_pattern must be \|/bin/false, or the need for core dumps must be documented with the ISSO as an operational requirement (input.attest.rhel_09_21304… |
+| RHEL-09-213045 | configuration_management | `modprobe.atm` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install atm /bin/false' and 'blacklist atm', or its use must be documented with the ISSO (input… |
+| RHEL-09-213050 | configuration_management | `modprobe.can` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install can /bin/false' and 'blacklist can', or its use must be documented with the ISSO (input… |
 | RHEL-09-213055 | configuration_management | `modprobe["firewire-core"]` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install firewire-core /bin/false' and 'blacklist firewire-core', or its use must be documented … |
+| RHEL-09-213060 | configuration_management | `modprobe.sctp` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install sctp /bin/false' and 'blacklist sctp', or its use must be documented with the ISSO (inp… |
+| RHEL-09-213065 | configuration_management | `modprobe.tipc` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install tipc /bin/false' and 'blacklist tipc', or its use must be documented with the ISSO (inp… |
 | RHEL-09-213070 | configuration_management | `kernel_params["kernel.randomize_va_space"]`, `sysctl_config["kernel.randomize_va_space"]` | kernel.randomize_va_space must be 2 at runtime and in every sysctl configuration file that sets it (none conflicting) |
 | RHEL-09-213075 | configuration_management | `kernel_params["kernel.unprivileged_bpf_disabled"]` | kernel.unprivileged_bpf_disabled must be 1 |
+| RHEL-09-213080 | configuration_management | `kernel_params["kernel.yama.ptrace_scope"]` | kernel.yama.ptrace_scope must be 1 |
+| RHEL-09-213085 | configuration_management | `coredump_conf.ProcessSizeMax` | ProcessSizeMax in /etc/systemd/coredump.conf must be 0 (uncommented), or the need for core dumps must be documented with the ISSO as an operational requirement… |
+| RHEL-09-213090 | configuration_management | `coredump_conf.Storage` | Storage in /etc/systemd/coredump.conf must be none (uncommented), or the need for core dumps must be documented with the ISSO as an operational requirement (in… |
+| RHEL-09-213095 | configuration_management | `limits_conf.core` | /etc/security/limits.conf or limits.d/*.conf must carry an uncommented core item and every core item must be 0; a missing item is accepted only when the need f… |
+| RHEL-09-213100 | configuration_management | `systemd_units["systemd-coredump.socket"].load_state` | systemd-coredump.socket must be masked (systemctl status: Loaded: masked), not loaded and unmasked, or the need for core dumps must be documented with the ISSO… |
+| RHEL-09-213105 | configuration_management | `kernel_params["user.max_user_namespaces"]` | user.max_user_namespaces must be 0, or the use of namespaces must be operationally required and documented with the ISSM (input.attest.rhel_09_213105_namespace… |
+| RHEL-09-213110 | configuration_management | `cpuinfo.flags`, `grub.kernel_args` | every flags line of /proc/cpuinfo must carry nx, and no boot entry (grubby --info=ALL, args) may carry noexec |
+| RHEL-09-213115 | services | `systemd_units["kdump.service"].load_state`, `services.kdump` | kdump.service must be masked (systemctl show kdump: LoadState=masked); a service that is loaded or active and not masked is a finding |
 | RHEL-09-214010 | software_integrity | `rpm_gpg_pubkeys`, `redhat_release_key_file.fingerprints` | Red Hat GPG keys 'release key 2' and 'auxiliary key 3' must be installed and /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release must carry fingerprints 567E347AD0044A… |
+| RHEL-09-214015 | software_integrity | `dnf_config.gpgcheck` | gpgcheck in /etc/dnf/dnf.conf must be 1, true or yes, or an approved GPG verification process must be attested (input.attest.rhel_09_214015_gpg_process) |
 | RHEL-09-214020 | software_integrity | `dnf_config.localpkg_gpgcheck` | localpkg_gpgcheck in /etc/dnf/dnf.conf must be 1, true or yes, or an approved GPG verification process must be attested (input.attest.rhel_09_214020_gpg_proces… |
 | RHEL-09-214025 | software_integrity | `yum_repos` | every repository in /etc/yum.repos.d/*.repo must set gpgcheck to 1, true or yes, or an approved GPG verification process must be attested (input.attest.rhel_09… |
+| RHEL-09-214030 | software_integrity | `rpm_verify.hash_mismatch_files` | rpm -Va --noconfig must report no non-configuration file whose hash differs from the RPM database |
+| RHEL-09-214035 | software_integrity | `dnf_config.clean_requirements_on_remove` | clean_requirements_on_remove in /etc/dnf/dnf.conf must be 1, true or yes |
+| RHEL-09-215010 | software_integrity | `packages["subscription-manager"]` | the subscription-manager package must be installed |
 | RHEL-09-215015 | services | `packages.vsftpd` | the vsftpd package must not be installed |
+| RHEL-09-215020 | services | `packages.sendmail` | the sendmail package must not be installed |
 | RHEL-09-215025 | services | `packages["nfs-utils"]` | the nfs-utils package must not be installed |
+| RHEL-09-215035 | software_integrity | `dnf_repolist` | dnf repolist must show no repository with epel in its id or name |
 | RHEL-09-215040 | services | `packages["telnet-server"]` | the telnet-server package must not be installed |
+| RHEL-09-215045 | services | `packages.gssproxy` | the gssproxy package must not be installed, or its use must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215045_gssproxy_doc… |
+| RHEL-09-215050 | services | `packages.iprutils` | the iprutils package must not be installed, or its use must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215050_iprutils_doc… |
+| RHEL-09-215055 | services | `packages.tuned` | the tuned package must not be installed, or its use must be documented with the ISSO as an operational requirement (input.attest.rhel_09_215055_tuned_documente… |
 | RHEL-09-215060 | services | `packages["tftp-server"]` | tftp-server is installed: the ExecStart of tftp.service (input.tftp.execstart) must run in.tftpd with -s |
+| RHEL-09-215070 | services | `packages["xorg-x11-server-common"]` | the xorg-x11-server-common package must not be installed, or the use of a graphical user interface must be documented with the ISSO as an operational requireme… |
+| RHEL-09-215075 | pki_crypto | `packages["openssl-pkcs11"]` | the openssl-pkcs11 package must be installed |
+| RHEL-09-215080 | pki_crypto | `packages["gnutls-utils"]` | the gnutls-utils package must be installed |
+| RHEL-09-215085 | pki_crypto | `packages["nss-tools"]` | the nss-tools package must be installed |
+| RHEL-09-215090 | software_integrity | `packages["rng-tools"]` | the rng-tools package must be installed |
+| RHEL-09-215095 | software_integrity | `packages["s-nail"]` | the s-nail package must be installed |
+| RHEL-09-215100 | pki_crypto | `packages["crypto-policies"]` | the crypto-policies package must be installed |
+| RHEL-09-215101 | software_integrity | `packages.postfix` | the postfix package must be installed |
 | RHEL-09-215105 | configuration_management | `crypto_policy`, `crypto_policy_state.hash`, `crypto_policy_state.min_rsa_size` | update-crypto-policies --show must be FIPS; CURRENT.pol hash must include SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256, nothing wit… |
+| RHEL-09-231010 | configuration_management | `filesystem_mounts` | a separate file system must be mounted on /home |
 | RHEL-09-231015 | configuration_management | `filesystem_mounts` | a separate file system must be mounted on /tmp |
+| RHEL-09-231020 | configuration_management | `filesystem_mounts` | a separate file system must be mounted on /var |
 | RHEL-09-231025 | configuration_management | `filesystem_mounts` | a separate file system must be mounted on /var/log |
 | RHEL-09-231030 | configuration_management | `filesystem_mounts`, `auditd_config.log_file` | the directory of auditd log_file (the audit data path) must be a separate mounted file system |
+| RHEL-09-231035 | configuration_management | `filesystem_mounts` | a separate file system must be mounted on /var/tmp |
 | RHEL-09-231040 | services | `unit_enabled.autofs` | systemctl is-enabled autofs must return masked, disabled or not-found |
 | RHEL-09-231045 | configuration_management | `filesystem_mounts` | /home must be a separate file system mounted with nodev (home directories under / are a finding) |
 | RHEL-09-231050 | configuration_management | `filesystem_mounts` | /home must be a separate file system mounted with nosuid (home directories under / are a finding) |
 | RHEL-09-231055 | configuration_management | `filesystem_mounts` | /home must be a separate file system mounted with noexec (home directories under / are a finding) |
+| RHEL-09-231065 | configuration_management | `fstab` | every NFS entry in /etc/fstab must carry the nodev option |
+| RHEL-09-231070 | configuration_management | `fstab` | every NFS entry in /etc/fstab must carry the noexec option |
+| RHEL-09-231075 | configuration_management | `fstab` | every NFS entry in /etc/fstab must carry the nosuid option |
+| RHEL-09-231080 | configuration_management | `removable_media_fstab` | every /etc/fstab file system that refers to removable media must carry the noexec option |
+| RHEL-09-231085 | configuration_management | `removable_media_fstab` | every /etc/fstab file system that refers to removable media must carry the nodev option |
+| RHEL-09-231090 | configuration_management | `removable_media_fstab` | every /etc/fstab file system that refers to removable media must carry the nosuid option |
+| RHEL-09-231095 | configuration_management | `filesystem_mounts` | /boot must be mounted with the nodev option (no /boot entry in the mount table is a finding) |
+| RHEL-09-231100 | configuration_management | `filesystem_mounts` | /boot must be mounted with the nosuid option (no /boot entry in the mount table is a finding) |
+| RHEL-09-231105 | configuration_management | `filesystem_mounts` | /boot/efi must be mounted with the nosuid option |
+| RHEL-09-231110 | configuration_management | `filesystem_mounts` | /dev/shm must be mounted with the nodev option (no /dev/shm entry in the mount table is a finding) |
+| RHEL-09-231115 | configuration_management | `filesystem_mounts` | /dev/shm must be mounted with the noexec option (no /dev/shm entry in the mount table is a finding) |
+| RHEL-09-231120 | configuration_management | `filesystem_mounts` | /dev/shm must be mounted with the nosuid option (no /dev/shm entry in the mount table is a finding) |
+| RHEL-09-231125 | configuration_management | `filesystem_mounts` | /tmp must be mounted with the nodev option (no /tmp entry in the mount table is a finding) |
+| RHEL-09-231130 | configuration_management | `filesystem_mounts` | /tmp must be mounted with the noexec option (no /tmp entry in the mount table is a finding) |
+| RHEL-09-231135 | configuration_management | `filesystem_mounts` | /tmp must be mounted with the nosuid option (no /tmp entry in the mount table is a finding) |
+| RHEL-09-231140 | configuration_management | `filesystem_mounts` | /var must be mounted with the nodev option (no /var entry in the mount table is a finding) |
+| RHEL-09-231145 | configuration_management | `filesystem_mounts` | /var/log must be mounted with the nodev option (no /var/log entry in the mount table is a finding) |
+| RHEL-09-231150 | configuration_management | `filesystem_mounts` | the /var/log file system must be mounted with the noexec option (mount \| grep /var/log) |
+| RHEL-09-231155 | configuration_management | `filesystem_mounts` | the /var/log file system must be mounted with the nosuid option (mount \| grep /var/log) |
+| RHEL-09-231160 | configuration_management | `filesystem_mounts` | the /var/log/audit file system must be mounted with the nodev option (mount \| grep /var/log/audit) |
+| RHEL-09-231165 | configuration_management | `filesystem_mounts` | the /var/log/audit file system must be mounted with the noexec option (mount \| grep /var/log/audit) |
+| RHEL-09-231170 | configuration_management | `filesystem_mounts` | the /var/log/audit file system must be mounted with the nosuid option (mount \| grep /var/log/audit) |
+| RHEL-09-231175 | configuration_management | `filesystem_mounts` | the /var/tmp file system must be mounted with the nodev option (mount \| grep /var/tmp) |
+| RHEL-09-231180 | configuration_management | `filesystem_mounts` | the /var/tmp file system must be mounted with the noexec option (mount \| grep /var/tmp) |
+| RHEL-09-231185 | configuration_management | `filesystem_mounts` | the /var/tmp file system must be mounted with the nosuid option (mount \| grep /var/tmp) |
+| RHEL-09-231190 | configuration_management | `disk_encryption.filesystems` | every persistent file system except /boot and /boot/efi must sit on a crypt block device of type LUKS (lsblk --tree, cryptsetup status), or the administrator m… |
+| RHEL-09-231195 | configuration_management | `modprobe.cramfs` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install cramfs /bin/false' and 'blacklist cramfs', or its use must be documented with the ISSO … |
+| RHEL-09-231200 | configuration_management | `filesystem_mounts` | every mount of a /dev device on a mount point other than / must carry the nodev option |
 | RHEL-09-232010 | file_permissions | `file_permissions.system_commands_group_or_world_writable` | no system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin may be group- or world-writable |
+| RHEL-09-232015 | file_permissions | `file_permissions.library_dirs_group_or_world_writable` | no directory under /lib, /lib64, /usr/lib, /usr/lib64 may be group- or world-writable |
 | RHEL-09-232020 | file_permissions | `file_permissions.library_files_group_or_world_writable` | no shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 may be group- or world-writable |
+| RHEL-09-232025 | file_permissions | `file_permissions.var_log.mode` | /var/log must have mode 0755 or less permissive |
+| RHEL-09-232030 | file_permissions | `file_permissions.var_log_messages.mode` | /var/log/messages must have mode 0640 or less permissive |
+| RHEL-09-232035 | file_permissions | `file_permissions.audit_tools` | no audit tool (auditctl, aureport, ausearch, autrace, auditd, rsyslogd and augenrules under /sbin) may have a mode more permissive than 0755 |
+| RHEL-09-232040 | file_permissions | `file_permissions.cron_rpm_verify_deviations` | rpm --verify cronie crontabs must report no owner, group or mode deviation for the cron files and directories |
+| RHEL-09-232045 | file_permissions | `file_permissions.init_files_more_permissive_than_0740` | no local initialization file (dot file up to two levels under /home and /root) may have a mode more permissive than 0740 |
 | RHEL-09-232050 | file_permissions | `file_permissions.interactive_home_dirs` | the home directory of every local interactive user (UID >= 1000, login shell not nologin) must have mode 0750 or less permissive |
 | RHEL-09-232055 | file_permissions | `file_permissions.etc_group.mode` | /etc/group must have mode 0644 or less permissive |
+| RHEL-09-232060 | file_permissions | `file_permissions.etc_group_backup.mode` | /etc/group- must have mode 0644 or less permissive |
 | RHEL-09-232065 | file_permissions | `file_permissions.etc_gshadow.mode` | /etc/gshadow must have mode 0000 |
+| RHEL-09-232070 | file_permissions | `file_permissions.etc_gshadow_backup.mode` | /etc/gshadow- must have mode 0000 |
 | RHEL-09-232075 | file_permissions | `file_permissions.etc_passwd.mode` | /etc/passwd must have mode 0644 or less permissive |
+| RHEL-09-232080 | file_permissions | `file_permissions.etc_passwd_backup.mode` | /etc/passwd- must have mode 0644 or less permissive |
+| RHEL-09-232085 | file_permissions | `file_permissions.etc_shadow_backup.mode` | /etc/shadow- must have mode 0000 |
+| RHEL-09-232090 | file_permissions | `file_permissions.etc_group.owner` | /etc/group must be owned by root |
+| RHEL-09-232095 | file_permissions | `file_permissions.etc_group.group` | /etc/group must be group-owned by root |
+| RHEL-09-232100 | file_permissions | `file_permissions.etc_group_backup.owner` | /etc/group- must be owned by root |
+| RHEL-09-232103 | file_permissions | `file_permissions.etc_audit_dir.owner` | /etc/audit/ must be owned by root |
+| RHEL-09-232104 | file_permissions | `file_permissions.etc_audit_dir.group` | /etc/audit/ must be group-owned by root |
+| RHEL-09-232105 | file_permissions | `file_permissions.etc_group_backup.group` | /etc/group- must be group-owned by root |
+| RHEL-09-232110 | file_permissions | `file_permissions.etc_gshadow.owner` | /etc/gshadow must be owned by root |
+| RHEL-09-232115 | file_permissions | `file_permissions.etc_gshadow.group` | /etc/gshadow must be group-owned by root |
+| RHEL-09-232120 | file_permissions | `file_permissions.etc_gshadow_backup.owner` | /etc/gshadow- must be owned by root |
+| RHEL-09-232125 | file_permissions | `file_permissions.etc_gshadow_backup.group` | /etc/gshadow- must be group-owned by root |
+| RHEL-09-232130 | file_permissions | `file_permissions.etc_passwd.owner` | /etc/passwd must be owned by root |
+| RHEL-09-232135 | file_permissions | `file_permissions.etc_passwd.group` | /etc/passwd must be group-owned by root |
+| RHEL-09-232140 | file_permissions | `file_permissions.etc_passwd_backup.owner` | /etc/passwd- must be owned by root |
+| RHEL-09-232145 | file_permissions | `file_permissions.etc_passwd_backup.group` | /etc/passwd- must be group-owned by root |
+| RHEL-09-232150 | file_permissions | `file_permissions.etc_shadow.owner` | /etc/shadow must be owned by root |
+| RHEL-09-232155 | file_permissions | `file_permissions.etc_shadow.group` | /etc/shadow must be group-owned by root |
+| RHEL-09-232160 | file_permissions | `file_permissions.etc_shadow_backup.owner` | /etc/shadow- must be owned by root |
+| RHEL-09-232165 | file_permissions | `file_permissions.etc_shadow_backup.group` | /etc/shadow- must be group-owned by root |
+| RHEL-09-232170 | file_permissions | `file_permissions.var_log.owner` | /var/log must be owned by root |
+| RHEL-09-232175 | file_permissions | `file_permissions.var_log.group` | /var/log must be group-owned by root |
+| RHEL-09-232180 | file_permissions | `file_permissions.var_log_messages.owner` | /var/log/messages must be owned by root |
+| RHEL-09-232185 | file_permissions | `file_permissions.var_log_messages.group` | /var/log/messages must be group-owned by root |
+| RHEL-09-232190 | file_permissions | `file_permissions.system_commands_not_owned_by_root` | every system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin must be owned by root |
+| RHEL-09-232195 | file_permissions | `file_permissions.system_commands_not_group_owned_by_root` | every system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin must be group-owned by root or a system account group (… |
 | RHEL-09-232200 | file_permissions | `file_permissions.library_files_not_owned_by_root` | every shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 must be owned by root |
+| RHEL-09-232205 | file_permissions | `file_permissions.library_files_not_group_owned_by_root` | every shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 must be group-owned by root |
+| RHEL-09-232210 | file_permissions | `file_permissions.library_dirs_not_owned_by_root` | every directory under /lib, /lib64, /usr/lib, /usr/lib64 must be owned by root |
+| RHEL-09-232215 | file_permissions | `file_permissions.library_dirs_not_group_owned_by_root` | every directory under /lib, /lib64, /usr/lib, /usr/lib64 must be group-owned by root or a system account group (GID below 1000) |
+| RHEL-09-232220 | file_permissions | `file_permissions.audit_tools` | every audit tool (auditctl, aureport, ausearch, autrace, auditd, rsyslogd and augenrules under /sbin) must be owned by root |
+| RHEL-09-232225 | file_permissions | `file_permissions.audit_tools` | every audit tool (auditctl, aureport, ausearch, autrace, auditd, rsyslogd and augenrules under /sbin) must be group-owned by root |
+| RHEL-09-232230 | file_permissions | `file_permissions.cron_config` | every /etc/cron* file and directory must be owned by root |
+| RHEL-09-232235 | file_permissions | `file_permissions.cron_config` | every /etc/cron* file and directory must be group-owned by root |
+| RHEL-09-232240 | file_permissions | `file_permissions.world_writable_dirs_owned_by_uid_1000_plus` | no world-writable directory may be owned by an account with UID 1000 or above, unless every listed owner is an approved system or application account (input.at… |
+| RHEL-09-232245 | file_permissions | `file_permissions.world_writable_dirs_without_sticky_bit` | every world-writable directory must have the sticky bit set |
 | RHEL-09-232250 | file_permissions | `file_permissions.ungrouped_files` | no local file or directory may lack a valid group |
 | RHEL-09-232255 | file_permissions | `file_permissions.unowned_files` | no local file or directory may lack a valid owner |
+| RHEL-09-232260 | file_permissions | `device_file_labels.device_t`, `device_file_labels.unlabeled_t` | no character or block device file may carry the device_t or unlabeled_t SELinux type; device_t files a virtual machine needs (such as /dev/vmci) are allowed wh… |
 | RHEL-09-232270 | file_permissions | `file_permissions.etc_shadow.mode` | /etc/shadow must have mode 0000 |
+| RHEL-09-251010 | network | `packages.firewalld` | the firewalld package must be installed |
 | RHEL-09-251015 | network | `services.firewalld` | firewalld must be active (systemctl is-active firewalld) |
+| RHEL-09-251020 | network | `firewalld.active_zones`, `firewalld.default_zone.target_runtime`, `firewalld.default_zone.target_permanent` | at least one firewalld zone must be active and the default zone's runtime and permanent targets must both be DROP |
+| RHEL-09-251030 | network | `firewalld_conf.FirewallBackend` | FirewallBackend in /etc/firewalld/firewalld.conf must be nftables |
+| RHEL-09-251035 | network | `firewalld.zone_services` | the services the firewall allows (input.firewalld.zone_services) must be reviewed against the site PPSM CLSA and the PPSM CAL, and the match attested (input.at… |
 | RHEL-09-251040 | network | `promiscuous_interfaces` | no interface may be in promiscuous mode unless approved by the ISSO and documented (input.attest.rhel_09_251040_promisc_approved) |
 | RHEL-09-251045 | configuration_management | `kernel_params["net.core.bpf_jit_harden"]` | net.core.bpf_jit_harden must be 2 |
+| RHEL-09-252010 | services | `packages.chrony` | the chrony package must be installed |
+| RHEL-09-252015 | services | `services.chronyd` | chronyd must be active (systemctl is-active chronyd) |
+| RHEL-09-252020 | services | `chrony_conf.sources` | an uncommented time source line in /etc/chrony.conf must set maxpoll, no maxpoll may exceed 16, a server must be configured, and it must be attested as an auth… |
+| RHEL-09-252025 | services | `chrony_conf.port` | port in /etc/chrony.conf must be 0 (uncommented) to disable the chrony daemon from acting as a server |
+| RHEL-09-252030 | services | `chrony_conf.cmdport` | cmdport in /etc/chrony.conf must be 0 (uncommented) to disable network management of the chrony daemon |
+| RHEL-09-252035 | network | `resolv_conf.nameservers` | /etc/resolv.conf must carry at least two uncommented nameserver lines |
+| RHEL-09-252040 | network | `networkmanager.main.dns` | the dns key in the [main] section of NetworkManager --print-config must be default, none or systemd-resolved, or a DNS resolver other than NetworkManager must … |
+| RHEL-09-252045 | network | `services.ipsec` | the ipsec service must not be active, or no IPsec connection (conn) may be configured, or the configured tunnels must be documented with the ISSO (input.attest… |
+| RHEL-09-252050 | services | `packages.postfix` | postfix is installed: postconf -n smtpd_client_restrictions must list only permit_mynetworks and reject, or the additional entries must be documented with the … |
+| RHEL-09-252060 | services | `mail_aliases.postmaster` | /etc/aliases must carry an uncommented 'postmaster: root' line, or the SA must show how the SA and ISSO are notified of an audit processing failure (input.atte… |
+| RHEL-09-252065 | network | `packages.libreswan` | the libreswan package must be installed (no operational need for Libreswan is Not Applicable: input.attest.rhel_09_252065_no_operational_need) |
+| RHEL-09-252070 | ssh_config | `shosts_equiv_files` | no shosts.equiv file may exist on the system |
+| RHEL-09-252075 | ssh_config | `shosts_files` | no .shosts file may exist on the system |
 | RHEL-09-253010 | network | `kernel_params["net.ipv4.tcp_syncookies"]` | net.ipv4.tcp_syncookies must be 1 |
 | RHEL-09-253015 | network | `kernel_params["net.ipv4.conf.all.accept_redirects"]` | net.ipv4.conf.all.accept_redirects must be 0 |
 | RHEL-09-253020 | network | `kernel_params["net.ipv4.conf.all.accept_source_route"]` | net.ipv4.conf.all.accept_source_route must be 0 |
+| RHEL-09-253025 | network | `kernel_params["net.ipv4.conf.all.log_martians"]` | net.ipv4.conf.all.log_martians must be 1 |
+| RHEL-09-253030 | network | `kernel_params["net.ipv4.conf.default.log_martians"]` | net.ipv4.conf.default.log_martians must be 1 |
 | RHEL-09-253035 | network | `kernel_params["net.ipv4.conf.all.rp_filter"]` | net.ipv4.conf.all.rp_filter must be 1 |
+| RHEL-09-253040 | network | `kernel_params["net.ipv4.conf.default.accept_redirects"]` | net.ipv4.conf.default.accept_redirects must be 0 |
+| RHEL-09-253045 | network | `kernel_params["net.ipv4.conf.default.accept_source_route"]` | net.ipv4.conf.default.accept_source_route must be 0 |
+| RHEL-09-253050 | network | `kernel_params["net.ipv4.conf.default.rp_filter"]` | net.ipv4.conf.default.rp_filter must be 1 |
+| RHEL-09-253055 | network | `kernel_params["net.ipv4.icmp_echo_ignore_broadcasts"]` | net.ipv4.icmp_echo_ignore_broadcasts must be 1 |
 | RHEL-09-253060 | network | `kernel_params["net.ipv4.icmp_ignore_bogus_error_responses"]` | net.ipv4.icmp_ignore_bogus_error_responses must be 1 |
 | RHEL-09-253065 | network | `kernel_params["net.ipv4.conf.all.send_redirects"]` | net.ipv4.conf.all.send_redirects must be 0, or the setting must be documented with the ISSO as an operational requirement (input.attest.rhel_09_253065_redirect… |
+| RHEL-09-253070 | network | `kernel_params["net.ipv4.conf.default.send_redirects"]` | net.ipv4.conf.default.send_redirects must be 0, or the setting must be documented with the ISSO as an operational requirement (input.attest.rhel_09_253070_redi… |
 | RHEL-09-253075 | network | `kernel_params["net.ipv4.conf.all.forwarding"]` | net.ipv4.conf.all.forwarding must be 0, or the setting must be documented with the ISSO as an operational requirement (input.attest.rhel_09_253075_router_docum… |
+| RHEL-09-254010 | network | `kernel_params["net.ipv6.conf.all.accept_ra"]` | net.ipv6.conf.all.accept_ra must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-254015 | network | `kernel_params["net.ipv6.conf.all.accept_redirects"]` | net.ipv6.conf.all.accept_redirects must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-254020 | network | `kernel_params["net.ipv6.conf.all.accept_source_route"]` | net.ipv6.conf.all.accept_source_route must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-254025 | network | `kernel_params["net.ipv6.conf.all.forwarding"]` | net.ipv6.conf.all.forwarding must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-254030 | network | `kernel_params["net.ipv6.conf.default.accept_ra"]` | net.ipv6.conf.default.accept_ra must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-254035 | network | `kernel_params["net.ipv6.conf.default.accept_redirects"]` | net.ipv6.conf.default.accept_redirects must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-254040 | network | `kernel_params["net.ipv6.conf.default.accept_source_route"]` | net.ipv6.conf.default.accept_source_route must be 0 (IPv6 disabled on the system is Not Applicable) |
+| RHEL-09-255010 | ssh_config | `packages["openssh-server"]` | the openssh-server package must be installed |
+| RHEL-09-255015 | ssh_config | `services.sshd` | sshd must be active (systemctl is-active sshd) |
+| RHEL-09-255020 | ssh_config | `packages["openssh-clients"]` | the openssh-clients package must be installed |
 | RHEL-09-255025 | configuration_management | `ssh_config.Banner` | sshd must have an uncommented Banner keyword naming the banner file |
+| RHEL-09-255030 | ssh_config | `ssh_config.LogLevel` | sshd LogLevel must be set to verbose (a missing or commented-out line is a finding) |
+| RHEL-09-255035 | ssh_config | `ssh_config.PubkeyAuthentication` | sshd PubkeyAuthentication must be set to yes (a missing or commented-out line is a finding) |
 | RHEL-09-255040 | ssh_config | `ssh_config.PermitEmptyPasswords` | sshd PermitEmptyPasswords must be no |
 | RHEL-09-255045 | ssh_config | `ssh_config.PermitRootLogin` | sshd PermitRootLogin must be no |
 | RHEL-09-255050 | ssh_config | `ssh_config.UsePAM` | sshd UsePAM must be yes |
+| RHEL-09-255064 | ssh_config | `openssh_config.Ciphers` | Ciphers in /etc/crypto-policies/back-ends/openssh.config must list only aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr |
 | RHEL-09-255065 | ssh_config | `opensshserver_config.Ciphers` | Ciphers in /etc/crypto-policies/back-ends/opensshserver.config must list only aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr |
+| RHEL-09-255070 | ssh_config | `openssh_config.MACs` | MACs in /etc/crypto-policies/back-ends/openssh.config must list only hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512 |
 | RHEL-09-255075 | ssh_config | `opensshserver_config.MACs` | MACs in /etc/crypto-policies/back-ends/opensshserver.config must list only hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-… |
 | RHEL-09-255080 | ssh_config | `ssh_config.HostbasedAuthentication` | sshd HostbasedAuthentication must be no |
+| RHEL-09-255085 | ssh_config | `ssh_config.PermitUserEnvironment` | sshd PermitUserEnvironment must be set to no (a missing or commented-out line is a finding) |
+| RHEL-09-255090 | ssh_config | `ssh_config.RekeyLimit` | sshd RekeyLimit must define both a maximum data amount and a maximum time (e.g. RekeyLimit 1G 1h); 'default' and 'none' define neither |
 | RHEL-09-255095 | ssh_config | `ssh_config.ClientAliveCountMax` | sshd ClientAliveCountMax must be 1 |
 | RHEL-09-255100 | ssh_config | `ssh_config.ClientAliveInterval` | sshd ClientAliveInterval must be set to 600 or less |
+| RHEL-09-255105 | file_permissions | `file_permissions.sshd_config_paths` | /etc/ssh/sshd_config, /etc/ssh/sshd_config.d and every file in it must have group root |
+| RHEL-09-255110 | file_permissions | `file_permissions.sshd_config_paths` | /etc/ssh/sshd_config, /etc/ssh/sshd_config.d and every file in it must have owner root |
+| RHEL-09-255115 | file_permissions | `rpm_verify["openssh-server"]` | rpm --verify openssh-server must report nothing but configuration files (c) whose mode, user, group, device, link and capabilities are unchanged |
+| RHEL-09-255120 | file_permissions | `file_permissions.ssh_private_host_keys` | every /etc/ssh/*_key file must have mode 0600 or less permissive |
+| RHEL-09-255125 | file_permissions | `file_permissions.ssh_public_host_keys` | every /etc/ssh/*.pub file must have mode 0644 or less permissive |
+| RHEL-09-255135 | ssh_config | `ssh_config.GSSAPIAuthentication` | sshd GSSAPIAuthentication must be set to no (missing or commented out is a finding), unless the use of GSSAPI authentication is documented with the ISSO (input… |
+| RHEL-09-255140 | ssh_config | `ssh_config.KerberosAuthentication` | sshd KerberosAuthentication must be set to no (missing or commented out is a finding), unless the use of Kerberos authentication is documented with the ISSO (i… |
 | RHEL-09-255145 | ssh_config | `ssh_config.IgnoreRhosts` | sshd IgnoreRhosts must be yes |
 | RHEL-09-255150 | ssh_config | `ssh_config.IgnoreUserKnownHosts` | sshd IgnoreUserKnownHosts must be yes |
 | RHEL-09-255155 | ssh_config | `ssh_config.X11Forwarding` | sshd X11Forwarding must be no, unless X11 forwarding is documented with the ISSO (input.attest.rhel_09_255155_x11_documented) |
 | RHEL-09-255160 | ssh_config | `ssh_config.StrictModes` | sshd StrictModes must be yes |
 | RHEL-09-255165 | ssh_config | `ssh_config.PrintLastLog` | sshd PrintLastLog must be yes |
+| RHEL-09-255175 | ssh_config | `ssh_config.X11UseLocalhost` | sshd X11UseLocalhost must be set to yes (a missing or commented-out line is a finding) |
+| RHEL-09-271010 | configuration_management | `gnome.banner_message_enable` | gsettings get org.gnome.login-screen banner-message-enable must return true |
+| RHEL-09-271011 | configuration_management | `gnome.banner_message_text` | gsettings get org.gnome.login-screen banner-message-text must return exactly the Standard Mandatory DoW Notice and Consent Banner (the \n formatting sequences … |
+| RHEL-09-271015 | configuration_management | `gnome_writable.banner_message_enable` | gsettings writable org.gnome.login-screen banner-message-enable must return false (the key is locked) |
+| RHEL-09-271020 | configuration_management | `gnome.automount_open` | gsettings get org.gnome.desktop.media-handling automount-open must return false, unless documented with the ISSO as an operational requirement (input.attest.rh… |
+| RHEL-09-271025 | configuration_management | `dconf_locks.automount_open` | a lock file of the system dconf database (/etc/dconf/db/<system-db>.d/locks/*) must carry /org/gnome/desktop/media-handling/automount-open |
+| RHEL-09-271030 | configuration_management | `gnome.autorun_never` | gsettings get org.gnome.desktop.media-handling autorun-never must return true, unless documented with the ISSO as an operational requirement (input.attest.rhel… |
+| RHEL-09-271035 | configuration_management | `gnome_writable.autorun_never` | gsettings writable org.gnome.desktop.media-handling autorun-never must return false (the key is locked), unless documented with the ISSO as an operational requ… |
+| RHEL-09-271040 | configuration_management | `gdm_custom_conf.AutomaticLoginEnable` | AutomaticLoginEnable in /etc/gdm/custom.conf must be set to false |
 | RHEL-09-271045 | pki_crypto | `gnome.smartcard_removal_action` | gsettings get org.gnome.settings-daemon.peripherals.smartcard removal-action must return 'lock-screen' |
+| RHEL-09-271050 | pki_crypto | `gnome_writable.smartcard_removal_action` | gsettings writable org.gnome.settings-daemon.peripherals.smartcard removal-action must return false (the key is locked) |
+| RHEL-09-271055 | configuration_management | `gnome.screensaver_lock_enabled` | gsettings get org.gnome.desktop.screensaver lock-enabled must return true |
+| RHEL-09-271060 | configuration_management | `gnome_writable.screensaver_lock_enabled` | gsettings writable org.gnome.desktop.screensaver lock-enabled must return false (the key is locked) |
+| RHEL-09-271065 | configuration_management | `gnome.session_idle_delay` | gsettings get org.gnome.desktop.session idle-delay must return 600 or less and not 0 |
+| RHEL-09-271070 | configuration_management | `gnome_writable.session_idle_delay` | gsettings writable org.gnome.desktop.session idle-delay must return false (the key is locked) |
+| RHEL-09-271075 | configuration_management | `gnome.screensaver_lock_delay` | gsettings get org.gnome.desktop.screensaver lock-delay must return 5 or less |
+| RHEL-09-271080 | configuration_management | `gnome_writable.screensaver_lock_delay` | gsettings writable org.gnome.desktop.screensaver lock-delay must return false (the key is locked) |
+| RHEL-09-271085 | configuration_management | `gnome_writable.screensaver_picture_uri` | gsettings writable org.gnome.desktop.screensaver picture-uri must return false (the key is locked) |
+| RHEL-09-271090 | configuration_management | `dconf_outdated_databases` | no dconf database under /etc/dconf/db may be older than its keyfiles (<db>.d/*) |
+| RHEL-09-271095 | configuration_management | `gnome.disable_restart_buttons` | gsettings get org.gnome.login-screen disable-restart-buttons must return true |
+| RHEL-09-271100 | configuration_management | `gnome_writable.disable_restart_buttons` | gsettings writable org.gnome.login-screen disable-restart-buttons must return false (the key is locked) |
 | RHEL-09-271105 | configuration_management | `gnome.media_keys_logout` | gsettings get org.gnome.settings-daemon.plugins.media-keys logout must return [''] (no logout key sequence) |
+| RHEL-09-271110 | configuration_management | `gnome_writable.media_keys_logout` | gsettings writable org.gnome.settings-daemon.plugins.media-keys logout must return false (the key is locked) |
+| RHEL-09-271115 | configuration_management | `gnome.disable_user_list` | gsettings get org.gnome.login-screen disable-user-list must return true |
 | RHEL-09-291010 | configuration_management | `modprobe["usb-storage"]` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install usb-storage /bin/false' and 'blacklist usb-storage', or its use must be documented with… |
+| RHEL-09-291015 | configuration_management | `packages.usbguard` | the usbguard package must be installed, or the SA must show how unauthorized peripherals are blocked before a connection is established (input.attest.rhel_09_2… |
+| RHEL-09-291020 | configuration_management | `services.usbguard` | usbguard must be active (systemctl is-active usbguard), or the SA must show how unauthorized peripherals are blocked before a connection is established (input.… |
+| RHEL-09-291025 | audit_logging | `usbguard_daemon_conf.AuditBackend` | AuditBackend in /etc/usbguard/usbguard-daemon.conf must be LinuxAudit; not a finding on a virtual machine with no virtual or physical USB peripherals attached … |
+| RHEL-09-291030 | configuration_management | `usbguard_rules` | usbguard list-rules must return at least one rule, or the SA must show how unauthorized peripherals are blocked before a connection is established (input.attes… |
 | RHEL-09-291035 | network | `modprobe.bluetooth` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install bluetooth /bin/false' and 'blacklist bluetooth', or its use must be documented with the… |
 | RHEL-09-291040 | network | `wireless_interfaces` | no wireless interface may be configured unless documented and approved by the ISSO (input.attest.rhel_09_291040_wireless_approved) |
 | RHEL-09-411010 | account_auth | `password_policy.maxdays` | PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit) |
+| RHEL-09-411015 | account_auth | `shadow_maxdays_out_of_range` | no /etc/shadow entry other than a system account may have a maximum password age (field 5) above 180, empty, or 0 or less |
+| RHEL-09-411020 | account_auth | `login_defs.CREATE_HOME` | CREATE_HOME in /etc/login.defs must be yes |
+| RHEL-09-411025 | account_auth | `user_init_files.umask_statements` | no local interactive user initialization file may set a umask less restrictive than 077 |
 | RHEL-09-411030 | account_auth | `duplicate_uid_accounts` | no interactive account in /etc/passwd may share its UID with another account |
+| RHEL-09-411035 | account_auth | `system_accounts_with_interactive_shell` | no system account (UID 1 to 999, other than halt, sync and shutdown) may have a login shell other than nologin or false |
+| RHEL-09-411040 | account_auth | `temporary_accounts` | every temporary account must have an account expiration date set, no more than 72 hours ahead (chage -l) |
+| RHEL-09-411045 | account_auth | `pwck_no_group_accounts` | pwck -r must not report 'no group' for any interactive user |
 | RHEL-09-411050 | account_auth | `password_policy.inactive_days` | INACTIVE in /etc/default/useradd must be 0 to 35 (not -1) |
+| RHEL-09-411055 | account_auth | `user_init_files.path_statements` | PATH statements in local interactive user initialization files may only add directories inside the user's home directory, unless documented with the ISSO as an… |
+| RHEL-09-411060 | account_auth | `interactive_users` | every local interactive user (UID >= 1000, shell not nologin) must have a home directory defined in /etc/passwd |
+| RHEL-09-411065 | account_auth | `interactive_users` | the home directory assigned to every local interactive user must exist (pwck -r reports none missing) |
+| RHEL-09-411070 | file_permissions | `interactive_users` | the home directory of every local interactive user (UID >= 1000, shell not nologin or false) must be group-owned by the user's primary GID |
 | RHEL-09-411075 | account_auth | `faillock_conf.deny` | deny in /etc/security/faillock.conf must be 1 to 3 (not 0) |
+| RHEL-09-411080 | account_auth | `faillock_conf.even_deny_root` | /etc/security/faillock.conf must carry an uncommented even_deny_root line (the root account locks after failed logons) |
 | RHEL-09-411085 | account_auth | `faillock_conf.fail_interval` | fail_interval in /etc/security/faillock.conf must be 900 or less (not 0) |
+| RHEL-09-411090 | account_auth | `faillock_conf.unlock_time` | unlock_time in /etc/security/faillock.conf must be 0 (locked until an administrator releases the account) |
+| RHEL-09-411095 | account_auth | `local_interactive_users` | every local interactive user account in /etc/passwd must be on the list authorized by the SA or ISSO: the accounts found must be compared with that list and at… |
+| RHEL-09-411100 | account_auth | `uid_zero_accounts` | no account other than root may have UID 0 in /etc/passwd |
+| RHEL-09-411105 | account_auth | `faillock_conf.dir` | dir in /etc/security/faillock.conf must name a nondefault tally directory (not /var/run/faillock), e.g. /var/log/faillock |
 | RHEL-09-411110 | account_auth | `duplicate_gids` | no GID may appear twice in /etc/group |
+| RHEL-09-412035 | account_auth | `profile_tmout` | a script in /etc/profile.d/ must set TMOUT to 600 or less (uncommented) |
+| RHEL-09-412040 | account_auth | `limits_maxlogins` | every uncommented maxlogins item in /etc/security/limits.conf and limits.d/*.conf must be 10 or less (at least one item), or the value must be documented with … |
+| RHEL-09-412045 | account_auth | `faillock_conf.audit` | /etc/security/faillock.conf must carry an uncommented audit line (the user name is logged on a failed logon) |
+| RHEL-09-412050 | account_auth | `login_defs.FAIL_DELAY` | FAIL_DELAY in /etc/login.defs must be 4 or greater |
+| RHEL-09-412055 | account_auth | `shell_umask.etc_bashrc` | every uncommented umask command in /etc/bashrc must set 077 (at least one) |
+| RHEL-09-412060 | account_auth | `shell_umask.etc_csh_cshrc` | every uncommented umask command in /etc/csh.cshrc must set 077 (at least one) |
+| RHEL-09-412065 | account_auth | `login_defs.UMASK` | UMASK in /etc/login.defs must be 077 |
+| RHEL-09-412070 | account_auth | `shell_umask.etc_profile` | every uncommented umask command in /etc/profile must set 077 (at least one) |
+| RHEL-09-412080 | account_auth | `logind_conf.StopIdleSessionSec` | StopIdleSessionSec in the effective logind.conf (systemd-analyze cat-config systemd/logind.conf) must be 600 |
 | RHEL-09-431010 | configuration_management | `selinux.getenforce`, `selinux.config_selinux` | getenforce must return Enforcing and /etc/selinux/config must set SELINUX=enforcing |
 | RHEL-09-431015 | configuration_management | `selinux.policy` | sestatus Loaded policy name must be targeted |
+| RHEL-09-431016 | configuration_management | `sudoers.lines` | a sudoers user specification for the designated administrator group or account must elevate the SELinux context with TYPE=sysadm_t ROLE=sysadm_r |
+| RHEL-09-431020 | configuration_management | `faillock_dir.selinux_type` | the faillock tally directory (dir in /etc/security/faillock.conf) must have the SELinux context type faillog_t |
+| RHEL-09-431025 | configuration_management | `packages.policycoreutils` | the policycoreutils package must be installed |
+| RHEL-09-431030 | configuration_management | `packages["policycoreutils-python-utils"]` | the policycoreutils-python-utils package must be installed |
+| RHEL-09-432010 | account_auth | `packages.sudo` | the sudo package must be installed |
+| RHEL-09-432015 | account_auth | `sudoers.lines` | exactly one of /etc/sudoers and the /etc/sudoers.d/ files must set timestamp_timeout, and every such line must be Defaults timestamp_timeout=0 |
+| RHEL-09-432020 | account_auth | `sudoers.lines` | Defaults !targetpw, Defaults !rootpw and Defaults !runaspw must all be defined, in a single file among /etc/sudoers and /etc/sudoers.d/* |
+| RHEL-09-432025 | account_auth | `sudoers.lines` | no uncommented line of /etc/sudoers or /etc/sudoers.d/* may contain !authenticate |
+| RHEL-09-432030 | account_auth | `sudoers.lines` | /etc/sudoers and /etc/sudoers.d/* must not carry ALL ALL=(ALL) ALL or ALL ALL=(ALL:ALL) ALL |
+| RHEL-09-432035 | account_auth | `pam_d.su` | /etc/pam.d/su must carry an uncommented pam_wheel.so line (auth required pam_wheel.so use_uid) |
+| RHEL-09-433010 | software_integrity | `packages.fapolicyd` | the fapolicyd package must be installed |
+| RHEL-09-433015 | software_integrity | `services.fapolicyd` | fapolicyd must be active (systemctl is-active fapolicyd) |
+| RHEL-09-433016 | software_integrity | `fapolicyd.permissive`, `fapolicyd.compiled_rules` | permissive in /etc/fapolicyd/fapolicyd.conf must be 0 and the last rule of /etc/fapolicyd/compiled.rules must deny all (deny perm=any all : all; deny_audit and… |
+| RHEL-09-611010 | account_auth | `password_policy.retry` | retry in /etc/security/pwquality.conf(.d) must be 1 to 3 |
+| RHEL-09-611025 | account_auth | `pam_d["system-auth"]`, `pam_d["password-auth"]` | /etc/pam.d/system-auth and /etc/pam.d/password-auth must not carry the nullok option, or the SA must demonstrate that the configuration is in a PAM file includ… |
+| RHEL-09-611030 | account_auth | `pam_d["system-auth"]` | /etc/pam.d/system-auth must carry pam_faillock.so with its preauth line before pam_unix.so, or the SA must demonstrate that the configuration is in a PAM file … |
+| RHEL-09-611035 | account_auth | `pam_d["password-auth"]` | /etc/pam.d/password-auth must carry pam_faillock.so with its preauth line before pam_unix.so, or the SA must demonstrate that the configuration is in a PAM fil… |
+| RHEL-09-611040 | account_auth | `pam_d["password-auth"]` | /etc/pam.d/password-auth must carry an uncommented pam_pwquality.so line, or the SA must demonstrate that the configuration is in a PAM file included or substa… |
+| RHEL-09-611045 | account_auth | `pam_d["system-auth"]` | /etc/pam.d/system-auth must carry an uncommented pam_pwquality.so line, or the SA must demonstrate that the configuration is in a PAM file included or substack… |
+| RHEL-09-611050 | account_auth | `pam_d["password-auth"]` | the pam_unix.so password line of /etc/pam.d/password-auth must set rounds to 100000 or greater |
+| RHEL-09-611055 | account_auth | `pam_d["system-auth"]` | the pam_unix.so password line of /etc/pam.d/system-auth must set rounds to 100000 or greater |
+| RHEL-09-611060 | account_auth | `password_policy.enforce_for_root` | /etc/security/pwquality.conf or pwquality.conf.d/*.conf must carry an uncommented enforce_for_root line (password complexity applies to root) |
 | RHEL-09-611065 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character) |
 | RHEL-09-611070 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character) |
 | RHEL-09-611075 | account_auth | `password_policy.mindays` | PASS_MIN_DAYS in /etc/login.defs must be 1 or greater |
+| RHEL-09-611080 | account_auth | `shadow_min_age_below_one` | no account other than a system account may have a minimum password lifetime below 1 day in /etc/shadow |
+| RHEL-09-611085 | account_auth | `sudoers.lines` | no uncommented line of /etc/sudoers or /etc/sudoers.d/* may contain NOPASSWD, unless documented with the ISSO as an organizationally defined administrative gro… |
 | RHEL-09-611090 | account_auth | `password_policy.minlen` | minlen in /etc/security/pwquality.conf(.d) must be 15 or greater |
 | RHEL-09-611100 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character) |
+| RHEL-09-611105 | account_auth | `password_policy.dictcheck` | dictcheck in /etc/security/pwquality.conf(.d) must be set to a value other than 0 |
 | RHEL-09-611110 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character) |
+| RHEL-09-611115 | account_auth | `password_policy.difok` | difok in /etc/security/pwquality.conf(.d) must be 8 or greater |
+| RHEL-09-611120 | account_auth | `password_policy.maxclassrepeat` | maxclassrepeat in /etc/security/pwquality.conf(.d) must be 1 to 4 (not 0) |
+| RHEL-09-611125 | account_auth | `password_policy.maxrepeat` | maxrepeat in /etc/security/pwquality.conf(.d) must be set to 3 or less |
+| RHEL-09-611130 | account_auth | `password_policy.minclass` | minclass in /etc/security/pwquality.conf(.d) must be 4 or greater |
+| RHEL-09-611135 | account_auth | `packages.libuser` | libuser is installed: crypt_style in the [defaults] section of /etc/libuser.conf (input.libuser_conf.defaults.crypt_style) must be sha512 |
 | RHEL-09-611140 | account_auth | `login_defs.ENCRYPT_METHOD` | ENCRYPT_METHOD in /etc/login.defs must be SHA512 |
+| RHEL-09-611145 | account_auth | `pam_d.sudo` | /etc/pam.d/sudo must not contain pam_succeed_if |
 | RHEL-09-611155 | account_auth | `local_accounts_with_empty_passwords` | no /etc/shadow entry may have an empty password field |
+| RHEL-09-611160 | pki_crypto | `opensc.card_drivers` | opensc-tool --get-conf-entry app:default:card_drivers must list cac |
 | RHEL-09-611165 | account_auth | `sssd.pam_cert_auth` | pam_cert_auth = True must be set (uncommented) in /etc/sssd/sssd.conf or /etc/sssd/conf.d/ |
 | RHEL-09-611170 | pki_crypto | `sssd.certificate_verification` | certificate_verification in the [sssd] section must carry the option ocsp_dgst=sha512 and neither no_ocsp nor no_verification, or the SA must show how certific… |
+| RHEL-09-611175 | pki_crypto | `packages["pcsc-lite"]` | the pcsc-lite package must be installed |
+| RHEL-09-611180 | pki_crypto | `services["pcscd.socket"]` | pcscd.socket must be active (systemctl is-active pcscd.socket) |
+| RHEL-09-611185 | pki_crypto | `packages.opensc` | the opensc package must be installed |
+| RHEL-09-611190 | pki_crypto | `ssh_private_keys_without_passphrase` | every SSH private key stored on the system must be protected by a passphrase (ssh-keygen -y -f <key> must prompt for it) |
+| RHEL-09-611195 | account_auth | `sulogin_lines["emergency.service"].unit_file`, `sulogin_lines["emergency.service"].drop_ins` | /usr/lib/systemd/system/emergency.service or a drop-in in /etc/systemd/system/emergency.service.d/ must carry ExecStart=-/usr/lib/systemd/systemd-sulogin-shell… |
+| RHEL-09-611200 | account_auth | `sulogin_lines["rescue.service"].unit_file`, `sulogin_lines["rescue.service"].drop_ins` | /usr/lib/systemd/system/rescue.service or a drop-in in /etc/systemd/system/rescue.service.d/ must carry ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue |
 | RHEL-09-631010 | pki_crypto | `sssd_ca_db.certificates` | /etc/sssd/pki/sssd_auth_ca_db.pem must hold a self-signed DoD root CA (Issuer = Subject = C=US, O=U.S. Government, OU=DoD, OU=PKI, CN=DoD Root CA <n>) within i… |
 | RHEL-09-631015 | pki_crypto | `sssd.certmap_rules` | sssd.conf / conf.d must have a [certmap/...] section mapping certificates to accounts, or the SA must show how certificates are mapped (input.attest.rhel_09_63… |
+| RHEL-09-631020 | pki_crypto | `sssd.cache_credentials_values` | when cache_credentials is true in /etc/sssd/sssd.conf or /etc/sssd/conf.d/, offline_credentials_expiration must be 1 |
 | RHEL-09-651010 | configuration_management | `packages.aide` | the aide package must be installed, or the SA must attest how file integrity checks are performed (input.attest.rhel_09_651010_alternate_fic) |
 | RHEL-09-651015 | configuration_management | `packages.aide`, `aide.schedule` | a cron job (/etc/cron.*, /etc/crontab, /var/spool/cron/root) must run aide --check and notify designated personnel (mail in the job, or input.attest.rhel_09_65… |
 | RHEL-09-651020 | software_integrity | `aide.rule_lines` | every uncommented selection line in /etc/aide.conf must use sha512, or another tool using FIPS 140-3 hashes must be attested (input.attest.rhel_09_651020_other… |
+| RHEL-09-651025 | software_integrity | `packages.aide`, `aide.audit_tool_lines` | AIDE must be installed and /etc/aide.conf must carry a selection line for each of /usr/sbin/auditctl, auditd, ausearch, aureport, autrace and augenrules, or th… |
+| RHEL-09-651030 | software_integrity | `aide.rule_lines` | every uncommented selection line in /etc/aide.conf must use the acl rule, or another file integrity tool checking ACLs must be attested (input.attest.rhel_09_6… |
+| RHEL-09-651035 | software_integrity | `aide.rule_lines` | every uncommented selection line in /etc/aide.conf must use the xattrs rule, or another file integrity tool checking extended attributes must be attested (inpu… |
 | RHEL-09-652010 | software_integrity | `packages.rsyslog` | the rsyslog package must be installed |
+| RHEL-09-652015 | software_integrity | `packages["rsyslog-gnutls"]` | the rsyslog-gnutls package must be installed |
 | RHEL-09-652020 | software_integrity | `services.rsyslog` | rsyslog must be active (systemctl is-active rsyslog) |
+| RHEL-09-652025 | software_integrity | `rsyslog.listening_sockets`, `rsyslog.config_lines` | rsyslog must not listen for remote messages (ss -tulnp shows no rsyslog socket, or no uncommented imtcp / imudp / imrelp / ServerRun line in /etc/rsyslog.conf … |
+| RHEL-09-652030 | software_integrity | `rsyslog.config_lines` | auth.*, authpriv.* and daemon.* must each be logged by an uncommented rule in /etc/rsyslog.conf or /etc/rsyslog.d/ |
+| RHEL-09-652040 | software_integrity | `rsyslog.config_lines` | $ActionSendStreamDriverAuthMode (or StreamDriverAuthMode / StreamDriver.AuthMode in an omfwd action, never in a module block) must be x509/name, or the SA must… |
+| RHEL-09-652045 | software_integrity | `rsyslog.config_lines` | $ActionSendStreamDriverMode (or StreamDriverMode / StreamDriver.Mode in an omfwd action) must be 1, and StreamDriverAuthMode must not be set in a module block |
+| RHEL-09-652050 | software_integrity | `rsyslog.config_lines` | $DefaultNetstreamDriver (or StreamDriver / StreamDriver.Name in an omfwd action, never in a module block) must be gtls |
+| RHEL-09-652055 | software_integrity | `rsyslog.config_lines` | /etc/rsyslog.conf or /etc/rsyslog.d/ must forward to a remote server over TCP (*.* @@host:port, or an action of type omfwd), or the SA must show how audit logs… |
+| RHEL-09-652060 | software_integrity | `rsyslog.config_lines` | an uncommented rsyslog rule must log cron.* to /var/log/cron, or the functional test (logger -p cron.info, then grep /var/log/cron) must show the message logge… |
+| RHEL-09-653010 | audit_logging | `packages.audit` | the audit package must be installed |
 | RHEL-09-653015 | audit_logging | `services.auditd` | auditd.service must be active (running) |
+| RHEL-09-653020 | audit_logging | `auditd_config.disk_error_action` | disk_error_action in /etc/audit/auditd.conf must be SYSLOG, SINGLE or HALT, or the SA must attest that the system takes appropriate action when an audit proces… |
 | RHEL-09-653025 | audit_logging | `auditd_config.disk_full_action` | disk_full_action in /etc/audit/auditd.conf must be SYSLOG or SINGLE or HALT, or the SA must attest that the system takes appropriate action when the audit stor… |
+| RHEL-09-653030 | audit_logging | (attestation / Not Applicable facts only) | the partition holding the audit log (log_file in /etc/audit/auditd.conf; df -h) must be reviewed and attested as large enough for at least one week of audit re… |
+| RHEL-09-653035 | audit_logging | `auditd_config.space_left` | space_left in /etc/audit/auditd.conf must be 25% or more of the audit storage volume (written as a percentage) |
 | RHEL-09-653040 | audit_logging | `auditd_config.space_left_action` | space_left_action in /etc/audit/auditd.conf must be EMAIL, or the SA must attest that real-time alerts to the SA and ISSO are configured at 75 percent of audit… |
+| RHEL-09-653045 | audit_logging | `auditd_config.admin_space_left` | admin_space_left in /etc/audit/auditd.conf must be 5% of the audit storage volume (written as a percentage) |
+| RHEL-09-653050 | audit_logging | `auditd_config.admin_space_left_action` | admin_space_left_action in /etc/audit/auditd.conf must be single, or the SA must attest that real-time alerts to the SA and ISSO are configured for 95 percent … |
 | RHEL-09-653055 | audit_logging | `auditd_config.max_log_file_action` | max_log_file_action in /etc/audit/auditd.conf must be ROTATE or SINGLE, or the SA must attest that the system takes appropriate action when the audit files rea… |
+| RHEL-09-653060 | audit_logging | `auditd_config.name_format` | name_format in /etc/audit/auditd.conf must be hostname or fqd or numeric |
+| RHEL-09-653065 | audit_logging | `auditd_config.overflow_action` | overflow_action in /etc/audit/auditd.conf must be syslog or single or halt, or the SA must attest that the audit logs are off-loaded to a different system or m… |
+| RHEL-09-653070 | audit_logging | `auditd_config.action_mail_acct` | action_mail_acct in /etc/audit/auditd.conf must be root, or the SA must attest that the SA and ISSO are notified of an audit processing failure another way, e.… |
+| RHEL-09-653075 | audit_logging | `auditd_config.local_events` | local_events in /etc/audit/auditd.conf must be yes |
+| RHEL-09-653080 | file_permissions | `file_permissions.audit_log.group` | the audit log (auditd.conf log_file) must be group-owned by root or by the log_group configured in /etc/audit/auditd.conf |
+| RHEL-09-653085 | file_permissions | `file_permissions.audit_log_dir.owner` | the audit log directory (the directory of auditd.conf log_file) must be owned by root |
+| RHEL-09-653090 | file_permissions | `file_permissions.audit_log_files` | no file in the audit log directory may have a mode more permissive than 0600 |
+| RHEL-09-653095 | audit_logging | `auditd_config.freq` | freq in /etc/audit/auditd.conf must be between 1 and 100 |
+| RHEL-09-653100 | audit_logging | `auditd_config.log_format` | log_format in /etc/audit/auditd.conf must be enriched |
+| RHEL-09-653105 | audit_logging | `auditd_config.write_logs` | write_logs in /etc/audit/auditd.conf must be yes |
+| RHEL-09-653110 | file_permissions | `file_permissions.audit_config_files` | /etc/audit/rules.d/*.rules, /etc/audit/audit.rules and /etc/audit/auditd.conf must have mode 0600 or less permissive |
+| RHEL-09-653120 | audit_logging | `grub.kernel_args` | every boot entry that sets audit_backlog_limit (grubby --info=ALL, args) must set it to 8192 or more |
+| RHEL-09-653125 | audit_logging | `postfix.root_alias` | the Postfix alias maps must hold an alias for root (postmap -q root <alias_maps> returns one) |
+| RHEL-09-653130 | audit_logging | `packages["audispd-plugins"]` | the audispd-plugins package must be installed |
 | RHEL-09-654010 | audit_logging | `audit_rules` | execve must be audited for b32 and b64 with -C uid!=euid -F euid=0 and -C gid!=egid -F egid=0 (all four rules) |
 | RHEL-09-654015 | audit_logging | `audit_rules` | chmod, fchmod and fchmodat must be audited for both b32 and b64 |
 | RHEL-09-654020 | audit_logging | `audit_rules` | chown, fchown, fchownat and lchown must be audited for both b32 and b64 |
 | RHEL-09-654025 | audit_logging | `audit_rules` | setxattr, fsetxattr, lsetxattr, removexattr, fremovexattr and lremovexattr must be audited for both b32 and b64 |
+| RHEL-09-654030 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/umount |
+| RHEL-09-654035 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/chacl |
+| RHEL-09-654040 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/setfacl |
+| RHEL-09-654045 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/chcon |
+| RHEL-09-654050 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/semanage |
+| RHEL-09-654055 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/setfiles |
+| RHEL-09-654060 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/setsebool |
+| RHEL-09-654065 | audit_logging | `audit_rules` | rename, unlink, rmdir, renameat and unlinkat must be audited for both b32 and b64 |
 | RHEL-09-654070 | audit_logging | `audit_rules` | truncate, ftruncate, creat, open, openat and open_by_handle_at must be audited for both arches with -F exit=-EPERM and -F exit=-EACCES |
+| RHEL-09-654075 | audit_logging | `audit_rules` | delete_module must be audited for both b32 and b64 |
 | RHEL-09-654080 | audit_logging | `audit_rules` | init_module and finit_module must be audited for both b32 and b64 |
+| RHEL-09-654085 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/chage |
+| RHEL-09-654090 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/chsh |
+| RHEL-09-654095 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/crontab |
+| RHEL-09-654097 | audit_logging | `audit_rules` | execve by subj_type=crond_t must be audited for b32 and b64, once with -F euid=0 and once with -F auid>=1000 -F auid!=unset (all four rules) |
+| RHEL-09-654100 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/gpasswd |
+| RHEL-09-654105 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/kmod |
+| RHEL-09-654110 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/newgrp |
+| RHEL-09-654115 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/pam_timestamp_check |
+| RHEL-09-654120 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/passwd |
+| RHEL-09-654125 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/postdrop |
+| RHEL-09-654130 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/postqueue |
+| RHEL-09-654135 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/ssh-agent |
+| RHEL-09-654140 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/libexec/openssh/ssh-keysign |
+| RHEL-09-654145 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/su |
 | RHEL-09-654150 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/sudo |
+| RHEL-09-654155 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/sudoedit |
+| RHEL-09-654160 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/unix_chkpwd |
+| RHEL-09-654165 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/unix_update |
+| RHEL-09-654170 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/userhelper |
+| RHEL-09-654175 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/usermod |
+| RHEL-09-654176 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/useradd |
+| RHEL-09-654180 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/bin/mount |
+| RHEL-09-654185 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/init |
+| RHEL-09-654190 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/poweroff |
+| RHEL-09-654195 | audit_logging | `audit_rules` | a loaded audit rule must audit execution (perm x) of /usr/sbin/reboot |
+| RHEL-09-654200 | audit_logging | `audit_rules_d` | a rule in /etc/audit/rules.d/ must audit execution (perm x) of /usr/sbin/shutdown |
+| RHEL-09-654205 | audit_logging | `audit_rules` | the umount system call must be audited for b32 |
+| RHEL-09-654210 | audit_logging | `audit_rules` | the umount2 system call must be audited (the check expects a b64 and a b32 rule and is a finding when no rule is returned) |
 | RHEL-09-654215 | audit_logging | `audit_rules` | a loaded audit rule must watch /etc/sudoers itself (not only /etc/sudoers.d/) for write and attribute change (perm wa) |
+| RHEL-09-654220 | audit_logging | `audit_rules` | a loaded audit rule must watch /etc/sudoers.d for write and attribute change (perm wa) |
+| RHEL-09-654225 | audit_logging | `audit_rules` | a loaded audit rule must audit write and attribute change (perm wa) of /etc/group |
+| RHEL-09-654230 | audit_logging | `audit_rules` | a loaded audit rule must audit write and attribute change (perm wa) of /etc/gshadow |
+| RHEL-09-654235 | audit_logging | `audit_rules` | a loaded audit rule must audit write and attribute change (perm wa) of /etc/security/opasswd |
 | RHEL-09-654240 | audit_logging | `audit_rules` | a loaded audit rule must watch /etc/passwd for write and attribute change (perm wa) |
+| RHEL-09-654245 | audit_logging | `audit_rules` | a loaded audit rule must audit write and attribute change (perm wa) of /etc/shadow |
+| RHEL-09-654250 | audit_logging | `audit_rules` | a loaded audit rule must audit write and attribute change (perm wa) of /var/log/faillock |
+| RHEL-09-654255 | audit_logging | `audit_rules` | a loaded audit rule must audit write and attribute change (perm wa) of /var/log/lastlog |
+| RHEL-09-654265 | audit_logging | `audit_rules_file` | /etc/audit/audit.rules must set -f 2, or availability must be documented as an overriding concern (input.attest.rhel_09_654265_availability_overriding) |
+| RHEL-09-654270 | audit_logging | `audit_rules_file` | /etc/audit/audit.rules must contain --loginuid-immutable (uncommented) |
+| RHEL-09-654275 | audit_logging | `audit_rules_file` | the last uncommented line of /etc/audit/audit.rules must be -e 2 |
 | RHEL-09-671010 | configuration_management | `fips.fips_enabled` | /proc/sys/crypto/fips_enabled must contain 1 |
+| RHEL-09-671015 | account_auth | `interactive_shadow_hashes` | every interactive user's /etc/shadow password hash must begin with $6$ (hashes starting with ! or * are not evaluated) |
+| RHEL-09-671020 | pki_crypto | `packages.libreswan`, `ipsec.include_lines` | /etc/ipsec.conf or /etc/ipsec.d/*.conf must contain include /etc/crypto-policies/back-ends/libreswan.config when the libreswan package is installed |
+| RHEL-09-671025 | account_auth | `pam.password_auth.pam_unix_password_lines` | a password line for pam_unix.so in /etc/pam.d/password-auth must carry sha512, or the SA must demonstrate that the configuration is in a PAM file included or s… |
 | RHEL-09-672020 | pki_crypto | `crypto_policy_check.output`, `crypto_backends` | update-crypto-policies --check must report the configured policy matches the generated policy, and every back-end in /etc/crypto-policies/back-ends/ except nss… |
+| RHEL-09-672050 | pki_crypto | `packages.bind`, `named.include_lines` | /etc/named.conf must contain include "/etc/crypto-policies/back-ends/bind.config"; (uncommented) when the bind package is installed |
 | RHEL-09-672055 | pki_crypto | `openssl_cnf.lines` | /etc/pki/tls/openssl.cnf must include /etc/crypto-policies/back-ends/opensslcnf.config (uncommented) |
 
 ## Oracle Linux 9 rules (114)

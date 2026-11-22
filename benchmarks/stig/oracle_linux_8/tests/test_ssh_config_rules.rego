@@ -10,16 +10,34 @@ green_fixture := {
 		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
 		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
 	},
-	"services": {"sshd": "active"},
+	"services": {
+		"sshd": "active",
+	},
 	"sshd_config_lines": {
-		"ClientAliveCountMax": ["1"],
-		"ClientAliveInterval": ["600"],
-		"IgnoreUserKnownHosts": ["yes"],
-		"PermitEmptyPasswords": ["no"],
-		"PermitRootLogin": ["no"],
-		"PrintLastLog": ["yes"],
-		"StrictModes": ["yes"],
-		"X11Forwarding": ["no"],
+		"ClientAliveCountMax": [
+			"1",
+		],
+		"ClientAliveInterval": [
+			"600",
+		],
+		"IgnoreUserKnownHosts": [
+			"yes",
+		],
+		"PermitEmptyPasswords": [
+			"no",
+		],
+		"PermitRootLogin": [
+			"no",
+		],
+		"PrintLastLog": [
+			"yes",
+		],
+		"StrictModes": [
+			"yes",
+		],
+		"X11Forwarding": [
+			"no",
+		],
 	},
 }
 

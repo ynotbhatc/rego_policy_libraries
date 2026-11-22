@@ -10,48 +10,70 @@ green_fixture := {
 		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
 		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
 	},
-	"ssh_config": {"UsePAM": "yes"},
+	"ssh_config": {
+		"UsePAM": "yes",
+	},
 	"sshd_config_files": {
-		"ClientAliveCountMax": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "1",
-		}],
-		"ClientAliveInterval": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "600",
-		}],
-		"HostbasedAuthentication": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
-		"IgnoreRhosts": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"IgnoreUserKnownHosts": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"PermitEmptyPasswords": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
-		"PermitRootLogin": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
-		"PrintLastLog": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"StrictModes": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "yes",
-		}],
-		"X11Forwarding": [{
-			"file": "/etc/ssh/sshd_config.d/10-stig.conf",
-			"value": "no",
-		}],
+		"ClientAliveCountMax": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "1",
+			},
+		],
+		"ClientAliveInterval": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "600",
+			},
+		],
+		"HostbasedAuthentication": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
+		"IgnoreRhosts": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"IgnoreUserKnownHosts": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"PermitEmptyPasswords": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
+		"PermitRootLogin": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
+		"PrintLastLog": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"StrictModes": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "yes",
+			},
+		],
+		"X11Forwarding": [
+			{
+				"file": "/etc/ssh/sshd_config.d/10-stig.conf",
+				"value": "no",
+			},
+		],
 	},
 	"sshd_runtime": {
 		"clientalivecountmax": "1",

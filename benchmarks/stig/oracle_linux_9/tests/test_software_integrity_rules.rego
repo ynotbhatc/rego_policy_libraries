@@ -6,22 +6,34 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"]},
+	"aide": {
+		"rule_lines": [
+			"All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux",
+		],
+	},
 	"dnf_config": {
 		"gpgcheck": "1",
 		"localpkg_gpgcheck": "1",
 	},
-	"kernel_params": {"kernel.kexec_load_disabled": "1"},
-	"oracle_release_key_file": {"fingerprints": [
-		"3E6D 826D 3FBA B389 C2F3  8E34 BC4D 06A0 8D8B 756F",
-		"9822 3175 9C74 6706 5D0C  E9B2 A7DD 0708 8B4E FBE6",
-	]},
-	"packages": {"rsyslog": true},
+	"kernel_params": {
+		"kernel.kexec_load_disabled": "1",
+	},
+	"oracle_release_key_file": {
+		"fingerprints": [
+			"3E6D 826D 3FBA B389 C2F3  8E34 BC4D 06A0 8D8B 756F",
+			"9822 3175 9C74 6706 5D0C  E9B2 A7DD 0708 8B4E FBE6",
+		],
+	},
+	"packages": {
+		"rsyslog": true,
+	},
 	"rpm_gpg_pubkeys": [
 		"Oracle Linux (release key 1) <secalert_us@oracle.com> public key",
 		"Oracle Linux (backup key 1) <secalert_us@oracle.com> public key",
 	],
-	"services": {"rsyslog": "active"},
+	"services": {
+		"rsyslog": "active",
+	},
 	"yum_repos": [
 		{
 			"gpgcheck": "1",

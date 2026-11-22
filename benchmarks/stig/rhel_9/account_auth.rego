@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 16
-#     cited: 15
+#     checks: 67
+#     cited: 66
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_9.account_auth
 
 # DISA STIG for RHEL 9 - Account and Authentication Module
@@ -74,6 +74,190 @@ _truthy(v) if {
 
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
+
+# a umask value that is 077 or more restrictive: every group and other permission bit masked (077, 0077, 177 ...);
+# a symbolic or unparsable value is not accepted
+_umask_077(v) if {
+	is_string(v)
+	regex.match(`^0*[0-7]?77$`, trim_space(v))
+}
+
+# a temporary account's expiration date (chage -l -i "Account expires": YYYY-MM-DD) is set and no more than
+# 72 hours ahead
+_expires_within_72h(a) if {
+	is_string(a.expires)
+	d := trim_space(a.expires)
+	regex.match(`^[0-9]{4}-[0-9]{2}-[0-9]{2}$`, d)
+	t := time.parse_ns("2006-01-02", d)
+	t <= time.now_ns() + 259200000000000
+}
+
+# an entry of a PATH statement that stays inside the user's home directory, or keeps the existing search path
+_path_entry_ok(e, _) if e in {"$PATH", "${PATH}"}
+
+_path_entry_ok(e, _) if regex.match(`^(\$HOME|\$\{HOME\}|~)(/.*)?$`, e)
+
+_path_entry_ok(e, home) if {
+	is_string(home)
+	home != ""
+	e == home
+}
+
+_path_entry_ok(e, home) if {
+	is_string(home)
+	home != ""
+	startswith(e, concat("", [trim_right(home, "/"), "/"]))
+}
+
+# input.sudoers.lines: [{file, line}], the uncommented lines of /etc/sudoers and /etc/sudoers.d/*
+_p4_sudoers := [e | some e in input.sudoers.lines; is_string(e.line); is_string(e.file)]
+
+_p4_sudoers_collected if is_array(input.sudoers.lines)
+
+# the sudoers entries whose line matches a (case-insensitive) pattern, as the check's grep -i returns them
+_p4_sudoers_matching(pattern) := [e | some e in _p4_sudoers; regex.match(pattern, e.line)]
+
+# input.pam_d[<file>]: the uncommented lines of /etc/pam.d/<file>, in file order
+_p4_pam(file) := [l | some l in input.pam_d[file]; is_string(l)] if is_array(input.pam_d[file])
+
+# a pam_faillock.so preauth line stands before every pam_unix.so line of the file
+_p4_faillock_preauth_first(file) if {
+	lines := _p4_pam(file)
+	some i, l in lines
+	contains(l, "pam_faillock.so")
+	regex.match(`(^|\s)preauth(\s|$)`, l)
+	every j, u in lines {
+		_p4_not_unix_before(u, j, i)
+	}
+}
+
+_p4_not_unix_before(u, _, _) if not contains(u, "pam_unix.so")
+
+_p4_not_unix_before(u, j, i) if {
+	contains(u, "pam_unix.so")
+	j > i
+}
+
+# the rounds= values on the lines of a PAM file
+_p4_rounds(file) := [v | some l in _p4_pam(file); some m in regex.find_all_string_submatch_n(`(^|\s)rounds=(\S*)`, l, -1); v := m[2]]
+
+_p4_rounds_ok(file) if {
+	some l in _p4_pam(file)
+	regex.match(`^\s*password\s.*pam_unix\.so\s(.*\s)?rounds=[0-9]+(\s|$)`, l)
+	every v in _p4_rounds(file) {
+		regex.match(`^[0-9]+$`, v)
+		to_number(v) >= 100000
+	}
+}
+
+# a non-negative integer (number, or decimal string) no greater than max
+_p4_int_at_most(v, max) if {
+	is_number(v)
+	v >= 0
+	v <= max
+}
+
+_p4_int_at_most(v, max) if {
+	is_string(v)
+	regex.match(`^\s*[0-9]+\s*$`, v)
+	to_number(trim_space(v)) <= max
+}
+
+# the umask values of a shell start-up file: at least one uncommented umask command, every one 077
+_p4_umask_077(key) if {
+	vals := input.shell_umask[key]
+	is_array(vals)
+	count(vals) > 0
+	every v in vals {
+		v == "077"
+	}
+}
+
+# an /etc/shadow password field the RHEL-09-671015 check accepts: SHA-512, or an inactive account (! or *)
+_shadow_hash_ok(h) if startswith(h, "$6$")
+
+_shadow_hash_ok(h) if startswith(h, "!")
+
+_shadow_hash_ok(h) if startswith(h, "*")
+
+# =============================================================================
+# CAT I - HIGH SEVERITY
+# =============================================================================
+
+# RHEL-09-411100 | V-258059 | CAT I
+# account names printed by awk -F: '$3 == 0 {print $1}' /etc/passwd
+missing_rhel_09_411100 := [concat(".", p) | some p in [["uid_zero_accounts"]]; not _collected(p)]
+
+default only_root_uid_zero := false
+
+only_root_uid_zero if {
+	count(missing_rhel_09_411100) == 0
+	accts := input.uid_zero_accounts
+	is_array(accts)
+	every a in accts {
+		a == "root"
+	}
+}
+
+status_rhel_09_411100 := "Not_a_Finding" if only_root_uid_zero
+
+else := "Open"
+
+detail_rhel_09_411100 := "RHEL-09-411100: Not_a_Finding" if only_root_uid_zero
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411100", concat(", ", missing_rhel_09_411100)]) if count(missing_rhel_09_411100) > 0
+
+else := "RHEL-09-411100: check failed — no account other than root may have UID 0 in /etc/passwd"
+
+finding_rhel_09_411100 := {
+	"vuln_id": "V-258059",
+	"stig_id": "RHEL-09-411100",
+	"severity": "CAT I",
+	"rule_title": "The root account must be the only account having unrestricted access to RHEL 9 system.",
+	"check_type": "machine",
+	"status": status_rhel_09_411100,
+	"detail": detail_rhel_09_411100,
+	"fix_text": "Change the UID of every account other than root that has UID 0 (usermod -u)",
+}
+
+# RHEL-09-611025 | V-258094 | CAT I
+# uncommented lines of /etc/pam.d/system-auth and /etc/pam.d/password-auth carrying nullok (case-insensitive)
+missing_rhel_09_611025 := [concat(".", p) | some p in [["pam_d", "system-auth"], ["pam_d", "password-auth"]]; not _collected(p)]
+
+default pam_no_nullok := false
+
+pam_no_nullok if {
+	count(missing_rhel_09_611025) == 0
+	every f in {"system-auth", "password-auth"} {
+		lines := _p4_pam(f)
+		count([l | some l in lines; contains(lower(l), "nullok")]) == 0
+	}
+}
+
+pam_no_nullok if {
+	_attested("rhel_09_611025_included_pam_config")
+}
+
+status_rhel_09_611025 := "Not_a_Finding" if pam_no_nullok
+
+else := "Open"
+
+detail_rhel_09_611025 := "RHEL-09-611025: Not_a_Finding" if pam_no_nullok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611025", concat(", ", missing_rhel_09_611025)]) if count(missing_rhel_09_611025) > 0
+
+else := "RHEL-09-611025: check failed — /etc/pam.d/system-auth and /etc/pam.d/password-auth must not carry the nullok option, or the SA must demonstrate that the configuration is in a PAM file included or substacked from system-auth (input.attest.rhel_09_611025_included_pam_config)"
+
+finding_rhel_09_611025 := {
+	"vuln_id": "V-258094",
+	"stig_id": "RHEL-09-611025",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must not allow blank or null passwords.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_611025,
+	"detail": detail_rhel_09_611025,
+	"fix_text": "Remove nullok: authselect enable-feature without-nullok (or edit /etc/pam.d/system-auth and password-auth)",
+}
 
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
@@ -599,13 +783,1743 @@ finding_rhel_09_411110 := {
 	"fix_text": "Give each group a unique GID (groupmod -g)",
 }
 
+# RHEL-09-411015 | V-258042 | CAT II
+# accounts printed by awk -F: '$5 > 180' and awk -F: '$5 <= 0' on /etc/shadow, each {name, max_days, system_account}
+missing_rhel_09_411015 := [concat(".", p) | some p in [["shadow_maxdays_out_of_range"]]; not _collected(p)]
+
+default existing_passwords_maxage_ok := false
+
+existing_passwords_maxage_ok if {
+	count(missing_rhel_09_411015) == 0
+	accts := input.shadow_maxdays_out_of_range
+	is_array(accts)
+	count([a | some a in accts; not a.system_account == true]) == 0
+}
+
+status_rhel_09_411015 := "Not_a_Finding" if existing_passwords_maxage_ok
+
+else := "Open"
+
+detail_rhel_09_411015 := "RHEL-09-411015: Not_a_Finding" if existing_passwords_maxage_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411015", concat(", ", missing_rhel_09_411015)]) if count(missing_rhel_09_411015) > 0
+
+else := "RHEL-09-411015: check failed — no /etc/shadow entry other than a system account may have a maximum password age (field 5) above 180, empty, or 0 or less"
+
+finding_rhel_09_411015 := {
+	"vuln_id": "V-258042",
+	"stig_id": "RHEL-09-411015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 user account passwords must have a 180-day maximum password lifetime restriction.",
+	"check_type": "machine",
+	"status": status_rhel_09_411015,
+	"detail": detail_rhel_09_411015,
+	"fix_text": "Set a 180-day maximum for each listed account: passwd -x 180 <user>",
+}
+
+# RHEL-09-411020 | V-258043 | CAT II
+# CREATE_HOME as configured in /etc/login.defs (null when missing or commented out)
+missing_rhel_09_411020 := [concat(".", p) | some p in [["login_defs", "CREATE_HOME"]]; not _collected(p)]
+
+default create_home_enabled := false
+
+create_home_enabled if {
+	count(missing_rhel_09_411020) == 0
+	_kw(["login_defs", "CREATE_HOME"]) == "yes"
+}
+
+status_rhel_09_411020 := "Not_a_Finding" if create_home_enabled
+
+else := "Open"
+
+detail_rhel_09_411020 := "RHEL-09-411020: Not_a_Finding" if create_home_enabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411020", concat(", ", missing_rhel_09_411020)]) if count(missing_rhel_09_411020) > 0
+
+else := "RHEL-09-411020: check failed — CREATE_HOME in /etc/login.defs must be yes"
+
+finding_rhel_09_411020 := {
+	"vuln_id": "V-258043",
+	"stig_id": "RHEL-09-411020",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local interactive user accounts must be assigned a home directory upon creation.",
+	"check_type": "machine",
+	"status": status_rhel_09_411020,
+	"detail": detail_rhel_09_411020,
+	"fix_text": "Set CREATE_HOME yes in /etc/login.defs",
+}
+
+# RHEL-09-411025 | V-258044 | CAT II
+# uncommented umask statements in the interactive users' initialization files (find <home> -maxdepth 2 -type f -name '.[^.]*' ... grep -i umask, .bash_history excluded): [{file, umask}]
+missing_rhel_09_411025 := [concat(".", p) | some p in [["user_init_files", "umask_statements"]]; not _collected(p)]
+
+default user_init_files_umask_ok := false
+
+user_init_files_umask_ok if {
+	count(missing_rhel_09_411025) == 0
+	us := input.user_init_files.umask_statements
+	is_array(us)
+	every u in us {
+		_umask_077(u.umask)
+	}
+}
+
+status_rhel_09_411025 := "Not_a_Finding" if user_init_files_umask_ok
+
+else := "Open"
+
+detail_rhel_09_411025 := "RHEL-09-411025: Not_a_Finding" if user_init_files_umask_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411025", concat(", ", missing_rhel_09_411025)]) if count(missing_rhel_09_411025) > 0
+
+else := "RHEL-09-411025: check failed — no local interactive user initialization file may set a umask less restrictive than 077"
+
+finding_rhel_09_411025 := {
+	"vuln_id": "V-258044",
+	"stig_id": "RHEL-09-411025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must set the umask value to 077 for all local interactive user accounts.",
+	"check_type": "machine",
+	"status": status_rhel_09_411025,
+	"detail": detail_rhel_09_411025,
+	"fix_text": "Remove the umask statement from each listed initialization file",
+}
+
+# RHEL-09-411035 | V-258046 | CAT II
+# output of awk -F: '(($3 > 0 && $3 < 1000) && $1 !~ /^(halt|sync|shutdown)$/ && $7 !~ /(nologin|false)$/) {print $1 ":" $3 ":" $7}' /etc/passwd
+missing_rhel_09_411035 := [concat(".", p) | some p in [["system_accounts_with_interactive_shell"]]; not _collected(p)]
+
+default system_accounts_no_interactive_shell := false
+
+system_accounts_no_interactive_shell if {
+	count(missing_rhel_09_411035) == 0
+	xs := object.get(input, ["system_accounts_with_interactive_shell"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_411035 := "Not_a_Finding" if system_accounts_no_interactive_shell
+
+else := "Open"
+
+detail_rhel_09_411035 := "RHEL-09-411035: Not_a_Finding" if system_accounts_no_interactive_shell
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411035", concat(", ", missing_rhel_09_411035)]) if count(missing_rhel_09_411035) > 0
+
+else := "RHEL-09-411035: check failed — no system account (UID 1 to 999, other than halt, sync and shutdown) may have a login shell other than nologin or false"
+
+finding_rhel_09_411035 := {
+	"vuln_id": "V-258046",
+	"stig_id": "RHEL-09-411035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 system accounts must not have an interactive login shell.",
+	"check_type": "machine",
+	"status": status_rhel_09_411035,
+	"detail": detail_rhel_09_411035,
+	"fix_text": "Disable the shell of each listed account: usermod --shell /usr/sbin/nologin <user>",
+}
+
+# RHEL-09-411040 | V-258047 | CAT II
+# the organization's temporary accounts with their expiration date (chage -l -i <name>, "Account expires": YYYY-MM-DD or never): [{name, expires}]; an empty list when there are none
+missing_rhel_09_411040 := [concat(".", p) | some p in [["temporary_accounts"]]; not _collected(p)]
+
+default temporary_accounts_expire := false
+
+temporary_accounts_expire if {
+	count(missing_rhel_09_411040) == 0
+	accts := input.temporary_accounts
+	is_array(accts)
+	every a in accts {
+		_expires_within_72h(a)
+	}
+}
+
+status_rhel_09_411040 := "Not_a_Finding" if temporary_accounts_expire
+
+else := "Open"
+
+detail_rhel_09_411040 := "RHEL-09-411040: Not_a_Finding" if temporary_accounts_expire
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411040", concat(", ", missing_rhel_09_411040)]) if count(missing_rhel_09_411040) > 0
+
+else := "RHEL-09-411040: check failed — every temporary account must have an account expiration date set, no more than 72 hours ahead (chage -l)"
+
+finding_rhel_09_411040 := {
+	"vuln_id": "V-258047",
+	"stig_id": "RHEL-09-411040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must automatically expire temporary accounts within 72 hours.",
+	"check_type": "machine",
+	"status": status_rhel_09_411040,
+	"detail": detail_rhel_09_411040,
+	"fix_text": "Set the expiration: chage -E $(date -d +3days +%Y-%m-%d) <temporary_account_name>",
+}
+
+# RHEL-09-411045 | V-258048 | CAT II
+# accounts pwck -r reports with "no group <gid>", each {name, gid, interactive}
+missing_rhel_09_411045 := [concat(".", p) | some p in [["pwck_no_group_accounts"]]; not _collected(p)]
+
+default interactive_users_primary_group_exists := false
+
+interactive_users_primary_group_exists if {
+	count(missing_rhel_09_411045) == 0
+	accts := input.pwck_no_group_accounts
+	is_array(accts)
+	count([a | some a in accts; not a.interactive == false]) == 0
+}
+
+status_rhel_09_411045 := "Not_a_Finding" if interactive_users_primary_group_exists
+
+else := "Open"
+
+detail_rhel_09_411045 := "RHEL-09-411045: Not_a_Finding" if interactive_users_primary_group_exists
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411045", concat(", ", missing_rhel_09_411045)]) if count(missing_rhel_09_411045) > 0
+
+else := "RHEL-09-411045: check failed — pwck -r must not report 'no group' for any interactive user"
+
+finding_rhel_09_411045 := {
+	"vuln_id": "V-258048",
+	"stig_id": "RHEL-09-411045",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 interactive users must have a primary group that exists.",
+	"check_type": "machine",
+	"status": status_rhel_09_411045,
+	"detail": detail_rhel_09_411045,
+	"fix_text": "Give each listed user a primary GID that is defined in /etc/group",
+}
+
+# RHEL-09-411055 | V-258050 | CAT II
+# uncommented PATH= statements in the interactive users' initialization files (find <home> -maxdepth 2 -type f -name '.[^.]*' ... grep -iH path=): [{file, home, entries}], entries = the statement's value split on ':'
+missing_rhel_09_411055 := [concat(".", p) | some p in [["user_init_files", "path_statements"]]; not _collected(p)]
+
+default user_init_files_path_ok := false
+
+user_init_files_path_ok if {
+	count(missing_rhel_09_411055) == 0
+	ps := input.user_init_files.path_statements
+	is_array(ps)
+	every p in ps {
+		is_array(p.entries)
+		every e in p.entries {
+			_path_entry_ok(e, object.get(p, "home", null))
+		}
+	}
+}
+
+user_init_files_path_ok if {
+	_attested("rhel_09_411055_path_documented")
+}
+
+status_rhel_09_411055 := "Not_a_Finding" if user_init_files_path_ok
+
+else := "Open"
+
+detail_rhel_09_411055 := "RHEL-09-411055: Not_a_Finding" if user_init_files_path_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411055", concat(", ", missing_rhel_09_411055)]) if count(missing_rhel_09_411055) > 0
+
+else := "RHEL-09-411055: check failed — PATH statements in local interactive user initialization files may only add directories inside the user's home directory, unless documented with the ISSO as an operational requirement (input.attest.rhel_09_411055_path_documented)"
+
+finding_rhel_09_411055 := {
+	"vuln_id": "V-258050",
+	"stig_id": "RHEL-09-411055",
+	"severity": "CAT II",
+	"rule_title": "Executable search paths within the initialization files of all local interactive RHEL 9 users must only contain paths that resolve to the system default or the users home directory.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_411055,
+	"detail": detail_rhel_09_411055,
+	"fix_text": "Edit the listed initialization files so PATH statements reference only directories inside the user's home directory",
+}
+
+# RHEL-09-411060 | V-258051 | CAT II
+# home (field 6 of /etc/passwd) of each entry of input.interactive_users
+missing_rhel_09_411060 := [concat(".", p) | some p in [["interactive_users"]]; not _collected(p)]
+
+default interactive_users_home_assigned := false
+
+interactive_users_home_assigned if {
+	count(missing_rhel_09_411060) == 0
+	us := input.interactive_users
+	is_array(us)
+	every u in us {
+		is_string(u.home)
+		trim_space(u.home) != ""
+	}
+}
+
+status_rhel_09_411060 := "Not_a_Finding" if interactive_users_home_assigned
+
+else := "Open"
+
+detail_rhel_09_411060 := "RHEL-09-411060: Not_a_Finding" if interactive_users_home_assigned
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411060", concat(", ", missing_rhel_09_411060)]) if count(missing_rhel_09_411060) > 0
+
+else := "RHEL-09-411060: check failed — every local interactive user (UID >= 1000, shell not nologin) must have a home directory defined in /etc/passwd"
+
+finding_rhel_09_411060 := {
+	"vuln_id": "V-258051",
+	"stig_id": "RHEL-09-411060",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local interactive users must have a home directory assigned in the /etc/passwd file.",
+	"check_type": "machine",
+	"status": status_rhel_09_411060,
+	"detail": detail_rhel_09_411060,
+	"fix_text": "Assign a home directory to each listed user: usermod -d /home/<user> <user>",
+}
+
+# RHEL-09-411065 | V-258052 | CAT II
+# home_exists of each entry of input.interactive_users (the directory pwck -r reports as "does not exist")
+missing_rhel_09_411065 := [concat(".", p) | some p in [["interactive_users"]]; not _collected(p)]
+
+default interactive_users_home_exists := false
+
+interactive_users_home_exists if {
+	count(missing_rhel_09_411065) == 0
+	us := input.interactive_users
+	is_array(us)
+	every u in us {
+		u.home_exists == true
+	}
+}
+
+status_rhel_09_411065 := "Not_a_Finding" if interactive_users_home_exists
+
+else := "Open"
+
+detail_rhel_09_411065 := "RHEL-09-411065: Not_a_Finding" if interactive_users_home_exists
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411065", concat(", ", missing_rhel_09_411065)]) if count(missing_rhel_09_411065) > 0
+
+else := "RHEL-09-411065: check failed — the home directory assigned to every local interactive user must exist (pwck -r reports none missing)"
+
+finding_rhel_09_411065 := {
+	"vuln_id": "V-258052",
+	"stig_id": "RHEL-09-411065",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local interactive user home directories defined in the /etc/passwd file must exist.",
+	"check_type": "machine",
+	"status": status_rhel_09_411065,
+	"detail": detail_rhel_09_411065,
+	"fix_text": "Create the home directory of each listed user: mkdir <home>; chown <user> <home>; chgrp <group> <home>; chmod 0750 <home>",
+}
+
+# RHEL-09-411080 | V-258055 | CAT II
+# even_deny_root option present and uncommented in /etc/security/faillock.conf (boolean)
+missing_rhel_09_411080 := [concat(".", p) | some p in [["faillock_conf", "even_deny_root"]]; not _collected(p)]
+
+default faillock_even_deny_root := false
+
+faillock_even_deny_root if {
+	count(missing_rhel_09_411080) == 0
+	input.faillock_conf.even_deny_root == true
+}
+
+status_rhel_09_411080 := "Not_a_Finding" if faillock_even_deny_root
+
+else := "Open"
+
+detail_rhel_09_411080 := "RHEL-09-411080: Not_a_Finding" if faillock_even_deny_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411080", concat(", ", missing_rhel_09_411080)]) if count(missing_rhel_09_411080) > 0
+
+else := "RHEL-09-411080: check failed — /etc/security/faillock.conf must carry an uncommented even_deny_root line (the root account locks after failed logons)"
+
+finding_rhel_09_411080 := {
+	"vuln_id": "V-258055",
+	"stig_id": "RHEL-09-411080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must automatically lock the root account until the root account is released by an administrator when three unsuccessful logon attempts occur during a 15-minute time period.",
+	"check_type": "machine",
+	"status": status_rhel_09_411080,
+	"detail": detail_rhel_09_411080,
+	"fix_text": "Add the line even_deny_root to /etc/security/faillock.conf",
+}
+
+# RHEL-09-411090 | V-258057 | CAT II
+# unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out)
+missing_rhel_09_411090 := [concat(".", p) | some p in [["faillock_conf", "unlock_time"]]; not _collected(p)]
+
+default faillock_unlock_time_zero := false
+
+faillock_unlock_time_zero if {
+	count(missing_rhel_09_411090) == 0
+	_num(["faillock_conf", "unlock_time"]) == 0
+}
+
+status_rhel_09_411090 := "Not_a_Finding" if faillock_unlock_time_zero
+
+else := "Open"
+
+detail_rhel_09_411090 := "RHEL-09-411090: Not_a_Finding" if faillock_unlock_time_zero
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411090", concat(", ", missing_rhel_09_411090)]) if count(missing_rhel_09_411090) > 0
+
+else := "RHEL-09-411090: check failed — unlock_time in /etc/security/faillock.conf must be 0 (locked until an administrator releases the account)"
+
+finding_rhel_09_411090 := {
+	"vuln_id": "V-258057",
+	"stig_id": "RHEL-09-411090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must maintain an account lock until the locked account is released by an administrator.",
+	"check_type": "machine",
+	"status": status_rhel_09_411090,
+	"detail": detail_rhel_09_411090,
+	"fix_text": "Set unlock_time = 0 in /etc/security/faillock.conf",
+}
+
+# RHEL-09-411095 | V-258058 | CAT II
+# local interactive accounts in /etc/passwd (UID >= 1000, interactive shell); the comparison with the authorized list is an attestation
+missing_rhel_09_411095 := [concat(".", p) | some p in [["local_interactive_users"]]; not _collected(p)]
+
+default no_unauthorized_accounts := false
+
+no_unauthorized_accounts if {
+	count(missing_rhel_09_411095) == 0
+	us := input.local_interactive_users
+	is_array(us)
+	count(us) == 0
+}
+
+no_unauthorized_accounts if {
+	_attested("rhel_09_411095_accounts_authorized")
+}
+
+status_rhel_09_411095 := "Not_a_Finding" if no_unauthorized_accounts
+
+else := "Open"
+
+detail_rhel_09_411095 := "RHEL-09-411095: Not_a_Finding" if no_unauthorized_accounts
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411095", concat(", ", missing_rhel_09_411095)]) if count(missing_rhel_09_411095) > 0
+
+else := "RHEL-09-411095: check failed — every local interactive user account in /etc/passwd must be on the list authorized by the SA or ISSO: the accounts found must be compared with that list and attested (input.attest.rhel_09_411095_accounts_authorized)"
+
+finding_rhel_09_411095 := {
+	"vuln_id": "V-258058",
+	"stig_id": "RHEL-09-411095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not have unauthorized accounts.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_411095,
+	"detail": detail_rhel_09_411095,
+	"fix_text": "Remove each unauthorized local interactive account: userdel <unauthorized_user>",
+}
+
+# RHEL-09-411105 | V-258060 | CAT II
+# dir as configured in /etc/security/faillock.conf (null when missing or commented out); the default /var/run/faillock does not persist
+missing_rhel_09_411105 := [concat(".", p) | some p in [["faillock_conf", "dir"]]; not _collected(p)]
+
+default faillock_dir_persistent := false
+
+faillock_dir_persistent if {
+	count(missing_rhel_09_411105) == 0
+	d := trim_right(_str(["faillock_conf", "dir"]), "/")
+	startswith(d, "/")
+	not d in {"/var/run/faillock", "/run/faillock"}
+}
+
+status_rhel_09_411105 := "Not_a_Finding" if faillock_dir_persistent
+
+else := "Open"
+
+detail_rhel_09_411105 := "RHEL-09-411105: Not_a_Finding" if faillock_dir_persistent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411105", concat(", ", missing_rhel_09_411105)]) if count(missing_rhel_09_411105) > 0
+
+else := "RHEL-09-411105: check failed — dir in /etc/security/faillock.conf must name a nondefault tally directory (not /var/run/faillock), e.g. /var/log/faillock"
+
+finding_rhel_09_411105 := {
+	"vuln_id": "V-258060",
+	"stig_id": "RHEL-09-411105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must ensure account lockouts persist.",
+	"check_type": "machine",
+	"status": status_rhel_09_411105,
+	"detail": detail_rhel_09_411105,
+	"fix_text": "Set dir = /var/log/faillock in /etc/security/faillock.conf",
+}
+
+# RHEL-09-412035 | V-258068 | CAT II
+# uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value as written)
+missing_rhel_09_412035 := [concat(".", p) | some p in [["profile_tmout"]]; not _collected(p)]
+
+default shell_tmout_set := false
+
+shell_tmout_set if {
+	count(missing_rhel_09_412035) == 0
+	es := input.profile_tmout
+	is_array(es)
+	some e in es
+	startswith(e.file, "/etc/profile.d/")
+	_p4_int_at_most(e.value, 600)
+}
+
+status_rhel_09_412035 := "Not_a_Finding" if shell_tmout_set
+
+else := "Open"
+
+detail_rhel_09_412035 := "RHEL-09-412035: Not_a_Finding" if shell_tmout_set
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412035", concat(", ", missing_rhel_09_412035)]) if count(missing_rhel_09_412035) > 0
+
+else := "RHEL-09-412035: check failed — a script in /etc/profile.d/ must set TMOUT to 600 or less (uncommented)"
+
+finding_rhel_09_412035 := {
+	"vuln_id": "V-258068",
+	"stig_id": "RHEL-09-412035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must automatically exit interactive command shell user sessions after 10 minutes of inactivity.",
+	"check_type": "machine",
+	"status": status_rhel_09_412035,
+	"detail": detail_rhel_09_412035,
+	"fix_text": "Add declare -xr TMOUT=600 to /etc/profile.d/tmout.sh",
+}
+
+# RHEL-09-412045 | V-258070 | CAT II
+# audit option present and uncommented in /etc/security/faillock.conf (boolean)
+missing_rhel_09_412045 := [concat(".", p) | some p in [["faillock_conf", "audit"]]; not _collected(p)]
+
+default faillock_audit := false
+
+faillock_audit if {
+	count(missing_rhel_09_412045) == 0
+	input.faillock_conf.audit == true
+}
+
+status_rhel_09_412045 := "Not_a_Finding" if faillock_audit
+
+else := "Open"
+
+detail_rhel_09_412045 := "RHEL-09-412045: Not_a_Finding" if faillock_audit
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412045", concat(", ", missing_rhel_09_412045)]) if count(missing_rhel_09_412045) > 0
+
+else := "RHEL-09-412045: check failed — /etc/security/faillock.conf must carry an uncommented audit line (the user name is logged on a failed logon)"
+
+finding_rhel_09_412045 := {
+	"vuln_id": "V-258070",
+	"stig_id": "RHEL-09-412045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must log username information when unsuccessful logon attempts occur.",
+	"check_type": "machine",
+	"status": status_rhel_09_412045,
+	"detail": detail_rhel_09_412045,
+	"fix_text": "Add the line audit to /etc/security/faillock.conf",
+}
+
+# RHEL-09-412050 | V-258071 | CAT II
+# FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out)
+missing_rhel_09_412050 := [concat(".", p) | some p in [["login_defs", "FAIL_DELAY"]]; not _collected(p)]
+
+default login_fail_delay := false
+
+login_fail_delay if {
+	count(missing_rhel_09_412050) == 0
+	n := _num(["login_defs", "FAIL_DELAY"])
+	n >= 4
+}
+
+status_rhel_09_412050 := "Not_a_Finding" if login_fail_delay
+
+else := "Open"
+
+detail_rhel_09_412050 := "RHEL-09-412050: Not_a_Finding" if login_fail_delay
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412050", concat(", ", missing_rhel_09_412050)]) if count(missing_rhel_09_412050) > 0
+
+else := "RHEL-09-412050: check failed — FAIL_DELAY in /etc/login.defs must be 4 or greater"
+
+finding_rhel_09_412050 := {
+	"vuln_id": "V-258071",
+	"stig_id": "RHEL-09-412050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enforce a delay of at least four seconds between logon prompts following a failed logon attempt.",
+	"check_type": "machine",
+	"status": status_rhel_09_412050,
+	"detail": detail_rhel_09_412050,
+	"fix_text": "Set FAIL_DELAY 4 in /etc/login.defs",
+}
+
+# RHEL-09-412055 | V-258072 | CAT II
+# the values of the uncommented umask commands in /etc/bashrc, as written (e.g. ["077"]); empty when none
+missing_rhel_09_412055 := [concat(".", p) | some p in [["shell_umask", "etc_bashrc"]]; not _collected(p)]
+
+default umask_bashrc := false
+
+umask_bashrc if {
+	count(missing_rhel_09_412055) == 0
+	_p4_umask_077("etc_bashrc")
+}
+
+status_rhel_09_412055 := "Not_a_Finding" if umask_bashrc
+
+else := "Open"
+
+detail_rhel_09_412055 := "RHEL-09-412055: Not_a_Finding" if umask_bashrc
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412055", concat(", ", missing_rhel_09_412055)]) if count(missing_rhel_09_412055) > 0
+
+else := "RHEL-09-412055: check failed — every uncommented umask command in /etc/bashrc must set 077 (at least one)"
+
+finding_rhel_09_412055 := {
+	"vuln_id": "V-258072",
+	"stig_id": "RHEL-09-412055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must define default permissions for the bash shell.",
+	"check_type": "machine",
+	"status": status_rhel_09_412055,
+	"detail": detail_rhel_09_412055,
+	"fix_text": "Set umask 077 in /etc/bashrc",
+}
+
+# RHEL-09-412060 | V-258073 | CAT II
+# the values of the uncommented umask commands in /etc/csh.cshrc, as written (e.g. ["077"]); empty when none
+missing_rhel_09_412060 := [concat(".", p) | some p in [["shell_umask", "etc_csh_cshrc"]]; not _collected(p)]
+
+default umask_cshrc := false
+
+umask_cshrc if {
+	count(missing_rhel_09_412060) == 0
+	_p4_umask_077("etc_csh_cshrc")
+}
+
+status_rhel_09_412060 := "Not_a_Finding" if umask_cshrc
+
+else := "Open"
+
+detail_rhel_09_412060 := "RHEL-09-412060: Not_a_Finding" if umask_cshrc
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412060", concat(", ", missing_rhel_09_412060)]) if count(missing_rhel_09_412060) > 0
+
+else := "RHEL-09-412060: check failed — every uncommented umask command in /etc/csh.cshrc must set 077 (at least one)"
+
+finding_rhel_09_412060 := {
+	"vuln_id": "V-258073",
+	"stig_id": "RHEL-09-412060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must define default permissions for the c shell.",
+	"check_type": "machine",
+	"status": status_rhel_09_412060,
+	"detail": detail_rhel_09_412060,
+	"fix_text": "Set umask 077 in /etc/csh.cshrc",
+}
+
+# RHEL-09-412070 | V-258075 | CAT II
+# the values of the uncommented umask commands in /etc/profile, as written (e.g. ["077"]); empty when none
+missing_rhel_09_412070 := [concat(".", p) | some p in [["shell_umask", "etc_profile"]]; not _collected(p)]
+
+default umask_profile := false
+
+umask_profile if {
+	count(missing_rhel_09_412070) == 0
+	_p4_umask_077("etc_profile")
+}
+
+status_rhel_09_412070 := "Not_a_Finding" if umask_profile
+
+else := "Open"
+
+detail_rhel_09_412070 := "RHEL-09-412070: Not_a_Finding" if umask_profile
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412070", concat(", ", missing_rhel_09_412070)]) if count(missing_rhel_09_412070) > 0
+
+else := "RHEL-09-412070: check failed — every uncommented umask command in /etc/profile must set 077 (at least one)"
+
+finding_rhel_09_412070 := {
+	"vuln_id": "V-258075",
+	"stig_id": "RHEL-09-412070",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must define default permissions for the system default profile.",
+	"check_type": "machine",
+	"status": status_rhel_09_412070,
+	"detail": detail_rhel_09_412070,
+	"fix_text": "Set umask 077 in /etc/profile",
+}
+
+# RHEL-09-412065 | V-258074 | CAT II
+# UMASK as configured in /etc/login.defs, a string so the leading zero survives (null when missing or commented out)
+missing_rhel_09_412065 := [concat(".", p) | some p in [["login_defs", "UMASK"]]; not _collected(p)]
+
+default umask_login_defs := false
+
+umask_login_defs if {
+	count(missing_rhel_09_412065) == 0
+	_str(["login_defs", "UMASK"]) == "077"
+}
+
+status_rhel_09_412065 := "Not_a_Finding" if umask_login_defs
+
+else := "Open"
+
+detail_rhel_09_412065 := "RHEL-09-412065: Not_a_Finding" if umask_login_defs
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412065", concat(", ", missing_rhel_09_412065)]) if count(missing_rhel_09_412065) > 0
+
+else := "RHEL-09-412065: check failed — UMASK in /etc/login.defs must be 077"
+
+finding_rhel_09_412065 := {
+	"vuln_id": "V-258074",
+	"stig_id": "RHEL-09-412065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must define default permissions for all authenticated users in such a way that the user can only read and modify their own files.",
+	"check_type": "machine",
+	"status": status_rhel_09_412065,
+	"detail": detail_rhel_09_412065,
+	"fix_text": "Set UMASK 077 in /etc/login.defs",
+}
+
+# RHEL-09-412080 | V-258077 | CAT II
+# effective (last uncommented) StopIdleSessionSec from systemd-analyze cat-config systemd/logind.conf; a cloud-hosted system with sshd ClientAliveInterval configured is Not Applicable
+missing_rhel_09_412080 := [concat(".", p) | some p in [["logind_conf", "StopIdleSessionSec"]]; not _collected(p)]
+
+default idle_sessions_terminated := false
+
+idle_sessions_terminated if {
+	count(missing_rhel_09_412080) == 0
+	_str(["logind_conf", "StopIdleSessionSec"]) == "600"
+}
+
+default na_rhel_09_412080 := false
+
+na_rhel_09_412080 if {
+	_attested("rhel_09_412080_cloud_hosted")
+	n := _num(["ssh_config", "ClientAliveInterval"])
+	n >= 1
+	n <= 600
+}
+
+status_rhel_09_412080 := "Not_a_Finding" if idle_sessions_terminated
+
+else := "Not_Applicable" if na_rhel_09_412080
+
+else := "Open"
+
+detail_rhel_09_412080 := "RHEL-09-412080: Not_a_Finding" if idle_sessions_terminated
+
+else := "RHEL-09-412080: Not_Applicable — cloud-hosted system with sshd ClientAliveInterval configured (RHEL-09-255100)" if na_rhel_09_412080
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412080", concat(", ", missing_rhel_09_412080)]) if count(missing_rhel_09_412080) > 0
+
+else := "RHEL-09-412080: check failed — StopIdleSessionSec in the effective logind.conf (systemd-analyze cat-config systemd/logind.conf) must be 600"
+
+finding_rhel_09_412080 := {
+	"vuln_id": "V-258077",
+	"stig_id": "RHEL-09-412080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must terminate idle user sessions.",
+	"check_type": "machine",
+	"status": status_rhel_09_412080,
+	"detail": detail_rhel_09_412080,
+	"fix_text": "Set StopIdleSessionSec=600 under [Login] in a file in /etc/systemd/logind.conf.d/ and restart systemd-logind",
+}
+
+# RHEL-09-432010 | V-258083 | CAT II
+# sudo package installed (dnf list --installed sudo)
+missing_rhel_09_432010 := [concat(".", p) | some p in [["packages", "sudo"]]; not _collected(p)]
+
+default sudo_installed := false
+
+sudo_installed if {
+	count(missing_rhel_09_432010) == 0
+	input.packages.sudo == true
+}
+
+status_rhel_09_432010 := "Not_a_Finding" if sudo_installed
+
+else := "Open"
+
+detail_rhel_09_432010 := "RHEL-09-432010: Not_a_Finding" if sudo_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-432010", concat(", ", missing_rhel_09_432010)]) if count(missing_rhel_09_432010) > 0
+
+else := "RHEL-09-432010: check failed — the sudo package must be installed"
+
+finding_rhel_09_432010 := {
+	"vuln_id": "V-258083",
+	"stig_id": "RHEL-09-432010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the sudo package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_432010,
+	"detail": detail_rhel_09_432010,
+	"fix_text": "Install the package: dnf install sudo",
+}
+
+# RHEL-09-432015 | V-258084 | CAT II
+# uncommented timestamp_timeout lines of /etc/sudoers and /etc/sudoers.d/* (input.sudoers.lines[{file, line}])
+missing_rhel_09_432015 := [concat(".", p) | some p in [["sudoers", "lines"]]; not _collected(p)]
+
+default sudo_reauthentication := false
+
+sudo_reauthentication if {
+	count(missing_rhel_09_432015) == 0
+	_p4_sudoers_collected
+	es := _p4_sudoers_matching(`(?i)timestamp_timeout`)
+	count(es) > 0
+	count({e.file | some e in es}) == 1
+	every e in es {
+		regex.match(`^\s*Defaults\s+(.*,\s*)?timestamp_timeout\s*=\s*0\s*(,.*)?$`, e.line)
+	}
+}
+
+status_rhel_09_432015 := "Not_a_Finding" if sudo_reauthentication
+
+else := "Open"
+
+detail_rhel_09_432015 := "RHEL-09-432015: Not_a_Finding" if sudo_reauthentication
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-432015", concat(", ", missing_rhel_09_432015)]) if count(missing_rhel_09_432015) > 0
+
+else := "RHEL-09-432015: check failed — exactly one of /etc/sudoers and the /etc/sudoers.d/ files must set timestamp_timeout, and every such line must be Defaults timestamp_timeout=0"
+
+finding_rhel_09_432015 := {
+	"vuln_id": "V-258084",
+	"stig_id": "RHEL-09-432015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require reauthentication when using the \"sudo\" command.",
+	"check_type": "machine",
+	"status": status_rhel_09_432015,
+	"detail": detail_rhel_09_432015,
+	"fix_text": "Add Defaults timestamp_timeout=0 to /etc/sudoers or one file in /etc/sudoers.d/ and remove any other definition",
+}
+
+# RHEL-09-432020 | V-258085 | CAT II
+# uncommented !rootpw / !targetpw / !runaspw lines of /etc/sudoers and /etc/sudoers.d/*
+missing_rhel_09_432020 := [concat(".", p) | some p in [["sudoers", "lines"]]; not _collected(p)]
+
+default sudo_invoking_user_password := false
+
+sudo_invoking_user_password if {
+	count(missing_rhel_09_432020) == 0
+	_p4_sudoers_collected
+	es := _p4_sudoers_matching(`(?i)!(rootpw|targetpw|runaspw)`)
+	count(es) > 0
+	count({e.file | some e in es}) == 1
+	every opt in {"targetpw", "rootpw", "runaspw"} {
+		some e in es
+		regex.match(sprintf(`^\s*Defaults\s+(.*,\s*)?!%s\s*(,.*)?$`, [opt]), e.line)
+	}
+}
+
+status_rhel_09_432020 := "Not_a_Finding" if sudo_invoking_user_password
+
+else := "Open"
+
+detail_rhel_09_432020 := "RHEL-09-432020: Not_a_Finding" if sudo_invoking_user_password
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-432020", concat(", ", missing_rhel_09_432020)]) if count(missing_rhel_09_432020) > 0
+
+else := "RHEL-09-432020: check failed — Defaults !targetpw, Defaults !rootpw and Defaults !runaspw must all be defined, in a single file among /etc/sudoers and /etc/sudoers.d/*"
+
+finding_rhel_09_432020 := {
+	"vuln_id": "V-258085",
+	"stig_id": "RHEL-09-432020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must use the invoking user's password for privilege escalation when using \"sudo\".",
+	"check_type": "machine",
+	"status": status_rhel_09_432020,
+	"detail": detail_rhel_09_432020,
+	"fix_text": "Add Defaults !targetpw, Defaults !rootpw and Defaults !runaspw to /etc/sudoers or a single file in /etc/sudoers.d/",
+}
+
+# RHEL-09-432025 | V-258086 | CAT II
+# uncommented lines of /etc/sudoers and /etc/sudoers.d/* containing !authenticate (case-insensitive)
+missing_rhel_09_432025 := [concat(".", p) | some p in [["sudoers", "lines"]]; not _collected(p)]
+
+default sudo_no_authenticate_bypass := false
+
+sudo_no_authenticate_bypass if {
+	count(missing_rhel_09_432025) == 0
+	_p4_sudoers_collected
+	count(_p4_sudoers_matching(`(?i)!authenticate`)) == 0
+}
+
+status_rhel_09_432025 := "Not_a_Finding" if sudo_no_authenticate_bypass
+
+else := "Open"
+
+detail_rhel_09_432025 := "RHEL-09-432025: Not_a_Finding" if sudo_no_authenticate_bypass
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-432025", concat(", ", missing_rhel_09_432025)]) if count(missing_rhel_09_432025) > 0
+
+else := "RHEL-09-432025: check failed — no uncommented line of /etc/sudoers or /etc/sudoers.d/* may contain !authenticate"
+
+finding_rhel_09_432025 := {
+	"vuln_id": "V-258086",
+	"stig_id": "RHEL-09-432025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require users to reauthenticate for privilege escalation.",
+	"check_type": "machine",
+	"status": status_rhel_09_432025,
+	"detail": detail_rhel_09_432025,
+	"fix_text": "Remove every occurrence of !authenticate from /etc/sudoers and the files in /etc/sudoers.d/",
+}
+
+# RHEL-09-432030 | V-258087 | CAT II
+# uncommented sudoers lines granting every user every command (ALL ALL=(ALL) ALL, ALL ALL=(ALL:ALL) ALL)
+missing_rhel_09_432030 := [concat(".", p) | some p in [["sudoers", "lines"]]; not _collected(p)]
+
+default sudo_not_open_to_all := false
+
+sudo_not_open_to_all if {
+	count(missing_rhel_09_432030) == 0
+	_p4_sudoers_collected
+	count(_p4_sudoers_matching(`^\s*ALL\s+ALL\s*=\s*\(\s*ALL\s*(:\s*ALL\s*)?\)\s*ALL\s*$`)) == 0
+}
+
+status_rhel_09_432030 := "Not_a_Finding" if sudo_not_open_to_all
+
+else := "Open"
+
+detail_rhel_09_432030 := "RHEL-09-432030: Not_a_Finding" if sudo_not_open_to_all
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-432030", concat(", ", missing_rhel_09_432030)]) if count(missing_rhel_09_432030) > 0
+
+else := "RHEL-09-432030: check failed — /etc/sudoers and /etc/sudoers.d/* must not carry ALL ALL=(ALL) ALL or ALL ALL=(ALL:ALL) ALL"
+
+finding_rhel_09_432030 := {
+	"vuln_id": "V-258087",
+	"stig_id": "RHEL-09-432030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must restrict privilege elevation to authorized personnel.",
+	"check_type": "machine",
+	"status": status_rhel_09_432030,
+	"detail": detail_rhel_09_432030,
+	"fix_text": "Remove the entries ALL ALL=(ALL) ALL and ALL ALL=(ALL:ALL) ALL from /etc/sudoers and /etc/sudoers.d/",
+}
+
+# RHEL-09-432035 | V-258088 | CAT II
+# uncommented lines of /etc/pam.d/su (input.pam_d.su) naming pam_wheel.so
+missing_rhel_09_432035 := [concat(".", p) | some p in [["pam_d", "su"]]; not _collected(p)]
+
+default su_restricted_to_wheel := false
+
+su_restricted_to_wheel if {
+	count(missing_rhel_09_432035) == 0
+	lines := _p4_pam("su")
+	some l in lines
+	contains(l, "pam_wheel.so")
+}
+
+status_rhel_09_432035 := "Not_a_Finding" if su_restricted_to_wheel
+
+else := "Open"
+
+detail_rhel_09_432035 := "RHEL-09-432035: Not_a_Finding" if su_restricted_to_wheel
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-432035", concat(", ", missing_rhel_09_432035)]) if count(missing_rhel_09_432035) > 0
+
+else := "RHEL-09-432035: check failed — /etc/pam.d/su must carry an uncommented pam_wheel.so line (auth required pam_wheel.so use_uid)"
+
+finding_rhel_09_432035 := {
+	"vuln_id": "V-258088",
+	"stig_id": "RHEL-09-432035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must restrict the use of the \"su\" command.",
+	"check_type": "machine",
+	"status": status_rhel_09_432035,
+	"detail": detail_rhel_09_432035,
+	"fix_text": "Uncomment auth required pam_wheel.so use_uid in /etc/pam.d/su",
+}
+
+# RHEL-09-611085 | V-258106 | CAT II
+# uncommented lines of /etc/sudoers and /etc/sudoers.d/* containing NOPASSWD (case-insensitive)
+missing_rhel_09_611085 := [concat(".", p) | some p in [["sudoers", "lines"]]; not _collected(p)]
+
+default sudo_requires_password := false
+
+sudo_requires_password if {
+	count(missing_rhel_09_611085) == 0
+	_p4_sudoers_collected
+	count(_p4_sudoers_matching(`(?i)nopasswd`)) == 0
+}
+
+sudo_requires_password if {
+	_attested("rhel_09_611085_nopasswd_mfa_documented")
+}
+
+status_rhel_09_611085 := "Not_a_Finding" if sudo_requires_password
+
+else := "Open"
+
+detail_rhel_09_611085 := "RHEL-09-611085: Not_a_Finding" if sudo_requires_password
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611085", concat(", ", missing_rhel_09_611085)]) if count(missing_rhel_09_611085) > 0
+
+else := "RHEL-09-611085: check failed — no uncommented line of /etc/sudoers or /etc/sudoers.d/* may contain NOPASSWD, unless documented with the ISSO as an organizationally defined administrative group using MFA (input.attest.rhel_09_611085_nopasswd_mfa_documented)"
+
+finding_rhel_09_611085 := {
+	"vuln_id": "V-258106",
+	"stig_id": "RHEL-09-611085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require users to provide a password for privilege escalation.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_611085,
+	"detail": detail_rhel_09_611085,
+	"fix_text": "Remove every occurrence of NOPASSWD from /etc/sudoers and the files in /etc/sudoers.d/",
+}
+
+# RHEL-09-611145 | V-258118 | CAT II
+# uncommented lines of /etc/pam.d/sudo (input.pam_d.sudo) naming pam_succeed_if
+missing_rhel_09_611145 := [concat(".", p) | some p in [["pam_d", "sudo"]]; not _collected(p)]
+
+default sudo_pam_no_succeed_if := false
+
+sudo_pam_no_succeed_if if {
+	count(missing_rhel_09_611145) == 0
+	lines := _p4_pam("sudo")
+	count([l | some l in lines; contains(l, "pam_succeed_if")]) == 0
+}
+
+status_rhel_09_611145 := "Not_a_Finding" if sudo_pam_no_succeed_if
+
+else := "Open"
+
+detail_rhel_09_611145 := "RHEL-09-611145: Not_a_Finding" if sudo_pam_no_succeed_if
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611145", concat(", ", missing_rhel_09_611145)]) if count(missing_rhel_09_611145) > 0
+
+else := "RHEL-09-611145: check failed — /etc/pam.d/sudo must not contain pam_succeed_if"
+
+finding_rhel_09_611145 := {
+	"vuln_id": "V-258118",
+	"stig_id": "RHEL-09-611145",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not be configured to bypass password requirements for privilege escalation.",
+	"check_type": "machine",
+	"status": status_rhel_09_611145,
+	"detail": detail_rhel_09_611145,
+	"fix_text": "Remove every pam_succeed_if line from /etc/pam.d/sudo",
+}
+
+# RHEL-09-611030 | V-258095 | CAT II
+# uncommented lines of /etc/pam.d/system-auth in file order (input.pam_d["system-auth"]): pam_faillock.so preauth before pam_unix.so
+missing_rhel_09_611030 := [concat(".", p) | some p in [["pam_d", "system-auth"]]; not _collected(p)]
+
+default pam_faillock_system_auth := false
+
+pam_faillock_system_auth if {
+	count(missing_rhel_09_611030) == 0
+	_p4_faillock_preauth_first("system-auth")
+}
+
+pam_faillock_system_auth if {
+	_attested("rhel_09_611030_included_pam_config")
+}
+
+status_rhel_09_611030 := "Not_a_Finding" if pam_faillock_system_auth
+
+else := "Open"
+
+detail_rhel_09_611030 := "RHEL-09-611030: Not_a_Finding" if pam_faillock_system_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611030", concat(", ", missing_rhel_09_611030)]) if count(missing_rhel_09_611030) > 0
+
+else := "RHEL-09-611030: check failed — /etc/pam.d/system-auth must carry pam_faillock.so with its preauth line before pam_unix.so, or the SA must demonstrate that the configuration is in a PAM file included or substacked from system-auth (input.attest.rhel_09_611030_included_pam_config)"
+
+finding_rhel_09_611030 := {
+	"vuln_id": "V-258095",
+	"stig_id": "RHEL-09-611030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must configure the use of the pam_faillock.so module in the /etc/pam.d/system-auth file.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_611030,
+	"detail": detail_rhel_09_611030,
+	"fix_text": "Enable faillock: authselect enable-feature with-faillock (or add the pam_faillock.so preauth / authfail / account lines to /etc/pam.d/system-auth)",
+}
+
+# RHEL-09-611035 | V-258096 | CAT II
+# uncommented lines of /etc/pam.d/password-auth in file order (input.pam_d["password-auth"]): pam_faillock.so preauth before pam_unix.so
+missing_rhel_09_611035 := [concat(".", p) | some p in [["pam_d", "password-auth"]]; not _collected(p)]
+
+default pam_faillock_password_auth := false
+
+pam_faillock_password_auth if {
+	count(missing_rhel_09_611035) == 0
+	_p4_faillock_preauth_first("password-auth")
+}
+
+pam_faillock_password_auth if {
+	_attested("rhel_09_611035_included_pam_config")
+}
+
+status_rhel_09_611035 := "Not_a_Finding" if pam_faillock_password_auth
+
+else := "Open"
+
+detail_rhel_09_611035 := "RHEL-09-611035: Not_a_Finding" if pam_faillock_password_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611035", concat(", ", missing_rhel_09_611035)]) if count(missing_rhel_09_611035) > 0
+
+else := "RHEL-09-611035: check failed — /etc/pam.d/password-auth must carry pam_faillock.so with its preauth line before pam_unix.so, or the SA must demonstrate that the configuration is in a PAM file included or substacked from system-auth (input.attest.rhel_09_611035_included_pam_config)"
+
+finding_rhel_09_611035 := {
+	"vuln_id": "V-258096",
+	"stig_id": "RHEL-09-611035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must configure the use of the pam_faillock.so module in the /etc/pam.d/password-auth file.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_611035,
+	"detail": detail_rhel_09_611035,
+	"fix_text": "Enable faillock: authselect enable-feature with-faillock (or add the pam_faillock.so preauth / authfail / account lines to /etc/pam.d/password-auth)",
+}
+
+# RHEL-09-611040 | V-258097 | CAT II
+# uncommented lines of /etc/pam.d/password-auth naming pam_pwquality.so
+missing_rhel_09_611040 := [concat(".", p) | some p in [["pam_d", "password-auth"]]; not _collected(p)]
+
+default pam_pwquality_password_auth := false
+
+pam_pwquality_password_auth if {
+	count(missing_rhel_09_611040) == 0
+	lines := _p4_pam("password-auth")
+	some l in lines
+	contains(l, "pam_pwquality.so")
+}
+
+pam_pwquality_password_auth if {
+	_attested("rhel_09_611040_included_pam_config")
+}
+
+status_rhel_09_611040 := "Not_a_Finding" if pam_pwquality_password_auth
+
+else := "Open"
+
+detail_rhel_09_611040 := "RHEL-09-611040: Not_a_Finding" if pam_pwquality_password_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611040", concat(", ", missing_rhel_09_611040)]) if count(missing_rhel_09_611040) > 0
+
+else := "RHEL-09-611040: check failed — /etc/pam.d/password-auth must carry an uncommented pam_pwquality.so line, or the SA must demonstrate that the configuration is in a PAM file included or substacked from system-auth (input.attest.rhel_09_611040_included_pam_config)"
+
+finding_rhel_09_611040 := {
+	"vuln_id": "V-258097",
+	"stig_id": "RHEL-09-611040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must ensure the password complexity module is enabled in the password-auth file.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_611040,
+	"detail": detail_rhel_09_611040,
+	"fix_text": "Add password required pam_pwquality.so to /etc/pam.d/password-auth",
+}
+
+# RHEL-09-611045 | V-258098 | CAT II
+# uncommented lines of /etc/pam.d/system-auth naming pam_pwquality.so
+missing_rhel_09_611045 := [concat(".", p) | some p in [["pam_d", "system-auth"]]; not _collected(p)]
+
+default pam_pwquality_system_auth := false
+
+pam_pwquality_system_auth if {
+	count(missing_rhel_09_611045) == 0
+	lines := _p4_pam("system-auth")
+	some l in lines
+	contains(l, "pam_pwquality.so")
+}
+
+pam_pwquality_system_auth if {
+	_attested("rhel_09_611045_included_pam_config")
+}
+
+status_rhel_09_611045 := "Not_a_Finding" if pam_pwquality_system_auth
+
+else := "Open"
+
+detail_rhel_09_611045 := "RHEL-09-611045: Not_a_Finding" if pam_pwquality_system_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611045", concat(", ", missing_rhel_09_611045)]) if count(missing_rhel_09_611045) > 0
+
+else := "RHEL-09-611045: check failed — /etc/pam.d/system-auth must carry an uncommented pam_pwquality.so line, or the SA must demonstrate that the configuration is in a PAM file included or substacked from system-auth (input.attest.rhel_09_611045_included_pam_config)"
+
+finding_rhel_09_611045 := {
+	"vuln_id": "V-258098",
+	"stig_id": "RHEL-09-611045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must ensure the password complexity module is enabled in the system-auth file.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_611045,
+	"detail": detail_rhel_09_611045,
+	"fix_text": "Add password required pam_pwquality.so to /etc/pam.d/system-auth",
+}
+
+# RHEL-09-611050 | V-258099 | CAT II
+# uncommented lines of /etc/pam.d/password-auth: rounds= on the password pam_unix.so line
+missing_rhel_09_611050 := [concat(".", p) | some p in [["pam_d", "password-auth"]]; not _collected(p)]
+
+default pam_unix_rounds_password_auth := false
+
+pam_unix_rounds_password_auth if {
+	count(missing_rhel_09_611050) == 0
+	_p4_rounds_ok("password-auth")
+}
+
+status_rhel_09_611050 := "Not_a_Finding" if pam_unix_rounds_password_auth
+
+else := "Open"
+
+detail_rhel_09_611050 := "RHEL-09-611050: Not_a_Finding" if pam_unix_rounds_password_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611050", concat(", ", missing_rhel_09_611050)]) if count(missing_rhel_09_611050) > 0
+
+else := "RHEL-09-611050: check failed — the pam_unix.so password line of /etc/pam.d/password-auth must set rounds to 100000 or greater"
+
+finding_rhel_09_611050 := {
+	"vuln_id": "V-258099",
+	"stig_id": "RHEL-09-611050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 password-auth must be configured to use a sufficient number of hashing rounds.",
+	"check_type": "machine",
+	"status": status_rhel_09_611050,
+	"detail": detail_rhel_09_611050,
+	"fix_text": "Set rounds=100000 on the password sufficient pam_unix.so sha512 line of /etc/pam.d/password-auth",
+}
+
+# RHEL-09-611055 | V-258100 | CAT II
+# uncommented lines of /etc/pam.d/system-auth: rounds= on the password pam_unix.so line
+missing_rhel_09_611055 := [concat(".", p) | some p in [["pam_d", "system-auth"]]; not _collected(p)]
+
+default pam_unix_rounds_system_auth := false
+
+pam_unix_rounds_system_auth if {
+	count(missing_rhel_09_611055) == 0
+	_p4_rounds_ok("system-auth")
+}
+
+status_rhel_09_611055 := "Not_a_Finding" if pam_unix_rounds_system_auth
+
+else := "Open"
+
+detail_rhel_09_611055 := "RHEL-09-611055: Not_a_Finding" if pam_unix_rounds_system_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611055", concat(", ", missing_rhel_09_611055)]) if count(missing_rhel_09_611055) > 0
+
+else := "RHEL-09-611055: check failed — the pam_unix.so password line of /etc/pam.d/system-auth must set rounds to 100000 or greater"
+
+finding_rhel_09_611055 := {
+	"vuln_id": "V-258100",
+	"stig_id": "RHEL-09-611055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 system-auth must be configured to use a sufficient number of hashing rounds.",
+	"check_type": "machine",
+	"status": status_rhel_09_611055,
+	"detail": detail_rhel_09_611055,
+	"fix_text": "Set rounds=100000 on the password sufficient pam_unix.so sha512 line of /etc/pam.d/system-auth",
+}
+
+# RHEL-09-611010 | V-258091 | CAT II
+# effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out)
+missing_rhel_09_611010 := [concat(".", p) | some p in [["password_policy", "retry"]]; not _collected(p)]
+
+default pwquality_retry := false
+
+pwquality_retry if {
+	count(missing_rhel_09_611010) == 0
+	n := _num(["password_policy", "retry"])
+	n >= 1
+	n <= 3
+}
+
+status_rhel_09_611010 := "Not_a_Finding" if pwquality_retry
+
+else := "Open"
+
+detail_rhel_09_611010 := "RHEL-09-611010: Not_a_Finding" if pwquality_retry
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611010", concat(", ", missing_rhel_09_611010)]) if count(missing_rhel_09_611010) > 0
+
+else := "RHEL-09-611010: check failed — retry in /etc/security/pwquality.conf(.d) must be 1 to 3"
+
+finding_rhel_09_611010 := {
+	"vuln_id": "V-258091",
+	"stig_id": "RHEL-09-611010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must ensure the password complexity module in the system-auth file is configured for three retries or less.",
+	"check_type": "machine",
+	"status": status_rhel_09_611010,
+	"detail": detail_rhel_09_611010,
+	"fix_text": "Set retry = 3 in /etc/security/pwquality.conf",
+}
+
+# RHEL-09-611060 | V-258101 | CAT II
+# enforce_for_root option present and uncommented in /etc/security/pwquality.conf or pwquality.conf.d/*.conf (boolean)
+missing_rhel_09_611060 := [concat(".", p) | some p in [["password_policy", "enforce_for_root"]]; not _collected(p)]
+
+default pwquality_enforce_for_root := false
+
+pwquality_enforce_for_root if {
+	count(missing_rhel_09_611060) == 0
+	input.password_policy.enforce_for_root == true
+}
+
+status_rhel_09_611060 := "Not_a_Finding" if pwquality_enforce_for_root
+
+else := "Open"
+
+detail_rhel_09_611060 := "RHEL-09-611060: Not_a_Finding" if pwquality_enforce_for_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611060", concat(", ", missing_rhel_09_611060)]) if count(missing_rhel_09_611060) > 0
+
+else := "RHEL-09-611060: check failed — /etc/security/pwquality.conf or pwquality.conf.d/*.conf must carry an uncommented enforce_for_root line (password complexity applies to root)"
+
+finding_rhel_09_611060 := {
+	"vuln_id": "V-258101",
+	"stig_id": "RHEL-09-611060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enforce password complexity rules for the root account.",
+	"check_type": "machine",
+	"status": status_rhel_09_611060,
+	"detail": detail_rhel_09_611060,
+	"fix_text": "Add the line enforce_for_root to /etc/security/pwquality.conf or pwquality.conf.d/*.conf",
+}
+
+# RHEL-09-611080 | V-258105 | CAT II
+# accounts printed by awk -F: '$4 < 1 {printf "%s %d\n", $1, $4}' /etc/shadow, each {name, min_days, system_account}
+missing_rhel_09_611080 := [concat(".", p) | some p in [["shadow_min_age_below_one"]]; not _collected(p)]
+
+default shadow_min_age_one_day := false
+
+shadow_min_age_one_day if {
+	count(missing_rhel_09_611080) == 0
+	accts := input.shadow_min_age_below_one
+	is_array(accts)
+	count([a | some a in accts; not a.system_account == true]) == 0
+}
+
+status_rhel_09_611080 := "Not_a_Finding" if shadow_min_age_one_day
+
+else := "Open"
+
+detail_rhel_09_611080 := "RHEL-09-611080: Not_a_Finding" if shadow_min_age_one_day
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611080", concat(", ", missing_rhel_09_611080)]) if count(missing_rhel_09_611080) > 0
+
+else := "RHEL-09-611080: check failed — no account other than a system account may have a minimum password lifetime below 1 day in /etc/shadow"
+
+finding_rhel_09_611080 := {
+	"vuln_id": "V-258105",
+	"stig_id": "RHEL-09-611080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 passwords must have a 24 hours minimum password lifetime restriction in /etc/shadow.",
+	"check_type": "machine",
+	"status": status_rhel_09_611080,
+	"detail": detail_rhel_09_611080,
+	"fix_text": "Set a 24 hour minimum password lifetime on each listed account: passwd -n 1 <user>",
+}
+
+# RHEL-09-611105 | V-258110 | CAT II
+# effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out)
+missing_rhel_09_611105 := [concat(".", p) | some p in [["password_policy", "dictcheck"]]; not _collected(p)]
+
+default pwquality_dictcheck := false
+
+pwquality_dictcheck if {
+	count(missing_rhel_09_611105) == 0
+	n := _num(["password_policy", "dictcheck"])
+	n != 0
+}
+
+status_rhel_09_611105 := "Not_a_Finding" if pwquality_dictcheck
+
+else := "Open"
+
+detail_rhel_09_611105 := "RHEL-09-611105: Not_a_Finding" if pwquality_dictcheck
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611105", concat(", ", missing_rhel_09_611105)]) if count(missing_rhel_09_611105) > 0
+
+else := "RHEL-09-611105: check failed — dictcheck in /etc/security/pwquality.conf(.d) must be set to a value other than 0"
+
+finding_rhel_09_611105 := {
+	"vuln_id": "V-258110",
+	"stig_id": "RHEL-09-611105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent the use of dictionary words for passwords.",
+	"check_type": "machine",
+	"status": status_rhel_09_611105,
+	"detail": detail_rhel_09_611105,
+	"fix_text": "Set dictcheck = 1 in /etc/security/pwquality.conf",
+}
+
+# RHEL-09-611115 | V-258112 | CAT II
+# effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611115 := [concat(".", p) | some p in [["password_policy", "difok"]]; not _collected(p)]
+
+default pwquality_difok := false
+
+pwquality_difok if {
+	count(missing_rhel_09_611115) == 0
+	n := _num(["password_policy", "difok"])
+	n >= 8
+}
+
+status_rhel_09_611115 := "Not_a_Finding" if pwquality_difok
+
+else := "Open"
+
+detail_rhel_09_611115 := "RHEL-09-611115: Not_a_Finding" if pwquality_difok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611115", concat(", ", missing_rhel_09_611115)]) if count(missing_rhel_09_611115) > 0
+
+else := "RHEL-09-611115: check failed — difok in /etc/security/pwquality.conf(.d) must be 8 or greater"
+
+finding_rhel_09_611115 := {
+	"vuln_id": "V-258112",
+	"stig_id": "RHEL-09-611115",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require the change of at least eight characters when passwords are changed.",
+	"check_type": "machine",
+	"status": status_rhel_09_611115,
+	"detail": detail_rhel_09_611115,
+	"fix_text": "Set difok = 8 in /etc/security/pwquality.conf",
+}
+
+# RHEL-09-611120 | V-258113 | CAT II
+# effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611120 := [concat(".", p) | some p in [["password_policy", "maxclassrepeat"]]; not _collected(p)]
+
+default pwquality_maxclassrepeat := false
+
+pwquality_maxclassrepeat if {
+	count(missing_rhel_09_611120) == 0
+	n := _num(["password_policy", "maxclassrepeat"])
+	n >= 1
+	n <= 4
+}
+
+status_rhel_09_611120 := "Not_a_Finding" if pwquality_maxclassrepeat
+
+else := "Open"
+
+detail_rhel_09_611120 := "RHEL-09-611120: Not_a_Finding" if pwquality_maxclassrepeat
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611120", concat(", ", missing_rhel_09_611120)]) if count(missing_rhel_09_611120) > 0
+
+else := "RHEL-09-611120: check failed — maxclassrepeat in /etc/security/pwquality.conf(.d) must be 1 to 4 (not 0)"
+
+finding_rhel_09_611120 := {
+	"vuln_id": "V-258113",
+	"stig_id": "RHEL-09-611120",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require the maximum number of repeating characters of the same character class be limited to four when passwords are changed.",
+	"check_type": "machine",
+	"status": status_rhel_09_611120,
+	"detail": detail_rhel_09_611120,
+	"fix_text": "Set maxclassrepeat = 4 in /etc/security/pwquality.conf",
+}
+
+# RHEL-09-611125 | V-258114 | CAT II
+# effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611125 := [concat(".", p) | some p in [["password_policy", "maxrepeat"]]; not _collected(p)]
+
+default pwquality_maxrepeat := false
+
+pwquality_maxrepeat if {
+	count(missing_rhel_09_611125) == 0
+	n := _num(["password_policy", "maxrepeat"])
+	n >= 0
+	n <= 3
+}
+
+status_rhel_09_611125 := "Not_a_Finding" if pwquality_maxrepeat
+
+else := "Open"
+
+detail_rhel_09_611125 := "RHEL-09-611125: Not_a_Finding" if pwquality_maxrepeat
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611125", concat(", ", missing_rhel_09_611125)]) if count(missing_rhel_09_611125) > 0
+
+else := "RHEL-09-611125: check failed — maxrepeat in /etc/security/pwquality.conf(.d) must be set to 3 or less"
+
+finding_rhel_09_611125 := {
+	"vuln_id": "V-258114",
+	"stig_id": "RHEL-09-611125",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require the maximum number of repeating characters be limited to three when passwords are changed.",
+	"check_type": "machine",
+	"status": status_rhel_09_611125,
+	"detail": detail_rhel_09_611125,
+	"fix_text": "Set maxrepeat = 3 in /etc/security/pwquality.conf",
+}
+
+# RHEL-09-611130 | V-258115 | CAT II
+# effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611130 := [concat(".", p) | some p in [["password_policy", "minclass"]]; not _collected(p)]
+
+default pwquality_minclass := false
+
+pwquality_minclass if {
+	count(missing_rhel_09_611130) == 0
+	n := _num(["password_policy", "minclass"])
+	n >= 4
+}
+
+status_rhel_09_611130 := "Not_a_Finding" if pwquality_minclass
+
+else := "Open"
+
+detail_rhel_09_611130 := "RHEL-09-611130: Not_a_Finding" if pwquality_minclass
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611130", concat(", ", missing_rhel_09_611130)]) if count(missing_rhel_09_611130) > 0
+
+else := "RHEL-09-611130: check failed — minclass in /etc/security/pwquality.conf(.d) must be 4 or greater"
+
+finding_rhel_09_611130 := {
+	"vuln_id": "V-258115",
+	"stig_id": "RHEL-09-611130",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require the change of at least four character classes when passwords are changed.",
+	"check_type": "machine",
+	"status": status_rhel_09_611130,
+	"detail": detail_rhel_09_611130,
+	"fix_text": "Set minclass = 4 in /etc/security/pwquality.conf",
+}
+
+# RHEL-09-611135 | V-258116 | CAT II
+# uncommented crypt_style of the [defaults] section of /etc/libuser.conf, read when libuser is installed; not installed is Not Applicable
+missing_rhel_09_611135 := [concat(".", p) | some p in [["packages", "libuser"]]; not _collected(p)]
+
+default libuser_sha512 := false
+
+libuser_sha512 if {
+	count(missing_rhel_09_611135) == 0
+	input.packages.libuser == true
+	_str(["libuser_conf", "defaults", "crypt_style"]) == "sha512"
+}
+
+default na_rhel_09_611135 := false
+
+na_rhel_09_611135 if {
+	input.packages.libuser == false
+}
+
+status_rhel_09_611135 := "Not_a_Finding" if libuser_sha512
+
+else := "Not_Applicable" if na_rhel_09_611135
+
+else := "Open"
+
+detail_rhel_09_611135 := "RHEL-09-611135: Not_a_Finding" if libuser_sha512
+
+else := "RHEL-09-611135: Not_Applicable — the libuser package is not installed" if na_rhel_09_611135
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611135", concat(", ", missing_rhel_09_611135)]) if count(missing_rhel_09_611135) > 0
+
+else := "RHEL-09-611135: check failed — libuser is installed: crypt_style in the [defaults] section of /etc/libuser.conf (input.libuser_conf.defaults.crypt_style) must be sha512"
+
+finding_rhel_09_611135 := {
+	"vuln_id": "V-258116",
+	"stig_id": "RHEL-09-611135",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured so that user and group account administration utilities are configured to store only encrypted representations of passwords.",
+	"check_type": "machine",
+	"status": status_rhel_09_611135,
+	"detail": detail_rhel_09_611135,
+	"fix_text": "Set crypt_style = sha512 in the [defaults] section of /etc/libuser.conf",
+}
+
+# RHEL-09-611195 | V-258128 | CAT II
+# lines returned by grep sulogin on /usr/lib/systemd/system/emergency.service (unit_file) and /etc/systemd/system/emergency.service.d/*.conf (drop_ins)
+missing_rhel_09_611195 := [concat(".", p) | some p in [["sulogin_lines", "emergency.service", "unit_file"], ["sulogin_lines", "emergency.service", "drop_ins"]]; not _collected(p)]
+
+default emergency_mode_authentication := false
+
+emergency_mode_authentication if {
+	count(missing_rhel_09_611195) == 0
+	some where in {"unit_file", "drop_ins"}
+	ls := input.sulogin_lines["emergency.service"][where]
+	is_array(ls)
+	some l in ls
+	is_string(l)
+	trim_space(l) == "ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency"
+}
+
+status_rhel_09_611195 := "Not_a_Finding" if emergency_mode_authentication
+
+else := "Open"
+
+detail_rhel_09_611195 := "RHEL-09-611195: Not_a_Finding" if emergency_mode_authentication
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611195", concat(", ", missing_rhel_09_611195)]) if count(missing_rhel_09_611195) > 0
+
+else := "RHEL-09-611195: check failed — /usr/lib/systemd/system/emergency.service or a drop-in in /etc/systemd/system/emergency.service.d/ must carry ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency"
+
+finding_rhel_09_611195 := {
+	"vuln_id": "V-258128",
+	"stig_id": "RHEL-09-611195",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require authentication to access emergency mode.",
+	"check_type": "machine",
+	"status": status_rhel_09_611195,
+	"detail": detail_rhel_09_611195,
+	"fix_text": "Create /etc/systemd/system/emergency.service.d/emergency.service.conf with [Service], ExecStart= and ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency, then systemctl daemon-reload",
+}
+
+# RHEL-09-611200 | V-258129 | CAT II
+# lines returned by grep sulogin on /usr/lib/systemd/system/rescue.service (unit_file) and /etc/systemd/system/rescue.service.d/*.conf (drop_ins)
+missing_rhel_09_611200 := [concat(".", p) | some p in [["sulogin_lines", "rescue.service", "unit_file"], ["sulogin_lines", "rescue.service", "drop_ins"]]; not _collected(p)]
+
+default single_user_mode_authentication := false
+
+single_user_mode_authentication if {
+	count(missing_rhel_09_611200) == 0
+	some where in {"unit_file", "drop_ins"}
+	ls := input.sulogin_lines["rescue.service"][where]
+	is_array(ls)
+	some l in ls
+	is_string(l)
+	trim_space(l) == "ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"
+}
+
+status_rhel_09_611200 := "Not_a_Finding" if single_user_mode_authentication
+
+else := "Open"
+
+detail_rhel_09_611200 := "RHEL-09-611200: Not_a_Finding" if single_user_mode_authentication
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611200", concat(", ", missing_rhel_09_611200)]) if count(missing_rhel_09_611200) > 0
+
+else := "RHEL-09-611200: check failed — /usr/lib/systemd/system/rescue.service or a drop-in in /etc/systemd/system/rescue.service.d/ must carry ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"
+
+finding_rhel_09_611200 := {
+	"vuln_id": "V-258129",
+	"stig_id": "RHEL-09-611200",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require authentication to access single-user mode.",
+	"check_type": "machine",
+	"status": status_rhel_09_611200,
+	"detail": detail_rhel_09_611200,
+	"fix_text": "Create /etc/systemd/system/rescue.service.d/rescue.service.conf with [Service], ExecStart= and ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue, then systemctl daemon-reload",
+}
+
+# RHEL-09-671015 | V-258231 | CAT II
+# for each interactive user, the /etc/shadow password field cut to its scheme prefix ("$6$", "$y$", "!", "*"; the hash itself is not collected): [{name, hash}]
+missing_rhel_09_671015 := [concat(".", p) | some p in [["interactive_shadow_hashes"]]; not _collected(p)]
+
+default shadow_hashes_sha512 := false
+
+shadow_hashes_sha512 if {
+	count(missing_rhel_09_671015) == 0
+	hs := input.interactive_shadow_hashes
+	is_array(hs)
+	every h in hs {
+		is_string(h.hash)
+		_shadow_hash_ok(h.hash)
+	}
+}
+
+status_rhel_09_671015 := "Not_a_Finding" if shadow_hashes_sha512
+
+else := "Open"
+
+detail_rhel_09_671015 := "RHEL-09-671015: Not_a_Finding" if shadow_hashes_sha512
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-671015", concat(", ", missing_rhel_09_671015)]) if count(missing_rhel_09_671015) > 0
+
+else := "RHEL-09-671015: check failed — every interactive user's /etc/shadow password hash must begin with $6$ (hashes starting with ! or * are not evaluated)"
+
+finding_rhel_09_671015 := {
+	"vuln_id": "V-258231",
+	"stig_id": "RHEL-09-671015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must employ FIPS 140-3-approved cryptographic hashing algorithms for all stored passwords.",
+	"check_type": "machine",
+	"status": status_rhel_09_671015,
+	"detail": detail_rhel_09_671015,
+	"fix_text": "Lock each listed account until its password is regenerated with SHA-512: passwd -l <username>",
+}
+
+# RHEL-09-671025 | V-258233 | CAT II
+# the lines of /etc/pam.d/password-auth that match ^password.*pam_unix.so (grep '^password.*pam_unix.so')
+missing_rhel_09_671025 := [concat(".", p) | some p in [["pam", "password_auth", "pam_unix_password_lines"]]; not _collected(p)]
+
+default pam_unix_sha512_password_auth := false
+
+pam_unix_sha512_password_auth if {
+	count(missing_rhel_09_671025) == 0
+	ls := input.pam.password_auth.pam_unix_password_lines
+	is_array(ls)
+	some l in ls
+	is_string(l)
+	regex.match(`^password.*pam_unix\.so.*sha512`, l)
+}
+
+pam_unix_sha512_password_auth if {
+	_attested("rhel_09_671025_included_pam_file")
+}
+
+status_rhel_09_671025 := "Not_a_Finding" if pam_unix_sha512_password_auth
+
+else := "Open"
+
+detail_rhel_09_671025 := "RHEL-09-671025: Not_a_Finding" if pam_unix_sha512_password_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-671025", concat(", ", missing_rhel_09_671025)]) if count(missing_rhel_09_671025) > 0
+
+else := "RHEL-09-671025: check failed — a password line for pam_unix.so in /etc/pam.d/password-auth must carry sha512, or the SA must demonstrate that the configuration is in a PAM file included or substacked from system-auth (input.attest.rhel_09_671025_included_pam_file)"
+
+finding_rhel_09_671025 := {
+	"vuln_id": "V-258233",
+	"stig_id": "RHEL-09-671025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 pam_unix.so module must be configured in the password-auth file to use a FIPS 140-3 approved cryptographic hashing algorithm for system authentication.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_671025,
+	"detail": detail_rhel_09_671025,
+	"fix_text": "Add sha512 to the pam_unix.so password line of /etc/pam.d/password-auth: password sufficient pam_unix.so sha512",
+}
+
+# =============================================================================
+# CAT III - LOW SEVERITY
+# =============================================================================
+
+# RHEL-09-412040 | V-258069 | CAT III
+# uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}]
+missing_rhel_09_412040 := [concat(".", p) | some p in [["limits_maxlogins"]]; not _collected(p)]
+
+default maxlogins_limited := false
+
+maxlogins_limited if {
+	count(missing_rhel_09_412040) == 0
+	es := input.limits_maxlogins
+	is_array(es)
+	count(es) > 0
+	every e in es {
+		_p4_int_at_most(e.value, 10)
+	}
+}
+
+maxlogins_limited if {
+	_attested("rhel_09_412040_maxlogins_documented")
+}
+
+status_rhel_09_412040 := "Not_a_Finding" if maxlogins_limited
+
+else := "Open"
+
+detail_rhel_09_412040 := "RHEL-09-412040: Not_a_Finding" if maxlogins_limited
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412040", concat(", ", missing_rhel_09_412040)]) if count(missing_rhel_09_412040) > 0
+
+else := "RHEL-09-412040: check failed — every uncommented maxlogins item in /etc/security/limits.conf and limits.d/*.conf must be 10 or less (at least one item), or the value must be documented with the ISSO as an operational requirement (input.attest.rhel_09_412040_maxlogins_documented)"
+
+finding_rhel_09_412040 := {
+	"vuln_id": "V-258069",
+	"stig_id": "RHEL-09-412040",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must limit the number of concurrent sessions to ten for all accounts and/or account types.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_412040,
+	"detail": detail_rhel_09_412040,
+	"fix_text": "Add * hard maxlogins 10 to /etc/security/limits.conf",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-# No CAT I rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
-# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
-cat_i_findings := array.concat([], [])
+cat_i_findings := [
+	finding_rhel_09_411100,
+	finding_rhel_09_611025,
+]
 
 cat_ii_findings := [
 	finding_rhel_09_611165,
@@ -623,11 +2537,59 @@ cat_ii_findings := [
 	finding_rhel_09_411050,
 	finding_rhel_09_411030,
 	finding_rhel_09_411110,
+	finding_rhel_09_411015,
+	finding_rhel_09_411020,
+	finding_rhel_09_411025,
+	finding_rhel_09_411035,
+	finding_rhel_09_411040,
+	finding_rhel_09_411045,
+	finding_rhel_09_411055,
+	finding_rhel_09_411060,
+	finding_rhel_09_411065,
+	finding_rhel_09_411080,
+	finding_rhel_09_411090,
+	finding_rhel_09_411095,
+	finding_rhel_09_411105,
+	finding_rhel_09_412035,
+	finding_rhel_09_412045,
+	finding_rhel_09_412050,
+	finding_rhel_09_412055,
+	finding_rhel_09_412060,
+	finding_rhel_09_412070,
+	finding_rhel_09_412065,
+	finding_rhel_09_412080,
+	finding_rhel_09_432010,
+	finding_rhel_09_432015,
+	finding_rhel_09_432020,
+	finding_rhel_09_432025,
+	finding_rhel_09_432030,
+	finding_rhel_09_432035,
+	finding_rhel_09_611085,
+	finding_rhel_09_611145,
+	finding_rhel_09_611030,
+	finding_rhel_09_611035,
+	finding_rhel_09_611040,
+	finding_rhel_09_611045,
+	finding_rhel_09_611050,
+	finding_rhel_09_611055,
+	finding_rhel_09_611010,
+	finding_rhel_09_611060,
+	finding_rhel_09_611080,
+	finding_rhel_09_611105,
+	finding_rhel_09_611115,
+	finding_rhel_09_611120,
+	finding_rhel_09_611125,
+	finding_rhel_09_611130,
+	finding_rhel_09_611135,
+	finding_rhel_09_611195,
+	finding_rhel_09_611200,
+	finding_rhel_09_671015,
+	finding_rhel_09_671025,
 ]
 
-# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
-# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
-cat_iii_findings := array.concat([], [])
+cat_iii_findings := [
+	finding_rhel_09_412040,
+]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 

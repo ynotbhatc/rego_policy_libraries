@@ -16,12 +16,16 @@ green_fixture := {
 		"net.ipv6.conf.all.accept_redirects": "0",
 		"net.ipv6.conf.all.accept_source_route": "0",
 	},
-	"modprobe": {"bluetooth": {
-		"blacklisted": true,
-		"install": "/bin/false",
-	}},
+	"modprobe": {
+		"bluetooth": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+	},
 	"promiscuous_interfaces": [],
-	"services": {"firewalld": "active"},
+	"services": {
+		"firewalld": "active",
+	},
 	"wireless_interfaces": [],
 }
 

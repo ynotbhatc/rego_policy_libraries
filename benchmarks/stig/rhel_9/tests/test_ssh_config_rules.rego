@@ -6,22 +6,42 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
+	"openssh_config": {
+		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
+		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
+	},
 	"opensshserver_config": {
 		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
 		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
 	},
+	"packages": {
+		"openssh-clients": true,
+		"openssh-server": true,
+	},
+	"services": {
+		"sshd": "active",
+	},
+	"shosts_equiv_files": [],
+	"shosts_files": [],
 	"ssh_config": {
 		"ClientAliveCountMax": 1,
 		"ClientAliveInterval": 600,
+		"GSSAPIAuthentication": "no",
 		"HostbasedAuthentication": "no",
 		"IgnoreRhosts": "yes",
 		"IgnoreUserKnownHosts": "yes",
+		"KerberosAuthentication": "no",
+		"LogLevel": "verbose",
 		"PermitEmptyPasswords": "no",
 		"PermitRootLogin": "no",
+		"PermitUserEnvironment": "no",
 		"PrintLastLog": "yes",
+		"PubkeyAuthentication": "yes",
+		"RekeyLimit": "1G 1h",
 		"StrictModes": "yes",
 		"UsePAM": "yes",
 		"X11Forwarding": "no",
+		"X11UseLocalhost": "yes",
 	},
 }
 
@@ -330,4 +350,333 @@ test_rhel_09_255095_evidence_missing_1 if {
 
 test_rhel_09_255095_pass_2 if {
 	data.stig.rhel_9.ssh_config.status_rhel_09_255095 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveCountMax": "1"}})
+}
+
+test_rhel_09_252070_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_252070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252070_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_252070 with input as object.union(green_fixture, {"shosts_equiv_files": ["/etc/ssh/shosts.equiv"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252070: check failed")
+}
+
+test_rhel_09_252070_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_252070 with input as json.remove(green_fixture, [["shosts_equiv_files"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252070: evidence missing — shosts_equiv_files")
+}
+
+test_rhel_09_252075_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_252075 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252075_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_252075 with input as object.union(green_fixture, {"shosts_files": ["/home/disauser/.shosts"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252075: check failed")
+}
+
+test_rhel_09_252075_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_252075 with input as json.remove(green_fixture, [["shosts_files"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252075: evidence missing — shosts_files")
+}
+
+test_rhel_09_255010_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255010_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255010 with input as object.union(green_fixture, {"packages": {"openssh-server": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255010: check failed")
+}
+
+test_rhel_09_255010_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255010 with input as json.remove(green_fixture, [["packages", "openssh-server"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255010: evidence missing — packages.openssh-server")
+}
+
+test_rhel_09_255020_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255020_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255020 with input as object.union(green_fixture, {"packages": {"openssh-clients": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255020: check failed")
+}
+
+test_rhel_09_255020_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255020 with input as json.remove(green_fixture, [["packages", "openssh-clients"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255020: evidence missing — packages.openssh-clients")
+}
+
+test_rhel_09_255015_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255015_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255015 with input as object.union(green_fixture, {"services": {"sshd": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255015: check failed")
+}
+
+test_rhel_09_255015_fail_2 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255015 with input as object.union(green_fixture, {"services": {"sshd": "failed"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255015: check failed")
+}
+
+test_rhel_09_255015_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255015 with input as json.remove(green_fixture, [["services", "sshd"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255015: evidence missing — services.sshd")
+}
+
+test_rhel_09_255030_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255030_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255030 with input as object.union(green_fixture, {"ssh_config": {"LogLevel": "INFO"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255030: check failed")
+}
+
+test_rhel_09_255030_fail_2 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255030 with input as object.union(green_fixture, {"ssh_config": {"LogLevel": "DEBUG"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255030: check failed")
+}
+
+test_rhel_09_255030_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255030 with input as json.remove(green_fixture, [["ssh_config", "LogLevel"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255030: evidence missing — ssh_config.LogLevel")
+}
+
+test_rhel_09_255030_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255030 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"LogLevel": "VERBOSE"}})
+}
+
+test_rhel_09_255035_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255035_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255035 with input as object.union(green_fixture, {"ssh_config": {"PubkeyAuthentication": "no"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255035: check failed")
+}
+
+test_rhel_09_255035_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255035 with input as json.remove(green_fixture, [["ssh_config", "PubkeyAuthentication"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255035: evidence missing — ssh_config.PubkeyAuthentication")
+}
+
+test_rhel_09_255035_not_applicable_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255035 with input as object.union(green_fixture, {"ssh_config": {"PubkeyAuthentication": null}, "attest": {"rhel_09_255035_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_255035_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255035 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"PubkeyAuthentication": "YES"}})
+}
+
+test_rhel_09_255085_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255085 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255085_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255085 with input as object.union(green_fixture, {"ssh_config": {"PermitUserEnvironment": "yes"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255085: check failed")
+}
+
+test_rhel_09_255085_fail_2 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255085 with input as object.union(green_fixture, {"ssh_config": {"PermitUserEnvironment": "LANG,LC_*"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255085: check failed")
+}
+
+test_rhel_09_255085_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255085 with input as json.remove(green_fixture, [["ssh_config", "PermitUserEnvironment"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255085: evidence missing — ssh_config.PermitUserEnvironment")
+}
+
+test_rhel_09_255085_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255085 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"PermitUserEnvironment": "NO"}})
+}
+
+test_rhel_09_255175_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255175 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255175_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255175 with input as object.union(green_fixture, {"ssh_config": {"X11UseLocalhost": "no"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255175: check failed")
+}
+
+test_rhel_09_255175_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255175 with input as json.remove(green_fixture, [["ssh_config", "X11UseLocalhost"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255175: evidence missing — ssh_config.X11UseLocalhost")
+}
+
+test_rhel_09_255175_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255175 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"X11UseLocalhost": "YES"}})
+}
+
+test_rhel_09_255135_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255135 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255135_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255135 with input as object.union(green_fixture, {"ssh_config": {"GSSAPIAuthentication": "yes"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255135: check failed")
+}
+
+test_rhel_09_255135_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255135 with input as json.remove(green_fixture, [["ssh_config", "GSSAPIAuthentication"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255135: evidence missing — ssh_config.GSSAPIAuthentication")
+}
+
+test_rhel_09_255135_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255135 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"GSSAPIAuthentication": "yes"}, "attest": {"rhel_09_255135_gssapi_documented": true}})
+}
+
+test_rhel_09_255135_pass_3 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255135 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"GSSAPIAuthentication": "NO"}})
+}
+
+test_rhel_09_255140_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255140 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255140_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255140 with input as object.union(green_fixture, {"ssh_config": {"KerberosAuthentication": "yes"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255140: check failed")
+}
+
+test_rhel_09_255140_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255140 with input as json.remove(green_fixture, [["ssh_config", "KerberosAuthentication"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255140: evidence missing — ssh_config.KerberosAuthentication")
+}
+
+test_rhel_09_255140_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255140 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"KerberosAuthentication": "yes"}, "attest": {"rhel_09_255140_kerberos_documented": true}})
+}
+
+test_rhel_09_255140_pass_3 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255140 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"KerberosAuthentication": "NO"}})
+}
+
+test_rhel_09_255090_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255090 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255090_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255090 with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "1G"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255090: check failed")
+}
+
+test_rhel_09_255090_fail_2 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255090 with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "default none"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255090: check failed")
+}
+
+test_rhel_09_255090_fail_3 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255090 with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "1G none"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255090: check failed")
+}
+
+test_rhel_09_255090_fail_4 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255090 with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "default 1h"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255090: check failed")
+}
+
+test_rhel_09_255090_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255090 with input as json.remove(green_fixture, [["ssh_config", "RekeyLimit"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255090: evidence missing — ssh_config.RekeyLimit")
+}
+
+test_rhel_09_255090_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255090 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "512M 30m"}})
+}
+
+test_rhel_09_255090_pass_3 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255090 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "1073741824 3600"}})
+}
+
+test_rhel_09_255090_pass_4 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255090 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"RekeyLimit": "1g 1h30m"}})
+}
+
+test_rhel_09_255064_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255064 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255064_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255064 with input as object.union(green_fixture, {"openssh_config": {"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr,aes192-ctr"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255064: check failed")
+}
+
+test_rhel_09_255064_fail_2 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255064 with input as object.union(green_fixture, {"openssh_config": {"Ciphers": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255064: check failed")
+}
+
+test_rhel_09_255064_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255064 with input as json.remove(green_fixture, [["openssh_config", "Ciphers"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255064: evidence missing — openssh_config.Ciphers")
+}
+
+test_rhel_09_255064_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255064 == "Not_a_Finding" with input as object.union(green_fixture, {"openssh_config": {"Ciphers": "aes256-ctr"}})
+}
+
+test_rhel_09_255070_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_255070_fail_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255070 with input as object.union(green_fixture, {"openssh_config": {"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255070: check failed")
+}
+
+test_rhel_09_255070_fail_2 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255070 with input as object.union(green_fixture, {"openssh_config": {"MACs": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255070: check failed")
+}
+
+test_rhel_09_255070_evidence_missing_1 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255070 with input as json.remove(green_fixture, [["openssh_config", "MACs"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255070: evidence missing — openssh_config.MACs")
+}
+
+test_rhel_09_255070_pass_2 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255070 == "Not_a_Finding" with input as object.union(green_fixture, {"openssh_config": {"MACs": "hmac-sha2-512-etm@openssh.com"}})
 }

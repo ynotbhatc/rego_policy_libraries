@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 25
-#     cited: 24
+#     checks: 109
+#     cited: 108
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_9.configuration_management
 
 # DISA STIG for RHEL 9 - Configuration Management Module
@@ -141,6 +141,135 @@ _aide_check_line(l) if {
 }
 
 _aide_notifies if _attested("rhel_09_651015_notification")
+
+# the whitespace-separated arguments of a kernel command line
+_cmdline_tokens(s) := {t | some t in regex.split(`\s+`, trim_space(s)); t != ""}
+
+# every boot entry (input.grub.kernel_args: the args="..." value of each entry of grubby --info=ALL) carries arg
+_grubby_all_have(arg) if {
+	args := input.grub.kernel_args
+	is_array(args)
+	count(args) > 0
+	every a in args {
+		is_string(a)
+		arg in _cmdline_tokens(a)
+	}
+}
+
+# the uncommented GRUB_CMDLINE_LINUX of /etc/default/grub carries arg
+_grub_default_has(arg) if {
+	s := _str(["grub", "default_cmdline_linux"])
+	arg in _cmdline_tokens(s)
+}
+
+# every uncommented "core" line of /etc/security/limits.conf and limits.d/*.conf (input.limits_conf.core:
+# [{domain, type, value}]) sets the value 0
+_core_limits_all_zero if {
+	xs := input.limits_conf.core
+	is_array(xs)
+	every x in xs {
+		sprintf("%v", [x.value]) == "0"
+	}
+}
+
+# the NFS entries of /etc/fstab (input.fstab: [{mount_point, fs_type, options}], uncommented entries; fs_type nfs / nfs4)
+_fstab_nfs := [e | some e in input.fstab; is_string(e.fs_type); startswith(lower(e.fs_type), "nfs")]
+
+# an fstab entry carries the mount option (options: the comma-separated fourth field)
+_fstab_has_opt(e, opt) if {
+	is_string(e.options)
+	opt in {trim_space(x) | some x in split(e.options, ",")}
+}
+
+# a mount the RHEL-09-231200 grep selects: device under /dev, mount point below / (not / itself)
+_nonroot_dev_mount(m) if {
+	is_string(m.device)
+	startswith(m.device, "/dev")
+	is_string(m.mount)
+	regex.match(`^/\S`, m.mount)
+}
+
+# the mount entry lists the option (an entry without an options list does not)
+_mount_has_option(m, opt) if {
+	is_array(m.options)
+	opt in m.options
+}
+
+# the file system has a crypt parent block device whose cryptsetup type is LUKS (LUKS1 / LUKS2)
+_luks_parent(f) if {
+	some c in f.crypt
+	is_string(c.type)
+	startswith(upper(c.type), "LUKS")
+}
+
+# a gsettings boolean (`gsettings get` / `gsettings writable`): "true" / "false" as printed, or a JSON boolean
+_gs_bool(path) := lower(s) if s := _str(path)
+
+_gs_bool(path) := "true" if object.get(input, path, null) == true
+
+_gs_bool(path) := "false" if object.get(input, path, null) == false
+
+# a gsettings unsigned value as printed ("uint32 600"), a bare decimal string, or a number; undefined otherwise
+_gs_uint(path) := n if {
+	v := object.get(input, path, null)
+	is_number(v)
+	n := v
+}
+
+_gs_uint(path) := n if {
+	v := object.get(input, path, null)
+	is_string(v)
+	m := regex.find_all_string_submatch_n(`^\s*(?:uint32\s+)?([0-9]+)\s*$`, v, 1)
+	n := to_number(m[0][1])
+}
+
+# the gsettings string at path as GNOME shows it: outer quotes dropped, the literal \n sequences (formatting only)
+# and every whitespace run turned into one space
+_gs_text(path) := t if {
+	s := _str(path)
+	t := _squash(replace(trim(trim_space(s), "'\""), "\\n", " "))
+}
+
+# input.sudoers.lines: [{file, line}], the uncommented lines of /etc/sudoers and /etc/sudoers.d/*
+_p4_sudoers := [e | some e in input.sudoers.lines; is_string(e.line); is_string(e.file)]
+
+_p4_sudoers_collected if is_array(input.sudoers.lines)
+
+# the sudoers entries whose line matches a (case-insensitive) pattern, as the check's grep -i returns them
+_p4_sudoers_matching(pattern) := [e | some e in _p4_sudoers; regex.match(pattern, e.line)]
+
+# input.pam_d[<file>]: the uncommented lines of /etc/pam.d/<file>, in file order
+_p4_pam(file) := [l | some l in input.pam_d[file]; is_string(l)] if is_array(input.pam_d[file])
+
+# a pam_faillock.so preauth line stands before every pam_unix.so line of the file
+_p4_faillock_preauth_first(file) if {
+	lines := _p4_pam(file)
+	some i, l in lines
+	contains(l, "pam_faillock.so")
+	regex.match(`(^|\s)preauth(\s|$)`, l)
+	every j, u in lines {
+		_p4_not_unix_before(u, j, i)
+	}
+}
+
+_p4_not_unix_before(u, _, _) if not contains(u, "pam_unix.so")
+
+_p4_not_unix_before(u, j, i) if {
+	contains(u, "pam_unix.so")
+	j > i
+}
+
+# the rounds= values on the lines of a PAM file
+_p4_rounds(file) := [v | some l in _p4_pam(file); some m in regex.find_all_string_submatch_n(`(^|\s)rounds=(\S*)`, l, -1); v := m[2]]
+
+_p4_rounds_ok(file) if {
+	some l in _p4_pam(file)
+	regex.match(`^\s*password\s.*pam_unix\.so\s(.*\s)?rounds=[0-9]+(\s|$)`, l)
+	every v in _p4_rounds(file) {
+		regex.match(`^[0-9]+$`, v)
+		to_number(v) >= 100000
+	}
+}
 
 # =============================================================================
 # CAT I - HIGH SEVERITY
@@ -280,6 +409,200 @@ finding_rhel_09_215105 := {
 	"status": status_rhel_09_215105,
 	"detail": detail_rhel_09_215105,
 	"fix_text": "Set the FIPS policy: update-crypto-policies --set FIPS, then reboot",
+}
+
+# RHEL-09-211010 | V-257777 | CAT I
+# content of /etc/redhat-release; whether that minor release is still supported is an attestation (the supported set changes over time)
+missing_rhel_09_211010 := [concat(".", p) | some p in [["os_release", "redhat_release"]]; not _collected(p)]
+
+default vendor_supported_release := false
+
+vendor_supported_release if {
+	count(missing_rhel_09_211010) == 0
+	s := _str(["os_release", "redhat_release"])
+	regex.match(`^Red Hat Enterprise Linux release 9\.[0-9]+`, s)
+	_attested("rhel_09_211010_release_supported")
+}
+
+status_rhel_09_211010 := "Not_a_Finding" if vendor_supported_release
+
+else := "Open"
+
+detail_rhel_09_211010 := "RHEL-09-211010: Not_a_Finding" if vendor_supported_release
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211010", concat(", ", missing_rhel_09_211010)]) if count(missing_rhel_09_211010) > 0
+
+else := "RHEL-09-211010: check failed — /etc/redhat-release must name a RHEL 9 release and the SA must attest that this release is vendor supported (input.attest.rhel_09_211010_release_supported)"
+
+finding_rhel_09_211010 := {
+	"vuln_id": "V-257777",
+	"stig_id": "RHEL-09-211010",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must be a vendor-supported release.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_211010,
+	"detail": detail_rhel_09_211010,
+	"fix_text": "Upgrade to a supported version of RHEL 9",
+}
+
+# RHEL-09-211045 | V-257784 | CAT I
+# CtrlAltDelBurstAction as configured under /etc/systemd/system* (grep -iR; null when missing or commented out)
+missing_rhel_09_211045 := [concat(".", p) | some p in [["systemd_system_conf", "CtrlAltDelBurstAction"]]; not _collected(p)]
+
+default ctrl_alt_del_burst_disabled := false
+
+ctrl_alt_del_burst_disabled if {
+	count(missing_rhel_09_211045) == 0
+	_str(["systemd_system_conf", "CtrlAltDelBurstAction"]) == "none"
+}
+
+status_rhel_09_211045 := "Not_a_Finding" if ctrl_alt_del_burst_disabled
+
+else := "Open"
+
+detail_rhel_09_211045 := "RHEL-09-211045: Not_a_Finding" if ctrl_alt_del_burst_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211045", concat(", ", missing_rhel_09_211045)]) if count(missing_rhel_09_211045) > 0
+
+else := "RHEL-09-211045: check failed — CtrlAltDelBurstAction must be set to none (uncommented) in /etc/systemd/system.conf or /etc/systemd/system.conf.d/"
+
+finding_rhel_09_211045 := {
+	"vuln_id": "V-257784",
+	"stig_id": "RHEL-09-211045",
+	"severity": "CAT I",
+	"rule_title": "The systemd Ctrl-Alt-Delete burst key sequence in RHEL 9 must be disabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_211045,
+	"detail": detail_rhel_09_211045,
+	"fix_text": "Add CtrlAltDelBurstAction=none under [Manager] in a /etc/systemd/system.conf.d/ drop-in and run systemctl daemon-reload",
+}
+
+# RHEL-09-212020 | V-257789 | CAT I
+# the value of set superusers= in /etc/grub2.cfg (grep -A1 superusers; null when not set); the common names the check lists are refused
+missing_rhel_09_212020 := [concat(".", p) | some p in [["grub", "superusers"]]; not _collected(p)]
+
+default grub_superuser_unique := false
+
+grub_superuser_unique if {
+	count(missing_rhel_09_212020) == 0
+	s := _kw(["grub", "superusers"])
+	s != ""
+	not s in {"root", "admin", "administrator"}
+}
+
+status_rhel_09_212020 := "Not_a_Finding" if grub_superuser_unique
+
+else := "Open"
+
+detail_rhel_09_212020 := "RHEL-09-212020: Not_a_Finding" if grub_superuser_unique
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212020", concat(", ", missing_rhel_09_212020)]) if count(missing_rhel_09_212020) > 0
+
+else := "RHEL-09-212020: check failed — set superusers= in /etc/grub2.cfg must name an account that is not root, admin or administrator"
+
+finding_rhel_09_212020 := {
+	"vuln_id": "V-257789",
+	"stig_id": "RHEL-09-212020",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must require a unique superusers name upon booting into single-user and maintenance modes.",
+	"check_type": "machine",
+	"status": status_rhel_09_212020,
+	"detail": detail_rhel_09_212020,
+	"fix_text": "Set a unique name in /etc/grub.d/01_users (set superusers=\"<accountname>\"; export superusers) and run grub2-mkconfig -o /boot/grub2/grub.cfg",
+}
+
+# RHEL-09-231190 | V-257879 | CAT I
+# input.disk_encryption.filesystems[{mount, device, crypt: [{name, type}]}]: each persistent file system and the crypt-type parents in its lsblk tree with the cryptsetup status type; a documented and approved reason for no OS-level encryption is Not Applicable
+missing_rhel_09_231190 := [concat(".", p) | some p in [["disk_encryption", "filesystems"]]; not _collected(p)]
+
+default persistent_filesystems_encrypted := false
+
+persistent_filesystems_encrypted if {
+	count(missing_rhel_09_231190) == 0
+	fss := input.disk_encryption.filesystems
+	is_array(fss)
+	checked := [f | some f in fss; not f.mount in {"/boot", "/boot/efi"}]
+	count(checked) > 0
+	every f in checked {
+		_luks_parent(f)
+	}
+}
+
+persistent_filesystems_encrypted if {
+	_attested("rhel_09_231190_encryption_evidence")
+}
+
+default na_rhel_09_231190 := false
+
+na_rhel_09_231190 if {
+	_attested("rhel_09_231190_no_os_encryption_approved")
+}
+
+status_rhel_09_231190 := "Not_a_Finding" if persistent_filesystems_encrypted
+
+else := "Not_Applicable" if na_rhel_09_231190
+
+else := "Open"
+
+detail_rhel_09_231190 := "RHEL-09-231190: Not_a_Finding" if persistent_filesystems_encrypted
+
+else := "RHEL-09-231190: Not_Applicable — a documented and approved reason for not having data-at-rest encryption at the operating system level" if na_rhel_09_231190
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231190", concat(", ", missing_rhel_09_231190)]) if count(missing_rhel_09_231190) > 0
+
+else := "RHEL-09-231190: check failed — every persistent file system except /boot and /boot/efi must sit on a crypt block device of type LUKS (lsblk --tree, cryptsetup status), or the administrator must show how the file systems are encrypted (input.attest.rhel_09_231190_encryption_evidence)"
+
+finding_rhel_09_231190 := {
+	"vuln_id": "V-257879",
+	"stig_id": "RHEL-09-231190",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure or modification of all information that requires at rest protection.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_231190,
+	"detail": detail_rhel_09_231190,
+	"fix_text": "Encrypt the partitions holding persistent file systems with LUKS (dedicate an encrypted partition in the layout)",
+}
+
+# RHEL-09-271040 | V-258018 | CAT I
+# AutomaticLoginEnable as set (uncommented) in /etc/gdm/custom.conf, null when not set; no GUI installed is Not Applicable
+missing_rhel_09_271040 := [concat(".", p) | some p in [["gdm_custom_conf", "AutomaticLoginEnable"]]; not _collected(p)]
+
+default gui_automatic_login_disabled := false
+
+gui_automatic_login_disabled if {
+	count(missing_rhel_09_271040) == 0
+	_kw(["gdm_custom_conf", "AutomaticLoginEnable"]) == "false"
+}
+
+default na_rhel_09_271040 := false
+
+na_rhel_09_271040 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271040 := "Not_a_Finding" if gui_automatic_login_disabled
+
+else := "Not_Applicable" if na_rhel_09_271040
+
+else := "Open"
+
+detail_rhel_09_271040 := "RHEL-09-271040: Not_a_Finding" if gui_automatic_login_disabled
+
+else := "RHEL-09-271040: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271040
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271040", concat(", ", missing_rhel_09_271040)]) if count(missing_rhel_09_271040) > 0
+
+else := "RHEL-09-271040: check failed — AutomaticLoginEnable in /etc/gdm/custom.conf must be set to false"
+
+finding_rhel_09_271040 := {
+	"vuln_id": "V-258018",
+	"stig_id": "RHEL-09-271040",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must not allow unattended or automatic logon via the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271040,
+	"detail": detail_rhel_09_271040,
+	"fix_text": "Set AutomaticLoginEnable=false in the [daemon] section of /etc/gdm/custom.conf",
 }
 
 # =============================================================================
@@ -906,6 +1229,2894 @@ finding_rhel_09_231055 := {
 	"fix_text": "Mount /home with the noexec option in /etc/fstab",
 }
 
+# RHEL-09-211030 | V-257781 | CAT II
+# output of systemctl get-default
+missing_rhel_09_211030 := [concat(".", p) | some p in [["systemd", "default_target"]]; not _collected(p)]
+
+default default_target_multi_user := false
+
+default_target_multi_user if {
+	count(missing_rhel_09_211030) == 0
+	_str(["systemd", "default_target"]) == "multi-user.target"
+}
+
+default_target_multi_user if {
+	_attested("rhel_09_211030_gui_required")
+}
+
+status_rhel_09_211030 := "Not_a_Finding" if default_target_multi_user
+
+else := "Open"
+
+detail_rhel_09_211030 := "RHEL-09-211030: Not_a_Finding" if default_target_multi_user
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211030", concat(", ", missing_rhel_09_211030)]) if count(missing_rhel_09_211030) > 0
+
+else := "RHEL-09-211030: check failed — systemctl get-default must return multi-user.target, or the ISSO must have a documented requirement for a graphical user interface (input.attest.rhel_09_211030_gui_required)"
+
+finding_rhel_09_211030 := {
+	"vuln_id": "V-257781",
+	"stig_id": "RHEL-09-211030",
+	"severity": "CAT II",
+	"rule_title": "The graphical display manager must not be the default target on RHEL 9 unless approved.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_211030,
+	"detail": detail_rhel_09_211030,
+	"fix_text": "Set the default target: systemctl set-default multi-user.target (or document the GUI requirement with the ISSO)",
+}
+
+# RHEL-09-211055 | V-257786 | CAT II
+# debug-shell.service load state (systemctl show -p LoadState): masked, or not-found when the unit does not exist
+missing_rhel_09_211055 := [concat(".", p) | some p in [["systemd_units", "debug-shell.service", "load_state"]]; not _collected(p)]
+
+default debug_shell_masked := false
+
+debug_shell_masked if {
+	count(missing_rhel_09_211055) == 0
+	_kw(["systemd_units", "debug-shell.service", "load_state"]) in {"masked", "not-found"}
+}
+
+status_rhel_09_211055 := "Not_a_Finding" if debug_shell_masked
+
+else := "Open"
+
+detail_rhel_09_211055 := "RHEL-09-211055: Not_a_Finding" if debug_shell_masked
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211055", concat(", ", missing_rhel_09_211055)]) if count(missing_rhel_09_211055) > 0
+
+else := "RHEL-09-211055: check failed — debug-shell.service must be masked (systemctl status: Loaded: masked), not loaded and unmasked"
+
+finding_rhel_09_211055 := {
+	"vuln_id": "V-257786",
+	"stig_id": "RHEL-09-211055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 debug-shell systemd service must be disabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_211055,
+	"detail": detail_rhel_09_211055,
+	"fix_text": "Mask the service: systemctl disable --now debug-shell.service && systemctl mask --now debug-shell.service",
+}
+
+# RHEL-09-212015 | V-257788 | CAT II
+# input.grub.kernel_args: the args value of every boot entry printed by grubby --info=ALL, one string per entry
+missing_rhel_09_212015 := [concat(".", p) | some p in [["grub", "kernel_args"]]; not _collected(p)]
+
+default no_interactive_boot := false
+
+no_interactive_boot if {
+	count(missing_rhel_09_212015) == 0
+	args := input.grub.kernel_args
+	is_array(args)
+	count(args) > 0
+	every a in args {
+		is_string(a)
+		not contains(a, "systemd.confirm_spawn")
+	}
+}
+
+status_rhel_09_212015 := "Not_a_Finding" if no_interactive_boot
+
+else := "Open"
+
+detail_rhel_09_212015 := "RHEL-09-212015: Not_a_Finding" if no_interactive_boot
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212015", concat(", ", missing_rhel_09_212015)]) if count(missing_rhel_09_212015) > 0
+
+else := "RHEL-09-212015: check failed — no boot entry (grubby --info=ALL, args) may carry systemd.confirm_spawn"
+
+finding_rhel_09_212015 := {
+	"vuln_id": "V-257788",
+	"stig_id": "RHEL-09-212015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the ability of systemd to spawn an interactive boot process.",
+	"check_type": "machine",
+	"status": status_rhel_09_212015,
+	"detail": detail_rhel_09_212015,
+	"fix_text": "Remove the argument: grubby --update-kernel=ALL --remove-args=\"systemd.confirm_spawn\"",
+}
+
+# RHEL-09-212035 | V-257792 | CAT II
+# vsyscall=none in every boot entry's args (grubby --info=ALL) and in the uncommented GRUB_CMDLINE_LINUX of /etc/default/grub
+missing_rhel_09_212035 := [concat(".", p) | some p in [["grub", "kernel_args"], ["grub", "default_cmdline_linux"]]; not _collected(p)]
+
+default vsyscall_disabled := false
+
+vsyscall_disabled if {
+	count(missing_rhel_09_212035) == 0
+	_grubby_all_have("vsyscall=none")
+	_grub_default_has("vsyscall=none")
+}
+
+vsyscall_disabled if {
+	_attested("rhel_09_212035_vsyscall_documented")
+}
+
+status_rhel_09_212035 := "Not_a_Finding" if vsyscall_disabled
+
+else := "Open"
+
+detail_rhel_09_212035 := "RHEL-09-212035: Not_a_Finding" if vsyscall_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212035", concat(", ", missing_rhel_09_212035)]) if count(missing_rhel_09_212035) > 0
+
+else := "RHEL-09-212035: check failed — every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry vsyscall=none, or the use of virtual system calls must be documented with the ISSO as an operational requirement (input.attest.rhel_09_212035_vsyscall_documented)"
+
+finding_rhel_09_212035 := {
+	"vuln_id": "V-257792",
+	"stig_id": "RHEL-09-212035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable virtual system calls.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_212035,
+	"detail": detail_rhel_09_212035,
+	"fix_text": "Disable virtual system calls: grubby --update-kernel=ALL --args=\"vsyscall=none\" and add vsyscall=none to GRUB_CMDLINE_LINUX in /etc/default/grub",
+}
+
+# RHEL-09-212040 | V-257793 | CAT II
+# page_poison=1 in every boot entry's args (grubby --info=ALL) and in the uncommented GRUB_CMDLINE_LINUX of /etc/default/grub
+missing_rhel_09_212040 := [concat(".", p) | some p in [["grub", "kernel_args"], ["grub", "default_cmdline_linux"]]; not _collected(p)]
+
+default page_poison_enabled := false
+
+page_poison_enabled if {
+	count(missing_rhel_09_212040) == 0
+	_grubby_all_have("page_poison=1")
+	_grub_default_has("page_poison=1")
+}
+
+status_rhel_09_212040 := "Not_a_Finding" if page_poison_enabled
+
+else := "Open"
+
+detail_rhel_09_212040 := "RHEL-09-212040: Not_a_Finding" if page_poison_enabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212040", concat(", ", missing_rhel_09_212040)]) if count(missing_rhel_09_212040) > 0
+
+else := "RHEL-09-212040: check failed — every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry page_poison=1"
+
+finding_rhel_09_212040 := {
+	"vuln_id": "V-257793",
+	"stig_id": "RHEL-09-212040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must clear the page allocator to prevent use-after-free attacks.",
+	"check_type": "machine",
+	"status": status_rhel_09_212040,
+	"detail": detail_rhel_09_212040,
+	"fix_text": "Enable page poisoning: grubby --update-kernel=ALL --args=\"page_poison=1\" and add page_poison=1 to GRUB_CMDLINE_LINUX in /etc/default/grub",
+}
+
+# RHEL-09-212045 | V-257794 | CAT II
+# the uncommented GRUB_CMDLINE_LINUX value of /etc/default/grub (null when missing or commented out)
+missing_rhel_09_212045 := [concat(".", p) | some p in [["grub", "default_cmdline_linux"]]; not _collected(p)]
+
+default init_on_free_enabled := false
+
+init_on_free_enabled if {
+	count(missing_rhel_09_212045) == 0
+	_grub_default_has("init_on_free=1")
+}
+
+status_rhel_09_212045 := "Not_a_Finding" if init_on_free_enabled
+
+else := "Open"
+
+detail_rhel_09_212045 := "RHEL-09-212045: Not_a_Finding" if init_on_free_enabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212045", concat(", ", missing_rhel_09_212045)]) if count(missing_rhel_09_212045) > 0
+
+else := "RHEL-09-212045: check failed — GRUB_CMDLINE_LINUX in /etc/default/grub must carry init_on_free=1 (uncommented)"
+
+finding_rhel_09_212045 := {
+	"vuln_id": "V-257794",
+	"stig_id": "RHEL-09-212045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must clear memory when it is freed to prevent use-after-free attacks.",
+	"check_type": "machine",
+	"status": status_rhel_09_212045,
+	"detail": detail_rhel_09_212045,
+	"fix_text": "Enable init_on_free: grubby --update-kernel=ALL --args=\"init_on_free=1\", then grub2-mkconfig -o /boot/grub2/grub.cfg and reboot",
+}
+
+# RHEL-09-213025 | V-257800 | CAT II
+# runtime kernel.kptr_restrict (sysctl)
+missing_rhel_09_213025 := [concat(".", p) | some p in [["kernel_params", "kernel.kptr_restrict"]]; not _collected(p)]
+
+default kptr_restricted := false
+
+kptr_restricted if {
+	count(missing_rhel_09_213025) == 0
+	_str(["kernel_params", "kernel.kptr_restrict"]) == "1"
+}
+
+status_rhel_09_213025 := "Not_a_Finding" if kptr_restricted
+
+else := "Open"
+
+detail_rhel_09_213025 := "RHEL-09-213025: Not_a_Finding" if kptr_restricted
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213025", concat(", ", missing_rhel_09_213025)]) if count(missing_rhel_09_213025) > 0
+
+else := "RHEL-09-213025: check failed — kernel.kptr_restrict must be 1"
+
+finding_rhel_09_213025 := {
+	"vuln_id": "V-257800",
+	"stig_id": "RHEL-09-213025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must restrict exposed kernel pointer addresses access.",
+	"check_type": "machine",
+	"status": status_rhel_09_213025,
+	"detail": detail_rhel_09_213025,
+	"fix_text": "Set kernel.kptr_restrict = 1 in /etc/sysctl.d/99-kernel_kptr_restrict.conf and run sysctl --system",
+}
+
+# RHEL-09-213030 | V-257801 | CAT II
+# runtime fs.protected_hardlinks (sysctl)
+missing_rhel_09_213030 := [concat(".", p) | some p in [["kernel_params", "fs.protected_hardlinks"]]; not _collected(p)]
+
+default protected_hardlinks := false
+
+protected_hardlinks if {
+	count(missing_rhel_09_213030) == 0
+	_str(["kernel_params", "fs.protected_hardlinks"]) == "1"
+}
+
+status_rhel_09_213030 := "Not_a_Finding" if protected_hardlinks
+
+else := "Open"
+
+detail_rhel_09_213030 := "RHEL-09-213030: Not_a_Finding" if protected_hardlinks
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213030", concat(", ", missing_rhel_09_213030)]) if count(missing_rhel_09_213030) > 0
+
+else := "RHEL-09-213030: check failed — fs.protected_hardlinks must be 1"
+
+finding_rhel_09_213030 := {
+	"vuln_id": "V-257801",
+	"stig_id": "RHEL-09-213030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enable kernel parameters to enforce discretionary access control (DAC) on hardlinks.",
+	"check_type": "machine",
+	"status": status_rhel_09_213030,
+	"detail": detail_rhel_09_213030,
+	"fix_text": "Set fs.protected_hardlinks = 1 in /etc/sysctl.d/99-fs_protected_hardlinks.conf and run sysctl --system",
+}
+
+# RHEL-09-213035 | V-257802 | CAT II
+# runtime fs.protected_symlinks (sysctl)
+missing_rhel_09_213035 := [concat(".", p) | some p in [["kernel_params", "fs.protected_symlinks"]]; not _collected(p)]
+
+default protected_symlinks := false
+
+protected_symlinks if {
+	count(missing_rhel_09_213035) == 0
+	_str(["kernel_params", "fs.protected_symlinks"]) == "1"
+}
+
+status_rhel_09_213035 := "Not_a_Finding" if protected_symlinks
+
+else := "Open"
+
+detail_rhel_09_213035 := "RHEL-09-213035: Not_a_Finding" if protected_symlinks
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213035", concat(", ", missing_rhel_09_213035)]) if count(missing_rhel_09_213035) > 0
+
+else := "RHEL-09-213035: check failed — fs.protected_symlinks must be 1"
+
+finding_rhel_09_213035 := {
+	"vuln_id": "V-257802",
+	"stig_id": "RHEL-09-213035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enable kernel parameters to enforce discretionary access (DAC) control on symlinks.",
+	"check_type": "machine",
+	"status": status_rhel_09_213035,
+	"detail": detail_rhel_09_213035,
+	"fix_text": "Set fs.protected_symlinks = 1 in /etc/sysctl.d/99-fs_protected_symlinks.conf and run sysctl --system",
+}
+
+# RHEL-09-213080 | V-257811 | CAT II
+# runtime kernel.yama.ptrace_scope (sysctl)
+missing_rhel_09_213080 := [concat(".", p) | some p in [["kernel_params", "kernel.yama.ptrace_scope"]]; not _collected(p)]
+
+default ptrace_restricted := false
+
+ptrace_restricted if {
+	count(missing_rhel_09_213080) == 0
+	_str(["kernel_params", "kernel.yama.ptrace_scope"]) == "1"
+}
+
+status_rhel_09_213080 := "Not_a_Finding" if ptrace_restricted
+
+else := "Open"
+
+detail_rhel_09_213080 := "RHEL-09-213080: Not_a_Finding" if ptrace_restricted
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213080", concat(", ", missing_rhel_09_213080)]) if count(missing_rhel_09_213080) > 0
+
+else := "RHEL-09-213080: check failed — kernel.yama.ptrace_scope must be 1"
+
+finding_rhel_09_213080 := {
+	"vuln_id": "V-257811",
+	"stig_id": "RHEL-09-213080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must restrict usage of ptrace to descendant processes.",
+	"check_type": "machine",
+	"status": status_rhel_09_213080,
+	"detail": detail_rhel_09_213080,
+	"fix_text": "Set kernel.yama.ptrace_scope = 1 in /etc/sysctl.d/99-kernel_yama.ptrace_scope.conf and run sysctl --system",
+}
+
+# RHEL-09-213105 | V-257816 | CAT II
+# runtime user.max_user_namespaces (sysctl)
+missing_rhel_09_213105 := [concat(".", p) | some p in [["kernel_params", "user.max_user_namespaces"]]; not _collected(p)]
+
+default user_namespaces_disabled := false
+
+user_namespaces_disabled if {
+	count(missing_rhel_09_213105) == 0
+	_str(["kernel_params", "user.max_user_namespaces"]) == "0"
+}
+
+user_namespaces_disabled if {
+	_attested("rhel_09_213105_namespaces_documented")
+}
+
+status_rhel_09_213105 := "Not_a_Finding" if user_namespaces_disabled
+
+else := "Open"
+
+detail_rhel_09_213105 := "RHEL-09-213105: Not_a_Finding" if user_namespaces_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213105", concat(", ", missing_rhel_09_213105)]) if count(missing_rhel_09_213105) > 0
+
+else := "RHEL-09-213105: check failed — user.max_user_namespaces must be 0, or the use of namespaces must be operationally required and documented with the ISSM (input.attest.rhel_09_213105_namespaces_documented)"
+
+finding_rhel_09_213105 := {
+	"vuln_id": "V-257816",
+	"stig_id": "RHEL-09-213105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the use of user namespaces.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213105,
+	"detail": detail_rhel_09_213105,
+	"fix_text": "Set user.max_user_namespaces = 0 in /etc/sysctl.d/99-user_max_user_namespaces.conf and run sysctl --system",
+}
+
+# RHEL-09-213040 | V-257803 | CAT II
+# runtime kernel.core_pattern (sysctl)
+missing_rhel_09_213040 := [concat(".", p) | some p in [["kernel_params", "kernel.core_pattern"]]; not _collected(p)]
+
+default core_pattern_disabled := false
+
+core_pattern_disabled if {
+	count(missing_rhel_09_213040) == 0
+	_str(["kernel_params", "kernel.core_pattern"]) == "|/bin/false"
+}
+
+core_pattern_disabled if {
+	_attested("rhel_09_213040_core_dumps_documented")
+}
+
+status_rhel_09_213040 := "Not_a_Finding" if core_pattern_disabled
+
+else := "Open"
+
+detail_rhel_09_213040 := "RHEL-09-213040: Not_a_Finding" if core_pattern_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213040", concat(", ", missing_rhel_09_213040)]) if count(missing_rhel_09_213040) > 0
+
+else := "RHEL-09-213040: check failed — kernel.core_pattern must be |/bin/false, or the need for core dumps must be documented with the ISSO as an operational requirement (input.attest.rhel_09_213040_core_dumps_documented)"
+
+finding_rhel_09_213040 := {
+	"vuln_id": "V-257803",
+	"stig_id": "RHEL-09-213040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the kernel.core_pattern.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213040,
+	"detail": detail_rhel_09_213040,
+	"fix_text": "Set kernel.core_pattern = |/bin/false in /etc/sysctl.d/99-kernel_core_pattern.conf and run sysctl --system",
+}
+
+# RHEL-09-213045 | V-257804 | CAT II
+# uncommented modprobe lines for atm: input.modprobe["atm"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_213045 := [concat(".", p) | some p in [["modprobe", "atm"]]; not _collected(p)]
+
+default atm_disabled := false
+
+atm_disabled if {
+	count(missing_rhel_09_213045) == 0
+	_module_disabled("atm")
+}
+
+atm_disabled if {
+	_attested("rhel_09_213045_atm_documented")
+}
+
+status_rhel_09_213045 := "Not_a_Finding" if atm_disabled
+
+else := "Open"
+
+detail_rhel_09_213045 := "RHEL-09-213045: Not_a_Finding" if atm_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213045", concat(", ", missing_rhel_09_213045)]) if count(missing_rhel_09_213045) > 0
+
+else := "RHEL-09-213045: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install atm /bin/false' and 'blacklist atm', or its use must be documented with the ISSO (input.attest.rhel_09_213045_atm_documented)"
+
+finding_rhel_09_213045 := {
+	"vuln_id": "V-257804",
+	"stig_id": "RHEL-09-213045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured to disable the Asynchronous Transfer Mode kernel module.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213045,
+	"detail": detail_rhel_09_213045,
+	"fix_text": "Add 'install atm /bin/false' and 'blacklist atm' to /etc/modprobe.d/atm.conf",
+}
+
+# RHEL-09-213050 | V-257805 | CAT II
+# uncommented modprobe lines for can: input.modprobe["can"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_213050 := [concat(".", p) | some p in [["modprobe", "can"]]; not _collected(p)]
+
+default can_disabled := false
+
+can_disabled if {
+	count(missing_rhel_09_213050) == 0
+	_module_disabled("can")
+}
+
+can_disabled if {
+	_attested("rhel_09_213050_can_documented")
+}
+
+status_rhel_09_213050 := "Not_a_Finding" if can_disabled
+
+else := "Open"
+
+detail_rhel_09_213050 := "RHEL-09-213050: Not_a_Finding" if can_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213050", concat(", ", missing_rhel_09_213050)]) if count(missing_rhel_09_213050) > 0
+
+else := "RHEL-09-213050: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install can /bin/false' and 'blacklist can', or its use must be documented with the ISSO (input.attest.rhel_09_213050_can_documented)"
+
+finding_rhel_09_213050 := {
+	"vuln_id": "V-257805",
+	"stig_id": "RHEL-09-213050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured to disable the Controller Area Network kernel module.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213050,
+	"detail": detail_rhel_09_213050,
+	"fix_text": "Add 'install can /bin/false' and 'blacklist can' to /etc/modprobe.d/can.conf",
+}
+
+# RHEL-09-213060 | V-257807 | CAT II
+# uncommented modprobe lines for sctp: input.modprobe["sctp"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_213060 := [concat(".", p) | some p in [["modprobe", "sctp"]]; not _collected(p)]
+
+default sctp_disabled := false
+
+sctp_disabled if {
+	count(missing_rhel_09_213060) == 0
+	_module_disabled("sctp")
+}
+
+sctp_disabled if {
+	_attested("rhel_09_213060_sctp_documented")
+}
+
+status_rhel_09_213060 := "Not_a_Finding" if sctp_disabled
+
+else := "Open"
+
+detail_rhel_09_213060 := "RHEL-09-213060: Not_a_Finding" if sctp_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213060", concat(", ", missing_rhel_09_213060)]) if count(missing_rhel_09_213060) > 0
+
+else := "RHEL-09-213060: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install sctp /bin/false' and 'blacklist sctp', or its use must be documented with the ISSO (input.attest.rhel_09_213060_sctp_documented)"
+
+finding_rhel_09_213060 := {
+	"vuln_id": "V-257807",
+	"stig_id": "RHEL-09-213060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the Stream Control Transmission Protocol (SCTP) kernel module.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213060,
+	"detail": detail_rhel_09_213060,
+	"fix_text": "Add 'install sctp /bin/false' and 'blacklist sctp' to /etc/modprobe.d/sctp.conf",
+}
+
+# RHEL-09-213065 | V-257808 | CAT II
+# uncommented modprobe lines for tipc: input.modprobe["tipc"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_213065 := [concat(".", p) | some p in [["modprobe", "tipc"]]; not _collected(p)]
+
+default tipc_disabled := false
+
+tipc_disabled if {
+	count(missing_rhel_09_213065) == 0
+	_module_disabled("tipc")
+}
+
+tipc_disabled if {
+	_attested("rhel_09_213065_tipc_documented")
+}
+
+status_rhel_09_213065 := "Not_a_Finding" if tipc_disabled
+
+else := "Open"
+
+detail_rhel_09_213065 := "RHEL-09-213065: Not_a_Finding" if tipc_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213065", concat(", ", missing_rhel_09_213065)]) if count(missing_rhel_09_213065) > 0
+
+else := "RHEL-09-213065: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install tipc /bin/false' and 'blacklist tipc', or its use must be documented with the ISSO (input.attest.rhel_09_213065_tipc_documented)"
+
+finding_rhel_09_213065 := {
+	"vuln_id": "V-257808",
+	"stig_id": "RHEL-09-213065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the Transparent Inter Process Communication (TIPC) kernel module.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213065,
+	"detail": detail_rhel_09_213065,
+	"fix_text": "Add 'install tipc /bin/false' and 'blacklist tipc' to /etc/modprobe.d/tipc.conf",
+}
+
+# RHEL-09-213085 | V-257812 | CAT II
+# ProcessSizeMax as configured in /etc/systemd/coredump.conf (grep -i; null when missing or commented out)
+missing_rhel_09_213085 := [concat(".", p) | some p in [["coredump_conf", "ProcessSizeMax"]]; not _collected(p)]
+
+default coredump_backtraces_disabled := false
+
+coredump_backtraces_disabled if {
+	count(missing_rhel_09_213085) == 0
+	_str(["coredump_conf", "ProcessSizeMax"]) == "0"
+}
+
+coredump_backtraces_disabled if {
+	_attested("rhel_09_213085_core_dumps_documented")
+}
+
+default na_rhel_09_213085 := false
+
+na_rhel_09_213085 if {
+	_str(["kernel_params", "kernel.core_pattern"]) == "|/bin/false"
+}
+
+status_rhel_09_213085 := "Not_a_Finding" if coredump_backtraces_disabled
+
+else := "Not_Applicable" if na_rhel_09_213085
+
+else := "Open"
+
+detail_rhel_09_213085 := "RHEL-09-213085: Not_a_Finding" if coredump_backtraces_disabled
+
+else := "RHEL-09-213085: Not_Applicable — kernel dumps are disabled in accordance with RHEL-09-213040 (kernel.core_pattern is |/bin/false)" if na_rhel_09_213085
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213085", concat(", ", missing_rhel_09_213085)]) if count(missing_rhel_09_213085) > 0
+
+else := "RHEL-09-213085: check failed — ProcessSizeMax in /etc/systemd/coredump.conf must be 0 (uncommented), or the need for core dumps must be documented with the ISSO as an operational requirement (input.attest.rhel_09_213085_core_dumps_documented)"
+
+finding_rhel_09_213085 := {
+	"vuln_id": "V-257812",
+	"stig_id": "RHEL-09-213085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable core dump backtraces.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213085,
+	"detail": detail_rhel_09_213085,
+	"fix_text": "Set ProcessSizeMax=0 in /etc/systemd/coredump.conf",
+}
+
+# RHEL-09-213090 | V-257813 | CAT II
+# Storage as configured in /etc/systemd/coredump.conf (grep -i; null when missing or commented out)
+missing_rhel_09_213090 := [concat(".", p) | some p in [["coredump_conf", "Storage"]]; not _collected(p)]
+
+default coredump_storage_none := false
+
+coredump_storage_none if {
+	count(missing_rhel_09_213090) == 0
+	_str(["coredump_conf", "Storage"]) == "none"
+}
+
+coredump_storage_none if {
+	_attested("rhel_09_213090_core_dumps_documented")
+}
+
+default na_rhel_09_213090 := false
+
+na_rhel_09_213090 if {
+	_str(["kernel_params", "kernel.core_pattern"]) == "|/bin/false"
+}
+
+status_rhel_09_213090 := "Not_a_Finding" if coredump_storage_none
+
+else := "Not_Applicable" if na_rhel_09_213090
+
+else := "Open"
+
+detail_rhel_09_213090 := "RHEL-09-213090: Not_a_Finding" if coredump_storage_none
+
+else := "RHEL-09-213090: Not_Applicable — kernel dumps are disabled in accordance with RHEL-09-213040 (kernel.core_pattern is |/bin/false)" if na_rhel_09_213090
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213090", concat(", ", missing_rhel_09_213090)]) if count(missing_rhel_09_213090) > 0
+
+else := "RHEL-09-213090: check failed — Storage in /etc/systemd/coredump.conf must be none (uncommented), or the need for core dumps must be documented with the ISSO as an operational requirement (input.attest.rhel_09_213090_core_dumps_documented)"
+
+finding_rhel_09_213090 := {
+	"vuln_id": "V-257813",
+	"stig_id": "RHEL-09-213090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable storing core dumps.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213090,
+	"detail": detail_rhel_09_213090,
+	"fix_text": "Set Storage=none in /etc/systemd/coredump.conf",
+}
+
+# RHEL-09-213095 | V-257814 | CAT II
+# uncommented core items found by grep -rs core /etc/security/limits.conf /etc/security/limits.d/*.conf: [{domain, type, value}]
+missing_rhel_09_213095 := [concat(".", p) | some p in [["limits_conf", "core"]]; not _collected(p)]
+
+default core_dumps_limited := false
+
+core_dumps_limited if {
+	count(missing_rhel_09_213095) == 0
+	count(input.limits_conf.core) > 0
+	_core_limits_all_zero
+}
+
+core_dumps_limited if {
+	_attested("rhel_09_213095_core_dumps_documented")
+	_core_limits_all_zero
+}
+
+default na_rhel_09_213095 := false
+
+na_rhel_09_213095 if {
+	_str(["kernel_params", "kernel.core_pattern"]) == "|/bin/false"
+}
+
+status_rhel_09_213095 := "Not_a_Finding" if core_dumps_limited
+
+else := "Not_Applicable" if na_rhel_09_213095
+
+else := "Open"
+
+detail_rhel_09_213095 := "RHEL-09-213095: Not_a_Finding" if core_dumps_limited
+
+else := "RHEL-09-213095: Not_Applicable — kernel dumps are disabled in accordance with RHEL-09-213040 (kernel.core_pattern is |/bin/false)" if na_rhel_09_213095
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213095", concat(", ", missing_rhel_09_213095)]) if count(missing_rhel_09_213095) > 0
+
+else := "RHEL-09-213095: check failed — /etc/security/limits.conf or limits.d/*.conf must carry an uncommented core item and every core item must be 0; a missing item is accepted only when the need for core dumps is documented with the ISSO (input.attest.rhel_09_213095_core_dumps_documented), and an entry with another value is a finding either way"
+
+finding_rhel_09_213095 := {
+	"vuln_id": "V-257814",
+	"stig_id": "RHEL-09-213095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable core dumps for all users.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213095,
+	"detail": detail_rhel_09_213095,
+	"fix_text": "Add '* hard core 0' to /etc/security/limits.conf (or one file in limits.d/) and remove entries with another value",
+}
+
+# RHEL-09-213100 | V-257815 | CAT II
+# systemd-coredump.socket load state (systemctl show -p LoadState): masked, or not-found when the unit does not exist
+missing_rhel_09_213100 := [concat(".", p) | some p in [["systemd_units", "systemd-coredump.socket", "load_state"]]; not _collected(p)]
+
+default coredump_socket_masked := false
+
+coredump_socket_masked if {
+	count(missing_rhel_09_213100) == 0
+	_kw(["systemd_units", "systemd-coredump.socket", "load_state"]) in {"masked", "not-found"}
+}
+
+coredump_socket_masked if {
+	_attested("rhel_09_213100_core_dumps_documented")
+}
+
+default na_rhel_09_213100 := false
+
+na_rhel_09_213100 if {
+	_str(["kernel_params", "kernel.core_pattern"]) == "|/bin/false"
+}
+
+status_rhel_09_213100 := "Not_a_Finding" if coredump_socket_masked
+
+else := "Not_Applicable" if na_rhel_09_213100
+
+else := "Open"
+
+detail_rhel_09_213100 := "RHEL-09-213100: Not_a_Finding" if coredump_socket_masked
+
+else := "RHEL-09-213100: Not_Applicable — kernel dumps are disabled in accordance with RHEL-09-213040 (kernel.core_pattern is |/bin/false)" if na_rhel_09_213100
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213100", concat(", ", missing_rhel_09_213100)]) if count(missing_rhel_09_213100) > 0
+
+else := "RHEL-09-213100: check failed — systemd-coredump.socket must be masked (systemctl status: Loaded: masked), not loaded and unmasked, or the need for core dumps must be documented with the ISSO as an operational requirement (input.attest.rhel_09_213100_core_dumps_documented)"
+
+finding_rhel_09_213100 := {
+	"vuln_id": "V-257815",
+	"stig_id": "RHEL-09-213100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable acquiring, saving, and processing core dumps.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_213100,
+	"detail": detail_rhel_09_213100,
+	"fix_text": "Mask the socket: systemctl mask --now systemd-coredump.socket && systemctl daemon-reload",
+}
+
+# RHEL-09-213110 | V-257817 | CAT II
+# input.cpuinfo.flags: the flags lines of /proc/cpuinfo (grep ^flags), one string per processor; input.grub.kernel_args as above
+missing_rhel_09_213110 := [concat(".", p) | some p in [["cpuinfo", "flags"], ["grub", "kernel_args"]]; not _collected(p)]
+
+default nx_enabled := false
+
+nx_enabled if {
+	count(missing_rhel_09_213110) == 0
+	flags := input.cpuinfo.flags
+	is_array(flags)
+	count(flags) > 0
+	every f in flags {
+		is_string(f)
+		regex.match(`[^[:alnum:]]nx([^[:alnum:]]|$)`, f)
+	}
+	args := input.grub.kernel_args
+	is_array(args)
+	count(args) > 0
+	every a in args {
+		is_string(a)
+		not regex.match(`(^|[^[:alnum:]])noexec([^[:alnum:]]|$)`, a)
+	}
+}
+
+status_rhel_09_213110 := "Not_a_Finding" if nx_enabled
+
+else := "Open"
+
+detail_rhel_09_213110 := "RHEL-09-213110: Not_a_Finding" if nx_enabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213110", concat(", ", missing_rhel_09_213110)]) if count(missing_rhel_09_213110) > 0
+
+else := "RHEL-09-213110: check failed — every flags line of /proc/cpuinfo must carry nx, and no boot entry (grubby --info=ALL, args) may carry noexec"
+
+finding_rhel_09_213110 := {
+	"vuln_id": "V-257817",
+	"stig_id": "RHEL-09-213110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must implement nonexecutable data to protect its memory from unauthorized code execution.",
+	"check_type": "machine",
+	"status": status_rhel_09_213110,
+	"detail": detail_rhel_09_213110,
+	"fix_text": "Enable NX/XD in the BIOS or UEFI, and remove the argument: grubby --update-kernel=ALL --remove-args=noexec",
+}
+
+# RHEL-09-231010 | V-257843 | CAT II
+# the mount table (mount / findmnt): a separate entry for /home
+missing_rhel_09_231010 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default home_separate := false
+
+home_separate if {
+	count(missing_rhel_09_231010) == 0
+	_mount("/home")
+}
+
+status_rhel_09_231010 := "Not_a_Finding" if home_separate
+
+else := "Open"
+
+detail_rhel_09_231010 := "RHEL-09-231010: Not_a_Finding" if home_separate
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231010", concat(", ", missing_rhel_09_231010)]) if count(missing_rhel_09_231010) > 0
+
+else := "RHEL-09-231010: check failed — a separate file system must be mounted on /home"
+
+finding_rhel_09_231010 := {
+	"vuln_id": "V-257843",
+	"stig_id": "RHEL-09-231010",
+	"severity": "CAT II",
+	"rule_title": "A separate RHEL 9 file system must be used for user home directories (such as /home or an equivalent).",
+	"check_type": "machine",
+	"status": status_rhel_09_231010,
+	"detail": detail_rhel_09_231010,
+	"fix_text": "Migrate /home onto a separate file system and mount it in /etc/fstab",
+}
+
+# RHEL-09-231035 | V-257848 | CAT II
+# the mount table (mount / findmnt): a separate entry for /var/tmp
+missing_rhel_09_231035 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_tmp_separate := false
+
+var_tmp_separate if {
+	count(missing_rhel_09_231035) == 0
+	_mount("/var/tmp")
+}
+
+status_rhel_09_231035 := "Not_a_Finding" if var_tmp_separate
+
+else := "Open"
+
+detail_rhel_09_231035 := "RHEL-09-231035: Not_a_Finding" if var_tmp_separate
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231035", concat(", ", missing_rhel_09_231035)]) if count(missing_rhel_09_231035) > 0
+
+else := "RHEL-09-231035: check failed — a separate file system must be mounted on /var/tmp"
+
+finding_rhel_09_231035 := {
+	"vuln_id": "V-257848",
+	"stig_id": "RHEL-09-231035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must use a separate file system for /var/tmp.",
+	"check_type": "machine",
+	"status": status_rhel_09_231035,
+	"detail": detail_rhel_09_231035,
+	"fix_text": "Migrate /var/tmp onto a separate file system and mount it in /etc/fstab",
+}
+
+# RHEL-09-231095 | V-257860 | CAT II
+# the /boot entry of the mount table (mount / findmnt) must carry nodev
+missing_rhel_09_231095 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default boot_nodev := false
+
+boot_nodev if {
+	count(missing_rhel_09_231095) == 0
+	m := _mount("/boot")
+	"nodev" in m.options
+}
+
+status_rhel_09_231095 := "Not_a_Finding" if boot_nodev
+
+else := "Open"
+
+detail_rhel_09_231095 := "RHEL-09-231095: Not_a_Finding" if boot_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231095", concat(", ", missing_rhel_09_231095)]) if count(missing_rhel_09_231095) > 0
+
+else := "RHEL-09-231095: check failed — /boot must be mounted with the nodev option (no /boot entry in the mount table is a finding)"
+
+finding_rhel_09_231095 := {
+	"vuln_id": "V-257860",
+	"stig_id": "RHEL-09-231095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /boot with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231095,
+	"detail": detail_rhel_09_231095,
+	"fix_text": "Add nodev to the /boot options in /etc/fstab and remount",
+}
+
+# RHEL-09-231100 | V-257861 | CAT II
+# the /boot entry of the mount table (mount / findmnt) must carry nosuid
+missing_rhel_09_231100 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default boot_nosuid := false
+
+boot_nosuid if {
+	count(missing_rhel_09_231100) == 0
+	m := _mount("/boot")
+	"nosuid" in m.options
+}
+
+status_rhel_09_231100 := "Not_a_Finding" if boot_nosuid
+
+else := "Open"
+
+detail_rhel_09_231100 := "RHEL-09-231100: Not_a_Finding" if boot_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231100", concat(", ", missing_rhel_09_231100)]) if count(missing_rhel_09_231100) > 0
+
+else := "RHEL-09-231100: check failed — /boot must be mounted with the nosuid option (no /boot entry in the mount table is a finding)"
+
+finding_rhel_09_231100 := {
+	"vuln_id": "V-257861",
+	"stig_id": "RHEL-09-231100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent files with the setuid and setgid bit set from being executed on the /boot directory.",
+	"check_type": "machine",
+	"status": status_rhel_09_231100,
+	"detail": detail_rhel_09_231100,
+	"fix_text": "Add nosuid to the /boot options in /etc/fstab and remount",
+}
+
+# RHEL-09-231110 | V-257863 | CAT II
+# the /dev/shm entry of the mount table (mount / findmnt) must carry nodev
+missing_rhel_09_231110 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default dev_shm_nodev := false
+
+dev_shm_nodev if {
+	count(missing_rhel_09_231110) == 0
+	m := _mount("/dev/shm")
+	"nodev" in m.options
+}
+
+status_rhel_09_231110 := "Not_a_Finding" if dev_shm_nodev
+
+else := "Open"
+
+detail_rhel_09_231110 := "RHEL-09-231110: Not_a_Finding" if dev_shm_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231110", concat(", ", missing_rhel_09_231110)]) if count(missing_rhel_09_231110) > 0
+
+else := "RHEL-09-231110: check failed — /dev/shm must be mounted with the nodev option (no /dev/shm entry in the mount table is a finding)"
+
+finding_rhel_09_231110 := {
+	"vuln_id": "V-257863",
+	"stig_id": "RHEL-09-231110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /dev/shm with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231110,
+	"detail": detail_rhel_09_231110,
+	"fix_text": "Add nodev to the /dev/shm options in /etc/fstab and remount",
+}
+
+# RHEL-09-231115 | V-257864 | CAT II
+# the /dev/shm entry of the mount table (mount / findmnt) must carry noexec
+missing_rhel_09_231115 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default dev_shm_noexec := false
+
+dev_shm_noexec if {
+	count(missing_rhel_09_231115) == 0
+	m := _mount("/dev/shm")
+	"noexec" in m.options
+}
+
+status_rhel_09_231115 := "Not_a_Finding" if dev_shm_noexec
+
+else := "Open"
+
+detail_rhel_09_231115 := "RHEL-09-231115: Not_a_Finding" if dev_shm_noexec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231115", concat(", ", missing_rhel_09_231115)]) if count(missing_rhel_09_231115) > 0
+
+else := "RHEL-09-231115: check failed — /dev/shm must be mounted with the noexec option (no /dev/shm entry in the mount table is a finding)"
+
+finding_rhel_09_231115 := {
+	"vuln_id": "V-257864",
+	"stig_id": "RHEL-09-231115",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /dev/shm with the noexec option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231115,
+	"detail": detail_rhel_09_231115,
+	"fix_text": "Add noexec to the /dev/shm options in /etc/fstab and remount",
+}
+
+# RHEL-09-231120 | V-257865 | CAT II
+# the /dev/shm entry of the mount table (mount / findmnt) must carry nosuid
+missing_rhel_09_231120 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default dev_shm_nosuid := false
+
+dev_shm_nosuid if {
+	count(missing_rhel_09_231120) == 0
+	m := _mount("/dev/shm")
+	"nosuid" in m.options
+}
+
+status_rhel_09_231120 := "Not_a_Finding" if dev_shm_nosuid
+
+else := "Open"
+
+detail_rhel_09_231120 := "RHEL-09-231120: Not_a_Finding" if dev_shm_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231120", concat(", ", missing_rhel_09_231120)]) if count(missing_rhel_09_231120) > 0
+
+else := "RHEL-09-231120: check failed — /dev/shm must be mounted with the nosuid option (no /dev/shm entry in the mount table is a finding)"
+
+finding_rhel_09_231120 := {
+	"vuln_id": "V-257865",
+	"stig_id": "RHEL-09-231120",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /dev/shm with the nosuid option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231120,
+	"detail": detail_rhel_09_231120,
+	"fix_text": "Add nosuid to the /dev/shm options in /etc/fstab and remount",
+}
+
+# RHEL-09-231125 | V-257866 | CAT II
+# the /tmp entry of the mount table (mount / findmnt) must carry nodev
+missing_rhel_09_231125 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default tmp_nodev := false
+
+tmp_nodev if {
+	count(missing_rhel_09_231125) == 0
+	m := _mount("/tmp")
+	"nodev" in m.options
+}
+
+status_rhel_09_231125 := "Not_a_Finding" if tmp_nodev
+
+else := "Open"
+
+detail_rhel_09_231125 := "RHEL-09-231125: Not_a_Finding" if tmp_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231125", concat(", ", missing_rhel_09_231125)]) if count(missing_rhel_09_231125) > 0
+
+else := "RHEL-09-231125: check failed — /tmp must be mounted with the nodev option (no /tmp entry in the mount table is a finding)"
+
+finding_rhel_09_231125 := {
+	"vuln_id": "V-257866",
+	"stig_id": "RHEL-09-231125",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /tmp with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231125,
+	"detail": detail_rhel_09_231125,
+	"fix_text": "Add nodev to the /tmp options in /etc/fstab and remount",
+}
+
+# RHEL-09-231130 | V-257867 | CAT II
+# the /tmp entry of the mount table (mount / findmnt) must carry noexec
+missing_rhel_09_231130 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default tmp_noexec := false
+
+tmp_noexec if {
+	count(missing_rhel_09_231130) == 0
+	m := _mount("/tmp")
+	"noexec" in m.options
+}
+
+status_rhel_09_231130 := "Not_a_Finding" if tmp_noexec
+
+else := "Open"
+
+detail_rhel_09_231130 := "RHEL-09-231130: Not_a_Finding" if tmp_noexec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231130", concat(", ", missing_rhel_09_231130)]) if count(missing_rhel_09_231130) > 0
+
+else := "RHEL-09-231130: check failed — /tmp must be mounted with the noexec option (no /tmp entry in the mount table is a finding)"
+
+finding_rhel_09_231130 := {
+	"vuln_id": "V-257867",
+	"stig_id": "RHEL-09-231130",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /tmp with the noexec option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231130,
+	"detail": detail_rhel_09_231130,
+	"fix_text": "Add noexec to the /tmp options in /etc/fstab and remount",
+}
+
+# RHEL-09-231135 | V-257868 | CAT II
+# the /tmp entry of the mount table (mount / findmnt) must carry nosuid
+missing_rhel_09_231135 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default tmp_nosuid := false
+
+tmp_nosuid if {
+	count(missing_rhel_09_231135) == 0
+	m := _mount("/tmp")
+	"nosuid" in m.options
+}
+
+status_rhel_09_231135 := "Not_a_Finding" if tmp_nosuid
+
+else := "Open"
+
+detail_rhel_09_231135 := "RHEL-09-231135: Not_a_Finding" if tmp_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231135", concat(", ", missing_rhel_09_231135)]) if count(missing_rhel_09_231135) > 0
+
+else := "RHEL-09-231135: check failed — /tmp must be mounted with the nosuid option (no /tmp entry in the mount table is a finding)"
+
+finding_rhel_09_231135 := {
+	"vuln_id": "V-257868",
+	"stig_id": "RHEL-09-231135",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /tmp with the nosuid option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231135,
+	"detail": detail_rhel_09_231135,
+	"fix_text": "Add nosuid to the /tmp options in /etc/fstab and remount",
+}
+
+# RHEL-09-231140 | V-257869 | CAT II
+# the /var entry of the mount table (mount / findmnt) must carry nodev
+missing_rhel_09_231140 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_nodev := false
+
+var_nodev if {
+	count(missing_rhel_09_231140) == 0
+	m := _mount("/var")
+	"nodev" in m.options
+}
+
+status_rhel_09_231140 := "Not_a_Finding" if var_nodev
+
+else := "Open"
+
+detail_rhel_09_231140 := "RHEL-09-231140: Not_a_Finding" if var_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231140", concat(", ", missing_rhel_09_231140)]) if count(missing_rhel_09_231140) > 0
+
+else := "RHEL-09-231140: check failed — /var must be mounted with the nodev option (no /var entry in the mount table is a finding)"
+
+finding_rhel_09_231140 := {
+	"vuln_id": "V-257869",
+	"stig_id": "RHEL-09-231140",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231140,
+	"detail": detail_rhel_09_231140,
+	"fix_text": "Add nodev to the /var options in /etc/fstab and remount",
+}
+
+# RHEL-09-231145 | V-257870 | CAT II
+# the /var/log entry of the mount table (mount / findmnt) must carry nodev
+missing_rhel_09_231145 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_log_nodev := false
+
+var_log_nodev if {
+	count(missing_rhel_09_231145) == 0
+	m := _mount("/var/log")
+	"nodev" in m.options
+}
+
+status_rhel_09_231145 := "Not_a_Finding" if var_log_nodev
+
+else := "Open"
+
+detail_rhel_09_231145 := "RHEL-09-231145: Not_a_Finding" if var_log_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231145", concat(", ", missing_rhel_09_231145)]) if count(missing_rhel_09_231145) > 0
+
+else := "RHEL-09-231145: check failed — /var/log must be mounted with the nodev option (no /var/log entry in the mount table is a finding)"
+
+finding_rhel_09_231145 := {
+	"vuln_id": "V-257870",
+	"stig_id": "RHEL-09-231145",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/log with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231145,
+	"detail": detail_rhel_09_231145,
+	"fix_text": "Add nodev to the /var/log options in /etc/fstab and remount",
+}
+
+# RHEL-09-231105 | V-257862 | CAT II
+# the /boot/efi entry of the mount table; a BIOS system (input.boot_firmware) or a vfat /boot/efi is Not Applicable
+missing_rhel_09_231105 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default boot_efi_nosuid := false
+
+boot_efi_nosuid if {
+	count(missing_rhel_09_231105) == 0
+	m := _mount("/boot/efi")
+	"nosuid" in m.options
+}
+
+default na_rhel_09_231105 := false
+
+na_rhel_09_231105 if {
+	_kw(["boot_firmware"]) == "bios"
+}
+
+na_rhel_09_231105 if {
+	m := _mount("/boot/efi")
+	is_string(m.fstype)
+	lower(m.fstype) == "vfat"
+}
+
+status_rhel_09_231105 := "Not_a_Finding" if boot_efi_nosuid
+
+else := "Not_Applicable" if na_rhel_09_231105
+
+else := "Open"
+
+detail_rhel_09_231105 := "RHEL-09-231105: Not_a_Finding" if boot_efi_nosuid
+
+else := "RHEL-09-231105: Not_Applicable — the system uses BIOS, or /boot/efi is a vfat file system" if na_rhel_09_231105
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231105", concat(", ", missing_rhel_09_231105)]) if count(missing_rhel_09_231105) > 0
+
+else := "RHEL-09-231105: check failed — /boot/efi must be mounted with the nosuid option"
+
+finding_rhel_09_231105 := {
+	"vuln_id": "V-257862",
+	"stig_id": "RHEL-09-231105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent files with the setuid and setgid bit set from being executed on the /boot/efi directory.",
+	"check_type": "machine",
+	"status": status_rhel_09_231105,
+	"detail": detail_rhel_09_231105,
+	"fix_text": "Add nosuid to the /boot/efi options in /etc/fstab and remount",
+}
+
+# RHEL-09-231065 | V-257854 | CAT II
+# NFS entries of /etc/fstab (grep nfs /etc/fstab) must carry nodev; no NFS entry is Not Applicable
+missing_rhel_09_231065 := [concat(".", p) | some p in [["fstab"]]; not _collected(p)]
+
+default nfs_nodev := false
+
+nfs_nodev if {
+	count(missing_rhel_09_231065) == 0
+	is_array(input.fstab)
+	count(_fstab_nfs) > 0
+	every e in _fstab_nfs {
+		_fstab_has_opt(e, "nodev")
+	}
+}
+
+default na_rhel_09_231065 := false
+
+na_rhel_09_231065 if {
+	is_array(input.fstab)
+	count(_fstab_nfs) == 0
+}
+
+status_rhel_09_231065 := "Not_a_Finding" if nfs_nodev
+
+else := "Not_Applicable" if na_rhel_09_231065
+
+else := "Open"
+
+detail_rhel_09_231065 := "RHEL-09-231065: Not_a_Finding" if nfs_nodev
+
+else := "RHEL-09-231065: Not_Applicable — no NFS mounts are configured in /etc/fstab" if na_rhel_09_231065
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231065", concat(", ", missing_rhel_09_231065)]) if count(missing_rhel_09_231065) > 0
+
+else := "RHEL-09-231065: check failed — every NFS entry in /etc/fstab must carry the nodev option"
+
+finding_rhel_09_231065 := {
+	"vuln_id": "V-257854",
+	"stig_id": "RHEL-09-231065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent special devices on file systems that are imported via Network File System (NFS).",
+	"check_type": "machine",
+	"status": status_rhel_09_231065,
+	"detail": detail_rhel_09_231065,
+	"fix_text": "Add nodev to the options of every NFS file system in /etc/fstab",
+}
+
+# RHEL-09-231070 | V-257855 | CAT II
+# NFS entries of /etc/fstab (grep nfs /etc/fstab) must carry noexec; no NFS entry is Not Applicable
+missing_rhel_09_231070 := [concat(".", p) | some p in [["fstab"]]; not _collected(p)]
+
+default nfs_noexec := false
+
+nfs_noexec if {
+	count(missing_rhel_09_231070) == 0
+	is_array(input.fstab)
+	count(_fstab_nfs) > 0
+	every e in _fstab_nfs {
+		_fstab_has_opt(e, "noexec")
+	}
+}
+
+default na_rhel_09_231070 := false
+
+na_rhel_09_231070 if {
+	is_array(input.fstab)
+	count(_fstab_nfs) == 0
+}
+
+status_rhel_09_231070 := "Not_a_Finding" if nfs_noexec
+
+else := "Not_Applicable" if na_rhel_09_231070
+
+else := "Open"
+
+detail_rhel_09_231070 := "RHEL-09-231070: Not_a_Finding" if nfs_noexec
+
+else := "RHEL-09-231070: Not_Applicable — no NFS mounts are configured in /etc/fstab" if na_rhel_09_231070
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231070", concat(", ", missing_rhel_09_231070)]) if count(missing_rhel_09_231070) > 0
+
+else := "RHEL-09-231070: check failed — every NFS entry in /etc/fstab must carry the noexec option"
+
+finding_rhel_09_231070 := {
+	"vuln_id": "V-257855",
+	"stig_id": "RHEL-09-231070",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent code from being executed on file systems that are imported via Network File System (NFS).",
+	"check_type": "machine",
+	"status": status_rhel_09_231070,
+	"detail": detail_rhel_09_231070,
+	"fix_text": "Add noexec to the options of every NFS file system in /etc/fstab",
+}
+
+# RHEL-09-231075 | V-257856 | CAT II
+# NFS entries of /etc/fstab (grep nfs /etc/fstab) must carry nosuid; no NFS entry is Not Applicable
+missing_rhel_09_231075 := [concat(".", p) | some p in [["fstab"]]; not _collected(p)]
+
+default nfs_nosuid := false
+
+nfs_nosuid if {
+	count(missing_rhel_09_231075) == 0
+	is_array(input.fstab)
+	count(_fstab_nfs) > 0
+	every e in _fstab_nfs {
+		_fstab_has_opt(e, "nosuid")
+	}
+}
+
+default na_rhel_09_231075 := false
+
+na_rhel_09_231075 if {
+	is_array(input.fstab)
+	count(_fstab_nfs) == 0
+}
+
+status_rhel_09_231075 := "Not_a_Finding" if nfs_nosuid
+
+else := "Not_Applicable" if na_rhel_09_231075
+
+else := "Open"
+
+detail_rhel_09_231075 := "RHEL-09-231075: Not_a_Finding" if nfs_nosuid
+
+else := "RHEL-09-231075: Not_Applicable — no NFS mounts are configured in /etc/fstab" if na_rhel_09_231075
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231075", concat(", ", missing_rhel_09_231075)]) if count(missing_rhel_09_231075) > 0
+
+else := "RHEL-09-231075: check failed — every NFS entry in /etc/fstab must carry the nosuid option"
+
+finding_rhel_09_231075 := {
+	"vuln_id": "V-257856",
+	"stig_id": "RHEL-09-231075",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent files with the setuid and setgid bit set from being executed on file systems that are imported via Network File System (NFS).",
+	"check_type": "machine",
+	"status": status_rhel_09_231075,
+	"detail": detail_rhel_09_231075,
+	"fix_text": "Add nosuid to the options of every NFS file system in /etc/fstab",
+}
+
+# RHEL-09-231080 | V-257857 | CAT II
+# input.removable_media_fstab: the /etc/fstab entries that refer to removable media (USB, optical, flash), [{mount_point, fs_type, options}]; each must carry noexec; none is a pass
+missing_rhel_09_231080 := [concat(".", p) | some p in [["removable_media_fstab"]]; not _collected(p)]
+
+default removable_media_noexec := false
+
+removable_media_noexec if {
+	count(missing_rhel_09_231080) == 0
+	es := input.removable_media_fstab
+	is_array(es)
+	every e in es {
+		_fstab_has_opt(e, "noexec")
+	}
+}
+
+status_rhel_09_231080 := "Not_a_Finding" if removable_media_noexec
+
+else := "Open"
+
+detail_rhel_09_231080 := "RHEL-09-231080: Not_a_Finding" if removable_media_noexec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231080", concat(", ", missing_rhel_09_231080)]) if count(missing_rhel_09_231080) > 0
+
+else := "RHEL-09-231080: check failed — every /etc/fstab file system that refers to removable media must carry the noexec option"
+
+finding_rhel_09_231080 := {
+	"vuln_id": "V-257857",
+	"stig_id": "RHEL-09-231080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent code from being executed on file systems that are used with removable media.",
+	"check_type": "machine",
+	"status": status_rhel_09_231080,
+	"detail": detail_rhel_09_231080,
+	"fix_text": "Add noexec to the /etc/fstab options of every file system associated with removable media",
+}
+
+# RHEL-09-231085 | V-257858 | CAT II
+# input.removable_media_fstab: the /etc/fstab entries that refer to removable media (USB, optical, flash), [{mount_point, fs_type, options}]; each must carry nodev; none is a pass
+missing_rhel_09_231085 := [concat(".", p) | some p in [["removable_media_fstab"]]; not _collected(p)]
+
+default removable_media_nodev := false
+
+removable_media_nodev if {
+	count(missing_rhel_09_231085) == 0
+	es := input.removable_media_fstab
+	is_array(es)
+	every e in es {
+		_fstab_has_opt(e, "nodev")
+	}
+}
+
+status_rhel_09_231085 := "Not_a_Finding" if removable_media_nodev
+
+else := "Open"
+
+detail_rhel_09_231085 := "RHEL-09-231085: Not_a_Finding" if removable_media_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231085", concat(", ", missing_rhel_09_231085)]) if count(missing_rhel_09_231085) > 0
+
+else := "RHEL-09-231085: check failed — every /etc/fstab file system that refers to removable media must carry the nodev option"
+
+finding_rhel_09_231085 := {
+	"vuln_id": "V-257858",
+	"stig_id": "RHEL-09-231085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent special devices on file systems that are used with removable media.",
+	"check_type": "machine",
+	"status": status_rhel_09_231085,
+	"detail": detail_rhel_09_231085,
+	"fix_text": "Add nodev to the /etc/fstab options of every file system associated with removable media",
+}
+
+# RHEL-09-231090 | V-257859 | CAT II
+# input.removable_media_fstab: the /etc/fstab entries that refer to removable media (USB, optical, flash), [{mount_point, fs_type, options}]; each must carry nosuid; none is a pass
+missing_rhel_09_231090 := [concat(".", p) | some p in [["removable_media_fstab"]]; not _collected(p)]
+
+default removable_media_nosuid := false
+
+removable_media_nosuid if {
+	count(missing_rhel_09_231090) == 0
+	es := input.removable_media_fstab
+	is_array(es)
+	every e in es {
+		_fstab_has_opt(e, "nosuid")
+	}
+}
+
+status_rhel_09_231090 := "Not_a_Finding" if removable_media_nosuid
+
+else := "Open"
+
+detail_rhel_09_231090 := "RHEL-09-231090: Not_a_Finding" if removable_media_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231090", concat(", ", missing_rhel_09_231090)]) if count(missing_rhel_09_231090) > 0
+
+else := "RHEL-09-231090: check failed — every /etc/fstab file system that refers to removable media must carry the nosuid option"
+
+finding_rhel_09_231090 := {
+	"vuln_id": "V-257859",
+	"stig_id": "RHEL-09-231090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent files with the setuid and setgid bit set from being executed on file systems that are used with removable media.",
+	"check_type": "machine",
+	"status": status_rhel_09_231090,
+	"detail": detail_rhel_09_231090,
+	"fix_text": "Add nosuid to the /etc/fstab options of every file system associated with removable media",
+}
+
+# RHEL-09-231150 | V-257871 | CAT II
+# the /var/log entry of the mount table must carry noexec (exact option token); no /var/log mount entry cannot show the option and stays a finding
+missing_rhel_09_231150 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_log_noexec := false
+
+var_log_noexec if {
+	count(missing_rhel_09_231150) == 0
+	m := _mount("/var/log")
+	"noexec" in m.options
+}
+
+status_rhel_09_231150 := "Not_a_Finding" if var_log_noexec
+
+else := "Open"
+
+detail_rhel_09_231150 := "RHEL-09-231150: Not_a_Finding" if var_log_noexec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231150", concat(", ", missing_rhel_09_231150)]) if count(missing_rhel_09_231150) > 0
+
+else := "RHEL-09-231150: check failed — the /var/log file system must be mounted with the noexec option (mount | grep /var/log)"
+
+finding_rhel_09_231150 := {
+	"vuln_id": "V-257871",
+	"stig_id": "RHEL-09-231150",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/log with the noexec option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231150,
+	"detail": detail_rhel_09_231150,
+	"fix_text": "Add noexec to the /var/log options in /etc/fstab and remount",
+}
+
+# RHEL-09-231155 | V-257872 | CAT II
+# the /var/log entry of the mount table must carry nosuid (exact option token); no /var/log mount entry cannot show the option and stays a finding
+missing_rhel_09_231155 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_log_nosuid := false
+
+var_log_nosuid if {
+	count(missing_rhel_09_231155) == 0
+	m := _mount("/var/log")
+	"nosuid" in m.options
+}
+
+status_rhel_09_231155 := "Not_a_Finding" if var_log_nosuid
+
+else := "Open"
+
+detail_rhel_09_231155 := "RHEL-09-231155: Not_a_Finding" if var_log_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231155", concat(", ", missing_rhel_09_231155)]) if count(missing_rhel_09_231155) > 0
+
+else := "RHEL-09-231155: check failed — the /var/log file system must be mounted with the nosuid option (mount | grep /var/log)"
+
+finding_rhel_09_231155 := {
+	"vuln_id": "V-257872",
+	"stig_id": "RHEL-09-231155",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/log with the nosuid option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231155,
+	"detail": detail_rhel_09_231155,
+	"fix_text": "Add nosuid to the /var/log options in /etc/fstab and remount",
+}
+
+# RHEL-09-231160 | V-257873 | CAT II
+# the /var/log/audit entry of the mount table must carry nodev (exact option token); no /var/log/audit mount entry cannot show the option and stays a finding
+missing_rhel_09_231160 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_log_audit_nodev := false
+
+var_log_audit_nodev if {
+	count(missing_rhel_09_231160) == 0
+	m := _mount("/var/log/audit")
+	"nodev" in m.options
+}
+
+status_rhel_09_231160 := "Not_a_Finding" if var_log_audit_nodev
+
+else := "Open"
+
+detail_rhel_09_231160 := "RHEL-09-231160: Not_a_Finding" if var_log_audit_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231160", concat(", ", missing_rhel_09_231160)]) if count(missing_rhel_09_231160) > 0
+
+else := "RHEL-09-231160: check failed — the /var/log/audit file system must be mounted with the nodev option (mount | grep /var/log/audit)"
+
+finding_rhel_09_231160 := {
+	"vuln_id": "V-257873",
+	"stig_id": "RHEL-09-231160",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/log/audit with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231160,
+	"detail": detail_rhel_09_231160,
+	"fix_text": "Add nodev to the /var/log/audit options in /etc/fstab and remount",
+}
+
+# RHEL-09-231165 | V-257874 | CAT II
+# the /var/log/audit entry of the mount table must carry noexec (exact option token); no /var/log/audit mount entry cannot show the option and stays a finding
+missing_rhel_09_231165 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_log_audit_noexec := false
+
+var_log_audit_noexec if {
+	count(missing_rhel_09_231165) == 0
+	m := _mount("/var/log/audit")
+	"noexec" in m.options
+}
+
+status_rhel_09_231165 := "Not_a_Finding" if var_log_audit_noexec
+
+else := "Open"
+
+detail_rhel_09_231165 := "RHEL-09-231165: Not_a_Finding" if var_log_audit_noexec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231165", concat(", ", missing_rhel_09_231165)]) if count(missing_rhel_09_231165) > 0
+
+else := "RHEL-09-231165: check failed — the /var/log/audit file system must be mounted with the noexec option (mount | grep /var/log/audit)"
+
+finding_rhel_09_231165 := {
+	"vuln_id": "V-257874",
+	"stig_id": "RHEL-09-231165",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/log/audit with the noexec option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231165,
+	"detail": detail_rhel_09_231165,
+	"fix_text": "Add noexec to the /var/log/audit options in /etc/fstab and remount",
+}
+
+# RHEL-09-231170 | V-257875 | CAT II
+# the /var/log/audit entry of the mount table must carry nosuid (exact option token); no /var/log/audit mount entry cannot show the option and stays a finding
+missing_rhel_09_231170 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_log_audit_nosuid := false
+
+var_log_audit_nosuid if {
+	count(missing_rhel_09_231170) == 0
+	m := _mount("/var/log/audit")
+	"nosuid" in m.options
+}
+
+status_rhel_09_231170 := "Not_a_Finding" if var_log_audit_nosuid
+
+else := "Open"
+
+detail_rhel_09_231170 := "RHEL-09-231170: Not_a_Finding" if var_log_audit_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231170", concat(", ", missing_rhel_09_231170)]) if count(missing_rhel_09_231170) > 0
+
+else := "RHEL-09-231170: check failed — the /var/log/audit file system must be mounted with the nosuid option (mount | grep /var/log/audit)"
+
+finding_rhel_09_231170 := {
+	"vuln_id": "V-257875",
+	"stig_id": "RHEL-09-231170",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/log/audit with the nosuid option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231170,
+	"detail": detail_rhel_09_231170,
+	"fix_text": "Add nosuid to the /var/log/audit options in /etc/fstab and remount",
+}
+
+# RHEL-09-231175 | V-257876 | CAT II
+# the /var/tmp entry of the mount table must carry nodev (exact option token); no /var/tmp mount entry cannot show the option and stays a finding
+missing_rhel_09_231175 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_tmp_nodev := false
+
+var_tmp_nodev if {
+	count(missing_rhel_09_231175) == 0
+	m := _mount("/var/tmp")
+	"nodev" in m.options
+}
+
+status_rhel_09_231175 := "Not_a_Finding" if var_tmp_nodev
+
+else := "Open"
+
+detail_rhel_09_231175 := "RHEL-09-231175: Not_a_Finding" if var_tmp_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231175", concat(", ", missing_rhel_09_231175)]) if count(missing_rhel_09_231175) > 0
+
+else := "RHEL-09-231175: check failed — the /var/tmp file system must be mounted with the nodev option (mount | grep /var/tmp)"
+
+finding_rhel_09_231175 := {
+	"vuln_id": "V-257876",
+	"stig_id": "RHEL-09-231175",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/tmp with the nodev option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231175,
+	"detail": detail_rhel_09_231175,
+	"fix_text": "Add nodev to the /var/tmp options in /etc/fstab and remount",
+}
+
+# RHEL-09-231180 | V-257877 | CAT II
+# the /var/tmp entry of the mount table must carry noexec (exact option token); no /var/tmp mount entry cannot show the option and stays a finding
+missing_rhel_09_231180 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_tmp_noexec := false
+
+var_tmp_noexec if {
+	count(missing_rhel_09_231180) == 0
+	m := _mount("/var/tmp")
+	"noexec" in m.options
+}
+
+status_rhel_09_231180 := "Not_a_Finding" if var_tmp_noexec
+
+else := "Open"
+
+detail_rhel_09_231180 := "RHEL-09-231180: Not_a_Finding" if var_tmp_noexec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231180", concat(", ", missing_rhel_09_231180)]) if count(missing_rhel_09_231180) > 0
+
+else := "RHEL-09-231180: check failed — the /var/tmp file system must be mounted with the noexec option (mount | grep /var/tmp)"
+
+finding_rhel_09_231180 := {
+	"vuln_id": "V-257877",
+	"stig_id": "RHEL-09-231180",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/tmp with the noexec option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231180,
+	"detail": detail_rhel_09_231180,
+	"fix_text": "Add noexec to the /var/tmp options in /etc/fstab and remount",
+}
+
+# RHEL-09-231185 | V-257878 | CAT II
+# the /var/tmp entry of the mount table must carry nosuid (exact option token); no /var/tmp mount entry cannot show the option and stays a finding
+missing_rhel_09_231185 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_tmp_nosuid := false
+
+var_tmp_nosuid if {
+	count(missing_rhel_09_231185) == 0
+	m := _mount("/var/tmp")
+	"nosuid" in m.options
+}
+
+status_rhel_09_231185 := "Not_a_Finding" if var_tmp_nosuid
+
+else := "Open"
+
+detail_rhel_09_231185 := "RHEL-09-231185: Not_a_Finding" if var_tmp_nosuid
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231185", concat(", ", missing_rhel_09_231185)]) if count(missing_rhel_09_231185) > 0
+
+else := "RHEL-09-231185: check failed — the /var/tmp file system must be mounted with the nosuid option (mount | grep /var/tmp)"
+
+finding_rhel_09_231185 := {
+	"vuln_id": "V-257878",
+	"stig_id": "RHEL-09-231185",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must mount /var/tmp with the nosuid option.",
+	"check_type": "machine",
+	"status": status_rhel_09_231185,
+	"detail": detail_rhel_09_231185,
+	"fix_text": "Add nosuid to the /var/tmp options in /etc/fstab and remount",
+}
+
+# RHEL-09-231200 | V-257881 | CAT II
+# mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev': mount entries whose device starts with /dev and whose mount point is not /
+missing_rhel_09_231200 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default nonroot_local_partitions_nodev := false
+
+nonroot_local_partitions_nodev if {
+	count(missing_rhel_09_231200) == 0
+	mounts := input.filesystem_mounts
+	is_array(mounts)
+	count([m |
+		some m in mounts
+		_nonroot_dev_mount(m)
+		not _mount_has_option(m, "nodev")
+	]) == 0
+}
+
+status_rhel_09_231200 := "Not_a_Finding" if nonroot_local_partitions_nodev
+
+else := "Open"
+
+detail_rhel_09_231200 := "RHEL-09-231200: Not_a_Finding" if nonroot_local_partitions_nodev
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231200", concat(", ", missing_rhel_09_231200)]) if count(missing_rhel_09_231200) > 0
+
+else := "RHEL-09-231200: check failed — every mount of a /dev device on a mount point other than / must carry the nodev option"
+
+finding_rhel_09_231200 := {
+	"vuln_id": "V-257881",
+	"stig_id": "RHEL-09-231200",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent special devices on non-root local partitions.",
+	"check_type": "machine",
+	"status": status_rhel_09_231200,
+	"detail": detail_rhel_09_231200,
+	"fix_text": "Add nodev to every non-root local partition in /etc/fstab and remount",
+}
+
+# RHEL-09-271010 | V-258012 | CAT II
+# gsettings get org.gnome.login-screen banner-message-enable; no GUI installed is Not Applicable
+missing_rhel_09_271010 := [concat(".", p) | some p in [["gnome", "banner_message_enable"]]; not _collected(p)]
+
+default gui_banner_enabled := false
+
+gui_banner_enabled if {
+	count(missing_rhel_09_271010) == 0
+	_gs_bool(["gnome", "banner_message_enable"]) == "true"
+}
+
+default na_rhel_09_271010 := false
+
+na_rhel_09_271010 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271010 := "Not_a_Finding" if gui_banner_enabled
+
+else := "Not_Applicable" if na_rhel_09_271010
+
+else := "Open"
+
+detail_rhel_09_271010 := "RHEL-09-271010: Not_a_Finding" if gui_banner_enabled
+
+else := "RHEL-09-271010: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271010
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271010", concat(", ", missing_rhel_09_271010)]) if count(missing_rhel_09_271010) > 0
+
+else := "RHEL-09-271010: check failed — gsettings get org.gnome.login-screen banner-message-enable must return true"
+
+finding_rhel_09_271010 := {
+	"vuln_id": "V-258012",
+	"stig_id": "RHEL-09-271010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enable the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a graphical user logon.",
+	"check_type": "machine",
+	"status": status_rhel_09_271010,
+	"detail": detail_rhel_09_271010,
+	"fix_text": "Set banner-message-enable=true under [org/gnome/login-screen] in /etc/dconf/db/local.d/01-banner-message and run dconf update",
+}
+
+# RHEL-09-271020 | V-258014 | CAT II
+# gsettings get org.gnome.desktop.media-handling automount-open; no GUI installed is Not Applicable
+missing_rhel_09_271020 := [concat(".", p) | some p in [["gnome", "automount_open"]]; not _collected(p)]
+
+default gui_automount_disabled := false
+
+gui_automount_disabled if {
+	count(missing_rhel_09_271020) == 0
+	_gs_bool(["gnome", "automount_open"]) == "false"
+}
+
+gui_automount_disabled if {
+	_attested("rhel_09_271020_automount_documented")
+}
+
+default na_rhel_09_271020 := false
+
+na_rhel_09_271020 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271020 := "Not_a_Finding" if gui_automount_disabled
+
+else := "Not_Applicable" if na_rhel_09_271020
+
+else := "Open"
+
+detail_rhel_09_271020 := "RHEL-09-271020: Not_a_Finding" if gui_automount_disabled
+
+else := "RHEL-09-271020: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271020
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271020", concat(", ", missing_rhel_09_271020)]) if count(missing_rhel_09_271020) > 0
+
+else := "RHEL-09-271020: check failed — gsettings get org.gnome.desktop.media-handling automount-open must return false, unless documented with the ISSO as an operational requirement (input.attest.rhel_09_271020_automount_documented)"
+
+finding_rhel_09_271020 := {
+	"vuln_id": "V-258014",
+	"stig_id": "RHEL-09-271020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the graphical user interface automount function unless required.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_271020,
+	"detail": detail_rhel_09_271020,
+	"fix_text": "Set automount-open=false under [org/gnome/desktop/media-handling] in /etc/dconf/db/local.d/00-security-settings and run dconf update",
+}
+
+# RHEL-09-271030 | V-258016 | CAT II
+# gsettings get org.gnome.desktop.media-handling autorun-never; no GUI installed is Not Applicable
+missing_rhel_09_271030 := [concat(".", p) | some p in [["gnome", "autorun_never"]]; not _collected(p)]
+
+default gui_autorun_disabled := false
+
+gui_autorun_disabled if {
+	count(missing_rhel_09_271030) == 0
+	_gs_bool(["gnome", "autorun_never"]) == "true"
+}
+
+gui_autorun_disabled if {
+	_attested("rhel_09_271030_autorun_documented")
+}
+
+default na_rhel_09_271030 := false
+
+na_rhel_09_271030 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271030 := "Not_a_Finding" if gui_autorun_disabled
+
+else := "Not_Applicable" if na_rhel_09_271030
+
+else := "Open"
+
+detail_rhel_09_271030 := "RHEL-09-271030: Not_a_Finding" if gui_autorun_disabled
+
+else := "RHEL-09-271030: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271030
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271030", concat(", ", missing_rhel_09_271030)]) if count(missing_rhel_09_271030) > 0
+
+else := "RHEL-09-271030: check failed — gsettings get org.gnome.desktop.media-handling autorun-never must return true, unless documented with the ISSO as an operational requirement (input.attest.rhel_09_271030_autorun_documented)"
+
+finding_rhel_09_271030 := {
+	"vuln_id": "V-258016",
+	"stig_id": "RHEL-09-271030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the graphical user interface autorun function unless required.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_271030,
+	"detail": detail_rhel_09_271030,
+	"fix_text": "Set autorun-never=true under [org/gnome/desktop/media-handling] in /etc/dconf/db/local.d/00-security-settings and run dconf update",
+}
+
+# RHEL-09-271055 | V-258021 | CAT II
+# gsettings get org.gnome.desktop.screensaver lock-enabled; no GUI installed is Not Applicable
+missing_rhel_09_271055 := [concat(".", p) | some p in [["gnome", "screensaver_lock_enabled"]]; not _collected(p)]
+
+default gui_screensaver_lock_enabled := false
+
+gui_screensaver_lock_enabled if {
+	count(missing_rhel_09_271055) == 0
+	_gs_bool(["gnome", "screensaver_lock_enabled"]) == "true"
+}
+
+default na_rhel_09_271055 := false
+
+na_rhel_09_271055 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271055 := "Not_a_Finding" if gui_screensaver_lock_enabled
+
+else := "Not_Applicable" if na_rhel_09_271055
+
+else := "Open"
+
+detail_rhel_09_271055 := "RHEL-09-271055: Not_a_Finding" if gui_screensaver_lock_enabled
+
+else := "RHEL-09-271055: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271055
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271055", concat(", ", missing_rhel_09_271055)]) if count(missing_rhel_09_271055) > 0
+
+else := "RHEL-09-271055: check failed — gsettings get org.gnome.desktop.screensaver lock-enabled must return true"
+
+finding_rhel_09_271055 := {
+	"vuln_id": "V-258021",
+	"stig_id": "RHEL-09-271055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enable a user session lock until that user re-establishes access using established identification and authentication procedures for graphical user sessions.",
+	"check_type": "machine",
+	"status": status_rhel_09_271055,
+	"detail": detail_rhel_09_271055,
+	"fix_text": "Set lock-enabled=true under [org/gnome/desktop/screensaver] in /etc/dconf/db/local.d/00-screensaver and run dconf update",
+}
+
+# RHEL-09-271095 | V-258029 | CAT II
+# gsettings get org.gnome.login-screen disable-restart-buttons; no GUI installed is Not Applicable
+missing_rhel_09_271095 := [concat(".", p) | some p in [["gnome", "disable_restart_buttons"]]; not _collected(p)]
+
+default gui_restart_buttons_disabled := false
+
+gui_restart_buttons_disabled if {
+	count(missing_rhel_09_271095) == 0
+	_gs_bool(["gnome", "disable_restart_buttons"]) == "true"
+}
+
+default na_rhel_09_271095 := false
+
+na_rhel_09_271095 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271095 := "Not_a_Finding" if gui_restart_buttons_disabled
+
+else := "Not_Applicable" if na_rhel_09_271095
+
+else := "Open"
+
+detail_rhel_09_271095 := "RHEL-09-271095: Not_a_Finding" if gui_restart_buttons_disabled
+
+else := "RHEL-09-271095: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271095
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271095", concat(", ", missing_rhel_09_271095)]) if count(missing_rhel_09_271095) > 0
+
+else := "RHEL-09-271095: check failed — gsettings get org.gnome.login-screen disable-restart-buttons must return true"
+
+finding_rhel_09_271095 := {
+	"vuln_id": "V-258029",
+	"stig_id": "RHEL-09-271095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the ability of a user to restart the system from the login screen.",
+	"check_type": "machine",
+	"status": status_rhel_09_271095,
+	"detail": detail_rhel_09_271095,
+	"fix_text": "Set disable-restart-buttons='true' under [org/gnome/login-screen] in /etc/dconf/db/local.d/ and run dconf update",
+}
+
+# RHEL-09-271115 | V-258033 | CAT II
+# gsettings get org.gnome.login-screen disable-user-list; no GUI installed is Not Applicable
+missing_rhel_09_271115 := [concat(".", p) | some p in [["gnome", "disable_user_list"]]; not _collected(p)]
+
+default gui_user_list_disabled := false
+
+gui_user_list_disabled if {
+	count(missing_rhel_09_271115) == 0
+	_gs_bool(["gnome", "disable_user_list"]) == "true"
+}
+
+default na_rhel_09_271115 := false
+
+na_rhel_09_271115 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271115 := "Not_a_Finding" if gui_user_list_disabled
+
+else := "Not_Applicable" if na_rhel_09_271115
+
+else := "Open"
+
+detail_rhel_09_271115 := "RHEL-09-271115: Not_a_Finding" if gui_user_list_disabled
+
+else := "RHEL-09-271115: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271115
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271115", concat(", ", missing_rhel_09_271115)]) if count(missing_rhel_09_271115) > 0
+
+else := "RHEL-09-271115: check failed — gsettings get org.gnome.login-screen disable-user-list must return true"
+
+finding_rhel_09_271115 := {
+	"vuln_id": "V-258033",
+	"stig_id": "RHEL-09-271115",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the user list at logon for graphical user interfaces.",
+	"check_type": "machine",
+	"status": status_rhel_09_271115,
+	"detail": detail_rhel_09_271115,
+	"fix_text": "Set disable-user-list=true under [org/gnome/login-screen] in /etc/dconf/db/local.d/02-login-screen and run dconf update",
+}
+
+# RHEL-09-271015 | V-258013 | CAT II
+# gsettings writable org.gnome.login-screen banner-message-enable; no GUI installed is Not Applicable
+missing_rhel_09_271015 := [concat(".", p) | some p in [["gnome_writable", "banner_message_enable"]]; not _collected(p)]
+
+default gui_banner_enable_locked := false
+
+gui_banner_enable_locked if {
+	count(missing_rhel_09_271015) == 0
+	_gs_bool(["gnome_writable", "banner_message_enable"]) == "false"
+}
+
+default na_rhel_09_271015 := false
+
+na_rhel_09_271015 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271015 := "Not_a_Finding" if gui_banner_enable_locked
+
+else := "Not_Applicable" if na_rhel_09_271015
+
+else := "Open"
+
+detail_rhel_09_271015 := "RHEL-09-271015: Not_a_Finding" if gui_banner_enable_locked
+
+else := "RHEL-09-271015: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271015
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271015", concat(", ", missing_rhel_09_271015)]) if count(missing_rhel_09_271015) > 0
+
+else := "RHEL-09-271015: check failed — gsettings writable org.gnome.login-screen banner-message-enable must return false (the key is locked)"
+
+finding_rhel_09_271015 := {
+	"vuln_id": "V-258013",
+	"stig_id": "RHEL-09-271015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the banner-message-enable setting for the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271015,
+	"detail": detail_rhel_09_271015,
+	"fix_text": "Add /org/gnome/login-screen/banner-message-enable to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271035 | V-258017 | CAT II
+# gsettings writable org.gnome.desktop.media-handling autorun-never; no GUI installed is Not Applicable
+missing_rhel_09_271035 := [concat(".", p) | some p in [["gnome_writable", "autorun_never"]]; not _collected(p)]
+
+default gui_autorun_locked := false
+
+gui_autorun_locked if {
+	count(missing_rhel_09_271035) == 0
+	_gs_bool(["gnome_writable", "autorun_never"]) == "false"
+}
+
+gui_autorun_locked if {
+	_attested("rhel_09_271035_autorun_writable_documented")
+}
+
+default na_rhel_09_271035 := false
+
+na_rhel_09_271035 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271035 := "Not_a_Finding" if gui_autorun_locked
+
+else := "Not_Applicable" if na_rhel_09_271035
+
+else := "Open"
+
+detail_rhel_09_271035 := "RHEL-09-271035: Not_a_Finding" if gui_autorun_locked
+
+else := "RHEL-09-271035: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271035
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271035", concat(", ", missing_rhel_09_271035)]) if count(missing_rhel_09_271035) > 0
+
+else := "RHEL-09-271035: check failed — gsettings writable org.gnome.desktop.media-handling autorun-never must return false (the key is locked), unless documented with the ISSO as an operational requirement (input.attest.rhel_09_271035_autorun_writable_documented)"
+
+finding_rhel_09_271035 := {
+	"vuln_id": "V-258017",
+	"stig_id": "RHEL-09-271035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the disabling of the graphical user interface autorun function.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_271035,
+	"detail": detail_rhel_09_271035,
+	"fix_text": "Add /org/gnome/desktop/media-handling/autorun-never to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271060 | V-258022 | CAT II
+# gsettings writable org.gnome.desktop.screensaver lock-enabled; no GUI installed is Not Applicable
+missing_rhel_09_271060 := [concat(".", p) | some p in [["gnome_writable", "screensaver_lock_enabled"]]; not _collected(p)]
+
+default gui_screensaver_lock_enabled_locked := false
+
+gui_screensaver_lock_enabled_locked if {
+	count(missing_rhel_09_271060) == 0
+	_gs_bool(["gnome_writable", "screensaver_lock_enabled"]) == "false"
+}
+
+default na_rhel_09_271060 := false
+
+na_rhel_09_271060 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271060 := "Not_a_Finding" if gui_screensaver_lock_enabled_locked
+
+else := "Not_Applicable" if na_rhel_09_271060
+
+else := "Open"
+
+detail_rhel_09_271060 := "RHEL-09-271060: Not_a_Finding" if gui_screensaver_lock_enabled_locked
+
+else := "RHEL-09-271060: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271060
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271060", concat(", ", missing_rhel_09_271060)]) if count(missing_rhel_09_271060) > 0
+
+else := "RHEL-09-271060: check failed — gsettings writable org.gnome.desktop.screensaver lock-enabled must return false (the key is locked)"
+
+finding_rhel_09_271060 := {
+	"vuln_id": "V-258022",
+	"stig_id": "RHEL-09-271060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the screensaver lock-enabled setting for the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271060,
+	"detail": detail_rhel_09_271060,
+	"fix_text": "Add /org/gnome/desktop/screensaver/lock-enabled to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271070 | V-258024 | CAT II
+# gsettings writable org.gnome.desktop.session idle-delay; no GUI installed is Not Applicable
+missing_rhel_09_271070 := [concat(".", p) | some p in [["gnome_writable", "session_idle_delay"]]; not _collected(p)]
+
+default gui_idle_delay_locked := false
+
+gui_idle_delay_locked if {
+	count(missing_rhel_09_271070) == 0
+	_gs_bool(["gnome_writable", "session_idle_delay"]) == "false"
+}
+
+default na_rhel_09_271070 := false
+
+na_rhel_09_271070 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271070 := "Not_a_Finding" if gui_idle_delay_locked
+
+else := "Not_Applicable" if na_rhel_09_271070
+
+else := "Open"
+
+detail_rhel_09_271070 := "RHEL-09-271070: Not_a_Finding" if gui_idle_delay_locked
+
+else := "RHEL-09-271070: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271070
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271070", concat(", ", missing_rhel_09_271070)]) if count(missing_rhel_09_271070) > 0
+
+else := "RHEL-09-271070: check failed — gsettings writable org.gnome.desktop.session idle-delay must return false (the key is locked)"
+
+finding_rhel_09_271070 := {
+	"vuln_id": "V-258024",
+	"stig_id": "RHEL-09-271070",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the session idle-delay setting for the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271070,
+	"detail": detail_rhel_09_271070,
+	"fix_text": "Add /org/gnome/desktop/session/idle-delay to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271080 | V-258026 | CAT II
+# gsettings writable org.gnome.desktop.screensaver lock-delay; no GUI installed is Not Applicable
+missing_rhel_09_271080 := [concat(".", p) | some p in [["gnome_writable", "screensaver_lock_delay"]]; not _collected(p)]
+
+default gui_lock_delay_locked := false
+
+gui_lock_delay_locked if {
+	count(missing_rhel_09_271080) == 0
+	_gs_bool(["gnome_writable", "screensaver_lock_delay"]) == "false"
+}
+
+default na_rhel_09_271080 := false
+
+na_rhel_09_271080 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271080 := "Not_a_Finding" if gui_lock_delay_locked
+
+else := "Not_Applicable" if na_rhel_09_271080
+
+else := "Open"
+
+detail_rhel_09_271080 := "RHEL-09-271080: Not_a_Finding" if gui_lock_delay_locked
+
+else := "RHEL-09-271080: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271080
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271080", concat(", ", missing_rhel_09_271080)]) if count(missing_rhel_09_271080) > 0
+
+else := "RHEL-09-271080: check failed — gsettings writable org.gnome.desktop.screensaver lock-delay must return false (the key is locked)"
+
+finding_rhel_09_271080 := {
+	"vuln_id": "V-258026",
+	"stig_id": "RHEL-09-271080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the session lock-delay setting for the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271080,
+	"detail": detail_rhel_09_271080,
+	"fix_text": "Add /org/gnome/desktop/screensaver/lock-delay to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271085 | V-258027 | CAT II
+# gsettings writable org.gnome.desktop.screensaver picture-uri; no GUI installed is Not Applicable
+missing_rhel_09_271085 := [concat(".", p) | some p in [["gnome_writable", "screensaver_picture_uri"]]; not _collected(p)]
+
+default gui_screensaver_picture_locked := false
+
+gui_screensaver_picture_locked if {
+	count(missing_rhel_09_271085) == 0
+	_gs_bool(["gnome_writable", "screensaver_picture_uri"]) == "false"
+}
+
+default na_rhel_09_271085 := false
+
+na_rhel_09_271085 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271085 := "Not_a_Finding" if gui_screensaver_picture_locked
+
+else := "Not_Applicable" if na_rhel_09_271085
+
+else := "Open"
+
+detail_rhel_09_271085 := "RHEL-09-271085: Not_a_Finding" if gui_screensaver_picture_locked
+
+else := "RHEL-09-271085: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271085
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271085", concat(", ", missing_rhel_09_271085)]) if count(missing_rhel_09_271085) > 0
+
+else := "RHEL-09-271085: check failed — gsettings writable org.gnome.desktop.screensaver picture-uri must return false (the key is locked)"
+
+finding_rhel_09_271085 := {
+	"vuln_id": "V-258027",
+	"stig_id": "RHEL-09-271085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must conceal, via the session lock, information previously visible on the display with a publicly viewable image.",
+	"check_type": "machine",
+	"status": status_rhel_09_271085,
+	"detail": detail_rhel_09_271085,
+	"fix_text": "Add /org/gnome/desktop/screensaver/picture-uri to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271100 | V-258030 | CAT II
+# gsettings writable org.gnome.login-screen disable-restart-buttons; no GUI installed is Not Applicable
+missing_rhel_09_271100 := [concat(".", p) | some p in [["gnome_writable", "disable_restart_buttons"]]; not _collected(p)]
+
+default gui_restart_buttons_locked := false
+
+gui_restart_buttons_locked if {
+	count(missing_rhel_09_271100) == 0
+	_gs_bool(["gnome_writable", "disable_restart_buttons"]) == "false"
+}
+
+default na_rhel_09_271100 := false
+
+na_rhel_09_271100 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271100 := "Not_a_Finding" if gui_restart_buttons_locked
+
+else := "Not_Applicable" if na_rhel_09_271100
+
+else := "Open"
+
+detail_rhel_09_271100 := "RHEL-09-271100: Not_a_Finding" if gui_restart_buttons_locked
+
+else := "RHEL-09-271100: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271100
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271100", concat(", ", missing_rhel_09_271100)]) if count(missing_rhel_09_271100) > 0
+
+else := "RHEL-09-271100: check failed — gsettings writable org.gnome.login-screen disable-restart-buttons must return false (the key is locked)"
+
+finding_rhel_09_271100 := {
+	"vuln_id": "V-258030",
+	"stig_id": "RHEL-09-271100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the disable-restart-buttons setting for the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271100,
+	"detail": detail_rhel_09_271100,
+	"fix_text": "Add /org/gnome/login-screen/disable-restart-buttons to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271110 | V-258032 | CAT II
+# gsettings writable org.gnome.settings-daemon.plugins.media-keys logout; no GUI installed is Not Applicable
+missing_rhel_09_271110 := [concat(".", p) | some p in [["gnome_writable", "media_keys_logout"]]; not _collected(p)]
+
+default ctrl_alt_del_graphical_locked := false
+
+ctrl_alt_del_graphical_locked if {
+	count(missing_rhel_09_271110) == 0
+	_gs_bool(["gnome_writable", "media_keys_logout"]) == "false"
+}
+
+default na_rhel_09_271110 := false
+
+na_rhel_09_271110 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271110 := "Not_a_Finding" if ctrl_alt_del_graphical_locked
+
+else := "Not_Applicable" if na_rhel_09_271110
+
+else := "Open"
+
+detail_rhel_09_271110 := "RHEL-09-271110: Not_a_Finding" if ctrl_alt_del_graphical_locked
+
+else := "RHEL-09-271110: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271110
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271110", concat(", ", missing_rhel_09_271110)]) if count(missing_rhel_09_271110) > 0
+
+else := "RHEL-09-271110: check failed — gsettings writable org.gnome.settings-daemon.plugins.media-keys logout must return false (the key is locked)"
+
+finding_rhel_09_271110 := {
+	"vuln_id": "V-258032",
+	"stig_id": "RHEL-09-271110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the Ctrl-Alt-Del sequence settings for the graphical user interface.",
+	"check_type": "machine",
+	"status": status_rhel_09_271110,
+	"detail": detail_rhel_09_271110,
+	"fix_text": "Add /org/gnome/settings-daemon/plugins/media-keys/logout to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-271011 | V-270174 | CAT II
+# gsettings get org.gnome.login-screen banner-message-text, compared with the banner text of the check; no GUI installed is Not Applicable
+missing_rhel_09_271011 := [concat(".", p) | some p in [["gnome", "banner_message_text"]]; not _collected(p)]
+
+default gui_banner_text_set := false
+
+gui_banner_text_set if {
+	count(missing_rhel_09_271011) == 0
+	_gs_text(["gnome", "banner_message_text"]) == dod_banner
+}
+
+default na_rhel_09_271011 := false
+
+na_rhel_09_271011 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271011 := "Not_a_Finding" if gui_banner_text_set
+
+else := "Not_Applicable" if na_rhel_09_271011
+
+else := "Open"
+
+detail_rhel_09_271011 := "RHEL-09-271011: Not_a_Finding" if gui_banner_text_set
+
+else := "RHEL-09-271011: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271011
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271011", concat(", ", missing_rhel_09_271011)]) if count(missing_rhel_09_271011) > 0
+
+else := "RHEL-09-271011: check failed — gsettings get org.gnome.login-screen banner-message-text must return exactly the Standard Mandatory DoW Notice and Consent Banner (the \\n formatting sequences and whitespace aside)"
+
+finding_rhel_09_271011 := {
+	"vuln_id": "V-270174",
+	"stig_id": "RHEL-09-271011",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a graphical user logon.",
+	"check_type": "machine",
+	"status": status_rhel_09_271011,
+	"detail": detail_rhel_09_271011,
+	"fix_text": "Set banner-message-text to the Standard Mandatory DoW Notice and Consent Banner under [org/gnome/login-screen] in /etc/dconf/db/local.d/01-banner-message and run dconf update",
+}
+
+# RHEL-09-271025 | V-258015 | CAT II
+# lines returned by grep 'automount-open' /etc/dconf/db/<db>.d/locks/* for the system-db named in /etc/dconf/profile/user (input.dconf_locks.automount_open); no GUI installed is Not Applicable
+missing_rhel_09_271025 := [concat(".", p) | some p in [["dconf_locks", "automount_open"]]; not _collected(p)]
+
+default gui_automount_locked := false
+
+gui_automount_locked if {
+	count(missing_rhel_09_271025) == 0
+	ls := input.dconf_locks.automount_open
+	is_array(ls)
+	some l in ls
+	is_string(l)
+	regex.match(`(^|:)/org/gnome/desktop/media-handling/automount-open\s*$`, l)
+}
+
+default na_rhel_09_271025 := false
+
+na_rhel_09_271025 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271025 := "Not_a_Finding" if gui_automount_locked
+
+else := "Not_Applicable" if na_rhel_09_271025
+
+else := "Open"
+
+detail_rhel_09_271025 := "RHEL-09-271025: Not_a_Finding" if gui_automount_locked
+
+else := "RHEL-09-271025: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271025
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271025", concat(", ", missing_rhel_09_271025)]) if count(missing_rhel_09_271025) > 0
+
+else := "RHEL-09-271025: check failed — a lock file of the system dconf database (/etc/dconf/db/<system-db>.d/locks/*) must carry /org/gnome/desktop/media-handling/automount-open"
+
+finding_rhel_09_271025 := {
+	"vuln_id": "V-258015",
+	"stig_id": "RHEL-09-271025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the disabling of the graphical user interface automount function.",
+	"check_type": "machine",
+	"status": status_rhel_09_271025,
+	"detail": detail_rhel_09_271025,
+	"fix_text": "Add /org/gnome/desktop/media-handling/automount-open to /etc/dconf/db/local.d/locks/00-security-settings-lock and run dconf update",
+}
+
+# RHEL-09-271065 | V-258023 | CAT II
+# gsettings get org.gnome.desktop.session idle-delay ("uint32 <n>"); no GUI installed is Not Applicable
+missing_rhel_09_271065 := [concat(".", p) | some p in [["gnome", "session_idle_delay"]]; not _collected(p)]
+
+default gui_idle_delay_ok := false
+
+gui_idle_delay_ok if {
+	count(missing_rhel_09_271065) == 0
+	n := _gs_uint(["gnome", "session_idle_delay"])
+	n >= 1
+	n <= 600
+}
+
+default na_rhel_09_271065 := false
+
+na_rhel_09_271065 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271065 := "Not_a_Finding" if gui_idle_delay_ok
+
+else := "Not_Applicable" if na_rhel_09_271065
+
+else := "Open"
+
+detail_rhel_09_271065 := "RHEL-09-271065: Not_a_Finding" if gui_idle_delay_ok
+
+else := "RHEL-09-271065: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271065
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271065", concat(", ", missing_rhel_09_271065)]) if count(missing_rhel_09_271065) > 0
+
+else := "RHEL-09-271065: check failed — gsettings get org.gnome.desktop.session idle-delay must return 600 or less and not 0"
+
+finding_rhel_09_271065 := {
+	"vuln_id": "V-258023",
+	"stig_id": "RHEL-09-271065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must automatically lock graphical user sessions after 10 minutes of inactivity.",
+	"check_type": "machine",
+	"status": status_rhel_09_271065,
+	"detail": detail_rhel_09_271065,
+	"fix_text": "Set idle-delay=uint32 600 under [org/gnome/desktop/session] in /etc/dconf/db/local.d/00-screensaver and run dconf update",
+}
+
+# RHEL-09-271075 | V-258025 | CAT II
+# gsettings get org.gnome.desktop.screensaver lock-delay ("uint32 <n>"); no GUI installed is Not Applicable
+missing_rhel_09_271075 := [concat(".", p) | some p in [["gnome", "screensaver_lock_delay"]]; not _collected(p)]
+
+default gui_lock_delay_ok := false
+
+gui_lock_delay_ok if {
+	count(missing_rhel_09_271075) == 0
+	n := _gs_uint(["gnome", "screensaver_lock_delay"])
+	n >= 0
+	n <= 5
+}
+
+default na_rhel_09_271075 := false
+
+na_rhel_09_271075 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271075 := "Not_a_Finding" if gui_lock_delay_ok
+
+else := "Not_Applicable" if na_rhel_09_271075
+
+else := "Open"
+
+detail_rhel_09_271075 := "RHEL-09-271075: Not_a_Finding" if gui_lock_delay_ok
+
+else := "RHEL-09-271075: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271075
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271075", concat(", ", missing_rhel_09_271075)]) if count(missing_rhel_09_271075) > 0
+
+else := "RHEL-09-271075: check failed — gsettings get org.gnome.desktop.screensaver lock-delay must return 5 or less"
+
+finding_rhel_09_271075 := {
+	"vuln_id": "V-258025",
+	"stig_id": "RHEL-09-271075",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must initiate a session lock for graphical user interfaces when the screensaver is activated.",
+	"check_type": "machine",
+	"status": status_rhel_09_271075,
+	"detail": detail_rhel_09_271075,
+	"fix_text": "Set lock-delay=uint32 5 under [org/gnome/desktop/screensaver] in /etc/dconf/db/local.d/00-screensaver and run dconf update",
+}
+
+# RHEL-09-271090 | V-258028 | CAT II
+# output lines of the check's dconf_needs_update function (a database whose mtime is below its newest keyfile's); no GUI installed is Not Applicable
+missing_rhel_09_271090 := [concat(".", p) | some p in [["dconf_outdated_databases"]]; not _collected(p)]
+
+default dconf_databases_current := false
+
+dconf_databases_current if {
+	count(missing_rhel_09_271090) == 0
+	xs := input.dconf_outdated_databases
+	is_array(xs)
+	count(xs) == 0
+}
+
+default na_rhel_09_271090 := false
+
+na_rhel_09_271090 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271090 := "Not_a_Finding" if dconf_databases_current
+
+else := "Not_Applicable" if na_rhel_09_271090
+
+else := "Open"
+
+detail_rhel_09_271090 := "RHEL-09-271090: Not_a_Finding" if dconf_databases_current
+
+else := "RHEL-09-271090: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271090
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271090", concat(", ", missing_rhel_09_271090)]) if count(missing_rhel_09_271090) > 0
+
+else := "RHEL-09-271090: check failed — no dconf database under /etc/dconf/db may be older than its keyfiles (<db>.d/*)"
+
+finding_rhel_09_271090 := {
+	"vuln_id": "V-258028",
+	"stig_id": "RHEL-09-271090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 effective dconf policy must match the policy keyfiles.",
+	"check_type": "machine",
+	"status": status_rhel_09_271090,
+	"detail": detail_rhel_09_271090,
+	"fix_text": "Update the dconf databases: dconf update",
+}
+
+# RHEL-09-291015 | V-258035 | CAT II
+# usbguard package installed (dnf list installed usbguard); SA evidence of another blocking method is an attestation
+missing_rhel_09_291015 := [concat(".", p) | some p in [["packages", "usbguard"]]; not _collected(p)]
+
+default usbguard_installed := false
+
+usbguard_installed if {
+	count(missing_rhel_09_291015) == 0
+	input.packages.usbguard == true
+}
+
+usbguard_installed if {
+	_attested("rhel_09_291015_peripherals_blocked")
+}
+
+usbguard_installed if {
+	input.virtual_machine == true
+	ps := input.usb_peripherals
+	is_array(ps)
+	count(ps) == 0
+}
+
+status_rhel_09_291015 := "Not_a_Finding" if usbguard_installed
+
+else := "Open"
+
+detail_rhel_09_291015 := "RHEL-09-291015: Not_a_Finding" if usbguard_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291015", concat(", ", missing_rhel_09_291015)]) if count(missing_rhel_09_291015) > 0
+
+else := "RHEL-09-291015: check failed — the usbguard package must be installed, or the SA must show how unauthorized peripherals are blocked before a connection is established (input.attest.rhel_09_291015_peripherals_blocked); not a finding on a virtual machine with no virtual or physical USB peripherals attached (input.virtual_machine, input.usb_peripherals)"
+
+finding_rhel_09_291015 := {
+	"vuln_id": "V-258035",
+	"stig_id": "RHEL-09-291015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the USBGuard package installed.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_291015,
+	"detail": detail_rhel_09_291015,
+	"fix_text": "Install and start USBGuard: dnf install usbguard && systemctl enable --now usbguard",
+}
+
+# RHEL-09-291020 | V-258036 | CAT II
+# systemctl is-active usbguard; SA evidence of another blocking method is an attestation
+missing_rhel_09_291020 := [concat(".", p) | some p in [["services", "usbguard"]]; not _collected(p)]
+
+default usbguard_active := false
+
+usbguard_active if {
+	count(missing_rhel_09_291020) == 0
+	_kw(["services", "usbguard"]) == "active"
+}
+
+usbguard_active if {
+	_attested("rhel_09_291020_peripherals_blocked")
+}
+
+usbguard_active if {
+	input.virtual_machine == true
+	ps := input.usb_peripherals
+	is_array(ps)
+	count(ps) == 0
+}
+
+status_rhel_09_291020 := "Not_a_Finding" if usbguard_active
+
+else := "Open"
+
+detail_rhel_09_291020 := "RHEL-09-291020: Not_a_Finding" if usbguard_active
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291020", concat(", ", missing_rhel_09_291020)]) if count(missing_rhel_09_291020) > 0
+
+else := "RHEL-09-291020: check failed — usbguard must be active (systemctl is-active usbguard), or the SA must show how unauthorized peripherals are blocked before a connection is established (input.attest.rhel_09_291020_peripherals_blocked); not a finding on a virtual machine with no virtual or physical USB peripherals attached (input.virtual_machine, input.usb_peripherals)"
+
+finding_rhel_09_291020 := {
+	"vuln_id": "V-258036",
+	"stig_id": "RHEL-09-291020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the USBGuard package enabled.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_291020,
+	"detail": detail_rhel_09_291020,
+	"fix_text": "Enable and start USBGuard: systemctl enable --now usbguard",
+}
+
+# RHEL-09-291030 | V-258038 | CAT II
+# output lines of usbguard list-rules (null when the command returns an error); a virtual machine with no USB peripherals is Not Applicable
+missing_rhel_09_291030 := [concat(".", p) | some p in [["usbguard_rules"]]; not _collected(p)]
+
+default usbguard_policy_configured := false
+
+usbguard_policy_configured if {
+	count(missing_rhel_09_291030) == 0
+	rs := input.usbguard_rules
+	is_array(rs)
+	count(rs) > 0
+}
+
+usbguard_policy_configured if {
+	_attested("rhel_09_291030_peripherals_blocked")
+}
+
+default na_rhel_09_291030 := false
+
+na_rhel_09_291030 if {
+	input.virtual_machine == true
+	ps := input.usb_peripherals
+	is_array(ps)
+	count(ps) == 0
+}
+
+status_rhel_09_291030 := "Not_a_Finding" if usbguard_policy_configured
+
+else := "Not_Applicable" if na_rhel_09_291030
+
+else := "Open"
+
+detail_rhel_09_291030 := "RHEL-09-291030: Not_a_Finding" if usbguard_policy_configured
+
+else := "RHEL-09-291030: Not_Applicable — the system is a virtual machine with no virtual or physical USB peripherals attached" if na_rhel_09_291030
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291030", concat(", ", missing_rhel_09_291030)]) if count(missing_rhel_09_291030) > 0
+
+else := "RHEL-09-291030: check failed — usbguard list-rules must return at least one rule, or the SA must show how unauthorized peripherals are blocked before a connection is established (input.attest.rhel_09_291030_peripherals_blocked)"
+
+finding_rhel_09_291030 := {
+	"vuln_id": "V-258038",
+	"stig_id": "RHEL-09-291030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must block unauthorized peripherals before establishing a connection.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_291030,
+	"detail": detail_rhel_09_291030,
+	"fix_text": "Create a USBGuard policy: usbguard generate-policy --no-hash > /etc/usbguard/rules.conf, then enable and start usbguard",
+}
+
+# RHEL-09-431016 | V-272496 | CAT II
+# uncommented lines of /etc/sudoers and /etc/sudoers.d/* (input.sudoers.lines[{file, line}]) carrying TYPE=sysadm_t and ROLE=sysadm_r
+missing_rhel_09_431016 := [concat(".", p) | some p in [["sudoers", "lines"]]; not _collected(p)]
+
+default sudo_selinux_context_elevated := false
+
+sudo_selinux_context_elevated if {
+	count(missing_rhel_09_431016) == 0
+	_p4_sudoers_collected
+	some e in _p4_sudoers
+	regex.match(`^\s*[^\s#]\S*\s+\S+\s*=.*\bTYPE\s*=\s*sysadm_t\b`, e.line)
+	regex.match(`^\s*[^\s#]\S*\s+\S+\s*=.*\bROLE\s*=\s*sysadm_r\b`, e.line)
+}
+
+status_rhel_09_431016 := "Not_a_Finding" if sudo_selinux_context_elevated
+
+else := "Open"
+
+detail_rhel_09_431016 := "RHEL-09-431016: Not_a_Finding" if sudo_selinux_context_elevated
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-431016", concat(", ", missing_rhel_09_431016)]) if count(missing_rhel_09_431016) > 0
+
+else := "RHEL-09-431016: check failed — a sudoers user specification for the designated administrator group or account must elevate the SELinux context with TYPE=sysadm_t ROLE=sysadm_r"
+
+finding_rhel_09_431016 := {
+	"vuln_id": "V-272496",
+	"stig_id": "RHEL-09-431016",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must elevate the SELinux context when an administrator calls the sudo command.",
+	"check_type": "machine",
+	"status": status_rhel_09_431016,
+	"detail": detail_rhel_09_431016,
+	"fix_text": "Add %<admin_group> ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL to a file in /etc/sudoers.d/ (visudo -f)",
+}
+
+# RHEL-09-431020 | V-258080 | CAT II
+# SELinux type from ls -Zd of the directory named by dir in /etc/security/faillock.conf (input.faillock_dir {path, selinux_type}); SELinux not enforcing a targeted policy, or pam_faillock not configured, is Not Applicable
+missing_rhel_09_431020 := [concat(".", p) | some p in [["faillock_dir", "selinux_type"]]; not _collected(p)]
+
+default faillock_dir_selinux_type := false
+
+faillock_dir_selinux_type if {
+	count(missing_rhel_09_431020) == 0
+	_str(["faillock_dir", "selinux_type"]) == "faillog_t"
+}
+
+default na_rhel_09_431020 := false
+
+na_rhel_09_431020 if {
+	g := _kw(["selinux", "getenforce"])
+	g != "enforcing"
+}
+
+na_rhel_09_431020 if {
+	p := _str(["selinux", "policy"])
+	p != "targeted"
+}
+
+na_rhel_09_431020 if {
+	every f in {"system-auth", "password-auth"} {
+		lines := _p4_pam(f)
+		count([l | some l in lines; contains(l, "pam_faillock.so")]) == 0
+	}
+}
+
+status_rhel_09_431020 := "Not_a_Finding" if faillock_dir_selinux_type
+
+else := "Not_Applicable" if na_rhel_09_431020
+
+else := "Open"
+
+detail_rhel_09_431020 := "RHEL-09-431020: Not_a_Finding" if faillock_dir_selinux_type
+
+else := "RHEL-09-431020: Not_Applicable — SELinux is not enforcing a targeted policy, or pam_faillock is not configured in system-auth / password-auth" if na_rhel_09_431020
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-431020", concat(", ", missing_rhel_09_431020)]) if count(missing_rhel_09_431020) > 0
+
+else := "RHEL-09-431020: check failed — the faillock tally directory (dir in /etc/security/faillock.conf) must have the SELinux context type faillog_t"
+
+finding_rhel_09_431020 := {
+	"vuln_id": "V-258080",
+	"stig_id": "RHEL-09-431020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must configure SELinux context type to allow the use of a nondefault faillock tally directory.",
+	"check_type": "machine",
+	"status": status_rhel_09_431020,
+	"detail": detail_rhel_09_431020,
+	"fix_text": "semanage fcontext -a -t faillog_t \"/var/log/faillock(/.*)?\" && restorecon -R -v /var/log/faillock",
+}
+
+# RHEL-09-431025 | V-258081 | CAT II
+# policycoreutils package installed (dnf list --installed policycoreutils)
+missing_rhel_09_431025 := [concat(".", p) | some p in [["packages", "policycoreutils"]]; not _collected(p)]
+
+default policycoreutils_installed := false
+
+policycoreutils_installed if {
+	count(missing_rhel_09_431025) == 0
+	input.packages.policycoreutils == true
+}
+
+status_rhel_09_431025 := "Not_a_Finding" if policycoreutils_installed
+
+else := "Open"
+
+detail_rhel_09_431025 := "RHEL-09-431025: Not_a_Finding" if policycoreutils_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-431025", concat(", ", missing_rhel_09_431025)]) if count(missing_rhel_09_431025) > 0
+
+else := "RHEL-09-431025: check failed — the policycoreutils package must be installed"
+
+finding_rhel_09_431025 := {
+	"vuln_id": "V-258081",
+	"stig_id": "RHEL-09-431025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have policycoreutils package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_431025,
+	"detail": detail_rhel_09_431025,
+	"fix_text": "Install the package: dnf install policycoreutils",
+}
+
+# RHEL-09-431030 | V-258082 | CAT II
+# policycoreutils-python-utils package installed (dnf list --installed policycoreutils-python-utils)
+missing_rhel_09_431030 := [concat(".", p) | some p in [["packages", "policycoreutils-python-utils"]]; not _collected(p)]
+
+default policycoreutils_python_utils_installed := false
+
+policycoreutils_python_utils_installed if {
+	count(missing_rhel_09_431030) == 0
+	input.packages["policycoreutils-python-utils"] == true
+}
+
+status_rhel_09_431030 := "Not_a_Finding" if policycoreutils_python_utils_installed
+
+else := "Open"
+
+detail_rhel_09_431030 := "RHEL-09-431030: Not_a_Finding" if policycoreutils_python_utils_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-431030", concat(", ", missing_rhel_09_431030)]) if count(missing_rhel_09_431030) > 0
+
+else := "RHEL-09-431030: check failed — the policycoreutils-python-utils package must be installed"
+
+finding_rhel_09_431030 := {
+	"vuln_id": "V-258082",
+	"stig_id": "RHEL-09-431030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 policycoreutils-python-utils package must be installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_431030,
+	"detail": detail_rhel_09_431030,
+	"fix_text": "Install the package: dnf install policycoreutils-python-utils",
+}
+
 # =============================================================================
 # CAT III - LOW SEVERITY
 # =============================================================================
@@ -976,6 +4187,140 @@ finding_rhel_09_231030 := {
 	"fix_text": "Create a separate file system for the audit data path (e.g. /var/log/audit) and mount it in /etc/fstab",
 }
 
+# RHEL-09-212050 | V-257795 | CAT III
+# pti=on in every boot entry's args (grubby --info=ALL) and in the uncommented GRUB_CMDLINE_LINUX of /etc/default/grub
+missing_rhel_09_212050 := [concat(".", p) | some p in [["grub", "kernel_args"], ["grub", "default_cmdline_linux"]]; not _collected(p)]
+
+default pti_enabled := false
+
+pti_enabled if {
+	count(missing_rhel_09_212050) == 0
+	_grubby_all_have("pti=on")
+	_grub_default_has("pti=on")
+}
+
+status_rhel_09_212050 := "Not_a_Finding" if pti_enabled
+
+else := "Open"
+
+detail_rhel_09_212050 := "RHEL-09-212050: Not_a_Finding" if pti_enabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212050", concat(", ", missing_rhel_09_212050)]) if count(missing_rhel_09_212050) > 0
+
+else := "RHEL-09-212050: check failed — every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry pti=on"
+
+finding_rhel_09_212050 := {
+	"vuln_id": "V-257795",
+	"stig_id": "RHEL-09-212050",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must enable mitigations against processor-based vulnerabilities.",
+	"check_type": "machine",
+	"status": status_rhel_09_212050,
+	"detail": detail_rhel_09_212050,
+	"fix_text": "Enable kernel page-table isolation: grubby --update-kernel=ALL --args=\"pti=on\" and add pti=on to GRUB_CMDLINE_LINUX in /etc/default/grub",
+}
+
+# RHEL-09-212055 | V-257796 | CAT III
+# audit=1 in every boot entry's args (grubby --info=ALL) and in the uncommented GRUB_CMDLINE_LINUX of /etc/default/grub
+missing_rhel_09_212055 := [concat(".", p) | some p in [["grub", "kernel_args"], ["grub", "default_cmdline_linux"]]; not _collected(p)]
+
+default audit_at_boot := false
+
+audit_at_boot if {
+	count(missing_rhel_09_212055) == 0
+	_grubby_all_have("audit=1")
+	_grub_default_has("audit=1")
+}
+
+status_rhel_09_212055 := "Not_a_Finding" if audit_at_boot
+
+else := "Open"
+
+detail_rhel_09_212055 := "RHEL-09-212055: Not_a_Finding" if audit_at_boot
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212055", concat(", ", missing_rhel_09_212055)]) if count(missing_rhel_09_212055) > 0
+
+else := "RHEL-09-212055: check failed — every boot entry (grubby --info=ALL, args) and GRUB_CMDLINE_LINUX in /etc/default/grub must carry audit=1"
+
+finding_rhel_09_212055 := {
+	"vuln_id": "V-257796",
+	"stig_id": "RHEL-09-212055",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must enable auditing of processes that start prior to the audit daemon.",
+	"check_type": "machine",
+	"status": status_rhel_09_212055,
+	"detail": detail_rhel_09_212055,
+	"fix_text": "Enable auditing of processes that start before auditd: grubby --update-kernel=ALL --args=\"audit=1\" and add audit=1 to GRUB_CMDLINE_LINUX in /etc/default/grub",
+}
+
+# RHEL-09-231020 | V-257845 | CAT III
+# the mount table (mount / findmnt): a separate entry for /var
+missing_rhel_09_231020 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
+default var_separate := false
+
+var_separate if {
+	count(missing_rhel_09_231020) == 0
+	_mount("/var")
+}
+
+status_rhel_09_231020 := "Not_a_Finding" if var_separate
+
+else := "Open"
+
+detail_rhel_09_231020 := "RHEL-09-231020: Not_a_Finding" if var_separate
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231020", concat(", ", missing_rhel_09_231020)]) if count(missing_rhel_09_231020) > 0
+
+else := "RHEL-09-231020: check failed — a separate file system must be mounted on /var"
+
+finding_rhel_09_231020 := {
+	"vuln_id": "V-257845",
+	"stig_id": "RHEL-09-231020",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must use a separate file system for /var.",
+	"check_type": "machine",
+	"status": status_rhel_09_231020,
+	"detail": detail_rhel_09_231020,
+	"fix_text": "Migrate /var onto a separate file system and mount it in /etc/fstab",
+}
+
+# RHEL-09-231195 | V-257880 | CAT III
+# uncommented modprobe lines for cramfs: input.modprobe["cramfs"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_231195 := [concat(".", p) | some p in [["modprobe", "cramfs"]]; not _collected(p)]
+
+default cramfs_disabled := false
+
+cramfs_disabled if {
+	count(missing_rhel_09_231195) == 0
+	_module_disabled("cramfs")
+}
+
+cramfs_disabled if {
+	_attested("rhel_09_231195_cramfs_documented")
+}
+
+status_rhel_09_231195 := "Not_a_Finding" if cramfs_disabled
+
+else := "Open"
+
+detail_rhel_09_231195 := "RHEL-09-231195: Not_a_Finding" if cramfs_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231195", concat(", ", missing_rhel_09_231195)]) if count(missing_rhel_09_231195) > 0
+
+else := "RHEL-09-231195: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install cramfs /bin/false' and 'blacklist cramfs', or its use must be documented with the ISSO (input.attest.rhel_09_231195_cramfs_documented)"
+
+finding_rhel_09_231195 := {
+	"vuln_id": "V-257880",
+	"stig_id": "RHEL-09-231195",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must disable mounting of cramfs.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_231195,
+	"detail": detail_rhel_09_231195,
+	"fix_text": "Add 'install cramfs /bin/false' and 'blacklist cramfs' to /etc/modprobe.d/cramfs.conf",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -985,6 +4330,11 @@ cat_i_findings := [
 	finding_rhel_09_431010,
 	finding_rhel_09_671010,
 	finding_rhel_09_215105,
+	finding_rhel_09_211010,
+	finding_rhel_09_211045,
+	finding_rhel_09_212020,
+	finding_rhel_09_231190,
+	finding_rhel_09_271040,
 ]
 
 cat_ii_findings := [
@@ -1006,11 +4356,90 @@ cat_ii_findings := [
 	finding_rhel_09_231045,
 	finding_rhel_09_231050,
 	finding_rhel_09_231055,
+	finding_rhel_09_211030,
+	finding_rhel_09_211055,
+	finding_rhel_09_212015,
+	finding_rhel_09_212035,
+	finding_rhel_09_212040,
+	finding_rhel_09_212045,
+	finding_rhel_09_213025,
+	finding_rhel_09_213030,
+	finding_rhel_09_213035,
+	finding_rhel_09_213080,
+	finding_rhel_09_213105,
+	finding_rhel_09_213040,
+	finding_rhel_09_213045,
+	finding_rhel_09_213050,
+	finding_rhel_09_213060,
+	finding_rhel_09_213065,
+	finding_rhel_09_213085,
+	finding_rhel_09_213090,
+	finding_rhel_09_213095,
+	finding_rhel_09_213100,
+	finding_rhel_09_213110,
+	finding_rhel_09_231010,
+	finding_rhel_09_231035,
+	finding_rhel_09_231095,
+	finding_rhel_09_231100,
+	finding_rhel_09_231110,
+	finding_rhel_09_231115,
+	finding_rhel_09_231120,
+	finding_rhel_09_231125,
+	finding_rhel_09_231130,
+	finding_rhel_09_231135,
+	finding_rhel_09_231140,
+	finding_rhel_09_231145,
+	finding_rhel_09_231105,
+	finding_rhel_09_231065,
+	finding_rhel_09_231070,
+	finding_rhel_09_231075,
+	finding_rhel_09_231080,
+	finding_rhel_09_231085,
+	finding_rhel_09_231090,
+	finding_rhel_09_231150,
+	finding_rhel_09_231155,
+	finding_rhel_09_231160,
+	finding_rhel_09_231165,
+	finding_rhel_09_231170,
+	finding_rhel_09_231175,
+	finding_rhel_09_231180,
+	finding_rhel_09_231185,
+	finding_rhel_09_231200,
+	finding_rhel_09_271010,
+	finding_rhel_09_271020,
+	finding_rhel_09_271030,
+	finding_rhel_09_271055,
+	finding_rhel_09_271095,
+	finding_rhel_09_271115,
+	finding_rhel_09_271015,
+	finding_rhel_09_271035,
+	finding_rhel_09_271060,
+	finding_rhel_09_271070,
+	finding_rhel_09_271080,
+	finding_rhel_09_271085,
+	finding_rhel_09_271100,
+	finding_rhel_09_271110,
+	finding_rhel_09_271011,
+	finding_rhel_09_271025,
+	finding_rhel_09_271065,
+	finding_rhel_09_271075,
+	finding_rhel_09_271090,
+	finding_rhel_09_291015,
+	finding_rhel_09_291020,
+	finding_rhel_09_291030,
+	finding_rhel_09_431016,
+	finding_rhel_09_431020,
+	finding_rhel_09_431025,
+	finding_rhel_09_431030,
 ]
 
 cat_iii_findings := [
 	finding_rhel_09_231025,
 	finding_rhel_09_231030,
+	finding_rhel_09_212050,
+	finding_rhel_09_212055,
+	finding_rhel_09_231020,
+	finding_rhel_09_231195,
 ]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))

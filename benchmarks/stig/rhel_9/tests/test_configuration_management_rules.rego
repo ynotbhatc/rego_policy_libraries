@@ -6,8 +6,23 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"]},
-	"auditd_config": {"log_file": "/var/log/audit/audit.log"},
+	"aide": {
+		"schedule": [
+			"/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil",
+		],
+	},
+	"attest": {
+		"rhel_09_211010_release_supported": true,
+	},
+	"auditd_config": {
+		"log_file": "/var/log/audit/audit.log",
+	},
+	"cpuinfo": {
+		"flags": [
+			"flags : fpu vme de pse nx lm",
+			"flags : fpu vme de pse nx lm",
+		],
+	},
 	"crypto_policy": "FIPS",
 	"crypto_policy_state": {
 		"hash": [
@@ -21,6 +36,50 @@ green_fixture := {
 			"SHAKE-256",
 		],
 		"min_rsa_size": 2048,
+	},
+	"dconf_locks": {
+		"automount_open": [
+			"/org/gnome/desktop/media-handling/automount-open",
+		],
+	},
+	"dconf_outdated_databases": [],
+	"disk_encryption": {
+		"filesystems": [
+			{
+				"crypt": [
+					{
+						"name": "luks-b74f6910",
+						"type": "LUKS2",
+					},
+				],
+				"device": "/dev/mapper/rhel-root",
+				"mount": "/",
+			},
+			{
+				"crypt": [
+					{
+						"name": "luks-b74f6910",
+						"type": "LUKS2",
+					},
+				],
+				"device": "/dev/mapper/rhel-home",
+				"mount": "/home",
+			},
+			{
+				"crypt": [],
+				"device": "/dev/nvme0n1p2",
+				"mount": "/boot",
+			},
+			{
+				"crypt": [],
+				"device": "/dev/nvme0n1p1",
+				"mount": "/boot/efi",
+			},
+		],
+	},
+	"faillock_dir": {
+		"path": "/var/log/faillock",
+		"selinux_type": "faillog_t",
 	},
 	"filesystem_mounts": [
 		{
@@ -67,20 +126,149 @@ green_fixture := {
 				"noexec",
 			],
 		},
+		{
+			"device": "/dev/mapper/rhel-var",
+			"fstype": "xfs",
+			"mount": "/var",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/mapper/rhel-var_tmp",
+			"fstype": "xfs",
+			"mount": "/var/tmp",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/sda2",
+			"fstype": "xfs",
+			"mount": "/boot",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/sda1",
+			"fstype": "vfat",
+			"mount": "/boot/efi",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "tmpfs",
+			"fstype": "tmpfs",
+			"mount": "/dev/shm",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
 	],
-	"fips": {"fips_enabled": "1"},
-	"gnome": {"media_keys_logout": "['']"},
-	"grub": {"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF"},
+	"fips": {
+		"fips_enabled": "1",
+	},
+	"fstab": [
+		{
+			"fs_type": "xfs",
+			"mount_point": "/",
+			"options": "defaults",
+		},
+		{
+			"fs_type": "nfs4",
+			"mount_point": "/data",
+			"options": "rw,nosuid,nodev,noexec,sync,soft,sec=krb5:krb5i:krb5p",
+		},
+	],
+	"gdm_custom_conf": {
+		"AutomaticLoginEnable": "false",
+	},
+	"gnome": {
+		"automount_open": "false",
+		"autorun_never": "true",
+		"banner_message_enable": "true",
+		"banner_message_text": "'You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\n-At any time, the USG may inspect and seize data stored on this IS.\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details. '",
+		"disable_restart_buttons": "true",
+		"disable_user_list": "true",
+		"media_keys_logout": "['']",
+		"screensaver_lock_delay": "uint32 5",
+		"screensaver_lock_enabled": "true",
+		"session_idle_delay": "uint32 600",
+	},
+	"gnome_writable": {
+		"autorun_never": "false",
+		"banner_message_enable": "false",
+		"disable_restart_buttons": "false",
+		"media_keys_logout": "false",
+		"screensaver_lock_delay": "false",
+		"screensaver_lock_enabled": "false",
+		"screensaver_picture_uri": "false",
+		"session_idle_delay": "false",
+	},
+	"grub": {
+		"default_cmdline_linux": "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192",
+		"kernel_args": [
+			"root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192",
+			"root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192",
+		],
+		"superusers": "bootmgr9",
+		"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF",
+	},
 	"kernel_params": {
+		"fs.protected_hardlinks": "1",
+		"fs.protected_symlinks": "1",
+		"kernel.core_pattern": "|/bin/false",
 		"kernel.dmesg_restrict": "1",
+		"kernel.kptr_restrict": "1",
 		"kernel.perf_event_paranoid": "2",
 		"kernel.randomize_va_space": "2",
 		"kernel.unprivileged_bpf_disabled": "1",
+		"kernel.yama.ptrace_scope": "1",
 		"net.core.bpf_jit_harden": "2",
+		"user.max_user_namespaces": "0",
 	},
-	"login_banner": {"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."},
+	"login_banner": {
+		"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
+	},
 	"modprobe": {
+		"atm": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+		"can": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+		"cramfs": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
 		"firewire-core": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+		"sctp": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+		"tipc": {
 			"blacklisted": true,
 			"install": "/bin/false",
 		},
@@ -89,15 +277,83 @@ green_fixture := {
 			"install": "/bin/false",
 		},
 	},
-	"packages": {"aide": true},
+	"os_release": {
+		"redhat_release": "Red Hat Enterprise Linux release 9.6 (Plow)",
+	},
+	"packages": {
+		"aide": true,
+		"policycoreutils": true,
+		"policycoreutils-python-utils": true,
+		"usbguard": true,
+	},
+	"removable_media_fstab": [
+		{
+			"fs_type": "vfat",
+			"mount_point": "/mnt/usbflash",
+			"options": "noauto,owner,ro,nosuid,nodev,noexec",
+		},
+	],
 	"selinux": {
 		"config_selinux": "enforcing",
 		"getenforce": "Enforcing",
 		"policy": "targeted",
 	},
-	"ssh_config": {"Banner": "/etc/issue"},
-	"sysctl_config": {"kernel.randomize_va_space": ["2"]},
-	"systemd_units": {"ctrl-alt-del.target": {"load_state": "masked"}},
+	"services": {
+		"usbguard": "active",
+	},
+	"ssh_config": {
+		"Banner": "/etc/issue",
+	},
+	"sudoers": {
+		"lines": [
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults timestamp_timeout=0",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults !targetpw",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults !rootpw",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults !runaspw",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "root ALL=(ALL) ALL",
+			},
+			{
+				"file": "/etc/sudoers.d/admins",
+				"line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL",
+			},
+		],
+	},
+	"sysctl_config": {
+		"kernel.randomize_va_space": [
+			"2",
+		],
+	},
+	"systemd": {
+		"default_target": "multi-user.target",
+	},
+	"systemd_system_conf": {
+		"CtrlAltDelBurstAction": "none",
+	},
+	"systemd_units": {
+		"ctrl-alt-del.target": {
+			"load_state": "masked",
+		},
+		"debug-shell.service": {
+			"load_state": "masked",
+		},
+	},
+	"usbguard_rules": [
+		"1: allow id 1d6b:0001 serial \"0000:00:01.2\"",
+	],
 }
 
 test_every_finding_open_on_empty_input if {
@@ -720,4 +976,2454 @@ test_rhel_09_231030_evidence_missing_2 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231030 with input as json.remove(green_fixture, [["auditd_config", "log_file"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-231030: evidence missing — auditd_config.log_file")
+}
+
+test_rhel_09_211010_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_211010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211010_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211010 with input as object.union(green_fixture, {"attest": {"rhel_09_211010_release_supported": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211010: check failed")
+}
+
+test_rhel_09_211010_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211010 with input as object.union(green_fixture, {"os_release": {"redhat_release": "Red Hat Enterprise Linux release 8.10 (Ootpa)"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211010: check failed")
+}
+
+test_rhel_09_211010_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211010 with input as json.remove(green_fixture, [["os_release", "redhat_release"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211010: evidence missing — os_release.redhat_release")
+}
+
+test_rhel_09_211030_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_211030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211030_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211030 with input as object.union(green_fixture, {"systemd": {"default_target": "graphical.target"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211030: check failed")
+}
+
+test_rhel_09_211030_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211030 with input as json.remove(green_fixture, [["systemd", "default_target"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211030: evidence missing — systemd.default_target")
+}
+
+test_rhel_09_211030_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_211030 == "Not_a_Finding" with input as object.union(green_fixture, {"systemd": {"default_target": "graphical.target"}, "attest": {"rhel_09_211030_gui_required": true}})
+}
+
+test_rhel_09_211045_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_211045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211045_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211045 with input as object.union(green_fixture, {"systemd_system_conf": {"CtrlAltDelBurstAction": "reboot-force"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211045: check failed")
+}
+
+test_rhel_09_211045_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211045 with input as object.union(green_fixture, {"systemd_system_conf": {"CtrlAltDelBurstAction": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211045: check failed")
+}
+
+test_rhel_09_211045_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211045 with input as json.remove(green_fixture, [["systemd_system_conf", "CtrlAltDelBurstAction"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211045: evidence missing — systemd_system_conf.CtrlAltDelBurstAction")
+}
+
+test_rhel_09_211055_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_211055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211055_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211055 with input as object.union(green_fixture, {"systemd_units": {"debug-shell.service": {"load_state": "loaded"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211055: check failed")
+}
+
+test_rhel_09_211055_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_211055 with input as json.remove(green_fixture, [["systemd_units", "debug-shell.service", "load_state"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211055: evidence missing — systemd_units.debug-shell.service.load_state")
+}
+
+test_rhel_09_211055_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_211055 == "Not_a_Finding" with input as object.union(green_fixture, {"systemd_units": {"debug-shell.service": {"load_state": "not-found"}}})
+}
+
+test_rhel_09_212015_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212015_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212015 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192 systemd.confirm_spawn=1"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212015: check failed")
+}
+
+test_rhel_09_212015_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212015 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192 systemd.confirm_spawn"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212015: check failed")
+}
+
+test_rhel_09_212015_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212015 with input as object.union(green_fixture, {"grub": {"kernel_args": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212015: check failed")
+}
+
+test_rhel_09_212015_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212015 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212015: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_212020_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212020_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212020 with input as object.union(green_fixture, {"grub": {"superusers": "root"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212020: check failed")
+}
+
+test_rhel_09_212020_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212020 with input as object.union(green_fixture, {"grub": {"superusers": "Admin"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212020: check failed")
+}
+
+test_rhel_09_212020_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212020 with input as object.union(green_fixture, {"grub": {"superusers": "administrator"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212020: check failed")
+}
+
+test_rhel_09_212020_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212020 with input as object.union(green_fixture, {"grub": {"superusers": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212020: check failed")
+}
+
+test_rhel_09_212020_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212020 with input as json.remove(green_fixture, [["grub", "superusers"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212020: evidence missing — grub.superusers")
+}
+
+test_rhel_09_212035_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212035_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212035 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212035: check failed")
+}
+
+test_rhel_09_212035_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212035 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192 vsyscall=0"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212035: check failed")
+}
+
+test_rhel_09_212035_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212035 with input as object.union(green_fixture, {"grub": {"default_cmdline_linux": "root=/dev/mapper/rhel-root ro audit=1 page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212035: check failed")
+}
+
+test_rhel_09_212035_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212035 with input as object.union(green_fixture, {"grub": {"kernel_args": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212035: check failed")
+}
+
+test_rhel_09_212035_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212035 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212035: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_212035_evidence_missing_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212035 with input as json.remove(green_fixture, [["grub", "default_cmdline_linux"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212035: evidence missing — grub.default_cmdline_linux")
+}
+
+test_rhel_09_212035_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212035 == "Not_a_Finding" with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192"]}, "attest": {"rhel_09_212035_vsyscall_documented": true}})
+}
+
+test_rhel_09_212040_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212040_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212040 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none init_on_free=1 pti=on audit_backlog_limit=8192"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212040: check failed")
+}
+
+test_rhel_09_212040_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212040 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none init_on_free=1 pti=on audit_backlog_limit=8192 page_poison=0"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212040: check failed")
+}
+
+test_rhel_09_212040_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212040 with input as object.union(green_fixture, {"grub": {"default_cmdline_linux": "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none init_on_free=1 pti=on audit_backlog_limit=8192"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212040: check failed")
+}
+
+test_rhel_09_212040_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212040 with input as object.union(green_fixture, {"grub": {"kernel_args": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212040: check failed")
+}
+
+test_rhel_09_212040_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212040 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212040: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_212040_evidence_missing_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212040 with input as json.remove(green_fixture, [["grub", "default_cmdline_linux"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212040: evidence missing — grub.default_cmdline_linux")
+}
+
+test_rhel_09_212050_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212050_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212050 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 audit_backlog_limit=8192"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212050: check failed")
+}
+
+test_rhel_09_212050_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212050 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 audit_backlog_limit=8192 pti=0"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212050: check failed")
+}
+
+test_rhel_09_212050_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212050 with input as object.union(green_fixture, {"grub": {"default_cmdline_linux": "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 audit_backlog_limit=8192"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212050: check failed")
+}
+
+test_rhel_09_212050_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212050 with input as object.union(green_fixture, {"grub": {"kernel_args": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212050: check failed")
+}
+
+test_rhel_09_212050_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212050 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212050: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_212050_evidence_missing_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212050 with input as json.remove(green_fixture, [["grub", "default_cmdline_linux"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212050: evidence missing — grub.default_cmdline_linux")
+}
+
+test_rhel_09_212055_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212055_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212055 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212055: check failed")
+}
+
+test_rhel_09_212055_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212055 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192 audit=0"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212055: check failed")
+}
+
+test_rhel_09_212055_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212055 with input as object.union(green_fixture, {"grub": {"default_cmdline_linux": "root=/dev/mapper/rhel-root ro vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212055: check failed")
+}
+
+test_rhel_09_212055_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212055 with input as object.union(green_fixture, {"grub": {"kernel_args": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212055: check failed")
+}
+
+test_rhel_09_212055_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212055 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212055: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_212055_evidence_missing_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212055 with input as json.remove(green_fixture, [["grub", "default_cmdline_linux"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212055: evidence missing — grub.default_cmdline_linux")
+}
+
+test_rhel_09_212045_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_212045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_212045_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212045 with input as object.union(green_fixture, {"grub": {"default_cmdline_linux": "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 pti=on audit_backlog_limit=8192"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212045: check failed")
+}
+
+test_rhel_09_212045_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212045 with input as object.union(green_fixture, {"grub": {"default_cmdline_linux": "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 pti=on audit_backlog_limit=8192 init_on_free=0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212045: check failed")
+}
+
+test_rhel_09_212045_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_212045 with input as json.remove(green_fixture, [["grub", "default_cmdline_linux"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-212045: evidence missing — grub.default_cmdline_linux")
+}
+
+test_rhel_09_213025_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213025_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213025 with input as object.union(green_fixture, {"kernel_params": {"kernel.kptr_restrict": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213025: check failed")
+}
+
+test_rhel_09_213025_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213025 with input as object.union(green_fixture, {"kernel_params": {"kernel.kptr_restrict": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213025: check failed")
+}
+
+test_rhel_09_213025_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213025 with input as json.remove(green_fixture, [["kernel_params", "kernel.kptr_restrict"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213025: evidence missing — kernel_params.kernel.kptr_restrict")
+}
+
+test_rhel_09_213025_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213025 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.kptr_restrict": 1}})
+}
+
+test_rhel_09_213030_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213030_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213030 with input as object.union(green_fixture, {"kernel_params": {"fs.protected_hardlinks": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213030: check failed")
+}
+
+test_rhel_09_213030_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213030 with input as json.remove(green_fixture, [["kernel_params", "fs.protected_hardlinks"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213030: evidence missing — kernel_params.fs.protected_hardlinks")
+}
+
+test_rhel_09_213030_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213030 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"fs.protected_hardlinks": 1}})
+}
+
+test_rhel_09_213035_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213035_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213035 with input as object.union(green_fixture, {"kernel_params": {"fs.protected_symlinks": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213035: check failed")
+}
+
+test_rhel_09_213035_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213035 with input as json.remove(green_fixture, [["kernel_params", "fs.protected_symlinks"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213035: evidence missing — kernel_params.fs.protected_symlinks")
+}
+
+test_rhel_09_213035_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213035 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"fs.protected_symlinks": 1}})
+}
+
+test_rhel_09_213080_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213080_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213080 with input as object.union(green_fixture, {"kernel_params": {"kernel.yama.ptrace_scope": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213080: check failed")
+}
+
+test_rhel_09_213080_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213080 with input as object.union(green_fixture, {"kernel_params": {"kernel.yama.ptrace_scope": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213080: check failed")
+}
+
+test_rhel_09_213080_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213080 with input as json.remove(green_fixture, [["kernel_params", "kernel.yama.ptrace_scope"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213080: evidence missing — kernel_params.kernel.yama.ptrace_scope")
+}
+
+test_rhel_09_213080_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213080 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.yama.ptrace_scope": 1}})
+}
+
+test_rhel_09_213105_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213105 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213105_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213105 with input as object.union(green_fixture, {"kernel_params": {"user.max_user_namespaces": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213105: check failed")
+}
+
+test_rhel_09_213105_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213105 with input as object.union(green_fixture, {"kernel_params": {"user.max_user_namespaces": "31231"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213105: check failed")
+}
+
+test_rhel_09_213105_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213105 with input as json.remove(green_fixture, [["kernel_params", "user.max_user_namespaces"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213105: evidence missing — kernel_params.user.max_user_namespaces")
+}
+
+test_rhel_09_213105_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213105 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"user.max_user_namespaces": 0}})
+}
+
+test_rhel_09_213105_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213105 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"user.max_user_namespaces": "31231"}, "attest": {"rhel_09_213105_namespaces_documented": true}})
+}
+
+test_rhel_09_213040_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213040_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213040 with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213040: check failed")
+}
+
+test_rhel_09_213040_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213040 with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "core"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213040: check failed")
+}
+
+test_rhel_09_213040_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213040 with input as json.remove(green_fixture, [["kernel_params", "kernel.core_pattern"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213040: evidence missing — kernel_params.kernel.core_pattern")
+}
+
+test_rhel_09_213040_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213040 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "attest": {"rhel_09_213040_core_dumps_documented": true}})
+}
+
+test_rhel_09_213045_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213045_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213045 with input as object.union(green_fixture, {"modprobe": {"atm": {"install": "/bin/false", "blacklisted": false}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213045: check failed")
+}
+
+test_rhel_09_213045_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213045 with input as object.union(green_fixture, {"modprobe": {"atm": {"install": null, "blacklisted": true}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213045: check failed")
+}
+
+test_rhel_09_213045_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213045 with input as json.remove(green_fixture, [["modprobe", "atm"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213045: evidence missing — modprobe.atm")
+}
+
+test_rhel_09_213045_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213045 == "Not_a_Finding" with input as object.union(green_fixture, {"modprobe": {"atm": {"install": "/bin/true", "blacklisted": false}}, "attest": {"rhel_09_213045_atm_documented": true}})
+}
+
+test_rhel_09_213050_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213050_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213050 with input as object.union(green_fixture, {"modprobe": {"can": {"install": "/bin/false", "blacklisted": false}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213050: check failed")
+}
+
+test_rhel_09_213050_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213050 with input as object.union(green_fixture, {"modprobe": {"can": {"install": null, "blacklisted": true}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213050: check failed")
+}
+
+test_rhel_09_213050_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213050 with input as json.remove(green_fixture, [["modprobe", "can"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213050: evidence missing — modprobe.can")
+}
+
+test_rhel_09_213050_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213050 == "Not_a_Finding" with input as object.union(green_fixture, {"modprobe": {"can": {"install": "/bin/true", "blacklisted": false}}, "attest": {"rhel_09_213050_can_documented": true}})
+}
+
+test_rhel_09_213060_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213060_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213060 with input as object.union(green_fixture, {"modprobe": {"sctp": {"install": "/bin/false", "blacklisted": false}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213060: check failed")
+}
+
+test_rhel_09_213060_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213060 with input as object.union(green_fixture, {"modprobe": {"sctp": {"install": null, "blacklisted": true}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213060: check failed")
+}
+
+test_rhel_09_213060_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213060 with input as json.remove(green_fixture, [["modprobe", "sctp"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213060: evidence missing — modprobe.sctp")
+}
+
+test_rhel_09_213060_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213060 == "Not_a_Finding" with input as object.union(green_fixture, {"modprobe": {"sctp": {"install": "/bin/true", "blacklisted": false}}, "attest": {"rhel_09_213060_sctp_documented": true}})
+}
+
+test_rhel_09_213065_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213065_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213065 with input as object.union(green_fixture, {"modprobe": {"tipc": {"install": "/bin/false", "blacklisted": false}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213065: check failed")
+}
+
+test_rhel_09_213065_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213065 with input as object.union(green_fixture, {"modprobe": {"tipc": {"install": null, "blacklisted": true}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213065: check failed")
+}
+
+test_rhel_09_213065_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213065 with input as json.remove(green_fixture, [["modprobe", "tipc"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213065: evidence missing — modprobe.tipc")
+}
+
+test_rhel_09_213065_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213065 == "Not_a_Finding" with input as object.union(green_fixture, {"modprobe": {"tipc": {"install": "/bin/true", "blacklisted": false}}, "attest": {"rhel_09_213065_tipc_documented": true}})
+}
+
+test_rhel_09_213085_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213085 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"ProcessSizeMax": "0"}})
+}
+
+test_rhel_09_213085_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213085 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"ProcessSizeMax": "0"}}), {"coredump_conf": {"ProcessSizeMax": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213085: check failed")
+}
+
+test_rhel_09_213085_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213085 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"ProcessSizeMax": "0"}}), {"coredump_conf": {"ProcessSizeMax": "2G"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213085: check failed")
+}
+
+test_rhel_09_213085_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213085 with input as json.remove(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"ProcessSizeMax": "0"}}), [["coredump_conf", "ProcessSizeMax"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213085: evidence missing — coredump_conf.ProcessSizeMax")
+}
+
+test_rhel_09_213085_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213085 with input as object.union(green_fixture, {"coredump_conf": {"ProcessSizeMax": "1"}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_213085_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213085 == "Not_a_Finding" with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"ProcessSizeMax": "0"}}), {"coredump_conf": {"ProcessSizeMax": "1"}, "attest": {"rhel_09_213085_core_dumps_documented": true}})
+}
+
+test_rhel_09_213090_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213090 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"Storage": "none"}})
+}
+
+test_rhel_09_213090_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213090 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"Storage": "none"}}), {"coredump_conf": {"Storage": "external"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213090: check failed")
+}
+
+test_rhel_09_213090_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213090 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"Storage": "none"}}), {"coredump_conf": {"Storage": "journal"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213090: check failed")
+}
+
+test_rhel_09_213090_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213090 with input as json.remove(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"Storage": "none"}}), [["coredump_conf", "Storage"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213090: evidence missing — coredump_conf.Storage")
+}
+
+test_rhel_09_213090_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213090 with input as object.union(green_fixture, {"coredump_conf": {"Storage": "external"}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_213090_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213090 == "Not_a_Finding" with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "coredump_conf": {"Storage": "none"}}), {"coredump_conf": {"Storage": "external"}, "attest": {"rhel_09_213090_core_dumps_documented": true}})
+}
+
+test_rhel_09_213095_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213095 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}})
+}
+
+test_rhel_09_213095_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213095 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), {"limits_conf": {"core": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213095: check failed")
+}
+
+test_rhel_09_213095_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213095 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), {"limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "unlimited"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213095: check failed")
+}
+
+test_rhel_09_213095_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213095 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), {"limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}, {"domain": "@developers", "type": "soft", "value": "100000"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213095: check failed")
+}
+
+test_rhel_09_213095_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213095 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), {"limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}, {"domain": "@developers", "type": "soft", "value": "100000"}]}, "attest": {"rhel_09_213095_core_dumps_documented": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213095: check failed")
+}
+
+test_rhel_09_213095_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213095 with input as json.remove(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), [["limits_conf", "core"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213095: evidence missing — limits_conf.core")
+}
+
+test_rhel_09_213095_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213095 with input as object.union(green_fixture, {"limits_conf": {"core": []}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_213095_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213095 == "Not_a_Finding" with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), {"limits_conf": {"core": [{"domain": "*", "type": "hard", "value": 0}, {"domain": "@ops", "type": "soft", "value": "0"}]}})
+}
+
+test_rhel_09_213095_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213095 == "Not_a_Finding" with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "limits_conf": {"core": [{"domain": "*", "type": "hard", "value": "0"}]}}), {"limits_conf": {"core": []}, "attest": {"rhel_09_213095_core_dumps_documented": true}})
+}
+
+test_rhel_09_213100_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213100 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "systemd_units": {"systemd-coredump.socket": {"load_state": "masked"}}})
+}
+
+test_rhel_09_213100_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213100 with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "systemd_units": {"systemd-coredump.socket": {"load_state": "masked"}}}), {"systemd_units": {"systemd-coredump.socket": {"load_state": "loaded"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213100: check failed")
+}
+
+test_rhel_09_213100_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213100 with input as json.remove(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "systemd_units": {"systemd-coredump.socket": {"load_state": "masked"}}}), [["systemd_units", "systemd-coredump.socket", "load_state"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213100: evidence missing — systemd_units.systemd-coredump.socket.load_state")
+}
+
+test_rhel_09_213100_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213100 with input as object.union(green_fixture, {"systemd_units": {"systemd-coredump.socket": {"load_state": "loaded"}}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_213100_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213100 == "Not_a_Finding" with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "systemd_units": {"systemd-coredump.socket": {"load_state": "masked"}}}), {"systemd_units": {"systemd-coredump.socket": {"load_state": "not-found"}}})
+}
+
+test_rhel_09_213100_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213100 == "Not_a_Finding" with input as object.union(object.union(green_fixture, {"kernel_params": {"kernel.core_pattern": "|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h"}, "systemd_units": {"systemd-coredump.socket": {"load_state": "masked"}}}), {"systemd_units": {"systemd-coredump.socket": {"load_state": "loaded"}}, "attest": {"rhel_09_213100_core_dumps_documented": true}})
+}
+
+test_rhel_09_213110_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213110 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213110_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as object.union(green_fixture, {"cpuinfo": {"flags": ["flags : fpu vme de pse nx lm", "flags : fpu vme de pse lm"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: check failed")
+}
+
+test_rhel_09_213110_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as object.union(green_fixture, {"cpuinfo": {"flags": ["flags : fpu vme de pse nxt lm"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: check failed")
+}
+
+test_rhel_09_213110_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as object.union(green_fixture, {"cpuinfo": {"flags": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: check failed")
+}
+
+test_rhel_09_213110_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as object.union(green_fixture, {"grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192", "root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192 noexec=off"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: check failed")
+}
+
+test_rhel_09_213110_fail_5 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as object.union(green_fixture, {"grub": {"kernel_args": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: check failed")
+}
+
+test_rhel_09_213110_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as json.remove(green_fixture, [["cpuinfo", "flags"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: evidence missing — cpuinfo.flags")
+}
+
+test_rhel_09_213110_evidence_missing_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_213110 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213110: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_213110_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_213110 == "Not_a_Finding" with input as object.union(green_fixture, {"cpuinfo": {"flags": ["flags\t\t: fpu vme nx"]}, "grub": {"kernel_args": ["root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192 noexec32=off"]}})
+}
+
+test_rhel_09_231010_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231010_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231010 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231010: check failed")
+}
+
+test_rhel_09_231010_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231010 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231010: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231020_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231020_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231020 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231020: check failed")
+}
+
+test_rhel_09_231020_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231020 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231020: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231035_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231035_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231035 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231035: check failed")
+}
+
+test_rhel_09_231035_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231035 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231035: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231095_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231095 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231095_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231095 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231095: check failed")
+}
+
+test_rhel_09_231095_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231095 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231095: check failed")
+}
+
+test_rhel_09_231095_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231095 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231095: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231100_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231100 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231100_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231100 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231100: check failed")
+}
+
+test_rhel_09_231100_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231100 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231100: check failed")
+}
+
+test_rhel_09_231100_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231100 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231100: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231110_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231110 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231110_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231110 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231110: check failed")
+}
+
+test_rhel_09_231110_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231110 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231110: check failed")
+}
+
+test_rhel_09_231110_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231110 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231110: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231115_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231115 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231115_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231115 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231115: check failed")
+}
+
+test_rhel_09_231115_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231115 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231115: check failed")
+}
+
+test_rhel_09_231115_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231115 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231115: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231120_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231120 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231120_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231120 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231120: check failed")
+}
+
+test_rhel_09_231120_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231120 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231120: check failed")
+}
+
+test_rhel_09_231120_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231120 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231120: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231125_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231125 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231125_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231125 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231125: check failed")
+}
+
+test_rhel_09_231125_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231125 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231125: check failed")
+}
+
+test_rhel_09_231125_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231125 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231125: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231130_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231130 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231130_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231130 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231130: check failed")
+}
+
+test_rhel_09_231130_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231130 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231130: check failed")
+}
+
+test_rhel_09_231130_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231130 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231130: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231135_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231135 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231135_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231135 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231135: check failed")
+}
+
+test_rhel_09_231135_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231135 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231135: check failed")
+}
+
+test_rhel_09_231135_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231135 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231135: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231140_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231140 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231140_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231140 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231140: check failed")
+}
+
+test_rhel_09_231140_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231140 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231140: check failed")
+}
+
+test_rhel_09_231140_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231140 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231140: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231145_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231145 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231145_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231145 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231145: check failed")
+}
+
+test_rhel_09_231145_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231145 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231145: check failed")
+}
+
+test_rhel_09_231145_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231145 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231145: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231105_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231105 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231105_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231105 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "ext4", "options": ["rw", "relatime"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231105: check failed")
+}
+
+test_rhel_09_231105_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231105 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231105: check failed")
+}
+
+test_rhel_09_231105_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231105 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231105: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231105_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231105 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}], "boot_firmware": "bios"})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_231105_not_applicable_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231105 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "relatime"]}]})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_231065_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231065_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231065 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}, {"mount_point": "/data", "fs_type": "nfs4", "options": "rw,nosuid,noexec,sync,soft,sec=krb5:krb5i:krb5p"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231065: check failed")
+}
+
+test_rhel_09_231065_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231065 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}, {"mount_point": "/data", "fs_type": "nfs4", "options": "rw,nosuid,nodev,noexec,sync,soft,sec=krb5:krb5i:krb5p"}, {"mount_point": "/srv/share", "fs_type": "nfs", "options": "rw,sync"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231065: check failed")
+}
+
+test_rhel_09_231065_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231065 with input as json.remove(green_fixture, [["fstab"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231065: evidence missing — fstab")
+}
+
+test_rhel_09_231065_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231065 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}]})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_231070_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231070_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231070 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}, {"mount_point": "/data", "fs_type": "nfs4", "options": "rw,nosuid,nodev,sync,soft,sec=krb5:krb5i:krb5p"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231070: check failed")
+}
+
+test_rhel_09_231070_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231070 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}, {"mount_point": "/data", "fs_type": "nfs4", "options": "rw,nosuid,nodev,noexec,sync,soft,sec=krb5:krb5i:krb5p"}, {"mount_point": "/srv/share", "fs_type": "nfs", "options": "rw,sync"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231070: check failed")
+}
+
+test_rhel_09_231070_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231070 with input as json.remove(green_fixture, [["fstab"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231070: evidence missing — fstab")
+}
+
+test_rhel_09_231070_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231070 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}]})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_231075_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231075 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231075_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231075 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}, {"mount_point": "/data", "fs_type": "nfs4", "options": "rw,nodev,noexec,sync,soft,sec=krb5:krb5i:krb5p"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231075: check failed")
+}
+
+test_rhel_09_231075_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231075 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}, {"mount_point": "/data", "fs_type": "nfs4", "options": "rw,nosuid,nodev,noexec,sync,soft,sec=krb5:krb5i:krb5p"}, {"mount_point": "/srv/share", "fs_type": "nfs", "options": "rw,sync"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231075: check failed")
+}
+
+test_rhel_09_231075_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231075 with input as json.remove(green_fixture, [["fstab"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231075: evidence missing — fstab")
+}
+
+test_rhel_09_231075_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231075 with input as object.union(green_fixture, {"fstab": [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"}]})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_231080_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231080_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231080 with input as object.union(green_fixture, {"removable_media_fstab": [{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "options": "noauto,owner,ro,nosuid,nodev"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231080: check failed")
+}
+
+test_rhel_09_231080_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231080 with input as object.union(green_fixture, {"removable_media_fstab": [{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "options": "noauto,owner,ro,nosuid,nodev,noexec"}, {"mount_point": "/mnt/cdrom", "fs_type": "iso9660", "options": "noauto,ro"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231080: check failed")
+}
+
+test_rhel_09_231080_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231080 with input as json.remove(green_fixture, [["removable_media_fstab"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231080: evidence missing — removable_media_fstab")
+}
+
+test_rhel_09_231080_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231080 == "Not_a_Finding" with input as object.union(green_fixture, {"removable_media_fstab": []})
+}
+
+test_rhel_09_231085_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231085 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231085_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231085 with input as object.union(green_fixture, {"removable_media_fstab": [{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "options": "noauto,owner,ro,nosuid,noexec"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231085: check failed")
+}
+
+test_rhel_09_231085_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231085 with input as object.union(green_fixture, {"removable_media_fstab": [{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "options": "noauto,owner,ro,nosuid,nodev,noexec"}, {"mount_point": "/mnt/cdrom", "fs_type": "iso9660", "options": "noauto,ro"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231085: check failed")
+}
+
+test_rhel_09_231085_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231085 with input as json.remove(green_fixture, [["removable_media_fstab"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231085: evidence missing — removable_media_fstab")
+}
+
+test_rhel_09_231085_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231085 == "Not_a_Finding" with input as object.union(green_fixture, {"removable_media_fstab": []})
+}
+
+test_rhel_09_231090_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231090 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231090_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231090 with input as object.union(green_fixture, {"removable_media_fstab": [{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "options": "noauto,owner,ro,nodev,noexec"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231090: check failed")
+}
+
+test_rhel_09_231090_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231090 with input as object.union(green_fixture, {"removable_media_fstab": [{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "options": "noauto,owner,ro,nosuid,nodev,noexec"}, {"mount_point": "/mnt/cdrom", "fs_type": "iso9660", "options": "noauto,ro"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231090: check failed")
+}
+
+test_rhel_09_231090_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231090 with input as json.remove(green_fixture, [["removable_media_fstab"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231090: evidence missing — removable_media_fstab")
+}
+
+test_rhel_09_231090_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231090 == "Not_a_Finding" with input as object.union(green_fixture, {"removable_media_fstab": []})
+}
+
+test_rhel_09_231150_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231150 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231150_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231150 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231150: check failed")
+}
+
+test_rhel_09_231150_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231150 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "xnoexecx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231150: check failed")
+}
+
+test_rhel_09_231150_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231150 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231150: check failed")
+}
+
+test_rhel_09_231150_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231150 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231150: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231155_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231155 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231155_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231155 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231155: check failed")
+}
+
+test_rhel_09_231155_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231155 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "xnosuidx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231155: check failed")
+}
+
+test_rhel_09_231155_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231155 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231155: check failed")
+}
+
+test_rhel_09_231155_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231155 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231155: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231160_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231160 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231160_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231160 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231160: check failed")
+}
+
+test_rhel_09_231160_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231160 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "xnodevx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231160: check failed")
+}
+
+test_rhel_09_231160_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231160 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231160: check failed")
+}
+
+test_rhel_09_231160_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231160 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231160: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231165_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231165 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231165_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231165 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231165: check failed")
+}
+
+test_rhel_09_231165_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231165 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "xnoexecx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231165: check failed")
+}
+
+test_rhel_09_231165_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231165 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231165: check failed")
+}
+
+test_rhel_09_231165_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231165 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231165: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231170_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231170 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231170_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231170 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231170: check failed")
+}
+
+test_rhel_09_231170_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231170 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "xnosuidx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231170: check failed")
+}
+
+test_rhel_09_231170_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231170 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231170: check failed")
+}
+
+test_rhel_09_231170_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231170 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231170: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231175_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231175 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231175_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231175 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231175: check failed")
+}
+
+test_rhel_09_231175_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231175 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "xnodevx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231175: check failed")
+}
+
+test_rhel_09_231175_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231175 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231175: check failed")
+}
+
+test_rhel_09_231175_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231175 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231175: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231180_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231180 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231180_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231180 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231180: check failed")
+}
+
+test_rhel_09_231180_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231180 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "xnoexecx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231180: check failed")
+}
+
+test_rhel_09_231180_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231180 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231180: check failed")
+}
+
+test_rhel_09_231180_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231180 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231180: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231185_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231185 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231185_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231185 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231185: check failed")
+}
+
+test_rhel_09_231185_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231185 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "xnosuidx"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231185: check failed")
+}
+
+test_rhel_09_231185_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231185 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231185: check failed")
+}
+
+test_rhel_09_231185_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231185 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231185: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231200_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231200 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231200_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231200 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nosuid"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231200: check failed")
+}
+
+test_rhel_09_231200_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231200 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/data", "device": "/dev/sdb1", "fstype": "xfs"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231200: check failed")
+}
+
+test_rhel_09_231200_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231200 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231200: evidence missing — filesystem_mounts")
+}
+
+test_rhel_09_231200_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231200 == "Not_a_Finding" with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var", "device": "/dev/mapper/rhel-var", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/tmp", "device": "/dev/mapper/rhel-var_tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot", "device": "/dev/sda2", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/boot/efi", "device": "/dev/sda1", "fstype": "vfat", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/dev/shm", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/", "device": "/dev/mapper/rhel-root", "fstype": "xfs", "options": ["rw"]}, {"mount": "/run", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw"]}]})
+}
+
+test_rhel_09_231190_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231190 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231190_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt": []}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "crypt": [{"name": "luks-b74f6910", "type": "LUKS2"}]}, {"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231190: check failed")
+}
+
+test_rhel_09_231190_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt": [{"name": "plain0", "type": "PLAIN"}]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "crypt": [{"name": "luks-b74f6910", "type": "LUKS2"}]}, {"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231190: check failed")
+}
+
+test_rhel_09_231190_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/", "device": "/dev/sda3"}, {"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231190: check failed")
+}
+
+test_rhel_09_231190_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231190: check failed")
+}
+
+test_rhel_09_231190_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as json.remove(green_fixture, [["disk_encryption", "filesystems"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231190: evidence missing — disk_encryption.filesystems")
+}
+
+test_rhel_09_231190_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}, "attest": {"rhel_09_231190_no_os_encryption_approved": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_231190_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231190 == "Not_a_Finding" with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt": [{"name": "luks-1", "type": "LUKS1"}]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "crypt": [{"name": "luks-b74f6910", "type": "LUKS2"}]}, {"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}})
+}
+
+test_rhel_09_231190_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231190 == "Not_a_Finding" with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/boot", "device": "/dev/nvme0n1p2", "crypt": []}, {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]}, "attest": {"rhel_09_231190_encryption_evidence": true}})
+}
+
+test_rhel_09_231195_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231195 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231195_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231195 with input as object.union(green_fixture, {"modprobe": {"cramfs": {"install": "/bin/false", "blacklisted": false}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231195: check failed")
+}
+
+test_rhel_09_231195_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231195 with input as object.union(green_fixture, {"modprobe": {"cramfs": {"install": null, "blacklisted": true}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231195: check failed")
+}
+
+test_rhel_09_231195_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231195 with input as json.remove(green_fixture, [["modprobe", "cramfs"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231195: evidence missing — modprobe.cramfs")
+}
+
+test_rhel_09_231195_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231195 == "Not_a_Finding" with input as object.union(green_fixture, {"modprobe": {"cramfs": {"install": "/bin/true", "blacklisted": false}}, "attest": {"rhel_09_231195_cramfs_documented": true}})
+}
+
+test_rhel_09_271010_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271010_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271010 with input as object.union(green_fixture, {"gnome": {"banner_message_enable": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271010: check failed")
+}
+
+test_rhel_09_271010_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271010 with input as object.union(green_fixture, {"gnome": {"banner_message_enable": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271010: check failed")
+}
+
+test_rhel_09_271010_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271010 with input as json.remove(green_fixture, [["gnome", "banner_message_enable"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271010: evidence missing — gnome.banner_message_enable")
+}
+
+test_rhel_09_271010_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271010 with input as object.union(green_fixture, {"gnome": {"banner_message_enable": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271010_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271010 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"banner_message_enable": true}})
+}
+
+test_rhel_09_271010_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271010 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"banner_message_enable": "True"}})
+}
+
+test_rhel_09_271020_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271020_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271020 with input as object.union(green_fixture, {"gnome": {"automount_open": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271020: check failed")
+}
+
+test_rhel_09_271020_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271020 with input as object.union(green_fixture, {"gnome": {"automount_open": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271020: check failed")
+}
+
+test_rhel_09_271020_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271020 with input as json.remove(green_fixture, [["gnome", "automount_open"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271020: evidence missing — gnome.automount_open")
+}
+
+test_rhel_09_271020_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271020 with input as object.union(green_fixture, {"gnome": {"automount_open": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271020_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271020 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"automount_open": false}})
+}
+
+test_rhel_09_271020_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271020 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"automount_open": "true"}, "attest": {"rhel_09_271020_automount_documented": true}})
+}
+
+test_rhel_09_271030_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271030_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271030 with input as object.union(green_fixture, {"gnome": {"autorun_never": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271030: check failed")
+}
+
+test_rhel_09_271030_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271030 with input as object.union(green_fixture, {"gnome": {"autorun_never": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271030: check failed")
+}
+
+test_rhel_09_271030_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271030 with input as json.remove(green_fixture, [["gnome", "autorun_never"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271030: evidence missing — gnome.autorun_never")
+}
+
+test_rhel_09_271030_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271030 with input as object.union(green_fixture, {"gnome": {"autorun_never": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271030_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271030 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"autorun_never": true}})
+}
+
+test_rhel_09_271030_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271030 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"autorun_never": "false"}, "attest": {"rhel_09_271030_autorun_documented": true}})
+}
+
+test_rhel_09_271055_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271055_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271055 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_enabled": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271055: check failed")
+}
+
+test_rhel_09_271055_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271055 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_enabled": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271055: check failed")
+}
+
+test_rhel_09_271055_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271055 with input as json.remove(green_fixture, [["gnome", "screensaver_lock_enabled"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271055: evidence missing — gnome.screensaver_lock_enabled")
+}
+
+test_rhel_09_271055_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271055 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_enabled": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271055_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271055 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_enabled": true}})
+}
+
+test_rhel_09_271055_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271055 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_enabled": "True"}})
+}
+
+test_rhel_09_271095_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271095 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271095_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271095 with input as object.union(green_fixture, {"gnome": {"disable_restart_buttons": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271095: check failed")
+}
+
+test_rhel_09_271095_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271095 with input as object.union(green_fixture, {"gnome": {"disable_restart_buttons": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271095: check failed")
+}
+
+test_rhel_09_271095_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271095 with input as json.remove(green_fixture, [["gnome", "disable_restart_buttons"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271095: evidence missing — gnome.disable_restart_buttons")
+}
+
+test_rhel_09_271095_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271095 with input as object.union(green_fixture, {"gnome": {"disable_restart_buttons": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271095_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271095 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"disable_restart_buttons": true}})
+}
+
+test_rhel_09_271095_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271095 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"disable_restart_buttons": "True"}})
+}
+
+test_rhel_09_271115_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271115 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271115_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271115 with input as object.union(green_fixture, {"gnome": {"disable_user_list": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271115: check failed")
+}
+
+test_rhel_09_271115_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271115 with input as object.union(green_fixture, {"gnome": {"disable_user_list": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271115: check failed")
+}
+
+test_rhel_09_271115_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271115 with input as json.remove(green_fixture, [["gnome", "disable_user_list"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271115: evidence missing — gnome.disable_user_list")
+}
+
+test_rhel_09_271115_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271115 with input as object.union(green_fixture, {"gnome": {"disable_user_list": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271115_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271115 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"disable_user_list": true}})
+}
+
+test_rhel_09_271115_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271115 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"disable_user_list": "True"}})
+}
+
+test_rhel_09_271015_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271015_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271015 with input as object.union(green_fixture, {"gnome_writable": {"banner_message_enable": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271015: check failed")
+}
+
+test_rhel_09_271015_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271015 with input as object.union(green_fixture, {"gnome_writable": {"banner_message_enable": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271015: check failed")
+}
+
+test_rhel_09_271015_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271015 with input as json.remove(green_fixture, [["gnome_writable", "banner_message_enable"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271015: evidence missing — gnome_writable.banner_message_enable")
+}
+
+test_rhel_09_271015_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271015 with input as object.union(green_fixture, {"gnome_writable": {"banner_message_enable": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271015_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271015 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"banner_message_enable": false}})
+}
+
+test_rhel_09_271015_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271015 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"banner_message_enable": "False"}})
+}
+
+test_rhel_09_271035_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271035_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271035 with input as object.union(green_fixture, {"gnome_writable": {"autorun_never": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271035: check failed")
+}
+
+test_rhel_09_271035_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271035 with input as object.union(green_fixture, {"gnome_writable": {"autorun_never": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271035: check failed")
+}
+
+test_rhel_09_271035_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271035 with input as json.remove(green_fixture, [["gnome_writable", "autorun_never"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271035: evidence missing — gnome_writable.autorun_never")
+}
+
+test_rhel_09_271035_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271035 with input as object.union(green_fixture, {"gnome_writable": {"autorun_never": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271035_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271035 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"autorun_never": false}})
+}
+
+test_rhel_09_271035_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271035 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"autorun_never": "true"}, "attest": {"rhel_09_271035_autorun_writable_documented": true}})
+}
+
+test_rhel_09_271060_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271060_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271060 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_enabled": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271060: check failed")
+}
+
+test_rhel_09_271060_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271060 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_enabled": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271060: check failed")
+}
+
+test_rhel_09_271060_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271060 with input as json.remove(green_fixture, [["gnome_writable", "screensaver_lock_enabled"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271060: evidence missing — gnome_writable.screensaver_lock_enabled")
+}
+
+test_rhel_09_271060_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271060 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_enabled": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271060_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271060 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_enabled": false}})
+}
+
+test_rhel_09_271060_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271060 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_enabled": "False"}})
+}
+
+test_rhel_09_271070_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271070_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271070 with input as object.union(green_fixture, {"gnome_writable": {"session_idle_delay": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271070: check failed")
+}
+
+test_rhel_09_271070_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271070 with input as object.union(green_fixture, {"gnome_writable": {"session_idle_delay": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271070: check failed")
+}
+
+test_rhel_09_271070_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271070 with input as json.remove(green_fixture, [["gnome_writable", "session_idle_delay"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271070: evidence missing — gnome_writable.session_idle_delay")
+}
+
+test_rhel_09_271070_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271070 with input as object.union(green_fixture, {"gnome_writable": {"session_idle_delay": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271070_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271070 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"session_idle_delay": false}})
+}
+
+test_rhel_09_271070_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271070 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"session_idle_delay": "False"}})
+}
+
+test_rhel_09_271080_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271080_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271080 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_delay": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271080: check failed")
+}
+
+test_rhel_09_271080_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271080 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_delay": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271080: check failed")
+}
+
+test_rhel_09_271080_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271080 with input as json.remove(green_fixture, [["gnome_writable", "screensaver_lock_delay"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271080: evidence missing — gnome_writable.screensaver_lock_delay")
+}
+
+test_rhel_09_271080_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271080 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_delay": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271080_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271080 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_delay": false}})
+}
+
+test_rhel_09_271080_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271080 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"screensaver_lock_delay": "False"}})
+}
+
+test_rhel_09_271085_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271085 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271085_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271085 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_picture_uri": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271085: check failed")
+}
+
+test_rhel_09_271085_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271085 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_picture_uri": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271085: check failed")
+}
+
+test_rhel_09_271085_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271085 with input as json.remove(green_fixture, [["gnome_writable", "screensaver_picture_uri"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271085: evidence missing — gnome_writable.screensaver_picture_uri")
+}
+
+test_rhel_09_271085_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271085 with input as object.union(green_fixture, {"gnome_writable": {"screensaver_picture_uri": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271085_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271085 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"screensaver_picture_uri": false}})
+}
+
+test_rhel_09_271085_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271085 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"screensaver_picture_uri": "False"}})
+}
+
+test_rhel_09_271100_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271100 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271100_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271100 with input as object.union(green_fixture, {"gnome_writable": {"disable_restart_buttons": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271100: check failed")
+}
+
+test_rhel_09_271100_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271100 with input as object.union(green_fixture, {"gnome_writable": {"disable_restart_buttons": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271100: check failed")
+}
+
+test_rhel_09_271100_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271100 with input as json.remove(green_fixture, [["gnome_writable", "disable_restart_buttons"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271100: evidence missing — gnome_writable.disable_restart_buttons")
+}
+
+test_rhel_09_271100_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271100 with input as object.union(green_fixture, {"gnome_writable": {"disable_restart_buttons": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271100_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271100 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"disable_restart_buttons": false}})
+}
+
+test_rhel_09_271100_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271100 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"disable_restart_buttons": "False"}})
+}
+
+test_rhel_09_271110_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271110 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271110_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271110 with input as object.union(green_fixture, {"gnome_writable": {"media_keys_logout": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271110: check failed")
+}
+
+test_rhel_09_271110_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271110 with input as object.union(green_fixture, {"gnome_writable": {"media_keys_logout": true}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271110: check failed")
+}
+
+test_rhel_09_271110_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271110 with input as json.remove(green_fixture, [["gnome_writable", "media_keys_logout"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271110: evidence missing — gnome_writable.media_keys_logout")
+}
+
+test_rhel_09_271110_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271110 with input as object.union(green_fixture, {"gnome_writable": {"media_keys_logout": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271110_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271110 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"media_keys_logout": false}})
+}
+
+test_rhel_09_271110_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271110 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome_writable": {"media_keys_logout": "False"}})
+}
+
+test_rhel_09_271011_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271011 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271011_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271011 with input as object.union(green_fixture, {"gnome": {"banner_message_text": "'Authorized users only. All activity may be monitored.'"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271011: check failed")
+}
+
+test_rhel_09_271011_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271011 with input as object.union(green_fixture, {"gnome": {"banner_message_text": "'You are accessing a U.S. Government (USG) Information System (IS) that is provided for authorized use only.\\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\n-At any time, the USG may inspect and seize data stored on this IS.\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details. '"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271011: check failed")
+}
+
+test_rhel_09_271011_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271011 with input as object.union(green_fixture, {"gnome": {"banner_message_text": "''"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271011: check failed")
+}
+
+test_rhel_09_271011_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271011 with input as json.remove(green_fixture, [["gnome", "banner_message_text"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271011: evidence missing — gnome.banner_message_text")
+}
+
+test_rhel_09_271011_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271011 with input as object.union(green_fixture, {"gnome": {"banner_message_text": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271011_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271011 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"banner_message_text": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."}})
+}
+
+test_rhel_09_271025_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271025_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271025 with input as object.union(green_fixture, {"dconf_locks": {"automount_open": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271025: check failed")
+}
+
+test_rhel_09_271025_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271025 with input as object.union(green_fixture, {"dconf_locks": {"automount_open": ["#/org/gnome/desktop/media-handling/automount-open"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271025: check failed")
+}
+
+test_rhel_09_271025_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271025 with input as object.union(green_fixture, {"dconf_locks": {"automount_open": ["/org/gnome/desktop/media-handling/automount-open-other"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271025: check failed")
+}
+
+test_rhel_09_271025_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271025 with input as json.remove(green_fixture, [["dconf_locks", "automount_open"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271025: evidence missing — dconf_locks.automount_open")
+}
+
+test_rhel_09_271025_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271025 with input as object.union(green_fixture, {"dconf_locks": {"automount_open": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271025_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271025 == "Not_a_Finding" with input as object.union(green_fixture, {"dconf_locks": {"automount_open": ["/etc/dconf/db/local.d/locks/00-security-settings-lock:/org/gnome/desktop/media-handling/automount-open"]}})
+}
+
+test_rhel_09_271040_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271040_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271040 with input as object.union(green_fixture, {"gdm_custom_conf": {"AutomaticLoginEnable": "true"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271040: check failed")
+}
+
+test_rhel_09_271040_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271040 with input as object.union(green_fixture, {"gdm_custom_conf": {"AutomaticLoginEnable": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271040: check failed")
+}
+
+test_rhel_09_271040_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271040 with input as json.remove(green_fixture, [["gdm_custom_conf", "AutomaticLoginEnable"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271040: evidence missing — gdm_custom_conf.AutomaticLoginEnable")
+}
+
+test_rhel_09_271040_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271040 with input as object.union(green_fixture, {"gdm_custom_conf": {"AutomaticLoginEnable": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271040_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271040 == "Not_a_Finding" with input as object.union(green_fixture, {"gdm_custom_conf": {"AutomaticLoginEnable": "False"}})
+}
+
+test_rhel_09_271065_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271065_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "uint32 0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: check failed")
+}
+
+test_rhel_09_271065_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "uint32 601"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: check failed")
+}
+
+test_rhel_09_271065_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "uint32 900"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: check failed")
+}
+
+test_rhel_09_271065_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "never"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: check failed")
+}
+
+test_rhel_09_271065_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as json.remove(green_fixture, [["gnome", "session_idle_delay"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: evidence missing — gnome.session_idle_delay")
+}
+
+test_rhel_09_271065_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271065_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "uint32 1"}})
+}
+
+test_rhel_09_271065_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": 600}})
+}
+
+test_rhel_09_271065_pass_4 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "600"}})
+}
+
+test_rhel_09_271075_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271075_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "uint32 6"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271075: check failed")
+}
+
+test_rhel_09_271075_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "uint32 300"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271075: check failed")
+}
+
+test_rhel_09_271075_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "five"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271075: check failed")
+}
+
+test_rhel_09_271075_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as json.remove(green_fixture, [["gnome", "screensaver_lock_delay"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271075: evidence missing — gnome.screensaver_lock_delay")
+}
+
+test_rhel_09_271075_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271075_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "uint32 1"}})
+}
+
+test_rhel_09_271075_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": 5}})
+}
+
+test_rhel_09_271075_pass_4 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "5"}})
+}
+
+test_rhel_09_271075_pass_5 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "uint32 0"}})
+}
+
+test_rhel_09_271090_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_271090 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271090_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271090 with input as object.union(green_fixture, {"dconf_outdated_databases": ["/etc/dconf/db/local needs update"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271090: check failed")
+}
+
+test_rhel_09_271090_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271090 with input as json.remove(green_fixture, [["dconf_outdated_databases"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271090: evidence missing — dconf_outdated_databases")
+}
+
+test_rhel_09_271090_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271090 with input as object.union(green_fixture, {"dconf_outdated_databases": null, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_291015_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_291015_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291015 with input as object.union(green_fixture, {"packages": {"usbguard": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291015: check failed")
+}
+
+test_rhel_09_291015_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291015 with input as object.union(green_fixture, {"packages": {"usbguard": false}, "virtual_machine": true, "usb_peripherals": ["Bus 001 Device 002: ID 0627:0001 QEMU USB Tablet"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291015: check failed")
+}
+
+test_rhel_09_291015_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291015 with input as json.remove(green_fixture, [["packages", "usbguard"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291015: evidence missing — packages.usbguard")
+}
+
+test_rhel_09_291015_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291015 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"usbguard": false}, "attest": {"rhel_09_291015_peripherals_blocked": true}})
+}
+
+test_rhel_09_291015_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291015 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"usbguard": false}, "virtual_machine": true, "usb_peripherals": []})
+}
+
+test_rhel_09_291020_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_291020_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291020 with input as object.union(green_fixture, {"services": {"usbguard": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291020: check failed")
+}
+
+test_rhel_09_291020_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291020 with input as object.union(green_fixture, {"services": {"usbguard": "inactive"}, "virtual_machine": true, "usb_peripherals": ["Bus 001 Device 002: ID 0627:0001 QEMU USB Tablet"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291020: check failed")
+}
+
+test_rhel_09_291020_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291020 with input as json.remove(green_fixture, [["services", "usbguard"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291020: evidence missing — services.usbguard")
+}
+
+test_rhel_09_291020_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291020 == "Not_a_Finding" with input as object.union(green_fixture, {"services": {"usbguard": "inactive"}, "attest": {"rhel_09_291020_peripherals_blocked": true}})
+}
+
+test_rhel_09_291020_pass_3 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291020 == "Not_a_Finding" with input as object.union(green_fixture, {"services": {"usbguard": "inactive"}, "virtual_machine": true, "usb_peripherals": []})
+}
+
+test_rhel_09_291030_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_291030_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291030 with input as object.union(green_fixture, {"usbguard_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291030: check failed")
+}
+
+test_rhel_09_291030_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291030 with input as json.remove(green_fixture, [["usbguard_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291030: evidence missing — usbguard_rules")
+}
+
+test_rhel_09_291030_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_291030 with input as object.union(green_fixture, {"usbguard_rules": null, "virtual_machine": true, "usb_peripherals": []})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_291030_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_291030 == "Not_a_Finding" with input as object.union(green_fixture, {"usbguard_rules": [], "attest": {"rhel_09_291030_peripherals_blocked": true}})
+}
+
+test_rhel_09_431016_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_431016 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_431016_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431016 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431016: check failed")
+}
+
+test_rhel_09_431016_fail_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431016 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) ROLE=sysadm_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431016: check failed")
+}
+
+test_rhel_09_431016_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431016 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=staff_t ROLE=staff_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431016: check failed")
+}
+
+test_rhel_09_431016_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431016 with input as json.remove(green_fixture, [["sudoers", "lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431016: evidence missing — sudoers.lines")
+}
+
+test_rhel_09_431016_pass_2 if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_431016 == "Not_a_Finding" with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers", "line": "admin1 ALL=(ALL) ROLE=sysadm_r TYPE=sysadm_t ALL"}]}})
+}
+
+test_rhel_09_431020_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_431020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_431020_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431020 with input as object.union(green_fixture, {"faillock_dir": {"selinux_type": "var_log_t"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431020: check failed")
+}
+
+test_rhel_09_431020_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431020 with input as json.remove(green_fixture, [["faillock_dir", "selinux_type"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431020: evidence missing — faillock_dir.selinux_type")
+}
+
+test_rhel_09_431020_not_applicable_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431020 with input as object.union(green_fixture, {"faillock_dir": {"selinux_type": null}, "selinux": {"getenforce": "Permissive"}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_431020_not_applicable_2 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431020 with input as object.union(green_fixture, {"faillock_dir": {"selinux_type": "var_log_t"}, "selinux": {"policy": "mls"}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_431020_not_applicable_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431020 with input as object.union(green_fixture, {"faillock_dir": {"selinux_type": null}, "pam_d": {"system-auth": ["auth sufficient pam_unix.so"], "password-auth": ["auth sufficient pam_unix.so"]}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_431025_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_431025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_431025_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431025 with input as object.union(green_fixture, {"packages": {"policycoreutils": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431025: check failed")
+}
+
+test_rhel_09_431025_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431025 with input as json.remove(green_fixture, [["packages", "policycoreutils"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431025: evidence missing — packages.policycoreutils")
+}
+
+test_rhel_09_431030_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_431030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_431030_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431030 with input as object.union(green_fixture, {"packages": {"policycoreutils-python-utils": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431030: check failed")
+}
+
+test_rhel_09_431030_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_431030 with input as json.remove(green_fixture, [["packages", "policycoreutils-python-utils"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-431030: evidence missing — packages.policycoreutils-python-utils")
 }

@@ -1021,7 +1021,9 @@ cat_ii_findings := [
 	finding_rhel_10_200632,
 ]
 
-cat_iii_findings := [finding_rhel_10_000520]
+cat_iii_findings := [
+	finding_rhel_10_000520,
+]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 

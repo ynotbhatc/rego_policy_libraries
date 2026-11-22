@@ -59,8 +59,8 @@ test_no_facts_finding_is_explicit if {
 test_gate_transparent_when_facts_supplied if {
 	report := main.compliance_report with input as {"ssh_config": {"PermitRootLogin": "no"}}
 	report.facts_supplied == true
-	report.compliance_percentage > 0
 	report.passed_controls > 0
+	report.failed_controls < report.total_controls
 	not contains(concat(" ", [f.rule_title | some f in report.violations]), "FAIL-CLOSED")
 }
 
@@ -89,3 +89,10 @@ test_bridge_does_not_double_count_no_facts if {
 _is_fail_closed(v) if startswith(object.get(v, "rule_title", ""), "FAIL-CLOSED")
 
 _is_fail_closed(v) if object.get(v, "control", "") == "FAIL-CLOSED"
+
+# One Open finding among 445 controls is 99.78 %: the score must not round up to 100.
+test_percentage_is_100_only_when_all_pass if {
+	report := main.compliance_report with input as {"ssh_config": {"PermitRootLogin": "no"}}
+	report.passed_controls < report.total_controls
+	report.compliance_percentage < 100
+}

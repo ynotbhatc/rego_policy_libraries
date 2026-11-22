@@ -6,21 +6,74 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
+	"attest": {
+		"rhel_09_251035_ppsm_clsa_match": true,
+	},
+	"firewalld": {
+		"active_zones": [
+			"drop",
+		],
+		"default_zone": {
+			"target_permanent": "DROP",
+			"target_runtime": "DROP",
+		},
+		"zone_services": [
+			"drop (active)",
+			"  services: ssh",
+		],
+	},
+	"firewalld_conf": {
+		"FirewallBackend": "nftables",
+	},
 	"kernel_params": {
 		"net.ipv4.conf.all.accept_redirects": "0",
 		"net.ipv4.conf.all.accept_source_route": "0",
 		"net.ipv4.conf.all.forwarding": "0",
+		"net.ipv4.conf.all.log_martians": "1",
 		"net.ipv4.conf.all.rp_filter": "1",
 		"net.ipv4.conf.all.send_redirects": "0",
+		"net.ipv4.conf.default.accept_redirects": "0",
+		"net.ipv4.conf.default.accept_source_route": "0",
+		"net.ipv4.conf.default.log_martians": "1",
+		"net.ipv4.conf.default.rp_filter": "1",
+		"net.ipv4.conf.default.send_redirects": "0",
+		"net.ipv4.icmp_echo_ignore_broadcasts": "1",
 		"net.ipv4.icmp_ignore_bogus_error_responses": "1",
 		"net.ipv4.tcp_syncookies": "1",
+		"net.ipv6.conf.all.accept_ra": "0",
+		"net.ipv6.conf.all.accept_redirects": "0",
+		"net.ipv6.conf.all.accept_source_route": "0",
+		"net.ipv6.conf.all.forwarding": "0",
+		"net.ipv6.conf.default.accept_ra": "0",
+		"net.ipv6.conf.default.accept_redirects": "0",
+		"net.ipv6.conf.default.accept_source_route": "0",
 	},
-	"modprobe": {"bluetooth": {
-		"blacklisted": true,
-		"install": "/bin/false",
-	}},
+	"modprobe": {
+		"bluetooth": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+	},
+	"networkmanager": {
+		"main": {
+			"dns": "none",
+		},
+	},
+	"packages": {
+		"firewalld": true,
+		"libreswan": true,
+	},
 	"promiscuous_interfaces": [],
-	"services": {"firewalld": "active"},
+	"resolv_conf": {
+		"nameservers": [
+			"ns1.example.mil",
+			"ns2.example.mil",
+		],
+	},
+	"services": {
+		"firewalld": "active",
+		"ipsec": "inactive",
+	},
 	"wireless_interfaces": [],
 }
 
@@ -278,4 +331,583 @@ test_rhel_09_251040_evidence_missing_1 if {
 
 test_rhel_09_251040_pass_2 if {
 	data.stig.rhel_9.network.status_rhel_09_251040 == "Not_a_Finding" with input as object.union(green_fixture, {"promiscuous_interfaces": ["eth0"], "attest": {"rhel_09_251040_promisc_approved": true}})
+}
+
+test_rhel_09_251010_pass if {
+	data.stig.rhel_9.network.status_rhel_09_251010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_251010_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251010 with input as object.union(green_fixture, {"packages": {"firewalld": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251010: check failed")
+}
+
+test_rhel_09_251010_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251010 with input as json.remove(green_fixture, [["packages", "firewalld"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251010: evidence missing — packages.firewalld")
+}
+
+test_rhel_09_251020_pass if {
+	data.stig.rhel_9.network.status_rhel_09_251020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_251020_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as object.union(green_fixture, {"firewalld": {"active_zones": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: check failed")
+}
+
+test_rhel_09_251020_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as object.union(green_fixture, {"firewalld": {"default_zone": {"target_runtime": "default"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: check failed")
+}
+
+test_rhel_09_251020_fail_3 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as object.union(green_fixture, {"firewalld": {"default_zone": {"target_permanent": "ACCEPT"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: check failed")
+}
+
+test_rhel_09_251020_fail_4 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as object.union(green_fixture, {"firewalld": {"default_zone": {"target_runtime": "%%REJECT%%", "target_permanent": "%%REJECT%%"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: check failed")
+}
+
+test_rhel_09_251020_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as json.remove(green_fixture, [["firewalld", "active_zones"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: evidence missing — firewalld.active_zones")
+}
+
+test_rhel_09_251020_evidence_missing_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as json.remove(green_fixture, [["firewalld", "default_zone", "target_runtime"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: evidence missing — firewalld.default_zone.target_runtime")
+}
+
+test_rhel_09_251020_evidence_missing_3 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251020 with input as json.remove(green_fixture, [["firewalld", "default_zone", "target_permanent"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251020: evidence missing — firewalld.default_zone.target_permanent")
+}
+
+test_rhel_09_251030_pass if {
+	data.stig.rhel_9.network.status_rhel_09_251030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_251030_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251030 with input as object.union(green_fixture, {"firewalld_conf": {"FirewallBackend": "iptables"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251030: check failed")
+}
+
+test_rhel_09_251030_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251030 with input as json.remove(green_fixture, [["firewalld_conf", "FirewallBackend"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251030: evidence missing — firewalld_conf.FirewallBackend")
+}
+
+test_rhel_09_251035_pass if {
+	data.stig.rhel_9.network.status_rhel_09_251035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_251035_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251035 with input as object.union(green_fixture, {"attest": {"rhel_09_251035_ppsm_clsa_match": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251035: check failed")
+}
+
+test_rhel_09_251035_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251035 with input as object.union(green_fixture, {"firewalld": {"zone_services": "ssh"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251035: check failed")
+}
+
+test_rhel_09_251035_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_251035 with input as json.remove(green_fixture, [["firewalld", "zone_services"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-251035: evidence missing — firewalld.zone_services")
+}
+
+test_rhel_09_252035_pass if {
+	data.stig.rhel_9.network.status_rhel_09_252035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252035_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252035 with input as object.union(green_fixture, {"resolv_conf": {"nameservers": ["ns1.example.mil"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252035: check failed")
+}
+
+test_rhel_09_252035_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252035 with input as object.union(green_fixture, {"resolv_conf": {"nameservers": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252035: check failed")
+}
+
+test_rhel_09_252035_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252035 with input as json.remove(green_fixture, [["resolv_conf", "nameservers"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252035: evidence missing — resolv_conf.nameservers")
+}
+
+test_rhel_09_252035_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252035 with input as object.union(green_fixture, {"resolv_conf": {"nameservers": ["ns1.example.mil"]}, "attest": {"rhel_09_252035_cloud_single_dns": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_252040_pass if {
+	data.stig.rhel_9.network.status_rhel_09_252040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252040_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252040 with input as object.union(green_fixture, {"networkmanager": {"main": {"dns": "dnsmasq"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252040: check failed")
+}
+
+test_rhel_09_252040_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252040 with input as object.union(green_fixture, {"networkmanager": {"main": {"dns": ""}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252040: check failed")
+}
+
+test_rhel_09_252040_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252040 with input as json.remove(green_fixture, [["networkmanager", "main", "dns"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252040: evidence missing — networkmanager.main.dns")
+}
+
+test_rhel_09_252040_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_252040 == "Not_a_Finding" with input as object.union(green_fixture, {"networkmanager": {"main": {"dns": "default"}}})
+}
+
+test_rhel_09_252040_pass_3 if {
+	data.stig.rhel_9.network.status_rhel_09_252040 == "Not_a_Finding" with input as object.union(green_fixture, {"networkmanager": {"main": {"dns": "systemd-resolved"}}})
+}
+
+test_rhel_09_252040_pass_4 if {
+	data.stig.rhel_9.network.status_rhel_09_252040 == "Not_a_Finding" with input as object.union(green_fixture, {"networkmanager": {"main": {"dns": "dnsmasq"}}, "attest": {"rhel_09_252040_other_resolver_approved": true}})
+}
+
+test_rhel_09_252045_pass if {
+	data.stig.rhel_9.network.status_rhel_09_252045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252045_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252045 with input as object.union(green_fixture, {"services": {"ipsec": "active"}, "ipsec": {"conn_lines": ["/etc/ipsec.d/site.conf:1:conn site-to-site"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252045: check failed")
+}
+
+test_rhel_09_252045_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252045 with input as object.union(green_fixture, {"services": {"ipsec": "active"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252045: check failed")
+}
+
+test_rhel_09_252045_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252045 with input as json.remove(green_fixture, [["services", "ipsec"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252045: evidence missing — services.ipsec")
+}
+
+test_rhel_09_252045_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_252045 == "Not_a_Finding" with input as object.union(green_fixture, {"services": {"ipsec": "active"}, "ipsec": {"conn_lines": []}})
+}
+
+test_rhel_09_252045_pass_3 if {
+	data.stig.rhel_9.network.status_rhel_09_252045 == "Not_a_Finding" with input as object.union(green_fixture, {"services": {"ipsec": "active"}, "ipsec": {"conn_lines": ["/etc/ipsec.conf:3:conn hq"]}, "attest": {"rhel_09_252045_tunnels_approved": true}})
+}
+
+test_rhel_09_252065_pass if {
+	data.stig.rhel_9.network.status_rhel_09_252065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_252065_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252065 with input as object.union(green_fixture, {"packages": {"libreswan": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252065: check failed")
+}
+
+test_rhel_09_252065_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252065 with input as json.remove(green_fixture, [["packages", "libreswan"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252065: evidence missing — packages.libreswan")
+}
+
+test_rhel_09_252065_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_252065 with input as object.union(green_fixture, {"packages": {"libreswan": false}, "attest": {"rhel_09_252065_no_operational_need": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_253025_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253025_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253025 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.all.log_martians": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253025: check failed")
+}
+
+test_rhel_09_253025_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253025 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.conf.all.log_martians"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253025: evidence missing — kernel_params.net.ipv4.conf.all.log_martians")
+}
+
+test_rhel_09_253025_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253025 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.all.log_martians": 1}})
+}
+
+test_rhel_09_253030_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253030_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253030 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.log_martians": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253030: check failed")
+}
+
+test_rhel_09_253030_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253030 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.conf.default.log_martians"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253030: evidence missing — kernel_params.net.ipv4.conf.default.log_martians")
+}
+
+test_rhel_09_253030_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253030 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.log_martians": 1}})
+}
+
+test_rhel_09_253040_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253040_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253040 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.accept_redirects": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253040: check failed")
+}
+
+test_rhel_09_253040_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253040 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.conf.default.accept_redirects"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253040: evidence missing — kernel_params.net.ipv4.conf.default.accept_redirects")
+}
+
+test_rhel_09_253040_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253040 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.accept_redirects": 0}})
+}
+
+test_rhel_09_253045_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253045_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253045 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.accept_source_route": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253045: check failed")
+}
+
+test_rhel_09_253045_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253045 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.conf.default.accept_source_route"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253045: evidence missing — kernel_params.net.ipv4.conf.default.accept_source_route")
+}
+
+test_rhel_09_253045_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253045 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.accept_source_route": 0}})
+}
+
+test_rhel_09_253050_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253050_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253050 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.rp_filter": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253050: check failed")
+}
+
+test_rhel_09_253050_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253050 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.rp_filter": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253050: check failed")
+}
+
+test_rhel_09_253050_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253050 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.conf.default.rp_filter"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253050: evidence missing — kernel_params.net.ipv4.conf.default.rp_filter")
+}
+
+test_rhel_09_253050_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253050 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.rp_filter": 1}})
+}
+
+test_rhel_09_253055_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253055_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253055 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.icmp_echo_ignore_broadcasts": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253055: check failed")
+}
+
+test_rhel_09_253055_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253055 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.icmp_echo_ignore_broadcasts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253055: evidence missing — kernel_params.net.ipv4.icmp_echo_ignore_broadcasts")
+}
+
+test_rhel_09_253055_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253055 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.icmp_echo_ignore_broadcasts": 1}})
+}
+
+test_rhel_09_253070_pass if {
+	data.stig.rhel_9.network.status_rhel_09_253070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_253070_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253070 with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.send_redirects": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253070: check failed")
+}
+
+test_rhel_09_253070_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_253070 with input as json.remove(green_fixture, [["kernel_params", "net.ipv4.conf.default.send_redirects"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-253070: evidence missing — kernel_params.net.ipv4.conf.default.send_redirects")
+}
+
+test_rhel_09_253070_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_253070 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.send_redirects": 0}})
+}
+
+test_rhel_09_253070_pass_3 if {
+	data.stig.rhel_9.network.status_rhel_09_253070 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv4.conf.default.send_redirects": "1"}, "attest": {"rhel_09_253070_redirects_documented": true}})
+}
+
+test_rhel_09_254010_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254010_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254010 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_ra": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254010: check failed")
+}
+
+test_rhel_09_254010_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254010 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_ra": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254010: check failed")
+}
+
+test_rhel_09_254010_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254010 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.all.accept_ra"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254010: evidence missing — kernel_params.net.ipv6.conf.all.accept_ra")
+}
+
+test_rhel_09_254010_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254010 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_ra": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254010_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254010 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_ra": 0}})
+}
+
+test_rhel_09_254015_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254015_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254015 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_redirects": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254015: check failed")
+}
+
+test_rhel_09_254015_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254015 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_redirects": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254015: check failed")
+}
+
+test_rhel_09_254015_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254015 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.all.accept_redirects"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254015: evidence missing — kernel_params.net.ipv6.conf.all.accept_redirects")
+}
+
+test_rhel_09_254015_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254015 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_redirects": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254015_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254015 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_redirects": 0}})
+}
+
+test_rhel_09_254020_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254020_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254020 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_source_route": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254020: check failed")
+}
+
+test_rhel_09_254020_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254020 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_source_route": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254020: check failed")
+}
+
+test_rhel_09_254020_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254020 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.all.accept_source_route"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254020: evidence missing — kernel_params.net.ipv6.conf.all.accept_source_route")
+}
+
+test_rhel_09_254020_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254020 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_source_route": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254020_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254020 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.accept_source_route": 0}})
+}
+
+test_rhel_09_254025_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254025_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254025 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.forwarding": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254025: check failed")
+}
+
+test_rhel_09_254025_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254025 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.forwarding": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254025: check failed")
+}
+
+test_rhel_09_254025_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254025 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.all.forwarding"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254025: evidence missing — kernel_params.net.ipv6.conf.all.forwarding")
+}
+
+test_rhel_09_254025_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254025 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.forwarding": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254025_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254025 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.all.forwarding": 0}})
+}
+
+test_rhel_09_254030_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254030_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254030 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_ra": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254030: check failed")
+}
+
+test_rhel_09_254030_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254030 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_ra": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254030: check failed")
+}
+
+test_rhel_09_254030_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254030 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.default.accept_ra"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254030: evidence missing — kernel_params.net.ipv6.conf.default.accept_ra")
+}
+
+test_rhel_09_254030_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254030 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_ra": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254030_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254030 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_ra": 0}})
+}
+
+test_rhel_09_254035_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254035_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254035 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_redirects": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254035: check failed")
+}
+
+test_rhel_09_254035_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254035 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_redirects": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254035: check failed")
+}
+
+test_rhel_09_254035_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254035 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.default.accept_redirects"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254035: evidence missing — kernel_params.net.ipv6.conf.default.accept_redirects")
+}
+
+test_rhel_09_254035_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254035 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_redirects": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254035_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254035 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_redirects": 0}})
+}
+
+test_rhel_09_254040_pass if {
+	data.stig.rhel_9.network.status_rhel_09_254040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_254040_fail_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254040 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_source_route": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254040: check failed")
+}
+
+test_rhel_09_254040_fail_2 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254040 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_source_route": "2"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254040: check failed")
+}
+
+test_rhel_09_254040_evidence_missing_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254040 with input as json.remove(green_fixture, [["kernel_params", "net.ipv6.conf.default.accept_source_route"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-254040: evidence missing — kernel_params.net.ipv6.conf.default.accept_source_route")
+}
+
+test_rhel_09_254040_not_applicable_1 if {
+	f := data.stig.rhel_9.network.finding_rhel_09_254040 with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_source_route": null}, "ipv6_disabled": true})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_254040_pass_2 if {
+	data.stig.rhel_9.network.status_rhel_09_254040 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"net.ipv6.conf.default.accept_source_route": 0}})
 }

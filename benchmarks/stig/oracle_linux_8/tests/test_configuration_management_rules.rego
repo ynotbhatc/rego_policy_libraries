@@ -6,8 +6,14 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"]},
-	"auditd_config": {"log_file": "/var/log/audit/audit.log"},
+	"aide": {
+		"schedule": [
+			"/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil",
+		],
+	},
+	"auditd_config": {
+		"log_file": "/var/log/audit/audit.log",
+	},
 	"crypto_policy": "FIPS",
 	"crypto_policy_state": {
 		"hash": [
@@ -21,7 +27,11 @@ green_fixture := {
 		],
 		"min_rsa_size": 2048,
 	},
-	"dconf_local": {"logout": ["''"]},
+	"dconf_local": {
+		"logout": [
+			"''",
+		],
+	},
 	"fips": {
 		"fips_enabled": "1",
 		"mode_setup_check": "FIPS mode is enabled.",
@@ -58,7 +68,9 @@ green_fixture := {
 		"kernelopts": "root=/dev/mapper/ol-root ro crashkernel=auto fips=1 boot=UUID=1a2b",
 		"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF",
 	},
-	"home_dir_mount_points": ["/home"],
+	"home_dir_mount_points": [
+		"/home",
+	],
 	"kernel_params": {
 		"kernel.dmesg_restrict": "1",
 		"kernel.perf_event_paranoid": "2",
@@ -67,7 +79,9 @@ green_fixture := {
 		"kernel.yama.ptrace_scope": "1",
 		"net.core.bpf_jit_harden": "2",
 	},
-	"login_banner": {"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."},
+	"login_banner": {
+		"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
+	},
 	"modprobe": {
 		"firewire-core": {
 			"blacklisted": true,
@@ -78,16 +92,32 @@ green_fixture := {
 			"install": "/bin/false",
 		},
 	},
-	"packages": {"aide": true},
+	"packages": {
+		"aide": true,
+	},
 	"selinux": {
 		"config_selinuxtype": "targeted",
 		"getenforce": "Enforcing",
 		"policy": "targeted",
 	},
-	"ssh_banner_file": {"text": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."},
-	"sshd_config_lines": {"Banner": ["/etc/issue"]},
-	"sysctl_config": {"kernel.randomize_va_space": ["2"]},
-	"systemd_units": {"ctrl-alt-del.target": {"load_state": "masked"}},
+	"ssh_banner_file": {
+		"text": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
+	},
+	"sshd_config_lines": {
+		"Banner": [
+			"/etc/issue",
+		],
+	},
+	"sysctl_config": {
+		"kernel.randomize_va_space": [
+			"2",
+		],
+	},
+	"systemd_units": {
+		"ctrl-alt-del.target": {
+			"load_state": "masked",
+		},
+	},
 }
 
 test_every_finding_open_on_empty_input if {

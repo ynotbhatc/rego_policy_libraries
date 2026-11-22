@@ -66,7 +66,19 @@ _passed := max([0, _total_controls - _failed]) if _facts_supplied
 
 default _percentage := 0
 
-_percentage := round((_passed * 100) / _total_controls) if _total_controls > 0
+# 100 only when every control passed: with 445 controls a single Open finding is 99.78 %, which round() would
+# report as 100 next to compliant == false.
+_percentage := 100 if {
+	is_number(_total_controls)
+	_total_controls > 0
+	_passed == _total_controls
+}
+
+_percentage := min([round((_passed * 100) / _total_controls), 99]) if {
+	is_number(_total_controls)
+	_total_controls > 0
+	_passed < _total_controls
+}
 
 default _compliant := false
 

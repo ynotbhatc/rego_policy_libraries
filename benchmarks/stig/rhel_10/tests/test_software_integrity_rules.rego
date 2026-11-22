@@ -6,25 +6,37 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"dnf_config": {"localpkg_gpgcheck": "1"},
-	"kernel_params": {"kernel.kexec_load_disabled": "1"},
-	"packages": {"rsyslog": true},
-	"redhat_release_key_file": {"fingerprints": [
-		"567E347AD0044ADE55BA8A5F199E2F91FD431D51",
-		"7E4624258C406535D56D6F135054E4A45A6340B3",
-		"FCD355B305707A62DA143AB6E422397E50FE8467A2A95343D246D6276AFEDF8F",
-	]},
+	"dnf_config": {
+		"localpkg_gpgcheck": "1",
+	},
+	"kernel_params": {
+		"kernel.kexec_load_disabled": "1",
+	},
+	"packages": {
+		"rsyslog": true,
+	},
+	"redhat_release_key_file": {
+		"fingerprints": [
+			"567E347AD0044ADE55BA8A5F199E2F91FD431D51",
+			"7E4624258C406535D56D6F135054E4A45A6340B3",
+			"FCD355B305707A62DA143AB6E422397E50FE8467A2A95343D246D6276AFEDF8F",
+		],
+	},
 	"rpm_gpg_pubkeys": [
 		"Red Hat, Inc. (release key 2) <security@redhat.com> public key",
 		"Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key",
 		"Red Hat, Inc. (release key 4) <security@redhat.com> public key",
 	],
-	"services": {"rsyslog": "active"},
-	"yum_repos": [{
-		"file": "/etc/yum.repos.d/redhat.repo",
-		"gpgcheck": "1",
-		"name": "rhel-9-for-x86_64-baseos-rpms",
-	}],
+	"services": {
+		"rsyslog": "active",
+	},
+	"yum_repos": [
+		{
+			"file": "/etc/yum.repos.d/redhat.repo",
+			"gpgcheck": "1",
+			"name": "rhel-9-for-x86_64-baseos-rpms",
+		},
+	],
 }
 
 test_every_finding_open_on_empty_input if {

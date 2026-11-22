@@ -13,7 +13,9 @@ green_fixture := {
 		"tuned": false,
 		"vsftpd": false,
 	},
-	"unit_enabled": {"autofs": "masked"},
+	"unit_enabled": {
+		"autofs": "masked",
+	},
 }
 
 test_every_finding_open_on_empty_input if {
