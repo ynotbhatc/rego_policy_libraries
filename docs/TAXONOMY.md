@@ -30,7 +30,7 @@ rego_policy_libraries/
 │   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
 │   ├── stig/                    # DISA STIGs — 25 platforms (Linux, Windows, K8s/RKE2/OpenShift,
 │   │                            # databases, Apache, Cisco IOS-XE, vSphere)
-│   ├── scuba/m365/              # CISA SCuBA M365 baselines — 104 policies, 7 products (BOD 25-01)
+│   ├── scuba/m365/              # CISA SCuBA M365 baselines — 109 policies, 7 products, ScubaGear v2.0.0 (BOD 25-01)
 │   ├── nsa_cisa/kubernetes/     # NSA/CISA Kubernetes Hardening Guidance v1.2 — 43 controls
 │   ├── pss/kubernetes/          # K8s Pod Security Standards — baseline + restricted, manifest-evaluated
 │   └── sap/abap/                # SAP Security Baseline Template v2.6 (ABAP) — 355-check registry, 138 host-decided
