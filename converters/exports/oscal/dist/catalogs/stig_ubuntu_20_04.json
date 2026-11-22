@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "stig_ubuntu_20_04-UBTU-20-PK-000010",
-      "title": "Ubuntu 20.04 LTS must have the DoD Root CA certificates installed",
+      "id": "stig_ubuntu_20_04-UBTU-20-010001",
+      "title": "Ubuntu 20.04 LTS must be a vendor-supported release.",
       "props": [
        {
         "name": "label",
-        "value": "UBTU-20-PK-000010"
+        "value": "UBTU-20-010001"
        },
        {
         "name": "alt-identifier",
-        "value": "UBTU-20-PK-000010"
+        "value": "UBTU-20-010001"
        },
        {
         "name": "rego-package",
@@ -91,24 +91,24 @@
       ],
       "parts": [
        {
-        "id": "stig_ubuntu_20_04-UBTU-20-PK-000010_stmt",
+        "id": "stig_ubuntu_20_04-UBTU-20-010001_stmt",
         "name": "statement",
-        "prose": "Ubuntu 20.04 LTS must have the DoD Root CA certificates installed"
+        "prose": "Ubuntu 20.04 LTS must be a vendor-supported release."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_ubuntu_20_04-UBTU-20-SO-000030",
-      "title": "The built-in guest account must be disabled",
+      "id": "stig_ubuntu_20_04-UBTU-20-010443",
+      "title": "The Ubuntu operating system must use DoD PKI-established certificate authorities for verification of the establishment of protected sessions.",
       "props": [
        {
         "name": "label",
-        "value": "UBTU-20-SO-000030"
+        "value": "UBTU-20-010443"
        },
        {
         "name": "alt-identifier",
-        "value": "UBTU-20-SO-000030"
+        "value": "UBTU-20-010443"
        },
        {
         "name": "rego-package",
@@ -124,24 +124,24 @@
       ],
       "parts": [
        {
-        "id": "stig_ubuntu_20_04-UBTU-20-SO-000030_stmt",
+        "id": "stig_ubuntu_20_04-UBTU-20-010443_stmt",
         "name": "statement",
-        "prose": "The built-in guest account must be disabled"
+        "prose": "The Ubuntu operating system must use DoD PKI-established certificate authorities for verification of the establishment of protected sessions."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_ubuntu_20_04-UBTU-20-00-000020",
-      "title": "The Ubuntu 20.04 LTS system must use an antivirus program",
+      "id": "stig_ubuntu_20_04-UBTU-20-010054",
+      "title": "The Ubuntu operating system must enforce a minimum 15-character password length.",
       "props": [
        {
         "name": "label",
-        "value": "UBTU-20-00-000020"
+        "value": "UBTU-20-010054"
        },
        {
         "name": "alt-identifier",
-        "value": "UBTU-20-00-000020"
+        "value": "UBTU-20-010054"
        },
        {
         "name": "rego-package",
@@ -157,24 +157,24 @@
       ],
       "parts": [
        {
-        "id": "stig_ubuntu_20_04-UBTU-20-00-000020_stmt",
+        "id": "stig_ubuntu_20_04-UBTU-20-010054_stmt",
         "name": "statement",
-        "prose": "The Ubuntu 20.04 LTS system must use an antivirus program"
+        "prose": "The Ubuntu operating system must enforce a minimum 15-character password length."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_ubuntu_20_04-UBTU-20-AC-000010",
-      "title": "Password history must be configured to 24 or more passwords",
+      "id": "stig_ubuntu_20_04-UBTU-20-010070",
+      "title": "The Ubuntu operating system must prohibit password reuse for a minimum of five generations.",
       "props": [
        {
         "name": "label",
-        "value": "UBTU-20-AC-000010"
+        "value": "UBTU-20-010070"
        },
        {
         "name": "alt-identifier",
-        "value": "UBTU-20-AC-000010"
+        "value": "UBTU-20-010070"
        },
        {
         "name": "rego-package",
@@ -190,42 +190,9 @@
       ],
       "parts": [
        {
-        "id": "stig_ubuntu_20_04-UBTU-20-AC-000010_stmt",
+        "id": "stig_ubuntu_20_04-UBTU-20-010070_stmt",
         "name": "statement",
-        "prose": "Password history must be configured to 24 or more passwords"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_ubuntu_20_04-UBTU-20-AC-000040",
-      "title": "Minimum password length must be configured to 14 characters or more",
-      "props": [
-       {
-        "name": "label",
-        "value": "UBTU-20-AC-000040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "UBTU-20-AC-000040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.ubuntu_20_04"
-       }
-      ],
-      "links": [
-       {
-        "href": "#500bfea6-f3b9-58dc-8480-6b255998e549",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_ubuntu_20_04-UBTU-20-AC-000040_stmt",
-        "name": "statement",
-        "prose": "Minimum password length must be configured to 14 characters or more"
+        "prose": "The Ubuntu operating system must prohibit password reuse for a minimum of five generations."
        }
       ],
       "class": "security"
