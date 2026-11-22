@@ -8,6 +8,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — OpenSSF S2C2F pinned to v1.1 (2026-11-21, issue #341)
+
+- `benchmarks/supply_chain/s2c2f` now states S2C2F v1.1 (ossf/s2c2f release, 2022-10-19, still the latest): the
+  header maps all 25 v1.1 requirement ids with their maturity levels to the four substrate themes the overlay reuses
+  (AUD-1 and REB-1 have no consumption-side theme). Report string "OpenSSF S2C2F v1.1 (consumption)";
+  `reuses_substrate` and the collapse metrics are unchanged. `standards.yaml` pins v1.1 (was unknown).
+
 ### Reviewed — NIST Privacy Framework 1.1 still a draft (2026-11-21, issue #341)
 
 - NIST Privacy Framework 1.1 remains the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed

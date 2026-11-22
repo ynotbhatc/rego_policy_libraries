@@ -606,7 +606,7 @@ frameworks:
       - {standard: SLSA build track, version: v1.0, publisher: OpenSSF, literal: "SLSA v1.0", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
   supply_chain_s2c2f:
     standards:
-      - {standard: OpenSSF S2C2F, version: unknown, publisher: OpenSSF, check: {method: github_release, repo: ossf/s2c2f}}
+      - {standard: OpenSSF S2C2F, version: v1.1, publisher: OpenSSF, literal: "S2C2F v1.1", check: {method: github_release, repo: ossf/s2c2f}}
   supply_chain_scrm_800_161:
     standards:
       - {standard: NIST SP 800-161, version: r1, publisher: NIST, literal: "800-161r1", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final"}}

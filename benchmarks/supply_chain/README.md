@@ -22,7 +22,7 @@ slsa/           SLSA v1.0 build track            -> substrate
 ssdf/           NIST SSDF (SP 800-218)           -> substrate
 ssdf_genai/     NIST SSDF for GenAI (SP 800-218A)-> substrate + AI-contribution attestation
 scrm_800_161/   NIST SP 800-161r1 (C-SCRM)       -> substrate
-s2c2f/          OpenSSF S2C2F (consumption)      -> substrate
+s2c2f/          OpenSSF S2C2F v1.1 (consumption) -> substrate
 coverage/       spine-footprint -> evaluation-depth triage
 metrics/        the collapse, measured (framework references vs distinct themes)
 tests/          opa test — incl. the collapse tests
