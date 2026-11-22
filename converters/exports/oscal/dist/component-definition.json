@@ -504938,7 +504938,7 @@
      {
       "uuid": "c402510b-f0ec-5910-997a-c1bc3e1cb72f",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/scuba_m365.json",
-      "description": "Controls of scuba_m365 evaluated by the Rego Policy Libraries (104 controls, 7 Rego modules).",
+      "description": "Controls of scuba_m365 evaluated by the Rego Policy Libraries (134 controls, 8 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -505798,13 +505798,13 @@
         ]
        },
        {
-        "uuid": "fca82e43-5f16-5818-8dba-864505a7ec2b",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.1v1-SHALL",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Standard and strict preset security policies are not enabled",
+        "uuid": "41321d47-72af-5baf-a9b5-5d2a13564252",
+        "control-id": "scuba_m365-alerts",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Implemented by a Rego rule in benchmarks/scuba/m365/defender_validation.rego (package scuba_m365.defender); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "SCuBA MS.DEFENDER.1.1v1 (SHALL)"
+          "value": "alerts"
          },
          {
           "name": "rego-package",
@@ -505823,13 +505823,13 @@
         ]
        },
        {
-        "uuid": "dcd0d9a3-ad6a-5e48-9de0-659d092a5b42",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.2v1-SHALL",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Not all users are covered by Exchange Online Protection in a preset security policy",
+        "uuid": "e6b7820e-7291-5e67-9e54-2de0236d285b",
+        "control-id": "scuba_m365-audit",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Implemented by a Rego rule in benchmarks/scuba/m365/defender_validation.rego (package scuba_m365.defender); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "SCuBA MS.DEFENDER.1.2v1 (SHALL)"
+          "value": "audit"
          },
          {
           "name": "rego-package",
@@ -505848,13 +505848,13 @@
         ]
        },
        {
-        "uuid": "1dcae4f0-d322-5844-ad9f-6977741356a3",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.3v1-SHALL",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Not all users are covered by Defender for Office 365 protection in a preset security policy",
+        "uuid": "8c604e86-3d3c-5877-aeff-9e3b9b01aff8",
+        "control-id": "scuba_m365-dlp",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Implemented by a Rego rule in benchmarks/scuba/m365/defender_validation.rego (package scuba_m365.defender); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "SCuBA MS.DEFENDER.1.3v1 (SHALL)"
+          "value": "dlp"
          },
          {
           "name": "rego-package",
@@ -505873,13 +505873,13 @@
         ]
        },
        {
-        "uuid": "ea0339a5-e2a5-57de-9d23-c53757d6574c",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.4v1-SHALL",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Sensitive accounts are not in Exchange Online Protection under the strict preset policy",
+        "uuid": "52e2dda1-a610-5f51-9765-5b755f4113cf",
+        "control-id": "scuba_m365-impersonation",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Implemented by a Rego rule in benchmarks/scuba/m365/defender_validation.rego (package scuba_m365.defender); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "SCuBA MS.DEFENDER.1.4v1 (SHALL)"
+          "value": "impersonation"
          },
          {
           "name": "rego-package",
@@ -505898,13 +505898,13 @@
         ]
        },
        {
-        "uuid": "77a6a553-bb7f-5683-b67a-927576c472e7",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.5v1-SHALL",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Sensitive accounts are not in Defender for Office 365 protection under the strict preset policy",
+        "uuid": "28f7169b-0a04-5401-9b9b-f64a567e8a18",
+        "control-id": "scuba_m365-safe_attachments",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Implemented by a Rego rule in benchmarks/scuba/m365/defender_validation.rego (package scuba_m365.defender); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "SCuBA MS.DEFENDER.1.5v1 (SHALL)"
+          "value": "safe_attachments"
          },
          {
           "name": "rego-package",
@@ -506123,31 +506123,6 @@
         ]
        },
        {
-        "uuid": "87d7deb2-b50e-52b5-9fa2-41ce82728ef3",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.4.5v1-SHOULD",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): No list of apps restricted from accessing DLP-protected files is defined",
-        "props": [
-         {
-          "name": "label",
-          "value": "SCuBA MS.DEFENDER.4.5v1 (SHOULD)"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "scuba_m365.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/scuba/m365/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "38bc2efd-66fa-50c9-8f5b-8a89193214a9",
         "control-id": "scuba_m365-SCuBA-MS.DEFENDER.4.6v1-SHOULD",
         "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Custom DLP policy does not block restricted apps and unwanted Bluetooth applications from sensitive information",
@@ -506155,31 +506130,6 @@
          {
           "name": "label",
           "value": "SCuBA MS.DEFENDER.4.6v1 (SHOULD)"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "scuba_m365.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/scuba/m365/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "13a6e875-f043-58d6-8763-a2a6c3c683cf",
-        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.5.1v1-SHALL",
-        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Alerts required by the Exchange Online baseline are not enabled",
-        "props": [
-         {
-          "name": "label",
-          "value": "SCuBA MS.DEFENDER.5.1v1 (SHALL)"
          },
          {
           "name": "rego-package",
@@ -506230,6 +506180,206 @@
          {
           "name": "label",
           "value": "SCuBA MS.DEFENDER.6.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "52b6ccef-11e5-5639-8354-df8eb2fea3a7",
+        "control-id": "scuba_m365-scuba_m365.defender-1",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): %s [evaluated as %s]",
+        "props": [
+         {
+          "name": "label",
+          "value": "scuba_m365.defender#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fca82e43-5f16-5818-8dba-864505a7ec2b",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Standard and strict preset security policies are not enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.1.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "dcd0d9a3-ad6a-5e48-9de0-659d092a5b42",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.2v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Not all users are covered by Exchange Online Protection in a preset security policy",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.1.2v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1dcae4f0-d322-5844-ad9f-6977741356a3",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.3v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Not all users are covered by Defender for Office 365 protection in a preset security policy",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.1.3v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ea0339a5-e2a5-57de-9d23-c53757d6574c",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.4v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Sensitive accounts are not in Exchange Online Protection under the strict preset policy",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.1.4v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "77a6a553-bb7f-5683-b67a-927576c472e7",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.1.5v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Sensitive accounts are not in Defender for Office 365 protection under the strict preset policy",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.1.5v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "87d7deb2-b50e-52b5-9fa2-41ce82728ef3",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.4.5v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): No list of apps restricted from accessing DLP-protected files is defined",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.4.5v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.defender"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/defender_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "13a6e875-f043-58d6-8763-a2a6c3c683cf",
+        "control-id": "scuba_m365-SCuBA-MS.DEFENDER.5.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.defender (benchmarks/scuba/m365/defender_validation.rego): Alerts required by the Exchange Online baseline are not enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.DEFENDER.5.1v1 (SHALL)"
          },
          {
           "name": "rego-package",
@@ -506990,6 +507140,606 @@
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "benchmarks/scuba/m365/powerplatform_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d7946c21-002e-57e3-a0ee-c9c99420d2d8",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.1.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Emails with click-to-run file attachments (at a minimum .exe, .cmd and .vbe) are not blocked",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.1.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "59a491a1-3b7c-5543-97b5-c1f5454e1efa",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.1.2v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Email scanning cannot review emails after delivery",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.1.2v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f8edc248-4f8b-544c-a1fb-e1f4e7f986e9",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.1.3v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Emails identified as containing malware are not quarantined or dropped",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.1.3v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "00673d8c-d3fd-5d1b-a176-54b7c9c1a978",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.1.4v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): SharePoint, OneDrive and Teams message attachments are not scanned for malware",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.1.4v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c5628424-0fa1-5122-a584-1967070d4240",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.2.1v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): User impersonation protection is not enabled for sensitive accounts",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.2.1v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ca7b39ba-b29c-54e6-b57f-5c96b4b1423b",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.2.2v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Domain impersonation protection is not enabled for domains owned by the agency",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.2.2v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4b8bd8be-1d51-54cf-af4c-fbb8dea505ef",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.2.3v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Domain impersonation protection is not added for key suppliers and partners",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.2.3v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "941a8ed1-8969-59cf-bceb-af2c75cbda2d",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.2.4v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): User warnings comparable to the EOP user safety tips are not displayed",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.2.4v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c086e571-fb71-5c73-8df8-e270466f0cc9",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.3.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): No DLP policy protects PII and sensitive information, blocking at a minimum credit card numbers, U.S. ITINs and U.S. SSNs",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.3.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "052f56c1-b801-5353-b767-810f18833da7",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.3.2v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): The DLP policy is not applied to Exchange, OneDrive, SharePoint, Teams chat and Devices",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.3.2v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4bac454d-777c-5bae-b9d7-c1f01acc7721",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.3.3v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): The DLP policy action is not set to block sharing sensitive information with everyone",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.3.3v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0bdea49c-c61b-5949-a1c2-9ef1369fd2fe",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.3.4v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): User notifications on the proper use of sensitive information are not enabled in the DLP policy",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.3.4v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "90bdda60-36c1-5409-b645-a48ac6c092e6",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.3.5v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): The DLP policy does not block access to sensitive information by restricted applications and unwanted Bluetooth applications",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.3.5v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "505bfb30-2e56-5399-8833-2b153ad99dea",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.4.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Required alerts are not enabled (missing: %s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.4.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f1bff74f-3458-5805-94e9-68cee07ca95d",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.4.2v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Alerts are not sent to a monitored address or incorporated into a SIEM",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.4.2v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "718ab685-a13c-5d73-b319-488025f8acc7",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.5.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Unified audit logging is not enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.5.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f04c964a-ea8e-5c65-a801-940c2d5ac394",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.5.2v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Audit logs are not retained and searchable for at least 3 months (90 days) and retrievable for at least 12 months (365 days)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.5.2v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f802166c-7613-59c2-bad4-ad718c23959f",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.6.1v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Emails detected as spam or phishing can be delivered to the user's inbox",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.6.1v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ff7855d5-1aa5-5555-b45b-91b8c9ac83fc",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.6.2v1-SHALL",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Allowed domains are added to inbound anti-spam protection policies",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.6.2v1 (SHALL)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f40d03e3-d304-5b8c-aa31-35e075cfb235",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.7.1v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): URL comparison with a block-list is not enabled for URLs in emails, Teams messages and Office documents",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.7.1v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d3bb8215-c988-55b1-9494-e9ee13d409b2",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.7.2v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Direct download links are not scanned for malware",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.7.2v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "32052560-43df-55fe-b1de-9c36f14ea9f6",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.7.3v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): User click tracking is not enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.7.3v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e5d886db-be1c-5685-903a-49d7bc1f77e5",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.8.1v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): An IP allow list is created",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.8.1v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a122821a-f4f2-5c9b-9545-836ec50e9871",
+        "control-id": "scuba_m365-SCuBA-MS.SECURITYSUITE.8.2v1-SHOULD",
+        "description": "Evaluated by Rego package scuba_m365.securitysuite (benchmarks/scuba/m365/securitysuite_validation.rego): Safe lists are enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCuBA MS.SECURITYSUITE.8.2v1 (SHOULD)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "scuba_m365.securitysuite"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/scuba/m365/securitysuite_validation.rego"
          },
          {
           "name": "implementation-status",
