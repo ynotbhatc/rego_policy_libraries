@@ -475,7 +475,7 @@ frameworks:
   # ---------------------------------------------------------------- management systems and frameworks
   cobit:
     standards:
-      - {standard: COBIT, version: "2019", publisher: ISACA, literal: "COBIT 2019", check: {method: page_regex, url: "https://www.isaca.org/resources/cobit", pattern: 'COBIT(?:®)? ?(\d{1,4})\b', known: ["2019", "19", "5"], note: "COBIT 7 published 2026-11-19 (#194); regeneration needs a licence decision"}}
+      - {standard: COBIT, version: "2019", publisher: ISACA, literal: "COBIT 2019", check: {method: page_regex, url: "https://www.isaca.org/resources/cobit", pattern: 'COBIT(?:®)? ?(\d{1,4})\b', known: ["2019", "19", "5", "7"], note: "COBIT 7 (2026-11-19) blocked by vendor: paid commercial licence for software use; not planned (#194)"}}
   hitrust:
     standards:
       - {standard: HITRUST CSF, version: v11.3.0, publisher: HITRUST Alliance, literal: "HITRUST Common Security Framework (CSF) v11.3.0", check: {method: page_regex, url: "https://hitrustalliance.net/advisories", pattern: 'CSF (?:[Vv]ersion |v)(1\d\.\d+(?:\.\d+)?)', note: "v11.0-11.3 decommissioned (HAA 2026-007; new r2 objects from 2026-12-23 must use v11.4+); upstream v11.9.0; rebuild needs HITRUST's written consent (licence excludes security vendors)"}}
