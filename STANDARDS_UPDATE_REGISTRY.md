@@ -1,6 +1,6 @@
 # Standards Update Registry
 
-**Version:** v1.2
+**Version:** v1.3
 **Date:** 2026-11-21
 **Authors:** Tim Coulter (Red Hat) with Claude (Anthropic)
 **Purpose:** Every framework this library implements tracks an upstream standard that
@@ -93,7 +93,7 @@ feed are listed as `manual`. This document keeps the cadence, context and notes 
 | FedRAMP | rev5 baselines — **20x is GA** (Consolidated Rules 2026-06-25): rules mandatory for all 2027-01-01, no new rev5 applications after 2027-06-11, grace periods end 2028-02-01, rev5 authorisations sunset 2028-12-31, Class D (High) pilot FY27 Q1–Q2; **20x/KSI module implemented (#180, closed #172)** (verified 2026-11-11) | GSA | 20x cadence | 2027-01-01 | fedramp.gov |
 | ISO/IEC 42005 | 2025 (first edition, 2025-05-28) — verified current 2026-11-11, no amendment | ISO/IEC | first-edition — watch for early amendment | — | iso.org/standard/44545 (42005) |
 | OWASP LLM Top 10 | 2026 edition (2026-08-04; formal launch 2026-09-01 with the Agent Control Standard) — verified current 2026-11-11 | OWASP GenAI Security Project | ~annual; 2026 renumbered 8 of 10 vs 2025 | 2027 | genai.owasp.org |
-| MITRE ATLAS (crosswalk) | crosswalk pins atlas-data **v2026.09** — upstream **v2026.10 (2026-10-28**: 16 tactics, 129 techniques + 92 sub-techniques, 44 mitigations); crosswalk refresh pending — no issue yet (verified 2026-11-11) | MITRE | monthly releases — crosswalk metadata only, not checks | continuous | github.com/mitre-atlas/atlas-data/releases |
+| MITRE ATLAS (crosswalk) | crosswalk pins atlas-data **v2026.10** (2026-10-28; 44 mitigations, AML.M0000–M0043) — refreshed 2026-11-21 for #341: all 19 cited mitigation ids still exist; M0023, M0026, M0028 renamed (same intent), no cited id removed; M0040–M0043 are new and not mapped (M0041 Privacy-Preserving AI Training and Inference and M0043 AI Agent External Resource Lifecycle Management are candidates for LLM02 and LLM03, a curation call) | MITRE | monthly releases — crosswalk metadata only, not checks | continuous | github.com/mitre-atlas/atlas-data/releases |
 | FedRAMP 20x KSI | Consolidated Rules datafile (46 KSIs, stable since 2026-06-24) — verified 2026-11-11 | GSA/FedRAMP | datafile-versioned; regenerate module from fedramp-consolidated-rules.json | rolling | github.com/FedRAMP/rules |
 | UK MoD DCC / DEF STAN 05-138 | Issue 4 (14 May 2024) + ISN 2026/01 (covering-narrative clarification, CSM scope) + ISN 2026/02 (DCC as DEFCON 658 assurance: an L0 certificate satisfies Cyber Risk Profile 0 only); **MOD asks all suppliers for DCC L0 by 2026-12-31** (contractual where DEFCON 658 applies, not statute) (verified 2026-11-11) | UK MoD DStan / IASME | issue-driven (Iss 3→4 ~4 yrs); scheme guidance revs faster | 2026-12-31 | gov.uk (DStan, ISNs) + iasme.co.uk (DCC) |
 | PQC Readiness | FIPS 203/204/205 (Aug 2024) + NIST IR 8547 (final 2026-10-27) + EO 14412 (2026-06-22) / OMB M-26-15 + CNSA 2.0 (FAQ v2.1, 2024-12-29 — a "v2.2 Oct 2026" claim is single-source, unconfirmed) — verified 2026-11-11; FAR proposed rule not yet published | NIST / OMB / NSA | **watch: CNSA 2.0 FAQ revs; CNSA 2.0 procurement gate 2027-01-01; EO-driven FAR proposed rule (expected Dec 2026); CISA CBOM minimum elements (by Mar 2027)** | 2027-01-01 | csrc.nist.gov/pubs/ir/8547 + nsa.gov (CNSA 2.0 FAQ) |

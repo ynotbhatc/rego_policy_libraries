@@ -8,6 +8,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — OWASP LLM MITRE ATLAS crosswalk re-pinned to atlas-data v2026.10 (2026-11-21, issue #341)
+
+- `governance/owasp_llm` crosswalk metadata now cites atlas-data v2026.10 (2026-10-28, 44 mitigations
+  AML.M0000-M0043; v2026.09 had 40). All 19 cited mitigation ids still exist with the same intent; three were renamed
+  upstream (AML.M0023 "Maintain an AI Bill of Materials", AML.M0026 "Manage AI Agent Service Access", AML.M0028
+  "Enforce Access Controls for AI Agent Tools"). The crosswalk table and the 30 checks are unchanged; the new
+  mitigations AML.M0040-M0043 are not mapped.
+
 ### Changed — DISA STIG RHEL 8 V2R9 (2026-11-21, issue #341)
 
 - `benchmarks/stig/rhel_8` follows DISA's standalone V2R9 (30 Sep 2026): 56 of 371 rules. Added RHEL-08-010287
