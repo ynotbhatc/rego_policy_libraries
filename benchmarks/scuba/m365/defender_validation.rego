@@ -52,14 +52,14 @@
 #   domains: [saas, m365]
 #   deprecated: "MS.DEFENDER baseline removed upstream in ScubaGear v2.0.0; use scuba_m365.securitysuite; this shim is removed in the next minor release"
 #   coverage:
-#     checks: 19
-#     cited: 19
+#     checks: 25
+#     cited: 24
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package scuba_m365.defender
 
 import data.scuba_m365.securitysuite

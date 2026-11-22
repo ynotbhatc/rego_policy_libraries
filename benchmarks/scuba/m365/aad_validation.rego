@@ -68,36 +68,36 @@ compliant if {
 # ── Group 1 — Legacy Authentication ──────────────────────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.legacy_auth_blocked
+	not input.scuba.aad.legacy_auth_blocked == true
 	msg := "SCuBA MS.AAD.1.1v1 (SHALL): Legacy authentication is not blocked"
 }
 
 # ── Group 2 — Risk Based Policies ────────────────────────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.risk.high_risk_users_blocked
+	not input.scuba.aad.risk.high_risk_users_blocked == true
 	msg := "SCuBA MS.AAD.2.1v1 (SHALL): Users detected as high risk are not blocked"
 }
 
 violations contains msg if {
-	not input.scuba.aad.risk.high_risk_user_alerts
+	not input.scuba.aad.risk.high_risk_user_alerts == true
 	msg := "SCuBA MS.AAD.2.2v1 (SHOULD): No administrator notification is sent when high-risk users are detected"
 }
 
 violations contains msg if {
-	not input.scuba.aad.risk.high_risk_signins_blocked
+	not input.scuba.aad.risk.high_risk_signins_blocked == true
 	msg := "SCuBA MS.AAD.2.3v1 (SHALL): Sign-ins detected as high risk are not blocked"
 }
 
 # ── Group 3 — Strong Authentication & Secure Registration ────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.auth.phishing_resistant_mfa_all_users
+	not input.scuba.aad.auth.phishing_resistant_mfa_all_users == true
 	msg := "SCuBA MS.AAD.3.1v1 (SHALL): Phishing-resistant MFA is not enforced for all users"
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.mfa_enforced_all_users
+	not input.scuba.aad.auth.mfa_enforced_all_users == true
 	msg := "SCuBA MS.AAD.3.2v2 (SHALL): MFA is not enforced for all users"
 }
 
@@ -119,61 +119,61 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.methods_migration_complete
+	not input.scuba.aad.auth.methods_migration_complete == true
 	msg := "SCuBA MS.AAD.3.4v1 (SHALL): Authentication Methods Manage Migration is not set to Migration Complete"
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.weak_methods_disabled
+	not input.scuba.aad.auth.weak_methods_disabled == true
 	msg := "SCuBA MS.AAD.3.5v2 (SHALL): SMS, Voice Call, or Email OTP authentication methods are not disabled"
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.phishing_resistant_mfa_privileged
+	not input.scuba.aad.auth.phishing_resistant_mfa_privileged == true
 	msg := "SCuBA MS.AAD.3.6v1 (SHALL): Phishing-resistant MFA is not required for highly privileged roles"
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.managed_devices_required
+	not input.scuba.aad.auth.managed_devices_required == true
 	msg := "SCuBA MS.AAD.3.7v1 (SHOULD): Managed devices are not required for authentication"
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.managed_devices_for_mfa_registration
+	not input.scuba.aad.auth.managed_devices_for_mfa_registration == true
 	msg := "SCuBA MS.AAD.3.8v1 (SHOULD): Managed devices are not required to register MFA"
 }
 
 violations contains msg if {
-	not input.scuba.aad.auth.device_code_blocked
+	not input.scuba.aad.auth.device_code_blocked == true
 	msg := "SCuBA MS.AAD.3.9v1 (SHOULD): Device code authentication flow is not blocked"
 }
 
 # ── Group 4 — Centralized Log Collection ─────────────────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.logging.security_logs_to_soc
+	not input.scuba.aad.logging.security_logs_to_soc == true
 	msg := "SCuBA MS.AAD.4.1v1 (SHALL): Security logs are not sent to the security operations center for monitoring"
 }
 
 # ── Group 5 — Application Registration and Consent ───────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.apps.registration_admin_only
+	not input.scuba.aad.apps.registration_admin_only == true
 	msg := "SCuBA MS.AAD.5.1v1 (SHALL): Non-administrators are allowed to register applications"
 }
 
 violations contains msg if {
-	not input.scuba.aad.apps.user_consent_restricted
+	not input.scuba.aad.apps.user_consent_restricted == true
 	msg := "SCuBA MS.AAD.5.2v1 (SHALL): User consent to applications is not restricted"
 }
 
 violations contains msg if {
-	not input.scuba.aad.apps.admin_consent_workflow
+	not input.scuba.aad.apps.admin_consent_workflow == true
 	msg := "SCuBA MS.AAD.5.3v1 (SHALL): Admin consent workflow for applications is not configured"
 }
 
 violations contains msg if {
-	not input.scuba.aad.apps.password_addition_blocked
+	not input.scuba.aad.apps.password_addition_blocked == true
 	msg := "SCuBA MS.AAD.5.5v1 (SHOULD): Application password (client secret) addition is not blocked"
 }
 
@@ -204,7 +204,7 @@ violations contains msg if {
 # ── Group 6 — Passwords ──────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.passwords.expiration_disabled
+	not input.scuba.aad.passwords.expiration_disabled == true
 	msg := "SCuBA MS.AAD.6.1v1 (SHALL): User password expiration is enabled (passwords SHALL NOT expire)"
 }
 
@@ -225,66 +225,66 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.granular_roles_used
+	not input.scuba.aad.privileged.granular_roles_used == true
 	msg := "SCuBA MS.AAD.7.2v1 (SHALL): Privileged users are not provisioned with finer-grained roles instead of Global Administrator"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.cloud_only
+	not input.scuba.aad.privileged.cloud_only == true
 	msg := "SCuBA MS.AAD.7.3v1 (SHALL): Privileged users are not provisioned cloud-only accounts separate from on-premises/federated identities"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.no_permanent_active_assignments
+	not input.scuba.aad.privileged.no_permanent_active_assignments == true
 	msg := "SCuBA MS.AAD.7.4v1 (SHALL): Permanent active role assignments exist for highly privileged roles"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.pam_provisioning_only
+	not input.scuba.aad.privileged.pam_provisioning_only == true
 	msg := "SCuBA MS.AAD.7.5v1 (SHALL): Highly privileged role provisioning occurs outside of a PAM system"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.ga_activation_requires_approval
+	not input.scuba.aad.privileged.ga_activation_requires_approval == true
 	msg := "SCuBA MS.AAD.7.6v1 (SHALL): Global Administrator role activation does not require approval"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.assignment_alerts
+	not input.scuba.aad.privileged.assignment_alerts == true
 	msg := "SCuBA MS.AAD.7.7v1 (SHALL): Eligible and active highly privileged role assignments do not trigger an alert"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.ga_activation_alerts
+	not input.scuba.aad.privileged.ga_activation_alerts == true
 	msg := "SCuBA MS.AAD.7.8v1 (SHALL): Global Administrator role activation does not trigger an alert"
 }
 
 violations contains msg if {
-	not input.scuba.aad.privileged.role_activation_alerts
+	not input.scuba.aad.privileged.role_activation_alerts == true
 	msg := "SCuBA MS.AAD.7.9v1 (SHOULD): Activation of other highly privileged roles does not trigger an alert"
 }
 
 # ── Group 8 — Guest User Access ──────────────────────────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.guests.access_restricted
+	not input.scuba.aad.guests.access_restricted == true
 	msg := "SCuBA MS.AAD.8.1v1 (SHOULD): Guest users do not have limited or restricted access to directory objects"
 }
 
 violations contains msg if {
-	not input.scuba.aad.guests.invites_restricted_to_inviter_role
+	not input.scuba.aad.guests.invites_restricted_to_inviter_role == true
 	msg := "SCuBA MS.AAD.8.2v1 (SHOULD): Guest invitations are not restricted to users with the Guest Inviter role"
 }
 
 violations contains msg if {
-	not input.scuba.aad.guests.invite_domain_allowlist
+	not input.scuba.aad.guests.invite_domain_allowlist == true
 	msg := "SCuBA MS.AAD.8.3v1 (SHOULD): Guest invites are not restricted to authorized external domains"
 }
 
 # ── Group 9 — AI Security ────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.scuba.aad.ai.risky_agents_blocked
+	not input.scuba.aad.ai.risky_agents_blocked == true
 	msg := "SCuBA MS.AAD.9.1v1 (SHALL): Risky AI agents are not blocked"
 }
 

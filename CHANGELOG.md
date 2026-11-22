@@ -33,6 +33,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `scuba.securitysuite.*` always wins when present. **The shim and the `scuba.defender.*` input path are removed in
   the next minor release** — move collectors to `scuba.securitysuite.*`.
 - `standards.yaml` pins ScubaGear v2.0.0 (was unknown).
+- `benchmarks/scuba/m365/aad_validation.rego`: the 30 checks written `not input.scuba.aad.<fact>` now require the
+  boolean `true` (`not ... == true`), so a string such as `"true"` no longer passes (found by `make check-bad-input`
+  once the Security Suite fixture let `scuba_m365.main` reach a pass).
 
 ### Changed — TISAX rebuilt on VDA ISA2027.1 (2026-11-22) — BREAKING: control ids and input contract
 
