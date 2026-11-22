@@ -8,6 +8,35 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — CISA SCuBA M365 follows ScubaGear v2.0.0: Defender baseline replaced by Security Suite, Defender kept as a deprecated shim (2026-11-21, issue #341)
+
+- `benchmarks/scuba/m365` now implements every active policy of the ScubaGear v2.0.0 baselines (2026-10-22): 109
+  policies, 59 SHALL / 50 SHOULD, id and criticality checked one by one against `baselines/*.md`. The 85 Entra ID,
+  EXO, Power BI, Power Platform, SharePoint and Teams ids were unchanged.
+- v2.0.0 removed the Defender baseline. New module `scuba_m365.securitysuite` (`securitysuite_validation.rego`, 24
+  MS.SECURITYSUITE policies in 8 groups: malware, impersonation, DLP, alerts, audit logging, inbound anti-spam,
+  link protection, IP allow lists), input `scuba.securitysuite.*`. Where the rework is one to one the field names
+  are kept (impersonation, `safe_attachments`, DLP, `alerts.routed_to_monitored_target`,
+  `audit.unified_logging_enabled`); new facts: `malware.*`, `impersonation.user_warnings`, `alerts.enabled` (list
+  of alert names; 4.1 names the seven it requires and reports the missing ones), `audit.searchable_retention_days`
+  (>= 90) and `audit.retrievable_retention_days` (>= 365) for 5.2, `antispam.*`, `links.*`, `allow_lists.*`.
+  MS.DEFENDER.4.5 and 6.2 have no successor.
+- The orchestrator `scuba_m365.main` totals 109 and counts the Security Suite baseline only (its product summary
+  carries `MS.SECURITYSUITE`, never `MS.DEFENDER`).
+- **Not breaking in this release — deprecation shim.** `scuba_m365.defender` stays as a deprecated compatibility
+  layer: `/v1/data/scuba_m365/defender/compliance_report` and input `scuba.defender.*` keep working with the same
+  19 MS.DEFENDER ids, and the report gains `deprecated`, `successor` and `successor_ids`. The 11 policies with a
+  one-to-one successor (2.1-2.3, 3.1, 4.1-4.4, 4.6, 5.2, 6.1) are evaluated by the Security Suite rule on the
+  translated fact; the other 8 (1.1-1.5, 4.5, 5.1, 6.3) keep their original rule. When input arrives only as
+  `scuba.defender.*`, `scuba_m365.main` evaluates the Security Suite baseline from the one-to-one facts (the 13
+  policies with no legacy fact fail closed) and reports `securitysuite_input_path` and an `input_note`;
+  `scuba.securitysuite.*` always wins when present. **The shim and the `scuba.defender.*` input path are removed in
+  the next minor release** — move collectors to `scuba.securitysuite.*`.
+- `standards.yaml` pins ScubaGear v2.0.0 (was unknown).
+- `benchmarks/scuba/m365/aad_validation.rego`: the 30 checks written `not input.scuba.aad.<fact>` now require the
+  boolean `true` (`not ... == true`), so a string such as `"true"` no longer passes (found by `make check-bad-input`
+  once the Security Suite fixture let `scuba_m365.main` reach a pass).
+
 ### Changed — SAP ABAP baseline re-pinned to frun-csa-policies-best-practices cb687307 (2026-11-21, issue #341)
 
 - `benchmarks/sap/abap` re-imported at `cb687307` (2026-11-12, upstream HEAD). The five commits since `888f3c53`

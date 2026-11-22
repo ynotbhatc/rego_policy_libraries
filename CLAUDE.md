@@ -31,7 +31,7 @@ benchmarks/                    Per-platform configuration baselines
 │   ├── network/cisco/         Network device baselines
 │   └── mobile/ios/            Mobile platforms
 ├── stig/                      DISA STIGs — 26 platform directories (4 sunset)
-├── scuba/m365/                CISA SCuBA M365 baselines (104 policies, 7 products)
+├── scuba/m365/                CISA SCuBA M365 baselines (109 policies, 7 products, ScubaGear v2.0.0)
 ├── nsa_cisa/kubernetes/       NSA/CISA K8s Hardening Guidance v1.2 (43 controls)
 └── pss/kubernetes/            K8s Pod Security Standards (baseline + restricted)
 

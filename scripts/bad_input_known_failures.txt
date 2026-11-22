@@ -2,8 +2,8 @@
 # entrypoints that pass, go undefined or error on empty / missing / null / string-typed input.
 # `make check-bad-input` fails only on a failure NOT listed here. Fix the module, then regenerate.
 # Format: <package> <case> <kind>: <detail>. Kinds: pass, score-rise, undefined, error.
-# 195 entrypoints, 119 with an all-pass fixture, 8146 cases, 1307 failures in 79 packages.
-# Entrypoints without an all-pass fixture (base cases only): 76
+# 195 entrypoints, 121 with an all-pass fixture, 8282 cases, 1289 failures in 79 packages.
+# Entrypoints without an all-pass fixture (base cases only): 74
 
 aca_155_260.main keys_null undefined: compliance_report is undefined
 aca_155_260.main keys_str_num undefined: compliance_report is undefined
@@ -1156,24 +1156,6 @@ pqc.main boolstr:pqc.crypto_inventory[0].pqc_migration_planned pass: compliant=t
 pqc.main boolstr:pqc.crypto_inventory[1].pqc_migration_planned pass: compliant=true score=null
 pqc.main boolstr:pqc.crypto_inventory[2].pqc_migration_planned pass: compliant=true score=null
 pqc.main boolstr:pqc.crypto_inventory[3].pqc_migration_planned pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.apps.admin_consent_workflow pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.apps.password_addition_blocked pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.apps.user_consent_restricted pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.auth.mfa_enforced_all_users pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.auth.phishing_resistant_mfa_all_users pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.legacy_auth_blocked pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.cloud_only pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.ga_activation_alerts pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.granular_roles_used pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.pam_provisioning_only pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.role_activation_alerts pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.alerts.required_exo_alerts_enabled pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.alerts.routed_to_monitored_target pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.audit.unified_logging_enabled pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.dlp.user_notifications pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.impersonation.domain_protection_owned pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.impersonation.domain_protection_partners pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.presets.eop_all_users pass: compliant=true score=null
 scuba_m365.main boolstr:scuba.exo.dkim_enabled_all_domains pass: compliant=true score=null
 scuba_m365.main boolstr:scuba.exo.dmarc.agency_poc_included pass: compliant=true score=null
 scuba_m365.main boolstr:scuba.exo.dmarc.published_all_domains pass: compliant=true score=null

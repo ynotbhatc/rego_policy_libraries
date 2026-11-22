@@ -2,9 +2,9 @@
 # (benchmarks/scuba/m365/scuba_m365_complete.rego, package scuba_m365.main).
 #
 # These tests exercise the AGGREGATE report only — the orchestrator that
-# concatenates the seven product modules (aad, defender, exo, powerbi,
-# powerplatform, sharepoint, teams) into one compliance_report. The fixture
-# below is a fully-compliant tenant across all 104 policies; individual
+# concatenates the seven product modules (aad, exo, powerbi,
+# powerplatform, securitysuite, sharepoint, teams) into one compliance_report. The fixture
+# below is a fully-compliant tenant across all 109 policies; individual
 # product-module behaviour is covered by the sibling test_*_validation files.
 #
 # Package is scuba_m365.main_test so it never collides with the existing
@@ -16,7 +16,7 @@ package scuba_m365.main_test
 import data.scuba_m365.main
 import rego.v1
 
-# ── Fully-compliant tenant fixture (all 104 policies satisfied) ──────────────
+# ── Fully-compliant tenant fixture (all 109 policies satisfied) ──────────────
 
 compliant_input := {
 	"tenant_name": "example.onmicrosoft.com",
@@ -68,36 +68,16 @@ compliant_input := {
 			},
 			"ai": {"risky_agents_blocked": true},
 		},
-		"defender": {
-			"presets": {
-				"standard_strict_enabled": true,
-				"eop_all_users": true,
-				"atp_all_users": true,
-				"eop_sensitive_strict": true,
-				"atp_sensitive_strict": true,
-			},
-			"impersonation": {
-				"user_protection_sensitive": true,
-				"domain_protection_owned": true,
-				"domain_protection_partners": true,
-			},
+		"securitysuite": {
+			"malware": {"click_to_run_blocked": true, "post_delivery_scan": true, "quarantine_or_drop": true},
 			"safe_attachments": {"spo_odb_teams_enabled": true},
-			"dlp": {
-				"custom_pii_policy": true,
-				"applied_all_workloads": true,
-				"block_everyone_action": true,
-				"user_notifications": true,
-				"restricted_apps_list": true,
-				"restricted_apps_blocked": true,
-			},
-			"alerts": {
-				"required_exo_alerts_enabled": true,
-				"routed_to_monitored_target": true,
-			},
-			"audit": {
-				"unified_logging_enabled": true,
-				"retention_meets_m2131": true,
-			},
+			"impersonation": {"user_protection_sensitive": true, "domain_protection_owned": true, "domain_protection_partners": true, "user_warnings": true},
+			"dlp": {"custom_pii_policy": true, "applied_all_workloads": true, "block_everyone_action": true, "user_notifications": true, "restricted_apps_blocked": true},
+			"alerts": {"enabled": ["Suspicious email sending patterns detected", "Suspicious Connector Activity", "Suspicious Email Forwarding Activity", "Messages have been delayed", "Tenant restricted from sending unprovisioned email", "Tenant restricted from sending email", "A potentially malicious URL click was detected"], "routed_to_monitored_target": true},
+			"audit": {"unified_logging_enabled": true, "searchable_retention_days": 90, "retrievable_retention_days": 365},
+			"antispam": {"spam_phish_not_in_inbox": true, "no_allowed_domains": true},
+			"links": {"url_blocklist_enabled": true, "download_links_scanned": true, "click_tracking_enabled": true},
+			"allow_lists": {"no_ip_allow_list": true, "safe_list_disabled": true},
 		},
 		"exo": {
 			"auto_forwarding_disabled": true,
@@ -245,7 +225,7 @@ test_product_summary_present_and_cross_foots_to_aggregate if {
 
 test_accounting_balanced_on_empty_input if {
 	r := main.compliance_report with input as {}
-	r.policies_evaluated == 104
-	r.total_controls == 104
+	r.policies_evaluated == 109
+	r.total_controls == 109
 	r.accounting_balanced == true
 }

@@ -73,7 +73,7 @@ Each framework key is labelled validated, partial or experimental in [`scripts/c
 | **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
 | **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing explicitly scoped out |
 | **COBIT 2019** | `frameworks/management/cobit/` | Governance-system attestation across EDM/APO/BAI/DSS/MEA — maturity assessment explicitly disclaimed |
-| **CISA SCuBA M365** | `benchmarks/scuba/m365/` | All 104 baseline policies across 7 products (Entra ID, Defender, EXO, Power BI, Power Platform, SharePoint/OneDrive, Teams); SHALL/SHOULD criticality reported; BOD 25-01 |
+| **CISA SCuBA M365** | `benchmarks/scuba/m365/` | All 109 active policies of the ScubaGear v2.0.0 baselines across 7 products (Entra ID, EXO, Power BI, Power Platform, Security Suite, SharePoint/OneDrive, Teams); SHALL/SHOULD criticality reported; BOD 25-01 |
 | **CIS Amazon EKS v1.8.0** | `benchmarks/cis/eks/` | 49 controls (kubescape-mapped coverage; gaps stated in header) |
 | **CIS Azure AKS v1.8.0** | `benchmarks/cis/aks/` | 56 controls (kubescape-mapped coverage; gaps stated in header) |
 | **CIS Google GKE v1.9.0** | `benchmarks/cis/gke/` | 40 controls (partial cover of the official benchmark — stated in header) |

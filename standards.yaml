@@ -591,7 +591,7 @@ frameworks:
       - {standard: Kubernetes Pod Security Standards, version: current, publisher: Kubernetes SIG Auth, literal: "Kubernetes Pod Security Standards", check: {method: manual, url: "https://kubernetes.io/docs/concepts/security/pod-security-standards/", note: "versionless page; field lists current as of 2026-09 per the module"}}
   scuba_m365:
     standards:
-      - {standard: CISA SCuBA Microsoft 365 baselines (ScubaGear), version: unknown, publisher: CISA, check: {method: github_release, repo: cisagov/ScubaGear, note: "policy ids are versioned one by one; the module pins no ScubaGear release, so any release is reported for review"}}
+      - {standard: CISA SCuBA Microsoft 365 baselines (ScubaGear), version: v2.0.0, publisher: CISA, literal: "ScubaGear v2.0.0", check: {method: github_release, repo: cisagov/ScubaGear, note: "policy ids are also versioned one by one; on a new release diff the active ids and criticality (baselines/*.md, removedpolicies.md excluded) against the modules"}}
   sap_abap_baseline:
     standards:
       - {standard: SAP Security Baseline Template (ABAP), version: v2.6, publisher: SAP, literal: "SAP Security Baseline Template v2.6", check: {method: manual, url: "https://support.sap.com/en/offerings-programs/support-services/security-optimization-services-portfolio/security-baseline-template.html"}}
