@@ -55,3 +55,39 @@ if problems:
     sys.exit("FAIL (nist_800_53 key): examples/nist_800_53/facts.json no longer gives the documented result\n  " + "\n  ".join(problems))
 print("ok: nist_800_53: 55 pass, 5 fail, 416 evidence missing, 66 not attested of 542")
 '
+
+# 3. The same facts plus benchmark results (benchmark_findings.json), with the crosswalk spine loaded: the
+#    benchmark gap fails AC-8 over its declared evidence, and the satisfied verdict on AC-7 passes nothing.
+python3 -c '
+import json, sys
+facts = json.load(open(sys.argv[1])); facts.update(json.load(open(sys.argv[2]))); json.dump(facts, sys.stdout)
+' "$here/facts.json" "$here/benchmark_findings.json" |
+opa eval -d "$nist" -d "$root/crosswalk/correlation.rego" \
+  -d "crosswalk.stig_800_53:$root/crosswalk/stig_800_53/data.json" -I -f json 'data.nist_800_53.main.compliance_report' |
+python3 -c '
+import json, sys
+result = json.load(sys.stdin).get("result")
+if not result:
+    sys.exit("FAIL: nist_800_53.main.compliance_report is undefined with benchmark results")
+r = result[0]["expressions"][0]["value"]
+b = r.get("benchmark_evidence", {})
+rows = {c["id"]: c for c in r.get("control_results", [])}
+problems = []
+def expect(label, got, want):
+    if got != want:
+        problems.append(f"{label}: got {got!r}, expected {want!r}")
+expect("spine_loaded", b.get("spine_loaded"), True)
+expect("benchmark satisfied", b.get("satisfied"), ["AC-7"])
+expect("benchmark gap", b.get("gap"), ["AC-8"])
+expect("unmapped_rules", b.get("unmapped_rules"), ["EXAMPLE-00-000001"])
+expect("control_result_counts", r.get("control_result_counts"),
+       {"pass": 54, "fail": 6, "evidence_missing": 416, "not_attested": 66})
+expect("AC-8 status", rows.get("AC-8", {}).get("status"), "fail")
+expect("AC-8 open rules", rows.get("AC-8", {}).get("benchmark", {}).get("open_rules"), ["RHEL-09-211020"])
+expect("AC-7 status", rows.get("AC-7", {}).get("status"), "fail")
+expect("AC-7 benchmark", rows.get("AC-7", {}).get("benchmark", {}).get("status"), "satisfied")
+expect("AC-2(1) benchmark", rows.get("AC-2(1)", {}).get("benchmark", {}).get("status"), "not_evaluated")
+if problems:
+    sys.exit("FAIL (nist_800_53 with benchmark results): examples/nist_800_53 no longer gives the documented result\n  " + "\n  ".join(problems))
+print("ok: nist_800_53 with benchmark results: AC-8 fails on the benchmark gap, AC-7 satisfied by the benchmark and still failing on its own evidence")
+'
