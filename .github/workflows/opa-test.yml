@@ -18,6 +18,12 @@ on:
 permissions:
   contents: read
 
+# A new push to a pull request cancels that PR's run still in progress; main and scheduled runs
+# are never cancelled.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   validate:
     # Matrix legs show up as "Check and Test Rego Policies (OPA <version>)".
@@ -31,7 +37,9 @@ jobs:
         # 1.10.0 is the oldest supported OPA and the version the published bundle is built with.
         # 1.22.4 is the newest stable release as of 2026-11-21; bump it (and NEWEST_PINNED_OPA
         # below) on a new OPA release. The weekly latest-opa job tests the newest release unpinned.
-        opa: ["1.10.0", "1.22.4"]
+        # Pull requests run the full suite on 1.22.4 only (one ~18-minute leg instead of two) plus a
+        # parse and type check on 1.10.0 (step below); pushes to main and the weekly run keep both legs.
+        opa: ${{ fromJSON(github.event_name == 'pull_request' && '["1.22.4"]' || '["1.10.0", "1.22.4"]') }}
 
     steps:
       - name: Checkout
@@ -51,6 +59,17 @@ jobs:
           sudo mv opa_linux_amd64_static /usr/local/bin/opa
           rm -f opa.sha256
           opa version
+
+      - name: Oldest supported OPA (1.10.0) parses and type-checks the tree (pull requests)
+        if: github.event_name == 'pull_request'
+        run: |
+          curl -sSL -o /tmp/opa_linux_amd64_static \
+            "https://github.com/open-policy-agent/opa/releases/download/v1.10.0/opa_linux_amd64_static"
+          curl -sSL -o /tmp/opa.sha256 \
+            "https://github.com/open-policy-agent/opa/releases/download/v1.10.0/opa_linux_amd64_static.sha256"
+          (cd /tmp && sha256sum -c opa.sha256)
+          chmod +x /tmp/opa_linux_amd64_static
+          /tmp/opa_linux_amd64_static check . --ignore .github --ignore converters
 
       - name: Count control-level checks (scripts/count_controls.py must run clean)
         run: python3 scripts/count_controls.py --check-readme
