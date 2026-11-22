@@ -1,7 +1,7 @@
 # Rego engine compatibility
 
-**Version:** v1.2
-**Date:** 2026-11-01
+**Version:** v1.3
+**Date:** 2026-11-22
 **Authors:** Tim Coulter · Claude (Anthropic)
 
 ## Supported engines
@@ -9,7 +9,8 @@
 This library is written for, and tested against, **Open Policy Agent** and **Enterprise OPA**.
 CI runs `opa check --strict` and the full test suite on two releases
 (`.github/workflows/opa-test.yml`): **v1.10.0**, the oldest supported release, and **v1.22.4**, the newest stable
-release as of 2026-11-21. Both must pass, with the same test count. A weekly job also runs the
+release as of 2026-11-21. Every push to main runs both and both must pass, with the same test count;
+pull requests run the full suite on v1.22.4 and a parse and type check (`opa check`) on v1.10.0. A weekly job also runs the
 strict check and the full suite on whatever OPA release is newest that day, so a change in a new
 OPA shows up within a week; it does not gate pull requests. The GHCR bundle publish and
 the wasm release workflow still build with v1.10.0. Tools that embed OPA's Go evaluator
@@ -101,6 +102,7 @@ Not a supported configuration, but if a policy must run on rego-cpp 1.5.2:
 
 | Version | Date | Change |
 |---|---|---|
+| v1.3 | 2026-11-22 | Pull requests: full suite on 1.22.4, `opa check` on 1.10.0; main and weekly keep both full legs. |
 | v1.2 | 2026-11-21 | CI tests OPA 1.10.0 and 1.22.4; weekly run on the newest OPA release. |
 | v1.1 | 2026-11-01 | CI tests OPA 1.10.0 and 1.22.0. The regopy comparison below is unchanged and was run against OPA 1.10.0. |
 | v1.0 | 2026-10-16 | First version: supported engines; regopy 1.5.2 results; authoring guidance |

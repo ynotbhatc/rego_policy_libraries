@@ -8,6 +8,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — SAP ABAP baseline re-pinned to frun-csa-policies-best-practices cb687307 (2026-11-21, issue #341)
+
+- `benchmarks/sap/abap` re-imported at `cb687307` (2026-11-12, upstream HEAD). The five commits since `888f3c53`
+  carry the November Patch Day only (`NotesPolicies/` ABAP and HANA security notes, FRUN 3.0 FP01 `NO_PD`
+  containers); `BaselinePolicies/SOS/v2.6/ABAP_ALL` is unchanged, so `scripts/import_sap_baseline.py` produces the
+  same 355 registry rows and 127 translated checks, and only the source-commit stamp moves.
+
 ### Changed — TISAX rebuilt on VDA ISA2027.1 (2026-11-22) — BREAKING: control ids and input contract
 
 - `frameworks/management/tisax` (package `tisax.main`, entrypoint unchanged) now evaluates every active control

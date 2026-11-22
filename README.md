@@ -135,7 +135,7 @@ The evaluation output and the policy source generate the artefacts an authorisat
 
 ## Requirements
 
-- Open Policy Agent or Enterprise OPA. Tested in CI on OPA 1.10.0 (oldest supported) and 1.22.4 (newest), plus a weekly run on the newest OPA release; the published bundle is built with 1.10.0. Other Rego engines are not supported ([docs/ENGINE_COMPATIBILITY.md](docs/ENGINE_COMPATIBILITY.md)).
+- Open Policy Agent or Enterprise OPA. Tested in CI on OPA 1.10.0 (oldest supported) and 1.22.4 (newest) on every merge to main, plus a weekly run on the newest OPA release; the published bundle is built with 1.10.0. Other Rego engines are not supported ([docs/ENGINE_COMPATIBILITY.md](docs/ENGINE_COMPATIBILITY.md)).
 - Nothing else. Policies use `import rego.v1` and standard built-ins only.
 
 ## Who uses it
