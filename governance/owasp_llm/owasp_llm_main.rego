@@ -4,7 +4,7 @@
 # LLM08:2026 "Hidden Context Exposure").
 #
 # Three checkable controls per risk. Each risk carries MITRE ATLAS
-# mitigation crosswalk ids (atlas-data v2026.09, AML.M0000-M0034) in
+# mitigation crosswalk ids (atlas-data v2026.10, AML.M0000-M0043) in
 # the atlas_crosswalk table — metadata for threat-informed coverage
 # reporting, deliberately NOT separate checks (ATLAS revs monthly and
 # its mitigations overlap these and the MCP-governance module).
@@ -201,7 +201,10 @@ violations contains msg if {
 	msg := "OWASP LLM10:2026 (Improper Output Handling): model-generated code or queries are parameterized/sandboxed before execution — not in place"
 }
 
-# MITRE ATLAS mitigation crosswalk (atlas-data v2026.09) — metadata only.
+# MITRE ATLAS mitigation crosswalk (atlas-data v2026.10) — metadata only.
+# Every cited id is current in v2026.10; M0023, M0026 and M0028 were renamed
+# there (same intent): Maintain an AI Bill of Materials, Manage AI Agent
+# Service Access, Enforce Access Controls for AI Agent Tools.
 atlas_crosswalk := {
 	"LLM01:2026": {"title": "Prompt Injection", "mitigations": ["AML.M0020", "AML.M0030", "AML.M0029"]},
 	"LLM02:2026": {"title": "Sensitive Information Disclosure", "mitigations": ["AML.M0005", "AML.M0019", "AML.M0012"]},

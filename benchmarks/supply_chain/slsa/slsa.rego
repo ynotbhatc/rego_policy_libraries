@@ -1,4 +1,11 @@
-# SLSA v1.0 (build track) mapped onto the supply-chain substrate.
+# SLSA v1.2 (build track) mapped onto the supply-chain substrate.
+#
+# SLSA v1.2 (2025-11-24) keeps the v1.0 Build track unchanged: the same three
+# levels and the same requirements (provenance exists / authentic /
+# unforgeable, hosted, isolated). v1.1 and v1.2 only reworded them and added a
+# RECOMMENDED (not required) signing method that eases key-compromise
+# detection, such as transparency logs or time stamping. v1.2 adds a separate
+# Source track (L1-L4), which this overlay does not map.
 #
 # The point of this file is the mapping, not new logic: SLSA's build-track
 # levels are expressed entirely in terms of substrate rules the baseline and
@@ -10,7 +17,7 @@
 #   L3  Hardened, isolated builds         -> + substrate.build_hardening_ok
 
 # METADATA
-# title: "SLSA v1.0 (build track) mapped onto the supply-chain substrate"
+# title: "SLSA v1.2 (build track) mapped onto the supply-chain substrate"
 # custom:
 #   class: security
 #   framework: supply_chain_slsa
@@ -54,7 +61,7 @@ else := 0
 reuses_substrate := ["provenance", "signing", "build_hardening"]
 
 report := {
-	"framework": "SLSA v1.0 (build track)",
+	"framework": "SLSA v1.2 (build track)",
 	"build_level": level,
 	"reuses_substrate": reuses_substrate,
 }

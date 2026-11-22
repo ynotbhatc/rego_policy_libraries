@@ -3,13 +3,24 @@ package supply_chain.slsa
 
 # Software Supply Chain Security — SLSA Framework Governance
 #
-# Implements SLSA (Supply chain Levels for Software Artifacts) v1.0 verification
-# and broader supply chain integrity controls.
+# Implements SLSA (Supply chain Levels for Software Artifacts) v1.2 verification
+# and broader supply chain integrity controls. The SLSA v1.2 Build track is the
+# v1.0 Build track unchanged; v1.2 adds a separate Source track (L1-L4).
 #
-# SLSA Levels:
+# SLSA Levels (as gated below):
 #   Level 1 — Provenance exists, scripted build
 #   Level 2 — Version-controlled, service-generated provenance
 #   Level 3 — Hardened build platform, non-falsifiable provenance
+#
+# These gates keep the SLSA v0.1 shape, which mixed source and build items in
+# one level. Under v1.2, "scripted build" stands in for the producer's "follow a
+# consistent build process" (Build L1), service-generated provenance on a build
+# service is Build L2 (authentic, hosted), and hardened/isolated platform with
+# non-falsifiable provenance is Build L3; "version-controlled source" is Source
+# L1 and "verified history" is Source L2 (history and source provenance), which
+# v1.0+ no longer counts toward a Build level. Splitting these into separate
+# Build and Source levels would change the gate results, so it is left as a
+# decision.
 #
 # Also covers: SBOM completeness, dependency hygiene, license compliance,
 # artifact signing (Sigstore/Cosign), and CVE policy enforcement.
@@ -336,7 +347,7 @@ slsa_assessment := {
 }
 
 compliance_report := {
-	"framework": "SLSA v1.0 + Supply Chain Governance",
+	"framework": "SLSA v1.2 + Supply Chain Governance",
 	"standard": "supply_chain.slsa",
 	"compliant": compliant,
 	"assessment": slsa_assessment,

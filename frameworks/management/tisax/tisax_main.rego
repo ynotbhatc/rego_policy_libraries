@@ -24,7 +24,32 @@ import rego.v1
 # TISAX — Trusted Information Security Assessment Exchange
 # Assessment Levels: AL 1 (normal), AL 2 (high), AL 3 (very high)
 # Based on: VDA ISA (Information Security Assessment) Catalog v6.0.3 (2023)
+#   (ISA 6.0.3 workbook dated 2023-04-12)
 # Managed by: ENX Association (European automotive exchange network)
+#
+# UPSTREAM STATUS (checked 2026-11-21, public ENX pages and the free ISA download):
+#   - ISA 6 is being replaced. VDA ISA2027 was published 2026-07-01; the
+#     current English workbook is ISA2027.1 (dated 2026-09-30), German
+#     ISA2027.1 followed 2026-10-01. ISA2027 is the basis for assessments
+#     ordered from 2027-01-01; ISA 6 still serves assessments ordered before
+#     then, and March 2027 is the last month to open an initial ISA 6
+#     assessment. From 2027 the catalogue is named by year and revised annually.
+#   - ISA2027 id changes (from the catalogue's own change history and id
+#     lists): 1.2.4 moved to 6.1.3; Prototype Protection restructured into
+#     8.1.1-8.1.13 (organisational) and 8.2.1-8.2.7 (physical), and the ISA 6
+#     ids 8.3.x-8.5.x are gone; NIST CSF 2.0 mapping added. The Information
+#     Security and Data Protection id sets are otherwise unchanged.
+#   - The ids in this module are the module's own numbering, NOT catalogue
+#     control ids: of 49 cited ids, 30 exist in ISA 6 but almost none on the
+#     same topic (e.g. ISA 5.1.1 is cryptography, here network segmentation),
+#     and the domain list below is the module's grouping. No catalogue question
+#     or requirement text is carried. The VDA ISA is a free download under
+#     CC BY-ND 4.0 plus ENX's Section 9 grant for marked derivatives: a
+#     rebuild against ISA2027.1 with catalogue ids and checks in our own words
+#     needs no permission. Do not paste catalogue question or requirement text
+#     into this module: that makes it a derivative, which must be marked as not
+#     approved by ENX, keep the ISA licence (not Apache-2.0) and drop ENX logos
+#     and marks. See STANDARDS_UPDATE_REGISTRY.md.
 #
 # Applies to:
 #   - Automotive OEMs (BMW, VW, Mercedes, Stellantis, Renault, etc.)
@@ -32,12 +57,12 @@ import rego.v1
 #   - Engineering service providers handling vehicle designs, prototypes, test data
 #   - IT/technology vendors to automotive industry
 #
-# Three assessment objectives:
-#   IS  — Information Security (all three ALs)
-#   PD  — Prototype and Test Vehicle Protection (AL 2 and 3 for prototype handling)
-#   SD  — Connection to Third Parties / Availability of IT Systems (AL 2 and 3 for special requirements)
+# Catalogue modules (ISA 6 and ISA2027): Information Security (chapters 1-7),
+# Prototype Protection (chapter 8), Data Protection (chapter 9). This module
+# checks a subset of Information Security plus three prototype checks
+# (PD AL2, applied when prototype handling is in scope).
 #
-# VDA ISA Control Domains:
+# Module check groups (module numbering, see above):
 #   1.x — Information Security Management
 #   2.x — Security Organization and Responsibilities
 #   3.x — Asset Management

@@ -22,32 +22,41 @@ package hitrust.main
 import rego.v1
 
 # HITRUST Common Security Framework (CSF) v11.3.0
-# Published: 2023
+# Released: 2024-04-16 (HITRUST Advisory HAA 2024-002)
+#
+# UPSTREAM STATUS (checked 2026-11-21, public HITRUST advisories only):
+#   - Not current. Upstream is CSF v11.9.0 (HAA 2026-005, 2026-09-24); v11.4.0
+#     through v11.8.0 (HAA 2026-002, 2026-05-07) came between.
+#   - v11.0-v11.3 are DECOMMISSIONED (HAA 2026-007, 2026-09-24): maintenance
+#     ended 2026-09-24; new r2 assessment objects created from 2026-12-23 must
+#     use v11.4 or later (the advisory also names 2026-12-31 for disabling
+#     v11.0-v11.3 creation); no v11.0-v11.3 submissions for report processing
+#     after 2027-03-31; libraries removed from MyCSF 2028-06-30.
+#   - The module is a set of HIPAA-oriented healthcare checks written from
+#     public knowledge. It carries no CSF requirement text, and its ids are the
+#     module's own numbering in CSF reference style, not CSF control references:
+#     the CSF has 14 control categories (00-13, per public summaries), so
+#     14.a-18.c do not exist and 11-13 carry different topics upstream
+#     (11 Incident Management, 12 Business Continuity, 13 Privacy Practices).
+#   - The CSF itself is licensed by HITRUST (free, but only to Qualified
+#     Organizations; derivative software needs HITRUST's prior written consent).
+#     A rebuild against v11.9.0 waits on that permission. See
+#     STANDARDS_UPDATE_REGISTRY.md.
 #
 # Applies to: Healthcare organizations, business associates, and
 #             technology vendors handling protected health information (PHI)
 #             or requiring HITRUST certification for healthcare customers.
 #
-# 19 Control Categories (mapped to HIPAA, NIST, ISO 27001, SOC 2):
-#   00 — Information Security Management Program
-#   01 — Access Control
-#   02 — Human Resources Security
-#   03 — Risk Management
-#   04 — Security Policy
-#   05 — Organization of Information Security
-#   06 — Compliance
-#   07 — Asset Management
-#   08 — Physical and Environmental Security
-#   09 — Communications and Operations Management
-#   10 — Information Systems Acquisition, Development and Maintenance
-#   11 — Information Access Management
-#   12 — Audit Logging and Monitoring
-#   13 — Education, Training and Awareness
-#   14 — Third Party Assurance
-#   15 — Incident Management
-#   16 — Business Continuity Management
-#   17 — Risk Management (specific)
-#   18 — Privacy Practices
+# Module check groups (module numbering, see above):
+#   00 Security management program   01 Access control
+#   02 HR security                   03 Risk management
+#   04 Security policy               06 Compliance (HIPAA rules)
+#   07 Asset management              08 Physical security
+#   09 Operations                    10 Acquisition and development
+#   11 Information access            12 Audit logging
+#   13 Training                      14 Third parties
+#   15 Incident management           16 Business continuity
+#   17 Encryption                    18 Privacy practices
 #
 # OPA endpoint: POST http://<host>:8182/v1/data/hitrust/main/compliance_report
 
@@ -427,7 +436,7 @@ entity_type := input.entity_type
 compliance_report := {
 	"framework": "HITRUST Common Security Framework (CSF)",
 	"version": "v11.3.0",
-	"published": "2023",
+	"published": "2024-04-16",
 	"entity_name": entity_name,
 	"entity_type": entity_type,
 	"assessed_at": assessment_date,

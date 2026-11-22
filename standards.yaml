@@ -242,7 +242,7 @@ frameworks:
       - {standard: DISA Kubernetes STIG, version: V2R6, publisher: DISA, literal: "V2R6", check: {method: disa_stig_zip, stem: U_Kubernetes}}
   stig_ms_sql_2016:
     standards:
-      - {standard: DISA MS SQL Server 2016 Instance STIG, version: V3R6, publisher: DISA, literal: "V3R6", check: {method: disa_dated_zip, stem: U_MS_SQL_Server_2016, released: "2026-01"}}
+      - {standard: DISA MS SQL Server 2016 Instance STIG, version: V3R6, publisher: DISA, literal: "V3R6", check: {method: disa_dated_zip, stem: U_MS_SQL_Server_2016, released: "2026-04"}}
   stig_openshift_4:
     standards:
       - {standard: DISA Red Hat OpenShift Container Platform 4.x STIG, version: V2R7, publisher: DISA, literal: "V2R7", check: {method: disa_stig_zip, stem: U_RH_OpenShift_Container_Platform_4-x}}
@@ -287,7 +287,7 @@ frameworks:
       - {standard: DISA Canonical Ubuntu 24.04 LTS STIG, version: V1R7, publisher: DISA, literal: "V1R7", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_24-04_LTS}}
   stig_vmware_vsphere_8:
     standards:
-      - {standard: DISA VMware vSphere 8.0 ESXi STIG, version: V2R4, publisher: DISA, literal: "V2R4", check: {method: disa_dated_zip, stem: U_VMW_vSphere_8-0, released: "2026-07"}}
+      - {standard: DISA VMware vSphere 8.0 ESXi STIG, version: V2R5, publisher: DISA, literal: "V2R5", check: {method: disa_dated_zip, stem: U_VMW_vSphere_8-0, released: "2026-10"}}
   stig_windows_11:
     standards:
       - {standard: DISA Microsoft Windows 11 STIG, version: V2R11, publisher: DISA, literal: "V2R11", check: {method: disa_stig_zip, stem: U_MS_Windows_11}}
@@ -334,7 +334,7 @@ frameworks:
       - {standard: NIST AI 600-1 Generative AI Profile, version: "1.0", publisher: NIST, literal: "AI RMF 1.0", check: {method: manual, url: "https://www.nist.gov/itl/ai-risk-management-framework", note: "AI 600-1 has no revision number; the literal pins the AI RMF version it profiles"}}
   nist_privacy_framework:
     standards:
-      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Privacy Framework (?:Version |v)?(\d\.\d)'}}
+      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Version (\d\.\d) \(PDF\)', note: "PF 1.1 is still the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed 2025-06-13; no 2pd or final on CSRC, checked 2026-11-21). The pattern reads the final-document download link (today 'Version 1.0 (PDF)'), so the IPD banner and the 'Using Privacy Framework 1.1' navigation link no longer flag; a final 1.1 PDF link does. Regenerate the module from the 1.1 CPRT Core when final"}}
   nist_risk_management_framework:
     standards:
       - {standard: NIST SP 800-37 Risk Management Framework, version: Rev 2, publisher: NIST, literal: "NIST SP 800-37 Rev 2", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/37/r2/final"}}
@@ -478,10 +478,10 @@ frameworks:
       - {standard: COBIT, version: "2019", publisher: ISACA, literal: "COBIT 2019", check: {method: page_regex, url: "https://www.isaca.org/resources/cobit", pattern: 'COBIT(?:®)? ?(\d{1,4})\b', known: ["2019", "19", "5"], note: "COBIT 7 published 2026-11-19 (#194); regeneration needs a licence decision"}}
   hitrust:
     standards:
-      - {standard: HITRUST CSF, version: v11.3.0, publisher: HITRUST Alliance, literal: "HITRUST Common Security Framework (CSF) v11.3.0", check: {method: page_regex, url: "https://hitrustalliance.net/advisories", pattern: '(?:CSF|HITRUST)[^<]{0,20}v(\d+\.\d+(?:\.\d+)?)'}}
+      - {standard: HITRUST CSF, version: v11.3.0, publisher: HITRUST Alliance, literal: "HITRUST Common Security Framework (CSF) v11.3.0", check: {method: page_regex, url: "https://hitrustalliance.net/advisories", pattern: 'CSF (?:[Vv]ersion |v)(1\d\.\d+(?:\.\d+)?)', note: "v11.0-11.3 decommissioned (HAA 2026-007; new r2 objects from 2026-12-23 must use v11.4+); upstream v11.9.0; rebuild needs HITRUST's written consent (licence excludes security vendors)"}}
   tisax:
     standards:
-      - {standard: VDA ISA (TISAX), version: v6.0.3, publisher: ENX / VDA, literal: "VDA ISA (Information Security Assessment) Catalog v6.0.3", check: {method: page_regex, url: "https://portal.enx.com/en-US/TISAX/downloads/", pattern: 'ISA ?(20\d\d(?:\.\d)?|6\.\d\.\d)'}}
+      - {standard: VDA ISA (TISAX), version: v6.0.3, publisher: ENX / VDA, literal: "VDA ISA (Information Security Assessment) Catalog v6.0.3", check: {method: page_regex, url: "https://portal.enx.com/en-US/TISAX/downloads/", pattern: 'ISA ?(20\d\d(?:\.\d)?|6\.\d\.\d)', note: "ISA2027.1 current (EN 2026-09-30); applies to orders from 2027-01-01; module ids are module-local, rebuild from the free CC BY-ND catalogue"}}
   iso27001:
     standards:
       - {standard: ISO/IEC 27001, version: "2022", publisher: ISO/IEC, literal: "ISO/IEC 27001:2022", check: {method: manual, url: "https://www.iso.org/standard/27001", note: "iso.org blocks scripted fetches (403)"}}
@@ -582,7 +582,7 @@ frameworks:
   owasp_llm:
     standards:
       - {standard: OWASP Top 10 for LLM Applications, version: "2026", publisher: OWASP GenAI Security Project, literal: "OWASP Top 10 for LLM Applications — 2026 edition", check: {method: manual, url: "https://genai.owasp.org/llm-top-10/"}}
-      - {standard: MITRE ATLAS (mitigation crosswalk metadata), version: v2026.09, publisher: MITRE, literal: "atlas-data v2026.09", check: {method: github_release, repo: mitre-atlas/atlas-data}}
+      - {standard: MITRE ATLAS (mitigation crosswalk metadata), version: v2026.10, publisher: MITRE, literal: "atlas-data v2026.10", check: {method: github_release, repo: mitre-atlas/atlas-data}}
   owasp_top10:
     standards:
       - {standard: OWASP Top 10, version: "2025", publisher: OWASP, literal: "OWASP Top 10:2025", check: {method: manual, url: "https://owasp.org/Top10/"}}
@@ -603,10 +603,10 @@ frameworks:
   # ---------------------------------------------------------------- supply chain
   supply_chain_slsa:
     standards:
-      - {standard: SLSA build track, version: v1.0, publisher: OpenSSF, literal: "SLSA v1.0", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
+      - {standard: SLSA build track, version: v1.2, publisher: OpenSSF, literal: "SLSA v1.2", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
   supply_chain_s2c2f:
     standards:
-      - {standard: OpenSSF S2C2F, version: unknown, publisher: OpenSSF, check: {method: github_release, repo: ossf/s2c2f}}
+      - {standard: OpenSSF S2C2F, version: v1.1, publisher: OpenSSF, literal: "S2C2F v1.1", check: {method: github_release, repo: ossf/s2c2f}}
   supply_chain_scrm_800_161:
     standards:
       - {standard: NIST SP 800-161, version: r1, publisher: NIST, literal: "800-161r1", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final"}}

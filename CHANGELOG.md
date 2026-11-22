@@ -8,6 +8,49 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — DISA STIG VMware vSphere 8.0 ESXi V2R5, MS SQL Server 2016 bundle 2026-04 (2026-11-21, issue #341)
+
+- `benchmarks/stig/vmware_vsphere_8` follows DISA's V2R5 (30 Sep 2026, bundle `U_VMW_vSphere_8-0_Y26M10`): 76 rules,
+  none added or removed, no CCI changes. Of the eight rules DISA revised, only ESXI-80-000124 is implemented and its
+  change is DoD → DoW wording, so no rule logic changed; version strings and `standards.yaml` move to V2R5 / 2026-10.
+  Not implemented here: ESXI-80-000227 `Security.PasswordMaxDays` check now 365 (was 90) while the fix text says 180;
+  ESXI-80-000193 adds an SSH scanning note; 000006/191/192/229/247 are DoD → DoW wording.
+- `benchmarks/stig/ms_sql_2016`: the 2026-04 bundle `U_MS_SQL_Server_2016_Y26M04` carries the Instance STIG V3R6
+  byte-identical to the 2026-01 bundle; only the Database STIG moves V3R4 → V3R5 (SQL6-D0-003300 TDE check query
+  rewritten), which this Instance module does not cover. No rule change; `standards.yaml` released → 2026-04.
+
+### Changed — SLSA re-pinned to v1.2 (build track unchanged) (2026-11-21, issue #341)
+
+- `benchmarks/supply_chain/slsa` and `enforcement/supply_chain/slsa_governance.rego` now state SLSA v1.2 (2025-11-24;
+  v1.0 is retired on slsa.dev). The Build track's three levels and requirements are the same as in v1.0 — v1.1 and
+  v1.2 reworded them and added a RECOMMENDED signing method (transparency logs or time stamping) — so no level logic
+  changed. v1.2's new Source track (L1-L4) is not implemented. The `slsa_governance` header now records that its
+  gates keep the v0.1 shape (version-controlled source and verified history counted toward build levels; under v1.2
+  they are Source L1/L2). Report strings "SLSA v1.2 (build track)" and "SLSA v1.2 + Supply Chain Governance".
+
+### Changed — OpenSSF S2C2F pinned to v1.1 (2026-11-21, issue #341)
+
+- `benchmarks/supply_chain/s2c2f` now states S2C2F v1.1 (ossf/s2c2f release, 2022-10-19, still the latest): the
+  header maps all 25 v1.1 requirement ids with their maturity levels to the four substrate themes the overlay reuses
+  (AUD-1 and REB-1 have no consumption-side theme). Report string "OpenSSF S2C2F v1.1 (consumption)";
+  `reuses_substrate` and the collapse metrics are unchanged. `standards.yaml` pins v1.1 (was unknown).
+
+### Reviewed — NIST Privacy Framework 1.1 still a draft (2026-11-21, issue #341)
+
+- NIST Privacy Framework 1.1 remains the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed
+  2025-06-13; no second draft or final on CSRC). `frameworks/privacy/nist_privacy_framework` stays on 1.0; no rule
+  changed. The `standards.yaml` page check now reads the final-document link ("Version 1.0 (PDF)") instead of any
+  "Privacy Framework 1.1" text, so the draft no longer reports as a newer release; a final 1.1 link will. New
+  STANDARDS_UPDATE_REGISTRY.md row.
+
+### Changed — OWASP LLM MITRE ATLAS crosswalk re-pinned to atlas-data v2026.10 (2026-11-21, issue #341)
+
+- `governance/owasp_llm` crosswalk metadata now cites atlas-data v2026.10 (2026-10-28, 44 mitigations
+  AML.M0000-M0043; v2026.09 had 40). All 19 cited mitigation ids still exist with the same intent; three were renamed
+  upstream (AML.M0023 "Maintain an AI Bill of Materials", AML.M0026 "Manage AI Agent Service Access", AML.M0028
+  "Enforce Access Controls for AI Agent Tools"). The crosswalk table and the 30 checks are unchanged; the new
+  mitigations AML.M0040-M0043 are not mapped.
+
 ### Changed — DISA STIG RHEL 8 V2R9 (2026-11-21, issue #341)
 
 - `benchmarks/stig/rhel_8` follows DISA's standalone V2R9 (30 Sep 2026): 56 of 371 rules. Added RHEL-08-010287
@@ -22,6 +65,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   -010070 (remember 5, was 24); guest account and antivirus had no Ubuntu 20.04 rule and are removed. Every rule
   fails closed with an "evidence missing" detail; `stig_assessment` carries `rule_results`. UBTU-20 joins the
   800-53 crosswalk (173 of 173).
+
+### Reviewed — HITRUST CSF and TISAX, licensed rows (2026-11-21, issue #341)
+
+- `frameworks/management/hitrust` still names CSF v11.3.0 (released 2024-04-16); upstream is v11.9.0 (HAA 2026-005,
+  2026-09-24) and v11.0–11.3 are decommissioned (HAA 2026-007: new r2 objects from 2026-12-23 must use v11.4+, no
+  v11.0–11.3 submissions after 2027-03-31). The header now says so and that its ids are the module's own numbering in CSF reference style
+  (the CSF has 14 categories, 00–13), not CSF control references; `published` corrected from 2023 to 2024-04-16. No
+  rule logic changed. A rebuild needs HITRUST's written consent: the CSF licence is free but excludes IT security
+  vendors and consultants and forbids derivative software without consent.
+- `frameworks/management/tisax` still names VDA ISA 6.0.3; ISA2027 (published 2026-07-01, English ISA2027.1 dated
+  2026-09-30) applies to assessments ordered from 2027-01-01. The header records that, the public id changes (1.2.4 →
+  6.1.3, Prototype Protection renumbered) and that the module's ids are its own numbering (30 of 49 exist in ISA 6,
+  nearly all on another topic); the objectives line now names the catalogue's Information Security, Prototype
+  Protection and Data Protection modules. No rule logic changed. The catalogue is a free CC BY-ND 4.0 download with
+  ENX's grant for marked derivatives, so a rebuild with catalogue ids and
+  checks in our own words needs no permission.
+- `standards.yaml`: notes on both rows (versions unchanged); the HITRUST watch pattern now matches "CSF Version
+  11.9.0" (it stopped at 11.8). `STANDARDS_UPDATE_REGISTRY.md` rows rewritten.
 
 ### Reviewed — HIPAA amendment of 2026-11-19
 
