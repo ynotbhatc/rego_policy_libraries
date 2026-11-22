@@ -6,7 +6,7 @@ import rego.v1
 
 test_numbers_pass if {
 	data.stig.ubuntu_20_04.password_history_status == "Not_a_Finding" with input as {"password_policy": {"password_history_size": 24}}
-	data.stig.ubuntu_20_04.password_length_status == "Not_a_Finding" with input as {"password_policy": {"minimum_password_length": 14}}
+	data.stig.ubuntu_20_04.password_length_status == "Not_a_Finding" with input as {"password_policy": {"minimum_password_length": 15}}
 }
 
 test_type_traps_are_open if {

@@ -17,9 +17,10 @@
 package stig.rhel_8.account_auth
 
 # DISA STIG for RHEL 8 - Account and Authentication Module
-# STIG Version: V2R8 | Released: 01 Jul 2026
+# STIG Version: V2R9 | Released: 30 Sep 2026
 # Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
-# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks. Re-checked
+# 2026-11-21 against DISA's standalone U_RHEL_8_V2R9_STIG.zip XCCDF and its revision history.
 
 import rego.v1
 
@@ -139,12 +140,12 @@ finding_rhel_08_020230 := {
 	"fix_text": "Set minlen=15 in /etc/security/pwquality.conf",
 }
 
-# RHEL-08-020200 | V-230366 | CAT II - Password max age 60 days
+# RHEL-08-020200 | V-230366 | CAT II - Password max age 180 days (V2R9 raised it from 60)
 default password_maxage := false
 
 password_maxage if {
 	is_number(input.password_policy.maxdays)
-	input.password_policy.maxdays <= 60
+	input.password_policy.maxdays <= 180
 	input.password_policy.maxdays > 0
 }
 
@@ -156,9 +157,9 @@ finding_rhel_08_020200 := {
 	"vuln_id": "V-230366",
 	"stig_id": "RHEL-08-020200",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 user account passwords must have a 60-day maximum password lifetime restriction.",
+	"rule_title": "RHEL 8 user account passwords must have a 180-day maximum password lifetime restriction.",
 	"status": status_rhel_08_020200,
-	"fix_text": "Set PASS_MAX_DAYS 60 in /etc/login.defs",
+	"fix_text": "Set PASS_MAX_DAYS 180 in /etc/login.defs",
 }
 
 # RHEL-08-020012 | V-230334 | CAT II - Lockout time 15 minutes

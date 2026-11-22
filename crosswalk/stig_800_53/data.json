@@ -1,9 +1,9 @@
 {
 "meta": {
-"source": "DISA SRG-STIG Library Compilation, July 2026; CCI List 2025-01-23; Oracle platforms from the October 2026 compilation; Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21); RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19)",
+"source": "DISA SRG-STIG Library Compilation, July 2026; CCI List 2025-01-23; Oracle platforms from the October 2026 compilation; Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21); RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19); RHEL 8 V2R9 from DISA's standalone STIG zip (2026-11-21); Ubuntu 20.04 V2R4 (sunset release) from DISA's standalone STIG zip (2026-11-21)",
 "join": "stig_id -> CCI (from XCCDF <ident>) -> NIST SP 800-53 (from U_CCI_List.xml)",
-"generated": "2026-11-19",
-"rule_count": 4437,
+"generated": "2026-11-21",
+"rule_count": 4610,
 "note": "Regenerate with tools/stig_generators/parse_xccdf.py + gen_crosswalk.py (per platform) from the current SRG-STIG Library compilation.",
 "platforms": {
 "OL09": "Oracle Linux 9 Security Technical Implementation Guide V1R7 (30 Sep 2026)",
@@ -13,7 +13,9 @@
 "CNTR-K8": "Kubernetes Security Technical Implementation Guide V2R6 (01 Apr 2026)",
 "CNTR-R2": "Rancher Government Solutions RKE2 Security Technical Implementation Guide V2R7 (01 Jul 2026)",
 "RHEL-10": "Red Hat Enterprise Linux 10 Security Technical Implementation Guide V1R3 (30 Sep 2026)",
-"UBTU-24": "Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide V1R7 (30 Sep 2026)"
+"UBTU-24": "Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide V1R7 (30 Sep 2026)",
+"RHEL-08": "Red Hat Enterprise Linux 8 Security Technical Implementation Guide V2R9 (30 Sep 2026)",
+"UBTU-20": "Canonical Ubuntu 20.04 LTS Security Technical Implementation Guide V2R4 (01 Oct 2025)"
 },
 "cci_list": "2025-01-23"
 },
@@ -2120,8 +2122,7 @@
 "SC-13"
 ],
 "RHEL-08-010019": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010020": [
 "AC-17"
@@ -2289,16 +2290,13 @@
 "CM-3"
 ],
 "RHEL-08-010370": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010371": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010372": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010373": [
 "AC-3"
@@ -2374,9 +2372,6 @@
 "CM-6"
 ],
 "RHEL-08-010470": [
-"CM-6"
-],
-"RHEL-08-010471": [
 "CM-6"
 ],
 "RHEL-08-010472": [
@@ -2665,8 +2660,7 @@
 "IA-2"
 ],
 "RHEL-08-020260": [
-"AC-2",
-"IA-4"
+"AC-2"
 ],
 "RHEL-08-020270": [
 "AC-2"
@@ -2951,7 +2945,6 @@
 "AU-5"
 ],
 "RHEL-08-030740": [
-"AU-8",
 "SC-45"
 ],
 "RHEL-08-030741": [
@@ -3121,12 +3114,6 @@
 ],
 "RHEL-08-040220": [
 "CM-6"
-],
-"RHEL-08-040221": [
-"SC-5"
-],
-"RHEL-08-040222": [
-"SC-5"
 ],
 "RHEL-08-040230": [
 "CM-6"
@@ -14451,6 +14438,554 @@
 ],
 "UBTU-24-101100": [
 "SI-6"
+],
+"RHEL-08-010293": [
+"AC-17"
+],
+"RHEL-08-010287": [
+"AC-17"
+],
+"RHEL-08-030565": [
+"AU-12"
+],
+"UBTU-20-010000": [
+"AC-2"
+],
+"UBTU-20-010002": [
+"AC-8"
+],
+"UBTU-20-010003": [
+"AC-8"
+],
+"UBTU-20-010004": [
+"AC-11"
+],
+"UBTU-20-010005": [
+"AC-11"
+],
+"UBTU-20-010006": [
+"IA-5"
+],
+"UBTU-20-010007": [
+"IA-5"
+],
+"UBTU-20-010008": [
+"IA-5"
+],
+"UBTU-20-010009": [
+"AC-3"
+],
+"UBTU-20-010010": [
+"IA-2",
+"IA-8"
+],
+"UBTU-20-010012": [
+"SC-3"
+],
+"UBTU-20-010013": [
+"AC-12"
+],
+"UBTU-20-010014": [
+"IA-11",
+"SC-11"
+],
+"UBTU-20-010016": [
+"CM-6"
+],
+"UBTU-20-010033": [
+"IA-2"
+],
+"UBTU-20-010035": [
+"MA-4"
+],
+"UBTU-20-010036": [
+"SC-10"
+],
+"UBTU-20-010037": [
+"SC-10"
+],
+"UBTU-20-010038": [
+"AC-8"
+],
+"UBTU-20-010042": [
+"SC-8"
+],
+"UBTU-20-010043": [
+"AC-17",
+"MA-4",
+"SC-8"
+],
+"UBTU-20-010044": [
+"AC-17",
+"MA-4",
+"SC-8"
+],
+"UBTU-20-010047": [
+"CM-6"
+],
+"UBTU-20-010048": [
+"CM-6"
+],
+"UBTU-20-010049": [
+"CM-6"
+],
+"UBTU-20-010050": [
+"IA-5"
+],
+"UBTU-20-010051": [
+"IA-5"
+],
+"UBTU-20-010052": [
+"IA-5"
+],
+"UBTU-20-010053": [
+"IA-5"
+],
+"UBTU-20-010054": [
+"IA-5"
+],
+"UBTU-20-010055": [
+"IA-5"
+],
+"UBTU-20-010056": [
+"CM-6"
+],
+"UBTU-20-010057": [
+"CM-6"
+],
+"UBTU-20-010060": [
+"IA-5"
+],
+"UBTU-20-010063": [
+"IA-2"
+],
+"UBTU-20-010064": [
+"IA-2"
+],
+"UBTU-20-010065": [
+"IA-2"
+],
+"UBTU-20-010066": [
+"IA-5"
+],
+"UBTU-20-010070": [
+"IA-5"
+],
+"UBTU-20-010072": [
+"AC-7"
+],
+"UBTU-20-010074": [
+"SI-6"
+],
+"UBTU-20-010075": [
+"CM-6"
+],
+"UBTU-20-010100": [
+"AC-2",
+"AU-12"
+],
+"UBTU-20-010101": [
+"AC-2",
+"AU-12"
+],
+"UBTU-20-010102": [
+"AC-2",
+"AU-12"
+],
+"UBTU-20-010103": [
+"AC-2",
+"AU-12"
+],
+"UBTU-20-010104": [
+"AC-2",
+"AU-12"
+],
+"UBTU-20-010117": [
+"AU-5"
+],
+"UBTU-20-010118": [
+"AU-5"
+],
+"UBTU-20-010122": [
+"AU-9"
+],
+"UBTU-20-010123": [
+"AU-9"
+],
+"UBTU-20-010124": [
+"AU-9"
+],
+"UBTU-20-010128": [
+"AU-9"
+],
+"UBTU-20-010133": [
+"AU-12"
+],
+"UBTU-20-010134": [
+"AU-12"
+],
+"UBTU-20-010135": [
+"AU-12"
+],
+"UBTU-20-010136": [
+"AU-12"
+],
+"UBTU-20-010137": [
+"AU-12"
+],
+"UBTU-20-010138": [
+"AU-12"
+],
+"UBTU-20-010139": [
+"AU-12"
+],
+"UBTU-20-010140": [
+"AU-12"
+],
+"UBTU-20-010141": [
+"AU-12"
+],
+"UBTU-20-010142": [
+"AU-12"
+],
+"UBTU-20-010148": [
+"AU-12"
+],
+"UBTU-20-010152": [
+"AU-12"
+],
+"UBTU-20-010155": [
+"AU-12"
+],
+"UBTU-20-010161": [
+"AU-12"
+],
+"UBTU-20-010162": [
+"AU-12"
+],
+"UBTU-20-010163": [
+"AU-12"
+],
+"UBTU-20-010164": [
+"AU-12"
+],
+"UBTU-20-010165": [
+"AU-12"
+],
+"UBTU-20-010166": [
+"AU-12"
+],
+"UBTU-20-010167": [
+"AU-12"
+],
+"UBTU-20-010168": [
+"AU-12"
+],
+"UBTU-20-010169": [
+"AU-12"
+],
+"UBTU-20-010170": [
+"AU-12"
+],
+"UBTU-20-010171": [
+"AU-12"
+],
+"UBTU-20-010172": [
+"AU-12"
+],
+"UBTU-20-010173": [
+"AU-12"
+],
+"UBTU-20-010174": [
+"AU-12"
+],
+"UBTU-20-010175": [
+"AU-12"
+],
+"UBTU-20-010176": [
+"AU-12"
+],
+"UBTU-20-010177": [
+"AU-12"
+],
+"UBTU-20-010178": [
+"AU-12"
+],
+"UBTU-20-010179": [
+"AU-12"
+],
+"UBTU-20-010181": [
+"AU-12"
+],
+"UBTU-20-010182": [
+"AU-12",
+"AU-3",
+"AU-6",
+"AU-7"
+],
+"UBTU-20-010198": [
+"AU-14"
+],
+"UBTU-20-010199": [
+"AU-9"
+],
+"UBTU-20-010200": [
+"AU-9"
+],
+"UBTU-20-010201": [
+"AU-9"
+],
+"UBTU-20-010205": [
+"AU-9"
+],
+"UBTU-20-010211": [
+"AC-6"
+],
+"UBTU-20-010215": [
+"AU-4"
+],
+"UBTU-20-010216": [
+"AU-4"
+],
+"UBTU-20-010217": [
+"AU-5"
+],
+"UBTU-20-010230": [
+"AU-8"
+],
+"UBTU-20-010244": [
+"AU-12",
+"MA-4"
+],
+"UBTU-20-010267": [
+"AU-12"
+],
+"UBTU-20-010277": [
+"AU-12"
+],
+"UBTU-20-010278": [
+"AU-12"
+],
+"UBTU-20-010279": [
+"AU-12"
+],
+"UBTU-20-010296": [
+"AU-12"
+],
+"UBTU-20-010297": [
+"AU-12"
+],
+"UBTU-20-010298": [
+"AU-12"
+],
+"UBTU-20-010300": [
+"AU-4"
+],
+"UBTU-20-010400": [
+"AC-10"
+],
+"UBTU-20-010403": [
+"AC-17"
+],
+"UBTU-20-010404": [
+"IA-7"
+],
+"UBTU-20-010405": [
+"IA-5"
+],
+"UBTU-20-010406": [
+"CM-7"
+],
+"UBTU-20-010407": [
+"CM-7"
+],
+"UBTU-20-010408": [
+"IA-2"
+],
+"UBTU-20-010409": [
+"AC-2"
+],
+"UBTU-20-010410": [
+"AC-2"
+],
+"UBTU-20-010411": [
+"SC-4"
+],
+"UBTU-20-010412": [
+"SC-5"
+],
+"UBTU-20-010413": [
+"SC-24"
+],
+"UBTU-20-010414": [
+"SC-28"
+],
+"UBTU-20-010416": [
+"SI-11"
+],
+"UBTU-20-010417": [
+"SI-11"
+],
+"UBTU-20-010418": [
+"SI-11"
+],
+"UBTU-20-010419": [
+"SI-11"
+],
+"UBTU-20-010420": [
+"SI-11"
+],
+"UBTU-20-010421": [
+"SI-11"
+],
+"UBTU-20-010422": [
+"SI-11"
+],
+"UBTU-20-010423": [
+"AU-9"
+],
+"UBTU-20-010424": [
+"AU-9"
+],
+"UBTU-20-010425": [
+"AU-9"
+],
+"UBTU-20-010426": [
+"CM-5"
+],
+"UBTU-20-010427": [
+"CM-5"
+],
+"UBTU-20-010428": [
+"CM-5"
+],
+"UBTU-20-010429": [
+"CM-5"
+],
+"UBTU-20-010430": [
+"CM-5"
+],
+"UBTU-20-010431": [
+"CM-5"
+],
+"UBTU-20-010432": [
+"SC-24"
+],
+"UBTU-20-010433": [
+"AC-17"
+],
+"UBTU-20-010434": [
+"AC-17"
+],
+"UBTU-20-010435": [
+"SC-45"
+],
+"UBTU-20-010436": [
+"SC-45"
+],
+"UBTU-20-010438": [
+"CM-14"
+],
+"UBTU-20-010439": [
+"AC-3",
+"AC-6",
+"CM-7"
+],
+"UBTU-20-010441": [
+"IA-5"
+],
+"UBTU-20-010442": [
+"SC-13"
+],
+"UBTU-20-010443": [
+"SC-23"
+],
+"UBTU-20-010446": [
+"SC-5"
+],
+"UBTU-20-010447": [
+"SI-16"
+],
+"UBTU-20-010448": [
+"SI-16"
+],
+"UBTU-20-010449": [
+"SI-2"
+],
+"UBTU-20-010450": [
+"SI-6"
+],
+"UBTU-20-010451": [
+"SI-6"
+],
+"UBTU-20-010453": [
+"AC-9"
+],
+"UBTU-20-010454": [
+"CM-6"
+],
+"UBTU-20-010456": [
+"CM-5"
+],
+"UBTU-20-010457": [
+"CM-5"
+],
+"UBTU-20-010458": [
+"CM-5"
+],
+"UBTU-20-010459": [
+"CM-6"
+],
+"UBTU-20-010460": [
+"CM-6"
+],
+"UBTU-20-010462": [
+"CM-6"
+],
+"UBTU-20-010463": [
+"CM-6"
+],
+"UBTU-20-010461": [
+"IA-3"
+],
+"UBTU-20-010455": [
+"SC-8"
+],
+"UBTU-20-010045": [
+"AC-17"
+],
+"UBTU-20-010401": [
+"SC-4"
+],
+"UBTU-20-010105": [
+"AU-12"
+],
+"UBTU-20-010018": [
+"IA-2"
+],
+"UBTU-20-010019": [
+"IA-2"
+],
+"UBTU-20-010020": [
+"IA-5",
+"SC-17"
+],
+"UBTU-20-010021": [
+"IA-5"
+],
+"UBTU-20-010022": [
+"IA-5"
+],
+"UBTU-20-010017": [
+"IA-11",
+"SC-11"
+],
+"UBTU-20-010015": [
+"IA-11",
+"SC-11"
+],
+"UBTU-20-010001": [
+"CM-6"
 ]
 }
 }

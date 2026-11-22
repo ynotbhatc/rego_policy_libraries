@@ -232,7 +232,7 @@
      },
      {
       "id": "stig_rhel_8-RHEL-08-020200",
-      "title": "RHEL 8 user account passwords must have a 60-day maximum password lifetime restriction.",
+      "title": "RHEL 8 user account passwords must have a 180-day maximum password lifetime restriction.",
       "props": [
        {
         "name": "label",
@@ -258,7 +258,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-020200_stmt",
         "name": "statement",
-        "prose": "RHEL 8 user account passwords must have a 60-day maximum password lifetime restriction."
+        "prose": "RHEL 8 user account passwords must have a 180-day maximum password lifetime restriction."
        }
       ],
       "class": "security"
@@ -651,6 +651,39 @@
       "class": "security"
      },
      {
+      "id": "stig_rhel_8-RHEL-08-030565",
+      "title": "OS must generate an audit record for all successful and unsuccessful uses of the useradd command.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030565"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030565"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2f762c0c-7b0d-5c3c-a0da-0b2f41304140",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030565_stmt",
+        "name": "statement",
+        "prose": "OS must generate an audit record for all successful and unsuccessful uses of the useradd command."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-RHEL-08-030121",
       "title": "RHEL 8 audit system must protect auditing rules from unauthorized change.",
       "props": [
@@ -802,6 +835,39 @@
         "id": "stig_rhel_8-RHEL-08-010020_stmt",
         "name": "statement",
         "prose": "RHEL 8 must implement a FIPS 140-3-compliant systemwide cryptographic policy."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010293",
+      "title": "RHEL 8 must implement DoW-approved encryption in the OpenSSL package.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010293"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010293"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#25253101-218a-5d4d-a0ae-714904e88584",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010293_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must implement DoW-approved encryption in the OpenSSL package."
        }
       ],
       "class": "security"
@@ -972,16 +1038,16 @@
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-010040",
-      "title": "RHEL 8 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a ssh logon.",
+      "id": "stig_rhel_8-RHEL-08-010060",
+      "title": "RHEL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-010040"
+        "value": "RHEL-08-010060"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-010040"
+        "value": "RHEL-08-010060"
        },
        {
         "name": "rego-package",
@@ -997,9 +1063,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-010040_stmt",
+        "id": "stig_rhel_8-RHEL-08-010060_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a ssh logon."
+        "prose": "RHEL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
        }
       ],
       "class": "security"
@@ -1960,7 +2026,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-010291",
-      "title": "The RHEL 8 SSH server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connectio",
+      "title": "The RHEL 8 SSH server must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connectio",
       "props": [
        {
         "name": "label",
@@ -1986,7 +2052,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-010291_stmt",
         "name": "statement",
-        "prose": "The RHEL 8 SSH server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
+        "prose": "The RHEL 8 SSH server must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
        }
       ],
       "class": "security"
@@ -2058,6 +2124,39 @@
       "class": "security"
      },
      {
+      "id": "stig_rhel_8-RHEL-08-010287",
+      "title": "The RHEL 8 SSH daemon must be configured to use systemwide crypto policies.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010287"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010287"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#19c13eb7-e535-5468-8960-1003fbf0add1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010287_stmt",
+        "name": "statement",
+        "prose": "The RHEL 8 SSH daemon must be configured to use systemwide crypto policies."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-RHEL-08-010550",
       "title": "RHEL 8 must not permit direct logons to the root account using remote access via SSH.",
       "props": [
@@ -2124,16 +2223,16 @@
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-010060",
-      "title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
+      "id": "stig_rhel_8-RHEL-08-010040",
+      "title": "RHEL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a ssh logon.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-010060"
+        "value": "RHEL-08-010040"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-010060"
+        "value": "RHEL-08-010040"
        },
        {
         "name": "rego-package",
@@ -2149,9 +2248,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-010060_stmt",
+        "id": "stig_rhel_8-RHEL-08-010040_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
+        "prose": "RHEL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a ssh logon."
        }
       ],
       "class": "security"

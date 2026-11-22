@@ -6,20 +6,21 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 10
-#     cited: 9
+#     checks: 11
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_8.audit_logging
 
 # DISA STIG for RHEL 8 - Audit Logging Module
-# STIG Version: V2R8 | Released: 01 Jul 2026
+# STIG Version: V2R9 | Released: 30 Sep 2026
 # Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
-# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks. Re-checked
+# 2026-11-21 against DISA's standalone U_RHEL_8_V2R9_STIG.zip XCCDF and its revision history.
 
 import rego.v1
 
@@ -164,6 +165,40 @@ finding_rhel_08_030550 := {
 	"fix_text": "Add: -a always,exit -F path=/usr/bin/sudo -F perm=x",
 }
 
+# RHEL-08-030565 | V-288831 | CAT II - audit record for the useradd command (added in V2R9)
+# the check: grep -w useradd /etc/audit/audit.rules returns an uncommented line
+missing_rhel_08_030565 := [concat(".", p) | some p in [["audit_rules"]]; not is_array(object.get(input, p, null))]
+
+default audit_useradd := false
+
+audit_useradd if {
+	count(missing_rhel_08_030565) == 0
+	some rule in input.audit_rules
+	is_string(rule)
+	not startswith(trim_space(rule), "#")
+	regex.match(`(^|[^A-Za-z0-9_])useradd([^A-Za-z0-9_]|$)`, rule)
+}
+
+status_rhel_08_030565 := "Not_a_Finding" if audit_useradd
+
+else := "Open"
+
+detail_rhel_08_030565 := "RHEL-08-030565: Not_a_Finding" if audit_useradd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-08-030565", concat(", ", missing_rhel_08_030565)]) if count(missing_rhel_08_030565) > 0
+
+else := "RHEL-08-030565: check failed — no uncommented audit rule for useradd in /etc/audit/audit.rules"
+
+finding_rhel_08_030565 := {
+	"vuln_id": "V-288831",
+	"stig_id": "RHEL-08-030565",
+	"severity": "CAT II",
+	"rule_title": "OS must generate an audit record for all successful and unsuccessful uses of the useradd command.",
+	"status": status_rhel_08_030565,
+	"detail": detail_rhel_08_030565,
+	"fix_text": "Add: -a always,exit -F path=/usr/sbin/useradd -F perm=x -F auid>=1000 -F auid!=unset -k privileged-useradd",
+}
+
 # RHEL-08-030121 | V-230402 | CAT II - Audit rules immutable
 default audit_immutable := false
 
@@ -217,6 +252,7 @@ cat_ii_findings := [
 	finding_rhel_08_030171,
 	finding_rhel_08_030150,
 	finding_rhel_08_030550,
+	finding_rhel_08_030565,
 	finding_rhel_08_030121,
 	finding_rhel_08_030731,
 ]

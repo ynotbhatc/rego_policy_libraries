@@ -266,7 +266,7 @@ frameworks:
       - {standard: DISA Red Hat Enterprise Linux 10 STIG, version: V1R3, publisher: DISA, literal: "V1R3", check: {method: disa_stig_zip, stem: U_RHEL_10}}
   stig_rhel_8:
     standards:
-      - {standard: DISA Red Hat Enterprise Linux 8 STIG, version: V2R8, publisher: DISA, literal: "V2R8", check: {method: disa_stig_zip, stem: U_RHEL_8}}
+      - {standard: DISA Red Hat Enterprise Linux 8 STIG, version: V2R9, publisher: DISA, literal: "V2R9", check: {method: disa_stig_zip, stem: U_RHEL_8}}
   stig_rhel_9:
     standards:
       - {standard: DISA Red Hat Enterprise Linux 9 STIG, version: V2R10, publisher: DISA, literal: "V2R10", check: {method: disa_stig_zip, stem: U_RHEL_9}}
@@ -278,7 +278,7 @@ frameworks:
       - {standard: DISA SUSE Linux Enterprise Server 15 STIG, version: V2R9, publisher: DISA, literal: "V2R9", check: {method: disa_stig_zip, stem: U_SLES_15}}
   stig_ubuntu_20_04:
     standards:
-      - {standard: DISA Canonical Ubuntu 20.04 LTS STIG, version: V2R1, publisher: DISA, literal: "V2R1", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_20-04_LTS}}
+      - {standard: DISA Canonical Ubuntu 20.04 LTS STIG, version: V2R4, publisher: DISA, literal: "V2R4", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_20-04_LTS}}
   stig_ubuntu_22_04:
     standards:
       - {standard: DISA Canonical Ubuntu 22.04 LTS STIG, version: V2R10, publisher: DISA, literal: "V2R10", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_22-04_LTS}}
@@ -422,7 +422,7 @@ frameworks:
       - {standard: CMS MARS-E, version: "2.0", publisher: HHS CMS, literal: "CMS MARS-E 2.0", check: {method: manual, url: "https://www.cms.gov/marketplace/resources/regulations-guidance", note: "superseded upstream by ARC-AMPE; kept for legacy assessments"}}
   hipaa:
     standards:
-      - {standard: HIPAA Security, Privacy and Breach Notification Rules (45 CFR Part 164), version: current, publisher: HHS OCR, literal: "45 CFR 164", check: {method: ecfr, title: 45, parts: [164], checked_through: "2024-06-25"}}
+      - {standard: HIPAA Security, Privacy and Breach Notification Rules (45 CFR Part 164), version: current, publisher: HHS OCR, literal: "45 CFR 164", check: {method: ecfr, title: 45, parts: [160, 162, 164], checked_through: "2026-11-19", note: "Part 162 2025-02-11/2025-04-14/2025-08-21 NCPDP F6 rule (89 FR 100763, 90 FR 9289, 90 FR 40746) reviewed 2026-11-21: hipaa.part162 already carries the August 14, 2027 / April 14, 2028 dates; 2026-05-26 subpart T (claims attachments, compliance 2028-05-26) not yet in hipaa.part162. Part 160 2026-03-24/2026-05-26 amendment (91 FR 14350, claims attachments; 160.103 Transaction (10) only) reviewed 2026-11-21, nothing hipaa.part160 evaluates. Part 164 2026-11-19 amendment reviewed 2026-11-21: Privacy Rule final rule 91 FR 74848 (FR doc 2026-23429), Subpart E only (164.501-.525, .532), Subpart C untouched; effective 2027-01-19, compliance 2027-07-19; hipaa.privacy_rule regeneration due before 2027-07-19 (see STANDARDS_UPDATE_REGISTRY.md)"}}
   coppa:
     standards:
       - {standard: COPPA Rule (16 CFR Part 312), version: 90 FR 16918, publisher: FTC, literal: "as amended by 90 FR 16918", check: {method: ecfr, title: 16, parts: [312], checked_through: "2025-06-23"}}

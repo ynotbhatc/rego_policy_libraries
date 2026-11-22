@@ -21,6 +21,8 @@ SOURCE_NOTES = {
     "rke2": "Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21)",
     "rhel_10": "RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19)",
     "ubuntu_24_04": "RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19)",
+    "rhel_8": "RHEL 8 V2R9 from DISA's standalone STIG zip (2026-11-21)",
+    "ubuntu_20_04": "Ubuntu 20.04 V2R4 (sunset release) from DISA's standalone STIG zip (2026-11-21)",
 }
 
 

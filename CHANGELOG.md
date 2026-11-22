@@ -8,6 +8,34 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — DISA STIG RHEL 8 V2R9 (2026-11-21, issue #341)
+
+- `benchmarks/stig/rhel_8` follows DISA's standalone V2R9 (30 Sep 2026): 56 of 371 rules. Added RHEL-08-010287
+  (sshd CRYPTO_POLICY commented), RHEL-08-010293 (openssl.cnf includes opensslcnf.config) and RHEL-08-030565
+  (useradd audit rule), each fail-closed with an "evidence missing" detail. RHEL-08-020200 is 180 days (was 60);
+  RHEL-08-010020 now checks the FIPS crypto policy without subpolicies, the CURRENT.pol hashes and min_rsa_size (it
+  checked FIPS mode); the crossed banner ids are corrected (010040 sshd Banner file, 010060 /etc/issue, exact text);
+  DoD → DoW titles. Crosswalk re-joined (V2R9 CCIs; RHEL-08-040221/040222 now have no Rev 5 mapping).
+- `benchmarks/stig/ubuntu_20_04` (sunset) follows DISA's final V2R4 (01 Oct 2025; the module said V2R1): the five
+  stub checks carried invented ids and non-DISA thresholds. Now 4 of 173 rules against the V2R4 check text —
+  UBTU-20-010001 (vendor-supported release, attested), -010443 (DoD root CA), -010054 (minlen 15, was 14) and
+  -010070 (remember 5, was 24); guest account and antivirus had no Ubuntu 20.04 rule and are removed. Every rule
+  fails closed with an "evidence missing" detail; `stig_assessment` carries `rule_results`. UBTU-20 joins the
+  800-53 crosswalk (173 of 173).
+
+### Reviewed — HIPAA amendment of 2026-11-19
+
+- 45 CFR Part 164 amendment of 2026-11-19 (HIPAA Privacy Rule final rule, 91 FR 74848, FR doc 2026-23429; effective
+  2027-01-19, compliance 2027-07-19) reviewed: it amends Subpart E (164.501-.525, .532) and 160.103 only, not the
+  Security Rule (Subpart C). No rule logic changed; `standards.yaml` hipaa checked_through 2026-11-19. The
+  `hipaa.privacy_rule` changes owed before 2027-07-19 are listed in STANDARDS_UPDATE_REGISTRY.md.
+- 45 CFR Part 160 amendment of 2026-03-24 / 2026-05-26 (claims attachments final rule, 91 FR 14350, FR doc
+  2026-05676; compliance 2028-05-26) reviewed: it changes only the 160.103 "Transaction" definition, which
+  `hipaa.part160` does not evaluate.
+- 45 CFR Part 162 amendments of 2025-04-14 and 2025-08-21 (NCPDP F6 retail pharmacy rule and its date
+  corrections, 90 FR 9289, 90 FR 40746) reviewed: `hipaa.part162` already carries the August 14, 2027 /
+  April 14, 2028 dates. The standards watch now covers 45 CFR Parts 160, 162 and 164.
+
 ### Changed — decisions of 2026-11-21
 
 - NIST 800-53 PT-6(1) and PT-6(2) are attestation-based
