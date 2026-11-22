@@ -1,10 +1,10 @@
-# SOC 2 - AICPA Trust Services Criteria: criterion-level report for 12 of the 33 common criteria
-# (CC1.2, CC1.4, CC3.2, CC6.1, CC6.2, CC6.3, CC6.6, CC7.2, CC7.4, CC8.1, CC9.1, CC9.2), plus
-# up to 16 criteria of the optional categories in scope (A1.1-A1.3, C1.1-C1.2, PI1.2-PI1.3, P3.1,
-# P3.2, P4.1, P4.2, P5.1, P5.2, P6.1, P6.6, P7.1). See "CRITERION-LEVEL REPORT".
+# SOC 2 - AICPA Trust Services Criteria: per-criterion results for all 33 common criteria (CC1.1-CC9.2):
+# 10 decided from evidence (CC6.1, CC6.2, CC6.3, CC6.5, CC6.6, CC6.7, CC6.8, CC7.1, CC7.2, CC8.1) and 23 by
+# signed attestation, plus up to 16 criteria of the optional categories in scope (A1.1-A1.3, C1.1-C1.2,
+# PI1.2-PI1.3, P3.1, P3.2, P4.1, P4.2, P5.1, P5.2, P6.1, P6.6, P7.1). See "CRITERION-LEVEL REPORT".
 
 # METADATA
-# title: "SOC 2 Trust Services Criteria - 12 common criteria and up to 16 optional-category criteria scored by id"
+# title: "SOC 2 Trust Services Criteria - all 33 common criteria and up to 16 optional-category criteria, per-criterion results"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -28,6 +28,8 @@ import data.soc2.confidentiality.data_confidentiality
 import data.soc2.privacy.data_privacy
 import data.soc2.processing_integrity.data_processing
 import data.soc2.security.access_controls
+
+import data.soc2.criteria as cc
 
 # Infrastructure components
 import data.soc2.infrastructure.applications_services
@@ -456,36 +458,30 @@ soc2_detailed_findings := findings if {
 # are 33 common criteria (CC1.1-CC9.2), A1.1-A1.3, C1.1-C1.2, PI1.1-PI1.5 and
 # P1.1-P8.1 (61 in all). No criterion text is reproduced here.
 #
-# What is scored: the common criteria below, each decided by the checks mapped
-# to it (every check must pass). total_controls = the criteria scored; a
-# criterion fails once however many of its checks fail.
-#   CC1.2 board oversight            management_oversight
-#   CC1.4 competence                 hr_controls_effective
-#   CC3.2 risk identification        risk_assessment_established, risk_monitoring_active
-#   CC6.1 logical access security    security: mfa_for_privileged_access, shared_accounts_managed,
-#                                    network_segmentation_implemented, database_access_controlled
-#   CC6.2 registration and review    security: user_lifecycle_managed, access_rights_reviewed
-#   CC6.3 role-based authorization   security: user_access_properly_restricted
-#   CC6.6 boundary / remote access   security: remote_access_secured
-#   CC7.2 monitoring for anomalies   security: system_access_monitored, system_monitoring_comprehensive,
-#                                    log_management_effective
-#   CC7.4 incident response          incident_response_program
-#   CC8.1 change management          change_management_process, configuration_management
-#   CC9.1 business disruption        business_continuity_planning
-#   CC9.2 vendors and partners       vendor_management_program, subservice_organization_oversight
-# The other 21 common criteria have no check and are not claimed.
+# What is evaluated: every one of the 33 common criteria, and the mapped criteria of each optional
+# category in scope, by data.soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego), which
+# lists for each criterion its basis, the input paths it reads and the test each must meet.
+#   evidence (10)     CC6.1 CC6.2 CC6.3 CC6.5 CC6.6 CC6.7 CC6.8 CC7.1 CC7.2 CC8.1
+#   attestation (23)  CC1.1-CC1.5 CC2.1-CC2.3 CC3.1-CC3.4 CC4.1-CC4.2 CC5.1-CC5.3 CC6.4 CC7.3 CC7.4 CC7.5
+#                     CC9.1 CC9.2, met by input.soc2.attestations["<id>"] = {attested: true, by, date};
+#                     CC1.2, CC1.4, CC3.2, CC7.4, CC9.1 and CC9.2 also still need the records read before
+#                     (control_environment, human_resources, risk_management, incident_response,
+#                     business_continuity, vendor_management, subservice_organizations)
+# control_results gives one row per criterion: status pass | fail | not_assessed and reason pass | fail |
+# evidence_missing | attestation_missing. Missing evidence or a missing attestation is not_assessed, never a
+# pass. total_controls = rows; failed_controls = rows that did not pass; compliant = every row passed, the
+# description prerequisites hold and the input carries no unreadable attestation.
 #
-# Optional categories: the criteria listed under "optional categories" below are
-# scored for each category the entity puts in scope (input.soc2.categories_in_scope);
-# a missing scope list is a finding and all four are then assessed. The category
-# modules' own verdicts hard-code values the criteria do not fix and decide nothing
-# (advisory.categories).
-# The infrastructure modules and the OpenShift platform checks decide no
-# criterion and are reported under `advisory`.
-# The system description inputs (service commitments, system boundaries) are
-# description-criteria prerequisites, not trust services criteria: they block
-# compliance when missing but are not counted as criteria.
-
+# Optional categories: their criteria are evaluated for each category the entity puts in scope
+# (input.soc2.categories_in_scope); a missing scope list is a finding and all four are then assessed. The
+# category modules' own verdicts hard-code values the criteria do not fix and decide nothing
+# (advisory.categories). The infrastructure modules and the OpenShift platform checks decide no criterion
+# and are reported under `advisory`. The system description inputs (service commitments, system
+# boundaries) are description-criteria prerequisites, not trust services criteria: they block compliance
+# when missing but are not counted as criteria.
+#
+# The mapped checks below (criteria_checks, reported as compliance_report.criteria) are the earlier
+# check-per-criterion view and are kept for readers of that field; they decide nothing.
 _common_criteria_checks := {
 	"CC1.2": {"management_oversight": management_oversight},
 	"CC1.4": {"hr_controls_effective": hr_controls_effective},
@@ -718,86 +714,31 @@ category_evidence_findings contains "P6.6: evidence missing - input.privacy.brea
 
 _failed_checks(c) := sort([k | some k, ok in criteria_checks[c]; ok != true])
 
-failed_criteria := {c | some c, _ in criteria_checks; count(_failed_checks(c)) > 0}
-
 criteria_status[c] := {"satisfied": count(_failed_checks(c)) == 0, "checks": checks, "failed_checks": _failed_checks(c)} if {
 	some c, checks in criteria_checks
 }
 
-# Findings a check emits about missing evidence, by criterion prefix ("CC6.6: ...").
-_evidence_for(c) := sort([m |
-	some m in (access_controls.evidence_findings | category_evidence_findings)
-	startswith(m, sprintf("%v:", [c]))
-])
+# Per-criterion results (data.soc2.criteria): every common criterion, plus the mapped criteria of the
+# optional categories in scope, in natural id order. criteria_status above keeps the earlier mapped checks
+# for readers of compliance_report.criteria; it decides nothing. The decision is control_results.
+_id_in_scope(id) if cc.criteria[id].category == "security"
 
-# One literal finding per scored criterion (the id is part of the message text),
-# then one detail line per failed check.
-criteria_findings contains "SOC 2 CC1.2: criterion not met - at least one mapped check failed (criteria[\"CC1.2\"].failed_checks)" if "CC1.2" in failed_criteria
+_id_in_scope(id) if cc.criteria[id].category in categories_in_scope
 
-criteria_findings contains "SOC 2 CC1.4: criterion not met - at least one mapped check failed (criteria[\"CC1.4\"].failed_checks)" if "CC1.4" in failed_criteria
+_in_scope_ids := [id | some id in cc.order; _id_in_scope(id)]
 
-criteria_findings contains "SOC 2 CC3.2: criterion not met - at least one mapped check failed (criteria[\"CC3.2\"].failed_checks)" if "CC3.2" in failed_criteria
+control_results := [cc.result_of[id] | some id in _in_scope_ids]
 
-criteria_findings contains "SOC 2 CC6.1: criterion not met - at least one mapped check failed (criteria[\"CC6.1\"].failed_checks)" if "CC6.1" in failed_criteria
+control_result_counts := {s: count([r | some r in control_results; r.status == s]) | some s in ["pass", "fail", "not_assessed"]}
 
-criteria_findings contains "SOC 2 CC6.2: criterion not met - at least one mapped check failed (criteria[\"CC6.2\"].failed_checks)" if "CC6.2" in failed_criteria
+basis_counts := {b: count([r | some r in control_results; r.basis == b]) | some b in ["evidence", "attestation"]}
 
-criteria_findings contains "SOC 2 CC6.3: criterion not met - at least one mapped check failed (criteria[\"CC6.3\"].failed_checks)" if "CC6.3" in failed_criteria
+failed_criteria := {id | some id in _in_scope_ids; cc.status_of[id] != "pass"}
 
-criteria_findings contains "SOC 2 CC6.6: criterion not met - at least one mapped check failed (criteria[\"CC6.6\"].failed_checks)" if "CC6.6" in failed_criteria
-
-criteria_findings contains "SOC 2 CC7.2: criterion not met - at least one mapped check failed (criteria[\"CC7.2\"].failed_checks)" if "CC7.2" in failed_criteria
-
-criteria_findings contains "SOC 2 CC7.4: criterion not met - at least one mapped check failed (criteria[\"CC7.4\"].failed_checks)" if "CC7.4" in failed_criteria
-
-criteria_findings contains "SOC 2 CC8.1: criterion not met - at least one mapped check failed (criteria[\"CC8.1\"].failed_checks)" if "CC8.1" in failed_criteria
-
-criteria_findings contains "SOC 2 CC9.1: criterion not met - at least one mapped check failed (criteria[\"CC9.1\"].failed_checks)" if "CC9.1" in failed_criteria
-
-criteria_findings contains "SOC 2 CC9.2: criterion not met - at least one mapped check failed (criteria[\"CC9.2\"].failed_checks)" if "CC9.2" in failed_criteria
-
-criteria_findings contains "SOC 2 A1.1: criterion not met - at least one mapped check failed (criteria[\"A1.1\"].failed_checks)" if "A1.1" in failed_criteria
-
-criteria_findings contains "SOC 2 A1.2: criterion not met - at least one mapped check failed (criteria[\"A1.2\"].failed_checks)" if "A1.2" in failed_criteria
-
-criteria_findings contains "SOC 2 A1.3: criterion not met - at least one mapped check failed (criteria[\"A1.3\"].failed_checks)" if "A1.3" in failed_criteria
-
-criteria_findings contains "SOC 2 C1.1: criterion not met - at least one mapped check failed (criteria[\"C1.1\"].failed_checks)" if "C1.1" in failed_criteria
-
-criteria_findings contains "SOC 2 C1.2: criterion not met - at least one mapped check failed (criteria[\"C1.2\"].failed_checks)" if "C1.2" in failed_criteria
-
-criteria_findings contains "SOC 2 PI1.2: criterion not met - at least one mapped check failed (criteria[\"PI1.2\"].failed_checks)" if "PI1.2" in failed_criteria
-
-criteria_findings contains "SOC 2 PI1.3: criterion not met - at least one mapped check failed (criteria[\"PI1.3\"].failed_checks)" if "PI1.3" in failed_criteria
-
-criteria_findings contains "SOC 2 P3.1: criterion not met - at least one mapped check failed (criteria[\"P3.1\"].failed_checks)" if "P3.1" in failed_criteria
-
-criteria_findings contains "SOC 2 P3.2: criterion not met - at least one mapped check failed (criteria[\"P3.2\"].failed_checks)" if "P3.2" in failed_criteria
-
-criteria_findings contains "SOC 2 P4.1: criterion not met - at least one mapped check failed (criteria[\"P4.1\"].failed_checks)" if "P4.1" in failed_criteria
-
-criteria_findings contains "SOC 2 P4.2: criterion not met - at least one mapped check failed (criteria[\"P4.2\"].failed_checks)" if "P4.2" in failed_criteria
-
-criteria_findings contains "SOC 2 P5.1: criterion not met - at least one mapped check failed (criteria[\"P5.1\"].failed_checks)" if "P5.1" in failed_criteria
-
-criteria_findings contains "SOC 2 P5.2: criterion not met - at least one mapped check failed (criteria[\"P5.2\"].failed_checks)" if "P5.2" in failed_criteria
-
-criteria_findings contains "SOC 2 P6.1: criterion not met - at least one mapped check failed (criteria[\"P6.1\"].failed_checks)" if "P6.1" in failed_criteria
-
-criteria_findings contains "SOC 2 P6.6: criterion not met - at least one mapped check failed (criteria[\"P6.6\"].failed_checks)" if "P6.6" in failed_criteria
-
-criteria_findings contains "SOC 2 P7.1: criterion not met - at least one mapped check failed (criteria[\"P7.1\"].failed_checks)" if "P7.1" in failed_criteria
-
+# One finding per criterion part that is not met; the criterion id leads each message ("SOC 2 CC6.6: ...").
 criteria_findings contains msg if {
-	some c in failed_criteria
-	some k in _failed_checks(c)
-	msg := sprintf("SOC 2 %v: check %v not satisfied", [c, k])
-}
-
-criteria_findings contains msg if {
-	some c in failed_criteria
-	some m in _evidence_for(c)
-	msg := sprintf("SOC 2 %v", [m])
+	some id in _in_scope_ids
+	some msg in cc.findings_of[id]
 }
 
 # --- scope of the optional categories ---
@@ -831,13 +772,15 @@ prerequisite_findings contains "SOC 2 description prerequisite: system boundarie
 	not system_boundaries_defined
 }
 
-_violations := array.concat(sort(prerequisite_findings), sort(criteria_findings))
+_violations := array.concat(sort(prerequisite_findings | cc.input_notes), sort(criteria_findings))
 
 default _soc2_report_compliant := false
 
 _soc2_report_compliant if {
+	count(control_results) > 0
 	count(failed_criteria) == 0
 	count(prerequisite_findings) == 0
+	count(cc.input_notes) == 0
 }
 
 advisory := {
@@ -873,12 +816,22 @@ default compliance_report := {
 compliance_report := {
 	"framework_key": "soc2",
 	"standard": "SOC 2 - AICPA Trust Services Criteria (TSP section 100, 2017, points of focus revised 2022)",
-	"scope_note": "Scores 12 of the 33 common criteria plus the mapped criteria of the optional categories in scope (listed in criteria); category-module verdicts are advisory",
+	"scope_note": "Evaluates all 33 common criteria (10 from evidence, 23 by signed attestation) plus the mapped criteria of the optional categories in scope; not_assessed is never a pass; category-module verdicts are advisory",
 	"compliant": _soc2_report_compliant,
-	"total_controls": count(criteria_checks),
+	"total_controls": count(control_results),
 	"failed_controls": count(failed_criteria),
+	"control_results": control_results,
+	"control_result_counts": control_result_counts,
+	"basis_counts": basis_counts,
+	"coverage": {
+		"common_criteria_total": 33,
+		"common_criteria_evaluated": count([r | some r in control_results; r.category == "security"]),
+		"optional_criteria_mapped": count([id | some id, c in cc.criteria; c.category != "security"]),
+		"optional_criteria_not_mapped": cc.not_mapped,
+	},
 	"criteria": criteria_status,
-	"failed_criteria": sort(failed_criteria),
+	"criteria_note": "criteria lists the earlier mapped checks per criterion; they decide nothing, control_results does",
+	"failed_criteria": [id | some id in _in_scope_ids; id in failed_criteria],
 	"categories_in_scope": sort(categories_in_scope),
 	"trust_services": {
 		"security": security_compliant == true,

@@ -2,6 +2,8 @@ package soc2.criteria_test
 
 import rego.v1
 
+import data.soc2.common_criteria_test as fx
+import data.soc2.criteria as cc
 import data.soc2.main
 import data.soc2.security.access_controls as ac
 
@@ -16,9 +18,10 @@ _cc_ids := {
 
 test_scored_criteria_are_real_common_criteria if {
 	count(_cc_ids) == 33
-	ids := {c | some c, _ in main._common_criteria_checks}
-	count(ids) == 12
-	every c in ids {
+	cc.common_criteria_ids == _cc_ids
+	legacy := {c | some c, _ in main._common_criteria_checks}
+	count(legacy) == 12
+	every c in legacy {
 		c in _cc_ids
 	}
 }
@@ -26,13 +29,13 @@ test_scored_criteria_are_real_common_criteria if {
 test_empty_input_scores_all_mapped_criteria_all_failed if {
 	r := main.compliance_report with input as {}
 
-	# no scope list: all four optional categories are assessed (12 common + 16 optional criteria)
-	r.total_controls == 28
-	r.failed_controls == 28
+	# no scope list: all four optional categories are assessed (33 common + 16 optional criteria)
+	r.total_controls == 49
+	r.failed_controls == 49
 	r.compliant == false
-	"SOC 2 CC6.6: check security.remote_access_secured not satisfied" in r.violations
-	"SOC 2 CC6.6: evidence missing - input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not a number" in r.violations
-	"SOC 2 CC7.2: evidence missing - input.access_controls.access_logging.retention_days not collected or not a number" in r.violations
+	r.control_result_counts == {"pass": 0, "fail": 0, "not_assessed": 49}
+	"SOC 2 CC6.6: Logical access measures against threats from outside the system boundary - not assessed - evidence missing: input.remote_access.session_timeout.configured, input.remote_access.session_timeout.max_idle_minutes, input.remote_access.vpn_encryption.enabled, input.remote_access.vpn_required, input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not of the expected type" in r.violations
+	"SOC 2 CC1.1: Commitment to integrity and ethical values - not assessed - no attestation at input.soc2.attestations[\"CC1.1\"]; this organisational criterion is met only by {attested: true, by, date}" in r.violations
 	some v in r.violations
 	startswith(v, "SOC 2 scope: evidence missing - input.soc2.categories_in_scope")
 }
@@ -113,31 +116,135 @@ test_cluster_admin_limit_is_the_entity_commitment if {
 
 # --- report scoring ---
 
-_all_pass := {c: {"check": true} | some c, _ in main._common_criteria_checks}
-
 test_all_criteria_pass_with_scope_and_description_is_compliant if {
-	r := main.compliance_report with input as {"soc2": {"categories_in_scope": []}}
-		with main.criteria_checks as _all_pass
-		with main.service_commitments_defined as true
-		with main.system_boundaries_defined as true
+	r := main.compliance_report with input as fx.fixture
 	r.compliant == true
-	r.total_controls == 12
+	r.total_controls == 49
 	r.failed_controls == 0
 	r.violations == []
+	r.control_result_counts == {"pass": 49, "fail": 0, "not_assessed": 0}
+	r.basis_counts == {"evidence": 26, "attestation": 23}
+	r.coverage.common_criteria_evaluated == 33
 }
 
-test_two_failed_checks_fail_one_criterion_once if {
-	checks := object.union(_all_pass, {"CC6.1": {"a": false, "b": false, "c": true}})
-	r := main.compliance_report with input as {"soc2": {"categories_in_scope": []}}
-		with main.criteria_checks as checks
-		with main.service_commitments_defined as true
-		with main.system_boundaries_defined as true
+test_common_criteria_split_ten_evidence_twenty_three_attestation if {
+	r := main.compliance_report with input as json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/categories_in_scope", "value": []}])
+	r.compliant == true
+	r.total_controls == 33
+	r.basis_counts == {"evidence": 10, "attestation": 23}
+}
+
+# The fact spec reproduces the earlier mapped checks: on the all-pass input every one of them holds.
+test_legacy_mapped_checks_agree_with_the_fixture if {
+	r := main.compliance_report with input as fx.fixture
+	every _, st in r.criteria {
+		st.satisfied == true
+	}
+}
+
+test_two_failed_facts_fail_one_criterion_once if {
+	inp := json.patch(fx.fixture, [
+		{"op": "replace", "path": "/access_controls/shared_accounts", "value": ["shared-1"]},
+		{"op": "replace", "path": "/network_security/firewalls/configured", "value": false},
+	])
+	r := main.compliance_report with input as inp
 	r.compliant == false
 	r.failed_controls == 1
 	r.failed_criteria == ["CC6.1"]
-	r.criteria["CC6.1"].failed_checks == ["a", "b"]
-	"SOC 2 CC6.1: criterion not met - at least one mapped check failed (criteria[\"CC6.1\"].failed_checks)" in r.violations
-	"SOC 2 CC6.1: check a not satisfied" in r.violations
+	"SOC 2 CC6.1: Logical access security over protected information assets - fail - input.access_controls.shared_accounts is a list of 1, required an empty list; input.network_security.firewalls.configured is false, required true" in r.violations
+}
+
+# A supplied fact that fails outranks a missing one: the criterion is a fail, and both are reported.
+test_fail_outranks_missing_evidence if {
+	inp := json.remove(json.patch(fx.fixture, [{"op": "replace", "path": "/remote_access/vpn_required", "value": false}]), ["/remote_access/vpn_encryption"])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "CC6.6"][0]
+	row.status == "fail"
+	count(row.findings) == 2
+}
+
+test_missing_commitment_is_not_assessed if {
+	inp := json.remove(fx.fixture, ["/soc2/commitments/max_idle_minutes"])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "CC6.6"][0]
+	row.status == "not_assessed"
+	row.reason == "evidence_missing"
+}
+
+test_string_where_boolean_belongs_is_not_assessed if {
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/change_management/approval/required", "value": "true"}])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "CC8.1"][0]
+	row.status == "not_assessed"
+	r.compliant == false
+}
+
+test_unsigned_attestation_fails if {
+	inp := json.remove(fx.fixture, ["/soc2/attestations/CC3.3/by"])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "CC3.3"][0]
+	row.status == "fail"
+	row.reason == "fail"
+}
+
+test_attestation_true_as_string_fails if {
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/attestations/CC5.2/attested", "value": "true"}])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "CC5.2"][0]
+	row.status == "fail"
+}
+
+test_unknown_attestation_key_blocks_compliance if {
+	inp := json.patch(fx.fixture, [{"op": "add", "path": "/soc2/attestations/CC10.1", "value": {"attested": true, "by": "x", "date": "2026-11-01"}}])
+	r := main.compliance_report with input as inp
+	r.compliant == false
+	r.failed_controls == 0
+	"SOC 2 input: attestation key \"CC10.1\" is not a SOC 2 criterion evaluated here" in r.violations
+}
+
+test_attestation_for_evidence_criterion_is_not_read if {
+	inp := json.patch(fx.fixture, [
+		{"op": "add", "path": "/soc2/attestations/CC6.6", "value": {"attested": true, "by": "x", "date": "2026-11-01"}},
+		{"op": "replace", "path": "/remote_access/vpn_required", "value": false},
+	])
+	r := main.compliance_report with input as inp
+	r.compliant == false
+	"CC6.6" in r.failed_criteria
+	"SOC 2 input: attestation key \"CC6.6\" names an evidence-based criterion; it is decided from facts, the attestation is not read" in r.violations
+}
+
+test_attestations_not_an_object_is_a_finding if {
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/attestations", "value": ["CC1.1"]}])
+	r := main.compliance_report with input as inp
+	r.compliant == false
+	"SOC 2 input: input.soc2.attestations is not an object; no attestation can be read" in r.violations
+}
+
+test_status_values_are_pass_fail_not_assessed if {
+	r1 := main.compliance_report with input as {}
+	r2 := main.compliance_report with input as fx.fixture
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/attestations/CC1.1/attested", "value": false}])
+	r3 := main.compliance_report with input as inp
+	every r in [r1, r2, r3] {
+		every row in r.control_results {
+			row.status in {"pass", "fail", "not_assessed"}
+		}
+	}
+}
+
+test_control_results_in_natural_order if {
+	r := main.compliance_report with input as {}
+	ids := [row.id | some row in r.control_results]
+	ids[0] == "CC1.1"
+	ids[32] == "CC9.2"
+	ids[33] == "A1.1"
+	ids[48] == "P7.1"
+}
+
+test_titles_are_paraphrases_without_aicpa_text if {
+	every _, c in cc.criteria {
+		count(c.title) <= 100
+	}
 }
 
 test_missing_scope_assesses_all_optional_categories if {
@@ -151,13 +258,10 @@ test_unknown_scope_category_is_a_finding if {
 }
 
 test_out_of_scope_category_does_not_block if {
-	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["privacy"]}}
-		with main.criteria_checks as _all_pass
-		with main.service_commitments_defined as true
-		with main.system_boundaries_defined as true
-		with main.privacy_compliant as true
-		with main.availability_compliant as false
+	inp := json.remove(json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/categories_in_scope", "value": ["privacy"]}]), ["/backup"])
+	r := main.compliance_report with input as inp
 	r.compliant == true
+	r.total_controls == 42
 }
 
 # --- optional categories (follow-up 2026-11-17) ---
@@ -179,20 +283,15 @@ test_optional_criteria_ids_are_real_tsc_ids if {
 
 test_only_in_scope_categories_add_criteria if {
 	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
-	r.total_controls == 15
+	r.total_controls == 36
 	r.categories_in_scope == ["availability"]
 	r2 := main.compliance_report with input as {"soc2": {"categories_in_scope": []}}
-	r2.total_controls == 12
+	r2.total_controls == 33
 }
 
 test_category_module_verdict_does_not_decide_compliance if {
-	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
-		with main._common_criteria_checks as _all_pass
-		with main.service_commitments_defined as true
-		with main.system_boundaries_defined as true
-		with main.capacity_managed as true
-		with main.backup_recovery_infrastructure as true
-		with main.recovery_plan_tested as true
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/categories_in_scope", "value": ["availability"]}])
+	r := main.compliance_report with input as inp
 		with main.availability_compliant as false
 	r.compliant == true
 	r.advisory.categories.availability == false
@@ -234,6 +333,5 @@ test_in_scope_criterion_failure_is_reported_by_id if {
 	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
 	r.compliant == false
 	"A1.3" in r.failed_criteria
-	"SOC 2 A1.3: criterion not met - at least one mapped check failed (criteria[\"A1.3\"].failed_checks)" in r.violations
-	"SOC 2 A1.3: evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number" in r.violations
+	"SOC 2 A1.3: Recovery plan tested - not assessed - evidence missing: input.backup.recovery_testing.frequency_days, input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not of the expected type" in r.violations
 }

@@ -8,6 +8,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — SOC 2: all 33 common criteria with per-criterion results (2026-11-22)
+- `frameworks/management/soc2` now evaluates every common criterion of the 2017 Trust Services Criteria
+  (points of focus revised 2022), CC1.1 to CC9.2 (was 12 of 33). New module `soc2.criteria`
+  (`criteria/soc2_criteria.rego`) lists each criterion with a short paraphrased title (no AICPA text), its
+  basis, the input paths it reads and the test each must meet.
+- 10 criteria are decided from evidence (CC6.1, CC6.2, CC6.3, CC6.5, CC6.6, CC6.7, CC6.8, CC7.1, CC7.2,
+  CC8.1) and 23 by a signed attestation at `input.soc2.attestations["<id>"]` = `{attested: true, by, date}`.
+  CC1.2, CC1.4, CC3.2, CC7.4, CC9.1 and CC9.2 still need the records they read before as well, so an
+  attestation never passes a criterion whose record says otherwise. The 16 mapped optional-category criteria
+  move onto the same fact tests.
+- `compliance_report` gains `control_results` (one row per criterion in scope: status pass / fail /
+  not_assessed, reason pass / fail / evidence_missing / attestation_missing, basis, evidence paths, findings),
+  `control_result_counts`, `basis_counts` and `coverage`. Missing evidence or a missing attestation is
+  `not_assessed` and never passes; a supplied fact that fails outranks a missing one.
+- Behaviour change: `total_controls` rises from 12 to 33 (plus the optional criteria in scope),
+  `failed_criteria` lists every criterion that did not pass, and `violations` carry one message per unmet part
+  (`SOC 2 <id>: <title> - ...`). Inputs that were compliant before now also need the attestations and the
+  new CC6.5, CC6.7, CC6.8 and CC7.1 facts (`data_disposal`, `encryption.in_transit`, `dlp.monitoring`,
+  `security.edr`, `security.vulnerability_management`). `soc2.main`, `soc2.soc2_assessment`, the submodules
+  and every existing input path are unchanged; `compliance_report.criteria` keeps the earlier mapped checks
+  and decides nothing.
+- Tests: pass, fail and evidence-missing for each of the 49 criteria, plus record-versus-attestation,
+  unsigned attestation, unknown key and type tests.
+- Not mapped (no check): PI1.1, PI1.4, PI1.5, P1.1, P2.1, P4.3, P6.2-P6.5, P6.7, P8.1.
+
 ### Added — DISA STIG RHEL 9 V2R10: all 445 rules (2026-11-22)
 - `benchmarks/stig/rhel_9` now implements every rule of the V2R10 STIG (was 104 of 445). The 341 new rules are
   reviewed table entries written against DISA's full check text (`tools/stig_generators/rhel9_rules_part1.py`

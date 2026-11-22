@@ -432,8 +432,8 @@ test_compliance_report_real_on_empty_input if {
 	r := main.compliance_report with input as {}
 	not r.fail_closed
 	r.compliant == false
-	r.total_controls == 28
-	r.failed_controls == 28
+	r.total_controls == 49
+	r.failed_controls == 49
 	r.violation_count > r.failed_controls
 }
 
