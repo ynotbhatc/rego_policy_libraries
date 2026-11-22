@@ -27,8 +27,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fixed: `framework_overlay.coverage` listed a framework control once per mapped 800-53 control, so
   `controls_satisfied` over-counted any control mapped to more than one (the shipped maps are one to one, so no
   published number changes).
-- The RHEL 9 STIG module's 445 rules reach 48 base controls in 7 families (AC, AU, CM, IA, MA, SC, SI). 442 of
-  the 445 are in the map; the three ids new in V2R10 are reported as unmapped until the map is regenerated.
+- The RHEL 9 STIG module's 445 rules reach 47 base controls in 7 families (SC 11, AC 10, AU 9, IA 6, CM 5, SI 4,
+  MA 2). The RHEL 9 slice of `crosswalk/stig_800_53/data.json` was regenerated from the V2R10 XCCDF, so all 445
+  rule ids are in the map (three V2R10 ids were missing and three retired ids remained).
 - Loading: to use benchmark results, `crosswalk/correlation.rego` and the map at `data.crosswalk.stig_800_53`
   must be in the same OPA as the 800-53 module. See `crosswalk/README.md` and `examples/nist_800_53/README.md`.
 

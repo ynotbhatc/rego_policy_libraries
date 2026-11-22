@@ -27,12 +27,12 @@ test_rhel9_stig_report_reaches_the_spine_and_passes_nothing_by_itself if {
 	b := r.benchmark_evidence
 	b.rules_supplied == 445
 
-	# the map's RHEL 9 slice may trail the module by a release: such rules are listed, never guessed at
+	# every rule of the module is in the map (regenerated from the V2R10 XCCDF)
 	b.rules_unmapped == count(b.unmapped_rules)
-	b.rules_unmapped < 10
+	b.rules_unmapped == 0
 	b.gap == []
 	b.not_reviewed == []
-	count(b.satisfied) >= 48
+	count(b.satisfied) >= 47
 	"AC-7" in b.satisfied
 	"RHEL-09-411075" in _row(r, "AC-7").benchmark.rules
 	_row(r, "AC-2(1)").benchmark.status == "not_evaluated"
@@ -72,7 +72,7 @@ test_stig_report_without_facts_fails_every_reached_control if {
 	b := r.benchmark_evidence
 	b.reports_without_facts == 1
 	b.satisfied == []
-	count(b.gap) >= 48
+	count(b.gap) >= 47
 	r.control_result_counts.fail == count(b.gap)
 	_row(r, "AC-7").status == "fail"
 	"FAIL-CLOSED: 1 benchmark report(s) had no facts supplied (facts_supplied is false); every rule in them counts as Open" in r.violations
