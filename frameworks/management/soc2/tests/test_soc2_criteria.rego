@@ -34,8 +34,8 @@ test_empty_input_scores_all_mapped_criteria_all_failed if {
 	r.failed_controls == 49
 	r.compliant == false
 	r.control_result_counts == {"pass": 0, "fail": 0, "not_assessed": 49}
-	"SOC 2 CC6.6: Logical access measures against threats from outside the system boundary - not assessed - evidence missing: input.remote_access.session_timeout.configured, input.remote_access.session_timeout.max_idle_minutes, input.remote_access.vpn_encryption.enabled, input.remote_access.vpn_required, input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not of the expected type" in r.violations
-	"SOC 2 CC1.1: Commitment to integrity and ethical values - not assessed - no attestation at input.soc2.attestations[\"CC1.1\"]; this organisational criterion is met only by {attested: true, by, date}" in r.violations
+	"SOC 2 CC6.6: Access from outside the system boundary protected - not assessed - evidence missing: input.remote_access.session_timeout.configured, input.remote_access.session_timeout.max_idle_minutes, input.remote_access.vpn_encryption.enabled, input.remote_access.vpn_required, input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not of the expected type" in r.violations
+	"SOC 2 CC1.1: Integrity and ethics upheld across the entity - not assessed - no attestation at input.soc2.attestations[\"CC1.1\"]; this organisational criterion is met only by {attested: true, by, date}" in r.violations
 	some v in r.violations
 	startswith(v, "SOC 2 scope: evidence missing - input.soc2.categories_in_scope")
 }
@@ -151,7 +151,7 @@ test_two_failed_facts_fail_one_criterion_once if {
 	r.compliant == false
 	r.failed_controls == 1
 	r.failed_criteria == ["CC6.1"]
-	"SOC 2 CC6.1: Logical access security over protected information assets - fail - input.access_controls.shared_accounts is a list of 1, required an empty list; input.network_security.firewalls.configured is false, required true" in r.violations
+	"SOC 2 CC6.1: Logical access to protected systems and data controlled - fail - input.access_controls.shared_accounts is a list of 1, required an empty list; input.network_security.firewalls.configured is false, required true" in r.violations
 }
 
 # A supplied fact that fails outranks a missing one: the criterion is a fail, and both are reported.
@@ -241,7 +241,7 @@ test_control_results_in_natural_order if {
 	ids[48] == "P7.1"
 }
 
-test_titles_are_paraphrases_without_aicpa_text if {
+test_titles_are_short if {
 	every _, c in cc.criteria {
 		count(c.title) <= 100
 	}
@@ -333,5 +333,5 @@ test_in_scope_criterion_failure_is_reported_by_id if {
 	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
 	r.compliant == false
 	"A1.3" in r.failed_criteria
-	"SOC 2 A1.3: Recovery plan tested - not assessed - evidence missing: input.backup.recovery_testing.frequency_days, input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not of the expected type" in r.violations
+	"SOC 2 A1.3: Recovery testing carried out - not assessed - evidence missing: input.backup.recovery_testing.frequency_days, input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not of the expected type" in r.violations
 }

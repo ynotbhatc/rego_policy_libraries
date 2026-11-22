@@ -55,9 +55,9 @@ common_criteria_total := 33
 #   min_commitment      number >= input.soc2.commitments[`commitment`]
 
 criteria := {
-	"CC1.1": {"title": "Commitment to integrity and ethical values", "group": "CC1 control environment", "category": "security", "basis": "attestation"},
+	"CC1.1": {"title": "Integrity and ethics upheld across the entity", "group": "CC1 control environment", "category": "security", "basis": "attestation"},
 	"CC1.2": {
-		"title": "Board independence and oversight of internal control", "group": "CC1 control environment", "category": "security", "basis": "attestation",
+		"title": "Board independent of management and overseeing controls", "group": "CC1 control environment", "category": "security", "basis": "attestation",
 		"facts": [
 			{"path": "soc2.control_environment.governance.board_oversight", "test": "true"},
 			{"path": "soc2.control_environment.governance.management_philosophy", "test": "true"},
@@ -65,9 +65,9 @@ criteria := {
 			{"path": "soc2.control_environment.competence.defined_roles", "test": "true"},
 		],
 	},
-	"CC1.3": {"title": "Structures, reporting lines and authorities set by management", "group": "CC1 control environment", "category": "security", "basis": "attestation"},
+	"CC1.3": {"title": "Reporting lines and authority defined", "group": "CC1 control environment", "category": "security", "basis": "attestation"},
 	"CC1.4": {
-		"title": "Commitment to attract, develop and retain competent people", "group": "CC1 control environment", "category": "security", "basis": "attestation",
+		"title": "Competent staff hired, developed and kept", "group": "CC1 control environment", "category": "security", "basis": "attestation",
 		"facts": [
 			{"path": "soc2.human_resources.background_checks", "test": "true"},
 			{"path": "soc2.human_resources.training_programs", "test": "true"},
@@ -75,13 +75,13 @@ criteria := {
 			{"path": "soc2.human_resources.disciplinary_procedures", "test": "true"},
 		],
 	},
-	"CC1.5": {"title": "People held accountable for their internal control duties", "group": "CC1 control environment", "category": "security", "basis": "attestation"},
-	"CC2.1": {"title": "Relevant, quality information obtained or produced for internal control", "group": "CC2 communication and information", "category": "security", "basis": "attestation"},
-	"CC2.2": {"title": "Internal communication of control objectives and responsibilities", "group": "CC2 communication and information", "category": "security", "basis": "attestation"},
-	"CC2.3": {"title": "Communication with outside parties on matters affecting internal control", "group": "CC2 communication and information", "category": "security", "basis": "attestation"},
-	"CC3.1": {"title": "Objectives stated clearly enough to identify and assess risks", "group": "CC3 risk assessment", "category": "security", "basis": "attestation"},
+	"CC1.5": {"title": "Control responsibilities enforced", "group": "CC1 control environment", "category": "security", "basis": "attestation"},
+	"CC2.1": {"title": "Quality information supports internal control", "group": "CC2 communication and information", "category": "security", "basis": "attestation"},
+	"CC2.2": {"title": "Control duties communicated inside the entity", "group": "CC2 communication and information", "category": "security", "basis": "attestation"},
+	"CC2.3": {"title": "Control matters communicated to outside parties", "group": "CC2 communication and information", "category": "security", "basis": "attestation"},
+	"CC3.1": {"title": "Objectives clear enough for risk assessment", "group": "CC3 risk assessment", "category": "security", "basis": "attestation"},
 	"CC3.2": {
-		"title": "Risks to objectives identified and analysed", "group": "CC3 risk assessment", "category": "security", "basis": "attestation",
+		"title": "Risk identification and analysis", "group": "CC3 risk assessment", "category": "security", "basis": "attestation",
 		"facts": [
 			{"path": "soc2.risk_management.risk_assessment.periodic", "test": "true"},
 			{"path": "soc2.risk_management.risk_assessment.methodology.defined", "test": "true"},
@@ -92,15 +92,15 @@ criteria := {
 			{"path": "soc2.risk_management.escalation.procedures.defined", "test": "true"},
 		],
 	},
-	"CC3.3": {"title": "Fraud potential considered when assessing risks", "group": "CC3 risk assessment", "category": "security", "basis": "attestation"},
-	"CC3.4": {"title": "Changes that could weaken internal control identified and assessed", "group": "CC3 risk assessment", "category": "security", "basis": "attestation"},
-	"CC4.1": {"title": "Ongoing or separate evaluations of the control components", "group": "CC4 monitoring activities", "category": "security", "basis": "attestation"},
-	"CC4.2": {"title": "Control deficiencies evaluated and reported for corrective action", "group": "CC4 monitoring activities", "category": "security", "basis": "attestation"},
-	"CC5.1": {"title": "Control activities chosen and built to reduce risks", "group": "CC5 control activities", "category": "security", "basis": "attestation"},
-	"CC5.2": {"title": "General control activities over technology chosen and built", "group": "CC5 control activities", "category": "security", "basis": "attestation"},
-	"CC5.3": {"title": "Control activities put in place through policies and procedures", "group": "CC5 control activities", "category": "security", "basis": "attestation"},
+	"CC3.3": {"title": "Fraud risk weighed", "group": "CC3 risk assessment", "category": "security", "basis": "attestation"},
+	"CC3.4": {"title": "Changes affecting controls assessed", "group": "CC3 risk assessment", "category": "security", "basis": "attestation"},
+	"CC4.1": {"title": "Control components evaluated", "group": "CC4 monitoring activities", "category": "security", "basis": "attestation"},
+	"CC4.2": {"title": "Control deficiencies reported and fixed", "group": "CC4 monitoring activities", "category": "security", "basis": "attestation"},
+	"CC5.1": {"title": "Control activities that reduce risk", "group": "CC5 control activities", "category": "security", "basis": "attestation"},
+	"CC5.2": {"title": "Technology general controls in place", "group": "CC5 control activities", "category": "security", "basis": "attestation"},
+	"CC5.3": {"title": "Controls deployed via policy and procedure", "group": "CC5 control activities", "category": "security", "basis": "attestation"},
 	"CC6.1": {
-		"title": "Logical access security over protected information assets", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "Logical access to protected systems and data controlled", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "access_controls.privileged_users", "test": "all_true", "fields": ["mfa_enabled"], "nonempty": true},
 			{"path": "access_controls.shared_accounts", "test": "empty"},
@@ -115,7 +115,7 @@ criteria := {
 		],
 	},
 	"CC6.2": {
-		"title": "Users registered and authorised before credentials are issued; access removed and reviewed", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "User access granted on approval, removed and reviewed", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "user_management.automated_provisioning", "test": "true"},
 			{"path": "user_management.automated_deprovisioning", "test": "true"},
@@ -126,23 +126,23 @@ criteria := {
 		],
 	},
 	"CC6.3": {
-		"title": "Access granted, changed and removed by role with least privilege", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "Role-based, least-privilege access", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "access_controls.role_based_access", "test": "true"},
 			{"path": "access_controls.least_privilege_principle", "test": "true"},
 			{"path": "access_controls.regular_access_reviews", "test": "true"},
 		],
 	},
-	"CC6.4": {"title": "Physical access to facilities and protected assets restricted", "group": "CC6 logical and physical access", "category": "security", "basis": "attestation"},
+	"CC6.4": {"title": "Physical access restricted", "group": "CC6 logical and physical access", "category": "security", "basis": "attestation"},
 	"CC6.5": {
-		"title": "Protection kept until disposed assets can no longer yield data", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "Data protected until asset disposal", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "data_disposal.procedures.documented", "test": "true"},
 			{"path": "data_disposal.verification.completion_verified", "test": "true"},
 		],
 	},
 	"CC6.6": {
-		"title": "Logical access measures against threats from outside the system boundary", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "Access from outside the system boundary protected", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "remote_access.vpn_required", "test": "true"},
 			{"path": "remote_access.vpn_encryption.enabled", "test": "true"},
@@ -151,7 +151,7 @@ criteria := {
 		],
 	},
 	"CC6.7": {
-		"title": "Transmission, movement and removal of information limited and protected", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "Information protected in transit and on removal", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "encryption.in_transit.enabled", "test": "true"},
 			{"path": "encryption.in_transit.cipher_suites.strong_only", "test": "true"},
@@ -159,14 +159,14 @@ criteria := {
 		],
 	},
 	"CC6.8": {
-		"title": "Unauthorised or malicious software prevented or detected", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
+		"title": "Malicious and unauthorised software blocked or found", "group": "CC6 logical and physical access", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "security.edr.coverage.comprehensive", "test": "true"},
 			{"path": "security.edr.detection.behavioral", "test": "true"},
 		],
 	},
 	"CC7.1": {
-		"title": "Configuration changes and new vulnerabilities detected", "group": "CC7 system operations", "category": "security", "basis": "evidence",
+		"title": "Configuration drift and vulnerabilities detected", "group": "CC7 system operations", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "soc2.configuration_management.baseline.established", "test": "true"},
 			{"path": "soc2.configuration_management.unauthorized_changes.detection", "test": "true"},
@@ -175,7 +175,7 @@ criteria := {
 		],
 	},
 	"CC7.2": {
-		"title": "System components monitored for anomalies that point to attacks or errors", "group": "CC7 system operations", "category": "security", "basis": "evidence",
+		"title": "Systems watched for signs of attack or error", "group": "CC7 system operations", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "access_controls.access_logging.enabled", "test": "true"},
 			{"path": "access_controls.access_logging.includes_failed_attempts", "test": "true"},
@@ -190,9 +190,9 @@ criteria := {
 			{"path": "soc2.logging.review.regular", "test": "true"},
 		],
 	},
-	"CC7.3": {"title": "Security events evaluated to decide whether they are incidents", "group": "CC7 system operations", "category": "security", "basis": "attestation"},
+	"CC7.3": {"title": "Security events triaged to find incidents", "group": "CC7 system operations", "category": "security", "basis": "attestation"},
 	"CC7.4": {
-		"title": "Security incidents answered by a defined response programme", "group": "CC7 system operations", "category": "security", "basis": "attestation",
+		"title": "Incident response programme operated", "group": "CC7 system operations", "category": "security", "basis": "attestation",
 		"facts": [
 			{"path": "soc2.incident_response.program.established", "test": "true"},
 			{"path": "soc2.incident_response.team.defined", "test": "true"},
@@ -200,9 +200,9 @@ criteria := {
 			{"path": "soc2.incident_response.testing.regular", "test": "true"},
 		],
 	},
-	"CC7.5": {"title": "Recovery from identified security incidents", "group": "CC7 system operations", "category": "security", "basis": "attestation"},
+	"CC7.5": {"title": "Return to normal operation after an incident", "group": "CC7 system operations", "category": "security", "basis": "attestation"},
 	"CC8.1": {
-		"title": "Changes authorised, designed, tested, approved and put in place under control", "group": "CC8 change management", "category": "security", "basis": "evidence",
+		"title": "Changes controlled from request to release", "group": "CC8 change management", "category": "security", "basis": "evidence",
 		"facts": [
 			{"path": "soc2.change_management.process.documented", "test": "true"},
 			{"path": "soc2.change_management.approval.required", "test": "true"},
@@ -214,7 +214,7 @@ criteria := {
 		],
 	},
 	"CC9.1": {
-		"title": "Risks of business disruption identified and reduced", "group": "CC9 risk mitigation", "category": "security", "basis": "attestation",
+		"title": "Business disruption risk reduced", "group": "CC9 risk mitigation", "category": "security", "basis": "attestation",
 		"facts": [
 			{"path": "soc2.business_continuity.plan.documented", "test": "true"},
 			{"path": "soc2.business_continuity.testing.annual", "test": "true"},
@@ -223,7 +223,7 @@ criteria := {
 		],
 	},
 	"CC9.2": {
-		"title": "Risks from vendors and business partners assessed and managed", "group": "CC9 risk mitigation", "category": "security", "basis": "attestation",
+		"title": "Vendor and partner risk handled", "group": "CC9 risk mitigation", "category": "security", "basis": "attestation",
 		"facts": [
 			{"path": "soc2.vendor_management.due_diligence.performed", "test": "true"},
 			{"path": "soc2.vendor_management.contracts.security_requirements", "test": "true"},
@@ -233,7 +233,7 @@ criteria := {
 		],
 	},
 	"A1.1": {
-		"title": "Capacity monitored and planned to meet availability commitments", "group": "A1 availability", "category": "availability", "basis": "evidence",
+		"title": "Capacity planned and monitored", "group": "A1 availability", "category": "availability", "basis": "evidence",
 		"facts": [
 			{"path": "capacity_management.monitoring.enabled", "test": "true"},
 			{"path": "capacity_management.forecasting.enabled", "test": "true"},
@@ -242,7 +242,7 @@ criteria := {
 		],
 	},
 	"A1.2": {
-		"title": "Backup and recovery infrastructure in place", "group": "A1 availability", "category": "availability", "basis": "evidence",
+		"title": "Backups and recovery infrastructure", "group": "A1 availability", "category": "availability", "basis": "evidence",
 		"facts": [
 			{"path": "backup.automated_backups.enabled", "test": "true"},
 			{"path": "backup.offsite_storage.enabled", "test": "true"},
@@ -250,11 +250,11 @@ criteria := {
 		],
 	},
 	"A1.3": {
-		"title": "Recovery plan tested", "group": "A1 availability", "category": "availability", "basis": "evidence",
+		"title": "Recovery testing carried out", "group": "A1 availability", "category": "availability", "basis": "evidence",
 		"facts": [{"path": "backup.recovery_testing.frequency_days", "test": "max_commitment", "commitment": "recovery_test_interval_days"}],
 	},
 	"C1.1": {
-		"title": "Confidential information identified and kept confidential", "group": "C1 confidentiality", "category": "confidentiality", "basis": "evidence",
+		"title": "Confidential data identified and protected", "group": "C1 confidentiality", "category": "confidentiality", "basis": "evidence",
 		"facts": [
 			{"path": "data_classification.system_defined", "test": "true"},
 			{"path": "data_classification.categories.confidential.defined", "test": "true"},
@@ -263,14 +263,14 @@ criteria := {
 		],
 	},
 	"C1.2": {
-		"title": "Confidential information disposed of as committed", "group": "C1 confidentiality", "category": "confidentiality", "basis": "evidence",
+		"title": "Confidential data disposed of", "group": "C1 confidentiality", "category": "confidentiality", "basis": "evidence",
 		"facts": [
 			{"path": "data_disposal.procedures.documented", "test": "true"},
 			{"path": "data_disposal.verification.completion_verified", "test": "true"},
 		],
 	},
 	"PI1.2": {
-		"title": "System inputs complete and accurate", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
+		"title": "Input validation", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
 		"facts": [
 			{"path": "data_processing.input_validation.enabled", "test": "true"},
 			{"path": "data_processing.input_validation.data_type_checking", "test": "true"},
@@ -279,7 +279,7 @@ criteria := {
 		],
 	},
 	"PI1.3": {
-		"title": "Processing complete, accurate and authorised", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
+		"title": "Processing authorised and traced", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
 		"facts": [
 			{"path": "data_processing.authorization.required", "test": "true"},
 			{"path": "data_processing.authorization.audit_trail", "test": "true"},
@@ -288,7 +288,7 @@ criteria := {
 		],
 	},
 	"P3.1": {
-		"title": "Personal information collected for the stated purposes", "group": "P3 collection", "category": "privacy", "basis": "evidence",
+		"title": "Collection limited to stated purposes", "group": "P3 collection", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.collection.policy_documented", "test": "true"},
 			{"path": "privacy.collection.purpose_limitation", "test": "true"},
@@ -296,43 +296,43 @@ criteria := {
 		],
 	},
 	"P3.2": {
-		"title": "Explicit consent obtained where required", "group": "P3 collection", "category": "privacy", "basis": "evidence",
+		"title": "Explicit consent recorded", "group": "P3 collection", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.consent.explicit_consent_required", "test": "true"},
 			{"path": "privacy.consent.consent_tracking.enabled", "test": "true"},
 		],
 	},
 	"P4.1": {
-		"title": "Personal information used only for the stated purposes", "group": "P4 use, retention and disposal", "category": "privacy", "basis": "evidence",
+		"title": "Use limited to stated purposes", "group": "P4 use, retention and disposal", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.use.purpose_limitation", "test": "true"},
 			{"path": "privacy.use.compatible_use_only", "test": "true"},
 		],
 	},
 	"P4.2": {
-		"title": "Personal information retained as committed", "group": "P4 use, retention and disposal", "category": "privacy", "basis": "evidence",
+		"title": "Retention schedules applied", "group": "P4 use, retention and disposal", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.retention.policies_documented", "test": "true"},
 			{"path": "privacy.retention.retention_schedules.defined", "test": "true"},
 		],
 	},
 	"P5.1": {
-		"title": "Data subjects can see their personal information", "group": "P5 access", "category": "privacy", "basis": "evidence",
+		"title": "Data subject access", "group": "P5 access", "category": "privacy", "basis": "evidence",
 		"facts": [{"path": "privacy.data_subject_rights.access_request.supported", "test": "true"}],
 	},
 	"P5.2": {
-		"title": "Data subjects can have their personal information corrected", "group": "P5 access", "category": "privacy", "basis": "evidence",
+		"title": "Data subject correction", "group": "P5 access", "category": "privacy", "basis": "evidence",
 		"facts": [{"path": "privacy.data_subject_rights.rectification.supported", "test": "true"}],
 	},
 	"P6.1": {
-		"title": "Disclosure to third parties limited to stated purposes and consent", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
+		"title": "Third-party disclosure controlled", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.third_party_sharing.documented_agreements", "test": "true"},
 			{"path": "privacy.third_party_sharing.due_diligence_performed", "test": "true"},
 		],
 	},
 	"P6.6": {
-		"title": "Breaches notified to affected parties as committed", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
+		"title": "Breach notification within commitments", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.breach_notification.procedures_documented", "test": "true"},
 			{"path": "privacy.breach_notification.timeline_compliance.authorities", "test": "max_commitment", "commitment": "breach_notice_hours_authorities"},
@@ -340,7 +340,7 @@ criteria := {
 		],
 	},
 	"P7.1": {
-		"title": "Personal information kept accurate, complete and relevant", "group": "P7 quality", "category": "privacy", "basis": "evidence",
+		"title": "Personal data quality maintained", "group": "P7 quality", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.data_quality.accuracy_verification", "test": "true"},
 			{"path": "privacy.data_quality.correction_procedures", "test": "true"},
