@@ -8,6 +8,11 @@ build_site.figures(), the same README line and docs/metrics.json that CI verifie
 Walks the policy directories, counts non-test .rego files per framework, and emits a
 browse-by-standard catalog with live coverage counts and one-click links to each module.
 Run from the repo root:  python3 scripts/gen_pages_catalog.py
+                         python3 scripts/gen_pages_catalog.py --check   # writes nothing; fails when a policy
+                         # tree is in no section or the section counts do not add up to the README policy count
+
+Every count on the page is policy files (scripts/rego_ast.policy_files, the README's definition), and the
+sections must add up to the headline: reconcile() stops the build otherwise.
 
 The counts are read from the working tree, so the published catalog stays current: run
 this in CI or before a release and commit the regenerated index.html.
@@ -68,46 +73,112 @@ def label(name):
     return " ".join(out)
 
 
+def _policy_files():
+    """Every policy file, by the one definition the README count uses (scripts/rego_ast.policy_files: no tests,
+    no tests/ directories, no converters/). The catalog counted with its own walk before, which is how its
+    sections came to add up to less than the headline."""
+    from rego_ast import policy_files
+    return list(policy_files("."))
+
+
+_POLICIES = None
+
+
 def count_policies(path):
-    if not os.path.isdir(path):
-        return 0
-    n = 0
-    for root, _, files in os.walk(path):
-        for f in files:
-            if f.endswith(".rego") and not f.startswith("test_") and not f.endswith("_test.rego"):
-                n += 1
-    return n
+    """Policy files under path (a directory, counted recursively)."""
+    global _POLICIES
+    if _POLICIES is None:
+        _POLICIES = _policy_files()
+    prefix = str(path).rstrip("/") + "/"
+    return sum(1 for rel in _POLICIES if rel.startswith(prefix))
 
 
 def children(base):
+    """(label, policy files, path) per sub-directory of base that holds policy files, plus one row for policy
+    files that sit directly in base, so a section's rows always add up to count_policies(base)."""
     if not os.path.isdir(base):
         return []
     rows = []
     for d in sorted(os.listdir(base)):
         full = os.path.join(base, d)
-        if not os.path.isdir(full) or d.startswith("_") or d.startswith("."):
+        if not os.path.isdir(full) or d.startswith(".") or d == "tests":
             continue
         c = count_policies(full)
         if c > 0:
-            rows.append((label(d), c, full))
+            rows.append((label(d.lstrip("_")), c, full))
+    loose = count_policies(base) - sum(c for _, c, _ in rows)
+    if loose > 0:
+        rows.append((label(os.path.basename(base)), loose, base))
     return sorted(rows, key=lambda r: -r[1])
 
 
+def section_rows(base):
+    """Rows of one section. base is a directory (one row per sub-directory) or a list of (name, directory)
+    pairs for a section that gathers several small trees (one row per tree)."""
+    if isinstance(base, str):
+        return children(base)
+    return sorted(((name, count_policies(d), d) for name, d in base if count_policies(d) > 0), key=lambda r: -r[1])
+
+
+def section_dirs(base):
+    return [base] if isinstance(base, str) else [d for _, d in base]
+
+
+# Every top-level policy tree must be in exactly one section: reconcile() fails the site build when a
+# directory is added without one, so the per-section counts always add up to the headline policy count.
 SECTIONS = [
     ("CIS Benchmarks", "OS, cloud, container, database & network hardening", "benchmarks/cis"),
     ("DISA STIGs", "DoD Security Technical Implementation Guides", "benchmarks/stig"),
+    ("Federal & Kubernetes Hardening Baselines", "CISA SCuBA for Microsoft 365, NSA/CISA Kubernetes hardening, Pod Security Standards",
+     [("CISA SCuBA M365", "benchmarks/scuba"), ("NSA/CISA Kubernetes Hardening", "benchmarks/nsa_cisa"),
+      ("Kubernetes Pod Security Standards", "benchmarks/pss")]),
+    ("Software Supply Chain", "SLSA, S2C2F, SSDF, NIST SP 800-161 overlays", "benchmarks/supply_chain"),
+    ("Application Suite Baselines", "SAP Security Baseline (ABAP)", "benchmarks/sap"),
     ("Federal (US)", "NIST, FISMA, FedRAMP, CMMC, CISA CPG", "frameworks/federal"),
     ("Critical Infrastructure / OT", "NERC-CIP, IEC 62443, AMI, TSA Pipeline, NIST 800-82", "frameworks/critical_infrastructure"),
     ("Management Systems", "ISO 27001, SOC 2, CSA CCM, COBIT", "frameworks/management"),
-    ("Financial", "PCI-DSS, SOX, GLBA", "frameworks/financial"),
+    ("Financial", "PCI-DSS, SOX, DORA, GLBA, NY DFS, SEC, SWIFT", "frameworks/financial"),
     ("Privacy", "GDPR, HIPAA, CCPA/CPRA, ISO 27701", "frameworks/privacy"),
-    ("Sector & Regional", "DORA, NIS2, NCSC CAF, NY DFS, SEC, SWIFT", "frameworks/compliance"),
+    ("EU & UK Cyber Regulation", "NIS2, Cyber Resilience Act, NCSC CAF", "frameworks/compliance"),
+    ("Regional", "BSI C5, ACSC Essential Eight, UK Cyber Essentials, UK MoD DCC, CERT-In, METI", "frameworks/regional"),
     ("Regulatory", "ITAR and other regulatory regimes", "frameworks/regulatory"),
     ("Digital Sovereignty", "Data residency and sovereignty domains", "frameworks/sovereignty"),
     ("AI & MCP Governance", "EU AI Act, ISO 42001, agent authorization, MCP tool-call gating", "governance"),
     ("Enforcement Gates", "Ansible, Terraform, Dockerfile, Kubernetes, CI/CD, SLSA", "enforcement"),
+    ("Crosswalks", "Control correlation between frameworks (STIG to NIST SP 800-53, framework overlays)", "crosswalk"),
     ("Threat Detection", "Behavioral detection policies", "threat_detection"),
 ]
+
+
+def reconcile(headline=None):
+    """Return a list of problems: policy files no section lists, a file listed twice, section rows that do not
+    add up, or a section sum that differs from the headline policy count (the README figure CI verifies)."""
+    global _POLICIES
+    if _POLICIES is None:
+        _POLICIES = _policy_files()
+    problems = []
+    dirs = [d.rstrip("/") + "/" for _, _, base in SECTIONS for d in section_dirs(base)]
+    claimed = {rel: [d for d in dirs if rel.startswith(d)] for rel in _POLICIES}
+    orphans = sorted(rel for rel, ds in claimed.items() if not ds)
+    twice = sorted(rel for rel, ds in claimed.items() if len(ds) > 1)
+    if orphans:
+        trees = sorted({"/".join(rel.split("/")[:2]) for rel in orphans})
+        problems.append(f"{len(orphans)} policy file(s) are in no catalog section; add a section for: {', '.join(trees)}")
+    if twice:
+        problems.append(f"{len(twice)} policy file(s) are in more than one catalog section, e.g. {twice[0]}")
+    total = 0
+    for title, _, base in SECTIONS:
+        rows_sum = sum(c for _, c, _ in section_rows(base))
+        want = sum(count_policies(d) for d in section_dirs(base))
+        total += rows_sum
+        if rows_sum != want:
+            problems.append(f"section {title!r}: its rows add up to {rows_sum}, its directories hold {want}")
+    if total != len(_POLICIES):
+        problems.append(f"catalog sections add up to {total}, the tree holds {len(_POLICIES)} policy files")
+    if headline is not None and total != headline:
+        problems.append(f"catalog sections add up to {total}, the published headline says {headline} "
+                        "(README count line; run scripts/count_controls.py --check-readme)")
+    return problems
 
 
 def main():
@@ -117,13 +188,24 @@ def main():
     os.chdir(pathlib.Path(__file__).resolve().parent.parent)
     fig = figures()
     total, checks = fig["files"], fig["checks"]
+    if "--check" in sys.argv:
+        # no files written: only that every policy file is in exactly one section and the sections add up
+        problems = reconcile(int(str(total).replace(",", "")))
+        if problems:
+            sys.exit("catalog sections do not reconcile with the policy count:\n  " + "\n  ".join(problems))
+        print(f"catalog sections reconcile: {len(SECTIONS)} sections add up to {total} policy files")
+        return
     stig_platforms = fig["stig_platforms"] or str(len(children("benchmarks/stig")))
-    framework_count = sum(len(children(b)) for _, _, b in SECTIONS)
+    framework_count = sum(len(section_rows(b)) for _, _, b in SECTIONS)
+    # the per-section counts are the same unit as the headline (policy files) and must add up to it
+    problems = reconcile(int(str(total).replace(",", "")))
+    if problems:
+        sys.exit("scripts/gen_pages_catalog.py: catalog counts do not reconcile:\n  " + "\n  ".join(problems))
 
     label_rows = coverage_labels()   # one badge per card: the coverage label of the framework keys under it
     cards = []
     for title, blurb, base in SECTIONS:
-        rows = children(base)
+        rows = section_rows(base)
         if not rows:
             continue
         sect_total = sum(c for _, c, _ in rows)
@@ -233,6 +315,7 @@ def main():
         <div class="stat"><b>{stig_platforms}</b><span>DISA STIG platforms</span></div>
         <div class="stat"><b>v1</b><span>Rego syntax</span></div>
       </div>
+      <p class="tag" style="font-size:.85em;margin:12px 0 0">The number beside each standard and section is policy files (tests excluded); the {len(cards)} sections add up to the {total} policies above.</p>
       <div class="cta">
         <a href="https://github.com/{REPO}">GitHub repo</a>
         <a class="ghost" href="https://github.com/{REPO}/blob/{BRANCH}/README.md">README</a>
