@@ -2,14 +2,15 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/fedramp/schema.json",
  "title": "Input facts for fedramp",
- "description": "Input paths referenced in the sources of frameworks/federal/fedramp/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/federal/fedramp/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "fedramp",
  "x-entrypoint": "data.fedramp.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/federal/fedramp/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.fedramp.benchmark_test._low",
  "type": "object",
  "properties": {
   "assessment_date": {
@@ -17,70 +18,331 @@
   },
   "authorization": {
    "description": "Read in fedramp_main.rego.",
+   "type": "object",
    "properties": {
+    "assessed_by_3pao": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "authorization_type": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "P-ATO"
+     ]
+    },
     "fedramp_authorized": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "last_3pao_assessment_days": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      200
+     ]
     }
    }
   },
   "cloud_service": {
    "description": "Read in fedramp_main.rego.",
+   "type": "object",
    "properties": {
     "incident_response_plan_approved": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "penetration_test_annual": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "redundant_processing": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "continuous_monitoring": {
-   "description": "Read in fedramp_main.rego."
+   "description": "Read in fedramp_main.rego.",
+   "type": "object",
+   "properties": {
+    "critical_vulnerabilities_open_days": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      3
+     ]
+    },
+    "database_scan_enabled": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "high_vulnerabilities_open_days": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      12
+     ]
+    },
+    "last_vulnerability_scan_days": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      10
+     ]
+    },
+    "low_vulnerabilities_open_days": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      100
+     ]
+    },
+    "moderate_vulnerabilities_open_days": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      45
+     ]
+    },
+    "monthly_ato_report_submitted": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "monthly_os_scan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "monthly_vulnerability_scans": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "program_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "web_app_scan_enabled": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
   },
   "cryptography": {
    "description": "Read in fedramp_main.rego.",
+   "type": "object",
    "properties": {
     "algorithms_in_use": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "AES-256"
+      ]
+     },
+     "examples": [
+      [
+       "AES-256",
+       "SHA-384"
+      ]
+     ]
     },
     "fips_140_validated": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "data_residency": {
    "description": "Read in fedramp_main.rego.",
+   "type": "object",
    "properties": {
+    "processing_locations": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "region": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "us-gov-east-1"
+        ]
+       },
+       "us_territory": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    },
+    "storage_locations": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "region": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "us-gov-west-1"
+        ]
+       },
+       "us_territory": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    },
     "us_only_required": {
      "description": "Read in fedramp_main.rego."
     }
    }
   },
+  "findings": {
+   "description": "Read in fedramp_main.rego."
+  },
   "impact_level": {
-   "description": "Read in fedramp_main.rego, fedramp_main_adapter.rego."
+   "description": "Read in fedramp_main.rego, fedramp_main_adapter.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "low"
+   ]
   },
   "personnel": {
-   "description": "Read in fedramp_main.rego."
+   "description": "Read in fedramp_main.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "admin_access": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "background_check_completed": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ops1"
+      ]
+     }
+    }
+   }
   },
   "personnel_requirements": {
    "description": "Read in fedramp_main.rego.",
+   "type": "object",
    "properties": {
     "us_persons_required_for_admin": {
      "description": "Read in fedramp_main.rego."
     }
    }
   },
+  "reports": {
+   "description": "Read in fedramp_main.rego."
+  },
   "supply_chain": {
    "description": "Read in fedramp_main.rego.",
+   "type": "object",
    "properties": {
     "risk_management_plan": {
-     "description": "Read in fedramp_main.rego."
+     "description": "Read in fedramp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   }
@@ -89,6 +351,8 @@
  "x-known-paths": [
   "assessment_date",
   "authorization",
+  "authorization.assessed_by_3pao",
+  "authorization.authorization_type",
   "authorization.fedramp_authorized",
   "authorization.last_3pao_assessment_days",
   "cloud_service",
@@ -96,15 +360,37 @@
   "cloud_service.penetration_test_annual",
   "cloud_service.redundant_processing",
   "continuous_monitoring",
+  "continuous_monitoring.critical_vulnerabilities_open_days",
+  "continuous_monitoring.database_scan_enabled",
+  "continuous_monitoring.high_vulnerabilities_open_days",
+  "continuous_monitoring.last_vulnerability_scan_days",
+  "continuous_monitoring.low_vulnerabilities_open_days",
+  "continuous_monitoring.moderate_vulnerabilities_open_days",
+  "continuous_monitoring.monthly_ato_report_submitted",
+  "continuous_monitoring.monthly_os_scan",
+  "continuous_monitoring.monthly_vulnerability_scans",
+  "continuous_monitoring.program_documented",
+  "continuous_monitoring.web_app_scan_enabled",
   "cryptography",
   "cryptography.algorithms_in_use",
   "cryptography.fips_140_validated",
   "data_residency",
+  "data_residency.processing_locations",
+  "data_residency.processing_locations[].region",
+  "data_residency.processing_locations[].us_territory",
+  "data_residency.storage_locations",
+  "data_residency.storage_locations[].region",
+  "data_residency.storage_locations[].us_territory",
   "data_residency.us_only_required",
+  "findings",
   "impact_level",
   "personnel",
+  "personnel[].admin_access",
+  "personnel[].background_check_completed",
+  "personnel[].name",
   "personnel_requirements",
   "personnel_requirements.us_persons_required_for_admin",
+  "reports",
   "supply_chain",
   "supply_chain.risk_management_plan"
  ]
