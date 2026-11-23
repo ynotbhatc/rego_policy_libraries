@@ -250,11 +250,23 @@ cip_senior_manager_approved if {
 }
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": "R3", "path": "supply_chain_plan.last_review_date", "value": object.get(input, ["supply_chain_plan", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R3",
+	"path": "supply_chain_plan.last_review_date",
+	"value": object.get(input, ["supply_chain_plan", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R3", "path": "supply_chain_plan.approval_date", "value": object.get(input, ["supply_chain_plan", "approval_date"], null)}
+dated_evidence contains {
+	"requirement": "R3",
+	"path": "supply_chain_plan.approval_date",
+	"value": object.get(input, ["supply_chain_plan", "approval_date"], null),
+}
 
-dated_evidence contains {"requirement": "R1.1", "path": sprintf("vendor_risk_assessments[%v].completion_date", [vendor.vendor_id]), "value": object.get(input, ["vendor_risk_assessments", vendor.vendor_id, "completion_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R1.1",
+	"path": sprintf("vendor_risk_assessments[%v].completion_date", [vendor.vendor_id]),
+	"value": object.get(input, ["vendor_risk_assessments", vendor.vendor_id, "completion_date"], null),
+} if {
 	some vendor in input.vendors
 	vendor.criticality_level in ["high", "medium"]
 	input.vendor_risk_assessments[vendor.vendor_id].completed == true

@@ -90,6 +90,9 @@ test_no_label_outside_r1 if {
 	every r in only_requirements({}) {
 		r in {"R1", "R1.1", "R1.2", "R1.3", "R1.4", "R1.5"}
 	}
+}
+
+test_every_part_reports_on_empty_input if {
 	{"R1.1", "R1.2", "R1.3", "R1.4", "R1.5"} & only_requirements({}) == {"R1.1", "R1.2", "R1.3", "R1.4", "R1.5"}
 }
 
@@ -129,8 +132,8 @@ test_part_1_5_responsibilities if {
 
 test_part_1_5_undeclared_is_not_same_entity if {
 	undeclared := json.remove(good, ["/control_center_communications/links/0/other_entity_operated"])
-	untyped := link_patch("other_entity_operated", "no")
 	only_requirements(undeclared) == {"R1.5"}
+	untyped := link_patch("other_entity_operated", "no")
 	only_requirements(untyped) == {"R1.5"}
 }
 
@@ -147,9 +150,12 @@ test_future_dates_are_findings if {
 		vs := c.violations with input as i with time.now_ns as now
 		count([v | some v in vs; contains(v.description, "later than the evaluation time")]) == 1
 	}
+}
+
+test_future_log_review_date_fails_the_rule if {
+	c.communication_log_review with input as good with time.now_ns as now
 	i := json.patch(good, [{"op": "replace", "path": "/communication_monitoring/last_review_date", "value": "2027-06-01T00:00:00Z"}])
 	not c.communication_log_review with input as i with time.now_ns as now
-	c.communication_log_review with input as good with time.now_ns as now
 }
 
 test_unparseable_date_is_evidence_missing if {

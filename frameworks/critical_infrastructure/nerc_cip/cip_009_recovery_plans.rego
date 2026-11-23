@@ -280,9 +280,17 @@ activation_criteria_tested if {
 }
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": "R2", "path": "recovery_plans.last_activation_test_date", "value": object.get(input, ["recovery_plans", "last_activation_test_date"], null)}
+dated_evidence contains {
+	"requirement": "R2",
+	"path": "recovery_plans.last_activation_test_date",
+	"value": object.get(input, ["recovery_plans", "last_activation_test_date"], null),
+}
 
-dated_evidence contains {"requirement": e.requirement, "path": sprintf("%s[%v].%s", [e.collection, system.system_id, e.field]), "value": object.get(input, [e.collection, system.system_id, e.field], null)} if {
+dated_evidence contains {
+	"requirement": e.requirement,
+	"path": sprintf("%s[%v].%s", [e.collection, system.system_id, e.field]),
+	"value": object.get(input, [e.collection, system.system_id, e.field], null),
+} if {
 	some system in input.bes_cyber_systems
 	system.impact_categorization in ["high", "medium"]
 	some e in [
@@ -292,7 +300,11 @@ dated_evidence contains {"requirement": e.requirement, "path": sprintf("%s[%v].%
 	]
 }
 
-dated_evidence contains {"requirement": "R3.1", "path": sprintf("qualifying_recovery_events[%v].%s", [object.get(event, "event_id", i), field]), "value": object.get(event, field, null)} if {
+dated_evidence contains {
+	"requirement": "R3.1",
+	"path": sprintf("qualifying_recovery_events[%v].%s", [object.get(event, "event_id", i), field]),
+	"value": object.get(event, field, null),
+} if {
 	some i, event in input.qualifying_recovery_events
 	event.plan_review_triggered == true
 	some field in ["event_date", "plan_review_completion_date"]

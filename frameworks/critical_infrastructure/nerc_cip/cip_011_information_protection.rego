@@ -165,7 +165,11 @@ bcsi_review_current(person) if {
 }
 
 # Dated evidence the recency check reads.
-dated_evidence contains {"requirement": "R1.2", "path": sprintf("bcsi_access_list[%v].last_review_date", [object.get(person, "person_id", i)]), "value": object.get(person, "last_review_date", null)} if {
+dated_evidence contains {
+	"requirement": "R1.2",
+	"path": sprintf("bcsi_access_list[%v].last_review_date", [object.get(person, "person_id", i)]),
+	"value": object.get(person, "last_review_date", null),
+} if {
 	some i, person in input.bcsi_access_list
 }
 

@@ -96,16 +96,16 @@ test_cip_003_9_vendor_remote_access_low_impact if {
 test_cip_003_9_undeclared_vendor_remote_access_is_evidence_missing if {
 	undeclared := {"bes_cyber_systems": main_low, "cybersecurity_organization": main_org}
 	not data.nerc_cip_main.cip_003_compliant with input as undeclared
-	v := data.nerc_cip_main.organization_violations with input as undeclared
-	count(v) == 1
-	some msg in v
-	startswith(msg, "CIP-003: evidence missing")
 
 	# No inventory is not "no low impact systems".
 	not data.nerc_cip_main.cip_003_compliant with input as {"cybersecurity_organization": main_org}
 
 	# An inventory with no low impact system: Section 6 does not apply.
 	data.nerc_cip_main.cip_003_compliant with input as {"bes_cyber_systems": [{"system_id": "H1", "impact_level": "high"}], "cybersecurity_organization": main_org}
+	v := data.nerc_cip_main.organization_violations with input as undeclared
+	count(v) == 1
+	some msg in v
+	startswith(msg, "CIP-003: evidence missing")
 }
 
 # The declared control universe is the number of violation rules in nerc_cip_main.

@@ -271,22 +271,42 @@ notification_within_1_hour(incident) if {
 }
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": "R3", "path": "incident_response_plan.last_review_date", "value": object.get(input, ["incident_response_plan", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R3",
+	"path": "incident_response_plan.last_review_date",
+	"value": object.get(input, ["incident_response_plan", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R2.1", "path": "incident_response_testing.last_test_date", "value": object.get(input, ["incident_response_testing", "last_test_date"], null)}
+dated_evidence contains {
+	"requirement": "R2.1",
+	"path": "incident_response_testing.last_test_date",
+	"value": object.get(input, ["incident_response_testing", "last_test_date"], null),
+}
 
-dated_evidence contains {"requirement": "R1", "path": sprintf("incident_response_team[%v].training.completion_date", [object.get(member, "member_id", i)]), "value": object.get(member, ["training", "completion_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R1",
+	"path": sprintf("incident_response_team[%v].training.completion_date", [object.get(member, "member_id", i)]),
+	"value": object.get(member, ["training", "completion_date"], null),
+} if {
 	some i, member in input.incident_response_team
 	member.training.completed == true
 }
 
-dated_evidence contains {"requirement": "R3.1", "path": sprintf("reportable_cyber_incidents[%v].%s", [object.get(incident, "incident_id", i), field]), "value": object.get(incident, field, null)} if {
+dated_evidence contains {
+	"requirement": "R3.1",
+	"path": sprintf("reportable_cyber_incidents[%v].%s", [object.get(incident, "incident_id", i), field]),
+	"value": object.get(incident, field, null),
+} if {
 	some i, incident in input.reportable_cyber_incidents
 	incident.plan_review_triggered == true
 	some field in ["incident_date", "plan_review_completion_date"]
 }
 
-dated_evidence contains {"requirement": "R4.2", "path": sprintf("reportable_cyber_incidents[%v].%s", [object.get(incident, "incident_id", i), field.name]), "value": field.value} if {
+dated_evidence contains {
+	"requirement": "R4.2",
+	"path": sprintf("reportable_cyber_incidents[%v].%s", [object.get(incident, "incident_id", i), field.name]),
+	"value": field.value,
+} if {
 	some i, incident in input.reportable_cyber_incidents
 	incident.nerc_notification.sent == true
 	some field in [

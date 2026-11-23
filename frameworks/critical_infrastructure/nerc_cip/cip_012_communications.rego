@@ -387,7 +387,7 @@ violations contains v if {
 		"requirement": "R1.5",
 		"severity": "medium",
 		"description": "Responsibilities between Responsible Entities not identified for one or more Control Center communication links, or other_entity_operated not declared",
-		"remediation": "State for every link whether another Responsible Entity owns or operates the far-end Control Center and, where one does, document each entity's responsibilities for Parts 1.1, 1.2 and 1.3",
+		"remediation": "State per link whether another Responsible Entity operates the far-end Control Center; where one does, document each entity's responsibilities for Parts 1.1-1.3",
 	}
 }
 
@@ -437,11 +437,23 @@ violations contains v if {
 }
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": "R1", "path": "communication_monitoring.last_review_date", "value": object.get(input, ["communication_monitoring", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R1",
+	"path": "communication_monitoring.last_review_date",
+	"value": object.get(input, ["communication_monitoring", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R1", "path": "control_center_communications.last_review_date", "value": object.get(input, ["control_center_communications", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R1",
+	"path": "control_center_communications.last_review_date",
+	"value": object.get(input, ["control_center_communications", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R1", "path": "control_center_communications.last_test_date", "value": object.get(input, ["control_center_communications", "last_test_date"], null)}
+dated_evidence contains {
+	"requirement": "R1",
+	"path": "control_center_communications.last_test_date",
+	"value": object.get(input, ["control_center_communications", "last_test_date"], null),
+}
 
 # A dated record that is absent, not a date, or later than the evaluation time
 # gets its own finding, so missing evidence is not reported as "overdue" and a
@@ -469,6 +481,7 @@ violations contains v if {
 		"remediation": sprintf("Record in input.%s the date the activity was actually completed", [e.path]),
 	}
 }
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================

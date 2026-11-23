@@ -260,9 +260,17 @@ physical_access_review_current(person) if {
 	age_days(person.physical_access_authorization.last_review_date) <= 455
 }
 
-dated_evidence contains {"requirement": "R1", "path": "physical_security_plan.last_review_date", "value": object.get(input, ["physical_security_plan", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R1",
+	"path": "physical_security_plan.last_review_date",
+	"value": object.get(input, ["physical_security_plan", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R1.2", "path": sprintf("personnel[%v].physical_access_authorization.last_review_date", [object.get(person, "person_id", i)]), "value": object.get(person, ["physical_access_authorization", "last_review_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R1.2",
+	"path": sprintf("personnel[%v].physical_access_authorization.last_review_date", [object.get(person, "person_id", i)]),
+	"value": object.get(person, ["physical_access_authorization", "last_review_date"], null),
+} if {
 	some i, person in input.personnel
 	person.access_level == "authorized_unescorted_physical_access"
 }

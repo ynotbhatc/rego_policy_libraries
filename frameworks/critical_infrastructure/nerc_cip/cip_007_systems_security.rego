@@ -294,12 +294,20 @@ security_log_review_current if {
 	age_days(input.security_event_alerting.last_review_date) <= 15
 }
 
-dated_evidence contains {"requirement": "R4.4", "path": "security_event_alerting.last_review_date", "value": object.get(input, ["security_event_alerting", "last_review_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R4.4",
+	"path": "security_event_alerting.last_review_date",
+	"value": object.get(input, ["security_event_alerting", "last_review_date"], null),
+} if {
 	log_review_applicable
 }
 
 # Per-patch dates behind Part 2.2.
-dated_evidence contains {"requirement": "R2.2", "path": sprintf("security_patches[%d].%s", [i, field.name]), "value": field.value} if {
+dated_evidence contains {
+	"requirement": "R2.2",
+	"path": sprintf("security_patches[%d].%s", [i, field.name]),
+	"value": field.value,
+} if {
 	some i, patch in input.security_patches
 	patch.applicable == true
 	patch.evaluation.completed == true

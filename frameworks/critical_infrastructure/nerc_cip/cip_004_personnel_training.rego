@@ -416,7 +416,6 @@ bcsi_entry_removal_timely(entry) if {
 	removed_ns < bcsi_removal_deadline_ns(entry)
 }
 
-
 # =============================================================================
 # VIOLATIONS
 # =============================================================================
@@ -616,32 +615,56 @@ violations contains v if {
 # Dated evidence the recency checks read (one entry per date actually used).
 person_label(i, person) := object.get(person, "person_id", sprintf("%d", [i]))
 
-dated_evidence contains {"requirement": "R1.1", "path": "security_awareness.last_reinforcement_date", "value": object.get(input, ["security_awareness", "last_reinforcement_date"], null)}
+dated_evidence contains {
+	"requirement": "R1.1",
+	"path": "security_awareness.last_reinforcement_date",
+	"value": object.get(input, ["security_awareness", "last_reinforcement_date"], null),
+}
 
-dated_evidence contains {"requirement": "R2.3", "path": sprintf("personnel[%v].cyber_security_training.last_completion_date", [person_label(i, person)]), "value": object.get(person, ["cyber_security_training", "last_completion_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R2.3",
+	"path": sprintf("personnel[%v].cyber_security_training.last_completion_date", [person_label(i, person)]),
+	"value": object.get(person, ["cyber_security_training", "last_completion_date"], null),
+} if {
 	some i, person in input.personnel
 	requires_cybersecurity_training(person)
 	person.cyber_security_training.initial_completed == true
 }
 
-dated_evidence contains {"requirement": "R3.5", "path": sprintf("personnel[%v].risk_assessment_date", [person_label(i, person)]), "value": object.get(person, "risk_assessment_date", null)} if {
+dated_evidence contains {
+	"requirement": "R3.5",
+	"path": sprintf("personnel[%v].risk_assessment_date", [person_label(i, person)]),
+	"value": object.get(person, "risk_assessment_date", null),
+} if {
 	some i, person in input.personnel
 	requires_risk_assessment(person)
 	person.risk_assessment_completed == true
 }
 
-dated_evidence contains {"requirement": "R3.5", "path": sprintf("personnel[%v].risk_assessment.completion_date", [person_label(i, person)]), "value": object.get(person, ["risk_assessment", "completion_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R3.5",
+	"path": sprintf("personnel[%v].risk_assessment.completion_date", [person_label(i, person)]),
+	"value": object.get(person, ["risk_assessment", "completion_date"], null),
+} if {
 	some i, person in input.personnel
 	requires_risk_assessment(person)
 	person.risk_assessment.completed == true
 }
 
-dated_evidence contains {"requirement": "R4.3", "path": sprintf("personnel[%v].access_authorization.last_review_date", [person_label(i, person)]), "value": object.get(person, ["access_authorization", "last_review_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R4.3",
+	"path": sprintf("personnel[%v].access_authorization.last_review_date", [person_label(i, person)]),
+	"value": object.get(person, ["access_authorization", "last_review_date"], null),
+} if {
 	some i, person in input.personnel
 	requires_access_authorization(person)
 }
 
-dated_evidence contains {"requirement": "R5.1", "path": sprintf("personnel[%v].%s", [person_label(i, person), field.name]), "value": field.value} if {
+dated_evidence contains {
+	"requirement": "R5.1",
+	"path": sprintf("personnel[%v].%s", [person_label(i, person), field.name]),
+	"value": field.value,
+} if {
 	some i, person in input.personnel
 	person.employment_status == "terminated"
 	person.access_revocation.completed == true
@@ -651,12 +674,20 @@ dated_evidence contains {"requirement": "R5.1", "path": sprintf("personnel[%v].%
 	]
 }
 
-dated_evidence contains {"requirement": "R6.2", "path": sprintf("bcsi_access.provisioned[%v].last_verification_date", [person_label(i, entry)]), "value": object.get(entry, "last_verification_date", null)} if {
+dated_evidence contains {
+	"requirement": "R6.2",
+	"path": sprintf("bcsi_access.provisioned[%v].last_verification_date", [person_label(i, entry)]),
+	"value": object.get(entry, "last_verification_date", null),
+} if {
 	some i, entry in input.bcsi_access.provisioned
 	not bcsi_terminated(entry)
 }
 
-dated_evidence contains {"requirement": "R6.3", "path": sprintf("bcsi_access.provisioned[%v].access_removed_date", [person_label(i, entry)]), "value": entry.access_removed_date} if {
+dated_evidence contains {
+	"requirement": "R6.3",
+	"path": sprintf("bcsi_access.provisioned[%v].access_removed_date", [person_label(i, entry)]),
+	"value": entry.access_removed_date,
+} if {
 	some i, entry in input.bcsi_access.provisioned
 	"access_removed_date" in object.keys(entry)
 }

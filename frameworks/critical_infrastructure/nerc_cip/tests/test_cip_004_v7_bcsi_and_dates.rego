@@ -49,9 +49,7 @@ v7_good := {
 	"bcsi_access": {"program_documented": true, "provisioned": [v7_entry]},
 }
 
-v7_violations(i) := vs if {
-	vs := c.violations with input as i with time.now_ns as v7_now
-}
+v7_violations(i) := {v | some v in c.violations with input as i with time.now_ns as v7_now}
 
 v7_reqs(i) := {v.requirement | some v in v7_violations(i)}
 

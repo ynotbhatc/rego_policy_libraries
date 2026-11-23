@@ -345,7 +345,6 @@ plan_third_party_reviewed(station) if {
 	plan.third_party_review.relevant_expertise == true
 	plan.third_party_review.documented == true
 
-
 	# R6.2 - Review completed within 90 calendar days of completing the security
 	# plan (earlier releases used 60). A review dated after the evaluation time
 	# has not been completed.
@@ -353,20 +352,40 @@ plan_third_party_reviewed(station) if {
 }
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": "R1.1", "path": "transmission_risk_assessment.last_assessment_date", "value": object.get(input, ["transmission_risk_assessment", "last_assessment_date"], null)}
+dated_evidence contains {
+	"requirement": "R1.1",
+	"path": "transmission_risk_assessment.last_assessment_date",
+	"value": object.get(input, ["transmission_risk_assessment", "last_assessment_date"], null),
+}
 
-dated_evidence contains {"requirement": "R2.2", "path": "transmission_risk_assessment.third_party_verification.last_verification_date", "value": object.get(input, ["transmission_risk_assessment", "third_party_verification", "last_verification_date"], null)}
+dated_evidence contains {
+	"requirement": "R2.2",
+	"path": "transmission_risk_assessment.third_party_verification.last_verification_date",
+	"value": object.get(input, ["transmission_risk_assessment", "third_party_verification", "last_verification_date"], null),
+}
 
-dated_evidence contains {"requirement": "R5", "path": sprintf("station_security_plans[%v].last_review_date", [station.station_id]), "value": object.get(input, ["station_security_plans", station.station_id, "last_review_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R5",
+	"path": sprintf("station_security_plans[%v].last_review_date", [station.station_id]),
+	"value": object.get(input, ["station_security_plans", station.station_id, "last_review_date"], null),
+} if {
 	some station in input.applicable_transmission_stations
 }
 
-dated_evidence contains {"requirement": "R5", "path": sprintf("station_security_plans[%v].implementation_date", [station.station_id]), "value": object.get(input, ["station_security_plans", station.station_id, "implementation_date"], null)} if {
+dated_evidence contains {
+	"requirement": "R5",
+	"path": sprintf("station_security_plans[%v].implementation_date", [station.station_id]),
+	"value": object.get(input, ["station_security_plans", station.station_id, "implementation_date"], null),
+} if {
 	some station in input.applicable_transmission_stations
 	input.station_security_plans[station.station_id].implementation_completed == true
 }
 
-dated_evidence contains {"requirement": "R6.2", "path": sprintf("station_security_plans[%v].%s", [station.station_id, field.name]), "value": field.value} if {
+dated_evidence contains {
+	"requirement": "R6.2",
+	"path": sprintf("station_security_plans[%v].%s", [station.station_id, field.name]),
+	"value": field.value,
+} if {
 	some station in input.applicable_transmission_stations
 	plan := input.station_security_plans[station.station_id]
 	plan.third_party_review.performed == true

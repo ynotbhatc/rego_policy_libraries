@@ -115,12 +115,12 @@ inventory_present if {
 	count(input.bes_cyber_systems) > 0
 }
 
-no_low_impact_systems if {
+low_impact_systems_absent if {
 	inventory_present
 	count([s | some s in input.bes_cyber_systems; s.impact_categorization == "low"]) == 0
 }
 
-no_high_or_medium_impact_systems if {
+high_medium_systems_absent if {
 	inventory_present
 	count([s | some s in input.bes_cyber_systems; s.impact_categorization in {"high", "medium"}]) == 0
 }
@@ -152,7 +152,7 @@ high_medium_policy_areas := {
 }
 
 missing_high_medium_policy_areas contains area if {
-	not no_high_or_medium_impact_systems
+	not high_medium_systems_absent
 	some area, _ in high_medium_policy_areas
 	not input.cybersecurity_policies.areas[area] == true
 }
@@ -172,7 +172,7 @@ low_impact_policy_areas := {
 }
 
 missing_low_impact_policy_areas contains area if {
-	not no_low_impact_systems
+	not low_impact_systems_absent
 	some area, _ in low_impact_policy_areas
 	not input.cybersecurity_policies.low_impact_areas[area] == true
 }
@@ -193,7 +193,7 @@ policy_review_current if {
 # impact BES Cyber System; no inventory is not "no low impact systems".
 
 low_impact_plan_implemented if {
-	no_low_impact_systems
+	low_impact_systems_absent
 } else if {
 	input.low_impact_plan.documented == true
 	input.low_impact_plan.approved == true
@@ -208,7 +208,7 @@ low_impact_plan_implemented if {
 # cycle is R1, for the policies). This is kept as a supporting check under R2: a
 # plan that nobody has looked at for 15 months is weak evidence of implementation.
 low_impact_plan_reviewed if {
-	no_low_impact_systems
+	low_impact_systems_absent
 } else if {
 	age_days(input.low_impact_plan.last_review_date) <= 455
 }
@@ -218,7 +218,7 @@ low_impact_plan_reviewed if {
 # used with high and medium impact systems are CIP-010 R4, not CIP-003.)
 
 transient_cyber_asset_policy if {
-	no_low_impact_systems
+	low_impact_systems_absent
 } else if {
 	input.transient_cyber_assets.policy_documented == true
 	input.transient_cyber_assets.asset_management.inventory_maintained == true
@@ -227,7 +227,7 @@ transient_cyber_asset_policy if {
 
 # Section 5.1 / 5.2 - methods to mitigate the introduction of malicious code
 transient_asset_security_controls if {
-	no_low_impact_systems
+	low_impact_systems_absent
 } else if {
 	input.transient_cyber_assets.controls.malicious_code_prevention == true
 	input.transient_cyber_assets.controls.security_patches.applied == true
@@ -236,7 +236,7 @@ transient_asset_security_controls if {
 
 # Section 5.3 - Removable Media: detect malicious code and mitigate before use
 removable_media_controls if {
-	no_low_impact_systems
+	low_impact_systems_absent
 } else if {
 	input.removable_media.policy_documented == true
 	input.removable_media.authorization_required == true
@@ -255,7 +255,7 @@ vendor_remote_access_methods := {
 }
 
 low_impact_vendor_remote_access_controlled if {
-	no_low_impact_systems
+	low_impact_systems_absent
 } else if {
 	input.low_impact_plan.vendor_electronic_remote_access.allowed == false
 } else if {
@@ -269,7 +269,7 @@ missing_vendor_remote_access_methods contains method if {
 }
 
 vendor_remote_access_undeclared if {
-	not no_low_impact_systems
+	not low_impact_systems_absent
 	not is_boolean(object.get(input, ["low_impact_plan", "vendor_electronic_remote_access", "allowed"], null))
 }
 
@@ -389,7 +389,7 @@ violations contains v if {
 		"requirement": "R2",
 		"severity": "high",
 		"description": "Low impact cyber security plan not documented, approved and implemented with the Attachment 1 sections (R2)",
-		"remediation": "Document and implement a low impact plan covering cyber security awareness, physical security, electronic access, incident response and transient cyber assets (Attachment 1 Sections 1-5)",
+		"remediation": "Document and implement a low impact plan covering Attachment 1 Sections 1-5: awareness, physical security, electronic access, incident response, transient cyber assets",
 	}
 }
 
@@ -449,7 +449,7 @@ violations contains v if {
 }
 
 violations contains v if {
-	not no_low_impact_systems
+	not low_impact_systems_absent
 	input.low_impact_plan.vendor_electronic_remote_access.allowed == true
 	some method in missing_vendor_remote_access_methods
 	section := vendor_remote_access_methods[method]
@@ -497,10 +497,18 @@ violations contains v if {
 }
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": "R1", "path": "cybersecurity_policies.last_review_date", "value": object.get(input, ["cybersecurity_policies", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R1",
+	"path": "cybersecurity_policies.last_review_date",
+	"value": object.get(input, ["cybersecurity_policies", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R2", "path": "low_impact_plan.last_review_date", "value": object.get(input, ["low_impact_plan", "last_review_date"], null)} if {
-	not no_low_impact_systems
+dated_evidence contains {
+	"requirement": "R2",
+	"path": "low_impact_plan.last_review_date",
+	"value": object.get(input, ["low_impact_plan", "last_review_date"], null),
+} if {
+	not low_impact_systems_absent
 }
 
 # A dated record that is absent, not a date, or later than the evaluation time

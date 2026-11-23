@@ -183,9 +183,17 @@ cip_senior_manager_approval if {
 	age_days(input.categorization_documentation.approval_date) <= 455 # 15 calendar months
 }
 
-dated_evidence contains {"requirement": "R2.1", "path": "categorization_documentation.last_review_date", "value": object.get(input, ["categorization_documentation", "last_review_date"], null)}
+dated_evidence contains {
+	"requirement": "R2.1",
+	"path": "categorization_documentation.last_review_date",
+	"value": object.get(input, ["categorization_documentation", "last_review_date"], null),
+}
 
-dated_evidence contains {"requirement": "R2.2", "path": "categorization_documentation.approval_date", "value": object.get(input, ["categorization_documentation", "approval_date"], null)}
+dated_evidence contains {
+	"requirement": "R2.2",
+	"path": "categorization_documentation.approval_date",
+	"value": object.get(input, ["categorization_documentation", "approval_date"], null),
+}
 
 # =============================================================================
 # EACMS and PACS Classification

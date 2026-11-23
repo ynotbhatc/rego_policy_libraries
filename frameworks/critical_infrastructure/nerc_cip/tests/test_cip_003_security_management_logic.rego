@@ -129,12 +129,12 @@ test_labels_follow_the_standard if {
 
 	# R1 policies, R2 low impact plan, R3 CIP Senior Manager, R4 delegation.
 	{"R1", "R2", "R3", "R4"} & rs == {"R1", "R2", "R3", "R4"}
-	some v in vs
-	v.requirement == "R3"
-	contains(v.description, "CIP Senior Manager")
 
 	# CIP-003-9 has no R5.
 	not "R5" in rs
+	some v in vs
+	v.requirement == "R3"
+	contains(v.description, "CIP Senior Manager")
 }
 
 test_every_missing_policy_topic_is_named_by_part if {
@@ -146,10 +146,9 @@ test_every_missing_policy_topic_is_named_by_part if {
 }
 
 test_information_sharing_plan_is_advisory_only if {
-	i := json.remove(good, ["/low_impact_plan/last_review_date"])
 	c.report.advisory.information_sharing_plan == false with input as good with time.now_ns as now
 	c.compliant with input as good with time.now_ns as now
-	not c.compliant with input as i with time.now_ns as now
+	not "information_sharing_plan" in object.keys(c.report.requirements) with input as good with time.now_ns as now
 }
 
 # ---- new in version 9: vendor electronic remote access (low impact) -----------

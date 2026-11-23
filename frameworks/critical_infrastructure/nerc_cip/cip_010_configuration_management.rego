@@ -265,7 +265,11 @@ post_change_assessment if {
 # R4: Transient Cyber Assets (TCA) Configuration (Attachment 1)
 
 # Dated evidence the recency checks read.
-dated_evidence contains {"requirement": e.requirement, "path": sprintf("%s[%v].%s", [e.collection, system.system_id, e.field]), "value": object.get(input, [e.collection, system.system_id, e.field], null)} if {
+dated_evidence contains {
+	"requirement": e.requirement,
+	"path": sprintf("%s[%v].%s", [e.collection, system.system_id, e.field]),
+	"value": object.get(input, [e.collection, system.system_id, e.field], null),
+} if {
 	some system in input.bes_cyber_systems
 	system.impact_categorization in ["high", "medium"]
 	some e in [
@@ -273,6 +277,7 @@ dated_evidence contains {"requirement": e.requirement, "path": sprintf("%s[%v].%
 		{"requirement": "R3.1", "collection": "vulnerability_assessments", "field": "completion_date"},
 	]
 }
+
 # =============================================================================
 
 # Transient Cyber Assets connected to High/Medium Impact BES Cyber Systems
