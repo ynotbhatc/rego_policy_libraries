@@ -18,10 +18,46 @@ package sox.simplified
 
 import rego.v1
 
-# Simplified SOX (Sarbanes-Oxley Act) Compliance Framework
-# Main policy for SOX compliance assessment
+# Simplified SOX (Sarbanes-Oxley Act) Compliance Framework.
+# Facts are read from input.sox.<area>.<control>.<field>.
+#
+# Sources (fetched 2026-11-23):
+#   SOX 302  15 U.S.C. 7241    https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap98-subchapIII-sec7241.htm
+#   SOX 404  15 U.S.C. 7262    https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap98-subchapIV-sec7262.htm
+#   SOX 409  15 U.S.C. 78m(l)  https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2B-sec78m.htm
+#   17 CFR 240.13a-11, 240.13a-14, 240.13a-15 and 229.308 (Item 308): https://www.ecfr.gov/current/title-17
+#   Form 8-K General Instruction B.1, read in the adopting release, 69 FR 15594 (25 March 2004):
+#     https://www.federalregister.gov/citation/69-FR-15594 (the current form is published at sec.gov)
+#
+# What the statute and rules require, and what this module therefore scores:
+#   302  the principal executive and financial officers certify each annual and quarterly report; disclosure
+#        controls are maintained and evaluated each fiscal quarter (13a-15(a), (b)); ICFR is evaluated as of
+#        fiscal year end (13a-15(c)); material weaknesses are disclosed (7241(a)(5), Item 308(a)(3)).
+#   404  management's annual internal control report (7262(a)) and, unless the issuer is exempt, the auditor's
+#        attestation (7262(b)). Emerging growth companies (7262(b)) and issuers that are neither large accelerated
+#        nor accelerated filers (7262(c)) are exempt from the attestation.
+#   409  disclosure "on a rapid and current basis" (78m(l)), which the SEC implemented through Form 8-K: a report
+#        is due within four business days after the event (General Instruction B.1).
+#
+# Not implemented here: Section 802 (record retention, 18 U.S.C. 1519 and 1520) and Section 906 (criminal
+# certification, 18 U.S.C. 1350). No check in this module speaks for them.
+#
+# Advisories are reported and never scored: the statute and rules do not require an automated disclosure
+# process, real-time event detection or continuous monitoring. Checks marked "Library criterion" in their basis
+# are this library's operationalisation (IT general controls, application controls and management practices
+# that support ICFR); they are scored, and the basis says they are not statutory text.
+#
+# Every scored check has one of four states:
+#   PASS              the fact is the boolean true
+#   NON_COMPLIANT     the fact is the boolean false
+#   EVIDENCE_MISSING  the fact is absent, null or not a boolean (never a pass)
+#   NOT_APPLICABLE    only the auditor attestation, and only on an explicit statement:
+#                     external_auditor_attestation.required = false together with
+#                     external_auditor_attestation.exemption = "emerging_growth_company" or "non_accelerated_filer"
+# The score, the findings, the verdict and the counts all come from the same list of checks, so
+# passed + failed + not applicable = total on every input (evidence-missing checks are part of failed).
 
-# Overall SOX compliance evaluation
+# Overall SOX compliance evaluation: every scored check passes or is not applicable.
 default sox_compliant := false
 
 sox_compliant if {
@@ -34,272 +70,375 @@ sox_compliant if {
 # Section 302: Corporate Responsibility for Financial Reports
 default section_302_compliant := false
 
-section_302_compliant if {
-	input.sox.section_302.ceo_certification.provided
-	input.sox.section_302.cfo_certification.provided
-	input.sox.section_302.disclosure_controls.effective
-	input.sox.section_302.material_weaknesses.none_identified
-}
+section_302_compliant if _area_compliant("section_302")
 
 # Section 404: Management Assessment of Internal Controls
 default section_404_compliant := false
 
-section_404_compliant if {
-	input.sox.section_404.management_assessment.completed
-	input.sox.section_404.internal_controls.designed_effectively
-	input.sox.section_404.internal_controls.operating_effectively
-	input.sox.section_404.external_auditor_attestation.unqualified
-}
+section_404_compliant if _area_compliant("section_404")
 
-# Section 409: Real-time Issuer Disclosures
+# Section 409: Real Time Issuer Disclosures
 default section_409_compliant := false
 
-section_409_compliant if {
-	input.sox.section_409.material_events.disclosed_timely
-	input.sox.section_409.disclosure_process.automated
-	input.sox.section_409.disclosure_controls.reviewed_quarterly
-}
+section_409_compliant if _area_compliant("section_409")
 
 # IT General Controls (ITGC) Compliance
 default itgc_compliant := false
 
-itgc_compliant if {
-	input.sox.itgc.access_controls.implemented
-	input.sox.itgc.change_management.controlled
-	input.sox.itgc.computer_operations.monitored
-	input.sox.itgc.system_development.secure
-	input.sox.itgc.data_center_operations.controlled
-	input.sox.itgc.backup_recovery.tested
+itgc_compliant if _area_compliant("itgc")
+
+# ---------------------------------------------------------------------------
+# The checks. This one list feeds the scores, the findings, the verdict and the counts.
+# ---------------------------------------------------------------------------
+
+_checks := [
+	{
+		"area": "section_302",
+		"section": "302",
+		"control": "CEO Certification",
+		"state": _state(object.get(input, ["sox", "section_302", "ceo_certification", "provided"], null)),
+		"risk_level": "CRITICAL",
+		"remediation": "Implement executive certification process with legal review",
+		"basis": "15 U.S.C. 7241(a); 17 CFR 240.13a-14(a)",
+		"evidence": "input.sox.section_302.ceo_certification.provided",
+	},
+	{
+		"area": "section_302",
+		"section": "302",
+		"control": "CFO Certification",
+		"state": _state(object.get(input, ["sox", "section_302", "cfo_certification", "provided"], null)),
+		"risk_level": "CRITICAL",
+		"remediation": "Implement executive certification process with legal review",
+		"basis": "15 U.S.C. 7241(a); 17 CFR 240.13a-14(a)",
+		"evidence": "input.sox.section_302.cfo_certification.provided",
+	},
+	{
+		"area": "section_302",
+		"section": "302",
+		"control": "Disclosure Controls",
+		"state": _state(object.get(input, ["sox", "section_302", "disclosure_controls", "effective"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Establish disclosure controls and procedures framework",
+		"basis": "15 U.S.C. 7241(a)(4); 17 CFR 240.13a-15(a)",
+		"evidence": "input.sox.section_302.disclosure_controls.effective",
+	},
+	{
+		"area": "section_302",
+		"section": "302",
+		"control": "Material Weaknesses",
+		"state": _state(object.get(input, ["sox", "section_302", "material_weaknesses", "none_identified"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Conduct comprehensive control testing and remediate identified weaknesses",
+		"basis": "15 U.S.C. 7241(a)(5) (disclosure to the auditors and audit committee); 17 CFR 229.308(a)(3) (no effective-ICFR conclusion with a material weakness)",
+		"evidence": "input.sox.section_302.material_weaknesses.none_identified",
+	},
+	{
+		"area": "section_302",
+		"section": "302",
+		"control": "Quarterly Evaluation",
+		"state": _state(object.get(input, ["sox", "section_302", "quarterly_review", "completed"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Evaluate disclosure controls and procedures as of the end of each fiscal quarter",
+		"basis": "17 CFR 240.13a-15(b)",
+		"evidence": "input.sox.section_302.quarterly_review.completed",
+	},
+	{
+		"area": "section_302",
+		"section": "302",
+		"control": "Annual Assessment",
+		"state": _state(object.get(input, ["sox", "section_302", "annual_assessment", "completed"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Complete management's evaluation of internal control over financial reporting as of fiscal year end",
+		"basis": "17 CFR 240.13a-15(c)",
+		"evidence": "input.sox.section_302.annual_assessment.completed",
+	},
+	{
+		"area": "section_404",
+		"section": "404",
+		"control": "Management Assessment",
+		"state": _state(object.get(input, ["sox", "section_404", "management_assessment", "completed"], null)),
+		"risk_level": "CRITICAL",
+		"remediation": "Develop management assessment methodology and documentation",
+		"basis": "15 U.S.C. 7262(a); 17 CFR 229.308(a)",
+		"evidence": "input.sox.section_404.management_assessment.completed",
+	},
+	{
+		"area": "section_404",
+		"section": "404",
+		"control": "Control Design",
+		"state": _state(object.get(input, ["sox", "section_404", "internal_controls", "designed_effectively"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Design comprehensive internal control framework",
+		"basis": "15 U.S.C. 7262(a)(2)",
+		"evidence": "input.sox.section_404.internal_controls.designed_effectively",
+	},
+	{
+		"area": "section_404",
+		"section": "404",
+		"control": "Control Operation",
+		"state": _state(object.get(input, ["sox", "section_404", "internal_controls", "operating_effectively"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Implement control monitoring and testing procedures",
+		"basis": "15 U.S.C. 7262(a)(2)",
+		"evidence": "input.sox.section_404.internal_controls.operating_effectively",
+	},
+	{
+		"area": "section_404",
+		"section": "404",
+		"control": "Auditor Attestation",
+		"state": _attestation_state,
+		"risk_level": "CRITICAL",
+		"remediation": "Engage qualified external auditor for Section 404 attestation",
+		"basis": "15 U.S.C. 7262(b); not required of issuers exempt under 7262(b) or (c)",
+		"evidence": "input.sox.section_404.external_auditor_attestation.unqualified",
+	},
+	{
+		"area": "section_404",
+		"section": "404",
+		"control": "Remediation Plan",
+		"state": _state(object.get(input, ["sox", "section_404", "remediation_plan", "implemented"], null)),
+		"risk_level": "MEDIUM",
+		"remediation": "Implement the remediation plan for identified control deficiencies",
+		"basis": "Library criterion (the statute requires the assessment and its disclosure, not a plan)",
+		"evidence": "input.sox.section_404.remediation_plan.implemented",
+	},
+	{
+		"area": "section_409",
+		"section": "409",
+		"control": "Timely Disclosure",
+		"state": _state(object.get(input, ["sox", "section_409", "material_events", "disclosed_timely"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Implement event identification and disclosure procedures that meet the Form 8-K deadline",
+		"basis": "15 U.S.C. 78m(l)",
+		"evidence": "input.sox.section_409.material_events.disclosed_timely",
+	},
+	{
+		"area": "section_409",
+		"section": "409",
+		"control": "Filing Deadlines",
+		"state": _state(object.get(input, ["sox", "section_409", "filing_deadlines", "met"], null)),
+		"risk_level": "HIGH",
+		"remediation": "File current reports on Form 8-K within four business days of the triggering event",
+		"basis": "Form 8-K General Instruction B.1 (four business days); 17 CFR 240.13a-11(a)",
+		"evidence": "input.sox.section_409.filing_deadlines.met",
+	},
+	{
+		"area": "section_409",
+		"section": "409",
+		"control": "Quarterly Review",
+		"state": _state(object.get(input, ["sox", "section_409", "disclosure_controls", "reviewed_quarterly"], null)),
+		"risk_level": "MEDIUM",
+		"remediation": "Establish quarterly disclosure control review process",
+		"basis": "17 CFR 240.13a-15(b)",
+		"evidence": "input.sox.section_409.disclosure_controls.reviewed_quarterly",
+	},
+	{
+		"area": "itgc",
+		"section": "ITGC",
+		"control": "Access Controls",
+		"state": _state(object.get(input, ["sox", "itgc", "access_controls", "implemented"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Implement role-based access controls with segregation of duties",
+		"basis": "Library criterion (IT general control)",
+		"evidence": "input.sox.itgc.access_controls.implemented",
+	},
+	{
+		"area": "itgc",
+		"section": "ITGC",
+		"control": "Change Management",
+		"state": _state(object.get(input, ["sox", "itgc", "change_management", "controlled"], null)),
+		"risk_level": "HIGH",
+		"remediation": "Establish formal change management process with approvals",
+		"basis": "Library criterion (IT general control)",
+		"evidence": "input.sox.itgc.change_management.controlled",
+	},
+	{
+		"area": "itgc",
+		"section": "ITGC",
+		"control": "Computer Operations",
+		"state": _state(object.get(input, ["sox", "itgc", "computer_operations", "monitored"], null)),
+		"risk_level": "MEDIUM",
+		"remediation": "Deploy comprehensive system monitoring and alerting",
+		"basis": "Library criterion (IT general control)",
+		"evidence": "input.sox.itgc.computer_operations.monitored",
+	},
+	{
+		"area": "itgc",
+		"section": "ITGC",
+		"control": "System Development",
+		"state": _state(object.get(input, ["sox", "itgc", "system_development", "secure"], null)),
+		"risk_level": "MEDIUM",
+		"remediation": "Implement secure development lifecycle (SDLC) practices",
+		"basis": "Library criterion (IT general control)",
+		"evidence": "input.sox.itgc.system_development.secure",
+	},
+	{
+		"area": "itgc",
+		"section": "ITGC",
+		"control": "Data Center Operations",
+		"state": _state(object.get(input, ["sox", "itgc", "data_center_operations", "controlled"], null)),
+		"risk_level": "MEDIUM",
+		"remediation": "Establish controlled data center operations",
+		"basis": "Library criterion (IT general control)",
+		"evidence": "input.sox.itgc.data_center_operations.controlled",
+	},
+	{
+		"area": "itgc",
+		"section": "ITGC",
+		"control": "Backup and Recovery",
+		"state": _state(object.get(input, ["sox", "itgc", "backup_recovery", "tested"], null)),
+		"risk_level": "MEDIUM",
+		"remediation": "Test backup and recovery procedures",
+		"basis": "Library criterion (IT general control)",
+		"evidence": "input.sox.itgc.backup_recovery.tested",
+	},
+]
+
+# Reported, never scored (see the header).
+advisories := [
+	{
+		"advisory": "Automated Disclosure Process",
+		"sox_section": "409",
+		"status": _advisory_state(object.get(input, ["sox", "section_409", "disclosure_process", "automated"], null)),
+		"scored": false,
+		"note": "15 U.S.C. 78m(l) requires disclosure on a rapid and current basis; neither it nor Form 8-K requires an automated process",
+		"evidence": "input.sox.section_409.disclosure_process.automated",
+	},
+	{
+		"advisory": "Real-Time Event Detection",
+		"sox_section": "409",
+		"status": _advisory_state(object.get(input, ["sox", "section_409", "event_detection", "real_time"], null)),
+		"scored": false,
+		"note": "Form 8-K General Instruction B.1 allows four business days after the event; real-time detection is not required",
+		"evidence": "input.sox.section_409.event_detection.real_time",
+	},
+	{
+		"advisory": "Continuous Monitoring",
+		"sox_section": "404",
+		"status": _advisory_state(object.get(input, ["sox", "section_404", "continuous_monitoring", "active"], null)),
+		"scored": false,
+		"note": "15 U.S.C. 7262(a) and 17 CFR 240.13a-15(c) require an assessment as of fiscal year end; continuous monitoring is not required",
+		"evidence": "input.sox.section_404.continuous_monitoring.active",
+	},
+]
+
+_state(true) := "PASS"
+
+_state(false) := "NON_COMPLIANT"
+
+_state(value) := "EVIDENCE_MISSING" if not is_boolean(value)
+
+_advisory_state(true) := "MET"
+
+_advisory_state(false) := "NOT_MET"
+
+_advisory_state(value) := "NOT_REPORTED" if not is_boolean(value)
+
+# Section 404(b) attestation: exempt only on an explicit statement naming the exemption.
+default _attestation_exempt := false
+
+_attestation_exempt if {
+	input.sox.section_404.external_auditor_attestation.required == false
+	input.sox.section_404.external_auditor_attestation.exemption in {"emerging_growth_company", "non_accelerated_filer"}
 }
 
-# SOX Compliance Score Calculation
+_attestation_state := "NOT_APPLICABLE" if {
+	_attestation_exempt
+} else := _state(object.get(input, ["sox", "section_404", "external_auditor_attestation", "unqualified"], null))
+
+_area_checks(area) := [check | some check in _checks; check.area == area]
+
+_with_state(checks, states) := [check | some check in checks; check.state in states]
+
+_open_states := {"NON_COMPLIANT", "EVIDENCE_MISSING"}
+
+_area_compliant(area) if count(_with_state(_area_checks(area), _open_states)) == 0
+
+# Share of the applicable checks that pass.
+_area_score(area) := count(_with_state(checks, {"PASS"})) / applicable if {
+	checks := _area_checks(area)
+	applicable := count(checks) - count(_with_state(checks, {"NOT_APPLICABLE"}))
+	applicable > 0
+}
+
+_area_findings(area) := [finding |
+	some check in _with_state(_area_checks(area), _open_states)
+	finding := {
+		"control_name": check.control,
+		"status": check.state,
+		"section": check.section,
+		"risk_level": check.risk_level,
+		"remediation": check.remediation,
+		"basis": check.basis,
+		"evidence": check.evidence,
+	}
+]
+
+# The counts every consumer reads. Evidence-missing checks are part of failed.
+total_controls := count(_checks)
+
+_count_in(states) := count(_with_state(_checks, states))
+
+# SOX Compliance Score Calculation: the mean of the four area scores (0 to 1).
 default sox_compliance_score := 0
 
-sox_compliance_score := score if {
+sox_compliance_score := sum(components) / count(components) if {
 	components := [
 		section_302_score,
 		section_404_score,
 		section_409_score,
 		itgc_score,
 	]
-	score := sum(components) / count(components)
 }
 
-# Section 302 Score
-section_302_score := score if {
-	checks := [
-		_i_section_302_ceo_certification_provided,
-		_i_section_302_cfo_certification_provided,
-		_i_section_302_disclosure_controls_effective,
-		_i_section_302_material_weaknesses_none_identified,
-		_i_section_302_quarterly_review_completed,
-		_i_section_302_annual_assessment_completed,
-	]
-	passed := count([check | check := checks[_]; check == true])
-	score := passed / count(checks)
-}
+default section_302_score := 0
 
-# Section 404 Score
-section_404_score := score if {
-	checks := [
-		_i_section_404_management_assessment_completed,
-		_i_section_404_internal_controls_designed_effectively,
-		_i_section_404_internal_controls_operating_effectively,
-		_i_section_404_external_auditor_attestation_unqualified,
-		_i_section_404_remediation_plan_implemented,
-		_i_section_404_continuous_monitoring_active,
-	]
-	passed := count([check | check := checks[_]; check == true])
-	score := passed / count(checks)
-}
+section_302_score := _area_score("section_302")
 
-# Section 409 Score
-section_409_score := score if {
-	checks := [
-		_i_section_409_material_events_disclosed_timely,
-		_i_section_409_disclosure_process_automated,
-		_i_section_409_disclosure_controls_reviewed_quarterly,
-		_i_section_409_event_detection_real_time,
-		_i_section_409_filing_deadlines_met,
-	]
-	passed := count([check | check := checks[_]; check == true])
-	score := passed / count(checks)
-}
+default section_404_score := 0
 
-# ITGC Score
-itgc_score := score if {
-	checks := [
-		_i_itgc_access_controls_implemented,
-		_i_itgc_change_management_controlled,
-		_i_itgc_computer_operations_monitored,
-		_i_itgc_system_development_secure,
-		_i_itgc_data_center_operations_controlled,
-		_i_itgc_backup_recovery_tested,
-	]
-	passed := count([check | check := checks[_]; check == true])
-	score := passed / count(checks)
-}
+section_404_score := _area_score("section_404")
 
-# SOX Detailed Findings
-sox_detailed_findings := findings if {
-	findings := {
-		"section_302_findings": section_302_findings,
-		"section_404_findings": section_404_findings,
-		"section_409_findings": section_409_findings,
-		"itgc_findings": itgc_findings,
-	}
-}
+default section_409_score := 0
 
-# Section 302 Findings
-section_302_findings := findings if {
-	findings := [finding |
-		controls := [
-			{"control": "CEO Certification", "status": _i_section_302_ceo_certification_provided, "risk": "CRITICAL"},
-			{"control": "CFO Certification", "status": _i_section_302_cfo_certification_provided, "risk": "CRITICAL"},
-			{"control": "Disclosure Controls", "status": _i_section_302_disclosure_controls_effective, "risk": "HIGH"},
-			{"control": "Material Weaknesses", "status": _i_section_302_material_weaknesses_none_identified, "risk": "HIGH"},
-		]
-		control := controls[_]
-		not control.status
-		finding := {
-			"control_name": control.control,
-			"status": "NON_COMPLIANT",
-			"section": "302",
-			"risk_level": control.risk,
-			"remediation": _get_302_remediation(control.control),
-		}
-	]
-}
+section_409_score := _area_score("section_409")
 
-# Section 404 Findings
-section_404_findings := findings if {
-	findings := [finding |
-		controls := [
-			{"control": "Management Assessment", "status": _i_section_404_management_assessment_completed, "risk": "CRITICAL"},
-			{"control": "Control Design", "status": _i_section_404_internal_controls_designed_effectively, "risk": "HIGH"},
-			{"control": "Control Operation", "status": _i_section_404_internal_controls_operating_effectively, "risk": "HIGH"},
-			{"control": "Auditor Attestation", "status": _i_section_404_external_auditor_attestation_unqualified, "risk": "CRITICAL"},
-		]
-		control := controls[_]
-		not control.status
-		finding := {
-			"control_name": control.control,
-			"status": "NON_COMPLIANT",
-			"section": "404",
-			"risk_level": control.risk,
-			"remediation": _get_404_remediation(control.control),
-		}
-	]
-}
+default itgc_score := 0
 
-# Section 409 Findings
-section_409_findings := findings if {
-	findings := [finding |
-		controls := [
-			{"control": "Timely Disclosure", "status": _i_section_409_material_events_disclosed_timely, "risk": "HIGH"},
-			{"control": "Automated Process", "status": _i_section_409_disclosure_process_automated, "risk": "MEDIUM"},
-			{"control": "Quarterly Review", "status": _i_section_409_disclosure_controls_reviewed_quarterly, "risk": "MEDIUM"},
-		]
-		control := controls[_]
-		not control.status
-		finding := {
-			"control_name": control.control,
-			"status": "NON_COMPLIANT",
-			"section": "409",
-			"risk_level": control.risk,
-			"remediation": _get_409_remediation(control.control),
-		}
-	]
-}
+itgc_score := _area_score("itgc")
 
-# ITGC Findings
-itgc_findings := findings if {
-	findings := [finding |
-		controls := [
-			{"control": "Access Controls", "status": _i_itgc_access_controls_implemented, "risk": "HIGH"},
-			{"control": "Change Management", "status": _i_itgc_change_management_controlled, "risk": "HIGH"},
-			{"control": "Computer Operations", "status": _i_itgc_computer_operations_monitored, "risk": "MEDIUM"},
-			{"control": "System Development", "status": _i_itgc_system_development_secure, "risk": "MEDIUM"},
-		]
-		control := controls[_]
-		not control.status
-		finding := {
-			"control_name": control.control,
-			"status": "NON_COMPLIANT",
-			"section": "ITGC",
-			"risk_level": control.risk,
-			"remediation": _get_itgc_remediation(control.control),
-		}
-	]
-}
+# SOX Detailed Findings: every scored check that is not passing and not exempt.
+section_302_findings := _area_findings("section_302")
 
-# Remediation Recommendations
-_get_302_remediation(control) := "Implement executive certification process with legal review" if {
-	control in ["CEO Certification", "CFO Certification"]
-}
+section_404_findings := _area_findings("section_404")
 
-_get_302_remediation(control) := "Establish disclosure controls and procedures framework" if {
-	control == "Disclosure Controls"
-}
+section_409_findings := _area_findings("section_409")
 
-_get_302_remediation(control) := "Conduct comprehensive control testing and remediate identified weaknesses" if {
-	control == "Material Weaknesses"
-}
+itgc_findings := _area_findings("itgc")
 
-_get_404_remediation(control) := "Develop management assessment methodology and documentation" if {
-	control == "Management Assessment"
-}
-
-_get_404_remediation(control) := "Design comprehensive internal control framework" if {
-	control == "Control Design"
-}
-
-_get_404_remediation(control) := "Implement control monitoring and testing procedures" if {
-	control == "Control Operation"
-}
-
-_get_404_remediation(control) := "Engage qualified external auditor for Section 404 attestation" if {
-	control == "Auditor Attestation"
-}
-
-_get_409_remediation(control) := "Implement real-time event detection and disclosure procedures" if {
-	control == "Timely Disclosure"
-}
-
-_get_409_remediation(control) := "Deploy automated disclosure management system" if {
-	control == "Automated Process"
-}
-
-_get_409_remediation(control) := "Establish quarterly disclosure control review process" if {
-	control == "Quarterly Review"
-}
-
-_get_itgc_remediation(control) := "Implement role-based access controls with segregation of duties" if {
-	control == "Access Controls"
-}
-
-_get_itgc_remediation(control) := "Establish formal change management process with approvals" if {
-	control == "Change Management"
-}
-
-_get_itgc_remediation(control) := "Deploy comprehensive system monitoring and alerting" if {
-	control == "Computer Operations"
-}
-
-_get_itgc_remediation(control) := "Implement secure development lifecycle (SDLC) practices" if {
-	control == "System Development"
+sox_detailed_findings := {
+	"section_302_findings": section_302_findings,
+	"section_404_findings": section_404_findings,
+	"section_409_findings": section_409_findings,
+	"itgc_findings": itgc_findings,
 }
 
 # SOX Compliance Level Determination
-sox_compliance_level := "FULLY_COMPLIANT" if {
+# FULLY_COMPLIANT additionally requires the gated verdict.
+default _fully_compliant := false
+
+_fully_compliant if {
 	is_number(sox_compliance_score)
 	sox_compliance_score >= 0.95
+	sox_compliant
 }
+
+sox_compliance_level := "FULLY_COMPLIANT" if _fully_compliant
 
 sox_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
 	is_number(sox_compliance_score)
 	sox_compliance_score >= 0.85
-	sox_compliance_score < 0.95
+	not _fully_compliant
 }
 
 sox_compliance_level := "PARTIALLY_COMPLIANT" if {
@@ -313,6 +452,19 @@ sox_compliance_level := "NON_COMPLIANT" if {
 	sox_compliance_score < 0.70
 }
 
+_all_findings := [finding |
+	some area in ["section_302", "section_404", "section_409", "itgc"]
+	some finding in _area_findings(area)
+]
+
+_findings_at(risk_level) := count([finding | some finding in _all_findings; finding.risk_level == risk_level])
+
+count_critical_findings := _findings_at("CRITICAL")
+
+count_high_findings := _findings_at("HIGH")
+
+count_medium_findings := _findings_at("MEDIUM")
+
 # Overall SOX Assessment Summary
 overall_sox_assessment := assessment if {
 	assessment := {
@@ -325,129 +477,15 @@ overall_sox_assessment := assessment if {
 			"section_409": section_409_score * 100,
 			"itgc": itgc_score * 100,
 		},
-		"total_findings": ((count(sox_detailed_findings.section_302_findings) + count(sox_detailed_findings.section_404_findings)) + count(sox_detailed_findings.section_409_findings)) + count(sox_detailed_findings.itgc_findings),
+		"total_findings": count(_all_findings),
 		"critical_findings": count_critical_findings,
 		"high_findings": count_high_findings,
 		"medium_findings": count_medium_findings,
+		"total_controls": count(_checks),
+		"passed_controls": _count_in({"PASS"}),
+		"failed_controls": _count_in(_open_states),
+		"evidence_missing_controls": _count_in({"EVIDENCE_MISSING"}),
+		"not_applicable_controls": _count_in({"NOT_APPLICABLE"}),
+		"advisories": [advisory | some advisory in advisories],
 	}
 }
-
-# Count findings by risk level
-count_critical_findings := count([finding |
-	some section_key
-	section := sox_detailed_findings[section_key]
-	finding := section[_]
-	finding.risk_level == "CRITICAL"
-])
-
-count_high_findings := count([finding |
-	some section_key
-	section := sox_detailed_findings[section_key]
-	finding := section[_]
-	finding.risk_level == "HIGH"
-])
-
-count_medium_findings := count([finding |
-	some section_key
-	section := sox_detailed_findings[section_key]
-	finding := section[_]
-	finding.risk_level == "MEDIUM"
-])
-
-# ---------------------------------------------------------------------------
-# Fact accessors. A missing input field must read as false, not make the whole
-# checks/controls array undefined (which silently dropped that control's
-# finding and left the score and assessment undefined).
-# ---------------------------------------------------------------------------
-
-default _i_section_302_ceo_certification_provided := false
-
-_i_section_302_ceo_certification_provided := input.sox.section_302.ceo_certification.provided
-
-default _i_section_302_cfo_certification_provided := false
-
-_i_section_302_cfo_certification_provided := input.sox.section_302.cfo_certification.provided
-
-default _i_section_302_disclosure_controls_effective := false
-
-_i_section_302_disclosure_controls_effective := input.sox.section_302.disclosure_controls.effective
-
-default _i_section_302_material_weaknesses_none_identified := false
-
-_i_section_302_material_weaknesses_none_identified := input.sox.section_302.material_weaknesses.none_identified
-
-default _i_section_302_quarterly_review_completed := false
-
-_i_section_302_quarterly_review_completed := input.sox.section_302.quarterly_review.completed
-
-default _i_section_302_annual_assessment_completed := false
-
-_i_section_302_annual_assessment_completed := input.sox.section_302.annual_assessment.completed
-
-default _i_section_404_management_assessment_completed := false
-
-_i_section_404_management_assessment_completed := input.sox.section_404.management_assessment.completed
-
-default _i_section_404_internal_controls_designed_effectively := false
-
-_i_section_404_internal_controls_designed_effectively := input.sox.section_404.internal_controls.designed_effectively
-
-default _i_section_404_internal_controls_operating_effectively := false
-
-_i_section_404_internal_controls_operating_effectively := input.sox.section_404.internal_controls.operating_effectively
-
-default _i_section_404_external_auditor_attestation_unqualified := false
-
-_i_section_404_external_auditor_attestation_unqualified := input.sox.section_404.external_auditor_attestation.unqualified
-
-default _i_section_404_remediation_plan_implemented := false
-
-_i_section_404_remediation_plan_implemented := input.sox.section_404.remediation_plan.implemented
-
-default _i_section_404_continuous_monitoring_active := false
-
-_i_section_404_continuous_monitoring_active := input.sox.section_404.continuous_monitoring.active
-
-default _i_section_409_material_events_disclosed_timely := false
-
-_i_section_409_material_events_disclosed_timely := input.sox.section_409.material_events.disclosed_timely
-
-default _i_section_409_disclosure_process_automated := false
-
-_i_section_409_disclosure_process_automated := input.sox.section_409.disclosure_process.automated
-
-default _i_section_409_disclosure_controls_reviewed_quarterly := false
-
-_i_section_409_disclosure_controls_reviewed_quarterly := input.sox.section_409.disclosure_controls.reviewed_quarterly
-
-default _i_section_409_event_detection_real_time := false
-
-_i_section_409_event_detection_real_time := input.sox.section_409.event_detection.real_time
-
-default _i_section_409_filing_deadlines_met := false
-
-_i_section_409_filing_deadlines_met := input.sox.section_409.filing_deadlines.met
-
-default _i_itgc_access_controls_implemented := false
-
-_i_itgc_access_controls_implemented := input.sox.itgc.access_controls.implemented
-
-default _i_itgc_change_management_controlled := false
-
-_i_itgc_change_management_controlled := input.sox.itgc.change_management.controlled
-
-default _i_itgc_computer_operations_monitored := false
-
-_i_itgc_computer_operations_monitored := input.sox.itgc.computer_operations.monitored
-
-default _i_itgc_system_development_secure := false
-
-_i_itgc_system_development_secure := input.sox.itgc.system_development.secure
-
-default _i_itgc_data_center_operations_controlled := false
-
-_i_itgc_data_center_operations_controlled := input.sox.itgc.data_center_operations.controlled
-
-default _i_itgc_backup_recovery_tested := false
-
-_i_itgc_backup_recovery_tested := input.sox.itgc.backup_recovery.tested

@@ -46,3 +46,58 @@ test_all_families_true_is_compliant if {
 		with data.sox.itgc.data_center_operations_compliant as true
 		with data.sox.itgc.backup_recovery_compliant as true
 }
+
+# ── Audit 2026-11-23: score, findings and counts come from one set of checks ─
+
+logical_access_true := {
+	"unique_user_ids": {"required": true},
+	"strong_authentication": {"enforced": true},
+	"password_policy": {"compliant": true},
+	"session_management": {"secure": true},
+	"account_lockout": {"configured": true},
+}
+
+test_empty_data_counts_add_up if {
+	c := data.sox.itgc.control_counts
+	c.total_controls == 34
+	c.failed_controls == 34
+	c.passed_controls == 0
+}
+
+test_every_family_reports_each_failed_check if {
+	e := data.sox.itgc.itgc_control_effectiveness
+	count(e.access_controls.key_findings) == 5
+	count(e.financial_applications.key_findings) == 4
+	total := sum([count(family.key_findings) | some family in e])
+	total == data.sox.itgc.control_counts.failed_controls
+}
+
+# Before: the area flag gated the verdict but was neither scored nor reported.
+test_area_attestation_is_scored_and_reported if {
+	message := "Access controls are not attested as in place (data.sox.itgc.access_controls.implemented)"
+	message in data.sox.itgc.itgc_control_effectiveness.access_controls.key_findings
+	s := data.sox.itgc.access_controls_score with data.sox.itgc.access_controls as {"implemented": true}
+	s == 0.2
+	e := data.sox.itgc.itgc_control_effectiveness with data.sox.itgc.access_controls as {"implemented": true}
+	count(e.access_controls.key_findings) == 4
+	not message in e.access_controls.key_findings
+}
+
+test_one_passing_check_moves_score_findings_and_counts_together if {
+	s := data.sox.itgc.access_controls_score with data.sox.itgc.logical_access as logical_access_true
+	s == 0.2
+	e := data.sox.itgc.itgc_control_effectiveness with data.sox.itgc.logical_access as logical_access_true
+	not "Logical access controls require strengthening" in e.access_controls.key_findings
+	count(e.access_controls.key_findings) == 4
+	c := data.sox.itgc.control_counts with data.sox.itgc.logical_access as logical_access_true
+	c.passed_controls == 1
+	c.failed_controls == 33
+	c.passed_controls + c.failed_controls == c.total_controls
+}
+
+# Only the boolean true is evidence: the string "no" used to satisfy the check.
+test_string_evidence_does_not_pass if {
+	stringy := object.union(logical_access_true, {"unique_user_ids": {"required": "no"}})
+	not data.sox.itgc.logical_access_controls_effective with data.sox.itgc.logical_access as stringy
+	data.sox.itgc.logical_access_controls_effective with data.sox.itgc.logical_access as logical_access_true
+}
