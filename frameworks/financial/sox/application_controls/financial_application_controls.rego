@@ -6,14 +6,14 @@
 #   source: us-federal
 #   domains: [financial, public-company]
 #   coverage:
-#     checks: 29
+#     checks: 35
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package sox.application_controls
 
 import rego.v1

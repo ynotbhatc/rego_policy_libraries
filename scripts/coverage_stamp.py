@@ -70,9 +70,6 @@ KNOWN_GAPS = {
         "different units: the section modules cite no Contributing Outcome ids, so 22 uncited violation rules are "
         "set against the 23 outcomes the orchestrator declares, and caf_a3_asset_management.rego is in a shape the "
         "counter does not read. Open work: cite the outcome id in each finding",
-    "frameworks/regulatory/cfr_part_11/cfr_part_11_main.rego":
-        "42 distinct checks found for a declared 43 (weekly audit 2026-11-23); the declared total is being "
-        "reconciled in the module",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design

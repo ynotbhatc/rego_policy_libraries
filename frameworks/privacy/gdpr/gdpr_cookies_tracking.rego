@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [privacy, eu]
 #   coverage:
-#     checks: 17
-#     cited: 5
+#     checks: 22
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package gdpr.cookies_tracking
 
 import rego.v1

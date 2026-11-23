@@ -51,12 +51,12 @@
 #     expected: 110
 #     found: 112
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171_r2.main
 
 import rego.v1

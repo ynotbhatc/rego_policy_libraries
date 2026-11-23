@@ -204,7 +204,7 @@
      },
      {
       "id": "dora-DORA-Art.12",
-      "title": "Recovery Time Objectives (RTO) not defined for critical ICT systems",
+      "title": "Recovery Time Objectives (RTO) not defined for critical ICT systems (Art.12(6))",
       "props": [
        {
         "name": "label",
@@ -230,12 +230,12 @@
        {
         "id": "dora-DORA-Art.12_stmt",
         "name": "statement",
-        "prose": "Recovery Time Objectives (RTO) not defined for critical ICT systems"
+        "prose": "Recovery Time Objectives (RTO) not defined for critical ICT systems (Art.12(6))"
        },
        {
         "id": "dora-DORA-Art.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Recovery Point Objectives (RPO) not defined for critical ICT systems"
+        "prose": "Recovery Point Objectives (RPO) not defined for critical ICT systems (Art.12(6))"
        },
        {
         "id": "dora-DORA-Art.12_obj.2",
@@ -246,41 +246,8 @@
       "class": "compliance"
      },
      {
-      "id": "dora-DORA-Art.10",
-      "title": "Patch and vulnerability management process not established",
-      "props": [
-       {
-        "name": "label",
-        "value": "DORA Art.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DORA Art.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-DORA-Art.10_stmt",
-        "name": "statement",
-        "prose": "Patch and vulnerability management process not established"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "dora-DORA-Art.9",
-      "title": "Data in transit not encrypted — encryption of sensitive data required",
+      "title": "Documented policies for patches and updates not established (Art.9(4)(f))",
       "props": [
        {
         "name": "label",
@@ -306,20 +273,25 @@
        {
         "id": "dora-DORA-Art.9_stmt",
         "name": "statement",
-        "prose": "Data in transit not encrypted — encryption of sensitive data required"
+        "prose": "Documented policies for patches and updates not established (Art.9(4)(f))"
        },
        {
         "id": "dora-DORA-Art.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Data at rest not encrypted — encryption of sensitive data required"
+        "prose": "Data in transit not encrypted — encryption of sensitive data required"
        },
        {
         "id": "dora-DORA-Art.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Multi-factor authentication not enforced for ICT system access"
+        "prose": "Data at rest not encrypted — encryption of sensitive data required"
        },
        {
         "id": "dora-DORA-Art.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "Multi-factor authentication not enforced for ICT system access"
+       },
+       {
+        "id": "dora-DORA-Art.9_obj.4",
         "name": "assessment-objective",
         "prose": "Privileged access not managed — PAM controls required"
        }
@@ -361,7 +333,7 @@
      },
      {
       "id": "dora-DORA-Art.19",
-      "title": "Major incident initial notification to authority not within 4 hours",
+      "title": "Major incident initial notification to authority not within 4 hours of classification as major (Art.19(4)(a); time limit set by Delegated Regulation (EU) 2025/301 Art.5(1)(a))",
       "props": [
        {
         "name": "label",
@@ -387,17 +359,17 @@
        {
         "id": "dora-DORA-Art.19_stmt",
         "name": "statement",
-        "prose": "Major incident initial notification to authority not within 4 hours"
+        "prose": "Major incident initial notification to authority not within 4 hours of classification as major (Art.19(4)(a); time limit set by Delegated Regulation (EU) 2025/301 Art.5(1)(a))"
        },
        {
         "id": "dora-DORA-Art.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Intermediate incident report to authority not within 72 hours"
+        "prose": "Intermediate incident report to authority not within 72 hours of the initial notification (Art.19(4)(b); time limit set by Delegated Regulation (EU) 2025/301 Art.5(1)(b))"
        },
        {
         "id": "dora-DORA-Art.19_obj.2",
         "name": "assessment-objective",
-        "prose": "Final incident report to authority not within 1 month of resolution"
+        "prose": "Final incident report to authority not within 1 month of the latest intermediate report (Art.19(4)(c); time limit set by Delegated Regulation (EU) 2025/301 Art.5(1)(c))"
        }
       ],
       "class": "compliance"
@@ -441,16 +413,16 @@
       "class": "compliance"
      },
      {
-      "id": "dora-DORA-Art.25",
-      "title": "Basic resilience testing (vulnerability scans, pen tests) not conducted annually",
+      "id": "dora-DORA-Art.24",
+      "title": "Resilience tests (Art.25: vulnerability scans, penetration tests, ...) not conducted at least yearly on ICT systems supporting critical or important functions (Art.24(6))",
       "props": [
        {
         "name": "label",
-        "value": "DORA Art.25"
+        "value": "DORA Art.24"
        },
        {
         "name": "alt-identifier",
-        "value": "DORA Art.25"
+        "value": "DORA Art.24"
        },
        {
         "name": "rego-package",
@@ -466,19 +438,14 @@
       ],
       "parts": [
        {
-        "id": "dora-DORA-Art.25_stmt",
+        "id": "dora-DORA-Art.24_stmt",
         "name": "statement",
-        "prose": "Basic resilience testing (vulnerability scans, pen tests) not conducted annually"
+        "prose": "Resilience tests (Art.25: vulnerability scans, penetration tests, ...) not conducted at least yearly on ICT systems supporting critical or important functions (Art.24(6))"
        },
        {
-        "id": "dora-DORA-Art.25_obj.1",
+        "id": "dora-DORA-Art.24_obj.1",
         "name": "assessment-objective",
-        "prose": "Critical findings from resilience testing not remediated in defined timeframe"
-       },
-       {
-        "id": "dora-DORA-Art.25_obj.2",
-        "name": "assessment-objective",
-        "prose": "Business continuity and crisis communication drills not conducted"
+        "prose": "Critical findings from resilience testing not remediated in defined timeframe (Art.24(5))"
        }
       ],
       "class": "compliance"
@@ -512,6 +479,39 @@
         "id": "dora-DORA-Art.26_stmt",
         "name": "statement",
         "prose": "Threat-Led Penetration Testing (TLPT) not conducted (significant entities: every 3 years)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dora-DORA-Art.11",
+      "title": "ICT business continuity plan tests and crisis communication plan tests not conducted (Art.11(6))",
+      "props": [
+       {
+        "name": "label",
+        "value": "DORA Art.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DORA Art.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dora.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dora-DORA-Art.11_stmt",
+        "name": "statement",
+        "prose": "ICT business continuity plan tests and crisis communication plan tests not conducted (Art.11(6))"
        }
       ],
       "class": "compliance"
@@ -670,7 +670,7 @@
      },
      {
       "id": "dora-dora.main-1",
-      "title": "ict risk management",
+      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -696,14 +696,14 @@
        {
         "id": "dora-dora.main-1_stmt",
         "name": "statement",
-        "prose": "ict risk management"
+        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-2",
-      "title": "incident reporting",
+      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -729,14 +729,14 @@
        {
         "id": "dora-dora.main-2_stmt",
         "name": "statement",
-        "prose": "incident reporting"
+        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-3",
-      "title": "information sharing",
+      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -762,14 +762,14 @@
        {
         "id": "dora-dora.main-3_stmt",
         "name": "statement",
-        "prose": "information sharing"
+        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-4",
-      "title": "resilience testing",
+      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -795,14 +795,14 @@
        {
         "id": "dora-dora.main-4_stmt",
         "name": "statement",
-        "prose": "resilience testing"
+        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-5",
-      "title": "third party risk",
+      "title": "ict risk management",
       "props": [
        {
         "name": "label",
@@ -828,14 +828,14 @@
        {
         "id": "dora-dora.main-5_stmt",
         "name": "statement",
-        "prose": "third party risk"
+        "prose": "ict risk management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-6",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
+      "title": "incident reporting",
       "props": [
        {
         "name": "label",
@@ -861,14 +861,14 @@
        {
         "id": "dora-dora.main-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
+        "prose": "incident reporting"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-7",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
+      "title": "information sharing",
       "props": [
        {
         "name": "label",
@@ -894,14 +894,14 @@
        {
         "id": "dora-dora.main-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
+        "prose": "information sharing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-8",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
+      "title": "resilience testing",
       "props": [
        {
         "name": "label",
@@ -927,14 +927,14 @@
        {
         "id": "dora-dora.main-8_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
+        "prose": "resilience testing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "dora-dora.main-9",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
+      "title": "third party risk",
       "props": [
        {
         "name": "label",
@@ -960,502 +960,7 @@
        {
         "id": "dora-dora.main-9_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-10",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-10_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-11",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-11_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-12",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-12_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-13",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-13_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-14",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-14_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-15",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#15"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#15"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-15_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-16",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#16"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#16"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-16_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-17",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#17"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#17"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-17_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-18",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#18"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#18"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-18_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-19",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#19"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#19"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-19_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-20",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#20"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#20"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-20_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-21",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#21"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#21"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-21_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-22",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#22"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#22"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-22_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-23",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#23"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#23"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-23_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "dora-dora.main-24",
-      "title": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "dora.main#24"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dora.main#24"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "dora.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2624cf79-889c-5956-95f5-ce692e191f48",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "dora-dora.main-24_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/financial/dora/dora_main.rego (package dora.main); see the rule body."
+        "prose": "third party risk"
        }
       ],
       "class": "compliance"

@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cfr_part_11-21-CFR-11.10-a",
-      "title": "System not validated to ensure accuracy, reliability, consistent intended performance, and ability to discern invalid/altered records",
+      "title": "System not validated to ensure accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records",
       "props": [
        {
         "name": "label",
@@ -93,24 +93,19 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-a_stmt",
         "name": "statement",
-        "prose": "System not validated to ensure accuracy, reliability, consistent intended performance, and ability to discern invalid/altered records"
+        "prose": "System not validated to ensure accuracy, reliability, consistent intended performance, and the ability to discern invalid or altered records"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-a_obj.1",
         "name": "assessment-objective",
-        "prose": "Installation Qualification (IQ), Operational Qualification (OQ), Performance Qualification (PQ) not documented"
-       },
-       {
-        "id": "cfr_part_11-21-CFR-11.10-a_obj.2",
-        "name": "assessment-objective",
-        "prose": "System not revalidated after significant changes affecting electronic records or signatures"
+        "prose": "Validation not repeated after changes that affect electronic records or signatures, so consistent intended performance is not shown (supporting check)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-b",
-      "title": "System cannot produce accurate and complete copies of records in human readable form",
+      "title": "System cannot generate accurate and complete copies of records in human readable form suitable for inspection, review, and copying by the agency",
       "props": [
        {
         "name": "label",
@@ -136,19 +131,19 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-b_stmt",
         "name": "statement",
-        "prose": "System cannot produce accurate and complete copies of records in human readable form"
+        "prose": "System cannot generate accurate and complete copies of records in human readable form suitable for inspection, review, and copying by the agency"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-b_obj.1",
         "name": "assessment-objective",
-        "prose": "System cannot produce accurate electronic copies of records for authorized agency inspection"
+        "prose": "System cannot generate accurate and complete copies of records in electronic form suitable for inspection, review, and copying by the agency"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-c",
-      "title": "Electronic records not protected to enable their accurate and ready retrieval throughout record retention period",
+      "title": "Records not protected to enable their accurate and ready retrieval throughout the records retention period",
       "props": [
        {
         "name": "label",
@@ -174,12 +169,12 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-c_stmt",
         "name": "statement",
-        "prose": "Electronic records not protected to enable their accurate and ready retrieval throughout record retention period"
+        "prose": "Records not protected to enable their accurate and ready retrieval throughout the records retention period"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-c_obj.1",
         "name": "assessment-objective",
-        "prose": "Electronic records not regularly backed up with tested restoration procedures"
+        "prose": "Records not regularly backed up with tested restoration, so ready retrieval throughout the retention period is not shown (supporting check)"
        }
       ],
       "class": "compliance"
@@ -217,14 +212,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-d_obj.1",
         "name": "assessment-objective",
-        "prose": "Unique user IDs not enforced — shared accounts not acceptable for 21 CFR Part 11"
+        "prose": "Unique user IDs not enforced, so access cannot be shown to be limited to authorized individuals (supporting check)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-e",
-      "title": "Audit trails not computer-generated (no manual audit trail entries permitted)",
+      "title": "Audit trails are not computer-generated",
       "props": [
        {
         "name": "label",
@@ -250,34 +245,39 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-e_stmt",
         "name": "statement",
-        "prose": "Audit trails not computer-generated (no manual audit trail entries permitted)"
+        "prose": "Audit trails are not computer-generated"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-e_obj.1",
         "name": "assessment-objective",
-        "prose": "Audit trail timestamps not accurate and synchronized to authoritative time source"
+        "prose": "Audit trail entries are not accurately time-stamped"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-e_obj.2",
         "name": "assessment-objective",
-        "prose": "Audit trail does not record date/time, operator ID, and nature of record changes"
+        "prose": "Audit trail does not independently record the date and time of operator entries and actions that create, modify, or delete electronic records"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-e_obj.3",
         "name": "assessment-objective",
-        "prose": "Audit trail records not protected against modification or deletion by users"
+        "prose": "Audit trail is not secure: users can modify or delete its entries"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-e_obj.4",
         "name": "assessment-objective",
-        "prose": "Audit trail not retained for at least as long as the records it covers, and available for agency review"
+        "prose": "Record changes obscure previously recorded information"
+       },
+       {
+        "id": "cfr_part_11-21-CFR-11.10-e_obj.5",
+        "name": "assessment-objective",
+        "prose": "Audit trail documentation not retained at least as long as the subject electronic records, or not available for agency review and copying"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-f",
-      "title": "System checks not in place to enforce permitted sequencing of steps and events where required",
+      "title": "Operational system checks not used to enforce permitted sequencing of steps and events, as appropriate",
       "props": [
        {
         "name": "label",
@@ -303,14 +303,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-f_stmt",
         "name": "statement",
-        "prose": "System checks not in place to enforce permitted sequencing of steps and events where required"
+        "prose": "Operational system checks not used to enforce permitted sequencing of steps and events, as appropriate"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-g",
-      "title": "System does not check authority to sign, access system, or perform operations at time of attempted action",
+      "title": "Authority checks not used to ensure that only authorized individuals can use the system, sign a record, access devices, alter a record, or perform the operation at hand",
       "props": [
        {
         "name": "label",
@@ -336,14 +336,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-g_stmt",
         "name": "statement",
-        "prose": "System does not check authority to sign, access system, or perform operations at time of attempted action"
+        "prose": "Authority checks not used to ensure that only authorized individuals can use the system, sign a record, access devices, alter a record, or perform the operation at hand"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-h",
-      "title": "Device checks not used to determine validity of source of data input or operational instruction",
+      "title": "Device (e.g., terminal) checks not used to determine, as appropriate, the validity of the source of data input or operational instruction",
       "props": [
        {
         "name": "label",
@@ -369,14 +369,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-h_stmt",
         "name": "statement",
-        "prose": "Device checks not used to determine validity of source of data input or operational instruction"
+        "prose": "Device (e.g., terminal) checks not used to determine, as appropriate, the validity of the source of data input or operational instruction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-i",
-      "title": "Personnel not trained and qualified on the use of the electronic records/signatures system",
+      "title": "No determination that persons who develop, maintain, or use the system have the education, training, and experience to perform their assigned tasks",
       "props": [
        {
         "name": "label",
@@ -402,19 +402,19 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-i_stmt",
         "name": "statement",
-        "prose": "Personnel not trained and qualified on the use of the electronic records/signatures system"
+        "prose": "No determination that persons who develop, maintain, or use the system have the education, training, and experience to perform their assigned tasks"
        },
        {
         "id": "cfr_part_11-21-CFR-11.10-i_obj.1",
         "name": "assessment-objective",
-        "prose": "Training records for electronic records system use not maintained"
+        "prose": "Training records that evidence the education, training, and experience determination are not maintained (supporting check)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-j",
-      "title": "Written policies holding individuals accountable for actions initiated under their electronic signatures not established",
+      "title": "Written policies that hold individuals accountable and responsible for actions initiated under their electronic signatures are not established and adhered to",
       "props": [
        {
         "name": "label",
@@ -440,14 +440,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-j_stmt",
         "name": "statement",
-        "prose": "Written policies holding individuals accountable for actions initiated under their electronic signatures not established"
+        "prose": "Written policies that hold individuals accountable and responsible for actions initiated under their electronic signatures are not established and adhered to"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-k-1",
-      "title": "Controls not established for distribution of, access to, and use of system documentation",
+      "title": "No adequate controls over the distribution of, access to, and use of documentation for system operation and maintenance",
       "props": [
        {
         "name": "label",
@@ -473,14 +473,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-k-1_stmt",
         "name": "statement",
-        "prose": "Controls not established for distribution of, access to, and use of system documentation"
+        "prose": "No adequate controls over the distribution of, access to, and use of documentation for system operation and maintenance"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.10-k-2",
-      "title": "Revision and change control procedures not established for system documentation",
+      "title": "No revision and change control procedures that maintain an audit trail of time-sequenced development and modification of systems documentation",
       "props": [
        {
         "name": "label",
@@ -506,14 +506,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.10-k-2_stmt",
         "name": "statement",
-        "prose": "Revision and change control procedures not established for system documentation"
+        "prose": "No revision and change control procedures that maintain an audit trail of time-sequenced development and modification of systems documentation"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.30",
-      "title": "Electronic records transmitted over open networks not encrypted to ensure authenticity and integrity",
+      "title": "evidence missing or invalid: open_systems.in_use must be the boolean true or false (open system: 11.3(b)(9)); the open-system controls apply until it is false",
       "props": [
        {
         "name": "label",
@@ -539,19 +539,24 @@
        {
         "id": "cfr_part_11-21-CFR-11.30_stmt",
         "name": "statement",
-        "prose": "Electronic records transmitted over open networks not encrypted to ensure authenticity and integrity"
+        "prose": "evidence missing or invalid: open_systems.in_use must be the boolean true or false (open system: 11.3(b)(9)); the open-system controls apply until it is false"
        },
        {
         "id": "cfr_part_11-21-CFR-11.30_obj.1",
         "name": "assessment-objective",
-        "prose": "Digital signatures or equivalent controls not used to ensure record authenticity on open systems"
+        "prose": "Open system does not use additional measures such as document encryption to ensure record authenticity, integrity, and confidentiality from creation to receipt"
+       },
+       {
+        "id": "cfr_part_11-21-CFR-11.30_obj.2",
+        "name": "assessment-objective",
+        "prose": "Open system does not use appropriate digital signature standards (or an equivalent measure) to ensure record authenticity and integrity"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.50-a-1",
-      "title": "Electronic signature does not include the printed name of the signer",
+      "title": "Signed electronic records do not contain the printed name of the signer",
       "props": [
        {
         "name": "label",
@@ -577,14 +582,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.50-a-1_stmt",
         "name": "statement",
-        "prose": "Electronic signature does not include the printed name of the signer"
+        "prose": "Signed electronic records do not contain the printed name of the signer"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.50-a-2",
-      "title": "Electronic signature does not include the date and time of signing",
+      "title": "Signed electronic records do not contain the date and time when the signature was executed",
       "props": [
        {
         "name": "label",
@@ -610,14 +615,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.50-a-2_stmt",
         "name": "statement",
-        "prose": "Electronic signature does not include the date and time of signing"
+        "prose": "Signed electronic records do not contain the date and time when the signature was executed"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.50-a-3",
-      "title": "Electronic signature does not indicate the meaning of the signature (review, approval, responsibility)",
+      "title": "Signed electronic records do not contain the meaning (such as review, approval, responsibility, or authorship) associated with the signature",
       "props": [
        {
         "name": "label",
@@ -643,14 +648,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.50-a-3_stmt",
         "name": "statement",
-        "prose": "Electronic signature does not indicate the meaning of the signature (review, approval, responsibility)"
+        "prose": "Signed electronic records do not contain the meaning (such as review, approval, responsibility, or authorship) associated with the signature"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.50-b",
-      "title": "Electronic signature manifestation not included in human readable form of signed records",
+      "title": "Signer name, date and time, and meaning are not included in every human readable form of the electronic record (display or printout)",
       "props": [
        {
         "name": "label",
@@ -676,14 +681,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.50-b_stmt",
         "name": "statement",
-        "prose": "Electronic signature manifestation not included in human readable form of signed records"
+        "prose": "Signer name, date and time, and meaning are not included in every human readable form of the electronic record (display or printout)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.70",
-      "title": "Electronic signatures not cryptographically or procedurally linked to their respective records",
+      "title": "Signatures are not linked to their respective electronic records",
       "props": [
        {
         "name": "label",
@@ -709,19 +714,19 @@
        {
         "id": "cfr_part_11-21-CFR-11.70_stmt",
         "name": "statement",
-        "prose": "Electronic signatures not cryptographically or procedurally linked to their respective records"
+        "prose": "Signatures are not linked to their respective electronic records"
        },
        {
         "id": "cfr_part_11-21-CFR-11.70_obj.1",
         "name": "assessment-objective",
-        "prose": "Signed records not tamper-evident — signature cannot be copied/transferred to falsify records"
+        "prose": "Signatures can be excised, copied, or otherwise transferred to falsify an electronic record by ordinary means"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.100-a",
-      "title": "Electronic signatures not proven unique to one individual and not reused or reassigned",
+      "title": "Electronic signatures are not unique to one individual, or are reused by or reassigned to someone else",
       "props": [
        {
         "name": "label",
@@ -747,14 +752,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.100-a_stmt",
         "name": "statement",
-        "prose": "Electronic signatures not proven unique to one individual and not reused or reassigned"
+        "prose": "Electronic signatures are not unique to one individual, or are reused by or reassigned to someone else"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.100-b",
-      "title": "Identity not verified before electronic signature privileges assigned",
+      "title": "Identity of the individual not verified before the electronic signature is established, assigned, certified, or otherwise sanctioned",
       "props": [
        {
         "name": "label",
@@ -780,14 +785,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.100-b_stmt",
         "name": "statement",
-        "prose": "Identity not verified before electronic signature privileges assigned"
+        "prose": "Identity of the individual not verified before the electronic signature is established, assigned, certified, or otherwise sanctioned"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.100-c",
-      "title": "Certification to FDA that electronic signatures are intended to be equivalent to handwritten signatures not filed",
+      "title": "No certification to the agency that the electronic signatures are intended to be the legally binding equivalent of traditional handwritten signatures",
       "props": [
        {
         "name": "label",
@@ -813,14 +818,47 @@
        {
         "id": "cfr_part_11-21-CFR-11.100-c_stmt",
         "name": "statement",
-        "prose": "Certification to FDA that electronic signatures are intended to be equivalent to handwritten signatures not filed"
+        "prose": "No certification to the agency that the electronic signatures are intended to be the legally binding equivalent of traditional handwritten signatures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-21-CFR-11.200-a",
+      "title": "evidence missing or invalid: electronic_signatures.non_biometric.in_use must be true or false; the 11.200(a) controls apply until it is false and biometric.in_use is true",
+      "props": [
+       {
+        "name": "label",
+        "value": "21 CFR 11.200(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "21 CFR 11.200(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f312644-33a6-5b39-8e86-4060ca7e1f02",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-21-CFR-11.200-a_stmt",
+        "name": "statement",
+        "prose": "evidence missing or invalid: electronic_signatures.non_biometric.in_use must be true or false; the 11.200(a) controls apply until it is false and biometric.in_use is true"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.200-a-1",
-      "title": "Non-biometric electronic signatures do not use at least two distinct identification components (e.g., ID code + password)",
+      "title": "Non-biometric electronic signatures do not employ at least two distinct identification components such as an identification code and password",
       "props": [
        {
         "name": "label",
@@ -846,14 +884,80 @@
        {
         "id": "cfr_part_11-21-CFR-11.200-a-1_stmt",
         "name": "statement",
-        "prose": "Non-biometric electronic signatures do not use at least two distinct identification components (e.g., ID code + password)"
+        "prose": "Non-biometric electronic signatures do not employ at least two distinct identification components such as an identification code and password"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-21-CFR-11.200-a-1-i",
+      "title": "In a series of signings in one continuous period of controlled access, the first does not use all components or a later one uses none executable only by the signer",
+      "props": [
+       {
+        "name": "label",
+        "value": "21 CFR 11.200(a)(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "21 CFR 11.200(a)(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f312644-33a6-5b39-8e86-4060ca7e1f02",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-21-CFR-11.200-a-1-i_stmt",
+        "name": "statement",
+        "prose": "In a series of signings in one continuous period of controlled access, the first does not use all components or a later one uses none executable only by the signer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-21-CFR-11.200-a-1-ii",
+      "title": "Signings not performed during one continuous period of controlled system access are not each executed using all of the electronic signature components",
+      "props": [
+       {
+        "name": "label",
+        "value": "21 CFR 11.200(a)(1)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "21 CFR 11.200(a)(1)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f312644-33a6-5b39-8e86-4060ca7e1f02",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-21-CFR-11.200-a-1-ii_stmt",
+        "name": "statement",
+        "prose": "Signings not performed during one continuous period of controlled system access are not each executed using all of the electronic signature components"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.200-a-2",
-      "title": "Executing multiple signings in one session does not require all components at first signing and at least one component thereafter",
+      "title": "Non-biometric electronic signatures are not shown to be used only by their genuine owners",
       "props": [
        {
         "name": "label",
@@ -879,14 +983,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.200-a-2_stmt",
         "name": "statement",
-        "prose": "Executing multiple signings in one session does not require all components at first signing and at least one component thereafter"
+        "prose": "Non-biometric electronic signatures are not shown to be used only by their genuine owners"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.200-a-3",
-      "title": "Executing signatures not during a single continuous session requires use of all signature components",
+      "title": "Non-biometric electronic signatures are not administered so that use by anyone other than the genuine owner requires collaboration of two or more individuals",
       "props": [
        {
         "name": "label",
@@ -912,14 +1016,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.200-a-3_stmt",
         "name": "statement",
-        "prose": "Executing signatures not during a single continuous session requires use of all signature components"
+        "prose": "Non-biometric electronic signatures are not administered so that use by anyone other than the genuine owner requires collaboration of two or more individuals"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.200-b",
-      "title": "Biometric electronic signatures not designed to ensure they cannot be used by anyone other than the genuine owner",
+      "title": "evidence missing or invalid: electronic_signatures.biometric.in_use must be true or false (biometrics: 11.3(b)(3)); the control applies until it is false",
       "props": [
        {
         "name": "label",
@@ -945,14 +1049,57 @@
        {
         "id": "cfr_part_11-21-CFR-11.200-b_stmt",
         "name": "statement",
-        "prose": "Biometric electronic signatures not designed to ensure they cannot be used by anyone other than the genuine owner"
+        "prose": "evidence missing or invalid: electronic_signatures.biometric.in_use must be true or false (biometrics: 11.3(b)(3)); the control applies until it is false"
+       },
+       {
+        "id": "cfr_part_11-21-CFR-11.200-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "Biometric electronic signatures are not designed to ensure that they cannot be used by anyone other than their genuine owners"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-21-CFR-11.300",
+      "title": "evidence missing or invalid: identification_codes.in_use must be true or false (signatures based on identification codes with passwords); the controls apply until it is false",
+      "props": [
+       {
+        "name": "label",
+        "value": "21 CFR 11.300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "21 CFR 11.300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f312644-33a6-5b39-8e86-4060ca7e1f02",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-21-CFR-11.300_stmt",
+        "name": "statement",
+        "prose": "evidence missing or invalid: identification_codes.in_use must be true or false (signatures based on identification codes with passwords); the controls apply until it is false"
+       },
+       {
+        "id": "cfr_part_11-21-CFR-11.300_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing or invalid: identification_codes.devices.in_use must be true or false (tokens, cards, other code or password devices); (c) and (e) apply until it is false"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.300-a",
-      "title": "Identification code/password combinations not maintained to ensure uniqueness",
+      "title": "Uniqueness of each combined identification code and password is not maintained",
       "props": [
        {
         "name": "label",
@@ -978,14 +1125,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.300-a_stmt",
         "name": "statement",
-        "prose": "Identification code/password combinations not maintained to ensure uniqueness"
+        "prose": "Uniqueness of each combined identification code and password is not maintained"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.300-b",
-      "title": "Identification codes or passwords not periodically checked, recalled, or revised",
+      "title": "Identification code and password issuances are not periodically checked, recalled, or revised (e.g., password aging)",
       "props": [
        {
         "name": "label",
@@ -1011,14 +1158,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.300-b_stmt",
         "name": "statement",
-        "prose": "Identification codes or passwords not periodically checked, recalled, or revised"
+        "prose": "Identification code and password issuances are not periodically checked, recalled, or revised (e.g., password aging)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.300-c",
-      "title": "Controls not in place to detect unauthorized use of passwords or identification codes",
+      "title": "No loss management procedures to electronically deauthorize lost, stolen, missing, or potentially compromised tokens, cards, and other devices and to issue replacements",
       "props": [
        {
         "name": "label",
@@ -1044,14 +1191,14 @@
        {
         "id": "cfr_part_11-21-CFR-11.300-c_stmt",
         "name": "statement",
-        "prose": "Controls not in place to detect unauthorized use of passwords or identification codes"
+        "prose": "No loss management procedures to electronically deauthorize lost, stolen, missing, or potentially compromised tokens, cards, and other devices and to issue replacements"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.300-d",
-      "title": "Device loss management procedures not established (for token/card-based systems)",
+      "title": "Transaction safeguards not used to prevent unauthorized use of passwords and/or identification codes",
       "props": [
        {
         "name": "label",
@@ -1077,14 +1224,19 @@
        {
         "id": "cfr_part_11-21-CFR-11.300-d_stmt",
         "name": "statement",
-        "prose": "Device loss management procedures not established (for token/card-based systems)"
+        "prose": "Transaction safeguards not used to prevent unauthorized use of passwords and/or identification codes"
+       },
+       {
+        "id": "cfr_part_11-21-CFR-11.300-d_obj.1",
+        "name": "assessment-objective",
+        "prose": "Attempts at unauthorized use of passwords or identification codes are not detected and reported in an immediate and urgent manner to the system security unit"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cfr_part_11-21-CFR-11.300-e",
-      "title": "Transaction safeguards not used to prevent unauthorized use of passwords",
+      "title": "No initial and periodic testing of devices, such as tokens or cards, that bear or generate identification code or password information",
       "props": [
        {
         "name": "label",
@@ -1110,7 +1262,7 @@
        {
         "id": "cfr_part_11-21-CFR-11.300-e_stmt",
         "name": "statement",
-        "prose": "Transaction safeguards not used to prevent unauthorized use of passwords"
+        "prose": "No initial and periodic testing of devices, such as tokens or cards, that bear or generate identification code or password information"
        }
       ],
       "class": "compliance"

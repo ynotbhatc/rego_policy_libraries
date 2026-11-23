@@ -9,14 +9,14 @@
 #     checks: 64
 #     cited: 16
 #     expected: 16
-#     found: 64
+#     found: 16
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171.access_control
 
 import rego.v1

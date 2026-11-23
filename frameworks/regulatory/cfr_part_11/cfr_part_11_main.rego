@@ -6,17 +6,17 @@
 #   source: fda
 #   domains: [life-sciences, us-federal]
 #   coverage:
-#     checks: 42
-#     cited: 30
-#     expected: 43
-#     found: 42
+#     checks: 50
+#     cited: 34
+#     expected: 50
+#     found: 50
 #     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cfr_part_11.main
 
 import rego.v1

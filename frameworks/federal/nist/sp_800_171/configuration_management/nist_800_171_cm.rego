@@ -9,14 +9,14 @@
 #     checks: 16
 #     cited: 7
 #     expected: 7
-#     found: 16
+#     found: 7
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171.configuration_management
 
 import rego.v1

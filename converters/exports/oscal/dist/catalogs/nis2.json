@@ -103,7 +103,7 @@
        {
         "id": "nis2-NIS2-Art.21-2-a_obj.2",
         "name": "assessment-objective",
-        "prose": "Risk analysis not reviewed at least annually or after significant changes"
+        "prose": "Risk analysis not reviewed at least annually or after significant changes (library criterion; the Directive sets no interval)"
        }
       ],
       "class": "compliance"
@@ -141,7 +141,7 @@
        {
         "id": "nis2-NIS2-Art.21-2-b_obj.1",
         "name": "assessment-objective",
-        "prose": "Security logs not retained for minimum 1 year"
+        "prose": "No defined retention period for security logs (library criterion; the Directive does not mention logs)"
        }
       ],
       "class": "compliance"
@@ -278,7 +278,7 @@
        {
         "id": "nis2-NIS2-Art.21-2-c_obj.1",
         "name": "assessment-objective",
-        "prose": "Business continuity plan not tested at least annually"
+        "prose": "Business continuity plan not tested at least annually (library criterion; the Directive sets no test interval)"
        },
        {
         "id": "nis2-NIS2-Art.21-2-c_obj.2",
@@ -381,7 +381,7 @@
      },
      {
       "id": "nis2-NIS2-Art.21-2-f",
-      "title": "Penetration testing not conducted at least annually",
+      "title": "Penetration testing not conducted at least annually (library criterion; the Directive names no test or interval)",
       "props": [
        {
         "name": "label",
@@ -407,7 +407,7 @@
        {
         "id": "nis2-NIS2-Art.21-2-f_stmt",
         "name": "statement",
-        "prose": "Penetration testing not conducted at least annually"
+        "prose": "Penetration testing not conducted at least annually (library criterion; the Directive names no test or interval)"
        },
        {
         "id": "nis2-NIS2-Art.21-2-f_obj.1",
@@ -419,7 +419,7 @@
      },
      {
       "id": "nis2-NIS2-Art.21-2-g",
-      "title": "Cybersecurity awareness training not conducted annually for all staff",
+      "title": "Cybersecurity awareness training not conducted annually for all staff (library criterion; the Directive sets no interval)",
       "props": [
        {
         "name": "label",
@@ -445,15 +445,10 @@
        {
         "id": "nis2-NIS2-Art.21-2-g_stmt",
         "name": "statement",
-        "prose": "Cybersecurity awareness training not conducted annually for all staff"
+        "prose": "Cybersecurity awareness training not conducted annually for all staff (library criterion; the Directive sets no interval)"
        },
        {
         "id": "nis2-NIS2-Art.21-2-g_obj.1",
-        "name": "assessment-objective",
-        "prose": "Management body members have not received cybersecurity training"
-       },
-       {
-        "id": "nis2-NIS2-Art.21-2-g_obj.2",
         "name": "assessment-objective",
         "prose": "Cyber hygiene policy (patching, updates, configurations) not established"
        }
@@ -493,12 +488,12 @@
        {
         "id": "nis2-NIS2-Art.21-2-h_obj.1",
         "name": "assessment-objective",
-        "prose": "Sensitive data at rest not encrypted"
+        "prose": "Sensitive data at rest not encrypted, and not stated as not appropriate (input.applicability.encryption_at_rest)"
        },
        {
         "id": "nis2-NIS2-Art.21-2-h_obj.2",
         "name": "assessment-objective",
-        "prose": "Data in transit not encrypted with strong protocols"
+        "prose": "Data in transit not encrypted with strong protocols, and not stated as not appropriate (input.applicability.encryption_in_transit)"
        }
       ],
       "class": "compliance"
@@ -553,7 +548,7 @@
      },
      {
       "id": "nis2-NIS2-Art.21-2-j",
-      "title": "MFA not enforced for remote access to network and information systems",
+      "title": "No multi-factor or continuous authentication for remote access, and not stated as not appropriate (input.applicability.strong_authentication_remote_access)",
       "props": [
        {
         "name": "label",
@@ -579,32 +574,42 @@
        {
         "id": "nis2-NIS2-Art.21-2-j_stmt",
         "name": "statement",
-        "prose": "MFA not enforced for remote access to network and information systems"
+        "prose": "No multi-factor or continuous authentication for remote access, and not stated as not appropriate (input.applicability.strong_authentication_remote_access)"
        },
        {
         "id": "nis2-NIS2-Art.21-2-j_obj.1",
         "name": "assessment-objective",
-        "prose": "MFA not enforced for privileged account access"
+        "prose": "No multi-factor or continuous authentication for privileged accounts, and not stated as not appropriate (input.applicability.strong_authentication_privileged_accounts)"
        },
        {
         "id": "nis2-NIS2-Art.21-2-j_obj.2",
         "name": "assessment-objective",
-        "prose": "MFA not enforced for access to critical systems"
+        "prose": "No multi-factor or continuous authentication for access to critical systems, and not stated as not appropriate (input.applicability.strong_authentication_critical_systems)"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-j_obj.3",
+        "name": "assessment-objective",
+        "prose": "Voice, video and text communications within the entity not secured, and not stated as not appropriate (input.applicability.secured_voice_video_text_communications)"
+       },
+       {
+        "id": "nis2-NIS2-Art.21-2-j_obj.4",
+        "name": "assessment-objective",
+        "prose": "No secured emergency communication system within the entity, and not stated as not appropriate (input.applicability.secured_emergency_communications)"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nis2-NIS2-Art.20",
-      "title": "Management body has not approved cybersecurity risk management measures",
+      "id": "nis2-NIS2-Art.20-1",
+      "title": "Management body has not approved the cybersecurity risk-management measures",
       "props": [
        {
         "name": "label",
-        "value": "NIS2 Art.20"
+        "value": "NIS2 Art.20(1)"
        },
        {
         "name": "alt-identifier",
-        "value": "NIS2 Art.20"
+        "value": "NIS2 Art.20(1)"
        },
        {
         "name": "rego-package",
@@ -620,14 +625,47 @@
       ],
       "parts": [
        {
-        "id": "nis2-NIS2-Art.20_stmt",
+        "id": "nis2-NIS2-Art.20-1_stmt",
         "name": "statement",
-        "prose": "Management body has not approved cybersecurity risk management measures"
+        "prose": "Management body has not approved the cybersecurity risk-management measures"
        },
        {
-        "id": "nis2-NIS2-Art.20_obj.1",
+        "id": "nis2-NIS2-Art.20-1_obj.1",
         "name": "assessment-objective",
-        "prose": "Management body not accountable for implementation of cybersecurity measures"
+        "prose": "Management body does not oversee, and is not held accountable for, implementation of the cybersecurity risk-management measures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nis2-NIS2-Art.20-2",
+      "title": "Members of the management body have not followed cybersecurity training",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIS2 Art.20(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIS2 Art.20(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nis2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4a28d86f-0c34-5084-8577-b60cf4b5f9ca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nis2-NIS2-Art.20-2_stmt",
+        "name": "statement",
+        "prose": "Members of the management body have not followed cybersecurity training"
        }
       ],
       "class": "compliance"

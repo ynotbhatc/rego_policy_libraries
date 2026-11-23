@@ -11,12 +11,12 @@
 #     expected: 59
 #     found: 63
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hitrust.main
 
 import rego.v1

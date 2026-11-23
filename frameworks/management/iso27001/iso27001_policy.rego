@@ -116,14 +116,14 @@
 #     checks: 109
 #     cited: 100
 #     expected: 93
-#     found: 100
+#     found: 94
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iso27001
 
 import rego.v1

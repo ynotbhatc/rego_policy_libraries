@@ -65,14 +65,14 @@
 #     checks: 112
 #     cited: 109
 #     expected: 106
-#     found: 138
+#     found: 109
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.csf.main
 
 import rego.v1

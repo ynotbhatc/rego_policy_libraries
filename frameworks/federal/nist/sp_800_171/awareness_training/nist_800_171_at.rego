@@ -9,14 +9,14 @@
 #     checks: 6
 #     cited: 2
 #     expected: 2
-#     found: 6
+#     found: 2
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171.awareness_training
 
 import rego.v1

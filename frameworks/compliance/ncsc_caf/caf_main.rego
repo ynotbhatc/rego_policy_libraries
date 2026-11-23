@@ -11,12 +11,12 @@
 #     expected: 23
 #     found: 22
 #     scope: directory
-#     density: full
+#     density: partial
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package ncsc_caf.main
 
 import rego.v1

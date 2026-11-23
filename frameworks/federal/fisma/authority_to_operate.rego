@@ -6,9 +6,9 @@
 #   source: nist
 #   domains: [us-federal]
 #   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
+#     checks: 4
+#     cited: 1
+#     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: none

@@ -75,15 +75,12 @@
 #   coverage:
 #     checks: 313
 #     cited: 309
-#     expected: 308
-#     found: 313
-#     scope: module
-#     density: full
-#     basis: declared-total
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package dora.rts_ict_risk
 
 import rego.v1

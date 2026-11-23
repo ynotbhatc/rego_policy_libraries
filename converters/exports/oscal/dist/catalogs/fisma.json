@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "3183a9ed-05b1-5ab3-bb0f-864264c328dc",
   "metadata": {
-   "title": "Rego Policy Libraries — fisma (Federal Information Security Modernization Act (FISMA) 2014 Implementation)",
+   "title": "Rego Policy Libraries — fisma (Authority to Operate (ATO) Assessment Policy)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -43,6 +43,78 @@
    ]
   },
   "groups": [
+   {
+    "id": "fisma-authority_to_operate",
+    "class": "rego-module",
+    "title": "Authority to Operate (ATO) Assessment Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "fisma.ato"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/fisma/authority_to_operate.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "fisma-NIST-SP-800-53-CA-5",
+      "title": "evidence missing: input.ato.authorization_package.poam.action_items must be an array of POA&M items (a missing POA&M is not an empty one)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-53 CA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-53 CA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ato"
+       }
+      ],
+      "links": [
+       {
+        "href": "#187ac3a5-dbe9-54c2-a543-9797a030e391",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-NIST-SP-800-53-CA-5_stmt",
+        "name": "statement",
+        "prose": "evidence missing: input.ato.authorization_package.poam.action_items must be an array of POA&M items (a missing POA&M is not an empty one)"
+       },
+       {
+        "id": "fisma-NIST-SP-800-53-CA-5_obj.1",
+        "name": "assessment-objective",
+        "prose": "the POA&M has no items; that is adequate only when input.ato.authorization_package.poam.open_weaknesses_count is the number 0"
+       },
+       {
+        "id": "fisma-NIST-SP-800-53-CA-5_obj.2",
+        "name": "assessment-objective",
+        "prose": "the POA&M has no items but risk_assessment.vulnerabilities.identified_vulnerabilities lists %d"
+       },
+       {
+        "id": "fisma-NIST-SP-800-53-CA-5_obj.3",
+        "name": "assessment-objective",
+        "prose": "POA&M item %d is incomplete: it needs non-empty strings weakness_id, description, resources_required, completion_date and a listed risk_rating and status"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
    {
     "id": "fisma-fisma_main",
     "class": "rego-module",
@@ -358,6 +430,23 @@
   ],
   "back-matter": {
    "resources": [
+    {
+     "uuid": "187ac3a5-dbe9-54c2-a543-9797a030e391",
+     "title": "Authority to Operate (ATO) Assessment Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "fisma.ato"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/federal/fisma/authority_to_operate.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
     {
      "uuid": "6afc068a-8001-5c0d-88a0-5b7ae61a5197",
      "title": "Federal Information Security Modernization Act (FISMA) 2014 Implementation",

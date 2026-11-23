@@ -6,17 +6,14 @@
 #   source: eu
 #   domains: [eu, critical-infrastructure]
 #   coverage:
-#     checks: 35
-#     cited: 14
-#     expected: 35
-#     found: 35
-#     scope: directory
-#     density: full
-#     basis: declared-total
+#     checks: 37
+#     cited: 15
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nis2.main
 
 import rego.v1

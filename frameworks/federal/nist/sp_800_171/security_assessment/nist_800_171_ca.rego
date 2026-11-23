@@ -11,12 +11,12 @@
 #     expected: 4
 #     found: 7
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171.security_assessment
 
 import rego.v1

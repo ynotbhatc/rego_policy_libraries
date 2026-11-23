@@ -2,65 +2,120 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cfr_part_11/schema.json",
  "title": "Input facts for cfr_part_11",
- "description": "Input paths referenced in the sources of frameworks/regulatory/cfr_part_11/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/regulatory/cfr_part_11/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "cfr_part_11",
  "x-entrypoint": "data.cfr_part_11.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/regulatory/cfr_part_11/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cfr_part_11.main_test.all_pass",
  "type": "object",
  "properties": {
   "access_control": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "authorized_users": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "only": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "unique_user_ids": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "assessment_date": {
-   "description": "Read in cfr_part_11_main.rego."
+   "description": "Read in cfr_part_11_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-11-23"
+   ]
   },
   "audit_trail": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "captures_record_changes": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "computer_generated": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "previous_entries_not_obscured": {
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "protected_from_modification": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "retention": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "at_least_as_long_as_record": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "timestamps": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "accurate": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -68,36 +123,61 @@
   },
   "authority_checks": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "enabled": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "device_checks": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "input_validation": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "documentation": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "distribution": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "revision": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -105,119 +185,294 @@
   },
   "electronic_signatures": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "biometric": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "designed_exclusively_for_individual": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "in_use": {
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "fda_certification": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "filed": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "identity_verification": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "before_assignment": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "manifestation": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "date_time": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "human_readable": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "meaning": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "printed_name": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "non_biometric": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "different_session_full_auth": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "genuine_owner_only": {
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "in_use": {
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "misuse_requires_collaboration": {
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "single_session_reauth": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "two_distinct_components": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "record_linking": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "cryptographically_bound": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "tamper_evident": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "uniqueness": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "guaranteed": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "entity_name": {
-   "description": "Read in cfr_part_11_main.rego."
+   "description": "Read in cfr_part_11_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example Pharma"
+   ]
   },
   "entity_type": {
    "description": "Read in cfr_part_11_main.rego."
   },
   "identification_codes": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
+    "device_testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "initial_and_periodic": {
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "devices": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "in_use": {
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "in_use": {
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
     "loss_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "procedures": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "periodic_revision": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "transaction_safeguards": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "unauthorized_use": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "detection": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "uniqueness": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "maintained": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -225,49 +480,89 @@
   },
   "open_systems": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "digital_signatures": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "where_appropriate": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "encryption": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "records_in_transit": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
+    },
+    "in_use": {
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "operational_checks": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "sequence_enforcement": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "personnel": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "training": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "records": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "maintained": {
-         "description": "Read in cfr_part_11_main.rego."
+         "description": "Read in cfr_part_11_main.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       },
       "system_specific": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -275,12 +570,19 @@
   },
   "policies": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "individual_accountability": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -288,49 +590,81 @@
   },
   "records": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "backup": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "regular_and_tested": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "electronic_copy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "capable": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "human_readable": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "capable": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "retention": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "protected_during_retention_period": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "system_name": {
-   "description": "Read in cfr_part_11_main.rego."
+   "description": "Read in cfr_part_11_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "LIMS"
+   ]
   },
   "system_validation": {
    "description": "Read in cfr_part_11_main.rego.",
+   "type": "object",
    "properties": {
     "iq_oq_pq": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
        "description": "Read in cfr_part_11_main.rego."
@@ -339,14 +673,25 @@
     },
     "revalidation": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "on_change": {
-       "description": "Read in cfr_part_11_main.rego."
+       "description": "Read in cfr_part_11_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "validated": {
-     "description": "Read in cfr_part_11_main.rego."
+     "description": "Read in cfr_part_11_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   }
@@ -362,6 +707,7 @@
   "audit_trail",
   "audit_trail.captures_record_changes",
   "audit_trail.computer_generated",
+  "audit_trail.previous_entries_not_obscured",
   "audit_trail.protected_from_modification",
   "audit_trail.retention",
   "audit_trail.retention.at_least_as_long_as_record",
@@ -379,6 +725,7 @@
   "electronic_signatures",
   "electronic_signatures.biometric",
   "electronic_signatures.biometric.designed_exclusively_for_individual",
+  "electronic_signatures.biometric.in_use",
   "electronic_signatures.fda_certification",
   "electronic_signatures.fda_certification.filed",
   "electronic_signatures.identity_verification",
@@ -390,6 +737,9 @@
   "electronic_signatures.manifestation.printed_name",
   "electronic_signatures.non_biometric",
   "electronic_signatures.non_biometric.different_session_full_auth",
+  "electronic_signatures.non_biometric.genuine_owner_only",
+  "electronic_signatures.non_biometric.in_use",
+  "electronic_signatures.non_biometric.misuse_requires_collaboration",
   "electronic_signatures.non_biometric.single_session_reauth",
   "electronic_signatures.non_biometric.two_distinct_components",
   "electronic_signatures.record_linking",
@@ -400,6 +750,11 @@
   "entity_name",
   "entity_type",
   "identification_codes",
+  "identification_codes.device_testing",
+  "identification_codes.device_testing.initial_and_periodic",
+  "identification_codes.devices",
+  "identification_codes.devices.in_use",
+  "identification_codes.in_use",
   "identification_codes.loss_management",
   "identification_codes.loss_management.procedures",
   "identification_codes.periodic_revision",
@@ -413,6 +768,7 @@
   "open_systems.digital_signatures.where_appropriate",
   "open_systems.encryption",
   "open_systems.encryption.records_in_transit",
+  "open_systems.in_use",
   "operational_checks",
   "operational_checks.sequence_enforcement",
   "personnel",

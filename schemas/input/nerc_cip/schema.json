@@ -126,6 +126,17 @@
   "baseline_configurations": {
    "description": "Read in cip_010_configuration_management.rego, nerc_cip_main.rego."
   },
+  "bcsi_access": {
+   "description": "Read in cip_004_personnel_training.rego.",
+   "properties": {
+    "program_documented": {
+     "description": "Read in cip_004_personnel_training.rego."
+    },
+    "provisioned": {
+     "description": "Read in cip_004_personnel_training.rego."
+    }
+   }
+  },
   "bcsi_access_list": {
    "description": "Read in cip_011_information_protection.rego.",
    "additionalProperties": {
@@ -226,7 +237,7 @@
   "bes_cyber_systems": {
    "description": "Read in cip_002_asset_identification.rego, cip_003_security_management.rego, cip_005_electronic_security.rego, cip_006_physical_security.rego and 5 more.",
    "additionalProperties": {
-    "description": "Read in cip_002_asset_identification.rego, cip_003_security_management.rego, cip_005_electronic_security.rego, cip_006_physical_security.rego and 5 more."
+    "description": "Read in cip_002_asset_identification.rego, cip_005_electronic_security.rego, cip_006_physical_security.rego, cip_007_systems_security.rego and 4 more."
    },
    "x-variable-key": "<_>"
   },
@@ -354,6 +365,9 @@
     "protection_requirements_defined": {
      "description": "Read in cip_012_communications.rego."
     },
+    "recovery_methods_documented": {
+     "description": "Read in nerc_cip_main.rego."
+    },
     "test_documented": {
      "description": "Read in cip_012_communications.rego."
     }
@@ -413,6 +427,18 @@
       }
      }
     },
+    "low_impact_vendor_remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "allowed": {
+       "description": "Read in nerc_cip_main.rego."
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in nerc_cip_main.rego."
+     },
+     "x-variable-key": "<method>"
+    },
     "policies": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "properties": {
@@ -457,29 +483,10 @@
     },
     "areas": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "configuration_management": {
-       "description": "Read in cip_003_security_management.rego."
-      },
-      "electronic_security_perimeters": {
-       "description": "Read in cip_003_security_management.rego."
-      },
-      "incident_response": {
-       "description": "Read in cip_003_security_management.rego."
-      },
-      "personnel_and_training": {
-       "description": "Read in cip_003_security_management.rego."
-      },
-      "physical_security": {
-       "description": "Read in cip_003_security_management.rego."
-      },
-      "recovery_plans": {
-       "description": "Read in cip_003_security_management.rego."
-      },
-      "systems_security_management": {
-       "description": "Read in cip_003_security_management.rego."
-      }
-     }
+     "additionalProperties": {
+      "description": "Read in cip_003_security_management.rego."
+     },
+     "x-variable-key": "<area>"
     },
     "cip_senior_manager_approved": {
      "description": "Read in cip_003_security_management.rego."
@@ -489,6 +496,13 @@
     },
     "last_review_date": {
      "description": "Read in cip_003_security_management.rego."
+    },
+    "low_impact_areas": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cip_003_security_management.rego."
+     },
+     "x-variable-key": "<area>"
     }
    }
   },
@@ -778,6 +792,9 @@
     "approved": {
      "description": "Read in cip_003_security_management.rego."
     },
+    "cyber_security_awareness": {
+     "description": "Read in cip_003_security_management.rego."
+    },
     "cyber_security_incident_response": {
      "description": "Read in cip_003_security_management.rego."
     },
@@ -795,6 +812,18 @@
     },
     "transient_cyber_asset_controls": {
      "description": "Read in cip_003_security_management.rego."
+    },
+    "vendor_electronic_remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "allowed": {
+       "description": "Read in cip_003_security_management.rego."
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in cip_003_security_management.rego."
+     },
+     "x-variable-key": "<method>"
     }
    }
   },
@@ -1182,7 +1211,19 @@
    "description": "Read in cip_006_physical_security.rego."
   },
   "station_security_plans": {
-   "description": "Read in cip_014_physical_security_transmission.rego."
+   "description": "Read in cip_014_physical_security_transmission.rego.",
+   "additionalProperties": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "properties": {
+     "implementation_date": {
+      "description": "Read in cip_014_physical_security_transmission.rego."
+     },
+     "last_review_date": {
+      "description": "Read in cip_014_physical_security_transmission.rego."
+     }
+    }
+   },
+   "x-variable-key": "<station.station_id>"
   },
   "supply_chain_incident_response": {
    "description": "Read in cip_013_supply_chain.rego.",
@@ -1463,7 +1504,16 @@
    "description": "Read in cip_013_supply_chain.rego."
   },
   "vendor_risk_assessments": {
-   "description": "Read in cip_013_supply_chain.rego."
+   "description": "Read in cip_013_supply_chain.rego.",
+   "additionalProperties": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "properties": {
+     "completion_date": {
+      "description": "Read in cip_013_supply_chain.rego."
+     }
+    }
+   },
+   "x-variable-key": "<vendor.vendor_id>"
   },
   "vendors": {
    "description": "Read in cip_013_supply_chain.rego.",
@@ -1540,6 +1590,9 @@
   "attachment1.medium_impact_criteria.rationale_documented",
   "backup_procedures",
   "baseline_configurations",
+  "bcsi_access",
+  "bcsi_access.program_documented",
+  "bcsi_access.provisioned",
   "bcsi_access_list",
   "bcsi_storage",
   "bcsi_storage.access_controls_implemented",
@@ -1602,6 +1655,7 @@
   "control_center_communications.last_test_date",
   "control_center_communications.links",
   "control_center_communications.protection_requirements_defined",
+  "control_center_communications.recovery_methods_documented",
   "control_center_communications.test_documented",
   "cyber_security_training",
   "cyber_security_training.content",
@@ -1619,6 +1673,8 @@
   "cybersecurity_organization.delegated_authority.documented",
   "cybersecurity_organization.delegated_authority.exists",
   "cybersecurity_organization.delegated_authority.scope_defined",
+  "cybersecurity_organization.low_impact_vendor_remote_access",
+  "cybersecurity_organization.low_impact_vendor_remote_access.allowed",
   "cybersecurity_organization.policies",
   "cybersecurity_organization.policies.approved",
   "cybersecurity_organization.policies.documented",
@@ -1632,16 +1688,10 @@
   "cybersecurity_policies",
   "cybersecurity_policies.approved",
   "cybersecurity_policies.areas",
-  "cybersecurity_policies.areas.configuration_management",
-  "cybersecurity_policies.areas.electronic_security_perimeters",
-  "cybersecurity_policies.areas.incident_response",
-  "cybersecurity_policies.areas.personnel_and_training",
-  "cybersecurity_policies.areas.physical_security",
-  "cybersecurity_policies.areas.recovery_plans",
-  "cybersecurity_policies.areas.systems_security_management",
   "cybersecurity_policies.cip_senior_manager_approved",
   "cybersecurity_policies.documented",
   "cybersecurity_policies.last_review_date",
+  "cybersecurity_policies.low_impact_areas",
   "electronic_access_control_systems",
   "electronic_access_points",
   "electronic_security_perimeter_ids",
@@ -1718,12 +1768,15 @@
   "insm.systems",
   "low_impact_plan",
   "low_impact_plan.approved",
+  "low_impact_plan.cyber_security_awareness",
   "low_impact_plan.cyber_security_incident_response",
   "low_impact_plan.documented",
   "low_impact_plan.electronic_access_controls",
   "low_impact_plan.last_review_date",
   "low_impact_plan.physical_security_controls",
   "low_impact_plan.transient_cyber_asset_controls",
+  "low_impact_plan.vendor_electronic_remote_access",
+  "low_impact_plan.vendor_electronic_remote_access.allowed",
   "malicious_code_protection",
   "malicious_code_protection.alternate_controls_when_av_not_available",
   "malicious_code_protection.mitigation_procedures_documented",
@@ -1828,6 +1881,8 @@
   "software_integrity.verification_process_documented",
   "standalone_bes_cyber_assets",
   "station_security_plans",
+  "station_security_plans[\"<station.station_id>\"].implementation_date",
+  "station_security_plans[\"<station.station_id>\"].last_review_date",
   "supply_chain_incident_response",
   "supply_chain_incident_response.coordination_tested",
   "supply_chain_incident_response.information_sharing_agreements",
@@ -1911,6 +1966,7 @@
   "user_accounts",
   "vendor_contracts",
   "vendor_risk_assessments",
+  "vendor_risk_assessments[\"<vendor.vendor_id>\"].completion_date",
   "vendors",
   "visitor_control_program",
   "visitor_control_program.access_logging",

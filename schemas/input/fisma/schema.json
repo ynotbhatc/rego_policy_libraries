@@ -19,12 +19,12 @@
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "properties": {
       "poam": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "description": "Read in authority_to_operate.rego.",
        "properties": {
         "action_items": {
          "description": "Read in authority_to_operate.rego."
         },
-        "risk_tolerance_acceptable": {
+        "open_weaknesses_count": {
          "description": "Read in authority_to_operate.rego."
         }
        }
@@ -1032,12 +1032,11 @@
       "remediation": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "properties": {
+        "open_weaknesses_count": {
+         "description": "Read in fisma_main.rego."
+        },
         "plan_of_actions": {
-         "description": "Read in fisma_main.rego.",
-         "additionalProperties": {
-          "description": "Read in fisma_main.rego."
-         },
-         "x-variable-key": "<_>"
+         "description": "Read in fisma_main.rego."
         }
        }
       }
@@ -1460,11 +1459,10 @@
        }
       },
       "compensating_controls": {
-       "description": "Read in fisma_main.rego.",
-       "additionalProperties": {
-        "description": "Read in fisma_main.rego."
-       },
-       "x-variable-key": "<_>"
+       "description": "Read in fisma_main.rego."
+      },
+      "compensating_controls_used": {
+       "description": "Read in fisma_main.rego."
       },
       "control_baselines": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
@@ -1484,11 +1482,10 @@
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "properties": {
         "tailored_controls": {
-         "description": "Read in fisma_main.rego.",
-         "additionalProperties": {
-          "description": "Read in fisma_main.rego."
-         },
-         "x-variable-key": "<_>"
+         "description": "Read in fisma_main.rego."
+        },
+        "tailoring_applied": {
+         "description": "Read in fisma_main.rego."
         }
        }
       }
@@ -1623,6 +1620,9 @@
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "properties": {
         "architecture_diagram_current": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "has_network_connections": {
          "description": "Read in system_security_plan.rego."
         },
         "network_connections": {
@@ -1852,7 +1852,7 @@
   "ato.authorization_package",
   "ato.authorization_package.poam",
   "ato.authorization_package.poam.action_items",
-  "ato.authorization_package.poam.risk_tolerance_acceptable",
+  "ato.authorization_package.poam.open_weaknesses_count",
   "ato.authorization_package.risk_assessment",
   "ato.authorization_package.risk_assessment.current_assessment",
   "ato.authorization_package.risk_assessment.impact_analyzed",
@@ -2140,6 +2140,7 @@
   "fisma.assess.procedures.interview_procedures_used",
   "fisma.assess.procedures.test_procedures_used",
   "fisma.assess.remediation",
+  "fisma.assess.remediation.open_weaknesses_count",
   "fisma.assess.remediation.plan_of_actions",
   "fisma.authorize",
   "fisma.authorize.decision",
@@ -2258,12 +2259,14 @@
   "fisma.select.allocation.responsibility_matrix_documented",
   "fisma.select.allocation.system_specific_controls_identified",
   "fisma.select.compensating_controls",
+  "fisma.select.compensating_controls_used",
   "fisma.select.control_baselines",
   "fisma.select.control_baselines.baseline_applied",
   "fisma.select.control_baselines.nist_sp_800_53_revision",
   "fisma.select.control_baselines.selected_controls",
   "fisma.select.tailoring",
   "fisma.select.tailoring.tailored_controls",
+  "fisma.select.tailoring.tailoring_applied",
   "ssp",
   "ssp.categorization",
   "ssp.categorization.availability",
@@ -2301,6 +2304,7 @@
   "ssp.environment.hardware",
   "ssp.environment.network",
   "ssp.environment.network.architecture_diagram_current",
+  "ssp.environment.network.has_network_connections",
   "ssp.environment.network.network_connections",
   "ssp.environment.network.network_topology_documented",
   "ssp.environment.software",

@@ -11,7 +11,7 @@
 #     expected: 71
 #     found: 79
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report

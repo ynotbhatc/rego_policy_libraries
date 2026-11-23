@@ -75,14 +75,14 @@
 #     checks: 50
 #     cited: 47
 #     expected: 97
-#     found: 124
+#     found: 123
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist_800_171.main
 
 import rego.v1

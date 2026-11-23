@@ -11,12 +11,12 @@
 #     expected: 49
 #     found: 50
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.sql_server_2025
 
 # CIS Microsoft SQL Server 2025 Benchmark v1.0.0.

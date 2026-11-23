@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [privacy, eu]
 #   coverage:
-#     checks: 24
-#     cited: 6
+#     checks: 27
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package gdpr.compliance
 
 import rego.v1
