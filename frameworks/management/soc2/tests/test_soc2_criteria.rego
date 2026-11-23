@@ -29,11 +29,11 @@ test_scored_criteria_are_real_common_criteria if {
 test_empty_input_scores_all_mapped_criteria_all_failed if {
 	r := main.compliance_report with input as {}
 
-	# no scope list: all four optional categories are assessed (33 common + 16 optional criteria)
-	r.total_controls == 49
-	r.failed_controls == 49
+	# no scope list: all four optional categories are assessed (33 common + 28 optional criteria)
+	r.total_controls == 61
+	r.failed_controls == 61
 	r.compliant == false
-	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 49, "not_attested": 0}
+	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 61, "not_attested": 0}
 	"SOC 2 CC6.6: Access from outside the system boundary protected - evidence missing - input.remote_access.session_timeout.configured, input.remote_access.session_timeout.max_idle_minutes, input.remote_access.vpn_encryption.enabled, input.remote_access.vpn_required, input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not of the expected type" in r.violations
 	"SOC 2 CC1.1: Integrity and ethics upheld across the entity - evidence missing - no attestation at input.soc2.attestations[\"CC1.1\"]; this organisational criterion is met only by {attested: true, by, date}" in r.violations
 	some v in r.violations
@@ -119,11 +119,11 @@ test_cluster_admin_limit_is_the_entity_commitment if {
 test_all_criteria_pass_with_scope_and_description_is_compliant if {
 	r := main.compliance_report with input as fx.fixture
 	r.compliant == true
-	r.total_controls == 49
+	r.total_controls == 61
 	r.failed_controls == 0
 	r.violations == []
-	r.control_result_counts == {"pass": 49, "fail": 0, "evidence_missing": 0, "not_attested": 0}
-	r.basis_counts == {"evidence": 26, "attestation": 23}
+	r.control_result_counts == {"pass": 61, "fail": 0, "evidence_missing": 0, "not_attested": 0}
+	r.basis_counts == {"evidence": 31, "attestation": 30}
 	r.coverage.common_criteria_evaluated == 33
 }
 
@@ -240,7 +240,10 @@ test_control_results_in_natural_order if {
 	ids[0] == "CC1.1"
 	ids[32] == "CC9.2"
 	ids[33] == "A1.1"
-	ids[48] == "P7.1"
+	ids[38] == "PI1.1"
+	ids[43] == "P1.1"
+	ids[60] == "P8.1"
+	count(ids) == 61
 }
 
 test_titles_are_short if {
@@ -263,7 +266,7 @@ test_out_of_scope_category_does_not_block if {
 	inp := json.remove(json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/categories_in_scope", "value": ["privacy"]}]), ["/backup"])
 	r := main.compliance_report with input as inp
 	r.compliant == true
-	r.total_controls == 42
+	r.total_controls == 51
 }
 
 # --- optional categories (follow-up 2026-11-17) ---
@@ -336,4 +339,58 @@ test_in_scope_criterion_failure_is_reported_by_id if {
 	r.compliant == false
 	"A1.3" in r.failed_criteria
 	"SOC 2 A1.3: Recovery testing carried out - evidence missing - input.backup.recovery_testing.frequency_days, input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not of the expected type" in r.violations
+}
+
+# --- the 12 optional criteria added 2026-11-22 ---
+
+test_optional_criteria_all_mapped if {
+	r := main.compliance_report with input as fx.fixture
+	r.coverage.optional_criteria_mapped == 28
+	r.coverage.optional_criteria_not_mapped == []
+}
+
+test_reconciliation_interval_compared_with_commitment if {
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/commitments/reconciliation_interval_hours", "value": 5}])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "PI1.4"][0]
+	row.status == "fail"
+}
+
+test_reconciliation_commitment_missing_is_evidence_missing if {
+	inp := json.remove(fx.fixture, ["/soc2/commitments/reconciliation_interval_hours"])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "PI1.4"][0]
+	row.status == "evidence_missing"
+	r.compliant == false
+}
+
+test_response_time_commitment_missing_is_evidence_missing if {
+	inp := json.remove(fx.fixture, ["/soc2/commitments/data_subject_response_days"])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "P6.7"][0]
+	row.status == "evidence_missing"
+	r.compliant == false
+}
+
+test_response_time_as_string_is_evidence_missing if {
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/privacy/data_subject_requests/response_timeline", "value": "10"}])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "P6.7"][0]
+	row.status == "evidence_missing"
+}
+
+test_new_attestation_criterion_unsigned_is_not_attested if {
+	inp := json.remove(fx.fixture, ["/soc2/attestations/P8.1/date"])
+	r := main.compliance_report with input as inp
+	row := [x | some x in r.control_results; x.id == "P8.1"][0]
+	row.status == "not_attested"
+	r.compliant == false
+}
+
+test_new_criteria_skipped_when_category_out_of_scope if {
+	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/categories_in_scope", "value": ["availability"]}])
+	r := main.compliance_report with input as inp
+	ids := {row.id | some row in r.control_results}
+	count(ids & {"PI1.1", "PI1.4", "PI1.5", "P1.1", "P2.1", "P4.3", "P6.2", "P6.3", "P6.4", "P6.5", "P6.7", "P8.1"}) == 0
+	r.total_controls == 36
 }

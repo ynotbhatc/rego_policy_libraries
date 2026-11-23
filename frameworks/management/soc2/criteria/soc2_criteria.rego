@@ -1,5 +1,5 @@
 # SOC 2 - AICPA Trust Services Criteria: per-criterion evaluation for all 33 common criteria (CC1.1-CC9.2)
-# and the 16 mapped criteria of the optional categories. data.soc2.main reads this module and puts the
+# and all 28 criteria of the optional categories (61 in all). data.soc2.main reads this module and puts the
 # criteria of the categories in scope into compliance_report.control_results.
 #
 # Source: AICPA, TSP section 100, 2017 Trust Services Criteria (points of focus revised 2022; the criteria
@@ -25,15 +25,15 @@
 # There is no separate reason field: the status, the basis and the findings say why a criterion did not pass.
 
 # METADATA
-# title: "SOC 2 Trust Services Criteria - per-criterion evaluation of all 33 common criteria and 16 optional-category criteria"
+# title: "SOC 2 Trust Services Criteria - per-criterion evaluation of all 33 common criteria and 28 optional-category criteria"
 # custom:
 #   class: compliance
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 49
-#     cited: 49
+#     checks: 61
+#     cited: 61
 #     density: sized
 #     basis: size
 #     tested: true
@@ -271,6 +271,7 @@ criteria := {
 			{"path": "data_disposal.verification.completion_verified", "test": "true"},
 		],
 	},
+	"PI1.1": {"title": "Processing specifications defined and communicated", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "attestation"},
 	"PI1.2": {
 		"title": "Input validation", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
 		"facts": [
@@ -289,6 +290,24 @@ criteria := {
 			{"path": "data_processing.error_handling.recovery_procedures.documented", "test": "true"},
 		],
 	},
+	"PI1.4": {
+		"title": "Outputs complete, accurate and delivered as intended", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
+		"facts": [
+			{"path": "data_processing.transmission.delivery_confirmation", "test": "true"},
+			{"path": "data_processing.transactions.reconciliation.enabled", "test": "true"},
+			{"path": "data_processing.transactions.reconciliation.frequency_hours", "test": "max_commitment", "commitment": "reconciliation_interval_hours"},
+		],
+	},
+	"PI1.5": {
+		"title": "Stored data kept complete and accurate", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
+		"facts": [
+			{"path": "data_processing.integrity_checks.checksums.enabled", "test": "true"},
+			{"path": "databases.integrity_constraints.enforced", "test": "true"},
+			{"path": "databases.transactions.rollback_capability", "test": "true"},
+		],
+	},
+	"P1.1": {"title": "Privacy notice given to data subjects", "group": "P1 notice", "category": "privacy", "basis": "attestation"},
+	"P2.1": {"title": "Choices and consent explained to data subjects", "group": "P2 choice and consent", "category": "privacy", "basis": "attestation"},
 	"P3.1": {
 		"title": "Collection limited to stated purposes", "group": "P3 collection", "category": "privacy", "basis": "evidence",
 		"facts": [
@@ -318,6 +337,13 @@ criteria := {
 			{"path": "privacy.retention.retention_schedules.defined", "test": "true"},
 		],
 	},
+	"P4.3": {
+		"title": "Personal information disposed of securely", "group": "P4 use, retention and disposal", "category": "privacy", "basis": "evidence",
+		"facts": [
+			{"path": "privacy.retention.automated_deletion", "test": "true"},
+			{"path": "data_disposal.verification.completion_verified", "test": "true"},
+		],
+	},
 	"P5.1": {
 		"title": "Data subject access", "group": "P5 access", "category": "privacy", "basis": "evidence",
 		"facts": [{"path": "privacy.data_subject_rights.access_request.supported", "test": "true"}],
@@ -333,12 +359,29 @@ criteria := {
 			{"path": "privacy.third_party_sharing.due_diligence_performed", "test": "true"},
 		],
 	},
+	"P6.2": {
+		"title": "Record kept of authorised disclosures", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
+		"facts": [
+			{"path": "privacy.third_party_sharing.disclosure_logging.enabled", "test": "true"},
+		],
+	},
+	"P6.3": {"title": "Record kept of unauthorised disclosures", "group": "P6 disclosure and notification", "category": "privacy", "basis": "attestation"},
+	"P6.4": {"title": "Privacy commitments obtained from third parties", "group": "P6 disclosure and notification", "category": "privacy", "basis": "attestation"},
+	"P6.5": {"title": "Third parties report unauthorised disclosures", "group": "P6 disclosure and notification", "category": "privacy", "basis": "attestation"},
 	"P6.6": {
 		"title": "Breach notification within commitments", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.breach_notification.procedures_documented", "test": "true"},
 			{"path": "privacy.breach_notification.timeline_compliance.authorities", "test": "max_commitment", "commitment": "breach_notice_hours_authorities"},
 			{"path": "privacy.breach_notification.timeline_compliance.individuals", "test": "max_commitment", "commitment": "breach_notice_hours_individuals"},
+		],
+	},
+	"P6.7": {
+		"title": "Account of personal information held and shared, on request", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
+		"facts": [
+			{"path": "privacy.gdpr.records_of_processing", "test": "true"},
+			{"path": "privacy.data_subject_requests.request_logging", "test": "true"},
+			{"path": "privacy.data_subject_requests.response_timeline", "test": "max_commitment", "commitment": "data_subject_response_days"},
 		],
 	},
 	"P7.1": {
@@ -348,10 +391,12 @@ criteria := {
 			{"path": "privacy.data_quality.correction_procedures", "test": "true"},
 		],
 	},
+	"P8.1": {"title": "Privacy inquiries, complaints and disputes resolved", "group": "P8 monitoring and enforcement", "category": "privacy", "basis": "attestation"},
 }
 
-# Optional-category criteria with no check here (not evaluated, not claimed).
-not_mapped := ["PI1.1", "PI1.4", "PI1.5", "P1.1", "P2.1", "P4.3", "P6.2", "P6.3", "P6.4", "P6.5", "P6.7", "P8.1"]
+# Optional-category criteria with no check here (not evaluated, not claimed): none since every one of the 28
+# optional-category criteria has a check.
+not_mapped := []
 
 common_criteria_ids := {id | some id, c in criteria; c.category == "security"}
 
