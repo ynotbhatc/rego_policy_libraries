@@ -1,0 +1,1848 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_kubernetes/schema.json",
+ "title": "Input facts for cis_kubernetes",
+ "description": "Facts the module in benchmarks/cis/kubernetes/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_kubernetes",
+ "x-entrypoint": "data.cis_kubernetes.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/kubernetes/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_kubernetes_test.green",
+ "type": "object",
+ "properties": {
+  "api_server": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "audit_policy": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "apiVersion": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "audit.k8s.io/v1"
+       ]
+      },
+      "kind": {
+       "description": "Read in cis_kubernetes.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Policy"
+       ]
+      },
+      "rules": {
+       "description": "Read in cis_kubernetes.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "level": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Metadata"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "authentication_config": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "anonymous": {
+       "description": "Read in cis_kubernetes.rego."
+      }
+     }
+    },
+    "encryption_config": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "resources": {
+       "description": "Read in cis_kubernetes.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "providers": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "aescbc"
+           ]
+          },
+          "examples": [
+           [
+            "aescbc",
+            "identity"
+           ]
+          ]
+         },
+         "resources": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "secrets"
+           ]
+          },
+          "examples": [
+           [
+            "secrets"
+           ]
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "flags": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "anonymous-auth": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "false"
+       ]
+      },
+      "audit-log-maxage": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "30"
+       ]
+      },
+      "audit-log-maxbackup": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "10"
+       ]
+      },
+      "audit-log-maxsize": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "100"
+       ]
+      },
+      "audit-log-path": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/log/kubernetes/audit.log"
+       ]
+      },
+      "audit-policy-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/audit-policy.yaml"
+       ]
+      },
+      "authorization-mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Node,RBAC"
+       ]
+      },
+      "client-ca-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/ca.crt"
+       ]
+      },
+      "enable-admission-plugins": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "NodeRestriction,EventRateLimit,AlwaysPullImages,DenyServiceExternalIPs"
+       ]
+      },
+      "encryption-provider-config": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/enc/config.yaml"
+       ]
+      },
+      "etcd-cafile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/etcd/ca.crt"
+       ]
+      },
+      "etcd-certfile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/apiserver-etcd-client.crt"
+       ]
+      },
+      "etcd-keyfile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/apiserver-etcd-client.key"
+       ]
+      },
+      "kubelet-certificate-authority": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/ca.crt"
+       ]
+      },
+      "kubelet-client-certificate": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/apiserver-kubelet-client.crt"
+       ]
+      },
+      "kubelet-client-key": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/apiserver-kubelet-client.key"
+       ]
+      },
+      "profiling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "false"
+       ]
+      },
+      "service-account-extend-token-expiration": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "false"
+       ]
+      },
+      "service-account-key-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/sa.pub"
+       ]
+      },
+      "service-account-lookup": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "true"
+       ]
+      },
+      "tls-cert-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/apiserver.crt"
+       ]
+      },
+      "tls-cipher-suites": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+       ]
+      },
+      "tls-private-key-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/apiserver.key"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "attest": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "admission_capabilities_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_host_ipc_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_host_network_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_host_path_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_host_pid_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_host_ports_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_net_raw_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_privilege_escalation_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_privileged_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_proc_mount_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_root_containers_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admission_windows_host_process_restricted": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "api_anonymous_paths_required": {
+     "description": "Read in cis_kubernetes.rego."
+    },
+    "api_request_timeout_appropriate": {
+     "description": "Read in cis_kubernetes.rego."
+    },
+    "audit_policy_coverage_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "bind_impersonate_escalate_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cluster_admin_bindings_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cni_enforces_network_policies": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "csr_approval_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "external_secret_storage_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "image_provenance_configured": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "kubelet_event_record_qps_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "kubelet_fine_grained_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "namespace_boundaries_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "node_proxy_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "persistent_volume_create_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "pod_create_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "pod_seccomp_profiles_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "pod_security_contexts_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "policy_control_mechanism_active": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rbac_wildcards_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "secret_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "service_account_token_create_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "service_account_token_mounts_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "system_masters_not_used": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "users_no_bootstrap_token_auth": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "users_no_client_certificate_auth": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "users_no_service_account_token_auth": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "webhook_config_access_reviewed": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "cis_profile": {
+   "description": "Read in cis_kubernetes.rego."
+  },
+  "cluster": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "namespace_resources": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "default": {
+       "description": "Read in cis_kubernetes.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "service/kubernetes"
+        ]
+       },
+       "examples": [
+        [
+         "service/kubernetes"
+        ]
+       ]
+      }
+     }
+    }
+   }
+  },
+  "collection_status": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "default_service_accounts": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "namespace_resources": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "network_policies": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "secret_env_scan": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    }
+   }
+  },
+  "controller_manager": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "flags": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "bind-address": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "127.0.0.1"
+       ]
+      },
+      "profiling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "false"
+       ]
+      },
+      "root-ca-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/ca.crt"
+       ]
+      },
+      "service-account-private-key-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/sa.key"
+       ]
+      },
+      "terminated-pod-gc-threshold": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "1000"
+       ]
+      },
+      "use-service-account-credentials": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "true"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "etcd": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "flags": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cert-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/etcd/server.crt"
+       ]
+      },
+      "client-cert-auth": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "true"
+       ]
+      },
+      "data-dir": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/lib/etcd"
+       ]
+      },
+      "key-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/etcd/server.key"
+       ]
+      },
+      "peer-cert-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/etcd/peer.crt"
+       ]
+      },
+      "peer-client-cert-auth": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "true"
+       ]
+      },
+      "peer-key-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/etcd/peer.key"
+       ]
+      },
+      "trusted-ca-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/pki/etcd/ca.crt"
+       ]
+      }
+     }
+    },
+    "member_count": {
+     "description": "Read in cis_kubernetes.rego."
+    }
+   }
+  },
+  "files": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "cni": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/cni/net.d/10-calico.conflist"
+        ]
+       }
+      }
+     }
+    },
+    "control_plane_confs": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/kubernetes/admin.conf"
+        ]
+       }
+      }
+     }
+    },
+    "etcd_data": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "etcd"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0700"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "etcd"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/var/lib/etcd"
+        ]
+       }
+      }
+     }
+    },
+    "kube_proxy_kubeconfig": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/var/lib/kube-proxy/kubeconfig.conf"
+        ]
+       }
+      }
+     }
+    },
+    "kubelet_client_ca": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0644"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/kubernetes/pki/ca.crt"
+        ]
+       }
+      }
+     }
+    },
+    "kubelet_config_dir": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0755"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/kubernetes/kubelet.conf.d"
+        ]
+       }
+      }
+     }
+    },
+    "kubelet_config_yaml": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/var/lib/kubelet/config.yaml"
+        ]
+       }
+      }
+     }
+    },
+    "kubelet_kubeconfig": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/kubernetes/kubelet.conf"
+        ]
+       }
+      }
+     }
+    },
+    "kubelet_service": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf"
+        ]
+       }
+      }
+     }
+    },
+    "manifests": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/kubernetes/manifests/kube-apiserver.yaml"
+        ]
+       }
+      }
+     }
+    },
+    "pki": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0644"
+        ]
+       },
+       "owner": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "root"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/kubernetes/pki/ca.crt"
+        ]
+       }
+      }
+     }
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in cis_kubernetes.rego."
+   },
+   "x-variable-key": "<g>"
+  },
+  "kube_proxy": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "config": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "metricsBindAddress": {
+       "description": "Read in cis_kubernetes.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "127.0.0.1:10249"
+       ]
+      }
+     }
+    },
+    "flags": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "config": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/lib/kube-proxy/config.conf"
+       ]
+      }
+     }
+    },
+    "running": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "kubelet": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "config": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "authentication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "anonymous": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            false
+           ]
+          }
+         }
+        },
+        "x509": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "clientCAFile": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "/etc/kubernetes/pki/ca.crt"
+           ]
+          }
+         }
+        }
+       }
+      },
+      "authorization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Webhook"
+         ]
+        }
+       }
+      },
+      "makeIPTablesUtilChains": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "podPidsLimit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        4096
+       ]
+      },
+      "readOnlyPort": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "rotateCertificates": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "seccompDefault": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "serverTLSBootstrap": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "streamingConnectionIdleTimeout": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "4h0m0s"
+       ]
+      },
+      "tlsCertFile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/lib/kubelet/pki/kubelet.crt"
+       ]
+      },
+      "tlsCipherSuites": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        ]
+       },
+       "examples": [
+        [
+         "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        ]
+       ]
+      },
+      "tlsPrivateKeyFile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/lib/kubelet/pki/kubelet.key"
+       ]
+      }
+     }
+    },
+    "flags": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "config": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/lib/kubelet/config.yaml"
+       ]
+      },
+      "config-dir": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/kubelet.conf.d"
+       ]
+      },
+      "kubeconfig": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/kubernetes/kubelet.conf"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "network_policies": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "namespaces_without_policy": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    }
+   }
+  },
+  "scheduler": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "flags": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "bind-address": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "127.0.0.1"
+       ]
+      },
+      "profiling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "false"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "secrets": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "env_var_usage_count": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
+    }
+   }
+  },
+  "service_accounts": {
+   "description": "Read in cis_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "default": {
+     "description": "Read in cis_kubernetes.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "automount_token": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "namespace": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "default"
+        ]
+       },
+       "role_bindings": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        },
+        "examples": [
+         []
+        ]
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "api_server",
+  "api_server.audit_policy",
+  "api_server.audit_policy.apiVersion",
+  "api_server.audit_policy.kind",
+  "api_server.audit_policy.rules",
+  "api_server.audit_policy.rules[].level",
+  "api_server.authentication_config",
+  "api_server.authentication_config.anonymous",
+  "api_server.encryption_config",
+  "api_server.encryption_config.resources",
+  "api_server.encryption_config.resources[].providers",
+  "api_server.encryption_config.resources[].resources",
+  "api_server.flags",
+  "api_server.flags.profiling",
+  "api_server.flags[\"anonymous-auth\"]",
+  "api_server.flags[\"audit-log-maxage\"]",
+  "api_server.flags[\"audit-log-maxbackup\"]",
+  "api_server.flags[\"audit-log-maxsize\"]",
+  "api_server.flags[\"audit-log-path\"]",
+  "api_server.flags[\"audit-policy-file\"]",
+  "api_server.flags[\"authorization-mode\"]",
+  "api_server.flags[\"client-ca-file\"]",
+  "api_server.flags[\"enable-admission-plugins\"]",
+  "api_server.flags[\"encryption-provider-config\"]",
+  "api_server.flags[\"etcd-cafile\"]",
+  "api_server.flags[\"etcd-certfile\"]",
+  "api_server.flags[\"etcd-keyfile\"]",
+  "api_server.flags[\"kubelet-certificate-authority\"]",
+  "api_server.flags[\"kubelet-client-certificate\"]",
+  "api_server.flags[\"kubelet-client-key\"]",
+  "api_server.flags[\"service-account-extend-token-expiration\"]",
+  "api_server.flags[\"service-account-key-file\"]",
+  "api_server.flags[\"service-account-lookup\"]",
+  "api_server.flags[\"tls-cert-file\"]",
+  "api_server.flags[\"tls-cipher-suites\"]",
+  "api_server.flags[\"tls-private-key-file\"]",
+  "attest",
+  "attest.admission_capabilities_restricted",
+  "attest.admission_host_ipc_restricted",
+  "attest.admission_host_network_restricted",
+  "attest.admission_host_path_restricted",
+  "attest.admission_host_pid_restricted",
+  "attest.admission_host_ports_restricted",
+  "attest.admission_net_raw_restricted",
+  "attest.admission_privilege_escalation_restricted",
+  "attest.admission_privileged_restricted",
+  "attest.admission_proc_mount_restricted",
+  "attest.admission_root_containers_restricted",
+  "attest.admission_windows_host_process_restricted",
+  "attest.api_anonymous_paths_required",
+  "attest.api_request_timeout_appropriate",
+  "attest.audit_policy_coverage_reviewed",
+  "attest.bind_impersonate_escalate_reviewed",
+  "attest.cluster_admin_bindings_reviewed",
+  "attest.cni_enforces_network_policies",
+  "attest.csr_approval_access_reviewed",
+  "attest.external_secret_storage_reviewed",
+  "attest.image_provenance_configured",
+  "attest.kubelet_event_record_qps_reviewed",
+  "attest.kubelet_fine_grained_access_reviewed",
+  "attest.namespace_boundaries_reviewed",
+  "attest.node_proxy_access_reviewed",
+  "attest.persistent_volume_create_access_reviewed",
+  "attest.pod_create_access_reviewed",
+  "attest.pod_seccomp_profiles_reviewed",
+  "attest.pod_security_contexts_reviewed",
+  "attest.policy_control_mechanism_active",
+  "attest.rbac_wildcards_reviewed",
+  "attest.secret_access_reviewed",
+  "attest.service_account_token_create_access_reviewed",
+  "attest.service_account_token_mounts_reviewed",
+  "attest.system_masters_not_used",
+  "attest.users_no_bootstrap_token_auth",
+  "attest.users_no_client_certificate_auth",
+  "attest.users_no_service_account_token_auth",
+  "attest.webhook_config_access_reviewed",
+  "cis_profile",
+  "cluster",
+  "cluster.namespace_resources",
+  "cluster.namespace_resources.default",
+  "collection_status",
+  "collection_status.default_service_accounts",
+  "collection_status.namespace_resources",
+  "collection_status.network_policies",
+  "collection_status.secret_env_scan",
+  "controller_manager",
+  "controller_manager.flags",
+  "controller_manager.flags.profiling",
+  "controller_manager.flags[\"bind-address\"]",
+  "controller_manager.flags[\"root-ca-file\"]",
+  "controller_manager.flags[\"service-account-private-key-file\"]",
+  "controller_manager.flags[\"terminated-pod-gc-threshold\"]",
+  "controller_manager.flags[\"use-service-account-credentials\"]",
+  "etcd",
+  "etcd.flags",
+  "etcd.flags[\"cert-file\"]",
+  "etcd.flags[\"client-cert-auth\"]",
+  "etcd.flags[\"data-dir\"]",
+  "etcd.flags[\"key-file\"]",
+  "etcd.flags[\"peer-cert-file\"]",
+  "etcd.flags[\"peer-client-cert-auth\"]",
+  "etcd.flags[\"peer-key-file\"]",
+  "etcd.flags[\"trusted-ca-file\"]",
+  "etcd.member_count",
+  "files",
+  "files.cni",
+  "files.cni[].group",
+  "files.cni[].mode",
+  "files.cni[].owner",
+  "files.cni[].path",
+  "files.control_plane_confs",
+  "files.control_plane_confs[].group",
+  "files.control_plane_confs[].mode",
+  "files.control_plane_confs[].owner",
+  "files.control_plane_confs[].path",
+  "files.etcd_data",
+  "files.etcd_data[].group",
+  "files.etcd_data[].mode",
+  "files.etcd_data[].owner",
+  "files.etcd_data[].path",
+  "files.kube_proxy_kubeconfig",
+  "files.kube_proxy_kubeconfig[].group",
+  "files.kube_proxy_kubeconfig[].mode",
+  "files.kube_proxy_kubeconfig[].owner",
+  "files.kube_proxy_kubeconfig[].path",
+  "files.kubelet_client_ca",
+  "files.kubelet_client_ca[].group",
+  "files.kubelet_client_ca[].mode",
+  "files.kubelet_client_ca[].owner",
+  "files.kubelet_client_ca[].path",
+  "files.kubelet_config_dir",
+  "files.kubelet_config_dir[].group",
+  "files.kubelet_config_dir[].mode",
+  "files.kubelet_config_dir[].owner",
+  "files.kubelet_config_dir[].path",
+  "files.kubelet_config_yaml",
+  "files.kubelet_config_yaml[].group",
+  "files.kubelet_config_yaml[].mode",
+  "files.kubelet_config_yaml[].owner",
+  "files.kubelet_config_yaml[].path",
+  "files.kubelet_kubeconfig",
+  "files.kubelet_kubeconfig[].group",
+  "files.kubelet_kubeconfig[].mode",
+  "files.kubelet_kubeconfig[].owner",
+  "files.kubelet_kubeconfig[].path",
+  "files.kubelet_service",
+  "files.kubelet_service[].group",
+  "files.kubelet_service[].mode",
+  "files.kubelet_service[].owner",
+  "files.kubelet_service[].path",
+  "files.manifests",
+  "files.manifests[].group",
+  "files.manifests[].mode",
+  "files.manifests[].owner",
+  "files.manifests[].path",
+  "files.pki",
+  "files.pki[].group",
+  "files.pki[].mode",
+  "files.pki[].owner",
+  "files.pki[].path",
+  "kube_proxy",
+  "kube_proxy.config",
+  "kube_proxy.config.metricsBindAddress",
+  "kube_proxy.flags",
+  "kube_proxy.flags.config",
+  "kube_proxy.running",
+  "kubelet",
+  "kubelet.config",
+  "kubelet.config.authentication",
+  "kubelet.config.authentication.anonymous",
+  "kubelet.config.authentication.anonymous.enabled",
+  "kubelet.config.authentication.x509",
+  "kubelet.config.authentication.x509.clientCAFile",
+  "kubelet.config.authorization",
+  "kubelet.config.authorization.mode",
+  "kubelet.config.makeIPTablesUtilChains",
+  "kubelet.config.podPidsLimit",
+  "kubelet.config.readOnlyPort",
+  "kubelet.config.rotateCertificates",
+  "kubelet.config.seccompDefault",
+  "kubelet.config.serverTLSBootstrap",
+  "kubelet.config.streamingConnectionIdleTimeout",
+  "kubelet.config.tlsCertFile",
+  "kubelet.config.tlsCipherSuites",
+  "kubelet.config.tlsPrivateKeyFile",
+  "kubelet.flags",
+  "kubelet.flags.config",
+  "kubelet.flags.kubeconfig",
+  "kubelet.flags[\"config-dir\"]",
+  "network_policies",
+  "network_policies.namespaces_without_policy",
+  "scheduler",
+  "scheduler.flags",
+  "scheduler.flags.profiling",
+  "scheduler.flags[\"bind-address\"]",
+  "secrets",
+  "secrets.env_var_usage_count",
+  "service_accounts",
+  "service_accounts.default",
+  "service_accounts.default[].automount_token",
+  "service_accounts.default[].namespace",
+  "service_accounts.default[].role_bindings"
+ ]
+}

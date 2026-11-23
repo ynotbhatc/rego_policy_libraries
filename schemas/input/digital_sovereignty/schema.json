@@ -1,0 +1,1235 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/digital_sovereignty/schema.json",
+ "title": "Input facts for digital_sovereignty",
+ "description": "Input paths referenced in the sources of frameworks/sovereignty/digital_sovereignty/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "digital_sovereignty",
+ "x-entrypoint": "data.digital_sovereignty.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/sovereignty/digital_sovereignty/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "ai_bias_fairness": {
+   "description": "Read in ai_sovereignty.rego.",
+   "properties": {
+    "audit_findings_documented": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "audit_frequency_days": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "bias_audit_policy_documented": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "last_audit_date": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "remediation_process_documented": {
+     "description": "Read in ai_sovereignty.rego."
+    }
+   }
+  },
+  "ai_fairness_controls": {
+   "description": "Read in ai_sovereignty.rego.",
+   "properties": {
+    "disparate_impact_tested": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "fairness_metrics_defined": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "fairness_monitoring_ongoing": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "fairness_thresholds_enforced": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "remediation_applied_when_breached": {
+     "description": "Read in ai_sovereignty.rego."
+    }
+   }
+  },
+  "ai_governance": {
+   "description": "Read in ai_sovereignty.rego.",
+   "properties": {
+    "approved_ai_services_list": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "data_handling_procedures": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "human_oversight_for_decisions": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "policy_documented": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "shadow_ai_controls": {
+     "description": "Read in ai_sovereignty.rego."
+    }
+   }
+  },
+  "ai_output_controls": {
+   "description": "Read in ai_sovereignty.rego.",
+   "properties": {
+    "output_jurisdiction": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "output_logging_enabled": {
+     "description": "Read in ai_sovereignty.rego."
+    }
+   }
+  },
+  "ai_services": {
+   "description": "Read in ai_sovereignty.rego."
+  },
+  "approved_cloud_regions": {
+   "description": "Read in data_residency.rego."
+  },
+  "approved_jurisdictions": {
+   "description": "Read in ai_sovereignty.rego, breach_notification_sovereignty.rego, cryptographic_sovereignty.rego, data_residency.rego and 4 more."
+  },
+  "backup_configurations": {
+   "description": "Read in data_residency.rego."
+  },
+  "bgp_configuration": {
+   "description": "Read in network_sovereignty.rego.",
+   "properties": {
+    "peer_list_reviewed_date": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "route_filtering_enabled": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "route_origin_validation": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "routes_documented": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "rpki_deployed": {
+     "description": "Read in network_sovereignty.rego."
+    }
+   }
+  },
+  "breach_notification": {
+   "description": "Read in breach_notification_sovereignty.rego.",
+   "properties": {
+    "breach_comms_encrypted": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "breach_register_maintained": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "data_processor_notification_procedure": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "early_warning_timeline_hours": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "forensic_evidence_jurisdiction": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "law_enforcement_disclosure_controlled": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "notification_channel_in_jurisdiction": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "notification_timeline_hours": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "notification_vendor_hq_country": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "policy_documented": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "procedure_test_frequency_days": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "procedure_tested_date": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    },
+    "supervisory_authority_contact_in_jurisdiction": {
+     "description": "Read in breach_notification_sovereignty.rego."
+    }
+   }
+  },
+  "cloud_providers": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in infrastructure_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "cloud_resources": {
+   "description": "Read in data_residency.rego.",
+   "additionalProperties": {
+    "description": "Read in data_residency.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "code_repositories": {
+   "description": "Read in software_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in software_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "code_signing": {
+   "description": "Read in cryptographic_sovereignty.rego.",
+   "properties": {
+    "implemented": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "key_location_country": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "private_key_in_approved_jurisdiction": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    }
+   }
+  },
+  "concentration_limits": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "properties": {
+    "max_foreign_provider_pct": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "max_single_provider_pct": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    }
+   }
+  },
+  "cyber_resilience": {
+   "description": "Read in cyber_resilience_sovereignty.rego.",
+   "properties": {
+    "adversarial_testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "red_team_conducted": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "red_team_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "red_team_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "backup_and_recovery": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "backup_immutability_enforced": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "backup_location_sovereign": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "recovery_test_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "recovery_test_met_rpo": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "recovery_test_met_rto": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "recovery_tested_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "governance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "board_cyber_resilience_review_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "board_review_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "cyber_resilience_training_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "cyber_resilience_training_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "incident_response": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ir_plan_documented": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "ir_plan_test_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "ir_plan_tested_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "nation_state_scenario_included": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "roles_formally_assigned": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "metrics": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "mttr_hours": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "mttr_threshold_hours": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "mttr_tracked": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "redundancy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "critical_systems_have_active_redundancy": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "failover_test_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "failover_tested_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "supply_chain_resilience": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "assessment_conducted": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "assessment_date": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "assessment_frequency_days": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "critical_suppliers_have_alternatives": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    },
+    "threat_intelligence": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "feeds_active": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      },
+      "feeds_integrated_into_soc": {
+       "description": "Read in cyber_resilience_sovereignty.rego."
+      }
+     }
+    }
+   }
+  },
+  "data_flow_inventory": {
+   "description": "Read in data_residency.rego.",
+   "properties": {
+    "last_review_date": {
+     "description": "Read in data_residency.rego."
+    },
+    "maintained": {
+     "description": "Read in data_residency.rego."
+    }
+   }
+  },
+  "data_flows": {
+   "description": "Read in data_residency.rego."
+  },
+  "dependency_management": {
+   "description": "Read in software_sovereignty.rego.",
+   "properties": {
+    "dependency_pinning_enforced": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "private_registry_used": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "registry_in_approved_jurisdiction": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "vulnerability_scanning": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enabled": {
+       "description": "Read in software_sovereignty.rego."
+      },
+      "last_scan_date": {
+       "description": "Read in software_sovereignty.rego."
+      }
+     }
+    }
+   }
+  },
+  "dns_configuration": {
+   "description": "Read in network_sovereignty.rego.",
+   "properties": {
+    "dns_logs_retained_days": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "dnssec_enabled": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "public_dns_providers_blocked": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "resolver_location_country": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "resolver_under_org_control": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "zone_transfers_controlled": {
+     "description": "Read in network_sovereignty.rego."
+    }
+   }
+  },
+  "dora": {
+   "description": "Read in dora_sovereignty.rego.",
+   "properties": {
+    "business_continuity_plan_documented": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "business_continuity_test_frequency_days": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "business_continuity_tested_date": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "critical_ict_providers_register_maintained": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "digital_resilience_test_date": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "digital_resilience_test_frequency_days": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "digital_resilience_testing_conducted": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "ict_asset_register_maintained": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "ict_asset_register_review_frequency_days": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "ict_asset_register_reviewed_date": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "ict_risk_framework_review_frequency_days": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "ict_risk_framework_reviewed_date": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "ict_risk_management_framework_documented": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "initial_notification_timeline_hours": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "intermediate_report_timeline_hours": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "major_incident_classification_defined": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "rpo_defined": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "rto_defined": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "tlpt_conducted": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "tlpt_date": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "tlpt_frequency_years": {
+     "description": "Read in dora_sovereignty.rego."
+    },
+    "tlpt_required": {
+     "description": "Read in dora_sovereignty.rego."
+    }
+   }
+  },
+  "dr_configurations": {
+   "description": "Read in data_residency.rego."
+  },
+  "encrypted_resources": {
+   "description": "Read in cryptographic_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in cryptographic_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "encrypted_resources_in_transit": {
+   "description": "Read in cryptographic_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in cryptographic_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "encryption_standards": {
+   "description": "Read in cryptographic_sovereignty.rego.",
+   "properties": {
+    "algorithms_approved": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    }
+   }
+  },
+  "exit_strategy": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "properties": {
+    "data_portability_format_open": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "documented": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "estimated_migration_days": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "portability_tested": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    }
+   }
+  },
+  "foreign_access_requests": {
+   "description": "Read in operational_sovereignty.rego.",
+   "properties": {
+    "legal_review_required": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "notification_to_data_owner": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "policy_documented": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "right_to_challenge": {
+     "description": "Read in operational_sovereignty.rego."
+    }
+   }
+  },
+  "geopolitical_risk": {
+   "description": "Read in geopolitical_sovereignty.rego.",
+   "properties": {
+    "country_exit_procedures": {
+     "description": "Read in geopolitical_sovereignty.rego.",
+     "additionalProperties": {
+      "description": "Read in geopolitical_sovereignty.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "designated_sovereign_risk_owner": {
+     "description": "Read in geopolitical_sovereignty.rego."
+    },
+    "geopolitical_event_triggers": {
+     "description": "Read in geopolitical_sovereignty.rego.",
+     "additionalProperties": {
+      "description": "Read in geopolitical_sovereignty.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "last_risk_review_date": {
+     "description": "Read in geopolitical_sovereignty.rego."
+    },
+    "regulatory_change_monitoring": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "jurisdictions_monitored": {
+       "description": "Read in geopolitical_sovereignty.rego."
+      },
+      "notification_mechanism": {
+       "description": "Read in geopolitical_sovereignty.rego."
+      },
+      "process_documented": {
+       "description": "Read in geopolitical_sovereignty.rego."
+      }
+     }
+    },
+    "review_frequency_days": {
+     "description": "Read in geopolitical_sovereignty.rego."
+    },
+    "risk_register_maintained": {
+     "description": "Read in geopolitical_sovereignty.rego."
+    },
+    "supply_chain_geopolitical_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "alternative_suppliers_identified": {
+       "description": "Read in geopolitical_sovereignty.rego."
+      },
+      "conducted": {
+       "description": "Read in geopolitical_sovereignty.rego."
+      },
+      "critical_suppliers_mapped": {
+       "description": "Read in geopolitical_sovereignty.rego."
+      }
+     }
+    }
+   }
+  },
+  "hardware_components": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in infrastructure_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "hsm_configuration": {
+   "description": "Read in cryptographic_sovereignty.rego.",
+   "properties": {
+    "deployed": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "key_material_leaves_hsm": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "location_country": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "type": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "vendor_access_possible": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    }
+   }
+  },
+  "infrastructure_components": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in infrastructure_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "internet_egress": {
+   "description": "Read in network_sovereignty.rego.",
+   "properties": {
+    "allowed_destinations_documented": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "blocked_destinations_documented": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "egress_country": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "single_controlled_egress_point": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "traffic_inspected_at_egress": {
+     "description": "Read in network_sovereignty.rego."
+    }
+   }
+  },
+  "key_management_policies": {
+   "description": "Read in cryptographic_sovereignty.rego.",
+   "properties": {
+    "dual_control_enforced": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "escrow": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists": {
+       "description": "Read in cryptographic_sovereignty.rego."
+      },
+      "foreign_entity_holds_keys": {
+       "description": "Read in cryptographic_sovereignty.rego."
+      }
+     }
+    },
+    "key_ceremony_documented": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "rotation_frequency_days": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "rotation_policy_documented": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    },
+    "split_knowledge_enforced": {
+     "description": "Read in cryptographic_sovereignty.rego."
+    }
+   }
+  },
+  "metadata_storage": {
+   "description": "Read in data_residency.rego.",
+   "properties": {
+    "in_approved_jurisdiction": {
+     "description": "Read in data_residency.rego."
+    },
+    "location_country": {
+     "description": "Read in data_residency.rego."
+    }
+   }
+  },
+  "ml_models": {
+   "description": "Read in ai_sovereignty.rego."
+  },
+  "ml_training": {
+   "description": "Read in ai_sovereignty.rego.",
+   "properties": {
+    "data_leaves_jurisdiction_for_training": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "federated_learning_used": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "training_data_classification": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "training_data_location_country": {
+     "description": "Read in ai_sovereignty.rego."
+    },
+    "training_infrastructure_country": {
+     "description": "Read in ai_sovereignty.rego."
+    }
+   }
+  },
+  "network_infrastructure": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "properties": {
+    "cdn": {
+     "description": "Read in infrastructure_sovereignty.rego.",
+     "properties": {
+      "content_cached_in_approved_regions": {
+       "description": "Read in infrastructure_sovereignty.rego."
+      }
+     }
+    },
+    "dns_provider": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "location_country": {
+       "description": "Read in infrastructure_sovereignty.rego."
+      },
+      "under_foreign_jurisdiction": {
+       "description": "Read in infrastructure_sovereignty.rego."
+      }
+     }
+    }
+   }
+  },
+  "network_monitoring": {
+   "description": "Read in network_sovereignty.rego.",
+   "properties": {
+    "anomaly_detection_enabled": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "foreign_destination_alerting": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "netflow_collection_enabled": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "retention_days": {
+     "description": "Read in network_sovereignty.rego."
+    }
+   }
+  },
+  "network_segments": {
+   "description": "Read in network_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in network_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "personnel": {
+   "description": "Read in operational_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in operational_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "private_connectivity": {
+   "description": "Read in network_sovereignty.rego.",
+   "properties": {
+    "dedicated_links_for_sensitive": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "used": {
+       "description": "Read in network_sovereignty.rego."
+      }
+     }
+    },
+    "vpn_termination_country": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "vpn_used_for_sensitive": {
+     "description": "Read in network_sovereignty.rego."
+    }
+   }
+  },
+  "privileged_access_management": {
+   "description": "Read in operational_sovereignty.rego.",
+   "properties": {
+    "credential_vaulting_enabled": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "just_in_time_provisioning": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "pam_solution_deployed": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "privileged_access_review_current": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "review_frequency_days": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "session_recording_enabled": {
+     "description": "Read in operational_sovereignty.rego."
+    }
+   }
+  },
+  "remote_operations": {
+   "description": "Read in operational_sovereignty.rego.",
+   "properties": {
+    "jump_host_in_jurisdiction": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "remote_from_approved_countries_only": {
+     "description": "Read in operational_sovereignty.rego."
+    },
+    "vpn_in_jurisdiction": {
+     "description": "Read in operational_sovereignty.rego."
+    }
+   }
+  },
+  "sbom": {
+   "description": "Read in software_sovereignty.rego.",
+   "properties": {
+    "coverage_pct": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "format": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "includes_transitive_dependencies": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "last_updated": {
+     "description": "Read in software_sovereignty.rego."
+    },
+    "maintained": {
+     "description": "Read in software_sovereignty.rego."
+    }
+   }
+  },
+  "software_components": {
+   "description": "Read in software_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in software_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "software_provenance": {
+   "description": "Read in software_sovereignty.rego.",
+   "properties": {
+    "signing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "all_artifacts_signed": {
+       "description": "Read in software_sovereignty.rego."
+      },
+      "key_in_approved_jurisdiction": {
+       "description": "Read in software_sovereignty.rego."
+      }
+     }
+    },
+    "verification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "hash_validation": {
+       "description": "Read in software_sovereignty.rego."
+      },
+      "integrity_checked_on_deploy": {
+       "description": "Read in software_sovereignty.rego."
+      }
+     }
+    }
+   }
+  },
+  "support_contracts": {
+   "description": "Read in operational_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in operational_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "surveillance_law_response": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "properties": {
+    "challenge_mechanism_available": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "cloud_act_specific_procedure": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "fisa_702_specific_procedure": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "legal_counsel_on_retainer": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "notification_to_data_owner_required": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "procedure_documented": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    }
+   }
+  },
+  "telemetry_and_logs": {
+   "description": "Read in data_residency.rego.",
+   "properties": {
+    "in_approved_jurisdiction": {
+     "description": "Read in data_residency.rego."
+    },
+    "location_country": {
+     "description": "Read in data_residency.rego."
+    },
+    "vendor_access_to_logs": {
+     "description": "Read in data_residency.rego."
+    }
+   }
+  },
+  "traffic_routing": {
+   "description": "Read in network_sovereignty.rego.",
+   "properties": {
+    "encrypted_if_transits_foreign": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "sensitive_traffic_transits_foreign_country": {
+     "description": "Read in network_sovereignty.rego."
+    },
+    "traffic_routed_over_approved_paths": {
+     "description": "Read in network_sovereignty.rego."
+    }
+   }
+  },
+  "update_mechanisms": {
+   "description": "Read in software_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in software_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "vendor_access": {
+   "description": "Read in operational_sovereignty.rego.",
+   "additionalProperties": {
+    "description": "Read in operational_sovereignty.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "vendor_lock_in_assessment": {
+   "description": "Read in infrastructure_sovereignty.rego.",
+   "properties": {
+    "conducted": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "exit_cost_acceptable": {
+     "description": "Read in infrastructure_sovereignty.rego."
+    },
+    "proprietary_api_dependencies": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in infrastructure_sovereignty.rego."
+     },
+     "x-variable-key": "<_>"
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "ai_bias_fairness",
+  "ai_bias_fairness.audit_findings_documented",
+  "ai_bias_fairness.audit_frequency_days",
+  "ai_bias_fairness.bias_audit_policy_documented",
+  "ai_bias_fairness.last_audit_date",
+  "ai_bias_fairness.remediation_process_documented",
+  "ai_fairness_controls",
+  "ai_fairness_controls.disparate_impact_tested",
+  "ai_fairness_controls.fairness_metrics_defined",
+  "ai_fairness_controls.fairness_monitoring_ongoing",
+  "ai_fairness_controls.fairness_thresholds_enforced",
+  "ai_fairness_controls.remediation_applied_when_breached",
+  "ai_governance",
+  "ai_governance.approved_ai_services_list",
+  "ai_governance.data_handling_procedures",
+  "ai_governance.human_oversight_for_decisions",
+  "ai_governance.policy_documented",
+  "ai_governance.shadow_ai_controls",
+  "ai_output_controls",
+  "ai_output_controls.output_jurisdiction",
+  "ai_output_controls.output_logging_enabled",
+  "ai_services",
+  "approved_cloud_regions",
+  "approved_jurisdictions",
+  "backup_configurations",
+  "bgp_configuration",
+  "bgp_configuration.peer_list_reviewed_date",
+  "bgp_configuration.route_filtering_enabled",
+  "bgp_configuration.route_origin_validation",
+  "bgp_configuration.routes_documented",
+  "bgp_configuration.rpki_deployed",
+  "breach_notification",
+  "breach_notification.breach_comms_encrypted",
+  "breach_notification.breach_register_maintained",
+  "breach_notification.data_processor_notification_procedure",
+  "breach_notification.early_warning_timeline_hours",
+  "breach_notification.forensic_evidence_jurisdiction",
+  "breach_notification.law_enforcement_disclosure_controlled",
+  "breach_notification.notification_channel_in_jurisdiction",
+  "breach_notification.notification_timeline_hours",
+  "breach_notification.notification_vendor_hq_country",
+  "breach_notification.policy_documented",
+  "breach_notification.procedure_test_frequency_days",
+  "breach_notification.procedure_tested_date",
+  "breach_notification.supervisory_authority_contact_in_jurisdiction",
+  "cloud_providers",
+  "cloud_resources",
+  "code_repositories",
+  "code_signing",
+  "code_signing.implemented",
+  "code_signing.key_location_country",
+  "code_signing.private_key_in_approved_jurisdiction",
+  "concentration_limits",
+  "concentration_limits.max_foreign_provider_pct",
+  "concentration_limits.max_single_provider_pct",
+  "cyber_resilience",
+  "cyber_resilience.adversarial_testing",
+  "cyber_resilience.adversarial_testing.red_team_conducted",
+  "cyber_resilience.adversarial_testing.red_team_date",
+  "cyber_resilience.adversarial_testing.red_team_frequency_days",
+  "cyber_resilience.backup_and_recovery",
+  "cyber_resilience.backup_and_recovery.backup_immutability_enforced",
+  "cyber_resilience.backup_and_recovery.backup_location_sovereign",
+  "cyber_resilience.backup_and_recovery.recovery_test_frequency_days",
+  "cyber_resilience.backup_and_recovery.recovery_test_met_rpo",
+  "cyber_resilience.backup_and_recovery.recovery_test_met_rto",
+  "cyber_resilience.backup_and_recovery.recovery_tested_date",
+  "cyber_resilience.governance",
+  "cyber_resilience.governance.board_cyber_resilience_review_frequency_days",
+  "cyber_resilience.governance.board_review_date",
+  "cyber_resilience.governance.cyber_resilience_training_date",
+  "cyber_resilience.governance.cyber_resilience_training_frequency_days",
+  "cyber_resilience.incident_response",
+  "cyber_resilience.incident_response.ir_plan_documented",
+  "cyber_resilience.incident_response.ir_plan_test_frequency_days",
+  "cyber_resilience.incident_response.ir_plan_tested_date",
+  "cyber_resilience.incident_response.nation_state_scenario_included",
+  "cyber_resilience.incident_response.roles_formally_assigned",
+  "cyber_resilience.metrics",
+  "cyber_resilience.metrics.mttr_hours",
+  "cyber_resilience.metrics.mttr_threshold_hours",
+  "cyber_resilience.metrics.mttr_tracked",
+  "cyber_resilience.redundancy",
+  "cyber_resilience.redundancy.critical_systems_have_active_redundancy",
+  "cyber_resilience.redundancy.failover_test_frequency_days",
+  "cyber_resilience.redundancy.failover_tested_date",
+  "cyber_resilience.supply_chain_resilience",
+  "cyber_resilience.supply_chain_resilience.assessment_conducted",
+  "cyber_resilience.supply_chain_resilience.assessment_date",
+  "cyber_resilience.supply_chain_resilience.assessment_frequency_days",
+  "cyber_resilience.supply_chain_resilience.critical_suppliers_have_alternatives",
+  "cyber_resilience.threat_intelligence",
+  "cyber_resilience.threat_intelligence.feeds_active",
+  "cyber_resilience.threat_intelligence.feeds_integrated_into_soc",
+  "data_flow_inventory",
+  "data_flow_inventory.last_review_date",
+  "data_flow_inventory.maintained",
+  "data_flows",
+  "dependency_management",
+  "dependency_management.dependency_pinning_enforced",
+  "dependency_management.private_registry_used",
+  "dependency_management.registry_in_approved_jurisdiction",
+  "dependency_management.vulnerability_scanning",
+  "dependency_management.vulnerability_scanning.enabled",
+  "dependency_management.vulnerability_scanning.last_scan_date",
+  "dns_configuration",
+  "dns_configuration.dns_logs_retained_days",
+  "dns_configuration.dnssec_enabled",
+  "dns_configuration.public_dns_providers_blocked",
+  "dns_configuration.resolver_location_country",
+  "dns_configuration.resolver_under_org_control",
+  "dns_configuration.zone_transfers_controlled",
+  "dora",
+  "dora.business_continuity_plan_documented",
+  "dora.business_continuity_test_frequency_days",
+  "dora.business_continuity_tested_date",
+  "dora.critical_ict_providers_register_maintained",
+  "dora.digital_resilience_test_date",
+  "dora.digital_resilience_test_frequency_days",
+  "dora.digital_resilience_testing_conducted",
+  "dora.ict_asset_register_maintained",
+  "dora.ict_asset_register_review_frequency_days",
+  "dora.ict_asset_register_reviewed_date",
+  "dora.ict_risk_framework_review_frequency_days",
+  "dora.ict_risk_framework_reviewed_date",
+  "dora.ict_risk_management_framework_documented",
+  "dora.initial_notification_timeline_hours",
+  "dora.intermediate_report_timeline_hours",
+  "dora.major_incident_classification_defined",
+  "dora.rpo_defined",
+  "dora.rto_defined",
+  "dora.tlpt_conducted",
+  "dora.tlpt_date",
+  "dora.tlpt_frequency_years",
+  "dora.tlpt_required",
+  "dr_configurations",
+  "encrypted_resources",
+  "encrypted_resources_in_transit",
+  "encryption_standards",
+  "encryption_standards.algorithms_approved",
+  "exit_strategy",
+  "exit_strategy.data_portability_format_open",
+  "exit_strategy.documented",
+  "exit_strategy.estimated_migration_days",
+  "exit_strategy.portability_tested",
+  "foreign_access_requests",
+  "foreign_access_requests.legal_review_required",
+  "foreign_access_requests.notification_to_data_owner",
+  "foreign_access_requests.policy_documented",
+  "foreign_access_requests.right_to_challenge",
+  "geopolitical_risk",
+  "geopolitical_risk.country_exit_procedures",
+  "geopolitical_risk.designated_sovereign_risk_owner",
+  "geopolitical_risk.geopolitical_event_triggers",
+  "geopolitical_risk.last_risk_review_date",
+  "geopolitical_risk.regulatory_change_monitoring",
+  "geopolitical_risk.regulatory_change_monitoring.jurisdictions_monitored",
+  "geopolitical_risk.regulatory_change_monitoring.notification_mechanism",
+  "geopolitical_risk.regulatory_change_monitoring.process_documented",
+  "geopolitical_risk.review_frequency_days",
+  "geopolitical_risk.risk_register_maintained",
+  "geopolitical_risk.supply_chain_geopolitical_assessment",
+  "geopolitical_risk.supply_chain_geopolitical_assessment.alternative_suppliers_identified",
+  "geopolitical_risk.supply_chain_geopolitical_assessment.conducted",
+  "geopolitical_risk.supply_chain_geopolitical_assessment.critical_suppliers_mapped",
+  "hardware_components",
+  "hsm_configuration",
+  "hsm_configuration.deployed",
+  "hsm_configuration.key_material_leaves_hsm",
+  "hsm_configuration.location_country",
+  "hsm_configuration.type",
+  "hsm_configuration.vendor_access_possible",
+  "infrastructure_components",
+  "internet_egress",
+  "internet_egress.allowed_destinations_documented",
+  "internet_egress.blocked_destinations_documented",
+  "internet_egress.egress_country",
+  "internet_egress.single_controlled_egress_point",
+  "internet_egress.traffic_inspected_at_egress",
+  "key_management_policies",
+  "key_management_policies.dual_control_enforced",
+  "key_management_policies.escrow",
+  "key_management_policies.escrow.exists",
+  "key_management_policies.escrow.foreign_entity_holds_keys",
+  "key_management_policies.key_ceremony_documented",
+  "key_management_policies.rotation_frequency_days",
+  "key_management_policies.rotation_policy_documented",
+  "key_management_policies.split_knowledge_enforced",
+  "metadata_storage",
+  "metadata_storage.in_approved_jurisdiction",
+  "metadata_storage.location_country",
+  "ml_models",
+  "ml_training",
+  "ml_training.data_leaves_jurisdiction_for_training",
+  "ml_training.federated_learning_used",
+  "ml_training.training_data_classification",
+  "ml_training.training_data_location_country",
+  "ml_training.training_infrastructure_country",
+  "network_infrastructure",
+  "network_infrastructure.cdn",
+  "network_infrastructure.cdn.content_cached_in_approved_regions",
+  "network_infrastructure.dns_provider",
+  "network_infrastructure.dns_provider.location_country",
+  "network_infrastructure.dns_provider.under_foreign_jurisdiction",
+  "network_monitoring",
+  "network_monitoring.anomaly_detection_enabled",
+  "network_monitoring.foreign_destination_alerting",
+  "network_monitoring.netflow_collection_enabled",
+  "network_monitoring.retention_days",
+  "network_segments",
+  "personnel",
+  "private_connectivity",
+  "private_connectivity.dedicated_links_for_sensitive",
+  "private_connectivity.dedicated_links_for_sensitive.used",
+  "private_connectivity.vpn_termination_country",
+  "private_connectivity.vpn_used_for_sensitive",
+  "privileged_access_management",
+  "privileged_access_management.credential_vaulting_enabled",
+  "privileged_access_management.just_in_time_provisioning",
+  "privileged_access_management.pam_solution_deployed",
+  "privileged_access_management.privileged_access_review_current",
+  "privileged_access_management.review_frequency_days",
+  "privileged_access_management.session_recording_enabled",
+  "remote_operations",
+  "remote_operations.jump_host_in_jurisdiction",
+  "remote_operations.remote_from_approved_countries_only",
+  "remote_operations.vpn_in_jurisdiction",
+  "sbom",
+  "sbom.coverage_pct",
+  "sbom.format",
+  "sbom.includes_transitive_dependencies",
+  "sbom.last_updated",
+  "sbom.maintained",
+  "software_components",
+  "software_provenance",
+  "software_provenance.signing",
+  "software_provenance.signing.all_artifacts_signed",
+  "software_provenance.signing.key_in_approved_jurisdiction",
+  "software_provenance.verification",
+  "software_provenance.verification.hash_validation",
+  "software_provenance.verification.integrity_checked_on_deploy",
+  "support_contracts",
+  "surveillance_law_response",
+  "surveillance_law_response.challenge_mechanism_available",
+  "surveillance_law_response.cloud_act_specific_procedure",
+  "surveillance_law_response.fisa_702_specific_procedure",
+  "surveillance_law_response.legal_counsel_on_retainer",
+  "surveillance_law_response.notification_to_data_owner_required",
+  "surveillance_law_response.procedure_documented",
+  "telemetry_and_logs",
+  "telemetry_and_logs.in_approved_jurisdiction",
+  "telemetry_and_logs.location_country",
+  "telemetry_and_logs.vendor_access_to_logs",
+  "traffic_routing",
+  "traffic_routing.encrypted_if_transits_foreign",
+  "traffic_routing.sensitive_traffic_transits_foreign_country",
+  "traffic_routing.traffic_routed_over_approved_paths",
+  "update_mechanisms",
+  "vendor_access",
+  "vendor_lock_in_assessment",
+  "vendor_lock_in_assessment.conducted",
+  "vendor_lock_in_assessment.exit_cost_acceptable",
+  "vendor_lock_in_assessment.proprietary_api_dependencies"
+ ]
+}

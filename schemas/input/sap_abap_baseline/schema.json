@@ -1,0 +1,77 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sap_abap_baseline/schema.json",
+ "title": "Input facts for sap_abap_baseline",
+ "description": "Input paths referenced in the sources of benchmarks/sap/abap/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "sap_abap_baseline",
+ "x-entrypoint": "data.sap_abap_baseline.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "benchmarks/sap/abap/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "sap": {
+   "description": "Read in sap_abap_baseline.rego, sap_abap_baseline_manual.rego.",
+   "properties": {
+    "abap": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "collected_at": {
+       "description": "Read in sap_abap_baseline_manual.rego."
+      },
+      "gateway": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in sap_abap_baseline_manual.rego.",
+        "properties": {
+         "present": {
+          "description": "Read in sap_abap_baseline_manual.rego."
+         }
+        }
+       },
+       "x-variable-key": "<file>"
+      },
+      "message_server": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "acl": {
+         "description": "Read in sap_abap_baseline_manual.rego.",
+         "properties": {
+          "present": {
+           "description": "Read in sap_abap_baseline_manual.rego."
+          }
+         }
+        }
+       }
+      },
+      "profile": {
+       "description": "Read in sap_abap_baseline.rego."
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in sap_abap_baseline.rego.",
+      "additionalProperties": {
+       "description": "Read in sap_abap_baseline.rego."
+      },
+      "x-variable-key": "<name>"
+     },
+     "x-variable-key": "<key>"
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "sap",
+  "sap.abap",
+  "sap.abap.collected_at",
+  "sap.abap.gateway",
+  "sap.abap.gateway[\"<file>\"].present",
+  "sap.abap.message_server",
+  "sap.abap.message_server.acl",
+  "sap.abap.message_server.acl.present",
+  "sap.abap.profile"
+ ]
+}

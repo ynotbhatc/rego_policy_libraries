@@ -1,0 +1,483 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/iec_62443/schema.json",
+ "title": "Input facts for iec_62443",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/iec_62443/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "iec_62443",
+ "x-entrypoint": "data.iec_62443.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/iec_62443/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "authentication": {
+   "description": "Read in fr1_identification_authentication.rego, fr2_use_control.rego.",
+   "properties": {
+    "audit_trail_for_privileged_access": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "centralized_identity_management": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "certificate_revocation_checking": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "dual_approval_for_critical_actions": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "hardware_token_authentication": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "identifier_reuse_prevented": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "initial_authenticator_secure_distribution": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "pki_or_certificate_based": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "portable_device_central_mgmt": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "role_based_access_control": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "strong_cryptography": {
+     "description": "Read in fr1_identification_authentication.rego."
+    },
+    "unified_account_policy": {
+     "description": "Read in fr1_identification_authentication.rego."
+    }
+   }
+  },
+  "backups": {
+   "description": "Read in fr7_resource_availability.rego.",
+   "properties": {
+    "backup_frequency_days": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "encryption_at_rest": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "offsite_storage": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "restoration_tested": {
+     "description": "Read in fr7_resource_availability.rego."
+    }
+   }
+  },
+  "conduits": {
+   "description": "Read in fr5_restricted_data_flow.rego."
+  },
+  "ics_systems": {
+   "description": "Read in fr1_identification_authentication.rego, fr2_use_control.rego, fr3_system_integrity.rego, fr4_data_confidentiality.rego and 4 more."
+  },
+  "is_iacs_service_provider": {
+   "description": "Read in part2_service_provider.rego."
+  },
+  "monitoring": {
+   "description": "Read in fr2_use_control.rego, fr3_system_integrity.rego, fr6_timely_response.rego, fr7_resource_availability.rego.",
+   "properties": {
+    "anomaly_detection_enabled": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "audit_failure_response_defined": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "audit_processing_failure_alerts": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "audit_storage_adequate": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "automated_alerts_configured": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "centralized_log_collection": {
+     "description": "Read in fr2_use_control.rego, fr6_timely_response.rego."
+    },
+    "continuous_monitoring": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "dos_protection": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "ics_log_retention_days": {
+     "description": "Read in fr2_use_control.rego."
+    },
+    "ics_specific_soc_capability": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "incident_response_plan_for_ics": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "log_access_controlled": {
+     "description": "Read in fr3_system_integrity.rego, fr6_timely_response.rego."
+    },
+    "logs_sent_to_immutable_store": {
+     "description": "Read in fr3_system_integrity.rego."
+    },
+    "security_event_monitoring": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "threat_intelligence_integrated": {
+     "description": "Read in fr6_timely_response.rego."
+    },
+    "timestamps_synchronized": {
+     "description": "Read in fr2_use_control.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in fr6_timely_response.rego."
+   },
+   "x-variable-key": "<key>"
+  },
+  "network": {
+   "description": "Read in fr1_identification_authentication.rego, fr3_system_integrity.rego, fr5_restricted_data_flow.rego, fr7_resource_availability.rego.",
+   "properties": {
+    "direct_internet_connectivity_to_ics": {
+     "description": "Read in fr5_restricted_data_flow.rego."
+    },
+    "dmz_implemented": {
+     "description": "Read in fr5_restricted_data_flow.rego."
+    },
+    "dos_traffic_management": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "general_purpose_comms_policy": {
+     "description": "Read in fr5_restricted_data_flow.rego."
+    },
+    "it_ot_segmentation": {
+     "description": "Read in fr5_restricted_data_flow.rego."
+    },
+    "malware_protection_at_boundaries": {
+     "description": "Read in fr3_system_integrity.rego."
+    },
+    "network_inventory_documented": {
+     "description": "Read in fr5_restricted_data_flow.rego, fr7_resource_availability.rego."
+    },
+    "redundant_paths": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "wireless_policy_documented": {
+     "description": "Read in fr1_identification_authentication.rego."
+    }
+   }
+  },
+  "patch_management": {
+   "description": "Read in fr3_system_integrity.rego, fr7_resource_availability.rego, part2_patch_management.rego.",
+   "properties": {
+    "change_management_integrated": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "compensating_controls_for_unpatched": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "emergency_patch_procedure": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "max_patch_delay_days": {
+     "description": "Read in fr3_system_integrity.rego, part2_patch_management.rego."
+    },
+    "patch_deployment_schedule_documented": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "patch_inventory_tracked": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "patch_testing_environment": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "process_documented": {
+     "description": "Read in fr3_system_integrity.rego, part2_patch_management.rego."
+    },
+    "rollback_capability": {
+     "description": "Read in fr7_resource_availability.rego, part2_patch_management.rego."
+    },
+    "tested_before_deployment": {
+     "description": "Read in part2_patch_management.rego."
+    },
+    "vendor_notification_subscriptions": {
+     "description": "Read in part2_patch_management.rego."
+    }
+   }
+  },
+  "risk_assessment": {
+   "description": "Read in part2_security_management.rego, part3_risk_assessment.rego.",
+   "properties": {
+    "asset_inventory_complete": {
+     "description": "Read in part2_security_management.rego, part3_risk_assessment.rego."
+    },
+    "conducted": {
+     "description": "Read in part2_security_management.rego, part3_risk_assessment.rego."
+    },
+    "consequence_analysis_performed": {
+     "description": "Read in part2_security_management.rego, part3_risk_assessment.rego."
+    },
+    "cyber_risk_identified": {
+     "description": "Read in part3_risk_assessment.rego."
+    },
+    "high_level_security_requirements": {
+     "description": "Read in part3_risk_assessment.rego."
+    },
+    "residual_risk_accepted": {
+     "description": "Read in part3_risk_assessment.rego."
+    },
+    "review_frequency_months": {
+     "description": "Read in part2_security_management.rego, part3_risk_assessment.rego."
+    },
+    "target_sl_assigned_per_zone": {
+     "description": "Read in part3_risk_assessment.rego."
+    },
+    "third_party_review": {
+     "description": "Read in part3_risk_assessment.rego."
+    },
+    "threat_modeling_performed": {
+     "description": "Read in part2_security_management.rego, part3_risk_assessment.rego."
+    },
+    "vulnerability_assessment_performed": {
+     "description": "Read in part3_risk_assessment.rego."
+    },
+    "zones_and_conduits_defined": {
+     "description": "Read in part3_risk_assessment.rego."
+    }
+   }
+  },
+  "security_management": {
+   "description": "Read in fr3_system_integrity.rego, fr7_resource_availability.rego, part2_security_management.rego.",
+   "properties": {
+    "configuration_change_management": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "csms_audit_conducted": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "csms_audit_frequency_months": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "csms_documented": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "functionality_review_schedule": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "incident_response_capability": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "inventory_auto_discovery": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "policy_approved": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "policy_review_cycle_months": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "recovery_plan_tested": {
+     "description": "Read in fr7_resource_availability.rego."
+    },
+    "risk_management_process": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "roles_responsibilities_defined": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "security_awareness_training": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "security_metrics_tracked": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "security_testing_schedule_documented": {
+     "description": "Read in fr3_system_integrity.rego."
+    },
+    "supply_chain_security": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "third_party_security_requirements": {
+     "description": "Read in part2_security_management.rego."
+    },
+    "training_frequency_months": {
+     "description": "Read in part2_security_management.rego."
+    }
+   }
+  },
+  "service_provider": {
+   "description": "Read in part2_service_provider.rego.",
+   "properties": {
+    "customer_security_requirements_reviewed": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "incident_notification_sla_hours": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "installation_protection_measures": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "malware_protection_on_tools": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "patch_qualification_for_supplied_systems": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "personnel_background_checks": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "portable_tool_security_policy": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "remote_access_mfa_enforced": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "remote_access_security_controlled": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "remote_session_audit_logged": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "security_documentation_provided": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "security_event_notification": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "security_program_documented": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "security_training_for_field_staff": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "temporary_connection_policy": {
+     "description": "Read in part2_service_provider.rego."
+    },
+    "vulnerability_disclosure_process": {
+     "description": "Read in part2_service_provider.rego."
+    }
+   }
+  },
+  "target_sl": {
+   "description": "Read in fr1_identification_authentication.rego, fr2_use_control.rego, fr3_system_integrity.rego, fr4_data_confidentiality.rego and 5 more."
+  },
+  "zones": {
+   "description": "Read in fr5_restricted_data_flow.rego, part3_risk_assessment.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "authentication",
+  "authentication.audit_trail_for_privileged_access",
+  "authentication.centralized_identity_management",
+  "authentication.certificate_revocation_checking",
+  "authentication.dual_approval_for_critical_actions",
+  "authentication.hardware_token_authentication",
+  "authentication.identifier_reuse_prevented",
+  "authentication.initial_authenticator_secure_distribution",
+  "authentication.pki_or_certificate_based",
+  "authentication.portable_device_central_mgmt",
+  "authentication.role_based_access_control",
+  "authentication.strong_cryptography",
+  "authentication.unified_account_policy",
+  "backups",
+  "backups.backup_frequency_days",
+  "backups.encryption_at_rest",
+  "backups.offsite_storage",
+  "backups.restoration_tested",
+  "conduits",
+  "ics_systems",
+  "is_iacs_service_provider",
+  "monitoring",
+  "monitoring.anomaly_detection_enabled",
+  "monitoring.audit_failure_response_defined",
+  "monitoring.audit_processing_failure_alerts",
+  "monitoring.audit_storage_adequate",
+  "monitoring.automated_alerts_configured",
+  "monitoring.centralized_log_collection",
+  "monitoring.continuous_monitoring",
+  "monitoring.dos_protection",
+  "monitoring.ics_log_retention_days",
+  "monitoring.ics_specific_soc_capability",
+  "monitoring.incident_response_plan_for_ics",
+  "monitoring.log_access_controlled",
+  "monitoring.logs_sent_to_immutable_store",
+  "monitoring.security_event_monitoring",
+  "monitoring.threat_intelligence_integrated",
+  "monitoring.timestamps_synchronized",
+  "network",
+  "network.direct_internet_connectivity_to_ics",
+  "network.dmz_implemented",
+  "network.dos_traffic_management",
+  "network.general_purpose_comms_policy",
+  "network.it_ot_segmentation",
+  "network.malware_protection_at_boundaries",
+  "network.network_inventory_documented",
+  "network.redundant_paths",
+  "network.wireless_policy_documented",
+  "patch_management",
+  "patch_management.change_management_integrated",
+  "patch_management.compensating_controls_for_unpatched",
+  "patch_management.emergency_patch_procedure",
+  "patch_management.max_patch_delay_days",
+  "patch_management.patch_deployment_schedule_documented",
+  "patch_management.patch_inventory_tracked",
+  "patch_management.patch_testing_environment",
+  "patch_management.process_documented",
+  "patch_management.rollback_capability",
+  "patch_management.tested_before_deployment",
+  "patch_management.vendor_notification_subscriptions",
+  "risk_assessment",
+  "risk_assessment.asset_inventory_complete",
+  "risk_assessment.conducted",
+  "risk_assessment.consequence_analysis_performed",
+  "risk_assessment.cyber_risk_identified",
+  "risk_assessment.high_level_security_requirements",
+  "risk_assessment.residual_risk_accepted",
+  "risk_assessment.review_frequency_months",
+  "risk_assessment.target_sl_assigned_per_zone",
+  "risk_assessment.third_party_review",
+  "risk_assessment.threat_modeling_performed",
+  "risk_assessment.vulnerability_assessment_performed",
+  "risk_assessment.zones_and_conduits_defined",
+  "security_management",
+  "security_management.configuration_change_management",
+  "security_management.csms_audit_conducted",
+  "security_management.csms_audit_frequency_months",
+  "security_management.csms_documented",
+  "security_management.functionality_review_schedule",
+  "security_management.incident_response_capability",
+  "security_management.inventory_auto_discovery",
+  "security_management.policy_approved",
+  "security_management.policy_review_cycle_months",
+  "security_management.recovery_plan_tested",
+  "security_management.risk_management_process",
+  "security_management.roles_responsibilities_defined",
+  "security_management.security_awareness_training",
+  "security_management.security_metrics_tracked",
+  "security_management.security_testing_schedule_documented",
+  "security_management.supply_chain_security",
+  "security_management.third_party_security_requirements",
+  "security_management.training_frequency_months",
+  "service_provider",
+  "service_provider.customer_security_requirements_reviewed",
+  "service_provider.incident_notification_sla_hours",
+  "service_provider.installation_protection_measures",
+  "service_provider.malware_protection_on_tools",
+  "service_provider.patch_qualification_for_supplied_systems",
+  "service_provider.personnel_background_checks",
+  "service_provider.portable_tool_security_policy",
+  "service_provider.remote_access_mfa_enforced",
+  "service_provider.remote_access_security_controlled",
+  "service_provider.remote_session_audit_logged",
+  "service_provider.security_documentation_provided",
+  "service_provider.security_event_notification",
+  "service_provider.security_program_documented",
+  "service_provider.security_training_for_field_staff",
+  "service_provider.temporary_connection_policy",
+  "service_provider.vulnerability_disclosure_process",
+  "target_sl",
+  "zones"
+ ]
+}

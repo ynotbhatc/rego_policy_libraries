@@ -1,0 +1,1167 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_ubuntu_2004/schema.json",
+ "title": "Input facts for cis_ubuntu_2004",
+ "description": "Input paths referenced in the sources of benchmarks/cis/ubuntu_20_04/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cis_ubuntu_2004",
+ "x-entrypoint": "data.cis_ubuntu_2004.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "benchmarks/cis/ubuntu_20_04/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "aide": {
+   "description": "Read in boot_security_validation.rego.",
+   "properties": {
+    "cron_configured": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "database_exists": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "installed": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "systemd_timer_configured": {
+     "description": "Read in boot_security_validation.rego."
+    }
+   }
+  },
+  "apparmor": {
+   "description": "Read in apparmor_validation.rego, boot_security_validation.rego.",
+   "properties": {
+    "bootloader_enabled": {
+     "description": "Read in apparmor_validation.rego, boot_security_validation.rego."
+    },
+    "complain_profiles": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "enforce_profiles": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "grub_cmdline": {
+     "description": "Read in apparmor_validation.rego, boot_security_validation.rego."
+    },
+    "installed": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "profiles": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "service_active": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "service_enabled": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "unloaded_profiles": {
+     "description": "Read in apparmor_validation.rego."
+    },
+    "utils_installed": {
+     "description": "Read in apparmor_validation.rego."
+    }
+   }
+  },
+  "auditd": {
+   "description": "Read in auditd_validation.rego.",
+   "properties": {
+    "active_rules": {
+     "description": "Read in auditd_validation.rego."
+    },
+    "config": {
+     "description": "Read in auditd_validation.rego."
+    },
+    "log_permissions": {
+     "description": "Read in auditd_validation.rego.",
+     "properties": {
+      "gr_name": {
+       "description": "Read in auditd_validation.rego."
+      },
+      "mode": {
+       "description": "Read in auditd_validation.rego."
+      },
+      "pw_name": {
+       "description": "Read in auditd_validation.rego."
+      }
+     }
+    }
+   }
+  },
+  "autofs": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "active": {
+     "description": "Read in services_validation.rego."
+    },
+    "enabled": {
+     "description": "Read in services_validation.rego."
+    },
+    "installed": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "bootloader": {
+   "description": "Read in auditd_validation.rego.",
+   "properties": {
+    "grub_config": {
+     "description": "Read in auditd_validation.rego."
+    }
+   }
+  },
+  "chronyd": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "has_time_sources": {
+     "description": "Read in services_validation.rego."
+    },
+    "service_active": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "client_packages": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "analysis": {
+     "description": "Read in services_validation.rego."
+    },
+    "any_installed": {
+     "description": "Read in services_validation.rego."
+    },
+    "installed_packages": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "critical_files": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "analysis": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "non_compliant_count": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "cron": {
+   "description": "Read in cron_validation.rego.",
+   "properties": {
+    "at_allow_exists": {
+     "description": "Read in cron_validation.rego."
+    },
+    "at_allow_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "at_deny_exists": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_allow_exists": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_allow_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_d_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_d_owner": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_daily_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_daily_owner": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_deny_exists": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_hourly_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_hourly_owner": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_monthly_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_monthly_owner": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_weekly_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "cron_weekly_owner": {
+     "description": "Read in cron_validation.rego."
+    },
+    "crond_enabled": {
+     "description": "Read in cron_validation.rego."
+    },
+    "crond_running": {
+     "description": "Read in cron_validation.rego."
+    },
+    "crontab_group": {
+     "description": "Read in cron_validation.rego."
+    },
+    "crontab_mode": {
+     "description": "Read in cron_validation.rego."
+    },
+    "crontab_owner": {
+     "description": "Read in cron_validation.rego."
+    }
+   }
+  },
+  "disabled_filesystem_modules": {
+   "description": "Read in filesystem_validation.rego.",
+   "properties": {
+    "modules": {
+     "description": "Read in filesystem_validation.rego."
+    }
+   }
+  },
+  "excessive_permissions": {
+   "description": "Read in logging_validation.rego.",
+   "properties": {
+    "files": {
+     "description": "Read in logging_validation.rego."
+    }
+   }
+  },
+  "firewall": {
+   "description": "Read in network_validation.rego.",
+   "properties": {
+    "active": {
+     "description": "Read in network_validation.rego."
+    },
+    "default_incoming": {
+     "description": "Read in network_validation.rego."
+    },
+    "type": {
+     "description": "Read in network_validation.rego."
+    }
+   }
+  },
+  "grub": {
+   "description": "Read in boot_security_validation.rego.",
+   "properties": {
+    "config_mode": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "config_owner": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "password_configured": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "sulogin_configured": {
+     "description": "Read in boot_security_validation.rego."
+    }
+   }
+  },
+  "initial_setup": {
+   "description": "Read in initial_setup_validation.rego.",
+   "properties": {
+    "aide_cron_configured": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "aide_installed": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "aslr_enabled": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "core_dumps_enabled": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "enabled_repos": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "gdm_banner_configured": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "gdm_idle_delay": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "gdm_installed": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "gdm_screen_lock_enabled": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "gpg_keys": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "grub_config_mode": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "grub_owner_root": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "grub_password_configured": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "gui_required": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_contains_sensitive_info": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_exists": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_mode": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_net_contains_sensitive_info": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_net_exists": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_net_mode": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_net_owner": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "issue_owner": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "motd_contains_sensitive_info": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "motd_exists": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "motd_mode": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "motd_owner": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "prelink_installed": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "ptrace_scope_restricted": {
+     "description": "Read in initial_setup_validation.rego."
+    },
+    "server_environment": {
+     "description": "Read in initial_setup_validation.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in initial_setup_validation.rego."
+   },
+   "x-variable-key": "<key>"
+  },
+  "ip_forwarding": {
+   "description": "Read in network_validation.rego.",
+   "properties": {
+    "ipv4_compliant": {
+     "description": "Read in network_validation.rego."
+    },
+    "ipv4_forwarding": {
+     "description": "Read in network_validation.rego."
+    },
+    "ipv6_compliant": {
+     "description": "Read in network_validation.rego."
+    },
+    "ipv6_forwarding": {
+     "description": "Read in network_validation.rego."
+    }
+   }
+  },
+  "ipv6": {
+   "description": "Read in network_validation.rego.",
+   "properties": {
+    "address_count": {
+     "description": "Read in network_validation.rego."
+    },
+    "disabled": {
+     "description": "Read in network_validation.rego."
+    },
+    "status": {
+     "description": "Read in network_validation.rego."
+    }
+   }
+  },
+  "journald": {
+   "description": "Read in logging_validation.rego.",
+   "properties": {
+    "compress_enabled": {
+     "description": "Read in logging_validation.rego."
+    },
+    "forward_to_syslog": {
+     "description": "Read in logging_validation.rego."
+    },
+    "service_active": {
+     "description": "Read in logging_validation.rego."
+    },
+    "storage_mode": {
+     "description": "Read in logging_validation.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in logging_validation.rego."
+   },
+   "x-variable-key": "<key>"
+  },
+  "log_file_permissions": {
+   "description": "Read in logging_validation.rego.",
+   "properties": {
+    "analysis": {
+     "description": "Read in logging_validation.rego."
+    }
+   }
+  },
+  "logrotate": {
+   "description": "Read in logging_validation.rego.",
+   "properties": {
+    "installed": {
+     "description": "Read in logging_validation.rego."
+    }
+   }
+  },
+  "mount_options": {
+   "description": "Read in filesystem_validation.rego.",
+   "properties": {
+    "mounts": {
+     "description": "Read in filesystem_validation.rego."
+    }
+   }
+  },
+  "packages": {
+   "description": "Read in auditd_validation.rego.",
+   "properties": {
+    "audit": {
+     "description": "Read in auditd_validation.rego."
+    },
+    "auditd": {
+     "description": "Read in auditd_validation.rego."
+    }
+   }
+  },
+  "pam": {
+   "description": "Read in pam_validation.rego.",
+   "properties": {
+    "common_password_raw": {
+     "description": "Read in pam_validation.rego."
+    },
+    "default_umask": {
+     "description": "Read in pam_validation.rego."
+    },
+    "faillock_configured": {
+     "description": "Read in pam_validation.rego."
+    },
+    "faillock_deny": {
+     "description": "Read in pam_validation.rego."
+    },
+    "faillock_unlock_time": {
+     "description": "Read in pam_validation.rego."
+    },
+    "inactive_days": {
+     "description": "Read in pam_validation.rego."
+    },
+    "pass_max_days": {
+     "description": "Read in pam_validation.rego."
+    },
+    "pass_min_days": {
+     "description": "Read in pam_validation.rego."
+    },
+    "pass_warn_age": {
+     "description": "Read in pam_validation.rego."
+    },
+    "pwquality_conf_raw": {
+     "description": "Read in pam_validation.rego."
+    },
+    "remember_configured": {
+     "description": "Read in pam_validation.rego."
+    },
+    "remember_count": {
+     "description": "Read in pam_validation.rego."
+    },
+    "system_accounts_with_login_shell": {
+     "description": "Read in pam_validation.rego."
+    },
+    "tmout_configured": {
+     "description": "Read in pam_validation.rego."
+    },
+    "tmout_value": {
+     "description": "Read in pam_validation.rego."
+    },
+    "users_with_future_password_change": {
+     "description": "Read in pam_validation.rego."
+    }
+   }
+  },
+  "process_hardening": {
+   "description": "Read in boot_security_validation.rego.",
+   "properties": {
+    "aslr_enabled": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "core_dumps_enabled": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "fs_suid_dumpable": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "prelink_installed": {
+     "description": "Read in boot_security_validation.rego."
+    },
+    "ptrace_scope_restricted": {
+     "description": "Read in boot_security_validation.rego."
+    }
+   }
+  },
+  "require_ipv6_disabled": {
+   "description": "Read in network_validation.rego."
+  },
+  "require_remote_logging": {
+   "description": "Read in logging_validation.rego."
+  },
+  "required_partitions": {
+   "description": "Read in filesystem_validation.rego.",
+   "properties": {
+    "partitions": {
+     "description": "Read in filesystem_validation.rego."
+    }
+   }
+  },
+  "rsyslog": {
+   "description": "Read in logging_validation.rego.",
+   "properties": {
+    "file_create_mode": {
+     "description": "Read in logging_validation.rego."
+    },
+    "installed": {
+     "description": "Read in logging_validation.rego."
+    },
+    "logging_rules_count": {
+     "description": "Read in logging_validation.rego."
+    },
+    "remote_logging_configured": {
+     "description": "Read in logging_validation.rego."
+    },
+    "service_active": {
+     "description": "Read in logging_validation.rego."
+    },
+    "service_enabled": {
+     "description": "Read in logging_validation.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in logging_validation.rego."
+   },
+   "x-variable-key": "<key>"
+  },
+  "services": {
+   "description": "Read in auditd_validation.rego.",
+   "properties": {
+    "auditd.service": {
+     "description": "Read in auditd_validation.rego."
+    }
+   }
+  },
+  "sgid_files": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "count": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "ssh": {
+   "description": "Read in ssh_validation.rego.",
+   "properties": {
+    "private_key_files": {
+     "description": "Read in ssh_validation.rego."
+    },
+    "public_key_files": {
+     "description": "Read in ssh_validation.rego."
+    },
+    "sshd_config_group": {
+     "description": "Read in ssh_validation.rego."
+    },
+    "sshd_config_mode": {
+     "description": "Read in ssh_validation.rego."
+    },
+    "sshd_config_owner": {
+     "description": "Read in ssh_validation.rego."
+    },
+    "sshd_config_raw": {
+     "description": "Read in ssh_validation.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in ssh_validation.rego."
+   },
+   "x-variable-key": "<field>"
+  },
+  "ssh_private_keys": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "all_compliant": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "analysis": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "sticky_bit_check": {
+   "description": "Read in filesystem_validation.rego.",
+   "properties": {
+    "world_writable_dirs": {
+     "description": "Read in filesystem_validation.rego."
+    }
+   }
+  },
+  "sudo": {
+   "description": "Read in sudo_validation.rego.",
+   "properties": {
+    "installed": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "logfile_configured": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "noauthenticate_entries": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "nopasswd_entries": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "su_allowed_group": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "su_restricted": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "sudoers_mode": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "sudoers_world_readable": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "timestamp_timeout": {
+     "description": "Read in sudo_validation.rego."
+    },
+    "use_pty": {
+     "description": "Read in sudo_validation.rego."
+    }
+   }
+  },
+  "suid_files": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "total_count": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "unknown_binaries": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "unknown_count": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "sysctl_parameters": {
+   "description": "Read in network_validation.rego.",
+   "properties": {
+    "analysis": {
+     "description": "Read in network_validation.rego."
+    },
+    "non_compliant_count": {
+     "description": "Read in network_validation.rego."
+    },
+    "non_compliant_params": {
+     "description": "Read in network_validation.rego."
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "properties": {
+    "architecture": {
+     "description": "Read in cis_ubuntu_20_04_complete.rego."
+    },
+    "distribution": {
+     "description": "Read in cis_ubuntu_20_04_complete.rego."
+    },
+    "distribution_version": {
+     "description": "Read in cis_ubuntu_20_04_complete.rego."
+    },
+    "hostname": {
+     "description": "Read in cis_ubuntu_20_04_complete.rego."
+    },
+    "kernel": {
+     "description": "Read in cis_ubuntu_20_04_complete.rego."
+    }
+   }
+  },
+  "time_synchronization": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "active_service": {
+     "description": "Read in services_validation.rego."
+    },
+    "compliant": {
+     "description": "Read in services_validation.rego."
+    },
+    "has_active_service": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "timesyncd": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "service_active": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "ungrouped_files": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "compliant": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "count": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "files": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "unnecessary_services": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "analysis": {
+     "description": "Read in services_validation.rego."
+    },
+    "non_compliant": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "unowned_files": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "compliant": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "count": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "files": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "usb_storage_disabled": {
+   "description": "Read in filesystem_validation.rego.",
+   "properties": {
+    "disabled": {
+     "description": "Read in filesystem_validation.rego."
+    },
+    "loaded": {
+     "description": "Read in filesystem_validation.rego."
+    }
+   }
+  },
+  "user_group": {
+   "description": "Read in user_group_validation.rego.",
+   "properties": {
+    "dotfiles_group_or_world_writable": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "duplicate_gids": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "duplicate_groupnames": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "duplicate_uids": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "duplicate_usernames": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "group_content": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "home_dirs_too_permissive": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "passwd_content": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "passwd_groups_not_in_group_file": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "root_path": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "root_path_dirs": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "root_path_writable_dirs": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "shadow_content": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "uid_zero_accounts": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_not_owning_home": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_with_empty_password": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_with_forward": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_with_netrc": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_with_rhosts": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_without_home_directory": {
+     "description": "Read in user_group_validation.rego."
+    },
+    "users_without_shadow": {
+     "description": "Read in user_group_validation.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in user_group_validation.rego."
+   },
+   "x-variable-key": "<key>"
+  },
+  "webserver": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "any_installed": {
+     "description": "Read in services_validation.rego."
+    },
+    "packages": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  },
+  "wireless_interfaces": {
+   "description": "Read in network_validation.rego.",
+   "properties": {
+    "compliant": {
+     "description": "Read in network_validation.rego."
+    },
+    "count": {
+     "description": "Read in network_validation.rego."
+    },
+    "has_wireless": {
+     "description": "Read in network_validation.rego."
+    },
+    "interfaces": {
+     "description": "Read in network_validation.rego."
+    }
+   }
+  },
+  "world_writable": {
+   "description": "Read in file_permissions_validation.rego.",
+   "properties": {
+    "compliant": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "count": {
+     "description": "Read in file_permissions_validation.rego."
+    },
+    "files": {
+     "description": "Read in file_permissions_validation.rego."
+    }
+   }
+  },
+  "x11": {
+   "description": "Read in services_validation.rego.",
+   "properties": {
+    "any_installed": {
+     "description": "Read in services_validation.rego."
+    },
+    "packages": {
+     "description": "Read in services_validation.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "aide",
+  "aide.cron_configured",
+  "aide.database_exists",
+  "aide.installed",
+  "aide.systemd_timer_configured",
+  "apparmor",
+  "apparmor.bootloader_enabled",
+  "apparmor.complain_profiles",
+  "apparmor.enforce_profiles",
+  "apparmor.grub_cmdline",
+  "apparmor.installed",
+  "apparmor.profiles",
+  "apparmor.service_active",
+  "apparmor.service_enabled",
+  "apparmor.unloaded_profiles",
+  "apparmor.utils_installed",
+  "auditd",
+  "auditd.active_rules",
+  "auditd.config",
+  "auditd.log_permissions",
+  "auditd.log_permissions.gr_name",
+  "auditd.log_permissions.mode",
+  "auditd.log_permissions.pw_name",
+  "autofs",
+  "autofs.active",
+  "autofs.enabled",
+  "autofs.installed",
+  "bootloader",
+  "bootloader.grub_config",
+  "chronyd",
+  "chronyd.has_time_sources",
+  "chronyd.service_active",
+  "client_packages",
+  "client_packages.analysis",
+  "client_packages.any_installed",
+  "client_packages.installed_packages",
+  "critical_files",
+  "critical_files.analysis",
+  "critical_files.non_compliant_count",
+  "cron",
+  "cron.at_allow_exists",
+  "cron.at_allow_mode",
+  "cron.at_deny_exists",
+  "cron.cron_allow_exists",
+  "cron.cron_allow_mode",
+  "cron.cron_d_mode",
+  "cron.cron_d_owner",
+  "cron.cron_daily_mode",
+  "cron.cron_daily_owner",
+  "cron.cron_deny_exists",
+  "cron.cron_hourly_mode",
+  "cron.cron_hourly_owner",
+  "cron.cron_monthly_mode",
+  "cron.cron_monthly_owner",
+  "cron.cron_weekly_mode",
+  "cron.cron_weekly_owner",
+  "cron.crond_enabled",
+  "cron.crond_running",
+  "cron.crontab_group",
+  "cron.crontab_mode",
+  "cron.crontab_owner",
+  "disabled_filesystem_modules",
+  "disabled_filesystem_modules.modules",
+  "excessive_permissions",
+  "excessive_permissions.files",
+  "firewall",
+  "firewall.active",
+  "firewall.default_incoming",
+  "firewall.type",
+  "grub",
+  "grub.config_mode",
+  "grub.config_owner",
+  "grub.password_configured",
+  "grub.sulogin_configured",
+  "initial_setup",
+  "initial_setup.aide_cron_configured",
+  "initial_setup.aide_installed",
+  "initial_setup.aslr_enabled",
+  "initial_setup.core_dumps_enabled",
+  "initial_setup.enabled_repos",
+  "initial_setup.gdm_banner_configured",
+  "initial_setup.gdm_idle_delay",
+  "initial_setup.gdm_installed",
+  "initial_setup.gdm_screen_lock_enabled",
+  "initial_setup.gpg_keys",
+  "initial_setup.grub_config_mode",
+  "initial_setup.grub_owner_root",
+  "initial_setup.grub_password_configured",
+  "initial_setup.gui_required",
+  "initial_setup.issue_contains_sensitive_info",
+  "initial_setup.issue_exists",
+  "initial_setup.issue_mode",
+  "initial_setup.issue_net_contains_sensitive_info",
+  "initial_setup.issue_net_exists",
+  "initial_setup.issue_net_mode",
+  "initial_setup.issue_net_owner",
+  "initial_setup.issue_owner",
+  "initial_setup.motd_contains_sensitive_info",
+  "initial_setup.motd_exists",
+  "initial_setup.motd_mode",
+  "initial_setup.motd_owner",
+  "initial_setup.prelink_installed",
+  "initial_setup.ptrace_scope_restricted",
+  "initial_setup.server_environment",
+  "ip_forwarding",
+  "ip_forwarding.ipv4_compliant",
+  "ip_forwarding.ipv4_forwarding",
+  "ip_forwarding.ipv6_compliant",
+  "ip_forwarding.ipv6_forwarding",
+  "ipv6",
+  "ipv6.address_count",
+  "ipv6.disabled",
+  "ipv6.status",
+  "journald",
+  "journald.compress_enabled",
+  "journald.forward_to_syslog",
+  "journald.service_active",
+  "journald.storage_mode",
+  "log_file_permissions",
+  "log_file_permissions.analysis",
+  "logrotate",
+  "logrotate.installed",
+  "mount_options",
+  "mount_options.mounts",
+  "packages",
+  "packages.audit",
+  "packages.auditd",
+  "pam",
+  "pam.common_password_raw",
+  "pam.default_umask",
+  "pam.faillock_configured",
+  "pam.faillock_deny",
+  "pam.faillock_unlock_time",
+  "pam.inactive_days",
+  "pam.pass_max_days",
+  "pam.pass_min_days",
+  "pam.pass_warn_age",
+  "pam.pwquality_conf_raw",
+  "pam.remember_configured",
+  "pam.remember_count",
+  "pam.system_accounts_with_login_shell",
+  "pam.tmout_configured",
+  "pam.tmout_value",
+  "pam.users_with_future_password_change",
+  "process_hardening",
+  "process_hardening.aslr_enabled",
+  "process_hardening.core_dumps_enabled",
+  "process_hardening.fs_suid_dumpable",
+  "process_hardening.prelink_installed",
+  "process_hardening.ptrace_scope_restricted",
+  "require_ipv6_disabled",
+  "require_remote_logging",
+  "required_partitions",
+  "required_partitions.partitions",
+  "rsyslog",
+  "rsyslog.file_create_mode",
+  "rsyslog.installed",
+  "rsyslog.logging_rules_count",
+  "rsyslog.remote_logging_configured",
+  "rsyslog.service_active",
+  "rsyslog.service_enabled",
+  "services",
+  "services[\"auditd.service\"]",
+  "sgid_files",
+  "sgid_files.count",
+  "ssh",
+  "ssh.private_key_files",
+  "ssh.public_key_files",
+  "ssh.sshd_config_group",
+  "ssh.sshd_config_mode",
+  "ssh.sshd_config_owner",
+  "ssh.sshd_config_raw",
+  "ssh_private_keys",
+  "ssh_private_keys.all_compliant",
+  "ssh_private_keys.analysis",
+  "sticky_bit_check",
+  "sticky_bit_check.world_writable_dirs",
+  "sudo",
+  "sudo.installed",
+  "sudo.logfile_configured",
+  "sudo.noauthenticate_entries",
+  "sudo.nopasswd_entries",
+  "sudo.su_allowed_group",
+  "sudo.su_restricted",
+  "sudo.sudoers_mode",
+  "sudo.sudoers_world_readable",
+  "sudo.timestamp_timeout",
+  "sudo.use_pty",
+  "suid_files",
+  "suid_files.total_count",
+  "suid_files.unknown_binaries",
+  "suid_files.unknown_count",
+  "sysctl_parameters",
+  "sysctl_parameters.analysis",
+  "sysctl_parameters.non_compliant_count",
+  "sysctl_parameters.non_compliant_params",
+  "system_info",
+  "system_info.architecture",
+  "system_info.distribution",
+  "system_info.distribution_version",
+  "system_info.hostname",
+  "system_info.kernel",
+  "time_synchronization",
+  "time_synchronization.active_service",
+  "time_synchronization.compliant",
+  "time_synchronization.has_active_service",
+  "timesyncd",
+  "timesyncd.service_active",
+  "ungrouped_files",
+  "ungrouped_files.compliant",
+  "ungrouped_files.count",
+  "ungrouped_files.files",
+  "unnecessary_services",
+  "unnecessary_services.analysis",
+  "unnecessary_services.non_compliant",
+  "unowned_files",
+  "unowned_files.compliant",
+  "unowned_files.count",
+  "unowned_files.files",
+  "usb_storage_disabled",
+  "usb_storage_disabled.disabled",
+  "usb_storage_disabled.loaded",
+  "user_group",
+  "user_group.dotfiles_group_or_world_writable",
+  "user_group.duplicate_gids",
+  "user_group.duplicate_groupnames",
+  "user_group.duplicate_uids",
+  "user_group.duplicate_usernames",
+  "user_group.group_content",
+  "user_group.home_dirs_too_permissive",
+  "user_group.passwd_content",
+  "user_group.passwd_groups_not_in_group_file",
+  "user_group.root_path",
+  "user_group.root_path_dirs",
+  "user_group.root_path_writable_dirs",
+  "user_group.shadow_content",
+  "user_group.uid_zero_accounts",
+  "user_group.users_not_owning_home",
+  "user_group.users_with_empty_password",
+  "user_group.users_with_forward",
+  "user_group.users_with_netrc",
+  "user_group.users_with_rhosts",
+  "user_group.users_without_home_directory",
+  "user_group.users_without_shadow",
+  "webserver",
+  "webserver.any_installed",
+  "webserver.packages",
+  "wireless_interfaces",
+  "wireless_interfaces.compliant",
+  "wireless_interfaces.count",
+  "wireless_interfaces.has_wireless",
+  "wireless_interfaces.interfaces",
+  "world_writable",
+  "world_writable.compliant",
+  "world_writable.count",
+  "world_writable.files",
+  "x11",
+  "x11.any_installed",
+  "x11.packages"
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ai_governance/schema.json",
+ "title": "Input facts for ai_governance",
+ "description": "Input paths referenced in the sources of governance/ai/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ai_governance",
+ "x-entrypoint": "data.ai_governance.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "governance/ai/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "action": {
+   "description": "Read in action_classification.rego, ai_governance_complete.rego, context_validation.rego."
+  },
+  "ai_system": {
+   "description": "Read in ai_governance_complete.rego, authorization.rego, context_validation.rego.",
+   "properties": {
+    "emergency_granted_at": {
+     "description": "Read in authorization.rego."
+    },
+    "enabled": {
+     "description": "Read in ai_governance_complete.rego, authorization.rego."
+    },
+    "id": {
+     "description": "Read in ai_governance_complete.rego, authorization.rego."
+    },
+    "production_access": {
+     "description": "Read in context_validation.rego."
+    },
+    "role": {
+     "description": "Read in ai_governance_complete.rego, authorization.rego."
+    }
+   }
+  },
+  "approval": {
+   "description": "Read in authorization.rego.",
+   "properties": {
+    "approved_at": {
+     "description": "Read in authorization.rego."
+    },
+    "approvers_count": {
+     "description": "Read in authorization.rego."
+    },
+    "obtained": {
+     "description": "Read in authorization.rego."
+    }
+   }
+  },
+  "context": {
+   "description": "Read in ai_governance_complete.rego, context_validation.rego.",
+   "properties": {
+    "actions_in_window": {
+     "description": "Read in context_validation.rego."
+    },
+    "blocked_operations": {
+     "description": "Read in context_validation.rego."
+    },
+    "environment": {
+     "description": "Read in ai_governance_complete.rego, context_validation.rego."
+    },
+    "maintenance_window_active": {
+     "description": "Read in context_validation.rego."
+    },
+    "rate_limit": {
+     "description": "Read in context_validation.rego."
+    },
+    "require_maintenance_window": {
+     "description": "Read in context_validation.rego."
+    },
+    "scope_limit": {
+     "description": "Read in context_validation.rego."
+    },
+    "target_hosts": {
+     "description": "Read in context_validation.rego."
+    }
+   }
+  },
+  "justification": {
+   "description": "Read in authorization.rego."
+  },
+  "trace_id": {
+   "description": "Read in ai_governance_complete.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "action",
+  "ai_system",
+  "ai_system.emergency_granted_at",
+  "ai_system.enabled",
+  "ai_system.id",
+  "ai_system.production_access",
+  "ai_system.role",
+  "approval",
+  "approval.approved_at",
+  "approval.approvers_count",
+  "approval.obtained",
+  "context",
+  "context.actions_in_window",
+  "context.blocked_operations",
+  "context.environment",
+  "context.maintenance_window_active",
+  "context.rate_limit",
+  "context.require_maintenance_window",
+  "context.scope_limit",
+  "context.target_hosts",
+  "justification",
+  "trace_id"
+ ]
+}

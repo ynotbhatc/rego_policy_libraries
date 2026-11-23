@@ -1,0 +1,450 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_gke/schema.json",
+ "title": "Input facts for cis_gke",
+ "description": "Facts the module in benchmarks/cis/gke/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_gke",
+ "x-entrypoint": "data.cis_gke.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/gke/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_gke.main_test._compliant",
+ "type": "object",
+ "properties": {
+  "cis_gke": {
+   "description": "Read in cis_gke_validation.rego.",
+   "type": "object",
+   "properties": {
+    "admission": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "image_provenance_configured": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "general": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "default_namespace_not_used": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "namespace_boundaries_used": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "seccomp_runtime_default": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_context_applied": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "images": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "registry_cluster_access_readonly": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "registry_user_access_minimized": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "trusted_images_only": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vulnerability_scanning_enabled": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "managed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authorized_networks_enabled": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "client_cert_auth_disabled": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cos_node_images": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dedicated_gcp_service_accounts": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "gke_sandbox_considered": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "google_groups_rbac_managed": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "legacy_abac_disabled": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logging_monitoring_enabled": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "managed_ssl_certificates": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "private_endpoint_only": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "private_nodes": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "secrets_kms_encrypted": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "web_ui_disabled": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "all_namespaces_have_network_policies": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cni_supports_network_policies": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "node_files": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "kubeconfig_owner_root": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kubeconfig_perms_restricted": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kubelet_config_owner_root": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kubelet_config_perms_restricted": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "pod_security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "pss_baseline_enforced": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "rbac": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "bind_impersonate_escalate_limited": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cluster_admin_usage_minimized": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "default_service_accounts_inactive": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "no_nondefault_system_authenticated_bindings": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "no_system_anonymous_bindings": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sa_token_mounts_minimized": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "secrets_access_minimized": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "system_masters_group_not_used": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "wildcard_use_minimized": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "secrets": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "external_secret_storage_considered": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "secrets_as_files_preferred": {
+       "description": "Read in cis_gke_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_gke",
+  "cis_gke.admission",
+  "cis_gke.admission.image_provenance_configured",
+  "cis_gke.general",
+  "cis_gke.general.default_namespace_not_used",
+  "cis_gke.general.namespace_boundaries_used",
+  "cis_gke.general.seccomp_runtime_default",
+  "cis_gke.general.security_context_applied",
+  "cis_gke.images",
+  "cis_gke.images.registry_cluster_access_readonly",
+  "cis_gke.images.registry_user_access_minimized",
+  "cis_gke.images.trusted_images_only",
+  "cis_gke.images.vulnerability_scanning_enabled",
+  "cis_gke.managed",
+  "cis_gke.managed.authorized_networks_enabled",
+  "cis_gke.managed.client_cert_auth_disabled",
+  "cis_gke.managed.cos_node_images",
+  "cis_gke.managed.dedicated_gcp_service_accounts",
+  "cis_gke.managed.gke_sandbox_considered",
+  "cis_gke.managed.google_groups_rbac_managed",
+  "cis_gke.managed.legacy_abac_disabled",
+  "cis_gke.managed.logging_monitoring_enabled",
+  "cis_gke.managed.managed_ssl_certificates",
+  "cis_gke.managed.private_endpoint_only",
+  "cis_gke.managed.private_nodes",
+  "cis_gke.managed.secrets_kms_encrypted",
+  "cis_gke.managed.web_ui_disabled",
+  "cis_gke.network",
+  "cis_gke.network.all_namespaces_have_network_policies",
+  "cis_gke.network.cni_supports_network_policies",
+  "cis_gke.node_files",
+  "cis_gke.node_files.kubeconfig_owner_root",
+  "cis_gke.node_files.kubeconfig_perms_restricted",
+  "cis_gke.node_files.kubelet_config_owner_root",
+  "cis_gke.node_files.kubelet_config_perms_restricted",
+  "cis_gke.pod_security",
+  "cis_gke.pod_security.pss_baseline_enforced",
+  "cis_gke.rbac",
+  "cis_gke.rbac.bind_impersonate_escalate_limited",
+  "cis_gke.rbac.cluster_admin_usage_minimized",
+  "cis_gke.rbac.default_service_accounts_inactive",
+  "cis_gke.rbac.no_nondefault_system_authenticated_bindings",
+  "cis_gke.rbac.no_system_anonymous_bindings",
+  "cis_gke.rbac.sa_token_mounts_minimized",
+  "cis_gke.rbac.secrets_access_minimized",
+  "cis_gke.rbac.system_masters_group_not_used",
+  "cis_gke.rbac.wildcard_use_minimized",
+  "cis_gke.secrets",
+  "cis_gke.secrets.external_secret_storage_considered",
+  "cis_gke.secrets.secrets_as_files_preferred"
+ ]
+}

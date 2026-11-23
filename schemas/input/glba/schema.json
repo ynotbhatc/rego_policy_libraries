@@ -1,0 +1,522 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/glba/schema.json",
+ "title": "Input facts for glba",
+ "description": "Facts the module in frameworks/financial/glba/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "glba",
+ "x-entrypoint": "data.glba.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/financial/glba/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.glba.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "authenticate_users": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "least_privilege": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "periodic_review": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in glba_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-02"
+   ]
+  },
+  "board_report": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "annual_written": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "covers_program_status": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "breach_notification": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "ftc_process_within_30_days": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "change_management": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "procedures_adopted": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "disposal": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "retention_justified": {
+     "description": "Read in glba_main.rego."
+    },
+    "retention_policy_reviewed": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "within_two_years": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "encryption": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "compensating_controls_approved": {
+     "description": "Read in glba_main.rego."
+    },
+    "customer_info": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "at_rest": {
+       "description": "Read in glba_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "in_transit": {
+       "description": "Read in glba_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in glba_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example Lending LLC"
+   ]
+  },
+  "entity_type": {
+   "description": "Read in glba_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "non-bank lender"
+   ]
+  },
+  "incident_response": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "post_event_revision": {
+       "description": "Read in glba_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "roles_defined": {
+       "description": "Read in glba_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "written": {
+       "description": "Read in glba_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "inventory": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "data_identified": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "systems_inventoried": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "mfa": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "all_information_systems": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "equivalent_approved_in_writing": {
+     "description": "Read in glba_main.rego."
+    }
+   }
+  },
+  "monitoring": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "authorized_user_activity": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unauthorized_access_detection": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "personnel": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "knowledge_current": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "qualified_infosec_staff": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "program": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "adjusted_from_findings": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "qualified_individual": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "designated": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "risk_assessment": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "criteria_documented": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "periodic_reassessment": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "written": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "secure_development": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "external_apps_assessed": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "inhouse_practices": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "service_providers": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "capability_assessed": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "contracts_require_safeguards": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "periodic_assessment": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "small_institution_exemption": {
+   "description": "Read in glba_main.rego."
+  },
+  "testing": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "continuous_monitoring": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "penetration_test": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "annual": {
+       "description": "Read in glba_main.rego."
+      }
+     }
+    },
+    "vulnerability_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "semi_annual": {
+       "description": "Read in glba_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "training": {
+   "description": "Read in glba_main.rego.",
+   "type": "object",
+   "properties": {
+    "security_awareness": {
+     "description": "Read in glba_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.authenticate_users",
+  "access_control.least_privilege",
+  "access_control.periodic_review",
+  "assessment_date",
+  "board_report",
+  "board_report.annual_written",
+  "board_report.covers_program_status",
+  "breach_notification",
+  "breach_notification.ftc_process_within_30_days",
+  "change_management",
+  "change_management.procedures_adopted",
+  "disposal",
+  "disposal.retention_justified",
+  "disposal.retention_policy_reviewed",
+  "disposal.within_two_years",
+  "encryption",
+  "encryption.compensating_controls_approved",
+  "encryption.customer_info",
+  "encryption.customer_info.at_rest",
+  "encryption.customer_info.in_transit",
+  "entity_name",
+  "entity_type",
+  "incident_response",
+  "incident_response.plan",
+  "incident_response.plan.post_event_revision",
+  "incident_response.plan.roles_defined",
+  "incident_response.plan.written",
+  "inventory",
+  "inventory.data_identified",
+  "inventory.systems_inventoried",
+  "mfa",
+  "mfa.all_information_systems",
+  "mfa.equivalent_approved_in_writing",
+  "monitoring",
+  "monitoring.authorized_user_activity",
+  "monitoring.unauthorized_access_detection",
+  "personnel",
+  "personnel.knowledge_current",
+  "personnel.qualified_infosec_staff",
+  "program",
+  "program.adjusted_from_findings",
+  "qualified_individual",
+  "qualified_individual.designated",
+  "risk_assessment",
+  "risk_assessment.criteria_documented",
+  "risk_assessment.periodic_reassessment",
+  "risk_assessment.written",
+  "secure_development",
+  "secure_development.external_apps_assessed",
+  "secure_development.inhouse_practices",
+  "service_providers",
+  "service_providers.capability_assessed",
+  "service_providers.contracts_require_safeguards",
+  "service_providers.periodic_assessment",
+  "small_institution_exemption",
+  "testing",
+  "testing.continuous_monitoring",
+  "testing.penetration_test",
+  "testing.penetration_test.annual",
+  "testing.vulnerability_assessment",
+  "testing.vulnerability_assessment.semi_annual",
+  "training",
+  "training.security_awareness"
+ ]
+}

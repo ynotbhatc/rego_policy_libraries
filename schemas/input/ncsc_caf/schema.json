@@ -1,0 +1,639 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ncsc_caf/schema.json",
+ "title": "Input facts for ncsc_caf",
+ "description": "Input paths referenced in the sources of frameworks/compliance/ncsc_caf/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ncsc_caf",
+ "x-entrypoint": "data.ncsc_caf.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/compliance/ncsc_caf/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "asset_management": {
+   "description": "Read in caf_a3_asset_management.rego.",
+   "properties": {
+    "automated_discovery": {
+     "description": "Read in caf_a3_asset_management.rego."
+    },
+    "cmdb_exists": {
+     "description": "Read in caf_a3_asset_management.rego."
+    },
+    "coverage_pct": {
+     "description": "Read in caf_a3_asset_management.rego."
+    },
+    "critical_assets_classified": {
+     "description": "Read in caf_a3_asset_management.rego."
+    },
+    "last_audit_days": {
+     "description": "Read in caf_a3_asset_management.rego."
+    }
+   }
+  },
+  "data_in_transit": {
+   "description": "Read in caf_b3_data_security.rego.",
+   "properties": {
+    "all_links_encrypted": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "cert_validity_days_remaining": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "tls_min_version": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "unencrypted_protocols_in_use": {
+     "description": "Read in caf_b3_data_security.rego."
+    }
+   }
+  },
+  "device_management": {
+   "description": "Read in caf_b2_identity_access.rego.",
+   "properties": {
+    "certificate_auth": {
+     "description": "Read in caf_b2_identity_access.rego."
+    },
+    "mdm_deployed": {
+     "description": "Read in caf_b2_identity_access.rego."
+    },
+    "mdm_enrollment_coverage_pct": {
+     "description": "Read in caf_b2_identity_access.rego."
+    },
+    "paw_enforced": {
+     "description": "Read in caf_b2_identity_access.rego."
+    },
+    "unknown_device_scanning": {
+     "description": "Read in caf_b2_identity_access.rego."
+    }
+   }
+  },
+  "identity_access": {
+   "description": "Read in caf_b2_identity_access.rego.",
+   "properties": {
+    "access_logs": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "collected": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "monitored": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "unauth_access_alerts": {
+       "description": "Read in caf_b2_identity_access.rego."
+      }
+     }
+    },
+    "access_revocation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "automated": {
+       "description": "Read in caf_b2_identity_access.rego."
+      }
+     }
+    },
+    "account_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "last_review_days": {
+       "description": "Read in caf_b2_identity_access.rego."
+      }
+     }
+    },
+    "auth_protocols": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ntlm_disabled": {
+       "description": "Read in caf_b2_identity_access.rego."
+      }
+     }
+    },
+    "mfa_enforcement": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "coverage": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "enabled": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "privileged_mfa": {
+       "description": "Read in caf_b2_identity_access.rego."
+      }
+     }
+    },
+    "min_access_enforced": {
+     "description": "Read in caf_b2_identity_access.rego."
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "activity_logged": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "dedicated_accounts": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "leavers_automated": {
+       "description": "Read in caf_b2_identity_access.rego."
+      },
+      "time_bound_access": {
+       "description": "Read in caf_b2_identity_access.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_response": {
+   "description": "Read in caf_d1_response_recovery.rego.",
+   "properties": {
+    "capability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "escalation_paths_defined": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "ir_retainer_exists": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "response_time_sla_hours": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "soc_available": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "soc_hours": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      }
+     }
+    },
+    "exercises": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "functional_exercise_days": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "last_exercise_days": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "post_exercise_actions_tracked": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "tabletop_conducted": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      }
+     }
+    },
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "communications_documented": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "covers_nis_incidents": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "exists": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "last_review_days": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      },
+      "roles_defined": {
+       "description": "Read in caf_d1_response_recovery.rego."
+      }
+     }
+    }
+   }
+  },
+  "mobile_data": {
+   "description": "Read in caf_b3_data_security.rego.",
+   "properties": {
+    "data_minimised": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "device_encryption": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "mdm_enrolled": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "remote_wipe_configured": {
+     "description": "Read in caf_b3_data_security.rego."
+    }
+   }
+  },
+  "resilience": {
+   "description": "Read in caf_b5_resilience.rego.",
+   "properties": {
+    "backups": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "automated": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "backup_age_hours": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "comprehensive_coverage": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "offline_backup_exists": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "ransomware_resilient": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "restore_test_age_days": {
+       "description": "Read in caf_b5_resilience.rego."
+      }
+     }
+    },
+    "bc_dr_plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "covers_essential_functions": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "exists": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "last_review_days": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "rto_rpo_defined": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "tested_days": {
+       "description": "Read in caf_b5_resilience.rego."
+      }
+     }
+    },
+    "network_segregation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "business_system_separated": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "essential_function_isolated": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "geographic_redundancy": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "no_internet_from_critical": {
+       "description": "Read in caf_b5_resilience.rego."
+      },
+      "redundant_paths": {
+       "description": "Read in caf_b5_resilience.rego."
+      }
+     }
+    }
+   }
+  },
+  "security_monitoring": {
+   "description": "Read in caf_c1_security_monitoring.rego.",
+   "properties": {
+    "alert_triage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "mean_triage_hours": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "process_documented": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "ticketing_integrated": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "triage_sla_defined": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      }
+     }
+    },
+    "alerting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "continuous_monitoring": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "ids_deployed": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "ioc_feed_age_hours": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "ioc_feeds_integrated": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "signature_age_hours": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      }
+     }
+    },
+    "log_integrity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_restricted": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "audit_trail_enabled": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "retention_days": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "worm_or_append_only": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      }
+     }
+    },
+    "log_sources": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "all_assets_covered": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "coverage_pct": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "host_based_monitoring": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "network_monitoring": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      }
+     }
+    },
+    "ntp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "sources_consistent": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "synchronized": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      }
+     }
+    },
+    "threat_intel": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "analyst_reviewed": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "feed_count": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "feeds_configured": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "integrated_with_siem": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      },
+      "last_update_hours": {
+       "description": "Read in caf_c1_security_monitoring.rego."
+      }
+     }
+    }
+   }
+  },
+  "stored_data": {
+   "description": "Read in caf_b3_data_security.rego.",
+   "properties": {
+    "backup_age_days": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "backup_exists": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "backup_segregated": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "encryption_at_rest": {
+     "description": "Read in caf_b3_data_security.rego."
+    },
+    "restore_test_days": {
+     "description": "Read in caf_b3_data_security.rego."
+    }
+   }
+  },
+  "system_security": {
+   "description": "Read in caf_b4_system_security.rego.",
+   "properties": {
+    "network_segmentation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "dmz_configured": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "input_validation_enforced": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "internet_routing_blocked_from_critical": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "ot_it_separated": {
+       "description": "Read in caf_b4_system_security.rego."
+      }
+     }
+    },
+    "secure_configuration": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "baseline_compliance_pct": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "config_drift_monitoring": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "default_accounts_disabled": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "software_allowlisting": {
+       "description": "Read in caf_b4_system_security.rego."
+      }
+     }
+    },
+    "secure_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "admin_from_paw_only": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "malware_protection": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "malware_signatures_days": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "unauthorised_software_count": {
+       "description": "Read in caf_b4_system_security.rego."
+      }
+     }
+    },
+    "vulnerability_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "critical_patch_age_days": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "eol_software_count": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "pentest_age_days": {
+       "description": "Read in caf_b4_system_security.rego."
+      },
+      "vuln_scan_age_days": {
+       "description": "Read in caf_b4_system_security.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "asset_management",
+  "asset_management.automated_discovery",
+  "asset_management.cmdb_exists",
+  "asset_management.coverage_pct",
+  "asset_management.critical_assets_classified",
+  "asset_management.last_audit_days",
+  "data_in_transit",
+  "data_in_transit.all_links_encrypted",
+  "data_in_transit.cert_validity_days_remaining",
+  "data_in_transit.tls_min_version",
+  "data_in_transit.unencrypted_protocols_in_use",
+  "device_management",
+  "device_management.certificate_auth",
+  "device_management.mdm_deployed",
+  "device_management.mdm_enrollment_coverage_pct",
+  "device_management.paw_enforced",
+  "device_management.unknown_device_scanning",
+  "identity_access",
+  "identity_access.access_logs",
+  "identity_access.access_logs.collected",
+  "identity_access.access_logs.monitored",
+  "identity_access.access_logs.unauth_access_alerts",
+  "identity_access.access_revocation",
+  "identity_access.access_revocation.automated",
+  "identity_access.account_review",
+  "identity_access.account_review.last_review_days",
+  "identity_access.auth_protocols",
+  "identity_access.auth_protocols.ntlm_disabled",
+  "identity_access.mfa_enforcement",
+  "identity_access.mfa_enforcement.coverage",
+  "identity_access.mfa_enforcement.enabled",
+  "identity_access.mfa_enforcement.privileged_mfa",
+  "identity_access.min_access_enforced",
+  "identity_access.privileged_accounts",
+  "identity_access.privileged_accounts.activity_logged",
+  "identity_access.privileged_accounts.dedicated_accounts",
+  "identity_access.privileged_accounts.leavers_automated",
+  "identity_access.privileged_accounts.time_bound_access",
+  "incident_response",
+  "incident_response.capability",
+  "incident_response.capability.escalation_paths_defined",
+  "incident_response.capability.ir_retainer_exists",
+  "incident_response.capability.response_time_sla_hours",
+  "incident_response.capability.soc_available",
+  "incident_response.capability.soc_hours",
+  "incident_response.exercises",
+  "incident_response.exercises.functional_exercise_days",
+  "incident_response.exercises.last_exercise_days",
+  "incident_response.exercises.post_exercise_actions_tracked",
+  "incident_response.exercises.tabletop_conducted",
+  "incident_response.plan",
+  "incident_response.plan.communications_documented",
+  "incident_response.plan.covers_nis_incidents",
+  "incident_response.plan.exists",
+  "incident_response.plan.last_review_days",
+  "incident_response.plan.roles_defined",
+  "mobile_data",
+  "mobile_data.data_minimised",
+  "mobile_data.device_encryption",
+  "mobile_data.mdm_enrolled",
+  "mobile_data.remote_wipe_configured",
+  "resilience",
+  "resilience.backups",
+  "resilience.backups.automated",
+  "resilience.backups.backup_age_hours",
+  "resilience.backups.comprehensive_coverage",
+  "resilience.backups.offline_backup_exists",
+  "resilience.backups.ransomware_resilient",
+  "resilience.backups.restore_test_age_days",
+  "resilience.bc_dr_plan",
+  "resilience.bc_dr_plan.covers_essential_functions",
+  "resilience.bc_dr_plan.exists",
+  "resilience.bc_dr_plan.last_review_days",
+  "resilience.bc_dr_plan.rto_rpo_defined",
+  "resilience.bc_dr_plan.tested_days",
+  "resilience.network_segregation",
+  "resilience.network_segregation.business_system_separated",
+  "resilience.network_segregation.essential_function_isolated",
+  "resilience.network_segregation.geographic_redundancy",
+  "resilience.network_segregation.no_internet_from_critical",
+  "resilience.network_segregation.redundant_paths",
+  "security_monitoring",
+  "security_monitoring.alert_triage",
+  "security_monitoring.alert_triage.mean_triage_hours",
+  "security_monitoring.alert_triage.process_documented",
+  "security_monitoring.alert_triage.ticketing_integrated",
+  "security_monitoring.alert_triage.triage_sla_defined",
+  "security_monitoring.alerting",
+  "security_monitoring.alerting.continuous_monitoring",
+  "security_monitoring.alerting.ids_deployed",
+  "security_monitoring.alerting.ioc_feed_age_hours",
+  "security_monitoring.alerting.ioc_feeds_integrated",
+  "security_monitoring.alerting.signature_age_hours",
+  "security_monitoring.log_integrity",
+  "security_monitoring.log_integrity.access_restricted",
+  "security_monitoring.log_integrity.audit_trail_enabled",
+  "security_monitoring.log_integrity.retention_days",
+  "security_monitoring.log_integrity.worm_or_append_only",
+  "security_monitoring.log_sources",
+  "security_monitoring.log_sources.all_assets_covered",
+  "security_monitoring.log_sources.coverage_pct",
+  "security_monitoring.log_sources.host_based_monitoring",
+  "security_monitoring.log_sources.network_monitoring",
+  "security_monitoring.ntp",
+  "security_monitoring.ntp.sources_consistent",
+  "security_monitoring.ntp.synchronized",
+  "security_monitoring.threat_intel",
+  "security_monitoring.threat_intel.analyst_reviewed",
+  "security_monitoring.threat_intel.feed_count",
+  "security_monitoring.threat_intel.feeds_configured",
+  "security_monitoring.threat_intel.integrated_with_siem",
+  "security_monitoring.threat_intel.last_update_hours",
+  "stored_data",
+  "stored_data.backup_age_days",
+  "stored_data.backup_exists",
+  "stored_data.backup_segregated",
+  "stored_data.encryption_at_rest",
+  "stored_data.restore_test_days",
+  "system_security",
+  "system_security.network_segmentation",
+  "system_security.network_segmentation.dmz_configured",
+  "system_security.network_segmentation.input_validation_enforced",
+  "system_security.network_segmentation.internet_routing_blocked_from_critical",
+  "system_security.network_segmentation.ot_it_separated",
+  "system_security.secure_configuration",
+  "system_security.secure_configuration.baseline_compliance_pct",
+  "system_security.secure_configuration.config_drift_monitoring",
+  "system_security.secure_configuration.default_accounts_disabled",
+  "system_security.secure_configuration.software_allowlisting",
+  "system_security.secure_management",
+  "system_security.secure_management.admin_from_paw_only",
+  "system_security.secure_management.malware_protection",
+  "system_security.secure_management.malware_signatures_days",
+  "system_security.secure_management.unauthorised_software_count",
+  "system_security.vulnerability_management",
+  "system_security.vulnerability_management.critical_patch_age_days",
+  "system_security.vulnerability_management.eol_software_count",
+  "system_security.vulnerability_management.pentest_age_days",
+  "system_security.vulnerability_management.vuln_scan_age_days"
+ ]
+}

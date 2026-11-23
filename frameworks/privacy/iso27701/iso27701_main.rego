@@ -78,11 +78,11 @@ import rego.v1
 #       the boolean false. Clauses 5 and 6 always apply. Missing data never shrinks scope.
 #   evidence.<area>.<fact>
 #       System facts for the 8 technical controls (evidence_spec below; limits are this library's defaults,
-#       not values from the standard). A fact that is absent or of the wrong type is not_assessed
-#       (evidence_missing), never a pass. A pass covers the technical facts only.
+#       not values from the standard). A fact that is absent or of the wrong type is evidence_missing,
+#       never a pass. A pass covers the technical facts only.
 #   attestations["<control id>"] = {attested: true, by: "<name>", date: "<date>"}
-#       Evidence for the 100 organisational controls. attested: false fails the control; an entry without
-#       attested == true, by and date is not_assessed (not_attested); no entry is not_assessed (evidence_missing).
+#       Evidence for the 100 organisational controls. attested: false fails the control; any other entry without
+#       attested == true, by and date is not_attested; no entry is evidence_missing.
 #   Legacy booleans (pims_requirements.*, pii_controller.*, pii_processor.*, data_subject_rights.*), the input
 #       paths of the module before this rebuild, are still read for the control each one evidences
 #       (legacy_inputs below). A control passes on them only when every mapped field is == true; any mapped
@@ -91,9 +91,10 @@ import rego.v1
 #       pii_controller.privacy_by_design.transmission_controls (7.4.9 is now decided from evidence).
 #
 # Report contract: total_controls = controls in scope; failed_controls = controls in scope that do not pass;
-# control_results lists every control in scope in clause order with status pass | fail | not_assessed,
-# reason (for not_assessed: evidence_missing | not_attested), basis evidence | attestation, and id_source
-# confirmed | unconfirmed. A compliant result means every control in scope passed here.
+# control_results lists every control in scope in clause order with status pass | fail | evidence_missing |
+# not_attested (the vocabulary of nist_800_53.main and tisax.main), basis evidence | attestation, and id_source
+# confirmed | unconfirmed. There is no separate reason field: the status says why a control did not pass.
+# A compliant result means every control in scope passed here.
 #
 # OPA endpoint: POST http://<host>:8182/v1/data/iso27701/main/compliance_report
 
@@ -459,7 +460,7 @@ _att_path(id) := sprintf("input.iso27701.attestations[%q]", [id])
 _status(id) := "fail" if {
 	_basis(id) == "evidence"
 	count(_failed_facts(id)) > 0
-} else := "not_assessed" if {
+} else := "evidence_missing" if {
 	_basis(id) == "evidence"
 	count(_missing_facts(id)) > 0
 } else := "pass" if {
@@ -472,10 +473,6 @@ _status(id) := "fail" if {
 	_signed(_att(id))
 } else := "pass" if {
 	_legacy_all_true(id)
-} else := "not_assessed"
-
-_reason(id) := "evidence_missing" if {
-	_basis(id) == "evidence"
 } else := "not_attested" if {
 	_att(id) != null
 } else := "evidence_missing"
@@ -487,9 +484,9 @@ _detail(id) := concat("", ["fail: ", concat("; ", _failed_facts(id))]) if {
 	_status_of[id] == "fail"
 }
 
-_detail(id) := sprintf("not assessed, evidence missing: not collected or not of the expected type: %v", [concat(", ", _missing_facts(id))]) if {
+_detail(id) := sprintf("evidence missing: not collected or not of the expected type: %v", [concat(", ", _missing_facts(id))]) if {
 	_basis(id) == "evidence"
-	_status_of[id] == "not_assessed"
+	_status_of[id] == "evidence_missing"
 }
 
 _detail(id) := sprintf("fail: %v has attested false", [_att_path(id)]) if {
@@ -504,16 +501,14 @@ _detail(id) := sprintf("fail: legacy input %v is false", [concat(", ", _legacy_f
 	not _refused(_att(id))
 }
 
-_detail(id) := sprintf("not assessed, not attested: %v must be {attested: true, by: <name>, date: <date>}", [_att_path(id)]) if {
+_detail(id) := sprintf("not attested: %v must be {attested: true, by: <name>, date: <date>}", [_att_path(id)]) if {
 	_basis(id) == "attestation"
-	_status_of[id] == "not_assessed"
-	_att(id) != null
+	_status_of[id] == "not_attested"
 }
 
-_detail(id) := sprintf("not assessed, evidence missing: no attestation at %v; pass needs {attested: true, by, date} showing %v", [_att_path(id), _group_need[controls[id].group]]) if {
+_detail(id) := sprintf("evidence missing: no attestation at %v; pass needs {attested: true, by, date} showing %v", [_att_path(id), _group_need[controls[id].group]]) if {
 	_basis(id) == "attestation"
-	_status_of[id] == "not_assessed"
-	_att(id) == null
+	_status_of[id] == "evidence_missing"
 }
 
 _finding(id) := sprintf("ISO 27701 %v (%v): %v", [id, controls[id].title, _detail(id)])
@@ -546,17 +541,12 @@ control_results := [{
 	"basis": _basis(id),
 	"id_source": controls[id].id_source,
 	"status": _status_of[id],
-	"reason": _reason_or_null(id),
 	"findings": [_finding(id) | _status_of[id] != "pass"],
 } |
 	some id in _order
 ]
 
-_reason_or_null(id) := _reason(id) if _status_of[id] == "not_assessed"
-
-else := null
-
-control_result_counts := {s: count([id | some id, st in _status_of; st == s]) | some s in ["pass", "fail", "not_assessed"]}
+control_result_counts := {s: count([id | some id, st in _status_of; st == s]) | some s in ["pass", "fail", "evidence_missing", "not_attested"]}
 
 failed_control_ids := [id | some id in _order; _status_of[id] != "pass"]
 

@@ -1,0 +1,37 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ami_device/schema.json",
+ "title": "Input facts for ami_device",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/ami/device_compliance/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ami_device",
+ "x-entrypoint": "data.ami_device.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/ami/device_compliance/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "device_standards": {
+   "description": "Read in ami_device_compliance.rego.",
+   "properties": {
+    "minimum_firmware_version": {
+     "description": "Read in ami_device_compliance.rego."
+    }
+   }
+  },
+  "devices": {
+   "description": "Read in ami_device_compliance.rego.",
+   "additionalProperties": {
+    "description": "Read in ami_device_compliance.rego."
+   },
+   "x-variable-key": "<_>"
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "device_standards",
+  "device_standards.minimum_firmware_version",
+  "devices"
+ ]
+}

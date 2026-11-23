@@ -1,0 +1,1109 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.oracle_database_19c/schema.json",
+ "title": "Input facts for stig.oracle_database_19c",
+ "description": "Facts the module in benchmarks/stig/oracle_database_19c/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig.oracle_database_19c",
+ "x-entrypoint": "data.stig.oracle_database_19c.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/oracle_database_19c/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.oracle_database_19c_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "oracle": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "additional_audit_information_configured": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "admin_functionality_separated_from_users": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_data_access_restricted": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_event_selection_by_designated_personnel": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_failure_realtime_alert": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_offloaded_continuously": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_storage_capacity_allocated": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_storage_warning_at_75_percent": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_tools_access_restricted": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "authorizations_enforced": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cli_plaintext_password_tools_mitigated_and_approved": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "compromised_password_list_checked": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "configured_per_dod_guidance": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "data_at_rest_encryption_not_required": {
+       "description": "Read in core.rego."
+      },
+      "data_log_audit_files_in_dedicated_directories": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dba_os_accounts_least_privilege": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "developers_excluded_from_dba_group": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "developers_no_elevated_privileges_on_shared_hosts": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dod_auditable_events_configured": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic_code_execution_justified": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic_code_injection_protected": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "encryption_not_required": {
+       "description": "Read in core.rego."
+      },
+      "error_messages_minimal": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "error_messages_restricted_to_authorized_personnel": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "external_executables_authorized": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "extproc_os_accounts_least_privilege": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "extproc_use_authorized": {
+       "description": "Read in core.rego."
+      },
+      "information_at_rest_integrity_protection_not_required": {
+       "description": "Read in core.rego."
+      },
+      "input_validation_implemented": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "install_account_restricted": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "install_account_use_logged": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "nonorganizational_users_uniquely_identified": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "org_level_auth_integrated": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "organizational_users_uniquely_identified": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "password_change_required_on_account_recovery": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pki_identity_mapped_to_accounts": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pki_private_key_access_restricted": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ppsm_functions_ports_protocols_approved": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "production_data_transfer_controlled": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_functions_isolated": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_labeling_implemented_or_not_required": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "shared_account_users_individually_identified": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "shared_accounts_require_individual_authentication": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "software_change_monitoring_in_place": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "software_directories_dedicated": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "software_library_access_restricted": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "temporary_accounts_expire_within_72h": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "temporary_accounts_identified": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "temporary_password_procedures_documented": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "trust_store_contains_only_approved_anchors": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vendor_supported_version": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "cman": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "present": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "remote_admin": {
+       "description": "Read in core.rego."
+      }
+     }
+    },
+    "control_files": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/u01/oradata/control01.ctl"
+      ]
+     },
+     "examples": [
+      [
+       "/u01/oradata/control01.ctl",
+       "/u02/oradata/control02.ctl",
+       "/u03/oradata/control03.ctl"
+      ]
+     ]
+    },
+    "direct_admin_privilege_grantees": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "filesystem": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "archive_log_dirs_world_accessible": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "database_files_world_accessible": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "diag_dir_world_accessible": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "oracle_home_world_accessible": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      }
+     }
+    },
+    "grantable_privileges_non_dba": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "instance_name": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "PRODDB"
+     ]
+    },
+    "listener": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "admin_authentication_required": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "extproc_configured": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "rate_limit_configured": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "log_mode": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ARCHIVELOG"
+     ]
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "access_restriction_enforced": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tls_or_native_encryption_required": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "os": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "root_in_dba_group": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      }
+     }
+    },
+    "parameters": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "audit_sys_operations": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TRUE"
+       ]
+      },
+      "audit_trail": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "DB"
+       ]
+      },
+      "dbfips_140": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TRUE"
+       ]
+      },
+      "max_idle_time": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "15"
+       ]
+      },
+      "remote_login_passwordfile": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "EXCLUSIVE"
+       ]
+      },
+      "remote_os_roles": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "FALSE"
+       ]
+      },
+      "sql92_security": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TRUE"
+       ]
+      }
+     }
+    },
+    "patches": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "latest_cpu_applied": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "profiles": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "ORA_STIG_PROFILE": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "FAILED_LOGIN_ATTEMPTS": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "3"
+         ]
+        },
+        "INACTIVE_ACCOUNT_TIME": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "35"
+         ]
+        },
+        "PASSWORD_GRACE_TIME": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "5"
+         ]
+        },
+        "PASSWORD_LIFE_TIME": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "60"
+         ]
+        },
+        "PASSWORD_LOCK_TIME": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "UNLIMITED"
+         ]
+        },
+        "PASSWORD_VERIFY_FUNCTION": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ORA12C_STIG_VERIFY_FUNCTION"
+         ]
+        },
+        "SESSIONS_PER_USER": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "10"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "public_granted_roles": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "public_system_privileges": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "redo_log_groups": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "group": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         1
+        ]
+       },
+       "members": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/u01/redo01a.log"
+         ]
+        },
+        "examples": [
+         [
+          "/u01/redo01a.log",
+          "/u02/redo01b.log"
+         ]
+        ]
+       }
+      }
+     }
+    },
+    "sample_schemas_present": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "sqlnet": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "allowed_logon_version_server": {
+       "description": "Read in core.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "12"
+       ]
+      }
+     }
+    },
+    "tde": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "unauthorized_admin_option_roles": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unauthorized_admin_option_system_privileges": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unauthorized_db_links": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unauthorized_default_admin_roles": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unauthorized_object_owners": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unauthorized_public_object_privileges": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unified_audit_policies_enabled": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ORA_SECURECONFIG"
+      ]
+     },
+     "examples": [
+      [
+       "ORA_SECURECONFIG"
+      ]
+     ]
+    },
+    "unified_audit_sys_policies": {
+     "description": "Read in core.rego."
+    },
+    "unused_components_installed": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "unused_integrated_options_enabled": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "users_with_10g_password_verifier": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "users_with_default_password": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "version": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "19.0.0.0.0"
+     ]
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_oracle_database_19c_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "oracle",
+  "oracle.attest",
+  "oracle.attest.additional_audit_information_configured",
+  "oracle.attest.admin_functionality_separated_from_users",
+  "oracle.attest.audit_data_access_restricted",
+  "oracle.attest.audit_event_selection_by_designated_personnel",
+  "oracle.attest.audit_failure_realtime_alert",
+  "oracle.attest.audit_offloaded_continuously",
+  "oracle.attest.audit_storage_capacity_allocated",
+  "oracle.attest.audit_storage_warning_at_75_percent",
+  "oracle.attest.audit_tools_access_restricted",
+  "oracle.attest.authorizations_enforced",
+  "oracle.attest.cli_plaintext_password_tools_mitigated_and_approved",
+  "oracle.attest.compromised_password_list_checked",
+  "oracle.attest.configured_per_dod_guidance",
+  "oracle.attest.data_at_rest_encryption_not_required",
+  "oracle.attest.data_log_audit_files_in_dedicated_directories",
+  "oracle.attest.dba_os_accounts_least_privilege",
+  "oracle.attest.developers_excluded_from_dba_group",
+  "oracle.attest.developers_no_elevated_privileges_on_shared_hosts",
+  "oracle.attest.dod_auditable_events_configured",
+  "oracle.attest.dynamic_code_execution_justified",
+  "oracle.attest.dynamic_code_injection_protected",
+  "oracle.attest.encryption_not_required",
+  "oracle.attest.error_messages_minimal",
+  "oracle.attest.error_messages_restricted_to_authorized_personnel",
+  "oracle.attest.external_executables_authorized",
+  "oracle.attest.extproc_os_accounts_least_privilege",
+  "oracle.attest.extproc_use_authorized",
+  "oracle.attest.information_at_rest_integrity_protection_not_required",
+  "oracle.attest.input_validation_implemented",
+  "oracle.attest.install_account_restricted",
+  "oracle.attest.install_account_use_logged",
+  "oracle.attest.nonorganizational_users_uniquely_identified",
+  "oracle.attest.org_level_auth_integrated",
+  "oracle.attest.organizational_users_uniquely_identified",
+  "oracle.attest.password_change_required_on_account_recovery",
+  "oracle.attest.pki_identity_mapped_to_accounts",
+  "oracle.attest.pki_private_key_access_restricted",
+  "oracle.attest.ppsm_functions_ports_protocols_approved",
+  "oracle.attest.production_data_transfer_controlled",
+  "oracle.attest.security_functions_isolated",
+  "oracle.attest.security_labeling_implemented_or_not_required",
+  "oracle.attest.shared_account_users_individually_identified",
+  "oracle.attest.shared_accounts_require_individual_authentication",
+  "oracle.attest.software_change_monitoring_in_place",
+  "oracle.attest.software_directories_dedicated",
+  "oracle.attest.software_library_access_restricted",
+  "oracle.attest.temporary_accounts_expire_within_72h",
+  "oracle.attest.temporary_accounts_identified",
+  "oracle.attest.temporary_password_procedures_documented",
+  "oracle.attest.trust_store_contains_only_approved_anchors",
+  "oracle.attest.vendor_supported_version",
+  "oracle.cman",
+  "oracle.cman.present",
+  "oracle.cman.remote_admin",
+  "oracle.control_files",
+  "oracle.direct_admin_privilege_grantees",
+  "oracle.filesystem",
+  "oracle.filesystem.archive_log_dirs_world_accessible",
+  "oracle.filesystem.database_files_world_accessible",
+  "oracle.filesystem.diag_dir_world_accessible",
+  "oracle.filesystem.oracle_home_world_accessible",
+  "oracle.grantable_privileges_non_dba",
+  "oracle.instance_name",
+  "oracle.listener",
+  "oracle.listener.admin_authentication_required",
+  "oracle.listener.extproc_configured",
+  "oracle.listener.rate_limit_configured",
+  "oracle.log_mode",
+  "oracle.network",
+  "oracle.network.access_restriction_enforced",
+  "oracle.network.tls_or_native_encryption_required",
+  "oracle.os",
+  "oracle.os.root_in_dba_group",
+  "oracle.parameters",
+  "oracle.parameters.audit_sys_operations",
+  "oracle.parameters.audit_trail",
+  "oracle.parameters.dbfips_140",
+  "oracle.parameters.max_idle_time",
+  "oracle.parameters.remote_login_passwordfile",
+  "oracle.parameters.remote_os_roles",
+  "oracle.parameters.sql92_security",
+  "oracle.patches",
+  "oracle.patches.latest_cpu_applied",
+  "oracle.profiles",
+  "oracle.profiles.ORA_STIG_PROFILE",
+  "oracle.profiles.ORA_STIG_PROFILE.FAILED_LOGIN_ATTEMPTS",
+  "oracle.profiles.ORA_STIG_PROFILE.INACTIVE_ACCOUNT_TIME",
+  "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_GRACE_TIME",
+  "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_LIFE_TIME",
+  "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_LOCK_TIME",
+  "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_VERIFY_FUNCTION",
+  "oracle.profiles.ORA_STIG_PROFILE.SESSIONS_PER_USER",
+  "oracle.public_granted_roles",
+  "oracle.public_system_privileges",
+  "oracle.redo_log_groups",
+  "oracle.redo_log_groups[].group",
+  "oracle.redo_log_groups[].members",
+  "oracle.sample_schemas_present",
+  "oracle.sqlnet",
+  "oracle.sqlnet.allowed_logon_version_server",
+  "oracle.tde",
+  "oracle.tde.enabled",
+  "oracle.unauthorized_admin_option_roles",
+  "oracle.unauthorized_admin_option_system_privileges",
+  "oracle.unauthorized_db_links",
+  "oracle.unauthorized_default_admin_roles",
+  "oracle.unauthorized_object_owners",
+  "oracle.unauthorized_public_object_privileges",
+  "oracle.unified_audit_policies_enabled",
+  "oracle.unified_audit_sys_policies",
+  "oracle.unused_components_installed",
+  "oracle.unused_integrated_options_enabled",
+  "oracle.users_with_10g_password_verifier",
+  "oracle.users_with_default_password",
+  "oracle.version",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

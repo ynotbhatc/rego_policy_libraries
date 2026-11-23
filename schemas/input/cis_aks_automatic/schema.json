@@ -1,0 +1,690 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_aks_automatic/schema.json",
+ "title": "Input facts for cis_aks_automatic",
+ "description": "Facts the module in benchmarks/cis/aks_automatic/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_aks_automatic",
+ "x-entrypoint": "data.cis_aks_automatic.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/aks_automatic/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_aks_automatic_test.green",
+ "type": "object",
+ "properties": {
+  "aks": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "cluster": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "object",
+     "properties": {
+      "aadProfile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "enableAzureRbac": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "managed": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "tenantId": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "11111111-2222-3333-4444-555555555555"
+         ]
+        }
+       }
+      },
+      "agentPoolProfiles": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "enableNodePublicIP": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": [
+           "boolean",
+           "null"
+          ],
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "System"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "system"
+          ]
+         }
+        }
+       }
+      },
+      "apiServerAccessProfile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "authorizedIpRanges": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        },
+        "enablePrivateCluster": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "enablePublicFqdn": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      },
+      "disableLocalAccounts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "enableRbac": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "name": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "aks-prod"
+       ]
+      },
+      "networkProfile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "networkDataplane": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "cilium"
+         ]
+        },
+        "networkPlugin": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "azure"
+         ]
+        },
+        "networkPluginMode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "overlay"
+         ]
+        },
+        "networkPolicy": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "cilium"
+         ]
+        }
+       }
+      },
+      "securityProfile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "azureKeyVaultKms": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            true
+           ]
+          }
+         }
+        },
+        "kubernetesResourceObjectEncryptionProfile": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "infrastructureEncryption": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Enabled"
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "subscription_tenant_id": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "11111111-2222-3333-4444-555555555555"
+     ]
+    }
+   }
+  },
+  "attest": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "acr_access_scoped": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "acr_cluster_pull_only": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "approved_registries_enforced": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "bind_impersonate_escalate_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cluster_admin_bindings_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "csr_approval_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "dedicated_workload_service_accounts": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "external_secret_storage_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "external_workloads_use_https": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "image_vulnerability_scanning_active": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "namespace_boundaries_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "node_proxy_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "persistent_volume_create_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "pod_create_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "pod_security_contexts_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rbac_wildcards_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "secret_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "service_account_token_create_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "webhook_config_access_reviewed": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "cis_profile": {
+   "description": "Read in cis_aks_automatic.rego."
+  },
+  "cluster": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "namespace_resources": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "default": {
+       "description": "Read in cis_aks_automatic.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "service/kubernetes"
+        ]
+       },
+       "examples": [
+        [
+         "service/kubernetes",
+         "serviceaccount/default",
+         "configmap/kube-root-ca.crt"
+        ]
+       ]
+      }
+     }
+    }
+   }
+  },
+  "collection_status": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "default_service_accounts": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "namespace_resources": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "pod_security": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "secret_env_scan": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "service_account_token_mounts": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    }
+   }
+  },
+  "files": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "additionalProperties": {
+    "description": "Read in cis_aks_automatic.rego."
+   },
+   "x-variable-key": "<g>"
+  },
+  "pod_security": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "host_ipc_pods": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "host_network_pods": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "host_pid_pods": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "namespaces_without_enforcement": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "privilege_escalation_containers": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "privileged_containers": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    }
+   }
+  },
+  "secrets": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "env_var_usage_count": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
+    }
+   }
+  },
+  "service_accounts": {
+   "description": "Read in cis_aks_automatic.rego.",
+   "type": "object",
+   "properties": {
+    "default": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "automount_token": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "namespace": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "default"
+        ]
+       },
+       "role_bindings": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        },
+        "examples": [
+         []
+        ]
+       }
+      }
+     }
+    },
+    "unneeded_token_mounts": {
+     "description": "Read in cis_aks_automatic.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "aks",
+  "aks.cluster",
+  "aks.cluster.aadProfile",
+  "aks.cluster.aadProfile.enableAzureRbac",
+  "aks.cluster.aadProfile.managed",
+  "aks.cluster.aadProfile.tenantId",
+  "aks.cluster.agentPoolProfiles",
+  "aks.cluster.agentPoolProfiles[].enableNodePublicIP",
+  "aks.cluster.agentPoolProfiles[].mode",
+  "aks.cluster.agentPoolProfiles[].name",
+  "aks.cluster.apiServerAccessProfile",
+  "aks.cluster.apiServerAccessProfile.authorizedIpRanges",
+  "aks.cluster.apiServerAccessProfile.enablePrivateCluster",
+  "aks.cluster.apiServerAccessProfile.enablePublicFqdn",
+  "aks.cluster.disableLocalAccounts",
+  "aks.cluster.enableRbac",
+  "aks.cluster.name",
+  "aks.cluster.networkProfile",
+  "aks.cluster.networkProfile.networkDataplane",
+  "aks.cluster.networkProfile.networkPlugin",
+  "aks.cluster.networkProfile.networkPluginMode",
+  "aks.cluster.networkProfile.networkPolicy",
+  "aks.cluster.securityProfile",
+  "aks.cluster.securityProfile.azureKeyVaultKms",
+  "aks.cluster.securityProfile.azureKeyVaultKms.enabled",
+  "aks.cluster.securityProfile.kubernetesResourceObjectEncryptionProfile",
+  "aks.cluster.securityProfile.kubernetesResourceObjectEncryptionProfile.infrastructureEncryption",
+  "aks.subscription_tenant_id",
+  "attest",
+  "attest.acr_access_scoped",
+  "attest.acr_cluster_pull_only",
+  "attest.approved_registries_enforced",
+  "attest.bind_impersonate_escalate_reviewed",
+  "attest.cluster_admin_bindings_reviewed",
+  "attest.csr_approval_access_reviewed",
+  "attest.dedicated_workload_service_accounts",
+  "attest.external_secret_storage_reviewed",
+  "attest.external_workloads_use_https",
+  "attest.image_vulnerability_scanning_active",
+  "attest.namespace_boundaries_reviewed",
+  "attest.node_proxy_access_reviewed",
+  "attest.persistent_volume_create_access_reviewed",
+  "attest.pod_create_access_reviewed",
+  "attest.pod_security_contexts_reviewed",
+  "attest.rbac_wildcards_reviewed",
+  "attest.secret_access_reviewed",
+  "attest.service_account_token_create_access_reviewed",
+  "attest.webhook_config_access_reviewed",
+  "cis_profile",
+  "cluster",
+  "cluster.namespace_resources",
+  "cluster.namespace_resources.default",
+  "collection_status",
+  "collection_status.default_service_accounts",
+  "collection_status.namespace_resources",
+  "collection_status.pod_security",
+  "collection_status.secret_env_scan",
+  "collection_status.service_account_token_mounts",
+  "files",
+  "pod_security",
+  "pod_security.host_ipc_pods",
+  "pod_security.host_network_pods",
+  "pod_security.host_pid_pods",
+  "pod_security.namespaces_without_enforcement",
+  "pod_security.privilege_escalation_containers",
+  "pod_security.privileged_containers",
+  "secrets",
+  "secrets.env_var_usage_count",
+  "service_accounts",
+  "service_accounts.default",
+  "service_accounts.default[].automount_token",
+  "service_accounts.default[].namespace",
+  "service_accounts.default[].role_bindings",
+  "service_accounts.unneeded_token_mounts"
+ ]
+}

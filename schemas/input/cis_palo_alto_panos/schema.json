@@ -1,0 +1,3592 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_palo_alto_panos/schema.json",
+ "title": "Input facts for cis_palo_alto_panos",
+ "description": "Facts the module in benchmarks/cis/network_devices/palo_alto/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_palo_alto_panos",
+ "x-entrypoint": "data.cis_palo_alto_panos.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/network_devices/palo_alto/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_palo_alto_panos_test.g",
+ "type": "object",
+ "properties": {
+  "cis_profile": {
+   "description": "Read in cis_palo_alto_panos.rego, cis_palo_alto_panos_main.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "Read in cis_palo_alto_panos.rego, cis_palo_alto_panos_main.rego."
+    }
+   }
+  },
+  "panos_config": {
+   "description": "Read in cis_palo_alto_panos.rego.",
+   "type": "object",
+   "properties": {
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "admin_web_certificate_valid": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "decryption_certificate_trusted": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ikev2_post_quantum_ppk_enabled": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "management_permitted_ips_reviewed": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "management_profile_permitted_ips_reviewed": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ssl_inbound_inspection_reviewed": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "user_mapping_verified_in_logs": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "userid_account_minimal_groups": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "userid_account_no_interactive_logon": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "userid_account_no_remote_access": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vpn_certificate_valid": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "wildfire_cloud_region_approved": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "wildfire_file_size_limits_reviewed": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "deviceconfig": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "high_availability": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "object",
+       "properties": {
+        "active_passive": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "passive_link_state": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "auto"
+           ]
+          }
+         }
+        },
+        "election_option": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "preemptive": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "no"
+           ]
+          }
+         }
+        },
+        "enabled": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "yes"
+         ]
+        },
+        "interface": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "ha2": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "port": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "ethernet1/5"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "link_monitoring": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "yes"
+           ]
+          },
+          "failure_condition": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "any"
+           ]
+          },
+          "link_group": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "enabled": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "yes"
+              ]
+             },
+             "failure_condition": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "any"
+              ]
+             },
+             "interface": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "ethernet1/1"
+               ]
+              },
+              "examples": [
+               [
+                "ethernet1/1",
+                "ethernet1/2"
+               ]
+              ]
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "uplinks"
+              ]
+             }
+            }
+           }
+          }
+         }
+        },
+        "state_synchronization": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "yes"
+           ]
+          }
+         }
+        }
+       }
+      },
+      "setting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "management": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "enable_log_high_dp_load": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "yes"
+           ]
+          },
+          "idle_timeout": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            10
+           ]
+          }
+         }
+        },
+        "ssl_decrypt": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "allow_forward_decrypted_content": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "yes"
+           ]
+          }
+         }
+        },
+        "wildfire": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "session_info_select": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "exclude_src_ip": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "no"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "system": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "object",
+       "properties": {
+        "login_banner": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Authorised use only."
+         ]
+        },
+        "ntp_servers": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "primary_ntp_server": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "ntp_server_address": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "10.0.0.123"
+             ]
+            }
+           }
+          },
+          "secondary_ntp_server": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "ntp_server_address": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "10.0.1.123"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "server_verification": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "yes"
+         ]
+        },
+        "service": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "disable_http": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "yes"
+           ]
+          },
+          "disable_telnet": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "yes"
+           ]
+          }
+         }
+        },
+        "snmp_setting": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "access_setting": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "version": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "v3"
+             ]
+            }
+           }
+          }
+         }
+        },
+        "update_schedule": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "object",
+         "properties": {
+          "anti_virus": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "download-and-install"
+             ]
+            },
+            "recurrence": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "hourly"
+             ]
+            }
+           }
+          },
+          "threats": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "download-and-install"
+             ]
+            },
+            "recurrence": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "every-30-mins"
+             ]
+            }
+           }
+          },
+          "wildfire": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "download-and-install"
+             ]
+            },
+            "recurrence": {
+             "description": "Read in cis_palo_alto_panos.rego.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "real-time"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "licenses": {
+     "description": "Read in cis_palo_alto_panos.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "expired": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "no"
+        ]
+       },
+       "feature": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "PAN-DB URL Filtering"
+        ]
+       }
+      }
+     }
+    },
+    "mgt_config": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "password_complexity": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "object",
+       "properties": {
+        "block_username_inclusion": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "yes"
+         ]
+        },
+        "enabled": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "yes"
+         ]
+        },
+        "minimum_length": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          14
+         ]
+        },
+        "minimum_lowercase_letters": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        },
+        "minimum_numeric_letters": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        },
+        "minimum_special_characters": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        },
+        "minimum_uppercase_letters": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        },
+        "new_password_differs_by_characters": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          3
+         ]
+        },
+        "password_change": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "expiration_period": {
+           "description": "Read in cis_palo_alto_panos.rego.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            90
+           ]
+          }
+         }
+        },
+        "password_history_count": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          24
+         ]
+        }
+       }
+      },
+      "password_profile": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "svc"
+          ]
+         },
+         "password_change": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "expiration_period": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "number",
+            "x-type-source": "fixture",
+            "examples": [
+             60
+            ]
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "profiles": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "interface_management": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "https": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           },
+           "name": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "mgmt-ping"
+            ]
+           },
+           "permitted_ip": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "10.0.0.0/24"
+             ]
+            },
+            "examples": [
+             [
+              "10.0.0.0/24"
+             ]
+            ]
+           },
+           "ping": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           }
+          }
+         }
+        },
+        "zone_protection": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "discard_ip_spoof": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           },
+           "discard_loose_source_routing": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           },
+           "discard_malformed_option": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           },
+           "discard_overlapping_tcp_segment_mismatch": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           },
+           "discard_strict_source_routing": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "yes"
+            ]
+           },
+           "flood": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "icmp": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "activate_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "alarm_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "maximal_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 40000
+                ]
+               }
+              }
+             },
+             "icmpv6": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "activate_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "alarm_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "maximal_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 40000
+                ]
+               }
+              }
+             },
+             "other_ip": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "activate_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "alarm_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "maximal_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 40000
+                ]
+               }
+              }
+             },
+             "tcp_syn": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "action": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "syn-cookies"
+                ]
+               },
+               "activate_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "alarm_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "maximal_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 40000
+                ]
+               }
+              }
+             },
+             "udp": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "activate_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "alarm_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10000
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "maximal_rate": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 40000
+                ]
+               }
+              }
+             }
+            }
+           },
+           "name": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "zp-strict"
+            ]
+           },
+           "scan": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "host_sweep": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "action": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "block"
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "interval": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10
+                ]
+               },
+               "threshold": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 30
+                ]
+               }
+              }
+             },
+             "tcp_port_scan": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "action": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "block-ip"
+                ]
+               },
+               "duration": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 600
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "interval": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 5
+                ]
+               },
+               "threshold": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 20
+                ]
+               },
+               "track_by": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "source"
+                ]
+               }
+              }
+             },
+             "udp_port_scan": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "action": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "alert"
+                ]
+               },
+               "enable": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "string",
+                "x-type-source": "fixture",
+                "examples": [
+                 "yes"
+                ]
+               },
+               "interval": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10
+                ]
+               },
+               "threshold": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 20
+                ]
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "profile_group": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "data_filtering": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "df-strict"
+         ]
+        },
+        "examples": [
+         [
+          "df-strict"
+         ]
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "pg-strict"
+        ]
+       },
+       "spyware": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "as-strict"
+         ]
+        },
+        "examples": [
+         [
+          "as-strict"
+         ]
+        ]
+       },
+       "url_filtering": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "url-strict"
+         ]
+        },
+        "examples": [
+         [
+          "url-strict"
+         ]
+        ]
+       },
+       "virus": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "av-strict"
+         ]
+        },
+        "examples": [
+         [
+          "av-strict"
+         ]
+        ]
+       },
+       "vulnerability": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "vp-strict"
+         ]
+        },
+        "examples": [
+         [
+          "vp-strict"
+         ]
+        ]
+       },
+       "wildfire_analysis": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "wf-strict"
+         ]
+        },
+        "examples": [
+         [
+          "wf-strict"
+         ]
+        ]
+       }
+      }
+     }
+    },
+    "profiles": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "data_filtering": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "df-strict"
+          ]
+         },
+         "rules": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "alert_threshold": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              20
+             ]
+            },
+            "block_threshold": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              0
+             ]
+            },
+            "data_object": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "credit-card-numbers"
+              ]
+             },
+             "examples": [
+              [
+               "credit-card-numbers"
+              ]
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "cc"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "spyware": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "botnet_domains": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "dns_security_categories": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "action": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "sinkhole"
+               ]
+              },
+              "name": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "pan-dns-sec-cc"
+               ]
+              },
+              "packet_capture": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "extended-capture"
+               ]
+              }
+             }
+            }
+           },
+           "lists": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "action": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object",
+               "properties": {
+                "sinkhole": {
+                 "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                 "type": "object"
+                }
+               }
+              },
+              "name": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "default-paloalto-dns"
+               ]
+              }
+             }
+            }
+           },
+           "sinkhole": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "ipv4_address": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "sinkhole.paloaltonetworks.com"
+              ]
+             },
+             "ipv6_address": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "::1"
+              ]
+             }
+            }
+           }
+          }
+         },
+         "cloud_inline_analysis": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "mica_engine_spyware_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "inline_policy_action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "reset-both"
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "HTTP Command and Control detector"
+             ]
+            }
+           }
+          }
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "as-strict"
+          ]
+         },
+         "rules": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "reset-both": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object"
+              }
+             }
+            },
+            "category": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "any"
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "block-chm"
+             ]
+            },
+            "severity": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "critical"
+              ]
+             },
+             "examples": [
+              [
+               "critical",
+               "high",
+               "medium"
+              ]
+             ]
+            },
+            "threat_name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "any"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "url_filtering": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "alert": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "news"
+           ]
+          },
+          "examples": [
+           [
+            "news",
+            "business-and-economy"
+           ]
+          ]
+         },
+         "block": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "malware"
+           ]
+          },
+          "examples": [
+           [
+            "malware",
+            "phishing"
+           ]
+          ]
+         },
+         "cloud_inline_cat": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "credential_enforcement": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "block": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "malware"
+             ]
+            },
+            "examples": [
+             [
+              "malware",
+              "phishing",
+              "command-and-control"
+             ]
+            ]
+           },
+           "continue": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "news"
+             ]
+            },
+            "examples": [
+             [
+              "news",
+              "business-and-economy"
+             ]
+            ]
+           },
+           "log_severity": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "medium"
+            ]
+           },
+           "mode": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "ip-user"
+            ]
+           }
+          }
+         },
+         "local_inline_cat": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "log_http_hdr_referer": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "log_http_hdr_user_agent": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "log_http_hdr_xff": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "url-strict"
+          ]
+         },
+         "override": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "command-and-control"
+           ]
+          },
+          "examples": [
+           [
+            "command-and-control"
+           ]
+          ]
+         }
+        }
+       }
+      },
+      "virus": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "decoder": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "reset-both"
+             ]
+            },
+            "mlav_action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "reset-both"
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "http"
+             ]
+            },
+            "wildfire_action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "reset-both"
+             ]
+            }
+           }
+          }
+         },
+         "mlav_engine_filebased_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "mlav_policy_action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "enable"
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "Windows Executables"
+             ]
+            }
+           }
+          }
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "av-strict"
+          ]
+         }
+        }
+       }
+      },
+      "vulnerability": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "cloud_inline_analysis": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "mica_engine_vulnerability_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "inline_policy_action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "alert"
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "SQL Injection"
+             ]
+            }
+           }
+          }
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "vp-strict"
+          ]
+         },
+         "rules": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "default": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object"
+              },
+              "reset-both": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object"
+              }
+             }
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "block-ch"
+             ]
+            },
+            "severity": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "critical"
+              ]
+             },
+             "examples": [
+              [
+               "critical",
+               "high"
+              ]
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "wildfire_analysis": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "cloud_inline_analysis": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "inline_cloud_rules": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "block"
+             ]
+            },
+            "application": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "any"
+              ]
+             },
+             "examples": [
+              [
+               "any"
+              ]
+             ]
+            },
+            "direction": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "both"
+             ]
+            },
+            "file_type": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "pe"
+              ]
+             },
+             "examples": [
+              [
+               "pe"
+              ]
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "pe"
+             ]
+            }
+           }
+          }
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "wf-strict"
+          ]
+         },
+         "rules": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "application": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "any"
+              ]
+             },
+             "examples": [
+              [
+               "any"
+              ]
+             ]
+            },
+            "file_type": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "any"
+              ]
+             },
+             "examples": [
+              [
+               "any"
+              ]
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "all"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "rulebase": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "decryption": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "action": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "decrypt"
+          ]
+         },
+         "category": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "any"
+           ]
+          },
+          "examples": [
+           [
+            "any"
+           ]
+          ]
+         },
+         "from": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "trust"
+           ]
+          },
+          "examples": [
+           [
+            "trust"
+           ]
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "decrypt-outbound"
+          ]
+         },
+         "to": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "untrust"
+           ]
+          },
+          "examples": [
+           [
+            "untrust"
+           ]
+          ]
+         },
+         "type": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "ssl-forward-proxy": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object"
+           }
+          }
+         }
+        }
+       }
+      },
+      "default_security_rules": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "action": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "allow"
+          ]
+         },
+         "log_end": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "yes"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "intrazone-default"
+          ]
+         }
+        }
+       }
+      },
+      "security": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "action": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "allow"
+          ]
+         },
+         "application": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "web-browsing"
+           ]
+          },
+          "examples": [
+           [
+            "web-browsing",
+            "ssl"
+           ]
+          ]
+         },
+         "destination": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "any"
+           ]
+          },
+          "examples": [
+           [
+            "any"
+           ]
+          ]
+         },
+         "from": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "trust"
+           ]
+          },
+          "examples": [
+           [
+            "trust"
+           ]
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "outbound-web"
+          ]
+         },
+         "profile_setting": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "group": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "pg-strict"
+             ]
+            },
+            "examples": [
+             [
+              "pg-strict"
+             ]
+            ]
+           },
+           "profiles": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "data_filtering": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "df-strict"
+               ]
+              },
+              "examples": [
+               [
+                "df-strict"
+               ]
+              ]
+             },
+             "spyware": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "as-strict"
+               ]
+              },
+              "examples": [
+               [
+                "as-strict"
+               ]
+              ]
+             },
+             "url_filtering": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "url-strict"
+               ]
+              },
+              "examples": [
+               [
+                "url-strict"
+               ]
+              ]
+             },
+             "virus": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "av-strict"
+               ]
+              },
+              "examples": [
+               [
+                "av-strict"
+               ]
+              ]
+             },
+             "vulnerability": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "vp-strict"
+               ]
+              },
+              "examples": [
+               [
+                "vp-strict"
+               ]
+              ]
+             },
+             "wildfire_analysis": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "wf-strict"
+               ]
+              },
+              "examples": [
+               [
+                "wf-strict"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         },
+         "service": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "application-default"
+           ]
+          },
+          "examples": [
+           [
+            "application-default"
+           ]
+          ]
+         },
+         "source": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "any"
+           ]
+          },
+          "examples": [
+           [
+            "any"
+           ]
+          ]
+         },
+         "to": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "untrust"
+           ]
+          },
+          "examples": [
+           [
+            "untrust"
+           ]
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "shared": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authentication_profile": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "lockout": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "failed_attempts": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "number",
+            "x-type-source": "fixture",
+            "examples": [
+             5
+            ]
+           },
+           "lockout_time": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "number",
+            "x-type-source": "fixture",
+            "examples": [
+             15
+            ]
+           }
+          }
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "admin-auth"
+          ]
+         }
+        }
+       }
+      },
+      "log_forwarding_profile": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "match_list": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "log_type": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "wildfire"
+             ]
+            },
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "wf"
+             ]
+            },
+            "send_syslog": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "syslog-siem"
+              ]
+             },
+             "examples": [
+              [
+               "syslog-siem"
+              ]
+             ]
+            }
+           }
+          }
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "lf-default"
+          ]
+         }
+        }
+       }
+      },
+      "log_settings": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "object",
+       "properties": {
+        "config": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "match_list": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "filter": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "All Logs"
+              ]
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "all"
+              ]
+             },
+             "send_snmptrap": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "trap-v3"
+               ]
+              },
+              "examples": [
+               [
+                "trap-v3"
+               ]
+              ]
+             },
+             "send_syslog": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "syslog-siem"
+               ]
+              },
+              "examples": [
+               [
+                "syslog-siem"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         }
+        },
+        "hipmatch": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "match_list": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "filter": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "All Logs"
+              ]
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "all"
+              ]
+             },
+             "send_snmptrap": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "trap-v3"
+               ]
+              },
+              "examples": [
+               [
+                "trap-v3"
+               ]
+              ]
+             },
+             "send_syslog": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "syslog-siem"
+               ]
+              },
+              "examples": [
+               [
+                "syslog-siem"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         }
+        },
+        "iptag": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "match_list": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "filter": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "All Logs"
+              ]
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "all"
+              ]
+             },
+             "send_snmptrap": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "trap-v3"
+               ]
+              },
+              "examples": [
+               [
+                "trap-v3"
+               ]
+              ]
+             },
+             "send_syslog": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "syslog-siem"
+               ]
+              },
+              "examples": [
+               [
+                "syslog-siem"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         }
+        },
+        "system": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "match_list": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "filter": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "All Logs"
+              ]
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "all"
+              ]
+             },
+             "send_snmptrap": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "trap-v3"
+               ]
+              },
+              "examples": [
+               [
+                "trap-v3"
+               ]
+              ]
+             },
+             "send_syslog": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "syslog-siem"
+               ]
+              },
+              "examples": [
+               [
+                "syslog-siem"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         }
+        },
+        "userid": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "match_list": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "filter": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "All Logs"
+              ]
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "all"
+              ]
+             },
+             "send_snmptrap": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "trap-v3"
+               ]
+              },
+              "examples": [
+               [
+                "trap-v3"
+               ]
+              ]
+             },
+             "send_syslog": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "syslog-siem"
+               ]
+              },
+              "examples": [
+               [
+                "syslog-siem"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "server_profile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "snmptrap": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "name": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "trap-v3"
+            ]
+           },
+           "server": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "authpwd": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "-AQ==hashed"
+               ]
+              },
+              "engineid": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "0x80001f88"
+               ]
+              },
+              "manager": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "10.0.0.20"
+               ]
+              },
+              "name": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "nms"
+               ]
+              },
+              "user": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "trapper"
+               ]
+              }
+             }
+            }
+           },
+           "version": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "v3"
+            ]
+           }
+          }
+         }
+        },
+        "syslog": {
+         "description": "Read in cis_palo_alto_panos.rego.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "name": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "syslog-siem"
+            ]
+           },
+           "server": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "name": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "siem"
+               ]
+              },
+              "server": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "10.0.0.30"
+               ]
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "site": {
+     "description": "Read in cis_palo_alto_panos.rego.",
+     "type": "object",
+     "properties": {
+      "internet_zones": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "untrust"
+        ]
+       },
+       "examples": [
+        [
+         "untrust"
+        ]
+       ]
+      },
+      "untrusted_zones": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "untrust"
+        ]
+       },
+       "examples": [
+        [
+         "untrust",
+         "guest"
+        ]
+       ]
+      },
+      "url_block_categories": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "malware"
+        ]
+       },
+       "examples": [
+        [
+         "malware",
+         "phishing",
+         "command-and-control"
+        ]
+       ]
+      }
+     }
+    },
+    "user_id": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "include_exclude_network": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "discovery": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "include"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "corp"
+          ]
+         },
+         "network_address": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "10.0.0.0/8"
+          ]
+         }
+        }
+       }
+      },
+      "setting": {
+       "description": "Read in cis_palo_alto_panos.rego.",
+       "type": "object",
+       "properties": {
+        "enable_probing": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "no"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "zone": {
+     "description": "Read in cis_palo_alto_panos.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "enable_user_identification": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "yes"
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "trust"
+        ]
+       },
+       "zone_protection_profile": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "zp-strict"
+        ]
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_profile",
+  "cis_profile.level",
+  "panos_config",
+  "panos_config.attest",
+  "panos_config.attest.admin_web_certificate_valid",
+  "panos_config.attest.decryption_certificate_trusted",
+  "panos_config.attest.ikev2_post_quantum_ppk_enabled",
+  "panos_config.attest.management_permitted_ips_reviewed",
+  "panos_config.attest.management_profile_permitted_ips_reviewed",
+  "panos_config.attest.ssl_inbound_inspection_reviewed",
+  "panos_config.attest.user_mapping_verified_in_logs",
+  "panos_config.attest.userid_account_minimal_groups",
+  "panos_config.attest.userid_account_no_interactive_logon",
+  "panos_config.attest.userid_account_no_remote_access",
+  "panos_config.attest.vpn_certificate_valid",
+  "panos_config.attest.wildfire_cloud_region_approved",
+  "panos_config.attest.wildfire_file_size_limits_reviewed",
+  "panos_config.deviceconfig",
+  "panos_config.deviceconfig.high_availability",
+  "panos_config.deviceconfig.high_availability.active_passive",
+  "panos_config.deviceconfig.high_availability.active_passive.passive_link_state",
+  "panos_config.deviceconfig.high_availability.election_option",
+  "panos_config.deviceconfig.high_availability.election_option.preemptive",
+  "panos_config.deviceconfig.high_availability.enabled",
+  "panos_config.deviceconfig.high_availability.interface",
+  "panos_config.deviceconfig.high_availability.interface.ha2",
+  "panos_config.deviceconfig.high_availability.interface.ha2.port",
+  "panos_config.deviceconfig.high_availability.link_monitoring",
+  "panos_config.deviceconfig.high_availability.link_monitoring.enabled",
+  "panos_config.deviceconfig.high_availability.link_monitoring.failure_condition",
+  "panos_config.deviceconfig.high_availability.link_monitoring.link_group",
+  "panos_config.deviceconfig.high_availability.link_monitoring.link_group[].enabled",
+  "panos_config.deviceconfig.high_availability.link_monitoring.link_group[].failure_condition",
+  "panos_config.deviceconfig.high_availability.link_monitoring.link_group[].interface",
+  "panos_config.deviceconfig.high_availability.link_monitoring.link_group[].name",
+  "panos_config.deviceconfig.high_availability.state_synchronization",
+  "panos_config.deviceconfig.high_availability.state_synchronization.enabled",
+  "panos_config.deviceconfig.setting",
+  "panos_config.deviceconfig.setting.management",
+  "panos_config.deviceconfig.setting.management.enable_log_high_dp_load",
+  "panos_config.deviceconfig.setting.management.idle_timeout",
+  "panos_config.deviceconfig.setting.ssl_decrypt",
+  "panos_config.deviceconfig.setting.ssl_decrypt.allow_forward_decrypted_content",
+  "panos_config.deviceconfig.setting.wildfire",
+  "panos_config.deviceconfig.setting.wildfire.session_info_select",
+  "panos_config.deviceconfig.setting.wildfire.session_info_select.exclude_src_ip",
+  "panos_config.deviceconfig.system",
+  "panos_config.deviceconfig.system.login_banner",
+  "panos_config.deviceconfig.system.ntp_servers",
+  "panos_config.deviceconfig.system.ntp_servers.primary_ntp_server",
+  "panos_config.deviceconfig.system.ntp_servers.primary_ntp_server.ntp_server_address",
+  "panos_config.deviceconfig.system.ntp_servers.secondary_ntp_server",
+  "panos_config.deviceconfig.system.ntp_servers.secondary_ntp_server.ntp_server_address",
+  "panos_config.deviceconfig.system.server_verification",
+  "panos_config.deviceconfig.system.service",
+  "panos_config.deviceconfig.system.service.disable_http",
+  "panos_config.deviceconfig.system.service.disable_telnet",
+  "panos_config.deviceconfig.system.snmp_setting",
+  "panos_config.deviceconfig.system.snmp_setting.access_setting",
+  "panos_config.deviceconfig.system.snmp_setting.access_setting.version",
+  "panos_config.deviceconfig.system.update_schedule",
+  "panos_config.deviceconfig.system.update_schedule.anti_virus",
+  "panos_config.deviceconfig.system.update_schedule.anti_virus.action",
+  "panos_config.deviceconfig.system.update_schedule.anti_virus.recurrence",
+  "panos_config.deviceconfig.system.update_schedule.threats",
+  "panos_config.deviceconfig.system.update_schedule.threats.action",
+  "panos_config.deviceconfig.system.update_schedule.threats.recurrence",
+  "panos_config.deviceconfig.system.update_schedule.wildfire",
+  "panos_config.deviceconfig.system.update_schedule.wildfire.action",
+  "panos_config.deviceconfig.system.update_schedule.wildfire.recurrence",
+  "panos_config.licenses",
+  "panos_config.licenses[].expired",
+  "panos_config.licenses[].feature",
+  "panos_config.mgt_config",
+  "panos_config.mgt_config.password_complexity",
+  "panos_config.mgt_config.password_complexity.block_username_inclusion",
+  "panos_config.mgt_config.password_complexity.enabled",
+  "panos_config.mgt_config.password_complexity.minimum_length",
+  "panos_config.mgt_config.password_complexity.minimum_lowercase_letters",
+  "panos_config.mgt_config.password_complexity.minimum_numeric_letters",
+  "panos_config.mgt_config.password_complexity.minimum_special_characters",
+  "panos_config.mgt_config.password_complexity.minimum_uppercase_letters",
+  "panos_config.mgt_config.password_complexity.new_password_differs_by_characters",
+  "panos_config.mgt_config.password_complexity.password_change",
+  "panos_config.mgt_config.password_complexity.password_change.expiration_period",
+  "panos_config.mgt_config.password_complexity.password_history_count",
+  "panos_config.mgt_config.password_profile",
+  "panos_config.mgt_config.password_profile[].name",
+  "panos_config.mgt_config.password_profile[].password_change",
+  "panos_config.mgt_config.password_profile[].password_change.expiration_period",
+  "panos_config.network",
+  "panos_config.network.profiles",
+  "panos_config.network.profiles.interface_management",
+  "panos_config.network.profiles.interface_management[].https",
+  "panos_config.network.profiles.interface_management[].name",
+  "panos_config.network.profiles.interface_management[].permitted_ip",
+  "panos_config.network.profiles.interface_management[].ping",
+  "panos_config.network.profiles.zone_protection",
+  "panos_config.network.profiles.zone_protection[].discard_ip_spoof",
+  "panos_config.network.profiles.zone_protection[].discard_loose_source_routing",
+  "panos_config.network.profiles.zone_protection[].discard_malformed_option",
+  "panos_config.network.profiles.zone_protection[].discard_overlapping_tcp_segment_mismatch",
+  "panos_config.network.profiles.zone_protection[].discard_strict_source_routing",
+  "panos_config.network.profiles.zone_protection[].flood",
+  "panos_config.network.profiles.zone_protection[].flood.icmp",
+  "panos_config.network.profiles.zone_protection[].flood.icmp.activate_rate",
+  "panos_config.network.profiles.zone_protection[].flood.icmp.alarm_rate",
+  "panos_config.network.profiles.zone_protection[].flood.icmp.enable",
+  "panos_config.network.profiles.zone_protection[].flood.icmp.maximal_rate",
+  "panos_config.network.profiles.zone_protection[].flood.icmpv6",
+  "panos_config.network.profiles.zone_protection[].flood.icmpv6.activate_rate",
+  "panos_config.network.profiles.zone_protection[].flood.icmpv6.alarm_rate",
+  "panos_config.network.profiles.zone_protection[].flood.icmpv6.enable",
+  "panos_config.network.profiles.zone_protection[].flood.icmpv6.maximal_rate",
+  "panos_config.network.profiles.zone_protection[].flood.other_ip",
+  "panos_config.network.profiles.zone_protection[].flood.other_ip.activate_rate",
+  "panos_config.network.profiles.zone_protection[].flood.other_ip.alarm_rate",
+  "panos_config.network.profiles.zone_protection[].flood.other_ip.enable",
+  "panos_config.network.profiles.zone_protection[].flood.other_ip.maximal_rate",
+  "panos_config.network.profiles.zone_protection[].flood.tcp_syn",
+  "panos_config.network.profiles.zone_protection[].flood.tcp_syn.action",
+  "panos_config.network.profiles.zone_protection[].flood.tcp_syn.activate_rate",
+  "panos_config.network.profiles.zone_protection[].flood.tcp_syn.alarm_rate",
+  "panos_config.network.profiles.zone_protection[].flood.tcp_syn.enable",
+  "panos_config.network.profiles.zone_protection[].flood.tcp_syn.maximal_rate",
+  "panos_config.network.profiles.zone_protection[].flood.udp",
+  "panos_config.network.profiles.zone_protection[].flood.udp.activate_rate",
+  "panos_config.network.profiles.zone_protection[].flood.udp.alarm_rate",
+  "panos_config.network.profiles.zone_protection[].flood.udp.enable",
+  "panos_config.network.profiles.zone_protection[].flood.udp.maximal_rate",
+  "panos_config.network.profiles.zone_protection[].name",
+  "panos_config.network.profiles.zone_protection[].scan",
+  "panos_config.network.profiles.zone_protection[].scan.host_sweep",
+  "panos_config.network.profiles.zone_protection[].scan.host_sweep.action",
+  "panos_config.network.profiles.zone_protection[].scan.host_sweep.enable",
+  "panos_config.network.profiles.zone_protection[].scan.host_sweep.interval",
+  "panos_config.network.profiles.zone_protection[].scan.host_sweep.threshold",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan.action",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan.duration",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan.enable",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan.interval",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan.threshold",
+  "panos_config.network.profiles.zone_protection[].scan.tcp_port_scan.track_by",
+  "panos_config.network.profiles.zone_protection[].scan.udp_port_scan",
+  "panos_config.network.profiles.zone_protection[].scan.udp_port_scan.action",
+  "panos_config.network.profiles.zone_protection[].scan.udp_port_scan.enable",
+  "panos_config.network.profiles.zone_protection[].scan.udp_port_scan.interval",
+  "panos_config.network.profiles.zone_protection[].scan.udp_port_scan.threshold",
+  "panos_config.profile_group",
+  "panos_config.profile_group[].data_filtering",
+  "panos_config.profile_group[].name",
+  "panos_config.profile_group[].spyware",
+  "panos_config.profile_group[].url_filtering",
+  "panos_config.profile_group[].virus",
+  "panos_config.profile_group[].vulnerability",
+  "panos_config.profile_group[].wildfire_analysis",
+  "panos_config.profiles",
+  "panos_config.profiles.data_filtering",
+  "panos_config.profiles.data_filtering[].name",
+  "panos_config.profiles.data_filtering[].rules",
+  "panos_config.profiles.data_filtering[].rules[].alert_threshold",
+  "panos_config.profiles.data_filtering[].rules[].block_threshold",
+  "panos_config.profiles.data_filtering[].rules[].data_object",
+  "panos_config.profiles.data_filtering[].rules[].name",
+  "panos_config.profiles.spyware",
+  "panos_config.profiles.spyware[].botnet_domains",
+  "panos_config.profiles.spyware[].botnet_domains.dns_security_categories",
+  "panos_config.profiles.spyware[].botnet_domains.dns_security_categories[].action",
+  "panos_config.profiles.spyware[].botnet_domains.dns_security_categories[].name",
+  "panos_config.profiles.spyware[].botnet_domains.dns_security_categories[].packet_capture",
+  "panos_config.profiles.spyware[].botnet_domains.lists",
+  "panos_config.profiles.spyware[].botnet_domains.lists[].action",
+  "panos_config.profiles.spyware[].botnet_domains.lists[].action.sinkhole",
+  "panos_config.profiles.spyware[].botnet_domains.lists[].name",
+  "panos_config.profiles.spyware[].botnet_domains.sinkhole",
+  "panos_config.profiles.spyware[].botnet_domains.sinkhole.ipv4_address",
+  "panos_config.profiles.spyware[].botnet_domains.sinkhole.ipv6_address",
+  "panos_config.profiles.spyware[].cloud_inline_analysis",
+  "panos_config.profiles.spyware[].mica_engine_spyware_enabled",
+  "panos_config.profiles.spyware[].mica_engine_spyware_enabled[].inline_policy_action",
+  "panos_config.profiles.spyware[].mica_engine_spyware_enabled[].name",
+  "panos_config.profiles.spyware[].name",
+  "panos_config.profiles.spyware[].rules",
+  "panos_config.profiles.spyware[].rules[].action",
+  "panos_config.profiles.spyware[].rules[].action[\"reset-both\"]",
+  "panos_config.profiles.spyware[].rules[].category",
+  "panos_config.profiles.spyware[].rules[].name",
+  "panos_config.profiles.spyware[].rules[].severity",
+  "panos_config.profiles.spyware[].rules[].threat_name",
+  "panos_config.profiles.url_filtering",
+  "panos_config.profiles.url_filtering[].alert",
+  "panos_config.profiles.url_filtering[].block",
+  "panos_config.profiles.url_filtering[].cloud_inline_cat",
+  "panos_config.profiles.url_filtering[].credential_enforcement",
+  "panos_config.profiles.url_filtering[].credential_enforcement.block",
+  "panos_config.profiles.url_filtering[].credential_enforcement.continue",
+  "panos_config.profiles.url_filtering[].credential_enforcement.log_severity",
+  "panos_config.profiles.url_filtering[].credential_enforcement.mode",
+  "panos_config.profiles.url_filtering[].local_inline_cat",
+  "panos_config.profiles.url_filtering[].log_http_hdr_referer",
+  "panos_config.profiles.url_filtering[].log_http_hdr_user_agent",
+  "panos_config.profiles.url_filtering[].log_http_hdr_xff",
+  "panos_config.profiles.url_filtering[].name",
+  "panos_config.profiles.url_filtering[].override",
+  "panos_config.profiles.virus",
+  "panos_config.profiles.virus[].decoder",
+  "panos_config.profiles.virus[].decoder[].action",
+  "panos_config.profiles.virus[].decoder[].mlav_action",
+  "panos_config.profiles.virus[].decoder[].name",
+  "panos_config.profiles.virus[].decoder[].wildfire_action",
+  "panos_config.profiles.virus[].mlav_engine_filebased_enabled",
+  "panos_config.profiles.virus[].mlav_engine_filebased_enabled[].mlav_policy_action",
+  "panos_config.profiles.virus[].mlav_engine_filebased_enabled[].name",
+  "panos_config.profiles.virus[].name",
+  "panos_config.profiles.vulnerability",
+  "panos_config.profiles.vulnerability[].cloud_inline_analysis",
+  "panos_config.profiles.vulnerability[].mica_engine_vulnerability_enabled",
+  "panos_config.profiles.vulnerability[].mica_engine_vulnerability_enabled[].inline_policy_action",
+  "panos_config.profiles.vulnerability[].mica_engine_vulnerability_enabled[].name",
+  "panos_config.profiles.vulnerability[].name",
+  "panos_config.profiles.vulnerability[].rules",
+  "panos_config.profiles.vulnerability[].rules[].action",
+  "panos_config.profiles.vulnerability[].rules[].action.default",
+  "panos_config.profiles.vulnerability[].rules[].action[\"reset-both\"]",
+  "panos_config.profiles.vulnerability[].rules[].name",
+  "panos_config.profiles.vulnerability[].rules[].severity",
+  "panos_config.profiles.wildfire_analysis",
+  "panos_config.profiles.wildfire_analysis[].cloud_inline_analysis",
+  "panos_config.profiles.wildfire_analysis[].inline_cloud_rules",
+  "panos_config.profiles.wildfire_analysis[].inline_cloud_rules[].action",
+  "panos_config.profiles.wildfire_analysis[].inline_cloud_rules[].application",
+  "panos_config.profiles.wildfire_analysis[].inline_cloud_rules[].direction",
+  "panos_config.profiles.wildfire_analysis[].inline_cloud_rules[].file_type",
+  "panos_config.profiles.wildfire_analysis[].inline_cloud_rules[].name",
+  "panos_config.profiles.wildfire_analysis[].name",
+  "panos_config.profiles.wildfire_analysis[].rules",
+  "panos_config.profiles.wildfire_analysis[].rules[].application",
+  "panos_config.profiles.wildfire_analysis[].rules[].file_type",
+  "panos_config.profiles.wildfire_analysis[].rules[].name",
+  "panos_config.rulebase",
+  "panos_config.rulebase.decryption",
+  "panos_config.rulebase.decryption[].action",
+  "panos_config.rulebase.decryption[].category",
+  "panos_config.rulebase.decryption[].from",
+  "panos_config.rulebase.decryption[].name",
+  "panos_config.rulebase.decryption[].to",
+  "panos_config.rulebase.decryption[].type",
+  "panos_config.rulebase.decryption[].type[\"ssl-forward-proxy\"]",
+  "panos_config.rulebase.default_security_rules",
+  "panos_config.rulebase.default_security_rules[].action",
+  "panos_config.rulebase.default_security_rules[].log_end",
+  "panos_config.rulebase.default_security_rules[].name",
+  "panos_config.rulebase.security",
+  "panos_config.rulebase.security[].action",
+  "panos_config.rulebase.security[].application",
+  "panos_config.rulebase.security[].destination",
+  "panos_config.rulebase.security[].from",
+  "panos_config.rulebase.security[].name",
+  "panos_config.rulebase.security[].profile_setting",
+  "panos_config.rulebase.security[].profile_setting.group",
+  "panos_config.rulebase.security[].profile_setting.profiles",
+  "panos_config.rulebase.security[].profile_setting.profiles.data_filtering",
+  "panos_config.rulebase.security[].profile_setting.profiles.spyware",
+  "panos_config.rulebase.security[].profile_setting.profiles.url_filtering",
+  "panos_config.rulebase.security[].profile_setting.profiles.virus",
+  "panos_config.rulebase.security[].profile_setting.profiles.vulnerability",
+  "panos_config.rulebase.security[].profile_setting.profiles.wildfire_analysis",
+  "panos_config.rulebase.security[].service",
+  "panos_config.rulebase.security[].source",
+  "panos_config.rulebase.security[].to",
+  "panos_config.shared",
+  "panos_config.shared.authentication_profile",
+  "panos_config.shared.authentication_profile[].lockout",
+  "panos_config.shared.authentication_profile[].lockout.failed_attempts",
+  "panos_config.shared.authentication_profile[].lockout.lockout_time",
+  "panos_config.shared.authentication_profile[].name",
+  "panos_config.shared.log_forwarding_profile",
+  "panos_config.shared.log_forwarding_profile[].match_list",
+  "panos_config.shared.log_forwarding_profile[].match_list[].log_type",
+  "panos_config.shared.log_forwarding_profile[].match_list[].name",
+  "panos_config.shared.log_forwarding_profile[].match_list[].send_syslog",
+  "panos_config.shared.log_forwarding_profile[].name",
+  "panos_config.shared.log_settings",
+  "panos_config.shared.log_settings.config",
+  "panos_config.shared.log_settings.config.match_list",
+  "panos_config.shared.log_settings.config.match_list[].filter",
+  "panos_config.shared.log_settings.config.match_list[].name",
+  "panos_config.shared.log_settings.config.match_list[].send_snmptrap",
+  "panos_config.shared.log_settings.config.match_list[].send_syslog",
+  "panos_config.shared.log_settings.hipmatch",
+  "panos_config.shared.log_settings.hipmatch.match_list",
+  "panos_config.shared.log_settings.hipmatch.match_list[].filter",
+  "panos_config.shared.log_settings.hipmatch.match_list[].name",
+  "panos_config.shared.log_settings.hipmatch.match_list[].send_snmptrap",
+  "panos_config.shared.log_settings.hipmatch.match_list[].send_syslog",
+  "panos_config.shared.log_settings.iptag",
+  "panos_config.shared.log_settings.iptag.match_list",
+  "panos_config.shared.log_settings.iptag.match_list[].filter",
+  "panos_config.shared.log_settings.iptag.match_list[].name",
+  "panos_config.shared.log_settings.iptag.match_list[].send_snmptrap",
+  "panos_config.shared.log_settings.iptag.match_list[].send_syslog",
+  "panos_config.shared.log_settings.system",
+  "panos_config.shared.log_settings.system.match_list",
+  "panos_config.shared.log_settings.system.match_list[].filter",
+  "panos_config.shared.log_settings.system.match_list[].name",
+  "panos_config.shared.log_settings.system.match_list[].send_snmptrap",
+  "panos_config.shared.log_settings.system.match_list[].send_syslog",
+  "panos_config.shared.log_settings.userid",
+  "panos_config.shared.log_settings.userid.match_list",
+  "panos_config.shared.log_settings.userid.match_list[].filter",
+  "panos_config.shared.log_settings.userid.match_list[].name",
+  "panos_config.shared.log_settings.userid.match_list[].send_snmptrap",
+  "panos_config.shared.log_settings.userid.match_list[].send_syslog",
+  "panos_config.shared.server_profile",
+  "panos_config.shared.server_profile.snmptrap",
+  "panos_config.shared.server_profile.snmptrap[].name",
+  "panos_config.shared.server_profile.snmptrap[].server",
+  "panos_config.shared.server_profile.snmptrap[].server[].authpwd",
+  "panos_config.shared.server_profile.snmptrap[].server[].engineid",
+  "panos_config.shared.server_profile.snmptrap[].server[].manager",
+  "panos_config.shared.server_profile.snmptrap[].server[].name",
+  "panos_config.shared.server_profile.snmptrap[].server[].user",
+  "panos_config.shared.server_profile.snmptrap[].version",
+  "panos_config.shared.server_profile.syslog",
+  "panos_config.shared.server_profile.syslog[].name",
+  "panos_config.shared.server_profile.syslog[].server",
+  "panos_config.shared.server_profile.syslog[].server[].name",
+  "panos_config.shared.server_profile.syslog[].server[].server",
+  "panos_config.site",
+  "panos_config.site.internet_zones",
+  "panos_config.site.untrusted_zones",
+  "panos_config.site.url_block_categories",
+  "panos_config.user_id",
+  "panos_config.user_id.include_exclude_network",
+  "panos_config.user_id.include_exclude_network[].discovery",
+  "panos_config.user_id.include_exclude_network[].name",
+  "panos_config.user_id.include_exclude_network[].network_address",
+  "panos_config.user_id.setting",
+  "panos_config.user_id.setting.enable_probing",
+  "panos_config.zone",
+  "panos_config.zone[].enable_user_identification",
+  "panos_config.zone[].name",
+  "panos_config.zone[].zone_protection_profile"
+ ]
+}

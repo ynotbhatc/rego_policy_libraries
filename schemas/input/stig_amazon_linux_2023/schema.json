@@ -1,0 +1,301 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig_amazon_linux_2023/schema.json",
+ "title": "Input facts for stig_amazon_linux_2023",
+ "description": "Facts the module in benchmarks/stig/amazon_linux_2023/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig_amazon_linux_2023",
+ "x-entrypoint": "data.stig_amazon_linux_2023.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/amazon_linux_2023/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.amazon_linux_2023_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "crypto_policy": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "openssh_client_ciphers": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr"
+     ]
+    },
+    "openssh_client_macs": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512"
+     ]
+    },
+    "opensshserver_ciphers": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr"
+     ]
+    },
+    "opensshserver_macs": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512"
+     ]
+    },
+    "overridden": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
+    },
+    "policy": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "FIPS"
+     ]
+    }
+   }
+  },
+  "fips": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "enabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "os": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "vendor_supported": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "packages": {
+   "description": "Read in core.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "string",
+    "x-type-source": "fixture",
+    "examples": [
+     "openssh-server"
+    ]
+   },
+   "examples": [
+    [
+     "openssh-server",
+     "crypto-policies"
+    ]
+   ]
+  },
+  "repos": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "all_repos_gpgcheck": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "gpgcheck": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "localpkg_gpgcheck": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "selinux": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "enforcing": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "services": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "sshd": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "active": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "sshd_config": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "PermitEmptyPasswords": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "no"
+     ]
+    },
+    "PermitRootLogin": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "no"
+     ]
+    },
+    "RekeyLimit": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "1G 1h"
+     ]
+    },
+    "UsePAM": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "yes"
+     ]
+    }
+   }
+  },
+  "storage": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "persistent_partitions_encrypted": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "sysctl": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "kernel.dmesg_restrict": {
+     "description": "Read in core.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    },
+    "kernel.randomize_va_space": {
+     "description": "Read in core.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      2
+     ]
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_amazon_linux_2023_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "crypto_policy",
+  "crypto_policy.openssh_client_ciphers",
+  "crypto_policy.openssh_client_macs",
+  "crypto_policy.opensshserver_ciphers",
+  "crypto_policy.opensshserver_macs",
+  "crypto_policy.overridden",
+  "crypto_policy.policy",
+  "fips",
+  "fips.enabled",
+  "os",
+  "os.vendor_supported",
+  "packages",
+  "repos",
+  "repos.all_repos_gpgcheck",
+  "repos.gpgcheck",
+  "repos.localpkg_gpgcheck",
+  "selinux",
+  "selinux.enforcing",
+  "services",
+  "services.sshd",
+  "services.sshd.active",
+  "sshd_config",
+  "sshd_config.PermitEmptyPasswords",
+  "sshd_config.PermitRootLogin",
+  "sshd_config.RekeyLimit",
+  "sshd_config.UsePAM",
+  "storage",
+  "storage.persistent_partitions_encrypted",
+  "sysctl",
+  "sysctl[\"kernel.dmesg_restrict\"]",
+  "sysctl[\"kernel.randomize_va_space\"]",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

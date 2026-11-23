@@ -1,0 +1,3237 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_aws/schema.json",
+ "title": "Input facts for cis_aws",
+ "description": "Facts the module in benchmarks/cis/aws/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_aws",
+ "x-entrypoint": "data.cis_aws.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/aws/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_aws.l2_test.green",
+ "type": "object",
+ "properties": {
+  "access_analyzers": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "external"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     },
+     "status": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ACTIVE"
+      ]
+     },
+     "type": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ACCOUNT"
+      ]
+     }
+    }
+   }
+  },
+  "account_id": {
+   "description": "Read in cis_aws_main.rego."
+  },
+  "account_summary": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "AccountAccessKeysPresent": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
+    },
+    "AccountMFAEnabled": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    },
+    "AccountPasswordPresent": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in cis_aws_main.rego."
+  },
+  "assessment_time": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-11-17T00:00:00Z"
+   ]
+  },
+  "attest": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "account_contact_details_current": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_cloudtrail_configuration_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_cmk_disable_or_deletion": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_config_configuration_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_console_authentication_failures": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_console_sign_in_without_mfa": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_iam_policy_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_nacl_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_network_gateway_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_organizations_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_root_account_usage": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_route_table_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_s3_bucket_policy_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_security_group_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_unauthorized_api_calls": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alarm_vpc_changes": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "bedrock_agent_roles_least_privilege": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "bedrock_data_retention_matches_sensitivity": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "bedrock_encryption_key_management_appropriate": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "bedrock_log_destinations_protected": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cloudshell_full_access_restricted": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cloudtrail_bucket_access_logging_enabled": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cloudtrail_enabled_all_regions": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "genai_invocation_and_management_roles_separated": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "genai_invocation_policies_least_privilege": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "guardrail_evaluation_independent_of_agent_reasoning": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "guardrail_on_every_invocation_point": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "guardrails_apply_contextual_grounding": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "guardrails_filter_sensitive_information": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "iam_users_managed_centrally": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "org_authorization_guardrails_in_place": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "org_management_account_runs_no_workloads": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "org_policies_managed_by_delegated_admin": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "org_root_access_centralized": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "org_services_managed_by_delegated_admins": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "org_units_structured_by_environment": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rds_deletion_protection_enabled": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rds_multi_az_where_availability_needed": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "resource_policies_have_no_wildcard_principal": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "root_hardware_mfa": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "root_not_used_for_daily_tasks": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "s3_data_classified_and_secured": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "s3_encryption_key_management_appropriate": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "s3_mfa_delete_enabled": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "scp_restricts_genai_models_to_approved_list": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_contact_registered": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unguarded_invocation_points_monitored": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vpc_endpoints_used_for_aws_services": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vpc_peering_routes_least_access": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "web_frontend_access_logging_enabled": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "bedrock_api_keys": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "CreateDate": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "2026-10-20T00:00:00Z"
+      ]
+     },
+     "ExpirationDate": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "2027-01-01T00:00:00Z"
+      ]
+     },
+     "ServiceName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "bedrock.amazonaws.com"
+      ]
+     },
+     "Status": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Active"
+      ]
+     },
+     "UserName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "svc"
+      ]
+     }
+    }
+   }
+  },
+  "bedrock_endpoint_requirements": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     },
+     "service_name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "com.amazonaws.us-east-1.bedrock-runtime"
+      ]
+     },
+     "vpc_id": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpc-1"
+      ]
+     }
+    }
+   }
+  },
+  "bedrock_guardrails": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "blockedInputMessaging": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "blocked"
+      ]
+     },
+     "blockedOutputsMessaging": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "blocked"
+      ]
+     },
+     "contentPolicy": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "filters": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "inputStrength": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "HIGH"
+           ]
+          },
+          "outputStrength": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "HIGH"
+           ]
+          },
+          "type": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "HATE"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "id": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "g1"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "gr"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "bedrock_invocation_logging": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "loggingConfig": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "cloudWatchConfig": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "logGroupName": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "/bedrock/invocations"
+          ]
+         },
+         "roleArn": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "arn:aws:iam::111122223333:role/bedrock-logs"
+          ]
+         }
+        }
+       },
+       "embeddingDataDeliveryEnabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "imageDataDeliveryEnabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "textDataDeliveryEnabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "videoDataDeliveryEnabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       }
+      }
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "bedrock_jobs": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "jobArn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:bedrock:us-east-1:111122223333:model-invocation-job/j1"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     },
+     "type": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "batch"
+      ]
+     },
+     "vpcConfig": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "securityGroupIds": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "sg-1"
+         ]
+        },
+        "examples": [
+         [
+          "sg-1"
+         ]
+        ]
+       },
+       "subnetIds": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "subnet-1"
+         ]
+        },
+        "examples": [
+         [
+          "subnet-1"
+         ]
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "bedrock_knowledge_bases": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "knowledgeBaseArn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/kb1"
+      ]
+     },
+     "knowledgeBaseId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "kb1"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     },
+     "storageConfiguration": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "opensearchServerlessConfiguration": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "collectionArn": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "arn:aws:aoss:us-east-1:111122223333:collection/abc123"
+          ]
+         }
+        }
+       },
+       "type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "OPENSEARCH_SERVERLESS"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "bedrock_marketplace_endpoints": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "endpointArn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:sagemaker:us-east-1:111122223333:endpoint/ep1"
+      ]
+     },
+     "models": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "EnableNetworkIsolation": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ModelName": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "m1"
+         ]
+        },
+        "VpcConfig": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "SecurityGroupIds": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "sg-1"
+            ]
+           },
+           "examples": [
+            [
+             "sg-1"
+            ]
+           ]
+          },
+          "Subnets": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "subnet-1"
+            ]
+           },
+           "examples": [
+            [
+             "subnet-1"
+            ]
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "bedrock_modalities_in_use": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "string",
+    "x-type-source": "fixture",
+    "examples": [
+     "text"
+    ]
+   },
+   "examples": [
+    [
+     "text"
+    ]
+   ]
+  },
+  "bedrock_regions": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "string",
+    "x-type-source": "fixture",
+    "examples": [
+     "us-east-1"
+    ]
+   },
+   "examples": [
+    [
+     "us-east-1"
+    ]
+   ]
+  },
+  "bedrock_resource_types_in_use": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "string",
+    "x-type-source": "fixture",
+    "examples": [
+     "AWS::Bedrock::AgentAlias"
+    ]
+   },
+   "examples": [
+    [
+     "AWS::Bedrock::AgentAlias"
+    ]
+   ]
+  },
+  "cis_profile": {
+   "description": "Read in cis_aws_foundations.rego, l2_validation.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "Read in cis_aws_foundations.rego, l2_validation.rego."
+    }
+   }
+  },
+  "cloudtrail_trails": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "HomeRegion": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     },
+     "IsMultiRegionTrail": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "KmsKeyId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:kms:us-east-1:111122223333:key/1234"
+      ]
+     },
+     "LogFileValidationEnabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "Name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "main"
+      ]
+     },
+     "TrailARN": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:cloudtrail:us-east-1:111122223333:trail/main"
+      ]
+     },
+     "event_selectors": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "AdvancedEventSelectors": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "FieldSelectors": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "Equals": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "Data"
+               ]
+              },
+              "examples": [
+               [
+                "Data"
+               ]
+              ]
+             },
+             "Field": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "eventCategory"
+              ]
+             }
+            }
+           }
+          },
+          "Name": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "s3"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "status": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "IsLogging": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "config_recorder_status": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "lastStatus": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "SUCCESS"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "default"
+      ]
+     },
+     "recording": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "config_recorders": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "default"
+      ]
+     },
+     "recordingGroup": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "allSupported": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "includeGlobalResourceTypes": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "credential_report": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "access_key_1_active": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "false"
+      ]
+     },
+     "access_key_1_last_rotated": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "N/A"
+      ]
+     },
+     "access_key_1_last_used_date": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "N/A"
+      ]
+     },
+     "access_key_2_active": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "false"
+      ]
+     },
+     "access_key_2_last_rotated": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "N/A"
+      ]
+     },
+     "access_key_2_last_used_date": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "N/A"
+      ]
+     },
+     "mfa_active": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "true"
+      ]
+     },
+     "password_enabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "not_supported"
+      ]
+     },
+     "password_last_used": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "N/A"
+      ]
+     },
+     "user": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "<root_account>"
+      ]
+     },
+     "user_creation_time": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "2025-01-01T00:00:00+00:00"
+      ]
+     }
+    }
+   }
+  },
+  "ebs_encryption_by_default": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "EbsEncryptionByDefault": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "ec2_instances": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "IamInstanceProfile": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Arn": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "arn:aws:iam::111122223333:instance-profile/app"
+        ]
+       }
+      }
+     },
+     "InstanceId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "i-1"
+      ]
+     },
+     "MetadataOptions": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "HttpTokens": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "required"
+        ]
+       },
+       "State": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "applied"
+        ]
+       }
+      }
+     },
+     "State": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "running"
+        ]
+       }
+      }
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "efs_file_systems": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Encrypted": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "FileSystemId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "fs-1"
+      ]
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in cis_aws_main.rego."
+  },
+  "flow_logs": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "FlowLogStatus": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ACTIVE"
+      ]
+     },
+     "ResourceId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpc-1"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "iam_instance_profiles": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Arn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:iam::111122223333:instance-profile/app"
+      ]
+     },
+     "Roles": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "RoleName": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "app"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "iam_policies": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Arn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:iam::111122223333:policy/ReadOnly"
+      ]
+     },
+     "AttachmentCount": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       1
+      ]
+     },
+     "DefaultVersionDocument": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Statement": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "Action": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "s3:Get*"
+            ]
+           },
+           "examples": [
+            [
+             "s3:Get*"
+            ]
+           ]
+          },
+          "Effect": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Allow"
+           ]
+          },
+          "Resource": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "*"
+           ]
+          }
+         }
+        }
+       },
+       "Version": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2012-10-17"
+        ]
+       }
+      }
+     },
+     "PolicyName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ReadOnly"
+      ]
+     }
+    }
+   }
+  },
+  "iam_roles": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Arn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:iam::111122223333:role/bedrock-kb"
+      ]
+     },
+     "AssumeRolePolicyDocument": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Statement": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "Action": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "sts:AssumeRole"
+           ]
+          },
+          "Condition": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "ArnLike": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "aws:SourceArn": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/*"
+               ]
+              }
+             }
+            },
+            "StringEquals": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "aws:SourceAccount": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "111122223333"
+               ]
+              }
+             }
+            }
+           }
+          },
+          "Effect": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Allow"
+           ]
+          },
+          "Principal": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "Service": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "bedrock.amazonaws.com"
+             ]
+            }
+           }
+          }
+         }
+        }
+       },
+       "Version": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2012-10-17"
+        ]
+       }
+      }
+     },
+     "Path": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/"
+      ]
+     },
+     "RoleName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "bedrock-kb"
+      ]
+     }
+    }
+   }
+  },
+  "iam_server_certificates": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Expiration": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "2027-06-01T00:00:00Z"
+      ]
+     },
+     "ServerCertificateName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "c1"
+      ]
+     }
+    }
+   }
+  },
+  "iam_users": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "UserName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "alice"
+      ]
+     },
+     "attached_policies": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     },
+     "inline_policies": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     }
+    }
+   }
+  },
+  "kms_keys": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "KeyId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "k1"
+      ]
+     },
+     "KeyManager": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "CUSTOMER"
+      ]
+     },
+     "KeyRotationEnabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "KeySpec": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "SYMMETRIC_DEFAULT"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "log_deliveries": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "deliveryDestinationArn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:logs:us-east-1:111122223333:log-group:kb"
+      ]
+     },
+     "deliveryDestinationType": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "CWL"
+      ]
+     },
+     "deliverySourceName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "kb1-src"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "log_delivery_sources": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "logType": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "APPLICATION_LOGS"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "kb1-src"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     },
+     "resourceArns": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/kb1"
+       ]
+      },
+      "examples": [
+       [
+        "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/kb1"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  "network_acls": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Entries": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "CidrBlock": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "10.0.0.0/8"
+         ]
+        },
+        "Egress": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "PortRange": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "From": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            22
+           ]
+          },
+          "To": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            22
+           ]
+          }
+         }
+        },
+        "Protocol": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "6"
+         ]
+        },
+        "RuleAction": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "allow"
+         ]
+        },
+        "RuleNumber": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          100
+         ]
+        }
+       }
+      }
+     },
+     "NetworkAclId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "acl-1"
+      ]
+     }
+    }
+   }
+  },
+  "opensearch_serverless_collections": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "id": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "abc123"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "kbcoll"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "opensearch_serverless_network_policies": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "p1"
+      ]
+     },
+     "policy": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "AllowFromPublic": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "Rules": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "Resource": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "collection/kbcoll"
+             ]
+            },
+            "examples": [
+             [
+              "collection/kbcoll"
+             ]
+            ]
+           },
+           "ResourceType": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "collection"
+            ]
+           }
+          }
+         }
+        },
+        "SourceServices": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "bedrock.amazonaws.com"
+          ]
+         },
+         "examples": [
+          [
+           "bedrock.amazonaws.com"
+          ]
+         ]
+        }
+       }
+      }
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "password_policy": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "MinimumPasswordLength": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      14
+     ]
+    },
+    "PasswordReusePrevention": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      24
+     ]
+    }
+   }
+  },
+  "rds_instances": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "AutoMinorVersionUpgrade": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "DBInstanceIdentifier": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "db1"
+      ]
+     },
+     "PubliclyAccessible": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       false
+      ]
+     },
+     "StorageEncrypted": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     }
+    }
+   }
+  },
+  "regions": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "RegionName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "remote_admin_ports": {
+   "description": "Read in cis_aws_foundations.rego."
+  },
+  "route_tables": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Associations": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "Main": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "SubnetId": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "subnet-1"
+         ]
+        }
+       }
+      }
+     },
+     "RouteTableId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "rtb-1"
+      ]
+     },
+     "Routes": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "DestinationCidrBlock": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "10.0.0.0/16"
+         ]
+        },
+        "GatewayId": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "local"
+         ]
+        }
+       }
+      }
+     },
+     "VpcId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpc-1"
+      ]
+     }
+    }
+   }
+  },
+  "s3_account_public_access_block": {
+   "description": "Read in cis_aws_foundations.rego."
+  },
+  "s3_buckets": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "Name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "app-data"
+      ]
+     },
+     "policy": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Statement": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "Action": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "s3:*"
+           ]
+          },
+          "Condition": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "Bool": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "aws:SecureTransport": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "false"
+               ]
+              }
+             }
+            }
+           }
+          },
+          "Effect": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Deny"
+           ]
+          },
+          "Principal": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "*"
+           ]
+          },
+          "Resource": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "arn:aws:s3:::app-data"
+            ]
+           },
+           "examples": [
+            [
+             "arn:aws:s3:::app-data",
+             "arn:aws:s3:::app-data/*"
+            ]
+           ]
+          }
+         }
+        }
+       },
+       "Version": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2012-10-17"
+        ]
+       }
+      }
+     },
+     "public_access_block": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "BlockPublicAcls": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "BlockPublicPolicy": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "IgnorePublicAcls": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "RestrictPublicBuckets": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "security_groups": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "GroupId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "sg-1"
+      ]
+     },
+     "GroupName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "web"
+      ]
+     },
+     "IpPermissions": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "FromPort": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          443
+         ]
+        },
+        "IpProtocol": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "tcp"
+         ]
+        },
+        "IpRanges": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "CidrIp": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "0.0.0.0/0"
+            ]
+           }
+          }
+         }
+        },
+        "Ipv6Ranges": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "CidrIpv6": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "::/0"
+            ]
+           }
+          }
+         }
+        },
+        "ToPort": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          443
+         ]
+        }
+       }
+      },
+      "examples": [
+       []
+      ]
+     },
+     "IpPermissionsEgress": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "securityhub_hubs": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "HubArn": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "arn:aws:securityhub:us-east-1:111122223333:hub/default"
+      ]
+     },
+     "SubscribedAt": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "2025-01-01T00:00:00.000Z"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  },
+  "subnets": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "SubnetId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "subnet-1"
+      ]
+     },
+     "VpcId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpc-1"
+      ]
+     }
+    }
+   }
+  },
+  "support_policy_entities": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "PolicyGroups": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "PolicyRoles": {
+     "description": "Read in cis_aws_foundations.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "RoleName": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "support"
+        ]
+       }
+      }
+     }
+    },
+    "PolicyUsers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    }
+   }
+  },
+  "vpc_endpoints": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "PolicyDocument": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "{\"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::111122223333:root\"}, \"Action\": [\"bedrock:InvokeModel\"], \"Resource\": \"*\"}]}"
+      ]
+     },
+     "PrivateDnsEnabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "ServiceName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "com.amazonaws.us-east-1.bedrock-runtime"
+      ]
+     },
+     "State": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "available"
+      ]
+     },
+     "VpcEndpointId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpce-1"
+      ]
+     },
+     "VpcEndpointType": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Interface"
+      ]
+     },
+     "VpcId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpc-1"
+      ]
+     }
+    }
+   }
+  },
+  "vpcs": {
+   "description": "Read in cis_aws_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "VpcId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vpc-1"
+      ]
+     },
+     "region": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "us-east-1"
+      ]
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_analyzers",
+  "access_analyzers[].name",
+  "access_analyzers[].region",
+  "access_analyzers[].status",
+  "access_analyzers[].type",
+  "account_id",
+  "account_summary",
+  "account_summary.AccountAccessKeysPresent",
+  "account_summary.AccountMFAEnabled",
+  "account_summary.AccountPasswordPresent",
+  "assessment_date",
+  "assessment_time",
+  "attest",
+  "attest.account_contact_details_current",
+  "attest.alarm_cloudtrail_configuration_changes",
+  "attest.alarm_cmk_disable_or_deletion",
+  "attest.alarm_config_configuration_changes",
+  "attest.alarm_console_authentication_failures",
+  "attest.alarm_console_sign_in_without_mfa",
+  "attest.alarm_iam_policy_changes",
+  "attest.alarm_nacl_changes",
+  "attest.alarm_network_gateway_changes",
+  "attest.alarm_organizations_changes",
+  "attest.alarm_root_account_usage",
+  "attest.alarm_route_table_changes",
+  "attest.alarm_s3_bucket_policy_changes",
+  "attest.alarm_security_group_changes",
+  "attest.alarm_unauthorized_api_calls",
+  "attest.alarm_vpc_changes",
+  "attest.bedrock_agent_roles_least_privilege",
+  "attest.bedrock_data_retention_matches_sensitivity",
+  "attest.bedrock_encryption_key_management_appropriate",
+  "attest.bedrock_log_destinations_protected",
+  "attest.cloudshell_full_access_restricted",
+  "attest.cloudtrail_bucket_access_logging_enabled",
+  "attest.cloudtrail_enabled_all_regions",
+  "attest.genai_invocation_and_management_roles_separated",
+  "attest.genai_invocation_policies_least_privilege",
+  "attest.guardrail_evaluation_independent_of_agent_reasoning",
+  "attest.guardrail_on_every_invocation_point",
+  "attest.guardrails_apply_contextual_grounding",
+  "attest.guardrails_filter_sensitive_information",
+  "attest.iam_users_managed_centrally",
+  "attest.org_authorization_guardrails_in_place",
+  "attest.org_management_account_runs_no_workloads",
+  "attest.org_policies_managed_by_delegated_admin",
+  "attest.org_root_access_centralized",
+  "attest.org_services_managed_by_delegated_admins",
+  "attest.org_units_structured_by_environment",
+  "attest.rds_deletion_protection_enabled",
+  "attest.rds_multi_az_where_availability_needed",
+  "attest.resource_policies_have_no_wildcard_principal",
+  "attest.root_hardware_mfa",
+  "attest.root_not_used_for_daily_tasks",
+  "attest.s3_data_classified_and_secured",
+  "attest.s3_encryption_key_management_appropriate",
+  "attest.s3_mfa_delete_enabled",
+  "attest.scp_restricts_genai_models_to_approved_list",
+  "attest.security_contact_registered",
+  "attest.unguarded_invocation_points_monitored",
+  "attest.vpc_endpoints_used_for_aws_services",
+  "attest.vpc_peering_routes_least_access",
+  "attest.web_frontend_access_logging_enabled",
+  "bedrock_api_keys",
+  "bedrock_api_keys[].CreateDate",
+  "bedrock_api_keys[].ExpirationDate",
+  "bedrock_api_keys[].ServiceName",
+  "bedrock_api_keys[].Status",
+  "bedrock_api_keys[].UserName",
+  "bedrock_endpoint_requirements",
+  "bedrock_endpoint_requirements[].region",
+  "bedrock_endpoint_requirements[].service_name",
+  "bedrock_endpoint_requirements[].vpc_id",
+  "bedrock_guardrails",
+  "bedrock_guardrails[].blockedInputMessaging",
+  "bedrock_guardrails[].blockedOutputsMessaging",
+  "bedrock_guardrails[].contentPolicy",
+  "bedrock_guardrails[].contentPolicy.filters",
+  "bedrock_guardrails[].contentPolicy.filters[].inputStrength",
+  "bedrock_guardrails[].contentPolicy.filters[].outputStrength",
+  "bedrock_guardrails[].contentPolicy.filters[].type",
+  "bedrock_guardrails[].id",
+  "bedrock_guardrails[].name",
+  "bedrock_guardrails[].region",
+  "bedrock_invocation_logging",
+  "bedrock_invocation_logging[].loggingConfig",
+  "bedrock_invocation_logging[].loggingConfig.cloudWatchConfig",
+  "bedrock_invocation_logging[].loggingConfig.cloudWatchConfig.logGroupName",
+  "bedrock_invocation_logging[].loggingConfig.cloudWatchConfig.roleArn",
+  "bedrock_invocation_logging[].loggingConfig.embeddingDataDeliveryEnabled",
+  "bedrock_invocation_logging[].loggingConfig.imageDataDeliveryEnabled",
+  "bedrock_invocation_logging[].loggingConfig.textDataDeliveryEnabled",
+  "bedrock_invocation_logging[].loggingConfig.videoDataDeliveryEnabled",
+  "bedrock_invocation_logging[].region",
+  "bedrock_jobs",
+  "bedrock_jobs[].jobArn",
+  "bedrock_jobs[].region",
+  "bedrock_jobs[].type",
+  "bedrock_jobs[].vpcConfig",
+  "bedrock_jobs[].vpcConfig.securityGroupIds",
+  "bedrock_jobs[].vpcConfig.subnetIds",
+  "bedrock_knowledge_bases",
+  "bedrock_knowledge_bases[].knowledgeBaseArn",
+  "bedrock_knowledge_bases[].knowledgeBaseId",
+  "bedrock_knowledge_bases[].region",
+  "bedrock_knowledge_bases[].storageConfiguration",
+  "bedrock_knowledge_bases[].storageConfiguration.opensearchServerlessConfiguration",
+  "bedrock_knowledge_bases[].storageConfiguration.opensearchServerlessConfiguration.collectionArn",
+  "bedrock_knowledge_bases[].storageConfiguration.type",
+  "bedrock_marketplace_endpoints",
+  "bedrock_marketplace_endpoints[].endpointArn",
+  "bedrock_marketplace_endpoints[].models",
+  "bedrock_marketplace_endpoints[].models[].EnableNetworkIsolation",
+  "bedrock_marketplace_endpoints[].models[].ModelName",
+  "bedrock_marketplace_endpoints[].models[].VpcConfig",
+  "bedrock_marketplace_endpoints[].models[].VpcConfig.SecurityGroupIds",
+  "bedrock_marketplace_endpoints[].models[].VpcConfig.Subnets",
+  "bedrock_marketplace_endpoints[].region",
+  "bedrock_modalities_in_use",
+  "bedrock_regions",
+  "bedrock_resource_types_in_use",
+  "cis_profile",
+  "cis_profile.level",
+  "cloudtrail_trails",
+  "cloudtrail_trails[].HomeRegion",
+  "cloudtrail_trails[].IsMultiRegionTrail",
+  "cloudtrail_trails[].KmsKeyId",
+  "cloudtrail_trails[].LogFileValidationEnabled",
+  "cloudtrail_trails[].Name",
+  "cloudtrail_trails[].TrailARN",
+  "cloudtrail_trails[].event_selectors",
+  "cloudtrail_trails[].event_selectors.AdvancedEventSelectors",
+  "cloudtrail_trails[].event_selectors.AdvancedEventSelectors[].FieldSelectors",
+  "cloudtrail_trails[].event_selectors.AdvancedEventSelectors[].FieldSelectors[].Equals",
+  "cloudtrail_trails[].event_selectors.AdvancedEventSelectors[].FieldSelectors[].Field",
+  "cloudtrail_trails[].event_selectors.AdvancedEventSelectors[].Name",
+  "cloudtrail_trails[].status",
+  "cloudtrail_trails[].status.IsLogging",
+  "config_recorder_status",
+  "config_recorder_status[].lastStatus",
+  "config_recorder_status[].name",
+  "config_recorder_status[].recording",
+  "config_recorder_status[].region",
+  "config_recorders",
+  "config_recorders[].name",
+  "config_recorders[].recordingGroup",
+  "config_recorders[].recordingGroup.allSupported",
+  "config_recorders[].recordingGroup.includeGlobalResourceTypes",
+  "config_recorders[].region",
+  "credential_report",
+  "credential_report[].access_key_1_active",
+  "credential_report[].access_key_1_last_rotated",
+  "credential_report[].access_key_1_last_used_date",
+  "credential_report[].access_key_2_active",
+  "credential_report[].access_key_2_last_rotated",
+  "credential_report[].access_key_2_last_used_date",
+  "credential_report[].mfa_active",
+  "credential_report[].password_enabled",
+  "credential_report[].password_last_used",
+  "credential_report[].user",
+  "credential_report[].user_creation_time",
+  "ebs_encryption_by_default",
+  "ebs_encryption_by_default[].EbsEncryptionByDefault",
+  "ebs_encryption_by_default[].region",
+  "ec2_instances",
+  "ec2_instances[].IamInstanceProfile",
+  "ec2_instances[].IamInstanceProfile.Arn",
+  "ec2_instances[].InstanceId",
+  "ec2_instances[].MetadataOptions",
+  "ec2_instances[].MetadataOptions.HttpTokens",
+  "ec2_instances[].MetadataOptions.State",
+  "ec2_instances[].State",
+  "ec2_instances[].State.Name",
+  "ec2_instances[].region",
+  "efs_file_systems",
+  "efs_file_systems[].Encrypted",
+  "efs_file_systems[].FileSystemId",
+  "entity_name",
+  "flow_logs",
+  "flow_logs[].FlowLogStatus",
+  "flow_logs[].ResourceId",
+  "flow_logs[].region",
+  "iam_instance_profiles",
+  "iam_instance_profiles[].Arn",
+  "iam_instance_profiles[].Roles",
+  "iam_instance_profiles[].Roles[].RoleName",
+  "iam_policies",
+  "iam_policies[].Arn",
+  "iam_policies[].AttachmentCount",
+  "iam_policies[].DefaultVersionDocument",
+  "iam_policies[].DefaultVersionDocument.Statement",
+  "iam_policies[].DefaultVersionDocument.Statement[].Action",
+  "iam_policies[].DefaultVersionDocument.Statement[].Effect",
+  "iam_policies[].DefaultVersionDocument.Statement[].Resource",
+  "iam_policies[].DefaultVersionDocument.Version",
+  "iam_policies[].PolicyName",
+  "iam_roles",
+  "iam_roles[].Arn",
+  "iam_roles[].AssumeRolePolicyDocument",
+  "iam_roles[].AssumeRolePolicyDocument.Statement",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Action",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Condition",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Condition.ArnLike",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Condition.ArnLike[\"aws:SourceArn\"]",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Condition.StringEquals",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Condition.StringEquals[\"aws:SourceAccount\"]",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Effect",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Principal",
+  "iam_roles[].AssumeRolePolicyDocument.Statement[].Principal.Service",
+  "iam_roles[].AssumeRolePolicyDocument.Version",
+  "iam_roles[].Path",
+  "iam_roles[].RoleName",
+  "iam_server_certificates",
+  "iam_server_certificates[].Expiration",
+  "iam_server_certificates[].ServerCertificateName",
+  "iam_users",
+  "iam_users[].UserName",
+  "iam_users[].attached_policies",
+  "iam_users[].inline_policies",
+  "kms_keys",
+  "kms_keys[].KeyId",
+  "kms_keys[].KeyManager",
+  "kms_keys[].KeyRotationEnabled",
+  "kms_keys[].KeySpec",
+  "kms_keys[].region",
+  "log_deliveries",
+  "log_deliveries[].deliveryDestinationArn",
+  "log_deliveries[].deliveryDestinationType",
+  "log_deliveries[].deliverySourceName",
+  "log_deliveries[].region",
+  "log_delivery_sources",
+  "log_delivery_sources[].logType",
+  "log_delivery_sources[].name",
+  "log_delivery_sources[].region",
+  "log_delivery_sources[].resourceArns",
+  "network_acls",
+  "network_acls[].Entries",
+  "network_acls[].Entries[].CidrBlock",
+  "network_acls[].Entries[].Egress",
+  "network_acls[].Entries[].PortRange",
+  "network_acls[].Entries[].PortRange.From",
+  "network_acls[].Entries[].PortRange.To",
+  "network_acls[].Entries[].Protocol",
+  "network_acls[].Entries[].RuleAction",
+  "network_acls[].Entries[].RuleNumber",
+  "network_acls[].NetworkAclId",
+  "opensearch_serverless_collections",
+  "opensearch_serverless_collections[].id",
+  "opensearch_serverless_collections[].name",
+  "opensearch_serverless_collections[].region",
+  "opensearch_serverless_network_policies",
+  "opensearch_serverless_network_policies[].name",
+  "opensearch_serverless_network_policies[].policy",
+  "opensearch_serverless_network_policies[].policy[].AllowFromPublic",
+  "opensearch_serverless_network_policies[].policy[].Rules",
+  "opensearch_serverless_network_policies[].policy[].Rules[].Resource",
+  "opensearch_serverless_network_policies[].policy[].Rules[].ResourceType",
+  "opensearch_serverless_network_policies[].policy[].SourceServices",
+  "opensearch_serverless_network_policies[].region",
+  "password_policy",
+  "password_policy.MinimumPasswordLength",
+  "password_policy.PasswordReusePrevention",
+  "rds_instances",
+  "rds_instances[].AutoMinorVersionUpgrade",
+  "rds_instances[].DBInstanceIdentifier",
+  "rds_instances[].PubliclyAccessible",
+  "rds_instances[].StorageEncrypted",
+  "regions",
+  "regions[].RegionName",
+  "remote_admin_ports",
+  "route_tables",
+  "route_tables[].Associations",
+  "route_tables[].Associations[].Main",
+  "route_tables[].Associations[].SubnetId",
+  "route_tables[].RouteTableId",
+  "route_tables[].Routes",
+  "route_tables[].Routes[].DestinationCidrBlock",
+  "route_tables[].Routes[].GatewayId",
+  "route_tables[].VpcId",
+  "s3_account_public_access_block",
+  "s3_buckets",
+  "s3_buckets[].Name",
+  "s3_buckets[].policy",
+  "s3_buckets[].policy.Statement",
+  "s3_buckets[].policy.Statement[].Action",
+  "s3_buckets[].policy.Statement[].Condition",
+  "s3_buckets[].policy.Statement[].Condition.Bool",
+  "s3_buckets[].policy.Statement[].Condition.Bool[\"aws:SecureTransport\"]",
+  "s3_buckets[].policy.Statement[].Effect",
+  "s3_buckets[].policy.Statement[].Principal",
+  "s3_buckets[].policy.Statement[].Resource",
+  "s3_buckets[].policy.Version",
+  "s3_buckets[].public_access_block",
+  "s3_buckets[].public_access_block.BlockPublicAcls",
+  "s3_buckets[].public_access_block.BlockPublicPolicy",
+  "s3_buckets[].public_access_block.IgnorePublicAcls",
+  "s3_buckets[].public_access_block.RestrictPublicBuckets",
+  "security_groups",
+  "security_groups[].GroupId",
+  "security_groups[].GroupName",
+  "security_groups[].IpPermissions",
+  "security_groups[].IpPermissionsEgress",
+  "security_groups[].IpPermissions[].FromPort",
+  "security_groups[].IpPermissions[].IpProtocol",
+  "security_groups[].IpPermissions[].IpRanges",
+  "security_groups[].IpPermissions[].IpRanges[].CidrIp",
+  "security_groups[].IpPermissions[].Ipv6Ranges",
+  "security_groups[].IpPermissions[].Ipv6Ranges[].CidrIpv6",
+  "security_groups[].IpPermissions[].ToPort",
+  "security_groups[].region",
+  "securityhub_hubs",
+  "securityhub_hubs[].HubArn",
+  "securityhub_hubs[].SubscribedAt",
+  "securityhub_hubs[].region",
+  "subnets",
+  "subnets[].SubnetId",
+  "subnets[].VpcId",
+  "support_policy_entities",
+  "support_policy_entities.PolicyGroups",
+  "support_policy_entities.PolicyRoles",
+  "support_policy_entities.PolicyRoles[].RoleName",
+  "support_policy_entities.PolicyUsers",
+  "vpc_endpoints",
+  "vpc_endpoints[].PolicyDocument",
+  "vpc_endpoints[].PrivateDnsEnabled",
+  "vpc_endpoints[].ServiceName",
+  "vpc_endpoints[].State",
+  "vpc_endpoints[].VpcEndpointId",
+  "vpc_endpoints[].VpcEndpointType",
+  "vpc_endpoints[].VpcId",
+  "vpcs",
+  "vpcs[].VpcId",
+  "vpcs[].region"
+ ]
+}

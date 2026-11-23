@@ -1,0 +1,1359 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/as9100d/schema.json",
+ "title": "Input facts for as9100d",
+ "description": "Facts the module in frameworks/management/as9100d/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "as9100d",
+ "x-entrypoint": "data.as9100d.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/management/as9100d/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.as9100d_fixture_test.full",
+ "type": "object",
+ "properties": {
+  "as9100d": {
+   "description": "Read in as9100d_context.rego, as9100d_improvement.rego, as9100d_leadership.rego, as9100d_main.rego and 4 more.",
+   "type": "object",
+   "properties": {
+    "as_of": {
+     "description": "Read in as9100d_improvement.rego, as9100d_main.rego, as9100d_operation.rego, as9100d_performance.rego and 1 more.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "2026-11-11"
+     ]
+    },
+    "attestations": {
+     "description": "Read in as9100d_context.rego, as9100d_improvement.rego, as9100d_leadership.rego, as9100d_main.rego and 4 more.",
+     "type": "object",
+     "properties": {
+      "10.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "10.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4.4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4.4.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "5.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "5.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "5.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "5.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "6.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "6.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "6.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "6.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "6.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.1.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.1.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.5.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "7.5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.2.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.3.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.5.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.5.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.5.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.5.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "8.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "9.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "9.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "9.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "9.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "9.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in as9100d_context.rego, as9100d_improvement.rego, as9100d_leadership.rego, as9100d_operation.rego and 3 more."
+     },
+     "x-variable-key": "<id>"
+    },
+    "change_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "records": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "approved": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "approved_by": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Engineering manager"
+          ]
+         },
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "CR-12"
+          ]
+         },
+         "impact_reviewed": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "configuration_management": {
+     "description": "Read in as9100d_operation.rego.",
+     "type": "object",
+     "properties": {
+      "baselines": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "approved": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "approved_by": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Configuration Control Board"
+          ]
+         },
+         "approved_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2026-02-10"
+          ]
+         },
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "BL-2026-02"
+          ]
+         }
+        }
+       }
+      },
+      "drift_records": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "baseline_id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "BL-2026-02"
+          ]
+         },
+         "detected_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2026-09-14"
+          ]
+         },
+         "disposition": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "corrected"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "corrective_actions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "none_occurred": {
+       "description": "Read in as9100d_improvement.rego."
+      },
+      "records": {
+       "description": "Read in as9100d_improvement.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "closed_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2026-08-01"
+          ]
+         },
+         "due_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2027-01-15"
+          ]
+         },
+         "effectiveness_reviewed": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "human_factors_considered": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "CA-9"
+          ]
+         },
+         "nonconformity_id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "NCR-5"
+          ]
+         },
+         "root_cause": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "worn fixture locator"
+          ]
+         },
+         "status": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "closed"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "counterfeit_prevention": {
+     "description": "Read in as9100d_operation.rego.",
+     "type": "object",
+     "properties": {
+      "approved_sources": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "OEM-A"
+        ]
+       },
+       "examples": [
+        [
+         "OEM-A",
+         "DIST-B"
+        ]
+       ]
+      },
+      "components": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "PN-100"
+          ]
+         },
+         "provenance_documented": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "source": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "OEM-A"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "external_providers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "suppliers": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "flow_down_acknowledged": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "SUP-1"
+          ]
+         },
+         "performance_reviewed_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2026-09-30"
+          ]
+         },
+         "scope": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "machined parts"
+          ]
+         },
+         "status": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "approved"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "internal_audit": {
+     "description": "Read in as9100d_performance.rego.",
+     "type": "object",
+     "properties": {
+      "audits": {
+       "description": "Read in as9100d_performance.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "completed_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2026-03-20"
+          ]
+         },
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "IA-2026-1"
+          ]
+         },
+         "report_issued": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      },
+      "programme": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "planned": {
+         "description": "Read in as9100d_performance.rego.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "id": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "IA-2026-1"
+            ]
+           },
+           "scheduled_on": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "2026-03-15"
+            ]
+           },
+           "scope": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "clause 8 operation"
+            ]
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "kpis": {
+     "description": "Read in as9100d_performance.rego.",
+     "type": "object",
+     "properties": {
+      "conformity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "period_end": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-10-31"
+         ]
+        },
+        "target": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          98
+         ]
+        },
+        "value": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          99.2
+         ]
+        }
+       }
+      },
+      "on_time_delivery": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "period_end": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-10-31"
+         ]
+        },
+        "target": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          95
+         ]
+        },
+        "value": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          96.5
+         ]
+        }
+       }
+      }
+     }
+    },
+    "management_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "reviews": {
+       "description": "Read in as9100d_performance.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "held_on": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "2026-06-15"
+          ]
+         },
+         "outputs_recorded": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "measuring_equipment": {
+     "description": "Read in as9100d_support.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "calibrated_on": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2026-03-31"
+        ]
+       },
+       "calibration_due": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2027-03-31"
+        ]
+       },
+       "description": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "coordinate measuring machine"
+        ]
+       },
+       "id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "CMM-01"
+        ]
+       },
+       "in_service": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "traceable": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    },
+    "nonconformance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "none_occurred": {
+       "description": "Read in as9100d_operation.rego."
+      },
+      "records": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "customer_authorized": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "description": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "undersize bore"
+          ]
+         },
+         "disposition": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "rework"
+          ]
+         },
+         "disposition_authority": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Material Review Board"
+          ]
+         },
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "NCR-5"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "production_equipment": {
+     "description": "Read in as9100d_operation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "CNC-3"
+        ]
+       },
+       "type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "equipment"
+        ]
+       },
+       "validated": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "validated_on": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2026-01-20"
+        ]
+       }
+      }
+     }
+    },
+    "traceability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "items": {
+       "description": "Read in as9100d_operation.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "SN-0001"
+          ]
+         },
+         "lot": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "55"
+          ]
+         },
+         "part_number": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "PN-100"
+          ]
+         },
+         "serial": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0001"
+          ]
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "attest": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "9.1.2": {
+     "description": "Read in as9100d_performance.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "as9100d",
+  "as9100d.as_of",
+  "as9100d.attestations",
+  "as9100d.attestations[\"10.1\"]",
+  "as9100d.attestations[\"10.3\"]",
+  "as9100d.attestations[\"4.1\"]",
+  "as9100d.attestations[\"4.2\"]",
+  "as9100d.attestations[\"4.3\"]",
+  "as9100d.attestations[\"4.4.1\"]",
+  "as9100d.attestations[\"4.4.2\"]",
+  "as9100d.attestations[\"5.1.1\"]",
+  "as9100d.attestations[\"5.1.2\"]",
+  "as9100d.attestations[\"5.2.1\"]",
+  "as9100d.attestations[\"5.2.2\"]",
+  "as9100d.attestations[\"5.3\"]",
+  "as9100d.attestations[\"6.1.1\"]",
+  "as9100d.attestations[\"6.1.2\"]",
+  "as9100d.attestations[\"6.2.1\"]",
+  "as9100d.attestations[\"6.2.2\"]",
+  "as9100d.attestations[\"6.3\"]",
+  "as9100d.attestations[\"7.1.1\"]",
+  "as9100d.attestations[\"7.1.2\"]",
+  "as9100d.attestations[\"7.1.3\"]",
+  "as9100d.attestations[\"7.1.4\"]",
+  "as9100d.attestations[\"7.1.6\"]",
+  "as9100d.attestations[\"7.2\"]",
+  "as9100d.attestations[\"7.3\"]",
+  "as9100d.attestations[\"7.4\"]",
+  "as9100d.attestations[\"7.5.1\"]",
+  "as9100d.attestations[\"7.5.2\"]",
+  "as9100d.attestations[\"7.5.3\"]",
+  "as9100d.attestations[\"8.1\"]",
+  "as9100d.attestations[\"8.1.1\"]",
+  "as9100d.attestations[\"8.1.3\"]",
+  "as9100d.attestations[\"8.2.1\"]",
+  "as9100d.attestations[\"8.2.2\"]",
+  "as9100d.attestations[\"8.2.3\"]",
+  "as9100d.attestations[\"8.2.4\"]",
+  "as9100d.attestations[\"8.3.1\"]",
+  "as9100d.attestations[\"8.3.2\"]",
+  "as9100d.attestations[\"8.3.3\"]",
+  "as9100d.attestations[\"8.3.4\"]",
+  "as9100d.attestations[\"8.3.4.1\"]",
+  "as9100d.attestations[\"8.3.5\"]",
+  "as9100d.attestations[\"8.3.6\"]",
+  "as9100d.attestations[\"8.5.1\"]",
+  "as9100d.attestations[\"8.5.1.2\"]",
+  "as9100d.attestations[\"8.5.1.3\"]",
+  "as9100d.attestations[\"8.5.3\"]",
+  "as9100d.attestations[\"8.5.4\"]",
+  "as9100d.attestations[\"8.5.5\"]",
+  "as9100d.attestations[\"8.6\"]",
+  "as9100d.attestations[\"9.1.1\"]",
+  "as9100d.attestations[\"9.1.2\"]",
+  "as9100d.attestations[\"9.1.3\"]",
+  "as9100d.attestations[\"9.3.2\"]",
+  "as9100d.attestations[\"9.3.3\"]",
+  "as9100d.change_control",
+  "as9100d.change_control.records",
+  "as9100d.change_control.records[].approved",
+  "as9100d.change_control.records[].approved_by",
+  "as9100d.change_control.records[].id",
+  "as9100d.change_control.records[].impact_reviewed",
+  "as9100d.configuration_management",
+  "as9100d.configuration_management.baselines",
+  "as9100d.configuration_management.baselines[].approved",
+  "as9100d.configuration_management.baselines[].approved_by",
+  "as9100d.configuration_management.baselines[].approved_on",
+  "as9100d.configuration_management.baselines[].id",
+  "as9100d.configuration_management.drift_records",
+  "as9100d.configuration_management.drift_records[].baseline_id",
+  "as9100d.configuration_management.drift_records[].detected_on",
+  "as9100d.configuration_management.drift_records[].disposition",
+  "as9100d.corrective_actions",
+  "as9100d.corrective_actions.none_occurred",
+  "as9100d.corrective_actions.records",
+  "as9100d.corrective_actions.records[].closed_on",
+  "as9100d.corrective_actions.records[].due_on",
+  "as9100d.corrective_actions.records[].effectiveness_reviewed",
+  "as9100d.corrective_actions.records[].human_factors_considered",
+  "as9100d.corrective_actions.records[].id",
+  "as9100d.corrective_actions.records[].nonconformity_id",
+  "as9100d.corrective_actions.records[].root_cause",
+  "as9100d.corrective_actions.records[].status",
+  "as9100d.counterfeit_prevention",
+  "as9100d.counterfeit_prevention.approved_sources",
+  "as9100d.counterfeit_prevention.components",
+  "as9100d.counterfeit_prevention.components[].id",
+  "as9100d.counterfeit_prevention.components[].provenance_documented",
+  "as9100d.counterfeit_prevention.components[].source",
+  "as9100d.external_providers",
+  "as9100d.external_providers.suppliers",
+  "as9100d.external_providers.suppliers[].flow_down_acknowledged",
+  "as9100d.external_providers.suppliers[].id",
+  "as9100d.external_providers.suppliers[].performance_reviewed_on",
+  "as9100d.external_providers.suppliers[].scope",
+  "as9100d.external_providers.suppliers[].status",
+  "as9100d.internal_audit",
+  "as9100d.internal_audit.audits",
+  "as9100d.internal_audit.audits[].completed_on",
+  "as9100d.internal_audit.audits[].id",
+  "as9100d.internal_audit.audits[].report_issued",
+  "as9100d.internal_audit.programme",
+  "as9100d.internal_audit.programme.planned",
+  "as9100d.internal_audit.programme.planned[].id",
+  "as9100d.internal_audit.programme.planned[].scheduled_on",
+  "as9100d.internal_audit.programme.planned[].scope",
+  "as9100d.kpis",
+  "as9100d.kpis.conformity",
+  "as9100d.kpis.conformity.period_end",
+  "as9100d.kpis.conformity.target",
+  "as9100d.kpis.conformity.value",
+  "as9100d.kpis.on_time_delivery",
+  "as9100d.kpis.on_time_delivery.period_end",
+  "as9100d.kpis.on_time_delivery.target",
+  "as9100d.kpis.on_time_delivery.value",
+  "as9100d.management_review",
+  "as9100d.management_review.reviews",
+  "as9100d.management_review.reviews[].held_on",
+  "as9100d.management_review.reviews[].outputs_recorded",
+  "as9100d.measuring_equipment",
+  "as9100d.measuring_equipment[].calibrated_on",
+  "as9100d.measuring_equipment[].calibration_due",
+  "as9100d.measuring_equipment[].description",
+  "as9100d.measuring_equipment[].id",
+  "as9100d.measuring_equipment[].in_service",
+  "as9100d.measuring_equipment[].traceable",
+  "as9100d.nonconformance",
+  "as9100d.nonconformance.none_occurred",
+  "as9100d.nonconformance.records",
+  "as9100d.nonconformance.records[].customer_authorized",
+  "as9100d.nonconformance.records[].description",
+  "as9100d.nonconformance.records[].disposition",
+  "as9100d.nonconformance.records[].disposition_authority",
+  "as9100d.nonconformance.records[].id",
+  "as9100d.production_equipment",
+  "as9100d.production_equipment[].id",
+  "as9100d.production_equipment[].type",
+  "as9100d.production_equipment[].validated",
+  "as9100d.production_equipment[].validated_on",
+  "as9100d.traceability",
+  "as9100d.traceability.items",
+  "as9100d.traceability.items[].id",
+  "as9100d.traceability.items[].lot",
+  "as9100d.traceability.items[].part_number",
+  "as9100d.traceability.items[].serial",
+  "attest",
+  "attest[\"9.1.2\"]"
+ ]
+}

@@ -1,0 +1,1774 @@
+{
+ "generated_by": "scripts/gen_input_schemas.py",
+ "entrypoints": 195,
+ "with_schema": 195,
+ "by_derivation": {
+  "table": 5,
+  "manifest": 8,
+  "static-scan+fixture": 110,
+  "paths-only": 72
+ },
+ "schemas": {
+  "aca_155_260": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/aca_155_260/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/aca_155_260/"
+   ]
+  },
+  "ai_governance": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ai_governance/schema.json",
+   "known_paths": 22,
+   "required_paths": 0,
+   "source": [
+    "governance/ai/"
+   ]
+  },
+  "ami_device": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ami_device/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/ami/device_compliance/"
+   ]
+  },
+  "ami_headend": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ami_headend/schema.json",
+   "known_paths": 58,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/ami/headend/"
+   ]
+  },
+  "ami_nist_ir7628": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ami_nist_ir7628/schema.json",
+   "known_paths": 127,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/ami/nist_ir_7628/"
+   ]
+  },
+  "apra_cps234": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/apra_cps234/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/apra_cps234/"
+   ]
+  },
+  "as9100d": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/as9100d/schema.json",
+   "known_paths": 148,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/as9100d/"
+   ]
+  },
+  "bnm_rmit": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/bnm_rmit/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/bnm_rmit/"
+   ]
+  },
+  "bsi_c5": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/bsi_c5/schema.json",
+   "known_paths": 170,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regional/bsi_c5/"
+   ]
+  },
+  "c2m2": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/c2m2/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/c2m2/"
+   ]
+  },
+  "ccpa": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ccpa/schema.json",
+   "known_paths": 106,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/ccpa/"
+   ]
+  },
+  "cert_in": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cert_in/schema.json",
+   "known_paths": 1,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regional/cert_in/"
+   ]
+  },
+  "cert_rmm": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cert_rmm/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/cert_rmm/"
+   ]
+  },
+  "cfr_part_11": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cfr_part_11/schema.json",
+   "known_paths": 86,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regulatory/cfr_part_11/"
+   ]
+  },
+  "cis.intune_defender_antivirus": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis.intune_defender_antivirus/schema.json",
+   "known_paths": 40,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/intune_defender_antivirus/"
+   ]
+  },
+  "cis.mobile.ios": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis.mobile.ios/schema.json",
+   "known_paths": 81,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/mobile_devices/ios/"
+   ]
+  },
+  "cis.rhel_10": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis.rhel_10/schema.json",
+   "known_paths": 26,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/rhel_10/"
+   ]
+  },
+  "cis.sql_server_2022": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis.sql_server_2022/schema.json",
+   "known_paths": 87,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/sql_server_2022/"
+   ]
+  },
+  "cis.sql_server_2025": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis.sql_server_2025/schema.json",
+   "known_paths": 88,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/sql_server_2025/"
+   ]
+  },
+  "cis_aks": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_aks/schema.json",
+   "known_paths": 105,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/aks/"
+   ]
+  },
+  "cis_aks_automatic": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_aks_automatic/schema.json",
+   "known_paths": 74,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/aks_automatic/"
+   ]
+  },
+  "cis_amazon_linux_2023": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_amazon_linux_2023/schema.json",
+   "known_paths": 302,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/amazon_linux_2023/"
+   ]
+  },
+  "cis_aws": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_aws/schema.json",
+   "known_paths": 333,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/aws/"
+   ]
+  },
+  "cis_azure": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_azure/schema.json",
+   "known_paths": 283,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/azure/"
+   ]
+  },
+  "cis_cisco_ios_xe_17": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_cisco_ios_xe_17/schema.json",
+   "known_paths": 32,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/network_devices/cisco_ios_xe_17/"
+   ]
+  },
+  "cis_controls_v8": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_controls_v8/schema.json",
+   "known_paths": 155,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/cis_controls_v8/"
+   ]
+  },
+  "cis_debian_11": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_debian_11/schema.json",
+   "known_paths": 254,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/debian_11/"
+   ]
+  },
+  "cis_debian_12": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_debian_12/schema.json",
+   "known_paths": 369,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/debian_12/"
+   ]
+  },
+  "cis_debian_13": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_debian_13/schema.json",
+   "known_paths": 389,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/debian_13/"
+   ]
+  },
+  "cis_docker": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_docker/schema.json",
+   "known_paths": 240,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/docker/"
+   ]
+  },
+  "cis_eks": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_eks/schema.json",
+   "known_paths": 128,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/eks/"
+   ]
+  },
+  "cis_gcp": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_gcp/schema.json",
+   "known_paths": 179,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/gcp/"
+   ]
+  },
+  "cis_gke": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_gke/schema.json",
+   "known_paths": 50,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/gke/"
+   ]
+  },
+  "cis_kubernetes": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_kubernetes/schema.json",
+   "known_paths": 202,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/kubernetes/"
+   ]
+  },
+  "cis_m365_v7": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_m365_v7/schema.json",
+   "known_paths": 341,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/saas/m365_v7/"
+   ]
+  },
+  "cis_mcp_server": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_mcp_server/schema.json",
+   "known_paths": 253,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/mcp_server/"
+   ]
+  },
+  "cis_oci": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_oci/schema.json",
+   "known_paths": 87,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/oci/"
+   ]
+  },
+  "cis_openshift": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_openshift/schema.json",
+   "known_paths": 282,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/openshift/"
+   ]
+  },
+  "cis_opnsense": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_opnsense/schema.json",
+   "known_paths": 80,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/network_devices/opnsense/"
+   ]
+  },
+  "cis_palo_alto_panos": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_palo_alto_panos/schema.json",
+   "known_paths": 344,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/network_devices/palo_alto/"
+   ]
+  },
+  "cis_pfsense": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_pfsense/schema.json",
+   "known_paths": 63,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/network_devices/pfsense/"
+   ]
+  },
+  "cis_postgresql": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_postgresql/schema.json",
+   "known_paths": 209,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/postgresql/"
+   ]
+  },
+  "cis_postgresql_16": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_postgresql_16/schema.json",
+   "known_paths": 110,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/postgresql_16/"
+   ]
+  },
+  "cis_postgresql_18": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_postgresql_18/schema.json",
+   "known_paths": 112,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/postgresql_18/"
+   ]
+  },
+  "cis_rhel10": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_rhel10/schema.json",
+   "known_paths": 26,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/rhel_10/"
+   ]
+  },
+  "cis_rhel8": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_rhel8/schema.json",
+   "known_paths": 468,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/rhel_8/"
+   ]
+  },
+  "cis_rhel9": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_rhel9/schema.json",
+   "known_paths": 522,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/rhel_9/"
+   ]
+  },
+  "cis_rocky_linux_8": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_rocky_linux_8/schema.json",
+   "known_paths": 468,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/rocky_linux_8/"
+   ]
+  },
+  "cis_rocky_linux_9": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_rocky_linux_9/schema.json",
+   "known_paths": 499,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/rocky_linux_9/"
+   ]
+  },
+  "cis_suse16": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_suse16/schema.json",
+   "known_paths": 336,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/suse_16/"
+   ]
+  },
+  "cis_ubuntu_2004": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_2004/schema.json",
+   "known_paths": 259,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_20_04/"
+   ]
+  },
+  "cis_ubuntu_20_04": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_20_04/schema.json",
+   "known_paths": 259,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_20_04/"
+   ]
+  },
+  "cis_ubuntu_2204": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_2204/schema.json",
+   "known_paths": 334,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_22_04/"
+   ]
+  },
+  "cis_ubuntu_22_04": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_22_04/schema.json",
+   "known_paths": 334,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_22_04/"
+   ]
+  },
+  "cis_ubuntu_2404": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_2404/schema.json",
+   "known_paths": 370,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_24_04/"
+   ]
+  },
+  "cis_ubuntu_24_04": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_24_04/schema.json",
+   "known_paths": 370,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_24_04/"
+   ]
+  },
+  "cis_ubuntu_26_04": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_ubuntu_26_04/schema.json",
+   "known_paths": 389,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/ubuntu_26_04/"
+   ]
+  },
+  "cis_vmware_esxi": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_vmware_esxi/schema.json",
+   "known_paths": 174,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/vmware/esxi/"
+   ]
+  },
+  "cis_vmware_esxi_9": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cis_vmware_esxi_9/schema.json",
+   "known_paths": 174,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/vmware/esxi_9/"
+   ]
+  },
+  "cis_vyos": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cis_vyos/schema.json",
+   "known_paths": 34,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/network_devices/vyos/"
+   ]
+  },
+  "cis_windows_10": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_10/schema.json",
+   "known_paths": 722,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_10_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_11": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_11/schema.json",
+   "known_paths": 766,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_11_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_2019": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_2019/schema.json",
+   "known_paths": 541,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_server_2019_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_2022": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_2022/schema.json",
+   "known_paths": 553,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_server_2022_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_server_2016": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_server_2016/schema.json",
+   "known_paths": 587,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_server_2016_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_server_2019": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_server_2019/schema.json",
+   "known_paths": 541,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_server_2019_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_server_2022": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_server_2022/schema.json",
+   "known_paths": 553,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_server_2022_modular/data/collector_manifest.json"
+   ]
+  },
+  "cis_windows_server_2025": {
+   "derivation": "manifest",
+   "schema": "schemas/input/cis_windows_server_2025/schema.json",
+   "known_paths": 576,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/cis/windows_server_2025_modular/data/collector_manifest.json"
+   ]
+  },
+  "cisa_cpg": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cisa_cpg/schema.json",
+   "known_paths": 48,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/cisa_cpg/"
+   ]
+  },
+  "cisa_ssdaf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cisa_ssdaf/schema.json",
+   "known_paths": 29,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/cisa_ssdaf/"
+   ]
+  },
+  "cisa_tic3": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cisa_tic3/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/cisa_tic3/"
+   ]
+  },
+  "cjis": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cjis/schema.json",
+   "known_paths": 126,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/cjis/"
+   ]
+  },
+  "cmmc": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cmmc/schema.json",
+   "known_paths": 297,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/cmmc/"
+   ]
+  },
+  "cms_mars_e": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cms_mars_e/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/cms_mars_e/"
+   ]
+  },
+  "cobit": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cobit/schema.json",
+   "known_paths": 25,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/cobit/"
+   ]
+  },
+  "coppa": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/coppa/schema.json",
+   "known_paths": 33,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/coppa/"
+   ]
+  },
+  "cra": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/cra/schema.json",
+   "known_paths": 395,
+   "required_paths": 0,
+   "source": [
+    "frameworks/compliance/cra/"
+   ]
+  },
+  "crypto_miner_detection": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/crypto_miner_detection/schema.json",
+   "known_paths": 6,
+   "required_paths": 0,
+   "source": [
+    "threat_detection/crypto_mining/"
+   ]
+  },
+  "csa_ccm": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/csa_ccm/schema.json",
+   "known_paths": 717,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/csa_ccm/"
+   ]
+  },
+  "cyber_essentials": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/cyber_essentials/schema.json",
+   "known_paths": 40,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regional/cyber_essentials/"
+   ]
+  },
+  "dcc": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/dcc/schema.json",
+   "known_paths": 6,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regional/dcc/"
+   ]
+  },
+  "dfars_7012": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/dfars_7012/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/dfars_7012/"
+   ]
+  },
+  "digital_sovereignty": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/digital_sovereignty/schema.json",
+   "known_paths": 263,
+   "required_paths": 0,
+   "source": [
+    "frameworks/sovereignty/digital_sovereignty/"
+   ]
+  },
+  "dora": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/dora/schema.json",
+   "known_paths": 151,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/dora/"
+   ]
+  },
+  "dpdp": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/dpdp/schema.json",
+   "known_paths": 1,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/dpdp_india/"
+   ]
+  },
+  "eo_14028": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/eo_14028/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/eo_14028/"
+   ]
+  },
+  "essential_eight": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/essential_eight/schema.json",
+   "known_paths": 18,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regional/essential_eight/"
+   ]
+  },
+  "estate_continuity": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/estate_continuity/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "governance/estate_continuity/"
+   ]
+  },
+  "eu_ai_act": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/eu_ai_act/schema.json",
+   "known_paths": 240,
+   "required_paths": 0,
+   "source": [
+    "governance/eu_ai_act/"
+   ]
+  },
+  "far_cyber": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/far_cyber/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/far_cyber/"
+   ]
+  },
+  "fedramp": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/fedramp/schema.json",
+   "known_paths": 20,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/fedramp/"
+   ]
+  },
+  "fedramp_20x": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/fedramp_20x/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/fedramp_20x/"
+   ]
+  },
+  "ferpa": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/ferpa/schema.json",
+   "known_paths": 44,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/ferpa/"
+   ]
+  },
+  "fisma": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/fisma/schema.json",
+   "known_paths": 513,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/fisma/"
+   ]
+  },
+  "ftc_red_flags": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ftc_red_flags/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/ftc_red_flags/"
+   ]
+  },
+  "gdpr": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/gdpr/schema.json",
+   "known_paths": 532,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/gdpr/"
+   ]
+  },
+  "glba": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/glba/schema.json",
+   "known_paths": 64,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/glba/"
+   ]
+  },
+  "hipaa": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/hipaa/schema.json",
+   "known_paths": 761,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/hipaa/"
+   ]
+  },
+  "hitrust": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/hitrust/schema.json",
+   "known_paths": 140,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/hitrust/"
+   ]
+  },
+  "hkma_trm": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/hkma_trm/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/hkma_trm/"
+   ]
+  },
+  "iec_62443": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/iec_62443/schema.json",
+   "known_paths": 111,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/iec_62443/"
+   ]
+  },
+  "irs_1075": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/irs_1075/schema.json",
+   "known_paths": 75,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/irs_1075/"
+   ]
+  },
+  "iso27001": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/iso27001/schema.json",
+   "known_paths": 768,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/iso27001/"
+   ]
+  },
+  "iso27701": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/iso27701/schema.json",
+   "known_paths": 425,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/iso27701/"
+   ]
+  },
+  "iso_42001": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/iso_42001/schema.json",
+   "known_paths": 54,
+   "required_paths": 0,
+   "source": [
+    "governance/iso_42001/"
+   ]
+  },
+  "iso_42005": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/iso_42005/schema.json",
+   "known_paths": 25,
+   "required_paths": 0,
+   "source": [
+    "governance/iso_42005/"
+   ]
+  },
+  "itar": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/itar/schema.json",
+   "known_paths": 30,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regulatory/itar/"
+   ]
+  },
+  "k8s_pss": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/k8s_pss/schema.json",
+   "known_paths": 24,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/pss/kubernetes/"
+   ]
+  },
+  "kubernetes": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/kubernetes/schema.json",
+   "known_paths": 24,
+   "required_paths": 0,
+   "source": [
+    "enforcement/kubernetes/"
+   ]
+  },
+  "maritime_33cfr101f": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/maritime_33cfr101f/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/maritime_33cfr101f/"
+   ]
+  },
+  "mas_trm": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/mas_trm/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/mas_trm/"
+   ]
+  },
+  "meti_csm": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/meti_csm/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/regional/meti_csm/"
+   ]
+  },
+  "ncsc_caf": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ncsc_caf/schema.json",
+   "known_paths": 139,
+   "required_paths": 0,
+   "source": [
+    "frameworks/compliance/ncsc_caf/"
+   ]
+  },
+  "nerc_cip": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nerc_cip/schema.json",
+   "known_paths": 411,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/nerc_cip/"
+   ]
+  },
+  "nis2": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nis2/schema.json",
+   "known_paths": 84,
+   "required_paths": 0,
+   "source": [
+    "frameworks/compliance/nis2/"
+   ]
+  },
+  "nispom": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nispom/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nispom/"
+   ]
+  },
+  "nist.ai_600_1": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.ai_600_1/schema.json",
+   "known_paths": 320,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/ai_rmf/"
+   ]
+  },
+  "nist.ai_rmf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.ai_rmf/schema.json",
+   "known_paths": 108,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/ai_rmf/"
+   ]
+  },
+  "nist.csf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.csf/schema.json",
+   "known_paths": 359,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/cybersecurity_framework_2.0/"
+   ]
+  },
+  "nist.rmf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.rmf/schema.json",
+   "known_paths": 90,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/risk_management_framework/"
+   ]
+  },
+  "nist.sp800_160v2": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.sp800_160v2/schema.json",
+   "known_paths": 53,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_160v2/"
+   ]
+  },
+  "nist.sp800_171_r2": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nist.sp800_171_r2/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_171_r2/"
+   ]
+  },
+  "nist.sp800_171a": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.sp800_171a/schema.json",
+   "known_paths": 424,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_171a/"
+   ]
+  },
+  "nist.sp800_171a_r2": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.sp800_171a_r2/schema.json",
+   "known_paths": 322,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_171a_r2/"
+   ]
+  },
+  "nist.sp800_172": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.sp800_172/schema.json",
+   "known_paths": 339,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_172/"
+   ]
+  },
+  "nist.sp800_39": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nist.sp800_39/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_39/"
+   ]
+  },
+  "nist.sp800_53": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist.sp800_53/schema.json",
+   "known_paths": 2315,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_53/"
+   ]
+  },
+  "nist_800_171": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist_800_171/schema.json",
+   "known_paths": 507,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_171/"
+   ]
+  },
+  "nist_800_53": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist_800_53/schema.json",
+   "known_paths": 2315,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/sp_800_53/"
+   ]
+  },
+  "nist_800_82": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nist_800_82/schema.json",
+   "known_paths": 80,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/nist_800_82/"
+   ]
+  },
+  "nist_ai_rmf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist_ai_rmf/schema.json",
+   "known_paths": 108,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/ai_rmf/"
+   ]
+  },
+  "nist_csf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist_csf/schema.json",
+   "known_paths": 359,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist/cybersecurity_framework_2.0/"
+   ]
+  },
+  "nist_privacy_framework": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist_privacy_framework/schema.json",
+   "known_paths": 102,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/nist_privacy_framework/"
+   ]
+  },
+  "nist_ssdf": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nist_ssdf/schema.json",
+   "known_paths": 62,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/nist_ssdf/"
+   ]
+  },
+  "nrc_73_54": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/nrc_73_54/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/nrc_73_54/"
+   ]
+  },
+  "nsa_cisa_k8s": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/nsa_cisa_k8s/schema.json",
+   "known_paths": 51,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/nsa_cisa/kubernetes/"
+   ]
+  },
+  "ny_dfs": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/ny_dfs/schema.json",
+   "known_paths": 101,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/ny_dfs/"
+   ]
+  },
+  "owasp_llm": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/owasp_llm/schema.json",
+   "known_paths": 41,
+   "required_paths": 0,
+   "source": [
+    "governance/owasp_llm/"
+   ]
+  },
+  "owasp_top10": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/owasp_top10/schema.json",
+   "known_paths": 12,
+   "required_paths": 0,
+   "source": [
+    "governance/owasp_top10/"
+   ]
+  },
+  "pci_dss": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/pci_dss/schema.json",
+   "known_paths": 1527,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/pci_dss/"
+   ]
+  },
+  "pqc": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/pqc/schema.json",
+   "known_paths": 28,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/pqc/"
+   ]
+  },
+  "provider_change": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/provider_change/schema.json",
+   "known_paths": 9,
+   "required_paths": 0,
+   "source": [
+    "enforcement/provider/"
+   ]
+  },
+  "sap_abap_baseline": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/sap_abap_baseline/schema.json",
+   "known_paths": 9,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/sap/abap/"
+   ]
+  },
+  "scuba_m365": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/scuba_m365/schema.json",
+   "known_paths": 152,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/scuba/m365/"
+   ]
+  },
+  "sec_cyber": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/sec_cyber/schema.json",
+   "known_paths": 45,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/sec_cyber/"
+   ]
+  },
+  "sentinel_ansible": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/sentinel_ansible/schema.json",
+   "known_paths": 4,
+   "required_paths": 0,
+   "source": [
+    "enforcement/ansible/"
+   ]
+  },
+  "sentinel_dockerfile": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/sentinel_dockerfile/schema.json",
+   "known_paths": 2,
+   "required_paths": 0,
+   "source": [
+    "enforcement/dockerfile/"
+   ]
+  },
+  "sentinel_kubernetes": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/sentinel_kubernetes/schema.json",
+   "known_paths": 29,
+   "required_paths": 0,
+   "source": [
+    "enforcement/kubernetes/"
+   ]
+  },
+  "sentinel_terraform": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/sentinel_terraform/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "enforcement/terraform/"
+   ]
+  },
+  "soc2": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/soc2/schema.json",
+   "known_paths": 2038,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/soc2/"
+   ]
+  },
+  "sox": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/sox/schema.json",
+   "known_paths": 50,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/sox/"
+   ]
+  },
+  "stig.amazon_linux_2023": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.amazon_linux_2023/schema.json",
+   "known_paths": 33,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/amazon_linux_2023/"
+   ]
+  },
+  "stig.apache_2_4_unix": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.apache_2_4_unix/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/apache_2_4_unix/"
+   ]
+  },
+  "stig.cisco_ios_xe_router": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.cisco_ios_xe_router/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/cisco_ios_xe_router/"
+   ]
+  },
+  "stig.kubernetes": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.kubernetes/schema.json",
+   "known_paths": 164,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/kubernetes/"
+   ]
+  },
+  "stig.ms_sql_2016": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.ms_sql_2016/schema.json",
+   "known_paths": 16,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/ms_sql_2016/"
+   ]
+  },
+  "stig.openshift_4": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.openshift_4/schema.json",
+   "known_paths": 46,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/openshift_4/"
+   ]
+  },
+  "stig.oracle_database_19c": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.oracle_database_19c/schema.json",
+   "known_paths": 119,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/oracle_database_19c/"
+   ]
+  },
+  "stig.oracle_linux_8": {
+   "derivation": "table",
+   "schema": "schemas/input/stig.oracle_linux_8/schema.json",
+   "known_paths": 184,
+   "required_paths": 107,
+   "source": [
+    "tools/stig_generators/ol8_rules.py",
+    "tools/stig_generators/gen_collector_contract.py"
+   ]
+  },
+  "stig.oracle_linux_9": {
+   "derivation": "table",
+   "schema": "schemas/input/stig.oracle_linux_9/schema.json",
+   "known_paths": 198,
+   "required_paths": 137,
+   "source": [
+    "tools/stig_generators/ol9_rules.py",
+    "tools/stig_generators/gen_collector_contract.py"
+   ]
+  },
+  "stig.oracle_mysql_8": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.oracle_mysql_8/schema.json",
+   "known_paths": 71,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/oracle_mysql_8/"
+   ]
+  },
+  "stig.postgresql_16": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.postgresql_16/schema.json",
+   "known_paths": 17,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/postgresql_16/"
+   ]
+  },
+  "stig.rhel_10": {
+   "derivation": "table",
+   "schema": "schemas/input/stig.rhel_10/schema.json",
+   "known_paths": 215,
+   "required_paths": 129,
+   "source": [
+    "tools/stig_generators/rhel10_rules.py",
+    "tools/stig_generators/gen_collector_contract.py"
+   ]
+  },
+  "stig.rhel_8": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/stig.rhel_8/schema.json",
+   "known_paths": 76,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/rhel_8/"
+   ]
+  },
+  "stig.rhel_9": {
+   "derivation": "table",
+   "schema": "schemas/input/stig.rhel_9/schema.json",
+   "known_paths": 661,
+   "required_paths": 353,
+   "source": [
+    "tools/stig_generators/rhel9_rules.py",
+    "tools/stig_generators/gen_collector_contract.py"
+   ]
+  },
+  "stig.rke2": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.rke2/schema.json",
+   "known_paths": 97,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/rke2/"
+   ]
+  },
+  "stig.sles_15": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.sles_15/schema.json",
+   "known_paths": 43,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/sles_15/"
+   ]
+  },
+  "stig.ubuntu_22_04": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.ubuntu_22_04/schema.json",
+   "known_paths": 37,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/ubuntu_22_04/"
+   ]
+  },
+  "stig.ubuntu_24_04": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.ubuntu_24_04/schema.json",
+   "known_paths": 37,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/ubuntu_24_04/"
+   ]
+  },
+  "stig.vmware_vsphere_8": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.vmware_vsphere_8/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/vmware_vsphere_8/"
+   ]
+  },
+  "stig.windows_11": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.windows_11/schema.json",
+   "known_paths": 369,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_11/"
+   ]
+  },
+  "stig.windows_server_2016": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.windows_server_2016/schema.json",
+   "known_paths": 319,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_server_2016/"
+   ]
+  },
+  "stig.windows_server_2019": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.windows_server_2019/schema.json",
+   "known_paths": 321,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_server_2019/"
+   ]
+  },
+  "stig.windows_server_2022": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.windows_server_2022/schema.json",
+   "known_paths": 319,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_server_2022/"
+   ]
+  },
+  "stig.windows_server_2025": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig.windows_server_2025/schema.json",
+   "known_paths": 291,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_server_2025/"
+   ]
+  },
+  "stig_amazon_linux_2023": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_amazon_linux_2023/schema.json",
+   "known_paths": 33,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/amazon_linux_2023/"
+   ]
+  },
+  "stig_apache_2_4": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_apache_2_4/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/apache_2_4_unix/"
+   ]
+  },
+  "stig_cisco_ios_xe_router": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_cisco_ios_xe_router/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/cisco_ios_xe_router/"
+   ]
+  },
+  "stig_kubernetes": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_kubernetes/schema.json",
+   "known_paths": 164,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/kubernetes/"
+   ]
+  },
+  "stig_ms_sql_2016": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_ms_sql_2016/schema.json",
+   "known_paths": 16,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/ms_sql_2016/"
+   ]
+  },
+  "stig_openshift_4": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_openshift_4/schema.json",
+   "known_paths": 46,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/openshift_4/"
+   ]
+  },
+  "stig_postgresql_16": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_postgresql_16/schema.json",
+   "known_paths": 17,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/postgresql_16/"
+   ]
+  },
+  "stig_rhel8": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/stig_rhel8/schema.json",
+   "known_paths": 76,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/rhel_8/"
+   ]
+  },
+  "stig_rhel9": {
+   "derivation": "table",
+   "schema": "schemas/input/stig_rhel9/schema.json",
+   "known_paths": 661,
+   "required_paths": 353,
+   "source": [
+    "tools/stig_generators/rhel9_rules.py",
+    "tools/stig_generators/gen_collector_contract.py"
+   ]
+  },
+  "stig_sles_15": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_sles_15/schema.json",
+   "known_paths": 43,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/sles_15/"
+   ]
+  },
+  "stig_ubuntu_2204": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_ubuntu_2204/schema.json",
+   "known_paths": 37,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/ubuntu_22_04/"
+   ]
+  },
+  "stig_vsphere_8_esxi": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_vsphere_8_esxi/schema.json",
+   "known_paths": 13,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/vmware_vsphere_8/"
+   ]
+  },
+  "stig_windows_11": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_windows_11/schema.json",
+   "known_paths": 369,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_11/"
+   ]
+  },
+  "stig_windows_server_2022": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_windows_server_2022/schema.json",
+   "known_paths": 319,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_server_2022/"
+   ]
+  },
+  "stig_windows_server_2025": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/stig_windows_server_2025/schema.json",
+   "known_paths": 291,
+   "required_paths": 0,
+   "source": [
+    "benchmarks/stig/windows_server_2025/"
+   ]
+  },
+  "swift_csp": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/swift_csp/schema.json",
+   "known_paths": 106,
+   "required_paths": 0,
+   "source": [
+    "frameworks/financial/swift_csp/"
+   ]
+  },
+  "tisax": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/tisax/schema.json",
+   "known_paths": 309,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/tisax/"
+   ]
+  },
+  "tsa_pipeline": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/tsa_pipeline/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/critical_infrastructure/tsa_pipeline/"
+   ]
+  },
+  "uk_dpa_2018": {
+   "derivation": "paths-only",
+   "schema": "schemas/input/uk_dpa_2018/schema.json",
+   "known_paths": 3,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/uk_dpa_2018/"
+   ]
+  },
+  "zero_trust": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/zero_trust/schema.json",
+   "known_paths": 101,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/zero_trust/"
+   ]
+  }
+ },
+ "without_schema": {}
+}

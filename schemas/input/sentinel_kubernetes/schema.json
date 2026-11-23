@@ -1,0 +1,193 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sentinel_kubernetes/schema.json",
+ "title": "Input facts for sentinel_kubernetes",
+ "description": "Facts the module in enforcement/kubernetes/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "sentinel_kubernetes",
+ "x-entrypoint": "data.sentinel_kubernetes.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "enforcement/kubernetes/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.sentinel.kubernetes_test.bad_container",
+ "type": "object",
+ "properties": {
+  "existing_policies": {
+   "description": "Read in sentinel_kubernetes.rego."
+  },
+  "image": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "quay.io/x/y:1"
+   ]
+  },
+  "kind": {
+   "description": "Read in sentinel_kubernetes.rego."
+  },
+  "manifest": {
+   "description": "Read in sentinel_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "metadata": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "labels": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in sentinel_kubernetes.rego."
+       },
+       "x-variable-key": "<label>"
+      },
+      "name": {
+       "description": "Read in sentinel_kubernetes.rego."
+      },
+      "namespace": {
+       "description": "Read in sentinel_kubernetes.rego."
+      }
+     }
+    },
+    "spec": {
+     "description": "Read in sentinel_kubernetes.rego.",
+     "type": "object",
+     "properties": {
+      "jobTemplate": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "spec": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "template": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "spec": {
+             "description": "Read in sentinel_kubernetes.rego."
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "template": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "spec": {
+         "description": "Read in sentinel_kubernetes.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "name": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "c"
+   ]
+  },
+  "policy": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "approved_registries": {
+     "description": "Read in kubernetes_admission.rego."
+    },
+    "production_namespaces": {
+     "description": "Read in kubernetes_admission.rego."
+    },
+    "require_image_digest": {
+     "description": "Read in kubernetes_admission.rego."
+    }
+   }
+  },
+  "request": {
+   "description": "Read in kubernetes_admission.rego.",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "kind": {
+       "description": "Read in kubernetes_admission.rego."
+      }
+     }
+    },
+    "namespace": {
+     "description": "Read in kubernetes_admission.rego."
+    },
+    "object": {
+     "description": "Read in kubernetes_admission.rego."
+    },
+    "operation": {
+     "description": "Read in kubernetes_admission.rego."
+    }
+   }
+  },
+  "securityContext": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "privileged": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "runAsUser": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "existing_policies",
+  "image",
+  "kind",
+  "manifest",
+  "manifest.metadata",
+  "manifest.metadata.labels",
+  "manifest.metadata.name",
+  "manifest.metadata.namespace",
+  "manifest.spec",
+  "manifest.spec.jobTemplate",
+  "manifest.spec.jobTemplate.spec",
+  "manifest.spec.jobTemplate.spec.template",
+  "manifest.spec.jobTemplate.spec.template.spec",
+  "manifest.spec.template",
+  "manifest.spec.template.spec",
+  "name",
+  "policy",
+  "policy.approved_registries",
+  "policy.production_namespaces",
+  "policy.require_image_digest",
+  "request",
+  "request.kind",
+  "request.kind.kind",
+  "request.namespace",
+  "request.object",
+  "request.operation",
+  "securityContext",
+  "securityContext.privileged",
+  "securityContext.runAsUser"
+ ]
+}

@@ -1,0 +1,281 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ami_headend/schema.json",
+ "title": "Input facts for ami_headend",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/ami/headend/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ami_headend",
+ "x-entrypoint": "data.ami_headend.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/ami/headend/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "mdms": {
+   "description": "Read in ami_headend_security.rego.",
+   "properties": {
+    "api_gateway": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authentication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "jwt_expiry_minutes": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "mfa_enabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "mfa_method": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "mfa_required_for_admin": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "oauth2_enabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "refresh_token_rotation": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      },
+      "authorization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "default_deny": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "rbac_enabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "roles": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      },
+      "protection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "input_validation": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "rate_limiting_enabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "request_size_limit_enforced": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      },
+      "transport": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ssl_disabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "tls_1_0_disabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "tls_1_1_disabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "tls_minimum_version": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      }
+     }
+    },
+    "audit_logging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "alert_on_critical_events": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "encrypted": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "events_logged": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in ami_headend_security.rego."
+       },
+       "x-variable-key": "<_>"
+      },
+      "integrity_protection": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "real_time_alerting": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "retention_days": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "siem_integrated": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "write_once_storage": {
+       "description": "Read in ami_headend_security.rego."
+      }
+     }
+    },
+    "database": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "least_privilege_per_account": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "per_application_accounts": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "shared_admin_account_disabled": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      },
+      "encryption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "algorithm": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "at_rest": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "key_management": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "tde_enabled": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      },
+      "network": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "connection_tls_version": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "default_port_changed": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "isolated_to_private_subnet": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "public_access_disabled": {
+         "description": "Read in ami_headend_security.rego."
+        },
+        "ssl_required_for_connections": {
+         "description": "Read in ami_headend_security.rego."
+        }
+       }
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "bastion_host_required": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "direct_ssh_blocked": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "dmz_used": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "firewall_between_zones": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "internet_facing": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "ot_it_separation": {
+       "description": "Read in ami_headend_security.rego."
+      }
+     }
+    },
+    "patching": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "critical_patch_max_days": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "high_patch_max_days": {
+       "description": "Read in ami_headend_security.rego."
+      },
+      "vulnerability_scanning_enabled": {
+       "description": "Read in ami_headend_security.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "mdms",
+  "mdms.api_gateway",
+  "mdms.api_gateway.authentication",
+  "mdms.api_gateway.authentication.jwt_expiry_minutes",
+  "mdms.api_gateway.authentication.mfa_enabled",
+  "mdms.api_gateway.authentication.mfa_method",
+  "mdms.api_gateway.authentication.mfa_required_for_admin",
+  "mdms.api_gateway.authentication.oauth2_enabled",
+  "mdms.api_gateway.authentication.refresh_token_rotation",
+  "mdms.api_gateway.authorization",
+  "mdms.api_gateway.authorization.default_deny",
+  "mdms.api_gateway.authorization.rbac_enabled",
+  "mdms.api_gateway.authorization.roles",
+  "mdms.api_gateway.protection",
+  "mdms.api_gateway.protection.input_validation",
+  "mdms.api_gateway.protection.rate_limiting_enabled",
+  "mdms.api_gateway.protection.request_size_limit_enforced",
+  "mdms.api_gateway.transport",
+  "mdms.api_gateway.transport.ssl_disabled",
+  "mdms.api_gateway.transport.tls_1_0_disabled",
+  "mdms.api_gateway.transport.tls_1_1_disabled",
+  "mdms.api_gateway.transport.tls_minimum_version",
+  "mdms.audit_logging",
+  "mdms.audit_logging.alert_on_critical_events",
+  "mdms.audit_logging.encrypted",
+  "mdms.audit_logging.events_logged",
+  "mdms.audit_logging.integrity_protection",
+  "mdms.audit_logging.real_time_alerting",
+  "mdms.audit_logging.retention_days",
+  "mdms.audit_logging.siem_integrated",
+  "mdms.audit_logging.write_once_storage",
+  "mdms.database",
+  "mdms.database.access",
+  "mdms.database.access.least_privilege_per_account",
+  "mdms.database.access.per_application_accounts",
+  "mdms.database.access.shared_admin_account_disabled",
+  "mdms.database.encryption",
+  "mdms.database.encryption.algorithm",
+  "mdms.database.encryption.at_rest",
+  "mdms.database.encryption.key_management",
+  "mdms.database.encryption.tde_enabled",
+  "mdms.database.network",
+  "mdms.database.network.connection_tls_version",
+  "mdms.database.network.default_port_changed",
+  "mdms.database.network.isolated_to_private_subnet",
+  "mdms.database.network.public_access_disabled",
+  "mdms.database.network.ssl_required_for_connections",
+  "mdms.network",
+  "mdms.network.bastion_host_required",
+  "mdms.network.direct_ssh_blocked",
+  "mdms.network.dmz_used",
+  "mdms.network.firewall_between_zones",
+  "mdms.network.internet_facing",
+  "mdms.network.ot_it_separation",
+  "mdms.patching",
+  "mdms.patching.critical_patch_max_days",
+  "mdms.patching.high_patch_max_days",
+  "mdms.patching.vulnerability_scanning_enabled"
+ ]
+}

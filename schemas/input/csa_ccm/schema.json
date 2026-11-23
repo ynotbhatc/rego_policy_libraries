@@ -1,0 +1,3223 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/csa_ccm/schema.json",
+ "title": "Input facts for csa_ccm",
+ "description": "Input paths referenced in the sources of frameworks/management/csa_ccm/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "csa_ccm",
+ "x-entrypoint": "data.csa_ccm.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/management/csa_ccm/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "csa_ccm": {
+   "description": "Read in csa_ccm_application_security.rego, csa_ccm_audit_assurance.rego, csa_ccm_business_continuity.rego, csa_ccm_change_control.rego and 12 more.",
+   "properties": {
+    "application_security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "api_security": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "api_inventory_maintained": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "authentication_required": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "authorization_enforced": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "rate_limiting_implemented": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "transport_encryption_enforced": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      },
+      "appsec_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_app_scope_included": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "developer_acknowledgement": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      },
+      "code_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automated_review_integrated": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "peer_review_required": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "review_process_established": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "security_focused_review": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      },
+      "dependencies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "inventory_maintained": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "outdated_components_remediated": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "sca_tool_in_use": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "vulnerability_scanning": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      },
+      "input_validation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "input_validation_implemented": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "output_encoding_implemented": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "sql_injection_prevented": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "xss_prevented": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      },
+      "sdlc": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "lifecycle_implemented": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "security_gates_in_cicd": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "security_requirements_defined": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "security_training_for_developers": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "threat_modeling_performed": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      },
+      "testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dast_conducted": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "findings_remediated": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "pentest_conducted": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "pre_release_testing_required": {
+         "description": "Read in csa_ccm_application_security.rego."
+        },
+        "sast_conducted": {
+         "description": "Read in csa_ccm_application_security.rego."
+        }
+       }
+      }
+     }
+    },
+    "audit_assurance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "audit_scope": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "frequency_defined": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "methodology_documented": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "risk_based_approach": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "scope_documented": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      },
+      "continuous_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "alerts_configured": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "automated_controls_monitored": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "monitoring_program_exists": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "results_reviewed_regularly": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      },
+      "evidence_retention": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "disposal_process_defined": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "evidence_stored_securely": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "retention_period_met": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "retention_policy_defined": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      },
+      "findings_tracking": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "due_dates_set": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "overdue_escalation_process": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "owners_assigned": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "remediation_tracked": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      },
+      "independent_audit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "auditor_independence_confirmed": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "cloud_scope_included": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "program_established": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      },
+      "internal_audit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "charter_documented": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "function_exists": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "independence_maintained": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      },
+      "reporting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "board_notification": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "executive_distribution": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "reports_communicated": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        },
+        "timely_issuance": {
+         "description": "Read in csa_ccm_audit_assurance.rego."
+        }
+       }
+      }
+     }
+    },
+    "business_continuity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "backup": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "backup_frequency_meets_rpo": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "backups_tested": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "encryption_applied": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "offsite_or_cloud_storage": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "procedures_implemented": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "bcm_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_services_included": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "executive_approved": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "reviewed_annually": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "bcp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "activation_criteria_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "contact_lists_current": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "plans_documented": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "plans_maintained": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "roles_assigned": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "bcp_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "deficiencies_remediated": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "plans_tested": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "test_frequency_met": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "test_results_documented": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "bia": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "bia_conducted": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "cloud_dependency_mapped": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "critical_processes_identified": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "reviewed_after_significant_change": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "crisis_communication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "media_response_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "plan_established": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "regulatory_notification_included": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "stakeholder_notifications_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "dependencies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "critical_dependencies_identified": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "single_points_of_failure_addressed": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "third_party_dependencies_mapped": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "drp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "alternate_site_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "data_recovery_procedures_included": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "plans_documented": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "recovery_procedures_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "drp_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "drp_tested_annually": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "failover_tested": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "test_results_documented": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "lessons_learned": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "findings_incorporated_into_plans": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "process_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "review_conducted_after_events": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      },
+      "rto_rpo": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "business_approved": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "rpo_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "rto_defined": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        },
+        "rto_rpo_validated": {
+         "description": "Read in csa_ccm_business_continuity.rego."
+        }
+       }
+      }
+     }
+    },
+    "change_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "change_approval": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approval_required": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "change_records_maintained": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "documentation_required": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "impact_assessment_required": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "review_required": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "change_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_changes_in_scope": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "roles_defined": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "config_baseline": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "baseline_documented": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "baseline_established": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "baseline_reviewed_regularly": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "security_hardening_included": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "config_tracking": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "audit_trail_maintained": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "changes_tracked": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "version_control_used": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "emergency_change": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "emergency_changes_tracked": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "post_approval_required": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "procedure_defined": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "retrospective_review_conducted": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "post_implementation_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "lessons_captured": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "objectives_validated": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "review_conducted": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "unintended_effects_assessed": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "rollback": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "rollback_procedure_defined": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "rollback_tested": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "success_criteria_defined": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "separation_of_duties": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approvals_auditable": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "developer_prod_access_restricted": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "sod_enforced": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      },
+      "unauthorized_change_detection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "alerts_configured": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "detection_controls_exist": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "drift_detection_automated": {
+         "description": "Read in csa_ccm_change_control.rego."
+        },
+        "response_procedure_defined": {
+         "description": "Read in csa_ccm_change_control.rego."
+        }
+       }
+      }
+     }
+    },
+    "cryptography": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "certificate_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "certificate_inventory_maintained": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "crl_or_ocsp_implemented": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "expiry_monitoring_enabled": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "lifecycle_management_implemented": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "crypto_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approved_algorithms_listed": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "key_management_procedures_defined": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "crypto_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "deprecated_crypto_identified": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "migration_plan_when_deprecated": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "standards_review_process": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "encryption_at_rest": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "backup_encryption_enabled": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "database_encryption_enabled": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "sensitive_data_encrypted": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "storage_encryption_enabled": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "encryption_in_transit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "certificate_validity_enforced": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "minimum_tls_version_met": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "tls_enforced": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "weak_ciphers_disabled": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "key_destruction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "destroyed_keys_irrecoverable": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "destruction_procedure_defined": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "revocation_timely": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "key_generation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approved_algorithms_used": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "key_length_meets_standard": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "random_number_generator_validated": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "weak_keys_prohibited": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "key_rotation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "emergency_rotation_procedure": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "rotation_enforced": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "rotation_logged": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "rotation_schedule_defined": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      },
+      "key_storage": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "hsm_or_equivalent_used": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "key_access_logged": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "key_access_restricted": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        },
+        "keys_never_stored_in_plaintext": {
+         "description": "Read in csa_ccm_cryptography.rego."
+        }
+       }
+      }
+     }
+    },
+    "data_security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_to_data": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_based_on_classification": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "least_privilege_enforced": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "privileged_data_access_logged": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "classification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "classification_scheme_defined": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "cloud_data_in_scope": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "cross_border": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_region_data_residency_enforced": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "transfer_mechanisms_documented": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "transfer_restrictions_assessed": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "data_flows": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_flow_diagrams_maintained": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "data_flows_mapped": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "unauthorized_flows_detected": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "data_inventory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_owners_assigned": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "inventory_maintained": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "inventory_reviewed_regularly": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "disposal": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_data_deletion_verified": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "disposal_procedures_defined": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "disposal_records_maintained": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "secure_deletion_used": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "dlp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dlp_alerts_reviewed": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "dlp_controls_implemented": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "dlp_policies_cover_cloud": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "egress_monitoring_enabled": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "labeling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "labeling_enforced_at_creation": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "labeling_implemented": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "sensitive_data_labeled": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "privacy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "consent_mechanism_implemented": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "data_subject_rights_honored": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "privacy_impact_assessments_conducted": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "privacy_notice_provided": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      },
+      "retention": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "legal_hold_process_defined": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "retention_enforced_technically": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "retention_policy_defined": {
+         "description": "Read in csa_ccm_data_security.rego."
+        },
+        "retention_schedules_documented": {
+         "description": "Read in csa_ccm_data_security.rego."
+        }
+       }
+      }
+     }
+    },
+    "endpoint_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "application_control": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "application_allowlisting_implemented": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "unauthorized_apps_blocked": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "byod": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "byod_policy_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "containerization_or_mam_implemented": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "jailbroken_rooted_devices_blocked": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "minimum_os_version_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "configuration_baseline": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "baseline_drift_detected": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "endpoint_hardening_standards_applied": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "new_devices_hardened_before_deployment": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "device_encryption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "encryption_compliance_monitored": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "encryption_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "mobile_device_encryption_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "edr": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automated_response_enabled": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "edr_alerts_monitored": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "edr_coverage_complete": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "edr_solution_deployed": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "endpoint_patching": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "critical_patches_applied_timely": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "patch_compliance_monitored": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "patch_management_implemented": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "patch_testing_before_deployment": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "mdm_deployment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_managed_devices_enrolled": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "compliance_policies_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "device_inventory_maintained": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "mdm_uem_solution_deployed": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "network_access_control": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "guest_network_segregated": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "nac_implemented": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "non_compliant_devices_quarantined": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "remote_wipe": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "remote_wipe_capability_enabled": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "remote_wipe_procedure_defined": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "selective_wipe_for_byod": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "removable_media": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "media_scanning_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "removable_media_policy_defined": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "unauthorized_media_blocked": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "screen_lock": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "screen_lock_enforced": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "screen_lock_timeout_appropriate": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      },
+      "uem_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_device_types_in_scope": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "byod_policy_defined": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_endpoint_management.rego."
+        }
+       }
+      }
+     }
+    },
+    "governance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "compliance_obligations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "gaps_identified_and_remediated": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "obligations_inventoried": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "obligations_tracked": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "regulatory_change_monitoring": {
+         "description": "Read in csa_ccm_governance.rego."
+        }
+       }
+      },
+      "executive_approval": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "board_oversight_exists": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "cloud_strategy_approved": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "policies_executive_approved": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "security_budget_allocated": {
+         "description": "Read in csa_ccm_governance.rego."
+        }
+       }
+      },
+      "metrics": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "metrics_actionable": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "metrics_defined": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "metrics_reported_to_leadership": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "metrics_reviewed_regularly": {
+         "description": "Read in csa_ccm_governance.rego."
+        }
+       }
+      },
+      "risk_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "risk_aligned_to_business_objectives": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "risk_program_exists": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "risk_register_maintained": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "risk_review_cadence": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "risk_treatment_plans_defined": {
+         "description": "Read in csa_ccm_governance.rego."
+        }
+       }
+      },
+      "roles_responsibilities": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "accountability_assigned": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "ciso_or_equivalent_defined": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "cloud_security_roles_documented": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "raci_or_equivalent_defined": {
+         "description": "Read in csa_ccm_governance.rego."
+        }
+       }
+      },
+      "security_framework": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_governance_included": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "framework_aligned_to_standard": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "framework_documented": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "framework_established": {
+         "description": "Read in csa_ccm_governance.rego."
+        },
+        "reviewed_annually": {
+         "description": "Read in csa_ccm_governance.rego."
+        }
+       }
+      }
+     }
+    },
+    "human_resources": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "acceptable_use": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "employees_acknowledged": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "violations_enforced": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "background_checks": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "checks_commensurate_with_access": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "checks_conducted_pre_hire": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "contractors_included": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "insider_threat": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "high_risk_personnel_controls": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "monitoring_implemented": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "program_exists": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "reporting_mechanism_exists": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "nda": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "nda_covers_cloud_data": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "nda_records_maintained": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "nda_required": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "nda_signed_before_access": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "role_based_access_removal": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_tied_to_role": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "access_updated_on_role_change": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "orphaned_accounts_removed": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "periodic_access_reviews_conducted": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "security_awareness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "annual_training_required": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "cloud_security_topics_included": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "completion_tracked": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "training_conducted_at_hire": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "training_program_established": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "security_roles": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "certifications_encouraged": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "security_responsibilities_documented": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "specialized_training_provided": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "termination": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_revoked_timely": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "asset_return_verified": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "exit_process_documented": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "privileged_access_revoked_immediately": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "termination_procedure_defined": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      },
+      "third_party_personnel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_limited_to_required": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "access_reviewed_regularly": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        },
+        "security_requirements_communicated": {
+         "description": "Read in csa_ccm_human_resources.rego."
+        }
+       }
+      }
+     }
+    },
+    "identity_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_reviews": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "inappropriate_access_revoked": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "privileged_access_reviewed_frequently": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "review_results_documented": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "reviews_conducted": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "account_lockout": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "lockout_policy_configured": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "lockout_threshold_appropriate": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "federated_identity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "directory_sync_operational": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "federation_implemented": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "terminated_users_deprovisioned_automatically": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "iam_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_identities_in_scope": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "least_privilege_principle_adopted": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "identity_lifecycle": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "deprovisioning_process_defined": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "identity_verified_before_provisioning": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "provisioning_process_defined": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "unique_identities_enforced": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "jit_access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_requests_approved": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "jit_access_time_limited": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "jit_implemented_for_privileged": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "mfa": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "mfa_enforced": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "mfa_on_privileged_accounts": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "mfa_on_remote_access": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "phishing_resistant_mfa_for_admins": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "password_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "breached_password_detection": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "minimum_length_enforced": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "password_policy_enforced": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "privileged_access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "break_glass_procedure_defined": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "pam_solution_deployed": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "privileged_accounts_inventoried": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "privileged_sessions_recorded": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "standing_privilege_minimized": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "privileged_identity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "admin_accounts_separate_from_user_accounts": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "global_admin_accounts_minimized": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "privileged_identity_governance_defined": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "rbac": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "excessive_role_assignments_detected": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "rbac_implemented": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "roles_defined_per_job_function": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "service_accounts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "managed_identities_preferred": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "service_account_credentials_rotated": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "service_account_permissions_minimal": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "service_accounts_inventoried": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "sso": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "sso_implemented": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "sso_session_timeout_configured": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "sso_uses_federated_identity": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      },
+      "zero_trust": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "continuous_verification_implemented": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "microsegmentation_applied": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        },
+        "network_implicit_trust_eliminated": {
+         "description": "Read in csa_ccm_identity_access.rego."
+        }
+       }
+      }
+     }
+    },
+    "incident_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "classification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "classification_scheme_defined": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "cloud_specific_classification_included": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "severity_levels_documented": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "triage_procedure_defined": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "ediscovery": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_data_searchable": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "ediscovery_capability_defined": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "legal_team_engaged_in_planning": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "escalation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "escalation_contacts_maintained": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "escalation_procedures_defined": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "management_notification_thresholds": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "on_call_rotation_established": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "forensic_readiness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_forensics_capability": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "evidence_preservation_procedure": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "forensic_readiness_plan_exists": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "legal_hold_integrated_with_ir": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "log_retention_sufficient_for_forensics": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "ir_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_incidents_in_scope": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "ir_plan_exists": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "roles_defined": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "ir_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ir_plan_tested": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "metrics": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "incident_metrics_tracked": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "metrics_reported_to_management": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "trend_analysis_conducted": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "notification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "customer_notification_procedure": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "notification_templates_prepared": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "notifications_sent_within_sla": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "regulatory_notification_timeframes": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      },
+      "post_incident_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "lessons_learned_documented": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "process_improvements_tracked": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "review_conducted": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        },
+        "root_cause_analysis_performed": {
+         "description": "Read in csa_ccm_incident_management.rego."
+        }
+       }
+      }
+     }
+    },
+    "infrastructure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "container_security": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "container_images_scanned": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "containers_run_as_non_root": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "image_signing_enforced": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "runtime_security_monitoring": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "trusted_registries_enforced": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "host_hardening": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cis_benchmark_or_stig_followed": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "hardening_compliance_verified": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "hardening_standards_applied": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "hypervisor": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "hypervisor_access_restricted": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "hypervisor_hardened": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "hypervisor_patched_regularly": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "network_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "flow_logs_enabled": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "ids_ips_deployed": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "network_traffic_monitored": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "network_security_groups": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "default_deny_implemented": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "overly_permissive_rules_detected": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "security_group_review_conducted": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "security_groups_configured": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "network_segmentation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dmz_implemented": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "micro_segmentation_applied": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "segmentation_implemented": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "segmentation_validated": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "patch_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "critical_patches_applied_timely": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "infrastructure_patches_applied": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "patch_compliance_monitored": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "resource_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "resource_inventory_maintained": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "resource_tagging_enforced": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "unused_resources_identified": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "vm_isolation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "multi_tenant_isolation_verified": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "vm_breakout_controls_implemented": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "vm_isolation_enforced": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "vulnerability_scanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authenticated_scans_used": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "findings_tracked_to_remediation": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "infrastructure_scanned": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "scan_frequency_defined": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      },
+      "workload_protection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_security_posture_managed": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "cloud_workload_protection_active": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        },
+        "workload_protection_deployed": {
+         "description": "Read in csa_ccm_infrastructure.rego."
+        }
+       }
+      }
+     }
+    },
+    "interoperability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "api_standards": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "api_dependency_inventory": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "api_versioning_managed": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "apis_documented": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "standard_protocols_used": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        }
+       }
+      },
+      "data_format_standards": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "format_standards_documented": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "open_standards_preferred": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "vendor_lock_in_assessed": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        }
+       }
+      },
+      "data_portability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_formats_documented": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "export_capability_verified": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "portability_sla_in_contracts": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "requirements_documented": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        }
+       }
+      },
+      "exit_plan": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "business_continuity_during_migration": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "data_migration_procedure_defined": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "exit_plan_established": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "exit_plan_reviewed_regularly": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "transition_timelines_defined": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        }
+       }
+      },
+      "portability_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "deficiencies_remediated": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "portability_tested": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        },
+        "test_results_documented": {
+         "description": "Read in csa_ccm_interoperability.rego."
+        }
+       }
+      }
+     }
+    },
+    "logging_monitoring": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "anomaly_detection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "anomaly_detection_implemented": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "cloud_anomalies_detected": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "ueba_or_equivalent": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "audit_logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "audit_logging_enabled": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "cloud_api_logging_enabled": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "log_coverage_verified": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "logging_policy_established": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "centralized_logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_critical_sources_onboarded": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "cloud_logs_forwarded": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "log_parsing_configured": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "siem_deployed": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "data_access_logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "bulk_data_access_alerted": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "sensitive_data_access_logged": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "incident_detection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "detection_rules_tuned": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "detection_use_cases_defined": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "log_integrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "immutable_log_storage_used": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "log_access_controlled": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "log_integrity_verified": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "logs_protected_from_tampering": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "log_retention": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "archived_logs_protected": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "minimum_retention_met": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "retention_period_enforced": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "retention_policy_defined": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "metrics_dashboards": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "kpi_metrics_tracked": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "security_dashboards_operational": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "monitoring_coverage": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_environments_monitored": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "application_logging_enabled": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "network_monitoring_active": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "monitoring_program": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "coverage_gaps_identified": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "program_reviewed_annually": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "ntp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "single_time_source_used": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "time_drift_monitored": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "time_synchronization_configured": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "privileged_access_logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "privileged_actions_logged": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "privileged_log_tampering_prevented": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "privileged_session_content_captured": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      },
+      "real_time_alerting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "alert_response_times_defined": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "alert_rules_defined": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "alerting_configured": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        },
+        "alerts_reviewed_and_actioned": {
+         "description": "Read in csa_ccm_logging_monitoring.rego."
+        }
+       }
+      }
+     }
+    },
+    "supply_chain": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "contract_requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_handling_requirements_specified": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "incident_notification_sla_included": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "right_to_audit_included": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "security_requirements_in_contracts": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "termination_provisions_included": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "incident_response": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "vendor_ir_coordination_defined": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "vendor_notification_requirements_enforced": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "offboarding": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_revoked_on_termination": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "data_retrieved_or_deleted_on_exit": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "vendor_offboarding_procedure_defined": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "software_supply_chain": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "build_pipeline_integrity": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "sbom_maintained": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "third_party_code_reviewed": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "subprocessor_inventory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_sharing_documented": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "inventory_maintained": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "subprocessor_changes_managed": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "subprocessors_assessed": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "supplier_assessments": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "assessments_conducted": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "certifications_reviewed": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "questionnaires_or_audits_used": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "reassessments_conducted_periodically": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "risk_tiering_applied": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "supplier_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_suppliers_in_scope": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "third_party_risk": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "critical_vendors_identified": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "risk_management_program_exists": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "risk_register_includes_vendors": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "vendor_risk_monitoring_ongoing": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      },
+      "transparency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "csp_security_posture_reviewed": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "csp_shared_responsibility_understood": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        },
+        "csp_transparency_report_reviewed": {
+         "description": "Read in csa_ccm_supply_chain.rego."
+        }
+       }
+      }
+     }
+    },
+    "threat_vulnerability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cvss_scoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "business_context_applied": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "cvss_scoring_used": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "exploitability_considered": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "external_scanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "external_attack_surface_inventoried": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "external_scan_frequency_defined": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "external_scans_conducted": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "internal_scanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_assets_covered": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "authenticated_scans_used": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "internal_scans_conducted": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "scan_frequency_defined": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "patch_critical": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "critical_patches_applied_within_sla": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "patch_exemption_process_defined": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "zero_day_response_process_defined": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "patch_high": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "high_patches_applied_within_sla": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "patch_compliance_rate_monitored": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "penetration_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_specific_testing_performed": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "findings_remediated": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "pentest_conducted": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "pentest_frequency_met": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "qualified_testers_used": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "remediation_tracking": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_findings_tracked": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "metrics_reported_to_management": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "overdue_vulns_escalated": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "remediation_effectiveness_verified": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "threat_intel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_specific_threat_intel_consumed": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "threat_intel_feeds_subscribed": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "threat_intel_operationalized": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "tvm_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "cloud_assets_in_scope": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "policy_established": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "policy_reviewed_annually": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "remediation_slas_defined": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      },
+      "zero_day_response": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "csp_advisories_monitored": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "emergency_patching_capability": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "process_defined": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        },
+        "workarounds_applied_when_patch_unavailable": {
+         "description": "Read in csa_ccm_threat_vulnerability.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "csa_ccm",
+  "csa_ccm.application_security",
+  "csa_ccm.application_security.api_security",
+  "csa_ccm.application_security.api_security.api_inventory_maintained",
+  "csa_ccm.application_security.api_security.authentication_required",
+  "csa_ccm.application_security.api_security.authorization_enforced",
+  "csa_ccm.application_security.api_security.rate_limiting_implemented",
+  "csa_ccm.application_security.api_security.transport_encryption_enforced",
+  "csa_ccm.application_security.appsec_policy",
+  "csa_ccm.application_security.appsec_policy.cloud_app_scope_included",
+  "csa_ccm.application_security.appsec_policy.developer_acknowledgement",
+  "csa_ccm.application_security.appsec_policy.policy_established",
+  "csa_ccm.application_security.appsec_policy.policy_reviewed_annually",
+  "csa_ccm.application_security.code_review",
+  "csa_ccm.application_security.code_review.automated_review_integrated",
+  "csa_ccm.application_security.code_review.peer_review_required",
+  "csa_ccm.application_security.code_review.review_process_established",
+  "csa_ccm.application_security.code_review.security_focused_review",
+  "csa_ccm.application_security.dependencies",
+  "csa_ccm.application_security.dependencies.inventory_maintained",
+  "csa_ccm.application_security.dependencies.outdated_components_remediated",
+  "csa_ccm.application_security.dependencies.sca_tool_in_use",
+  "csa_ccm.application_security.dependencies.vulnerability_scanning",
+  "csa_ccm.application_security.input_validation",
+  "csa_ccm.application_security.input_validation.input_validation_implemented",
+  "csa_ccm.application_security.input_validation.output_encoding_implemented",
+  "csa_ccm.application_security.input_validation.sql_injection_prevented",
+  "csa_ccm.application_security.input_validation.xss_prevented",
+  "csa_ccm.application_security.sdlc",
+  "csa_ccm.application_security.sdlc.lifecycle_implemented",
+  "csa_ccm.application_security.sdlc.security_gates_in_cicd",
+  "csa_ccm.application_security.sdlc.security_requirements_defined",
+  "csa_ccm.application_security.sdlc.security_training_for_developers",
+  "csa_ccm.application_security.sdlc.threat_modeling_performed",
+  "csa_ccm.application_security.testing",
+  "csa_ccm.application_security.testing.dast_conducted",
+  "csa_ccm.application_security.testing.findings_remediated",
+  "csa_ccm.application_security.testing.pentest_conducted",
+  "csa_ccm.application_security.testing.pre_release_testing_required",
+  "csa_ccm.application_security.testing.sast_conducted",
+  "csa_ccm.audit_assurance",
+  "csa_ccm.audit_assurance.audit_scope",
+  "csa_ccm.audit_assurance.audit_scope.frequency_defined",
+  "csa_ccm.audit_assurance.audit_scope.methodology_documented",
+  "csa_ccm.audit_assurance.audit_scope.risk_based_approach",
+  "csa_ccm.audit_assurance.audit_scope.scope_documented",
+  "csa_ccm.audit_assurance.continuous_monitoring",
+  "csa_ccm.audit_assurance.continuous_monitoring.alerts_configured",
+  "csa_ccm.audit_assurance.continuous_monitoring.automated_controls_monitored",
+  "csa_ccm.audit_assurance.continuous_monitoring.monitoring_program_exists",
+  "csa_ccm.audit_assurance.continuous_monitoring.results_reviewed_regularly",
+  "csa_ccm.audit_assurance.evidence_retention",
+  "csa_ccm.audit_assurance.evidence_retention.disposal_process_defined",
+  "csa_ccm.audit_assurance.evidence_retention.evidence_stored_securely",
+  "csa_ccm.audit_assurance.evidence_retention.retention_period_met",
+  "csa_ccm.audit_assurance.evidence_retention.retention_policy_defined",
+  "csa_ccm.audit_assurance.findings_tracking",
+  "csa_ccm.audit_assurance.findings_tracking.due_dates_set",
+  "csa_ccm.audit_assurance.findings_tracking.overdue_escalation_process",
+  "csa_ccm.audit_assurance.findings_tracking.owners_assigned",
+  "csa_ccm.audit_assurance.findings_tracking.remediation_tracked",
+  "csa_ccm.audit_assurance.independent_audit",
+  "csa_ccm.audit_assurance.independent_audit.auditor_independence_confirmed",
+  "csa_ccm.audit_assurance.independent_audit.cloud_scope_included",
+  "csa_ccm.audit_assurance.independent_audit.program_established",
+  "csa_ccm.audit_assurance.internal_audit",
+  "csa_ccm.audit_assurance.internal_audit.charter_documented",
+  "csa_ccm.audit_assurance.internal_audit.function_exists",
+  "csa_ccm.audit_assurance.internal_audit.independence_maintained",
+  "csa_ccm.audit_assurance.reporting",
+  "csa_ccm.audit_assurance.reporting.board_notification",
+  "csa_ccm.audit_assurance.reporting.executive_distribution",
+  "csa_ccm.audit_assurance.reporting.reports_communicated",
+  "csa_ccm.audit_assurance.reporting.timely_issuance",
+  "csa_ccm.business_continuity",
+  "csa_ccm.business_continuity.backup",
+  "csa_ccm.business_continuity.backup.backup_frequency_meets_rpo",
+  "csa_ccm.business_continuity.backup.backups_tested",
+  "csa_ccm.business_continuity.backup.encryption_applied",
+  "csa_ccm.business_continuity.backup.offsite_or_cloud_storage",
+  "csa_ccm.business_continuity.backup.procedures_implemented",
+  "csa_ccm.business_continuity.bcm_policy",
+  "csa_ccm.business_continuity.bcm_policy.cloud_services_included",
+  "csa_ccm.business_continuity.bcm_policy.executive_approved",
+  "csa_ccm.business_continuity.bcm_policy.policy_established",
+  "csa_ccm.business_continuity.bcm_policy.reviewed_annually",
+  "csa_ccm.business_continuity.bcp",
+  "csa_ccm.business_continuity.bcp.activation_criteria_defined",
+  "csa_ccm.business_continuity.bcp.contact_lists_current",
+  "csa_ccm.business_continuity.bcp.plans_documented",
+  "csa_ccm.business_continuity.bcp.plans_maintained",
+  "csa_ccm.business_continuity.bcp.roles_assigned",
+  "csa_ccm.business_continuity.bcp_testing",
+  "csa_ccm.business_continuity.bcp_testing.deficiencies_remediated",
+  "csa_ccm.business_continuity.bcp_testing.plans_tested",
+  "csa_ccm.business_continuity.bcp_testing.test_frequency_met",
+  "csa_ccm.business_continuity.bcp_testing.test_results_documented",
+  "csa_ccm.business_continuity.bia",
+  "csa_ccm.business_continuity.bia.bia_conducted",
+  "csa_ccm.business_continuity.bia.cloud_dependency_mapped",
+  "csa_ccm.business_continuity.bia.critical_processes_identified",
+  "csa_ccm.business_continuity.bia.reviewed_after_significant_change",
+  "csa_ccm.business_continuity.crisis_communication",
+  "csa_ccm.business_continuity.crisis_communication.media_response_defined",
+  "csa_ccm.business_continuity.crisis_communication.plan_established",
+  "csa_ccm.business_continuity.crisis_communication.regulatory_notification_included",
+  "csa_ccm.business_continuity.crisis_communication.stakeholder_notifications_defined",
+  "csa_ccm.business_continuity.dependencies",
+  "csa_ccm.business_continuity.dependencies.critical_dependencies_identified",
+  "csa_ccm.business_continuity.dependencies.single_points_of_failure_addressed",
+  "csa_ccm.business_continuity.dependencies.third_party_dependencies_mapped",
+  "csa_ccm.business_continuity.drp",
+  "csa_ccm.business_continuity.drp.alternate_site_defined",
+  "csa_ccm.business_continuity.drp.data_recovery_procedures_included",
+  "csa_ccm.business_continuity.drp.plans_documented",
+  "csa_ccm.business_continuity.drp.recovery_procedures_defined",
+  "csa_ccm.business_continuity.drp_testing",
+  "csa_ccm.business_continuity.drp_testing.drp_tested_annually",
+  "csa_ccm.business_continuity.drp_testing.failover_tested",
+  "csa_ccm.business_continuity.drp_testing.test_results_documented",
+  "csa_ccm.business_continuity.lessons_learned",
+  "csa_ccm.business_continuity.lessons_learned.findings_incorporated_into_plans",
+  "csa_ccm.business_continuity.lessons_learned.process_defined",
+  "csa_ccm.business_continuity.lessons_learned.review_conducted_after_events",
+  "csa_ccm.business_continuity.rto_rpo",
+  "csa_ccm.business_continuity.rto_rpo.business_approved",
+  "csa_ccm.business_continuity.rto_rpo.rpo_defined",
+  "csa_ccm.business_continuity.rto_rpo.rto_defined",
+  "csa_ccm.business_continuity.rto_rpo.rto_rpo_validated",
+  "csa_ccm.change_control",
+  "csa_ccm.change_control.change_approval",
+  "csa_ccm.change_control.change_approval.approval_required",
+  "csa_ccm.change_control.change_approval.change_records_maintained",
+  "csa_ccm.change_control.change_approval.documentation_required",
+  "csa_ccm.change_control.change_approval.impact_assessment_required",
+  "csa_ccm.change_control.change_approval.review_required",
+  "csa_ccm.change_control.change_policy",
+  "csa_ccm.change_control.change_policy.cloud_changes_in_scope",
+  "csa_ccm.change_control.change_policy.policy_established",
+  "csa_ccm.change_control.change_policy.policy_reviewed_annually",
+  "csa_ccm.change_control.change_policy.roles_defined",
+  "csa_ccm.change_control.config_baseline",
+  "csa_ccm.change_control.config_baseline.baseline_documented",
+  "csa_ccm.change_control.config_baseline.baseline_established",
+  "csa_ccm.change_control.config_baseline.baseline_reviewed_regularly",
+  "csa_ccm.change_control.config_baseline.security_hardening_included",
+  "csa_ccm.change_control.config_tracking",
+  "csa_ccm.change_control.config_tracking.audit_trail_maintained",
+  "csa_ccm.change_control.config_tracking.changes_tracked",
+  "csa_ccm.change_control.config_tracking.version_control_used",
+  "csa_ccm.change_control.emergency_change",
+  "csa_ccm.change_control.emergency_change.emergency_changes_tracked",
+  "csa_ccm.change_control.emergency_change.post_approval_required",
+  "csa_ccm.change_control.emergency_change.procedure_defined",
+  "csa_ccm.change_control.emergency_change.retrospective_review_conducted",
+  "csa_ccm.change_control.post_implementation_review",
+  "csa_ccm.change_control.post_implementation_review.lessons_captured",
+  "csa_ccm.change_control.post_implementation_review.objectives_validated",
+  "csa_ccm.change_control.post_implementation_review.review_conducted",
+  "csa_ccm.change_control.post_implementation_review.unintended_effects_assessed",
+  "csa_ccm.change_control.rollback",
+  "csa_ccm.change_control.rollback.rollback_procedure_defined",
+  "csa_ccm.change_control.rollback.rollback_tested",
+  "csa_ccm.change_control.rollback.success_criteria_defined",
+  "csa_ccm.change_control.separation_of_duties",
+  "csa_ccm.change_control.separation_of_duties.approvals_auditable",
+  "csa_ccm.change_control.separation_of_duties.developer_prod_access_restricted",
+  "csa_ccm.change_control.separation_of_duties.sod_enforced",
+  "csa_ccm.change_control.unauthorized_change_detection",
+  "csa_ccm.change_control.unauthorized_change_detection.alerts_configured",
+  "csa_ccm.change_control.unauthorized_change_detection.detection_controls_exist",
+  "csa_ccm.change_control.unauthorized_change_detection.drift_detection_automated",
+  "csa_ccm.change_control.unauthorized_change_detection.response_procedure_defined",
+  "csa_ccm.cryptography",
+  "csa_ccm.cryptography.certificate_management",
+  "csa_ccm.cryptography.certificate_management.certificate_inventory_maintained",
+  "csa_ccm.cryptography.certificate_management.crl_or_ocsp_implemented",
+  "csa_ccm.cryptography.certificate_management.expiry_monitoring_enabled",
+  "csa_ccm.cryptography.certificate_management.lifecycle_management_implemented",
+  "csa_ccm.cryptography.crypto_policy",
+  "csa_ccm.cryptography.crypto_policy.approved_algorithms_listed",
+  "csa_ccm.cryptography.crypto_policy.key_management_procedures_defined",
+  "csa_ccm.cryptography.crypto_policy.policy_established",
+  "csa_ccm.cryptography.crypto_policy.policy_reviewed_annually",
+  "csa_ccm.cryptography.crypto_review",
+  "csa_ccm.cryptography.crypto_review.deprecated_crypto_identified",
+  "csa_ccm.cryptography.crypto_review.migration_plan_when_deprecated",
+  "csa_ccm.cryptography.crypto_review.standards_review_process",
+  "csa_ccm.cryptography.encryption_at_rest",
+  "csa_ccm.cryptography.encryption_at_rest.backup_encryption_enabled",
+  "csa_ccm.cryptography.encryption_at_rest.database_encryption_enabled",
+  "csa_ccm.cryptography.encryption_at_rest.sensitive_data_encrypted",
+  "csa_ccm.cryptography.encryption_at_rest.storage_encryption_enabled",
+  "csa_ccm.cryptography.encryption_in_transit",
+  "csa_ccm.cryptography.encryption_in_transit.certificate_validity_enforced",
+  "csa_ccm.cryptography.encryption_in_transit.minimum_tls_version_met",
+  "csa_ccm.cryptography.encryption_in_transit.tls_enforced",
+  "csa_ccm.cryptography.encryption_in_transit.weak_ciphers_disabled",
+  "csa_ccm.cryptography.key_destruction",
+  "csa_ccm.cryptography.key_destruction.destroyed_keys_irrecoverable",
+  "csa_ccm.cryptography.key_destruction.destruction_procedure_defined",
+  "csa_ccm.cryptography.key_destruction.revocation_timely",
+  "csa_ccm.cryptography.key_generation",
+  "csa_ccm.cryptography.key_generation.approved_algorithms_used",
+  "csa_ccm.cryptography.key_generation.key_length_meets_standard",
+  "csa_ccm.cryptography.key_generation.random_number_generator_validated",
+  "csa_ccm.cryptography.key_generation.weak_keys_prohibited",
+  "csa_ccm.cryptography.key_rotation",
+  "csa_ccm.cryptography.key_rotation.emergency_rotation_procedure",
+  "csa_ccm.cryptography.key_rotation.rotation_enforced",
+  "csa_ccm.cryptography.key_rotation.rotation_logged",
+  "csa_ccm.cryptography.key_rotation.rotation_schedule_defined",
+  "csa_ccm.cryptography.key_storage",
+  "csa_ccm.cryptography.key_storage.hsm_or_equivalent_used",
+  "csa_ccm.cryptography.key_storage.key_access_logged",
+  "csa_ccm.cryptography.key_storage.key_access_restricted",
+  "csa_ccm.cryptography.key_storage.keys_never_stored_in_plaintext",
+  "csa_ccm.data_security",
+  "csa_ccm.data_security.access_to_data",
+  "csa_ccm.data_security.access_to_data.access_based_on_classification",
+  "csa_ccm.data_security.access_to_data.least_privilege_enforced",
+  "csa_ccm.data_security.access_to_data.privileged_data_access_logged",
+  "csa_ccm.data_security.classification",
+  "csa_ccm.data_security.classification.classification_scheme_defined",
+  "csa_ccm.data_security.classification.cloud_data_in_scope",
+  "csa_ccm.data_security.classification.policy_established",
+  "csa_ccm.data_security.classification.policy_reviewed_annually",
+  "csa_ccm.data_security.cross_border",
+  "csa_ccm.data_security.cross_border.cloud_region_data_residency_enforced",
+  "csa_ccm.data_security.cross_border.transfer_mechanisms_documented",
+  "csa_ccm.data_security.cross_border.transfer_restrictions_assessed",
+  "csa_ccm.data_security.data_flows",
+  "csa_ccm.data_security.data_flows.data_flow_diagrams_maintained",
+  "csa_ccm.data_security.data_flows.data_flows_mapped",
+  "csa_ccm.data_security.data_flows.unauthorized_flows_detected",
+  "csa_ccm.data_security.data_inventory",
+  "csa_ccm.data_security.data_inventory.data_owners_assigned",
+  "csa_ccm.data_security.data_inventory.inventory_maintained",
+  "csa_ccm.data_security.data_inventory.inventory_reviewed_regularly",
+  "csa_ccm.data_security.disposal",
+  "csa_ccm.data_security.disposal.cloud_data_deletion_verified",
+  "csa_ccm.data_security.disposal.disposal_procedures_defined",
+  "csa_ccm.data_security.disposal.disposal_records_maintained",
+  "csa_ccm.data_security.disposal.secure_deletion_used",
+  "csa_ccm.data_security.dlp",
+  "csa_ccm.data_security.dlp.dlp_alerts_reviewed",
+  "csa_ccm.data_security.dlp.dlp_controls_implemented",
+  "csa_ccm.data_security.dlp.dlp_policies_cover_cloud",
+  "csa_ccm.data_security.dlp.egress_monitoring_enabled",
+  "csa_ccm.data_security.labeling",
+  "csa_ccm.data_security.labeling.labeling_enforced_at_creation",
+  "csa_ccm.data_security.labeling.labeling_implemented",
+  "csa_ccm.data_security.labeling.sensitive_data_labeled",
+  "csa_ccm.data_security.privacy",
+  "csa_ccm.data_security.privacy.consent_mechanism_implemented",
+  "csa_ccm.data_security.privacy.data_subject_rights_honored",
+  "csa_ccm.data_security.privacy.privacy_impact_assessments_conducted",
+  "csa_ccm.data_security.privacy.privacy_notice_provided",
+  "csa_ccm.data_security.retention",
+  "csa_ccm.data_security.retention.legal_hold_process_defined",
+  "csa_ccm.data_security.retention.retention_enforced_technically",
+  "csa_ccm.data_security.retention.retention_policy_defined",
+  "csa_ccm.data_security.retention.retention_schedules_documented",
+  "csa_ccm.endpoint_management",
+  "csa_ccm.endpoint_management.application_control",
+  "csa_ccm.endpoint_management.application_control.application_allowlisting_implemented",
+  "csa_ccm.endpoint_management.application_control.unauthorized_apps_blocked",
+  "csa_ccm.endpoint_management.byod",
+  "csa_ccm.endpoint_management.byod.byod_policy_enforced",
+  "csa_ccm.endpoint_management.byod.containerization_or_mam_implemented",
+  "csa_ccm.endpoint_management.byod.jailbroken_rooted_devices_blocked",
+  "csa_ccm.endpoint_management.byod.minimum_os_version_enforced",
+  "csa_ccm.endpoint_management.configuration_baseline",
+  "csa_ccm.endpoint_management.configuration_baseline.baseline_drift_detected",
+  "csa_ccm.endpoint_management.configuration_baseline.endpoint_hardening_standards_applied",
+  "csa_ccm.endpoint_management.configuration_baseline.new_devices_hardened_before_deployment",
+  "csa_ccm.endpoint_management.device_encryption",
+  "csa_ccm.endpoint_management.device_encryption.encryption_compliance_monitored",
+  "csa_ccm.endpoint_management.device_encryption.encryption_enforced",
+  "csa_ccm.endpoint_management.device_encryption.mobile_device_encryption_enforced",
+  "csa_ccm.endpoint_management.edr",
+  "csa_ccm.endpoint_management.edr.automated_response_enabled",
+  "csa_ccm.endpoint_management.edr.edr_alerts_monitored",
+  "csa_ccm.endpoint_management.edr.edr_coverage_complete",
+  "csa_ccm.endpoint_management.edr.edr_solution_deployed",
+  "csa_ccm.endpoint_management.endpoint_patching",
+  "csa_ccm.endpoint_management.endpoint_patching.critical_patches_applied_timely",
+  "csa_ccm.endpoint_management.endpoint_patching.patch_compliance_monitored",
+  "csa_ccm.endpoint_management.endpoint_patching.patch_management_implemented",
+  "csa_ccm.endpoint_management.endpoint_patching.patch_testing_before_deployment",
+  "csa_ccm.endpoint_management.mdm_deployment",
+  "csa_ccm.endpoint_management.mdm_deployment.all_managed_devices_enrolled",
+  "csa_ccm.endpoint_management.mdm_deployment.compliance_policies_enforced",
+  "csa_ccm.endpoint_management.mdm_deployment.device_inventory_maintained",
+  "csa_ccm.endpoint_management.mdm_deployment.mdm_uem_solution_deployed",
+  "csa_ccm.endpoint_management.network_access_control",
+  "csa_ccm.endpoint_management.network_access_control.guest_network_segregated",
+  "csa_ccm.endpoint_management.network_access_control.nac_implemented",
+  "csa_ccm.endpoint_management.network_access_control.non_compliant_devices_quarantined",
+  "csa_ccm.endpoint_management.remote_wipe",
+  "csa_ccm.endpoint_management.remote_wipe.remote_wipe_capability_enabled",
+  "csa_ccm.endpoint_management.remote_wipe.remote_wipe_procedure_defined",
+  "csa_ccm.endpoint_management.remote_wipe.selective_wipe_for_byod",
+  "csa_ccm.endpoint_management.removable_media",
+  "csa_ccm.endpoint_management.removable_media.media_scanning_enforced",
+  "csa_ccm.endpoint_management.removable_media.removable_media_policy_defined",
+  "csa_ccm.endpoint_management.removable_media.unauthorized_media_blocked",
+  "csa_ccm.endpoint_management.screen_lock",
+  "csa_ccm.endpoint_management.screen_lock.screen_lock_enforced",
+  "csa_ccm.endpoint_management.screen_lock.screen_lock_timeout_appropriate",
+  "csa_ccm.endpoint_management.uem_policy",
+  "csa_ccm.endpoint_management.uem_policy.all_device_types_in_scope",
+  "csa_ccm.endpoint_management.uem_policy.byod_policy_defined",
+  "csa_ccm.endpoint_management.uem_policy.policy_established",
+  "csa_ccm.endpoint_management.uem_policy.policy_reviewed_annually",
+  "csa_ccm.governance",
+  "csa_ccm.governance.compliance_obligations",
+  "csa_ccm.governance.compliance_obligations.gaps_identified_and_remediated",
+  "csa_ccm.governance.compliance_obligations.obligations_inventoried",
+  "csa_ccm.governance.compliance_obligations.obligations_tracked",
+  "csa_ccm.governance.compliance_obligations.regulatory_change_monitoring",
+  "csa_ccm.governance.executive_approval",
+  "csa_ccm.governance.executive_approval.board_oversight_exists",
+  "csa_ccm.governance.executive_approval.cloud_strategy_approved",
+  "csa_ccm.governance.executive_approval.policies_executive_approved",
+  "csa_ccm.governance.executive_approval.security_budget_allocated",
+  "csa_ccm.governance.metrics",
+  "csa_ccm.governance.metrics.metrics_actionable",
+  "csa_ccm.governance.metrics.metrics_defined",
+  "csa_ccm.governance.metrics.metrics_reported_to_leadership",
+  "csa_ccm.governance.metrics.metrics_reviewed_regularly",
+  "csa_ccm.governance.risk_management",
+  "csa_ccm.governance.risk_management.risk_aligned_to_business_objectives",
+  "csa_ccm.governance.risk_management.risk_program_exists",
+  "csa_ccm.governance.risk_management.risk_register_maintained",
+  "csa_ccm.governance.risk_management.risk_review_cadence",
+  "csa_ccm.governance.risk_management.risk_treatment_plans_defined",
+  "csa_ccm.governance.roles_responsibilities",
+  "csa_ccm.governance.roles_responsibilities.accountability_assigned",
+  "csa_ccm.governance.roles_responsibilities.ciso_or_equivalent_defined",
+  "csa_ccm.governance.roles_responsibilities.cloud_security_roles_documented",
+  "csa_ccm.governance.roles_responsibilities.raci_or_equivalent_defined",
+  "csa_ccm.governance.security_framework",
+  "csa_ccm.governance.security_framework.cloud_governance_included",
+  "csa_ccm.governance.security_framework.framework_aligned_to_standard",
+  "csa_ccm.governance.security_framework.framework_documented",
+  "csa_ccm.governance.security_framework.framework_established",
+  "csa_ccm.governance.security_framework.reviewed_annually",
+  "csa_ccm.human_resources",
+  "csa_ccm.human_resources.acceptable_use",
+  "csa_ccm.human_resources.acceptable_use.employees_acknowledged",
+  "csa_ccm.human_resources.acceptable_use.policy_established",
+  "csa_ccm.human_resources.acceptable_use.policy_reviewed_annually",
+  "csa_ccm.human_resources.acceptable_use.violations_enforced",
+  "csa_ccm.human_resources.background_checks",
+  "csa_ccm.human_resources.background_checks.checks_commensurate_with_access",
+  "csa_ccm.human_resources.background_checks.checks_conducted_pre_hire",
+  "csa_ccm.human_resources.background_checks.contractors_included",
+  "csa_ccm.human_resources.background_checks.policy_established",
+  "csa_ccm.human_resources.insider_threat",
+  "csa_ccm.human_resources.insider_threat.high_risk_personnel_controls",
+  "csa_ccm.human_resources.insider_threat.monitoring_implemented",
+  "csa_ccm.human_resources.insider_threat.program_exists",
+  "csa_ccm.human_resources.insider_threat.reporting_mechanism_exists",
+  "csa_ccm.human_resources.nda",
+  "csa_ccm.human_resources.nda.nda_covers_cloud_data",
+  "csa_ccm.human_resources.nda.nda_records_maintained",
+  "csa_ccm.human_resources.nda.nda_required",
+  "csa_ccm.human_resources.nda.nda_signed_before_access",
+  "csa_ccm.human_resources.role_based_access_removal",
+  "csa_ccm.human_resources.role_based_access_removal.access_tied_to_role",
+  "csa_ccm.human_resources.role_based_access_removal.access_updated_on_role_change",
+  "csa_ccm.human_resources.role_based_access_removal.orphaned_accounts_removed",
+  "csa_ccm.human_resources.role_based_access_removal.periodic_access_reviews_conducted",
+  "csa_ccm.human_resources.security_awareness",
+  "csa_ccm.human_resources.security_awareness.annual_training_required",
+  "csa_ccm.human_resources.security_awareness.cloud_security_topics_included",
+  "csa_ccm.human_resources.security_awareness.completion_tracked",
+  "csa_ccm.human_resources.security_awareness.training_conducted_at_hire",
+  "csa_ccm.human_resources.security_awareness.training_program_established",
+  "csa_ccm.human_resources.security_roles",
+  "csa_ccm.human_resources.security_roles.certifications_encouraged",
+  "csa_ccm.human_resources.security_roles.security_responsibilities_documented",
+  "csa_ccm.human_resources.security_roles.specialized_training_provided",
+  "csa_ccm.human_resources.termination",
+  "csa_ccm.human_resources.termination.access_revoked_timely",
+  "csa_ccm.human_resources.termination.asset_return_verified",
+  "csa_ccm.human_resources.termination.exit_process_documented",
+  "csa_ccm.human_resources.termination.privileged_access_revoked_immediately",
+  "csa_ccm.human_resources.termination.termination_procedure_defined",
+  "csa_ccm.human_resources.third_party_personnel",
+  "csa_ccm.human_resources.third_party_personnel.access_limited_to_required",
+  "csa_ccm.human_resources.third_party_personnel.access_reviewed_regularly",
+  "csa_ccm.human_resources.third_party_personnel.security_requirements_communicated",
+  "csa_ccm.identity_access",
+  "csa_ccm.identity_access.access_reviews",
+  "csa_ccm.identity_access.access_reviews.inappropriate_access_revoked",
+  "csa_ccm.identity_access.access_reviews.privileged_access_reviewed_frequently",
+  "csa_ccm.identity_access.access_reviews.review_results_documented",
+  "csa_ccm.identity_access.access_reviews.reviews_conducted",
+  "csa_ccm.identity_access.account_lockout",
+  "csa_ccm.identity_access.account_lockout.lockout_policy_configured",
+  "csa_ccm.identity_access.account_lockout.lockout_threshold_appropriate",
+  "csa_ccm.identity_access.federated_identity",
+  "csa_ccm.identity_access.federated_identity.directory_sync_operational",
+  "csa_ccm.identity_access.federated_identity.federation_implemented",
+  "csa_ccm.identity_access.federated_identity.terminated_users_deprovisioned_automatically",
+  "csa_ccm.identity_access.iam_policy",
+  "csa_ccm.identity_access.iam_policy.cloud_identities_in_scope",
+  "csa_ccm.identity_access.iam_policy.least_privilege_principle_adopted",
+  "csa_ccm.identity_access.iam_policy.policy_established",
+  "csa_ccm.identity_access.iam_policy.policy_reviewed_annually",
+  "csa_ccm.identity_access.identity_lifecycle",
+  "csa_ccm.identity_access.identity_lifecycle.deprovisioning_process_defined",
+  "csa_ccm.identity_access.identity_lifecycle.identity_verified_before_provisioning",
+  "csa_ccm.identity_access.identity_lifecycle.provisioning_process_defined",
+  "csa_ccm.identity_access.identity_lifecycle.unique_identities_enforced",
+  "csa_ccm.identity_access.jit_access",
+  "csa_ccm.identity_access.jit_access.access_requests_approved",
+  "csa_ccm.identity_access.jit_access.jit_access_time_limited",
+  "csa_ccm.identity_access.jit_access.jit_implemented_for_privileged",
+  "csa_ccm.identity_access.mfa",
+  "csa_ccm.identity_access.mfa.mfa_enforced",
+  "csa_ccm.identity_access.mfa.mfa_on_privileged_accounts",
+  "csa_ccm.identity_access.mfa.mfa_on_remote_access",
+  "csa_ccm.identity_access.mfa.phishing_resistant_mfa_for_admins",
+  "csa_ccm.identity_access.password_policy",
+  "csa_ccm.identity_access.password_policy.breached_password_detection",
+  "csa_ccm.identity_access.password_policy.minimum_length_enforced",
+  "csa_ccm.identity_access.password_policy.password_policy_enforced",
+  "csa_ccm.identity_access.privileged_access",
+  "csa_ccm.identity_access.privileged_access.break_glass_procedure_defined",
+  "csa_ccm.identity_access.privileged_access.pam_solution_deployed",
+  "csa_ccm.identity_access.privileged_access.privileged_accounts_inventoried",
+  "csa_ccm.identity_access.privileged_access.privileged_sessions_recorded",
+  "csa_ccm.identity_access.privileged_access.standing_privilege_minimized",
+  "csa_ccm.identity_access.privileged_identity",
+  "csa_ccm.identity_access.privileged_identity.admin_accounts_separate_from_user_accounts",
+  "csa_ccm.identity_access.privileged_identity.global_admin_accounts_minimized",
+  "csa_ccm.identity_access.privileged_identity.privileged_identity_governance_defined",
+  "csa_ccm.identity_access.rbac",
+  "csa_ccm.identity_access.rbac.excessive_role_assignments_detected",
+  "csa_ccm.identity_access.rbac.rbac_implemented",
+  "csa_ccm.identity_access.rbac.roles_defined_per_job_function",
+  "csa_ccm.identity_access.service_accounts",
+  "csa_ccm.identity_access.service_accounts.managed_identities_preferred",
+  "csa_ccm.identity_access.service_accounts.service_account_credentials_rotated",
+  "csa_ccm.identity_access.service_accounts.service_account_permissions_minimal",
+  "csa_ccm.identity_access.service_accounts.service_accounts_inventoried",
+  "csa_ccm.identity_access.sso",
+  "csa_ccm.identity_access.sso.sso_implemented",
+  "csa_ccm.identity_access.sso.sso_session_timeout_configured",
+  "csa_ccm.identity_access.sso.sso_uses_federated_identity",
+  "csa_ccm.identity_access.zero_trust",
+  "csa_ccm.identity_access.zero_trust.continuous_verification_implemented",
+  "csa_ccm.identity_access.zero_trust.microsegmentation_applied",
+  "csa_ccm.identity_access.zero_trust.network_implicit_trust_eliminated",
+  "csa_ccm.incident_management",
+  "csa_ccm.incident_management.classification",
+  "csa_ccm.incident_management.classification.classification_scheme_defined",
+  "csa_ccm.incident_management.classification.cloud_specific_classification_included",
+  "csa_ccm.incident_management.classification.severity_levels_documented",
+  "csa_ccm.incident_management.classification.triage_procedure_defined",
+  "csa_ccm.incident_management.ediscovery",
+  "csa_ccm.incident_management.ediscovery.cloud_data_searchable",
+  "csa_ccm.incident_management.ediscovery.ediscovery_capability_defined",
+  "csa_ccm.incident_management.ediscovery.legal_team_engaged_in_planning",
+  "csa_ccm.incident_management.escalation",
+  "csa_ccm.incident_management.escalation.escalation_contacts_maintained",
+  "csa_ccm.incident_management.escalation.escalation_procedures_defined",
+  "csa_ccm.incident_management.escalation.management_notification_thresholds",
+  "csa_ccm.incident_management.escalation.on_call_rotation_established",
+  "csa_ccm.incident_management.forensic_readiness",
+  "csa_ccm.incident_management.forensic_readiness.cloud_forensics_capability",
+  "csa_ccm.incident_management.forensic_readiness.evidence_preservation_procedure",
+  "csa_ccm.incident_management.forensic_readiness.forensic_readiness_plan_exists",
+  "csa_ccm.incident_management.forensic_readiness.legal_hold_integrated_with_ir",
+  "csa_ccm.incident_management.forensic_readiness.log_retention_sufficient_for_forensics",
+  "csa_ccm.incident_management.ir_policy",
+  "csa_ccm.incident_management.ir_policy.cloud_incidents_in_scope",
+  "csa_ccm.incident_management.ir_policy.ir_plan_exists",
+  "csa_ccm.incident_management.ir_policy.policy_established",
+  "csa_ccm.incident_management.ir_policy.policy_reviewed_annually",
+  "csa_ccm.incident_management.ir_policy.roles_defined",
+  "csa_ccm.incident_management.ir_testing",
+  "csa_ccm.incident_management.ir_testing.ir_plan_tested",
+  "csa_ccm.incident_management.metrics",
+  "csa_ccm.incident_management.metrics.incident_metrics_tracked",
+  "csa_ccm.incident_management.metrics.metrics_reported_to_management",
+  "csa_ccm.incident_management.metrics.trend_analysis_conducted",
+  "csa_ccm.incident_management.notification",
+  "csa_ccm.incident_management.notification.customer_notification_procedure",
+  "csa_ccm.incident_management.notification.notification_templates_prepared",
+  "csa_ccm.incident_management.notification.notifications_sent_within_sla",
+  "csa_ccm.incident_management.notification.regulatory_notification_timeframes",
+  "csa_ccm.incident_management.post_incident_review",
+  "csa_ccm.incident_management.post_incident_review.lessons_learned_documented",
+  "csa_ccm.incident_management.post_incident_review.process_improvements_tracked",
+  "csa_ccm.incident_management.post_incident_review.review_conducted",
+  "csa_ccm.incident_management.post_incident_review.root_cause_analysis_performed",
+  "csa_ccm.infrastructure",
+  "csa_ccm.infrastructure.container_security",
+  "csa_ccm.infrastructure.container_security.container_images_scanned",
+  "csa_ccm.infrastructure.container_security.containers_run_as_non_root",
+  "csa_ccm.infrastructure.container_security.image_signing_enforced",
+  "csa_ccm.infrastructure.container_security.runtime_security_monitoring",
+  "csa_ccm.infrastructure.container_security.trusted_registries_enforced",
+  "csa_ccm.infrastructure.host_hardening",
+  "csa_ccm.infrastructure.host_hardening.cis_benchmark_or_stig_followed",
+  "csa_ccm.infrastructure.host_hardening.hardening_compliance_verified",
+  "csa_ccm.infrastructure.host_hardening.hardening_standards_applied",
+  "csa_ccm.infrastructure.hypervisor",
+  "csa_ccm.infrastructure.hypervisor.hypervisor_access_restricted",
+  "csa_ccm.infrastructure.hypervisor.hypervisor_hardened",
+  "csa_ccm.infrastructure.hypervisor.hypervisor_patched_regularly",
+  "csa_ccm.infrastructure.network_monitoring",
+  "csa_ccm.infrastructure.network_monitoring.flow_logs_enabled",
+  "csa_ccm.infrastructure.network_monitoring.ids_ips_deployed",
+  "csa_ccm.infrastructure.network_monitoring.network_traffic_monitored",
+  "csa_ccm.infrastructure.network_security_groups",
+  "csa_ccm.infrastructure.network_security_groups.default_deny_implemented",
+  "csa_ccm.infrastructure.network_security_groups.overly_permissive_rules_detected",
+  "csa_ccm.infrastructure.network_security_groups.security_group_review_conducted",
+  "csa_ccm.infrastructure.network_security_groups.security_groups_configured",
+  "csa_ccm.infrastructure.network_segmentation",
+  "csa_ccm.infrastructure.network_segmentation.dmz_implemented",
+  "csa_ccm.infrastructure.network_segmentation.micro_segmentation_applied",
+  "csa_ccm.infrastructure.network_segmentation.segmentation_implemented",
+  "csa_ccm.infrastructure.network_segmentation.segmentation_validated",
+  "csa_ccm.infrastructure.patch_management",
+  "csa_ccm.infrastructure.patch_management.critical_patches_applied_timely",
+  "csa_ccm.infrastructure.patch_management.infrastructure_patches_applied",
+  "csa_ccm.infrastructure.patch_management.patch_compliance_monitored",
+  "csa_ccm.infrastructure.resource_management",
+  "csa_ccm.infrastructure.resource_management.resource_inventory_maintained",
+  "csa_ccm.infrastructure.resource_management.resource_tagging_enforced",
+  "csa_ccm.infrastructure.resource_management.unused_resources_identified",
+  "csa_ccm.infrastructure.vm_isolation",
+  "csa_ccm.infrastructure.vm_isolation.multi_tenant_isolation_verified",
+  "csa_ccm.infrastructure.vm_isolation.vm_breakout_controls_implemented",
+  "csa_ccm.infrastructure.vm_isolation.vm_isolation_enforced",
+  "csa_ccm.infrastructure.vulnerability_scanning",
+  "csa_ccm.infrastructure.vulnerability_scanning.authenticated_scans_used",
+  "csa_ccm.infrastructure.vulnerability_scanning.findings_tracked_to_remediation",
+  "csa_ccm.infrastructure.vulnerability_scanning.infrastructure_scanned",
+  "csa_ccm.infrastructure.vulnerability_scanning.scan_frequency_defined",
+  "csa_ccm.infrastructure.workload_protection",
+  "csa_ccm.infrastructure.workload_protection.cloud_security_posture_managed",
+  "csa_ccm.infrastructure.workload_protection.cloud_workload_protection_active",
+  "csa_ccm.infrastructure.workload_protection.workload_protection_deployed",
+  "csa_ccm.interoperability",
+  "csa_ccm.interoperability.api_standards",
+  "csa_ccm.interoperability.api_standards.api_dependency_inventory",
+  "csa_ccm.interoperability.api_standards.api_versioning_managed",
+  "csa_ccm.interoperability.api_standards.apis_documented",
+  "csa_ccm.interoperability.api_standards.standard_protocols_used",
+  "csa_ccm.interoperability.data_format_standards",
+  "csa_ccm.interoperability.data_format_standards.format_standards_documented",
+  "csa_ccm.interoperability.data_format_standards.open_standards_preferred",
+  "csa_ccm.interoperability.data_format_standards.vendor_lock_in_assessed",
+  "csa_ccm.interoperability.data_portability",
+  "csa_ccm.interoperability.data_portability.data_formats_documented",
+  "csa_ccm.interoperability.data_portability.export_capability_verified",
+  "csa_ccm.interoperability.data_portability.portability_sla_in_contracts",
+  "csa_ccm.interoperability.data_portability.requirements_documented",
+  "csa_ccm.interoperability.exit_plan",
+  "csa_ccm.interoperability.exit_plan.business_continuity_during_migration",
+  "csa_ccm.interoperability.exit_plan.data_migration_procedure_defined",
+  "csa_ccm.interoperability.exit_plan.exit_plan_established",
+  "csa_ccm.interoperability.exit_plan.exit_plan_reviewed_regularly",
+  "csa_ccm.interoperability.exit_plan.transition_timelines_defined",
+  "csa_ccm.interoperability.portability_testing",
+  "csa_ccm.interoperability.portability_testing.deficiencies_remediated",
+  "csa_ccm.interoperability.portability_testing.portability_tested",
+  "csa_ccm.interoperability.portability_testing.test_results_documented",
+  "csa_ccm.logging_monitoring",
+  "csa_ccm.logging_monitoring.anomaly_detection",
+  "csa_ccm.logging_monitoring.anomaly_detection.anomaly_detection_implemented",
+  "csa_ccm.logging_monitoring.anomaly_detection.cloud_anomalies_detected",
+  "csa_ccm.logging_monitoring.anomaly_detection.ueba_or_equivalent",
+  "csa_ccm.logging_monitoring.audit_logging",
+  "csa_ccm.logging_monitoring.audit_logging.audit_logging_enabled",
+  "csa_ccm.logging_monitoring.audit_logging.cloud_api_logging_enabled",
+  "csa_ccm.logging_monitoring.audit_logging.log_coverage_verified",
+  "csa_ccm.logging_monitoring.audit_logging.logging_policy_established",
+  "csa_ccm.logging_monitoring.centralized_logging",
+  "csa_ccm.logging_monitoring.centralized_logging.all_critical_sources_onboarded",
+  "csa_ccm.logging_monitoring.centralized_logging.cloud_logs_forwarded",
+  "csa_ccm.logging_monitoring.centralized_logging.log_parsing_configured",
+  "csa_ccm.logging_monitoring.centralized_logging.siem_deployed",
+  "csa_ccm.logging_monitoring.data_access_logging",
+  "csa_ccm.logging_monitoring.data_access_logging.bulk_data_access_alerted",
+  "csa_ccm.logging_monitoring.data_access_logging.sensitive_data_access_logged",
+  "csa_ccm.logging_monitoring.incident_detection",
+  "csa_ccm.logging_monitoring.incident_detection.detection_rules_tuned",
+  "csa_ccm.logging_monitoring.incident_detection.detection_use_cases_defined",
+  "csa_ccm.logging_monitoring.log_integrity",
+  "csa_ccm.logging_monitoring.log_integrity.immutable_log_storage_used",
+  "csa_ccm.logging_monitoring.log_integrity.log_access_controlled",
+  "csa_ccm.logging_monitoring.log_integrity.log_integrity_verified",
+  "csa_ccm.logging_monitoring.log_integrity.logs_protected_from_tampering",
+  "csa_ccm.logging_monitoring.log_retention",
+  "csa_ccm.logging_monitoring.log_retention.archived_logs_protected",
+  "csa_ccm.logging_monitoring.log_retention.minimum_retention_met",
+  "csa_ccm.logging_monitoring.log_retention.retention_period_enforced",
+  "csa_ccm.logging_monitoring.log_retention.retention_policy_defined",
+  "csa_ccm.logging_monitoring.metrics_dashboards",
+  "csa_ccm.logging_monitoring.metrics_dashboards.kpi_metrics_tracked",
+  "csa_ccm.logging_monitoring.metrics_dashboards.security_dashboards_operational",
+  "csa_ccm.logging_monitoring.monitoring_coverage",
+  "csa_ccm.logging_monitoring.monitoring_coverage.all_environments_monitored",
+  "csa_ccm.logging_monitoring.monitoring_coverage.application_logging_enabled",
+  "csa_ccm.logging_monitoring.monitoring_coverage.network_monitoring_active",
+  "csa_ccm.logging_monitoring.monitoring_program",
+  "csa_ccm.logging_monitoring.monitoring_program.coverage_gaps_identified",
+  "csa_ccm.logging_monitoring.monitoring_program.program_reviewed_annually",
+  "csa_ccm.logging_monitoring.ntp",
+  "csa_ccm.logging_monitoring.ntp.single_time_source_used",
+  "csa_ccm.logging_monitoring.ntp.time_drift_monitored",
+  "csa_ccm.logging_monitoring.ntp.time_synchronization_configured",
+  "csa_ccm.logging_monitoring.privileged_access_logging",
+  "csa_ccm.logging_monitoring.privileged_access_logging.privileged_actions_logged",
+  "csa_ccm.logging_monitoring.privileged_access_logging.privileged_log_tampering_prevented",
+  "csa_ccm.logging_monitoring.privileged_access_logging.privileged_session_content_captured",
+  "csa_ccm.logging_monitoring.real_time_alerting",
+  "csa_ccm.logging_monitoring.real_time_alerting.alert_response_times_defined",
+  "csa_ccm.logging_monitoring.real_time_alerting.alert_rules_defined",
+  "csa_ccm.logging_monitoring.real_time_alerting.alerting_configured",
+  "csa_ccm.logging_monitoring.real_time_alerting.alerts_reviewed_and_actioned",
+  "csa_ccm.supply_chain",
+  "csa_ccm.supply_chain.contract_requirements",
+  "csa_ccm.supply_chain.contract_requirements.data_handling_requirements_specified",
+  "csa_ccm.supply_chain.contract_requirements.incident_notification_sla_included",
+  "csa_ccm.supply_chain.contract_requirements.right_to_audit_included",
+  "csa_ccm.supply_chain.contract_requirements.security_requirements_in_contracts",
+  "csa_ccm.supply_chain.contract_requirements.termination_provisions_included",
+  "csa_ccm.supply_chain.incident_response",
+  "csa_ccm.supply_chain.incident_response.vendor_ir_coordination_defined",
+  "csa_ccm.supply_chain.incident_response.vendor_notification_requirements_enforced",
+  "csa_ccm.supply_chain.offboarding",
+  "csa_ccm.supply_chain.offboarding.access_revoked_on_termination",
+  "csa_ccm.supply_chain.offboarding.data_retrieved_or_deleted_on_exit",
+  "csa_ccm.supply_chain.offboarding.vendor_offboarding_procedure_defined",
+  "csa_ccm.supply_chain.software_supply_chain",
+  "csa_ccm.supply_chain.software_supply_chain.build_pipeline_integrity",
+  "csa_ccm.supply_chain.software_supply_chain.sbom_maintained",
+  "csa_ccm.supply_chain.software_supply_chain.third_party_code_reviewed",
+  "csa_ccm.supply_chain.subprocessor_inventory",
+  "csa_ccm.supply_chain.subprocessor_inventory.data_sharing_documented",
+  "csa_ccm.supply_chain.subprocessor_inventory.inventory_maintained",
+  "csa_ccm.supply_chain.subprocessor_inventory.subprocessor_changes_managed",
+  "csa_ccm.supply_chain.subprocessor_inventory.subprocessors_assessed",
+  "csa_ccm.supply_chain.supplier_assessments",
+  "csa_ccm.supply_chain.supplier_assessments.assessments_conducted",
+  "csa_ccm.supply_chain.supplier_assessments.certifications_reviewed",
+  "csa_ccm.supply_chain.supplier_assessments.questionnaires_or_audits_used",
+  "csa_ccm.supply_chain.supplier_assessments.reassessments_conducted_periodically",
+  "csa_ccm.supply_chain.supplier_assessments.risk_tiering_applied",
+  "csa_ccm.supply_chain.supplier_policy",
+  "csa_ccm.supply_chain.supplier_policy.cloud_suppliers_in_scope",
+  "csa_ccm.supply_chain.supplier_policy.policy_established",
+  "csa_ccm.supply_chain.supplier_policy.policy_reviewed_annually",
+  "csa_ccm.supply_chain.third_party_risk",
+  "csa_ccm.supply_chain.third_party_risk.critical_vendors_identified",
+  "csa_ccm.supply_chain.third_party_risk.risk_management_program_exists",
+  "csa_ccm.supply_chain.third_party_risk.risk_register_includes_vendors",
+  "csa_ccm.supply_chain.third_party_risk.vendor_risk_monitoring_ongoing",
+  "csa_ccm.supply_chain.transparency",
+  "csa_ccm.supply_chain.transparency.csp_security_posture_reviewed",
+  "csa_ccm.supply_chain.transparency.csp_shared_responsibility_understood",
+  "csa_ccm.supply_chain.transparency.csp_transparency_report_reviewed",
+  "csa_ccm.threat_vulnerability",
+  "csa_ccm.threat_vulnerability.cvss_scoring",
+  "csa_ccm.threat_vulnerability.cvss_scoring.business_context_applied",
+  "csa_ccm.threat_vulnerability.cvss_scoring.cvss_scoring_used",
+  "csa_ccm.threat_vulnerability.cvss_scoring.exploitability_considered",
+  "csa_ccm.threat_vulnerability.external_scanning",
+  "csa_ccm.threat_vulnerability.external_scanning.external_attack_surface_inventoried",
+  "csa_ccm.threat_vulnerability.external_scanning.external_scan_frequency_defined",
+  "csa_ccm.threat_vulnerability.external_scanning.external_scans_conducted",
+  "csa_ccm.threat_vulnerability.internal_scanning",
+  "csa_ccm.threat_vulnerability.internal_scanning.all_assets_covered",
+  "csa_ccm.threat_vulnerability.internal_scanning.authenticated_scans_used",
+  "csa_ccm.threat_vulnerability.internal_scanning.internal_scans_conducted",
+  "csa_ccm.threat_vulnerability.internal_scanning.scan_frequency_defined",
+  "csa_ccm.threat_vulnerability.patch_critical",
+  "csa_ccm.threat_vulnerability.patch_critical.critical_patches_applied_within_sla",
+  "csa_ccm.threat_vulnerability.patch_critical.patch_exemption_process_defined",
+  "csa_ccm.threat_vulnerability.patch_critical.zero_day_response_process_defined",
+  "csa_ccm.threat_vulnerability.patch_high",
+  "csa_ccm.threat_vulnerability.patch_high.high_patches_applied_within_sla",
+  "csa_ccm.threat_vulnerability.patch_high.patch_compliance_rate_monitored",
+  "csa_ccm.threat_vulnerability.penetration_testing",
+  "csa_ccm.threat_vulnerability.penetration_testing.cloud_specific_testing_performed",
+  "csa_ccm.threat_vulnerability.penetration_testing.findings_remediated",
+  "csa_ccm.threat_vulnerability.penetration_testing.pentest_conducted",
+  "csa_ccm.threat_vulnerability.penetration_testing.pentest_frequency_met",
+  "csa_ccm.threat_vulnerability.penetration_testing.qualified_testers_used",
+  "csa_ccm.threat_vulnerability.remediation_tracking",
+  "csa_ccm.threat_vulnerability.remediation_tracking.all_findings_tracked",
+  "csa_ccm.threat_vulnerability.remediation_tracking.metrics_reported_to_management",
+  "csa_ccm.threat_vulnerability.remediation_tracking.overdue_vulns_escalated",
+  "csa_ccm.threat_vulnerability.remediation_tracking.remediation_effectiveness_verified",
+  "csa_ccm.threat_vulnerability.threat_intel",
+  "csa_ccm.threat_vulnerability.threat_intel.cloud_specific_threat_intel_consumed",
+  "csa_ccm.threat_vulnerability.threat_intel.threat_intel_feeds_subscribed",
+  "csa_ccm.threat_vulnerability.threat_intel.threat_intel_operationalized",
+  "csa_ccm.threat_vulnerability.tvm_policy",
+  "csa_ccm.threat_vulnerability.tvm_policy.cloud_assets_in_scope",
+  "csa_ccm.threat_vulnerability.tvm_policy.policy_established",
+  "csa_ccm.threat_vulnerability.tvm_policy.policy_reviewed_annually",
+  "csa_ccm.threat_vulnerability.tvm_policy.remediation_slas_defined",
+  "csa_ccm.threat_vulnerability.zero_day_response",
+  "csa_ccm.threat_vulnerability.zero_day_response.csp_advisories_monitored",
+  "csa_ccm.threat_vulnerability.zero_day_response.emergency_patching_capability",
+  "csa_ccm.threat_vulnerability.zero_day_response.process_defined",
+  "csa_ccm.threat_vulnerability.zero_day_response.workarounds_applied_when_patch_unavailable"
+ ]
+}

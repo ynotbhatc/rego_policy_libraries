@@ -1,0 +1,33 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/c2m2/schema.json",
+ "title": "Input facts for c2m2",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/c2m2/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "c2m2",
+ "x-entrypoint": "data.c2m2.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/c2m2/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "c2m2": {
+   "description": "Read in c2m2_main.rego.",
+   "properties": {
+    "practices": {
+     "description": "Read in c2m2_main.rego."
+    },
+    "target_mil": {
+     "description": "Read in c2m2_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "c2m2",
+  "c2m2.practices",
+  "c2m2.target_mil"
+ ]
+}

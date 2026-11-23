@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-bad-input check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
+.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-bad-input check-generated check-coverage check-per-file-load schemas oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -15,6 +15,7 @@ help:
 	@echo "  make standards-releases  Check upstream sources for releases newer than standards.yaml (network)"
 	@echo "  make mutation MODULE=<dir> [ARGS=...]  Mutation-test one module directory (slow; not run in CI)"
 	@echo "  make check-bad-input  Empty / null / string-typed input and mutated fixtures never pass (known failures listed)"
+	@echo "  make schemas       Regenerate the input schemas (schemas/input/<key>/schema.json); check-generated fails when stale"
 	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
@@ -72,7 +73,6 @@ xccdf:
 	@python3 converters/exports/xccdf_ids/build.py
 
 check-converters:
-	@python3 converters/packaging/wasm/build.py --check-data-paths
 	@bash converters/packaging/wasm/test/roundtrip.sh
 	@bash converters/packaging/gatekeeper/test/roundtrip.sh
 	@bash converters/packaging/kubewarden/test/roundtrip.sh
@@ -110,14 +110,20 @@ check-coverage:
 	@$(MAKE) --no-print-directory check-bad-input
 
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
-# matches the module and the OSCAL baseline profiles; the FedRAMP maps in crosswalk/framework_maps match those profiles; the PCI DSS evidence_spec blocks match their rule bodies;
-# the Linux STIG collector contract matches the rule tables; standards.yaml matches the module versions
+# matches the module and the OSCAL baseline profiles; the PCI DSS evidence_spec blocks match their rule bodies;
+# the Linux STIG collector contract matches the rule tables; standards.yaml matches the module versions;
+# the input schemas (schemas/input/) match their sources and pass their self-tests
 check-generated: check-no-data check-standards
 	@python3 scripts/gen_nist_800_53_index.py --check
 	@echo "NIST 800-53 index current"
-	@python3 scripts/gen_fedramp_framework_maps.py --check
 	@python3 scripts/gen_pci_dss_evidence_spec.py --check
 	@python3 tools/stig_generators/gen_collector_contract.py --check
+	@OPA=$(OPA) python3 scripts/gen_input_schemas.py --check
+
+# one JSON Schema per framework key for the facts its module reads, generated from the rule tables, the collector
+# manifests and the sources (docs/INPUT_SCHEMAS.md); validate a document with scripts/validate_input.py
+schemas:
+	@OPA=$(OPA) python3 scripts/gen_input_schemas.py
 
 # standards.yaml must list every custom.framework key and each version must match literal module text (no network)
 check-standards:

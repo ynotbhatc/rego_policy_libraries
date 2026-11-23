@@ -1,0 +1,43 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/crypto_miner_detection/schema.json",
+ "title": "Input facts for crypto_miner_detection",
+ "description": "Input paths referenced in the sources of threat_detection/crypto_mining/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "crypto_miner_detection",
+ "x-entrypoint": "data.crypto_miner_detection.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "threat_detection/crypto_mining/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "cron_jobs": {
+   "description": "Read in crypto_miner_detection.rego."
+  },
+  "installed_packages": {
+   "description": "Read in crypto_miner_detection.rego."
+  },
+  "network_connections": {
+   "description": "Read in crypto_miner_detection.rego."
+  },
+  "running_processes": {
+   "description": "Read in crypto_miner_detection.rego."
+  },
+  "suspicious_files": {
+   "description": "Read in crypto_miner_detection.rego."
+  },
+  "systemd_services": {
+   "description": "Read in crypto_miner_detection.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cron_jobs",
+  "installed_packages",
+  "network_connections",
+  "running_processes",
+  "suspicious_files",
+  "systemd_services"
+ ]
+}

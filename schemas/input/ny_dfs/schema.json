@@ -1,0 +1,523 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ny_dfs/schema.json",
+ "title": "Input facts for ny_dfs",
+ "description": "Input paths referenced in the sources of frameworks/financial/ny_dfs/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ny_dfs",
+ "x-entrypoint": "data.ny_dfs.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/financial/ny_dfs/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "least_privilege": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "password_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "strong": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "regular_review": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "terminated_users": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "prompt_revocation": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in ny_dfs_main.rego."
+  },
+  "asset_inventory": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "maintained": {
+     "description": "Read in ny_dfs_main.rego."
+    },
+    "tracks_required_fields": {
+     "description": "Read in ny_dfs_main.rego."
+    }
+   }
+  },
+  "audit_trail": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "minimum_3_years_financial": {
+       "description": "Read in ny_dfs_main.rego."
+      },
+      "minimum_5_years_security": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "tamper_resistant": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "business_continuity": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "ciso": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "annual_report": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "includes_material_issues": {
+       "description": "Read in ny_dfs_main.rego."
+      },
+      "to_board": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "designated": {
+     "description": "Read in ny_dfs_main.rego."
+    }
+   }
+  },
+  "cybersecurity_policy": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "annual_review": {
+     "description": "Read in ny_dfs_main.rego."
+    },
+    "board_approved": {
+     "description": "Read in ny_dfs_main.rego."
+    },
+    "documented": {
+     "description": "Read in ny_dfs_main.rego."
+    }
+   }
+  },
+  "cybersecurity_program": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "exists": {
+     "description": "Read in ny_dfs_main.rego."
+    },
+    "risk_based": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "design": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "data_retention": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "nonpublic_info": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "disposed_when_no_longer_needed": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "dfs_license_number": {
+   "description": "Read in ny_dfs_main.rego."
+  },
+  "encryption": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "nonpublic_info": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "at_rest": {
+       "description": "Read in ny_dfs_main.rego."
+      },
+      "in_transit": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in ny_dfs_main.rego."
+  },
+  "entity_type": {
+   "description": "Read in ny_dfs_main.rego."
+  },
+  "incident_response": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in ny_dfs_main.rego."
+      },
+      "roles_defined": {
+       "description": "Read in ny_dfs_main.rego."
+      },
+      "tested_annually": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "mfa": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "all_individuals_all_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "ciso_approved_compensating_controls": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "third_party_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "monitoring": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "anomalous_activity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "systems_in_place": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "user_activity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "privileged_users_monitored": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "personnel": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "qualified_staff": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "available": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "training": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cybersecurity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "annual": {
+         "description": "Read in ny_dfs_main.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "risk_assessment": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "conducted": {
+     "description": "Read in ny_dfs_main.rego."
+    },
+    "covers_nonpublic_information": {
+     "description": "Read in ny_dfs_main.rego."
+    },
+    "periodic_review": {
+     "description": "Read in ny_dfs_main.rego."
+    }
+   }
+  },
+  "superintendent_notice": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "annual_certification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "filed": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "within_72_hours": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "testing": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "findings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "remediation_tracked": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "penetration_test": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "vulnerability_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "semi_annual": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "third_party": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "periodic_due_diligence": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "contracts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "prompt_notification_required": {
+       "description": "Read in ny_dfs_main.rego."
+      },
+      "security_controls_required": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "training": {
+   "description": "Read in ny_dfs_main.rego.",
+   "properties": {
+    "security_awareness": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual": {
+       "description": "Read in ny_dfs_main.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.least_privilege",
+  "access_control.least_privilege.enforced",
+  "access_control.password_policy",
+  "access_control.password_policy.strong",
+  "access_control.privileged_accounts",
+  "access_control.privileged_accounts.regular_review",
+  "access_control.terminated_users",
+  "access_control.terminated_users.prompt_revocation",
+  "assessment_date",
+  "asset_inventory",
+  "asset_inventory.maintained",
+  "asset_inventory.tracks_required_fields",
+  "audit_trail",
+  "audit_trail.retention",
+  "audit_trail.retention.minimum_3_years_financial",
+  "audit_trail.retention.minimum_5_years_security",
+  "audit_trail.systems",
+  "audit_trail.systems.tamper_resistant",
+  "business_continuity",
+  "business_continuity.plan",
+  "business_continuity.plan.documented",
+  "ciso",
+  "ciso.annual_report",
+  "ciso.annual_report.includes_material_issues",
+  "ciso.annual_report.to_board",
+  "ciso.designated",
+  "cybersecurity_policy",
+  "cybersecurity_policy.annual_review",
+  "cybersecurity_policy.board_approved",
+  "cybersecurity_policy.documented",
+  "cybersecurity_program",
+  "cybersecurity_program.exists",
+  "cybersecurity_program.risk_based",
+  "cybersecurity_program.risk_based.design",
+  "data_retention",
+  "data_retention.nonpublic_info",
+  "data_retention.nonpublic_info.disposed_when_no_longer_needed",
+  "data_retention.policy",
+  "data_retention.policy.documented",
+  "dfs_license_number",
+  "encryption",
+  "encryption.nonpublic_info",
+  "encryption.nonpublic_info.at_rest",
+  "encryption.nonpublic_info.in_transit",
+  "entity_name",
+  "entity_type",
+  "incident_response",
+  "incident_response.plan",
+  "incident_response.plan.documented",
+  "incident_response.plan.roles_defined",
+  "incident_response.plan.tested_annually",
+  "mfa",
+  "mfa.all_individuals_all_systems",
+  "mfa.all_individuals_all_systems.enforced",
+  "mfa.ciso_approved_compensating_controls",
+  "mfa.ciso_approved_compensating_controls.documented",
+  "mfa.privileged_accounts",
+  "mfa.privileged_accounts.enforced",
+  "mfa.remote_access",
+  "mfa.remote_access.enforced",
+  "mfa.third_party_access",
+  "mfa.third_party_access.enforced",
+  "monitoring",
+  "monitoring.anomalous_activity",
+  "monitoring.anomalous_activity.systems_in_place",
+  "monitoring.user_activity",
+  "monitoring.user_activity.privileged_users_monitored",
+  "personnel",
+  "personnel.qualified_staff",
+  "personnel.qualified_staff.available",
+  "personnel.training",
+  "personnel.training.cybersecurity",
+  "personnel.training.cybersecurity.annual",
+  "risk_assessment",
+  "risk_assessment.conducted",
+  "risk_assessment.covers_nonpublic_information",
+  "risk_assessment.periodic_review",
+  "superintendent_notice",
+  "superintendent_notice.annual_certification",
+  "superintendent_notice.annual_certification.filed",
+  "superintendent_notice.process",
+  "superintendent_notice.process.within_72_hours",
+  "testing",
+  "testing.findings",
+  "testing.findings.remediation_tracked",
+  "testing.penetration_test",
+  "testing.penetration_test.annual",
+  "testing.vulnerability_assessment",
+  "testing.vulnerability_assessment.semi_annual",
+  "third_party",
+  "third_party.assessment",
+  "third_party.assessment.periodic_due_diligence",
+  "third_party.contracts",
+  "third_party.contracts.prompt_notification_required",
+  "third_party.contracts.security_controls_required",
+  "third_party.policy",
+  "third_party.policy.documented",
+  "training",
+  "training.security_awareness",
+  "training.security_awareness.annual"
+ ]
+}

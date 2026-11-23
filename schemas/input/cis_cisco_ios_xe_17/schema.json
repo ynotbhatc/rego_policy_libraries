@@ -1,0 +1,321 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_cisco_ios_xe_17/schema.json",
+ "title": "Input facts for cis_cisco_ios_xe_17",
+ "description": "Facts the module in benchmarks/cis/network_devices/cisco_ios_xe_17/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_cisco_ios_xe_17",
+ "x-entrypoint": "data.cis_cisco_ios_xe_17.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/network_devices/cisco_ios_xe_17/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_cisco_ios_xe_17_test.g",
+ "type": "object",
+ "properties": {
+  "cis_profile": {
+   "description": "Read in cis_cisco_ios_xe_17.rego, cis_cisco_ios_xe_17_main.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "Read in cis_cisco_ios_xe_17.rego, cis_cisco_ios_xe_17_main.rego."
+    }
+   }
+  },
+  "ios_xe_config": {
+   "description": "Read in cis_cisco_ios_xe_17.rego.",
+   "type": "object",
+   "properties": {
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "bgp_neighbor_password": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_address_family_set": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_af_auth_md5": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_af_interface_default": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_af_key_chain": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_interface_auth_mode": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_interface_key_chain": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_key_chain_defined": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_key_defined": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "eigrp_key_string_set": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "external_interface_acl_inbound": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ospf_area_message_digest": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ospf_interface_md5_key": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "private_source_acl_defined": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "rsa_modulus_2048_or_more": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "snmp_acl_defined": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "snmp_disabled_when_unused": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "snmpv3_user_aes128_minimum": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "urpf_on_untrusted_interfaces": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vty_acl_defined": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "banners": {
+     "description": "Read in cis_cisco_ios_xe_17.rego.",
+     "type": "object",
+     "properties": {
+      "exec": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Authorised use only."
+       ]
+      },
+      "login": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Authorised use only."
+       ]
+      },
+      "motd": {
+       "description": "Read in cis_cisco_ios_xe_17.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Authorised use only."
+       ]
+      }
+     }
+    },
+    "lines": {
+     "description": "Read in cis_cisco_ios_xe_17.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "hostname edge-r1"
+      ]
+     },
+     "examples": [
+      [
+       "hostname edge-r1",
+       "aaa new-model",
+       "aaa authentication login default group tacacs+ local"
+      ]
+     ]
+    },
+    "sections": {
+     "description": "Read in cis_cisco_ios_xe_17.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "header": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "archive"
+        ]
+       },
+       "lines": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "log config"
+         ]
+        },
+        "examples": [
+         [
+          "log config",
+          "logging enable"
+         ]
+        ]
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_profile",
+  "cis_profile.level",
+  "ios_xe_config",
+  "ios_xe_config.attest",
+  "ios_xe_config.attest.bgp_neighbor_password",
+  "ios_xe_config.attest.eigrp_address_family_set",
+  "ios_xe_config.attest.eigrp_af_auth_md5",
+  "ios_xe_config.attest.eigrp_af_interface_default",
+  "ios_xe_config.attest.eigrp_af_key_chain",
+  "ios_xe_config.attest.eigrp_interface_auth_mode",
+  "ios_xe_config.attest.eigrp_interface_key_chain",
+  "ios_xe_config.attest.eigrp_key_chain_defined",
+  "ios_xe_config.attest.eigrp_key_defined",
+  "ios_xe_config.attest.eigrp_key_string_set",
+  "ios_xe_config.attest.external_interface_acl_inbound",
+  "ios_xe_config.attest.ospf_area_message_digest",
+  "ios_xe_config.attest.ospf_interface_md5_key",
+  "ios_xe_config.attest.private_source_acl_defined",
+  "ios_xe_config.attest.rsa_modulus_2048_or_more",
+  "ios_xe_config.attest.snmp_acl_defined",
+  "ios_xe_config.attest.snmp_disabled_when_unused",
+  "ios_xe_config.attest.snmpv3_user_aes128_minimum",
+  "ios_xe_config.attest.urpf_on_untrusted_interfaces",
+  "ios_xe_config.attest.vty_acl_defined",
+  "ios_xe_config.banners",
+  "ios_xe_config.banners.exec",
+  "ios_xe_config.banners.login",
+  "ios_xe_config.banners.motd",
+  "ios_xe_config.lines",
+  "ios_xe_config.sections",
+  "ios_xe_config.sections[].header",
+  "ios_xe_config.sections[].lines"
+ ]
+}

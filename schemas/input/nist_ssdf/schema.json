@@ -1,0 +1,548 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist_ssdf/schema.json",
+ "title": "Input facts for nist_ssdf",
+ "description": "Facts the module in frameworks/federal/nist_ssdf/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nist_ssdf",
+ "x-entrypoint": "data.nist_ssdf.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/nist_ssdf/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist_ssdf.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "build": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "hardening_flags": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "integrity_verified": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "code_review": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "peer_review_required": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "coding": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "secure_coding_standards": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "configuration": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "defaults_verified": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "secure_defaults": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "dependencies": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "internal_components_secured": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "sca_enabled": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vetted_components": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vulnerability_scanned": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "design": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "design_review_performed": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_requirements_tracked": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "standardized_security_features": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "threat_model_performed": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "environments": {
+   "description": "Read in po_prepare_organization.rego.",
+   "type": "object",
+   "properties": {
+    "endpoints_secured": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "separated": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "organization": {
+   "description": "Read in po_prepare_organization.rego.",
+   "type": "object",
+   "properties": {
+    "management_commitment": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "requirements_maintained": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "role_training_provided": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "roles_defined": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_criteria_defined": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_requirements_defined": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "third_party_requirements_communicated": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "provenance": {
+   "description": "Read in ps_protect_software.rego.",
+   "type": "object",
+   "properties": {
+    "artifacts_signed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "integrity_verification": {
+     "description": "Read in ps_protect_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "release_management": {
+   "description": "Read in ps_protect_software.rego.",
+   "type": "object",
+   "properties": {
+    "provenance_recorded": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "releases_archived": {
+     "description": "Read in ps_protect_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "sbom_generated": {
+     "description": "Read in ps_protect_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "sast": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "enabled": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "source_control": {
+   "description": "Read in ps_protect_software.rego.",
+   "type": "object",
+   "properties": {
+    "access_controlled": {
+     "description": "Read in ps_protect_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "branch_protection": {
+     "description": "Read in ps_protect_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "change_tracking": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "testing": {
+   "description": "Read in pw_produce_secured_software.rego.",
+   "type": "object",
+   "properties": {
+    "dast_enabled": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_testing_planned": {
+     "description": "Read in pw_produce_secured_software.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "toolchain": {
+   "description": "Read in po_prepare_organization.rego.",
+   "type": "object",
+   "properties": {
+    "artifacts_collected": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_check_data_collected": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_integrated": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "specified": {
+     "description": "Read in po_prepare_organization.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "vulnerability_management": {
+   "description": "Read in rv_respond_vulnerabilities.rego.",
+   "type": "object",
+   "properties": {
+    "disclosure_program": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "monitoring_enabled": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "process_improvement": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remediation_sla_defined": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "response_process": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "root_cause_analysis": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "root_cause_trend_analysis": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "systemic_review": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "triage_process": {
+     "description": "Read in rv_respond_vulnerabilities.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "build",
+  "build.hardening_flags",
+  "build.integrity_verified",
+  "code_review",
+  "code_review.peer_review_required",
+  "coding",
+  "coding.secure_coding_standards",
+  "configuration",
+  "configuration.defaults_verified",
+  "configuration.secure_defaults",
+  "dependencies",
+  "dependencies.internal_components_secured",
+  "dependencies.sca_enabled",
+  "dependencies.vetted_components",
+  "dependencies.vulnerability_scanned",
+  "design",
+  "design.design_review_performed",
+  "design.security_requirements_tracked",
+  "design.standardized_security_features",
+  "design.threat_model_performed",
+  "environments",
+  "environments.endpoints_secured",
+  "environments.separated",
+  "organization",
+  "organization.management_commitment",
+  "organization.requirements_maintained",
+  "organization.role_training_provided",
+  "organization.roles_defined",
+  "organization.security_criteria_defined",
+  "organization.security_requirements_defined",
+  "organization.third_party_requirements_communicated",
+  "provenance",
+  "provenance.artifacts_signed",
+  "provenance.integrity_verification",
+  "release_management",
+  "release_management.provenance_recorded",
+  "release_management.releases_archived",
+  "release_management.sbom_generated",
+  "sast",
+  "sast.enabled",
+  "source_control",
+  "source_control.access_controlled",
+  "source_control.branch_protection",
+  "source_control.change_tracking",
+  "testing",
+  "testing.dast_enabled",
+  "testing.security_testing_planned",
+  "toolchain",
+  "toolchain.artifacts_collected",
+  "toolchain.security_check_data_collected",
+  "toolchain.security_integrated",
+  "toolchain.specified",
+  "vulnerability_management",
+  "vulnerability_management.disclosure_program",
+  "vulnerability_management.monitoring_enabled",
+  "vulnerability_management.process_improvement",
+  "vulnerability_management.remediation_sla_defined",
+  "vulnerability_management.response_process",
+  "vulnerability_management.root_cause_analysis",
+  "vulnerability_management.root_cause_trend_analysis",
+  "vulnerability_management.systemic_review",
+  "vulnerability_management.triage_process"
+ ]
+}

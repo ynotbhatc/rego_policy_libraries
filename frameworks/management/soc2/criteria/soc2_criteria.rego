@@ -1,5 +1,5 @@
 # SOC 2 - AICPA Trust Services Criteria: per-criterion evaluation for all 33 common criteria (CC1.1-CC9.2)
-# and the 16 mapped criteria of the optional categories. data.soc2.main reads this module and puts the
+# and all 28 criteria of the optional categories (61 in all). data.soc2.main reads this module and puts the
 # criteria of the categories in scope into compliance_report.control_results.
 #
 # Source: AICPA, TSP section 100, 2017 Trust Services Criteria (points of focus revised 2022; the criteria
@@ -16,22 +16,24 @@
 #                already read for them (supporting facts): the attestation never passes a criterion whose
 #                record says otherwise.
 #
-# Status: pass | fail | not_assessed, and reason: pass | fail | evidence_missing | attestation_missing.
-#   fail          a fact was supplied and does not meet its test, or the attestation is present but not signed
-#   not_assessed  a fact was not supplied (or is not of the expected type), or no attestation is present
-#   pass          every fact supplied and met, and (for an attestation criterion) a signed attestation
-# A fail outranks a missing fact. not_assessed is never a pass.
+# Status: pass | fail | evidence_missing | not_attested (the vocabulary of nist_800_53.main and tisax.main).
+#   fail              a fact was supplied and does not meet its test, or the attestation says attested: false
+#   not_attested      an attestation is present but not signed ({attested: true, by, date} not all there)
+#   evidence_missing  a fact was not supplied (or is not of the expected type), or no attestation is present
+#   pass              every fact supplied and met, and (for an attestation criterion) a signed attestation
+# Precedence: fail > not_attested > evidence_missing > pass. Only pass is a pass; missing evidence never is.
+# There is no separate reason field: the status, the basis and the findings say why a criterion did not pass.
 
 # METADATA
-# title: "SOC 2 Trust Services Criteria - per-criterion evaluation of all 33 common criteria and 16 optional-category criteria"
+# title: "SOC 2 Trust Services Criteria - per-criterion evaluation of all 33 common criteria and 28 optional-category criteria"
 # custom:
 #   class: compliance
 #   framework: soc2
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 49
-#     cited: 49
+#     checks: 61
+#     cited: 61
 #     density: sized
 #     basis: size
 #     tested: true
@@ -269,6 +271,7 @@ criteria := {
 			{"path": "data_disposal.verification.completion_verified", "test": "true"},
 		],
 	},
+	"PI1.1": {"title": "Processing specifications defined and communicated", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "attestation"},
 	"PI1.2": {
 		"title": "Input validation", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
 		"facts": [
@@ -287,6 +290,24 @@ criteria := {
 			{"path": "data_processing.error_handling.recovery_procedures.documented", "test": "true"},
 		],
 	},
+	"PI1.4": {
+		"title": "Outputs complete, accurate and delivered as intended", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
+		"facts": [
+			{"path": "data_processing.transmission.delivery_confirmation", "test": "true"},
+			{"path": "data_processing.transactions.reconciliation.enabled", "test": "true"},
+			{"path": "data_processing.transactions.reconciliation.frequency_hours", "test": "max_commitment", "commitment": "reconciliation_interval_hours"},
+		],
+	},
+	"PI1.5": {
+		"title": "Stored data kept complete and accurate", "group": "PI1 processing integrity", "category": "processing_integrity", "basis": "evidence",
+		"facts": [
+			{"path": "data_processing.integrity_checks.checksums.enabled", "test": "true"},
+			{"path": "databases.integrity_constraints.enforced", "test": "true"},
+			{"path": "databases.transactions.rollback_capability", "test": "true"},
+		],
+	},
+	"P1.1": {"title": "Privacy notice given to data subjects", "group": "P1 notice", "category": "privacy", "basis": "attestation"},
+	"P2.1": {"title": "Choices and consent explained to data subjects", "group": "P2 choice and consent", "category": "privacy", "basis": "attestation"},
 	"P3.1": {
 		"title": "Collection limited to stated purposes", "group": "P3 collection", "category": "privacy", "basis": "evidence",
 		"facts": [
@@ -316,6 +337,13 @@ criteria := {
 			{"path": "privacy.retention.retention_schedules.defined", "test": "true"},
 		],
 	},
+	"P4.3": {
+		"title": "Personal information disposed of securely", "group": "P4 use, retention and disposal", "category": "privacy", "basis": "evidence",
+		"facts": [
+			{"path": "privacy.retention.automated_deletion", "test": "true"},
+			{"path": "data_disposal.verification.completion_verified", "test": "true"},
+		],
+	},
 	"P5.1": {
 		"title": "Data subject access", "group": "P5 access", "category": "privacy", "basis": "evidence",
 		"facts": [{"path": "privacy.data_subject_rights.access_request.supported", "test": "true"}],
@@ -331,12 +359,29 @@ criteria := {
 			{"path": "privacy.third_party_sharing.due_diligence_performed", "test": "true"},
 		],
 	},
+	"P6.2": {
+		"title": "Record kept of authorised disclosures", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
+		"facts": [
+			{"path": "privacy.third_party_sharing.disclosure_logging.enabled", "test": "true"},
+		],
+	},
+	"P6.3": {"title": "Record kept of unauthorised disclosures", "group": "P6 disclosure and notification", "category": "privacy", "basis": "attestation"},
+	"P6.4": {"title": "Privacy commitments obtained from third parties", "group": "P6 disclosure and notification", "category": "privacy", "basis": "attestation"},
+	"P6.5": {"title": "Third parties report unauthorised disclosures", "group": "P6 disclosure and notification", "category": "privacy", "basis": "attestation"},
 	"P6.6": {
 		"title": "Breach notification within commitments", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
 		"facts": [
 			{"path": "privacy.breach_notification.procedures_documented", "test": "true"},
 			{"path": "privacy.breach_notification.timeline_compliance.authorities", "test": "max_commitment", "commitment": "breach_notice_hours_authorities"},
 			{"path": "privacy.breach_notification.timeline_compliance.individuals", "test": "max_commitment", "commitment": "breach_notice_hours_individuals"},
+		],
+	},
+	"P6.7": {
+		"title": "Account of personal information held and shared, on request", "group": "P6 disclosure and notification", "category": "privacy", "basis": "evidence",
+		"facts": [
+			{"path": "privacy.gdpr.records_of_processing", "test": "true"},
+			{"path": "privacy.data_subject_requests.request_logging", "test": "true"},
+			{"path": "privacy.data_subject_requests.response_timeline", "test": "max_commitment", "commitment": "data_subject_response_days"},
 		],
 	},
 	"P7.1": {
@@ -346,10 +391,12 @@ criteria := {
 			{"path": "privacy.data_quality.correction_procedures", "test": "true"},
 		],
 	},
+	"P8.1": {"title": "Privacy inquiries, complaints and disputes resolved", "group": "P8 monitoring and enforcement", "category": "privacy", "basis": "attestation"},
 }
 
-# Optional-category criteria with no check here (not evaluated, not claimed).
-not_mapped := ["PI1.1", "PI1.4", "PI1.5", "P1.1", "P2.1", "P4.3", "P6.2", "P6.3", "P6.4", "P6.5", "P6.7", "P8.1"]
+# Optional-category criteria with no check here (not evaluated, not claimed): none since every one of the 28
+# optional-category criteria has a check.
+not_mapped := []
 
 common_criteria_ids := {id | some id, c in criteria; c.category == "security"}
 
@@ -520,39 +567,52 @@ _att_path(id) := sprintf("input.soc2.attestations[%q]", [id])
 
 # ── Status per criterion ─────────────────────────────────────────────────────
 
-_reason(id) := "fail" if {
+_attestation_criterion(id) if criteria[id].basis == "attestation"
+
+_refused(a) if {
+	is_object(a)
+	a.attested == false
+}
+
+_status(id) := "fail" if {
 	count(_failed_facts(id)) > 0
 } else := "fail" if {
-	criteria[id].basis == "attestation"
+	_attestation_criterion(id)
+	_refused(_att(id))
+} else := "not_attested" if {
+	_attestation_criterion(id)
 	_att(id) != null
 	not _signed(_att(id))
-} else := "attestation_missing" if {
-	criteria[id].basis == "attestation"
+} else := "evidence_missing" if {
+	_attestation_criterion(id)
 	_att(id) == null
 } else := "evidence_missing" if {
 	count(_missing_facts(id)) > 0
 } else := "pass"
 
-_status_by_reason := {"pass": "pass", "fail": "fail", "attestation_missing": "not_assessed", "evidence_missing": "not_assessed"}
-
-reason_of[id] := _reason(id) if some id, _ in criteria
-
-status_of[id] := _status_by_reason[reason_of[id]] if some id, _ in criteria
+status_of[id] := _status(id) if some id, _ in criteria
 
 _detail_parts(id) := array.concat(
 	[concat("", ["fail - ", concat("; ", _failed_facts(id))]) | count(_failed_facts(id)) > 0],
 	array.concat(
-		[sprintf("fail - %v is present but not signed; it must be {attested: true, by: <name>, date: <date>}", [_att_path(id)]) |
-			criteria[id].basis == "attestation"
-			_att(id) != null
-			not _signed(_att(id))
+		[sprintf("fail - %v says attested: false", [_att_path(id)]) |
+			_attestation_criterion(id)
+			_refused(_att(id))
 		],
 		array.concat(
-			[sprintf("not assessed - no attestation at %v; this organisational criterion is met only by {attested: true, by, date}", [_att_path(id)]) |
-				criteria[id].basis == "attestation"
-				_att(id) == null
+			[sprintf("not attested - %v is present but not signed; it must be {attested: true, by: <name>, date: <date>}", [_att_path(id)]) |
+				_attestation_criterion(id)
+				_att(id) != null
+				not _refused(_att(id))
+				not _signed(_att(id))
 			],
-			[sprintf("not assessed - evidence missing: %v not supplied or not of the expected type", [concat(", ", _missing_facts(id))]) | count(_missing_facts(id)) > 0],
+			array.concat(
+				[sprintf("evidence missing - no attestation at %v; this organisational criterion is met only by {attested: true, by, date}", [_att_path(id)]) |
+					_attestation_criterion(id)
+					_att(id) == null
+				],
+				[sprintf("evidence missing - %v not supplied or not of the expected type", [concat(", ", _missing_facts(id))]) | count(_missing_facts(id)) > 0],
+			),
 		),
 	),
 )
@@ -567,7 +627,6 @@ result_of[id] := {
 	"basis": c.basis,
 	"supporting_facts": count(_facts(id)) > 0,
 	"status": status_of[id],
-	"reason": reason_of[id],
 	"evidence": sort([concat("", ["input.", f.path]) | some f in _facts(id)]),
 	"findings": findings_of[id],
 } if some id, c in criteria

@@ -1,0 +1,564 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_pfsense/schema.json",
+ "title": "Input facts for cis_pfsense",
+ "description": "Facts the module in benchmarks/cis/network_devices/pfsense/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_pfsense",
+ "x-entrypoint": "data.cis_pfsense.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/network_devices/pfsense/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_pfsense_test.good_input",
+ "type": "object",
+ "properties": {
+  "attest": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "admin_default_password_changed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "autoconfigbackup_enabled": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "default_accounts_secured": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ipv6_required": {
+     "description": "Read in cis_pfsense.rego."
+    },
+    "local_accounts_disabled": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "net_snmp_secured": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unused_rules_reviewed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vpn_portal_certificate_trusted": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "filter": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "rule": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "descr": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "web"
+        ]
+       },
+       "destination": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "address": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "10.0.0.5"
+          ]
+         },
+         "any": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         },
+         "port": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "443"
+          ]
+         }
+        }
+       },
+       "icmptype": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "echoreq"
+        ]
+       },
+       "interface": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "lan"
+        ]
+       },
+       "log": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         ""
+        ]
+       },
+       "protocol": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "tcp"
+        ]
+       },
+       "source": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "any": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         },
+         "network": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "lan"
+          ]
+         }
+        }
+       },
+       "type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "pass"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "hasync": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "synchronizetoip": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "10.0.0.2"
+     ]
+    }
+   }
+  },
+  "motd": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Authorized use only.\n"
+   ]
+  },
+  "openvpn": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "openvpn-server": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "authmode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "corp-ldap"
+        ]
+       },
+       "data_ciphers": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AES-256-GCM,CHACHA20-POLY1305"
+        ]
+       },
+       "description": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "ra"
+        ]
+       },
+       "digest": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "SHA256"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "server_tls_user"
+        ]
+       },
+       "vpnid": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "1"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "platform": {
+   "description": "Read in cis_pfsense.rego."
+  },
+  "snmpd": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "trapenable": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      ""
+     ]
+    },
+    "trapserver": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "10.0.0.9"
+     ]
+    }
+   }
+  },
+  "sshd_config": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "# Banner none\nBanner /etc/issue.net\n"
+   ]
+  },
+  "syslog": {
+   "description": "Read in cis_pfsense.rego."
+  },
+  "syslogd": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "enable": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "1"
+     ]
+    },
+    "remoteserver": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "10.0.0.8:514"
+     ]
+    }
+   }
+  },
+  "system": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "authserver": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "corp-ldap"
+        ]
+       },
+       "type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "ldap"
+        ]
+       }
+      }
+     }
+    },
+    "disableconsolemenu": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      ""
+     ]
+    },
+    "dnsserver": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "10.0.0.53"
+      ]
+     },
+     "examples": [
+      [
+       "10.0.0.53"
+      ]
+     ]
+    },
+    "domain": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "example.org"
+     ]
+    },
+    "hostname": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "fw01"
+     ]
+    },
+    "sshguard_blocktime": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "600"
+     ]
+    },
+    "sshguard_threshold": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "20"
+     ]
+    },
+    "timeservers": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0.pool.ntp.org 1.pool.ntp.org"
+     ]
+    },
+    "timezone": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "Europe/London"
+     ]
+    },
+    "webgui": {
+     "description": "Read in cis_pfsense.rego.",
+     "type": "object",
+     "properties": {
+      "protocol": {
+       "description": "Read in cis_pfsense.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "https"
+       ]
+      },
+      "session_timeout": {
+       "description": "Read in cis_pfsense.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "10"
+       ]
+      }
+     }
+    }
+   }
+  },
+  "unbound": {
+   "description": "Read in cis_pfsense.rego.",
+   "type": "object",
+   "properties": {
+    "dnssec": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      ""
+     ]
+    },
+    "enable": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      ""
+     ]
+    }
+   }
+  },
+  "version": {
+   "description": "Read in cis_pfsense.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "attest",
+  "attest.admin_default_password_changed",
+  "attest.autoconfigbackup_enabled",
+  "attest.default_accounts_secured",
+  "attest.ipv6_required",
+  "attest.local_accounts_disabled",
+  "attest.net_snmp_secured",
+  "attest.unused_rules_reviewed",
+  "attest.vpn_portal_certificate_trusted",
+  "filter",
+  "filter.rule",
+  "filter.rule[].descr",
+  "filter.rule[].destination",
+  "filter.rule[].destination.address",
+  "filter.rule[].destination.any",
+  "filter.rule[].destination.port",
+  "filter.rule[].icmptype",
+  "filter.rule[].interface",
+  "filter.rule[].log",
+  "filter.rule[].protocol",
+  "filter.rule[].source",
+  "filter.rule[].source.any",
+  "filter.rule[].source.network",
+  "filter.rule[].type",
+  "hasync",
+  "hasync.synchronizetoip",
+  "motd",
+  "openvpn",
+  "openvpn[\"openvpn-server\"]",
+  "openvpn[\"openvpn-server\"][].authmode",
+  "openvpn[\"openvpn-server\"][].data_ciphers",
+  "openvpn[\"openvpn-server\"][].description",
+  "openvpn[\"openvpn-server\"][].digest",
+  "openvpn[\"openvpn-server\"][].mode",
+  "openvpn[\"openvpn-server\"][].vpnid",
+  "platform",
+  "snmpd",
+  "snmpd.trapenable",
+  "snmpd.trapserver",
+  "sshd_config",
+  "syslog",
+  "syslogd",
+  "syslogd.enable",
+  "syslogd.remoteserver",
+  "system",
+  "system.authserver",
+  "system.authserver[].name",
+  "system.authserver[].type",
+  "system.disableconsolemenu",
+  "system.dnsserver",
+  "system.domain",
+  "system.hostname",
+  "system.sshguard_blocktime",
+  "system.sshguard_threshold",
+  "system.timeservers",
+  "system.timezone",
+  "system.webgui",
+  "system.webgui.protocol",
+  "system.webgui.session_timeout",
+  "unbound",
+  "unbound.dnssec",
+  "unbound.enable",
+  "version"
+ ]
+}

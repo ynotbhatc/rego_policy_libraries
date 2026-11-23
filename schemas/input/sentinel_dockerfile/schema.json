@@ -1,0 +1,27 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sentinel_dockerfile/schema.json",
+ "title": "Input facts for sentinel_dockerfile",
+ "description": "Input paths referenced in the sources of enforcement/dockerfile/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "sentinel_dockerfile",
+ "x-entrypoint": "data.sentinel_dockerfile.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "enforcement/dockerfile/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "approved_base_images": {
+   "description": "Read in sentinel_dockerfile.rego."
+  },
+  "instructions": {
+   "description": "Read in sentinel_dockerfile.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "approved_base_images",
+  "instructions"
+ ]
+}

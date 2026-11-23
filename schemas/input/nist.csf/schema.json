@@ -1,0 +1,2420 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist.csf/schema.json",
+ "title": "Input facts for nist.csf",
+ "description": "Facts the module in frameworks/federal/nist/cybersecurity_framework_2.0/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nist.csf",
+ "x-entrypoint": "data.nist.csf.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/nist/cybersecurity_framework_2.0/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist.csf.main_test._green",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in access_control.rego.",
+   "type": "object",
+   "properties": {
+    "authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "device_authentication": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "multi_factor_required": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "strong_authentication": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "identity_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "centralized_system": {
+       "description": "Read in access_control.rego."
+      },
+      "credential_policies": {
+       "description": "Read in access_control.rego."
+      },
+      "lifecycle_management": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "identity_proofing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "assertion_mechanisms": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "credential_binding": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "verification_processes": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "network_segmentation": {
+       "description": "Read in access_control.rego."
+      },
+      "traffic_filtering": {
+       "description": "Read in access_control.rego."
+      },
+      "unauthorized_access_prevention": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "least_privilege_implemented": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "regular_access_reviews": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "separation_of_duties": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "physical_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "controlled_access_points": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "monitoring_systems": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "visitor_management": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "encrypted_connections": {
+       "description": "Read in access_control.rego."
+      },
+      "multi_factor_authentication": {
+       "description": "Read in access_control.rego."
+      },
+      "vpn_required": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in nist_csf_main.rego."
+  },
+  "awareness_training": {
+   "description": "Read in access_control.rego.",
+   "type": "object",
+   "properties": {
+    "all_users_trained": {
+     "description": "Read in access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "executives": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cybersecurity_briefings": {
+       "description": "Read in access_control.rego."
+      },
+      "decision_impact_awareness": {
+       "description": "Read in access_control.rego."
+      },
+      "risk_understanding": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "privileged_users": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "regular_updates": {
+       "description": "Read in access_control.rego."
+      },
+      "responsibilities_documented": {
+       "description": "Read in access_control.rego."
+      },
+      "specialized_training": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "regular_updates": {
+     "description": "Read in access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "role_specific_training": {
+     "description": "Read in access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_personnel": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "certification_requirements": {
+       "description": "Read in access_control.rego."
+      },
+      "comprehensive_training": {
+       "description": "Read in access_control.rego."
+      },
+      "ongoing_education": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "third_party": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "compliance_verified": {
+       "description": "Read in access_control.rego."
+      },
+      "expectations_documented": {
+       "description": "Read in access_control.rego."
+      },
+      "training_provided": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    }
+   }
+  },
+  "data_security": {
+   "description": "Read in access_control.rego.",
+   "type": "object",
+   "properties": {
+    "asset_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "formal_processes": {
+       "description": "Read in access_control.rego."
+      },
+      "secure_disposal": {
+       "description": "Read in access_control.rego."
+      },
+      "transfer_procedures": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "at_rest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "access_controls": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "encryption_implemented": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "integrity_monitoring": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "availability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "capacity_planning": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "performance_monitoring": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "redundancy_implemented": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "environments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "dev_prod_separation": {
+       "description": "Read in access_control.rego."
+      },
+      "secure_transitions": {
+       "description": "Read in access_control.rego."
+      },
+      "test_isolation": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "hardware": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "integrity_verification": {
+       "description": "Read in access_control.rego."
+      },
+      "supply_chain_verification": {
+       "description": "Read in access_control.rego."
+      },
+      "trusted_hardware": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "in_transit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "encryption_required": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "integrity_verification": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "secure_protocols": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "integrity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "automated_monitoring": {
+       "description": "Read in access_control.rego."
+      },
+      "regular_validation": {
+       "description": "Read in access_control.rego."
+      },
+      "verification_mechanisms": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "leak_prevention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "dlp_tools_deployed": {
+       "description": "Read in access_control.rego."
+      },
+      "monitoring_implemented": {
+       "description": "Read in access_control.rego."
+      },
+      "response_procedures": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    }
+   }
+  },
+  "detect": {
+   "description": "Read in detect.rego.",
+   "type": "object",
+   "properties": {
+    "anomalies_events": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "alert_thresholds_established": {
+       "description": "Read in detect.rego."
+      },
+      "baseline_established": {
+       "description": "Read in detect.rego."
+      },
+      "detected_events_analyzed": {
+       "description": "Read in detect.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "event_data_aggregated": {
+       "description": "Read in detect.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "impact_determined": {
+       "description": "Read in detect.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "continuous_monitoring": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "external_provider_activity_monitored": {
+       "description": "Read in detect.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "malicious_code_detected": {
+       "description": "Read in detect.rego."
+      },
+      "network_monitored": {
+       "description": "Read in detect.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "personnel_activity_monitored": {
+       "description": "Read in detect.rego."
+      },
+      "physical_environment_monitored": {
+       "description": "Read in detect.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unauthorized_mobile_code_detected": {
+       "description": "Read in detect.rego."
+      },
+      "unauthorized_personnel_devices_monitored": {
+       "description": "Read in detect.rego."
+      },
+      "vulnerability_scans_performed": {
+       "description": "Read in detect.rego."
+      }
+     }
+    },
+    "detection_processes": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "activities_comply_with_requirements": {
+       "description": "Read in detect.rego."
+      },
+      "detection_processes_improved": {
+       "description": "Read in detect.rego."
+      },
+      "detection_processes_tested": {
+       "description": "Read in detect.rego."
+      },
+      "event_information_communicated": {
+       "description": "Read in detect.rego."
+      },
+      "roles_defined": {
+       "description": "Read in detect.rego."
+      }
+     }
+    }
+   }
+  },
+  "governance": {
+   "description": "Read in governance.rego.",
+   "type": "object",
+   "properties": {
+    "coordination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "collaborative_decision_making": {
+       "description": "Read in governance.rego."
+      },
+      "cross_functional_coordination": {
+       "description": "Read in governance.rego."
+      },
+      "information_sharing": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "cybersecurity_strategy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approved_by_leadership": {
+       "description": "Read in governance.rego."
+      },
+      "documented": {
+       "description": "Read in governance.rego."
+      },
+      "regularly_reviewed": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "oversight_structure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "clear_accountability": {
+       "description": "Read in governance.rego."
+      },
+      "defined_roles": {
+       "description": "Read in governance.rego."
+      },
+      "exists": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "policies": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cybersecurity_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "communicated": {
+         "description": "Read in governance.rego."
+        },
+        "current": {
+         "description": "Read in governance.rego."
+        },
+        "exists": {
+         "description": "Read in governance.rego."
+        }
+       }
+      }
+     }
+    },
+    "policy_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "policies_current": {
+       "description": "Read in governance.rego."
+      },
+      "regular_reviews": {
+       "description": "Read in governance.rego."
+      },
+      "stakeholder_involvement": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "procedures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "detailed_guidance": {
+       "description": "Read in governance.rego."
+      },
+      "implementation_procedures": {
+       "description": "Read in governance.rego."
+      },
+      "regularly_updated": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "risk_calculation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "consistent_metrics": {
+       "description": "Read in governance.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "regular_monitoring": {
+       "description": "Read in governance.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "standardized_methodology": {
+       "description": "Read in governance.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "risk_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "mitigation_prioritization": {
+       "description": "Read in governance.rego."
+      },
+      "regular_risk_assessments": {
+       "description": "Read in governance.rego."
+      },
+      "resource_allocation_aligned": {
+       "description": "Read in governance.rego."
+      },
+      "risk_appetite_communicated": {
+       "description": "Read in governance.rego."
+      },
+      "risk_prioritization_process": {
+       "description": "Read in governance.rego."
+      },
+      "risk_response_plans": {
+       "description": "Read in governance.rego."
+      },
+      "risk_tolerance_defined": {
+       "description": "Read in governance.rego."
+      },
+      "strategy_documented": {
+       "description": "Read in governance.rego."
+      },
+      "timeline_established": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "roles_responsibilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "assigned": {
+       "description": "Read in governance.rego."
+      },
+      "documented": {
+       "description": "Read in governance.rego."
+      },
+      "understood": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "strategic_alignment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "business_objectives_considered": {
+       "description": "Read in governance.rego."
+      },
+      "risk_decisions_aligned": {
+       "description": "Read in governance.rego."
+      },
+      "stakeholder_input_included": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "strategic_decisions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "documented_rationale": {
+       "description": "Read in governance.rego."
+      },
+      "risk_appetite_considered": {
+       "description": "Read in governance.rego."
+      },
+      "risk_considerations_included": {
+       "description": "Read in governance.rego."
+      }
+     }
+    },
+    "supply_chain": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "best_practices_sharing": {
+       "description": "Read in governance.rego."
+      },
+      "continuous_monitoring": {
+       "description": "Read in governance.rego."
+      },
+      "contractual_requirements": {
+       "description": "Read in governance.rego."
+      },
+      "due_diligence_processes": {
+       "description": "Read in governance.rego."
+      },
+      "incident_communication": {
+       "description": "Read in governance.rego."
+      },
+      "ongoing_assessment_processes": {
+       "description": "Read in governance.rego."
+      },
+      "performance_standards_set": {
+       "description": "Read in governance.rego."
+      },
+      "performance_tracking": {
+       "description": "Read in governance.rego."
+      },
+      "periodic_reviews": {
+       "description": "Read in governance.rego."
+      },
+      "policy_comprehensive": {
+       "description": "Read in governance.rego."
+      },
+      "policy_established": {
+       "description": "Read in governance.rego."
+      },
+      "policy_regularly_updated": {
+       "description": "Read in governance.rego."
+      },
+      "pre_contract_assessments": {
+       "description": "Read in governance.rego."
+      },
+      "relationship_monitoring": {
+       "description": "Read in governance.rego."
+      },
+      "requirements_in_contracts": {
+       "description": "Read in governance.rego."
+      },
+      "risk_evaluation_completed": {
+       "description": "Read in governance.rego."
+      },
+      "risk_management_program": {
+       "description": "Read in governance.rego."
+      },
+      "security_criteria_established": {
+       "description": "Read in governance.rego."
+      },
+      "supplier_requirements_defined": {
+       "description": "Read in governance.rego."
+      },
+      "threat_intelligence_sharing": {
+       "description": "Read in governance.rego."
+      },
+      "vendor_assessments": {
+       "description": "Read in governance.rego."
+      }
+     }
+    }
+   }
+  },
+  "identify": {
+   "description": "Read in identify.rego.",
+   "type": "object",
+   "properties": {
+    "asset_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "external_systems_cataloged": {
+       "description": "Read in identify.rego."
+      },
+      "organizational_communication_mapped": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "physical_devices_inventoried": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "resources_prioritized": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "software_platforms_inventoried": {
+       "description": "Read in identify.rego."
+      }
+     }
+    },
+    "business_environment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "priorities_for_mission_established": {
+       "description": "Read in identify.rego."
+      },
+      "role_in_critical_infrastructure_identified": {
+       "description": "Read in identify.rego."
+      },
+      "role_in_supply_chain_identified": {
+       "description": "Read in identify.rego."
+      }
+     }
+    },
+    "risk_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "asset_vulnerabilities_identified": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cyber_threat_intelligence_received": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "potential_impacts_identified": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "risk_determined": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "threats_identified_and_documented": {
+       "description": "Read in identify.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "risk_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "processes_established": {
+       "description": "Read in identify.rego."
+      },
+      "risk_tolerance_determined": {
+       "description": "Read in identify.rego."
+      }
+     }
+    },
+    "supply_chain": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cyber_scrm_processes_established": {
+       "description": "Read in identify.rego."
+      },
+      "suppliers_identified": {
+       "description": "Read in identify.rego."
+      }
+     }
+    }
+   }
+  },
+  "information_protection": {
+   "description": "Read in access_control.rego.",
+   "type": "object",
+   "properties": {
+    "backups": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "regular_backups": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "secure_storage": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tested_restoration": {
+       "description": "Read in access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "change_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approval_required": {
+       "description": "Read in access_control.rego."
+      },
+      "documentation_maintained": {
+       "description": "Read in access_control.rego."
+      },
+      "formal_process": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "configuration": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "baseline_established": {
+       "description": "Read in access_control.rego."
+      },
+      "regularly_updated": {
+       "description": "Read in access_control.rego."
+      },
+      "version_controlled": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    },
+    "sdlc": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "documentation_maintained": {
+       "description": "Read in access_control.rego."
+      },
+      "formal_process": {
+       "description": "Read in access_control.rego."
+      },
+      "security_integrated": {
+       "description": "Read in access_control.rego."
+      }
+     }
+    }
+   }
+  },
+  "nist_csf": {
+   "description": "Read in nist_csf_main.rego.",
+   "type": "object",
+   "properties": {
+    "subcategories": {
+     "description": "Read in nist_csf_main.rego.",
+     "type": "object",
+     "properties": {
+      "DE.AE-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.AE-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.AE-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.AE-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.AE-07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.AE-08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.CM-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.CM-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.CM-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.CM-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DE.CM-09": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OC-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OC-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OC-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OC-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OC-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OV-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OV-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.OV-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RR-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RR-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RR-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RR-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-09": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.SC-10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.AM-08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-09": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AA-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AA-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AA-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AA-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AA-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AA-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AT-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AT-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.IR-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.IR-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.IR-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.IR-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PS-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PS-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PS-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PS-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PS-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PS-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.CO-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.CO-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.RP-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.RP-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.RP-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.RP-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.RP-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RC.RP-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.AN-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.AN-06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.AN-07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.AN-08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.CO-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.CO-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MA-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MA-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MA-03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MA-04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MA-05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MI-01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "RS.MI-02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "recover": {
+   "description": "Read in recover.rego.",
+   "type": "object",
+   "properties": {
+    "communications": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "public_relations_managed": {
+       "description": "Read in recover.rego."
+      },
+      "recovery_activities_communicated": {
+       "description": "Read in recover.rego."
+      },
+      "reputation_repaired": {
+       "description": "Read in recover.rego."
+      }
+     }
+    },
+    "improvements": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "recovery_plans_incorporate_lessons": {
+       "description": "Read in recover.rego."
+      },
+      "recovery_strategies_updated": {
+       "description": "Read in recover.rego."
+      }
+     }
+    },
+    "recovery_planning": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "recovery_plan_executed": {
+       "description": "Read in recover.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "respond": {
+   "description": "Read in respond.rego.",
+   "type": "object",
+   "properties": {
+    "analysis": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "forensics_performed": {
+       "description": "Read in respond.rego."
+      },
+      "incident_impact_understood": {
+       "description": "Read in respond.rego."
+      },
+      "incidents_categorized": {
+       "description": "Read in respond.rego."
+      },
+      "notifications_investigated": {
+       "description": "Read in respond.rego."
+      },
+      "vulnerability_disclosures_addressed": {
+       "description": "Read in respond.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "communications": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "coordination_with_stakeholders": {
+       "description": "Read in respond.rego."
+      },
+      "events_reported_within_criteria": {
+       "description": "Read in respond.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "information_shared_with_stakeholders": {
+       "description": "Read in respond.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "personnel_know_roles": {
+       "description": "Read in respond.rego."
+      },
+      "voluntary_information_sharing": {
+       "description": "Read in respond.rego."
+      }
+     }
+    },
+    "improvements": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "response_plans_incorporate_lessons": {
+       "description": "Read in respond.rego."
+      },
+      "response_strategies_updated": {
+       "description": "Read in respond.rego."
+      }
+     }
+    },
+    "mitigation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "incidents_contained": {
+       "description": "Read in respond.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "incidents_mitigated": {
+       "description": "Read in respond.rego."
+      },
+      "newly_identified_vulnerabilities_mitigated": {
+       "description": "Read in respond.rego."
+      }
+     }
+    },
+    "response_planning": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "response_plan_executed": {
+       "description": "Read in respond.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.authentication",
+  "access_control.authentication.device_authentication",
+  "access_control.authentication.multi_factor_required",
+  "access_control.authentication.strong_authentication",
+  "access_control.identity_management",
+  "access_control.identity_management.centralized_system",
+  "access_control.identity_management.credential_policies",
+  "access_control.identity_management.lifecycle_management",
+  "access_control.identity_proofing",
+  "access_control.identity_proofing.assertion_mechanisms",
+  "access_control.identity_proofing.credential_binding",
+  "access_control.identity_proofing.verification_processes",
+  "access_control.network",
+  "access_control.network.network_segmentation",
+  "access_control.network.traffic_filtering",
+  "access_control.network.unauthorized_access_prevention",
+  "access_control.permissions",
+  "access_control.permissions.least_privilege_implemented",
+  "access_control.permissions.regular_access_reviews",
+  "access_control.permissions.separation_of_duties",
+  "access_control.physical_access",
+  "access_control.physical_access.controlled_access_points",
+  "access_control.physical_access.monitoring_systems",
+  "access_control.physical_access.visitor_management",
+  "access_control.remote_access",
+  "access_control.remote_access.encrypted_connections",
+  "access_control.remote_access.multi_factor_authentication",
+  "access_control.remote_access.vpn_required",
+  "assessment_date",
+  "awareness_training",
+  "awareness_training.all_users_trained",
+  "awareness_training.executives",
+  "awareness_training.executives.cybersecurity_briefings",
+  "awareness_training.executives.decision_impact_awareness",
+  "awareness_training.executives.risk_understanding",
+  "awareness_training.privileged_users",
+  "awareness_training.privileged_users.regular_updates",
+  "awareness_training.privileged_users.responsibilities_documented",
+  "awareness_training.privileged_users.specialized_training",
+  "awareness_training.regular_updates",
+  "awareness_training.role_specific_training",
+  "awareness_training.security_personnel",
+  "awareness_training.security_personnel.certification_requirements",
+  "awareness_training.security_personnel.comprehensive_training",
+  "awareness_training.security_personnel.ongoing_education",
+  "awareness_training.third_party",
+  "awareness_training.third_party.compliance_verified",
+  "awareness_training.third_party.expectations_documented",
+  "awareness_training.third_party.training_provided",
+  "data_security",
+  "data_security.asset_management",
+  "data_security.asset_management.formal_processes",
+  "data_security.asset_management.secure_disposal",
+  "data_security.asset_management.transfer_procedures",
+  "data_security.at_rest",
+  "data_security.at_rest.access_controls",
+  "data_security.at_rest.encryption_implemented",
+  "data_security.at_rest.integrity_monitoring",
+  "data_security.availability",
+  "data_security.availability.capacity_planning",
+  "data_security.availability.performance_monitoring",
+  "data_security.availability.redundancy_implemented",
+  "data_security.environments",
+  "data_security.environments.dev_prod_separation",
+  "data_security.environments.secure_transitions",
+  "data_security.environments.test_isolation",
+  "data_security.hardware",
+  "data_security.hardware.integrity_verification",
+  "data_security.hardware.supply_chain_verification",
+  "data_security.hardware.trusted_hardware",
+  "data_security.in_transit",
+  "data_security.in_transit.encryption_required",
+  "data_security.in_transit.integrity_verification",
+  "data_security.in_transit.secure_protocols",
+  "data_security.integrity",
+  "data_security.integrity.automated_monitoring",
+  "data_security.integrity.regular_validation",
+  "data_security.integrity.verification_mechanisms",
+  "data_security.leak_prevention",
+  "data_security.leak_prevention.dlp_tools_deployed",
+  "data_security.leak_prevention.monitoring_implemented",
+  "data_security.leak_prevention.response_procedures",
+  "detect",
+  "detect.anomalies_events",
+  "detect.anomalies_events.alert_thresholds_established",
+  "detect.anomalies_events.baseline_established",
+  "detect.anomalies_events.detected_events_analyzed",
+  "detect.anomalies_events.event_data_aggregated",
+  "detect.anomalies_events.impact_determined",
+  "detect.continuous_monitoring",
+  "detect.continuous_monitoring.external_provider_activity_monitored",
+  "detect.continuous_monitoring.malicious_code_detected",
+  "detect.continuous_monitoring.network_monitored",
+  "detect.continuous_monitoring.personnel_activity_monitored",
+  "detect.continuous_monitoring.physical_environment_monitored",
+  "detect.continuous_monitoring.unauthorized_mobile_code_detected",
+  "detect.continuous_monitoring.unauthorized_personnel_devices_monitored",
+  "detect.continuous_monitoring.vulnerability_scans_performed",
+  "detect.detection_processes",
+  "detect.detection_processes.activities_comply_with_requirements",
+  "detect.detection_processes.detection_processes_improved",
+  "detect.detection_processes.detection_processes_tested",
+  "detect.detection_processes.event_information_communicated",
+  "detect.detection_processes.roles_defined",
+  "governance",
+  "governance.coordination",
+  "governance.coordination.collaborative_decision_making",
+  "governance.coordination.cross_functional_coordination",
+  "governance.coordination.information_sharing",
+  "governance.cybersecurity_strategy",
+  "governance.cybersecurity_strategy.approved_by_leadership",
+  "governance.cybersecurity_strategy.documented",
+  "governance.cybersecurity_strategy.regularly_reviewed",
+  "governance.oversight_structure",
+  "governance.oversight_structure.clear_accountability",
+  "governance.oversight_structure.defined_roles",
+  "governance.oversight_structure.exists",
+  "governance.policies",
+  "governance.policies.cybersecurity_policy",
+  "governance.policies.cybersecurity_policy.communicated",
+  "governance.policies.cybersecurity_policy.current",
+  "governance.policies.cybersecurity_policy.exists",
+  "governance.policy_management",
+  "governance.policy_management.policies_current",
+  "governance.policy_management.regular_reviews",
+  "governance.policy_management.stakeholder_involvement",
+  "governance.procedures",
+  "governance.procedures.detailed_guidance",
+  "governance.procedures.implementation_procedures",
+  "governance.procedures.regularly_updated",
+  "governance.risk_calculation",
+  "governance.risk_calculation.consistent_metrics",
+  "governance.risk_calculation.regular_monitoring",
+  "governance.risk_calculation.standardized_methodology",
+  "governance.risk_management",
+  "governance.risk_management.mitigation_prioritization",
+  "governance.risk_management.regular_risk_assessments",
+  "governance.risk_management.resource_allocation_aligned",
+  "governance.risk_management.risk_appetite_communicated",
+  "governance.risk_management.risk_prioritization_process",
+  "governance.risk_management.risk_response_plans",
+  "governance.risk_management.risk_tolerance_defined",
+  "governance.risk_management.strategy_documented",
+  "governance.risk_management.timeline_established",
+  "governance.roles_responsibilities",
+  "governance.roles_responsibilities.assigned",
+  "governance.roles_responsibilities.documented",
+  "governance.roles_responsibilities.understood",
+  "governance.strategic_alignment",
+  "governance.strategic_alignment.business_objectives_considered",
+  "governance.strategic_alignment.risk_decisions_aligned",
+  "governance.strategic_alignment.stakeholder_input_included",
+  "governance.strategic_decisions",
+  "governance.strategic_decisions.documented_rationale",
+  "governance.strategic_decisions.risk_appetite_considered",
+  "governance.strategic_decisions.risk_considerations_included",
+  "governance.supply_chain",
+  "governance.supply_chain.best_practices_sharing",
+  "governance.supply_chain.continuous_monitoring",
+  "governance.supply_chain.contractual_requirements",
+  "governance.supply_chain.due_diligence_processes",
+  "governance.supply_chain.incident_communication",
+  "governance.supply_chain.ongoing_assessment_processes",
+  "governance.supply_chain.performance_standards_set",
+  "governance.supply_chain.performance_tracking",
+  "governance.supply_chain.periodic_reviews",
+  "governance.supply_chain.policy_comprehensive",
+  "governance.supply_chain.policy_established",
+  "governance.supply_chain.policy_regularly_updated",
+  "governance.supply_chain.pre_contract_assessments",
+  "governance.supply_chain.relationship_monitoring",
+  "governance.supply_chain.requirements_in_contracts",
+  "governance.supply_chain.risk_evaluation_completed",
+  "governance.supply_chain.risk_management_program",
+  "governance.supply_chain.security_criteria_established",
+  "governance.supply_chain.supplier_requirements_defined",
+  "governance.supply_chain.threat_intelligence_sharing",
+  "governance.supply_chain.vendor_assessments",
+  "identify",
+  "identify.asset_management",
+  "identify.asset_management.external_systems_cataloged",
+  "identify.asset_management.organizational_communication_mapped",
+  "identify.asset_management.physical_devices_inventoried",
+  "identify.asset_management.resources_prioritized",
+  "identify.asset_management.software_platforms_inventoried",
+  "identify.business_environment",
+  "identify.business_environment.priorities_for_mission_established",
+  "identify.business_environment.role_in_critical_infrastructure_identified",
+  "identify.business_environment.role_in_supply_chain_identified",
+  "identify.risk_assessment",
+  "identify.risk_assessment.asset_vulnerabilities_identified",
+  "identify.risk_assessment.cyber_threat_intelligence_received",
+  "identify.risk_assessment.potential_impacts_identified",
+  "identify.risk_assessment.risk_determined",
+  "identify.risk_assessment.threats_identified_and_documented",
+  "identify.risk_management",
+  "identify.risk_management.processes_established",
+  "identify.risk_management.risk_tolerance_determined",
+  "identify.supply_chain",
+  "identify.supply_chain.cyber_scrm_processes_established",
+  "identify.supply_chain.suppliers_identified",
+  "information_protection",
+  "information_protection.backups",
+  "information_protection.backups.regular_backups",
+  "information_protection.backups.secure_storage",
+  "information_protection.backups.tested_restoration",
+  "information_protection.change_control",
+  "information_protection.change_control.approval_required",
+  "information_protection.change_control.documentation_maintained",
+  "information_protection.change_control.formal_process",
+  "information_protection.configuration",
+  "information_protection.configuration.baseline_established",
+  "information_protection.configuration.regularly_updated",
+  "information_protection.configuration.version_controlled",
+  "information_protection.sdlc",
+  "information_protection.sdlc.documentation_maintained",
+  "information_protection.sdlc.formal_process",
+  "information_protection.sdlc.security_integrated",
+  "nist_csf",
+  "nist_csf.subcategories",
+  "nist_csf.subcategories[\"DE.AE-02\"]",
+  "nist_csf.subcategories[\"DE.AE-03\"]",
+  "nist_csf.subcategories[\"DE.AE-04\"]",
+  "nist_csf.subcategories[\"DE.AE-06\"]",
+  "nist_csf.subcategories[\"DE.AE-07\"]",
+  "nist_csf.subcategories[\"DE.AE-08\"]",
+  "nist_csf.subcategories[\"DE.CM-01\"]",
+  "nist_csf.subcategories[\"DE.CM-02\"]",
+  "nist_csf.subcategories[\"DE.CM-03\"]",
+  "nist_csf.subcategories[\"DE.CM-06\"]",
+  "nist_csf.subcategories[\"DE.CM-09\"]",
+  "nist_csf.subcategories[\"GV.OC-01\"]",
+  "nist_csf.subcategories[\"GV.OC-02\"]",
+  "nist_csf.subcategories[\"GV.OC-03\"]",
+  "nist_csf.subcategories[\"GV.OC-04\"]",
+  "nist_csf.subcategories[\"GV.OC-05\"]",
+  "nist_csf.subcategories[\"GV.OV-01\"]",
+  "nist_csf.subcategories[\"GV.OV-02\"]",
+  "nist_csf.subcategories[\"GV.OV-03\"]",
+  "nist_csf.subcategories[\"GV.PO-01\"]",
+  "nist_csf.subcategories[\"GV.PO-02\"]",
+  "nist_csf.subcategories[\"GV.RM-01\"]",
+  "nist_csf.subcategories[\"GV.RM-02\"]",
+  "nist_csf.subcategories[\"GV.RM-03\"]",
+  "nist_csf.subcategories[\"GV.RM-04\"]",
+  "nist_csf.subcategories[\"GV.RM-05\"]",
+  "nist_csf.subcategories[\"GV.RM-06\"]",
+  "nist_csf.subcategories[\"GV.RM-07\"]",
+  "nist_csf.subcategories[\"GV.RR-01\"]",
+  "nist_csf.subcategories[\"GV.RR-02\"]",
+  "nist_csf.subcategories[\"GV.RR-03\"]",
+  "nist_csf.subcategories[\"GV.RR-04\"]",
+  "nist_csf.subcategories[\"GV.SC-01\"]",
+  "nist_csf.subcategories[\"GV.SC-02\"]",
+  "nist_csf.subcategories[\"GV.SC-03\"]",
+  "nist_csf.subcategories[\"GV.SC-04\"]",
+  "nist_csf.subcategories[\"GV.SC-05\"]",
+  "nist_csf.subcategories[\"GV.SC-06\"]",
+  "nist_csf.subcategories[\"GV.SC-07\"]",
+  "nist_csf.subcategories[\"GV.SC-08\"]",
+  "nist_csf.subcategories[\"GV.SC-09\"]",
+  "nist_csf.subcategories[\"GV.SC-10\"]",
+  "nist_csf.subcategories[\"ID.AM-01\"]",
+  "nist_csf.subcategories[\"ID.AM-02\"]",
+  "nist_csf.subcategories[\"ID.AM-03\"]",
+  "nist_csf.subcategories[\"ID.AM-04\"]",
+  "nist_csf.subcategories[\"ID.AM-05\"]",
+  "nist_csf.subcategories[\"ID.AM-07\"]",
+  "nist_csf.subcategories[\"ID.AM-08\"]",
+  "nist_csf.subcategories[\"ID.IM-01\"]",
+  "nist_csf.subcategories[\"ID.IM-02\"]",
+  "nist_csf.subcategories[\"ID.IM-03\"]",
+  "nist_csf.subcategories[\"ID.IM-04\"]",
+  "nist_csf.subcategories[\"ID.RA-01\"]",
+  "nist_csf.subcategories[\"ID.RA-02\"]",
+  "nist_csf.subcategories[\"ID.RA-03\"]",
+  "nist_csf.subcategories[\"ID.RA-04\"]",
+  "nist_csf.subcategories[\"ID.RA-05\"]",
+  "nist_csf.subcategories[\"ID.RA-06\"]",
+  "nist_csf.subcategories[\"ID.RA-07\"]",
+  "nist_csf.subcategories[\"ID.RA-08\"]",
+  "nist_csf.subcategories[\"ID.RA-09\"]",
+  "nist_csf.subcategories[\"ID.RA-10\"]",
+  "nist_csf.subcategories[\"PR.AA-01\"]",
+  "nist_csf.subcategories[\"PR.AA-02\"]",
+  "nist_csf.subcategories[\"PR.AA-03\"]",
+  "nist_csf.subcategories[\"PR.AA-04\"]",
+  "nist_csf.subcategories[\"PR.AA-05\"]",
+  "nist_csf.subcategories[\"PR.AA-06\"]",
+  "nist_csf.subcategories[\"PR.AT-01\"]",
+  "nist_csf.subcategories[\"PR.AT-02\"]",
+  "nist_csf.subcategories[\"PR.DS-01\"]",
+  "nist_csf.subcategories[\"PR.DS-02\"]",
+  "nist_csf.subcategories[\"PR.DS-10\"]",
+  "nist_csf.subcategories[\"PR.DS-11\"]",
+  "nist_csf.subcategories[\"PR.IR-01\"]",
+  "nist_csf.subcategories[\"PR.IR-02\"]",
+  "nist_csf.subcategories[\"PR.IR-03\"]",
+  "nist_csf.subcategories[\"PR.IR-04\"]",
+  "nist_csf.subcategories[\"PR.PS-01\"]",
+  "nist_csf.subcategories[\"PR.PS-02\"]",
+  "nist_csf.subcategories[\"PR.PS-03\"]",
+  "nist_csf.subcategories[\"PR.PS-04\"]",
+  "nist_csf.subcategories[\"PR.PS-05\"]",
+  "nist_csf.subcategories[\"PR.PS-06\"]",
+  "nist_csf.subcategories[\"RC.CO-03\"]",
+  "nist_csf.subcategories[\"RC.CO-04\"]",
+  "nist_csf.subcategories[\"RC.RP-01\"]",
+  "nist_csf.subcategories[\"RC.RP-02\"]",
+  "nist_csf.subcategories[\"RC.RP-03\"]",
+  "nist_csf.subcategories[\"RC.RP-04\"]",
+  "nist_csf.subcategories[\"RC.RP-05\"]",
+  "nist_csf.subcategories[\"RC.RP-06\"]",
+  "nist_csf.subcategories[\"RS.AN-03\"]",
+  "nist_csf.subcategories[\"RS.AN-06\"]",
+  "nist_csf.subcategories[\"RS.AN-07\"]",
+  "nist_csf.subcategories[\"RS.AN-08\"]",
+  "nist_csf.subcategories[\"RS.CO-02\"]",
+  "nist_csf.subcategories[\"RS.CO-03\"]",
+  "nist_csf.subcategories[\"RS.MA-01\"]",
+  "nist_csf.subcategories[\"RS.MA-02\"]",
+  "nist_csf.subcategories[\"RS.MA-03\"]",
+  "nist_csf.subcategories[\"RS.MA-04\"]",
+  "nist_csf.subcategories[\"RS.MA-05\"]",
+  "nist_csf.subcategories[\"RS.MI-01\"]",
+  "nist_csf.subcategories[\"RS.MI-02\"]",
+  "recover",
+  "recover.communications",
+  "recover.communications.public_relations_managed",
+  "recover.communications.recovery_activities_communicated",
+  "recover.communications.reputation_repaired",
+  "recover.improvements",
+  "recover.improvements.recovery_plans_incorporate_lessons",
+  "recover.improvements.recovery_strategies_updated",
+  "recover.recovery_planning",
+  "recover.recovery_planning.recovery_plan_executed",
+  "respond",
+  "respond.analysis",
+  "respond.analysis.forensics_performed",
+  "respond.analysis.incident_impact_understood",
+  "respond.analysis.incidents_categorized",
+  "respond.analysis.notifications_investigated",
+  "respond.analysis.vulnerability_disclosures_addressed",
+  "respond.communications",
+  "respond.communications.coordination_with_stakeholders",
+  "respond.communications.events_reported_within_criteria",
+  "respond.communications.information_shared_with_stakeholders",
+  "respond.communications.personnel_know_roles",
+  "respond.communications.voluntary_information_sharing",
+  "respond.improvements",
+  "respond.improvements.response_plans_incorporate_lessons",
+  "respond.improvements.response_strategies_updated",
+  "respond.mitigation",
+  "respond.mitigation.incidents_contained",
+  "respond.mitigation.incidents_mitigated",
+  "respond.mitigation.newly_identified_vulnerabilities_mitigated",
+  "respond.response_planning",
+  "respond.response_planning.response_plan_executed"
+ ]
+}

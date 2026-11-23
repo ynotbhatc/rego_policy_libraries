@@ -1,0 +1,3832 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist.sp800_171a/schema.json",
+ "title": "Input facts for nist.sp800_171a",
+ "description": "Facts the module in frameworks/federal/nist/sp_800_171a/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nist.sp800_171a",
+ "x-entrypoint": "data.nist.sp800_171a.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/nist/sp_800_171a/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist.sp800_171a.main_test._green",
+ "type": "object",
+ "properties": {
+  "nist_sp_800_171a": {
+   "description": "Read in nist_800_171a_main.rego.",
+   "type": "object",
+   "properties": {
+    "determinations": {
+     "description": "Read in nist_800_171a_main.rego.",
+     "type": "object",
+     "properties": {
+      "DS-A.03.01.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.b[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.b[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.b[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.c.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.c.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.c.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.d.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.d.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.e": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.f.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.f.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.f.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.f.04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.f.05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.g.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.g.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.g.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.01.h": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.02[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.02[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.03[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.03[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.04.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.04.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.05.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.05.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.05.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.05.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.05.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.06.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.06.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.07.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.07.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.08.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.08.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.09": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.10.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.10.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.10.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.d[1]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.12.d[2]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.d[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.16.d[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.18.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.18.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.18.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.18.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.18.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.20.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.20.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.20.c.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.20.c.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.20.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.22.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.22.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.01.22.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.03[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.03[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.03[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.03[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.03[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.a.03[06]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.02.a.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.02.a.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.02.a.01[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.02.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.02.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.02.02.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.01.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.a.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.a.04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.a.05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.a.06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.02.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.03.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.03.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.04.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.04.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.05.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.05.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.05.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.05.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.06.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.06.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.06.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.06.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.06.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.06.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.07.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.07.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.07.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.08.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.08.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.03.08.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.01.b[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.01.b[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.02.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.02.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.02.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.02.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.d[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.03.d[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.04.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.04.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.05[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.05[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.05[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.05[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.05[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.05[06]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.b[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.b[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.b[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.06.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.08.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.08.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.08.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.10.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.10.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.10.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.10.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.10.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.10.c[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.11.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.11.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.11.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.11.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.11.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.12.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.04.12.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.01.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.01.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.02[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.02[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.03[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.03[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.04[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.04[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.05.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.05.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.05.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.05.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.05.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.e": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.07.f": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.c[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.c[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.c[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.c[06]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.e": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.f[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.05.12.f[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.01[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.01[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.01[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.01[06]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.02.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.02.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.02.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.02.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.02.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.a.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.b[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.04.b[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.a.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.a.04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.a.05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.a.06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.06.05.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.04.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.04.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.04.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.04.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.04.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.05.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.05.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.05.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.05.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.05.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.05.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.06.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.06.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.06.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.06.d[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.07.06.d[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.04[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.04[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.04[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.05.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.05.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.05.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.05.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.07.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.07.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.09.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.08.09.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.01.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.01.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.a.02[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.a.02[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.a.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.b.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.b.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.09.02.b.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.01.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.01.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.01.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.01.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.02.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.02.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.02.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.02.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.06.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.06.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.07.e": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.10.08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.01.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.01.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.02.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.04[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.04[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.11.04[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.02.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.02.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.02.b.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.02.b.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.02.b.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.03[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.03[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.03[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.03[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.b[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.12.05.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.01.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.01.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.01.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.01.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.04[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.04[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.06[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.06[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.08[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.08[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.09": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.10[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.10[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.12.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.12.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.13.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.13.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.13.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.13.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.13.b[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.13.15": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.01.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.02.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.02.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.02.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.02.c.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.02.c.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.02.c.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.03.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.03.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.03.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.06.a.01[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.06.a.01[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.06.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.06.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.06.c[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.06.c[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.08[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.08[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.08[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.14.08[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.01.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.01.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.06": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.07": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.a.08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.02.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.03.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.03.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.03.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.03.d[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.15.03.d[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.16.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.16.02.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.16.02.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.16.03.a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.16.03.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.16.03.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[06]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[07]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[08]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[09]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.a[10]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.b[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.b[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.01.c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.02[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.02[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.02[03]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.02[04]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.02[05]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.02[06]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.03.a[01]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.03.a[02]": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "DS-A.03.17.03.b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "nist_sp_800_171a",
+  "nist_sp_800_171a.determinations",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.b[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.b[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.b[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.c.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.c.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.c.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.d.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.d.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.e\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.f.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.f.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.f.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.f.04\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.f.05\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.g.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.g.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.g.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.01.h\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.02[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.02[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.03[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.03[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.04.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.04.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.05.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.05.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.05.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.05.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.05.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.06.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.06.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.07.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.07.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.08.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.08.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.09\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.10.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.10.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.10.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.11\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.d[1]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.12.d[2]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.d[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.16.d[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.18.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.18.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.18.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.18.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.18.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.20.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.20.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.20.c.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.20.c.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.20.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.22.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.22.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.01.22.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.03[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.03[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.03[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.03[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.03[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.a.03[06]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.02.a.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.02.a.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.02.a.01[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.02.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.02.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.02.02.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.01.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.a.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.a.04\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.a.05\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.a.06\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.02.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.03.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.03.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.04.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.04.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.05.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.05.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.05.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.05.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.06.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.06.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.06.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.06.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.06.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.06.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.07.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.07.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.07.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.08.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.08.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.03.08.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.01.b[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.01.b[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.02.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.02.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.02.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.02.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.d[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.03.d[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.04.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.04.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.05[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.05[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.05[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.05[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.05[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.05[06]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.b[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.b[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.b[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.06.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.08.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.08.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.08.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.10.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.10.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.10.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.10.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.10.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.10.c[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.11.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.11.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.11.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.11.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.11.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.12.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.04.12.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.01.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.01.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.02[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.02[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.03[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.03[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.04[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.04[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.05.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.05.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.05.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.05.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.05.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.e\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.07.f\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.11\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.c[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.c[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.c[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.c[06]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.e\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.f[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.05.12.f[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.01[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.01[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.01[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.01[06]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.02.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.02.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.02.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.02.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.02.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.a.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.b[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.04.b[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.a.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.a.04\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.a.05\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.a.06\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.06.05.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.04.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.04.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.04.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.04.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.04.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.05.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.05.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.05.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.05.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.05.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.05.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.06.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.06.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.06.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.06.d[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.07.06.d[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.04[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.04[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.04[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.05.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.05.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.05.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.05.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.07.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.07.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.09.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.08.09.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.01.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.01.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.a.02[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.a.02[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.a.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.b.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.b.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.09.02.b.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.01.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.01.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.01.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.01.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.02.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.02.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.02.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.02.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.06.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.06.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.d\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.07.e\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.10.08\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.01.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.01.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.02.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.04[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.04[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.11.04[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.02.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.02.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.02.b.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.02.b.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.02.b.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.03[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.03[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.03[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.03[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.b[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.12.05.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.01.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.01.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.01.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.01.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.04[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.04[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.06[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.06[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.08[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.08[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.09\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.10[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.10[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.11\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.12.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.12.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.13.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.13.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.13.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.13.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.13.b[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.13.15\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.01.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.02.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.02.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.02.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.02.c.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.02.c.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.02.c.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.03.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.03.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.03.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.06.a.01[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.06.a.01[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.06.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.06.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.06.c[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.06.c[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.08[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.08[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.08[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.14.08[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.01.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.01.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.02\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.03\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.04\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.05\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.06\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.07\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.a.08\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.02.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.03.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.03.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.03.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.03.d[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.15.03.d[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.16.01\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.16.02.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.16.02.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.16.03.a\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.16.03.b\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.16.03.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[06]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[07]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[08]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[09]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.a[10]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.b[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.b[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.01.c\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.02[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.02[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.02[03]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.02[04]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.02[05]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.02[06]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.03.a[01]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.03.a[02]\"]",
+  "nist_sp_800_171a.determinations[\"DS-A.03.17.03.b\"]"
+ ]
+}

@@ -1,0 +1,239 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/iso_42005/schema.json",
+ "title": "Input facts for iso_42005",
+ "description": "Facts the module in governance/iso_42005/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "iso_42005",
+ "x-entrypoint": "data.iso_42005.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "governance/iso_42005/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.iso_42005.main_test.all_true",
+ "type": "object",
+ "properties": {
+  "iso_42005": {
+   "description": "Read in iso_42005_main.rego.",
+   "type": "object",
+   "properties": {
+    "process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approval_before_deployment_required": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "documented_repeatable_approach": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "integrated_with_aims": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "integrated_with_management_processes": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "lifecycle_triggers_defined": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "methodology_and_roles_documented": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "monitoring_and_reassessment_defined": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "responsibilities_allocated": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sensitive_use_thresholds_defined": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "severity_likelihood_scales_defined": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "records": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approval_predates_deployment": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "data_quality_documented": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "deployment_environment_described": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "harms_and_benefits_assessed": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "impacts_rated": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "interested_parties_identified": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "mitigations_with_owners": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "model_versioned": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "related_assessments_cross_referenced": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "reviews_current": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "scope_stated": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unintended_uses_covered": {
+       "description": "Read in iso_42005_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "iso_42005",
+  "iso_42005.process",
+  "iso_42005.process.approval_before_deployment_required",
+  "iso_42005.process.documented_repeatable_approach",
+  "iso_42005.process.integrated_with_aims",
+  "iso_42005.process.integrated_with_management_processes",
+  "iso_42005.process.lifecycle_triggers_defined",
+  "iso_42005.process.methodology_and_roles_documented",
+  "iso_42005.process.monitoring_and_reassessment_defined",
+  "iso_42005.process.responsibilities_allocated",
+  "iso_42005.process.sensitive_use_thresholds_defined",
+  "iso_42005.process.severity_likelihood_scales_defined",
+  "iso_42005.records",
+  "iso_42005.records.approval_predates_deployment",
+  "iso_42005.records.data_quality_documented",
+  "iso_42005.records.deployment_environment_described",
+  "iso_42005.records.harms_and_benefits_assessed",
+  "iso_42005.records.impacts_rated",
+  "iso_42005.records.interested_parties_identified",
+  "iso_42005.records.mitigations_with_owners",
+  "iso_42005.records.model_versioned",
+  "iso_42005.records.related_assessments_cross_referenced",
+  "iso_42005.records.reviews_current",
+  "iso_42005.records.scope_stated",
+  "iso_42005.records.unintended_uses_covered"
+ ]
+}

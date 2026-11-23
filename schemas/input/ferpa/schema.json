@@ -1,0 +1,396 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ferpa/schema.json",
+ "title": "Input facts for ferpa",
+ "description": "Facts the module in frameworks/privacy/ferpa/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "ferpa",
+ "x-entrypoint": "data.ferpa.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/privacy/ferpa/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.ferpa.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in ferpa_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-16"
+   ]
+  },
+  "entity_name": {
+   "description": "Read in ferpa_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example School District"
+   ]
+  },
+  "ferpa": {
+   "description": "Read in ferpa_main.rego.",
+   "type": "object",
+   "properties": {
+    "access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "amendment_procedure_documented": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "hearing_available": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "process_documented": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "response_deadline_enforced": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "statement_right_provided": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "consent": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "records_retained": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "specifies_scope": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "written_before_disclosure": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "directory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "opt_out_honored": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "opt_out_offered": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "public_notice": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "exceptions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "audit_data_destroyed": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_written_agreements": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "health_safety_threat_recorded": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "studies_written_agreement": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "subpoena_notify_effort": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "transfer_conditions_met": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "notification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "includes_complaint_right": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "includes_disclosure_conditions": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "includes_right_to_amend": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "includes_right_to_inspect": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "published": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "program": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "eligible_student_rights_transfer": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "leu_records_separated": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "records_of_disclosure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "log_maintained": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "log_retained_with_records": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "redisclosure_recorded": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "redisclosure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "limits_communicated": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "violation_process": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "school_officials": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "access_controls_enforced": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "contractors_under_direct_control": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "criteria_in_notification": {
+       "description": "Read in ferpa_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "entity_name",
+  "ferpa",
+  "ferpa.access",
+  "ferpa.access.amendment_procedure_documented",
+  "ferpa.access.hearing_available",
+  "ferpa.access.process_documented",
+  "ferpa.access.response_deadline_enforced",
+  "ferpa.access.statement_right_provided",
+  "ferpa.consent",
+  "ferpa.consent.records_retained",
+  "ferpa.consent.specifies_scope",
+  "ferpa.consent.written_before_disclosure",
+  "ferpa.directory",
+  "ferpa.directory.opt_out_honored",
+  "ferpa.directory.opt_out_offered",
+  "ferpa.directory.public_notice",
+  "ferpa.exceptions",
+  "ferpa.exceptions.audit_data_destroyed",
+  "ferpa.exceptions.audit_written_agreements",
+  "ferpa.exceptions.health_safety_threat_recorded",
+  "ferpa.exceptions.studies_written_agreement",
+  "ferpa.exceptions.subpoena_notify_effort",
+  "ferpa.exceptions.transfer_conditions_met",
+  "ferpa.notification",
+  "ferpa.notification.includes_complaint_right",
+  "ferpa.notification.includes_disclosure_conditions",
+  "ferpa.notification.includes_right_to_amend",
+  "ferpa.notification.includes_right_to_inspect",
+  "ferpa.notification.published",
+  "ferpa.program",
+  "ferpa.program.eligible_student_rights_transfer",
+  "ferpa.program.leu_records_separated",
+  "ferpa.records_of_disclosure",
+  "ferpa.records_of_disclosure.log_maintained",
+  "ferpa.records_of_disclosure.log_retained_with_records",
+  "ferpa.records_of_disclosure.redisclosure_recorded",
+  "ferpa.redisclosure",
+  "ferpa.redisclosure.limits_communicated",
+  "ferpa.redisclosure.violation_process",
+  "ferpa.school_officials",
+  "ferpa.school_officials.access_controls_enforced",
+  "ferpa.school_officials.contractors_under_direct_control",
+  "ferpa.school_officials.criteria_in_notification"
+ ]
+}

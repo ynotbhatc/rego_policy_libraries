@@ -1,0 +1,1823 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cra/schema.json",
+ "title": "Input facts for cra",
+ "description": "Input paths referenced in the sources of frameworks/compliance/cra/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cra",
+ "x-entrypoint": "data.cra.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/compliance/cra/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in cra_main.rego."
+  },
+  "authorised_representative": {
+   "description": "Read in cra_authorised_representative.rego.",
+   "properties": {
+    "appointed": {
+     "description": "Read in cra_authorised_representative.rego."
+    },
+    "contact_in_user_info": {
+     "description": "Read in cra_authorised_representative.rego."
+    },
+    "mandate_enables_required_tasks": {
+     "description": "Read in cra_authorised_representative.rego."
+    },
+    "manufacturer_breaching_cra": {
+     "description": "Read in cra_authorised_representative.rego."
+    },
+    "manufacturer_outside_eu": {
+     "description": "Read in cra_authorised_representative.rego."
+    },
+    "required": {
+     "description": "Read in cra_authorised_representative.rego."
+    },
+    "tasks": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "conformity_assessment_delegated": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "cooperate_on_cyber_risk_action": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "essential_requirements_delegated": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "keeps_declaration_of_conformity": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "keeps_technical_documentation": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "mandate_termination_considered": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "notified_competent_authority": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "provide_info_on_request": {
+       "description": "Read in cra_authorised_representative.rego."
+      },
+      "retention_10_years": {
+       "description": "Read in cra_authorised_representative.rego."
+      }
+     }
+    },
+    "written_mandate_in_place": {
+     "description": "Read in cra_authorised_representative.rego."
+    }
+   }
+  },
+  "conformity_assessment": {
+   "description": "Read in cra_conformity_assessment.rego.",
+   "properties": {
+    "ce_marking": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "affixed": {
+       "description": "Read in cra_conformity_assessment.rego."
+      },
+      "notified_body_number_included": {
+       "description": "Read in cra_conformity_assessment.rego."
+      },
+      "visible_legible_indelible": {
+       "description": "Read in cra_conformity_assessment.rego."
+      }
+     }
+    },
+    "declaration_of_conformity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "includes_required_elements": {
+       "description": "Read in cra_conformity_assessment.rego."
+      },
+      "prepared": {
+       "description": "Read in cra_conformity_assessment.rego."
+      }
+     }
+    },
+    "european_cyber_cert_scheme_used": {
+     "description": "Read in cra_conformity_assessment.rego."
+    },
+    "notified_body": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "engaged": {
+       "description": "Read in cra_conformity_assessment.rego."
+      },
+      "id_number": {
+       "description": "Read in cra_conformity_assessment.rego."
+      }
+     }
+    },
+    "procedure_selected": {
+     "description": "Read in cra_conformity_assessment.rego."
+    },
+    "procedure_used": {
+     "description": "Read in cra_conformity_assessment.rego."
+    },
+    "product_class": {
+     "description": "Read in cra_conformity_assessment.rego."
+    },
+    "product_placed_on_market": {
+     "description": "Read in cra_conformity_assessment.rego."
+    },
+    "reassessment_on_substantial_modification": {
+     "description": "Read in cra_conformity_assessment.rego."
+    }
+   }
+  },
+  "cryptography": {
+   "description": "Read in cra_crypto_evidence.rego.",
+   "properties": {
+    "at_rest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "database_encryption_enabled": {
+       "description": "Read in cra_crypto_evidence.rego."
+      },
+      "disk_encryption_enabled": {
+       "description": "Read in cra_crypto_evidence.rego."
+      }
+     }
+    },
+    "ciphers_in_use": {
+     "description": "Read in cra_crypto_evidence.rego."
+    },
+    "fips_validated": {
+     "description": "Read in cra_crypto_evidence.rego."
+    },
+    "protocols_in_use": {
+     "description": "Read in cra_crypto_evidence.rego."
+    },
+    "signing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "anti_rollback_enforced": {
+       "description": "Read in cra_crypto_evidence.rego."
+      },
+      "hardware_backed_key_storage": {
+       "description": "Read in cra_crypto_evidence.rego."
+      },
+      "in_use": {
+       "description": "Read in cra_crypto_evidence.rego."
+      }
+     }
+    }
+   }
+  },
+  "declaration_of_conformity": {
+   "description": "Read in cra_declaration_of_conformity.rego.",
+   "properties": {
+    "additional_info": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "support_period_stated": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "authorised_representative": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "name": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "postal_address": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "required": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "conformity_statement": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "references_cra": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "languages": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "translated_for_member_states": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "manufacturer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "name": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "postal_address": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "notified_body": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "certificate_reference": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "id_number": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "involved": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "name": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "object_description": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "sufficient_for_traceability": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "product_identification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "model_id": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "serial_or_batch": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "signature": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "place_and_date": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "signatory_function": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "signatory_name": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "signed_for_manufacturer": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "standards": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "harmonised_standards_referenced": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      },
+      "standard_dates_versions_included": {
+       "description": "Read in cra_declaration_of_conformity.rego."
+      }
+     }
+    },
+    "statement_of_sole_responsibility": {
+     "description": "Read in cra_declaration_of_conformity.rego."
+    }
+   }
+  },
+  "distributor": {
+   "description": "Read in cra_distributor_obligations.rego.",
+   "properties": {
+    "action": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "availability_suspended": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "manufacturer_informed": {
+       "description": "Read in cra_distributor_obligations.rego."
+      }
+     }
+    },
+    "assumed_manufacturer_obligations": {
+     "description": "Read in cra_distributor_obligations.rego."
+    },
+    "cooperation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cooperate_on_corrective_action": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "provide_info_on_request": {
+       "description": "Read in cra_distributor_obligations.rego."
+      }
+     }
+    },
+    "corrective_action": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "severity": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "taken": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "withdrawal_or_recall": {
+       "description": "Read in cra_distributor_obligations.rego."
+      }
+     }
+    },
+    "handling": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "storage_preserves_compliance": {
+       "description": "Read in cra_distributor_obligations.rego."
+      }
+     }
+    },
+    "non_conformity_confirmed": {
+     "description": "Read in cra_distributor_obligations.rego."
+    },
+    "non_conformity_suspected": {
+     "description": "Read in cra_distributor_obligations.rego."
+    },
+    "product_is_imported": {
+     "description": "Read in cra_distributor_obligations.rego."
+    },
+    "product_modified_after_placement": {
+     "description": "Read in cra_distributor_obligations.rego."
+    },
+    "risk_awareness": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "market_surveillance_informed": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "significant_risk_known": {
+       "description": "Read in cra_distributor_obligations.rego."
+      }
+     }
+    },
+    "sold_under_own_brand": {
+     "description": "Read in cra_distributor_obligations.rego."
+    },
+    "verification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ce_marking_present": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "declaration_of_conformity_provided": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "importer_identification_clear": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "manufacturer_identification_clear": {
+       "description": "Read in cra_distributor_obligations.rego."
+      },
+      "user_instructions_provided": {
+       "description": "Read in cra_distributor_obligations.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in cra_main.rego."
+  },
+  "essential_requirements": {
+   "description": "Read in cra_essential_requirements.rego.",
+   "properties": {
+    "access_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authentication_state_of_the_art": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "identity_access_management": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "attack_surface": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "external_interfaces_minimized": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "availability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "dos_protection": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "essential_functions_preserved": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "confidentiality": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_at_rest_encrypted": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "data_in_transit_encrypted": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "data_deletion": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "secure_erase_available": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "data_minimization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "only_necessary_data_processed": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "default_config": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "allows_reset_to_secure_defaults": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "secure_out_of_box": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "exploitation_mitigation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "techniques_implemented": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "integrity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "code_signing_enforced": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "tamper_detection": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "logging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_events_recorded": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "user_can_opt_out": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "security_by_design": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented_assessment": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "threat_modeled": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    },
+    "vulnerability_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "automatic_updates_default": {
+       "description": "Read in cra_essential_requirements.rego."
+      },
+      "security_updates_distinct": {
+       "description": "Read in cra_essential_requirements.rego."
+      }
+     }
+    }
+   }
+  },
+  "foss": {
+   "description": "Read in cra_foss_exclusion.rego.",
+   "properties": {
+    "claimed_exemption": {
+     "description": "Read in cra_foss_exclusion.rego."
+    },
+    "distribution": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "claimant_integrates_into_own_commercial_product": {
+       "description": "Read in cra_foss_exclusion.rego."
+      },
+      "distributed_in_eu_market": {
+       "description": "Read in cra_foss_exclusion.rego."
+      }
+     }
+    },
+    "is_open_source_product": {
+     "description": "Read in cra_foss_exclusion.rego."
+    },
+    "not_made_available_in_course_of_commercial_activity": {
+     "description": "Read in cra_foss_exclusion.rego."
+    },
+    "process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exemption_basis_documented": {
+       "description": "Read in cra_foss_exclusion.rego."
+      },
+      "exemption_basis_reviewed_annually": {
+       "description": "Read in cra_foss_exclusion.rego."
+      }
+     }
+    },
+    "revenue": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "commercial_saas_hosting": {
+       "description": "Read in cra_foss_exclusion.rego."
+      },
+      "license_fees_collected": {
+       "description": "Read in cra_foss_exclusion.rego."
+      },
+      "paid_support_cost_recovery_only": {
+       "description": "Read in cra_foss_exclusion.rego."
+      },
+      "paid_support_offered": {
+       "description": "Read in cra_foss_exclusion.rego."
+      },
+      "use_conditioned_on_personal_data": {
+       "description": "Read in cra_foss_exclusion.rego."
+      }
+     }
+    }
+   }
+  },
+  "importer": {
+   "description": "Read in cra_importer_obligations.rego.",
+   "properties": {
+    "assumed_manufacturer_obligations": {
+     "description": "Read in cra_importer_obligations.rego."
+    },
+    "cooperation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cooperate_with_authorities": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "documentation_available_10_years": {
+       "description": "Read in cra_importer_obligations.rego."
+      }
+     }
+    },
+    "corrective_action": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "severity": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "taken_immediately": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "withdrawal_or_recall_initiated": {
+       "description": "Read in cra_importer_obligations.rego."
+      }
+     }
+    },
+    "handling": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "storage_transport_preserves_compliance": {
+       "description": "Read in cra_importer_obligations.rego."
+      }
+     }
+    },
+    "identification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "name_on_product": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "postal_address_on_product": {
+       "description": "Read in cra_importer_obligations.rego."
+      }
+     }
+    },
+    "non_conformity_known": {
+     "description": "Read in cra_importer_obligations.rego."
+    },
+    "placed_under_own_brand": {
+     "description": "Read in cra_importer_obligations.rego."
+    },
+    "risk_awareness": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "manufacturer_informed": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "market_surveillance_informed": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "product_presents_cyber_risk": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "significant_risk": {
+       "description": "Read in cra_importer_obligations.rego."
+      }
+     }
+    },
+    "verification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ce_marking_present": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "conformity_assessment_performed": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "declaration_of_conformity_accompanies_product": {
+       "description": "Read in cra_importer_obligations.rego."
+      },
+      "technical_documentation_exists": {
+       "description": "Read in cra_importer_obligations.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_reporting": {
+   "description": "Read in cra_incident_reporting.rego.",
+   "properties": {
+    "actively_exploited_vuln_known": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "affected_users_notified": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "corrective_measure_available": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "csirt_coordinator_identified": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "days_since_corrective_measure_available": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "days_since_incident_notification": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "early_warning_sent": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "final_vuln_report_sent": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "hours_since_aware_of_incident": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "hours_since_aware_of_vuln": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "incident_early_warning_sent": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "incident_final_report_sent": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "incident_notification_sent": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "mitigation_guidance_provided": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "notification_machine_readable_where_appropriate": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "process_documented": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "process_tested_annually": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "severe_incident_occurred": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "users_impacted": {
+     "description": "Read in cra_incident_reporting.rego."
+    },
+    "vulnerability_notification_sent": {
+     "description": "Read in cra_incident_reporting.rego."
+    }
+   }
+  },
+  "manufacturer": {
+   "description": "Read in cra_manufacturer_obligations.rego.",
+   "properties": {
+    "eol": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "end_of_support_notification_planned": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "essential_requirements": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "met": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "governance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "product_security_role_assigned": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "market_surveillance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cooperation_committed": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_to_enisa_documented": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "risk_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "in_technical_documentation": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      },
+      "performed": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "support_period": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "declared": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      },
+      "years": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "third_party_components": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "due_diligence_performed": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      },
+      "vulnerabilities_monitored": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "user_information": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "instructions_provided": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      },
+      "security_relevant_info_included": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    },
+    "vulnerability_handling": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "lifetime_coverage": {
+       "description": "Read in cra_manufacturer_obligations.rego."
+      }
+     }
+    }
+   }
+  },
+  "online_marketplace": {
+   "description": "Read in cra_online_marketplace.rego.",
+   "properties": {
+    "affected_buyers_notified": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "authority_takedown_order_actioned": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "authority_takedown_order_hours_pending": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "authority_takedown_order_received": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "buyers_affected": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "cooperation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "with_authorities_documented": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    },
+    "is_marketplace_provider": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "listing_removed": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "manufacturer_notified": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "non_compliant_listing_identified": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "process_documentation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cra_process_documented": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    },
+    "products_offered": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "includes_products_with_digital_elements": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    },
+    "random_checks": {
+     "description": "Read in cra_online_marketplace.rego.",
+     "properties": {
+      "performed": {
+       "description": "Read in cra_online_marketplace.rego."
+      },
+      "sample_size_pct": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    },
+    "reporting_channel": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists_for_consumers": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    },
+    "severity": {
+     "description": "Read in cra_online_marketplace.rego."
+    },
+    "single_point_of_contact": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "designated_for_authorities": {
+       "description": "Read in cra_online_marketplace.rego."
+      },
+      "designated_for_end_users": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    },
+    "trader_due_diligence": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cra_compliance_attested": {
+       "description": "Read in cra_online_marketplace.rego."
+      },
+      "identity_verified": {
+       "description": "Read in cra_online_marketplace.rego."
+      }
+     }
+    }
+   }
+  },
+  "oss_steward": {
+   "description": "Read in cra_oss_steward.rego.",
+   "properties": {
+    "actively_exploited_vuln_known": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "affected_users_informed": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "can_ensure_corrective_action": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "cooperation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "policy_providable_on_reasoned_request": {
+       "description": "Read in cra_oss_steward.rego."
+      },
+      "with_market_surveillance": {
+       "description": "Read in cra_oss_steward.rego."
+      }
+     }
+    },
+    "csirt_coordinator_identified": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "cvd_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "in_place": {
+       "description": "Read in cra_oss_steward.rego."
+      }
+     }
+    },
+    "cybersecurity_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "covers_secure_development_practices": {
+       "description": "Read in cra_oss_steward.rego."
+      },
+      "covers_vulnerability_handling": {
+       "description": "Read in cra_oss_steward.rego."
+      },
+      "documented_verifiably": {
+       "description": "Read in cra_oss_steward.rego."
+      },
+      "fosters_voluntary_reporting_and_sharing": {
+       "description": "Read in cra_oss_steward.rego."
+      }
+     }
+    },
+    "ensures_product_viability": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "incident_notified": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "involved_in_development": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "is_legal_person": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "not_manufacturer_of_product": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "oss_product_intended_for_commercial_activities": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "provides_development_infrastructure": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "provides_systematic_sustained_support": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "severe_incident_affecting_provided_infrastructure": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "vulnerability_notified": {
+     "description": "Read in cra_oss_steward.rego."
+    },
+    "vulnerability_reporting_channel": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists": {
+       "description": "Read in cra_oss_steward.rego."
+      }
+     }
+    }
+   }
+  },
+  "product_class": {
+   "description": "Read in cra_main.rego."
+  },
+  "product_name": {
+   "description": "Read in cra_main.rego."
+  },
+  "substantial_modification": {
+   "description": "Read in cra_substantial_modification.rego, cra_supply_chain_evidence.rego.",
+   "properties": {
+    "assessment_process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "criteria_published": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "documented": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "reviewed_annually": {
+       "description": "Read in cra_substantial_modification.rego."
+      }
+     }
+    },
+    "changes": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "added_network_connectivity": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "cryptographic_primitive_changed": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "cryptographic_review_performed": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "risk_assessment_updated": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "sbom_changed": {
+       "description": "Read in cra_substantial_modification.rego, cra_supply_chain_evidence.rego."
+      },
+      "sbom_published_after_change": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "security_relevant": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "users_notified": {
+       "description": "Read in cra_substantial_modification.rego."
+      }
+     }
+    },
+    "conformity_reassessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "performed": {
+       "description": "Read in cra_substantial_modification.rego."
+      },
+      "scope_appropriate": {
+       "description": "Read in cra_substantial_modification.rego."
+      }
+     }
+    },
+    "declaration_of_conformity_reissued": {
+     "description": "Read in cra_substantial_modification.rego."
+    },
+    "documentation_updated": {
+     "description": "Read in cra_substantial_modification.rego."
+    },
+    "modification_classified_substantial": {
+     "description": "Read in cra_substantial_modification.rego."
+    },
+    "modifier_assumed_manufacturer_obligations": {
+     "description": "Read in cra_substantial_modification.rego."
+    },
+    "modifier_is_not_original_manufacturer": {
+     "description": "Read in cra_substantial_modification.rego."
+    },
+    "support_period_recommitted": {
+     "description": "Read in cra_substantial_modification.rego."
+    }
+   }
+  },
+  "technical_documentation": {
+   "description": "Read in cra_technical_documentation.rego.",
+   "properties": {
+    "declaration_of_conformity": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "signed": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "design": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "architecture_diagram": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "cybersecurity_controls_mapped": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "product": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "classification": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "product_description": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "intended_purpose": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "support_period_declared": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "available_on_request": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "maintained_10_years": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "risk_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "mitigations_documented": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "threats_identified": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "sbom": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "included": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "results_documented": {
+       "description": "Read in cra_technical_documentation.rego."
+      },
+      "third_party_assessment": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    },
+    "vuln_process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cra_technical_documentation.rego."
+      }
+     }
+    }
+   }
+  },
+  "user_information": {
+   "description": "Read in cra_user_information.rego.",
+   "properties": {
+    "cybersecurity_properties": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "described": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "decommissioning": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "guidance_provided": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "intended_purpose": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "described": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "security_environment_specified": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "languages": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "member_state_languages_covered": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "manufacturer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "contact_for_vulnerability_reports": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "electronic_contact_provided": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "name_provided": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "postal_address_provided": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "product_identifier": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "batch_or_serial_provided": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "type_provided": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "version_provided": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "readability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "appropriate_for_users": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "risks_and_threats": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "sbom_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "disclosed_to_user": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "single_point_of_contact": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "published": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "support_period": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "disclosed": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "end_of_support_date_disclosed": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    },
+    "updates": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_method_disclosed": {
+       "description": "Read in cra_user_information.rego."
+      },
+      "installation_instructions": {
+       "description": "Read in cra_user_information.rego."
+      }
+     }
+    }
+   }
+  },
+  "vulnerability_handling": {
+   "description": "Read in cra_vulnerability_handling.rego.",
+   "properties": {
+    "coordinated_disclosure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "contact_point_provided": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "policy_published": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "disclosure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cve_assigned": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "public_disclosure_after_patch": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "expected_use_years": {
+     "description": "Read in cra_vulnerability_handling.rego."
+    },
+    "mitigation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "compensating_controls_documented": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "remediation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_documented": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "security_updates_provided_free": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "reporting_channel": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "sbom": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "components_documented": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "machine_readable_format": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "maintained": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "support_period_years": {
+     "description": "Read in cra_vulnerability_handling.rego."
+    },
+    "testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "regular_testing_performed": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "test_results_reviewed": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    },
+    "update_distribution": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "secure_channel": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      },
+      "timely_delivery": {
+       "description": "Read in cra_vulnerability_handling.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "authorised_representative",
+  "authorised_representative.appointed",
+  "authorised_representative.contact_in_user_info",
+  "authorised_representative.mandate_enables_required_tasks",
+  "authorised_representative.manufacturer_breaching_cra",
+  "authorised_representative.manufacturer_outside_eu",
+  "authorised_representative.required",
+  "authorised_representative.tasks",
+  "authorised_representative.tasks.conformity_assessment_delegated",
+  "authorised_representative.tasks.cooperate_on_cyber_risk_action",
+  "authorised_representative.tasks.essential_requirements_delegated",
+  "authorised_representative.tasks.keeps_declaration_of_conformity",
+  "authorised_representative.tasks.keeps_technical_documentation",
+  "authorised_representative.tasks.mandate_termination_considered",
+  "authorised_representative.tasks.notified_competent_authority",
+  "authorised_representative.tasks.provide_info_on_request",
+  "authorised_representative.tasks.retention_10_years",
+  "authorised_representative.written_mandate_in_place",
+  "conformity_assessment",
+  "conformity_assessment.ce_marking",
+  "conformity_assessment.ce_marking.affixed",
+  "conformity_assessment.ce_marking.notified_body_number_included",
+  "conformity_assessment.ce_marking.visible_legible_indelible",
+  "conformity_assessment.declaration_of_conformity",
+  "conformity_assessment.declaration_of_conformity.includes_required_elements",
+  "conformity_assessment.declaration_of_conformity.prepared",
+  "conformity_assessment.european_cyber_cert_scheme_used",
+  "conformity_assessment.notified_body",
+  "conformity_assessment.notified_body.engaged",
+  "conformity_assessment.notified_body.id_number",
+  "conformity_assessment.procedure_selected",
+  "conformity_assessment.procedure_used",
+  "conformity_assessment.product_class",
+  "conformity_assessment.product_placed_on_market",
+  "conformity_assessment.reassessment_on_substantial_modification",
+  "cryptography",
+  "cryptography.at_rest",
+  "cryptography.at_rest.database_encryption_enabled",
+  "cryptography.at_rest.disk_encryption_enabled",
+  "cryptography.ciphers_in_use",
+  "cryptography.fips_validated",
+  "cryptography.protocols_in_use",
+  "cryptography.signing",
+  "cryptography.signing.anti_rollback_enforced",
+  "cryptography.signing.hardware_backed_key_storage",
+  "cryptography.signing.in_use",
+  "declaration_of_conformity",
+  "declaration_of_conformity.additional_info",
+  "declaration_of_conformity.additional_info.support_period_stated",
+  "declaration_of_conformity.authorised_representative",
+  "declaration_of_conformity.authorised_representative.name",
+  "declaration_of_conformity.authorised_representative.postal_address",
+  "declaration_of_conformity.authorised_representative.required",
+  "declaration_of_conformity.conformity_statement",
+  "declaration_of_conformity.conformity_statement.references_cra",
+  "declaration_of_conformity.languages",
+  "declaration_of_conformity.languages.translated_for_member_states",
+  "declaration_of_conformity.manufacturer",
+  "declaration_of_conformity.manufacturer.name",
+  "declaration_of_conformity.manufacturer.postal_address",
+  "declaration_of_conformity.notified_body",
+  "declaration_of_conformity.notified_body.certificate_reference",
+  "declaration_of_conformity.notified_body.id_number",
+  "declaration_of_conformity.notified_body.involved",
+  "declaration_of_conformity.notified_body.name",
+  "declaration_of_conformity.object_description",
+  "declaration_of_conformity.object_description.sufficient_for_traceability",
+  "declaration_of_conformity.product_identification",
+  "declaration_of_conformity.product_identification.model_id",
+  "declaration_of_conformity.product_identification.serial_or_batch",
+  "declaration_of_conformity.signature",
+  "declaration_of_conformity.signature.place_and_date",
+  "declaration_of_conformity.signature.signatory_function",
+  "declaration_of_conformity.signature.signatory_name",
+  "declaration_of_conformity.signature.signed_for_manufacturer",
+  "declaration_of_conformity.standards",
+  "declaration_of_conformity.standards.harmonised_standards_referenced",
+  "declaration_of_conformity.standards.standard_dates_versions_included",
+  "declaration_of_conformity.statement_of_sole_responsibility",
+  "distributor",
+  "distributor.action",
+  "distributor.action.availability_suspended",
+  "distributor.action.manufacturer_informed",
+  "distributor.assumed_manufacturer_obligations",
+  "distributor.cooperation",
+  "distributor.cooperation.cooperate_on_corrective_action",
+  "distributor.cooperation.provide_info_on_request",
+  "distributor.corrective_action",
+  "distributor.corrective_action.severity",
+  "distributor.corrective_action.taken",
+  "distributor.corrective_action.withdrawal_or_recall",
+  "distributor.handling",
+  "distributor.handling.storage_preserves_compliance",
+  "distributor.non_conformity_confirmed",
+  "distributor.non_conformity_suspected",
+  "distributor.product_is_imported",
+  "distributor.product_modified_after_placement",
+  "distributor.risk_awareness",
+  "distributor.risk_awareness.market_surveillance_informed",
+  "distributor.risk_awareness.significant_risk_known",
+  "distributor.sold_under_own_brand",
+  "distributor.verification",
+  "distributor.verification.ce_marking_present",
+  "distributor.verification.declaration_of_conformity_provided",
+  "distributor.verification.importer_identification_clear",
+  "distributor.verification.manufacturer_identification_clear",
+  "distributor.verification.user_instructions_provided",
+  "entity_name",
+  "essential_requirements",
+  "essential_requirements.access_protection",
+  "essential_requirements.access_protection.authentication_state_of_the_art",
+  "essential_requirements.access_protection.identity_access_management",
+  "essential_requirements.attack_surface",
+  "essential_requirements.attack_surface.external_interfaces_minimized",
+  "essential_requirements.availability",
+  "essential_requirements.availability.dos_protection",
+  "essential_requirements.availability.essential_functions_preserved",
+  "essential_requirements.confidentiality",
+  "essential_requirements.confidentiality.data_at_rest_encrypted",
+  "essential_requirements.confidentiality.data_in_transit_encrypted",
+  "essential_requirements.data_deletion",
+  "essential_requirements.data_deletion.secure_erase_available",
+  "essential_requirements.data_minimization",
+  "essential_requirements.data_minimization.only_necessary_data_processed",
+  "essential_requirements.default_config",
+  "essential_requirements.default_config.allows_reset_to_secure_defaults",
+  "essential_requirements.default_config.secure_out_of_box",
+  "essential_requirements.exploitation_mitigation",
+  "essential_requirements.exploitation_mitigation.techniques_implemented",
+  "essential_requirements.integrity",
+  "essential_requirements.integrity.code_signing_enforced",
+  "essential_requirements.integrity.tamper_detection",
+  "essential_requirements.logging",
+  "essential_requirements.logging.security_events_recorded",
+  "essential_requirements.logging.user_can_opt_out",
+  "essential_requirements.security_by_design",
+  "essential_requirements.security_by_design.documented_assessment",
+  "essential_requirements.security_by_design.threat_modeled",
+  "essential_requirements.vulnerability_protection",
+  "essential_requirements.vulnerability_protection.automatic_updates_default",
+  "essential_requirements.vulnerability_protection.security_updates_distinct",
+  "foss",
+  "foss.claimed_exemption",
+  "foss.distribution",
+  "foss.distribution.claimant_integrates_into_own_commercial_product",
+  "foss.distribution.distributed_in_eu_market",
+  "foss.is_open_source_product",
+  "foss.not_made_available_in_course_of_commercial_activity",
+  "foss.process",
+  "foss.process.exemption_basis_documented",
+  "foss.process.exemption_basis_reviewed_annually",
+  "foss.revenue",
+  "foss.revenue.commercial_saas_hosting",
+  "foss.revenue.license_fees_collected",
+  "foss.revenue.paid_support_cost_recovery_only",
+  "foss.revenue.paid_support_offered",
+  "foss.revenue.use_conditioned_on_personal_data",
+  "importer",
+  "importer.assumed_manufacturer_obligations",
+  "importer.cooperation",
+  "importer.cooperation.cooperate_with_authorities",
+  "importer.cooperation.documentation_available_10_years",
+  "importer.corrective_action",
+  "importer.corrective_action.severity",
+  "importer.corrective_action.taken_immediately",
+  "importer.corrective_action.withdrawal_or_recall_initiated",
+  "importer.handling",
+  "importer.handling.storage_transport_preserves_compliance",
+  "importer.identification",
+  "importer.identification.name_on_product",
+  "importer.identification.postal_address_on_product",
+  "importer.non_conformity_known",
+  "importer.placed_under_own_brand",
+  "importer.risk_awareness",
+  "importer.risk_awareness.manufacturer_informed",
+  "importer.risk_awareness.market_surveillance_informed",
+  "importer.risk_awareness.product_presents_cyber_risk",
+  "importer.risk_awareness.significant_risk",
+  "importer.verification",
+  "importer.verification.ce_marking_present",
+  "importer.verification.conformity_assessment_performed",
+  "importer.verification.declaration_of_conformity_accompanies_product",
+  "importer.verification.technical_documentation_exists",
+  "incident_reporting",
+  "incident_reporting.actively_exploited_vuln_known",
+  "incident_reporting.affected_users_notified",
+  "incident_reporting.corrective_measure_available",
+  "incident_reporting.csirt_coordinator_identified",
+  "incident_reporting.days_since_corrective_measure_available",
+  "incident_reporting.days_since_incident_notification",
+  "incident_reporting.early_warning_sent",
+  "incident_reporting.final_vuln_report_sent",
+  "incident_reporting.hours_since_aware_of_incident",
+  "incident_reporting.hours_since_aware_of_vuln",
+  "incident_reporting.incident_early_warning_sent",
+  "incident_reporting.incident_final_report_sent",
+  "incident_reporting.incident_notification_sent",
+  "incident_reporting.mitigation_guidance_provided",
+  "incident_reporting.notification_machine_readable_where_appropriate",
+  "incident_reporting.process_documented",
+  "incident_reporting.process_tested_annually",
+  "incident_reporting.severe_incident_occurred",
+  "incident_reporting.users_impacted",
+  "incident_reporting.vulnerability_notification_sent",
+  "manufacturer",
+  "manufacturer.eol",
+  "manufacturer.eol.end_of_support_notification_planned",
+  "manufacturer.essential_requirements",
+  "manufacturer.essential_requirements.met",
+  "manufacturer.governance",
+  "manufacturer.governance.product_security_role_assigned",
+  "manufacturer.market_surveillance",
+  "manufacturer.market_surveillance.cooperation_committed",
+  "manufacturer.reporting",
+  "manufacturer.reporting.process_to_enisa_documented",
+  "manufacturer.risk_assessment",
+  "manufacturer.risk_assessment.in_technical_documentation",
+  "manufacturer.risk_assessment.performed",
+  "manufacturer.support_period",
+  "manufacturer.support_period.declared",
+  "manufacturer.support_period.years",
+  "manufacturer.third_party_components",
+  "manufacturer.third_party_components.due_diligence_performed",
+  "manufacturer.third_party_components.vulnerabilities_monitored",
+  "manufacturer.user_information",
+  "manufacturer.user_information.instructions_provided",
+  "manufacturer.user_information.security_relevant_info_included",
+  "manufacturer.vulnerability_handling",
+  "manufacturer.vulnerability_handling.lifetime_coverage",
+  "online_marketplace",
+  "online_marketplace.affected_buyers_notified",
+  "online_marketplace.authority_takedown_order_actioned",
+  "online_marketplace.authority_takedown_order_hours_pending",
+  "online_marketplace.authority_takedown_order_received",
+  "online_marketplace.buyers_affected",
+  "online_marketplace.cooperation",
+  "online_marketplace.cooperation.with_authorities_documented",
+  "online_marketplace.is_marketplace_provider",
+  "online_marketplace.listing_removed",
+  "online_marketplace.manufacturer_notified",
+  "online_marketplace.non_compliant_listing_identified",
+  "online_marketplace.process_documentation",
+  "online_marketplace.process_documentation.cra_process_documented",
+  "online_marketplace.products_offered",
+  "online_marketplace.products_offered.includes_products_with_digital_elements",
+  "online_marketplace.random_checks",
+  "online_marketplace.random_checks.performed",
+  "online_marketplace.random_checks.sample_size_pct",
+  "online_marketplace.reporting_channel",
+  "online_marketplace.reporting_channel.exists_for_consumers",
+  "online_marketplace.severity",
+  "online_marketplace.single_point_of_contact",
+  "online_marketplace.single_point_of_contact.designated_for_authorities",
+  "online_marketplace.single_point_of_contact.designated_for_end_users",
+  "online_marketplace.trader_due_diligence",
+  "online_marketplace.trader_due_diligence.cra_compliance_attested",
+  "online_marketplace.trader_due_diligence.identity_verified",
+  "oss_steward",
+  "oss_steward.actively_exploited_vuln_known",
+  "oss_steward.affected_users_informed",
+  "oss_steward.can_ensure_corrective_action",
+  "oss_steward.cooperation",
+  "oss_steward.cooperation.policy_providable_on_reasoned_request",
+  "oss_steward.cooperation.with_market_surveillance",
+  "oss_steward.csirt_coordinator_identified",
+  "oss_steward.cvd_policy",
+  "oss_steward.cvd_policy.in_place",
+  "oss_steward.cybersecurity_policy",
+  "oss_steward.cybersecurity_policy.covers_secure_development_practices",
+  "oss_steward.cybersecurity_policy.covers_vulnerability_handling",
+  "oss_steward.cybersecurity_policy.documented_verifiably",
+  "oss_steward.cybersecurity_policy.fosters_voluntary_reporting_and_sharing",
+  "oss_steward.ensures_product_viability",
+  "oss_steward.incident_notified",
+  "oss_steward.involved_in_development",
+  "oss_steward.is_legal_person",
+  "oss_steward.not_manufacturer_of_product",
+  "oss_steward.oss_product_intended_for_commercial_activities",
+  "oss_steward.provides_development_infrastructure",
+  "oss_steward.provides_systematic_sustained_support",
+  "oss_steward.severe_incident_affecting_provided_infrastructure",
+  "oss_steward.vulnerability_notified",
+  "oss_steward.vulnerability_reporting_channel",
+  "oss_steward.vulnerability_reporting_channel.exists",
+  "product_class",
+  "product_name",
+  "substantial_modification",
+  "substantial_modification.assessment_process",
+  "substantial_modification.assessment_process.criteria_published",
+  "substantial_modification.assessment_process.documented",
+  "substantial_modification.assessment_process.reviewed_annually",
+  "substantial_modification.changes",
+  "substantial_modification.changes.added_network_connectivity",
+  "substantial_modification.changes.cryptographic_primitive_changed",
+  "substantial_modification.changes.cryptographic_review_performed",
+  "substantial_modification.changes.risk_assessment_updated",
+  "substantial_modification.changes.sbom_changed",
+  "substantial_modification.changes.sbom_published_after_change",
+  "substantial_modification.changes.security_relevant",
+  "substantial_modification.changes.users_notified",
+  "substantial_modification.conformity_reassessment",
+  "substantial_modification.conformity_reassessment.performed",
+  "substantial_modification.conformity_reassessment.scope_appropriate",
+  "substantial_modification.declaration_of_conformity_reissued",
+  "substantial_modification.documentation_updated",
+  "substantial_modification.modification_classified_substantial",
+  "substantial_modification.modifier_assumed_manufacturer_obligations",
+  "substantial_modification.modifier_is_not_original_manufacturer",
+  "substantial_modification.support_period_recommitted",
+  "technical_documentation",
+  "technical_documentation.declaration_of_conformity",
+  "technical_documentation.declaration_of_conformity.signed",
+  "technical_documentation.design",
+  "technical_documentation.design.architecture_diagram",
+  "technical_documentation.design.cybersecurity_controls_mapped",
+  "technical_documentation.product",
+  "technical_documentation.product.classification",
+  "technical_documentation.product_description",
+  "technical_documentation.product_description.documented",
+  "technical_documentation.product_description.intended_purpose",
+  "technical_documentation.product_description.support_period_declared",
+  "technical_documentation.retention",
+  "technical_documentation.retention.available_on_request",
+  "technical_documentation.retention.maintained_10_years",
+  "technical_documentation.risk_assessment",
+  "technical_documentation.risk_assessment.documented",
+  "technical_documentation.risk_assessment.mitigations_documented",
+  "technical_documentation.risk_assessment.threats_identified",
+  "technical_documentation.sbom",
+  "technical_documentation.sbom.included",
+  "technical_documentation.testing",
+  "technical_documentation.testing.results_documented",
+  "technical_documentation.testing.third_party_assessment",
+  "technical_documentation.vuln_process",
+  "technical_documentation.vuln_process.documented",
+  "user_information",
+  "user_information.cybersecurity_properties",
+  "user_information.cybersecurity_properties.described",
+  "user_information.decommissioning",
+  "user_information.decommissioning.guidance_provided",
+  "user_information.intended_purpose",
+  "user_information.intended_purpose.described",
+  "user_information.intended_purpose.security_environment_specified",
+  "user_information.languages",
+  "user_information.languages.member_state_languages_covered",
+  "user_information.manufacturer",
+  "user_information.manufacturer.contact_for_vulnerability_reports",
+  "user_information.manufacturer.electronic_contact_provided",
+  "user_information.manufacturer.name_provided",
+  "user_information.manufacturer.postal_address_provided",
+  "user_information.product_identifier",
+  "user_information.product_identifier.batch_or_serial_provided",
+  "user_information.product_identifier.type_provided",
+  "user_information.product_identifier.version_provided",
+  "user_information.readability",
+  "user_information.readability.appropriate_for_users",
+  "user_information.risks_and_threats",
+  "user_information.risks_and_threats.documented",
+  "user_information.sbom_access",
+  "user_information.sbom_access.disclosed_to_user",
+  "user_information.single_point_of_contact",
+  "user_information.single_point_of_contact.published",
+  "user_information.support_period",
+  "user_information.support_period.disclosed",
+  "user_information.support_period.end_of_support_date_disclosed",
+  "user_information.updates",
+  "user_information.updates.access_method_disclosed",
+  "user_information.updates.installation_instructions",
+  "vulnerability_handling",
+  "vulnerability_handling.coordinated_disclosure",
+  "vulnerability_handling.coordinated_disclosure.contact_point_provided",
+  "vulnerability_handling.coordinated_disclosure.policy_published",
+  "vulnerability_handling.disclosure",
+  "vulnerability_handling.disclosure.cve_assigned",
+  "vulnerability_handling.disclosure.public_disclosure_after_patch",
+  "vulnerability_handling.expected_use_years",
+  "vulnerability_handling.mitigation",
+  "vulnerability_handling.mitigation.compensating_controls_documented",
+  "vulnerability_handling.remediation",
+  "vulnerability_handling.remediation.process_documented",
+  "vulnerability_handling.remediation.security_updates_provided_free",
+  "vulnerability_handling.reporting_channel",
+  "vulnerability_handling.reporting_channel.exists",
+  "vulnerability_handling.sbom",
+  "vulnerability_handling.sbom.components_documented",
+  "vulnerability_handling.sbom.machine_readable_format",
+  "vulnerability_handling.sbom.maintained",
+  "vulnerability_handling.support_period_years",
+  "vulnerability_handling.testing",
+  "vulnerability_handling.testing.regular_testing_performed",
+  "vulnerability_handling.testing.test_results_reviewed",
+  "vulnerability_handling.update_distribution",
+  "vulnerability_handling.update_distribution.secure_channel",
+  "vulnerability_handling.update_distribution.timely_delivery"
+ ]
+}

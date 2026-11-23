@@ -1,0 +1,111 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/fedramp/schema.json",
+ "title": "Input facts for fedramp",
+ "description": "Input paths referenced in the sources of frameworks/federal/fedramp/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "fedramp",
+ "x-entrypoint": "data.fedramp.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/federal/fedramp/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in fedramp_main.rego, fedramp_main_adapter.rego."
+  },
+  "authorization": {
+   "description": "Read in fedramp_main.rego.",
+   "properties": {
+    "fedramp_authorized": {
+     "description": "Read in fedramp_main.rego."
+    },
+    "last_3pao_assessment_days": {
+     "description": "Read in fedramp_main.rego."
+    }
+   }
+  },
+  "cloud_service": {
+   "description": "Read in fedramp_main.rego.",
+   "properties": {
+    "incident_response_plan_approved": {
+     "description": "Read in fedramp_main.rego."
+    },
+    "penetration_test_annual": {
+     "description": "Read in fedramp_main.rego."
+    },
+    "redundant_processing": {
+     "description": "Read in fedramp_main.rego."
+    }
+   }
+  },
+  "continuous_monitoring": {
+   "description": "Read in fedramp_main.rego."
+  },
+  "cryptography": {
+   "description": "Read in fedramp_main.rego.",
+   "properties": {
+    "algorithms_in_use": {
+     "description": "Read in fedramp_main.rego."
+    },
+    "fips_140_validated": {
+     "description": "Read in fedramp_main.rego."
+    }
+   }
+  },
+  "data_residency": {
+   "description": "Read in fedramp_main.rego.",
+   "properties": {
+    "us_only_required": {
+     "description": "Read in fedramp_main.rego."
+    }
+   }
+  },
+  "impact_level": {
+   "description": "Read in fedramp_main.rego, fedramp_main_adapter.rego."
+  },
+  "personnel": {
+   "description": "Read in fedramp_main.rego."
+  },
+  "personnel_requirements": {
+   "description": "Read in fedramp_main.rego.",
+   "properties": {
+    "us_persons_required_for_admin": {
+     "description": "Read in fedramp_main.rego."
+    }
+   }
+  },
+  "supply_chain": {
+   "description": "Read in fedramp_main.rego.",
+   "properties": {
+    "risk_management_plan": {
+     "description": "Read in fedramp_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "authorization",
+  "authorization.fedramp_authorized",
+  "authorization.last_3pao_assessment_days",
+  "cloud_service",
+  "cloud_service.incident_response_plan_approved",
+  "cloud_service.penetration_test_annual",
+  "cloud_service.redundant_processing",
+  "continuous_monitoring",
+  "cryptography",
+  "cryptography.algorithms_in_use",
+  "cryptography.fips_140_validated",
+  "data_residency",
+  "data_residency.us_only_required",
+  "impact_level",
+  "personnel",
+  "personnel_requirements",
+  "personnel_requirements.us_persons_required_for_admin",
+  "supply_chain",
+  "supply_chain.risk_management_plan"
+ ]
+}

@@ -1,0 +1,419 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist_800_82/schema.json",
+ "title": "Input facts for nist_800_82",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/nist_800_82/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "nist_800_82",
+ "x-entrypoint": "data.nist_800_82.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/nist_800_82/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "ot_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "managed": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "physical_ot_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "privileged_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "controlled": {
+         "description": "Read in nist_800_82_main.rego."
+        }
+       }
+      }
+     }
+    },
+    "vendor_remote": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "managed": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in nist_800_82_main.rego."
+  },
+  "configuration": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "change_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_process": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "ot_baseline": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "established": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "removable_media": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "software": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authorized_only": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "contingency": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "backup": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_configurations": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "manual_operations": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "procedures_documented": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "recovery": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_rto_defined": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in nist_800_82_main.rego."
+  },
+  "incident_response": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "ot_specific": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "coordination_with_safety": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "forensics_consideration": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "plan_exists": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ics_cert": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "monitoring": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "historian": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "log_integrity": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "ot_network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "continuous": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "protocol_aware": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "network": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "data_flows": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "demilitarized_zone": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "dial_up": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "disabled_or_controlled": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "ot_it_segmentation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "implemented": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_specific_controls": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "wireless": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_wireless_restricted": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "nist_800_82": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "target_impact": {
+     "description": "Read in nist_800_82_main.rego."
+    }
+   }
+  },
+  "ot_system_type": {
+   "description": "Read in nist_800_82_main.rego."
+  },
+  "patch_management": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "ot": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "compensating_controls": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "policy_exists": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "vendor_coordination": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "risk_assessment": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "asset_inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_systems": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "consequence_analysis": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "environmental": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "life_safety": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "ot_specific": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "conducted": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "sector": {
+   "description": "Read in nist_800_82_main.rego."
+  },
+  "supply_chain": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "ot_equipment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "counterfeit_protection": {
+       "description": "Read in nist_800_82_main.rego."
+      },
+      "vendor_assessment": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "system_integrity": {
+   "description": "Read in nist_800_82_main.rego.",
+   "properties": {
+    "firmware": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "integrity_verified": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    },
+    "malware_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ot_appropriate": {
+       "description": "Read in nist_800_82_main.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.ot_accounts",
+  "access_control.ot_accounts.managed",
+  "access_control.physical_ot_access",
+  "access_control.physical_ot_access.controlled",
+  "access_control.privileged_access",
+  "access_control.privileged_access.ot",
+  "access_control.privileged_access.ot.controlled",
+  "access_control.vendor_remote",
+  "access_control.vendor_remote.managed",
+  "assessment_date",
+  "configuration",
+  "configuration.change_management",
+  "configuration.change_management.ot_process",
+  "configuration.ot_baseline",
+  "configuration.ot_baseline.established",
+  "configuration.removable_media",
+  "configuration.removable_media.controlled",
+  "configuration.software",
+  "configuration.software.authorized_only",
+  "contingency",
+  "contingency.backup",
+  "contingency.backup.ot_configurations",
+  "contingency.manual_operations",
+  "contingency.manual_operations.procedures_documented",
+  "contingency.recovery",
+  "contingency.recovery.ot_rto_defined",
+  "entity_name",
+  "incident_response",
+  "incident_response.ot_specific",
+  "incident_response.ot_specific.coordination_with_safety",
+  "incident_response.ot_specific.forensics_consideration",
+  "incident_response.ot_specific.plan_exists",
+  "incident_response.reporting",
+  "incident_response.reporting.ics_cert",
+  "monitoring",
+  "monitoring.historian",
+  "monitoring.historian.log_integrity",
+  "monitoring.ot_network",
+  "monitoring.ot_network.continuous",
+  "monitoring.ot_network.protocol_aware",
+  "network",
+  "network.data_flows",
+  "network.data_flows.documented",
+  "network.demilitarized_zone",
+  "network.demilitarized_zone.exists",
+  "network.dial_up",
+  "network.dial_up.disabled_or_controlled",
+  "network.ot_it_segmentation",
+  "network.ot_it_segmentation.implemented",
+  "network.remote_access",
+  "network.remote_access.ot_specific_controls",
+  "network.wireless",
+  "network.wireless.ot_wireless_restricted",
+  "nist_800_82",
+  "nist_800_82.target_impact",
+  "ot_system_type",
+  "patch_management",
+  "patch_management.ot",
+  "patch_management.ot.compensating_controls",
+  "patch_management.ot.policy_exists",
+  "patch_management.ot.vendor_coordination",
+  "risk_assessment",
+  "risk_assessment.asset_inventory",
+  "risk_assessment.asset_inventory.ot_systems",
+  "risk_assessment.consequence_analysis",
+  "risk_assessment.consequence_analysis.environmental",
+  "risk_assessment.consequence_analysis.life_safety",
+  "risk_assessment.ot_specific",
+  "risk_assessment.ot_specific.conducted",
+  "sector",
+  "supply_chain",
+  "supply_chain.ot_equipment",
+  "supply_chain.ot_equipment.counterfeit_protection",
+  "supply_chain.ot_equipment.vendor_assessment",
+  "system_integrity",
+  "system_integrity.firmware",
+  "system_integrity.firmware.integrity_verified",
+  "system_integrity.malware_protection",
+  "system_integrity.malware_protection.ot_appropriate"
+ ]
+}

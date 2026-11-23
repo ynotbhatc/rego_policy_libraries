@@ -2761,6 +2761,72 @@
       "class": "compliance"
      },
      {
+      "id": "soc2-P1.1",
+      "title": "Privacy notice given to data subjects",
+      "props": [
+       {
+        "name": "label",
+        "value": "P1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P1.1_stmt",
+        "name": "statement",
+        "prose": "Privacy notice given to data subjects"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P2.1",
+      "title": "Choices and consent explained to data subjects",
+      "props": [
+       {
+        "name": "label",
+        "value": "P2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P2.1_stmt",
+        "name": "statement",
+        "prose": "Choices and consent explained to data subjects"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "soc2-P3.1",
       "title": "Collection limited to stated purposes",
       "props": [
@@ -2929,6 +2995,39 @@
       "class": "compliance"
      },
      {
+      "id": "soc2-P4.3",
+      "title": "Personal information disposed of securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "P4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P4.3_stmt",
+        "name": "statement",
+        "prose": "Personal information disposed of securely"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "soc2-P5.1",
       "title": "Data subject access",
       "props": [
@@ -3055,6 +3154,138 @@
       "class": "compliance"
      },
      {
+      "id": "soc2-P6.2",
+      "title": "Record kept of authorised disclosures",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.2_stmt",
+        "name": "statement",
+        "prose": "Record kept of authorised disclosures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P6.3",
+      "title": "Record kept of unauthorised disclosures",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.3_stmt",
+        "name": "statement",
+        "prose": "Record kept of unauthorised disclosures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P6.4",
+      "title": "Privacy commitments obtained from third parties",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.4_stmt",
+        "name": "statement",
+        "prose": "Privacy commitments obtained from third parties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P6.5",
+      "title": "Third parties report unauthorised disclosures",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.5_stmt",
+        "name": "statement",
+        "prose": "Third parties report unauthorised disclosures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "soc2-P6.6",
       "title": "Breach notification within commitments",
       "props": [
@@ -3112,6 +3343,39 @@
       "class": "compliance"
      },
      {
+      "id": "soc2-P6.7",
+      "title": "Account of personal information held and shared, on request",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.7_stmt",
+        "name": "statement",
+        "prose": "Account of personal information held and shared, on request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "soc2-P7.1",
       "title": "Personal data quality maintained",
       "props": [
@@ -3149,6 +3413,72 @@
         "id": "soc2-P7.1_obj.1",
         "name": "assessment-objective",
         "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P8.1",
+      "title": "Privacy inquiries, complaints and disputes resolved",
+      "props": [
+       {
+        "name": "label",
+        "value": "P8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P8.1_stmt",
+        "name": "statement",
+        "prose": "Privacy inquiries, complaints and disputes resolved"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-PI1.1",
+      "title": "Processing specifications defined and communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-PI1.1_stmt",
+        "name": "statement",
+        "prose": "Processing specifications defined and communicated"
        }
       ],
       "class": "compliance"
@@ -3233,6 +3563,72 @@
         "id": "soc2-PI1.3_obj.1",
         "name": "assessment-objective",
         "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-PI1.4",
+      "title": "Outputs complete, accurate and delivered as intended",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-PI1.4_stmt",
+        "name": "statement",
+        "prose": "Outputs complete, accurate and delivered as intended"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-PI1.5",
+      "title": "Stored data kept complete and accurate",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-PI1.5_stmt",
+        "name": "statement",
+        "prose": "Stored data kept complete and accurate"
        }
       ],
       "class": "compliance"
