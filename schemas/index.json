@@ -5,8 +5,8 @@
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 110,
-  "paths-only": 72
+  "static-scan+fixture": 111,
+  "paths-only": 71
  },
  "schemas": {
   "aca_155_260": {
@@ -820,9 +820,9 @@
    ]
   },
   "fedramp": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/fedramp/schema.json",
-   "known_paths": 20,
+   "known_paths": 44,
    "required_paths": 0,
    "source": [
     "frameworks/federal/fedramp/"

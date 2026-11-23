@@ -15,9 +15,17 @@ Output: out/<class>.tar.gz (policy.wasm + data + .manifest), out/manifest.json
 --no-all skips the combined bundle. Pull-request CI uses it: the combined build peaks near
 the 16 GB of a GitHub-hosted runner, while each per-class bundle stays at or under ~10 GB.
 The release workflow (converters.yml) still builds and publishes the combined bundle.
+
+Data files: a data.json / data.yaml in the tree lands in the bundle's data.json at its path from the
+repository root (crosswalk/stig_800_53/data.json -> data.crosswalk.stig_800_53), which is where the modules read
+it and where `opa eval -d .` and a `-b .` bundle put it. Each top-level directory is therefore passed to opa as
+`<dir>:<path>`; a bare path would root the data at the directory itself (data.stig_800_53) and the crosswalk
+would read as not loaded. Every build checks its own data.json and fails if a data file is not at that path.
+`--check-data-paths` runs the same check on a plain (non-wasm) bundle of the directories that hold data files: a
+few seconds, any opa binary; `make check-converters` runs it.
 """
 from __future__ import annotations
-import argparse, hashlib, json, pathlib, re, subprocess, sys
+import argparse, hashlib, json, pathlib, re, subprocess, sys, tarfile, tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 VOCAB = json.loads((ROOT / "scripts" / "metadata_vocabulary.json").read_text())
@@ -60,6 +68,67 @@ def discover():
     return by_class
 
 
+DATA_NAMES = ("data.json", "data.yaml", "data.yml")
+
+
+def root_args(tops):
+    """opa path arguments for top-level directories: `<dir>:<abs path>`, so a data file under the directory is
+    rooted at data.<dir>.<its path>, the same as from the repository root. Rego files are unaffected."""
+    return [f"{d}:{ROOT / d}" for d in sorted(tops)]
+
+
+def data_files(tops):
+    """(document path, file) for every data file under the given top-level directories, tests aside."""
+    found = []
+    for d in sorted(tops):
+        for p in sorted((ROOT / d).rglob("data.*")):
+            rel = p.relative_to(ROOT).parts
+            if p.name in DATA_NAMES and "tests" not in rel:
+                found.append((rel[:-1], p))
+    return found
+
+
+def check_data_paths(bundle, tops):
+    """Fail unless every data file under `tops` is in the bundle's data.json at its repository path, with the
+    same top-level keys as the file. Returns the document paths checked."""
+    with tarfile.open(bundle) as tar:
+        member = next((m for m in tar.getmembers() if m.name.lstrip("/") == "data.json"), None)
+        data = json.load(tar.extractfile(member)) if member else {}
+    checked, problems = [], []
+    for parts, src in data_files(tops):
+        dotted = "data." + ".".join(parts)
+        if src.suffix != ".json":
+            problems.append(f"{src.relative_to(ROOT)}: only data.json is checked; convert it or extend check_data_paths")
+            continue
+        node = data
+        for part in parts:
+            node = node.get(part) if isinstance(node, dict) else None
+        want = json.loads(src.read_text())
+        if not isinstance(node, dict) or any(node.get(k) != v for k, v in want.items()):
+            problems.append(f"{src.relative_to(ROOT)} is not at {dotted} in {pathlib.Path(bundle).name} "
+                            f"(top-level data keys: {sorted(data)[:8]})")
+        checked.append(dotted)
+    if problems:
+        raise SystemExit("bundle data is not at the documented path:\n  " + "\n  ".join(problems))
+    return checked
+
+
+def check_data_paths_quick():
+    """The data-path check without the wasm compile: a plain bundle of every top-level directory that holds a
+    data file, built with the same path arguments the wasm bundles use."""
+    tops = sorted({p.relative_to(ROOT).parts[0] for p, _ in policy_files()})
+    tops = [d for d in tops if data_files([d])]
+    if not tops:
+        print("data paths: no data files in the policy tree")
+        return 0
+    with tempfile.TemporaryDirectory() as tmp:
+        target = pathlib.Path(tmp) / "data-paths.tar.gz"
+        subprocess.run(["opa", "build", "-o", str(target), "--ignore", "tests", *root_args(tops)], check=True, cwd=ROOT)
+        checked = check_data_paths(target, tops)
+    print(f"data paths ok: {', '.join(checked)}")
+    return 0
+
+
 def build(classes_for_bundle, name, out, by_class):
     dirs, eps = set(), set()
     for c in classes_for_bundle:
@@ -73,9 +142,10 @@ def build(classes_for_bundle, name, out, by_class):
     for e in sorted(eps):
         cmd += ["-e", e]
     # pass top-level dirs that contain this class's policies; opa ignores tests by name
-    for d in sorted({d.split("/")[0] for d in dirs}):
-        cmd.append(str(ROOT / d))
+    tops = {d.split("/")[0] for d in dirs}
+    cmd += root_args(tops)
     subprocess.run(cmd, check=True, cwd=ROOT)
+    check_data_paths(target, tops)
     data = target.read_bytes()
     return {"bundle": target.name, "classes": sorted(classes_for_bundle), "entrypoints": sorted(eps),
             "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)}
@@ -86,7 +156,11 @@ def main():
     ap.add_argument("--out", default=str(pathlib.Path(__file__).resolve().parent / "out"))
     ap.add_argument("--classes", default="")
     ap.add_argument("--no-all", action="store_true", help="skip the combined bundle (pull-request CI)")
+    ap.add_argument("--check-data-paths", action="store_true",
+                    help="only check that data files land at their repository path in a bundle (no wasm build)")
     a = ap.parse_args()
+    if a.check_data_paths:
+        return check_data_paths_quick()
     out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
     by_class = discover()
     manifest = {"library": "rego_policy_libraries", "revision": subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip(), "bundles": []}

@@ -148,7 +148,7 @@ Three mapping sources, nothing else (a check is `<framework>:<label>`):
 3. `nist-800-53-module`: our own `nist_sp_800_53` module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (two controls).
 
 **Excluded:** the 65 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
-nothing: its three 800-53B maps are baseline membership, not library mappings, and the five framework maps (800-171 R3, CSF 2.0, ISO 27001,
+nothing: its three 800-53B and four FedRAMP Rev 5 maps are baseline membership, not library mappings, and the five framework maps (800-171 R3, CSF 2.0, ISO 27001,
 PCI DSS v4, CIS Controls v8.1) are `pending` with no rows. **No ISO 27001, PCI DSS, CSF or 800-171 coverage is counted here.**
 
 **Granularity.** STIG rules map to 800-53 *base* controls only (the CCI join does not distinguish enhancements), so they never cover an

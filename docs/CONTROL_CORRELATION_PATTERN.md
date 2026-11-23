@@ -193,8 +193,10 @@ Since 2026-11-22 a framework module can also read the spine itself. NIST SP 800-
 `crosswalk.correlation.control_evidence` when its input carries benchmark results: a
 gap fails the control, a satisfied verdict is recorded without changing the status,
 and nothing is passed on benchmark evidence alone. The frameworks in
-`framework_maps` follow through `framework_overlay.control_evidence`. The input
-shape, the combination rule and the loading notes are in `crosswalk/README.md`.
+`framework_maps` follow through `framework_overlay.control_evidence`: FedRAMP Rev 5
+(`frameworks/federal/fedramp`) is the first, through identity maps generated from the
+FedRAMP OSCAL baseline profiles. The input shape, the combination rule and the loading
+notes are in `crosswalk/README.md`.
 
 **Sourcing discipline (this is the part that keeps it accurate):** every
 framework map carries a `source` and a `status`. Only `status:"authoritative"`
