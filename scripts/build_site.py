@@ -474,6 +474,7 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
     if catalogs:
         scope += f", mapped to {catalogs} framework catalogs"
     version_line = f"release {fig['version']}" if fig["version"] else "the current release"
+    paged_files = sum(c for _, _, c, _ in built)
     standards = "\n".join(f"- [{n}]({SITE}/standard/{s}.html): {c} policy files"
                           for s, n, c, _ in sorted(built, key=lambda x: x[1]))
     (ROOT / "llms.txt").write_text(f"""# Rego Policy Libraries
@@ -512,7 +513,7 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
 - Entrypoint, the same for every framework: `data.<key>.main.compliance_report`, where `<key>` is the
   framework key (`cis_rhel9`, `stig_rhel9`, `nist_800_53`, `pci_dss`, ...). Over the OPA REST API:
   `POST /v1/data/<key>/main/compliance_report` with the facts as `{{"input": ...}}`.
-- Input: a JSON document of collected facts. Policies read only `input`; they do no I/O and need no data documents.
+- Input: a JSON document of collected facts. Policies read only `input` and do no I/O. The one data document is the optional benchmark-to-control crosswalk under `crosswalk/`, which the NIST SP 800-53 and FedRAMP modules use when benchmark results are supplied.
 - Report fields: `compliant` (boolean), `total_controls`, `failed_controls` (integers) and `violations`
   (a list of strings, each starting with the control id). Most frameworks add `passed_controls`,
   `compliance_percentage` and per-section results.
@@ -522,6 +523,10 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
   `oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest`, then `opa run --server --bundle bundle.tar.gz`.
 
 ## Standards
+
+One page per standard directory that holds at least {MIN_POLICIES} policy files: {len(built)} pages covering {paged_files:,} of the
+{files_n} policy files. The other {int(files_n.replace(",", "")) - paged_files:,} files sit in smaller directories and in `crosswalk/`; the
+[homepage catalog]({SITE}/) lists every directory, and its sections add up to {files_n}.
 
 {standards}
 

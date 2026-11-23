@@ -30,7 +30,7 @@ benchmarks/                    Per-platform configuration baselines
 │   ├── saas/                  M365 (this is where the SaaS pattern lives)
 │   ├── network/cisco/         Network device baselines
 │   └── mobile/ios/            Mobile platforms
-├── stig/                      DISA STIGs — 26 platform directories (4 sunset)
+├── stig/                      DISA STIGs — one directory per platform (sunset ones: stig/SUNSET.md)
 ├── scuba/m365/                CISA SCuBA M365 baselines (109 policies, 7 products, ScubaGear v2.0.0)
 ├── nsa_cisa/kubernetes/       NSA/CISA K8s Hardening Guidance v1.2 (43 controls)
 └── pss/kubernetes/            K8s Pod Security Standards (baseline + restricted)
@@ -80,7 +80,7 @@ converters/                    Rego → X (own section): packaging, interchange 
                                coverage and a round-trip test (converters/CONTRACT.md)
 ```
 
-Headline count: **740 policy files** (996 including tests) across the above directories, as of 2026-10-12. Count it, do not quote it: total minus test-named files (tests/ dirs, test_*, *_test.rego).
+Headline count: the policy-file and control-level figures are on the README count line and in `docs/metrics.json`, and CI (`scripts/count_controls.py --check-readme`) fails when they differ from the tree. Count it, do not quote it: total minus test-named files (tests/ dirs, test_*, *_test.rego).
 Count it, never quote it — `git ls-tree -r HEAD --name-only | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'` — the number drifts with every merge. Control-level checks (one file holds one to a few hundred): `make count` (`scripts/count_controls.py`, which reads OPA's parser via `scripts/rego_ast.py` and restamps `docs/metrics.json`); CI fails if README or metrics.json disagree. 13,771 at 2.3.5 (13,758 at 2.3.3 (distinct (id,text) checks per module, validated against 47 modules' own declared totals; 11,693 at 2.3.2 folded same-article checks) (7,560 at 2.3.0 read one policy shape; 7,867 at 2.2.0 was a regex count). `make coverage` stamps `custom.coverage` into every module's METADATA; `make check-coverage` (CI) fails on stale stamps; report in docs/COVERAGE_SCAN.md.
 
 ## Skill: Rego v1 syntax (MANDATORY)

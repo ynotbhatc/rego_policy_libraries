@@ -111,9 +111,39 @@ def keep_stamp(text):
     return "\n".join(t[:i] + block + t[i:]) + "\n"
 
 
+# Where the number of evaluated ids is written out by hand. Each pattern must be found and must give the number
+# the module evaluates on empty input; the header said 523 for a week after the module moved to 542.
+STATED = [
+    ("frameworks/federal/nist/sp_800_53/nist_800_53_main.rego", [
+        (r'# title: "[^"\n]*?(\d+) ids"', "ids"), (r"evaluates (\d+) of them", "ids"), (r"(\d+) evaluated ids", "ids"),
+        (r"(\d+) of 1,014 active controls", "ids"), (r"base controls, in all 20 families, and (\d+) enhancements", "enh")]),
+    ("docs/FRAMEWORKS.md", [(r"(\d+) controls and enhancements of the 1,014", "ids"), (r"base controls plus (\d+) enhancements", "enh")]),
+    ("docs/QUICKSTARTS.md", [(r"nist_800_53\.main\.compliance_report'` \| of (\d+) controls", "ids")]),
+]
+
+
+def stated_count_errors():
+    """Hand-written statements of the evaluated-id count that differ from what the module evaluates."""
+    evaluated, _ = empty_input_run()
+    want = {"ids": len(evaluated), "enh": sum(1 for i in evaluated if "(" in i)}
+    errs = []
+    for rel, patterns in STATED:
+        text = (ROOT / rel).read_text()
+        for pat, what in patterns:
+            found = re.findall(pat, text)
+            if not found:
+                errs.append(f"{rel}: no longer states the evaluated count (pattern {pat!r}); update STATED in scripts/gen_nist_800_53_index.py")
+            errs += [f"{rel}: says {n} ({'ids' if what == 'ids' else 'enhancements'}); the module evaluates {want[what]}"
+                     for n in found if int(n) != want[what]]
+    return errs
+
+
 if __name__ == "__main__":
     text = build()
     if "--check" in sys.argv:
-        sys.exit(0 if OUT.exists() and OUT.read_text() == text else f"{OUT.relative_to(ROOT)} is stale: run scripts/gen_nist_800_53_index.py")
+        if not (OUT.exists() and OUT.read_text() == text):
+            sys.exit(f"{OUT.relative_to(ROOT)} is stale: run scripts/gen_nist_800_53_index.py")
+        problems = stated_count_errors()
+        sys.exit("NIST SP 800-53 evaluated-id count is stated wrongly:\n  " + "\n  ".join(problems) if problems else 0)
     OUT.write_text(text)
     print(f"wrote {OUT.relative_to(ROOT)}")

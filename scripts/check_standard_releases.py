@@ -5,7 +5,13 @@
   * every `custom.framework` key in the policy trees has an entry in standards.yaml, and every entry is a live key;
   * every standard with a known version carries a `literal` that contains the version and appears in a non-test
     .rego file of that key's directories, so the registry cannot drift from the module text;
-  * every check names a known method with its required fields.
+  * every check names a known method with its required fields;
+  * the hand-written docs/FRAMEWORKS.md agrees with the checked files (docs_errors): every path it names exists,
+    every version it quotes is the one standards.yaml records for the keys under that path, every "N recommendations"
+    is a total a module under that path declares (the custom.coverage `expected` stamp), the STIG platform count
+    is the number of benchmarks/stig directories, the "validated today" sentence names as many standards as
+    scripts/coverage_labels.json labels validated, no cell says only "Full", and docs/COVERAGE.md is not a second
+    copy of the generated COVERAGE.md.
   Versions marked "unknown" are listed as warnings for a human to settle; they do not fail.
 
 Network mode (monthly job): runs each check once and prints, per standard, one of
@@ -108,7 +114,74 @@ def bare(v: str) -> str:
     return re.sub(r"^v(?=\d)", "", str(v).strip())
 
 
-def validate(reg: dict) -> tuple[list[str], list[str]]:
+DOC = ROOT / "docs" / "FRAMEWORKS.md"
+DOC_PATH = re.compile(r"`((?:benchmarks|frameworks|governance|enforcement|threat_detection|crosswalk)/[^`\s]*)`")
+DOC_VERSION = re.compile(r"(?<![\w.])(v\d+(?:\.\d+)+|V\d+R\d+)\b")
+DOC_RECS = re.compile(r"\b(\d[\d,]*) recommendations\b")
+EXPECTED_STAMP = re.compile(r"(?m)^#     expected: (\d+)$")
+
+
+def _doc_dirs(path: str) -> list[Path]:
+    """Directories a path cell names; `benchmarks/cis/ubuntu_*/` names every match."""
+    path = path.rstrip("/")
+    return sorted(d for d in ROOT.glob(path) if d.is_dir()) if "*" in path else ([ROOT / path] if (ROOT / path).is_dir() else [])
+
+
+def docs_errors(reg: dict, live: dict[str, set[Path]]) -> list[str]:
+    """Contradictions between docs/FRAMEWORKS.md (hand-written) and the files CI already verifies."""
+    if not DOC.exists():
+        return []
+    errs: list[str] = []
+    text = DOC.read_text(encoding="utf-8")
+    entries = reg.get("frameworks") or {}
+    for n, line in enumerate(text.splitlines(), 1):
+        cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.startswith("|") else []
+        if len(cells) < 3 or set(cells[0]) <= set("-: "):
+            continue
+        where = f"docs/FRAMEWORKS.md:{n}"
+        if any(c == "Full" or c.startswith(("Full:", "Full (")) for c in cells):
+            errs.append(f"{where}: a cell says only \"Full\"; say what the module holds (a count the module declares, "
+                        "or what it covers); validated / partial / experimental live in scripts/coverage_labels.json")
+        dirs: list[Path] = []
+        for path in DOC_PATH.findall(cells[1]):
+            found = _doc_dirs(path)
+            if not found:
+                errs.append(f"{where}: path {path} does not exist")
+            dirs += found
+        if not dirs:
+            continue
+        under = lambda d: any(d == r or r in d.parents for r in dirs)  # noqa: E731
+        keys = sorted(k for k, ds in live.items() if any(under(d) for d in ds))
+        known = " ".join(f"{s.get('version', '')} {s.get('literal', '')} {s.get('standard', '')}"
+                         for k in keys for s in ((entries.get(k) or {}).get("standards") or []))
+        if known.strip():
+            for tok in sorted(set(DOC_VERSION.findall(line))):
+                if bare(tok) not in known:
+                    errs.append(f"{where}: quotes {tok}, which standards.yaml does not record for the keys under "
+                                f"{', '.join(str(d.relative_to(ROOT)) for d in dirs)} ({', '.join(keys)})")
+        declared = {int(x) for d in dirs for f in d.rglob("*.rego") if not is_test(f)
+                    for x in EXPECTED_STAMP.findall(f.read_text(encoding="utf-8", errors="replace"))}
+        for tok in DOC_RECS.findall(line):
+            if declared and int(tok.replace(",", "")) not in declared:
+                errs.append(f"{where}: says {tok} recommendations; the modules under that path declare "
+                            f"{', '.join(map(str, sorted(declared)))} (custom.coverage expected)")
+    m = re.search(r"DISA STIGs — (\d+) platforms", text)
+    stig = [d for d in (ROOT / "benchmarks" / "stig").iterdir() if d.is_dir() and not d.name.startswith("_") and d.name != "tests"]
+    if m and int(m.group(1)) != len(stig):
+        errs.append(f"docs/FRAMEWORKS.md: says {m.group(1)} DISA STIG platforms; benchmarks/stig holds {len(stig)} directories")
+    m = re.search(r"Only (.+?) are validated today", text)
+    labels = json.loads((ROOT / "scripts" / "coverage_labels.json").read_text())["coverage_labels"]["frameworks"]
+    validated = {e.get("modules") or k for k, e in labels.items() if e.get("label") == "validated"}
+    if m and len(re.split(r",\s*|\s+and\s+", m.group(1))) != len(validated):
+        errs.append(f"docs/FRAMEWORKS.md: names {m.group(1)!r} as validated; scripts/coverage_labels.json labels "
+                    f"{len(validated)} module tree(s) validated: {', '.join(sorted(validated))}")
+    copy = ROOT / "docs" / "COVERAGE.md"
+    if copy.exists() and re.search(r"\d+ of \d+ policy files have tests", copy.read_text(encoding="utf-8")):
+        errs.append("docs/COVERAGE.md is a second copy of the generated COVERAGE.md and goes stale; keep it a pointer")
+    return errs
+
+
+def validate(reg: dict, live: dict[str, set[Path]] | None = None) -> tuple[list[str], list[str]]:
     errs: list[str] = []
     warns: list[str] = []
     fams = reg.get("families") or {}
@@ -119,7 +192,7 @@ def validate(reg: dict) -> tuple[list[str], list[str]]:
             continue
         errs += [f"families.{name}: missing {f}" for f in FAMILY_METHODS[m] if not fam.get(f)]
     entries = reg.get("frameworks") or {}
-    live = key_dirs()
+    live = key_dirs() if live is None else live
     for k in sorted(set(live) - set(entries)):
         errs.append(f"{k}: framework key in the modules has no entry in standards.yaml")
     for k in sorted(set(entries) - set(live)):
@@ -424,7 +497,10 @@ def main() -> int:
     reg = load_registry(Path(args.registry))
 
     if args.offline:
-        errs, warns = validate(reg)
+        live = key_dirs()
+        errs, warns = validate(reg, live)
+        doc_errs = docs_errors(reg, live)
+        errs += doc_errs
         for w in [] if args.quiet else warns:
             print(f"warning: {w}")
         for e in errs:
@@ -434,6 +510,7 @@ def main() -> int:
             print(f"standards.yaml: {len(errs)} error(s) — fix the entry or the module text (see STANDARDS_UPDATE_REGISTRY.md)")
             return 3
         print(f"standards.yaml matches the modules: {n} keys, {len(warns)} version(s) unknown")
+        print("docs/FRAMEWORKS.md agrees with standards.yaml, the declared totals and the coverage labels")
         return 0
 
     results = run_checks(reg, set(args.only.split(",")) if args.only else None)

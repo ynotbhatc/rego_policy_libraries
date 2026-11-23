@@ -78,6 +78,19 @@ if "--check-readme" in sys.argv:
             if int(got.replace(",", "")) != want:
                 problems.append(f"docs/COMPARISON.md {label}: page says {got}, tree says {want:,}")
 
+    # every other hand-written page: a quoted control-level count is the current one or it is not quoted.
+    # (CHANGELOG and the monthly sweeps are history; dist/ is generated and checked elsewhere.)
+    try:
+        pages = subprocess.run(["git", "-C", str(root), "ls-files", "--", "*.md", "llms.txt"], capture_output=True, text=True, check=True).stdout.split()
+    except Exception:
+        pages = []
+    for page in pages:
+        if page == "CHANGELOG.md" or page.startswith("docs/sweeps/") or "/dist/" in page:
+            continue
+        for q in re.findall(r"([0-9][0-9,]{3,}) control-level checks", (root / page).read_text(errors="ignore")):
+            if int(q.replace(",", "")) != total:
+                problems.append(f"{page}: quotes {q} control-level checks; make count says {total:,}")
+
     def under(*prefixes):
         return sum(1 for r in rels if any(r == pfx or r.startswith(pfx + "/") for pfx in prefixes))
     rows = {
@@ -105,6 +118,14 @@ if "--check-readme" in sys.argv:
         expect("framework catalogs on the claim line", quote(r"across ([0-9,]+) framework catalogs", "the catalog count on the claim line"), n_cat)
         expect("OSCAL catalogs in the Continuous ATO table", quote(r"one per framework, ([0-9,]+) catalogs, [0-9,]+ controls", "the Continuous ATO catalog count"), n_cat)
         expect("OSCAL controls in the Continuous ATO table", quote(r"one per framework, [0-9,]+ catalogs, ([0-9,]+) controls", "the Continuous ATO control count"), n_ctl)
+        m_oscal = re.search(r"\(([0-9,]+)\s+at the last export\)", cmp_text)
+        if not m_oscal:
+            problems.append("docs/COMPARISON.md no longer states the OSCAL control total ('(N at the last export)')")
+        elif int(m_oscal.group(1).replace(",", "")) != n_ctl:
+            problems.append(f"docs/COMPARISON.md OSCAL controls: page says {m_oscal.group(1)}, dist/catalogs/index.json says {n_ctl:,}")
+        m_cats = re.search(r"The ([0-9,]+) catalogs are one per framework key", cmp_text)
+        if m_cats and int(m_cats.group(1).replace(",", "")) != n_cat:
+            problems.append(f"docs/COMPARISON.md catalogs: page says {m_cats.group(1)}, dist/catalogs/index.json says {n_cat:,}")
     else:
         problems.append("converters/exports/oscal/dist/catalogs/index.json missing; run make oscal")
     if problems:

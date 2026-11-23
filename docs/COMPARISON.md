@@ -84,16 +84,19 @@ parser the counter uses):
 
 | Figure | Value | What it is |
 |---|---:|---|
-| Per-file checks, summed over the 20 non-test files | 746 | what `count_controls.py` adds to the headline for this directory: distinct (id, message) pairs plus id-less checks |
+| Per-file checks, summed over the 20 non-test files | 749 | what `count_controls.py` adds to the headline for this directory: distinct (id, message) pairs plus id-less checks |
 | Distinct cited id strings in the directory | 377 | each id once, however many messages or modules cite it |
 | Of those, numeric ids (`1.1.1.1` form) | 352 | the same number as the benchmark's 352 recommendations (`standard_total`) |
 | Of those, other tokens | 25 | 16 CIS/NIST/STIG cross-reference tags on the STIG-extension modules, and 9 table or report keys the parser reads as ids |
 
-So this directory adds 746 to the headline while the benchmark has 352 recommendations. The coverage stamp on
-`cis_rhel9_main.rego` compares the distinct-id figure (377) with the declared 352, and calls the module `full`
-because the ratio is above 0.9; it does not say the extra 25 are not recommendations.
+So this directory adds 749 to the headline while the benchmark has 352 recommendations. The coverage stamp on
+`cis_rhel9_main.rego` compares distinct control ids with the declared 352: 371 after it drops the five bare
+table and report keys and counts `CIS 1.8.1` and `1.8.1` once. That is above the declared total, so the module is
+labelled `over`, not `full`: the label says the directory holds more ids than the benchmark has recommendations
+(the cross-reference tags on the STIG-extension modules), and it does not by itself show that all 352 are present.
+The numeric-id row above is what shows that.
 
-**OSCAL controls.** The catalog exporter's `controls` total in `converters/exports/oscal/dist/catalogs/index.json` (22,560
+**OSCAL controls.** The catalog exporter's `controls` total in `converters/exports/oscal/dist/catalogs/index.json` (23,364
 at the last export) is also a different quantity: the exporter emits one OSCAL control per rule or message it finds in each
 framework's modules, and that includes message templates. SAE AS9100D is the example its own module documents
 (`frameworks/management/as9100d/as9100d_main.rego`): 71 clause rows are exported as 88 controls, because 17 template
@@ -102,11 +105,14 @@ controls of their own. The 190 catalogs are one per framework key, not one per s
 
 **What to quote.** Use "30,357 control-level checks" only with its definition (per-file parser hits). For a number
 that means "distinct requirements of a standard", take a module's declared `standard_total` where it has one
-(352 for the RHEL 9 benchmark above), not the sum. The 90 % density rule in `scripts/coverage_stamp.py` only flags a
-module whose cited ids fall below 90 % of its own declared total; a module can sit above that line and still be
-short or long by a few. Windows Server 2019 is an example the other way: it declares 400, evaluates all 400
-(398 from facts, 2 Manual by attestation) and the counter sees 399 distinct ids, because the two attestation
-recommendations sit in a table shape the counter does not read as ids and one report key is read as an id.
+(352 for the RHEL 9 benchmark above), not the sum. `scripts/coverage_stamp.py` compares each declared total with
+the distinct control ids the counter finds, with no tolerance: a module is `full` only when the two are equal, a
+module below its declared total is listed with the real number and fails CI unless its reason is recorded
+(`KNOWN_GAPS`), and a module above it is labelled `over`, which is not a claim that every declared control is
+present (extension checks and fail-closed notices carry ids too). Windows Server 2019 shows what the counter can
+and cannot see: the module declares 400 and evaluates all 400 (398 from facts, 2 Manual by attestation), and the
+counter finds 398 ids, because the two attestation recommendations sit in a table shape it does not read as ids.
+The tables are in [COVERAGE_SCAN.md](COVERAGE_SCAN.md).
 
 The per-control result lists a report carries (`control_results`, with its static index of id, basis, profile and
 evidence paths) are **not** counted: they restate controls already counted from their violation rules. The counter
