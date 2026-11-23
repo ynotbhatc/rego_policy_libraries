@@ -113,7 +113,12 @@ default compliance_report := {
 
 # The product reads violations, violation_count and total_controls: the four modules are the units this
 # aggregator decides on, so a failing module is one finding and total_controls is the module count.
-_module_violations := [{"control": name, "title": sprintf("GDPR module %v is not compliant", [name])} |
+#
+# Conditional obligations (Art. 8, 9, 22, 26, 37, Chapter V, the tracking technologies) apply on a fact the
+# collector states as a boolean. A fact that is absent, null or not a boolean is never read as "not
+# applicable": the module fails and the fact is listed under evidence_missing, here and on the module's
+# violation, so the reader can tell "not collected" from "collected and failing".
+_module_violations := [violation |
 	some name, ok in {
 		"core_gdpr": core_compliant,
 		"controller_processor": controller_processor_compliant,
@@ -121,6 +126,30 @@ _module_violations := [{"control": name, "title": sprintf("GDPR module %v is not
 		"cookies_and_tracking": cookies_tracking_compliant,
 	}
 	not ok
+	violation := {
+		"control": name,
+		"title": _module_title(name),
+		"evidence_missing": [m.path | some m in _module_evidence_missing[name]],
+	}
+]
+
+_module_evidence_missing := {
+	"core_gdpr": compliance.evidence_missing,
+	"controller_processor": controller_processor.evidence_missing,
+	"data_transfers": [],
+	"cookies_and_tracking": cookies_tracking.evidence_missing,
+}
+
+_module_title(name) := sprintf("GDPR module %v is not compliant", [name]) if {
+	count(_module_evidence_missing[name]) == 0
+} else := sprintf(
+	"GDPR module %v is not compliant; evidence missing — must be true or false: %v",
+	[name, concat(", ", [m.path | some m in _module_evidence_missing[name]])],
+)
+
+evidence_missing := [object.union(m, {"module": name}) |
+	some name in sort(object.keys(_module_evidence_missing))
+	some m in _module_evidence_missing[name]
 ]
 
 compliance_report := object.union(report, {
@@ -128,7 +157,8 @@ compliance_report := object.union(report, {
 	"compliant": _entrypoint_compliant,
 	"violations": _module_violations,
 	"violation_count": count(_module_violations),
-	"failed_controls": min([_declared_controls, count(_module_violations)]),
+	"failed_controls": count(_module_violations),
+	"evidence_missing": evidence_missing,
 	"total_controls": _declared_controls,
 })
 
