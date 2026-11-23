@@ -65,17 +65,54 @@ security_assessment_report_adequate if {
 	input.ato.authorization_package.sar.assessment_current == true
 }
 
+# NIST SP 800-53 Rev 5 CA-5a: the POA&M documents "the planned remediation actions of the organization to correct
+# weaknesses or deficiencies noted during the assessment of the controls and to reduce or eliminate known
+# vulnerabilities in the system". Facts (input.ato.authorization_package.poam): action_items must be an array; an empty
+# one is adequate only when open_weaknesses_count is 0 and no identified_vulnerabilities are listed.
+default plan_of_action_milestones_adequate := false
+
 plan_of_action_milestones_adequate if {
-	count(input.ato.authorization_package.poam.action_items) >= 0
-	every item in input.ato.authorization_package.poam.action_items {
-		item.weakness_id != ""
-		item.description != ""
-		item.resources_required != ""
-		item.completion_date != ""
-		item.risk_rating in ["low", "moderate", "high", "very_high"]
-		item.status in ["ongoing", "completed", "delayed", "not_started"]
+	count(poam_evidence_findings) == 0
+	_poam.risk_tolerance_acceptable == true
+}
+
+_poam := input.ato.authorization_package.poam
+
+poam_evidence_findings contains "NIST SP 800-53 CA-5: evidence missing: input.ato.authorization_package.poam.action_items must be an array of POA&M items (a missing POA&M is not an empty one)" if {
+	not _poam_items_is_array
+}
+
+poam_evidence_findings contains "NIST SP 800-53 CA-5: the POA&M has no items; that is adequate only when input.ato.authorization_package.poam.open_weaknesses_count is the number 0" if {
+	_poam.action_items == []
+	not _no_open_weaknesses
+}
+
+poam_evidence_findings contains msg if {
+	_poam.action_items == []
+	known := input.ato.risk_assessment.vulnerabilities.identified_vulnerabilities
+	is_array(known)
+	count(known) > 0
+	msg := sprintf("NIST SP 800-53 CA-5: the POA&M has no items but risk_assessment.vulnerabilities.identified_vulnerabilities lists %d", [count(known)])
+}
+
+poam_evidence_findings contains msg if {
+	_poam_items_is_array
+	some i, item in _poam.action_items
+	not _poam_item_complete(item)
+	msg := sprintf("NIST SP 800-53 CA-5: POA&M item %d is incomplete: it needs non-empty strings weakness_id, description, resources_required, completion_date and a listed risk_rating and status", [i])
+}
+
+_poam_items_is_array if is_array(_poam.action_items)
+
+_no_open_weaknesses if _poam.open_weaknesses_count == 0
+
+_poam_item_complete(item) if {
+	item.risk_rating in ["low", "moderate", "high", "very_high"]
+	item.status in ["ongoing", "completed", "delayed", "not_started"]
+	every field in ["weakness_id", "description", "resources_required", "completion_date"] {
+		is_string(item[field])
+		trim_space(item[field]) != ""
 	}
-	input.ato.authorization_package.poam.risk_tolerance_acceptable == true
 }
 
 risk_assessment_report_adequate if {
@@ -123,7 +160,7 @@ vulnerability_assessment_current if {
 	input.ato.risk_assessment.vulnerabilities.penetration_test_current == true
 	input.ato.risk_assessment.vulnerabilities.configuration_review_current == true
 	input.ato.risk_assessment.vulnerabilities.code_review_conducted == true
-	count(input.ato.risk_assessment.vulnerabilities.identified_vulnerabilities) >= 0
+	is_array(input.ato.risk_assessment.vulnerabilities.identified_vulnerabilities)
 }
 
 risk_analysis_thorough if {
@@ -444,6 +481,7 @@ ato_assessment := {
 			"description": "Preparedness for ongoing authorization and monitoring",
 		},
 	],
+	"poam_evidence_findings": poam_evidence_findings,
 	"total_deficiencies": count(ato_deficiencies),
 	"deficiencies": ato_deficiencies,
 }

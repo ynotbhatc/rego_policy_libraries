@@ -240,13 +240,37 @@ provisional_authorization_considered if {
 # External Service Dependencies
 default external_dependencies_identified := false
 
+# NIST SP 800-53 Rev 5 PL-2a: the plan must "describe the operational environment for the system and any dependencies
+# on or connections to other systems or system components". A system may have none, so an empty external_dependencies
+# passes only when input.system_categorization.has_external_dependencies is the boolean false.
 external_dependencies_identified if {
-	count(input.system_categorization.external_dependencies) >= 0
+	_external_dependencies_evidence
 	every dependency in input.system_categorization.external_dependencies {
-		dependency.service_provider != ""
-		dependency.categorization_level != ""
+		_text(dependency.service_provider)
+		_text(dependency.categorization_level)
 		dependency.risk_assessment_completed == true
 	}
+}
+
+# system_categorization.external_dependencies is evidence only as an array (missing, null or another type is missing
+# evidence). Empty passes only when system_categorization.has_external_dependencies is the boolean false; a non-empty
+# list with that fact false is a contradiction.
+_external_dependencies_evidence if {
+	is_array(input.system_categorization.external_dependencies)
+	count(input.system_categorization.external_dependencies) > 0
+	not _no_external_dependencies_declared
+}
+
+_external_dependencies_evidence if {
+	input.system_categorization.external_dependencies == []
+	_no_external_dependencies_declared
+}
+
+_no_external_dependencies_declared if input.system_categorization.has_external_dependencies == false
+
+_text(value) if {
+	is_string(value)
+	trim_space(value) != ""
 }
 
 # Aggregate RMF Categorization compliance
