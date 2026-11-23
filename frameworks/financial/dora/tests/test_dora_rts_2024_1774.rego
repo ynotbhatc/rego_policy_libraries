@@ -35,14 +35,19 @@ test_empty_input_fail_closed if {
 	v := rts.violation with input as {}
 	not rts.compliant with input as {}
 
-	# gate + 4 undeclared roles + FAIL-CLOSED container + 206 Title II rows open without roles
-	count(v) == 212
+	# gate + 4 undeclared roles + FAIL-CLOSED container + 208 Title II rows open without roles (the two
+	# "other than microenterprises" points stay open until microenterprise is declared true)
+	count(v) == 214
 	_has(v, "simplified_framework must be declared")
 	_has(v, "input.dora.rts.obligations missing or not an object")
 	r := rts.compliance_report with input as {}
 	r.gate.title_evaluated == "II"
 	r.gate.simplified_framework == "undeclared"
-	r.controls_evaluated == 206
+	r.controls_evaluated == 208
+	r.total_controls == 208
+	r.failed_controls == 208
+	r.passed_controls == 0
+	r.input_contract_violations == 6
 }
 
 test_all_true_title_ii_compliant if {
@@ -163,12 +168,12 @@ test_microenterprise_closes_two_points if {
 
 test_main_aggregates_rts_2024_1774 if {
 	v := main.violations with input as {}
-	count([m | some m in v; contains(m, "RTS 2024/1774")]) == 212
+	count([m | some m in v; contains(m, "RTS 2024/1774")]) == 214
 	r := main.compliance_report with input as {}
-	count(r.pillar_summary.rts_2024_1774_ict_risk_management) == 212
+	count(r.pillar_summary.rts_2024_1774_ict_risk_management) == 214
 	r.rts_2024_1774_ict_risk_management.rows_by_title == {"II": 228, "III": 80}
 	r.rts_2024_1774_ict_risk_management.gate.title_evaluated == "II"
-	r.total_controls == 399
+	r.total_controls == 300
 }
 
 test_main_rts_2024_1774_not_in_level1_pillars if {

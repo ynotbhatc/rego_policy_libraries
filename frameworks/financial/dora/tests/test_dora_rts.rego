@@ -63,5 +63,7 @@ test_report_rts_buckets_populated if {
 	r := main.compliance_report with input as {}
 	count(r.pillar_summary.rts_2025_532_subcontracting) == 30
 	count(r.pillar_summary.rts_2025_1190_tlpt) == 31
-	r.total_controls == 399
+
+	# 31 Level-1 + 30 + 31 + the 208 Title II rows open when no role is declared; not the 399 once declared
+	r.total_controls == 300
 }
