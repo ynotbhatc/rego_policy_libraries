@@ -59,9 +59,10 @@ default _upstream := {}
 
 _upstream := _t.report
 
-# Control universe for the product's passed = total - failed arithmetic: thirty violation rules across the CIP standards in nerc_cip_main (16 fire with no facts).
+# Control universe for the product's passed = total - failed arithmetic: the 48 violation rules across the CIP standards in
+# nerc_cip_main (one rule = one control; a per-item rule can yield several findings).
 # Never below the finding count, so a fail-closed run cannot report more failures than controls.
-_declared_controls := 30
+_declared_controls := 48
 
 total_controls := max([_declared_controls, count(_violations)])
 
