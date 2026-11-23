@@ -88,6 +88,32 @@ organization_violations contains msg if {
 	msg := "CIP-003: Cybersecurity policies not approved"
 }
 
+# CIP-003-9 (US enforceable 2026-04-01), Attachment 1 Section 6: vendor electronic
+# remote access to assets containing low impact BES Cyber Systems. Applies when
+# the inventory holds a low impact system, and also when there is no inventory
+# (absence of an inventory is not absence of low impact systems). Not allowing
+# vendor remote access must be stated with `allowed: false`.
+low_impact_systems_possible if count(object.get(input, "bes_cyber_systems", [])) == 0
+
+low_impact_systems_possible if {
+	some s in input.bes_cyber_systems
+	s.impact_level == "low"
+}
+
+organization_violations contains msg if {
+	low_impact_systems_possible
+	not is_boolean(object.get(input, ["cybersecurity_organization", "low_impact_vendor_remote_access", "allowed"], null))
+	msg := "CIP-003: evidence missing — cybersecurity_organization.low_impact_vendor_remote_access.allowed not declared (CIP-003-9 Attachment 1 Section 6)"
+}
+
+organization_violations contains msg if {
+	low_impact_systems_possible
+	input.cybersecurity_organization.low_impact_vendor_remote_access.allowed == true
+	some method, section in {"determine_method": "6.1", "disable_method": "6.2", "malicious_communications_detection": "6.3"}
+	not input.cybersecurity_organization.low_impact_vendor_remote_access[method] == true
+	msg := sprintf("CIP-003: Vendor electronic remote access to low impact BES Cyber Systems is allowed but %s is not in place (CIP-003-9 Attachment 1 Section %s)", [method, section])
+}
+
 default cip_003_compliant := false
 
 cip_003_compliant if {
@@ -368,6 +394,20 @@ comms_protection_violations contains msg if {
 	msg := sprintf("CIP-012: Link %v is not authenticated", [object.get(link, "link_id", "unknown")])
 }
 
+# CIP-012-2 (US enforceable 2026-07-01) adds loss of availability: R1 Part 1.2
+# (methods against the loss of the ability to communicate) and Part 1.3 (methods
+# to initiate the recovery of communication links).
+comms_protection_violations contains msg if {
+	some link in input.control_center_communications.links
+	not link.availability_protected == true
+	msg := sprintf("CIP-012: Link %v has no method against the loss of the ability to communicate (CIP-012-2 R1 Part 1.2)", [object.get(link, "link_id", "unknown")])
+}
+
+comms_protection_violations contains msg if {
+	not input.control_center_communications.recovery_methods_documented == true
+	msg := "CIP-012: Methods to initiate the recovery of communication links not documented (CIP-012-2 R1 Part 1.3)"
+}
+
 comms_protection_violations contains "CIP-012: evidence missing — control_center_communications.links not collected" if {
 	count(object.get(input, ["control_center_communications", "links"], [])) == 0
 }
@@ -438,7 +478,7 @@ cip_014_compliant if {
 
 default cip_015_compliant := false
 
-cip_015_violations contains "CIP-015: Internal Network Security Monitoring requirements not met — see nerc_cip_cip015 R1/R2/R3 findings" if {
+cip_015_violations contains "CIP-015: Internal Network Security Monitoring requirements not met — see nerc_cip_cip015 findings" if {
 	not nerc_cip_cip015.cip_015_compliant
 }
 

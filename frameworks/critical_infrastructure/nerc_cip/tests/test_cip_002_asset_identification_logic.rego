@@ -60,7 +60,7 @@ test_invalid_eacms_not_compliant if {
 test_report_fully_populated_on_empty_input if {
 	r := c.report with input as {}
 	r.compliant == false
-	r.requirements.R1_high_impact_criteria == false
+	r.requirements.R1_1_high_impact_criteria == false
 }
 
 # decisions 2026-10-19: undeclared applicability fails closed; explicit false passes.
