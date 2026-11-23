@@ -1959,7 +1959,12 @@
        "type": "object",
        "properties": {
         "enabled": {
-         "description": "Read in data_processing.rego."
+         "description": "Read in data_processing.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       },
@@ -2031,10 +2036,20 @@
        "type": "object",
        "properties": {
         "enabled": {
-         "description": "Read in data_processing.rego."
+         "description": "Read in data_processing.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         },
         "frequency_hours": {
-         "description": "Read in data_processing.rego."
+         "description": "Read in data_processing.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          10
+         ]
         }
        }
       },
@@ -2048,7 +2063,12 @@
      "type": "object",
      "properties": {
       "delivery_confirmation": {
-       "description": "Read in data_processing.rego."
+       "description": "Read in data_processing.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "encryption_in_transit": {
        "description": "Read in data_processing.rego."
@@ -2187,7 +2207,12 @@
      "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in data_processing.rego."
+       "description": "Read in data_processing.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
@@ -2202,7 +2227,12 @@
        "description": "Read in data_processing.rego."
       },
       "rollback_capability": {
-       "description": "Read in data_processing.rego."
+       "description": "Read in data_processing.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -4365,10 +4395,20 @@
        "description": "Read in data_privacy.rego."
       },
       "request_logging": {
-       "description": "Read in data_privacy.rego."
+       "description": "Read in data_privacy.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "response_timeline": {
-       "description": "Read in data_privacy.rego."
+       "description": "Read in data_privacy.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        10
+       ]
       }
      }
     },
@@ -4450,7 +4490,12 @@
        }
       },
       "records_of_processing": {
-       "description": "Read in data_privacy.rego."
+       "description": "Read in data_privacy.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
@@ -4522,7 +4567,12 @@
      "type": "object",
      "properties": {
       "automated_deletion": {
-       "description": "Read in data_privacy.rego."
+       "description": "Read in data_privacy.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "legal_hold_management": {
        "description": "Read in data_privacy.rego."
@@ -4599,6 +4649,20 @@
      "properties": {
       "data_processing_agreements": {
        "description": "Read in data_privacy.rego."
+      },
+      "disclosure_logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
       },
       "documented_agreements": {
        "description": "Read in data_privacy.rego, soc2_main.rego.",
@@ -6630,6 +6694,216 @@
          ]
         }
        }
+      },
+      "P1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "P2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "P6.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "P6.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "P6.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "P8.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "PI1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Control owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
       }
      }
     },
@@ -6825,6 +7099,14 @@
         20
        ]
       },
+      "data_subject_response_days": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        20
+       ]
+      },
       "log_retention_days": {
        "description": "Read in access_controls.rego.",
        "type": "number",
@@ -6835,6 +7117,14 @@
       },
       "max_idle_minutes": {
        "description": "Read in access_controls.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        20
+       ]
+      },
+      "reconciliation_interval_hours": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "number",
        "x-type-source": "fixture",
        "examples": [
@@ -10949,6 +11239,8 @@
   "privacy.technical_measures.encryption.personal_data",
   "privacy.third_party_sharing",
   "privacy.third_party_sharing.data_processing_agreements",
+  "privacy.third_party_sharing.disclosure_logging",
+  "privacy.third_party_sharing.disclosure_logging.enabled",
   "privacy.third_party_sharing.documented_agreements",
   "privacy.third_party_sharing.due_diligence_performed",
   "privacy.third_party_sharing.regular_assessments",
@@ -11324,6 +11616,34 @@
   "soc2.attestations[\"CC9.2\"].attested",
   "soc2.attestations[\"CC9.2\"].by",
   "soc2.attestations[\"CC9.2\"].date",
+  "soc2.attestations[\"P1.1\"]",
+  "soc2.attestations[\"P1.1\"].attested",
+  "soc2.attestations[\"P1.1\"].by",
+  "soc2.attestations[\"P1.1\"].date",
+  "soc2.attestations[\"P2.1\"]",
+  "soc2.attestations[\"P2.1\"].attested",
+  "soc2.attestations[\"P2.1\"].by",
+  "soc2.attestations[\"P2.1\"].date",
+  "soc2.attestations[\"P6.3\"]",
+  "soc2.attestations[\"P6.3\"].attested",
+  "soc2.attestations[\"P6.3\"].by",
+  "soc2.attestations[\"P6.3\"].date",
+  "soc2.attestations[\"P6.4\"]",
+  "soc2.attestations[\"P6.4\"].attested",
+  "soc2.attestations[\"P6.4\"].by",
+  "soc2.attestations[\"P6.4\"].date",
+  "soc2.attestations[\"P6.5\"]",
+  "soc2.attestations[\"P6.5\"].attested",
+  "soc2.attestations[\"P6.5\"].by",
+  "soc2.attestations[\"P6.5\"].date",
+  "soc2.attestations[\"P8.1\"]",
+  "soc2.attestations[\"P8.1\"].attested",
+  "soc2.attestations[\"P8.1\"].by",
+  "soc2.attestations[\"P8.1\"].date",
+  "soc2.attestations[\"PI1.1\"]",
+  "soc2.attestations[\"PI1.1\"].attested",
+  "soc2.attestations[\"PI1.1\"].by",
+  "soc2.attestations[\"PI1.1\"].date",
   "soc2.business_continuity",
   "soc2.business_continuity.communication",
   "soc2.business_continuity.communication.plan",
@@ -11350,8 +11670,10 @@
   "soc2.commitments.backup_retention_days",
   "soc2.commitments.breach_notice_hours_authorities",
   "soc2.commitments.breach_notice_hours_individuals",
+  "soc2.commitments.data_subject_response_days",
   "soc2.commitments.log_retention_days",
   "soc2.commitments.max_idle_minutes",
+  "soc2.commitments.reconciliation_interval_hours",
   "soc2.commitments.recovery_test_interval_days",
   "soc2.configuration_management",
   "soc2.configuration_management.baseline",
