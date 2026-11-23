@@ -24,6 +24,7 @@ _facts := {
 	"system_owner": {"identified": true, "categorization_approved": true, "responsibilities_documented": true},
 	"saiso_review": {"completed": true, "approval_documented": true, "date": "2026-01-02"},
 	"provisional_authorization": {"not_applicable": true},
+	"has_external_dependencies": false,
 	"external_dependencies": [],
 }
 

@@ -65,12 +65,10 @@ security_assessment_report_adequate if {
 	input.ato.authorization_package.sar.assessment_current == true
 }
 
-# NIST SP 800-53 Rev 5 CA-5a: "Develop a plan of action and milestones for the system to document the planned remediation
-# actions of the organization to correct weaknesses or deficiencies noted during the assessment of the controls and to
-# reduce or eliminate known vulnerabilities in the system."
-# Facts (input.ato.authorization_package.poam): action_items, an array (missing, null or another type is missing evidence,
-# not an empty POA&M); open_weaknesses_count, a number (an empty action_items is adequate only when this is 0 and no
-# identified_vulnerabilities are listed); risk_tolerance_acceptable, boolean. poam_evidence_findings gives the reasons.
+# NIST SP 800-53 Rev 5 CA-5a: the POA&M documents "the planned remediation actions of the organization to correct
+# weaknesses or deficiencies noted during the assessment of the controls and to reduce or eliminate known
+# vulnerabilities in the system". Facts (input.ato.authorization_package.poam): action_items must be an array; an empty
+# one is adequate only when open_weaknesses_count is 0 and no identified_vulnerabilities are listed.
 default plan_of_action_milestones_adequate := false
 
 plan_of_action_milestones_adequate if {
@@ -162,7 +160,7 @@ vulnerability_assessment_current if {
 	input.ato.risk_assessment.vulnerabilities.penetration_test_current == true
 	input.ato.risk_assessment.vulnerabilities.configuration_review_current == true
 	input.ato.risk_assessment.vulnerabilities.code_review_conducted == true
-	count(input.ato.risk_assessment.vulnerabilities.identified_vulnerabilities) >= 0
+	is_array(input.ato.risk_assessment.vulnerabilities.identified_vulnerabilities)
 }
 
 risk_analysis_thorough if {
