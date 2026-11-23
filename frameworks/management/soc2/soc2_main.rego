@@ -1,10 +1,10 @@
 # SOC 2 - AICPA Trust Services Criteria: per-criterion results for all 33 common criteria (CC1.1-CC9.2):
 # 10 decided from evidence (CC6.1, CC6.2, CC6.3, CC6.5, CC6.6, CC6.7, CC6.8, CC7.1, CC7.2, CC8.1) and 23 by
-# signed attestation, plus up to 16 criteria of the optional categories in scope (A1.1-A1.3, C1.1-C1.2,
-# PI1.2-PI1.3, P3.1, P3.2, P4.1, P4.2, P5.1, P5.2, P6.1, P6.6, P7.1). See "CRITERION-LEVEL REPORT".
+# signed attestation, plus up to 28 criteria of the optional categories in scope (A1.1-A1.3, C1.1-C1.2,
+# PI1.1-PI1.5, P1.1-P8.1): 21 from evidence and 7 by signed attestation. See "CRITERION-LEVEL REPORT".
 
 # METADATA
-# title: "SOC 2 Trust Services Criteria - all 33 common criteria and up to 16 optional-category criteria, per-criterion results"
+# title: "SOC 2 Trust Services Criteria - all 33 common criteria and up to 28 optional-category criteria, per-criterion results"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -535,7 +535,11 @@ _common_criteria_checks := {
 #   P6.1 disclosure to third parties  documented agreements and due diligence
 #   P6.6 breach notification          documented procedure; notice times <= commitments
 #   P7.1 quality                      accuracy verification and correction procedures
-# Not mapped (no check): PI1.1, PI1.4, PI1.5, P1.1, P2.1, P6.2-P6.5, P6.7, P8.1.
+# The other 12 optional criteria have no entry here and are decided by data.soc2.criteria only:
+#   evidence     PI1.4 (delivery confirmed, reconciliation interval <= commitment), PI1.5 (checksums, database
+#                integrity constraints, rollback), P4.3 (automated deletion, verified disposal), P6.2
+#                (disclosure log), P6.7 (records of processing, request log, response time <= commitment)
+#   attestation  PI1.1, P1.1, P2.1, P6.3, P6.4, P6.5, P8.1
 
 _commitment(key) := v if {
 	v := input.soc2.commitments[key]
@@ -816,7 +820,7 @@ default compliance_report := {
 compliance_report := {
 	"framework_key": "soc2",
 	"standard": "SOC 2 - AICPA Trust Services Criteria (TSP section 100, 2017, points of focus revised 2022)",
-	"scope_note": "Evaluates all 33 common criteria (10 from evidence, 23 by signed attestation) plus the mapped criteria of the optional categories in scope; evidence_missing and not_attested are never a pass; category-module verdicts are advisory",
+	"scope_note": "Evaluates all 33 common criteria (10 from evidence, 23 by signed attestation) plus all 28 criteria of the optional categories in scope; evidence_missing and not_attested are never a pass; category-module verdicts are advisory",
 	"compliant": _soc2_report_compliant,
 	"total_controls": count(control_results),
 	"failed_controls": count(failed_criteria),

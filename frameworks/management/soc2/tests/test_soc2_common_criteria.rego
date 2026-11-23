@@ -8,7 +8,7 @@ import data.soc2.main
 # evidence-missing test. The fixture is the all-pass input: every fact of every criterion met, every commitment
 # supplied, a signed attestation for every attestation criterion and all four optional categories in scope.
 
-fixture := {"access_controls": {"access_logging": {"enabled": true, "includes_failed_attempts": true, "retention_days": 30}, "least_privilege_principle": true, "periodic_reviews": {"documented": true, "enabled": true, "frequency_days": 10}, "privileged_users": [{"mfa_enabled": true}], "regular_access_reviews": true, "role_based_access": true, "service_accounts": [{"regular_password_change": true, "unique_identifier": true}], "shared_accounts": []}, "backup": {"automated_backups": {"enabled": true}, "offsite_storage": {"enabled": true}, "recovery_testing": {"frequency_days": 10}, "retention": {"days": 30}}, "capacity_management": {"forecasting": {"enabled": true}, "monitoring": {"enabled": true}}, "data_classification": {"access_controls": {"need_to_know": true, "role_based": true}, "categories": {"confidential": {"defined": true}}, "system_defined": true}, "data_disposal": {"procedures": {"documented": true}, "verification": {"completion_verified": true}}, "data_processing": {"authorization": {"audit_trail": true, "required": true}, "error_handling": {"logging": {"enabled": true}, "recovery_procedures": {"documented": true}}, "input_validation": {"data_type_checking": true, "enabled": true, "format_validation": true, "range_checking": true}}, "database_security": {"access_logging": true, "authentication_required": true, "connection_encryption": true, "privileged_accounts": [{"regular_review": true}]}, "dlp": {"monitoring": {"enabled": true}}, "encryption": {"in_transit": {"cipher_suites": {"strong_only": true}, "enabled": true}}, "monitoring": {"alerts": {"configured": true}, "infrastructure": {"enabled": true}}, "network_security": {"firewalls": {"configured": true}, "segmentation": {"enabled": true, "zones": ["zone-0", "zone-1"]}}, "privacy": {"breach_notification": {"procedures_documented": true, "timeline_compliance": {"authorities": 10, "individuals": 10}}, "collection": {"data_minimization": true, "policy_documented": true, "purpose_limitation": true}, "consent": {"consent_tracking": {"enabled": true}, "explicit_consent_required": true}, "data_quality": {"accuracy_verification": true, "correction_procedures": true}, "data_subject_rights": {"access_request": {"supported": true}, "rectification": {"supported": true}}, "retention": {"policies_documented": true, "retention_schedules": {"defined": true}}, "third_party_sharing": {"documented_agreements": true, "due_diligence_performed": true}, "use": {"compatible_use_only": true, "purpose_limitation": true}}, "remote_access": {"session_timeout": {"configured": true, "max_idle_minutes": 10}, "vpn_encryption": {"enabled": true}, "vpn_required": true}, "security": {"edr": {"coverage": {"comprehensive": true}, "detection": {"behavioral": true}}, "vulnerability_management": {"coverage": {"comprehensive": true}, "scanning": {"continuous": true}}}, "soc2": {"attestations": {"CC1.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.5": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC2.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC2.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC2.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC4.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC4.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC5.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC5.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC5.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC6.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC7.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC7.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC7.5": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC9.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC9.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}}, "business_continuity": {"communication": {"plan": {"defined": true}}, "plan": {"documented": true}, "recovery_objectives": {"defined": true}, "testing": {"annual": true}}, "categories_in_scope": ["availability", "confidentiality", "privacy", "processing_integrity"], "change_management": {"approval": {"required": true}, "process": {"documented": true}, "rollback": {"procedures": {"defined": true}}, "testing": {"required": true}}, "commitments": {"access_review_interval_days": 20, "backup_retention_days": 20, "breach_notice_hours_authorities": 20, "breach_notice_hours_individuals": 20, "log_retention_days": 20, "max_idle_minutes": 20, "recovery_test_interval_days": 20}, "configuration_management": {"baseline": {"established": true}, "unauthorized_changes": {"detection": true}, "version_control": true}, "control_environment": {"competence": {"defined_roles": true}, "governance": {"board_oversight": true, "management_philosophy": true}, "integrity": {"code_of_conduct": true}}, "human_resources": {"background_checks": true, "disciplinary_procedures": true, "performance_evaluations": true, "training_programs": true}, "incident_response": {"procedures": {"documented": true}, "program": {"established": true}, "team": {"defined": true}, "testing": {"regular": true}}, "logging": {"centralized": true, "integrity_protection": true, "retention": {"adequate": true}, "review": {"regular": true}}, "monitoring": {"applications": {"comprehensive": true}, "infrastructure": {"comprehensive": true}, "performance": {"continuous": true}, "security_events": {"real_time": true}}, "risk_management": {"escalation": {"procedures": {"defined": true}}, "monitoring": {"continuous": true}, "reporting": {"regular": true}, "risk_assessment": {"methodology": {"defined": true}, "periodic": true}, "risk_identification": {"comprehensive": true}, "risk_response": {"documented": true}}, "service_commitments": {"operating_effectiveness": true, "security": {"defined": true}, "suitability_of_design": true}, "subservice_organizations": [{"soc_report": {"current": true}}], "system_boundaries": {"data": {"documented": true}, "infrastructure": {"documented": true}, "people": {"documented": true}, "procedures": {"documented": true}, "software": {"documented": true}}, "vendor_management": {"contracts": {"security_requirements": true}, "due_diligence": {"performed": true}, "monitoring": {"ongoing": true}, "termination": {"procedures": {"defined": true}}}}, "user_management": {"approval_workflow": true, "automated_deprovisioning": true, "automated_provisioning": true}}
+fixture := {"access_controls": {"access_logging": {"enabled": true, "includes_failed_attempts": true, "retention_days": 30}, "least_privilege_principle": true, "periodic_reviews": {"documented": true, "enabled": true, "frequency_days": 10}, "privileged_users": [{"mfa_enabled": true}], "regular_access_reviews": true, "role_based_access": true, "service_accounts": [{"regular_password_change": true, "unique_identifier": true}], "shared_accounts": []}, "backup": {"automated_backups": {"enabled": true}, "offsite_storage": {"enabled": true}, "recovery_testing": {"frequency_days": 10}, "retention": {"days": 30}}, "capacity_management": {"forecasting": {"enabled": true}, "monitoring": {"enabled": true}}, "data_classification": {"access_controls": {"need_to_know": true, "role_based": true}, "categories": {"confidential": {"defined": true}}, "system_defined": true}, "data_disposal": {"procedures": {"documented": true}, "verification": {"completion_verified": true}}, "data_processing": {"authorization": {"audit_trail": true, "required": true}, "error_handling": {"logging": {"enabled": true}, "recovery_procedures": {"documented": true}}, "input_validation": {"data_type_checking": true, "enabled": true, "format_validation": true, "range_checking": true}, "integrity_checks": {"checksums": {"enabled": true}}, "transactions": {"reconciliation": {"enabled": true, "frequency_hours": 10}}, "transmission": {"delivery_confirmation": true}}, "database_security": {"access_logging": true, "authentication_required": true, "connection_encryption": true, "privileged_accounts": [{"regular_review": true}]}, "databases": {"integrity_constraints": {"enforced": true}, "transactions": {"rollback_capability": true}}, "dlp": {"monitoring": {"enabled": true}}, "encryption": {"in_transit": {"cipher_suites": {"strong_only": true}, "enabled": true}}, "monitoring": {"alerts": {"configured": true}, "infrastructure": {"enabled": true}}, "network_security": {"firewalls": {"configured": true}, "segmentation": {"enabled": true, "zones": ["zone-0", "zone-1"]}}, "privacy": {"breach_notification": {"procedures_documented": true, "timeline_compliance": {"authorities": 10, "individuals": 10}}, "collection": {"data_minimization": true, "policy_documented": true, "purpose_limitation": true}, "consent": {"consent_tracking": {"enabled": true}, "explicit_consent_required": true}, "data_quality": {"accuracy_verification": true, "correction_procedures": true}, "data_subject_requests": {"request_logging": true, "response_timeline": 10}, "data_subject_rights": {"access_request": {"supported": true}, "rectification": {"supported": true}}, "gdpr": {"records_of_processing": true}, "retention": {"automated_deletion": true, "policies_documented": true, "retention_schedules": {"defined": true}}, "third_party_sharing": {"disclosure_logging": {"enabled": true}, "documented_agreements": true, "due_diligence_performed": true}, "use": {"compatible_use_only": true, "purpose_limitation": true}}, "remote_access": {"session_timeout": {"configured": true, "max_idle_minutes": 10}, "vpn_encryption": {"enabled": true}, "vpn_required": true}, "security": {"edr": {"coverage": {"comprehensive": true}, "detection": {"behavioral": true}}, "vulnerability_management": {"coverage": {"comprehensive": true}, "scanning": {"continuous": true}}}, "soc2": {"attestations": {"CC1.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC1.5": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC2.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC2.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC2.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC3.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC4.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC4.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC5.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC5.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC5.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC6.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC7.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC7.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC7.5": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC9.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "CC9.2": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "P1.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "P2.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "P6.3": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "P6.4": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "P6.5": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "P8.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}, "PI1.1": {"attested": true, "by": "Control owner", "date": "2026-11-01"}}, "business_continuity": {"communication": {"plan": {"defined": true}}, "plan": {"documented": true}, "recovery_objectives": {"defined": true}, "testing": {"annual": true}}, "categories_in_scope": ["availability", "confidentiality", "privacy", "processing_integrity"], "change_management": {"approval": {"required": true}, "process": {"documented": true}, "rollback": {"procedures": {"defined": true}}, "testing": {"required": true}}, "commitments": {"access_review_interval_days": 20, "backup_retention_days": 20, "breach_notice_hours_authorities": 20, "breach_notice_hours_individuals": 20, "data_subject_response_days": 20, "log_retention_days": 20, "max_idle_minutes": 20, "reconciliation_interval_hours": 20, "recovery_test_interval_days": 20}, "configuration_management": {"baseline": {"established": true}, "unauthorized_changes": {"detection": true}, "version_control": true}, "control_environment": {"competence": {"defined_roles": true}, "governance": {"board_oversight": true, "management_philosophy": true}, "integrity": {"code_of_conduct": true}}, "human_resources": {"background_checks": true, "disciplinary_procedures": true, "performance_evaluations": true, "training_programs": true}, "incident_response": {"procedures": {"documented": true}, "program": {"established": true}, "team": {"defined": true}, "testing": {"regular": true}}, "logging": {"centralized": true, "integrity_protection": true, "retention": {"adequate": true}, "review": {"regular": true}}, "monitoring": {"applications": {"comprehensive": true}, "infrastructure": {"comprehensive": true}, "performance": {"continuous": true}, "security_events": {"real_time": true}}, "risk_management": {"escalation": {"procedures": {"defined": true}}, "monitoring": {"continuous": true}, "reporting": {"regular": true}, "risk_assessment": {"methodology": {"defined": true}, "periodic": true}, "risk_identification": {"comprehensive": true}, "risk_response": {"documented": true}}, "service_commitments": {"operating_effectiveness": true, "security": {"defined": true}, "suitability_of_design": true}, "subservice_organizations": [{"soc_report": {"current": true}}], "system_boundaries": {"data": {"documented": true}, "infrastructure": {"documented": true}, "people": {"documented": true}, "procedures": {"documented": true}, "software": {"documented": true}}, "vendor_management": {"contracts": {"security_requirements": true}, "due_diligence": {"performed": true}, "monitoring": {"ongoing": true}, "termination": {"procedures": {"defined": true}}}}, "user_management": {"approval_workflow": true, "automated_deprovisioning": true, "automated_provisioning": true}}
 
 _row(r, id) := [x | some x in r.control_results; x.id == id][0]
 
@@ -888,6 +888,27 @@ test_c1_2_evidence_missing if {
 	r.compliant == false
 }
 
+test_pi1_1_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "PI1.1").status == "pass"
+	_row(r, "PI1.1").findings == []
+}
+
+test_pi1_1_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/PI1.1/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "PI1.1").status == "fail"
+	r.compliant == false
+	"PI1.1" in r.failed_criteria
+}
+
+test_pi1_1_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/PI1.1"])
+	r := main.compliance_report with input as inp
+	_row(r, "PI1.1").status == "evidence_missing"
+	r.compliant == false
+}
+
 test_pi1_2_pass if {
 	r := main.compliance_report with input as fixture
 	_row(r, "PI1.2").status == "pass"
@@ -927,6 +948,90 @@ test_pi1_3_evidence_missing if {
 	inp := json.remove(fixture, ["/data_processing/authorization/required"])
 	r := main.compliance_report with input as inp
 	_row(r, "PI1.3").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_pi1_4_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "PI1.4").status == "pass"
+	_row(r, "PI1.4").findings == []
+}
+
+test_pi1_4_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/data_processing/transmission/delivery_confirmation", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "PI1.4").status == "fail"
+	r.compliant == false
+	"PI1.4" in r.failed_criteria
+}
+
+test_pi1_4_evidence_missing if {
+	inp := json.remove(fixture, ["/data_processing/transmission/delivery_confirmation"])
+	r := main.compliance_report with input as inp
+	_row(r, "PI1.4").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_pi1_5_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "PI1.5").status == "pass"
+	_row(r, "PI1.5").findings == []
+}
+
+test_pi1_5_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/data_processing/integrity_checks/checksums/enabled", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "PI1.5").status == "fail"
+	r.compliant == false
+	"PI1.5" in r.failed_criteria
+}
+
+test_pi1_5_evidence_missing if {
+	inp := json.remove(fixture, ["/data_processing/integrity_checks/checksums/enabled"])
+	r := main.compliance_report with input as inp
+	_row(r, "PI1.5").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_p1_1_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P1.1").status == "pass"
+	_row(r, "P1.1").findings == []
+}
+
+test_p1_1_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/P1.1/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P1.1").status == "fail"
+	r.compliant == false
+	"P1.1" in r.failed_criteria
+}
+
+test_p1_1_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/P1.1"])
+	r := main.compliance_report with input as inp
+	_row(r, "P1.1").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_p2_1_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P2.1").status == "pass"
+	_row(r, "P2.1").findings == []
+}
+
+test_p2_1_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/P2.1/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P2.1").status == "fail"
+	r.compliant == false
+	"P2.1" in r.failed_criteria
+}
+
+test_p2_1_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/P2.1"])
+	r := main.compliance_report with input as inp
+	_row(r, "P2.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1014,6 +1119,27 @@ test_p4_2_evidence_missing if {
 	r.compliant == false
 }
 
+test_p4_3_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P4.3").status == "pass"
+	_row(r, "P4.3").findings == []
+}
+
+test_p4_3_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/privacy/retention/automated_deletion", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P4.3").status == "fail"
+	r.compliant == false
+	"P4.3" in r.failed_criteria
+}
+
+test_p4_3_evidence_missing if {
+	inp := json.remove(fixture, ["/privacy/retention/automated_deletion"])
+	r := main.compliance_report with input as inp
+	_row(r, "P4.3").status == "evidence_missing"
+	r.compliant == false
+}
+
 test_p5_1_pass if {
 	r := main.compliance_report with input as fixture
 	_row(r, "P5.1").status == "pass"
@@ -1077,6 +1203,90 @@ test_p6_1_evidence_missing if {
 	r.compliant == false
 }
 
+test_p6_2_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P6.2").status == "pass"
+	_row(r, "P6.2").findings == []
+}
+
+test_p6_2_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/privacy/third_party_sharing/disclosure_logging/enabled", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.2").status == "fail"
+	r.compliant == false
+	"P6.2" in r.failed_criteria
+}
+
+test_p6_2_evidence_missing if {
+	inp := json.remove(fixture, ["/privacy/third_party_sharing/disclosure_logging/enabled"])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.2").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_p6_3_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P6.3").status == "pass"
+	_row(r, "P6.3").findings == []
+}
+
+test_p6_3_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/P6.3/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.3").status == "fail"
+	r.compliant == false
+	"P6.3" in r.failed_criteria
+}
+
+test_p6_3_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/P6.3"])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.3").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_p6_4_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P6.4").status == "pass"
+	_row(r, "P6.4").findings == []
+}
+
+test_p6_4_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/P6.4/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.4").status == "fail"
+	r.compliant == false
+	"P6.4" in r.failed_criteria
+}
+
+test_p6_4_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/P6.4"])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.4").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_p6_5_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P6.5").status == "pass"
+	_row(r, "P6.5").findings == []
+}
+
+test_p6_5_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/P6.5/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.5").status == "fail"
+	r.compliant == false
+	"P6.5" in r.failed_criteria
+}
+
+test_p6_5_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/P6.5"])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.5").status == "evidence_missing"
+	r.compliant == false
+}
+
 test_p6_6_pass if {
 	r := main.compliance_report with input as fixture
 	_row(r, "P6.6").status == "pass"
@@ -1098,6 +1308,27 @@ test_p6_6_evidence_missing if {
 	r.compliant == false
 }
 
+test_p6_7_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P6.7").status == "pass"
+	_row(r, "P6.7").findings == []
+}
+
+test_p6_7_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/privacy/gdpr/records_of_processing", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.7").status == "fail"
+	r.compliant == false
+	"P6.7" in r.failed_criteria
+}
+
+test_p6_7_evidence_missing if {
+	inp := json.remove(fixture, ["/privacy/gdpr/records_of_processing"])
+	r := main.compliance_report with input as inp
+	_row(r, "P6.7").status == "evidence_missing"
+	r.compliant == false
+}
+
 test_p7_1_pass if {
 	r := main.compliance_report with input as fixture
 	_row(r, "P7.1").status == "pass"
@@ -1116,5 +1347,26 @@ test_p7_1_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/data_quality/accuracy_verification"])
 	r := main.compliance_report with input as inp
 	_row(r, "P7.1").status == "evidence_missing"
+	r.compliant == false
+}
+
+test_p8_1_pass if {
+	r := main.compliance_report with input as fixture
+	_row(r, "P8.1").status == "pass"
+	_row(r, "P8.1").findings == []
+}
+
+test_p8_1_fail if {
+	inp := json.patch(fixture, [{"op": "replace", "path": "/soc2/attestations/P8.1/attested", "value": false}])
+	r := main.compliance_report with input as inp
+	_row(r, "P8.1").status == "fail"
+	r.compliant == false
+	"P8.1" in r.failed_criteria
+}
+
+test_p8_1_evidence_missing if {
+	inp := json.remove(fixture, ["/soc2/attestations/P8.1"])
+	r := main.compliance_report with input as inp
+	_row(r, "P8.1").status == "evidence_missing"
 	r.compliant == false
 }

@@ -23,6 +23,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `make check-generated` now runs `gen_input_schemas.py --check`: a stale schema fails, and so does a self-test
   (each key's all-pass fixture validates; a re-spelled key and a wrong-typed value are flagged).
 - Docs: `docs/INPUT_SCHEMAS.md`. No policy, entrypoint or report changes.
+### Added — SOC 2: checks for the 12 optional criteria that had none (2026-11-22)
+- `soc2.criteria` now covers every one of the 61 criteria: all 28 criteria of the optional categories are
+  evaluated for the categories in scope (was 16). `coverage.optional_criteria_not_mapped` is now empty.
+- From evidence (5): PI1.4 (`data_processing.transmission.delivery_confirmation`,
+  `data_processing.transactions.reconciliation.enabled`, `...reconciliation.frequency_hours` <=
+  `input.soc2.commitments.reconciliation_interval_hours`), PI1.5 (`data_processing.integrity_checks.checksums.enabled`,
+  `databases.integrity_constraints.enforced`, `databases.transactions.rollback_capability`), P4.3
+  (`privacy.retention.automated_deletion`, `data_disposal.verification.completion_verified`), P6.2
+  (`privacy.third_party_sharing.disclosure_logging.enabled`, a new path) and P6.7
+  (`privacy.gdpr.records_of_processing`, `privacy.data_subject_requests.request_logging`,
+  `privacy.data_subject_requests.response_timeline` <= `input.soc2.commitments.data_subject_response_days`).
+- By signed attestation at `input.soc2.attestations[id]` (7): PI1.1, P1.1, P2.1, P6.3, P6.4, P6.5, P8.1.
+- Titles are short paraphrases written for this library; no AICPA text. Numbers are compared only with the
+  entity's own commitments.
+- Behaviour change: with processing integrity or privacy in scope, `total_controls` rises by up to 12 (61
+  with all four optional categories). An input that was compliant before also needs the five new evidence
+  sets, the two new commitments and the seven new attestations; missing evidence is `evidence_missing`.
+- Tests: pass, fail and evidence-missing for each new criterion, from the all-pass fixture, plus commitment,
+  type, unsigned-attestation and scope tests.
+
 ### Changed — SOC 2 and ISO 27701 per-control status values match NIST SP 800-53 and TISAX (breaking) (2026-11-22)
 - **Breaking change to the status values** in `control_results` of `soc2.main` (and `soc2.criteria`) and
   `iso27701.main`. Both now use the vocabulary of `nist_800_53.main` and `tisax.main`: `pass`, `fail`,
