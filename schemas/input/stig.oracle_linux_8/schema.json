@@ -1,0 +1,2688 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.oracle_linux_8/schema.json",
+ "title": "Input facts for stig.oracle_linux_8: DISA STIG, Oracle Linux 8",
+ "description": "Facts the DISA STIG module for Oracle Linux 8 reads, from its reviewed rule table (95 rules). `required` lists the evidence of rules that always apply: absent or null, the rule is Open with 'evidence missing'. Evidence of a rule with a Not Applicable clause is in x-required-when-applicable. Collect the observed value, not a verdict. Human-readable form: benchmarks/stig/LINUX_COLLECTOR_CONTRACT.md.",
+ "x-framework-key": "stig.oracle_linux_8",
+ "x-entrypoint": "data.stig.oracle_linux_8.main.compliance_report",
+ "x-derivation": "table",
+ "x-source": [
+  "tools/stig_generators/ol8_rules.py",
+  "tools/stig_generators/gen_collector_contract.py"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "aide": {
+   "type": "object",
+   "properties": {
+    "schedule": {
+     "description": "OL08-00-010360: the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA. Read by OL08-00-010360.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010360"
+     ],
+     "x-required-by": [
+      "OL08-00-010360"
+     ]
+    }
+   },
+   "required": [
+    "schedule"
+   ]
+  },
+  "attest": {
+   "type": "object",
+   "properties": {
+    "ol08_00_010090_alternate_mfa": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-010090.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-010090"
+     ]
+    },
+    "ol08_00_010360_notification": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-010360.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-010360"
+     ]
+    },
+    "ol08_00_010360_other_tool": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-010360.",
+     "type": "boolean",
+     "x-read-by": [
+      "OL08-00-010360"
+     ]
+    },
+    "ol08_00_010370_gpg_process": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-010370.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-010370"
+     ]
+    },
+    "ol08_00_010400_status_checking": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-010400.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-010400"
+     ]
+    },
+    "ol08_00_010542_other_partition": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-010542.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-010542"
+     ]
+    },
+    "ol08_00_020090_alternate_mfa": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-020090.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-020090"
+     ]
+    },
+    "ol08_00_030670_offload": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-030670.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-030670"
+     ]
+    },
+    "ol08_00_030731_realtime_alerts": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-030731.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-030731"
+     ]
+    },
+    "ol08_00_040026_firewire_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040026.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040026"
+     ]
+    },
+    "ol08_00_040080_usb_storage_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040080.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040080"
+     ]
+    },
+    "ol08_00_040101_other_firewall": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040101.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040101"
+     ]
+    },
+    "ol08_00_040110_wireless_approved": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040110.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040110"
+     ]
+    },
+    "ol08_00_040111_bluetooth_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040111.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040111"
+     ]
+    },
+    "ol08_00_040190_tftp_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040190.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040190"
+     ]
+    },
+    "ol08_00_040220_redirects_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040220.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040220"
+     ]
+    },
+    "ol08_00_040259_router_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040259.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040259"
+     ]
+    },
+    "ol08_00_040330_promisc_approved": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040330.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040330"
+     ]
+    },
+    "ol08_00_040340_x11_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040340.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040340"
+     ]
+    },
+    "ol08_00_040360_ftp_documented": {
+     "description": "Attestation (true when attested; absent means not attested). Read by OL08-00-040360.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040360"
+     ]
+    }
+   }
+  },
+  "audit_rules_file": {
+   "description": "OL08-00-030000: execve rules (auditctl -l) for both arches and both setuid/setgid conditions. Read by OL08-00-030000, OL08-00-030150, OL08-00-030171, OL08-00-030200, OL08-00-030360 and 4 more.",
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "examples": [
+    [
+     "-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k",
+     "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k",
+     "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k"
+    ]
+   ],
+   "x-read-by": [
+    "OL08-00-030000",
+    "OL08-00-030150",
+    "OL08-00-030171",
+    "OL08-00-030200",
+    "OL08-00-030360",
+    "OL08-00-030420",
+    "OL08-00-030480",
+    "OL08-00-030490",
+    "OL08-00-030550"
+   ],
+   "x-required-by": [
+    "OL08-00-030000",
+    "OL08-00-030150",
+    "OL08-00-030171",
+    "OL08-00-030200",
+    "OL08-00-030360",
+    "OL08-00-030420",
+    "OL08-00-030480",
+    "OL08-00-030490",
+    "OL08-00-030550"
+   ]
+  },
+  "auditd_config": {
+   "type": "object",
+   "properties": {
+    "disk_error_action": {
+     "description": "OL08-00-030040: grep disk_error_action /etc/audit/auditd.conf. Read by OL08-00-030040. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "HALT"
+     ],
+     "x-read-by": [
+      "OL08-00-030040"
+     ],
+     "x-required-by": [
+      "OL08-00-030040"
+     ]
+    },
+    "disk_full_action": {
+     "description": "OL08-00-030060: disk_full_action as configured in /etc/audit/auditd.conf. Read by OL08-00-030060. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "SYSLOG"
+     ],
+     "x-read-by": [
+      "OL08-00-030060"
+     ],
+     "x-required-by": [
+      "OL08-00-030060"
+     ]
+    },
+    "log_file": {
+     "description": "OL08-00-010542: the directory of auditd log_file must have its own /etc/fstab entry; the ask-the-SA clause is an attestation. Read by OL08-00-010542. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "/var/log/audit/audit.log"
+     ],
+     "x-read-by": [
+      "OL08-00-010542"
+     ],
+     "x-required-by": [
+      "OL08-00-010542"
+     ]
+    },
+    "space_left_action": {
+     "description": "OL08-00-030731: space_left_action as configured in /etc/audit/auditd.conf. Read by OL08-00-030731. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "EMAIL"
+     ],
+     "x-read-by": [
+      "OL08-00-030731"
+     ],
+     "x-required-by": [
+      "OL08-00-030731"
+     ]
+    }
+   },
+   "required": [
+    "disk_error_action",
+    "disk_full_action",
+    "log_file",
+    "space_left_action"
+   ]
+  },
+  "bluetooth_adapter_present": {
+   "description": "Read by OL08-00-040111.",
+   "type": "boolean",
+   "examples": [
+    false
+   ],
+   "x-read-by": [
+    "OL08-00-040111"
+   ]
+  },
+  "boot_firmware": {
+   "description": "Read by OL08-00-010140, OL08-00-010150. Accepted: string, or integer; trimmed and compared case-insensitively.",
+   "type": [
+    "integer",
+    "string"
+   ],
+   "examples": [
+    "uefi"
+   ],
+   "x-read-by": [
+    "OL08-00-010140",
+    "OL08-00-010150"
+   ]
+  },
+  "crypto_policy": {
+   "description": "OL08-00-010182: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by OL08-00-010182. Accepted: string, or integer (read as its decimal text); trimmed.",
+   "type": [
+    "integer",
+    "string"
+   ],
+   "examples": [
+    "FIPS"
+   ],
+   "x-read-by": [
+    "OL08-00-010182"
+   ],
+   "x-required-by": [
+    "OL08-00-010182"
+   ]
+  },
+  "crypto_policy_check": {
+   "type": "object",
+   "properties": {
+    "is_applied": {
+     "description": "OL08-00-010183: output of update-crypto-policies --is-applied (OL 8; RHEL 9 runs --check and lists the back-ends). Read by OL08-00-010183. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "The configured policy is applied"
+     ],
+     "x-read-by": [
+      "OL08-00-010183"
+     ],
+     "x-required-by": [
+      "OL08-00-010183"
+     ]
+    }
+   },
+   "required": [
+    "is_applied"
+   ]
+  },
+  "crypto_policy_state": {
+   "type": "object",
+   "properties": {
+    "hash": {
+     "description": "OL08-00-010182: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by OL08-00-010182.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "SHA2-256",
+       "SHA2-384",
+       "SHA2-512"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010182"
+     ],
+     "x-required-by": [
+      "OL08-00-010182"
+     ]
+    },
+    "min_rsa_size": {
+     "description": "OL08-00-010182: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by OL08-00-010182. Accepted: number, or string holding a decimal integer.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      2048
+     ],
+     "x-read-by": [
+      "OL08-00-010182"
+     ],
+     "x-required-by": [
+      "OL08-00-010182"
+     ]
+    }
+   },
+   "required": [
+    "hash",
+    "min_rsa_size"
+   ]
+  },
+  "dconf_db": {
+   "type": "object",
+   "properties": {
+    "removal_action": {
+     "description": "OL08-00-020050: input.dconf_db.removal_action: the values of the uncommented removal-action= lines found by grep -R removal-action /etc/dconf/db/* (OL 9 reads the dconf files; RHEL 9 reads gsettings). Read by OL08-00-020050.",
+     "type": [
+      "array",
+      "null"
+     ],
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "'lock-screen'"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020050"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-020050"
+     ]
+    }
+   }
+  },
+  "dconf_local": {
+   "type": "object",
+   "properties": {
+    "logout": {
+     "description": "OL08-00-040171: input.dconf_local.logout: values of uncommented logout= lines in /etc/dconf/db/local.d/*; the rule title applies it only when a GUI is installed (input.gui_installed == false is Not Applicable). Read by OL08-00-040171.",
+     "type": [
+      "array",
+      "null"
+     ],
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "''"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-040171"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-040171"
+     ]
+    }
+   }
+  },
+  "dnf_config": {
+   "type": "object",
+   "properties": {
+    "localpkg_gpgcheck": {
+     "description": "OL08-00-010371: localpkg_gpgcheck as written in /etc/dnf/dnf.conf. Read by OL08-00-010371.",
+     "type": "string",
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-010371"
+     ],
+     "x-required-by": [
+      "OL08-00-010371"
+     ]
+    }
+   },
+   "required": [
+    "localpkg_gpgcheck"
+   ]
+  },
+  "duplicate_uid_accounts": {
+   "description": "OL08-00-020240: accounts printed by awk -F: 'list[$3]++{print $1, $3}' /etc/passwd, each {name, uid, interactive}. Read by OL08-00-020240.",
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "interactive": {
+      "description": "Read by OL08-00-020240.",
+      "type": "boolean",
+      "examples": [
+       false
+      ],
+      "x-read-by": [
+       "OL08-00-020240"
+      ]
+     },
+     "name": {
+      "description": "Read by OL08-00-020240.",
+      "type": "string",
+      "examples": [
+       "toor"
+      ],
+      "x-read-by": [
+       "OL08-00-020240"
+      ]
+     },
+     "uid": {
+      "description": "Read by OL08-00-020240.",
+      "type": "number",
+      "examples": [
+       0
+      ],
+      "x-read-by": [
+       "OL08-00-020240"
+      ]
+     }
+    }
+   },
+   "examples": [
+    []
+   ],
+   "x-read-by": [
+    "OL08-00-020240"
+   ],
+   "x-required-by": [
+    "OL08-00-020240"
+   ]
+  },
+  "faillock_conf": {
+   "type": "object",
+   "properties": {
+    "deny": {
+     "description": "OL08-00-020011: deny as configured in /etc/security/faillock.conf. Read by OL08-00-020011. Accepted: number, or string holding a decimal integer.",
+     "type": [
+      "null",
+      "number",
+      "string"
+     ],
+     "examples": [
+      3
+     ],
+     "x-read-by": [
+      "OL08-00-020011"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-020011"
+     ]
+    },
+    "fail_interval": {
+     "description": "OL08-00-020013: fail_interval in /etc/security/faillock.conf; OL 8 requires 900 or MORE (RHEL 9: 900 or less); 8.0/8.1 N/A. Read by OL08-00-020013. Accepted: number, or string holding a decimal integer.",
+     "type": [
+      "null",
+      "number",
+      "string"
+     ],
+     "examples": [
+      900
+     ],
+     "x-read-by": [
+      "OL08-00-020013"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-020013"
+     ]
+    }
+   }
+  },
+  "file_permissions": {
+   "type": "object",
+   "properties": {
+    "home_dirs_uid_1000": {
+     "description": "OL08-00-010730: input.file_permissions.home_dirs_uid_1000 [{path, mode}]: users with UID >= 1000 other than nobody (OL 8's awk; RHEL 9 excludes nologin shells instead). Read by OL08-00-010730.",
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "mode": {
+        "description": "Read by OL08-00-010730.",
+        "type": "string",
+        "examples": [
+         "700"
+        ],
+        "x-read-by": [
+         "OL08-00-010730"
+        ]
+       },
+       "path": {
+        "description": "Read by OL08-00-010730.",
+        "type": "string",
+        "examples": [
+         "/home/disauser"
+        ],
+        "x-read-by": [
+         "OL08-00-010730"
+        ]
+       }
+      }
+     },
+     "x-read-by": [
+      "OL08-00-010730"
+     ],
+     "x-required-by": [
+      "OL08-00-010730"
+     ]
+    },
+    "library_files_group_or_world_writable": {
+     "description": "OL08-00-010330: output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022. Read by OL08-00-010330.",
+     "type": "array",
+     "examples": [
+      []
+     ],
+     "x-read-by": [
+      "OL08-00-010330"
+     ],
+     "x-required-by": [
+      "OL08-00-010330"
+     ]
+    },
+    "library_files_not_owned_by_root": {
+     "description": "OL08-00-010340: output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root. Read by OL08-00-010340.",
+     "type": "array",
+     "examples": [
+      []
+     ],
+     "x-read-by": [
+      "OL08-00-010340"
+     ],
+     "x-required-by": [
+      "OL08-00-010340"
+     ]
+    },
+    "system_commands_group_or_world_writable": {
+     "description": "OL08-00-010300: the RHEL 9 offender list (find -perm /022 incl. /usr/libexec); OL 8 does not search /usr/libexec, so those entries are ignored. Read by OL08-00-010300.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      []
+     ],
+     "x-read-by": [
+      "OL08-00-010300"
+     ],
+     "x-required-by": [
+      "OL08-00-010300"
+     ]
+    },
+    "ungrouped_files": {
+     "description": "OL08-00-010790: files found by find <local mounts> -xdev -nogroup. Read by OL08-00-010790.",
+     "type": "array",
+     "examples": [
+      []
+     ],
+     "x-read-by": [
+      "OL08-00-010790"
+     ],
+     "x-required-by": [
+      "OL08-00-010790"
+     ]
+    },
+    "unowned_files": {
+     "description": "OL08-00-010780: files found by find <local mounts> -xdev -nouser. Read by OL08-00-010780.",
+     "type": "array",
+     "examples": [
+      []
+     ],
+     "x-read-by": [
+      "OL08-00-010780"
+     ],
+     "x-required-by": [
+      "OL08-00-010780"
+     ]
+    }
+   },
+   "required": [
+    "home_dirs_uid_1000",
+    "library_files_group_or_world_writable",
+    "library_files_not_owned_by_root",
+    "system_commands_group_or_world_writable",
+    "ungrouped_files",
+    "unowned_files"
+   ]
+  },
+  "fips": {
+   "type": "object",
+   "properties": {
+    "fips_enabled": {
+     "description": "OL08-00-010020: fips-mode-setup --check, the kernelopts of grub2-editenv list, and /proc/sys/crypto/fips_enabled. Read by OL08-00-010020. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-010020"
+     ],
+     "x-required-by": [
+      "OL08-00-010020"
+     ]
+    },
+    "mode_setup_check": {
+     "description": "OL08-00-010020: fips-mode-setup --check, the kernelopts of grub2-editenv list, and /proc/sys/crypto/fips_enabled. Read by OL08-00-010020. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "FIPS mode is enabled."
+     ],
+     "x-read-by": [
+      "OL08-00-010020"
+     ],
+     "x-required-by": [
+      "OL08-00-010020"
+     ]
+    }
+   },
+   "required": [
+    "fips_enabled",
+    "mode_setup_check"
+   ]
+  },
+  "fstab": {
+   "description": "OL08-00-010543: an uncommented /etc/fstab entry mounting /tmp (grep /tmp /etc/fstab). Read by OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590.",
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "fs_type": {
+      "description": "Read by OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590.",
+      "type": "string",
+      "examples": [
+       "xfs"
+      ],
+      "x-read-by": [
+       "OL08-00-010541",
+       "OL08-00-010542",
+       "OL08-00-010543",
+       "OL08-00-010570",
+       "OL08-00-010590"
+      ]
+     },
+     "mount_point": {
+      "description": "Read by OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590.",
+      "type": "string",
+      "examples": [
+       "/"
+      ],
+      "x-read-by": [
+       "OL08-00-010541",
+       "OL08-00-010542",
+       "OL08-00-010543",
+       "OL08-00-010570",
+       "OL08-00-010590"
+      ]
+     },
+     "options": {
+      "description": "Read by OL08-00-010541, OL08-00-010542, OL08-00-010543, OL08-00-010570, OL08-00-010590.",
+      "type": "string",
+      "examples": [
+       "defaults"
+      ],
+      "x-read-by": [
+       "OL08-00-010541",
+       "OL08-00-010542",
+       "OL08-00-010543",
+       "OL08-00-010570",
+       "OL08-00-010590"
+      ]
+     }
+    }
+   },
+   "x-read-by": [
+    "OL08-00-010541",
+    "OL08-00-010542",
+    "OL08-00-010543",
+    "OL08-00-010570",
+    "OL08-00-010590"
+   ],
+   "x-required-by": [
+    "OL08-00-010541",
+    "OL08-00-010542",
+    "OL08-00-010543",
+    "OL08-00-010570",
+    "OL08-00-010590"
+   ]
+  },
+  "ftpd_packages": {
+   "description": "OL08-00-040360: input.ftpd_packages: installed package names matching ftpd. Read by OL08-00-040360.",
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "examples": [
+    []
+   ],
+   "x-read-by": [
+    "OL08-00-040360"
+   ],
+   "x-required-by": [
+    "OL08-00-040360"
+   ]
+  },
+  "grub": {
+   "type": "object",
+   "properties": {
+    "efi_user_cfg_password": {
+     "description": "OL08-00-010140: GRUB2_PASSWORD in /boot/efi/EFI/redhat/user.cfg (UEFI). Read by OL08-00-010140. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "null",
+      "string"
+     ],
+     "examples": [
+      "grub.pbkdf2.sha512.10000.ABCD"
+     ],
+     "x-read-by": [
+      "OL08-00-010140"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-010140"
+     ]
+    },
+    "kernelopts": {
+     "description": "OL08-00-010020: fips-mode-setup --check, the kernelopts of grub2-editenv list, and /proc/sys/crypto/fips_enabled. Read by OL08-00-010020. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "root=/dev/mapper/ol-root ro crashkernel=auto fips=1 boot=UUID=1a2b"
+     ],
+     "x-read-by": [
+      "OL08-00-010020"
+     ],
+     "x-required-by": [
+      "OL08-00-010020"
+     ]
+    },
+    "user_cfg_password": {
+     "description": "OL08-00-010150: GRUB2_PASSWORD in /boot/grub2/user.cfg (BIOS); input.boot_firmware \"uefi\" is Not Applicable. Read by OL08-00-010150. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "null",
+      "string"
+     ],
+     "examples": [
+      "grub.pbkdf2.sha512.10000.ABCDEF"
+     ],
+     "x-read-by": [
+      "OL08-00-010150"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-010150"
+     ]
+    }
+   },
+   "required": [
+    "kernelopts"
+   ]
+  },
+  "gui_installed": {
+   "description": "Read by OL08-00-020050, OL08-00-040171.",
+   "type": "boolean",
+   "examples": [
+    false
+   ],
+   "x-read-by": [
+    "OL08-00-020050",
+    "OL08-00-040171"
+   ]
+  },
+  "home_dir_mount_points": {
+   "description": "OL08-00-010570: input.home_dir_mount_points: the fstab mount points holding the home directories of users with UID >= 1000 (not nobody); each entry's options must include the option. Read by OL08-00-010570, OL08-00-010590.",
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "examples": [
+    [
+     "/home"
+    ]
+   ],
+   "x-read-by": [
+    "OL08-00-010570",
+    "OL08-00-010590"
+   ],
+   "x-required-by": [
+    "OL08-00-010570",
+    "OL08-00-010590"
+   ]
+  },
+  "ipv6_disabled": {
+   "description": "Read by OL08-00-040240, OL08-00-040280.",
+   "type": "boolean",
+   "examples": [
+    false
+   ],
+   "x-read-by": [
+    "OL08-00-040240",
+    "OL08-00-040280"
+   ]
+  },
+  "kernel_info": {
+   "type": "object",
+   "properties": {
+    "uek_release": {
+     "description": "Read by OL08-00-010372. Accepted: number, or string holding a decimal integer.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      7
+     ],
+     "x-read-by": [
+      "OL08-00-010372"
+     ]
+    }
+   }
+  },
+  "kernel_params": {
+   "type": "object",
+   "properties": {
+    "kernel.dmesg_restrict": {
+     "description": "OL08-00-010375: runtime kernel.dmesg_restrict (sysctl). Read by OL08-00-010375. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-010375"
+     ],
+     "x-required-by": [
+      "OL08-00-010375"
+     ]
+    },
+    "kernel.kexec_load_disabled": {
+     "description": "OL08-00-010372: kernel.kexec_load_disabled must be 1; UEK R6+ with Secure Boot is Not Applicable (input.kernel_info.uek_release, input.secureboot_enabled). Read by OL08-00-010372. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "null",
+      "number",
+      "string"
+     ],
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-010372"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-010372"
+     ]
+    },
+    "kernel.perf_event_paranoid": {
+     "description": "OL08-00-010376: runtime kernel.perf_event_paranoid (sysctl). Read by OL08-00-010376. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "2"
+     ],
+     "x-read-by": [
+      "OL08-00-010376"
+     ],
+     "x-required-by": [
+      "OL08-00-010376"
+     ]
+    },
+    "kernel.randomize_va_space": {
+     "description": "OL08-00-010430: runtime value (sysctl) and every value configured in the sysctl.d / sysctl.conf files the check greps. Read by OL08-00-010430. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "2"
+     ],
+     "x-read-by": [
+      "OL08-00-010430"
+     ],
+     "x-required-by": [
+      "OL08-00-010430"
+     ]
+    },
+    "kernel.unprivileged_bpf_disabled": {
+     "description": "OL08-00-040281: runtime kernel.unprivileged_bpf_disabled (sysctl). Read by OL08-00-040281. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-040281"
+     ],
+     "x-required-by": [
+      "OL08-00-040281"
+     ]
+    },
+    "kernel.yama.ptrace_scope": {
+     "description": "OL08-00-040282: sysctl kernel.yama.ptrace_scope (runtime value). Read by OL08-00-040282. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-040282"
+     ],
+     "x-required-by": [
+      "OL08-00-040282"
+     ]
+    },
+    "net.core.bpf_jit_harden": {
+     "description": "OL08-00-040286: runtime net.core.bpf_jit_harden (sysctl). Read by OL08-00-040286. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "2"
+     ],
+     "x-read-by": [
+      "OL08-00-040286"
+     ],
+     "x-required-by": [
+      "OL08-00-040286"
+     ]
+    },
+    "net.ipv4.conf.all.accept_redirects": {
+     "description": "OL08-00-040279: runtime net.ipv4.conf.all.accept_redirects (sysctl). Read by OL08-00-040279. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "0"
+     ],
+     "x-read-by": [
+      "OL08-00-040279"
+     ],
+     "x-required-by": [
+      "OL08-00-040279"
+     ]
+    },
+    "net.ipv4.conf.all.accept_source_route": {
+     "description": "OL08-00-040239: runtime net.ipv4.conf.all.accept_source_route (sysctl). Read by OL08-00-040239. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "0"
+     ],
+     "x-read-by": [
+      "OL08-00-040239"
+     ],
+     "x-required-by": [
+      "OL08-00-040239"
+     ]
+    },
+    "net.ipv4.conf.all.forwarding": {
+     "description": "OL08-00-040259: runtime net.ipv4.conf.all.forwarding (sysctl). Read by OL08-00-040259. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "0"
+     ],
+     "x-read-by": [
+      "OL08-00-040259"
+     ],
+     "x-required-by": [
+      "OL08-00-040259"
+     ]
+    },
+    "net.ipv4.conf.all.rp_filter": {
+     "description": "OL08-00-040285: runtime net.ipv4.conf.all.rp_filter (sysctl). Read by OL08-00-040285. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "1"
+     ],
+     "x-read-by": [
+      "OL08-00-040285"
+     ],
+     "x-required-by": [
+      "OL08-00-040285"
+     ]
+    },
+    "net.ipv4.conf.all.send_redirects": {
+     "description": "OL08-00-040220: runtime net.ipv4.conf.all.send_redirects (sysctl). Read by OL08-00-040220. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      "0"
+     ],
+     "x-read-by": [
+      "OL08-00-040220"
+     ],
+     "x-required-by": [
+      "OL08-00-040220"
+     ]
+    },
+    "net.ipv6.conf.all.accept_redirects": {
+     "description": "OL08-00-040280: sysctl net.ipv6.conf.all.accept_redirects; IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true). Read by OL08-00-040280. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "null",
+      "string"
+     ],
+     "examples": [
+      "0"
+     ],
+     "x-read-by": [
+      "OL08-00-040280"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-040280"
+     ]
+    },
+    "net.ipv6.conf.all.accept_source_route": {
+     "description": "OL08-00-040240: sysctl net.ipv6.conf.all.accept_source_route; IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true). Read by OL08-00-040240. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "null",
+      "string"
+     ],
+     "examples": [
+      "0"
+     ],
+     "x-read-by": [
+      "OL08-00-040240"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-040240"
+     ]
+    }
+   },
+   "required": [
+    "kernel.dmesg_restrict",
+    "kernel.perf_event_paranoid",
+    "kernel.randomize_va_space",
+    "kernel.unprivileged_bpf_disabled",
+    "kernel.yama.ptrace_scope",
+    "net.core.bpf_jit_harden",
+    "net.ipv4.conf.all.accept_redirects",
+    "net.ipv4.conf.all.accept_source_route",
+    "net.ipv4.conf.all.forwarding",
+    "net.ipv4.conf.all.rp_filter",
+    "net.ipv4.conf.all.send_redirects"
+   ]
+  },
+  "local_accounts_with_empty_passwords": {
+   "description": "OL08-00-010121: accounts whose /etc/shadow password field is empty (awk -F: '!$2 {print $1}' /etc/shadow). Read by OL08-00-010121.",
+   "type": "array",
+   "examples": [
+    []
+   ],
+   "x-read-by": [
+    "OL08-00-010121"
+   ],
+   "x-required-by": [
+    "OL08-00-010121"
+   ]
+  },
+  "login_banner": {
+   "type": "object",
+   "properties": {
+    "issue": {
+     "description": "OL08-00-010060: content of /etc/issue, compared with the banner text in the check (whitespace runs collapsed). Read by OL08-00-010060. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "x-read-by": [
+      "OL08-00-010060"
+     ],
+     "x-required-by": [
+      "OL08-00-010060"
+     ]
+    }
+   },
+   "required": [
+    "issue"
+   ]
+  },
+  "login_defs": {
+   "type": "object",
+   "properties": {
+    "ENCRYPT_METHOD": {
+     "description": "OL08-00-010110: ENCRYPT_METHOD as configured in /etc/login.defs (null when missing or commented out). Read by OL08-00-010110. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "SHA512"
+     ],
+     "x-read-by": [
+      "OL08-00-010110"
+     ],
+     "x-required-by": [
+      "OL08-00-010110"
+     ]
+    }
+   },
+   "required": [
+    "ENCRYPT_METHOD"
+   ]
+  },
+  "modprobe": {
+   "description": "Read by OL08-00-040026, OL08-00-040080, OL08-00-040111.",
+   "type": "object",
+   "properties": {
+    "bluetooth": {
+     "description": "OL08-00-040111: uncommented modprobe lines for bluetooth: input.modprobe[\"bluetooth\"] = {install: <command>, blacklisted: bool}. Read by OL08-00-040111.",
+     "type": [
+      "null",
+      "object"
+     ],
+     "properties": {
+      "blacklisted": {
+       "description": "Read by OL08-00-040111.",
+       "type": "boolean",
+       "examples": [
+        true
+       ],
+       "x-read-by": [
+        "OL08-00-040111"
+       ]
+      },
+      "install": {
+       "description": "Read by OL08-00-040111.",
+       "type": "string",
+       "examples": [
+        "/bin/false"
+       ],
+       "x-read-by": [
+        "OL08-00-040111"
+       ]
+      }
+     },
+     "x-read-by": [
+      "OL08-00-040111"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-040111"
+     ]
+    },
+    "firewire-core": {
+     "description": "OL08-00-040026: uncommented modprobe lines for firewire-core: input.modprobe[\"firewire-core\"] = {install: <command>, blacklisted: bool}. Read by OL08-00-040026.",
+     "type": "object",
+     "properties": {
+      "blacklisted": {
+       "description": "Read by OL08-00-040026.",
+       "type": "boolean",
+       "examples": [
+        true
+       ],
+       "x-read-by": [
+        "OL08-00-040026"
+       ]
+      },
+      "install": {
+       "description": "Read by OL08-00-040026.",
+       "type": "string",
+       "examples": [
+        "/bin/false"
+       ],
+       "x-read-by": [
+        "OL08-00-040026"
+       ]
+      }
+     },
+     "x-read-by": [
+      "OL08-00-040026"
+     ],
+     "x-required-by": [
+      "OL08-00-040026"
+     ]
+    },
+    "usb-storage": {
+     "description": "OL08-00-040080: uncommented modprobe lines for usb-storage: input.modprobe[\"usb-storage\"] = {install: <command>, blacklisted: bool}. Read by OL08-00-040080.",
+     "type": "object",
+     "properties": {
+      "blacklisted": {
+       "description": "Read by OL08-00-040080.",
+       "type": "boolean",
+       "examples": [
+        true
+       ],
+       "x-read-by": [
+        "OL08-00-040080"
+       ]
+      },
+      "install": {
+       "description": "Read by OL08-00-040080.",
+       "type": "string",
+       "examples": [
+        "/bin/false"
+       ],
+       "x-read-by": [
+        "OL08-00-040080"
+       ]
+      }
+     },
+     "x-read-by": [
+      "OL08-00-040080"
+     ],
+     "x-required-by": [
+      "OL08-00-040080"
+     ]
+    }
+   },
+   "required": [
+    "firewire-core",
+    "usb-storage"
+   ],
+   "x-read-by": [
+    "OL08-00-040026",
+    "OL08-00-040080",
+    "OL08-00-040111"
+   ]
+  },
+  "opensshserver_config": {
+   "type": "object",
+   "properties": {
+    "Ciphers": {
+     "description": "OL08-00-010291: Ciphers line of /etc/crypto-policies/back-ends/opensshserver.config (not sshd_config). Read by OL08-00-010291.",
+     "type": "string",
+     "examples": [
+      "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr"
+     ],
+     "x-read-by": [
+      "OL08-00-010291"
+     ],
+     "x-required-by": [
+      "OL08-00-010291"
+     ]
+    },
+    "MACs": {
+     "description": "OL08-00-010290: MACs line of /etc/crypto-policies/back-ends/opensshserver.config (not sshd_config). Read by OL08-00-010290.",
+     "type": "string",
+     "examples": [
+      "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512"
+     ],
+     "x-read-by": [
+      "OL08-00-010290"
+     ],
+     "x-required-by": [
+      "OL08-00-010290"
+     ]
+    }
+   },
+   "required": [
+    "Ciphers",
+    "MACs"
+   ]
+  },
+  "openssl_cnf": {
+   "type": "object",
+   "properties": {
+    "lines": {
+     "description": "OL08-00-010293: the lines of /etc/pki/tls/openssl.cnf must include the crypto-policy opensslcnf.config back-end. Read by OL08-00-010293.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "[ crypto_policy ]",
+       ".include = /etc/crypto-policies/back-ends/opensslcnf.config"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010293"
+     ],
+     "x-required-by": [
+      "OL08-00-010293"
+     ]
+    }
+   },
+   "required": [
+    "lines"
+   ]
+  },
+  "oracle_release_key_file": {
+   "type": "object",
+   "properties": {
+    "fingerprints": {
+     "description": "OL08-00-010019: rpm -q --queryformat \"%{SUMMARY}\" gpg-pubkey and gpg --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle. Read by OL08-00-010019.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "76FD 3DB1 3AB6 7410 B89D  B10E 8256 2EA9 AD98 6DA3"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010019"
+     ],
+     "x-required-by": [
+      "OL08-00-010019"
+     ]
+    }
+   },
+   "required": [
+    "fingerprints"
+   ]
+  },
+  "os_release": {
+   "type": "object",
+   "properties": {
+    "version_id": {
+     "description": "Read by OL08-00-020011, OL08-00-020013. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "8.1"
+     ],
+     "x-read-by": [
+      "OL08-00-020011",
+      "OL08-00-020013"
+     ]
+    }
+   }
+  },
+  "packages": {
+   "type": "object",
+   "properties": {
+    "aide": {
+     "description": "OL08-00-010360: the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA. Read by OL08-00-010360.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-010360"
+     ],
+     "x-required-by": [
+      "OL08-00-010360"
+     ]
+    },
+    "autofs": {
+     "description": "Read by OL08-00-040070.",
+     "type": "boolean",
+     "examples": [
+      false
+     ],
+     "x-read-by": [
+      "OL08-00-040070"
+     ]
+    },
+    "rsyslog": {
+     "description": "OL08-00-030670: rsyslog package installed. Read by OL08-00-030670.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-030670"
+     ],
+     "x-required-by": [
+      "OL08-00-030670"
+     ]
+    },
+    "sendmail": {
+     "description": "OL08-00-040002: yum list installed sendmail. Read by OL08-00-040002.",
+     "type": "boolean",
+     "examples": [
+      false
+     ],
+     "x-read-by": [
+      "OL08-00-040002"
+     ],
+     "x-required-by": [
+      "OL08-00-040002"
+     ]
+    },
+    "telnet-server": {
+     "description": "OL08-00-040000: the telnet-server package must not be installed (dnf list --installed telnet-server). Read by OL08-00-040000.",
+     "type": "boolean",
+     "examples": [
+      false
+     ],
+     "x-read-by": [
+      "OL08-00-040000"
+     ],
+     "x-required-by": [
+      "OL08-00-040000"
+     ]
+    },
+    "tftp-server": {
+     "description": "OL08-00-040350: if tftp-server is installed, tftp.service ExecStart must carry -s; not installed is Not Applicable. Read by OL08-00-040190, OL08-00-040350.",
+     "type": "boolean",
+     "examples": [
+      true
+     ],
+     "x-read-by": [
+      "OL08-00-040190",
+      "OL08-00-040350"
+     ],
+     "x-required-by": [
+      "OL08-00-040190"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-040350"
+     ]
+    }
+   },
+   "required": [
+    "aide",
+    "rsyslog",
+    "sendmail",
+    "telnet-server",
+    "tftp-server"
+   ]
+  },
+  "password_policy": {
+   "type": "object",
+   "properties": {
+    "maxdays": {
+     "description": "OL08-00-020200: PASS_MAX_DAYS as configured in /etc/login.defs. Read by OL08-00-020200. Accepted: number, or string holding a decimal integer.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      180
+     ],
+     "x-read-by": [
+      "OL08-00-020200"
+     ],
+     "x-required-by": [
+      "OL08-00-020200"
+     ]
+    },
+    "mindays": {
+     "description": "OL08-00-020190: PASS_MIN_DAYS as configured in /etc/login.defs. Read by OL08-00-020190. Accepted: number, or string holding a decimal integer.",
+     "type": [
+      "number",
+      "string"
+     ],
+     "examples": [
+      1
+     ],
+     "x-read-by": [
+      "OL08-00-020190"
+     ],
+     "x-required-by": [
+      "OL08-00-020190"
+     ]
+    }
+   },
+   "required": [
+    "maxdays",
+    "mindays"
+   ]
+  },
+  "promiscuous_interfaces": {
+   "description": "OL08-00-040330: interfaces flagged PROMISC by ip link. Read by OL08-00-040330.",
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "examples": [
+    []
+   ],
+   "x-read-by": [
+    "OL08-00-040330"
+   ],
+   "x-required-by": [
+    "OL08-00-040330"
+   ]
+  },
+  "pwquality_values": {
+   "description": "Read by OL08-00-020110, OL08-00-020120, OL08-00-020130, OL08-00-020230, OL08-00-020280.",
+   "type": "object",
+   "properties": {
+    "dcredit": {
+     "description": "OL08-00-020130: every dcredit = value line found by grep -r dcredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020130.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "-1"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020130"
+     ],
+     "x-required-by": [
+      "OL08-00-020130"
+     ]
+    },
+    "lcredit": {
+     "description": "OL08-00-020120: every lcredit = value line found by grep -r lcredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020120.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "-1"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020120"
+     ],
+     "x-required-by": [
+      "OL08-00-020120"
+     ]
+    },
+    "minlen": {
+     "description": "OL08-00-020230: every minlen = value line found by grep -r minlen /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020230.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "15"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020230"
+     ],
+     "x-required-by": [
+      "OL08-00-020230"
+     ]
+    },
+    "ocredit": {
+     "description": "OL08-00-020280: every ocredit = value line found by grep -r ocredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020280.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "-1"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020280"
+     ],
+     "x-required-by": [
+      "OL08-00-020280"
+     ]
+    },
+    "ucredit": {
+     "description": "OL08-00-020110: every ucredit = value line found by grep -r ucredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020110.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "-1"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020110"
+     ],
+     "x-required-by": [
+      "OL08-00-020110"
+     ]
+    }
+   },
+   "required": [
+    "dcredit",
+    "lcredit",
+    "minlen",
+    "ocredit",
+    "ucredit"
+   ],
+   "x-read-by": [
+    "OL08-00-020110",
+    "OL08-00-020120",
+    "OL08-00-020130",
+    "OL08-00-020230",
+    "OL08-00-020280"
+   ]
+  },
+  "rpm_gpg_pubkeys": {
+   "description": "OL08-00-010019: rpm -q --queryformat \"%{SUMMARY}\" gpg-pubkey and gpg --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle. Read by OL08-00-010019.",
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "examples": [
+    [
+     "gpg(Oracle OSS group (Open Source Software group) <build@oss.oracle.com>)"
+    ]
+   ],
+   "x-read-by": [
+    "OL08-00-010019"
+   ],
+   "x-required-by": [
+    "OL08-00-010019"
+   ]
+  },
+  "secureboot_enabled": {
+   "description": "Read by OL08-00-010372.",
+   "type": "boolean",
+   "examples": [
+    true
+   ],
+   "x-read-by": [
+    "OL08-00-010372"
+   ]
+  },
+  "selinux": {
+   "type": "object",
+   "properties": {
+    "config_selinuxtype": {
+     "description": "OL08-00-010450: Loaded policy name (sestatus) and the uncommented SELINUXTYPE in /etc/selinux/config. Read by OL08-00-010450. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "targeted"
+     ],
+     "x-read-by": [
+      "OL08-00-010450"
+     ],
+     "x-required-by": [
+      "OL08-00-010450"
+     ]
+    },
+    "getenforce": {
+     "description": "OL08-00-010170: getenforce (OL 8 checks the runtime mode only). Read by OL08-00-010170. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "Enforcing"
+     ],
+     "x-read-by": [
+      "OL08-00-010170"
+     ],
+     "x-required-by": [
+      "OL08-00-010170"
+     ]
+    },
+    "policy": {
+     "description": "OL08-00-010450: Loaded policy name (sestatus) and the uncommented SELINUXTYPE in /etc/selinux/config. Read by OL08-00-010450. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "targeted"
+     ],
+     "x-read-by": [
+      "OL08-00-010450"
+     ],
+     "x-required-by": [
+      "OL08-00-010450"
+     ]
+    }
+   },
+   "required": [
+    "config_selinuxtype",
+    "getenforce",
+    "policy"
+   ]
+  },
+  "services": {
+   "type": "object",
+   "properties": {
+    "auditd": {
+     "description": "OL08-00-030181: systemctl is-active auditd. Read by OL08-00-030181. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "active"
+     ],
+     "x-read-by": [
+      "OL08-00-030181"
+     ],
+     "x-required-by": [
+      "OL08-00-030181"
+     ]
+    },
+    "firewalld": {
+     "description": "OL08-00-040101: systemctl is-active firewalld. Read by OL08-00-040101. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "active"
+     ],
+     "x-read-by": [
+      "OL08-00-040101"
+     ],
+     "x-required-by": [
+      "OL08-00-040101"
+     ]
+    },
+    "rsyslog": {
+     "description": "OL08-00-010561: systemctl is-enabled rsyslog and systemctl is-active rsyslog. Read by OL08-00-010561. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "active"
+     ],
+     "x-read-by": [
+      "OL08-00-010561"
+     ],
+     "x-required-by": [
+      "OL08-00-010561"
+     ]
+    },
+    "sshd": {
+     "description": "OL08-00-040160: systemctl is-active sshd. Read by OL08-00-040160. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "active"
+     ],
+     "x-read-by": [
+      "OL08-00-040160"
+     ],
+     "x-required-by": [
+      "OL08-00-040160"
+     ]
+    }
+   },
+   "required": [
+    "auditd",
+    "firewalld",
+    "rsyslog",
+    "sshd"
+   ]
+  },
+  "ssh_banner_file": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "description": "OL08-00-010040: input.sshd_config_lines.Banner (every Banner line sshd reads) and input.ssh_banner_file.text (the file it names). Read by OL08-00-010040. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "x-read-by": [
+      "OL08-00-010040"
+     ],
+     "x-required-by": [
+      "OL08-00-010040"
+     ]
+    }
+   },
+   "required": [
+    "text"
+   ]
+  },
+  "sshd_config_lines": {
+   "description": "Read by OL08-00-010200, OL08-00-010201, OL08-00-010500, OL08-00-010520, OL08-00-010550 and 3 more.",
+   "type": "object",
+   "properties": {
+    "Banner": {
+     "description": "OL08-00-010040: input.sshd_config_lines.Banner (every Banner line sshd reads) and input.ssh_banner_file.text (the file it names). Read by OL08-00-010040.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "/etc/issue"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010040"
+     ],
+     "x-required-by": [
+      "OL08-00-010040"
+     ]
+    },
+    "ClientAliveCountMax": {
+     "description": "OL08-00-010200: ClientAliveCountMax lines sshd reads. Read by OL08-00-010200.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "1"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010200"
+     ],
+     "x-required-by": [
+      "OL08-00-010200"
+     ]
+    },
+    "ClientAliveInterval": {
+     "description": "OL08-00-010201: ClientAliveInterval lines sshd reads. Read by OL08-00-010201.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "600"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010201"
+     ],
+     "x-required-by": [
+      "OL08-00-010201"
+     ]
+    },
+    "IgnoreUserKnownHosts": {
+     "description": "OL08-00-010520: IgnoreUserKnownHosts lines sshd reads. Read by OL08-00-010520.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "yes"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010520"
+     ],
+     "x-required-by": [
+      "OL08-00-010520"
+     ]
+    },
+    "PermitEmptyPasswords": {
+     "description": "OL08-00-020330: OL 8's finding is only 'set to yes' or conflicting results: an unset keyword (sshd default no) passes. Read by OL08-00-020330.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "no"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020330"
+     ],
+     "x-required-by": [
+      "OL08-00-020330"
+     ]
+    },
+    "PermitRootLogin": {
+     "description": "OL08-00-010550: OL 8's finding names yes / missing / commented out and conflicting results; expected output and fix are 'no'. Read by OL08-00-010550.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "no"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010550"
+     ],
+     "x-required-by": [
+      "OL08-00-010550"
+     ]
+    },
+    "PrintLastLog": {
+     "description": "OL08-00-020350: PrintLastLog lines sshd reads. Read by OL08-00-020350.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "yes"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-020350"
+     ],
+     "x-required-by": [
+      "OL08-00-020350"
+     ]
+    },
+    "StrictModes": {
+     "description": "OL08-00-010500: StrictModes lines sshd reads. Read by OL08-00-010500.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "yes"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010500"
+     ],
+     "x-required-by": [
+      "OL08-00-010500"
+     ]
+    },
+    "X11Forwarding": {
+     "description": "OL08-00-040340: X11Forwarding lines sshd reads. Read by OL08-00-040340.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "no"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-040340"
+     ],
+     "x-required-by": [
+      "OL08-00-040340"
+     ]
+    }
+   },
+   "required": [
+    "Banner",
+    "ClientAliveCountMax",
+    "ClientAliveInterval",
+    "IgnoreUserKnownHosts",
+    "PermitEmptyPasswords",
+    "PermitRootLogin",
+    "PrintLastLog",
+    "StrictModes",
+    "X11Forwarding"
+   ],
+   "x-read-by": [
+    "OL08-00-010200",
+    "OL08-00-010201",
+    "OL08-00-010500",
+    "OL08-00-010520",
+    "OL08-00-010550",
+    "OL08-00-020330",
+    "OL08-00-020350",
+    "OL08-00-040340"
+   ]
+  },
+  "sssd": {
+   "type": "object",
+   "properties": {
+    "certificate_verification": {
+     "description": "OL08-00-010400: certificate_verification from the [sssd] section of sssd.conf / conf.d (uncommented). Read by OL08-00-010400.",
+     "type": "string",
+     "examples": [
+      "ocsp_dgst=sha1"
+     ],
+     "x-read-by": [
+      "OL08-00-010400"
+     ],
+     "x-required-by": [
+      "OL08-00-010400"
+     ]
+    }
+   },
+   "required": [
+    "certificate_verification"
+   ]
+  },
+  "sssd_ca_db": {
+   "description": "Read by OL08-00-010090.",
+   "type": [
+    "null",
+    "object"
+   ],
+   "properties": {
+    "certificates": {
+     "description": "OL08-00-010090: certificates in /etc/sssd/pki/sssd_auth_ca_db.pem: issuer / subject RDNs and validity dates. Read by OL08-00-010090.",
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "issuer_rdns": {
+        "description": "Read by OL08-00-010090.",
+        "type": "array",
+        "x-read-by": [
+         "OL08-00-010090"
+        ]
+       },
+       "not_after": {
+        "description": "Read by OL08-00-010090.",
+        "type": "string",
+        "examples": [
+         "2099-12-30T18:46:41Z"
+        ],
+        "x-read-by": [
+         "OL08-00-010090"
+        ]
+       },
+       "not_before": {
+        "description": "Read by OL08-00-010090.",
+        "type": "string",
+        "examples": [
+         "2012-03-20T18:46:41Z"
+        ],
+        "x-read-by": [
+         "OL08-00-010090"
+        ]
+       },
+       "subject_rdns": {
+        "description": "Read by OL08-00-010090.",
+        "type": "array",
+        "x-read-by": [
+         "OL08-00-010090"
+        ]
+       }
+      }
+     },
+     "x-read-by": [
+      "OL08-00-010090"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-010090"
+     ]
+    }
+   },
+   "x-read-by": [
+    "OL08-00-010090"
+   ]
+  },
+  "sssd_conf_file": {
+   "type": "object",
+   "properties": {
+    "certmap_rules": {
+     "description": "OL08-00-020090: input.sssd_conf_file.certmap_rules: [certmap/...] sections of /etc/sssd/sssd.conf (OL 9 reads that file only). Read by OL08-00-020090.",
+     "type": [
+      "array",
+      "null"
+     ],
+     "items": {
+      "type": "object",
+      "properties": {
+       "domains": {
+        "description": "Read by OL08-00-020090.",
+        "type": "string",
+        "examples": [
+         "testing.test"
+        ],
+        "x-read-by": [
+         "OL08-00-020090"
+        ]
+       },
+       "maprule": {
+        "description": "Read by OL08-00-020090.",
+        "type": "string",
+        "examples": [
+         "(userCertificate;binary={cert!bin})"
+        ],
+        "x-read-by": [
+         "OL08-00-020090"
+        ]
+       },
+       "matchrule": {
+        "description": "Read by OL08-00-020090.",
+        "type": "string",
+        "examples": [
+         "<SAN>.*EDIPI@mil"
+        ],
+        "x-read-by": [
+         "OL08-00-020090"
+        ]
+       },
+       "section": {
+        "description": "Read by OL08-00-020090.",
+        "type": "string",
+        "examples": [
+         "certmap/testing.test/rule_name"
+        ],
+        "x-read-by": [
+         "OL08-00-020090"
+        ]
+       }
+      }
+     },
+     "x-read-by": [
+      "OL08-00-020090"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-020090"
+     ]
+    }
+   }
+  },
+  "sysctl_config": {
+   "type": "object",
+   "properties": {
+    "kernel.randomize_va_space": {
+     "description": "OL08-00-010430: runtime value (sysctl) and every value configured in the sysctl.d / sysctl.conf files the check greps. Read by OL08-00-010430.",
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "examples": [
+      [
+       "2"
+      ]
+     ],
+     "x-read-by": [
+      "OL08-00-010430"
+     ],
+     "x-required-by": [
+      "OL08-00-010430"
+     ]
+    }
+   },
+   "required": [
+    "kernel.randomize_va_space"
+   ]
+  },
+  "systemd_units": {
+   "type": "object",
+   "properties": {
+    "ctrl-alt-del.target": {
+     "type": "object",
+     "properties": {
+      "load_state": {
+       "description": "OL08-00-040170: ctrl-alt-del.target load state (systemctl show -p LoadState) must be masked. Read by OL08-00-040170. Accepted: string, or integer; trimmed and compared case-insensitively.",
+       "type": [
+        "integer",
+        "string"
+       ],
+       "examples": [
+        "masked"
+       ],
+       "x-read-by": [
+        "OL08-00-040170"
+       ],
+       "x-required-by": [
+        "OL08-00-040170"
+       ]
+      }
+     },
+     "required": [
+      "load_state"
+     ]
+    }
+   },
+   "required": [
+    "ctrl-alt-del.target"
+   ]
+  },
+  "tftp": {
+   "type": "object",
+   "properties": {
+    "execstart": {
+     "description": "Read by OL08-00-040350. Accepted: string, or integer (read as its decimal text); trimmed.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "/usr/sbin/in.tftpd -s /var/lib/tftpboot"
+     ],
+     "x-read-by": [
+      "OL08-00-040350"
+     ]
+    }
+   }
+  },
+  "unit_enabled": {
+   "type": "object",
+   "properties": {
+    "autofs": {
+     "description": "OL08-00-040070: systemctl is-enabled autofs (input.unit_enabled[<unit>] is that command's output). Read by OL08-00-040070. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "null",
+      "string"
+     ],
+     "examples": [
+      "masked"
+     ],
+     "x-read-by": [
+      "OL08-00-040070"
+     ],
+     "x-required-when-applicable": [
+      "OL08-00-040070"
+     ]
+    },
+    "rsyslog": {
+     "description": "OL08-00-010561: systemctl is-enabled rsyslog and systemctl is-active rsyslog. Read by OL08-00-010561. Accepted: string, or integer; trimmed and compared case-insensitively.",
+     "type": [
+      "integer",
+      "string"
+     ],
+     "examples": [
+      "enabled"
+     ],
+     "x-read-by": [
+      "OL08-00-010561"
+     ],
+     "x-required-by": [
+      "OL08-00-010561"
+     ]
+    }
+   },
+   "required": [
+    "rsyslog"
+   ]
+  },
+  "wireless_interfaces": {
+   "description": "OL08-00-040110: configured wireless devices (nmcli device status, TYPE wifi); no physical radio is Not Applicable. Read by OL08-00-040110.",
+   "type": [
+    "array",
+    "null"
+   ],
+   "items": {
+    "type": "string"
+   },
+   "examples": [
+    []
+   ],
+   "x-read-by": [
+    "OL08-00-040110"
+   ],
+   "x-required-when-applicable": [
+    "OL08-00-040110"
+   ]
+  },
+  "wireless_radios_present": {
+   "description": "Read by OL08-00-040110.",
+   "type": "boolean",
+   "examples": [
+    false
+   ],
+   "x-read-by": [
+    "OL08-00-040110"
+   ]
+  },
+  "yum_repos": {
+   "description": "OL08-00-010370: input.yum_repos[{name, gpgcheck}]; OL 8 accepts only \"1\"; the ask-the-SA clause is an attestation. Read by OL08-00-010370.",
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "gpgcheck": {
+      "description": "Read by OL08-00-010370.",
+      "type": [
+       "number",
+       "string"
+      ],
+      "examples": [
+       "1"
+      ],
+      "x-read-by": [
+       "OL08-00-010370"
+      ]
+     },
+     "name": {
+      "description": "Read by OL08-00-010370.",
+      "type": "string",
+      "examples": [
+       "ol8_baseos_latest"
+      ],
+      "x-read-by": [
+       "OL08-00-010370"
+      ]
+     }
+    }
+   },
+   "x-read-by": [
+    "OL08-00-010370"
+   ],
+   "x-required-by": [
+    "OL08-00-010370"
+   ]
+  }
+ },
+ "required": [
+  "aide",
+  "audit_rules_file",
+  "auditd_config",
+  "crypto_policy",
+  "crypto_policy_check",
+  "crypto_policy_state",
+  "dnf_config",
+  "duplicate_uid_accounts",
+  "file_permissions",
+  "fips",
+  "fstab",
+  "ftpd_packages",
+  "grub",
+  "home_dir_mount_points",
+  "kernel_params",
+  "local_accounts_with_empty_passwords",
+  "login_banner",
+  "login_defs",
+  "modprobe",
+  "opensshserver_config",
+  "openssl_cnf",
+  "oracle_release_key_file",
+  "packages",
+  "password_policy",
+  "promiscuous_interfaces",
+  "pwquality_values",
+  "rpm_gpg_pubkeys",
+  "selinux",
+  "services",
+  "ssh_banner_file",
+  "sshd_config_lines",
+  "sssd",
+  "sysctl_config",
+  "systemd_units",
+  "unit_enabled",
+  "yum_repos"
+ ],
+ "additionalProperties": true,
+ "x-known-paths": [
+  "aide",
+  "aide.schedule",
+  "attest",
+  "attest.ol08_00_010090_alternate_mfa",
+  "attest.ol08_00_010360_notification",
+  "attest.ol08_00_010360_other_tool",
+  "attest.ol08_00_010370_gpg_process",
+  "attest.ol08_00_010400_status_checking",
+  "attest.ol08_00_010542_other_partition",
+  "attest.ol08_00_020090_alternate_mfa",
+  "attest.ol08_00_030670_offload",
+  "attest.ol08_00_030731_realtime_alerts",
+  "attest.ol08_00_040026_firewire_documented",
+  "attest.ol08_00_040080_usb_storage_documented",
+  "attest.ol08_00_040101_other_firewall",
+  "attest.ol08_00_040110_wireless_approved",
+  "attest.ol08_00_040111_bluetooth_documented",
+  "attest.ol08_00_040190_tftp_documented",
+  "attest.ol08_00_040220_redirects_documented",
+  "attest.ol08_00_040259_router_documented",
+  "attest.ol08_00_040330_promisc_approved",
+  "attest.ol08_00_040340_x11_documented",
+  "attest.ol08_00_040360_ftp_documented",
+  "audit_rules_file",
+  "auditd_config",
+  "auditd_config.disk_error_action",
+  "auditd_config.disk_full_action",
+  "auditd_config.log_file",
+  "auditd_config.space_left_action",
+  "bluetooth_adapter_present",
+  "boot_firmware",
+  "crypto_policy",
+  "crypto_policy_check",
+  "crypto_policy_check.is_applied",
+  "crypto_policy_state",
+  "crypto_policy_state.hash",
+  "crypto_policy_state.min_rsa_size",
+  "dconf_db",
+  "dconf_db.removal_action",
+  "dconf_local",
+  "dconf_local.logout",
+  "dnf_config",
+  "dnf_config.localpkg_gpgcheck",
+  "duplicate_uid_accounts",
+  "duplicate_uid_accounts[].interactive",
+  "duplicate_uid_accounts[].name",
+  "duplicate_uid_accounts[].uid",
+  "faillock_conf",
+  "faillock_conf.deny",
+  "faillock_conf.fail_interval",
+  "file_permissions",
+  "file_permissions.home_dirs_uid_1000",
+  "file_permissions.home_dirs_uid_1000[].mode",
+  "file_permissions.home_dirs_uid_1000[].path",
+  "file_permissions.library_files_group_or_world_writable",
+  "file_permissions.library_files_not_owned_by_root",
+  "file_permissions.system_commands_group_or_world_writable",
+  "file_permissions.ungrouped_files",
+  "file_permissions.unowned_files",
+  "fips",
+  "fips.fips_enabled",
+  "fips.mode_setup_check",
+  "fstab",
+  "fstab[].fs_type",
+  "fstab[].mount_point",
+  "fstab[].options",
+  "ftpd_packages",
+  "grub",
+  "grub.efi_user_cfg_password",
+  "grub.kernelopts",
+  "grub.user_cfg_password",
+  "gui_installed",
+  "home_dir_mount_points",
+  "ipv6_disabled",
+  "kernel_info",
+  "kernel_info.uek_release",
+  "kernel_params",
+  "kernel_params[\"kernel.dmesg_restrict\"]",
+  "kernel_params[\"kernel.kexec_load_disabled\"]",
+  "kernel_params[\"kernel.perf_event_paranoid\"]",
+  "kernel_params[\"kernel.randomize_va_space\"]",
+  "kernel_params[\"kernel.unprivileged_bpf_disabled\"]",
+  "kernel_params[\"kernel.yama.ptrace_scope\"]",
+  "kernel_params[\"net.core.bpf_jit_harden\"]",
+  "kernel_params[\"net.ipv4.conf.all.accept_redirects\"]",
+  "kernel_params[\"net.ipv4.conf.all.accept_source_route\"]",
+  "kernel_params[\"net.ipv4.conf.all.forwarding\"]",
+  "kernel_params[\"net.ipv4.conf.all.rp_filter\"]",
+  "kernel_params[\"net.ipv4.conf.all.send_redirects\"]",
+  "kernel_params[\"net.ipv6.conf.all.accept_redirects\"]",
+  "kernel_params[\"net.ipv6.conf.all.accept_source_route\"]",
+  "local_accounts_with_empty_passwords",
+  "login_banner",
+  "login_banner.issue",
+  "login_defs",
+  "login_defs.ENCRYPT_METHOD",
+  "modprobe",
+  "modprobe.bluetooth",
+  "modprobe.bluetooth.blacklisted",
+  "modprobe.bluetooth.install",
+  "modprobe[\"firewire-core\"]",
+  "modprobe[\"firewire-core\"].blacklisted",
+  "modprobe[\"firewire-core\"].install",
+  "modprobe[\"usb-storage\"]",
+  "modprobe[\"usb-storage\"].blacklisted",
+  "modprobe[\"usb-storage\"].install",
+  "opensshserver_config",
+  "opensshserver_config.Ciphers",
+  "opensshserver_config.MACs",
+  "openssl_cnf",
+  "openssl_cnf.lines",
+  "oracle_release_key_file",
+  "oracle_release_key_file.fingerprints",
+  "os_release",
+  "os_release.version_id",
+  "packages",
+  "packages.aide",
+  "packages.autofs",
+  "packages.rsyslog",
+  "packages.sendmail",
+  "packages[\"telnet-server\"]",
+  "packages[\"tftp-server\"]",
+  "password_policy",
+  "password_policy.maxdays",
+  "password_policy.mindays",
+  "promiscuous_interfaces",
+  "pwquality_values",
+  "pwquality_values.dcredit",
+  "pwquality_values.lcredit",
+  "pwquality_values.minlen",
+  "pwquality_values.ocredit",
+  "pwquality_values.ucredit",
+  "rpm_gpg_pubkeys",
+  "secureboot_enabled",
+  "selinux",
+  "selinux.config_selinuxtype",
+  "selinux.getenforce",
+  "selinux.policy",
+  "services",
+  "services.auditd",
+  "services.firewalld",
+  "services.rsyslog",
+  "services.sshd",
+  "ssh_banner_file",
+  "ssh_banner_file.text",
+  "sshd_config_lines",
+  "sshd_config_lines.Banner",
+  "sshd_config_lines.ClientAliveCountMax",
+  "sshd_config_lines.ClientAliveInterval",
+  "sshd_config_lines.IgnoreUserKnownHosts",
+  "sshd_config_lines.PermitEmptyPasswords",
+  "sshd_config_lines.PermitRootLogin",
+  "sshd_config_lines.PrintLastLog",
+  "sshd_config_lines.StrictModes",
+  "sshd_config_lines.X11Forwarding",
+  "sssd",
+  "sssd.certificate_verification",
+  "sssd_ca_db",
+  "sssd_ca_db.certificates",
+  "sssd_ca_db.certificates[].issuer_rdns",
+  "sssd_ca_db.certificates[].not_after",
+  "sssd_ca_db.certificates[].not_before",
+  "sssd_ca_db.certificates[].subject_rdns",
+  "sssd_conf_file",
+  "sssd_conf_file.certmap_rules",
+  "sssd_conf_file.certmap_rules[].domains",
+  "sssd_conf_file.certmap_rules[].maprule",
+  "sssd_conf_file.certmap_rules[].matchrule",
+  "sssd_conf_file.certmap_rules[].section",
+  "sysctl_config",
+  "sysctl_config[\"kernel.randomize_va_space\"]",
+  "systemd_units",
+  "systemd_units[\"ctrl-alt-del.target\"]",
+  "systemd_units[\"ctrl-alt-del.target\"].load_state",
+  "tftp",
+  "tftp.execstart",
+  "unit_enabled",
+  "unit_enabled.autofs",
+  "unit_enabled.rsyslog",
+  "wireless_interfaces",
+  "wireless_radios_present",
+  "yum_repos",
+  "yum_repos[].gpgcheck",
+  "yum_repos[].name"
+ ]
+}

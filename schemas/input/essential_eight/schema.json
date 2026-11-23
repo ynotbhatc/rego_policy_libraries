@@ -1,0 +1,147 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/essential_eight/schema.json",
+ "title": "Input facts for essential_eight",
+ "description": "Input paths referenced in the sources of frameworks/regional/essential_eight/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "essential_eight",
+ "x-entrypoint": "data.essential_eight.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/regional/essential_eight/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "essential_eight": {
+   "description": "Read in application_control.rego, essential_eight_main.rego, multi_factor_authentication.rego, office_macros.rego and 5 more.",
+   "properties": {
+    "application_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in application_control.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "multi_factor_authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in multi_factor_authentication.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "office_macros": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in office_macros.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "patch_applications": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in patch_applications.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "patch_operating_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in patch_operating_systems.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "regular_backups": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in regular_backups.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "restrict_admin_privileges": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in restrict_admin_privileges.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "user_application_hardening": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in user_application_hardening.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    }
+   },
+   "additionalProperties": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "properties": {
+     "requirements": {
+      "description": "Read in essential_eight_main.rego."
+     }
+    }
+   },
+   "x-variable-key": "<strat>"
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "essential_eight",
+  "essential_eight.application_control",
+  "essential_eight.application_control.requirements",
+  "essential_eight.multi_factor_authentication",
+  "essential_eight.multi_factor_authentication.requirements",
+  "essential_eight.office_macros",
+  "essential_eight.office_macros.requirements",
+  "essential_eight.patch_applications",
+  "essential_eight.patch_applications.requirements",
+  "essential_eight.patch_operating_systems",
+  "essential_eight.patch_operating_systems.requirements",
+  "essential_eight.regular_backups",
+  "essential_eight.regular_backups.requirements",
+  "essential_eight.restrict_admin_privileges",
+  "essential_eight.restrict_admin_privileges.requirements",
+  "essential_eight.user_application_hardening",
+  "essential_eight.user_application_hardening.requirements",
+  "essential_eight[\"<strat>\"].requirements"
+ ]
+}

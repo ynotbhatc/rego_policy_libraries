@@ -1,0 +1,368 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis.intune_defender_antivirus/schema.json",
+ "title": "Input facts for cis.intune_defender_antivirus",
+ "description": "Facts the module in benchmarks/cis/intune_defender_antivirus/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis.intune_defender_antivirus",
+ "x-entrypoint": "data.cis.intune_defender_antivirus.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/intune_defender_antivirus/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis.intune_defender_antivirus_test.green",
+ "type": "object",
+ "properties": {
+  "cis_profile": {
+   "description": "Read in cis_intune_defender_antivirus.rego."
+  },
+  "intune_defender": {
+   "description": "Read in cis_intune_defender_antivirus.rego.",
+   "type": "object",
+   "properties": {
+    "settings": {
+     "description": "Read in cis_intune_defender_antivirus.rego.",
+     "type": "object",
+     "properties": {
+      "AllowArchiveScanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowBehaviorMonitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowCloudProtection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowEmailScanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowFullScanRemovableDriveScanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowIOAVProtection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowOnAccessProtection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowRealtimeMonitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AllowScriptScanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "AttackSurfaceReductionRules": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture"
+      },
+      "CheckForSignaturesBeforeRunningScan": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "CloudBlockLevel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "CloudExtendedTimeout": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        50
+       ]
+      },
+      "DaysUntilAggressiveCatchupQuickScan": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        7
+       ]
+      },
+      "DisableBlockAtFirstSeen": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "enabled"
+       ]
+      },
+      "DisableRoutinelyTakingAction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "disabled"
+       ]
+      },
+      "EnableConvertWarnToBlock": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableDynamicSignatureDroppedEventReporting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableFileHashComputation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableNetworkProtection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "HideExclusionsFromLocalUsers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "OobeEnableRtpAndSigUpdate": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "PUAProtection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "QuickScanIncludeExclusions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RealTimeScanDirection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "RealtimeProtection_DisableScanOnRealtimeEnable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "enabled"
+       ]
+      },
+      "RemoteEncryptionProtectionAggressiveness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RemoteEncryptionProtectionConfiguredState": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "Reporting_DisablegenericrePorts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "disabled"
+       ]
+      },
+      "ScanParameter": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "ScheduleQuickScanTime": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        120
+       ]
+      },
+      "ScheduleScanDay": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "ScheduleScanTime": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        120
+       ]
+      },
+      "SignatureUpdateInterval": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        4
+       ]
+      },
+      "Spynet_LocalSettingOverrideSpynetReporting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "disabled"
+       ]
+      },
+      "SubmitSamplesConsent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "ThreatSeverityDefaultAction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "2=2|4=2|5=3"
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_profile",
+  "intune_defender",
+  "intune_defender.settings",
+  "intune_defender.settings.AllowArchiveScanning",
+  "intune_defender.settings.AllowBehaviorMonitoring",
+  "intune_defender.settings.AllowCloudProtection",
+  "intune_defender.settings.AllowEmailScanning",
+  "intune_defender.settings.AllowFullScanRemovableDriveScanning",
+  "intune_defender.settings.AllowIOAVProtection",
+  "intune_defender.settings.AllowOnAccessProtection",
+  "intune_defender.settings.AllowRealtimeMonitoring",
+  "intune_defender.settings.AllowScriptScanning",
+  "intune_defender.settings.AttackSurfaceReductionRules",
+  "intune_defender.settings.CheckForSignaturesBeforeRunningScan",
+  "intune_defender.settings.CloudBlockLevel",
+  "intune_defender.settings.CloudExtendedTimeout",
+  "intune_defender.settings.DaysUntilAggressiveCatchupQuickScan",
+  "intune_defender.settings.DisableBlockAtFirstSeen",
+  "intune_defender.settings.DisableRoutinelyTakingAction",
+  "intune_defender.settings.EnableConvertWarnToBlock",
+  "intune_defender.settings.EnableDynamicSignatureDroppedEventReporting",
+  "intune_defender.settings.EnableFileHashComputation",
+  "intune_defender.settings.EnableNetworkProtection",
+  "intune_defender.settings.HideExclusionsFromLocalUsers",
+  "intune_defender.settings.OobeEnableRtpAndSigUpdate",
+  "intune_defender.settings.PUAProtection",
+  "intune_defender.settings.QuickScanIncludeExclusions",
+  "intune_defender.settings.RealTimeScanDirection",
+  "intune_defender.settings.RealtimeProtection_DisableScanOnRealtimeEnable",
+  "intune_defender.settings.RemoteEncryptionProtectionAggressiveness",
+  "intune_defender.settings.RemoteEncryptionProtectionConfiguredState",
+  "intune_defender.settings.Reporting_DisablegenericrePorts",
+  "intune_defender.settings.ScanParameter",
+  "intune_defender.settings.ScheduleQuickScanTime",
+  "intune_defender.settings.ScheduleScanDay",
+  "intune_defender.settings.ScheduleScanTime",
+  "intune_defender.settings.SignatureUpdateInterval",
+  "intune_defender.settings.Spynet_LocalSettingOverrideSpynetReporting",
+  "intune_defender.settings.SubmitSamplesConsent",
+  "intune_defender.settings.ThreatSeverityDefaultAction"
+ ]
+}

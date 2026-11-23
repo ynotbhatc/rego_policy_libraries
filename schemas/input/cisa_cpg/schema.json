@@ -1,0 +1,430 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cisa_cpg/schema.json",
+ "title": "Input facts for cisa_cpg",
+ "description": "Facts the module in frameworks/federal/cisa_cpg/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cisa_cpg",
+ "x-entrypoint": "data.cisa_cpg.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/cisa_cpg/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cisa_cpg.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in cisa_cpg_main.rego.",
+   "type": "object",
+   "properties": {
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "multi_factor_authentication": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in cisa_cpg_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-02"
+   ]
+  },
+  "cpg": {
+   "description": "Read in cisa_cpg_main.rego.",
+   "type": "object",
+   "properties": {
+    "detect": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "adverse_events_identified": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "malicious_code_detection": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "governance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "incident_response_plans_managed": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "msp_risk_managed": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "oversight_managed": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "responsibilities_established": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "supply_chain_reporting_required": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "identify": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "independent_validation": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kev_mitigated": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "network_topology_documented": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vulnerability_disclosure_process": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "protect": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "backups_maintained": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "change_management": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cybersecurity_training": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "default_passwords_changed": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "departing_credentials_revoked": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "email_security": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "hw_sw_approval_process": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "internet_facing_secured": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "least_privilege": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "log_collection_storage": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "macros_disabled": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "minimum_password_strength": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "network_segmentation": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "separate_privileged_accounts": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "strong_encryption": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unauthorized_devices_prohibited": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unique_credentials": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unsuccessful_logins_monitored": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "recover": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "incident_planning_preparedness": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "respond": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "incident_communications": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "incident_reporting": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in cisa_cpg_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example Utility Coop"
+   ]
+  },
+  "identify": {
+   "description": "Read in cisa_cpg_main.rego.",
+   "type": "object",
+   "properties": {
+    "asset_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "physical_devices_inventoried": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "software_platforms_inventoried": {
+       "description": "Read in cisa_cpg_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.remote_access",
+  "access_control.remote_access.multi_factor_authentication",
+  "assessment_date",
+  "cpg",
+  "cpg.detect",
+  "cpg.detect.adverse_events_identified",
+  "cpg.detect.malicious_code_detection",
+  "cpg.governance",
+  "cpg.governance.incident_response_plans_managed",
+  "cpg.governance.msp_risk_managed",
+  "cpg.governance.oversight_managed",
+  "cpg.governance.responsibilities_established",
+  "cpg.governance.supply_chain_reporting_required",
+  "cpg.identify",
+  "cpg.identify.independent_validation",
+  "cpg.identify.kev_mitigated",
+  "cpg.identify.network_topology_documented",
+  "cpg.identify.vulnerability_disclosure_process",
+  "cpg.protect",
+  "cpg.protect.backups_maintained",
+  "cpg.protect.change_management",
+  "cpg.protect.cybersecurity_training",
+  "cpg.protect.default_passwords_changed",
+  "cpg.protect.departing_credentials_revoked",
+  "cpg.protect.email_security",
+  "cpg.protect.hw_sw_approval_process",
+  "cpg.protect.internet_facing_secured",
+  "cpg.protect.least_privilege",
+  "cpg.protect.log_collection_storage",
+  "cpg.protect.macros_disabled",
+  "cpg.protect.minimum_password_strength",
+  "cpg.protect.network_segmentation",
+  "cpg.protect.separate_privileged_accounts",
+  "cpg.protect.strong_encryption",
+  "cpg.protect.unauthorized_devices_prohibited",
+  "cpg.protect.unique_credentials",
+  "cpg.protect.unsuccessful_logins_monitored",
+  "cpg.recover",
+  "cpg.recover.incident_planning_preparedness",
+  "cpg.respond",
+  "cpg.respond.incident_communications",
+  "cpg.respond.incident_reporting",
+  "entity_name",
+  "identify",
+  "identify.asset_management",
+  "identify.asset_management.physical_devices_inventoried",
+  "identify.asset_management.software_platforms_inventoried"
+ ]
+}

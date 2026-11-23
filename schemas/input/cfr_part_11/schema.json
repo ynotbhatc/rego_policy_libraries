@@ -1,0 +1,443 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cfr_part_11/schema.json",
+ "title": "Input facts for cfr_part_11",
+ "description": "Input paths referenced in the sources of frameworks/regulatory/cfr_part_11/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cfr_part_11",
+ "x-entrypoint": "data.cfr_part_11.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/regulatory/cfr_part_11/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "authorized_users": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "only": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "unique_user_ids": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in cfr_part_11_main.rego."
+  },
+  "audit_trail": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "captures_record_changes": {
+     "description": "Read in cfr_part_11_main.rego."
+    },
+    "computer_generated": {
+     "description": "Read in cfr_part_11_main.rego."
+    },
+    "protected_from_modification": {
+     "description": "Read in cfr_part_11_main.rego."
+    },
+    "retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "at_least_as_long_as_record": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "timestamps": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "accurate": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "authority_checks": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "enabled": {
+     "description": "Read in cfr_part_11_main.rego."
+    }
+   }
+  },
+  "device_checks": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "input_validation": {
+     "description": "Read in cfr_part_11_main.rego."
+    }
+   }
+  },
+  "documentation": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "distribution": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "revision": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "electronic_signatures": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "biometric": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "designed_exclusively_for_individual": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "fda_certification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "filed": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "identity_verification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "before_assignment": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "manifestation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "date_time": {
+       "description": "Read in cfr_part_11_main.rego."
+      },
+      "human_readable": {
+       "description": "Read in cfr_part_11_main.rego."
+      },
+      "meaning": {
+       "description": "Read in cfr_part_11_main.rego."
+      },
+      "printed_name": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "non_biometric": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "different_session_full_auth": {
+       "description": "Read in cfr_part_11_main.rego."
+      },
+      "single_session_reauth": {
+       "description": "Read in cfr_part_11_main.rego."
+      },
+      "two_distinct_components": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "record_linking": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cryptographically_bound": {
+       "description": "Read in cfr_part_11_main.rego."
+      },
+      "tamper_evident": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "uniqueness": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "guaranteed": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in cfr_part_11_main.rego."
+  },
+  "entity_type": {
+   "description": "Read in cfr_part_11_main.rego."
+  },
+  "identification_codes": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "loss_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "procedures": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "periodic_revision": {
+     "description": "Read in cfr_part_11_main.rego."
+    },
+    "transaction_safeguards": {
+     "description": "Read in cfr_part_11_main.rego."
+    },
+    "unauthorized_use": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "detection": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "uniqueness": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "open_systems": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "digital_signatures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "where_appropriate": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "records_in_transit": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "operational_checks": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "sequence_enforcement": {
+     "description": "Read in cfr_part_11_main.rego."
+    }
+   }
+  },
+  "personnel": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "training": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "records": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "maintained": {
+         "description": "Read in cfr_part_11_main.rego."
+        }
+       }
+      },
+      "system_specific": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "policies": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "individual_accountability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "records": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "backup": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "regular_and_tested": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "electronic_copy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "capable": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "human_readable": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "capable": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "protected_during_retention_period": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "system_name": {
+   "description": "Read in cfr_part_11_main.rego."
+  },
+  "system_validation": {
+   "description": "Read in cfr_part_11_main.rego.",
+   "properties": {
+    "iq_oq_pq": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "revalidation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "on_change": {
+       "description": "Read in cfr_part_11_main.rego."
+      }
+     }
+    },
+    "validated": {
+     "description": "Read in cfr_part_11_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.authorized_users",
+  "access_control.authorized_users.only",
+  "access_control.unique_user_ids",
+  "access_control.unique_user_ids.enforced",
+  "assessment_date",
+  "audit_trail",
+  "audit_trail.captures_record_changes",
+  "audit_trail.computer_generated",
+  "audit_trail.protected_from_modification",
+  "audit_trail.retention",
+  "audit_trail.retention.at_least_as_long_as_record",
+  "audit_trail.timestamps",
+  "audit_trail.timestamps.accurate",
+  "authority_checks",
+  "authority_checks.enabled",
+  "device_checks",
+  "device_checks.input_validation",
+  "documentation",
+  "documentation.distribution",
+  "documentation.distribution.controlled",
+  "documentation.revision",
+  "documentation.revision.controlled",
+  "electronic_signatures",
+  "electronic_signatures.biometric",
+  "electronic_signatures.biometric.designed_exclusively_for_individual",
+  "electronic_signatures.fda_certification",
+  "electronic_signatures.fda_certification.filed",
+  "electronic_signatures.identity_verification",
+  "electronic_signatures.identity_verification.before_assignment",
+  "electronic_signatures.manifestation",
+  "electronic_signatures.manifestation.date_time",
+  "electronic_signatures.manifestation.human_readable",
+  "electronic_signatures.manifestation.meaning",
+  "electronic_signatures.manifestation.printed_name",
+  "electronic_signatures.non_biometric",
+  "electronic_signatures.non_biometric.different_session_full_auth",
+  "electronic_signatures.non_biometric.single_session_reauth",
+  "electronic_signatures.non_biometric.two_distinct_components",
+  "electronic_signatures.record_linking",
+  "electronic_signatures.record_linking.cryptographically_bound",
+  "electronic_signatures.record_linking.tamper_evident",
+  "electronic_signatures.uniqueness",
+  "electronic_signatures.uniqueness.guaranteed",
+  "entity_name",
+  "entity_type",
+  "identification_codes",
+  "identification_codes.loss_management",
+  "identification_codes.loss_management.procedures",
+  "identification_codes.periodic_revision",
+  "identification_codes.transaction_safeguards",
+  "identification_codes.unauthorized_use",
+  "identification_codes.unauthorized_use.detection",
+  "identification_codes.uniqueness",
+  "identification_codes.uniqueness.maintained",
+  "open_systems",
+  "open_systems.digital_signatures",
+  "open_systems.digital_signatures.where_appropriate",
+  "open_systems.encryption",
+  "open_systems.encryption.records_in_transit",
+  "operational_checks",
+  "operational_checks.sequence_enforcement",
+  "personnel",
+  "personnel.training",
+  "personnel.training.records",
+  "personnel.training.records.maintained",
+  "personnel.training.system_specific",
+  "policies",
+  "policies.individual_accountability",
+  "policies.individual_accountability.documented",
+  "records",
+  "records.backup",
+  "records.backup.regular_and_tested",
+  "records.electronic_copy",
+  "records.electronic_copy.capable",
+  "records.human_readable",
+  "records.human_readable.capable",
+  "records.retention",
+  "records.retention.protected_during_retention_period",
+  "system_name",
+  "system_validation",
+  "system_validation.iq_oq_pq",
+  "system_validation.iq_oq_pq.documented",
+  "system_validation.revalidation",
+  "system_validation.revalidation.on_change",
+  "system_validation.validated"
+ ]
+}

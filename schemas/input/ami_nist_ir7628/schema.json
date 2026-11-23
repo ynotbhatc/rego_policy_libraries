@@ -1,0 +1,619 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ami_nist_ir7628/schema.json",
+ "title": "Input facts for ami_nist_ir7628",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/ami/nist_ir_7628/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ami_nist_ir7628",
+ "x-entrypoint": "data.ami_nist_ir7628.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/ami/nist_ir_7628/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in nist_ir7628_access_control.rego.",
+   "properties": {
+    "accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "formal_deprovisioning": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "formal_provisioning": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "periodic_review": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      }
+     }
+    },
+    "enforcement": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "default_deny": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "least_privilege": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "privilege_separation": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approved": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "documented": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "last_review_date": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encrypted_channel": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "mfa_required": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "vpn_required": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      }
+     }
+    },
+    "sessions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "concurrent_sessions_limited": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "secure_tokens": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      },
+      "timeout_minutes": {
+       "description": "Read in nist_ir7628_access_control.rego."
+      }
+     }
+    }
+   }
+  },
+  "audit": {
+   "description": "Read in nist_ir7628_audit.rego.",
+   "properties": {
+    "events_logged": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in nist_ir7628_audit.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encrypted": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "integrity_mechanism": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "write_protected": {
+       "description": "Read in nist_ir7628_audit.rego."
+      }
+     }
+    },
+    "siem": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "centralized_logging": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "correlation_enabled": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "real_time_alerting": {
+       "description": "Read in nist_ir7628_audit.rego."
+      }
+     }
+    },
+    "storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "alert_threshold_percent": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "auto_archive_enabled": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "capacity_monitoring_enabled": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "failure_alerting_enabled": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "failure_response_documented": {
+       "description": "Read in nist_ir7628_audit.rego."
+      },
+      "retention_days": {
+       "description": "Read in nist_ir7628_audit.rego."
+      }
+     }
+    }
+   }
+  },
+  "config_management": {
+   "description": "Read in nist_ir7628_config_management.rego.",
+   "properties": {
+    "baseline": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "components_covered": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "documented": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "last_review_date": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "version_controlled": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      }
+     }
+    },
+    "change_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approval_required": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "formal_process": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "rollback_capability": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "testing_required": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      }
+     }
+    },
+    "hardening": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "default_passwords_changed": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "secure_protocols_only": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "unnecessary_ports_closed": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "unnecessary_services_disabled": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      }
+     }
+    },
+    "inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "components": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "last_updated": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      }
+     }
+    },
+    "least_functionality": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "application_whitelisting": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "firmware_locked": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      },
+      "unnecessary_software_removed": {
+       "description": "Read in nist_ir7628_config_management.rego."
+      }
+     }
+    }
+   }
+  },
+  "identification_auth": {
+   "description": "Read in nist_ir7628_identification_auth.rego.",
+   "properties": {
+    "cryptography": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "fips_validated": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "validation_level": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      }
+     }
+    },
+    "devices": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authentication_required": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "credential_inventory": {
+       "description": "Read in nist_ir7628_identification_auth.rego.",
+       "additionalProperties": {
+        "description": "Read in nist_ir7628_identification_auth.rego."
+       },
+       "x-variable-key": "<_>"
+      },
+      "unauthenticated_devices_blocked": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "unique_identity_per_device": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      }
+     }
+    },
+    "mfa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enabled": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "required_for_privileged": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "second_factor": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      }
+     }
+    },
+    "pki": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "certificate_algorithm": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "certificate_authority_trusted": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "certificate_revocation_checking": {
+       "description": "Read in nist_ir7628_identification_auth.rego."
+      },
+      "device_certificates": {
+       "description": "Read in nist_ir7628_identification_auth.rego.",
+       "additionalProperties": {
+        "description": "Read in nist_ir7628_identification_auth.rego."
+       },
+       "x-variable-key": "<_>"
+      }
+     }
+    }
+   }
+  },
+  "incident_response": {
+   "description": "Read in nist_ir7628_incident_response.rego.",
+   "properties": {
+    "detection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "anomaly_detection_enabled": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "automated_alerting": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "tamper_detection_integrated": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      }
+     }
+    },
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "scenarios_covered": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "additionalProperties": {
+        "description": "Read in nist_ir7628_incident_response.rego."
+       },
+       "x-variable-key": "<_>"
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ami_specific_procedures": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "approved": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "documented": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "last_review_date": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      }
+     }
+    },
+    "reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "external_reporting_contacts_current": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "internal_escalation_path_defined": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "reporting_timeframe_hours": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      }
+     }
+    },
+    "testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "last_test_date": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "type": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      }
+     }
+    },
+    "training": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ami_scenarios_covered": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      },
+      "last_date": {
+       "description": "Read in nist_ir7628_incident_response.rego."
+      }
+     }
+    }
+   }
+  },
+  "system_comms": {
+   "description": "Read in nist_ir7628_system_comms.rego.",
+   "properties": {
+    "encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enabled_ciphers": {
+       "description": "Read in nist_ir7628_system_comms.rego.",
+       "additionalProperties": {
+        "description": "Read in nist_ir7628_system_comms.rego."
+       },
+       "x-variable-key": "<_>"
+      },
+      "tls_version": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    },
+    "key_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "hsm_used": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "key_escrow_policy_defined": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "master_key_rotation_days": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ami_isolated_from_internet": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "firewall_between_zones": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "ot_it_segmented": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    },
+    "pki": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "crl_or_ocsp_enabled": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "intermediate_ca_online": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "root_ca_offline": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approved": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "documented": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    },
+    "rf_mesh": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encrypted": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "encryption_algorithm": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    },
+    "storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encryption_algorithm": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "key_management_integrated": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      },
+      "mdms_encrypted": {
+       "description": "Read in nist_ir7628_system_comms.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.accounts",
+  "access_control.accounts.formal_deprovisioning",
+  "access_control.accounts.formal_provisioning",
+  "access_control.accounts.periodic_review",
+  "access_control.enforcement",
+  "access_control.enforcement.default_deny",
+  "access_control.enforcement.least_privilege",
+  "access_control.enforcement.privilege_separation",
+  "access_control.policy",
+  "access_control.policy.approved",
+  "access_control.policy.documented",
+  "access_control.policy.last_review_date",
+  "access_control.remote_access",
+  "access_control.remote_access.encrypted_channel",
+  "access_control.remote_access.mfa_required",
+  "access_control.remote_access.vpn_required",
+  "access_control.sessions",
+  "access_control.sessions.concurrent_sessions_limited",
+  "access_control.sessions.secure_tokens",
+  "access_control.sessions.timeout_minutes",
+  "audit",
+  "audit.events_logged",
+  "audit.protection",
+  "audit.protection.encrypted",
+  "audit.protection.integrity_mechanism",
+  "audit.protection.write_protected",
+  "audit.siem",
+  "audit.siem.centralized_logging",
+  "audit.siem.correlation_enabled",
+  "audit.siem.real_time_alerting",
+  "audit.storage",
+  "audit.storage.alert_threshold_percent",
+  "audit.storage.auto_archive_enabled",
+  "audit.storage.capacity_monitoring_enabled",
+  "audit.storage.failure_alerting_enabled",
+  "audit.storage.failure_response_documented",
+  "audit.storage.retention_days",
+  "config_management",
+  "config_management.baseline",
+  "config_management.baseline.components_covered",
+  "config_management.baseline.documented",
+  "config_management.baseline.last_review_date",
+  "config_management.baseline.version_controlled",
+  "config_management.change_control",
+  "config_management.change_control.approval_required",
+  "config_management.change_control.formal_process",
+  "config_management.change_control.rollback_capability",
+  "config_management.change_control.testing_required",
+  "config_management.hardening",
+  "config_management.hardening.default_passwords_changed",
+  "config_management.hardening.secure_protocols_only",
+  "config_management.hardening.unnecessary_ports_closed",
+  "config_management.hardening.unnecessary_services_disabled",
+  "config_management.inventory",
+  "config_management.inventory.components",
+  "config_management.inventory.last_updated",
+  "config_management.least_functionality",
+  "config_management.least_functionality.application_whitelisting",
+  "config_management.least_functionality.firmware_locked",
+  "config_management.least_functionality.unnecessary_software_removed",
+  "identification_auth",
+  "identification_auth.cryptography",
+  "identification_auth.cryptography.fips_validated",
+  "identification_auth.cryptography.validation_level",
+  "identification_auth.devices",
+  "identification_auth.devices.authentication_required",
+  "identification_auth.devices.credential_inventory",
+  "identification_auth.devices.unauthenticated_devices_blocked",
+  "identification_auth.devices.unique_identity_per_device",
+  "identification_auth.mfa",
+  "identification_auth.mfa.enabled",
+  "identification_auth.mfa.required_for_privileged",
+  "identification_auth.mfa.second_factor",
+  "identification_auth.pki",
+  "identification_auth.pki.certificate_algorithm",
+  "identification_auth.pki.certificate_authority_trusted",
+  "identification_auth.pki.certificate_revocation_checking",
+  "identification_auth.pki.device_certificates",
+  "incident_response",
+  "incident_response.detection",
+  "incident_response.detection.anomaly_detection_enabled",
+  "incident_response.detection.automated_alerting",
+  "incident_response.detection.tamper_detection_integrated",
+  "incident_response.plan",
+  "incident_response.plan.scenarios_covered",
+  "incident_response.policy",
+  "incident_response.policy.ami_specific_procedures",
+  "incident_response.policy.approved",
+  "incident_response.policy.documented",
+  "incident_response.policy.last_review_date",
+  "incident_response.reporting",
+  "incident_response.reporting.external_reporting_contacts_current",
+  "incident_response.reporting.internal_escalation_path_defined",
+  "incident_response.reporting.reporting_timeframe_hours",
+  "incident_response.testing",
+  "incident_response.testing.last_test_date",
+  "incident_response.testing.type",
+  "incident_response.training",
+  "incident_response.training.ami_scenarios_covered",
+  "incident_response.training.last_date",
+  "system_comms",
+  "system_comms.encryption",
+  "system_comms.encryption.enabled_ciphers",
+  "system_comms.encryption.tls_version",
+  "system_comms.key_management",
+  "system_comms.key_management.hsm_used",
+  "system_comms.key_management.key_escrow_policy_defined",
+  "system_comms.key_management.master_key_rotation_days",
+  "system_comms.network",
+  "system_comms.network.ami_isolated_from_internet",
+  "system_comms.network.firewall_between_zones",
+  "system_comms.network.ot_it_segmented",
+  "system_comms.pki",
+  "system_comms.pki.crl_or_ocsp_enabled",
+  "system_comms.pki.intermediate_ca_online",
+  "system_comms.pki.root_ca_offline",
+  "system_comms.policy",
+  "system_comms.policy.approved",
+  "system_comms.policy.documented",
+  "system_comms.rf_mesh",
+  "system_comms.rf_mesh.encrypted",
+  "system_comms.rf_mesh.encryption_algorithm",
+  "system_comms.storage",
+  "system_comms.storage.encryption_algorithm",
+  "system_comms.storage.key_management_integrated",
+  "system_comms.storage.mdms_encrypted"
+ ]
+}

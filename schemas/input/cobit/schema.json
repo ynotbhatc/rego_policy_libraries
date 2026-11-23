@@ -1,0 +1,235 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cobit/schema.json",
+ "title": "Input facts for cobit",
+ "description": "Facts the module in frameworks/management/cobit/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cobit",
+ "x-entrypoint": "data.cobit.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/management/cobit/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cobit.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "apo": {
+   "description": "Read in cobit_main.rego.",
+   "type": "object",
+   "properties": {
+    "enterprise_architecture_managed": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "it_strategy_documented": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_management_operated": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_management_defined": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vendor_management_operated": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in cobit_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-02"
+   ]
+  },
+  "bai": {
+   "description": "Read in cobit_main.rego.",
+   "type": "object",
+   "properties": {
+    "change_management_operated": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "configuration_management_operated": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "dss": {
+   "description": "Read in cobit_main.rego.",
+   "type": "object",
+   "properties": {
+    "incident_management_operated": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "operations_managed": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_services_delivered": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "edm": {
+   "description": "Read in cobit_main.rego.",
+   "type": "object",
+   "properties": {
+    "benefits_delivery_overseen": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "governance_framework_established": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "resource_optimization_overseen": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_optimization_overseen": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "stakeholder_engagement": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in cobit_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example Enterprise"
+   ]
+  },
+  "mea": {
+   "description": "Read in cobit_main.rego.",
+   "type": "object",
+   "properties": {
+    "external_compliance_assessed": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "internal_control_assessed": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "performance_monitoring_operated": {
+     "description": "Read in cobit_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "apo",
+  "apo.enterprise_architecture_managed",
+  "apo.it_strategy_documented",
+  "apo.risk_management_operated",
+  "apo.security_management_defined",
+  "apo.vendor_management_operated",
+  "assessment_date",
+  "bai",
+  "bai.change_management_operated",
+  "bai.configuration_management_operated",
+  "dss",
+  "dss.incident_management_operated",
+  "dss.operations_managed",
+  "dss.security_services_delivered",
+  "edm",
+  "edm.benefits_delivery_overseen",
+  "edm.governance_framework_established",
+  "edm.resource_optimization_overseen",
+  "edm.risk_optimization_overseen",
+  "edm.stakeholder_engagement",
+  "entity_name",
+  "mea",
+  "mea.external_compliance_assessed",
+  "mea.internal_control_assessed",
+  "mea.performance_monitoring_operated"
+ ]
+}

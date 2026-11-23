@@ -1,0 +1,1927 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nerc_cip/schema.json",
+ "title": "Input facts for nerc_cip",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/nerc_cip/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "nerc_cip",
+ "x-entrypoint": "data.nerc_cip.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/nerc_cip/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "applicable_transmission_stations": {
+   "description": "Read in cip_014_physical_security_transmission.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_014_physical_security_transmission.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "attachment1": {
+   "description": "Read in cip_002_asset_identification.rego.",
+   "properties": {
+    "high_impact_criteria": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "criterion_2_1_control_centers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_2_2_transmission_facilities": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_2_3_generation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_2_4_systems": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_2_5_fca": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_2_6_eacms": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "rationale_documented": {
+       "description": "Read in cip_002_asset_identification.rego."
+      }
+     }
+    },
+    "medium_impact_criteria": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "criterion_3_1_control_centers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_3_2_transmission": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_3_3_generation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "criterion_3_4_eacms": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "evaluated": {
+         "description": "Read in cip_002_asset_identification.rego."
+        }
+       }
+      },
+      "rationale_documented": {
+       "description": "Read in cip_002_asset_identification.rego."
+      }
+     }
+    }
+   }
+  },
+  "backup_procedures": {
+   "description": "Read in cip_009_recovery_plans.rego, nerc_cip_main.rego."
+  },
+  "baseline_configurations": {
+   "description": "Read in cip_010_configuration_management.rego, nerc_cip_main.rego."
+  },
+  "bcsi_access_list": {
+   "description": "Read in cip_011_information_protection.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_011_information_protection.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "bcsi_storage": {
+   "description": "Read in cip_011_information_protection.rego.",
+   "properties": {
+    "access_controls_implemented": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "electronic": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authentication_required": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "authorization_enforced": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "logging_enabled": {
+       "description": "Read in cip_011_information_protection.rego."
+      }
+     }
+    },
+    "encryption_at_rest": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "physical": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_controlled": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "access_logged": {
+       "description": "Read in cip_011_information_protection.rego."
+      }
+     }
+    },
+    "physical_protection_implemented": {
+     "description": "Read in cip_011_information_protection.rego."
+    }
+   }
+  },
+  "bcsi_third_party_sharing": {
+   "description": "Read in cip_011_information_protection.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_011_information_protection.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "bcsi_transmissions": {
+   "description": "Read in cip_011_information_protection.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_011_information_protection.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "bes_cyber_system_information": {
+   "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego.",
+   "properties": {
+    "categories": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "device_configurations": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "incident_response_plans": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "network_diagrams": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "oca_addressed": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "security_plans": {
+       "description": "Read in cip_011_information_protection.rego."
+      },
+      "vulnerability_assessments": {
+       "description": "Read in cip_011_information_protection.rego."
+      }
+     }
+    },
+    "classification_performed": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "handling_procedures_defined": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "inventory_maintained": {
+     "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego."
+    }
+   }
+  },
+  "bes_cyber_systems": {
+   "description": "Read in cip_002_asset_identification.rego, cip_003_security_management.rego, cip_005_electronic_security.rego, cip_006_physical_security.rego and 5 more.",
+   "additionalProperties": {
+    "description": "Read in cip_002_asset_identification.rego, cip_003_security_management.rego, cip_005_electronic_security.rego, cip_006_physical_security.rego and 5 more."
+   },
+   "x-variable-key": "<_>"
+  },
+  "bes_environment_changes": {
+   "description": "Read in cip_002_asset_identification.rego."
+  },
+  "categorization_documentation": {
+   "description": "Read in cip_002_asset_identification.rego, nerc_cip_main.rego, nerc_cip_simplified.rego.",
+   "properties": {
+    "approval_date": {
+     "description": "Read in cip_002_asset_identification.rego."
+    },
+    "attachment1_used": {
+     "description": "Read in cip_002_asset_identification.rego."
+    },
+    "cip_senior_manager_approved": {
+     "description": "Read in cip_002_asset_identification.rego."
+    },
+    "criteria_defined": {
+     "description": "Read in cip_002_asset_identification.rego, nerc_cip_main.rego, nerc_cip_simplified.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_002_asset_identification.rego."
+    },
+    "methodology_documented": {
+     "description": "Read in cip_002_asset_identification.rego, nerc_cip_main.rego, nerc_cip_simplified.rego."
+    },
+    "rationale_provided": {
+     "description": "Read in cip_002_asset_identification.rego, nerc_cip_simplified.rego."
+    }
+   }
+  },
+  "communication_contingency": {
+   "description": "Read in cip_012_communications.rego.",
+   "properties": {
+    "backup_communications": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "backup_links": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "backup_links_exist": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "plans_documented": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "recovery_procedures": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "testing_performed": {
+     "description": "Read in cip_012_communications.rego."
+    }
+   }
+  },
+  "communication_monitoring": {
+   "description": "Read in cip_012_communications.rego.",
+   "properties": {
+    "alerting_configured": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "anomaly_detection": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "enabled": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "logging_implemented": {
+     "description": "Read in cip_012_communications.rego."
+    }
+   }
+  },
+  "configuration_change_management": {
+   "description": "Read in cip_010_configuration_management.rego.",
+   "properties": {
+    "approval_process_defined": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "process_documented": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "rollback_procedures_defined": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "testing_requirements_defined": {
+     "description": "Read in cip_010_configuration_management.rego."
+    }
+   }
+  },
+  "configuration_changes": {
+   "description": "Read in cip_010_configuration_management.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_010_configuration_management.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "configuration_monitoring": {
+   "description": "Read in cip_010_configuration_management.rego."
+  },
+  "control_center_communications": {
+   "description": "Read in cip_012_communications.rego, nerc_cip_main.rego.",
+   "properties": {
+    "criticality_assessed": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "inventory_maintained": {
+     "description": "Read in cip_012_communications.rego, nerc_cip_main.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "last_test_date": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "links": {
+     "description": "Read in cip_012_communications.rego, nerc_cip_main.rego.",
+     "additionalProperties": {
+      "description": "Read in cip_012_communications.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "protection_requirements_defined": {
+     "description": "Read in cip_012_communications.rego."
+    },
+    "test_documented": {
+     "description": "Read in cip_012_communications.rego."
+    }
+   }
+  },
+  "cyber_security_training": {
+   "description": "Read in cip_004_personnel_training.rego.",
+   "properties": {
+    "content": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "acceptable_use": {
+       "description": "Read in cip_004_personnel_training.rego."
+      },
+      "bes_cyber_system_overview": {
+       "description": "Read in cip_004_personnel_training.rego."
+      },
+      "electronic_security": {
+       "description": "Read in cip_004_personnel_training.rego."
+      },
+      "incident_response": {
+       "description": "Read in cip_004_personnel_training.rego."
+      },
+      "physical_security": {
+       "description": "Read in cip_004_personnel_training.rego."
+      },
+      "security_controls_overview": {
+       "description": "Read in cip_004_personnel_training.rego."
+      }
+     }
+    },
+    "program_documented": {
+     "description": "Read in cip_004_personnel_training.rego."
+    }
+   }
+  },
+  "cybersecurity_organization": {
+   "description": "Read in cip_003_security_management.rego, nerc_cip_main.rego, nerc_cip_simplified.rego.",
+   "properties": {
+    "delegated_authority": {
+     "description": "Read in cip_003_security_management.rego.",
+     "properties": {
+      "current": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "delegate_name": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "documented": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "exists": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "scope_defined": {
+       "description": "Read in cip_003_security_management.rego."
+      }
+     }
+    },
+    "policies": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approved": {
+       "description": "Read in nerc_cip_main.rego, nerc_cip_simplified.rego."
+      },
+      "documented": {
+       "description": "Read in nerc_cip_main.rego, nerc_cip_simplified.rego."
+      }
+     }
+    },
+    "senior_manager": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "accountability_documented": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "authority_documented": {
+       "description": "Read in cip_003_security_management.rego, nerc_cip_simplified.rego."
+      },
+      "designated": {
+       "description": "Read in cip_003_security_management.rego, nerc_cip_main.rego, nerc_cip_simplified.rego."
+      },
+      "name": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "responsibilities_defined": {
+       "description": "Read in cip_003_security_management.rego, nerc_cip_simplified.rego."
+      },
+      "title": {
+       "description": "Read in cip_003_security_management.rego."
+      }
+     }
+    }
+   }
+  },
+  "cybersecurity_policies": {
+   "description": "Read in cip_003_security_management.rego.",
+   "properties": {
+    "approved": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "areas": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "configuration_management": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "electronic_security_perimeters": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "incident_response": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "personnel_and_training": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "physical_security": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "recovery_plans": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "systems_security_management": {
+       "description": "Read in cip_003_security_management.rego."
+      }
+     }
+    },
+    "cip_senior_manager_approved": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "documented": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_003_security_management.rego."
+    }
+   }
+  },
+  "electronic_access_control_systems": {
+   "description": "Read in cip_002_asset_identification.rego, cip_006_physical_security.rego."
+  },
+  "electronic_access_points": {
+   "description": "Read in cip_005_electronic_security.rego, nerc_cip_main.rego, nerc_cip_simplified.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_005_electronic_security.rego, nerc_cip_simplified.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "electronic_security_perimeter_ids": {
+   "description": "Read in cip_005_electronic_security.rego."
+  },
+  "electronic_security_perimeters": {
+   "description": "Read in cip_005_electronic_security.rego, nerc_cip_simplified.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_005_electronic_security.rego.",
+    "properties": {
+     "documented": {
+      "description": "Read in nerc_cip_simplified.rego."
+     }
+    }
+   },
+   "x-variable-key": "<esp_id>"
+  },
+  "incident_identification": {
+   "description": "Read in cip_008_incident_response.rego.",
+   "properties": {
+    "criteria_documented": {
+     "description": "Read in cip_008_incident_response.rego."
+    },
+    "decision_process_documented": {
+     "description": "Read in cip_008_incident_response.rego."
+    }
+   }
+  },
+  "incident_reporting": {
+   "description": "Read in nerc_cip_main.rego.",
+   "properties": {
+    "procedures_documented": {
+     "description": "Read in nerc_cip_main.rego."
+    }
+   }
+  },
+  "incident_response_plan": {
+   "description": "Read in cip_008_incident_response.rego, nerc_cip_main.rego.",
+   "properties": {
+    "approved": {
+     "description": "Read in cip_008_incident_response.rego, nerc_cip_main.rego."
+    },
+    "classification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "attempted_compromise": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "defined": {
+         "description": "Read in cip_008_incident_response.rego."
+        }
+       }
+      },
+      "compromised_or_disrupted_operations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "defined": {
+         "description": "Read in cip_008_incident_response.rego."
+        }
+       }
+      },
+      "reportable_criteria_defined": {
+       "description": "Read in cip_008_incident_response.rego."
+      }
+     }
+    },
+    "documented": {
+     "description": "Read in cip_008_incident_response.rego, nerc_cip_main.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_008_incident_response.rego."
+    },
+    "processes": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "containment_procedures": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "eradication_procedures": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "identification_procedures": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "incident_classification_criteria": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "post_incident_review": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "recovery_procedures": {
+       "description": "Read in cip_008_incident_response.rego."
+      }
+     }
+    },
+    "reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "e_isac_notification": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "nerc_notification_process": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "reportable_incident_criteria_defined": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "reporting_timeframe_defined": {
+       "description": "Read in cip_008_incident_response.rego."
+      }
+     }
+    },
+    "roles_and_responsibilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "backup_lead": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "designated": {
+         "description": "Read in cip_008_incident_response.rego."
+        }
+       }
+      },
+      "contact_list_current": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "defined": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "primary_lead": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "designated": {
+         "description": "Read in cip_008_incident_response.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "incident_response_team": {
+   "description": "Read in cip_008_incident_response.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_008_incident_response.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "incident_response_testing": {
+   "description": "Read in cip_008_incident_response.rego.",
+   "properties": {
+    "last_test_date": {
+     "description": "Read in cip_008_incident_response.rego."
+    },
+    "lessons_learned": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "plan_updated_if_needed": {
+       "description": "Read in cip_008_incident_response.rego."
+      },
+      "reviewed": {
+       "description": "Read in cip_008_incident_response.rego."
+      }
+     }
+    },
+    "lessons_learned_captured": {
+     "description": "Read in cip_008_incident_response.rego."
+    },
+    "participants_documented": {
+     "description": "Read in cip_008_incident_response.rego."
+    },
+    "test_documented": {
+     "description": "Read in cip_008_incident_response.rego."
+    },
+    "test_type": {
+     "description": "Read in cip_008_incident_response.rego."
+    }
+   }
+  },
+  "information_access": {
+   "description": "Read in cip_011_information_protection.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_011_information_protection.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "information_disposal": {
+   "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego.",
+   "properties": {
+    "disposal_documentation": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "media_sanitization": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "procedures_documented": {
+     "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego."
+    },
+    "secure_deletion_methods": {
+     "description": "Read in cip_011_information_protection.rego."
+    }
+   }
+  },
+  "information_protection": {
+   "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego.",
+   "properties": {
+    "access_controls_enforced": {
+     "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego."
+    },
+    "procedures_documented": {
+     "description": "Read in cip_011_information_protection.rego, nerc_cip_main.rego."
+    },
+    "program_documented": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "storage_controls_implemented": {
+     "description": "Read in cip_011_information_protection.rego."
+    },
+    "transmission_controls_implemented": {
+     "description": "Read in cip_011_information_protection.rego."
+    }
+   }
+  },
+  "information_sharing_plan": {
+   "description": "Read in cip_003_security_management.rego.",
+   "properties": {
+    "contacts_current": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "documented": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "nerc_contact_included": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "regional_entity_contact_included": {
+     "description": "Read in cip_003_security_management.rego."
+    }
+   }
+  },
+  "insm": {
+   "description": "Read in cip_015_insm.rego.",
+   "properties": {
+    "categorization_review_date": {
+     "description": "Read in cip_015_insm.rego."
+    },
+    "documentation_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cip_015_insm.rego."
+      },
+      "last_review_date": {
+       "description": "Read in cip_015_insm.rego."
+      },
+      "reviewer": {
+       "description": "Read in cip_015_insm.rego."
+      }
+     }
+    },
+    "systems": {
+     "description": "Read in cip_015_insm.rego.",
+     "additionalProperties": {
+      "description": "Read in cip_015_insm.rego."
+     },
+     "x-variable-key": "<_>"
+    }
+   }
+  },
+  "low_impact_plan": {
+   "description": "Read in cip_003_security_management.rego.",
+   "properties": {
+    "approved": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "cyber_security_incident_response": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "documented": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "electronic_access_controls": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "physical_security_controls": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "transient_cyber_asset_controls": {
+     "description": "Read in cip_003_security_management.rego."
+    }
+   }
+  },
+  "malicious_code_protection": {
+   "description": "Read in cip_007_systems_security.rego, nerc_cip_main.rego.",
+   "properties": {
+    "alternate_controls_when_av_not_available": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "mitigation_procedures_documented": {
+     "description": "Read in cip_007_systems_security.rego."
+    }
+   }
+  },
+  "malicious_code_response": {
+   "description": "Read in cip_007_systems_security.rego.",
+   "properties": {
+    "eradication_procedures": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "escalation_procedures": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "procedures_documented": {
+     "description": "Read in cip_007_systems_security.rego."
+    }
+   }
+  },
+  "media_disposals": {
+   "description": "Read in cip_011_information_protection.rego."
+  },
+  "network_port_management": {
+   "description": "Read in cip_005_electronic_security.rego, cip_007_systems_security.rego."
+  },
+  "password_policy": {
+   "description": "Read in cip_007_systems_security.rego.",
+   "properties": {
+    "account_lockout_configured": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "complexity_required": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "expiration_configured": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "lockout_threshold": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "minimum_length": {
+     "description": "Read in cip_007_systems_security.rego."
+    }
+   }
+  },
+  "patch_management": {
+   "description": "Read in cip_007_systems_security.rego, nerc_cip_main.rego.",
+   "properties": {
+    "ics_cert_monitoring": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "tracking_process_documented": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "vendor_notifications_monitored": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "vulnerability_sources_identified": {
+     "description": "Read in cip_007_systems_security.rego."
+    }
+   }
+  },
+  "personnel": {
+   "description": "Read in cip_004_personnel_training.rego, cip_006_physical_security.rego, nerc_cip_main.rego, nerc_cip_simplified.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_004_personnel_training.rego, cip_006_physical_security.rego, nerc_cip_simplified.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "personnel_role_changes": {
+   "description": "Read in cip_004_personnel_training.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_004_personnel_training.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "physical_access_alerting": {
+   "description": "Read in cip_006_physical_security.rego.",
+   "properties": {
+    "after_hours_alert": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "enabled": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "response_procedures_documented": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "unauthorized_attempt_alert": {
+     "description": "Read in cip_006_physical_security.rego."
+    }
+   }
+  },
+  "physical_access_control_systems": {
+   "description": "Read in cip_002_asset_identification.rego, cip_006_physical_security.rego."
+  },
+  "physical_access_controls": {
+   "description": "Read in cip_006_physical_security.rego, nerc_cip_simplified.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_006_physical_security.rego, nerc_cip_simplified.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "physical_locations": {
+   "description": "Read in cip_006_physical_security.rego."
+  },
+  "physical_security_perimeters": {
+   "description": "Read in cip_006_physical_security.rego, nerc_cip_main.rego, nerc_cip_simplified.rego.",
+   "additionalProperties": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "properties": {
+     "boundary_defined": {
+      "description": "Read in nerc_cip_simplified.rego."
+     }
+    }
+   },
+   "x-variable-key": "<system_id>"
+  },
+  "physical_security_plan": {
+   "description": "Read in cip_006_physical_security.rego.",
+   "properties": {
+    "approved": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "documented": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "last_quarterly_review_date": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "psps_identified": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "scope_defined": {
+     "description": "Read in cip_006_physical_security.rego."
+    }
+   }
+  },
+  "ports_and_services": {
+   "description": "Read in cip_007_systems_security.rego.",
+   "properties": {
+    "authorization_required": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "policy_documented": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "review_process_defined": {
+     "description": "Read in cip_007_systems_security.rego."
+    }
+   }
+  },
+  "protected_cyber_assets": {
+   "description": "Read in cip_006_physical_security.rego."
+  },
+  "qualifying_recovery_events": {
+   "description": "Read in cip_009_recovery_plans.rego."
+  },
+  "recovery_plans": {
+   "description": "Read in cip_009_recovery_plans.rego, nerc_cip_main.rego.",
+   "properties": {
+    "activation_criteria_documented": {
+     "description": "Read in cip_009_recovery_plans.rego."
+    },
+    "activation_criteria_tested": {
+     "description": "Read in cip_009_recovery_plans.rego."
+    },
+    "decision_authority_identified": {
+     "description": "Read in cip_009_recovery_plans.rego."
+    },
+    "last_activation_test_date": {
+     "description": "Read in cip_009_recovery_plans.rego."
+    },
+    "log_preservation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "forensic_preservation_addressed": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      },
+      "process_documented": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      }
+     }
+    },
+    "network_reconnection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_documented": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      },
+      "security_verification": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      },
+      "validation_steps_defined": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      }
+     }
+    },
+    "roles_and_responsibilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "contact_list_current": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      },
+      "defined": {
+       "description": "Read in cip_009_recovery_plans.rego."
+      },
+      "primary_lead": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "designated": {
+         "description": "Read in cip_009_recovery_plans.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "recovery_team": {
+   "description": "Read in cip_009_recovery_plans.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_009_recovery_plans.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "recovery_testing": {
+   "description": "Read in cip_009_recovery_plans.rego."
+  },
+  "remote_access": {
+   "description": "Read in cip_005_electronic_security.rego.",
+   "properties": {
+    "authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "implemented": {
+       "description": "Read in cip_005_electronic_security.rego."
+      },
+      "multi_factor": {
+       "description": "Read in cip_005_electronic_security.rego."
+      }
+     }
+    },
+    "intermediary_device": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_controlled": {
+       "description": "Read in cip_005_electronic_security.rego."
+      },
+      "in_esp": {
+       "description": "Read in cip_005_electronic_security.rego."
+      },
+      "monitored": {
+       "description": "Read in cip_005_electronic_security.rego."
+      }
+     }
+    },
+    "policy_documented": {
+     "description": "Read in cip_005_electronic_security.rego."
+    },
+    "session_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "idle_timeout_minutes": {
+       "description": "Read in cip_005_electronic_security.rego."
+      },
+      "timeout_implemented": {
+       "description": "Read in cip_005_electronic_security.rego."
+      }
+     }
+    },
+    "uses_intermediary_device": {
+     "description": "Read in cip_005_electronic_security.rego."
+    }
+   }
+  },
+  "remote_access_sessions": {
+   "description": "Read in cip_005_electronic_security.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_005_electronic_security.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "removable_media": {
+   "description": "Read in cip_003_security_management.rego.",
+   "properties": {
+    "authorization_required": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "encryption_when_applicable": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "policy_documented": {
+     "description": "Read in cip_003_security_management.rego."
+    },
+    "scanning_before_use": {
+     "description": "Read in cip_003_security_management.rego."
+    }
+   }
+  },
+  "reportable_cyber_incidents": {
+   "description": "Read in cip_008_incident_response.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_008_incident_response.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "security_awareness": {
+   "description": "Read in cip_004_personnel_training.rego.",
+   "properties": {
+    "last_reinforcement_date": {
+     "description": "Read in cip_004_personnel_training.rego."
+    },
+    "methods_documented": {
+     "description": "Read in cip_004_personnel_training.rego."
+    },
+    "program_documented": {
+     "description": "Read in cip_004_personnel_training.rego."
+    },
+    "quarterly_reinforcement": {
+     "description": "Read in cip_004_personnel_training.rego."
+    }
+   }
+  },
+  "security_event_alerting": {
+   "description": "Read in cip_007_systems_security.rego.",
+   "properties": {
+    "account_lockout_alert": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "alert_review_process_documented": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "enabled": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "failed_login_alert": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_007_systems_security.rego."
+    },
+    "privilege_escalation_alert": {
+     "description": "Read in cip_007_systems_security.rego."
+    }
+   }
+  },
+  "security_monitoring": {
+   "description": "Read in cip_007_systems_security.rego."
+  },
+  "security_patches": {
+   "description": "Read in cip_007_systems_security.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_007_systems_security.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "software_integrity": {
+   "description": "Read in cip_010_configuration_management.rego.",
+   "properties": {
+    "hash_verification": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "vendor_verification": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "verification_process_documented": {
+     "description": "Read in cip_010_configuration_management.rego."
+    }
+   }
+  },
+  "standalone_bes_cyber_assets": {
+   "description": "Read in cip_006_physical_security.rego."
+  },
+  "station_security_plans": {
+   "description": "Read in cip_014_physical_security_transmission.rego."
+  },
+  "supply_chain_incident_response": {
+   "description": "Read in cip_013_supply_chain.rego.",
+   "properties": {
+    "coordination_tested": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "information_sharing_agreements": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "procedures_documented": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "vendor_contacts_current": {
+     "description": "Read in cip_013_supply_chain.rego."
+    }
+   }
+  },
+  "supply_chain_management": {
+   "description": "Read in nerc_cip_main.rego.",
+   "properties": {
+    "plan_approved": {
+     "description": "Read in nerc_cip_main.rego."
+    },
+    "plan_documented": {
+     "description": "Read in nerc_cip_main.rego."
+    },
+    "software_integrity_verification": {
+     "description": "Read in nerc_cip_main.rego."
+    }
+   }
+  },
+  "supply_chain_monitoring": {
+   "description": "Read in cip_013_supply_chain.rego.",
+   "properties": {
+    "enabled": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "ics_cert_advisory_monitoring": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "incident_detection": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "response_process_documented": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "threat_intelligence": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "vendor_bulletin_monitoring": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "vulnerability_tracking": {
+     "description": "Read in cip_013_supply_chain.rego."
+    }
+   }
+  },
+  "supply_chain_plan": {
+   "description": "Read in cip_013_supply_chain.rego.",
+   "properties": {
+    "approval_date": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "approved": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "cip_senior_manager_approved": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "current": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "documented": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "last_review_date": {
+     "description": "Read in cip_013_supply_chain.rego."
+    },
+    "processes": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "hash_or_signature_verification": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "incident_escalation_procedures": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "information_sharing_agreements": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "notification_response_procedures": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "software_integrity_verification": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_incident_coordination": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_incident_notification": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_provided_verification_method": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_remote_access_control": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_remote_access_logging": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_remote_access_monitoring": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_remote_access_policy": {
+       "description": "Read in cip_013_supply_chain.rego."
+      },
+      "vendor_vulnerability_notification": {
+       "description": "Read in cip_013_supply_chain.rego."
+      }
+     }
+    },
+    "vendor_requirements_defined": {
+     "description": "Read in cip_013_supply_chain.rego."
+    }
+   }
+  },
+  "system_access_controls": {
+   "description": "Read in cip_007_systems_security.rego, nerc_cip_main.rego."
+  },
+  "system_configurations": {
+   "description": "Read in cip_007_systems_security.rego."
+  },
+  "system_redeployments": {
+   "description": "Read in cip_011_information_protection.rego."
+  },
+  "transient_cyber_assets": {
+   "description": "Read in cip_003_security_management.rego, cip_010_configuration_management.rego.",
+   "properties": {
+    "asset_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authorization_required": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "inventory_maintained": {
+       "description": "Read in cip_003_security_management.rego."
+      }
+     }
+    },
+    "config_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "inventory_maintained": {
+       "description": "Read in cip_010_configuration_management.rego."
+      },
+      "policy_documented": {
+       "description": "Read in cip_010_configuration_management.rego."
+      },
+      "security_controls_applied": {
+       "description": "Read in cip_010_configuration_management.rego."
+      }
+     }
+    },
+    "controls": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "malicious_code_prevention": {
+       "description": "Read in cip_003_security_management.rego."
+      },
+      "security_patches": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "applied": {
+         "description": "Read in cip_003_security_management.rego."
+        },
+        "documented": {
+         "description": "Read in cip_003_security_management.rego."
+        }
+       }
+      }
+     }
+    },
+    "policy_documented": {
+     "description": "Read in cip_003_security_management.rego."
+    }
+   }
+  },
+  "transmission_risk_assessment": {
+   "description": "Read in cip_014_physical_security_transmission.rego.",
+   "properties": {
+    "documented": {
+     "description": "Read in cip_014_physical_security_transmission.rego."
+    },
+    "last_assessment_date": {
+     "description": "Read in cip_014_physical_security_transmission.rego."
+    },
+    "methodology": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cascading_potential_assessed": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "contingency_analysis": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "power_flow_analysis": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "stability_impact_assessed": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      }
+     }
+    },
+    "methodology_documented": {
+     "description": "Read in cip_014_physical_security_transmission.rego."
+    },
+    "no_applicable_stations_documented": {
+     "description": "Read in cip_014_physical_security_transmission.rego."
+    },
+    "performed": {
+     "description": "Read in cip_014_physical_security_transmission.rego."
+    },
+    "third_party_verification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "last_verification_date": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "performed": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "rc_notification_date": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "rc_notified": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "reviewer_qualifications_documented": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "timely": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      },
+      "unaffiliated": {
+       "description": "Read in cip_014_physical_security_transmission.rego."
+      }
+     }
+    }
+   }
+  },
+  "transmission_security_assessments": {
+   "description": "Read in nerc_cip_main.rego.",
+   "properties": {
+    "completed": {
+     "description": "Read in nerc_cip_main.rego."
+    },
+    "third_party_verified": {
+     "description": "Read in nerc_cip_main.rego."
+    }
+   }
+  },
+  "transmission_topology_changes": {
+   "description": "Read in cip_014_physical_security_transmission.rego."
+  },
+  "user_accounts": {
+   "description": "Read in cip_007_systems_security.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_007_systems_security.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "vendor_contracts": {
+   "description": "Read in cip_013_supply_chain.rego."
+  },
+  "vendor_risk_assessments": {
+   "description": "Read in cip_013_supply_chain.rego."
+  },
+  "vendors": {
+   "description": "Read in cip_013_supply_chain.rego.",
+   "additionalProperties": {
+    "description": "Read in cip_013_supply_chain.rego."
+   },
+   "x-variable-key": "<_>"
+  },
+  "visitor_control_program": {
+   "description": "Read in cip_006_physical_security.rego, nerc_cip_main.rego.",
+   "properties": {
+    "access_logging": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "documented": {
+     "description": "Read in cip_006_physical_security.rego, nerc_cip_main.rego."
+    },
+    "escort_procedures": {
+     "description": "Read in cip_006_physical_security.rego, nerc_cip_main.rego."
+    },
+    "identification_required": {
+     "description": "Read in cip_006_physical_security.rego."
+    },
+    "visitor_log_maintained": {
+     "description": "Read in cip_006_physical_security.rego."
+    }
+   }
+  },
+  "vulnerability_assessments": {
+   "description": "Read in cip_010_configuration_management.rego, nerc_cip_main.rego."
+  },
+  "vulnerability_monitoring": {
+   "description": "Read in cip_010_configuration_management.rego.",
+   "properties": {
+    "ics_cert_monitoring": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "response_process_documented": {
+     "description": "Read in cip_010_configuration_management.rego."
+    },
+    "vendor_advisories_monitored": {
+     "description": "Read in cip_010_configuration_management.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "applicable_transmission_stations",
+  "attachment1",
+  "attachment1.high_impact_criteria",
+  "attachment1.high_impact_criteria.criterion_2_1_control_centers",
+  "attachment1.high_impact_criteria.criterion_2_1_control_centers.evaluated",
+  "attachment1.high_impact_criteria.criterion_2_2_transmission_facilities",
+  "attachment1.high_impact_criteria.criterion_2_2_transmission_facilities.evaluated",
+  "attachment1.high_impact_criteria.criterion_2_3_generation",
+  "attachment1.high_impact_criteria.criterion_2_3_generation.evaluated",
+  "attachment1.high_impact_criteria.criterion_2_4_systems",
+  "attachment1.high_impact_criteria.criterion_2_4_systems.evaluated",
+  "attachment1.high_impact_criteria.criterion_2_5_fca",
+  "attachment1.high_impact_criteria.criterion_2_5_fca.evaluated",
+  "attachment1.high_impact_criteria.criterion_2_6_eacms",
+  "attachment1.high_impact_criteria.criterion_2_6_eacms.evaluated",
+  "attachment1.high_impact_criteria.rationale_documented",
+  "attachment1.medium_impact_criteria",
+  "attachment1.medium_impact_criteria.criterion_3_1_control_centers",
+  "attachment1.medium_impact_criteria.criterion_3_1_control_centers.evaluated",
+  "attachment1.medium_impact_criteria.criterion_3_2_transmission",
+  "attachment1.medium_impact_criteria.criterion_3_2_transmission.evaluated",
+  "attachment1.medium_impact_criteria.criterion_3_3_generation",
+  "attachment1.medium_impact_criteria.criterion_3_3_generation.evaluated",
+  "attachment1.medium_impact_criteria.criterion_3_4_eacms",
+  "attachment1.medium_impact_criteria.criterion_3_4_eacms.evaluated",
+  "attachment1.medium_impact_criteria.rationale_documented",
+  "backup_procedures",
+  "baseline_configurations",
+  "bcsi_access_list",
+  "bcsi_storage",
+  "bcsi_storage.access_controls_implemented",
+  "bcsi_storage.electronic",
+  "bcsi_storage.electronic.authentication_required",
+  "bcsi_storage.electronic.authorization_enforced",
+  "bcsi_storage.electronic.logging_enabled",
+  "bcsi_storage.encryption_at_rest",
+  "bcsi_storage.physical",
+  "bcsi_storage.physical.access_controlled",
+  "bcsi_storage.physical.access_logged",
+  "bcsi_storage.physical_protection_implemented",
+  "bcsi_third_party_sharing",
+  "bcsi_transmissions",
+  "bes_cyber_system_information",
+  "bes_cyber_system_information.categories",
+  "bes_cyber_system_information.categories.device_configurations",
+  "bes_cyber_system_information.categories.incident_response_plans",
+  "bes_cyber_system_information.categories.network_diagrams",
+  "bes_cyber_system_information.categories.oca_addressed",
+  "bes_cyber_system_information.categories.security_plans",
+  "bes_cyber_system_information.categories.vulnerability_assessments",
+  "bes_cyber_system_information.classification_performed",
+  "bes_cyber_system_information.handling_procedures_defined",
+  "bes_cyber_system_information.inventory_maintained",
+  "bes_cyber_systems",
+  "bes_environment_changes",
+  "categorization_documentation",
+  "categorization_documentation.approval_date",
+  "categorization_documentation.attachment1_used",
+  "categorization_documentation.cip_senior_manager_approved",
+  "categorization_documentation.criteria_defined",
+  "categorization_documentation.last_review_date",
+  "categorization_documentation.methodology_documented",
+  "categorization_documentation.rationale_provided",
+  "communication_contingency",
+  "communication_contingency.backup_communications",
+  "communication_contingency.backup_links",
+  "communication_contingency.backup_links_exist",
+  "communication_contingency.plans_documented",
+  "communication_contingency.recovery_procedures",
+  "communication_contingency.testing_performed",
+  "communication_monitoring",
+  "communication_monitoring.alerting_configured",
+  "communication_monitoring.anomaly_detection",
+  "communication_monitoring.enabled",
+  "communication_monitoring.last_review_date",
+  "communication_monitoring.logging_implemented",
+  "configuration_change_management",
+  "configuration_change_management.approval_process_defined",
+  "configuration_change_management.process_documented",
+  "configuration_change_management.rollback_procedures_defined",
+  "configuration_change_management.testing_requirements_defined",
+  "configuration_changes",
+  "configuration_monitoring",
+  "control_center_communications",
+  "control_center_communications.criticality_assessed",
+  "control_center_communications.inventory_maintained",
+  "control_center_communications.last_review_date",
+  "control_center_communications.last_test_date",
+  "control_center_communications.links",
+  "control_center_communications.protection_requirements_defined",
+  "control_center_communications.test_documented",
+  "cyber_security_training",
+  "cyber_security_training.content",
+  "cyber_security_training.content.acceptable_use",
+  "cyber_security_training.content.bes_cyber_system_overview",
+  "cyber_security_training.content.electronic_security",
+  "cyber_security_training.content.incident_response",
+  "cyber_security_training.content.physical_security",
+  "cyber_security_training.content.security_controls_overview",
+  "cyber_security_training.program_documented",
+  "cybersecurity_organization",
+  "cybersecurity_organization.delegated_authority",
+  "cybersecurity_organization.delegated_authority.current",
+  "cybersecurity_organization.delegated_authority.delegate_name",
+  "cybersecurity_organization.delegated_authority.documented",
+  "cybersecurity_organization.delegated_authority.exists",
+  "cybersecurity_organization.delegated_authority.scope_defined",
+  "cybersecurity_organization.policies",
+  "cybersecurity_organization.policies.approved",
+  "cybersecurity_organization.policies.documented",
+  "cybersecurity_organization.senior_manager",
+  "cybersecurity_organization.senior_manager.accountability_documented",
+  "cybersecurity_organization.senior_manager.authority_documented",
+  "cybersecurity_organization.senior_manager.designated",
+  "cybersecurity_organization.senior_manager.name",
+  "cybersecurity_organization.senior_manager.responsibilities_defined",
+  "cybersecurity_organization.senior_manager.title",
+  "cybersecurity_policies",
+  "cybersecurity_policies.approved",
+  "cybersecurity_policies.areas",
+  "cybersecurity_policies.areas.configuration_management",
+  "cybersecurity_policies.areas.electronic_security_perimeters",
+  "cybersecurity_policies.areas.incident_response",
+  "cybersecurity_policies.areas.personnel_and_training",
+  "cybersecurity_policies.areas.physical_security",
+  "cybersecurity_policies.areas.recovery_plans",
+  "cybersecurity_policies.areas.systems_security_management",
+  "cybersecurity_policies.cip_senior_manager_approved",
+  "cybersecurity_policies.documented",
+  "cybersecurity_policies.last_review_date",
+  "electronic_access_control_systems",
+  "electronic_access_points",
+  "electronic_security_perimeter_ids",
+  "electronic_security_perimeters",
+  "electronic_security_perimeters[\"<esp_id>\"].documented",
+  "incident_identification",
+  "incident_identification.criteria_documented",
+  "incident_identification.decision_process_documented",
+  "incident_reporting",
+  "incident_reporting.procedures_documented",
+  "incident_response_plan",
+  "incident_response_plan.approved",
+  "incident_response_plan.classification",
+  "incident_response_plan.classification.attempted_compromise",
+  "incident_response_plan.classification.attempted_compromise.defined",
+  "incident_response_plan.classification.compromised_or_disrupted_operations",
+  "incident_response_plan.classification.compromised_or_disrupted_operations.defined",
+  "incident_response_plan.classification.reportable_criteria_defined",
+  "incident_response_plan.documented",
+  "incident_response_plan.last_review_date",
+  "incident_response_plan.processes",
+  "incident_response_plan.processes.containment_procedures",
+  "incident_response_plan.processes.eradication_procedures",
+  "incident_response_plan.processes.identification_procedures",
+  "incident_response_plan.processes.incident_classification_criteria",
+  "incident_response_plan.processes.post_incident_review",
+  "incident_response_plan.processes.recovery_procedures",
+  "incident_response_plan.reporting",
+  "incident_response_plan.reporting.e_isac_notification",
+  "incident_response_plan.reporting.nerc_notification_process",
+  "incident_response_plan.reporting.reportable_incident_criteria_defined",
+  "incident_response_plan.reporting.reporting_timeframe_defined",
+  "incident_response_plan.roles_and_responsibilities",
+  "incident_response_plan.roles_and_responsibilities.backup_lead",
+  "incident_response_plan.roles_and_responsibilities.backup_lead.designated",
+  "incident_response_plan.roles_and_responsibilities.contact_list_current",
+  "incident_response_plan.roles_and_responsibilities.defined",
+  "incident_response_plan.roles_and_responsibilities.primary_lead",
+  "incident_response_plan.roles_and_responsibilities.primary_lead.designated",
+  "incident_response_team",
+  "incident_response_testing",
+  "incident_response_testing.last_test_date",
+  "incident_response_testing.lessons_learned",
+  "incident_response_testing.lessons_learned.plan_updated_if_needed",
+  "incident_response_testing.lessons_learned.reviewed",
+  "incident_response_testing.lessons_learned_captured",
+  "incident_response_testing.participants_documented",
+  "incident_response_testing.test_documented",
+  "incident_response_testing.test_type",
+  "information_access",
+  "information_disposal",
+  "information_disposal.disposal_documentation",
+  "information_disposal.media_sanitization",
+  "information_disposal.procedures_documented",
+  "information_disposal.secure_deletion_methods",
+  "information_protection",
+  "information_protection.access_controls_enforced",
+  "information_protection.procedures_documented",
+  "information_protection.program_documented",
+  "information_protection.storage_controls_implemented",
+  "information_protection.transmission_controls_implemented",
+  "information_sharing_plan",
+  "information_sharing_plan.contacts_current",
+  "information_sharing_plan.documented",
+  "information_sharing_plan.last_review_date",
+  "information_sharing_plan.nerc_contact_included",
+  "information_sharing_plan.regional_entity_contact_included",
+  "insm",
+  "insm.categorization_review_date",
+  "insm.documentation_review",
+  "insm.documentation_review.documented",
+  "insm.documentation_review.last_review_date",
+  "insm.documentation_review.reviewer",
+  "insm.systems",
+  "low_impact_plan",
+  "low_impact_plan.approved",
+  "low_impact_plan.cyber_security_incident_response",
+  "low_impact_plan.documented",
+  "low_impact_plan.electronic_access_controls",
+  "low_impact_plan.last_review_date",
+  "low_impact_plan.physical_security_controls",
+  "low_impact_plan.transient_cyber_asset_controls",
+  "malicious_code_protection",
+  "malicious_code_protection.alternate_controls_when_av_not_available",
+  "malicious_code_protection.mitigation_procedures_documented",
+  "malicious_code_response",
+  "malicious_code_response.eradication_procedures",
+  "malicious_code_response.escalation_procedures",
+  "malicious_code_response.procedures_documented",
+  "media_disposals",
+  "network_port_management",
+  "password_policy",
+  "password_policy.account_lockout_configured",
+  "password_policy.complexity_required",
+  "password_policy.expiration_configured",
+  "password_policy.lockout_threshold",
+  "password_policy.minimum_length",
+  "patch_management",
+  "patch_management.ics_cert_monitoring",
+  "patch_management.tracking_process_documented",
+  "patch_management.vendor_notifications_monitored",
+  "patch_management.vulnerability_sources_identified",
+  "personnel",
+  "personnel_role_changes",
+  "physical_access_alerting",
+  "physical_access_alerting.after_hours_alert",
+  "physical_access_alerting.enabled",
+  "physical_access_alerting.response_procedures_documented",
+  "physical_access_alerting.unauthorized_attempt_alert",
+  "physical_access_control_systems",
+  "physical_access_controls",
+  "physical_locations",
+  "physical_security_perimeters",
+  "physical_security_perimeters[\"<system_id>\"].boundary_defined",
+  "physical_security_plan",
+  "physical_security_plan.approved",
+  "physical_security_plan.documented",
+  "physical_security_plan.last_quarterly_review_date",
+  "physical_security_plan.last_review_date",
+  "physical_security_plan.psps_identified",
+  "physical_security_plan.scope_defined",
+  "ports_and_services",
+  "ports_and_services.authorization_required",
+  "ports_and_services.policy_documented",
+  "ports_and_services.review_process_defined",
+  "protected_cyber_assets",
+  "qualifying_recovery_events",
+  "recovery_plans",
+  "recovery_plans.activation_criteria_documented",
+  "recovery_plans.activation_criteria_tested",
+  "recovery_plans.decision_authority_identified",
+  "recovery_plans.last_activation_test_date",
+  "recovery_plans.log_preservation",
+  "recovery_plans.log_preservation.forensic_preservation_addressed",
+  "recovery_plans.log_preservation.process_documented",
+  "recovery_plans.network_reconnection",
+  "recovery_plans.network_reconnection.process_documented",
+  "recovery_plans.network_reconnection.security_verification",
+  "recovery_plans.network_reconnection.validation_steps_defined",
+  "recovery_plans.roles_and_responsibilities",
+  "recovery_plans.roles_and_responsibilities.contact_list_current",
+  "recovery_plans.roles_and_responsibilities.defined",
+  "recovery_plans.roles_and_responsibilities.primary_lead",
+  "recovery_plans.roles_and_responsibilities.primary_lead.designated",
+  "recovery_team",
+  "recovery_testing",
+  "remote_access",
+  "remote_access.authentication",
+  "remote_access.authentication.implemented",
+  "remote_access.authentication.multi_factor",
+  "remote_access.intermediary_device",
+  "remote_access.intermediary_device.access_controlled",
+  "remote_access.intermediary_device.in_esp",
+  "remote_access.intermediary_device.monitored",
+  "remote_access.policy_documented",
+  "remote_access.session_management",
+  "remote_access.session_management.idle_timeout_minutes",
+  "remote_access.session_management.timeout_implemented",
+  "remote_access.uses_intermediary_device",
+  "remote_access_sessions",
+  "removable_media",
+  "removable_media.authorization_required",
+  "removable_media.encryption_when_applicable",
+  "removable_media.policy_documented",
+  "removable_media.scanning_before_use",
+  "reportable_cyber_incidents",
+  "security_awareness",
+  "security_awareness.last_reinforcement_date",
+  "security_awareness.methods_documented",
+  "security_awareness.program_documented",
+  "security_awareness.quarterly_reinforcement",
+  "security_event_alerting",
+  "security_event_alerting.account_lockout_alert",
+  "security_event_alerting.alert_review_process_documented",
+  "security_event_alerting.enabled",
+  "security_event_alerting.failed_login_alert",
+  "security_event_alerting.last_review_date",
+  "security_event_alerting.privilege_escalation_alert",
+  "security_monitoring",
+  "security_patches",
+  "software_integrity",
+  "software_integrity.hash_verification",
+  "software_integrity.vendor_verification",
+  "software_integrity.verification_process_documented",
+  "standalone_bes_cyber_assets",
+  "station_security_plans",
+  "supply_chain_incident_response",
+  "supply_chain_incident_response.coordination_tested",
+  "supply_chain_incident_response.information_sharing_agreements",
+  "supply_chain_incident_response.procedures_documented",
+  "supply_chain_incident_response.vendor_contacts_current",
+  "supply_chain_management",
+  "supply_chain_management.plan_approved",
+  "supply_chain_management.plan_documented",
+  "supply_chain_management.software_integrity_verification",
+  "supply_chain_monitoring",
+  "supply_chain_monitoring.enabled",
+  "supply_chain_monitoring.ics_cert_advisory_monitoring",
+  "supply_chain_monitoring.incident_detection",
+  "supply_chain_monitoring.response_process_documented",
+  "supply_chain_monitoring.threat_intelligence",
+  "supply_chain_monitoring.vendor_bulletin_monitoring",
+  "supply_chain_monitoring.vulnerability_tracking",
+  "supply_chain_plan",
+  "supply_chain_plan.approval_date",
+  "supply_chain_plan.approved",
+  "supply_chain_plan.cip_senior_manager_approved",
+  "supply_chain_plan.current",
+  "supply_chain_plan.documented",
+  "supply_chain_plan.last_review_date",
+  "supply_chain_plan.processes",
+  "supply_chain_plan.processes.hash_or_signature_verification",
+  "supply_chain_plan.processes.incident_escalation_procedures",
+  "supply_chain_plan.processes.information_sharing_agreements",
+  "supply_chain_plan.processes.notification_response_procedures",
+  "supply_chain_plan.processes.software_integrity_verification",
+  "supply_chain_plan.processes.vendor_incident_coordination",
+  "supply_chain_plan.processes.vendor_incident_notification",
+  "supply_chain_plan.processes.vendor_provided_verification_method",
+  "supply_chain_plan.processes.vendor_remote_access_control",
+  "supply_chain_plan.processes.vendor_remote_access_logging",
+  "supply_chain_plan.processes.vendor_remote_access_monitoring",
+  "supply_chain_plan.processes.vendor_remote_access_policy",
+  "supply_chain_plan.processes.vendor_vulnerability_notification",
+  "supply_chain_plan.vendor_requirements_defined",
+  "system_access_controls",
+  "system_configurations",
+  "system_redeployments",
+  "transient_cyber_assets",
+  "transient_cyber_assets.asset_management",
+  "transient_cyber_assets.asset_management.authorization_required",
+  "transient_cyber_assets.asset_management.inventory_maintained",
+  "transient_cyber_assets.config_management",
+  "transient_cyber_assets.config_management.inventory_maintained",
+  "transient_cyber_assets.config_management.policy_documented",
+  "transient_cyber_assets.config_management.security_controls_applied",
+  "transient_cyber_assets.controls",
+  "transient_cyber_assets.controls.malicious_code_prevention",
+  "transient_cyber_assets.controls.security_patches",
+  "transient_cyber_assets.controls.security_patches.applied",
+  "transient_cyber_assets.controls.security_patches.documented",
+  "transient_cyber_assets.policy_documented",
+  "transmission_risk_assessment",
+  "transmission_risk_assessment.documented",
+  "transmission_risk_assessment.last_assessment_date",
+  "transmission_risk_assessment.methodology",
+  "transmission_risk_assessment.methodology.cascading_potential_assessed",
+  "transmission_risk_assessment.methodology.contingency_analysis",
+  "transmission_risk_assessment.methodology.power_flow_analysis",
+  "transmission_risk_assessment.methodology.stability_impact_assessed",
+  "transmission_risk_assessment.methodology_documented",
+  "transmission_risk_assessment.no_applicable_stations_documented",
+  "transmission_risk_assessment.performed",
+  "transmission_risk_assessment.third_party_verification",
+  "transmission_risk_assessment.third_party_verification.documented",
+  "transmission_risk_assessment.third_party_verification.last_verification_date",
+  "transmission_risk_assessment.third_party_verification.performed",
+  "transmission_risk_assessment.third_party_verification.rc_notification_date",
+  "transmission_risk_assessment.third_party_verification.rc_notified",
+  "transmission_risk_assessment.third_party_verification.reviewer_qualifications_documented",
+  "transmission_risk_assessment.third_party_verification.timely",
+  "transmission_risk_assessment.third_party_verification.unaffiliated",
+  "transmission_security_assessments",
+  "transmission_security_assessments.completed",
+  "transmission_security_assessments.third_party_verified",
+  "transmission_topology_changes",
+  "user_accounts",
+  "vendor_contracts",
+  "vendor_risk_assessments",
+  "vendors",
+  "visitor_control_program",
+  "visitor_control_program.access_logging",
+  "visitor_control_program.documented",
+  "visitor_control_program.escort_procedures",
+  "visitor_control_program.identification_required",
+  "visitor_control_program.visitor_log_maintained",
+  "vulnerability_assessments",
+  "vulnerability_monitoring",
+  "vulnerability_monitoring.ics_cert_monitoring",
+  "vulnerability_monitoring.response_process_documented",
+  "vulnerability_monitoring.vendor_advisories_monitored"
+ ]
+}

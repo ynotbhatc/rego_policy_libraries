@@ -1,0 +1,29 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cert_rmm/schema.json",
+ "title": "Input facts for cert_rmm",
+ "description": "Input paths referenced in the sources of frameworks/management/cert_rmm/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cert_rmm",
+ "x-entrypoint": "data.cert_rmm.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/management/cert_rmm/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "cert_rmm": {
+   "description": "Read in cert_rmm_main.rego.",
+   "properties": {
+    "practices": {
+     "description": "Read in cert_rmm_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cert_rmm",
+  "cert_rmm.practices"
+ ]
+}

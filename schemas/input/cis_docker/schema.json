@@ -1,0 +1,2184 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_docker/schema.json",
+ "title": "Input facts for cis_docker",
+ "description": "Facts the module in benchmarks/cis/docker/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_docker",
+ "x-entrypoint": "data.cis_docker.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/docker/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_docker_test.green",
+ "type": "object",
+ "properties": {
+  "auditd": {
+   "description": "Read in cis_docker_benchmark.rego.",
+   "type": "object",
+   "properties": {
+    "active_rules": {
+     "description": "Read in cis_docker_benchmark.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "-a always,exit -F arch=b64 -F path=/usr/bin/dockerd -F perm=x -F key=docker"
+      ]
+     },
+     "examples": [
+      [
+       "-a always,exit -F arch=b64 -F path=/usr/bin/dockerd -F perm=x -F key=docker",
+       "-w /run/containerd -p rwxa -k docker",
+       "-w /var/lib/docker -p rwxa -k docker"
+      ]
+     ]
+    }
+   }
+  },
+  "cis_profile": {
+   "description": "Read in cis_docker_benchmark.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "Read in cis_docker_benchmark.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      2
+     ]
+    },
+    "swarm": {
+     "description": "Read in cis_docker_benchmark.rego."
+    }
+   }
+  },
+  "docker": {
+   "description": "Read in cis_docker_benchmark.rego.",
+   "type": "object",
+   "properties": {
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "autolock_key_rotated": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "central_logging_configured": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "cgroup_parent_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "container_ulimit_overrides_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "default_seccomp_profile_sufficient": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "default_ulimits_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "docker_version_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "host_hardened": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "images_pulled_fresh_before_use": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "images_scanned_and_rebuilt": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "minimal_packages_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "no_secrets_in_images": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "only_needed_ports_open": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "rootful_daemon_required": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "setuid_files_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "signed_artifacts_validated": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "stopped_containers_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "swarm_ca_rotated": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "swarm_manager_count_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "swarm_mode_required": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "swarm_secrets_used": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "trusted_base_images": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unused_images_reviewed": {
+       "description": "Read in cis_docker_benchmark.rego."
+      },
+      "verified_packages_only": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "containers": {
+     "description": "Read in cis_docker_benchmark.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "AppArmorProfile": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "docker-default"
+        ]
+       },
+       "HostConfig": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "CapAdd": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+         },
+         "CapDrop": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "ALL"
+           ]
+          },
+          "examples": [
+           [
+            "ALL"
+           ]
+          ]
+         },
+         "CgroupParent": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         },
+         "CpuShares": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           512
+          ]
+         },
+         "Devices": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+          },
+          "examples": [
+           []
+          ]
+         },
+         "IpcMode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "private"
+          ]
+         },
+         "Memory": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           536870912
+          ]
+         },
+         "NetworkMode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "app_net"
+          ]
+         },
+         "PidMode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         },
+         "PidsLimit": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           100
+          ]
+         },
+         "Privileged": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         },
+         "ReadonlyRootfs": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "RestartPolicy": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "MaximumRetryCount": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "number",
+            "x-type-source": "fixture",
+            "examples": [
+             5
+            ]
+           },
+           "Name": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "on-failure"
+            ]
+           }
+          }
+         },
+         "SecurityOpt": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "no-new-privileges"
+           ]
+          },
+          "examples": [
+           [
+            "no-new-privileges",
+            "label=type:container_t"
+           ]
+          ]
+         },
+         "UTSMode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         },
+         "Ulimits": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+         },
+         "UsernsMode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         }
+        }
+       },
+       "Id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "web0001"
+        ]
+       },
+       "Image": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "sha256:app1"
+        ]
+       },
+       "MountLabel": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "system_u:object_r:container_file_t:s0:c1,c2"
+        ]
+       },
+       "Mounts": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "Destination": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "/data"
+           ]
+          },
+          "Propagation": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            ""
+           ]
+          },
+          "RW": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            true
+           ]
+          },
+          "Source": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "/var/lib/docker/volumes/data/_data"
+           ]
+          },
+          "Type": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "volume"
+           ]
+          }
+         }
+        }
+       },
+       "Name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/web"
+        ]
+       },
+       "NetworkSettings": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "Networks": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "app_net": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "IPAddress": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "10.10.0.2"
+              ]
+             }
+            }
+           }
+          }
+         },
+         "Ports": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "8080/tcp": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "HostIp": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "10.0.0.5"
+               ]
+              },
+              "HostPort": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "8080"
+               ]
+              }
+             }
+            }
+           },
+           "9090/tcp": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+           }
+          }
+         }
+        }
+       },
+       "ProcessLabel": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "system_u:system_r:container_t:s0:c1,c2"
+        ]
+       },
+       "State": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "Health": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "Status": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "healthy"
+            ]
+           }
+          }
+         },
+         "Pid": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           4242
+          ]
+         },
+         "Running": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       },
+       "runtime": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "pid1_euid": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           1000
+          ]
+         },
+         "processes": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "/usr/bin/app --serve"
+           ]
+          },
+          "examples": [
+           [
+            "/usr/bin/app --serve",
+            "/usr/bin/app --worker"
+           ]
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "daemon": {
+     "description": "Read in cis_docker_benchmark.rego.",
+     "type": "object",
+     "properties": {
+      "authorization-plugins": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "opa-docker-authz"
+        ]
+       },
+       "examples": [
+        [
+         "opa-docker-authz"
+        ]
+       ]
+      },
+      "default-ulimits": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "nofile": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "Hard": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            4096
+           ]
+          },
+          "Name": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "nofile"
+           ]
+          },
+          "Soft": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            1024
+           ]
+          }
+         }
+        }
+       }
+      },
+      "hosts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "unix:///var/run/docker.sock"
+        ]
+       },
+       "examples": [
+        [
+         "unix:///var/run/docker.sock"
+        ]
+       ]
+      },
+      "icc": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "iptables": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "live-restore": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "log-driver": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "syslog"
+       ]
+      },
+      "log-level": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "info"
+       ]
+      },
+      "no-new-privileges": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "seccomp-profile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/docker/seccomp.json"
+       ]
+      },
+      "userland-proxy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "userns-remap": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "default"
+       ]
+      }
+     }
+    },
+    "daemon_process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "rootless": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "user": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "dockeruser"
+       ]
+      }
+     }
+    },
+    "docker_group": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approved_members": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "deploy"
+        ]
+       },
+       "examples": [
+        [
+         "deploy",
+         "ops"
+        ]
+       ]
+      },
+      "members": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "deploy"
+        ]
+       },
+       "examples": [
+        [
+         "deploy"
+        ]
+       ]
+      }
+     }
+    },
+    "exec_audit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "privileged_events": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "root_user_events": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      }
+     }
+    },
+    "files": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "containerd_sock": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "660"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/run/containerd/containerd.sock"
+         ]
+        }
+       }
+      },
+      "daemon_json": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "644"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/docker/daemon.json"
+         ]
+        }
+       }
+      },
+      "docker_service": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "644"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/usr/lib/systemd/system/docker.service"
+         ]
+        }
+       }
+      },
+      "docker_sock": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "docker"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "660"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/var/run/docker.sock"
+         ]
+        }
+       }
+      },
+      "docker_socket_unit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "644"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/usr/lib/systemd/system/docker.socket"
+         ]
+        }
+       }
+      },
+      "etc_default_docker": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "644"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/default/docker"
+         ]
+        }
+       }
+      },
+      "etc_docker": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "755"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/docker"
+         ]
+        }
+       }
+      },
+      "etc_sysconfig_docker": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "640"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/sysconfig/docker"
+         ]
+        }
+       }
+      },
+      "registry_certs": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "444"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "path": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "/etc/docker/certs.d/registry.example.com/ca.crt"
+          ]
+         }
+        }
+       }
+      },
+      "tls_ca_cert": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "444"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/docker/tls/ca.pem"
+         ]
+        }
+       }
+      },
+      "tls_server_cert": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "444"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/docker/tls/server-cert.pem"
+         ]
+        }
+       }
+      },
+      "tls_server_key": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exists": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "400"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/docker/tls/server-key.pem"
+         ]
+        }
+       }
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in cis_docker_benchmark.rego.",
+      "properties": {
+       "exists": {
+        "description": "Read in cis_docker_benchmark.rego."
+       },
+       "path": {
+        "description": "Read in cis_docker_benchmark.rego."
+       }
+      }
+     },
+     "x-variable-key": "<k>"
+    },
+    "host": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "data_root_is_mountpoint": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "images": {
+     "description": "Read in cis_docker_benchmark.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Config": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "Healthcheck": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "Test": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "array",
+            "x-type-source": "fixture",
+            "items": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "CMD"
+             ]
+            },
+            "examples": [
+             [
+              "CMD",
+              "/usr/bin/app",
+              "--health"
+             ]
+            ]
+           }
+          }
+         },
+         "User": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "app"
+          ]
+         }
+        }
+       },
+       "Id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "sha256:app1"
+        ]
+       },
+       "RepoTags": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "registry.example.com/app:1.4.2"
+         ]
+        },
+        "examples": [
+         [
+          "registry.example.com/app:1.4.2"
+         ]
+        ]
+       },
+       "history": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/bin/sh -c #(nop) ADD file:0a1b2c3d4e5f in / "
+         ]
+        },
+        "examples": [
+         [
+          "/bin/sh -c #(nop) ADD file:0a1b2c3d4e5f in / ",
+          "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends ca-certificates",
+          "/bin/sh -c #(nop) COPY file:77aa in /usr/bin/app "
+         ]
+        ]
+       },
+       "setuid_files": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        },
+        "examples": [
+         []
+        ]
+       }
+      }
+     }
+    },
+    "info": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Containers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "ContainersRunning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "ContainersStopped": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "DockerRootDir": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/lib/docker"
+       ]
+      },
+      "Driver": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "overlay2"
+       ]
+      },
+      "Images": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "LiveRestoreEnabled": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "LoggingDriver": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "syslog"
+       ]
+      },
+      "RegistryConfig": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "object",
+       "properties": {
+        "IndexConfigs": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "docker.io": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "Name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "docker.io"
+             ]
+            },
+            "Secure": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "boolean",
+             "x-type-source": "fixture",
+             "examples": [
+              true
+             ]
+            }
+           }
+          }
+         }
+        },
+        "InsecureRegistryCIDRs": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "127.0.0.0/8"
+          ]
+         },
+         "examples": [
+          [
+           "127.0.0.0/8",
+           "::1/128"
+          ]
+         ]
+        }
+       }
+      },
+      "SecurityOptions": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "name=seccomp,profile=/etc/docker/seccomp.json"
+        ]
+       },
+       "examples": [
+        [
+         "name=seccomp,profile=/etc/docker/seccomp.json",
+         "name=selinux",
+         "name=userns"
+        ]
+       ]
+      },
+      "Swarm": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "Cluster": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "Spec": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "CAConfig": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "NodeCertExpiry": {
+               "description": "Read in cis_docker_benchmark.rego.",
+               "type": "number",
+               "x-type-source": "fixture",
+               "examples": [
+                7776000000000000
+               ]
+              }
+             }
+            },
+            "EncryptionConfig": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "AutoLockManagers": {
+               "description": "Read in cis_docker_benchmark.rego.",
+               "type": "boolean",
+               "x-type-source": "fixture",
+               "examples": [
+                true
+               ]
+              }
+             }
+            }
+           }
+          }
+         }
+        },
+        "ControlAvailable": {
+         "description": "Read in cis_docker_benchmark.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "LocalNodeState": {
+         "description": "Read in cis_docker_benchmark.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "active"
+         ]
+        },
+        "Managers": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          3
+         ]
+        },
+        "NodeAddr": {
+         "description": "Read in cis_docker_benchmark.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "10.0.0.5"
+         ]
+        },
+        "Nodes": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          5
+         ]
+        }
+       }
+      }
+     }
+    },
+    "networks": {
+     "description": "Read in cis_docker_benchmark.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "Driver": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "bridge"
+        ]
+       },
+       "Name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "bridge"
+        ]
+       },
+       "Options": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "com.docker.network.bridge.enable_icc": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "false"
+          ]
+         },
+         "com.docker.network.bridge.name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "docker0"
+          ]
+         },
+         "encrypted": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           ""
+          ]
+         }
+        }
+       },
+       "Scope": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "local"
+        ]
+       }
+      }
+     }
+    },
+    "platform": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "mac": {
+       "description": "Read in cis_docker_benchmark.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_docker_benchmark.rego."
+     },
+     "x-variable-key": "<name>"
+    },
+    "swarm": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "data_path_addr": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "10.0.1.5"
+       ]
+      },
+      "listeners": {
+       "description": "Read in cis_docker_benchmark.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "address": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "10.0.0.5"
+          ]
+         },
+         "port": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           2377
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "version": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Server": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "Experimental": {
+         "description": "Read in cis_docker_benchmark.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "Version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "27.3.1"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "auditd",
+  "auditd.active_rules",
+  "cis_profile",
+  "cis_profile.level",
+  "cis_profile.swarm",
+  "docker",
+  "docker.attest",
+  "docker.attest.autolock_key_rotated",
+  "docker.attest.central_logging_configured",
+  "docker.attest.cgroup_parent_reviewed",
+  "docker.attest.container_ulimit_overrides_reviewed",
+  "docker.attest.default_seccomp_profile_sufficient",
+  "docker.attest.default_ulimits_reviewed",
+  "docker.attest.docker_version_reviewed",
+  "docker.attest.host_hardened",
+  "docker.attest.images_pulled_fresh_before_use",
+  "docker.attest.images_scanned_and_rebuilt",
+  "docker.attest.minimal_packages_reviewed",
+  "docker.attest.no_secrets_in_images",
+  "docker.attest.only_needed_ports_open",
+  "docker.attest.rootful_daemon_required",
+  "docker.attest.setuid_files_reviewed",
+  "docker.attest.signed_artifacts_validated",
+  "docker.attest.stopped_containers_reviewed",
+  "docker.attest.swarm_ca_rotated",
+  "docker.attest.swarm_manager_count_reviewed",
+  "docker.attest.swarm_mode_required",
+  "docker.attest.swarm_secrets_used",
+  "docker.attest.trusted_base_images",
+  "docker.attest.unused_images_reviewed",
+  "docker.attest.verified_packages_only",
+  "docker.containers",
+  "docker.containers[].AppArmorProfile",
+  "docker.containers[].HostConfig",
+  "docker.containers[].HostConfig.CapAdd",
+  "docker.containers[].HostConfig.CapDrop",
+  "docker.containers[].HostConfig.CgroupParent",
+  "docker.containers[].HostConfig.CpuShares",
+  "docker.containers[].HostConfig.Devices",
+  "docker.containers[].HostConfig.IpcMode",
+  "docker.containers[].HostConfig.Memory",
+  "docker.containers[].HostConfig.NetworkMode",
+  "docker.containers[].HostConfig.PidMode",
+  "docker.containers[].HostConfig.PidsLimit",
+  "docker.containers[].HostConfig.Privileged",
+  "docker.containers[].HostConfig.ReadonlyRootfs",
+  "docker.containers[].HostConfig.RestartPolicy",
+  "docker.containers[].HostConfig.RestartPolicy.MaximumRetryCount",
+  "docker.containers[].HostConfig.RestartPolicy.Name",
+  "docker.containers[].HostConfig.SecurityOpt",
+  "docker.containers[].HostConfig.UTSMode",
+  "docker.containers[].HostConfig.Ulimits",
+  "docker.containers[].HostConfig.UsernsMode",
+  "docker.containers[].Id",
+  "docker.containers[].Image",
+  "docker.containers[].MountLabel",
+  "docker.containers[].Mounts",
+  "docker.containers[].Mounts[].Destination",
+  "docker.containers[].Mounts[].Propagation",
+  "docker.containers[].Mounts[].RW",
+  "docker.containers[].Mounts[].Source",
+  "docker.containers[].Mounts[].Type",
+  "docker.containers[].Name",
+  "docker.containers[].NetworkSettings",
+  "docker.containers[].NetworkSettings.Networks",
+  "docker.containers[].NetworkSettings.Networks.app_net",
+  "docker.containers[].NetworkSettings.Networks.app_net.IPAddress",
+  "docker.containers[].NetworkSettings.Ports",
+  "docker.containers[].NetworkSettings.Ports[\"8080/tcp\"]",
+  "docker.containers[].NetworkSettings.Ports[\"8080/tcp\"][].HostIp",
+  "docker.containers[].NetworkSettings.Ports[\"8080/tcp\"][].HostPort",
+  "docker.containers[].NetworkSettings.Ports[\"9090/tcp\"]",
+  "docker.containers[].ProcessLabel",
+  "docker.containers[].State",
+  "docker.containers[].State.Health",
+  "docker.containers[].State.Health.Status",
+  "docker.containers[].State.Pid",
+  "docker.containers[].State.Running",
+  "docker.containers[].runtime",
+  "docker.containers[].runtime.pid1_euid",
+  "docker.containers[].runtime.processes",
+  "docker.daemon",
+  "docker.daemon.hosts",
+  "docker.daemon.icc",
+  "docker.daemon.iptables",
+  "docker.daemon[\"authorization-plugins\"]",
+  "docker.daemon[\"default-ulimits\"]",
+  "docker.daemon[\"default-ulimits\"].nofile",
+  "docker.daemon[\"default-ulimits\"].nofile.Hard",
+  "docker.daemon[\"default-ulimits\"].nofile.Name",
+  "docker.daemon[\"default-ulimits\"].nofile.Soft",
+  "docker.daemon[\"live-restore\"]",
+  "docker.daemon[\"log-driver\"]",
+  "docker.daemon[\"log-level\"]",
+  "docker.daemon[\"no-new-privileges\"]",
+  "docker.daemon[\"seccomp-profile\"]",
+  "docker.daemon[\"userland-proxy\"]",
+  "docker.daemon[\"userns-remap\"]",
+  "docker.daemon_process",
+  "docker.daemon_process.rootless",
+  "docker.daemon_process.user",
+  "docker.docker_group",
+  "docker.docker_group.approved_members",
+  "docker.docker_group.members",
+  "docker.exec_audit",
+  "docker.exec_audit.privileged_events",
+  "docker.exec_audit.root_user_events",
+  "docker.files",
+  "docker.files.containerd_sock",
+  "docker.files.containerd_sock.exists",
+  "docker.files.containerd_sock.group",
+  "docker.files.containerd_sock.mode",
+  "docker.files.containerd_sock.owner",
+  "docker.files.containerd_sock.path",
+  "docker.files.daemon_json",
+  "docker.files.daemon_json.exists",
+  "docker.files.daemon_json.group",
+  "docker.files.daemon_json.mode",
+  "docker.files.daemon_json.owner",
+  "docker.files.daemon_json.path",
+  "docker.files.docker_service",
+  "docker.files.docker_service.exists",
+  "docker.files.docker_service.group",
+  "docker.files.docker_service.mode",
+  "docker.files.docker_service.owner",
+  "docker.files.docker_service.path",
+  "docker.files.docker_sock",
+  "docker.files.docker_sock.exists",
+  "docker.files.docker_sock.group",
+  "docker.files.docker_sock.mode",
+  "docker.files.docker_sock.owner",
+  "docker.files.docker_sock.path",
+  "docker.files.docker_socket_unit",
+  "docker.files.docker_socket_unit.exists",
+  "docker.files.docker_socket_unit.group",
+  "docker.files.docker_socket_unit.mode",
+  "docker.files.docker_socket_unit.owner",
+  "docker.files.docker_socket_unit.path",
+  "docker.files.etc_default_docker",
+  "docker.files.etc_default_docker.exists",
+  "docker.files.etc_default_docker.group",
+  "docker.files.etc_default_docker.mode",
+  "docker.files.etc_default_docker.owner",
+  "docker.files.etc_default_docker.path",
+  "docker.files.etc_docker",
+  "docker.files.etc_docker.exists",
+  "docker.files.etc_docker.group",
+  "docker.files.etc_docker.mode",
+  "docker.files.etc_docker.owner",
+  "docker.files.etc_docker.path",
+  "docker.files.etc_sysconfig_docker",
+  "docker.files.etc_sysconfig_docker.exists",
+  "docker.files.etc_sysconfig_docker.group",
+  "docker.files.etc_sysconfig_docker.mode",
+  "docker.files.etc_sysconfig_docker.owner",
+  "docker.files.etc_sysconfig_docker.path",
+  "docker.files.registry_certs",
+  "docker.files.registry_certs[].group",
+  "docker.files.registry_certs[].mode",
+  "docker.files.registry_certs[].owner",
+  "docker.files.registry_certs[].path",
+  "docker.files.tls_ca_cert",
+  "docker.files.tls_ca_cert.exists",
+  "docker.files.tls_ca_cert.group",
+  "docker.files.tls_ca_cert.mode",
+  "docker.files.tls_ca_cert.owner",
+  "docker.files.tls_ca_cert.path",
+  "docker.files.tls_server_cert",
+  "docker.files.tls_server_cert.exists",
+  "docker.files.tls_server_cert.group",
+  "docker.files.tls_server_cert.mode",
+  "docker.files.tls_server_cert.owner",
+  "docker.files.tls_server_cert.path",
+  "docker.files.tls_server_key",
+  "docker.files.tls_server_key.exists",
+  "docker.files.tls_server_key.group",
+  "docker.files.tls_server_key.mode",
+  "docker.files.tls_server_key.owner",
+  "docker.files.tls_server_key.path",
+  "docker.files[\"<k>\"].exists",
+  "docker.files[\"<k>\"].path",
+  "docker.host",
+  "docker.host.data_root_is_mountpoint",
+  "docker.images",
+  "docker.images[].Config",
+  "docker.images[].Config.Healthcheck",
+  "docker.images[].Config.Healthcheck.Test",
+  "docker.images[].Config.User",
+  "docker.images[].Id",
+  "docker.images[].RepoTags",
+  "docker.images[].history",
+  "docker.images[].setuid_files",
+  "docker.info",
+  "docker.info.Containers",
+  "docker.info.ContainersRunning",
+  "docker.info.ContainersStopped",
+  "docker.info.DockerRootDir",
+  "docker.info.Driver",
+  "docker.info.Images",
+  "docker.info.LiveRestoreEnabled",
+  "docker.info.LoggingDriver",
+  "docker.info.RegistryConfig",
+  "docker.info.RegistryConfig.IndexConfigs",
+  "docker.info.RegistryConfig.IndexConfigs[\"docker.io\"]",
+  "docker.info.RegistryConfig.IndexConfigs[\"docker.io\"].Name",
+  "docker.info.RegistryConfig.IndexConfigs[\"docker.io\"].Secure",
+  "docker.info.RegistryConfig.InsecureRegistryCIDRs",
+  "docker.info.SecurityOptions",
+  "docker.info.Swarm",
+  "docker.info.Swarm.Cluster",
+  "docker.info.Swarm.Cluster.Spec",
+  "docker.info.Swarm.Cluster.Spec.CAConfig",
+  "docker.info.Swarm.Cluster.Spec.CAConfig.NodeCertExpiry",
+  "docker.info.Swarm.Cluster.Spec.EncryptionConfig",
+  "docker.info.Swarm.Cluster.Spec.EncryptionConfig.AutoLockManagers",
+  "docker.info.Swarm.ControlAvailable",
+  "docker.info.Swarm.LocalNodeState",
+  "docker.info.Swarm.Managers",
+  "docker.info.Swarm.NodeAddr",
+  "docker.info.Swarm.Nodes",
+  "docker.networks",
+  "docker.networks[].Driver",
+  "docker.networks[].Name",
+  "docker.networks[].Options",
+  "docker.networks[].Options.encrypted",
+  "docker.networks[].Options[\"com.docker.network.bridge.enable_icc\"]",
+  "docker.networks[].Options[\"com.docker.network.bridge.name\"]",
+  "docker.networks[].Scope",
+  "docker.platform",
+  "docker.platform.mac",
+  "docker.policy",
+  "docker.swarm",
+  "docker.swarm.data_path_addr",
+  "docker.swarm.listeners",
+  "docker.swarm.listeners[].address",
+  "docker.swarm.listeners[].port",
+  "docker.version",
+  "docker.version.Server",
+  "docker.version.Server.Experimental",
+  "docker.version.Server.Version"
+ ]
+}

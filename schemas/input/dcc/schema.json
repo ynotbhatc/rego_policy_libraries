@@ -1,0 +1,74 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/dcc/schema.json",
+ "title": "Input facts for dcc",
+ "description": "Facts the module in frameworks/regional/dcc/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "dcc",
+ "x-entrypoint": "data.dcc.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/regional/dcc/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.dcc.main_test.l0_compliant",
+ "type": "object",
+ "properties": {
+  "dcc": {
+   "description": "Read in dcc_main.rego.",
+   "type": "object",
+   "properties": {
+    "controls": {
+     "description": "Read in dcc_main.rego.",
+     "type": "object",
+     "properties": {
+      "0001": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "2314": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "2500": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in dcc_main.rego."
+     },
+     "x-variable-key": "<id>"
+    },
+    "target_level": {
+     "description": "Read in dcc_main.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "dcc",
+  "dcc.controls",
+  "dcc.controls[\"0001\"]",
+  "dcc.controls[\"2314\"]",
+  "dcc.controls[\"2500\"]",
+  "dcc.target_level"
+ ]
+}

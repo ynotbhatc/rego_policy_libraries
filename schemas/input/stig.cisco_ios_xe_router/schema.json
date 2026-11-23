@@ -1,0 +1,128 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.cisco_ios_xe_router/schema.json",
+ "title": "Input facts for stig.cisco_ios_xe_router",
+ "description": "Facts the module in benchmarks/stig/cisco_ios_xe_router/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig.cisco_ios_xe_router",
+ "x-entrypoint": "data.stig.cisco_ios_xe_router.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/cisco_ios_xe_router/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.cisco_ios_xe_router_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "cisco": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "config_backup_on_change": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "min_15_char_password_enforced": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "nonsecure_services_disabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "passwords_stored_hashed": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "session_timeout_configured": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssh_fips_ciphers_configured": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssh_fips_hmac_configured": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "supported_ios_release": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "two_authentication_servers": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "two_syslog_servers": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_cisco_ios_xe_router_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cisco",
+  "cisco.config_backup_on_change",
+  "cisco.min_15_char_password_enforced",
+  "cisco.nonsecure_services_disabled",
+  "cisco.passwords_stored_hashed",
+  "cisco.session_timeout_configured",
+  "cisco.ssh_fips_ciphers_configured",
+  "cisco.ssh_fips_hmac_configured",
+  "cisco.supported_ios_release",
+  "cisco.two_authentication_servers",
+  "cisco.two_syslog_servers",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

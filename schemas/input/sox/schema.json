@@ -1,0 +1,273 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sox/schema.json",
+ "title": "Input facts for sox",
+ "description": "Input paths referenced in the sources of frameworks/financial/sox/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "sox",
+ "x-entrypoint": "data.sox.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/financial/sox/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "sox": {
+   "description": "Read in sox_simplified.rego.",
+   "properties": {
+    "itgc": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "backup_recovery": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "tested": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "change_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "controlled": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "computer_operations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "monitored": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "data_center_operations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "controlled": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "system_development": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "secure": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      }
+     }
+    },
+    "section_302": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "completed": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "ceo_certification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "provided": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "cfo_certification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "provided": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "disclosure_controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "effective": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "material_weaknesses": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "none_identified": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "quarterly_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "completed": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      }
+     }
+    },
+    "section_404": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "continuous_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "active": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "external_auditor_attestation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "unqualified": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "internal_controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "designed_effectively": {
+         "description": "Read in sox_simplified.rego."
+        },
+        "operating_effectively": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "management_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "completed": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "remediation_plan": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      }
+     }
+    },
+    "section_409": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "disclosure_controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "reviewed_quarterly": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "disclosure_process": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automated": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "event_detection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "real_time": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "filing_deadlines": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "met": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      },
+      "material_events": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "disclosed_timely": {
+         "description": "Read in sox_simplified.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "sox",
+  "sox.itgc",
+  "sox.itgc.access_controls",
+  "sox.itgc.access_controls.implemented",
+  "sox.itgc.backup_recovery",
+  "sox.itgc.backup_recovery.tested",
+  "sox.itgc.change_management",
+  "sox.itgc.change_management.controlled",
+  "sox.itgc.computer_operations",
+  "sox.itgc.computer_operations.monitored",
+  "sox.itgc.data_center_operations",
+  "sox.itgc.data_center_operations.controlled",
+  "sox.itgc.system_development",
+  "sox.itgc.system_development.secure",
+  "sox.section_302",
+  "sox.section_302.annual_assessment",
+  "sox.section_302.annual_assessment.completed",
+  "sox.section_302.ceo_certification",
+  "sox.section_302.ceo_certification.provided",
+  "sox.section_302.cfo_certification",
+  "sox.section_302.cfo_certification.provided",
+  "sox.section_302.disclosure_controls",
+  "sox.section_302.disclosure_controls.effective",
+  "sox.section_302.material_weaknesses",
+  "sox.section_302.material_weaknesses.none_identified",
+  "sox.section_302.quarterly_review",
+  "sox.section_302.quarterly_review.completed",
+  "sox.section_404",
+  "sox.section_404.continuous_monitoring",
+  "sox.section_404.continuous_monitoring.active",
+  "sox.section_404.external_auditor_attestation",
+  "sox.section_404.external_auditor_attestation.unqualified",
+  "sox.section_404.internal_controls",
+  "sox.section_404.internal_controls.designed_effectively",
+  "sox.section_404.internal_controls.operating_effectively",
+  "sox.section_404.management_assessment",
+  "sox.section_404.management_assessment.completed",
+  "sox.section_404.remediation_plan",
+  "sox.section_404.remediation_plan.implemented",
+  "sox.section_409",
+  "sox.section_409.disclosure_controls",
+  "sox.section_409.disclosure_controls.reviewed_quarterly",
+  "sox.section_409.disclosure_process",
+  "sox.section_409.disclosure_process.automated",
+  "sox.section_409.event_detection",
+  "sox.section_409.event_detection.real_time",
+  "sox.section_409.filing_deadlines",
+  "sox.section_409.filing_deadlines.met",
+  "sox.section_409.material_events",
+  "sox.section_409.material_events.disclosed_timely"
+ ]
+}

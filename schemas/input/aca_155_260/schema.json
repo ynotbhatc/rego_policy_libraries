@@ -1,0 +1,33 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/aca_155_260/schema.json",
+ "title": "Input facts for aca_155_260",
+ "description": "Input paths referenced in the sources of frameworks/privacy/aca_155_260/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "aca_155_260",
+ "x-entrypoint": "data.aca_155_260.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/privacy/aca_155_260/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "aca_155_260": {
+   "description": "Read in aca_155_260_main.rego.",
+   "properties": {
+    "exchange_or_non_exchange_entity": {
+     "description": "Read in aca_155_260_main.rego."
+    },
+    "obligations": {
+     "description": "Read in aca_155_260_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "aca_155_260",
+  "aca_155_260.exchange_or_non_exchange_entity",
+  "aca_155_260.obligations"
+ ]
+}

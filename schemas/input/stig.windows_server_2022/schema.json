@@ -1,0 +1,2145 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.windows_server_2022/schema.json",
+ "title": "Input facts for stig.windows_server_2022",
+ "description": "Facts the module in benchmarks/stig/windows_server_2022/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig.windows_server_2022",
+ "x-entrypoint": "data.stig.windows_server_2022.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/windows_server_2022/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.windows_server_2022_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "registry": {
+   "description": "Read in registry_cc.rego, registry_other.rego, registry_so.rego.",
+   "type": "object",
+   "properties": {
+    "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "SaveZoneInformation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      }
+     }
+    },
+    "HKCU\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Attachments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "SaveZoneInformation": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "CachedLogonsCount": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "4"
+       ]
+      },
+      "scremoveoption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "1"
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\CredUI": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnumerateAdministrators": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoAutorun": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "PreXPSP2ShellProtocolBehavior": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ConsentPromptBehaviorAdmin": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "ConsentPromptBehaviorUser": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "DisableAutomaticRestartSignOn": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableInstallerDetection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableLUA": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableSecureUIAPaths": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableUIADesktopToggle": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "EnableVirtualization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "FilterAdministratorToken": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "InactivityTimeoutSecs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        900
+       ]
+      },
+      "LegalNoticeText": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "<banner text as configured>"
+       ]
+      },
+      "LocalAccountTokenFilterPolicy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ProcessCreationIncludeCmdLine_Enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "SupportedEncryptionTypes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2147483640
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\Explorer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoDriveTypeAutoRun": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        255
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Cryptography": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ForceKeyProtection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowBasicAuthInClear": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "DisableEnclosureDownload": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ACSettingIndex": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "DCSettingIndex": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableHTTPPrinting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "DisableWebPnPDownload": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "RestrictRemoteClients": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisablePasswordSaving": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "MinEncryptionLevel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        3
+       ]
+      },
+      "fDisableCdm": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "fEncryptRPCTraffic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "fPromptForPassword": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableInventory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowProtectedCreds": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowTelemetry": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DODownloadMode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableVirtualizationBasedSecurity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "LsaCfgFlags": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RequirePlatformSecurityFeatures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "MaxSize": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        32768
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "MaxSize": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        5120000
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "MaxSize": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        32768
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoAutoplayfornonVolume": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "NoDataExecutionPrevention": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "NoHeapTerminationOnCorruption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoGPOListChanges": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AlwaysInstallElevated": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "EnableUserControl": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "SafeForScripting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowInsecureGuestAuth": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "\\\\*\\NETLOGON": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "RequireMutualAuthentication=1, RequireIntegrity=1"
+       ]
+      },
+      "\\\\*\\SYSVOL": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "RequireMutualAuthentication=1, RequireIntegrity=1"
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoLockScreenSlideshow": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableScriptBlockLogging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\Transcription": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableTranscripting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DontDisplayNetworkSelectionUI": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnableSmartScreen": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "EnumerateLocalUsers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowBasic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "AllowDigest": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "AllowUnencryptedTraffic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowBasic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "AllowUnencryptedTraffic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "DisableRunAs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowIndexingEncryptedStoresOrItems": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "UseMachineId": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\\MSV1_0": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "allownullsessionfallback": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\\pku2u": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowOnlineID": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EveryoneIncludesAnonymous": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "LimitBlankPasswordUse": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "LmCompatibilityLevel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        5
+       ]
+      },
+      "NoLMHash": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RestrictAnonymous": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RestrictAnonymousSAM": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RestrictRemoteSAM": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "O:BAG:BAD:(A;;RC;;;BA)"
+       ]
+      },
+      "SCENoApplyLegacyAuditPolicy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NTLMMinClientSec": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        537395200
+       ]
+      },
+      "NTLMMinServerSec": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        537395200
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\Wdigest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "UseLogonCredential": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ProtectionMode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DriverLoadPolicy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LDAP": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "LDAPClientIntegrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableSecuritySignature": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RequireSecuritySignature": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RestrictNullSessAccess": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "SMB1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnablePlainTextPassword": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "EnableSecuritySignature": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RequireSecuritySignature": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "LDAPServerIntegrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netbt\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoNameReleaseOnDemand": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisablePasswordChange": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "MaximumPasswordAge": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        30
+       ]
+      },
+      "RefusePasswordChange": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "RequireSignOrSeal": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "RequireStrongKey": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "SealSecureChannel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "SignSecureChannel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableIPSourceRouting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableIPSourceRouting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "EnableICMPRedirect": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     }
+    },
+    "HKLM\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Start": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        4
+       ]
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "CachedLogonsCount": {
+       "description": "Read in registry_other.rego."
+      },
+      "scremoveoption": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\CredUI": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnumerateAdministrators": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Explorer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoAutorun": {
+       "description": "Read in registry_cc.rego."
+      },
+      "PreXPSP2ShellProtocolBehavior": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ConsentPromptBehaviorAdmin": {
+       "description": "Read in registry_so.rego."
+      },
+      "ConsentPromptBehaviorUser": {
+       "description": "Read in registry_so.rego."
+      },
+      "DisableAutomaticRestartSignOn": {
+       "description": "Read in registry_cc.rego."
+      },
+      "EnableInstallerDetection": {
+       "description": "Read in registry_so.rego."
+      },
+      "EnableLUA": {
+       "description": "Read in registry_so.rego."
+      },
+      "EnableSecureUIAPaths": {
+       "description": "Read in registry_so.rego."
+      },
+      "EnableUIADesktopToggle": {
+       "description": "Read in registry_so.rego."
+      },
+      "EnableVirtualization": {
+       "description": "Read in registry_so.rego."
+      },
+      "FilterAdministratorToken": {
+       "description": "Read in registry_so.rego."
+      },
+      "InactivityTimeoutSecs": {
+       "description": "Read in registry_so.rego."
+      },
+      "LegalNoticeText": {
+       "description": "Read in registry_so.rego."
+      },
+      "LocalAccountTokenFilterPolicy": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Audit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ProcessCreationIncludeCmdLine_Enabled": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Kerberos\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "SupportedEncryptionTypes": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\policies\\\\Explorer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoDriveTypeAutoRun": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Cryptography": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ForceKeyProtection": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Internet Explorer\\\\Feeds": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowBasicAuthInClear": {
+       "description": "Read in registry_cc.rego."
+      },
+      "DisableEnclosureDownload": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Power\\\\PowerSettings\\\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ACSettingIndex": {
+       "description": "Read in registry_cc.rego."
+      },
+      "DCSettingIndex": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Printers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableHTTPPrinting": {
+       "description": "Read in registry_cc.rego."
+      },
+      "DisableWebPnPDownload": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Rpc": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "RestrictRemoteClients": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisablePasswordSaving": {
+       "description": "Read in registry_cc.rego."
+      },
+      "MinEncryptionLevel": {
+       "description": "Read in registry_cc.rego."
+      },
+      "fDisableCdm": {
+       "description": "Read in registry_cc.rego."
+      },
+      "fEncryptRPCTraffic": {
+       "description": "Read in registry_cc.rego."
+      },
+      "fPromptForPassword": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\AppCompat": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableInventory": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\CredentialsDelegation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowProtectedCreds": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DataCollection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowTelemetry": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeliveryOptimization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DODownloadMode": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableVirtualizationBasedSecurity": {
+       "description": "Read in registry_cc.rego."
+      },
+      "LsaCfgFlags": {
+       "description": "Read in registry_other.rego."
+      },
+      "RequirePlatformSecurityFeatures": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Application": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "MaxSize": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "MaxSize": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\System": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "MaxSize": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Explorer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoAutoplayfornonVolume": {
+       "description": "Read in registry_cc.rego."
+      },
+      "NoDataExecutionPrevention": {
+       "description": "Read in registry_cc.rego."
+      },
+      "NoHeapTerminationOnCorruption": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Group Policy\\\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoGPOListChanges": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Installer": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AlwaysInstallElevated": {
+       "description": "Read in registry_cc.rego."
+      },
+      "EnableUserControl": {
+       "description": "Read in registry_cc.rego."
+      },
+      "SafeForScripting": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\LanmanWorkstation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowInsecureGuestAuth": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\NetworkProvider\\\\HardenedPaths": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "\\\\\\\\*\\\\NETLOGON": {
+       "description": "Read in registry_cc.rego."
+      },
+      "\\\\\\\\*\\\\SYSVOL": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Personalization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoLockScreenSlideshow": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\ScriptBlockLogging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableScriptBlockLogging": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\Transcription": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableTranscripting": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\System": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DontDisplayNetworkSelectionUI": {
+       "description": "Read in registry_cc.rego."
+      },
+      "EnableSmartScreen": {
+       "description": "Read in registry_cc.rego."
+      },
+      "EnumerateLocalUsers": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Client": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowBasic": {
+       "description": "Read in registry_cc.rego."
+      },
+      "AllowDigest": {
+       "description": "Read in registry_cc.rego."
+      },
+      "AllowUnencryptedTraffic": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Service": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowBasic": {
+       "description": "Read in registry_cc.rego."
+      },
+      "AllowUnencryptedTraffic": {
+       "description": "Read in registry_cc.rego."
+      },
+      "DisableRunAs": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Windows Search": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowIndexingEncryptedStoresOrItems": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "UseMachineId": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\\\\MSV1_0": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "allownullsessionfallback": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\\\\pku2u": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "AllowOnlineID": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EveryoneIncludesAnonymous": {
+       "description": "Read in registry_so.rego."
+      },
+      "LimitBlankPasswordUse": {
+       "description": "Read in registry_so.rego."
+      },
+      "LmCompatibilityLevel": {
+       "description": "Read in registry_so.rego."
+      },
+      "NoLMHash": {
+       "description": "Read in registry_so.rego."
+      },
+      "RestrictAnonymous": {
+       "description": "Read in registry_so.rego."
+      },
+      "RestrictAnonymousSAM": {
+       "description": "Read in registry_so.rego."
+      },
+      "RestrictRemoteSAM": {
+       "description": "Read in registry_other.rego."
+      },
+      "SCENoApplyLegacyAuditPolicy": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\FIPSAlgorithmPolicy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Enabled": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\MSV1_0": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NTLMMinClientSec": {
+       "description": "Read in registry_so.rego."
+      },
+      "NTLMMinServerSec": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\Wdigest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "UseLogonCredential": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Session Manager": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ProtectionMode": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Policies\\\\EarlyLaunch": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DriverLoadPolicy": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LDAP": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "LDAPClientIntegrity": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanManServer\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnableSecuritySignature": {
+       "description": "Read in registry_so.rego."
+      },
+      "RequireSecuritySignature": {
+       "description": "Read in registry_so.rego."
+      },
+      "RestrictNullSessAccess": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanServer\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "SMB1": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanWorkstation\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "EnablePlainTextPassword": {
+       "description": "Read in registry_so.rego."
+      },
+      "EnableSecuritySignature": {
+       "description": "Read in registry_so.rego."
+      },
+      "RequireSecuritySignature": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\NTDS\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "LDAPServerIntegrity": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netbt\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "NoNameReleaseOnDemand": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisablePasswordChange": {
+       "description": "Read in registry_so.rego."
+      },
+      "MaximumPasswordAge": {
+       "description": "Read in registry_so.rego."
+      },
+      "RefusePasswordChange": {
+       "description": "Read in registry_other.rego."
+      },
+      "RequireSignOrSeal": {
+       "description": "Read in registry_so.rego."
+      },
+      "RequireStrongKey": {
+       "description": "Read in registry_so.rego."
+      },
+      "SealSecureChannel": {
+       "description": "Read in registry_so.rego."
+      },
+      "SignSecureChannel": {
+       "description": "Read in registry_so.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip6\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableIPSourceRouting": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "DisableIPSourceRouting": {
+       "description": "Read in registry_cc.rego."
+      },
+      "EnableICMPRedirect": {
+       "description": "Read in registry_cc.rego."
+      }
+     }
+    },
+    "HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\mrxsmb10": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Start": {
+       "description": "Read in registry_other.rego."
+      }
+     }
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_windows_server_2022_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "registry",
+  "registry[\"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\"]",
+  "registry[\"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\"].SaveZoneInformation",
+  "registry[\"HKCU\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Attachments\"]",
+  "registry[\"HKCU\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Attachments\"].SaveZoneInformation",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\"].CachedLogonsCount",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\"].scremoveoption",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\CredUI\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\CredUI\"].EnumerateAdministrators",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\"].NoAutorun",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\"].PreXPSP2ShellProtocolBehavior",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].ConsentPromptBehaviorAdmin",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].ConsentPromptBehaviorUser",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].DisableAutomaticRestartSignOn",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].EnableInstallerDetection",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].EnableLUA",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].EnableSecureUIAPaths",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].EnableUIADesktopToggle",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].EnableVirtualization",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].FilterAdministratorToken",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].InactivityTimeoutSecs",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].LegalNoticeText",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\"].LocalAccountTokenFilterPolicy",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit\"].ProcessCreationIncludeCmdLine_Enabled",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters\"].SupportedEncryptionTypes",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\Explorer\"]",
+  "registry[\"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\policies\\Explorer\"].NoDriveTypeAutoRun",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Cryptography\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Cryptography\"].ForceKeyProtection",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds\"].AllowBasicAuthInClear",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds\"].DisableEnclosureDownload",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\"].ACSettingIndex",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\"].DCSettingIndex",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\"].DisableHTTPPrinting",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\"].DisableWebPnPDownload",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc\"].RestrictRemoteClients",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\"].DisablePasswordSaving",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\"].MinEncryptionLevel",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\"].fDisableCdm",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\"].fEncryptRPCTraffic",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\"].fPromptForPassword",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\"].DisableInventory",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation\"].AllowProtectedCreds",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\"].AllowTelemetry",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization\"].DODownloadMode",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].EnableVirtualizationBasedSecurity",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].LsaCfgFlags",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].RequirePlatformSecurityFeatures",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application\"].MaxSize",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security\"].MaxSize",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System\"].MaxSize",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\"].NoAutoplayfornonVolume",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\"].NoDataExecutionPrevention",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\"].NoHeapTerminationOnCorruption",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\"].NoGPOListChanges",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer\"].AlwaysInstallElevated",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer\"].EnableUserControl",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer\"].SafeForScripting",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation\"].AllowInsecureGuestAuth",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths\"][\"\\\\*\\NETLOGON\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths\"][\"\\\\*\\SYSVOL\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\"].NoLockScreenSlideshow",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\"].EnableScriptBlockLogging",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\Transcription\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\Transcription\"].EnableTranscripting",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\"].DontDisplayNetworkSelectionUI",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\"].EnableSmartScreen",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\"].EnumerateLocalUsers",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client\"].AllowBasic",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client\"].AllowDigest",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client\"].AllowUnencryptedTraffic",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\"].AllowBasic",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\"].AllowUnencryptedTraffic",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\"].DisableRunAs",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\"]",
+  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\"].AllowIndexingEncryptedStoresOrItems",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\"].UseMachineId",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\\MSV1_0\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\\MSV1_0\"].allownullsessionfallback",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\\pku2u\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\LSA\\pku2u\"].AllowOnlineID",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].EveryoneIncludesAnonymous",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].LimitBlankPasswordUse",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].LmCompatibilityLevel",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].NoLMHash",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].RestrictAnonymous",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].RestrictAnonymousSAM",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].RestrictRemoteSAM",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\"].SCENoApplyLegacyAuditPolicy",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy\"].Enabled",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0\"].NTLMMinClientSec",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0\"].NTLMMinServerSec",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\Wdigest\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\Wdigest\"].UseLogonCredential",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\"].ProtectionMode",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch\"].DriverLoadPolicy",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LDAP\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LDAP\"].LDAPClientIntegrity",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters\"].EnableSecuritySignature",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters\"].RequireSecuritySignature",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters\"].RestrictNullSessAccess",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\"].SMB1",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters\"].EnablePlainTextPassword",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters\"].EnableSecuritySignature",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters\"].RequireSecuritySignature",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters\"].LDAPServerIntegrity",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netbt\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netbt\\Parameters\"].NoNameReleaseOnDemand",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].DisablePasswordChange",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].MaximumPasswordAge",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].RefusePasswordChange",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].RequireSignOrSeal",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].RequireStrongKey",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].SealSecureChannel",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters\"].SignSecureChannel",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters\"].DisableIPSourceRouting",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\"].DisableIPSourceRouting",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\"].EnableICMPRedirect",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10\"]",
+  "registry[\"HKLM\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10\"].Start",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\"].CachedLogonsCount",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\"].scremoveoption",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\CredUI\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\CredUI\"].EnumerateAdministrators",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Explorer\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Explorer\"].NoAutorun",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Explorer\"].PreXPSP2ShellProtocolBehavior",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].ConsentPromptBehaviorAdmin",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].ConsentPromptBehaviorUser",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].DisableAutomaticRestartSignOn",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].EnableInstallerDetection",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].EnableLUA",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].EnableSecureUIAPaths",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].EnableUIADesktopToggle",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].EnableVirtualization",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].FilterAdministratorToken",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].InactivityTimeoutSecs",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].LegalNoticeText",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\"].LocalAccountTokenFilterPolicy",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Audit\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Audit\"].ProcessCreationIncludeCmdLine_Enabled",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Kerberos\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Kerberos\\\\Parameters\"].SupportedEncryptionTypes",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\policies\\\\Explorer\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\policies\\\\Explorer\"].NoDriveTypeAutoRun",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Cryptography\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Cryptography\"].ForceKeyProtection",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Internet Explorer\\\\Feeds\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Internet Explorer\\\\Feeds\"].AllowBasicAuthInClear",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Internet Explorer\\\\Feeds\"].DisableEnclosureDownload",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Power\\\\PowerSettings\\\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Power\\\\PowerSettings\\\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\"].ACSettingIndex",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Power\\\\PowerSettings\\\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\"].DCSettingIndex",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Printers\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Printers\"].DisableHTTPPrinting",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Printers\"].DisableWebPnPDownload",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Rpc\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Rpc\"].RestrictRemoteClients",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services\"].DisablePasswordSaving",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services\"].MinEncryptionLevel",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services\"].fDisableCdm",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services\"].fEncryptRPCTraffic",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows NT\\\\Terminal Services\"].fPromptForPassword",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\AppCompat\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\AppCompat\"].DisableInventory",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\CredentialsDelegation\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\CredentialsDelegation\"].AllowProtectedCreds",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DataCollection\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DataCollection\"].AllowTelemetry",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeliveryOptimization\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeliveryOptimization\"].DODownloadMode",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].EnableVirtualizationBasedSecurity",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].LsaCfgFlags",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].RequirePlatformSecurityFeatures",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Application\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Application\"].MaxSize",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Security\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Security\"].MaxSize",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\System\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\System\"].MaxSize",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Explorer\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Explorer\"].NoAutoplayfornonVolume",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Explorer\"].NoDataExecutionPrevention",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Explorer\"].NoHeapTerminationOnCorruption",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Group Policy\\\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Group Policy\\\\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}\"].NoGPOListChanges",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Installer\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Installer\"].AlwaysInstallElevated",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Installer\"].EnableUserControl",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Installer\"].SafeForScripting",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\LanmanWorkstation\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\LanmanWorkstation\"].AllowInsecureGuestAuth",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\NetworkProvider\\\\HardenedPaths\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\NetworkProvider\\\\HardenedPaths\"][\"\\\\\\\\*\\\\NETLOGON\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\NetworkProvider\\\\HardenedPaths\"][\"\\\\\\\\*\\\\SYSVOL\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Personalization\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Personalization\"].NoLockScreenSlideshow",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\ScriptBlockLogging\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\ScriptBlockLogging\"].EnableScriptBlockLogging",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\Transcription\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\PowerShell\\\\Transcription\"].EnableTranscripting",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\System\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\System\"].DontDisplayNetworkSelectionUI",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\System\"].EnableSmartScreen",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\System\"].EnumerateLocalUsers",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Client\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Client\"].AllowBasic",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Client\"].AllowDigest",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Client\"].AllowUnencryptedTraffic",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Service\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Service\"].AllowBasic",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Service\"].AllowUnencryptedTraffic",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WinRM\\\\Service\"].DisableRunAs",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Windows Search\"]",
+  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Windows Search\"].AllowIndexingEncryptedStoresOrItems",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\"].UseMachineId",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\\\\MSV1_0\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\\\\MSV1_0\"].allownullsessionfallback",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\\\\pku2u\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\LSA\\\\pku2u\"].AllowOnlineID",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].EveryoneIncludesAnonymous",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].LimitBlankPasswordUse",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].LmCompatibilityLevel",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].NoLMHash",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].RestrictAnonymous",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].RestrictAnonymousSAM",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].RestrictRemoteSAM",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\"].SCENoApplyLegacyAuditPolicy",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\FIPSAlgorithmPolicy\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\FIPSAlgorithmPolicy\"].Enabled",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\MSV1_0\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\MSV1_0\"].NTLMMinClientSec",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Lsa\\\\MSV1_0\"].NTLMMinServerSec",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\Wdigest\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\Wdigest\"].UseLogonCredential",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Session Manager\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Session Manager\"].ProtectionMode",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Policies\\\\EarlyLaunch\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Policies\\\\EarlyLaunch\"].DriverLoadPolicy",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LDAP\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LDAP\"].LDAPClientIntegrity",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanManServer\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanManServer\\\\Parameters\"].EnableSecuritySignature",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanManServer\\\\Parameters\"].RequireSecuritySignature",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanManServer\\\\Parameters\"].RestrictNullSessAccess",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanServer\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanServer\\\\Parameters\"].SMB1",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanWorkstation\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanWorkstation\\\\Parameters\"].EnablePlainTextPassword",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanWorkstation\\\\Parameters\"].EnableSecuritySignature",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\LanmanWorkstation\\\\Parameters\"].RequireSecuritySignature",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\NTDS\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\NTDS\\\\Parameters\"].LDAPServerIntegrity",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netbt\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netbt\\\\Parameters\"].NoNameReleaseOnDemand",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].DisablePasswordChange",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].MaximumPasswordAge",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].RefusePasswordChange",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].RequireSignOrSeal",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].RequireStrongKey",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].SealSecureChannel",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Netlogon\\\\Parameters\"].SignSecureChannel",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip6\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip6\\\\Parameters\"].DisableIPSourceRouting",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters\"].DisableIPSourceRouting",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters\"].EnableICMPRedirect",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\mrxsmb10\"]",
+  "registry[\"HKLM\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\mrxsmb10\"].Start",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

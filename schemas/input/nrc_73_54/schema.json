@@ -1,0 +1,29 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nrc_73_54/schema.json",
+ "title": "Input facts for nrc_73_54",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/nrc_73_54/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "nrc_73_54",
+ "x-entrypoint": "data.nrc_73_54.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/nrc_73_54/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "nrc_73_54": {
+   "description": "Read in nrc_73_54_main.rego.",
+   "properties": {
+    "paragraphs": {
+     "description": "Read in nrc_73_54_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "nrc_73_54",
+  "nrc_73_54.paragraphs"
+ ]
+}

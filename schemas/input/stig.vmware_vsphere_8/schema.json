@@ -1,0 +1,128 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.vmware_vsphere_8/schema.json",
+ "title": "Input facts for stig.vmware_vsphere_8",
+ "description": "Facts the module in benchmarks/stig/vmware_vsphere_8/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig.vmware_vsphere_8",
+ "x-entrypoint": "data.stig.vmware_vsphere_8.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/vmware_vsphere_8/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.vmware_vsphere_8_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "esxi": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "audit_storage_one_week_allocated": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "lockdown_mode_enabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mgmt_traffic_isolated_or_encrypted": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ntp_authoritative_source_configured": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_quality_policy_configured": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "patches_current": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "shell_idle_timeout_15min": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssh_fips_140_2_enabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vib_acceptance_partner_or_stricter": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vswitch_mac_changes_rejected": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_vmware_vsphere_8_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "esxi",
+  "esxi.audit_storage_one_week_allocated",
+  "esxi.lockdown_mode_enabled",
+  "esxi.mgmt_traffic_isolated_or_encrypted",
+  "esxi.ntp_authoritative_source_configured",
+  "esxi.password_quality_policy_configured",
+  "esxi.patches_current",
+  "esxi.shell_idle_timeout_15min",
+  "esxi.ssh_fips_140_2_enabled",
+  "esxi.vib_acceptance_partner_or_stricter",
+  "esxi.vswitch_mac_changes_rejected",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

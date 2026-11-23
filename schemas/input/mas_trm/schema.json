@@ -1,0 +1,37 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/mas_trm/schema.json",
+ "title": "Input facts for mas_trm",
+ "description": "Input paths referenced in the sources of frameworks/financial/mas_trm/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "mas_trm",
+ "x-entrypoint": "data.mas_trm.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/financial/mas_trm/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "mas_trm": {
+   "description": "Read in mas_trm_main.rego.",
+   "properties": {
+    "controls": {
+     "description": "Read in mas_trm_main.rego.",
+     "additionalProperties": {
+      "description": "Read in mas_trm_main.rego."
+     },
+     "x-variable-key": "<id>"
+    },
+    "online_financial_services": {
+     "description": "Read in mas_trm_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "mas_trm",
+  "mas_trm.controls",
+  "mas_trm.online_financial_services"
+ ]
+}

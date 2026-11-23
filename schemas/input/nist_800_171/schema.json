@@ -1,0 +1,4329 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist_800_171/schema.json",
+ "title": "Input facts for nist_800_171",
+ "description": "Facts the module in frameworks/federal/nist/sp_800_171/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nist_800_171",
+ "x-entrypoint": "data.nist_800_171.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/nist/sp_800_171/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist_800_171.main_test._green",
+ "type": "object",
+ "properties": {
+  "cui_access": {
+   "description": "Read in cui_access_control.rego.",
+   "type": "object",
+   "properties": {
+    "external_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "connection_verification": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_assessments": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "usage_limitations": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "flow_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approved_authorizations": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "automated_enforcement": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "monitoring_implemented": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "least_privilege": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "minimum_necessary_access": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privileged_account_restrictions": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_function_limits": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "logon_limits": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "lockout_duration": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        15
+       ]
+      },
+      "lockout_implemented": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "maximum_attempts": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        3
+       ]
+      }
+     }
+    },
+    "managed_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "centralized_management": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "designated_control_points": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "monitoring_capability": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "mobile_devices": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "connection_controls": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "device_registration": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_requirements": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "mobile_encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approved_encryption": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cui_encrypted": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "key_management": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "non_privileged": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "privilege_escalation_controlled": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "role_segregation": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "separate_accounts": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "notices": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cui_rules_referenced": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privacy_notice_displayed": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_notice_displayed": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "portable_storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authorization_required": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_controls": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "usage_restrictions": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "privileged_prevention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authorization_required": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "execution_controls": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "monitoring_implemented": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "public_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cui_restrictions": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "removal_capability": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "review_procedures": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "access_control": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "encrypted_connections": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "session_monitoring": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "remote_encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approved_algorithms": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cryptographic_protection": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "end_to_end_encryption": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "remote_privileged": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "explicit_authorization": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logging_monitoring": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "strong_authentication": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "separation_duties": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "collusion_prevention": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "critical_functions_separated": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "documented_assignments": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "session_lock": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authentication_required": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "inactivity_timeout": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        900
+       ]
+      },
+      "pattern_hiding": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "session_termination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "automatic_termination": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "defined_conditions": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "user_notification": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "transaction_limits": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "documented_permissions": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "function_authorization": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "role_based_restrictions": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "user_authorization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "all_users_authorized": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "device_authorization": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "process_authorization": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "wireless": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "configuration_management": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pre_authorization_required": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "security_controls": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "wireless_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "approved_protocols": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "authentication_required": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "encryption_implemented": {
+       "description": "Read in cui_access_control.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "nist_800_171": {
+   "description": "Read in nist_800_171_au.rego, nist_800_171_at.rego, nist_800_171_cm.rego, nist_800_171_ia.rego and 9 more.",
+   "type": "object",
+   "properties": {
+    "audit_accountability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "audit_logs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "covers_all_systems": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "logging_enabled": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "retention_period_days": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          90
+         ]
+        }
+       }
+      },
+      "audit_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_list_documented": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "restricted_to_privileged": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "separation_of_duties": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "audit_protection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_restricted": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "deletion_prevented": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "integrity_protected": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "correlation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "correlation_capability": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "cross_system_analysis": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reporting_integrated": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "event_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "events_defined": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "periodic_review_performed": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "updates_documented": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "failure_alerting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "alerts_configured": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "response_procedures_documented": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "responsible_personnel_notified": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "reduction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "on_demand_analysis": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reduction_capability": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "report_generation": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "time_sync": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "all_systems_synchronized": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "authoritative_source": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ntp_configured": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "user_tracing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "audit_trail_complete": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "shared_accounts_prohibited": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unique_user_ids": {
+         "description": "Read in nist_800_171_au.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "awareness_training": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "awareness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "all_personnel_covered": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "periodic_refreshes": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "program_established": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "risk_topics_included": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "role_training": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "before_access_granted": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "completion_tracked": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "role_specific_content": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "threat_training": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "insider_threat_covered": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "phishing_covered": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reporting_procedures_covered": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "social_engineering_covered": {
+         "description": "Read in nist_800_171_at.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "configuration_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "baselines": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "documented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "includes_all_components": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "inventory_maintained": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reviewed_periodically": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "change_access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approval_documented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "enforcement_implemented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "logical_restrictions_defined": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "physical_restrictions_defined": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "change_control": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approval_required": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "change_tracking": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "changes_logged": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "review_process": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "impact_analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "performed_before_implementation": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "results_documented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "security_team_involved": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "least_functionality": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "documented_rationale": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reviewed_periodically": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unnecessary_functions_disabled": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "nonessential": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "ports_restricted": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "programs_restricted": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "protocols_restricted": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "services_restricted": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "security_settings": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "deviations_approved": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "enforcement_automated": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "settings_defined": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "software_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "authorized_software_list": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "deny_by_exception_implemented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "enforcement_automated": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "user_software": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "installation_restricted": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "monitoring_implemented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "policy_documented": {
+         "description": "Read in nist_800_171_cm.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "identification_authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authentication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "all_entry_points_covered": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "mechanism_documented": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "required_before_access": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "feedback": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "all_interfaces_covered": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "no_hint_displayed": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "password_masked": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "identification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "devices_identified": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "processes_identified": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "users_identified": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "identifier_mgmt": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "disable_on_inactivity": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "inactivity_period_days": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          35
+         ]
+        },
+        "unique_identifiers": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "inactivity_disable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "automated_enforcement": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "period_documented": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "policy_defined": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "mfa": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "non_privileged_network_mfa": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "privileged_local_mfa": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "privileged_network_mfa": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "password_complexity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "change_requirements_defined": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "complexity_enforced": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "minimum_length": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          12
+         ]
+        }
+       }
+      },
+      "password_crypto": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_algorithms": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "storage_hashed": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "transmission_encrypted": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "password_reuse": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "enforcement_automated": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "generations_remembered": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          5
+         ]
+        }
+       }
+      },
+      "replay_resistant": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "covers_non_privileged": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "covers_privileged": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "mechanism_implemented": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "temp_password": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "expiry_enforced": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "immediate_change_required": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "secure_delivery": {
+         "description": "Read in nist_800_171_ia.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "incident_response": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "handling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "analysis_procedures": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "containment_procedures": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "detection_procedures": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "plan_documented": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "preparation_phase": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "recovery_procedures": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "user_response_procedures": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "lessons_incorporated": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "results_reviewed": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "test_type_documented": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "tested_annually": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "tracking": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "designated_officials_identified": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "documentation_required": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "incident_tracking_system": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reporting_timelines_defined": {
+         "description": "Read in nist_800_171_ir.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "maintenance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_techniques": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "approved_tools": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "authorized_personnel_only": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "controls_documented": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "diagnostic_media": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_scanning_tool": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "results_documented": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "scanned_before_use": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "maintenance_schedule": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "performed_regularly": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "records_maintained": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "schedule_documented": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "remote_maintenance": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "connections_monitored": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "mfa_required": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "session_terminated_after": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "sanitization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "process_documented": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "removed_equipment_sanitized": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "sanitization_verified": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "supervision": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "supervision_documented": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "supervisor_has_required_access": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unauthorized_personnel_supervised": {
+         "description": "Read in nist_800_171_ma.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "media_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_enforcement_implemented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "access_list_documented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "authorized_users_only": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "backup": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_restricted": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "backups_encrypted": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "storage_location_secured": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "marking": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "cui_markings_applied": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "distribution_limitations_marked": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "marking_policy_documented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "physical": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_controlled": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "digital_media_secured": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "paper_media_secured": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "portable_storage": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "enforcement_implemented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "owner_identification_required": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unidentified_devices_prohibited": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "removable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approval_required": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "technical_controls_implemented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "usage_policy_defined": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "sanitization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "method_documented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "sanitized_before_disposal": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "sanitized_before_reuse": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "verification_performed": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "transport": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_controlled_during_transport": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "accountability_maintained": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "chain_of_custody_documented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "transport_crypto": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_algorithms": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "covers_all_cui_transport": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "encryption_implemented": {
+         "description": "Read in nist_800_171_mp.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "personnel_security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "personnel_actions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_revocation_timely": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "property_return_required": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "termination_procedures": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "transfer_procedures": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "screening": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "background_checks_performed": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "criteria_documented": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "rescreening_policy": {
+         "description": "Read in nist_800_171_ps.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "physical_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_controls_implemented": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "access_list_maintained": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "authorized_individuals_only": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "access_devices": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "inventory_maintained": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "issuance_tracked": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "periodic_audit": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "revocation_procedures": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "access_logs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "covers_all_entry_points": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "logs_maintained": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "retention_period_days": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          90
+         ]
+        },
+        "reviewed_periodically": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "alternate_sites": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "includes_remote_work": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "safeguards_defined": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "safeguards_enforced": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "facility_monitored": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "monitoring_continuous": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "support_infrastructure_monitored": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "visitors": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "activity_monitored": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "escort_required": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "visitor_log_maintained": {
+         "description": "Read in nist_800_171_pe.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "risk_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "covers_assets": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "covers_individuals": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "covers_operations": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "performed_annually": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "results_documented": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "remediation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "critical_days": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          15
+         ]
+        },
+        "high_days": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          30
+         ]
+        },
+        "risk_based_prioritization": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "tracking_system": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "vulnerability_scanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "covers_all_systems": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "periodic_scans_performed": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "results_documented": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "triggered_on_new_vulnerabilities": {
+         "description": "Read in nist_800_171_ra.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "security_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "continuous_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "automated_where_possible": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "monitoring_implemented": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ongoing_not_just_periodic": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "controls_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "effectiveness_determined": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "independent_assessor": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "periodic_assessments": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "results_documented": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "plans_of_action": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "deficiencies_tracked": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "milestones_defined": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "poam_documented": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "progress_monitored": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "ssp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "environment_described": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "interconnections_documented": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "plan_documented": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "requirements_implementation_described": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "system_boundary_defined": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "updated_periodically": {
+         "description": "Read in nist_800_171_ca.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "system_communications": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authenticity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "mechanisms_documented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "replay_protection": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "session_authentication": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "boundary": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "communications_controlled": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "external_boundaries_monitored": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "key_internal_boundaries_monitored": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "collaborative_devices": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "policy_documented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "presence_indicator": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "remote_activation_prohibited": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "data_at_rest": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_algorithms": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "covers_all_cui_storage": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "encryption_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "deny_all": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "default_deny_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "exceptions_documented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "permit_by_exception": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "dmz": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "internal_network_protected": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "physical_or_logical_separation": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "public_components_separated": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "engineering": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "principles_documented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "secure_sdlc": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "security_by_design": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "fips": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "covers_cui_protection": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "fips_validated_modules": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "inventory_maintained": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "key_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "key_destruction_procedures": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "key_distribution_secured": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "key_generation_documented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "key_rotation_policy": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "mobile_code": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "monitoring_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "technical_controls": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "usage_policy_defined": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "separation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "admin_interfaces_distinct": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "technical_controls_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "user_mgmt_separated": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "session_timeout": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "all_connection_types_covered": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "automatic_termination": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "inactivity_timeout_defined": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "shared_resources": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "controls_documented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "resource_isolation": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unauthorized_transfer_prevented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "split_tunneling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "policy_enforced": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "prevention_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "vpn_configured_correctly": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "transmission": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_algorithms": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "covers_all_cui_transmission": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "encryption_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "voip": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "monitoring_implemented": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "technical_controls": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "usage_policy_defined": {
+         "description": "Read in nist_800_171_sc.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "system_information": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "alerts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "advisories_tracked": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "monitoring_implemented": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "response_procedures_defined": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "subscribed_to_threat_feeds": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "attack_detection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "inbound_traffic_monitored": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ioc_detection": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "outbound_traffic_monitored": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "system_monitoring": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "flaws": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "identification_process": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "reporting_process": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "timely_correction": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "tracking_system": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "malicious_code": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "approved_solution": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "protection_at_entry_exit": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "server_protection": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "workstation_protection": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "malicious_code_updates": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "all_systems_covered": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "automatic_updates": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "update_frequency_defined": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "scanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "external_source_files_scanned": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "periodic_scans_performed": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "real_time_scanning": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "scan_schedule_defined": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "unauthorized_use": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "anomaly_detection": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "baseline_established": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "detection_mechanisms": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "response_procedures": {
+         "description": "Read in nist_800_171_si.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "nist_sp_800_171": {
+   "description": "Read in nist_800_171_main.rego.",
+   "type": "object",
+   "properties": {
+    "requirements": {
+     "description": "Read in nist_800_171_main.rego.",
+     "type": "object",
+     "properties": {
+      "03.04.10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.04.11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.04.12": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.05.12": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.06.04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.06.05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.10.08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.11.04": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.12.05": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.14.08": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.15.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.15.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.16.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.16.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.16.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.17.01": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.17.02": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "03.17.03": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cui_access",
+  "cui_access.external_systems",
+  "cui_access.external_systems.connection_verification",
+  "cui_access.external_systems.security_assessments",
+  "cui_access.external_systems.usage_limitations",
+  "cui_access.flow_control",
+  "cui_access.flow_control.approved_authorizations",
+  "cui_access.flow_control.automated_enforcement",
+  "cui_access.flow_control.monitoring_implemented",
+  "cui_access.least_privilege",
+  "cui_access.least_privilege.minimum_necessary_access",
+  "cui_access.least_privilege.privileged_account_restrictions",
+  "cui_access.least_privilege.security_function_limits",
+  "cui_access.logon_limits",
+  "cui_access.logon_limits.lockout_duration",
+  "cui_access.logon_limits.lockout_implemented",
+  "cui_access.logon_limits.maximum_attempts",
+  "cui_access.managed_access",
+  "cui_access.managed_access.centralized_management",
+  "cui_access.managed_access.designated_control_points",
+  "cui_access.managed_access.monitoring_capability",
+  "cui_access.mobile_devices",
+  "cui_access.mobile_devices.connection_controls",
+  "cui_access.mobile_devices.device_registration",
+  "cui_access.mobile_devices.security_requirements",
+  "cui_access.mobile_encryption",
+  "cui_access.mobile_encryption.approved_encryption",
+  "cui_access.mobile_encryption.cui_encrypted",
+  "cui_access.mobile_encryption.key_management",
+  "cui_access.non_privileged",
+  "cui_access.non_privileged.privilege_escalation_controlled",
+  "cui_access.non_privileged.role_segregation",
+  "cui_access.non_privileged.separate_accounts",
+  "cui_access.notices",
+  "cui_access.notices.cui_rules_referenced",
+  "cui_access.notices.privacy_notice_displayed",
+  "cui_access.notices.security_notice_displayed",
+  "cui_access.portable_storage",
+  "cui_access.portable_storage.authorization_required",
+  "cui_access.portable_storage.security_controls",
+  "cui_access.portable_storage.usage_restrictions",
+  "cui_access.privileged_prevention",
+  "cui_access.privileged_prevention.authorization_required",
+  "cui_access.privileged_prevention.execution_controls",
+  "cui_access.privileged_prevention.monitoring_implemented",
+  "cui_access.public_systems",
+  "cui_access.public_systems.cui_restrictions",
+  "cui_access.public_systems.removal_capability",
+  "cui_access.public_systems.review_procedures",
+  "cui_access.remote_access",
+  "cui_access.remote_access.access_control",
+  "cui_access.remote_access.encrypted_connections",
+  "cui_access.remote_access.session_monitoring",
+  "cui_access.remote_encryption",
+  "cui_access.remote_encryption.approved_algorithms",
+  "cui_access.remote_encryption.cryptographic_protection",
+  "cui_access.remote_encryption.end_to_end_encryption",
+  "cui_access.remote_privileged",
+  "cui_access.remote_privileged.explicit_authorization",
+  "cui_access.remote_privileged.logging_monitoring",
+  "cui_access.remote_privileged.strong_authentication",
+  "cui_access.separation_duties",
+  "cui_access.separation_duties.collusion_prevention",
+  "cui_access.separation_duties.critical_functions_separated",
+  "cui_access.separation_duties.documented_assignments",
+  "cui_access.session_lock",
+  "cui_access.session_lock.authentication_required",
+  "cui_access.session_lock.inactivity_timeout",
+  "cui_access.session_lock.pattern_hiding",
+  "cui_access.session_termination",
+  "cui_access.session_termination.automatic_termination",
+  "cui_access.session_termination.defined_conditions",
+  "cui_access.session_termination.user_notification",
+  "cui_access.transaction_limits",
+  "cui_access.transaction_limits.documented_permissions",
+  "cui_access.transaction_limits.function_authorization",
+  "cui_access.transaction_limits.role_based_restrictions",
+  "cui_access.user_authorization",
+  "cui_access.user_authorization.all_users_authorized",
+  "cui_access.user_authorization.device_authorization",
+  "cui_access.user_authorization.process_authorization",
+  "cui_access.wireless",
+  "cui_access.wireless.configuration_management",
+  "cui_access.wireless.pre_authorization_required",
+  "cui_access.wireless.security_controls",
+  "cui_access.wireless_protection",
+  "cui_access.wireless_protection.approved_protocols",
+  "cui_access.wireless_protection.authentication_required",
+  "cui_access.wireless_protection.encryption_implemented",
+  "nist_800_171",
+  "nist_800_171.audit_accountability",
+  "nist_800_171.audit_accountability.audit_logs",
+  "nist_800_171.audit_accountability.audit_logs.covers_all_systems",
+  "nist_800_171.audit_accountability.audit_logs.logging_enabled",
+  "nist_800_171.audit_accountability.audit_logs.retention_period_days",
+  "nist_800_171.audit_accountability.audit_management",
+  "nist_800_171.audit_accountability.audit_management.access_list_documented",
+  "nist_800_171.audit_accountability.audit_management.restricted_to_privileged",
+  "nist_800_171.audit_accountability.audit_management.separation_of_duties",
+  "nist_800_171.audit_accountability.audit_protection",
+  "nist_800_171.audit_accountability.audit_protection.access_restricted",
+  "nist_800_171.audit_accountability.audit_protection.deletion_prevented",
+  "nist_800_171.audit_accountability.audit_protection.integrity_protected",
+  "nist_800_171.audit_accountability.correlation",
+  "nist_800_171.audit_accountability.correlation.correlation_capability",
+  "nist_800_171.audit_accountability.correlation.cross_system_analysis",
+  "nist_800_171.audit_accountability.correlation.reporting_integrated",
+  "nist_800_171.audit_accountability.event_review",
+  "nist_800_171.audit_accountability.event_review.events_defined",
+  "nist_800_171.audit_accountability.event_review.periodic_review_performed",
+  "nist_800_171.audit_accountability.event_review.updates_documented",
+  "nist_800_171.audit_accountability.failure_alerting",
+  "nist_800_171.audit_accountability.failure_alerting.alerts_configured",
+  "nist_800_171.audit_accountability.failure_alerting.response_procedures_documented",
+  "nist_800_171.audit_accountability.failure_alerting.responsible_personnel_notified",
+  "nist_800_171.audit_accountability.reduction",
+  "nist_800_171.audit_accountability.reduction.on_demand_analysis",
+  "nist_800_171.audit_accountability.reduction.reduction_capability",
+  "nist_800_171.audit_accountability.reduction.report_generation",
+  "nist_800_171.audit_accountability.time_sync",
+  "nist_800_171.audit_accountability.time_sync.all_systems_synchronized",
+  "nist_800_171.audit_accountability.time_sync.authoritative_source",
+  "nist_800_171.audit_accountability.time_sync.ntp_configured",
+  "nist_800_171.audit_accountability.user_tracing",
+  "nist_800_171.audit_accountability.user_tracing.audit_trail_complete",
+  "nist_800_171.audit_accountability.user_tracing.shared_accounts_prohibited",
+  "nist_800_171.audit_accountability.user_tracing.unique_user_ids",
+  "nist_800_171.awareness_training",
+  "nist_800_171.awareness_training.awareness",
+  "nist_800_171.awareness_training.awareness.all_personnel_covered",
+  "nist_800_171.awareness_training.awareness.periodic_refreshes",
+  "nist_800_171.awareness_training.awareness.program_established",
+  "nist_800_171.awareness_training.awareness.risk_topics_included",
+  "nist_800_171.awareness_training.role_training",
+  "nist_800_171.awareness_training.role_training.before_access_granted",
+  "nist_800_171.awareness_training.role_training.completion_tracked",
+  "nist_800_171.awareness_training.role_training.role_specific_content",
+  "nist_800_171.awareness_training.threat_training",
+  "nist_800_171.awareness_training.threat_training.insider_threat_covered",
+  "nist_800_171.awareness_training.threat_training.phishing_covered",
+  "nist_800_171.awareness_training.threat_training.reporting_procedures_covered",
+  "nist_800_171.awareness_training.threat_training.social_engineering_covered",
+  "nist_800_171.configuration_management",
+  "nist_800_171.configuration_management.baselines",
+  "nist_800_171.configuration_management.baselines.documented",
+  "nist_800_171.configuration_management.baselines.includes_all_components",
+  "nist_800_171.configuration_management.baselines.inventory_maintained",
+  "nist_800_171.configuration_management.baselines.reviewed_periodically",
+  "nist_800_171.configuration_management.change_access",
+  "nist_800_171.configuration_management.change_access.approval_documented",
+  "nist_800_171.configuration_management.change_access.enforcement_implemented",
+  "nist_800_171.configuration_management.change_access.logical_restrictions_defined",
+  "nist_800_171.configuration_management.change_access.physical_restrictions_defined",
+  "nist_800_171.configuration_management.change_control",
+  "nist_800_171.configuration_management.change_control.approval_required",
+  "nist_800_171.configuration_management.change_control.change_tracking",
+  "nist_800_171.configuration_management.change_control.changes_logged",
+  "nist_800_171.configuration_management.change_control.review_process",
+  "nist_800_171.configuration_management.impact_analysis",
+  "nist_800_171.configuration_management.impact_analysis.performed_before_implementation",
+  "nist_800_171.configuration_management.impact_analysis.results_documented",
+  "nist_800_171.configuration_management.impact_analysis.security_team_involved",
+  "nist_800_171.configuration_management.least_functionality",
+  "nist_800_171.configuration_management.least_functionality.documented_rationale",
+  "nist_800_171.configuration_management.least_functionality.reviewed_periodically",
+  "nist_800_171.configuration_management.least_functionality.unnecessary_functions_disabled",
+  "nist_800_171.configuration_management.nonessential",
+  "nist_800_171.configuration_management.nonessential.ports_restricted",
+  "nist_800_171.configuration_management.nonessential.programs_restricted",
+  "nist_800_171.configuration_management.nonessential.protocols_restricted",
+  "nist_800_171.configuration_management.nonessential.services_restricted",
+  "nist_800_171.configuration_management.security_settings",
+  "nist_800_171.configuration_management.security_settings.deviations_approved",
+  "nist_800_171.configuration_management.security_settings.enforcement_automated",
+  "nist_800_171.configuration_management.security_settings.settings_defined",
+  "nist_800_171.configuration_management.software_policy",
+  "nist_800_171.configuration_management.software_policy.authorized_software_list",
+  "nist_800_171.configuration_management.software_policy.deny_by_exception_implemented",
+  "nist_800_171.configuration_management.software_policy.enforcement_automated",
+  "nist_800_171.configuration_management.user_software",
+  "nist_800_171.configuration_management.user_software.installation_restricted",
+  "nist_800_171.configuration_management.user_software.monitoring_implemented",
+  "nist_800_171.configuration_management.user_software.policy_documented",
+  "nist_800_171.identification_authentication",
+  "nist_800_171.identification_authentication.authentication",
+  "nist_800_171.identification_authentication.authentication.all_entry_points_covered",
+  "nist_800_171.identification_authentication.authentication.mechanism_documented",
+  "nist_800_171.identification_authentication.authentication.required_before_access",
+  "nist_800_171.identification_authentication.feedback",
+  "nist_800_171.identification_authentication.feedback.all_interfaces_covered",
+  "nist_800_171.identification_authentication.feedback.no_hint_displayed",
+  "nist_800_171.identification_authentication.feedback.password_masked",
+  "nist_800_171.identification_authentication.identification",
+  "nist_800_171.identification_authentication.identification.devices_identified",
+  "nist_800_171.identification_authentication.identification.processes_identified",
+  "nist_800_171.identification_authentication.identification.users_identified",
+  "nist_800_171.identification_authentication.identifier_mgmt",
+  "nist_800_171.identification_authentication.identifier_mgmt.disable_on_inactivity",
+  "nist_800_171.identification_authentication.identifier_mgmt.inactivity_period_days",
+  "nist_800_171.identification_authentication.identifier_mgmt.unique_identifiers",
+  "nist_800_171.identification_authentication.inactivity_disable",
+  "nist_800_171.identification_authentication.inactivity_disable.automated_enforcement",
+  "nist_800_171.identification_authentication.inactivity_disable.period_documented",
+  "nist_800_171.identification_authentication.inactivity_disable.policy_defined",
+  "nist_800_171.identification_authentication.mfa",
+  "nist_800_171.identification_authentication.mfa.non_privileged_network_mfa",
+  "nist_800_171.identification_authentication.mfa.privileged_local_mfa",
+  "nist_800_171.identification_authentication.mfa.privileged_network_mfa",
+  "nist_800_171.identification_authentication.password_complexity",
+  "nist_800_171.identification_authentication.password_complexity.change_requirements_defined",
+  "nist_800_171.identification_authentication.password_complexity.complexity_enforced",
+  "nist_800_171.identification_authentication.password_complexity.minimum_length",
+  "nist_800_171.identification_authentication.password_crypto",
+  "nist_800_171.identification_authentication.password_crypto.approved_algorithms",
+  "nist_800_171.identification_authentication.password_crypto.storage_hashed",
+  "nist_800_171.identification_authentication.password_crypto.transmission_encrypted",
+  "nist_800_171.identification_authentication.password_reuse",
+  "nist_800_171.identification_authentication.password_reuse.enforcement_automated",
+  "nist_800_171.identification_authentication.password_reuse.generations_remembered",
+  "nist_800_171.identification_authentication.replay_resistant",
+  "nist_800_171.identification_authentication.replay_resistant.covers_non_privileged",
+  "nist_800_171.identification_authentication.replay_resistant.covers_privileged",
+  "nist_800_171.identification_authentication.replay_resistant.mechanism_implemented",
+  "nist_800_171.identification_authentication.temp_password",
+  "nist_800_171.identification_authentication.temp_password.expiry_enforced",
+  "nist_800_171.identification_authentication.temp_password.immediate_change_required",
+  "nist_800_171.identification_authentication.temp_password.secure_delivery",
+  "nist_800_171.incident_response",
+  "nist_800_171.incident_response.handling",
+  "nist_800_171.incident_response.handling.analysis_procedures",
+  "nist_800_171.incident_response.handling.containment_procedures",
+  "nist_800_171.incident_response.handling.detection_procedures",
+  "nist_800_171.incident_response.handling.plan_documented",
+  "nist_800_171.incident_response.handling.preparation_phase",
+  "nist_800_171.incident_response.handling.recovery_procedures",
+  "nist_800_171.incident_response.handling.user_response_procedures",
+  "nist_800_171.incident_response.testing",
+  "nist_800_171.incident_response.testing.lessons_incorporated",
+  "nist_800_171.incident_response.testing.results_reviewed",
+  "nist_800_171.incident_response.testing.test_type_documented",
+  "nist_800_171.incident_response.testing.tested_annually",
+  "nist_800_171.incident_response.tracking",
+  "nist_800_171.incident_response.tracking.designated_officials_identified",
+  "nist_800_171.incident_response.tracking.documentation_required",
+  "nist_800_171.incident_response.tracking.incident_tracking_system",
+  "nist_800_171.incident_response.tracking.reporting_timelines_defined",
+  "nist_800_171.maintenance",
+  "nist_800_171.maintenance.controls",
+  "nist_800_171.maintenance.controls.approved_techniques",
+  "nist_800_171.maintenance.controls.approved_tools",
+  "nist_800_171.maintenance.controls.authorized_personnel_only",
+  "nist_800_171.maintenance.controls.controls_documented",
+  "nist_800_171.maintenance.diagnostic_media",
+  "nist_800_171.maintenance.diagnostic_media.approved_scanning_tool",
+  "nist_800_171.maintenance.diagnostic_media.results_documented",
+  "nist_800_171.maintenance.diagnostic_media.scanned_before_use",
+  "nist_800_171.maintenance.maintenance_schedule",
+  "nist_800_171.maintenance.maintenance_schedule.performed_regularly",
+  "nist_800_171.maintenance.maintenance_schedule.records_maintained",
+  "nist_800_171.maintenance.maintenance_schedule.schedule_documented",
+  "nist_800_171.maintenance.remote_maintenance",
+  "nist_800_171.maintenance.remote_maintenance.connections_monitored",
+  "nist_800_171.maintenance.remote_maintenance.mfa_required",
+  "nist_800_171.maintenance.remote_maintenance.session_terminated_after",
+  "nist_800_171.maintenance.sanitization",
+  "nist_800_171.maintenance.sanitization.process_documented",
+  "nist_800_171.maintenance.sanitization.removed_equipment_sanitized",
+  "nist_800_171.maintenance.sanitization.sanitization_verified",
+  "nist_800_171.maintenance.supervision",
+  "nist_800_171.maintenance.supervision.supervision_documented",
+  "nist_800_171.maintenance.supervision.supervisor_has_required_access",
+  "nist_800_171.maintenance.supervision.unauthorized_personnel_supervised",
+  "nist_800_171.media_protection",
+  "nist_800_171.media_protection.access",
+  "nist_800_171.media_protection.access.access_enforcement_implemented",
+  "nist_800_171.media_protection.access.access_list_documented",
+  "nist_800_171.media_protection.access.authorized_users_only",
+  "nist_800_171.media_protection.backup",
+  "nist_800_171.media_protection.backup.access_restricted",
+  "nist_800_171.media_protection.backup.backups_encrypted",
+  "nist_800_171.media_protection.backup.storage_location_secured",
+  "nist_800_171.media_protection.marking",
+  "nist_800_171.media_protection.marking.cui_markings_applied",
+  "nist_800_171.media_protection.marking.distribution_limitations_marked",
+  "nist_800_171.media_protection.marking.marking_policy_documented",
+  "nist_800_171.media_protection.physical",
+  "nist_800_171.media_protection.physical.access_controlled",
+  "nist_800_171.media_protection.physical.digital_media_secured",
+  "nist_800_171.media_protection.physical.paper_media_secured",
+  "nist_800_171.media_protection.portable_storage",
+  "nist_800_171.media_protection.portable_storage.enforcement_implemented",
+  "nist_800_171.media_protection.portable_storage.owner_identification_required",
+  "nist_800_171.media_protection.portable_storage.unidentified_devices_prohibited",
+  "nist_800_171.media_protection.removable",
+  "nist_800_171.media_protection.removable.approval_required",
+  "nist_800_171.media_protection.removable.technical_controls_implemented",
+  "nist_800_171.media_protection.removable.usage_policy_defined",
+  "nist_800_171.media_protection.sanitization",
+  "nist_800_171.media_protection.sanitization.method_documented",
+  "nist_800_171.media_protection.sanitization.sanitized_before_disposal",
+  "nist_800_171.media_protection.sanitization.sanitized_before_reuse",
+  "nist_800_171.media_protection.sanitization.verification_performed",
+  "nist_800_171.media_protection.transport",
+  "nist_800_171.media_protection.transport.access_controlled_during_transport",
+  "nist_800_171.media_protection.transport.accountability_maintained",
+  "nist_800_171.media_protection.transport.chain_of_custody_documented",
+  "nist_800_171.media_protection.transport_crypto",
+  "nist_800_171.media_protection.transport_crypto.approved_algorithms",
+  "nist_800_171.media_protection.transport_crypto.covers_all_cui_transport",
+  "nist_800_171.media_protection.transport_crypto.encryption_implemented",
+  "nist_800_171.personnel_security",
+  "nist_800_171.personnel_security.personnel_actions",
+  "nist_800_171.personnel_security.personnel_actions.access_revocation_timely",
+  "nist_800_171.personnel_security.personnel_actions.property_return_required",
+  "nist_800_171.personnel_security.personnel_actions.termination_procedures",
+  "nist_800_171.personnel_security.personnel_actions.transfer_procedures",
+  "nist_800_171.personnel_security.screening",
+  "nist_800_171.personnel_security.screening.background_checks_performed",
+  "nist_800_171.personnel_security.screening.criteria_documented",
+  "nist_800_171.personnel_security.screening.rescreening_policy",
+  "nist_800_171.physical_protection",
+  "nist_800_171.physical_protection.access",
+  "nist_800_171.physical_protection.access.access_controls_implemented",
+  "nist_800_171.physical_protection.access.access_list_maintained",
+  "nist_800_171.physical_protection.access.authorized_individuals_only",
+  "nist_800_171.physical_protection.access_devices",
+  "nist_800_171.physical_protection.access_devices.inventory_maintained",
+  "nist_800_171.physical_protection.access_devices.issuance_tracked",
+  "nist_800_171.physical_protection.access_devices.periodic_audit",
+  "nist_800_171.physical_protection.access_devices.revocation_procedures",
+  "nist_800_171.physical_protection.access_logs",
+  "nist_800_171.physical_protection.access_logs.covers_all_entry_points",
+  "nist_800_171.physical_protection.access_logs.logs_maintained",
+  "nist_800_171.physical_protection.access_logs.retention_period_days",
+  "nist_800_171.physical_protection.access_logs.reviewed_periodically",
+  "nist_800_171.physical_protection.alternate_sites",
+  "nist_800_171.physical_protection.alternate_sites.includes_remote_work",
+  "nist_800_171.physical_protection.alternate_sites.safeguards_defined",
+  "nist_800_171.physical_protection.alternate_sites.safeguards_enforced",
+  "nist_800_171.physical_protection.monitoring",
+  "nist_800_171.physical_protection.monitoring.facility_monitored",
+  "nist_800_171.physical_protection.monitoring.monitoring_continuous",
+  "nist_800_171.physical_protection.monitoring.support_infrastructure_monitored",
+  "nist_800_171.physical_protection.visitors",
+  "nist_800_171.physical_protection.visitors.activity_monitored",
+  "nist_800_171.physical_protection.visitors.escort_required",
+  "nist_800_171.physical_protection.visitors.visitor_log_maintained",
+  "nist_800_171.risk_assessment",
+  "nist_800_171.risk_assessment.assessment",
+  "nist_800_171.risk_assessment.assessment.covers_assets",
+  "nist_800_171.risk_assessment.assessment.covers_individuals",
+  "nist_800_171.risk_assessment.assessment.covers_operations",
+  "nist_800_171.risk_assessment.assessment.performed_annually",
+  "nist_800_171.risk_assessment.assessment.results_documented",
+  "nist_800_171.risk_assessment.remediation",
+  "nist_800_171.risk_assessment.remediation.critical_days",
+  "nist_800_171.risk_assessment.remediation.high_days",
+  "nist_800_171.risk_assessment.remediation.risk_based_prioritization",
+  "nist_800_171.risk_assessment.remediation.tracking_system",
+  "nist_800_171.risk_assessment.vulnerability_scanning",
+  "nist_800_171.risk_assessment.vulnerability_scanning.covers_all_systems",
+  "nist_800_171.risk_assessment.vulnerability_scanning.periodic_scans_performed",
+  "nist_800_171.risk_assessment.vulnerability_scanning.results_documented",
+  "nist_800_171.risk_assessment.vulnerability_scanning.triggered_on_new_vulnerabilities",
+  "nist_800_171.security_assessment",
+  "nist_800_171.security_assessment.continuous_monitoring",
+  "nist_800_171.security_assessment.continuous_monitoring.automated_where_possible",
+  "nist_800_171.security_assessment.continuous_monitoring.monitoring_implemented",
+  "nist_800_171.security_assessment.continuous_monitoring.ongoing_not_just_periodic",
+  "nist_800_171.security_assessment.controls_assessment",
+  "nist_800_171.security_assessment.controls_assessment.effectiveness_determined",
+  "nist_800_171.security_assessment.controls_assessment.independent_assessor",
+  "nist_800_171.security_assessment.controls_assessment.periodic_assessments",
+  "nist_800_171.security_assessment.controls_assessment.results_documented",
+  "nist_800_171.security_assessment.plans_of_action",
+  "nist_800_171.security_assessment.plans_of_action.deficiencies_tracked",
+  "nist_800_171.security_assessment.plans_of_action.milestones_defined",
+  "nist_800_171.security_assessment.plans_of_action.poam_documented",
+  "nist_800_171.security_assessment.plans_of_action.progress_monitored",
+  "nist_800_171.security_assessment.ssp",
+  "nist_800_171.security_assessment.ssp.environment_described",
+  "nist_800_171.security_assessment.ssp.interconnections_documented",
+  "nist_800_171.security_assessment.ssp.plan_documented",
+  "nist_800_171.security_assessment.ssp.requirements_implementation_described",
+  "nist_800_171.security_assessment.ssp.system_boundary_defined",
+  "nist_800_171.security_assessment.ssp.updated_periodically",
+  "nist_800_171.system_communications",
+  "nist_800_171.system_communications.authenticity",
+  "nist_800_171.system_communications.authenticity.mechanisms_documented",
+  "nist_800_171.system_communications.authenticity.replay_protection",
+  "nist_800_171.system_communications.authenticity.session_authentication",
+  "nist_800_171.system_communications.boundary",
+  "nist_800_171.system_communications.boundary.communications_controlled",
+  "nist_800_171.system_communications.boundary.external_boundaries_monitored",
+  "nist_800_171.system_communications.boundary.key_internal_boundaries_monitored",
+  "nist_800_171.system_communications.collaborative_devices",
+  "nist_800_171.system_communications.collaborative_devices.policy_documented",
+  "nist_800_171.system_communications.collaborative_devices.presence_indicator",
+  "nist_800_171.system_communications.collaborative_devices.remote_activation_prohibited",
+  "nist_800_171.system_communications.data_at_rest",
+  "nist_800_171.system_communications.data_at_rest.approved_algorithms",
+  "nist_800_171.system_communications.data_at_rest.covers_all_cui_storage",
+  "nist_800_171.system_communications.data_at_rest.encryption_implemented",
+  "nist_800_171.system_communications.deny_all",
+  "nist_800_171.system_communications.deny_all.default_deny_implemented",
+  "nist_800_171.system_communications.deny_all.exceptions_documented",
+  "nist_800_171.system_communications.deny_all.permit_by_exception",
+  "nist_800_171.system_communications.dmz",
+  "nist_800_171.system_communications.dmz.internal_network_protected",
+  "nist_800_171.system_communications.dmz.physical_or_logical_separation",
+  "nist_800_171.system_communications.dmz.public_components_separated",
+  "nist_800_171.system_communications.engineering",
+  "nist_800_171.system_communications.engineering.principles_documented",
+  "nist_800_171.system_communications.engineering.secure_sdlc",
+  "nist_800_171.system_communications.engineering.security_by_design",
+  "nist_800_171.system_communications.fips",
+  "nist_800_171.system_communications.fips.covers_cui_protection",
+  "nist_800_171.system_communications.fips.fips_validated_modules",
+  "nist_800_171.system_communications.fips.inventory_maintained",
+  "nist_800_171.system_communications.key_management",
+  "nist_800_171.system_communications.key_management.key_destruction_procedures",
+  "nist_800_171.system_communications.key_management.key_distribution_secured",
+  "nist_800_171.system_communications.key_management.key_generation_documented",
+  "nist_800_171.system_communications.key_management.key_rotation_policy",
+  "nist_800_171.system_communications.mobile_code",
+  "nist_800_171.system_communications.mobile_code.monitoring_implemented",
+  "nist_800_171.system_communications.mobile_code.technical_controls",
+  "nist_800_171.system_communications.mobile_code.usage_policy_defined",
+  "nist_800_171.system_communications.separation",
+  "nist_800_171.system_communications.separation.admin_interfaces_distinct",
+  "nist_800_171.system_communications.separation.technical_controls_implemented",
+  "nist_800_171.system_communications.separation.user_mgmt_separated",
+  "nist_800_171.system_communications.session_timeout",
+  "nist_800_171.system_communications.session_timeout.all_connection_types_covered",
+  "nist_800_171.system_communications.session_timeout.automatic_termination",
+  "nist_800_171.system_communications.session_timeout.inactivity_timeout_defined",
+  "nist_800_171.system_communications.shared_resources",
+  "nist_800_171.system_communications.shared_resources.controls_documented",
+  "nist_800_171.system_communications.shared_resources.resource_isolation",
+  "nist_800_171.system_communications.shared_resources.unauthorized_transfer_prevented",
+  "nist_800_171.system_communications.split_tunneling",
+  "nist_800_171.system_communications.split_tunneling.policy_enforced",
+  "nist_800_171.system_communications.split_tunneling.prevention_implemented",
+  "nist_800_171.system_communications.split_tunneling.vpn_configured_correctly",
+  "nist_800_171.system_communications.transmission",
+  "nist_800_171.system_communications.transmission.approved_algorithms",
+  "nist_800_171.system_communications.transmission.covers_all_cui_transmission",
+  "nist_800_171.system_communications.transmission.encryption_implemented",
+  "nist_800_171.system_communications.voip",
+  "nist_800_171.system_communications.voip.monitoring_implemented",
+  "nist_800_171.system_communications.voip.technical_controls",
+  "nist_800_171.system_communications.voip.usage_policy_defined",
+  "nist_800_171.system_information",
+  "nist_800_171.system_information.alerts",
+  "nist_800_171.system_information.alerts.advisories_tracked",
+  "nist_800_171.system_information.alerts.monitoring_implemented",
+  "nist_800_171.system_information.alerts.response_procedures_defined",
+  "nist_800_171.system_information.alerts.subscribed_to_threat_feeds",
+  "nist_800_171.system_information.attack_detection",
+  "nist_800_171.system_information.attack_detection.inbound_traffic_monitored",
+  "nist_800_171.system_information.attack_detection.ioc_detection",
+  "nist_800_171.system_information.attack_detection.outbound_traffic_monitored",
+  "nist_800_171.system_information.attack_detection.system_monitoring",
+  "nist_800_171.system_information.flaws",
+  "nist_800_171.system_information.flaws.identification_process",
+  "nist_800_171.system_information.flaws.reporting_process",
+  "nist_800_171.system_information.flaws.timely_correction",
+  "nist_800_171.system_information.flaws.tracking_system",
+  "nist_800_171.system_information.malicious_code",
+  "nist_800_171.system_information.malicious_code.approved_solution",
+  "nist_800_171.system_information.malicious_code.protection_at_entry_exit",
+  "nist_800_171.system_information.malicious_code.server_protection",
+  "nist_800_171.system_information.malicious_code.workstation_protection",
+  "nist_800_171.system_information.malicious_code_updates",
+  "nist_800_171.system_information.malicious_code_updates.all_systems_covered",
+  "nist_800_171.system_information.malicious_code_updates.automatic_updates",
+  "nist_800_171.system_information.malicious_code_updates.update_frequency_defined",
+  "nist_800_171.system_information.scanning",
+  "nist_800_171.system_information.scanning.external_source_files_scanned",
+  "nist_800_171.system_information.scanning.periodic_scans_performed",
+  "nist_800_171.system_information.scanning.real_time_scanning",
+  "nist_800_171.system_information.scanning.scan_schedule_defined",
+  "nist_800_171.system_information.unauthorized_use",
+  "nist_800_171.system_information.unauthorized_use.anomaly_detection",
+  "nist_800_171.system_information.unauthorized_use.baseline_established",
+  "nist_800_171.system_information.unauthorized_use.detection_mechanisms",
+  "nist_800_171.system_information.unauthorized_use.response_procedures",
+  "nist_sp_800_171",
+  "nist_sp_800_171.requirements",
+  "nist_sp_800_171.requirements[\"03.04.10\"]",
+  "nist_sp_800_171.requirements[\"03.04.11\"]",
+  "nist_sp_800_171.requirements[\"03.04.12\"]",
+  "nist_sp_800_171.requirements[\"03.05.12\"]",
+  "nist_sp_800_171.requirements[\"03.06.04\"]",
+  "nist_sp_800_171.requirements[\"03.06.05\"]",
+  "nist_sp_800_171.requirements[\"03.10.08\"]",
+  "nist_sp_800_171.requirements[\"03.11.04\"]",
+  "nist_sp_800_171.requirements[\"03.12.05\"]",
+  "nist_sp_800_171.requirements[\"03.14.08\"]",
+  "nist_sp_800_171.requirements[\"03.15.01\"]",
+  "nist_sp_800_171.requirements[\"03.15.03\"]",
+  "nist_sp_800_171.requirements[\"03.16.01\"]",
+  "nist_sp_800_171.requirements[\"03.16.02\"]",
+  "nist_sp_800_171.requirements[\"03.16.03\"]",
+  "nist_sp_800_171.requirements[\"03.17.01\"]",
+  "nist_sp_800_171.requirements[\"03.17.02\"]",
+  "nist_sp_800_171.requirements[\"03.17.03\"]"
+ ]
+}

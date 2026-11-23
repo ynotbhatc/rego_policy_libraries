@@ -1,0 +1,29 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/dfars_7012/schema.json",
+ "title": "Input facts for dfars_7012",
+ "description": "Input paths referenced in the sources of frameworks/federal/dfars_7012/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "dfars_7012",
+ "x-entrypoint": "data.dfars_7012.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/federal/dfars_7012/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "dfars_7012": {
+   "description": "Read in dfars_7012_main.rego.",
+   "properties": {
+    "obligations": {
+     "description": "Read in dfars_7012_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "dfars_7012",
+  "dfars_7012.obligations"
+ ]
+}

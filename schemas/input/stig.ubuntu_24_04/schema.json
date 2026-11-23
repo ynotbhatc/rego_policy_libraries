@@ -1,0 +1,331 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.ubuntu_24_04/schema.json",
+ "title": "Input facts for stig.ubuntu_24_04",
+ "description": "Facts the module in benchmarks/stig/ubuntu_24_04/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig.ubuntu_24_04",
+ "x-entrypoint": "data.stig.ubuntu_24_04.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/ubuntu_24_04/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.ubuntu_24_04_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "fips": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "enabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "gdm": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "ctrl_alt_del_disabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "grub": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "password_required": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "os": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "vendor_supported": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "packages": {
+   "description": "Read in core.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "string",
+    "x-type-source": "fixture",
+    "examples": [
+     "openssh-server"
+    ]
+   },
+   "examples": [
+    [
+     "openssh-server"
+    ]
+   ]
+  },
+  "pam": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "nullok_present": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
+    }
+   }
+  },
+  "passwd": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "blank_password_accounts": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    }
+   }
+  },
+  "services": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "kdump-tools": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "masked": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "ssh": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "active": {
+       "description": "Read in core.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "sshd_config": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "Ciphers": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes128-ctr"
+     ]
+    },
+    "ClientAliveCountMax": {
+     "description": "Read in core.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    },
+    "ClientAliveInterval": {
+     "description": "Read in core.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      600
+     ]
+    },
+    "MACs": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256"
+     ]
+    },
+    "PermitEmptyPasswords": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "no"
+     ]
+    },
+    "PermitUserEnvironment": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "no"
+     ]
+    },
+    "X11Forwarding": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "no"
+     ]
+    },
+    "X11UseLocalhost": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "yes"
+     ]
+    }
+   }
+  },
+  "sssd": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "pki_mapping_configured": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "sudo": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "only_required_members": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "sysctl": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "kernel.dmesg_restrict": {
+     "description": "Read in core.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_ubuntu_24_04_complete.rego."
+    }
+   }
+  },
+  "systemd": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "ctrl_alt_del_masked": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "fips",
+  "fips.enabled",
+  "gdm",
+  "gdm.ctrl_alt_del_disabled",
+  "grub",
+  "grub.password_required",
+  "os",
+  "os.vendor_supported",
+  "packages",
+  "pam",
+  "pam.nullok_present",
+  "passwd",
+  "passwd.blank_password_accounts",
+  "services",
+  "services.ssh",
+  "services.ssh.active",
+  "services[\"kdump-tools\"]",
+  "services[\"kdump-tools\"].masked",
+  "sshd_config",
+  "sshd_config.Ciphers",
+  "sshd_config.ClientAliveCountMax",
+  "sshd_config.ClientAliveInterval",
+  "sshd_config.MACs",
+  "sshd_config.PermitEmptyPasswords",
+  "sshd_config.PermitUserEnvironment",
+  "sshd_config.X11Forwarding",
+  "sshd_config.X11UseLocalhost",
+  "sssd",
+  "sssd.pki_mapping_configured",
+  "sudo",
+  "sudo.only_required_members",
+  "sysctl",
+  "sysctl[\"kernel.dmesg_restrict\"]",
+  "system_info",
+  "system_info.hostname",
+  "systemd",
+  "systemd.ctrl_alt_del_masked"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sentinel_ansible/schema.json",
+ "title": "Input facts for sentinel_ansible",
+ "description": "Input paths referenced in the sources of enforcement/ansible/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "sentinel_ansible",
+ "x-entrypoint": "data.sentinel_ansible.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "enforcement/ansible/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "lab_addresses": {
+   "description": "Read in repo_hygiene.rego."
+  },
+  "path": {
+   "description": "Read in repo_hygiene.rego."
+  },
+  "plays": {
+   "description": "Read in repo_hygiene.rego, sentinel_ansible.rego."
+  },
+  "sentinel_environment": {
+   "description": "Read in sentinel_ansible.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "lab_addresses",
+  "path",
+  "plays",
+  "sentinel_environment"
+ ]
+}

@@ -1,0 +1,181 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_vyos/schema.json",
+ "title": "Input facts for cis_vyos",
+ "description": "Input paths referenced in the sources of benchmarks/cis/network_devices/vyos/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cis_vyos",
+ "x-entrypoint": "data.cis_vyos.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "benchmarks/cis/network_devices/vyos/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "firewall": {
+   "description": "Read in cis_vyos.rego.",
+   "properties": {
+    "name": {
+     "description": "Read in cis_vyos.rego."
+    }
+   }
+  },
+  "interfaces": {
+   "description": "Read in cis_vyos.rego.",
+   "properties": {
+    "ethernet": {
+     "description": "Read in cis_vyos.rego."
+    }
+   }
+  },
+  "service": {
+   "description": "Read in cis_vyos.rego.",
+   "properties": {
+    "http": {
+     "description": "Read in cis_vyos.rego."
+    },
+    "snmp": {
+     "description": "Read in cis_vyos.rego.",
+     "properties": {
+      "community": {
+       "description": "Read in cis_vyos.rego."
+      },
+      "v3": {
+       "description": "Read in cis_vyos.rego."
+      }
+     }
+    },
+    "ssh": {
+     "description": "Read in cis_vyos.rego.",
+     "properties": {
+      "allow-root": {
+       "description": "Read in cis_vyos.rego."
+      },
+      "client-keepalive-interval": {
+       "description": "Read in cis_vyos.rego."
+      },
+      "disable-password-authentication": {
+       "description": "Read in cis_vyos.rego."
+      },
+      "v1-enabled": {
+       "description": "Read in cis_vyos.rego."
+      }
+     }
+    },
+    "telnet": {
+     "description": "Read in cis_vyos.rego."
+    }
+   }
+  },
+  "system": {
+   "description": "Read in cis_vyos.rego.",
+   "properties": {
+    "console": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "device": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ttyS0": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "timeout-login": {
+           "description": "Read in cis_vyos.rego."
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "domain-name": {
+     "description": "Read in cis_vyos.rego."
+    },
+    "host-name": {
+     "description": "Read in cis_vyos.rego."
+    },
+    "ip": {
+     "description": "Read in cis_vyos.rego."
+    },
+    "login": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "banner": {
+       "description": "Read in cis_vyos.rego."
+      },
+      "user": {
+       "description": "Read in cis_vyos.rego.",
+       "properties": {
+        "vyos": {
+         "description": "Read in cis_vyos.rego."
+        }
+       }
+      }
+     }
+    },
+    "name-server": {
+     "description": "Read in cis_vyos.rego."
+    },
+    "ntp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "server": {
+       "description": "Read in cis_vyos.rego."
+      }
+     }
+    },
+    "syslog": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "host": {
+       "description": "Read in cis_vyos.rego."
+      }
+     }
+    },
+    "time-zone": {
+     "description": "Read in cis_vyos.rego."
+    }
+   }
+  },
+  "version": {
+   "description": "Read in cis_vyos.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "firewall",
+  "firewall.name",
+  "interfaces",
+  "interfaces.ethernet",
+  "service",
+  "service.http",
+  "service.snmp",
+  "service.snmp.community",
+  "service.snmp.v3",
+  "service.ssh",
+  "service.ssh[\"allow-root\"]",
+  "service.ssh[\"client-keepalive-interval\"]",
+  "service.ssh[\"disable-password-authentication\"]",
+  "service.ssh[\"v1-enabled\"]",
+  "service.telnet",
+  "system",
+  "system.console",
+  "system.console.device",
+  "system.console.device.ttyS0",
+  "system.console.device.ttyS0[\"timeout-login\"]",
+  "system.ip",
+  "system.login",
+  "system.login.banner",
+  "system.login.user",
+  "system.login.user.vyos",
+  "system.ntp",
+  "system.ntp.server",
+  "system.syslog",
+  "system.syslog.host",
+  "system[\"domain-name\"]",
+  "system[\"host-name\"]",
+  "system[\"name-server\"]",
+  "system[\"time-zone\"]",
+  "version"
+ ]
+}

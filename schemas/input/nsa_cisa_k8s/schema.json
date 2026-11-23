@@ -1,0 +1,467 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nsa_cisa_k8s/schema.json",
+ "title": "Input facts for nsa_cisa_k8s",
+ "description": "Facts the module in benchmarks/nsa_cisa/kubernetes/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nsa_cisa_k8s",
+ "x-entrypoint": "data.nsa_cisa_k8s.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/nsa_cisa/kubernetes/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nsa_cisa_k8s.main_test.base_input",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in nsa_cisa_k8s_validation.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-17"
+   ]
+  },
+  "cluster_name": {
+   "description": "Read in nsa_cisa_k8s_validation.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "prod-cluster"
+   ]
+  },
+  "nsa_cisa": {
+   "description": "Read in nsa_cisa_k8s_validation.rego.",
+   "type": "object",
+   "properties": {
+    "authn_authz": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "anonymous_auth_disabled": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kubelet_anonymous_disabled": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kubelet_client_tls_auth": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "least_privilege_roles": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "rbac_enabled": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "strong_user_authentication": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "logging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "audit_logging_enabled": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_policy_configured": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logs_aggregated_externally": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logs_survive_node_failure": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "monitoring_alerting_configured": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pod_baselines_established": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "rbac_periodically_audited": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "api_server_not_internet_exposed": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cloud_metadata_access_blocked": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "control_plane_firewalled": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "control_plane_separate_network": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "control_plane_tls": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "default_deny_policy": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "etcd_access_limited": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "etcd_dedicated_tls": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "etcd_encrypted_at_rest": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "namespaces_partition_resources": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "network_policies_defined": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "resource_limits_enforced": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "secrets_encrypted_not_in_config": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "traffic_tls12_plus": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "pod_security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "host_namespaces_denied": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "hostpath_denied": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "image_scanning_in_pipeline": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "image_signature_verification": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kernel_hardening_applied": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "nonroot_containers": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pod_security_admission_enforced": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privileged_containers_prevented": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "readonly_root_filesystems": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "root_execution_rejected": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sa_token_automount_disabled_where_unneeded": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "trusted_registries_enforced": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "updates": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "cis_benchmark_adherence": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "patches_promptly_applied": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "periodic_scans_and_pentests": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unused_components_removed": {
+       "description": "Read in nsa_cisa_k8s_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "cluster_name",
+  "nsa_cisa",
+  "nsa_cisa.authn_authz",
+  "nsa_cisa.authn_authz.anonymous_auth_disabled",
+  "nsa_cisa.authn_authz.kubelet_anonymous_disabled",
+  "nsa_cisa.authn_authz.kubelet_client_tls_auth",
+  "nsa_cisa.authn_authz.least_privilege_roles",
+  "nsa_cisa.authn_authz.rbac_enabled",
+  "nsa_cisa.authn_authz.strong_user_authentication",
+  "nsa_cisa.logging",
+  "nsa_cisa.logging.audit_logging_enabled",
+  "nsa_cisa.logging.audit_policy_configured",
+  "nsa_cisa.logging.logs_aggregated_externally",
+  "nsa_cisa.logging.logs_survive_node_failure",
+  "nsa_cisa.logging.monitoring_alerting_configured",
+  "nsa_cisa.logging.pod_baselines_established",
+  "nsa_cisa.logging.rbac_periodically_audited",
+  "nsa_cisa.network",
+  "nsa_cisa.network.api_server_not_internet_exposed",
+  "nsa_cisa.network.cloud_metadata_access_blocked",
+  "nsa_cisa.network.control_plane_firewalled",
+  "nsa_cisa.network.control_plane_separate_network",
+  "nsa_cisa.network.control_plane_tls",
+  "nsa_cisa.network.default_deny_policy",
+  "nsa_cisa.network.etcd_access_limited",
+  "nsa_cisa.network.etcd_dedicated_tls",
+  "nsa_cisa.network.etcd_encrypted_at_rest",
+  "nsa_cisa.network.namespaces_partition_resources",
+  "nsa_cisa.network.network_policies_defined",
+  "nsa_cisa.network.resource_limits_enforced",
+  "nsa_cisa.network.secrets_encrypted_not_in_config",
+  "nsa_cisa.network.traffic_tls12_plus",
+  "nsa_cisa.pod_security",
+  "nsa_cisa.pod_security.host_namespaces_denied",
+  "nsa_cisa.pod_security.hostpath_denied",
+  "nsa_cisa.pod_security.image_scanning_in_pipeline",
+  "nsa_cisa.pod_security.image_signature_verification",
+  "nsa_cisa.pod_security.kernel_hardening_applied",
+  "nsa_cisa.pod_security.nonroot_containers",
+  "nsa_cisa.pod_security.pod_security_admission_enforced",
+  "nsa_cisa.pod_security.privileged_containers_prevented",
+  "nsa_cisa.pod_security.readonly_root_filesystems",
+  "nsa_cisa.pod_security.root_execution_rejected",
+  "nsa_cisa.pod_security.sa_token_automount_disabled_where_unneeded",
+  "nsa_cisa.pod_security.trusted_registries_enforced",
+  "nsa_cisa.updates",
+  "nsa_cisa.updates.cis_benchmark_adherence",
+  "nsa_cisa.updates.patches_promptly_applied",
+  "nsa_cisa.updates.periodic_scans_and_pentests",
+  "nsa_cisa.updates.unused_components_removed"
+ ]
+}

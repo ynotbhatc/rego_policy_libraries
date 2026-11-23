@@ -1,0 +1,258 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/pqc/schema.json",
+ "title": "Input facts for pqc",
+ "description": "Facts the module in frameworks/federal/pqc/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "pqc",
+ "x-entrypoint": "data.pqc.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/pqc/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.pqc.main_test.base",
+ "type": "object",
+ "properties": {
+  "pqc": {
+   "description": "Read in cswp39_crypto_agility.rego, pqc_main.rego.",
+   "type": "object",
+   "properties": {
+    "agility": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "algorithms_replaceable": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "library_inventory_maintained": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vendor_roadmaps_tracked": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "crypto_inventory": {
+     "description": "Read in pqc_main.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "algorithm": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "ML-KEM-1024"
+        ]
+       },
+       "asset": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "api-gw"
+        ]
+       },
+       "pqc_migration_planned": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "usage": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "key_establishment"
+        ]
+       }
+      }
+     }
+    },
+    "cswp39": {
+     "description": "Read in cswp39_crypto_agility.rego.",
+     "type": "object",
+     "properties": {
+      "practices": {
+       "description": "Read in cswp39_crypto_agility.rego."
+      }
+     }
+    },
+    "federal": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "contractor_fips_pqc_required": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "key_establishment_migration_on_track": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "signature_migration_on_track": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tls_endpoints_support_pqc_kem": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "complete": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "hndl_data_identified": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "migration_plan_exists": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "refreshed_within_year": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "nss": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "acquisitions_require_cnsa": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "network_equipment_on_track": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sw_fw_signing_cnsa": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "symmetric_cnsa_compliant": {
+       "description": "Read in pqc_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "profile": {
+     "description": "Read in pqc_main.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "nss"
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "pqc",
+  "pqc.agility",
+  "pqc.agility.algorithms_replaceable",
+  "pqc.agility.library_inventory_maintained",
+  "pqc.agility.vendor_roadmaps_tracked",
+  "pqc.crypto_inventory",
+  "pqc.crypto_inventory[].algorithm",
+  "pqc.crypto_inventory[].asset",
+  "pqc.crypto_inventory[].pqc_migration_planned",
+  "pqc.crypto_inventory[].usage",
+  "pqc.cswp39",
+  "pqc.cswp39.practices",
+  "pqc.federal",
+  "pqc.federal.contractor_fips_pqc_required",
+  "pqc.federal.key_establishment_migration_on_track",
+  "pqc.federal.signature_migration_on_track",
+  "pqc.federal.tls_endpoints_support_pqc_kem",
+  "pqc.inventory",
+  "pqc.inventory.complete",
+  "pqc.inventory.hndl_data_identified",
+  "pqc.inventory.migration_plan_exists",
+  "pqc.inventory.refreshed_within_year",
+  "pqc.nss",
+  "pqc.nss.acquisitions_require_cnsa",
+  "pqc.nss.network_equipment_on_track",
+  "pqc.nss.sw_fw_signing_cnsa",
+  "pqc.nss.symmetric_cnsa_compliant",
+  "pqc.profile"
+ ]
+}

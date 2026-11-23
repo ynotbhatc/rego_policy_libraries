@@ -1,0 +1,33 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cisa_tic3/schema.json",
+ "title": "Input facts for cisa_tic3",
+ "description": "Input paths referenced in the sources of frameworks/federal/cisa_tic3/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cisa_tic3",
+ "x-entrypoint": "data.cisa_tic3.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/federal/cisa_tic3/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "cisa_tic3": {
+   "description": "Read in cisa_tic3_main.rego.",
+   "properties": {
+    "capabilities": {
+     "description": "Read in cisa_tic3_main.rego."
+    },
+    "pep_groups_in_scope": {
+     "description": "Read in cisa_tic3_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cisa_tic3",
+  "cisa_tic3.capabilities",
+  "cisa_tic3.pep_groups_in_scope"
+ ]
+}

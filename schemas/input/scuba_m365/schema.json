@@ -1,0 +1,1319 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/scuba_m365/schema.json",
+ "title": "Input facts for scuba_m365",
+ "description": "Facts the module in benchmarks/scuba/m365/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "scuba_m365",
+ "x-entrypoint": "data.scuba_m365.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/scuba/m365/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.scuba_m365.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in scuba_m365_complete.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-16"
+   ]
+  },
+  "scuba": {
+   "description": "Read in aad_validation.rego, defender_validation.rego, exo_validation.rego, powerbi_validation.rego and 4 more.",
+   "type": "object",
+   "properties": {
+    "aad": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ai": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "risky_agents_blocked": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "apps": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "admin_consent_workflow": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "certificate_lifetime_days": {
+         "description": "Read in aad_validation.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          365
+         ]
+        },
+        "password_addition_blocked": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "password_lifetime_days": {
+         "description": "Read in aad_validation.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          90
+         ]
+        },
+        "registration_admin_only": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "user_consent_restricted": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "auth": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "authenticator": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "Read in aad_validation.rego.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            true
+           ]
+          },
+          "login_context_shown": {
+           "description": "Read in aad_validation.rego.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            true
+           ]
+          }
+         }
+        },
+        "device_code_blocked": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "managed_devices_for_mfa_registration": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "managed_devices_required": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "methods_migration_complete": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "mfa_enforced_all_users": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "phishing_resistant_mfa_all_users": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "phishing_resistant_mfa_privileged": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "weak_methods_disabled": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "guests": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access_restricted": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "invite_domain_allowlist": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "invites_restricted_to_inviter_role": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "legacy_auth_blocked": {
+       "description": "Read in aad_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "security_logs_to_soc": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "passwords": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "expiration_disabled": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "privileged": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "assignment_alerts": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "cloud_only": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ga_activation_alerts": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ga_activation_requires_approval": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "global_admin_count": {
+         "description": "Read in aad_validation.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          3
+         ]
+        },
+        "granular_roles_used": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "no_permanent_active_assignments": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "pam_provisioning_only": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "role_activation_alerts": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "risk": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "high_risk_signins_blocked": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "high_risk_user_alerts": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "high_risk_users_blocked": {
+         "description": "Read in aad_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "defender": {
+     "description": "Read in defender_validation.rego."
+    },
+    "exo": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "auto_forwarding_disabled": {
+       "description": "Read in exo_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dkim_enabled_all_domains": {
+       "description": "Read in exo_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dmarc": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "agency_poc_included": {
+         "description": "Read in exo_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "policy_reject": {
+         "description": "Read in exo_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "published_all_domains": {
+         "description": "Read in exo_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "rua_includes_cisa": {
+         "description": "Read in exo_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "external_sender_warnings": {
+       "description": "Read in exo_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "mailbox_auditing_enabled": {
+       "description": "Read in exo_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sharing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "calendar_not_all_domains": {
+         "description": "Read in exo_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "contacts_not_all_domains": {
+         "description": "Read in exo_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "smtp_auth_disabled": {
+       "description": "Read in exo_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "spf_fail_policy_all_domains": {
+       "description": "Read in exo_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "powerbi": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "external_invitations_disabled": {
+       "description": "Read in powerbi_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "guest_access_disabled": {
+       "description": "Read in powerbi_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "publish_to_web_disabled": {
+       "description": "Read in powerbi_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "python_r_interactions_disabled": {
+       "description": "Read in powerbi_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "resourcekey_auth_blocked": {
+       "description": "Read in powerbi_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sensitivity_labels_enabled": {
+       "description": "Read in powerbi_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "service_principals": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "api_restricted_to_groups": {
+         "description": "Read in powerbi_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "profiles_restricted_to_groups": {
+         "description": "Read in powerbi_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "powerplatform": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "apps_csp_enforced": {
+       "description": "Read in powerplatform_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dlp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "default_environment_policy": {
+         "description": "Read in powerplatform_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "nondefault_environments_covered": {
+         "description": "Read in powerplatform_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "environment_creation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "production_restricted_to_admins": {
+         "description": "Read in powerplatform_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "trial_restricted_to_admins": {
+         "description": "Read in powerplatform_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "power_pages_creation_restricted": {
+       "description": "Read in powerplatform_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "share_with_everyone_disabled": {
+       "description": "Read in powerplatform_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tenant_isolation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "connection_allowlist": {
+         "description": "Read in powerplatform_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "enabled": {
+         "description": "Read in powerplatform_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "securitysuite": {
+     "description": "Read in defender_validation.rego, scuba_m365_complete.rego, securitysuite_validation.rego.",
+     "type": "object",
+     "properties": {
+      "alerts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Suspicious email sending patterns detected"
+          ]
+         },
+         "examples": [
+          [
+           "Suspicious email sending patterns detected",
+           "Suspicious Connector Activity",
+           "Suspicious Email Forwarding Activity"
+          ]
+         ]
+        },
+        "routed_to_monitored_target": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "allow_lists": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "no_ip_allow_list": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "safe_list_disabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "antispam": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "no_allowed_domains": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "spam_phish_not_in_inbox": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "audit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "retrievable_retention_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          365
+         ]
+        },
+        "searchable_retention_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          90
+         ]
+        },
+        "unified_logging_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "dlp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "applied_all_workloads": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "block_everyone_action": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "custom_pii_policy": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "restricted_apps_blocked": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "user_notifications": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "impersonation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "domain_protection_owned": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "domain_protection_partners": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "user_protection_sensitive": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "user_warnings": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "links": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "click_tracking_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "download_links_scanned": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "url_blocklist_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "malware": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "click_to_run_blocked": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "post_delivery_scan": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "quarantine_or_drop": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "safe_attachments": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "spo_odb_teams_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "sharepoint": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "anyone_links": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "expiration_days": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          30
+         ]
+        },
+        "view_only": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "default_sharing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "permission_view_only": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "scope_specific_people": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "external_sharing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "domain_allowlist": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "odb_restricted": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "spo_restricted": {
+         "description": "Read in sharepoint_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "verification_code_reauth_days": {
+       "description": "Read in sharepoint_validation.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        30
+       ]
+      }
+     }
+    },
+    "teams": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "apps": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "custom_approved_only": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "microsoft_apps_approved_only": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "third_party_approved_only": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "email_integration_disabled": {
+       "description": "Read in teams_validation.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "external_access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "per_domain_only": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unmanaged_inbound_blocked": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unmanaged_outbound_blocked": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "meetings": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "anonymous_start_blocked": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "dialin_lobby_enforced": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "external_control_blocked": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "internal_auto_admit": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "lobby_for_anonymous_and_dialin": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "no_always_record": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "recording_disabled": {
+         "description": "Read in teams_validation.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "tenant_name": {
+   "description": "Read in scuba_m365_complete.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "example.onmicrosoft.com"
+   ]
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "scuba",
+  "scuba.aad",
+  "scuba.aad.ai",
+  "scuba.aad.ai.risky_agents_blocked",
+  "scuba.aad.apps",
+  "scuba.aad.apps.admin_consent_workflow",
+  "scuba.aad.apps.certificate_lifetime_days",
+  "scuba.aad.apps.password_addition_blocked",
+  "scuba.aad.apps.password_lifetime_days",
+  "scuba.aad.apps.registration_admin_only",
+  "scuba.aad.apps.user_consent_restricted",
+  "scuba.aad.auth",
+  "scuba.aad.auth.authenticator",
+  "scuba.aad.auth.authenticator.enabled",
+  "scuba.aad.auth.authenticator.login_context_shown",
+  "scuba.aad.auth.device_code_blocked",
+  "scuba.aad.auth.managed_devices_for_mfa_registration",
+  "scuba.aad.auth.managed_devices_required",
+  "scuba.aad.auth.methods_migration_complete",
+  "scuba.aad.auth.mfa_enforced_all_users",
+  "scuba.aad.auth.phishing_resistant_mfa_all_users",
+  "scuba.aad.auth.phishing_resistant_mfa_privileged",
+  "scuba.aad.auth.weak_methods_disabled",
+  "scuba.aad.guests",
+  "scuba.aad.guests.access_restricted",
+  "scuba.aad.guests.invite_domain_allowlist",
+  "scuba.aad.guests.invites_restricted_to_inviter_role",
+  "scuba.aad.legacy_auth_blocked",
+  "scuba.aad.logging",
+  "scuba.aad.logging.security_logs_to_soc",
+  "scuba.aad.passwords",
+  "scuba.aad.passwords.expiration_disabled",
+  "scuba.aad.privileged",
+  "scuba.aad.privileged.assignment_alerts",
+  "scuba.aad.privileged.cloud_only",
+  "scuba.aad.privileged.ga_activation_alerts",
+  "scuba.aad.privileged.ga_activation_requires_approval",
+  "scuba.aad.privileged.global_admin_count",
+  "scuba.aad.privileged.granular_roles_used",
+  "scuba.aad.privileged.no_permanent_active_assignments",
+  "scuba.aad.privileged.pam_provisioning_only",
+  "scuba.aad.privileged.role_activation_alerts",
+  "scuba.aad.risk",
+  "scuba.aad.risk.high_risk_signins_blocked",
+  "scuba.aad.risk.high_risk_user_alerts",
+  "scuba.aad.risk.high_risk_users_blocked",
+  "scuba.defender",
+  "scuba.exo",
+  "scuba.exo.auto_forwarding_disabled",
+  "scuba.exo.dkim_enabled_all_domains",
+  "scuba.exo.dmarc",
+  "scuba.exo.dmarc.agency_poc_included",
+  "scuba.exo.dmarc.policy_reject",
+  "scuba.exo.dmarc.published_all_domains",
+  "scuba.exo.dmarc.rua_includes_cisa",
+  "scuba.exo.external_sender_warnings",
+  "scuba.exo.mailbox_auditing_enabled",
+  "scuba.exo.sharing",
+  "scuba.exo.sharing.calendar_not_all_domains",
+  "scuba.exo.sharing.contacts_not_all_domains",
+  "scuba.exo.smtp_auth_disabled",
+  "scuba.exo.spf_fail_policy_all_domains",
+  "scuba.powerbi",
+  "scuba.powerbi.external_invitations_disabled",
+  "scuba.powerbi.guest_access_disabled",
+  "scuba.powerbi.publish_to_web_disabled",
+  "scuba.powerbi.python_r_interactions_disabled",
+  "scuba.powerbi.resourcekey_auth_blocked",
+  "scuba.powerbi.sensitivity_labels_enabled",
+  "scuba.powerbi.service_principals",
+  "scuba.powerbi.service_principals.api_restricted_to_groups",
+  "scuba.powerbi.service_principals.profiles_restricted_to_groups",
+  "scuba.powerplatform",
+  "scuba.powerplatform.apps_csp_enforced",
+  "scuba.powerplatform.dlp",
+  "scuba.powerplatform.dlp.default_environment_policy",
+  "scuba.powerplatform.dlp.nondefault_environments_covered",
+  "scuba.powerplatform.environment_creation",
+  "scuba.powerplatform.environment_creation.production_restricted_to_admins",
+  "scuba.powerplatform.environment_creation.trial_restricted_to_admins",
+  "scuba.powerplatform.power_pages_creation_restricted",
+  "scuba.powerplatform.share_with_everyone_disabled",
+  "scuba.powerplatform.tenant_isolation",
+  "scuba.powerplatform.tenant_isolation.connection_allowlist",
+  "scuba.powerplatform.tenant_isolation.enabled",
+  "scuba.securitysuite",
+  "scuba.securitysuite.alerts",
+  "scuba.securitysuite.alerts.enabled",
+  "scuba.securitysuite.alerts.routed_to_monitored_target",
+  "scuba.securitysuite.allow_lists",
+  "scuba.securitysuite.allow_lists.no_ip_allow_list",
+  "scuba.securitysuite.allow_lists.safe_list_disabled",
+  "scuba.securitysuite.antispam",
+  "scuba.securitysuite.antispam.no_allowed_domains",
+  "scuba.securitysuite.antispam.spam_phish_not_in_inbox",
+  "scuba.securitysuite.audit",
+  "scuba.securitysuite.audit.retrievable_retention_days",
+  "scuba.securitysuite.audit.searchable_retention_days",
+  "scuba.securitysuite.audit.unified_logging_enabled",
+  "scuba.securitysuite.dlp",
+  "scuba.securitysuite.dlp.applied_all_workloads",
+  "scuba.securitysuite.dlp.block_everyone_action",
+  "scuba.securitysuite.dlp.custom_pii_policy",
+  "scuba.securitysuite.dlp.restricted_apps_blocked",
+  "scuba.securitysuite.dlp.user_notifications",
+  "scuba.securitysuite.impersonation",
+  "scuba.securitysuite.impersonation.domain_protection_owned",
+  "scuba.securitysuite.impersonation.domain_protection_partners",
+  "scuba.securitysuite.impersonation.user_protection_sensitive",
+  "scuba.securitysuite.impersonation.user_warnings",
+  "scuba.securitysuite.links",
+  "scuba.securitysuite.links.click_tracking_enabled",
+  "scuba.securitysuite.links.download_links_scanned",
+  "scuba.securitysuite.links.url_blocklist_enabled",
+  "scuba.securitysuite.malware",
+  "scuba.securitysuite.malware.click_to_run_blocked",
+  "scuba.securitysuite.malware.post_delivery_scan",
+  "scuba.securitysuite.malware.quarantine_or_drop",
+  "scuba.securitysuite.safe_attachments",
+  "scuba.securitysuite.safe_attachments.spo_odb_teams_enabled",
+  "scuba.sharepoint",
+  "scuba.sharepoint.anyone_links",
+  "scuba.sharepoint.anyone_links.expiration_days",
+  "scuba.sharepoint.anyone_links.view_only",
+  "scuba.sharepoint.default_sharing",
+  "scuba.sharepoint.default_sharing.permission_view_only",
+  "scuba.sharepoint.default_sharing.scope_specific_people",
+  "scuba.sharepoint.external_sharing",
+  "scuba.sharepoint.external_sharing.domain_allowlist",
+  "scuba.sharepoint.external_sharing.odb_restricted",
+  "scuba.sharepoint.external_sharing.spo_restricted",
+  "scuba.sharepoint.verification_code_reauth_days",
+  "scuba.teams",
+  "scuba.teams.apps",
+  "scuba.teams.apps.custom_approved_only",
+  "scuba.teams.apps.microsoft_apps_approved_only",
+  "scuba.teams.apps.third_party_approved_only",
+  "scuba.teams.email_integration_disabled",
+  "scuba.teams.external_access",
+  "scuba.teams.external_access.per_domain_only",
+  "scuba.teams.external_access.unmanaged_inbound_blocked",
+  "scuba.teams.external_access.unmanaged_outbound_blocked",
+  "scuba.teams.meetings",
+  "scuba.teams.meetings.anonymous_start_blocked",
+  "scuba.teams.meetings.dialin_lobby_enforced",
+  "scuba.teams.meetings.external_control_blocked",
+  "scuba.teams.meetings.internal_auto_admit",
+  "scuba.teams.meetings.lobby_for_anonymous_and_dialin",
+  "scuba.teams.meetings.no_always_record",
+  "scuba.teams.meetings.recording_disabled",
+  "tenant_name"
+ ]
+}

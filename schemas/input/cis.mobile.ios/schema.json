@@ -1,0 +1,740 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis.mobile.ios/schema.json",
+ "title": "Input facts for cis.mobile.ios",
+ "description": "Facts the module in benchmarks/cis/mobile_devices/ios/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis.mobile.ios",
+ "x-entrypoint": "data.cis.mobile.ios.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/mobile_devices/ios/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis.mobile.ios_test.green_end_user",
+ "type": "object",
+ "properties": {
+  "cis_profile": {
+   "description": "Read in cis_mobile_ios.rego, cis_mobile_ios_main.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      2
+     ]
+    },
+    "ownership": {
+     "description": "Read in cis_mobile_ios_main.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "end_user"
+     ]
+    }
+   }
+  },
+  "ios_profile": {
+   "description": "Read in cis_mobile_ios.rego.",
+   "type": "object",
+   "properties": {
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "airprint_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "app_privacy_report_enabled": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "auto_app_updates_enabled": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "auto_update_install_enabled": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "emergency_reset_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "find_my_enabled": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "iphone_mirroring_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "latest_hardware_for_high_value": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "lockdown_mode_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "lost_message_configured": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "mac_randomization_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "mail_privacy_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "managed_app_notifications": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "managed_safari_domains": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "not_jailbroken": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "private_relay_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "rcs_messaging_enabled": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sharing_access_reviewed": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "software_up_to_date": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "stolen_device_protection_enabled": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vpn_configured": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "mail_accounts": {
+     "description": "Read in cis_mobile_ios.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "PreventMove": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "allowMailDrop": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       }
+      }
+     }
+    },
+    "passcode": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "allowSimple": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "maxFailedAttempts": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        6
+       ]
+      },
+      "maxGracePeriod": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "maxInactivity": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "minLength": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        6
+       ]
+      },
+      "requireAlphanumeric": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "profile": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "consent_message": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Authorised use only"
+       ]
+      },
+      "removal": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "always"
+       ]
+      }
+     }
+    },
+    "restrictions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "allowActivityContinuation": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowAppCellularDataModification": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowApplePersonalizedAdvertising": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowAssistantWhileLocked": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowCloudBackup": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowCloudDocumentSync": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowCloudKeychainSync": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowDiagnosticSubmission": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowEnterpriseAppTrust": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowEraseContentAndSettings": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowExternalIntelligenceIntegrations": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowExternalIntelligenceIntegrationsSignIn": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowFilesNetworkDriveAccess": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowFilesUSBDriveAccess": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowHostPairing": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowLockScreenControlCenter": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowLockScreenNotificationsView": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowMailSmartReplies": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowMailSummary": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowManagedAppsCloudSync": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowNotesTranscription": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowNotesTranscriptionSummary": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowOpenFromManagedToUnmanaged": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowOpenFromUnmanagedToManaged": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowPasswordProximityRequests": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowPasswordSharing": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowProximitySetupToNewDevice": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowSafariSummary": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowScreenShot": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowUIConfigurationProfileInstallation": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowUSBRestrictedMode": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "allowUntrustedTLSPrompt": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowVPNCreation": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "allowWritingTools": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "forceAirDropUnmanaged": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "forceAuthenticationBeforeAutoFill": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "forceAutomaticDateAndTime": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "forceEncryptedBackup": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "forceWatchWristDetection": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "safariAcceptCookies": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "safariForceFraudWarning": {
+       "description": "Read in cis_mobile_ios.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_profile",
+  "cis_profile.level",
+  "cis_profile.ownership",
+  "ios_profile",
+  "ios_profile.attest",
+  "ios_profile.attest.airprint_reviewed",
+  "ios_profile.attest.app_privacy_report_enabled",
+  "ios_profile.attest.auto_app_updates_enabled",
+  "ios_profile.attest.auto_update_install_enabled",
+  "ios_profile.attest.emergency_reset_reviewed",
+  "ios_profile.attest.find_my_enabled",
+  "ios_profile.attest.iphone_mirroring_reviewed",
+  "ios_profile.attest.latest_hardware_for_high_value",
+  "ios_profile.attest.lockdown_mode_reviewed",
+  "ios_profile.attest.lost_message_configured",
+  "ios_profile.attest.mac_randomization_reviewed",
+  "ios_profile.attest.mail_privacy_reviewed",
+  "ios_profile.attest.managed_app_notifications",
+  "ios_profile.attest.managed_safari_domains",
+  "ios_profile.attest.not_jailbroken",
+  "ios_profile.attest.private_relay_reviewed",
+  "ios_profile.attest.rcs_messaging_enabled",
+  "ios_profile.attest.sharing_access_reviewed",
+  "ios_profile.attest.software_up_to_date",
+  "ios_profile.attest.stolen_device_protection_enabled",
+  "ios_profile.attest.vpn_configured",
+  "ios_profile.mail_accounts",
+  "ios_profile.mail_accounts[].PreventMove",
+  "ios_profile.mail_accounts[].allowMailDrop",
+  "ios_profile.passcode",
+  "ios_profile.passcode.allowSimple",
+  "ios_profile.passcode.maxFailedAttempts",
+  "ios_profile.passcode.maxGracePeriod",
+  "ios_profile.passcode.maxInactivity",
+  "ios_profile.passcode.minLength",
+  "ios_profile.passcode.requireAlphanumeric",
+  "ios_profile.profile",
+  "ios_profile.profile.consent_message",
+  "ios_profile.profile.removal",
+  "ios_profile.restrictions",
+  "ios_profile.restrictions.allowActivityContinuation",
+  "ios_profile.restrictions.allowAppCellularDataModification",
+  "ios_profile.restrictions.allowApplePersonalizedAdvertising",
+  "ios_profile.restrictions.allowAssistantWhileLocked",
+  "ios_profile.restrictions.allowCloudBackup",
+  "ios_profile.restrictions.allowCloudDocumentSync",
+  "ios_profile.restrictions.allowCloudKeychainSync",
+  "ios_profile.restrictions.allowDiagnosticSubmission",
+  "ios_profile.restrictions.allowEnterpriseAppTrust",
+  "ios_profile.restrictions.allowEraseContentAndSettings",
+  "ios_profile.restrictions.allowExternalIntelligenceIntegrations",
+  "ios_profile.restrictions.allowExternalIntelligenceIntegrationsSignIn",
+  "ios_profile.restrictions.allowFilesNetworkDriveAccess",
+  "ios_profile.restrictions.allowFilesUSBDriveAccess",
+  "ios_profile.restrictions.allowHostPairing",
+  "ios_profile.restrictions.allowLockScreenControlCenter",
+  "ios_profile.restrictions.allowLockScreenNotificationsView",
+  "ios_profile.restrictions.allowMailSmartReplies",
+  "ios_profile.restrictions.allowMailSummary",
+  "ios_profile.restrictions.allowManagedAppsCloudSync",
+  "ios_profile.restrictions.allowNotesTranscription",
+  "ios_profile.restrictions.allowNotesTranscriptionSummary",
+  "ios_profile.restrictions.allowOpenFromManagedToUnmanaged",
+  "ios_profile.restrictions.allowOpenFromUnmanagedToManaged",
+  "ios_profile.restrictions.allowPasswordProximityRequests",
+  "ios_profile.restrictions.allowPasswordSharing",
+  "ios_profile.restrictions.allowProximitySetupToNewDevice",
+  "ios_profile.restrictions.allowSafariSummary",
+  "ios_profile.restrictions.allowScreenShot",
+  "ios_profile.restrictions.allowUIConfigurationProfileInstallation",
+  "ios_profile.restrictions.allowUSBRestrictedMode",
+  "ios_profile.restrictions.allowUntrustedTLSPrompt",
+  "ios_profile.restrictions.allowVPNCreation",
+  "ios_profile.restrictions.allowWritingTools",
+  "ios_profile.restrictions.forceAirDropUnmanaged",
+  "ios_profile.restrictions.forceAuthenticationBeforeAutoFill",
+  "ios_profile.restrictions.forceAutomaticDateAndTime",
+  "ios_profile.restrictions.forceEncryptedBackup",
+  "ios_profile.restrictions.forceWatchWristDetection",
+  "ios_profile.restrictions.safariAcceptCookies",
+  "ios_profile.restrictions.safariForceFraudWarning"
+ ]
+}

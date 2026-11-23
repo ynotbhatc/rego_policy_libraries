@@ -1,0 +1,373 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig_rhel8/schema.json",
+ "title": "Input facts for stig_rhel8",
+ "description": "Input paths referenced in the sources of benchmarks/stig/rhel_8/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "stig_rhel8",
+ "x-entrypoint": "data.stig_rhel8.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "benchmarks/stig/rhel_8/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "aide_config": {
+   "description": "Read in configuration_management.rego.",
+   "properties": {
+    "cron_job": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "audit_rules": {
+   "description": "Read in audit_logging.rego."
+  },
+  "auditd_config": {
+   "description": "Read in audit_logging.rego.",
+   "properties": {
+    "space_left_action": {
+     "description": "Read in audit_logging.rego."
+    }
+   }
+  },
+  "certificates": {
+   "description": "Read in configuration_management.rego.",
+   "properties": {
+    "dod_root_ca_installed": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "crypto_policy": {
+   "description": "Read in configuration_management.rego."
+  },
+  "crypto_policy_state": {
+   "description": "Read in configuration_management.rego.",
+   "properties": {
+    "hash": {
+     "description": "Read in configuration_management.rego."
+    },
+    "min_rsa_size": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "duplicate_uids": {
+   "description": "Read in account_auth.rego."
+  },
+  "file_permissions": {
+   "description": "Read in file_permissions.rego.",
+   "properties": {
+    "insecure_home_dirs": {
+     "description": "Read in file_permissions.rego."
+    },
+    "library_files_ok": {
+     "description": "Read in file_permissions.rego."
+    },
+    "unowned_files": {
+     "description": "Read in file_permissions.rego."
+    }
+   }
+  },
+  "filesystem_mounts": {
+   "description": "Read in configuration_management.rego."
+  },
+  "firewall": {
+   "description": "Read in network.rego.",
+   "properties": {
+    "active": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "grub_config": {
+   "description": "Read in configuration_management.rego.",
+   "properties": {
+    "password_set": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "kernel_modules": {
+   "description": "Read in configuration_management.rego, network.rego.",
+   "properties": {
+    "bluetooth": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "blacklisted": {
+       "description": "Read in network.rego."
+      }
+     }
+    },
+    "usb-storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "blacklisted": {
+       "description": "Read in configuration_management.rego."
+      },
+      "status": {
+       "description": "Read in configuration_management.rego."
+      }
+     }
+    }
+   }
+  },
+  "kernel_params": {
+   "description": "Read in configuration_management.rego, network.rego.",
+   "properties": {
+    "kernel.dmesg_restrict": {
+     "description": "Read in configuration_management.rego."
+    },
+    "kernel.randomize_va_space": {
+     "description": "Read in configuration_management.rego."
+    },
+    "net.ipv4.conf.all.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.rp_filter": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.send_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.ip_forward": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "local_accounts_with_empty_passwords": {
+   "description": "Read in account_auth.rego."
+  },
+  "login_banner": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "properties": {
+    "issue": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "openssl_cnf": {
+   "description": "Read in configuration_management.rego.",
+   "properties": {
+    "lines": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "packages": {
+   "description": "Read in configuration_management.rego, services.rego.",
+   "properties": {
+    "aide": {
+     "description": "Read in configuration_management.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in services.rego."
+   },
+   "x-variable-key": "<pkg>"
+  },
+  "pam_config": {
+   "description": "Read in account_auth.rego.",
+   "properties": {
+    "lockout_attempts": {
+     "description": "Read in account_auth.rego."
+    },
+    "lockout_time": {
+     "description": "Read in account_auth.rego."
+    },
+    "mfa_enabled": {
+     "description": "Read in account_auth.rego."
+    },
+    "password_hash": {
+     "description": "Read in account_auth.rego."
+    },
+    "sssd_mfa": {
+     "description": "Read in account_auth.rego."
+    }
+   }
+  },
+  "password_policy": {
+   "description": "Read in account_auth.rego.",
+   "properties": {
+    "inactive_days": {
+     "description": "Read in account_auth.rego."
+    },
+    "maxdays": {
+     "description": "Read in account_auth.rego."
+    },
+    "minlen": {
+     "description": "Read in account_auth.rego."
+    },
+    "sha512": {
+     "description": "Read in account_auth.rego."
+    }
+   }
+  },
+  "selinux": {
+   "description": "Read in configuration_management.rego.",
+   "properties": {
+    "policy": {
+     "description": "Read in configuration_management.rego."
+    },
+    "status": {
+     "description": "Read in configuration_management.rego."
+    }
+   }
+  },
+  "services": {
+   "description": "Read in audit_logging.rego, configuration_management.rego, network.rego, services.rego.",
+   "properties": {
+    "auditd": {
+     "description": "Read in audit_logging.rego."
+    },
+    "bluetooth": {
+     "description": "Read in network.rego."
+    },
+    "ctrl-alt-del.target": {
+     "description": "Read in configuration_management.rego."
+    },
+    "firewalld": {
+     "description": "Read in network.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in services.rego."
+   },
+   "x-variable-key": "<svc>"
+  },
+  "ssh_config": {
+   "description": "Read in ssh_config.rego.",
+   "properties": {
+    "Banner": {
+     "description": "Read in ssh_config.rego."
+    },
+    "Ciphers": {
+     "description": "Read in ssh_config.rego."
+    },
+    "ClientAliveInterval": {
+     "description": "Read in ssh_config.rego."
+    },
+    "MACs": {
+     "description": "Read in ssh_config.rego."
+    },
+    "PermitEmptyPasswords": {
+     "description": "Read in ssh_config.rego."
+    },
+    "PermitRootLogin": {
+     "description": "Read in ssh_config.rego."
+    },
+    "banner_text": {
+     "description": "Read in ssh_config.rego."
+    }
+   }
+  },
+  "sshd_sysconfig": {
+   "description": "Read in ssh_config.rego.",
+   "properties": {
+    "lines": {
+     "description": "Read in ssh_config.rego."
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_rhel8_complete.rego."
+    },
+    "os_version": {
+     "description": "Read in stig_rhel8_complete.rego."
+    }
+   }
+  },
+  "wireless_interfaces": {
+   "description": "Read in network.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "aide_config",
+  "aide_config.cron_job",
+  "audit_rules",
+  "auditd_config",
+  "auditd_config.space_left_action",
+  "certificates",
+  "certificates.dod_root_ca_installed",
+  "crypto_policy",
+  "crypto_policy_state",
+  "crypto_policy_state.hash",
+  "crypto_policy_state.min_rsa_size",
+  "duplicate_uids",
+  "file_permissions",
+  "file_permissions.insecure_home_dirs",
+  "file_permissions.library_files_ok",
+  "file_permissions.unowned_files",
+  "filesystem_mounts",
+  "firewall",
+  "firewall.active",
+  "grub_config",
+  "grub_config.password_set",
+  "kernel_modules",
+  "kernel_modules.bluetooth",
+  "kernel_modules.bluetooth.blacklisted",
+  "kernel_modules[\"usb-storage\"]",
+  "kernel_modules[\"usb-storage\"].blacklisted",
+  "kernel_modules[\"usb-storage\"].status",
+  "kernel_params",
+  "kernel_params[\"kernel.dmesg_restrict\"]",
+  "kernel_params[\"kernel.randomize_va_space\"]",
+  "kernel_params[\"net.ipv4.conf.all.accept_redirects\"]",
+  "kernel_params[\"net.ipv4.conf.all.accept_source_route\"]",
+  "kernel_params[\"net.ipv4.conf.all.rp_filter\"]",
+  "kernel_params[\"net.ipv4.conf.all.send_redirects\"]",
+  "kernel_params[\"net.ipv4.conf.default.accept_redirects\"]",
+  "kernel_params[\"net.ipv4.ip_forward\"]",
+  "local_accounts_with_empty_passwords",
+  "login_banner",
+  "login_banner.issue",
+  "openssl_cnf",
+  "openssl_cnf.lines",
+  "packages",
+  "packages.aide",
+  "pam_config",
+  "pam_config.lockout_attempts",
+  "pam_config.lockout_time",
+  "pam_config.mfa_enabled",
+  "pam_config.password_hash",
+  "pam_config.sssd_mfa",
+  "password_policy",
+  "password_policy.inactive_days",
+  "password_policy.maxdays",
+  "password_policy.minlen",
+  "password_policy.sha512",
+  "selinux",
+  "selinux.policy",
+  "selinux.status",
+  "services",
+  "services.auditd",
+  "services.bluetooth",
+  "services.firewalld",
+  "services[\"ctrl-alt-del.target\"]",
+  "ssh_config",
+  "ssh_config.Banner",
+  "ssh_config.Ciphers",
+  "ssh_config.ClientAliveInterval",
+  "ssh_config.MACs",
+  "ssh_config.PermitEmptyPasswords",
+  "ssh_config.PermitRootLogin",
+  "ssh_config.banner_text",
+  "sshd_sysconfig",
+  "sshd_sysconfig.lines",
+  "system_info",
+  "system_info.hostname",
+  "system_info.os_version",
+  "wireless_interfaces"
+ ]
+}

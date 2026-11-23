@@ -1,0 +1,2721 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cmmc/schema.json",
+ "title": "Input facts for cmmc",
+ "description": "Facts the module in frameworks/federal/cmmc/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cmmc",
+ "x-entrypoint": "data.cmmc.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/cmmc/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cmmc_level_2_pass_test.level_2_facts",
+ "type": "object",
+ "properties": {
+  "access_controls": {
+   "description": "Read in cmmc_access_control.rego.",
+   "type": "object",
+   "properties": {
+    "cui_flow_controls": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "external_connections_controlled": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "least_privilege_enforced": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mobile_device_cui_access": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mobile_device_encryption": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mobile_device_policy": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "portable_storage_external_use_limited": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "privacy_security_notices_displayed": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "privileged_function_auditing": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_access_encrypted": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_access_monitored": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_access_via_managed_points": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_privileged_commands_controlled": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "separation_of_duties": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unsuccessful_logon_attempts_limited": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "wireless_access_authorized": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "wireless_access_enabled": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "wireless_access_encrypted": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "assessment": {
+   "description": "Read in cmmc_security_assessment.rego.",
+   "type": "object",
+   "properties": {
+    "assessment_frequency_days": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "assessment_results_documented": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "continuous_monitoring_program": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "control_effectiveness_reviewed": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "plan_of_action_exists": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "poam_reviewed_regularly": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "poam_tracks_deficiencies": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_controls_assessed": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_metrics_collected": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssp_documents_boundaries": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssp_documents_cui_environment": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssp_updated_annually": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "system_security_plan_exists": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "audit": {
+   "description": "Read in cmmc_audit_accountability.rego.",
+   "type": "object",
+   "properties": {
+    "admin_space_left_action": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "halt"
+     ]
+    },
+    "audit_admins": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "x"
+      ]
+     },
+     "examples": [
+      [
+       "x"
+      ]
+     ]
+    },
+    "audit_rules_configured": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "auditd_active": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "auditd_immutable_config": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "centralized_logging": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "event_review_process": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "failure_alerting_enabled": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "last_review_days_ago": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "log_analysis_tool": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "siem"
+     ]
+    },
+    "log_dir_permissions_correct": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "log_file_permissions_correct": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "log_retention_days": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      90
+     ]
+    },
+    "logging_enabled": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "management_restricted": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ntp_configured": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ntp_servers": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "x"
+      ]
+     },
+     "examples": [
+      [
+       "x",
+       "x"
+      ]
+     ]
+    },
+    "privileged_command_rules": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "x"
+      ]
+     },
+     "examples": [
+      [
+       "x"
+      ]
+     ]
+    },
+    "report_generation_capability": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "siem_integrated": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "space_left_action": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "email"
+     ]
+    },
+    "time_sync_active": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "user_activity_tracked": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "cmmc_level": {
+   "description": "Read in cmmc_access_control.rego, cmmc_configuration_management.rego, cmmc_incident_response.rego, cmmc_key_main.rego and 1 more.",
+   "type": "number",
+   "x-type-source": "fixture",
+   "examples": [
+    2
+   ]
+  },
+  "configuration": {
+   "description": "Read in cmmc_configuration_management.rego.",
+   "type": "object",
+   "properties": {
+    "change_access_restricted": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "change_control_process": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "changes_reviewed_before_implementation": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_impact_analysis": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "cui_systems": {
+   "description": "Read in cmmc_access_control.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "cui_posting_controls": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "web"
+      ]
+     },
+     "publicly_accessible": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     }
+    }
+   }
+  },
+  "identity": {
+   "description": "Read in cmmc_identification_authentication.rego.",
+   "type": "object",
+   "properties": {
+    "authentication_required": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "automated_account_management": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "failed_login_no_detail": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "hash_algorithm": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "sha512"
+     ]
+    },
+    "identifier_management_policy": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "identifier_reuse_prevented_days": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      400
+     ]
+    },
+    "inactive_account_disable_days": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      35
+     ]
+    },
+    "kerberos_or_pki": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mfa_network_access": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mfa_privileged_accounts": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_complexity_lowercase": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_complexity_numbers": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_complexity_special": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_complexity_uppercase": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_history_count": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      5
+     ]
+    },
+    "password_masking_enabled": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "password_min_length": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      12
+     ]
+    },
+    "passwords_hashed": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "passwords_transmitted_encrypted": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "replay_resistant_auth": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "service_accounts_identified": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "shared_accounts_documented": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "temp_password_change_on_first_login": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "temp_password_expiry_hours": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      24
+     ]
+    },
+    "terminated_accounts_disabled_immediately": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unique_user_accounts": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "incident_response": {
+   "description": "Read in cmmc_incident_response.rego.",
+   "type": "object",
+   "properties": {
+    "incident_tracking_system": {
+     "description": "Read in cmmc_incident_response.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "plan_age_days": {
+     "description": "Read in cmmc_incident_response.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      100
+     ]
+    },
+    "plan_documented": {
+     "description": "Read in cmmc_incident_response.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "plan_tested": {
+     "description": "Read in cmmc_incident_response.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "reporting_to_dod_required_when_applicable": {
+     "description": "Read in cmmc_incident_response.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "tabletop_exercise_completed": {
+     "description": "Read in cmmc_incident_response.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "integrity": {
+   "description": "Read in cmmc_system_information_integrity.rego.",
+   "type": "object",
+   "properties": {
+    "alerts_actioned": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "anomaly_detection_enabled": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "antimalware_auto_update": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "antimalware_covers_entry_exit_points": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "antimalware_installed": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "antimalware_realtime_enabled": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "attack_indicators_detected": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "baseline_behavior_established": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "critical_patch_days": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "download_scanning_enabled": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "flaw_remediation_policy": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ids_ips_deployed": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "inbound_traffic_monitored": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "outbound_traffic_monitored": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "patch_management_program": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "periodic_system_scans": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "realtime_file_scanning": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "scan_frequency_days": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      7
+     ]
+    },
+    "security_alerts_monitored": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "signature_update_frequency_hours": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      24
+     ]
+    },
+    "threat_intel_feeds_subscribed": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unauthorized_access_alerted": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unauthorized_use_detection": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "maintenance": {
+   "description": "Read in cmmc_maintenance.rego.",
+   "type": "object",
+   "properties": {
+    "diagnostic_media_controlled": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "equipment_sanitization_procedure": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "escort_required_for_visitors": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "maintenance_personnel_authorized": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "maintenance_policy_exists": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "maintenance_records_kept": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "maintenance_tools_approved": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "media_scanning_before_use": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_maintenance_controlled": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_maintenance_encrypted": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_maintenance_mfa": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_session_auto_terminate": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "removal_authorization_required": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "scheduled_maintenance": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unauthorized_personnel_supervised": {
+     "description": "Read in cmmc_maintenance.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "media": {
+   "description": "Read in cmmc_media_protection.rego.",
+   "type": "object",
+   "properties": {
+    "backup_cui_encrypted": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "backup_integrity_verified": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "backup_storage_access_controlled": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "chain_of_custody_maintained": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cui_marking_policy": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "device_registration_required": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "digital_media_protected": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "encrypted_during_transport": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "encryption_at_rest": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "fips_validated_encryption": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "media_access_controlled": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "media_access_list_maintained": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "media_access_restricted_to_authorized": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "media_labeled_with_classification": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "nist_800_88_compliant": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "paper_media_protected": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "removable_media_policy": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "sanitization_policy_exists": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "sanitization_records_kept": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "transport_controls_implemented": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unauthorized_removable_media_blocked": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unowned_portable_storage_prohibited": {
+     "description": "Read in cmmc_media_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "org_defined": {
+   "description": "Read in cmmc_access_control.rego, cmmc_audit_accountability.rego, cmmc_awareness_training.rego, cmmc_identification_authentication.rego and 5 more.",
+   "type": "object",
+   "properties": {
+    "audit_event_review_interval_days": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "audit_log_retention_days": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      90
+     ]
+    },
+    "audit_logging_managers": {
+     "description": "Read in cmmc_audit_accountability.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "a"
+      ]
+     },
+     "examples": [
+      [
+       "a",
+       "b",
+       "x"
+      ]
+     ]
+    },
+    "awareness_training_interval_days": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "control_assessment_interval_days": {
+     "description": "Read in cmmc_security_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "critical_vulnerability_remediation_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      15
+     ]
+    },
+    "flaw_correction_days": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "high_vulnerability_remediation_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "identifier_inactivity_days": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      35
+     ]
+    },
+    "identifier_reuse_period_days": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "malware_scan_interval_days": {
+     "description": "Read in cmmc_system_information_integrity.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      7
+     ]
+    },
+    "network_session_inactivity_minutes": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "password_history_generations": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      5
+     ]
+    },
+    "password_min_length": {
+     "description": "Read in cmmc_identification_authentication.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      12
+     ]
+    },
+    "physical_access_log_retention_days": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      90
+     ]
+    },
+    "risk_assessment_interval_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "session_lock_minutes": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      15
+     ]
+    },
+    "vulnerability_scan_interval_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in cmmc_audit_accountability.rego, cmmc_awareness_training.rego, cmmc_identification_authentication.rego, cmmc_physical_protection.rego and 4 more."
+   },
+   "x-variable-key": "<name>"
+  },
+  "personnel": {
+   "description": "Read in cmmc_personnel_security.rego.",
+   "type": "object",
+   "properties": {
+    "access_revoked_on_termination": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "background_check_required": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "equipment_returned_on_termination": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "pre_employment_screening": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "screening_records_maintained": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "termination_procedure_exists": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "transfer_access_reviewed": {
+     "description": "Read in cmmc_personnel_security.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "physical": {
+   "description": "Read in cmmc_physical_protection.rego.",
+   "type": "object",
+   "properties": {
+    "access_control_implemented": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "access_devices_audited_annually": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "access_devices_inventoried": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "access_log_retention_days": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      90
+     ]
+    },
+    "access_logs_reviewed_regularly": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "alternate_site_controls_defined": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "authorized_personnel_list_maintained": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cctv_or_equivalent": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "environmental_controls": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "facility_monitoring": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "lost_credentials_revoked": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "physical_access_audit_logs": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "physical_access_logs_kept": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_work_policy": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "visitor_badges_issued": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "visitor_escort_required": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "visitor_log_maintained": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vpn_required_for_remote_cui_access": {
+     "description": "Read in cmmc_physical_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "risk": {
+   "description": "Read in cmmc_risk_assessment.rego.",
+   "type": "object",
+   "properties": {
+    "critical_vuln_remediation_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      15
+     ]
+    },
+    "high_vuln_remediation_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "new_vuln_scan_triggered": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remediation_tracked": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_assessment_conducted": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_assessment_documented": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_assessment_frequency_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "scan_frequency_days": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "scan_results_reviewed": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vuln_remediation_policy": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vulnerability_scanning_enabled": {
+     "description": "Read in cmmc_risk_assessment.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "scp": {
+   "description": "Read in cmmc_system_communications_protection.rego.",
+   "type": "object",
+   "properties": {
+    "admin_interface_separated": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "anti_replay_protection": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "camera_mic_indicator_present": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "covert_channel_controls": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cui_network_segregated": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "database_encryption_enabled": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "default_deny_policy": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "defense_in_depth_implemented": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "dmz_implemented": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "encryption_at_rest": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "encryption_in_transit": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "explicit_allow_rules": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "external_boundary_monitoring": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "fips_140_2_validated": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "fips_validated_storage_encryption": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "fips_validated_tls": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "firewall_rules_reviewed_annually": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "internal_boundary_controls": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "key_generation_secure": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "key_management_policy": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "key_rotation_policy": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "key_storage_protected": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "least_functionality_enforced": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "memory_protection_enabled": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mobile_code_policy": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mobile_code_usage_monitored": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "network_session_timeout_minutes": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
+    },
+    "network_traffic_controlled": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "non_fips_algorithms_prohibited": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "public_systems_isolated": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remote_activation_prohibited": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "secure_architecture_principles": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "session_authentication_enforced": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "session_hijacking_prevention": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "session_timeout_enabled": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "shared_resource_controls": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "split_tunneling_prevented": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "tls_min_version": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "1.2"
+     ]
+    },
+    "unauthorized_mobile_code_blocked": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "user_mgmt_plane_separated": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "voip_policy": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "voip_traffic_encrypted": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "voip_usage_monitored": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vpn_enforces_all_traffic": {
+     "description": "Read in cmmc_system_communications_protection.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "session": {
+   "description": "Read in cmmc_access_control.rego.",
+   "type": "object",
+   "properties": {
+    "automatic_termination": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "lock_timeout_minutes": {
+     "description": "Read in cmmc_access_control.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      10
+     ]
+    }
+   }
+  },
+  "software": {
+   "description": "Read in cmmc_configuration_management.rego.",
+   "type": "object",
+   "properties": {
+    "application_whitelist_enabled": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "deny_by_default": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "user_install_controlled": {
+     "description": "Read in cmmc_configuration_management.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "systems": {
+   "description": "Read in cmmc_configuration_management.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "baseline_configuration_documented": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "h1"
+      ]
+     },
+     "security_configuration_enforced": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "unauthorized_software": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     },
+     "unnecessary_services": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     }
+    }
+   }
+  },
+  "training": {
+   "description": "Read in cmmc_awareness_training.rego.",
+   "type": "object",
+   "properties": {
+    "all_users_trained": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "insider_threat_training": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "phishing_awareness_training": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "privileged_user_training": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "role_based_training": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "security_awareness_program": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "social_engineering_training": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "training_frequency_days": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
+    },
+    "training_records_maintained": {
+     "description": "Read in cmmc_awareness_training.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "users": {
+   "description": "Read in cmmc_access_control.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "authorized": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "non_privileged_account_for_regular_use": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "privilege_justified": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "privileged": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "system_access": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "username": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "alice"
+      ]
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_controls",
+  "access_controls.cui_flow_controls",
+  "access_controls.external_connections_controlled",
+  "access_controls.least_privilege_enforced",
+  "access_controls.mobile_device_cui_access",
+  "access_controls.mobile_device_encryption",
+  "access_controls.mobile_device_policy",
+  "access_controls.portable_storage_external_use_limited",
+  "access_controls.privacy_security_notices_displayed",
+  "access_controls.privileged_function_auditing",
+  "access_controls.remote_access_encrypted",
+  "access_controls.remote_access_monitored",
+  "access_controls.remote_access_via_managed_points",
+  "access_controls.remote_privileged_commands_controlled",
+  "access_controls.separation_of_duties",
+  "access_controls.unsuccessful_logon_attempts_limited",
+  "access_controls.wireless_access_authorized",
+  "access_controls.wireless_access_enabled",
+  "access_controls.wireless_access_encrypted",
+  "assessment",
+  "assessment.assessment_frequency_days",
+  "assessment.assessment_results_documented",
+  "assessment.continuous_monitoring_program",
+  "assessment.control_effectiveness_reviewed",
+  "assessment.plan_of_action_exists",
+  "assessment.poam_reviewed_regularly",
+  "assessment.poam_tracks_deficiencies",
+  "assessment.security_controls_assessed",
+  "assessment.security_metrics_collected",
+  "assessment.ssp_documents_boundaries",
+  "assessment.ssp_documents_cui_environment",
+  "assessment.ssp_updated_annually",
+  "assessment.system_security_plan_exists",
+  "audit",
+  "audit.admin_space_left_action",
+  "audit.audit_admins",
+  "audit.audit_rules_configured",
+  "audit.auditd_active",
+  "audit.auditd_immutable_config",
+  "audit.centralized_logging",
+  "audit.event_review_process",
+  "audit.failure_alerting_enabled",
+  "audit.last_review_days_ago",
+  "audit.log_analysis_tool",
+  "audit.log_dir_permissions_correct",
+  "audit.log_file_permissions_correct",
+  "audit.log_retention_days",
+  "audit.logging_enabled",
+  "audit.management_restricted",
+  "audit.ntp_configured",
+  "audit.ntp_servers",
+  "audit.privileged_command_rules",
+  "audit.report_generation_capability",
+  "audit.siem_integrated",
+  "audit.space_left_action",
+  "audit.time_sync_active",
+  "audit.user_activity_tracked",
+  "cmmc_level",
+  "configuration",
+  "configuration.change_access_restricted",
+  "configuration.change_control_process",
+  "configuration.changes_reviewed_before_implementation",
+  "configuration.security_impact_analysis",
+  "cui_systems",
+  "cui_systems[].cui_posting_controls",
+  "cui_systems[].name",
+  "cui_systems[].publicly_accessible",
+  "identity",
+  "identity.authentication_required",
+  "identity.automated_account_management",
+  "identity.failed_login_no_detail",
+  "identity.hash_algorithm",
+  "identity.identifier_management_policy",
+  "identity.identifier_reuse_prevented_days",
+  "identity.inactive_account_disable_days",
+  "identity.kerberos_or_pki",
+  "identity.mfa_network_access",
+  "identity.mfa_privileged_accounts",
+  "identity.password_complexity_lowercase",
+  "identity.password_complexity_numbers",
+  "identity.password_complexity_special",
+  "identity.password_complexity_uppercase",
+  "identity.password_history_count",
+  "identity.password_masking_enabled",
+  "identity.password_min_length",
+  "identity.passwords_hashed",
+  "identity.passwords_transmitted_encrypted",
+  "identity.replay_resistant_auth",
+  "identity.service_accounts_identified",
+  "identity.shared_accounts_documented",
+  "identity.temp_password_change_on_first_login",
+  "identity.temp_password_expiry_hours",
+  "identity.terminated_accounts_disabled_immediately",
+  "identity.unique_user_accounts",
+  "incident_response",
+  "incident_response.incident_tracking_system",
+  "incident_response.plan_age_days",
+  "incident_response.plan_documented",
+  "incident_response.plan_tested",
+  "incident_response.reporting_to_dod_required_when_applicable",
+  "incident_response.tabletop_exercise_completed",
+  "integrity",
+  "integrity.alerts_actioned",
+  "integrity.anomaly_detection_enabled",
+  "integrity.antimalware_auto_update",
+  "integrity.antimalware_covers_entry_exit_points",
+  "integrity.antimalware_installed",
+  "integrity.antimalware_realtime_enabled",
+  "integrity.attack_indicators_detected",
+  "integrity.baseline_behavior_established",
+  "integrity.critical_patch_days",
+  "integrity.download_scanning_enabled",
+  "integrity.flaw_remediation_policy",
+  "integrity.ids_ips_deployed",
+  "integrity.inbound_traffic_monitored",
+  "integrity.outbound_traffic_monitored",
+  "integrity.patch_management_program",
+  "integrity.periodic_system_scans",
+  "integrity.realtime_file_scanning",
+  "integrity.scan_frequency_days",
+  "integrity.security_alerts_monitored",
+  "integrity.signature_update_frequency_hours",
+  "integrity.threat_intel_feeds_subscribed",
+  "integrity.unauthorized_access_alerted",
+  "integrity.unauthorized_use_detection",
+  "maintenance",
+  "maintenance.diagnostic_media_controlled",
+  "maintenance.equipment_sanitization_procedure",
+  "maintenance.escort_required_for_visitors",
+  "maintenance.maintenance_personnel_authorized",
+  "maintenance.maintenance_policy_exists",
+  "maintenance.maintenance_records_kept",
+  "maintenance.maintenance_tools_approved",
+  "maintenance.media_scanning_before_use",
+  "maintenance.remote_maintenance_controlled",
+  "maintenance.remote_maintenance_encrypted",
+  "maintenance.remote_maintenance_mfa",
+  "maintenance.remote_session_auto_terminate",
+  "maintenance.removal_authorization_required",
+  "maintenance.scheduled_maintenance",
+  "maintenance.unauthorized_personnel_supervised",
+  "media",
+  "media.backup_cui_encrypted",
+  "media.backup_integrity_verified",
+  "media.backup_storage_access_controlled",
+  "media.chain_of_custody_maintained",
+  "media.cui_marking_policy",
+  "media.device_registration_required",
+  "media.digital_media_protected",
+  "media.encrypted_during_transport",
+  "media.encryption_at_rest",
+  "media.fips_validated_encryption",
+  "media.media_access_controlled",
+  "media.media_access_list_maintained",
+  "media.media_access_restricted_to_authorized",
+  "media.media_labeled_with_classification",
+  "media.nist_800_88_compliant",
+  "media.paper_media_protected",
+  "media.removable_media_policy",
+  "media.sanitization_policy_exists",
+  "media.sanitization_records_kept",
+  "media.transport_controls_implemented",
+  "media.unauthorized_removable_media_blocked",
+  "media.unowned_portable_storage_prohibited",
+  "org_defined",
+  "org_defined.audit_event_review_interval_days",
+  "org_defined.audit_log_retention_days",
+  "org_defined.audit_logging_managers",
+  "org_defined.awareness_training_interval_days",
+  "org_defined.control_assessment_interval_days",
+  "org_defined.critical_vulnerability_remediation_days",
+  "org_defined.flaw_correction_days",
+  "org_defined.high_vulnerability_remediation_days",
+  "org_defined.identifier_inactivity_days",
+  "org_defined.identifier_reuse_period_days",
+  "org_defined.malware_scan_interval_days",
+  "org_defined.network_session_inactivity_minutes",
+  "org_defined.password_history_generations",
+  "org_defined.password_min_length",
+  "org_defined.physical_access_log_retention_days",
+  "org_defined.risk_assessment_interval_days",
+  "org_defined.session_lock_minutes",
+  "org_defined.vulnerability_scan_interval_days",
+  "personnel",
+  "personnel.access_revoked_on_termination",
+  "personnel.background_check_required",
+  "personnel.equipment_returned_on_termination",
+  "personnel.pre_employment_screening",
+  "personnel.screening_records_maintained",
+  "personnel.termination_procedure_exists",
+  "personnel.transfer_access_reviewed",
+  "physical",
+  "physical.access_control_implemented",
+  "physical.access_devices_audited_annually",
+  "physical.access_devices_inventoried",
+  "physical.access_log_retention_days",
+  "physical.access_logs_reviewed_regularly",
+  "physical.alternate_site_controls_defined",
+  "physical.authorized_personnel_list_maintained",
+  "physical.cctv_or_equivalent",
+  "physical.environmental_controls",
+  "physical.facility_monitoring",
+  "physical.lost_credentials_revoked",
+  "physical.physical_access_audit_logs",
+  "physical.physical_access_logs_kept",
+  "physical.remote_work_policy",
+  "physical.visitor_badges_issued",
+  "physical.visitor_escort_required",
+  "physical.visitor_log_maintained",
+  "physical.vpn_required_for_remote_cui_access",
+  "risk",
+  "risk.critical_vuln_remediation_days",
+  "risk.high_vuln_remediation_days",
+  "risk.new_vuln_scan_triggered",
+  "risk.remediation_tracked",
+  "risk.risk_assessment_conducted",
+  "risk.risk_assessment_documented",
+  "risk.risk_assessment_frequency_days",
+  "risk.scan_frequency_days",
+  "risk.scan_results_reviewed",
+  "risk.vuln_remediation_policy",
+  "risk.vulnerability_scanning_enabled",
+  "scp",
+  "scp.admin_interface_separated",
+  "scp.anti_replay_protection",
+  "scp.camera_mic_indicator_present",
+  "scp.covert_channel_controls",
+  "scp.cui_network_segregated",
+  "scp.database_encryption_enabled",
+  "scp.default_deny_policy",
+  "scp.defense_in_depth_implemented",
+  "scp.dmz_implemented",
+  "scp.encryption_at_rest",
+  "scp.encryption_in_transit",
+  "scp.explicit_allow_rules",
+  "scp.external_boundary_monitoring",
+  "scp.fips_140_2_validated",
+  "scp.fips_validated_storage_encryption",
+  "scp.fips_validated_tls",
+  "scp.firewall_rules_reviewed_annually",
+  "scp.internal_boundary_controls",
+  "scp.key_generation_secure",
+  "scp.key_management_policy",
+  "scp.key_rotation_policy",
+  "scp.key_storage_protected",
+  "scp.least_functionality_enforced",
+  "scp.memory_protection_enabled",
+  "scp.mobile_code_policy",
+  "scp.mobile_code_usage_monitored",
+  "scp.network_session_timeout_minutes",
+  "scp.network_traffic_controlled",
+  "scp.non_fips_algorithms_prohibited",
+  "scp.public_systems_isolated",
+  "scp.remote_activation_prohibited",
+  "scp.secure_architecture_principles",
+  "scp.session_authentication_enforced",
+  "scp.session_hijacking_prevention",
+  "scp.session_timeout_enabled",
+  "scp.shared_resource_controls",
+  "scp.split_tunneling_prevented",
+  "scp.tls_min_version",
+  "scp.unauthorized_mobile_code_blocked",
+  "scp.user_mgmt_plane_separated",
+  "scp.voip_policy",
+  "scp.voip_traffic_encrypted",
+  "scp.voip_usage_monitored",
+  "scp.vpn_enforces_all_traffic",
+  "session",
+  "session.automatic_termination",
+  "session.lock_timeout_minutes",
+  "software",
+  "software.application_whitelist_enabled",
+  "software.deny_by_default",
+  "software.user_install_controlled",
+  "systems",
+  "systems[].baseline_configuration_documented",
+  "systems[].name",
+  "systems[].security_configuration_enforced",
+  "systems[].unauthorized_software",
+  "systems[].unnecessary_services",
+  "training",
+  "training.all_users_trained",
+  "training.insider_threat_training",
+  "training.phishing_awareness_training",
+  "training.privileged_user_training",
+  "training.role_based_training",
+  "training.security_awareness_program",
+  "training.social_engineering_training",
+  "training.training_frequency_days",
+  "training.training_records_maintained",
+  "users",
+  "users[].authorized",
+  "users[].non_privileged_account_for_regular_use",
+  "users[].privilege_justified",
+  "users[].privileged",
+  "users[].system_access",
+  "users[].username"
+ ]
+}

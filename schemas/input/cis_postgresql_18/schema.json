@@ -1,0 +1,1068 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_postgresql_18/schema.json",
+ "title": "Input facts for cis_postgresql_18",
+ "description": "Facts the module in benchmarks/cis/postgresql_18/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_postgresql_18",
+ "x-entrypoint": "data.cis_postgresql_18.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/postgresql_18/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis.postgresql_18_test.green",
+ "type": "object",
+ "properties": {
+  "postgresql": {
+   "description": "Read in cis_postgresql_18.rego.",
+   "type": "object",
+   "properties": {
+    "archive_settings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "archive_command": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "pgbackrest --stanza=main archive-push %p"
+       ]
+      },
+      "archive_library": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        ""
+       ]
+      },
+      "archive_mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      }
+     }
+    },
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authorized_package_repositories": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "base_backups_functional": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "bound_to_ip_address": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "excessive_admin_privileges_revoked": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "excessive_dml_privileges_revoked": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "file_permissions_mask_correct": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "host_tcp_login_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "interactive_login_disabled": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "latest_security_patches_applied": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "local_socket_login_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "login_accounts_have_passwords": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "miscellaneous_settings_correct": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "no_passwords_on_command_line": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "only_required_packages_installed": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "password_complexity_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pgcrypto_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "postmaster_parameters_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "predefined_roles_used": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "replication_command_logging_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "replication_only_user_used": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "row_level_security_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "runtime_parameter_attack_vectors_reviewed": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "service_file_has_no_passwords": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sighup_parameters_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "streaming_replication_parameters_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "subdirectories_outside_data_cluster": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sudo_configured_correctly": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "superuser_parameters_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "syslog_facility_correct": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unused_accounts_locked": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "user_parameters_configured": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "available_extensions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "set_user"
+      ]
+     },
+     "examples": [
+      [
+       "set_user",
+       "pgaudit"
+      ]
+     ]
+    },
+    "backend_settings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "ignore_system_indexes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "jit_debugging_support": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "jit_profiling_support": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "log_connections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "all"
+       ]
+      },
+      "log_disconnections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "post_auth_delay": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "0"
+       ]
+      }
+     }
+    },
+    "backup_methods": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "pgbackrest"
+      ]
+     },
+     "examples": [
+      [
+       "pgbackrest",
+       "pg_dump"
+      ]
+     ]
+    },
+    "cluster": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "check_db_dir_rc": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "initialized": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "cryptography": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "fips_140_2_enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "openssl_fips_mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "file_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "extension_directory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "0755"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/usr/pgsql-18/share/extension"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "logging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "debug_pretty_print": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "debug_print_parse": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "debug_print_plan": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "debug_print_rewritten": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "log_connections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "all"
+       ]
+      },
+      "log_destination": {
+       "description": "Read in cis_postgresql_18.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "csvlog,stderr"
+       ]
+      },
+      "log_directory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/log/postgres"
+       ]
+      },
+      "log_disconnections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "log_error_verbosity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "verbose"
+       ]
+      },
+      "log_file_mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "0600"
+       ]
+      },
+      "log_filename": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "postgresql-%Y%m%d.log"
+       ]
+      },
+      "log_hostname": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "log_line_prefix": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "%m [%p]: [%l-1] db=%d,user=%u,app=%a,client=%h "
+       ]
+      },
+      "log_min_error_statement": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "error"
+       ]
+      },
+      "log_min_messages": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "warning"
+       ]
+      },
+      "log_rotation_age": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "1d"
+       ]
+      },
+      "log_rotation_size": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "1GB"
+       ]
+      },
+      "log_statement": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "ddl"
+       ]
+      },
+      "log_timezone": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "UTC"
+       ]
+      },
+      "log_truncate_on_rotation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "logging_collector": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "syslog_ident": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "postgres"
+       ]
+      },
+      "syslog_sequence_numbers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "syslog_split_messages": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      }
+     }
+    },
+    "login_roles_with_superuser_path": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "postgres"
+      ]
+     },
+     "examples": [
+      [
+       "postgres"
+      ]
+     ]
+    },
+    "pgaudit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "log": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "ddl, write"
+       ]
+      }
+     }
+    },
+    "policy": {
+     "description": "Read in cis_postgresql_18.rego.",
+     "type": "object",
+     "properties": {
+      "authorized_security_definer_functions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "public.audit_fn"
+        ]
+       },
+       "examples": [
+        [
+         "public.audit_fn"
+        ]
+       ]
+      },
+      "authorized_superusers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "postgres"
+        ]
+       },
+       "examples": [
+        [
+         "postgres"
+        ]
+       ]
+      }
+     }
+    },
+    "roles": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "connection_limit": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         10
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "postgres"
+        ]
+       }
+      }
+     }
+    },
+    "security_definer_functions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "audit_fn"
+        ]
+       },
+       "prosecdef": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "schema": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "public"
+        ]
+       }
+      }
+     }
+    },
+    "service": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "settings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "shared_preload_libraries": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "pgaudit,pg_stat_statements"
+       ]
+      }
+     }
+    },
+    "ssl": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ssl_ciphers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256"
+       ]
+      },
+      "ssl_min_protocol_version": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TLSv1.3"
+       ]
+      },
+      "ssl_tls13_ciphers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TLS_AES_256_GCM_SHA384"
+       ]
+      },
+      "unapproved_cipher_sessions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      }
+     }
+    },
+    "system": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "pgpassword_processes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "pgpassword_profile_files": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "psql_history_files": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "path": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "/home/doug/.psql_history"
+          ]
+         },
+         "symlink_target": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "/dev/null"
+          ]
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "postgresql",
+  "postgresql.archive_settings",
+  "postgresql.archive_settings.archive_command",
+  "postgresql.archive_settings.archive_library",
+  "postgresql.archive_settings.archive_mode",
+  "postgresql.attest",
+  "postgresql.attest.authorized_package_repositories",
+  "postgresql.attest.base_backups_functional",
+  "postgresql.attest.bound_to_ip_address",
+  "postgresql.attest.excessive_admin_privileges_revoked",
+  "postgresql.attest.excessive_dml_privileges_revoked",
+  "postgresql.attest.file_permissions_mask_correct",
+  "postgresql.attest.host_tcp_login_configured",
+  "postgresql.attest.interactive_login_disabled",
+  "postgresql.attest.latest_security_patches_applied",
+  "postgresql.attest.local_socket_login_configured",
+  "postgresql.attest.login_accounts_have_passwords",
+  "postgresql.attest.miscellaneous_settings_correct",
+  "postgresql.attest.no_passwords_on_command_line",
+  "postgresql.attest.only_required_packages_installed",
+  "postgresql.attest.password_complexity_configured",
+  "postgresql.attest.pgcrypto_configured",
+  "postgresql.attest.postmaster_parameters_configured",
+  "postgresql.attest.predefined_roles_used",
+  "postgresql.attest.replication_command_logging_configured",
+  "postgresql.attest.replication_only_user_used",
+  "postgresql.attest.row_level_security_configured",
+  "postgresql.attest.runtime_parameter_attack_vectors_reviewed",
+  "postgresql.attest.service_file_has_no_passwords",
+  "postgresql.attest.sighup_parameters_configured",
+  "postgresql.attest.streaming_replication_parameters_configured",
+  "postgresql.attest.subdirectories_outside_data_cluster",
+  "postgresql.attest.sudo_configured_correctly",
+  "postgresql.attest.superuser_parameters_configured",
+  "postgresql.attest.syslog_facility_correct",
+  "postgresql.attest.unused_accounts_locked",
+  "postgresql.attest.user_parameters_configured",
+  "postgresql.available_extensions",
+  "postgresql.backend_settings",
+  "postgresql.backend_settings.ignore_system_indexes",
+  "postgresql.backend_settings.jit_debugging_support",
+  "postgresql.backend_settings.jit_profiling_support",
+  "postgresql.backend_settings.log_connections",
+  "postgresql.backend_settings.log_disconnections",
+  "postgresql.backend_settings.post_auth_delay",
+  "postgresql.backup_methods",
+  "postgresql.cluster",
+  "postgresql.cluster.check_db_dir_rc",
+  "postgresql.cluster.initialized",
+  "postgresql.cryptography",
+  "postgresql.cryptography.fips_140_2_enabled",
+  "postgresql.cryptography.openssl_fips_mode",
+  "postgresql.file_permissions",
+  "postgresql.file_permissions.extension_directory",
+  "postgresql.file_permissions.extension_directory.group",
+  "postgresql.file_permissions.extension_directory.mode",
+  "postgresql.file_permissions.extension_directory.owner",
+  "postgresql.file_permissions.extension_directory.path",
+  "postgresql.logging",
+  "postgresql.logging.debug_pretty_print",
+  "postgresql.logging.debug_print_parse",
+  "postgresql.logging.debug_print_plan",
+  "postgresql.logging.debug_print_rewritten",
+  "postgresql.logging.log_connections",
+  "postgresql.logging.log_destination",
+  "postgresql.logging.log_directory",
+  "postgresql.logging.log_disconnections",
+  "postgresql.logging.log_error_verbosity",
+  "postgresql.logging.log_file_mode",
+  "postgresql.logging.log_filename",
+  "postgresql.logging.log_hostname",
+  "postgresql.logging.log_line_prefix",
+  "postgresql.logging.log_min_error_statement",
+  "postgresql.logging.log_min_messages",
+  "postgresql.logging.log_rotation_age",
+  "postgresql.logging.log_rotation_size",
+  "postgresql.logging.log_statement",
+  "postgresql.logging.log_timezone",
+  "postgresql.logging.log_truncate_on_rotation",
+  "postgresql.logging.logging_collector",
+  "postgresql.logging.syslog_ident",
+  "postgresql.logging.syslog_sequence_numbers",
+  "postgresql.logging.syslog_split_messages",
+  "postgresql.login_roles_with_superuser_path",
+  "postgresql.pgaudit",
+  "postgresql.pgaudit.log",
+  "postgresql.policy",
+  "postgresql.policy.authorized_security_definer_functions",
+  "postgresql.policy.authorized_superusers",
+  "postgresql.roles",
+  "postgresql.roles[].connection_limit",
+  "postgresql.roles[].name",
+  "postgresql.security_definer_functions",
+  "postgresql.security_definer_functions[].name",
+  "postgresql.security_definer_functions[].prosecdef",
+  "postgresql.security_definer_functions[].schema",
+  "postgresql.service",
+  "postgresql.service.enabled",
+  "postgresql.settings",
+  "postgresql.settings.shared_preload_libraries",
+  "postgresql.ssl",
+  "postgresql.ssl.enabled",
+  "postgresql.ssl.ssl_ciphers",
+  "postgresql.ssl.ssl_min_protocol_version",
+  "postgresql.ssl.ssl_tls13_ciphers",
+  "postgresql.ssl.unapproved_cipher_sessions",
+  "postgresql.system",
+  "postgresql.system.pgpassword_processes",
+  "postgresql.system.pgpassword_profile_files",
+  "postgresql.system.psql_history_files",
+  "postgresql.system.psql_history_files[].path",
+  "postgresql.system.psql_history_files[].symlink_target"
+ ]
+}

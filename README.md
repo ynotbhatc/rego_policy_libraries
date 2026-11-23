@@ -81,6 +81,7 @@ Wiring it into a CI job, Conftest, Gatekeeper or Kubewarden: [docs/INTEGRATIONS.
 - **One report shape.** `compliant`, counts of passed and failed controls, a percentage, and a `violations` list that names each control. Sections are reported separately when a framework has them.
 - **Facts in, decisions out.** Policies read only their input. They perform no I/O, call no services and need no data documents, so they run the same in OPA, Enterprise OPA, Conftest, Gatekeeper, Kubewarden and Trivy.
 - **Fails closed.** Missing facts fail. A control whose evidence is absent fails with an "evidence missing" violation rather than passing by default. The gate catches empty input; sparse or wrongly shaped input still evaluates, so send what the module header asks for.
+- **A schema for the input.** Each framework key has a generated JSON Schema for the facts it reads, under [`schemas/input/`](schemas/input/), and `python3 scripts/validate_input.py <framework key> facts.json` checks a document before evaluation: required evidence that is missing, wrong types, and misnamed keys (`sshd.permit_root_login` where the rule reads `ssh_config.PermitRootLogin`). Schemas are derived from the rule tables, the collector manifests or the policy sources, and each one says which; [docs/INPUT_SCHEMAS.md](docs/INPUT_SCHEMAS.md) explains how far to trust each level.
 - **Loadable in any slice.** Load one benchmark, one directory or the whole tree. Nothing references another instance.
 
 A typical report:

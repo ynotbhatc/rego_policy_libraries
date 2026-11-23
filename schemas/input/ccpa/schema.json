@@ -1,0 +1,511 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ccpa/schema.json",
+ "title": "Input facts for ccpa",
+ "description": "Input paths referenced in the sources of frameworks/privacy/ccpa/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "ccpa",
+ "x-entrypoint": "data.ccpa.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/privacy/ccpa/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "ccpa": {
+   "description": "Read in ccpa_admt.rego, ccpa_business_obligations.rego, ccpa_consumer_rights.rego, ccpa_cybersecurity_audits.rego and 3 more.",
+   "properties": {
+    "admt": {
+     "description": "Read in ccpa_admt.rego."
+    },
+    "business_obligations": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_broker": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "applicable": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "registered_with_cppa": {
+         "description": "Read in ccpa_business_obligations.rego."
+        }
+       }
+      },
+      "notice_at_collection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "categories_and_purposes_disclosed": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "provided_at_or_before_collection": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "retention_periods_disclosed": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "sale_sharing_disclosed_with_opt_out": {
+         "description": "Read in ccpa_business_obligations.rego."
+        }
+       }
+      },
+      "privacy_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ccpa_rights_disclosure_included": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "contact_information_included": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "lists_categories_collected": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "lists_collection_purposes": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "lists_third_party_categories": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "published_and_updated_annually": {
+         "description": "Read in ccpa_business_obligations.rego."
+        }
+       }
+      },
+      "record_keeping": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "annual_metrics_reported": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "requests_retained_24_months": {
+         "description": "Read in ccpa_business_obligations.rego."
+        }
+       }
+      },
+      "service_provider_contracts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "prohibition_on_selling": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "subprocessor_restrictions": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "written_contracts_limiting_use": {
+         "description": "Read in ccpa_business_obligations.rego."
+        }
+       }
+      },
+      "training": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "personnel_trained": {
+         "description": "Read in ccpa_business_obligations.rego."
+        },
+        "training_documented_and_refreshed": {
+         "description": "Read in ccpa_business_obligations.rego."
+        }
+       }
+      }
+     }
+    },
+    "consumer_rights": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "non_discrimination": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "no_different_pricing_for_opt_out": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "no_penalty_for_rights_exercise": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        }
+       }
+      },
+      "right_to_correct": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "correction_process_defined": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "correction_propagated": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "response_within_45_days": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        }
+       }
+      },
+      "right_to_delete": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "confirmation_provided": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "deletion_process_established": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "deletion_propagated": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "exceptions_documented": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        }
+       }
+      },
+      "right_to_know": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "categories_disclosed": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "identity_verification_established": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "response_within_45_days": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "specific_pieces_provided": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "two_requests_per_year_honored": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        }
+       }
+      },
+      "right_to_limit_sensitive": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "honored_within_15_business_days": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "limit_sensitive_pi_link_available": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "use_limited_when_requested": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        }
+       }
+      },
+      "right_to_opt_out": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "do_not_sell_link_on_homepage": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "gpc_signal_honored": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "honored_within_15_business_days": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        },
+        "no_reenrollment_within_12_months": {
+         "description": "Read in ccpa_consumer_rights.rego."
+        }
+       }
+      }
+     }
+    },
+    "cybersecurity_audits": {
+     "description": "Read in ccpa_cybersecurity_audits.rego."
+    },
+    "data_practices": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_minimization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "collected_only_for_disclosed_purposes": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "collection_limited_to_necessary": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "not_used_incompatibly": {
+         "description": "Read in ccpa_data_practices.rego."
+        }
+       }
+      },
+      "data_protection_assessments": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "conducted_for_high_risk": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "reviewed_annually": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "submitted_to_cppa_on_request": {
+         "description": "Read in ccpa_data_practices.rego."
+        }
+       }
+      },
+      "purpose_limitation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_sold_beyond_disclosed_categories": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "not_used_beyond_disclosed_purposes": {
+         "description": "Read in ccpa_data_practices.rego."
+        }
+       }
+      },
+      "retention_limitation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automated_deletion_enforced": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "not_retained_longer_than_necessary": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "schedule_established_and_documented": {
+         "description": "Read in ccpa_data_practices.rego."
+        }
+       }
+      },
+      "security": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "breach_notification_within_72_hours": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "consumer_notification_without_unreasonable_delay": {
+         "description": "Read in ccpa_data_practices.rego."
+        },
+        "reasonable_security_implemented": {
+         "description": "Read in ccpa_data_practices.rego."
+        }
+       }
+      }
+     }
+    },
+    "risk_assessments": {
+     "description": "Read in ccpa_risk_assessments.rego."
+    },
+    "sensitive_data": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "account_credentials": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_stored_in_plaintext": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "automated_decisions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "logic_explanation_available": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        },
+        "opt_out_available": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "biometric_data": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "consent_obtained": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        },
+        "retention_limited": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "genetic_data": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_controls_implemented": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        },
+        "not_sold": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "government_ids": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_limited_and_encrypted": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "health_information": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "hipaa_aligned_controls": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "mail_email_text": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_accessed_except_for_delivery": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "precise_geolocation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "explicit_purpose_limitation": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "racial_ethnic_origin": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dpias_conducted": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "religious_beliefs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "collection_minimized": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "sex_life_orientation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_collected_unless_necessary": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      },
+      "union_membership": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "collection_minimized": {
+         "description": "Read in ccpa_sensitive_data.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "ccpa",
+  "ccpa.admt",
+  "ccpa.business_obligations",
+  "ccpa.business_obligations.data_broker",
+  "ccpa.business_obligations.data_broker.applicable",
+  "ccpa.business_obligations.data_broker.registered_with_cppa",
+  "ccpa.business_obligations.notice_at_collection",
+  "ccpa.business_obligations.notice_at_collection.categories_and_purposes_disclosed",
+  "ccpa.business_obligations.notice_at_collection.provided_at_or_before_collection",
+  "ccpa.business_obligations.notice_at_collection.retention_periods_disclosed",
+  "ccpa.business_obligations.notice_at_collection.sale_sharing_disclosed_with_opt_out",
+  "ccpa.business_obligations.privacy_policy",
+  "ccpa.business_obligations.privacy_policy.ccpa_rights_disclosure_included",
+  "ccpa.business_obligations.privacy_policy.contact_information_included",
+  "ccpa.business_obligations.privacy_policy.lists_categories_collected",
+  "ccpa.business_obligations.privacy_policy.lists_collection_purposes",
+  "ccpa.business_obligations.privacy_policy.lists_third_party_categories",
+  "ccpa.business_obligations.privacy_policy.published_and_updated_annually",
+  "ccpa.business_obligations.record_keeping",
+  "ccpa.business_obligations.record_keeping.annual_metrics_reported",
+  "ccpa.business_obligations.record_keeping.requests_retained_24_months",
+  "ccpa.business_obligations.service_provider_contracts",
+  "ccpa.business_obligations.service_provider_contracts.prohibition_on_selling",
+  "ccpa.business_obligations.service_provider_contracts.subprocessor_restrictions",
+  "ccpa.business_obligations.service_provider_contracts.written_contracts_limiting_use",
+  "ccpa.business_obligations.training",
+  "ccpa.business_obligations.training.personnel_trained",
+  "ccpa.business_obligations.training.training_documented_and_refreshed",
+  "ccpa.consumer_rights",
+  "ccpa.consumer_rights.non_discrimination",
+  "ccpa.consumer_rights.non_discrimination.no_different_pricing_for_opt_out",
+  "ccpa.consumer_rights.non_discrimination.no_penalty_for_rights_exercise",
+  "ccpa.consumer_rights.right_to_correct",
+  "ccpa.consumer_rights.right_to_correct.correction_process_defined",
+  "ccpa.consumer_rights.right_to_correct.correction_propagated",
+  "ccpa.consumer_rights.right_to_correct.response_within_45_days",
+  "ccpa.consumer_rights.right_to_delete",
+  "ccpa.consumer_rights.right_to_delete.confirmation_provided",
+  "ccpa.consumer_rights.right_to_delete.deletion_process_established",
+  "ccpa.consumer_rights.right_to_delete.deletion_propagated",
+  "ccpa.consumer_rights.right_to_delete.exceptions_documented",
+  "ccpa.consumer_rights.right_to_know",
+  "ccpa.consumer_rights.right_to_know.categories_disclosed",
+  "ccpa.consumer_rights.right_to_know.identity_verification_established",
+  "ccpa.consumer_rights.right_to_know.response_within_45_days",
+  "ccpa.consumer_rights.right_to_know.specific_pieces_provided",
+  "ccpa.consumer_rights.right_to_know.two_requests_per_year_honored",
+  "ccpa.consumer_rights.right_to_limit_sensitive",
+  "ccpa.consumer_rights.right_to_limit_sensitive.honored_within_15_business_days",
+  "ccpa.consumer_rights.right_to_limit_sensitive.limit_sensitive_pi_link_available",
+  "ccpa.consumer_rights.right_to_limit_sensitive.use_limited_when_requested",
+  "ccpa.consumer_rights.right_to_opt_out",
+  "ccpa.consumer_rights.right_to_opt_out.do_not_sell_link_on_homepage",
+  "ccpa.consumer_rights.right_to_opt_out.gpc_signal_honored",
+  "ccpa.consumer_rights.right_to_opt_out.honored_within_15_business_days",
+  "ccpa.consumer_rights.right_to_opt_out.no_reenrollment_within_12_months",
+  "ccpa.cybersecurity_audits",
+  "ccpa.data_practices",
+  "ccpa.data_practices.data_minimization",
+  "ccpa.data_practices.data_minimization.collected_only_for_disclosed_purposes",
+  "ccpa.data_practices.data_minimization.collection_limited_to_necessary",
+  "ccpa.data_practices.data_minimization.not_used_incompatibly",
+  "ccpa.data_practices.data_protection_assessments",
+  "ccpa.data_practices.data_protection_assessments.conducted_for_high_risk",
+  "ccpa.data_practices.data_protection_assessments.reviewed_annually",
+  "ccpa.data_practices.data_protection_assessments.submitted_to_cppa_on_request",
+  "ccpa.data_practices.purpose_limitation",
+  "ccpa.data_practices.purpose_limitation.not_sold_beyond_disclosed_categories",
+  "ccpa.data_practices.purpose_limitation.not_used_beyond_disclosed_purposes",
+  "ccpa.data_practices.retention_limitation",
+  "ccpa.data_practices.retention_limitation.automated_deletion_enforced",
+  "ccpa.data_practices.retention_limitation.not_retained_longer_than_necessary",
+  "ccpa.data_practices.retention_limitation.schedule_established_and_documented",
+  "ccpa.data_practices.security",
+  "ccpa.data_practices.security.breach_notification_within_72_hours",
+  "ccpa.data_practices.security.consumer_notification_without_unreasonable_delay",
+  "ccpa.data_practices.security.reasonable_security_implemented",
+  "ccpa.risk_assessments",
+  "ccpa.sensitive_data",
+  "ccpa.sensitive_data.account_credentials",
+  "ccpa.sensitive_data.account_credentials.not_stored_in_plaintext",
+  "ccpa.sensitive_data.automated_decisions",
+  "ccpa.sensitive_data.automated_decisions.logic_explanation_available",
+  "ccpa.sensitive_data.automated_decisions.opt_out_available",
+  "ccpa.sensitive_data.biometric_data",
+  "ccpa.sensitive_data.biometric_data.consent_obtained",
+  "ccpa.sensitive_data.biometric_data.retention_limited",
+  "ccpa.sensitive_data.genetic_data",
+  "ccpa.sensitive_data.genetic_data.access_controls_implemented",
+  "ccpa.sensitive_data.genetic_data.not_sold",
+  "ccpa.sensitive_data.government_ids",
+  "ccpa.sensitive_data.government_ids.access_limited_and_encrypted",
+  "ccpa.sensitive_data.health_information",
+  "ccpa.sensitive_data.health_information.hipaa_aligned_controls",
+  "ccpa.sensitive_data.mail_email_text",
+  "ccpa.sensitive_data.mail_email_text.not_accessed_except_for_delivery",
+  "ccpa.sensitive_data.precise_geolocation",
+  "ccpa.sensitive_data.precise_geolocation.explicit_purpose_limitation",
+  "ccpa.sensitive_data.racial_ethnic_origin",
+  "ccpa.sensitive_data.racial_ethnic_origin.dpias_conducted",
+  "ccpa.sensitive_data.religious_beliefs",
+  "ccpa.sensitive_data.religious_beliefs.collection_minimized",
+  "ccpa.sensitive_data.sex_life_orientation",
+  "ccpa.sensitive_data.sex_life_orientation.not_collected_unless_necessary",
+  "ccpa.sensitive_data.union_membership",
+  "ccpa.sensitive_data.union_membership.collection_minimized"
+ ]
+}

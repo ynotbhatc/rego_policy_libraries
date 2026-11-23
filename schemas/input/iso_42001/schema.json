@@ -1,0 +1,480 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/iso_42001/schema.json",
+ "title": "Input facts for iso_42001",
+ "description": "Facts the module in governance/iso_42001/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "iso_42001",
+ "x-entrypoint": "data.iso_42001.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "governance/iso_42001/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.iso_42001.main_test.conformant_input",
+ "type": "object",
+ "properties": {
+  "annex_a": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "concern_reporting_process": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "data": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "management_process": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "provenance_recorded": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "quality_criteria": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "interested_parties": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "incident_reporting": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "user_information": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "lifecycle": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "deployment_plan": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "event_logging": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "operation_monitoring": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "requirements_specified": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "responsible_development_objectives": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "technical_documentation": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "verification_validation": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "resources_documented": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "responsible_use": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "objectives_defined": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "third_party": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "responsibilities_allocated": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "supplier_process": {
+       "description": "Read in iso_42001_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-02"
+   ]
+  },
+  "context": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "aims_scope_documented": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "interested_parties_identified": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "internal_external_issues_determined": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example AI Deployer Inc"
+   ]
+  },
+  "improvement": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "nonconformity_corrective_action": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "leadership": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "ai_policy_established": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "roles_responsibilities_assigned": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "top_management_commitment": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "operation": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "impact_assessments_performed": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "processes_planned_controlled": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_assessments_at_intervals": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "organization_role": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "deployer"
+   ]
+  },
+  "performance": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "internal_audit_program": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "management_review": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "monitoring_measurement": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "planning": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "ai_impact_assessment_process": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ai_risk_assessment_process": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "measurable_objectives": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_treatment_plan": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "support": {
+   "description": "Read in iso_42001_main.rego.",
+   "type": "object",
+   "properties": {
+    "awareness_program": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "competence_ensured": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "documented_information_controlled": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "resources_determined": {
+     "description": "Read in iso_42001_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "annex_a",
+  "annex_a.concern_reporting_process",
+  "annex_a.data",
+  "annex_a.data.management_process",
+  "annex_a.data.provenance_recorded",
+  "annex_a.data.quality_criteria",
+  "annex_a.interested_parties",
+  "annex_a.interested_parties.incident_reporting",
+  "annex_a.interested_parties.user_information",
+  "annex_a.lifecycle",
+  "annex_a.lifecycle.deployment_plan",
+  "annex_a.lifecycle.event_logging",
+  "annex_a.lifecycle.operation_monitoring",
+  "annex_a.lifecycle.requirements_specified",
+  "annex_a.lifecycle.responsible_development_objectives",
+  "annex_a.lifecycle.technical_documentation",
+  "annex_a.lifecycle.verification_validation",
+  "annex_a.resources_documented",
+  "annex_a.responsible_use",
+  "annex_a.responsible_use.objectives_defined",
+  "annex_a.third_party",
+  "annex_a.third_party.responsibilities_allocated",
+  "annex_a.third_party.supplier_process",
+  "assessment_date",
+  "context",
+  "context.aims_scope_documented",
+  "context.interested_parties_identified",
+  "context.internal_external_issues_determined",
+  "entity_name",
+  "improvement",
+  "improvement.nonconformity_corrective_action",
+  "leadership",
+  "leadership.ai_policy_established",
+  "leadership.roles_responsibilities_assigned",
+  "leadership.top_management_commitment",
+  "operation",
+  "operation.impact_assessments_performed",
+  "operation.processes_planned_controlled",
+  "operation.risk_assessments_at_intervals",
+  "organization_role",
+  "performance",
+  "performance.internal_audit_program",
+  "performance.management_review",
+  "performance.monitoring_measurement",
+  "planning",
+  "planning.ai_impact_assessment_process",
+  "planning.ai_risk_assessment_process",
+  "planning.measurable_objectives",
+  "planning.risk_treatment_plan",
+  "support",
+  "support.awareness_program",
+  "support.competence_ensured",
+  "support.documented_information_controlled",
+  "support.resources_determined"
+ ]
+}

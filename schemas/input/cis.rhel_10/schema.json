@@ -1,0 +1,161 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis.rhel_10/schema.json",
+ "title": "Input facts for cis.rhel_10",
+ "description": "Input paths referenced in the sources of benchmarks/cis/rhel_10/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cis.rhel_10",
+ "x-entrypoint": "data.cis.rhel_10.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "benchmarks/cis/rhel_10/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "ansible_facts": {
+   "description": "Read in cis_rhel_10.rego.",
+   "properties": {
+    "ansible_interfaces": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "ansible_modprobe_config": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "ansible_mounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "ansible_packages": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<package_name>"
+    },
+    "ansible_services": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "crond": {
+       "description": "Read in cis_rhel_10.rego."
+      }
+     }
+    },
+    "ansible_sysctl": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "audit_rules": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "directory_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<directory>"
+    },
+    "file_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "/etc/at.allow": {
+       "description": "Read in cis_rhel_10.rego."
+      },
+      "/etc/cron.allow": {
+       "description": "Read in cis_rhel_10.rego."
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<filepath>"
+    },
+    "firewalld_config": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "groups": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "grub_config": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "nftables_config": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "pam_config": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "podman_config": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "postfix_config": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "root_path": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "security_limits": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "shell_timeout": {
+     "description": "Read in cis_rhel_10.rego."
+    },
+    "system_files": {
+     "description": "Read in cis_rhel_10.rego.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "systemd_services": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "additionalProperties": {
+      "description": "Read in cis_rhel_10.rego."
+     },
+     "x-variable-key": "<_>"
+    },
+    "trusted_registries": {
+     "description": "Read in cis_rhel_10.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "ansible_facts",
+  "ansible_facts.ansible_interfaces",
+  "ansible_facts.ansible_modprobe_config",
+  "ansible_facts.ansible_mounts",
+  "ansible_facts.ansible_packages",
+  "ansible_facts.ansible_services",
+  "ansible_facts.ansible_services.crond",
+  "ansible_facts.ansible_sysctl",
+  "ansible_facts.audit_rules",
+  "ansible_facts.directory_permissions",
+  "ansible_facts.file_permissions",
+  "ansible_facts.file_permissions[\"/etc/at.allow\"]",
+  "ansible_facts.file_permissions[\"/etc/cron.allow\"]",
+  "ansible_facts.firewalld_config",
+  "ansible_facts.groups",
+  "ansible_facts.grub_config",
+  "ansible_facts.nftables_config",
+  "ansible_facts.pam_config",
+  "ansible_facts.podman_config",
+  "ansible_facts.postfix_config",
+  "ansible_facts.root_path",
+  "ansible_facts.security_limits",
+  "ansible_facts.shell_timeout",
+  "ansible_facts.system_files",
+  "ansible_facts.systemd_services",
+  "ansible_facts.trusted_registries"
+ ]
+}

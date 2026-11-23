@@ -1,0 +1,839 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis.sql_server_2022/schema.json",
+ "title": "Input facts for cis.sql_server_2022",
+ "description": "Facts the module in benchmarks/cis/sql_server_2022/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis.sql_server_2022",
+ "x-entrypoint": "data.cis.sql_server_2022.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/sql_server_2022/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis.sql_server_2022_test.green",
+ "type": "object",
+ "properties": {
+  "cis_profile": {
+   "description": "Read in cis_sql_server_2022.rego."
+  },
+  "sql": {
+   "description": "Read in cis_sql_server_2022.rego.",
+   "type": "object",
+   "properties": {
+    "asymmetric_keys": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "database": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AppDB"
+        ]
+       },
+       "key_length": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         2048
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AppAsym"
+        ]
+       }
+      }
+     }
+    },
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "browser_service_reviewed": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "control_server_grants_reviewed": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "fulltext_service_account_not_admin": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "input_sanitization_reviewed": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "latest_cumulative_update_installed": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "mssql_service_account_not_admin": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "must_change_reviewed": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "single_function_member_server": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sqlagent_service_account_not_admin": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sysadmin_membership_reviewed": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unnecessary_protocols_disabled": {
+       "description": "Read in cis_sql_server_2022.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "builtin_logins": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "configurations": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "object",
+     "properties": {
+      "ad hoc distributed queries": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "clr enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "clr strict security": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        }
+       }
+      },
+      "cross db ownership chaining": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "database mail xps": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "default trace enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        }
+       }
+      },
+      "ole automation procedures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "remote access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "remote admin connections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "scan for startup procs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "value_configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "value_in_use": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      }
+     }
+    },
+    "connection_encrypt_options": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "TRUE"
+      ]
+     },
+     "examples": [
+      [
+       "TRUE"
+      ]
+     ]
+    },
+    "contained_databases_auto_close_on": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "contained_db_sql_auth_users": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "databases_trustworthy_on": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "databases_without_tde": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "guest_connect_grants": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "has_contained_databases": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
+    },
+    "hide_instance": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    },
+    "is_clustered": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
+    },
+    "is_integrated_security_only": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
+    },
+    "local_group_logins": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "login_audit_level": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "failure"
+     ]
+    },
+    "logins_named_sa": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "msdb_admin_role_members": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "msdb_public_proxy_grants": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "num_error_logs": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      12
+     ]
+    },
+    "orphaned_users": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "public_role_extra_permissions": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "sa_account_disabled": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "sa_login_name": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "dbadmin_x"
+     ]
+    },
+    "server_audit_actions": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "audit_action_name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AUDIT_CHANGE_GROUP"
+        ]
+       },
+       "audit_enabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "audited_result": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "SUCCESS AND FAILURE"
+        ]
+       },
+       "specification_enabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    },
+    "sql_logins_without_check_policy": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "symmetric_keys": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "algorithm_desc": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AES_256"
+        ]
+       },
+       "database": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AppDB"
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AppKey"
+        ]
+       }
+      }
+     }
+    },
+    "sysadmin_logins_without_expiration_check": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "tcp_port_1433_count": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
+    },
+    "unencrypted_backups": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
+    },
+    "user_assemblies": {
+     "description": "Read in cis_sql_server_2022.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "database": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "AppDB"
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "SafeLib"
+        ]
+       },
+       "permission_set_desc": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "SAFE_ACCESS"
+        ]
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_profile",
+  "sql",
+  "sql.asymmetric_keys",
+  "sql.asymmetric_keys[].database",
+  "sql.asymmetric_keys[].key_length",
+  "sql.asymmetric_keys[].name",
+  "sql.attest",
+  "sql.attest.browser_service_reviewed",
+  "sql.attest.control_server_grants_reviewed",
+  "sql.attest.fulltext_service_account_not_admin",
+  "sql.attest.input_sanitization_reviewed",
+  "sql.attest.latest_cumulative_update_installed",
+  "sql.attest.mssql_service_account_not_admin",
+  "sql.attest.must_change_reviewed",
+  "sql.attest.single_function_member_server",
+  "sql.attest.sqlagent_service_account_not_admin",
+  "sql.attest.sysadmin_membership_reviewed",
+  "sql.attest.unnecessary_protocols_disabled",
+  "sql.builtin_logins",
+  "sql.configurations",
+  "sql.configurations[\"ad hoc distributed queries\"]",
+  "sql.configurations[\"ad hoc distributed queries\"].value_configured",
+  "sql.configurations[\"ad hoc distributed queries\"].value_in_use",
+  "sql.configurations[\"clr enabled\"]",
+  "sql.configurations[\"clr enabled\"].value_configured",
+  "sql.configurations[\"clr enabled\"].value_in_use",
+  "sql.configurations[\"clr strict security\"]",
+  "sql.configurations[\"clr strict security\"].value_configured",
+  "sql.configurations[\"clr strict security\"].value_in_use",
+  "sql.configurations[\"cross db ownership chaining\"]",
+  "sql.configurations[\"cross db ownership chaining\"].value_configured",
+  "sql.configurations[\"cross db ownership chaining\"].value_in_use",
+  "sql.configurations[\"database mail xps\"]",
+  "sql.configurations[\"database mail xps\"].value_configured",
+  "sql.configurations[\"database mail xps\"].value_in_use",
+  "sql.configurations[\"default trace enabled\"]",
+  "sql.configurations[\"default trace enabled\"].value_configured",
+  "sql.configurations[\"default trace enabled\"].value_in_use",
+  "sql.configurations[\"ole automation procedures\"]",
+  "sql.configurations[\"ole automation procedures\"].value_configured",
+  "sql.configurations[\"ole automation procedures\"].value_in_use",
+  "sql.configurations[\"remote access\"]",
+  "sql.configurations[\"remote access\"].value_configured",
+  "sql.configurations[\"remote access\"].value_in_use",
+  "sql.configurations[\"remote admin connections\"]",
+  "sql.configurations[\"remote admin connections\"].value_configured",
+  "sql.configurations[\"remote admin connections\"].value_in_use",
+  "sql.configurations[\"scan for startup procs\"]",
+  "sql.configurations[\"scan for startup procs\"].value_configured",
+  "sql.configurations[\"scan for startup procs\"].value_in_use",
+  "sql.connection_encrypt_options",
+  "sql.contained_databases_auto_close_on",
+  "sql.contained_db_sql_auth_users",
+  "sql.databases_trustworthy_on",
+  "sql.databases_without_tde",
+  "sql.guest_connect_grants",
+  "sql.has_contained_databases",
+  "sql.hide_instance",
+  "sql.is_clustered",
+  "sql.is_integrated_security_only",
+  "sql.local_group_logins",
+  "sql.login_audit_level",
+  "sql.logins_named_sa",
+  "sql.msdb_admin_role_members",
+  "sql.msdb_public_proxy_grants",
+  "sql.num_error_logs",
+  "sql.orphaned_users",
+  "sql.public_role_extra_permissions",
+  "sql.sa_account_disabled",
+  "sql.sa_login_name",
+  "sql.server_audit_actions",
+  "sql.server_audit_actions[].audit_action_name",
+  "sql.server_audit_actions[].audit_enabled",
+  "sql.server_audit_actions[].audited_result",
+  "sql.server_audit_actions[].specification_enabled",
+  "sql.sql_logins_without_check_policy",
+  "sql.symmetric_keys",
+  "sql.symmetric_keys[].algorithm_desc",
+  "sql.symmetric_keys[].database",
+  "sql.symmetric_keys[].name",
+  "sql.sysadmin_logins_without_expiration_check",
+  "sql.tcp_port_1433_count",
+  "sql.unencrypted_backups",
+  "sql.user_assemblies",
+  "sql.user_assemblies[].database",
+  "sql.user_assemblies[].name",
+  "sql.user_assemblies[].permission_set_desc"
+ ]
+}

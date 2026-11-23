@@ -1,0 +1,488 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist.sp800_160v2/schema.json",
+ "title": "Input facts for nist.sp800_160v2",
+ "description": "Facts the module in frameworks/federal/nist/sp_800_160v2/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nist.sp800_160v2",
+ "x-entrypoint": "data.nist.sp800_160v2.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/nist/sp_800_160v2/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist.sp800_160v2.main_test._green",
+ "type": "object",
+ "properties": {
+  "nist_sp_800_160v2": {
+   "description": "Read in nist_800_160v2_main.rego.",
+   "type": "object",
+   "properties": {
+    "approaches": {
+     "description": "Read in nist_800_160v2_main.rego.",
+     "type": "object",
+     "properties": {
+      "adaptive-response.adaptive-management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "adaptive-response.dynamic-reconfiguration": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "adaptive-response.dynamic-resource-allocation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "analytic-monitoring.forensic-and-behavioral-analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "analytic-monitoring.monitoring-and-damage-assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "analytic-monitoring.sensor-fusion-and-analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "contextual-awareness.dynamic-resource-awareness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "contextual-awareness.dynamic-threat-awareness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "contextual-awareness.mission-dependency-and-status-visualization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "coordinated-protection.calibrated-defense-in-depth": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "coordinated-protection.consistency-analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "coordinated-protection.orchestration": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "coordinated-protection.self-challenge": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "deception.disinformation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "deception.misdirection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "deception.obfuscation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "deception.tainting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "diversity.architectural-diversity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "diversity.design-diversity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "diversity.information-diversity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "diversity.path-diversity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "diversity.supply-chain-diversity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "diversity.synthetic-diversity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic-positioning.asset-mobility": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic-positioning.distributed-functionality": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic-positioning.fragmentation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic-positioning.functional-relocation-of-cyber-resources": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dynamic-positioning.functional-relocation-of-sensors": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "non-persistence.non-persistent-connectivity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "non-persistence.non-persistent-information": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "non-persistence.non-persistent-services": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privilege-restriction.attribute-based-usage-restriction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privilege-restriction.dynamic-privileges": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privilege-restriction.trust-based-privilege-management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "realignment.evolvability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "realignment.offloading": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "realignment.purposing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "realignment.replacement": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "realignment.restriction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "realignment.specialization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "redundancy.protected-backup-and-restore": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "redundancy.replication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "redundancy.surplus-capacity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "segmentation.dynamic-segmentation-and-isolation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "segmentation.predefined-segmentation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "substantiated-integrity.behavior-validation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "substantiated-integrity.integrity-checks": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "substantiated-integrity.provenance-tracking": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unpredictability.contextual-unpredictability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unpredictability.temporal-unpredictability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "scope": {
+     "description": "Read in nist_800_160v2_main.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "nist_sp_800_160v2",
+  "nist_sp_800_160v2.approaches",
+  "nist_sp_800_160v2.approaches[\"adaptive-response.adaptive-management\"]",
+  "nist_sp_800_160v2.approaches[\"adaptive-response.dynamic-reconfiguration\"]",
+  "nist_sp_800_160v2.approaches[\"adaptive-response.dynamic-resource-allocation\"]",
+  "nist_sp_800_160v2.approaches[\"analytic-monitoring.forensic-and-behavioral-analysis\"]",
+  "nist_sp_800_160v2.approaches[\"analytic-monitoring.monitoring-and-damage-assessment\"]",
+  "nist_sp_800_160v2.approaches[\"analytic-monitoring.sensor-fusion-and-analysis\"]",
+  "nist_sp_800_160v2.approaches[\"contextual-awareness.dynamic-resource-awareness\"]",
+  "nist_sp_800_160v2.approaches[\"contextual-awareness.dynamic-threat-awareness\"]",
+  "nist_sp_800_160v2.approaches[\"contextual-awareness.mission-dependency-and-status-visualization\"]",
+  "nist_sp_800_160v2.approaches[\"coordinated-protection.calibrated-defense-in-depth\"]",
+  "nist_sp_800_160v2.approaches[\"coordinated-protection.consistency-analysis\"]",
+  "nist_sp_800_160v2.approaches[\"coordinated-protection.orchestration\"]",
+  "nist_sp_800_160v2.approaches[\"coordinated-protection.self-challenge\"]",
+  "nist_sp_800_160v2.approaches[\"deception.disinformation\"]",
+  "nist_sp_800_160v2.approaches[\"deception.misdirection\"]",
+  "nist_sp_800_160v2.approaches[\"deception.obfuscation\"]",
+  "nist_sp_800_160v2.approaches[\"deception.tainting\"]",
+  "nist_sp_800_160v2.approaches[\"diversity.architectural-diversity\"]",
+  "nist_sp_800_160v2.approaches[\"diversity.design-diversity\"]",
+  "nist_sp_800_160v2.approaches[\"diversity.information-diversity\"]",
+  "nist_sp_800_160v2.approaches[\"diversity.path-diversity\"]",
+  "nist_sp_800_160v2.approaches[\"diversity.supply-chain-diversity\"]",
+  "nist_sp_800_160v2.approaches[\"diversity.synthetic-diversity\"]",
+  "nist_sp_800_160v2.approaches[\"dynamic-positioning.asset-mobility\"]",
+  "nist_sp_800_160v2.approaches[\"dynamic-positioning.distributed-functionality\"]",
+  "nist_sp_800_160v2.approaches[\"dynamic-positioning.fragmentation\"]",
+  "nist_sp_800_160v2.approaches[\"dynamic-positioning.functional-relocation-of-cyber-resources\"]",
+  "nist_sp_800_160v2.approaches[\"dynamic-positioning.functional-relocation-of-sensors\"]",
+  "nist_sp_800_160v2.approaches[\"non-persistence.non-persistent-connectivity\"]",
+  "nist_sp_800_160v2.approaches[\"non-persistence.non-persistent-information\"]",
+  "nist_sp_800_160v2.approaches[\"non-persistence.non-persistent-services\"]",
+  "nist_sp_800_160v2.approaches[\"privilege-restriction.attribute-based-usage-restriction\"]",
+  "nist_sp_800_160v2.approaches[\"privilege-restriction.dynamic-privileges\"]",
+  "nist_sp_800_160v2.approaches[\"privilege-restriction.trust-based-privilege-management\"]",
+  "nist_sp_800_160v2.approaches[\"realignment.evolvability\"]",
+  "nist_sp_800_160v2.approaches[\"realignment.offloading\"]",
+  "nist_sp_800_160v2.approaches[\"realignment.purposing\"]",
+  "nist_sp_800_160v2.approaches[\"realignment.replacement\"]",
+  "nist_sp_800_160v2.approaches[\"realignment.restriction\"]",
+  "nist_sp_800_160v2.approaches[\"realignment.specialization\"]",
+  "nist_sp_800_160v2.approaches[\"redundancy.protected-backup-and-restore\"]",
+  "nist_sp_800_160v2.approaches[\"redundancy.replication\"]",
+  "nist_sp_800_160v2.approaches[\"redundancy.surplus-capacity\"]",
+  "nist_sp_800_160v2.approaches[\"segmentation.dynamic-segmentation-and-isolation\"]",
+  "nist_sp_800_160v2.approaches[\"segmentation.predefined-segmentation\"]",
+  "nist_sp_800_160v2.approaches[\"substantiated-integrity.behavior-validation\"]",
+  "nist_sp_800_160v2.approaches[\"substantiated-integrity.integrity-checks\"]",
+  "nist_sp_800_160v2.approaches[\"substantiated-integrity.provenance-tracking\"]",
+  "nist_sp_800_160v2.approaches[\"unpredictability.contextual-unpredictability\"]",
+  "nist_sp_800_160v2.approaches[\"unpredictability.temporal-unpredictability\"]",
+  "nist_sp_800_160v2.scope"
+ ]
+}

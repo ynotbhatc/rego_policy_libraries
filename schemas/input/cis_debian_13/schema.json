@@ -1,0 +1,1691 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_debian_13/schema.json",
+ "title": "Input facts for cis_debian_13",
+ "description": "Input paths referenced in the sources of benchmarks/cis/debian_13/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "cis_debian_13",
+ "x-entrypoint": "data.cis_debian_13.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "benchmarks/cis/debian_13/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "aide": {
+   "description": "Read in integrity.rego.",
+   "properties": {
+    "audit_tool_options": {
+     "description": "Read in integrity.rego.",
+     "additionalProperties": {
+      "description": "Read in integrity.rego."
+     },
+     "x-variable-key": "<t>"
+    },
+    "dailyaidecheck": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "service_unit_file_state": {
+       "description": "Read in integrity.rego."
+      },
+      "timer_active_state": {
+       "description": "Read in integrity.rego."
+      },
+      "timer_unit_file_state": {
+       "description": "Read in integrity.rego."
+      }
+     }
+    }
+   }
+  },
+  "ansible_facts": {
+   "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more.",
+   "properties": {
+    "ansible_mounts": {
+     "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+    }
+   }
+  },
+  "apparmor": {
+   "description": "Read in apparmor.rego.",
+   "properties": {
+    "grub_d_cfg_raw": {
+     "description": "Read in apparmor.rego."
+    },
+    "processes": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "unconfined": {
+       "description": "Read in apparmor.rego."
+      }
+     }
+    },
+    "profiles": {
+     "description": "Read in apparmor.rego.",
+     "properties": {
+      "enforce": {
+       "description": "Read in apparmor.rego."
+      },
+      "loaded": {
+       "description": "Read in apparmor.rego."
+      }
+     }
+    }
+   }
+  },
+  "apport": {
+   "description": "Read in process_hardening.rego.",
+   "properties": {
+    "default_raw": {
+     "description": "Read in process_hardening.rego."
+    }
+   }
+  },
+  "apt": {
+   "description": "Read in package_management.rego.",
+   "properties": {
+    "auth_conf_d": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "group": {
+       "description": "Read in package_management.rego."
+      },
+      "mode": {
+       "description": "Read in package_management.rego."
+      },
+      "owner": {
+       "description": "Read in package_management.rego."
+      }
+     }
+    },
+    "auth_conf_files": {
+     "description": "Read in package_management.rego."
+    },
+    "config_dump": {
+     "description": "Read in package_management.rego."
+    },
+    "key_files": {
+     "description": "Read in package_management.rego."
+    },
+    "sources_list_d": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "group": {
+       "description": "Read in package_management.rego."
+      },
+      "mode": {
+       "description": "Read in package_management.rego."
+      },
+      "owner": {
+       "description": "Read in package_management.rego."
+      }
+     }
+    },
+    "sources_list_d_files": {
+     "description": "Read in package_management.rego."
+    },
+    "sources_list_d_raw": {
+     "description": "Read in package_management.rego."
+    },
+    "sources_list_exists": {
+     "description": "Read in package_management.rego."
+    },
+    "sources_list_raw": {
+     "description": "Read in package_management.rego."
+    },
+    "trusted_gpg_d": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "group": {
+       "description": "Read in package_management.rego."
+      },
+      "mode": {
+       "description": "Read in package_management.rego."
+      },
+      "owner": {
+       "description": "Read in package_management.rego."
+      }
+     }
+    },
+    "usr_share_keyrings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "group": {
+       "description": "Read in package_management.rego."
+      },
+      "mode": {
+       "description": "Read in package_management.rego."
+      },
+      "owner": {
+       "description": "Read in package_management.rego."
+      }
+     }
+    }
+   }
+  },
+  "attest": {
+   "description": "Read in accounts.rego, auditd.rego, file_permissions.rego, filesystem.rego and 6 more.",
+   "properties": {
+    "apt_sources_signed_by_reviewed": {
+     "description": "Read in package_management.rego."
+    },
+    "audit_running_and_disk_rules_match": {
+     "description": "Read in auditd.rego."
+    },
+    "ipv6_status_identified": {
+     "description": "Read in network.rego."
+    },
+    "journald_file_access_reviewed": {
+     "description": "Read in logging.rego."
+    },
+    "journald_rotation_reviewed": {
+     "description": "Read in logging.rego."
+    },
+    "listening_services_approved": {
+     "description": "Read in services.rego."
+    },
+    "logrotate_reviewed": {
+     "description": "Read in logging.rego."
+    },
+    "minimum_password_days_reviewed": {
+     "description": "Read in accounts.rego."
+    },
+    "password_complexity_reviewed": {
+     "description": "Read in pam.rego."
+    },
+    "rsyslog_ca_certificates_configured": {
+     "description": "Read in logging.rego."
+    },
+    "rsyslog_logging_reviewed": {
+     "description": "Read in logging.rego."
+    },
+    "rsyslog_remote_host_configured": {
+     "description": "Read in logging.rego."
+    },
+    "ssh_post_quantum_kex_reviewed": {
+     "description": "Read in ssh.rego."
+    },
+    "suid_sgid_files_reviewed": {
+     "description": "Read in file_permissions.rego."
+    },
+    "unneeded_network_modules_reviewed": {
+     "description": "Read in network.rego."
+    },
+    "unused_filesystem_modules_reviewed": {
+     "description": "Read in filesystem.rego."
+    },
+    "updates_installed": {
+     "description": "Read in package_management.rego."
+    }
+   }
+  },
+  "auditd": {
+   "description": "Read in auditd.rego.",
+   "properties": {
+    "active_rules": {
+     "description": "Read in auditd.rego."
+    },
+    "config": {
+     "description": "Read in auditd.rego."
+    },
+    "config_files": {
+     "description": "Read in auditd.rego."
+    },
+    "log_dir_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "mode": {
+       "description": "Read in auditd.rego."
+      }
+     }
+    },
+    "log_files": {
+     "description": "Read in auditd.rego."
+    },
+    "privileged_commands": {
+     "description": "Read in auditd.rego."
+    },
+    "rules": {
+     "description": "Read in auditd.rego."
+    },
+    "tools": {
+     "description": "Read in auditd.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in auditd.rego."
+   },
+   "x-variable-key": "<src>"
+  },
+  "boot_security": {
+   "description": "Read in apparmor.rego, auditd.rego, bootloader.rego, process_hardening.rego.",
+   "properties": {
+    "grub_cfg_group": {
+     "description": "Read in bootloader.rego."
+    },
+    "grub_cfg_linux_lines": {
+     "description": "Read in apparmor.rego, auditd.rego."
+    },
+    "grub_cfg_mode": {
+     "description": "Read in bootloader.rego."
+    },
+    "grub_cfg_owner": {
+     "description": "Read in bootloader.rego."
+    },
+    "grub_password_hashed": {
+     "description": "Read in bootloader.rego."
+    },
+    "grub_password_set": {
+     "description": "Read in bootloader.rego."
+    },
+    "systemd_coredump_process_size_max": {
+     "description": "Read in process_hardening.rego."
+    },
+    "systemd_coredump_storage": {
+     "description": "Read in process_hardening.rego."
+    }
+   }
+  },
+  "chronyd": {
+   "description": "Read in time_sync.rego.",
+   "properties": {
+    "pools_configured": {
+     "description": "Read in time_sync.rego."
+    },
+    "process_users": {
+     "description": "Read in time_sync.rego."
+    },
+    "servers_configured": {
+     "description": "Read in time_sync.rego."
+    }
+   }
+  },
+  "critical_files": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "properties": {
+    "analysis": {
+     "description": "Read in file_permissions.rego."
+    }
+   }
+  },
+  "cron": {
+   "description": "Read in job_schedulers.rego.",
+   "properties": {
+    "at_allow_exists": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_allow_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_allow_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_allow_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_deny_exists": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_deny_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_deny_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "at_deny_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_allow_exists": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_allow_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_allow_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_allow_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_d_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_d_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_d_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_daily_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_daily_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_daily_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_deny_exists": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_deny_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_deny_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_deny_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_hourly_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_hourly_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_hourly_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_monthly_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_monthly_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_monthly_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_weekly_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_weekly_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_weekly_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_yearly_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_yearly_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cron_yearly_owner": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "crontab_group": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "crontab_mode": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "crontab_owner": {
+     "description": "Read in job_schedulers.rego."
+    }
+   }
+  },
+  "disabled_filesystem_modules": {
+   "description": "Read in filesystem.rego.",
+   "properties": {
+    "modules": {
+     "description": "Read in filesystem.rego."
+    }
+   }
+  },
+  "disabled_network_modules": {
+   "description": "Read in network.rego.",
+   "properties": {
+    "modules": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "initial_setup": {
+   "description": "Read in banners.rego, gdm.rego.",
+   "properties": {
+    "gdm_automount_disabled": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_automount_open_disabled": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_automount_override_allowed": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_autorun_never_enabled": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_autorun_override_allowed": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_banner_configured": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_banner_override_allowed": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_disable_user_list": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_disable_user_list_override_allowed": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_idle_delay": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_installed": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_lock_delay": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_lock_override_allowed": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_wayland_enabled": {
+     "description": "Read in gdm.rego."
+    },
+    "gdm_xdmcp_enabled": {
+     "description": "Read in gdm.rego."
+    },
+    "issue_content": {
+     "description": "Read in banners.rego."
+    },
+    "issue_exists": {
+     "description": "Read in banners.rego."
+    },
+    "issue_group": {
+     "description": "Read in banners.rego."
+    },
+    "issue_mode": {
+     "description": "Read in banners.rego."
+    },
+    "issue_net_content": {
+     "description": "Read in banners.rego."
+    },
+    "issue_net_exists": {
+     "description": "Read in banners.rego."
+    },
+    "issue_net_group": {
+     "description": "Read in banners.rego."
+    },
+    "issue_net_mode": {
+     "description": "Read in banners.rego."
+    },
+    "issue_net_owner": {
+     "description": "Read in banners.rego."
+    },
+    "issue_owner": {
+     "description": "Read in banners.rego."
+    },
+    "motd_content": {
+     "description": "Read in banners.rego."
+    },
+    "motd_exists": {
+     "description": "Read in banners.rego."
+    },
+    "motd_group": {
+     "description": "Read in banners.rego."
+    },
+    "motd_mode": {
+     "description": "Read in banners.rego."
+    },
+    "motd_owner": {
+     "description": "Read in banners.rego."
+    },
+    "pam_motd_file_permissions": {
+     "description": "Read in banners.rego."
+    },
+    "pam_motd_files": {
+     "description": "Read in banners.rego."
+    }
+   }
+  },
+  "ipv6": {
+   "description": "Read in network.rego.",
+   "properties": {
+    "disabled": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "journald": {
+   "description": "Read in logging.rego.",
+   "properties": {
+    "compress_enabled": {
+     "description": "Read in logging.rego."
+    },
+    "forward_to_syslog": {
+     "description": "Read in logging.rego."
+    },
+    "service_active": {
+     "description": "Read in logging.rego."
+    },
+    "storage_mode": {
+     "description": "Read in logging.rego."
+    }
+   }
+  },
+  "limits": {
+   "description": "Read in process_hardening.rego.",
+   "properties": {
+    "limits_raw": {
+     "description": "Read in process_hardening.rego."
+    }
+   }
+  },
+  "log_file_permissions": {
+   "description": "Read in logging.rego.",
+   "properties": {
+    "analysis": {
+     "description": "Read in logging.rego."
+    }
+   }
+  },
+  "mta": {
+   "description": "Read in services.rego.",
+   "properties": {
+    "inet_interfaces": {
+     "description": "Read in services.rego."
+    },
+    "non_loopback_listeners": {
+     "description": "Read in services.rego."
+    }
+   }
+  },
+  "packages": {
+   "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more.",
+   "properties": {
+    "aide": {
+     "description": "Read in integrity.rego."
+    },
+    "aide-common": {
+     "description": "Read in integrity.rego."
+    },
+    "apache2": {
+     "description": "Read in services.rego."
+    },
+    "apparmor": {
+     "description": "Read in apparmor.rego."
+    },
+    "apparmor-utils": {
+     "description": "Read in apparmor.rego."
+    },
+    "apport": {
+     "description": "Read in process_hardening.rego."
+    },
+    "at": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "atftp": {
+     "description": "Read in services.rego."
+    },
+    "audispd-plugins": {
+     "description": "Read in auditd.rego."
+    },
+    "auditd": {
+     "description": "Read in auditd.rego."
+    },
+    "autofs": {
+     "description": "Read in services.rego."
+    },
+    "avahi-daemon": {
+     "description": "Read in services.rego."
+    },
+    "bind9": {
+     "description": "Read in services.rego."
+    },
+    "bluez": {
+     "description": "Read in network.rego."
+    },
+    "cracklib-runtime": {
+     "description": "Read in pam.rego."
+    },
+    "cron": {
+     "description": "Read in job_schedulers.rego."
+    },
+    "cups": {
+     "description": "Read in services.rego."
+    },
+    "dnsmasq": {
+     "description": "Read in services.rego."
+    },
+    "dovecot-imapd": {
+     "description": "Read in services.rego."
+    },
+    "dovecot-pop3d": {
+     "description": "Read in services.rego."
+    },
+    "ftp": {
+     "description": "Read in services.rego."
+    },
+    "ftp-ssl": {
+     "description": "Read in services.rego."
+    },
+    "inetutils-ftp": {
+     "description": "Read in services.rego."
+    },
+    "inetutils-telnet": {
+     "description": "Read in services.rego."
+    },
+    "kea": {
+     "description": "Read in services.rego."
+    },
+    "ldap-utils": {
+     "description": "Read in services.rego."
+    },
+    "libpam-modules": {
+     "description": "Read in pam.rego."
+    },
+    "libpam-pwquality": {
+     "description": "Read in pam.rego."
+    },
+    "libpam-runtime": {
+     "description": "Read in pam.rego."
+    },
+    "libsss-sudo": {
+     "description": "Read in sudo.rego."
+    },
+    "network-manager": {
+     "description": "Read in auditd.rego."
+    },
+    "nfs-kernel-server": {
+     "description": "Read in services.rego."
+    },
+    "nginx": {
+     "description": "Read in services.rego."
+    },
+    "nis": {
+     "description": "Read in services.rego."
+    },
+    "prelink": {
+     "description": "Read in process_hardening.rego."
+    },
+    "rpcbind": {
+     "description": "Read in services.rego."
+    },
+    "rsh-client": {
+     "description": "Read in services.rego."
+    },
+    "rsync": {
+     "description": "Read in services.rego."
+    },
+    "rsyslog-gnutls": {
+     "description": "Read in logging.rego."
+    },
+    "samba": {
+     "description": "Read in services.rego."
+    },
+    "slapd": {
+     "description": "Read in services.rego."
+    },
+    "snmpd": {
+     "description": "Read in services.rego."
+    },
+    "squid": {
+     "description": "Read in services.rego."
+    },
+    "sssd": {
+     "description": "Read in sudo.rego."
+    },
+    "sudo": {
+     "description": "Read in sudo.rego."
+    },
+    "sudo-rs": {
+     "description": "Read in sudo.rego."
+    },
+    "systemd-journal-remote": {
+     "description": "Read in logging.rego."
+    },
+    "talk": {
+     "description": "Read in services.rego."
+    },
+    "telnet": {
+     "description": "Read in services.rego."
+    },
+    "telnet-ssl": {
+     "description": "Read in services.rego."
+    },
+    "telnetd": {
+     "description": "Read in services.rego."
+    },
+    "telnetd-ssl": {
+     "description": "Read in services.rego."
+    },
+    "tftpd-hpa": {
+     "description": "Read in services.rego."
+    },
+    "tnftp": {
+     "description": "Read in services.rego."
+    },
+    "ufw": {
+     "description": "Read in firewall.rego."
+    },
+    "update-notifier-common": {
+     "description": "Read in banners.rego."
+    },
+    "vsftpd": {
+     "description": "Read in services.rego."
+    },
+    "xinetd": {
+     "description": "Read in services.rego."
+    },
+    "xserver-common": {
+     "description": "Read in services.rego."
+    },
+    "ypserv": {
+     "description": "Read in services.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+   },
+   "x-variable-key": "<p>"
+  },
+  "pam": {
+   "description": "Read in accounts.rego, pam.rego, sudo.rego.",
+   "properties": {
+    "common_account": {
+     "description": "Read in pam.rego."
+    },
+    "common_auth": {
+     "description": "Read in pam.rego."
+    },
+    "common_password": {
+     "description": "Read in pam.rego."
+    },
+    "common_session": {
+     "description": "Read in pam.rego."
+    },
+    "common_session_noninteractive": {
+     "description": "Read in pam.rego."
+    },
+    "default_umask": {
+     "description": "Read in accounts.rego."
+    },
+    "encrypt_method": {
+     "description": "Read in accounts.rego."
+    },
+    "faillock_conf_raw": {
+     "description": "Read in pam.rego."
+    },
+    "inactive_days": {
+     "description": "Read in accounts.rego."
+    },
+    "pass_max_days": {
+     "description": "Read in accounts.rego."
+    },
+    "pass_warn_age": {
+     "description": "Read in accounts.rego."
+    },
+    "profile_d_raw": {
+     "description": "Read in accounts.rego."
+    },
+    "pwhistory_conf_raw": {
+     "description": "Read in pam.rego."
+    },
+    "pwquality_conf_raw": {
+     "description": "Read in pam.rego."
+    },
+    "su": {
+     "description": "Read in sudo.rego."
+    },
+    "tmout": {
+     "description": "Read in accounts.rego."
+    },
+    "tmout_exported": {
+     "description": "Read in accounts.rego."
+    },
+    "tmout_readonly": {
+     "description": "Read in accounts.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in pam.rego."
+   },
+   "x-variable-key": "<k>"
+  },
+  "pending_updates": {
+   "description": "Read in pam.rego."
+  },
+  "profile": {
+   "description": "Read in cis_debian_13.rego."
+  },
+  "rsyslog": {
+   "description": "Read in logging.rego.",
+   "properties": {
+    "config_raw": {
+     "description": "Read in logging.rego."
+    },
+    "file_create_mode": {
+     "description": "Read in logging.rego."
+    },
+    "installed": {
+     "description": "Read in logging.rego."
+    },
+    "service_active": {
+     "description": "Read in logging.rego."
+    },
+    "service_enabled": {
+     "description": "Read in logging.rego."
+    }
+   }
+  },
+  "services": {
+   "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more.",
+   "properties": {
+    "apport.service": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "state": {
+       "description": "Read in process_hardening.rego."
+      }
+     }
+    },
+    "tmp.mount": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "status": {
+       "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+      }
+     }
+    }
+   },
+   "additionalProperties": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "properties": {
+     "state": {
+      "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+     },
+     "status": {
+      "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+     }
+    }
+   },
+   "x-variable-key": "<u>"
+  },
+  "ssh": {
+   "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more.",
+   "properties": {
+    "banner_content": {
+     "description": "Read in banners.rego."
+    },
+    "banner_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "gr_name": {
+       "description": "Read in banners.rego."
+      },
+      "mode": {
+       "description": "Read in banners.rego."
+      },
+      "pw_name": {
+       "description": "Read in banners.rego."
+      }
+     }
+    },
+    "config_dir_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists": {
+       "description": "Read in ssh.rego."
+      },
+      "group": {
+       "description": "Read in ssh.rego."
+      },
+      "mode": {
+       "description": "Read in ssh.rego."
+      },
+      "owner": {
+       "description": "Read in ssh.rego."
+      }
+     }
+    },
+    "config_files": {
+     "description": "Read in ssh.rego."
+    },
+    "private_key_permissions": {
+     "description": "Read in ssh.rego."
+    },
+    "public_key_permissions": {
+     "description": "Read in ssh.rego."
+    },
+    "sshd_config_raw": {
+     "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+    }
+   }
+  },
+  "sticky_bit": {
+   "description": "Read in file_permissions.rego.",
+   "properties": {
+    "world_writable_without_sticky": {
+     "description": "Read in file_permissions.rego."
+    }
+   }
+  },
+  "sudo": {
+   "description": "Read in auditd.rego, sudo.rego.",
+   "properties": {
+    "events_logged": {
+     "description": "Read in sudo.rego."
+    },
+    "implementation": {
+     "description": "Read in sudo.rego."
+    },
+    "sudoers_content": {
+     "description": "Read in auditd.rego, sudo.rego."
+    }
+   }
+  },
+  "sysctl": {
+   "description": "Read in apparmor.rego, network.rego, process_hardening.rego.",
+   "properties": {
+    "fs.protected_hardlinks": {
+     "description": "Read in process_hardening.rego."
+    },
+    "fs.protected_symlinks": {
+     "description": "Read in process_hardening.rego."
+    },
+    "fs.suid_dumpable": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.apparmor_restrict_unprivileged_unconfined": {
+     "description": "Read in apparmor.rego."
+    },
+    "kernel.dmesg_restrict": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.kptr_restrict": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.randomize_va_space": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.yama.ptrace_scope": {
+     "description": "Read in process_hardening.rego."
+    },
+    "net.ipv4.conf.all.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.forwarding": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.log_martians": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.route_localnet": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.rp_filter": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.secure_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.send_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.forwarding": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.log_martians": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.rp_filter": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.secure_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.send_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.icmp_echo_ignore_broadcasts": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.icmp_ignore_bogus_error_responses": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.ip_forward": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.tcp_syncookies": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.accept_ra": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.forwarding": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.accept_ra": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.forwarding": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "sysctl_persisted": {
+   "description": "Read in apparmor.rego, network.rego, process_hardening.rego.",
+   "properties": {
+    "fs.protected_hardlinks": {
+     "description": "Read in process_hardening.rego."
+    },
+    "fs.protected_symlinks": {
+     "description": "Read in process_hardening.rego."
+    },
+    "fs.suid_dumpable": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.apparmor_restrict_unprivileged_unconfined": {
+     "description": "Read in apparmor.rego."
+    },
+    "kernel.dmesg_restrict": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.kptr_restrict": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.randomize_va_space": {
+     "description": "Read in process_hardening.rego."
+    },
+    "kernel.yama.ptrace_scope": {
+     "description": "Read in process_hardening.rego."
+    },
+    "net.ipv4.conf.all.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.forwarding": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.log_martians": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.route_localnet": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.rp_filter": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.secure_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.all.send_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.forwarding": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.log_martians": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.rp_filter": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.secure_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.conf.default.send_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.icmp_echo_ignore_broadcasts": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.icmp_ignore_bogus_error_responses": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.ip_forward": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv4.tcp_syncookies": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.accept_ra": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.all.forwarding": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.accept_ra": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.accept_redirects": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.accept_source_route": {
+     "description": "Read in network.rego."
+    },
+    "net.ipv6.conf.default.forwarding": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "timesyncd": {
+   "description": "Read in time_sync.rego.",
+   "properties": {
+    "config_raw": {
+     "description": "Read in time_sync.rego."
+    }
+   }
+  },
+  "ufw": {
+   "description": "Read in firewall.rego.",
+   "properties": {
+    "default_raw": {
+     "description": "Read in firewall.rego."
+    },
+    "status_verbose": {
+     "description": "Read in firewall.rego."
+    }
+   }
+  },
+  "ungrouped_files": {
+   "description": "Read in file_permissions.rego.",
+   "properties": {
+    "files": {
+     "description": "Read in file_permissions.rego."
+    }
+   }
+  },
+  "unowned_files": {
+   "description": "Read in file_permissions.rego.",
+   "properties": {
+    "files": {
+     "description": "Read in file_permissions.rego."
+    }
+   }
+  },
+  "user_group": {
+   "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more.",
+   "properties": {
+    "dot_dirs": {
+     "description": "Read in user_group.rego."
+    },
+    "dotfiles": {
+     "description": "Read in user_group.rego."
+    },
+    "group_content": {
+     "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+    },
+    "interactive_homes": {
+     "description": "Read in user_group.rego."
+    },
+    "passwd_content": {
+     "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+    },
+    "root_password_status": {
+     "description": "Read in accounts.rego."
+    },
+    "root_path": {
+     "description": "Read in accounts.rego."
+    },
+    "root_path_entries": {
+     "description": "Read in accounts.rego."
+    },
+    "root_shell_init_exists": {
+     "description": "Read in accounts.rego."
+    },
+    "root_shell_init_raw": {
+     "description": "Read in accounts.rego."
+    },
+    "shadow_entries": {
+     "description": "Read in accounts.rego, user_group.rego."
+    },
+    "shells_content": {
+     "description": "Read in accounts.rego, apparmor.rego, auditd.rego, banners.rego and 17 more."
+    },
+    "uid_min": {
+     "description": "Read in accounts.rego."
+    }
+   }
+  },
+  "wireless_interfaces": {
+   "description": "Read in network.rego.",
+   "properties": {
+    "has_wireless": {
+     "description": "Read in network.rego."
+    },
+    "modules": {
+     "description": "Read in network.rego."
+    }
+   }
+  },
+  "world_writable": {
+   "description": "Read in file_permissions.rego.",
+   "properties": {
+    "files": {
+     "description": "Read in file_permissions.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "aide",
+  "aide.audit_tool_options",
+  "aide.dailyaidecheck",
+  "aide.dailyaidecheck.service_unit_file_state",
+  "aide.dailyaidecheck.timer_active_state",
+  "aide.dailyaidecheck.timer_unit_file_state",
+  "ansible_facts",
+  "ansible_facts.ansible_mounts",
+  "apparmor",
+  "apparmor.grub_d_cfg_raw",
+  "apparmor.processes",
+  "apparmor.processes.unconfined",
+  "apparmor.profiles",
+  "apparmor.profiles.enforce",
+  "apparmor.profiles.loaded",
+  "apport",
+  "apport.default_raw",
+  "apt",
+  "apt.auth_conf_d",
+  "apt.auth_conf_d.group",
+  "apt.auth_conf_d.mode",
+  "apt.auth_conf_d.owner",
+  "apt.auth_conf_files",
+  "apt.config_dump",
+  "apt.key_files",
+  "apt.sources_list_d",
+  "apt.sources_list_d.group",
+  "apt.sources_list_d.mode",
+  "apt.sources_list_d.owner",
+  "apt.sources_list_d_files",
+  "apt.sources_list_d_raw",
+  "apt.sources_list_exists",
+  "apt.sources_list_raw",
+  "apt.trusted_gpg_d",
+  "apt.trusted_gpg_d.group",
+  "apt.trusted_gpg_d.mode",
+  "apt.trusted_gpg_d.owner",
+  "apt.usr_share_keyrings",
+  "apt.usr_share_keyrings.group",
+  "apt.usr_share_keyrings.mode",
+  "apt.usr_share_keyrings.owner",
+  "attest",
+  "attest.apt_sources_signed_by_reviewed",
+  "attest.audit_running_and_disk_rules_match",
+  "attest.ipv6_status_identified",
+  "attest.journald_file_access_reviewed",
+  "attest.journald_rotation_reviewed",
+  "attest.listening_services_approved",
+  "attest.logrotate_reviewed",
+  "attest.minimum_password_days_reviewed",
+  "attest.password_complexity_reviewed",
+  "attest.rsyslog_ca_certificates_configured",
+  "attest.rsyslog_logging_reviewed",
+  "attest.rsyslog_remote_host_configured",
+  "attest.ssh_post_quantum_kex_reviewed",
+  "attest.suid_sgid_files_reviewed",
+  "attest.unneeded_network_modules_reviewed",
+  "attest.unused_filesystem_modules_reviewed",
+  "attest.updates_installed",
+  "auditd",
+  "auditd.active_rules",
+  "auditd.config",
+  "auditd.config_files",
+  "auditd.log_dir_permissions",
+  "auditd.log_dir_permissions.mode",
+  "auditd.log_files",
+  "auditd.privileged_commands",
+  "auditd.rules",
+  "auditd.tools",
+  "boot_security",
+  "boot_security.grub_cfg_group",
+  "boot_security.grub_cfg_linux_lines",
+  "boot_security.grub_cfg_mode",
+  "boot_security.grub_cfg_owner",
+  "boot_security.grub_password_hashed",
+  "boot_security.grub_password_set",
+  "boot_security.systemd_coredump_process_size_max",
+  "boot_security.systemd_coredump_storage",
+  "chronyd",
+  "chronyd.pools_configured",
+  "chronyd.process_users",
+  "chronyd.servers_configured",
+  "critical_files",
+  "critical_files.analysis",
+  "cron",
+  "cron.at_allow_exists",
+  "cron.at_allow_group",
+  "cron.at_allow_mode",
+  "cron.at_allow_owner",
+  "cron.at_deny_exists",
+  "cron.at_deny_group",
+  "cron.at_deny_mode",
+  "cron.at_deny_owner",
+  "cron.cron_allow_exists",
+  "cron.cron_allow_group",
+  "cron.cron_allow_mode",
+  "cron.cron_allow_owner",
+  "cron.cron_d_group",
+  "cron.cron_d_mode",
+  "cron.cron_d_owner",
+  "cron.cron_daily_group",
+  "cron.cron_daily_mode",
+  "cron.cron_daily_owner",
+  "cron.cron_deny_exists",
+  "cron.cron_deny_group",
+  "cron.cron_deny_mode",
+  "cron.cron_deny_owner",
+  "cron.cron_hourly_group",
+  "cron.cron_hourly_mode",
+  "cron.cron_hourly_owner",
+  "cron.cron_monthly_group",
+  "cron.cron_monthly_mode",
+  "cron.cron_monthly_owner",
+  "cron.cron_weekly_group",
+  "cron.cron_weekly_mode",
+  "cron.cron_weekly_owner",
+  "cron.cron_yearly_group",
+  "cron.cron_yearly_mode",
+  "cron.cron_yearly_owner",
+  "cron.crontab_group",
+  "cron.crontab_mode",
+  "cron.crontab_owner",
+  "disabled_filesystem_modules",
+  "disabled_filesystem_modules.modules",
+  "disabled_network_modules",
+  "disabled_network_modules.modules",
+  "initial_setup",
+  "initial_setup.gdm_automount_disabled",
+  "initial_setup.gdm_automount_open_disabled",
+  "initial_setup.gdm_automount_override_allowed",
+  "initial_setup.gdm_autorun_never_enabled",
+  "initial_setup.gdm_autorun_override_allowed",
+  "initial_setup.gdm_banner_configured",
+  "initial_setup.gdm_banner_override_allowed",
+  "initial_setup.gdm_disable_user_list",
+  "initial_setup.gdm_disable_user_list_override_allowed",
+  "initial_setup.gdm_idle_delay",
+  "initial_setup.gdm_installed",
+  "initial_setup.gdm_lock_delay",
+  "initial_setup.gdm_lock_override_allowed",
+  "initial_setup.gdm_wayland_enabled",
+  "initial_setup.gdm_xdmcp_enabled",
+  "initial_setup.issue_content",
+  "initial_setup.issue_exists",
+  "initial_setup.issue_group",
+  "initial_setup.issue_mode",
+  "initial_setup.issue_net_content",
+  "initial_setup.issue_net_exists",
+  "initial_setup.issue_net_group",
+  "initial_setup.issue_net_mode",
+  "initial_setup.issue_net_owner",
+  "initial_setup.issue_owner",
+  "initial_setup.motd_content",
+  "initial_setup.motd_exists",
+  "initial_setup.motd_group",
+  "initial_setup.motd_mode",
+  "initial_setup.motd_owner",
+  "initial_setup.pam_motd_file_permissions",
+  "initial_setup.pam_motd_files",
+  "ipv6",
+  "ipv6.disabled",
+  "journald",
+  "journald.compress_enabled",
+  "journald.forward_to_syslog",
+  "journald.service_active",
+  "journald.storage_mode",
+  "limits",
+  "limits.limits_raw",
+  "log_file_permissions",
+  "log_file_permissions.analysis",
+  "mta",
+  "mta.inet_interfaces",
+  "mta.non_loopback_listeners",
+  "packages",
+  "packages.aide",
+  "packages.apache2",
+  "packages.apparmor",
+  "packages.apport",
+  "packages.at",
+  "packages.atftp",
+  "packages.auditd",
+  "packages.autofs",
+  "packages.bind9",
+  "packages.bluez",
+  "packages.cron",
+  "packages.cups",
+  "packages.dnsmasq",
+  "packages.ftp",
+  "packages.kea",
+  "packages.nginx",
+  "packages.nis",
+  "packages.prelink",
+  "packages.rpcbind",
+  "packages.rsync",
+  "packages.samba",
+  "packages.slapd",
+  "packages.snmpd",
+  "packages.squid",
+  "packages.sssd",
+  "packages.sudo",
+  "packages.talk",
+  "packages.telnet",
+  "packages.telnetd",
+  "packages.tnftp",
+  "packages.ufw",
+  "packages.vsftpd",
+  "packages.xinetd",
+  "packages.ypserv",
+  "packages[\"aide-common\"]",
+  "packages[\"apparmor-utils\"]",
+  "packages[\"audispd-plugins\"]",
+  "packages[\"avahi-daemon\"]",
+  "packages[\"cracklib-runtime\"]",
+  "packages[\"dovecot-imapd\"]",
+  "packages[\"dovecot-pop3d\"]",
+  "packages[\"ftp-ssl\"]",
+  "packages[\"inetutils-ftp\"]",
+  "packages[\"inetutils-telnet\"]",
+  "packages[\"ldap-utils\"]",
+  "packages[\"libpam-modules\"]",
+  "packages[\"libpam-pwquality\"]",
+  "packages[\"libpam-runtime\"]",
+  "packages[\"libsss-sudo\"]",
+  "packages[\"network-manager\"]",
+  "packages[\"nfs-kernel-server\"]",
+  "packages[\"rsh-client\"]",
+  "packages[\"rsyslog-gnutls\"]",
+  "packages[\"sudo-rs\"]",
+  "packages[\"systemd-journal-remote\"]",
+  "packages[\"telnet-ssl\"]",
+  "packages[\"telnetd-ssl\"]",
+  "packages[\"tftpd-hpa\"]",
+  "packages[\"update-notifier-common\"]",
+  "packages[\"xserver-common\"]",
+  "pam",
+  "pam.common_account",
+  "pam.common_auth",
+  "pam.common_password",
+  "pam.common_session",
+  "pam.common_session_noninteractive",
+  "pam.default_umask",
+  "pam.encrypt_method",
+  "pam.faillock_conf_raw",
+  "pam.inactive_days",
+  "pam.pass_max_days",
+  "pam.pass_warn_age",
+  "pam.profile_d_raw",
+  "pam.pwhistory_conf_raw",
+  "pam.pwquality_conf_raw",
+  "pam.su",
+  "pam.tmout",
+  "pam.tmout_exported",
+  "pam.tmout_readonly",
+  "pending_updates",
+  "profile",
+  "rsyslog",
+  "rsyslog.config_raw",
+  "rsyslog.file_create_mode",
+  "rsyslog.installed",
+  "rsyslog.service_active",
+  "rsyslog.service_enabled",
+  "services",
+  "services[\"<u>\"].state",
+  "services[\"<u>\"].status",
+  "services[\"apport.service\"]",
+  "services[\"apport.service\"].state",
+  "services[\"tmp.mount\"]",
+  "services[\"tmp.mount\"].status",
+  "ssh",
+  "ssh.banner_content",
+  "ssh.banner_permissions",
+  "ssh.banner_permissions.gr_name",
+  "ssh.banner_permissions.mode",
+  "ssh.banner_permissions.pw_name",
+  "ssh.config_dir_permissions",
+  "ssh.config_dir_permissions.exists",
+  "ssh.config_dir_permissions.group",
+  "ssh.config_dir_permissions.mode",
+  "ssh.config_dir_permissions.owner",
+  "ssh.config_files",
+  "ssh.private_key_permissions",
+  "ssh.public_key_permissions",
+  "ssh.sshd_config_raw",
+  "sticky_bit",
+  "sticky_bit.world_writable_without_sticky",
+  "sudo",
+  "sudo.events_logged",
+  "sudo.implementation",
+  "sudo.sudoers_content",
+  "sysctl",
+  "sysctl[\"fs.protected_hardlinks\"]",
+  "sysctl[\"fs.protected_symlinks\"]",
+  "sysctl[\"fs.suid_dumpable\"]",
+  "sysctl[\"kernel.apparmor_restrict_unprivileged_unconfined\"]",
+  "sysctl[\"kernel.dmesg_restrict\"]",
+  "sysctl[\"kernel.kptr_restrict\"]",
+  "sysctl[\"kernel.randomize_va_space\"]",
+  "sysctl[\"kernel.yama.ptrace_scope\"]",
+  "sysctl[\"net.ipv4.conf.all.accept_redirects\"]",
+  "sysctl[\"net.ipv4.conf.all.accept_source_route\"]",
+  "sysctl[\"net.ipv4.conf.all.forwarding\"]",
+  "sysctl[\"net.ipv4.conf.all.log_martians\"]",
+  "sysctl[\"net.ipv4.conf.all.route_localnet\"]",
+  "sysctl[\"net.ipv4.conf.all.rp_filter\"]",
+  "sysctl[\"net.ipv4.conf.all.secure_redirects\"]",
+  "sysctl[\"net.ipv4.conf.all.send_redirects\"]",
+  "sysctl[\"net.ipv4.conf.default.accept_redirects\"]",
+  "sysctl[\"net.ipv4.conf.default.accept_source_route\"]",
+  "sysctl[\"net.ipv4.conf.default.forwarding\"]",
+  "sysctl[\"net.ipv4.conf.default.log_martians\"]",
+  "sysctl[\"net.ipv4.conf.default.rp_filter\"]",
+  "sysctl[\"net.ipv4.conf.default.secure_redirects\"]",
+  "sysctl[\"net.ipv4.conf.default.send_redirects\"]",
+  "sysctl[\"net.ipv4.icmp_echo_ignore_broadcasts\"]",
+  "sysctl[\"net.ipv4.icmp_ignore_bogus_error_responses\"]",
+  "sysctl[\"net.ipv4.ip_forward\"]",
+  "sysctl[\"net.ipv4.tcp_syncookies\"]",
+  "sysctl[\"net.ipv6.conf.all.accept_ra\"]",
+  "sysctl[\"net.ipv6.conf.all.accept_redirects\"]",
+  "sysctl[\"net.ipv6.conf.all.accept_source_route\"]",
+  "sysctl[\"net.ipv6.conf.all.forwarding\"]",
+  "sysctl[\"net.ipv6.conf.default.accept_ra\"]",
+  "sysctl[\"net.ipv6.conf.default.accept_redirects\"]",
+  "sysctl[\"net.ipv6.conf.default.accept_source_route\"]",
+  "sysctl[\"net.ipv6.conf.default.forwarding\"]",
+  "sysctl_persisted",
+  "sysctl_persisted[\"fs.protected_hardlinks\"]",
+  "sysctl_persisted[\"fs.protected_symlinks\"]",
+  "sysctl_persisted[\"fs.suid_dumpable\"]",
+  "sysctl_persisted[\"kernel.apparmor_restrict_unprivileged_unconfined\"]",
+  "sysctl_persisted[\"kernel.dmesg_restrict\"]",
+  "sysctl_persisted[\"kernel.kptr_restrict\"]",
+  "sysctl_persisted[\"kernel.randomize_va_space\"]",
+  "sysctl_persisted[\"kernel.yama.ptrace_scope\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.accept_redirects\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.accept_source_route\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.forwarding\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.log_martians\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.route_localnet\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.rp_filter\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.secure_redirects\"]",
+  "sysctl_persisted[\"net.ipv4.conf.all.send_redirects\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.accept_redirects\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.accept_source_route\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.forwarding\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.log_martians\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.rp_filter\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.secure_redirects\"]",
+  "sysctl_persisted[\"net.ipv4.conf.default.send_redirects\"]",
+  "sysctl_persisted[\"net.ipv4.icmp_echo_ignore_broadcasts\"]",
+  "sysctl_persisted[\"net.ipv4.icmp_ignore_bogus_error_responses\"]",
+  "sysctl_persisted[\"net.ipv4.ip_forward\"]",
+  "sysctl_persisted[\"net.ipv4.tcp_syncookies\"]",
+  "sysctl_persisted[\"net.ipv6.conf.all.accept_ra\"]",
+  "sysctl_persisted[\"net.ipv6.conf.all.accept_redirects\"]",
+  "sysctl_persisted[\"net.ipv6.conf.all.accept_source_route\"]",
+  "sysctl_persisted[\"net.ipv6.conf.all.forwarding\"]",
+  "sysctl_persisted[\"net.ipv6.conf.default.accept_ra\"]",
+  "sysctl_persisted[\"net.ipv6.conf.default.accept_redirects\"]",
+  "sysctl_persisted[\"net.ipv6.conf.default.accept_source_route\"]",
+  "sysctl_persisted[\"net.ipv6.conf.default.forwarding\"]",
+  "timesyncd",
+  "timesyncd.config_raw",
+  "ufw",
+  "ufw.default_raw",
+  "ufw.status_verbose",
+  "ungrouped_files",
+  "ungrouped_files.files",
+  "unowned_files",
+  "unowned_files.files",
+  "user_group",
+  "user_group.dot_dirs",
+  "user_group.dotfiles",
+  "user_group.group_content",
+  "user_group.interactive_homes",
+  "user_group.passwd_content",
+  "user_group.root_password_status",
+  "user_group.root_path",
+  "user_group.root_path_entries",
+  "user_group.root_shell_init_exists",
+  "user_group.root_shell_init_raw",
+  "user_group.shadow_entries",
+  "user_group.shells_content",
+  "user_group.uid_min",
+  "wireless_interfaces",
+  "wireless_interfaces.has_wireless",
+  "wireless_interfaces.modules",
+  "world_writable",
+  "world_writable.files"
+ ]
+}

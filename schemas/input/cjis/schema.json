@@ -1,0 +1,1153 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cjis/schema.json",
+ "title": "Input facts for cjis",
+ "description": "Facts the module in frameworks/federal/cjis/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cjis",
+ "x-entrypoint": "data.cjis.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/cjis/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cjis.main_test.all_true",
+ "type": "object",
+ "properties": {
+  "cjis": {
+   "description": "Read in access_control.rego, auditing_accountability.rego, cjis_main.rego, configuration_management.rego and 10 more.",
+   "type": "object",
+   "properties": {
+    "access_control": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "AC-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AC-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AC-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AC-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AC-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AC-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AC-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in access_control.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "auditing_accountability": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "AA-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AA-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AA-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AA-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AA-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AA-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "AA-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in auditing_accountability.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "configuration_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "CM-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "CM-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "CM-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "CM-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "CM-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "CM-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "CM-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in configuration_management.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "formal_audits": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "FA-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "FA-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "FA-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "FA-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "FA-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "FA-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in formal_audits.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "identification_authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "IA-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IA-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IA-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IA-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IA-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IA-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IA-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in identification_authentication.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "incident_response": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "IR-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IR-8": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in incident_response.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "information_exchange": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "IEA-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IEA-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IEA-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IEA-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IEA-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IEA-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "IEA-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in information_exchange.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "media_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "MP-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MP-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MP-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MP-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MP-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MP-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MP-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in media_protection.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "mobile_devices": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "MD-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "MD-8": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in mobile_devices.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "personnel_security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "PS-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PS-8": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in personnel_security.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "physical_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "PP-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PP-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PP-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PP-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PP-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PP-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "PP-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in physical_protection.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "security_awareness_training": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "SAT-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SAT-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SAT-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SAT-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SAT-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SAT-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SAT-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in security_awareness_training.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    },
+    "systems_communications_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "requirements": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "SC-1": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-10": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-11": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-12": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-2": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-3": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-4": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-5": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-6": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-7": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-8": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "SC-9": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       },
+       "additionalProperties": {
+        "description": "Read in systems_communications_protection.rego."
+       },
+       "x-variable-key": "<id>"
+      }
+     }
+    }
+   },
+   "additionalProperties": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "properties": {
+     "requirements": {
+      "description": "Read in cjis_main.rego."
+     }
+    }
+   },
+   "x-variable-key": "<area>"
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cjis",
+  "cjis.access_control",
+  "cjis.access_control.requirements",
+  "cjis.access_control.requirements[\"AC-1\"]",
+  "cjis.access_control.requirements[\"AC-2\"]",
+  "cjis.access_control.requirements[\"AC-3\"]",
+  "cjis.access_control.requirements[\"AC-4\"]",
+  "cjis.access_control.requirements[\"AC-5\"]",
+  "cjis.access_control.requirements[\"AC-6\"]",
+  "cjis.access_control.requirements[\"AC-7\"]",
+  "cjis.auditing_accountability",
+  "cjis.auditing_accountability.requirements",
+  "cjis.auditing_accountability.requirements[\"AA-1\"]",
+  "cjis.auditing_accountability.requirements[\"AA-2\"]",
+  "cjis.auditing_accountability.requirements[\"AA-3\"]",
+  "cjis.auditing_accountability.requirements[\"AA-4\"]",
+  "cjis.auditing_accountability.requirements[\"AA-5\"]",
+  "cjis.auditing_accountability.requirements[\"AA-6\"]",
+  "cjis.auditing_accountability.requirements[\"AA-7\"]",
+  "cjis.configuration_management",
+  "cjis.configuration_management.requirements",
+  "cjis.configuration_management.requirements[\"CM-1\"]",
+  "cjis.configuration_management.requirements[\"CM-2\"]",
+  "cjis.configuration_management.requirements[\"CM-3\"]",
+  "cjis.configuration_management.requirements[\"CM-4\"]",
+  "cjis.configuration_management.requirements[\"CM-5\"]",
+  "cjis.configuration_management.requirements[\"CM-6\"]",
+  "cjis.configuration_management.requirements[\"CM-7\"]",
+  "cjis.formal_audits",
+  "cjis.formal_audits.requirements",
+  "cjis.formal_audits.requirements[\"FA-1\"]",
+  "cjis.formal_audits.requirements[\"FA-2\"]",
+  "cjis.formal_audits.requirements[\"FA-3\"]",
+  "cjis.formal_audits.requirements[\"FA-4\"]",
+  "cjis.formal_audits.requirements[\"FA-5\"]",
+  "cjis.formal_audits.requirements[\"FA-6\"]",
+  "cjis.identification_authentication",
+  "cjis.identification_authentication.requirements",
+  "cjis.identification_authentication.requirements[\"IA-1\"]",
+  "cjis.identification_authentication.requirements[\"IA-2\"]",
+  "cjis.identification_authentication.requirements[\"IA-3\"]",
+  "cjis.identification_authentication.requirements[\"IA-4\"]",
+  "cjis.identification_authentication.requirements[\"IA-5\"]",
+  "cjis.identification_authentication.requirements[\"IA-6\"]",
+  "cjis.identification_authentication.requirements[\"IA-7\"]",
+  "cjis.incident_response",
+  "cjis.incident_response.requirements",
+  "cjis.incident_response.requirements[\"IR-1\"]",
+  "cjis.incident_response.requirements[\"IR-2\"]",
+  "cjis.incident_response.requirements[\"IR-3\"]",
+  "cjis.incident_response.requirements[\"IR-4\"]",
+  "cjis.incident_response.requirements[\"IR-5\"]",
+  "cjis.incident_response.requirements[\"IR-6\"]",
+  "cjis.incident_response.requirements[\"IR-7\"]",
+  "cjis.incident_response.requirements[\"IR-8\"]",
+  "cjis.information_exchange",
+  "cjis.information_exchange.requirements",
+  "cjis.information_exchange.requirements[\"IEA-1\"]",
+  "cjis.information_exchange.requirements[\"IEA-2\"]",
+  "cjis.information_exchange.requirements[\"IEA-3\"]",
+  "cjis.information_exchange.requirements[\"IEA-4\"]",
+  "cjis.information_exchange.requirements[\"IEA-5\"]",
+  "cjis.information_exchange.requirements[\"IEA-6\"]",
+  "cjis.information_exchange.requirements[\"IEA-7\"]",
+  "cjis.media_protection",
+  "cjis.media_protection.requirements",
+  "cjis.media_protection.requirements[\"MP-1\"]",
+  "cjis.media_protection.requirements[\"MP-2\"]",
+  "cjis.media_protection.requirements[\"MP-3\"]",
+  "cjis.media_protection.requirements[\"MP-4\"]",
+  "cjis.media_protection.requirements[\"MP-5\"]",
+  "cjis.media_protection.requirements[\"MP-6\"]",
+  "cjis.media_protection.requirements[\"MP-7\"]",
+  "cjis.mobile_devices",
+  "cjis.mobile_devices.requirements",
+  "cjis.mobile_devices.requirements[\"MD-1\"]",
+  "cjis.mobile_devices.requirements[\"MD-2\"]",
+  "cjis.mobile_devices.requirements[\"MD-3\"]",
+  "cjis.mobile_devices.requirements[\"MD-4\"]",
+  "cjis.mobile_devices.requirements[\"MD-5\"]",
+  "cjis.mobile_devices.requirements[\"MD-6\"]",
+  "cjis.mobile_devices.requirements[\"MD-7\"]",
+  "cjis.mobile_devices.requirements[\"MD-8\"]",
+  "cjis.personnel_security",
+  "cjis.personnel_security.requirements",
+  "cjis.personnel_security.requirements[\"PS-1\"]",
+  "cjis.personnel_security.requirements[\"PS-2\"]",
+  "cjis.personnel_security.requirements[\"PS-3\"]",
+  "cjis.personnel_security.requirements[\"PS-4\"]",
+  "cjis.personnel_security.requirements[\"PS-5\"]",
+  "cjis.personnel_security.requirements[\"PS-6\"]",
+  "cjis.personnel_security.requirements[\"PS-7\"]",
+  "cjis.personnel_security.requirements[\"PS-8\"]",
+  "cjis.physical_protection",
+  "cjis.physical_protection.requirements",
+  "cjis.physical_protection.requirements[\"PP-1\"]",
+  "cjis.physical_protection.requirements[\"PP-2\"]",
+  "cjis.physical_protection.requirements[\"PP-3\"]",
+  "cjis.physical_protection.requirements[\"PP-4\"]",
+  "cjis.physical_protection.requirements[\"PP-5\"]",
+  "cjis.physical_protection.requirements[\"PP-6\"]",
+  "cjis.physical_protection.requirements[\"PP-7\"]",
+  "cjis.security_awareness_training",
+  "cjis.security_awareness_training.requirements",
+  "cjis.security_awareness_training.requirements[\"SAT-1\"]",
+  "cjis.security_awareness_training.requirements[\"SAT-2\"]",
+  "cjis.security_awareness_training.requirements[\"SAT-3\"]",
+  "cjis.security_awareness_training.requirements[\"SAT-4\"]",
+  "cjis.security_awareness_training.requirements[\"SAT-5\"]",
+  "cjis.security_awareness_training.requirements[\"SAT-6\"]",
+  "cjis.security_awareness_training.requirements[\"SAT-7\"]",
+  "cjis.systems_communications_protection",
+  "cjis.systems_communications_protection.requirements",
+  "cjis.systems_communications_protection.requirements[\"SC-1\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-10\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-11\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-12\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-2\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-3\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-4\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-5\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-6\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-7\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-8\"]",
+  "cjis.systems_communications_protection.requirements[\"SC-9\"]",
+  "cjis[\"<area>\"].requirements"
+ ]
+}

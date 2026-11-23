@@ -1,0 +1,443 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nis2/schema.json",
+ "title": "Input facts for nis2",
+ "description": "Input paths referenced in the sources of frameworks/compliance/nis2/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "nis2",
+ "x-entrypoint": "data.nis2.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/compliance/nis2/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "principle_of_least_privilege": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "managed": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in nis2_main.rego."
+  },
+  "asset_management": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "business_continuity": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "bcp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego."
+      },
+      "tested_annually": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "crisis_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "plan_exists": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "drp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "cryptography": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_in_transit": {
+       "description": "Read in nis2_main.rego."
+      },
+      "sensitive_data_at_rest": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "cyber_hygiene": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "patch_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exists": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "effectiveness_assessment": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "audit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "regular": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "penetration_testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_category": {
+   "description": "Read in nis2_main.rego."
+  },
+  "entity_name": {
+   "description": "Read in nis2_main.rego."
+  },
+  "entity_type": {
+   "description": "Read in nis2_main.rego."
+  },
+  "governance": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "management_body": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approved_measures": {
+       "description": "Read in nis2_main.rego."
+      },
+      "oversight_accountability": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "hr_security": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "joiners_movers_leavers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_handling": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "log_retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "minimum_1_year": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "significant_incident": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "early_warning_24h": {
+       "description": "Read in nis2_main.rego."
+      },
+      "final_report_1month": {
+       "description": "Read in nis2_main.rego."
+      },
+      "notification_72h": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "mfa": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "critical_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "risk_management": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "risk_analysis": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "risk_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "frequency_annual": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "security_policies": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approved_by_management": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "sector": {
+   "description": "Read in nis2_main.rego."
+  },
+  "secure_development": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "patch_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "timely": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "sdlc_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "vulnerability_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "supply_chain": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "contractual_requirements": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_clauses": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "critical_suppliers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "identified": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "vendor_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "training": {
+   "description": "Read in nis2_main.rego.",
+   "properties": {
+    "cybersecurity_awareness": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "conducted_annually": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    },
+    "management_body": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cybersecurity_training": {
+       "description": "Read in nis2_main.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.principle_of_least_privilege",
+  "access_control.principle_of_least_privilege.enforced",
+  "access_control.privileged_accounts",
+  "access_control.privileged_accounts.managed",
+  "assessment_date",
+  "asset_management",
+  "asset_management.inventory",
+  "asset_management.inventory.maintained",
+  "business_continuity",
+  "business_continuity.bcp",
+  "business_continuity.bcp.documented",
+  "business_continuity.bcp.tested_annually",
+  "business_continuity.crisis_management",
+  "business_continuity.crisis_management.plan_exists",
+  "business_continuity.drp",
+  "business_continuity.drp.documented",
+  "cryptography",
+  "cryptography.encryption",
+  "cryptography.encryption.data_in_transit",
+  "cryptography.encryption.sensitive_data_at_rest",
+  "cryptography.policy",
+  "cryptography.policy.documented",
+  "cyber_hygiene",
+  "cyber_hygiene.patch_policy",
+  "cyber_hygiene.patch_policy.exists",
+  "effectiveness_assessment",
+  "effectiveness_assessment.audit",
+  "effectiveness_assessment.audit.regular",
+  "effectiveness_assessment.penetration_testing",
+  "effectiveness_assessment.penetration_testing.annual",
+  "entity_category",
+  "entity_name",
+  "entity_type",
+  "governance",
+  "governance.management_body",
+  "governance.management_body.approved_measures",
+  "governance.management_body.oversight_accountability",
+  "hr_security",
+  "hr_security.joiners_movers_leavers",
+  "hr_security.joiners_movers_leavers.process_exists",
+  "incident_handling",
+  "incident_handling.log_retention",
+  "incident_handling.log_retention.minimum_1_year",
+  "incident_handling.plan",
+  "incident_handling.plan.documented",
+  "incident_handling.significant_incident",
+  "incident_handling.significant_incident.early_warning_24h",
+  "incident_handling.significant_incident.final_report_1month",
+  "incident_handling.significant_incident.notification_72h",
+  "mfa",
+  "mfa.critical_systems",
+  "mfa.critical_systems.enforced",
+  "mfa.privileged_accounts",
+  "mfa.privileged_accounts.enforced",
+  "mfa.remote_access",
+  "mfa.remote_access.enforced",
+  "risk_management",
+  "risk_management.risk_analysis",
+  "risk_management.risk_analysis.documented",
+  "risk_management.risk_review",
+  "risk_management.risk_review.frequency_annual",
+  "risk_management.security_policies",
+  "risk_management.security_policies.approved_by_management",
+  "sector",
+  "secure_development",
+  "secure_development.patch_management",
+  "secure_development.patch_management.timely",
+  "secure_development.sdlc_policy",
+  "secure_development.sdlc_policy.documented",
+  "secure_development.vulnerability_management",
+  "secure_development.vulnerability_management.process_exists",
+  "supply_chain",
+  "supply_chain.contractual_requirements",
+  "supply_chain.contractual_requirements.security_clauses",
+  "supply_chain.critical_suppliers",
+  "supply_chain.critical_suppliers.identified",
+  "supply_chain.vendor_assessment",
+  "supply_chain.vendor_assessment.process_exists",
+  "training",
+  "training.cybersecurity_awareness",
+  "training.cybersecurity_awareness.conducted_annually",
+  "training.management_body",
+  "training.management_body.cybersecurity_training"
+ ]
+}
