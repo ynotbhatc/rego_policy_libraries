@@ -128,7 +128,7 @@ transfer_impact_assessment if {
 supplementary_measures if {
 	input.gdpr.transfers.tia.supplementary_measures_required == false
 } else if {
-	input.gdpr.transfers.tia.supplementary_measures_required
+	input.gdpr.transfers.tia.supplementary_measures_required == true
 	input.gdpr.transfers.supplementary_measures.technical.end_to_end_encryption == true
 	input.gdpr.transfers.supplementary_measures.technical.pseudonymisation == true
 	input.gdpr.transfers.supplementary_measures.contractual.additional_commitments == true
@@ -142,7 +142,7 @@ supplementary_measures if {
 binding_corporate_rules if {
 	input.gdpr.transfers.bcr.used == false
 } else if {
-	input.gdpr.transfers.bcr.used
+	input.gdpr.transfers.bcr.used == true
 	input.gdpr.transfers.bcr.approved_by_lead_dpa == true
 	input.gdpr.transfers.bcr.legally_binding == true
 	input.gdpr.transfers.bcr.covers_all_entities == true
@@ -158,7 +158,7 @@ binding_corporate_rules if {
 eu_us_dpf if {
 	input.gdpr.transfers.us_transfers.occur == false
 } else if {
-	input.gdpr.transfers.us_transfers.occur
+	input.gdpr.transfers.us_transfers.occur == true
 	input.gdpr.transfers.us_transfers.mechanism.eu_us_dpf_or_scc == true
 	input.gdpr.transfers.us_transfers.recipient.certified_or_scc_signed == true
 	input.gdpr.transfers.us_transfers.dpf_certification.verified == true
@@ -171,7 +171,7 @@ eu_us_dpf if {
 derogation_if_used if {
 	input.gdpr.transfers.derogations.used == false
 } else if {
-	input.gdpr.transfers.derogations.used
+	input.gdpr.transfers.derogations.used == true
 	input.gdpr.transfers.derogations.basis.documented == true
 
 	# Derogation must be one of the allowed bases

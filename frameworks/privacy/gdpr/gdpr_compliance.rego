@@ -65,6 +65,72 @@ default processor_agreements := false
 # OPA endpoint: POST http://<opa-host>:8182/v1/data/gdpr/compliance/report
 
 # =============================================================================
+# CONDITIONAL OBLIGATIONS — APPLICABILITY
+# =============================================================================
+# Three obligations in this module apply only on a condition: Art. 9 (special categories are processed),
+# Art. 37(1) (a data protection officer must be designated) and Chapter V, Art. 44-49 (personal data is
+# transferred to a third country or international organisation).
+# Whether the condition holds is a fact the collector states as a boolean. Only the boolean false is an
+# exemption and only the boolean true selects the evidence branch. A fact that is absent, null or not a
+# boolean (the string "false", 0, an empty object) is missing evidence: the gate fails and the fact is
+# listed under evidence_missing. Nothing is read as "not applicable" because it was not collected.
+
+_conditional := {
+	"special_category_data": {
+		"article": "Art. 9",
+		"field": "input.gdpr.special_category_data.processed",
+		"question": "state whether special categories of personal data (Art. 9(1)) are processed",
+	},
+	"dpo_requirements": {
+		"article": "Art. 37",
+		"field": "input.gdpr.dpo.mandatory",
+		"question": "state whether a data protection officer must be designated under Art. 37(1)",
+	},
+	"international_transfers": {
+		"article": "Art. 44-49",
+		"field": "input.gdpr.international_transfers.occur",
+		"question": "state whether personal data is transferred to a third country or international organisation",
+	},
+}
+
+# The stated condition, read once per gate. One rule per gate, so a gate whose fact cannot be read (no
+# input at all, a null or non-object section) is undefined on its own and falls to evidence_missing.
+_stated["special_category_data"] := object.get(input, ["gdpr", "special_category_data", "processed"], null)
+
+_stated["dpo_requirements"] := object.get(input, ["gdpr", "dpo", "mandatory"], null)
+
+_stated["international_transfers"] := object.get(input, ["gdpr", "international_transfers", "occur"], null)
+
+# applicable | not_applicable | evidence_missing, per gate
+applicability[name] := _applicability(name) if some name, _ in _conditional
+
+_applicability(name) := "applicable" if {
+	_stated[name] == true
+} else := "not_applicable" if {
+	_stated[name] == false
+} else := "evidence_missing"
+
+_fact_text(name) := sprintf("got %v", [json.marshal(_stated[name])]) if {
+	_stated[name] != null
+} else := "not collected"
+
+evidence_missing := [finding |
+	some name in sort(object.keys(_conditional))
+	applicability[name] == "evidence_missing"
+	gate := _conditional[name]
+	finding := {
+		"control": name,
+		"article": gate.article,
+		"status": "evidence_missing",
+		"path": gate.field,
+		"title": sprintf(
+			"GDPR %v (%v): evidence missing — %v must be true or false (%v); %v",
+			[gate.article, name, gate.field, _fact_text(name), gate.question],
+		),
+	}
+]
+
+# =============================================================================
 # LAWFUL BASIS FOR PROCESSING (Articles 6, 7, 9)
 # =============================================================================
 
@@ -85,9 +151,9 @@ consent_management if {
 }
 
 special_category_data if {
-	not input.gdpr.special_category_data.processed
+	applicability.special_category_data == "not_applicable"
 } else if {
-	input.gdpr.special_category_data.processed
+	applicability.special_category_data == "applicable"
 	input.gdpr.special_category_data.explicit_consent == true
 	input.gdpr.special_category_data.legal_basis.documented == true
 	input.gdpr.special_category_data.dpia.conducted == true
@@ -159,10 +225,10 @@ dpia_process if {
 # =============================================================================
 
 dpo_requirements if {
-	# DPO only mandatory for certain organisations
-	not input.gdpr.dpo.mandatory
+	# Designation is mandatory only in the Art. 37(1) cases; the organisation states which side it is on.
+	applicability.dpo_requirements == "not_applicable"
 } else if {
-	input.gdpr.dpo.mandatory
+	applicability.dpo_requirements == "applicable"
 	input.gdpr.dpo.appointed == true
 	input.gdpr.dpo.contact_details.published == true
 	input.gdpr.dpo.contact_details.notified_to_supervisory_authority == true
@@ -203,9 +269,9 @@ breach_notification if {
 # =============================================================================
 
 international_transfers if {
-	not input.gdpr.international_transfers.occur
+	applicability.international_transfers == "not_applicable"
 } else if {
-	input.gdpr.international_transfers.occur
+	applicability.international_transfers == "applicable"
 	input.gdpr.international_transfers.adequacy_decision_or_safeguards == true
 	input.gdpr.international_transfers.mechanism.documented == true
 	input.gdpr.international_transfers.scc_or_bcr.implemented == true
@@ -329,4 +395,6 @@ report := {
 		"minimisation": data_minimisation,
 		"processor_agreements": processor_agreements,
 	},
+	"applicability": applicability,
+	"evidence_missing": evidence_missing,
 }

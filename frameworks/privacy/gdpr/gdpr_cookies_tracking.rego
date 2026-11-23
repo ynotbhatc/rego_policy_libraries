@@ -56,6 +56,87 @@ default childrens_data := false
 # This policy covers current obligations under ePrivacy Directive + GDPR Art 6.
 
 # =============================================================================
+# CONDITIONAL OBLIGATIONS — APPLICABILITY
+# =============================================================================
+# Five obligations in this module apply only on a condition: device fingerprinting, tracking pixels and
+# behavioural advertising are in use (ePrivacy Art. 5(3), GDPR Art. 6/7), solely automated decisions with
+# legal or similarly significant effect are taken (GDPR Art. 22), and information society services are
+# offered directly to a child (GDPR Art. 8).
+# Whether the condition holds is a fact the collector states as a boolean. Only the boolean false is an
+# exemption and only the boolean true selects the evidence branch. A fact that is absent, null or not a
+# boolean (the string "false", 0, an empty object) is missing evidence: the gate fails and the fact is
+# listed under evidence_missing. Nothing is read as "not applicable" because it was not collected.
+
+_conditional := {
+	"fingerprinting_controlled": {
+		"article": "ePrivacy Art. 5(3)",
+		"field": "input.cookies.fingerprinting.used",
+		"question": "state whether device fingerprinting is used",
+	},
+	"tracking_pixels_compliant": {
+		"article": "ePrivacy Art. 5(3)",
+		"field": "input.cookies.tracking_pixels.used",
+		"question": "state whether tracking pixels or web beacons are used",
+	},
+	"automated_decision_making": {
+		"article": "Art. 22",
+		"field": "input.profiling.solely_automated_with_legal_effect.used",
+		"question": "state whether decisions based solely on automated processing with legal or similarly significant effect are taken",
+	},
+	"behavioural_advertising": {
+		"article": "Art. 6-7",
+		"field": "input.marketing.behavioural_advertising.used",
+		"question": "state whether behavioural advertising is used",
+	},
+	"childrens_data": {
+		"article": "Art. 8",
+		"field": "input.gdpr.childrens_data.services_directed_at_children",
+		"question": "state whether information society services are offered directly to a child",
+	},
+}
+
+# The stated condition, read once per gate. One rule per gate, so a gate whose fact cannot be read (no
+# input at all, a null or non-object section) is undefined on its own and falls to evidence_missing.
+_stated["fingerprinting_controlled"] := object.get(input, ["cookies", "fingerprinting", "used"], null)
+
+_stated["tracking_pixels_compliant"] := object.get(input, ["cookies", "tracking_pixels", "used"], null)
+
+_stated["automated_decision_making"] := object.get(input, ["profiling", "solely_automated_with_legal_effect", "used"], null)
+
+_stated["behavioural_advertising"] := object.get(input, ["marketing", "behavioural_advertising", "used"], null)
+
+_stated["childrens_data"] := object.get(input, ["gdpr", "childrens_data", "services_directed_at_children"], null)
+
+# applicable | not_applicable | evidence_missing, per gate
+applicability[name] := _applicability(name) if some name, _ in _conditional
+
+_applicability(name) := "applicable" if {
+	_stated[name] == true
+} else := "not_applicable" if {
+	_stated[name] == false
+} else := "evidence_missing"
+
+_fact_text(name) := sprintf("got %v", [json.marshal(_stated[name])]) if {
+	_stated[name] != null
+} else := "not collected"
+
+evidence_missing := [finding |
+	some name in sort(object.keys(_conditional))
+	applicability[name] == "evidence_missing"
+	gate := _conditional[name]
+	finding := {
+		"control": name,
+		"article": gate.article,
+		"status": "evidence_missing",
+		"path": gate.field,
+		"title": sprintf(
+			"GDPR %v (%v): evidence missing — %v must be true or false (%v); %v",
+			[gate.article, name, gate.field, _fact_text(name), gate.question],
+		),
+	}
+]
+
+# =============================================================================
 # COOKIE CONSENT (ePrivacy Art. 5(3) + GDPR Art. 7)
 # =============================================================================
 
@@ -143,9 +224,9 @@ local_storage_compliant if {
 
 # Fingerprinting
 fingerprinting_controlled if {
-	input.cookies.fingerprinting.used == false
+	applicability.fingerprinting_controlled == "not_applicable"
 } else if {
-	input.cookies.fingerprinting.used
+	applicability.fingerprinting_controlled == "applicable"
 	input.cookies.fingerprinting.consent.obtained == true
 	input.cookies.fingerprinting.purpose.documented == true
 	input.cookies.fingerprinting.privacy_notice.disclosed == true
@@ -153,9 +234,9 @@ fingerprinting_controlled if {
 
 # Tracking pixels / web beacons
 tracking_pixels_compliant if {
-	input.cookies.tracking_pixels.used == false
+	applicability.tracking_pixels_compliant == "not_applicable"
 } else if {
-	input.cookies.tracking_pixels.used
+	applicability.tracking_pixels_compliant == "applicable"
 	input.cookies.tracking_pixels.consent.obtained == true
 	input.cookies.tracking_pixels.third_parties.disclosed == true
 }
@@ -199,9 +280,9 @@ email_marketing_consent if {
 
 # Profiling and automated decision-making (GDPR Art. 22)
 automated_decision_making if {
-	input.profiling.solely_automated_with_legal_effect.used == false
+	applicability.automated_decision_making == "not_applicable"
 } else if {
-	input.profiling.solely_automated_with_legal_effect.used
+	applicability.automated_decision_making == "applicable"
 	input.profiling.lawful_basis.one_of_three_bases == true
 	input.profiling.data_subjects.informed == true
 	input.profiling.data_subjects.right_to_human_review == true
@@ -211,9 +292,9 @@ automated_decision_making if {
 
 # Behavioural advertising
 behavioural_advertising if {
-	input.marketing.behavioural_advertising.used == false
+	applicability.behavioural_advertising == "not_applicable"
 } else if {
-	input.marketing.behavioural_advertising.used
+	applicability.behavioural_advertising == "applicable"
 	input.marketing.behavioural_advertising.consent.obtained == true
 	input.marketing.behavioural_advertising.profiling.disclosed == true
 	input.marketing.behavioural_advertising.opt_out.easy == true
@@ -225,9 +306,9 @@ behavioural_advertising if {
 # =============================================================================
 
 childrens_data if {
-	input.gdpr.childrens_data.services_directed_at_children == false
+	applicability.childrens_data == "not_applicable"
 } else if {
-	input.gdpr.childrens_data.services_directed_at_children
+	applicability.childrens_data == "applicable"
 	input.gdpr.childrens_data.age_verification.implemented == true
 	input.gdpr.childrens_data.parental_consent.required_under_16 == true
 	input.gdpr.childrens_data.parental_consent.verification == true
@@ -290,4 +371,6 @@ report := {
 		"behavioural_advertising": behavioural_advertising,
 	},
 	"childrens_data": childrens_data,
+	"applicability": applicability,
+	"evidence_missing": evidence_missing,
 }
