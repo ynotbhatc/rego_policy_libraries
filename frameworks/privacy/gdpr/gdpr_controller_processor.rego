@@ -49,6 +49,55 @@ default security_of_processing := false
 # Defines accountability, joint controllers, processor selection, and contracts
 
 # =============================================================================
+# CONDITIONAL OBLIGATIONS — APPLICABILITY
+# =============================================================================
+# One obligation in this module applies only on a condition: Art. 26 (two or more controllers jointly
+# determine the purposes and means of processing).
+# Whether the condition holds is a fact the collector states as a boolean. Only the boolean false is an
+# exemption and only the boolean true selects the evidence branch. A fact that is absent, null or not a
+# boolean (the string "false", 0, an empty object) is missing evidence: the gate fails and the fact is
+# listed under evidence_missing. Nothing is read as "not applicable" because it was not collected.
+
+_conditional := {"joint_controller_arrangement": {
+	"article": "Art. 26",
+	"field": "input.gdpr.joint_controllers.arrangement_exists",
+	"question": "state whether purposes and means of processing are determined jointly with another controller",
+}}
+
+# The stated condition, read once per gate. One rule per gate, so a gate whose fact cannot be read (no
+# input at all, a null or non-object section) is undefined on its own and falls to evidence_missing.
+_stated["joint_controller_arrangement"] := object.get(input, ["gdpr", "joint_controllers", "arrangement_exists"], null)
+
+# applicable | not_applicable | evidence_missing, per gate
+applicability[name] := _applicability(name) if some name, _ in _conditional
+
+_applicability(name) := "applicable" if {
+	_stated[name] == true
+} else := "not_applicable" if {
+	_stated[name] == false
+} else := "evidence_missing"
+
+_fact_text(name) := sprintf("got %v", [json.marshal(_stated[name])]) if {
+	_stated[name] != null
+} else := "not collected"
+
+evidence_missing := [finding |
+	some name in sort(object.keys(_conditional))
+	applicability[name] == "evidence_missing"
+	gate := _conditional[name]
+	finding := {
+		"control": name,
+		"article": gate.article,
+		"status": "evidence_missing",
+		"path": gate.field,
+		"title": sprintf(
+			"GDPR %v (%v): evidence missing — %v must be true or false (%v); %v",
+			[gate.article, name, gate.field, _fact_text(name), gate.question],
+		),
+	}
+]
+
+# =============================================================================
 # CONTROLLER ACCOUNTABILITY (Article 24)
 # =============================================================================
 
@@ -97,9 +146,9 @@ privacy_by_default if {
 
 joint_controller_arrangement if {
 	# not applicable only when explicitly declared
-	input.gdpr.joint_controllers.arrangement_exists == false
+	applicability.joint_controller_arrangement == "not_applicable"
 } else if {
-	input.gdpr.joint_controllers.arrangement_exists
+	applicability.joint_controller_arrangement == "applicable"
 	input.gdpr.joint_controllers.agreement.documented == true
 	input.gdpr.joint_controllers.responsibilities.defined == true
 	input.gdpr.joint_controllers.data_subjects.can_exercise_rights_against_either == true
@@ -242,4 +291,6 @@ report := {
 	},
 	"supervisory_authority": supervisory_authority_cooperation,
 	"security_of_processing": security_of_processing,
+	"applicability": applicability,
+	"evidence_missing": evidence_missing,
 }
