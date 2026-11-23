@@ -110,11 +110,12 @@ check-coverage:
 	@$(MAKE) --no-print-directory check-bad-input
 
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
-# matches the module and the OSCAL baseline profiles; the PCI DSS evidence_spec blocks match their rule bodies;
+# matches the module and the OSCAL baseline profiles; the FedRAMP maps in crosswalk/framework_maps match those profiles; the PCI DSS evidence_spec blocks match their rule bodies;
 # the Linux STIG collector contract matches the rule tables; standards.yaml matches the module versions
 check-generated: check-no-data check-standards
 	@python3 scripts/gen_nist_800_53_index.py --check
 	@echo "NIST 800-53 index current"
+	@python3 scripts/gen_fedramp_framework_maps.py --check
 	@python3 scripts/gen_pci_dss_evidence_spec.py --check
 	@python3 tools/stig_generators/gen_collector_contract.py --check
 

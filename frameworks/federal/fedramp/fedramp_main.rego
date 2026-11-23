@@ -18,6 +18,9 @@ package fedramp
 
 import rego.v1
 
+import data.crosswalk.correlation as spine
+import data.crosswalk.framework_overlay as overlay
+
 # =============================================================================
 # FedRAMP Rev 5 — authorization, continuous monitoring and selected baseline checks
 #
@@ -58,6 +61,34 @@ import rego.v1
 #   input.personnel[]             - admin personnel (admin_access, background_check_completed, us_person)
 #   input.personnel_requirements  - us_persons_required_for_admin (agency PS-3(3) criterion, optional)
 #   input.data_residency          - storage_locations[] / processing_locations[], us_only_required (optional)
+#
+# Benchmark results (optional): the same input may carry STIG results in the two shapes
+# data.crosswalk.correlation reads, and no other:
+#   input.reports  : [ <STIG compliance_report with rule_results and facts_supplied>, ... ]
+#   input.findings : [ {"stig_id": "RHEL-09-255010", "status": "Not_a_Finding" | "Open" | ...}, ... ]
+# The crosswalk carries them to the controls of the FedRAMP Rev 5 baseline at the declared impact level (the
+# High baseline until a level is declared): STIG rule -> CCI -> NIST SP 800-53 (crosswalk/stig_800_53, DISA),
+# then 800-53 -> the FedRAMP baseline control with the same id (crosswalk/framework_maps fedramp_rev5_<level>,
+# generated from the FedRAMP OSCAL baseline profiles), read from
+# data.crosswalk.framework_overlay.control_evidence. The combination rule is the NIST SP 800-53 module's:
+#   - gap (a mapped rule is Open): the baseline control fails, whatever this module's own check, declared
+#     evidence or attestation says. The finding names the Open rules.
+#   - satisfied, not_reviewed, not_applicable: recorded on the control's row under "benchmark" with the
+#     contributing rule ids. Nothing else changes: benchmark results never turn a control into a pass.
+#   - no mapped rule supplied: benchmark.status is "not_evaluated".
+# The spine is at base-control granularity, so an enhancement row is always "not_evaluated". A verdict on an
+# 800-53 control the baseline does not select is not a FedRAMP finding at this level; it is listed under
+# benchmark_evidence.controls_not_in_baseline (gaps among them under gap_not_in_baseline). Fail closed: a
+# report with facts_supplied == false counts every one of its rules as Open; a rule id the crosswalk does not
+# know speaks to no control and is listed under benchmark_evidence.unmapped_rules; benchmark results that
+# cannot be read, or that arrive when the crosswalk packages and their two data files are not loaded next to
+# this module, are FAIL-CLOSED findings.
+# With benchmark results the reports gain control_results (one row per baseline control and per check of this
+# module: status pass / fail / not_evaluated, where not_evaluated means this module has no check for the
+# control and no benchmark gap was found, never a pass), control_result_counts and benchmark_evidence. With
+# neither key in the input both reports are what they were before, with none of the three. compliance_score
+# and areas describe this module's own assessment areas only; a benchmark gap is not an area. Nothing here
+# scores, weights or ranks; verdicts are carried through the maps.
 # =============================================================================
 
 # FedRAMP Rev 5 baseline sizes (see header). Reported beside, never as, the evaluated count.
@@ -448,7 +479,220 @@ assessment_areas := {
 	"impact_level": violation_impact_level,
 }
 
-all_violations := sort([v | some area in assessment_areas; some v in area])
+_module_violations := sort([v | some area in assessment_areas; some v in area])
+
+all_violations := array.concat(_module_violations, _bench_violations)
+
+# ---------------------------------------------------------------------------
+# Benchmark results through the crosswalk (see the header)
+# ---------------------------------------------------------------------------
+
+default benchmark_supplied := false
+
+benchmark_supplied if _ = input.reports
+
+benchmark_supplied if _ = input.findings
+
+# The baseline whose controls take the verdicts: the declared level, High until one is declared (the High
+# baseline selects every Low and Moderate control).
+default _bench_baseline := "high"
+
+_bench_baseline := impact_level_norm if impact_level_norm != "unknown"
+
+_bench_map_key := concat("", ["fedramp_rev5_", _bench_baseline])
+
+# {<baseline control id>: {status, spine, not_evaluated}} for that baseline. The crosswalk packages and their
+# data are separate files; when any is absent this is undefined, which must read as "could not be evaluated",
+# never as "no gap".
+_bench_map := overlay.control_evidence[_bench_map_key]
+
+default _spine_loaded := false
+
+_spine_loaded if {
+	spine.spine_loaded == true
+	is_number(spine.summary.rules_supplied)
+	count(_bench_map) > 0
+}
+
+# Technical verdict per baseline control the supplied rules reach; empty unless benchmark results were supplied
+# and the crosswalk is loaded.
+_bench[id] := b if {
+	benchmark_supplied
+	_spine_loaded
+	some id, ev in _bench_map
+	count(ev.spine) > 0
+	b := {
+		"status": _bench_status(ev),
+		"rules": sort({r | some e in ev.spine; some r in e.rules}),
+		"open_rules": sort({r | some e in ev.spine; some r in e.open_rules}),
+		"not_reviewed_rules": sort({r | some e in ev.spine; some r in e.not_reviewed_rules}),
+	}
+}
+
+# gap and satisfied are the overlay's; not_reviewed and not_applicable are the spine's own verdicts, kept apart
+# from "no rule supplied". None of them is a pass.
+_bench_status(ev) := "gap" if {
+	ev.status == "gap"
+} else := "satisfied" if {
+	ev.status == "satisfied"
+} else := "not_reviewed" if {
+	some e in ev.spine
+	e.status == "not_reviewed"
+} else := "not_applicable" if {
+	count(ev.not_evaluated) == 0
+	every e in ev.spine {
+		e.status == "not_applicable"
+	}
+} else := "not_evaluated"
+
+# Natural id order (AC-2 before AC-10, AC-2 before AC-2(1)).
+_id_num(s) := 0 if {
+	s == ""
+} else := to_number(s)
+
+_id_key(id) := [m[1], _id_num(m[2]), _id_num(m[3]), id] if {
+	some m in regex.find_all_string_submatch_n(`^([A-Z]{2})-([0-9]+)(?:\(([0-9]+)\))?$`, id, 1)
+} else := [id, 0, 0, id]
+
+_natural(ids) := [k[3] | some k in sort([_id_key(id) | some id in ids])]
+
+_baseline_ids := {id | _spine_loaded; some id, _ in _bench_map}
+
+_bench_ids_with(st) := _natural({id | some id, b in _bench; b.status == st})
+
+benchmark_gap_ids := _bench_ids_with("gap")
+
+_bench_rule_list(rules) := concat(", ", rules) if {
+	count(rules) <= 5
+} else := sprintf("%s and %d more, listed on the control's row", [concat(", ", array.slice(rules, 0, 5)), count(rules) - 5])
+
+_bench_gap_violations := [msg |
+	some id in benchmark_gap_ids
+	rules := _bench[id].open_rules
+	msg := sprintf("FedRAMP %s: benchmark results show a gap: %d mapped STIG rule(s) Open (%s); the control fails regardless of its declared evidence or attestation", [id, count(rules), _bench_rule_list(rules)])
+]
+
+_bench_fail_closed contains "FAIL-CLOSED: benchmark results were supplied (input.reports / input.findings) but the crosswalk (crosswalk/correlation.rego, crosswalk/framework_overlay.rego, crosswalk/stig_800_53/data.json and the FedRAMP baseline map in crosswalk/framework_maps/data.json) is not loaded, so no technical verdict could be taken; this is not a passing result" if {
+	benchmark_supplied
+	not _spine_loaded
+}
+
+_bench_fail_closed contains "FAIL-CLOSED: benchmark results were supplied (input.reports / input.findings) but no rule row could be read from them; this is not a passing result" if {
+	benchmark_supplied
+	_spine_loaded
+	spine.summary.rules_supplied == 0
+}
+
+_bench_fail_closed contains msg if {
+	benchmark_supplied
+	_spine_loaded
+	n := spine.summary.rules_supplied
+	is_number(n)
+	n > 0
+	count(spine.control_evidence) == 0
+	msg := sprintf("FAIL-CLOSED: none of the %d benchmark rule id(s) supplied is in the crosswalk, so no technical verdict could be taken; this is not a passing result", [n])
+}
+
+_bench_fail_closed contains msg if {
+	benchmark_supplied
+	_spine_loaded
+	n := spine.reports_without_facts
+	is_number(n)
+	n > 0
+	msg := sprintf("FAIL-CLOSED: %d benchmark report(s) had no facts supplied (facts_supplied is false); every rule in them counts as Open", [n])
+}
+
+_bench_violations := array.concat(_bench_gap_violations, sort(_bench_fail_closed))
+
+_bench_not_evaluated := {"status": "not_evaluated", "rules": [], "open_rules": [], "not_reviewed_rules": []}
+
+_bench_row(id) := _bench[id] if {
+	_bench[id]
+} else := _bench_not_evaluated
+
+# Spine verdicts on 800-53 controls the baseline does not select: shown, never a FedRAMP finding at this level.
+_bench_outside := sort({id | some id, _ in spine.control_evidence; not id in _baseline_ids})
+
+_bench_rule := "A benchmark gap fails the baseline control regardless of this module's own check, declared evidence or attestation. A satisfied benchmark verdict is recorded on the row and changes nothing else. Benchmark results never turn a control into a pass."
+
+# The benchmark_evidence block; undefined when no benchmark results were supplied. The crosswalk's values are
+# bound in the body, so anything it cannot give falls through to the short block and the report stays defined.
+_bench_block := {
+	"supplied": true,
+	"spine_loaded": true,
+	"source": "crosswalk.framework_overlay: STIG rule id -> CCI -> NIST SP 800-53 (DISA) -> FedRAMP Rev 5 baseline control with the same id (FedRAMP OSCAL baseline profile), base-control granularity",
+	"map": _bench_map_key,
+	"baseline": _bench_baseline,
+	"combination_rule": _bench_rule,
+	"rules_supplied": summary.rules_supplied,
+	"rules_unmapped": summary.rules_unmapped,
+	"unmapped_rules": unmapped,
+	"reports_without_facts": without_facts,
+	"baseline_controls": count(_baseline_ids),
+	"baseline_controls_reached": count(_bench),
+	"satisfied": _bench_ids_with("satisfied"),
+	"gap": _bench_ids_with("gap"),
+	"not_reviewed": _bench_ids_with("not_reviewed"),
+	"not_applicable": _bench_ids_with("not_applicable"),
+	"controls_not_in_baseline": _bench_outside,
+	"gap_not_in_baseline": [id | some id in _bench_outside; spine.control_evidence[id].status == "gap"],
+} if {
+	benchmark_supplied
+	_spine_loaded
+	summary := spine.summary
+	is_number(summary.rules_supplied)
+	is_number(summary.rules_unmapped)
+	unmapped := sort(spine.unmapped_rules)
+	without_facts := spine.reports_without_facts
+} else := {
+	"supplied": true,
+	"spine_loaded": false,
+	"map": _bench_map_key,
+	"baseline": _bench_baseline,
+	"combination_rule": _bench_rule,
+} if {
+	benchmark_supplied
+}
+
+# Per-control rows, only with benchmark results: one per control of the baseline (when the crosswalk is loaded)
+# and per check of this module, in natural id order.
+#   pass           a check of this module with no finding
+#   fail           a finding names the control: this module's own, or a benchmark gap
+#   not_evaluated  this module has no check for the control and the benchmark found no gap; never a pass
+# checked says whether this module has its own check for the id at the declared level.
+_finding_ids(msg) := {m[1] | some m in regex.find_all_string_submatch_n(`^FedRAMP ([A-Z]{2}-[0-9]+(?:\([0-9]+\))?):`, msg, 1)}
+
+_findings_by_id[id] contains v if {
+	some v in all_violations
+	some id in _finding_ids(v)
+}
+
+_findings_for(id) := sort(object.get(_findings_by_id, id, set()))
+
+_row_status(id) := "fail" if {
+	count(_findings_for(id)) > 0
+} else := "pass" if {
+	id in applicable_checks
+} else := "not_evaluated"
+
+_control_rows := [{
+	"id": id,
+	"status": _row_status(id),
+	"checked": id in applicable_checks,
+	"findings": _findings_for(id),
+	"benchmark": _bench_row(id),
+} |
+	some id in _natural(_baseline_ids | applicable_checks)
+]
+
+# What the reports gain: nothing without benchmark results, so they are then what they have always been.
+benchmark_addition := object.union({}, {}) if not benchmark_supplied
+
+benchmark_addition := object.union({}, {
+	"control_results": _control_rows,
+	"control_result_counts": {s: count([r | some r in _control_rows; r.status == s]) | some s in ["pass", "fail", "not_evaluated"]},
+	"benchmark_evidence": _bench_block,
+}) if benchmark_supplied
 
 default fedramp_compliant := false
 
@@ -466,7 +710,9 @@ passing_areas := count([name | some name, area in assessment_areas; count(area) 
 
 compliance_score := round((passing_areas / count(assessment_areas)) * 100)
 
-fedramp_compliance_report := {
+fedramp_compliance_report := object.union(_policy_report, benchmark_addition)
+
+_policy_report := {
 	"standard": "FedRAMP Rev 5",
 	"impact_level": impact_level_norm,
 	"compliant": fedramp_compliant,

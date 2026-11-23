@@ -61,7 +61,14 @@ kev_note := "KEV due dates assessed from continuous_monitoring.kev_findings" if 
 
 failed_controls := count(f.failed_checks)
 
-compliance_report := {
+# With benchmark results in the input (input.reports / input.findings, see package fedramp) the report gains
+# control_results, control_result_counts and benchmark_evidence, violations carries the benchmark gaps and
+# FAIL-CLOSED findings, and failed_control_ids also lists the baseline controls a benchmark gap fails.
+# failed_controls stays the number of this module's own checks with a finding, so it never exceeds
+# total_controls. Without benchmark results every field is what it was.
+compliance_report := object.union(_report, f.benchmark_addition)
+
+_report := {
 	"framework": "FedRAMP",
 	"regulation": "Federal Risk and Authorization Management Program",
 	"baseline": "NIST SP 800-53 Rev 5 + FedRAMP Rev 5 baselines (selected checks only, not a full baseline assessment)",
@@ -72,7 +79,7 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 	"failed_controls": failed_controls,
-	"failed_control_ids": sort(f.failed_checks),
+	"failed_control_ids": sort(f.failed_checks | {id | some id in f.benchmark_gap_ids}),
 	"total_controls": total_controls,
 	"controls_evaluated": sort(f.applicable_checks),
 	"baseline_size": f.baseline_size,
