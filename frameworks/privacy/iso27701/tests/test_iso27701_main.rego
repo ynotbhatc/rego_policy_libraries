@@ -27,8 +27,6 @@ _result(rep, id) := r if {
 
 _status(rep, id) := _result(rep, id).status
 
-_reason(rep, id) := _result(rep, id).reason
-
 _set_fact(path, value) := {"iso27701": {
 	"evidence": _put(_good_evidence, split(path, "."), value),
 	"attestations": _all_attestations,
@@ -65,8 +63,7 @@ test_5_2_1_fail if {
 test_5_2_1_evidence_missing if {
 	inp := _without_attestation("5.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.2.1") == "not_assessed"
-	_reason(r, "5.2.1") == "evidence_missing"
+	_status(r, "5.2.1") == "evidence_missing"
 }
 
 test_5_2_2_pass if {
@@ -83,8 +80,7 @@ test_5_2_2_fail if {
 test_5_2_2_evidence_missing if {
 	inp := _without_attestation("5.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.2.2") == "not_assessed"
-	_reason(r, "5.2.2") == "evidence_missing"
+	_status(r, "5.2.2") == "evidence_missing"
 }
 
 test_5_2_3_pass if {
@@ -101,8 +97,7 @@ test_5_2_3_fail if {
 test_5_2_3_evidence_missing if {
 	inp := _without_attestation("5.2.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.2.3") == "not_assessed"
-	_reason(r, "5.2.3") == "evidence_missing"
+	_status(r, "5.2.3") == "evidence_missing"
 }
 
 test_5_2_4_pass if {
@@ -119,8 +114,7 @@ test_5_2_4_fail if {
 test_5_2_4_evidence_missing if {
 	inp := _without_attestation("5.2.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.2.4") == "not_assessed"
-	_reason(r, "5.2.4") == "evidence_missing"
+	_status(r, "5.2.4") == "evidence_missing"
 }
 
 test_5_3_1_pass if {
@@ -137,8 +131,7 @@ test_5_3_1_fail if {
 test_5_3_1_evidence_missing if {
 	inp := _without_attestation("5.3.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.3.1") == "not_assessed"
-	_reason(r, "5.3.1") == "evidence_missing"
+	_status(r, "5.3.1") == "evidence_missing"
 }
 
 test_5_3_2_pass if {
@@ -155,8 +148,7 @@ test_5_3_2_fail if {
 test_5_3_2_evidence_missing if {
 	inp := _without_attestation("5.3.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.3.2") == "not_assessed"
-	_reason(r, "5.3.2") == "evidence_missing"
+	_status(r, "5.3.2") == "evidence_missing"
 }
 
 test_5_3_3_pass if {
@@ -173,8 +165,7 @@ test_5_3_3_fail if {
 test_5_3_3_evidence_missing if {
 	inp := _without_attestation("5.3.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.3.3") == "not_assessed"
-	_reason(r, "5.3.3") == "evidence_missing"
+	_status(r, "5.3.3") == "evidence_missing"
 }
 
 test_5_4_1_2_pass if {
@@ -191,8 +182,7 @@ test_5_4_1_2_fail if {
 test_5_4_1_2_evidence_missing if {
 	inp := _without_attestation("5.4.1.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.4.1.2") == "not_assessed"
-	_reason(r, "5.4.1.2") == "evidence_missing"
+	_status(r, "5.4.1.2") == "evidence_missing"
 }
 
 test_5_4_1_3_pass if {
@@ -209,8 +199,7 @@ test_5_4_1_3_fail if {
 test_5_4_1_3_evidence_missing if {
 	inp := _without_attestation("5.4.1.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.4.1.3") == "not_assessed"
-	_reason(r, "5.4.1.3") == "evidence_missing"
+	_status(r, "5.4.1.3") == "evidence_missing"
 }
 
 test_5_4_2_pass if {
@@ -227,8 +216,7 @@ test_5_4_2_fail if {
 test_5_4_2_evidence_missing if {
 	inp := _without_attestation("5.4.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.4.2") == "not_assessed"
-	_reason(r, "5.4.2") == "evidence_missing"
+	_status(r, "5.4.2") == "evidence_missing"
 }
 
 test_5_5_1_pass if {
@@ -245,8 +233,7 @@ test_5_5_1_fail if {
 test_5_5_1_evidence_missing if {
 	inp := _without_attestation("5.5.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.5.1") == "not_assessed"
-	_reason(r, "5.5.1") == "evidence_missing"
+	_status(r, "5.5.1") == "evidence_missing"
 }
 
 test_5_5_2_pass if {
@@ -263,8 +250,7 @@ test_5_5_2_fail if {
 test_5_5_2_evidence_missing if {
 	inp := _without_attestation("5.5.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.5.2") == "not_assessed"
-	_reason(r, "5.5.2") == "evidence_missing"
+	_status(r, "5.5.2") == "evidence_missing"
 }
 
 test_5_5_3_pass if {
@@ -281,8 +267,7 @@ test_5_5_3_fail if {
 test_5_5_3_evidence_missing if {
 	inp := _without_attestation("5.5.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.5.3") == "not_assessed"
-	_reason(r, "5.5.3") == "evidence_missing"
+	_status(r, "5.5.3") == "evidence_missing"
 }
 
 test_5_5_4_pass if {
@@ -299,8 +284,7 @@ test_5_5_4_fail if {
 test_5_5_4_evidence_missing if {
 	inp := _without_attestation("5.5.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.5.4") == "not_assessed"
-	_reason(r, "5.5.4") == "evidence_missing"
+	_status(r, "5.5.4") == "evidence_missing"
 }
 
 test_5_5_5_pass if {
@@ -317,8 +301,7 @@ test_5_5_5_fail if {
 test_5_5_5_evidence_missing if {
 	inp := _without_attestation("5.5.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.5.5") == "not_assessed"
-	_reason(r, "5.5.5") == "evidence_missing"
+	_status(r, "5.5.5") == "evidence_missing"
 }
 
 test_5_6_1_pass if {
@@ -335,8 +318,7 @@ test_5_6_1_fail if {
 test_5_6_1_evidence_missing if {
 	inp := _without_attestation("5.6.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.6.1") == "not_assessed"
-	_reason(r, "5.6.1") == "evidence_missing"
+	_status(r, "5.6.1") == "evidence_missing"
 }
 
 test_5_6_2_pass if {
@@ -353,8 +335,7 @@ test_5_6_2_fail if {
 test_5_6_2_evidence_missing if {
 	inp := _without_attestation("5.6.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.6.2") == "not_assessed"
-	_reason(r, "5.6.2") == "evidence_missing"
+	_status(r, "5.6.2") == "evidence_missing"
 }
 
 test_5_6_3_pass if {
@@ -371,8 +352,7 @@ test_5_6_3_fail if {
 test_5_6_3_evidence_missing if {
 	inp := _without_attestation("5.6.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.6.3") == "not_assessed"
-	_reason(r, "5.6.3") == "evidence_missing"
+	_status(r, "5.6.3") == "evidence_missing"
 }
 
 test_5_7_1_pass if {
@@ -389,8 +369,7 @@ test_5_7_1_fail if {
 test_5_7_1_evidence_missing if {
 	inp := _without_attestation("5.7.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.7.1") == "not_assessed"
-	_reason(r, "5.7.1") == "evidence_missing"
+	_status(r, "5.7.1") == "evidence_missing"
 }
 
 test_5_7_2_pass if {
@@ -407,8 +386,7 @@ test_5_7_2_fail if {
 test_5_7_2_evidence_missing if {
 	inp := _without_attestation("5.7.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.7.2") == "not_assessed"
-	_reason(r, "5.7.2") == "evidence_missing"
+	_status(r, "5.7.2") == "evidence_missing"
 }
 
 test_5_7_3_pass if {
@@ -425,8 +403,7 @@ test_5_7_3_fail if {
 test_5_7_3_evidence_missing if {
 	inp := _without_attestation("5.7.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.7.3") == "not_assessed"
-	_reason(r, "5.7.3") == "evidence_missing"
+	_status(r, "5.7.3") == "evidence_missing"
 }
 
 test_5_8_1_pass if {
@@ -443,8 +420,7 @@ test_5_8_1_fail if {
 test_5_8_1_evidence_missing if {
 	inp := _without_attestation("5.8.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.8.1") == "not_assessed"
-	_reason(r, "5.8.1") == "evidence_missing"
+	_status(r, "5.8.1") == "evidence_missing"
 }
 
 test_5_8_2_pass if {
@@ -461,8 +437,7 @@ test_5_8_2_fail if {
 test_5_8_2_evidence_missing if {
 	inp := _without_attestation("5.8.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.8.2") == "not_assessed"
-	_reason(r, "5.8.2") == "evidence_missing"
+	_status(r, "5.8.2") == "evidence_missing"
 }
 
 test_6_2_1_1_pass if {
@@ -479,8 +454,7 @@ test_6_2_1_1_fail if {
 test_6_2_1_1_evidence_missing if {
 	inp := _without_attestation("6.2.1.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.2.1.1") == "not_assessed"
-	_reason(r, "6.2.1.1") == "evidence_missing"
+	_status(r, "6.2.1.1") == "evidence_missing"
 }
 
 test_6_3_1_1_pass if {
@@ -497,8 +471,7 @@ test_6_3_1_1_fail if {
 test_6_3_1_1_evidence_missing if {
 	inp := _without_attestation("6.3.1.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.3.1.1") == "not_assessed"
-	_reason(r, "6.3.1.1") == "evidence_missing"
+	_status(r, "6.3.1.1") == "evidence_missing"
 }
 
 test_6_3_2_1_pass if {
@@ -515,8 +488,7 @@ test_6_3_2_1_fail if {
 test_6_3_2_1_evidence_missing if {
 	inp := _without_attestation("6.3.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.3.2.1") == "not_assessed"
-	_reason(r, "6.3.2.1") == "evidence_missing"
+	_status(r, "6.3.2.1") == "evidence_missing"
 }
 
 test_6_3_2_2_pass if {
@@ -533,8 +505,7 @@ test_6_3_2_2_fail if {
 test_6_3_2_2_evidence_missing if {
 	inp := _without_attestation("6.3.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.3.2.2") == "not_assessed"
-	_reason(r, "6.3.2.2") == "evidence_missing"
+	_status(r, "6.3.2.2") == "evidence_missing"
 }
 
 test_6_4_2_2_pass if {
@@ -551,8 +522,7 @@ test_6_4_2_2_fail if {
 test_6_4_2_2_evidence_missing if {
 	inp := _without_attestation("6.4.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.4.2.2") == "not_assessed"
-	_reason(r, "6.4.2.2") == "evidence_missing"
+	_status(r, "6.4.2.2") == "evidence_missing"
 }
 
 test_6_5_2_1_pass if {
@@ -569,8 +539,7 @@ test_6_5_2_1_fail if {
 test_6_5_2_1_evidence_missing if {
 	inp := _without_attestation("6.5.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.5.2.1") == "not_assessed"
-	_reason(r, "6.5.2.1") == "evidence_missing"
+	_status(r, "6.5.2.1") == "evidence_missing"
 }
 
 test_6_5_2_2_pass if {
@@ -587,8 +556,7 @@ test_6_5_2_2_fail if {
 test_6_5_2_2_evidence_missing if {
 	inp := _without_attestation("6.5.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.5.2.2") == "not_assessed"
-	_reason(r, "6.5.2.2") == "evidence_missing"
+	_status(r, "6.5.2.2") == "evidence_missing"
 }
 
 test_6_5_3_1_pass if {
@@ -605,8 +573,7 @@ test_6_5_3_1_fail if {
 test_6_5_3_1_evidence_missing if {
 	inp := _without_attestation("6.5.3.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.5.3.1") == "not_assessed"
-	_reason(r, "6.5.3.1") == "evidence_missing"
+	_status(r, "6.5.3.1") == "evidence_missing"
 }
 
 test_6_5_3_2_pass if {
@@ -623,8 +590,7 @@ test_6_5_3_2_fail if {
 test_6_5_3_2_evidence_missing if {
 	inp := _without_attestation("6.5.3.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.5.3.2") == "not_assessed"
-	_reason(r, "6.5.3.2") == "evidence_missing"
+	_status(r, "6.5.3.2") == "evidence_missing"
 }
 
 test_6_5_3_3_pass if {
@@ -641,8 +607,7 @@ test_6_5_3_3_fail if {
 test_6_5_3_3_evidence_missing if {
 	inp := _without_attestation("6.5.3.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.5.3.3") == "not_assessed"
-	_reason(r, "6.5.3.3") == "evidence_missing"
+	_status(r, "6.5.3.3") == "evidence_missing"
 }
 
 test_6_6_2_1_pass if {
@@ -659,8 +624,7 @@ test_6_6_2_1_fail if {
 test_6_6_2_1_evidence_missing if {
 	inp := _drop_fact("accounts.shared_accounts")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.6.2.1") == "not_assessed"
-	_reason(r, "6.6.2.1") == "evidence_missing"
+	_status(r, "6.6.2.1") == "evidence_missing"
 }
 
 test_6_6_2_2_pass if {
@@ -677,8 +641,7 @@ test_6_6_2_2_fail if {
 test_6_6_2_2_evidence_missing if {
 	inp := _without_attestation("6.6.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.6.2.2") == "not_assessed"
-	_reason(r, "6.6.2.2") == "evidence_missing"
+	_status(r, "6.6.2.2") == "evidence_missing"
 }
 
 test_6_6_4_2_pass if {
@@ -695,8 +658,7 @@ test_6_6_4_2_fail if {
 test_6_6_4_2_evidence_missing if {
 	inp := _drop_fact("authentication.mfa_for_pii_systems")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.6.4.2") == "not_assessed"
-	_reason(r, "6.6.4.2") == "evidence_missing"
+	_status(r, "6.6.4.2") == "evidence_missing"
 }
 
 test_6_7_1_1_pass if {
@@ -713,8 +675,7 @@ test_6_7_1_1_fail if {
 test_6_7_1_1_evidence_missing if {
 	inp := _drop_fact("encryption.pii_at_rest_encrypted")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.7.1.1") == "not_assessed"
-	_reason(r, "6.7.1.1") == "evidence_missing"
+	_status(r, "6.7.1.1") == "evidence_missing"
 }
 
 test_6_8_2_7_pass if {
@@ -731,8 +692,7 @@ test_6_8_2_7_fail if {
 test_6_8_2_7_evidence_missing if {
 	inp := _without_attestation("6.8.2.7")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.8.2.7") == "not_assessed"
-	_reason(r, "6.8.2.7") == "evidence_missing"
+	_status(r, "6.8.2.7") == "evidence_missing"
 }
 
 test_6_8_2_9_pass if {
@@ -749,8 +709,7 @@ test_6_8_2_9_fail if {
 test_6_8_2_9_evidence_missing if {
 	inp := _without_attestation("6.8.2.9")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.8.2.9") == "not_assessed"
-	_reason(r, "6.8.2.9") == "evidence_missing"
+	_status(r, "6.8.2.9") == "evidence_missing"
 }
 
 test_6_9_3_1_pass if {
@@ -767,8 +726,7 @@ test_6_9_3_1_fail if {
 test_6_9_3_1_evidence_missing if {
 	inp := _drop_fact("backup.configured")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.9.3.1") == "not_assessed"
-	_reason(r, "6.9.3.1") == "evidence_missing"
+	_status(r, "6.9.3.1") == "evidence_missing"
 }
 
 test_6_9_4_1_pass if {
@@ -785,8 +743,7 @@ test_6_9_4_1_fail if {
 test_6_9_4_1_evidence_missing if {
 	inp := _drop_fact("logging.audit_daemon_active")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.9.4.1") == "not_assessed"
-	_reason(r, "6.9.4.1") == "evidence_missing"
+	_status(r, "6.9.4.1") == "evidence_missing"
 }
 
 test_6_9_4_2_pass if {
@@ -803,8 +760,7 @@ test_6_9_4_2_fail if {
 test_6_9_4_2_evidence_missing if {
 	inp := _drop_fact("logging.central_forwarding")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.9.4.2") == "not_assessed"
-	_reason(r, "6.9.4.2") == "evidence_missing"
+	_status(r, "6.9.4.2") == "evidence_missing"
 }
 
 test_6_10_2_1_pass if {
@@ -821,8 +777,7 @@ test_6_10_2_1_fail if {
 test_6_10_2_1_evidence_missing if {
 	inp := _without_attestation("6.10.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.10.2.1") == "not_assessed"
-	_reason(r, "6.10.2.1") == "evidence_missing"
+	_status(r, "6.10.2.1") == "evidence_missing"
 }
 
 test_6_10_2_4_pass if {
@@ -839,8 +794,7 @@ test_6_10_2_4_fail if {
 test_6_10_2_4_evidence_missing if {
 	inp := _without_attestation("6.10.2.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.10.2.4") == "not_assessed"
-	_reason(r, "6.10.2.4") == "evidence_missing"
+	_status(r, "6.10.2.4") == "evidence_missing"
 }
 
 test_6_11_1_2_pass if {
@@ -857,8 +811,7 @@ test_6_11_1_2_fail if {
 test_6_11_1_2_evidence_missing if {
 	inp := _without_attestation("6.11.1.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.11.1.2") == "not_assessed"
-	_reason(r, "6.11.1.2") == "evidence_missing"
+	_status(r, "6.11.1.2") == "evidence_missing"
 }
 
 test_6_11_2_1_pass if {
@@ -875,8 +828,7 @@ test_6_11_2_1_fail if {
 test_6_11_2_1_evidence_missing if {
 	inp := _without_attestation("6.11.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.11.2.1") == "not_assessed"
-	_reason(r, "6.11.2.1") == "evidence_missing"
+	_status(r, "6.11.2.1") == "evidence_missing"
 }
 
 test_6_11_2_5_pass if {
@@ -893,8 +845,7 @@ test_6_11_2_5_fail if {
 test_6_11_2_5_evidence_missing if {
 	inp := _without_attestation("6.11.2.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.11.2.5") == "not_assessed"
-	_reason(r, "6.11.2.5") == "evidence_missing"
+	_status(r, "6.11.2.5") == "evidence_missing"
 }
 
 test_6_11_2_7_pass if {
@@ -911,8 +862,7 @@ test_6_11_2_7_fail if {
 test_6_11_2_7_evidence_missing if {
 	inp := _without_attestation("6.11.2.7")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.11.2.7") == "not_assessed"
-	_reason(r, "6.11.2.7") == "evidence_missing"
+	_status(r, "6.11.2.7") == "evidence_missing"
 }
 
 test_6_11_3_1_pass if {
@@ -929,8 +879,7 @@ test_6_11_3_1_fail if {
 test_6_11_3_1_evidence_missing if {
 	inp := _without_attestation("6.11.3.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.11.3.1") == "not_assessed"
-	_reason(r, "6.11.3.1") == "evidence_missing"
+	_status(r, "6.11.3.1") == "evidence_missing"
 }
 
 test_6_12_1_1_pass if {
@@ -947,8 +896,7 @@ test_6_12_1_1_fail if {
 test_6_12_1_1_evidence_missing if {
 	inp := _without_attestation("6.12.1.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.12.1.1") == "not_assessed"
-	_reason(r, "6.12.1.1") == "evidence_missing"
+	_status(r, "6.12.1.1") == "evidence_missing"
 }
 
 test_6_12_1_2_pass if {
@@ -965,8 +913,7 @@ test_6_12_1_2_fail if {
 test_6_12_1_2_evidence_missing if {
 	inp := _without_attestation("6.12.1.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.12.1.2") == "not_assessed"
-	_reason(r, "6.12.1.2") == "evidence_missing"
+	_status(r, "6.12.1.2") == "evidence_missing"
 }
 
 test_6_13_1_1_pass if {
@@ -983,8 +930,7 @@ test_6_13_1_1_fail if {
 test_6_13_1_1_evidence_missing if {
 	inp := _without_attestation("6.13.1.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.13.1.1") == "not_assessed"
-	_reason(r, "6.13.1.1") == "evidence_missing"
+	_status(r, "6.13.1.1") == "evidence_missing"
 }
 
 test_6_13_1_5_pass if {
@@ -1001,8 +947,7 @@ test_6_13_1_5_fail if {
 test_6_13_1_5_evidence_missing if {
 	inp := _without_attestation("6.13.1.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.13.1.5") == "not_assessed"
-	_reason(r, "6.13.1.5") == "evidence_missing"
+	_status(r, "6.13.1.5") == "evidence_missing"
 }
 
 test_6_14_2_1_pass if {
@@ -1019,8 +964,7 @@ test_6_14_2_1_fail if {
 test_6_14_2_1_evidence_missing if {
 	inp := _without_attestation("6.14.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.14.2.1") == "not_assessed"
-	_reason(r, "6.14.2.1") == "evidence_missing"
+	_status(r, "6.14.2.1") == "evidence_missing"
 }
 
 test_6_15_1_1_pass if {
@@ -1037,8 +981,7 @@ test_6_15_1_1_fail if {
 test_6_15_1_1_evidence_missing if {
 	inp := _without_attestation("6.15.1.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.15.1.1") == "not_assessed"
-	_reason(r, "6.15.1.1") == "evidence_missing"
+	_status(r, "6.15.1.1") == "evidence_missing"
 }
 
 test_6_15_1_3_pass if {
@@ -1055,8 +998,7 @@ test_6_15_1_3_fail if {
 test_6_15_1_3_evidence_missing if {
 	inp := _without_attestation("6.15.1.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.15.1.3") == "not_assessed"
-	_reason(r, "6.15.1.3") == "evidence_missing"
+	_status(r, "6.15.1.3") == "evidence_missing"
 }
 
 test_6_15_2_1_pass if {
@@ -1073,8 +1015,7 @@ test_6_15_2_1_fail if {
 test_6_15_2_1_evidence_missing if {
 	inp := _without_attestation("6.15.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.15.2.1") == "not_assessed"
-	_reason(r, "6.15.2.1") == "evidence_missing"
+	_status(r, "6.15.2.1") == "evidence_missing"
 }
 
 test_6_15_2_2_pass if {
@@ -1091,8 +1032,7 @@ test_6_15_2_2_fail if {
 test_6_15_2_2_evidence_missing if {
 	inp := _without_attestation("6.15.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.15.2.2") == "not_assessed"
-	_reason(r, "6.15.2.2") == "evidence_missing"
+	_status(r, "6.15.2.2") == "evidence_missing"
 }
 
 test_6_15_2_3_pass if {
@@ -1109,8 +1049,7 @@ test_6_15_2_3_fail if {
 test_6_15_2_3_evidence_missing if {
 	inp := _without_attestation("6.15.2.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.15.2.3") == "not_assessed"
-	_reason(r, "6.15.2.3") == "evidence_missing"
+	_status(r, "6.15.2.3") == "evidence_missing"
 }
 
 test_7_2_1_pass if {
@@ -1127,8 +1066,7 @@ test_7_2_1_fail if {
 test_7_2_1_evidence_missing if {
 	inp := _without_attestation("7.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.1") == "not_assessed"
-	_reason(r, "7.2.1") == "evidence_missing"
+	_status(r, "7.2.1") == "evidence_missing"
 }
 
 test_7_2_2_pass if {
@@ -1145,8 +1083,7 @@ test_7_2_2_fail if {
 test_7_2_2_evidence_missing if {
 	inp := _without_attestation("7.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.2") == "not_assessed"
-	_reason(r, "7.2.2") == "evidence_missing"
+	_status(r, "7.2.2") == "evidence_missing"
 }
 
 test_7_2_3_pass if {
@@ -1163,8 +1100,7 @@ test_7_2_3_fail if {
 test_7_2_3_evidence_missing if {
 	inp := _without_attestation("7.2.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.3") == "not_assessed"
-	_reason(r, "7.2.3") == "evidence_missing"
+	_status(r, "7.2.3") == "evidence_missing"
 }
 
 test_7_2_4_pass if {
@@ -1181,8 +1117,7 @@ test_7_2_4_fail if {
 test_7_2_4_evidence_missing if {
 	inp := _without_attestation("7.2.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.4") == "not_assessed"
-	_reason(r, "7.2.4") == "evidence_missing"
+	_status(r, "7.2.4") == "evidence_missing"
 }
 
 test_7_2_5_pass if {
@@ -1199,8 +1134,7 @@ test_7_2_5_fail if {
 test_7_2_5_evidence_missing if {
 	inp := _without_attestation("7.2.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.5") == "not_assessed"
-	_reason(r, "7.2.5") == "evidence_missing"
+	_status(r, "7.2.5") == "evidence_missing"
 }
 
 test_7_2_6_pass if {
@@ -1217,8 +1151,7 @@ test_7_2_6_fail if {
 test_7_2_6_evidence_missing if {
 	inp := _without_attestation("7.2.6")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.6") == "not_assessed"
-	_reason(r, "7.2.6") == "evidence_missing"
+	_status(r, "7.2.6") == "evidence_missing"
 }
 
 test_7_2_7_pass if {
@@ -1235,8 +1168,7 @@ test_7_2_7_fail if {
 test_7_2_7_evidence_missing if {
 	inp := _without_attestation("7.2.7")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.7") == "not_assessed"
-	_reason(r, "7.2.7") == "evidence_missing"
+	_status(r, "7.2.7") == "evidence_missing"
 }
 
 test_7_2_8_pass if {
@@ -1253,8 +1185,7 @@ test_7_2_8_fail if {
 test_7_2_8_evidence_missing if {
 	inp := _without_attestation("7.2.8")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.8") == "not_assessed"
-	_reason(r, "7.2.8") == "evidence_missing"
+	_status(r, "7.2.8") == "evidence_missing"
 }
 
 test_7_3_1_pass if {
@@ -1271,8 +1202,7 @@ test_7_3_1_fail if {
 test_7_3_1_evidence_missing if {
 	inp := _without_attestation("7.3.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.1") == "not_assessed"
-	_reason(r, "7.3.1") == "evidence_missing"
+	_status(r, "7.3.1") == "evidence_missing"
 }
 
 test_7_3_2_pass if {
@@ -1289,8 +1219,7 @@ test_7_3_2_fail if {
 test_7_3_2_evidence_missing if {
 	inp := _without_attestation("7.3.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.2") == "not_assessed"
-	_reason(r, "7.3.2") == "evidence_missing"
+	_status(r, "7.3.2") == "evidence_missing"
 }
 
 test_7_3_3_pass if {
@@ -1307,8 +1236,7 @@ test_7_3_3_fail if {
 test_7_3_3_evidence_missing if {
 	inp := _without_attestation("7.3.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.3") == "not_assessed"
-	_reason(r, "7.3.3") == "evidence_missing"
+	_status(r, "7.3.3") == "evidence_missing"
 }
 
 test_7_3_4_pass if {
@@ -1325,8 +1253,7 @@ test_7_3_4_fail if {
 test_7_3_4_evidence_missing if {
 	inp := _without_attestation("7.3.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.4") == "not_assessed"
-	_reason(r, "7.3.4") == "evidence_missing"
+	_status(r, "7.3.4") == "evidence_missing"
 }
 
 test_7_3_5_pass if {
@@ -1343,8 +1270,7 @@ test_7_3_5_fail if {
 test_7_3_5_evidence_missing if {
 	inp := _without_attestation("7.3.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.5") == "not_assessed"
-	_reason(r, "7.3.5") == "evidence_missing"
+	_status(r, "7.3.5") == "evidence_missing"
 }
 
 test_7_3_6_pass if {
@@ -1361,8 +1287,7 @@ test_7_3_6_fail if {
 test_7_3_6_evidence_missing if {
 	inp := _without_attestation("7.3.6")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.6") == "not_assessed"
-	_reason(r, "7.3.6") == "evidence_missing"
+	_status(r, "7.3.6") == "evidence_missing"
 }
 
 test_7_3_7_pass if {
@@ -1379,8 +1304,7 @@ test_7_3_7_fail if {
 test_7_3_7_evidence_missing if {
 	inp := _without_attestation("7.3.7")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.7") == "not_assessed"
-	_reason(r, "7.3.7") == "evidence_missing"
+	_status(r, "7.3.7") == "evidence_missing"
 }
 
 test_7_3_8_pass if {
@@ -1397,8 +1321,7 @@ test_7_3_8_fail if {
 test_7_3_8_evidence_missing if {
 	inp := _without_attestation("7.3.8")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.8") == "not_assessed"
-	_reason(r, "7.3.8") == "evidence_missing"
+	_status(r, "7.3.8") == "evidence_missing"
 }
 
 test_7_3_9_pass if {
@@ -1415,8 +1338,7 @@ test_7_3_9_fail if {
 test_7_3_9_evidence_missing if {
 	inp := _without_attestation("7.3.9")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.9") == "not_assessed"
-	_reason(r, "7.3.9") == "evidence_missing"
+	_status(r, "7.3.9") == "evidence_missing"
 }
 
 test_7_3_10_pass if {
@@ -1433,8 +1355,7 @@ test_7_3_10_fail if {
 test_7_3_10_evidence_missing if {
 	inp := _without_attestation("7.3.10")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.10") == "not_assessed"
-	_reason(r, "7.3.10") == "evidence_missing"
+	_status(r, "7.3.10") == "evidence_missing"
 }
 
 test_7_4_1_pass if {
@@ -1451,8 +1372,7 @@ test_7_4_1_fail if {
 test_7_4_1_evidence_missing if {
 	inp := _without_attestation("7.4.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.1") == "not_assessed"
-	_reason(r, "7.4.1") == "evidence_missing"
+	_status(r, "7.4.1") == "evidence_missing"
 }
 
 test_7_4_2_pass if {
@@ -1469,8 +1389,7 @@ test_7_4_2_fail if {
 test_7_4_2_evidence_missing if {
 	inp := _without_attestation("7.4.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.2") == "not_assessed"
-	_reason(r, "7.4.2") == "evidence_missing"
+	_status(r, "7.4.2") == "evidence_missing"
 }
 
 test_7_4_3_pass if {
@@ -1487,8 +1406,7 @@ test_7_4_3_fail if {
 test_7_4_3_evidence_missing if {
 	inp := _without_attestation("7.4.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.3") == "not_assessed"
-	_reason(r, "7.4.3") == "evidence_missing"
+	_status(r, "7.4.3") == "evidence_missing"
 }
 
 test_7_4_4_pass if {
@@ -1505,8 +1423,7 @@ test_7_4_4_fail if {
 test_7_4_4_evidence_missing if {
 	inp := _without_attestation("7.4.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.4") == "not_assessed"
-	_reason(r, "7.4.4") == "evidence_missing"
+	_status(r, "7.4.4") == "evidence_missing"
 }
 
 test_7_4_5_pass if {
@@ -1523,8 +1440,7 @@ test_7_4_5_fail if {
 test_7_4_5_evidence_missing if {
 	inp := _without_attestation("7.4.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.5") == "not_assessed"
-	_reason(r, "7.4.5") == "evidence_missing"
+	_status(r, "7.4.5") == "evidence_missing"
 }
 
 test_7_4_6_pass if {
@@ -1541,8 +1457,7 @@ test_7_4_6_fail if {
 test_7_4_6_evidence_missing if {
 	inp := _without_attestation("7.4.6")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.6") == "not_assessed"
-	_reason(r, "7.4.6") == "evidence_missing"
+	_status(r, "7.4.6") == "evidence_missing"
 }
 
 test_7_4_7_pass if {
@@ -1559,8 +1474,7 @@ test_7_4_7_fail if {
 test_7_4_7_evidence_missing if {
 	inp := _without_attestation("7.4.7")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.7") == "not_assessed"
-	_reason(r, "7.4.7") == "evidence_missing"
+	_status(r, "7.4.7") == "evidence_missing"
 }
 
 test_7_4_8_pass if {
@@ -1577,8 +1491,7 @@ test_7_4_8_fail if {
 test_7_4_8_evidence_missing if {
 	inp := _without_attestation("7.4.8")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.8") == "not_assessed"
-	_reason(r, "7.4.8") == "evidence_missing"
+	_status(r, "7.4.8") == "evidence_missing"
 }
 
 test_7_4_9_pass if {
@@ -1595,8 +1508,7 @@ test_7_4_9_fail if {
 test_7_4_9_evidence_missing if {
 	inp := _drop_fact("transport.tls_min_version")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.4.9") == "not_assessed"
-	_reason(r, "7.4.9") == "evidence_missing"
+	_status(r, "7.4.9") == "evidence_missing"
 }
 
 test_7_5_1_pass if {
@@ -1613,8 +1525,7 @@ test_7_5_1_fail if {
 test_7_5_1_evidence_missing if {
 	inp := _without_attestation("7.5.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.5.1") == "not_assessed"
-	_reason(r, "7.5.1") == "evidence_missing"
+	_status(r, "7.5.1") == "evidence_missing"
 }
 
 test_7_5_2_pass if {
@@ -1631,8 +1542,7 @@ test_7_5_2_fail if {
 test_7_5_2_evidence_missing if {
 	inp := _without_attestation("7.5.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.5.2") == "not_assessed"
-	_reason(r, "7.5.2") == "evidence_missing"
+	_status(r, "7.5.2") == "evidence_missing"
 }
 
 test_7_5_3_pass if {
@@ -1649,8 +1559,7 @@ test_7_5_3_fail if {
 test_7_5_3_evidence_missing if {
 	inp := _without_attestation("7.5.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.5.3") == "not_assessed"
-	_reason(r, "7.5.3") == "evidence_missing"
+	_status(r, "7.5.3") == "evidence_missing"
 }
 
 test_7_5_4_pass if {
@@ -1667,8 +1576,7 @@ test_7_5_4_fail if {
 test_7_5_4_evidence_missing if {
 	inp := _without_attestation("7.5.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.5.4") == "not_assessed"
-	_reason(r, "7.5.4") == "evidence_missing"
+	_status(r, "7.5.4") == "evidence_missing"
 }
 
 test_8_2_1_pass if {
@@ -1685,8 +1593,7 @@ test_8_2_1_fail if {
 test_8_2_1_evidence_missing if {
 	inp := _without_attestation("8.2.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.2.1") == "not_assessed"
-	_reason(r, "8.2.1") == "evidence_missing"
+	_status(r, "8.2.1") == "evidence_missing"
 }
 
 test_8_2_2_pass if {
@@ -1703,8 +1610,7 @@ test_8_2_2_fail if {
 test_8_2_2_evidence_missing if {
 	inp := _without_attestation("8.2.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.2.2") == "not_assessed"
-	_reason(r, "8.2.2") == "evidence_missing"
+	_status(r, "8.2.2") == "evidence_missing"
 }
 
 test_8_2_3_pass if {
@@ -1721,8 +1627,7 @@ test_8_2_3_fail if {
 test_8_2_3_evidence_missing if {
 	inp := _without_attestation("8.2.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.2.3") == "not_assessed"
-	_reason(r, "8.2.3") == "evidence_missing"
+	_status(r, "8.2.3") == "evidence_missing"
 }
 
 test_8_2_4_pass if {
@@ -1739,8 +1644,7 @@ test_8_2_4_fail if {
 test_8_2_4_evidence_missing if {
 	inp := _without_attestation("8.2.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.2.4") == "not_assessed"
-	_reason(r, "8.2.4") == "evidence_missing"
+	_status(r, "8.2.4") == "evidence_missing"
 }
 
 test_8_2_5_pass if {
@@ -1757,8 +1661,7 @@ test_8_2_5_fail if {
 test_8_2_5_evidence_missing if {
 	inp := _without_attestation("8.2.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.2.5") == "not_assessed"
-	_reason(r, "8.2.5") == "evidence_missing"
+	_status(r, "8.2.5") == "evidence_missing"
 }
 
 test_8_2_6_pass if {
@@ -1775,8 +1678,7 @@ test_8_2_6_fail if {
 test_8_2_6_evidence_missing if {
 	inp := _without_attestation("8.2.6")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.2.6") == "not_assessed"
-	_reason(r, "8.2.6") == "evidence_missing"
+	_status(r, "8.2.6") == "evidence_missing"
 }
 
 test_8_3_1_pass if {
@@ -1793,8 +1695,7 @@ test_8_3_1_fail if {
 test_8_3_1_evidence_missing if {
 	inp := _without_attestation("8.3.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.3.1") == "not_assessed"
-	_reason(r, "8.3.1") == "evidence_missing"
+	_status(r, "8.3.1") == "evidence_missing"
 }
 
 test_8_4_1_pass if {
@@ -1811,8 +1712,7 @@ test_8_4_1_fail if {
 test_8_4_1_evidence_missing if {
 	inp := _without_attestation("8.4.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.4.1") == "not_assessed"
-	_reason(r, "8.4.1") == "evidence_missing"
+	_status(r, "8.4.1") == "evidence_missing"
 }
 
 test_8_4_2_pass if {
@@ -1829,8 +1729,7 @@ test_8_4_2_fail if {
 test_8_4_2_evidence_missing if {
 	inp := _without_attestation("8.4.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.4.2") == "not_assessed"
-	_reason(r, "8.4.2") == "evidence_missing"
+	_status(r, "8.4.2") == "evidence_missing"
 }
 
 test_8_4_3_pass if {
@@ -1847,8 +1746,7 @@ test_8_4_3_fail if {
 test_8_4_3_evidence_missing if {
 	inp := _drop_fact("transport.tls_min_version")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.4.3") == "not_assessed"
-	_reason(r, "8.4.3") == "evidence_missing"
+	_status(r, "8.4.3") == "evidence_missing"
 }
 
 test_8_5_1_pass if {
@@ -1865,8 +1763,7 @@ test_8_5_1_fail if {
 test_8_5_1_evidence_missing if {
 	inp := _without_attestation("8.5.1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.1") == "not_assessed"
-	_reason(r, "8.5.1") == "evidence_missing"
+	_status(r, "8.5.1") == "evidence_missing"
 }
 
 test_8_5_2_pass if {
@@ -1883,8 +1780,7 @@ test_8_5_2_fail if {
 test_8_5_2_evidence_missing if {
 	inp := _without_attestation("8.5.2")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.2") == "not_assessed"
-	_reason(r, "8.5.2") == "evidence_missing"
+	_status(r, "8.5.2") == "evidence_missing"
 }
 
 test_8_5_3_pass if {
@@ -1901,8 +1797,7 @@ test_8_5_3_fail if {
 test_8_5_3_evidence_missing if {
 	inp := _without_attestation("8.5.3")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.3") == "not_assessed"
-	_reason(r, "8.5.3") == "evidence_missing"
+	_status(r, "8.5.3") == "evidence_missing"
 }
 
 test_8_5_4_pass if {
@@ -1919,8 +1814,7 @@ test_8_5_4_fail if {
 test_8_5_4_evidence_missing if {
 	inp := _without_attestation("8.5.4")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.4") == "not_assessed"
-	_reason(r, "8.5.4") == "evidence_missing"
+	_status(r, "8.5.4") == "evidence_missing"
 }
 
 test_8_5_5_pass if {
@@ -1937,8 +1831,7 @@ test_8_5_5_fail if {
 test_8_5_5_evidence_missing if {
 	inp := _without_attestation("8.5.5")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.5") == "not_assessed"
-	_reason(r, "8.5.5") == "evidence_missing"
+	_status(r, "8.5.5") == "evidence_missing"
 }
 
 test_8_5_6_pass if {
@@ -1955,8 +1848,7 @@ test_8_5_6_fail if {
 test_8_5_6_evidence_missing if {
 	inp := _without_attestation("8.5.6")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.6") == "not_assessed"
-	_reason(r, "8.5.6") == "evidence_missing"
+	_status(r, "8.5.6") == "evidence_missing"
 }
 
 test_8_5_7_pass if {
@@ -1973,8 +1865,7 @@ test_8_5_7_fail if {
 test_8_5_7_evidence_missing if {
 	inp := _without_attestation("8.5.7")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.7") == "not_assessed"
-	_reason(r, "8.5.7") == "evidence_missing"
+	_status(r, "8.5.7") == "evidence_missing"
 }
 
 test_8_5_8_pass if {
@@ -1991,8 +1882,7 @@ test_8_5_8_fail if {
 test_8_5_8_evidence_missing if {
 	inp := _without_attestation("8.5.8")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "8.5.8") == "not_assessed"
-	_reason(r, "8.5.8") == "evidence_missing"
+	_status(r, "8.5.8") == "evidence_missing"
 }
 
 # ── List shape ───────────────────────────────────────────────────────────────
@@ -2069,7 +1959,8 @@ test_empty_input_fails_closed if {
 	r.compliant == false
 	r.total_controls == 108
 	r.failed_controls == 108
-	r.control_result_counts.not_assessed == 108
+	r.control_result_counts.evidence_missing == 108
+	r.control_result_counts.not_attested == 0
 	r.control_result_counts.pass == 0
 }
 
@@ -2083,13 +1974,13 @@ test_non_object_input_reported if {
 test_string_true_fact_is_not_a_pass if {
 	inp := _set_fact("encryption.pii_at_rest_encrypted", "true")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.7.1.1") == "not_assessed"
+	_status(r, "6.7.1.1") == "evidence_missing"
 }
 
 test_string_number_fact_is_not_a_pass if {
 	inp := _set_fact("backup.last_success_age_days", "1")
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.9.3.1") == "not_assessed"
+	_status(r, "6.9.3.1") == "evidence_missing"
 }
 
 test_evidence_fail_beats_missing if {
@@ -2115,36 +2006,50 @@ test_evidence_limits if {
 test_technical_control_ignores_attestation if {
 	inp := {"iso27701": {"attestations": {"6.7.1.1": _signed}}}
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "6.7.1.1") == "not_assessed"
-	_reason(r, "6.7.1.1") == "evidence_missing"
+	_status(r, "6.7.1.1") == "evidence_missing"
 }
 
 # ── Attestation rules ────────────────────────────────────────────────────────
 
+# The status values are those of nist_800_53.main and tisax.main; there is no separate reason field.
+test_status_values_are_the_shared_vocabulary if {
+	r1 := data.iso27701.main.compliance_report with input as {}
+	r2 := data.iso27701.main.compliance_report with input as _good
+	r3 := data.iso27701.main.compliance_report with input as _with_attestation("7.2.1", {"attested": true})
+	r4 := data.iso27701.main.compliance_report with input as _with_attestation("7.2.5", _refused)
+	every r in [r1, r2, r3, r4] {
+		every row in r.control_results {
+			row.status in {"pass", "fail", "evidence_missing", "not_attested"}
+			not "reason" in object.keys(row)
+		}
+		object.keys(r.control_result_counts) == {"pass", "fail", "evidence_missing", "not_attested"}
+	}
+	r3.control_result_counts.not_attested == 1
+	r4.control_result_counts.fail == 1
+}
+
 test_unsigned_attestation_not_attested if {
 	inp := _with_attestation("7.2.1", {"attested": true})
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.1") == "not_assessed"
-	_reason(r, "7.2.1") == "not_attested"
+	_status(r, "7.2.1") == "not_attested"
 }
 
 test_string_attested_is_not_a_pass if {
 	inp := _with_attestation("7.2.1", {"attested": "true", "by": "x", "date": "2026-11-01"})
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.1") == "not_assessed"
+	_status(r, "7.2.1") == "not_attested"
 }
 
 test_blank_signer_not_a_pass if {
 	inp := _with_attestation("5.3.2", {"attested": true, "by": " ", "date": "2026-11-01"})
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.3.2") == "not_assessed"
+	_status(r, "5.3.2") == "not_attested"
 }
 
 test_non_object_attestation_not_a_pass if {
 	inp := _with_attestation("5.3.2", true)
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "5.3.2") == "not_assessed"
-	_reason(r, "5.3.2") == "not_attested"
+	_status(r, "5.3.2") == "not_attested"
 }
 
 test_unknown_attestation_key_reported if {
@@ -2205,7 +2110,7 @@ test_legacy_true_passes_mapped_control if {
 test_legacy_partial_is_not_a_pass if {
 	inp := {"iso27701": {"pii_controller": {"collection_conditions": {"privacy_notices_provided": true}}}}
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.3.3") == "not_assessed"
+	_status(r, "7.3.3") == "evidence_missing"
 }
 
 test_legacy_false_beats_signed_attestation if {
@@ -2222,7 +2127,7 @@ test_legacy_false_beats_signed_attestation if {
 test_legacy_string_is_not_a_pass if {
 	inp := {"iso27701": {"pii_controller": {"collection_conditions": {"purposes_documented": "true"}}}}
 	r := data.iso27701.main.compliance_report with input as inp
-	_status(r, "7.2.1") == "not_assessed"
+	_status(r, "7.2.1") == "evidence_missing"
 }
 
 test_area_packages_still_answer if {

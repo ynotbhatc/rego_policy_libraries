@@ -26,8 +26,8 @@ One result per control, 108 in all, edition 2019:
 | Annex A, PII controllers | 7.2.1 to 7.5.4 | 31 | 7.4.9 from system facts, 30 attestation |
 | Annex B, PII processors | 8.2.1 to 8.5.8 | 18 | 8.4.3 from system facts, 17 attestation |
 
-Each control reports `pass`, `fail` or `not_assessed` (with `reason` `evidence_missing` or `not_attested`).
-Missing or mistyped evidence is never a pass. Annex A and Annex B apply unless
+Each control reports `pass`, `fail`, `evidence_missing` or `not_attested`, the same status values as NIST
+SP 800-53 and TISAX. Missing or mistyped evidence is never a pass. Annex A and Annex B apply unless
 `input.iso27701.scope.pii_controller` / `pii_processor` is the boolean `false`.
 
 Input: `input.iso27701.evidence.<area>.<fact>` for the technical controls (see `evidence_spec`),

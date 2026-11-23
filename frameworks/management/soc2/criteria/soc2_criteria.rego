@@ -16,11 +16,13 @@
 #                already read for them (supporting facts): the attestation never passes a criterion whose
 #                record says otherwise.
 #
-# Status: pass | fail | not_assessed, and reason: pass | fail | evidence_missing | attestation_missing.
-#   fail          a fact was supplied and does not meet its test, or the attestation is present but not signed
-#   not_assessed  a fact was not supplied (or is not of the expected type), or no attestation is present
-#   pass          every fact supplied and met, and (for an attestation criterion) a signed attestation
-# A fail outranks a missing fact. not_assessed is never a pass.
+# Status: pass | fail | evidence_missing | not_attested (the vocabulary of nist_800_53.main and tisax.main).
+#   fail              a fact was supplied and does not meet its test, or the attestation says attested: false
+#   not_attested      an attestation is present but not signed ({attested: true, by, date} not all there)
+#   evidence_missing  a fact was not supplied (or is not of the expected type), or no attestation is present
+#   pass              every fact supplied and met, and (for an attestation criterion) a signed attestation
+# Precedence: fail > not_attested > evidence_missing > pass. Only pass is a pass; missing evidence never is.
+# There is no separate reason field: the status, the basis and the findings say why a criterion did not pass.
 
 # METADATA
 # title: "SOC 2 Trust Services Criteria - per-criterion evaluation of all 33 common criteria and 16 optional-category criteria"
@@ -520,39 +522,52 @@ _att_path(id) := sprintf("input.soc2.attestations[%q]", [id])
 
 # ── Status per criterion ─────────────────────────────────────────────────────
 
-_reason(id) := "fail" if {
+_attestation_criterion(id) if criteria[id].basis == "attestation"
+
+_refused(a) if {
+	is_object(a)
+	a.attested == false
+}
+
+_status(id) := "fail" if {
 	count(_failed_facts(id)) > 0
 } else := "fail" if {
-	criteria[id].basis == "attestation"
+	_attestation_criterion(id)
+	_refused(_att(id))
+} else := "not_attested" if {
+	_attestation_criterion(id)
 	_att(id) != null
 	not _signed(_att(id))
-} else := "attestation_missing" if {
-	criteria[id].basis == "attestation"
+} else := "evidence_missing" if {
+	_attestation_criterion(id)
 	_att(id) == null
 } else := "evidence_missing" if {
 	count(_missing_facts(id)) > 0
 } else := "pass"
 
-_status_by_reason := {"pass": "pass", "fail": "fail", "attestation_missing": "not_assessed", "evidence_missing": "not_assessed"}
-
-reason_of[id] := _reason(id) if some id, _ in criteria
-
-status_of[id] := _status_by_reason[reason_of[id]] if some id, _ in criteria
+status_of[id] := _status(id) if some id, _ in criteria
 
 _detail_parts(id) := array.concat(
 	[concat("", ["fail - ", concat("; ", _failed_facts(id))]) | count(_failed_facts(id)) > 0],
 	array.concat(
-		[sprintf("fail - %v is present but not signed; it must be {attested: true, by: <name>, date: <date>}", [_att_path(id)]) |
-			criteria[id].basis == "attestation"
-			_att(id) != null
-			not _signed(_att(id))
+		[sprintf("fail - %v says attested: false", [_att_path(id)]) |
+			_attestation_criterion(id)
+			_refused(_att(id))
 		],
 		array.concat(
-			[sprintf("not assessed - no attestation at %v; this organisational criterion is met only by {attested: true, by, date}", [_att_path(id)]) |
-				criteria[id].basis == "attestation"
-				_att(id) == null
+			[sprintf("not attested - %v is present but not signed; it must be {attested: true, by: <name>, date: <date>}", [_att_path(id)]) |
+				_attestation_criterion(id)
+				_att(id) != null
+				not _refused(_att(id))
+				not _signed(_att(id))
 			],
-			[sprintf("not assessed - evidence missing: %v not supplied or not of the expected type", [concat(", ", _missing_facts(id))]) | count(_missing_facts(id)) > 0],
+			array.concat(
+				[sprintf("evidence missing - no attestation at %v; this organisational criterion is met only by {attested: true, by, date}", [_att_path(id)]) |
+					_attestation_criterion(id)
+					_att(id) == null
+				],
+				[sprintf("evidence missing - %v not supplied or not of the expected type", [concat(", ", _missing_facts(id))]) | count(_missing_facts(id)) > 0],
+			),
 		),
 	),
 )
@@ -567,7 +582,6 @@ result_of[id] := {
 	"basis": c.basis,
 	"supporting_facts": count(_facts(id)) > 0,
 	"status": status_of[id],
-	"reason": reason_of[id],
 	"evidence": sort([concat("", ["input.", f.path]) | some f in _facts(id)]),
 	"findings": findings_of[id],
 } if some id, c in criteria
