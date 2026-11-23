@@ -1,5 +1,5 @@
 # Rego Policy Libraries — Makefile
-# Requires: opa (CI tests 1.10.0 and 1.22.0), curl
+# Requires: opa (CI tests 1.10.0 and 1.22.4), curl
 
 OPA ?= opa
 
@@ -116,7 +116,7 @@ check-coverage:
 # hold every policy file once and add up to the README policy count
 check-generated: check-no-data check-standards
 	@python3 scripts/gen_nist_800_53_index.py --check
-	@echo "NIST 800-53 index current"
+	@echo "NIST 800-53 index current; the evaluated-id count stated in the module header and docs matches"
 	@python3 scripts/gen_pci_dss_evidence_spec.py --check
 	@python3 tools/stig_generators/gen_collector_contract.py --check
 	@OPA=$(OPA) python3 scripts/gen_input_schemas.py --check

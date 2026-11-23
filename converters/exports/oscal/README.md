@@ -2,7 +2,7 @@
 
 **Status:** shipping — catalog, component-definition, assessment-results, imported baseline profiles.
 **Kind:** export (Tier 1)
-**Covers:** every framework — 150 catalogs, 11,539 distinct controls (the 14,318 control-level checks collapse onto them; the same id in two modules of one framework is one control)
+**Covers:** every framework, one catalog per framework key. The current catalog and control counts are in [`dist/catalogs/index.json`](dist/catalogs/index.json) and on the [README](../../../README.md)'s Continuous ATO line, which CI verifies against that file (the control-level checks collapse onto the catalog controls; the same id in two modules of one framework is one control)
 **Spec:** [OSCAL 1.2.3](https://pages.nist.gov/OSCAL/), JSON; schemas vendored in `schema/`
 
 ## Use it
