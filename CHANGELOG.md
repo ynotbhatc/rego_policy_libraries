@@ -8,6 +8,34 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — weekly audit 2026-11-23: counts, missing-evidence gates, citations and standard versions
+Breaking for collectors of the frameworks below: facts must be JSON booleans, and several report totals change.
+- **DORA**: `total_controls` and `failed_controls` are sums of the parts evaluated (300–320 for Title II, 172
+  for Title III; was a fixed 399 with `failed_controls` clamped). Level-1 checks need boolean `true`. Citations
+  corrected against Regulation (EU) 2022/2554 (Art. 9(4)(f), Art. 24(5)/(6), Art. 11(6)) and Delegated
+  Regulation (EU) 2025/301 for the reporting time limits.
+- **GDPR**: the Art. 9, Art. 37 and Chapter V gates, and six more conditional gates, exempt only on boolean
+  `false`. Absent, null or wrong-typed is listed under `evidence_missing`. `failed_controls` is counted.
+- **21 CFR Part 11**: 50 declared and 50 implemented (was 43 declared, 42 found). IQ/OQ/PQ is a non-scoring
+  advisory; §11.200(a) and §11.300(c)–(e) citations corrected; four paragraphs gained a check; the string
+  `"no"` no longer passes; five typed `in_use` scope declarations.
+- **FISMA / RMF**: an empty POA&M, tailoring list, compensating-control list, network-connection list or
+  external-dependency list passes only with an explicit typed "there are none" fact (SP 800-53 Rev 5 CA-5,
+  PL-2, PL-11, RA-5).
+- **NERC CIP**: CIP-003-9, CIP-004-7 and CIP-012-2 with their new parts; CIP-015-1 dates corrected (US
+  effective 2028-10-01); requirement and part labels corrected in eleven modules; log review is Part 4.4 at 15
+  calendar days; a future date is a finding and a missing date is evidence missing. `nerc_cip.main` now checks
+  CIP-003-9 Attachment 1 Section 6 and CIP-012-2 Parts 1.2/1.3.
+- **NIS2**: Art. 21(2)(j) is MFA or continuous authentication plus secured communications, with an explicit
+  "not appropriate" statement; training cites Art. 20(2); log retention is a defined period (library
+  criterion). 37 controls (was 35).
+- **SOX**: one check list feeds score, findings, verdict and counts; Section 409 gates on the Form 8-K
+  four-business-day deadline and automation is an advisory; four stray `.rego.fix*` files removed.
+- **Docs and tooling**: `docs/FRAMEWORKS.md` is checked against `standards.yaml` and the coverage labels;
+  NIST 800-53 header says 542; the coverage stamp requires equality for `full` and labels a count above the
+  declared total `over`; the site catalog has a section for every tree (sums to the headline); the bundle
+  manifest declares the `crosswalk` root.
+
 ### Fixed — FedRAMP Rev 5: three malformed inputs no longer pass (2026-11-22)
 - `input.cryptography: null` (and any section sent as null or a non-object: `authorization`,
   `continuous_monitoring`, `data_residency`, `cloud_service`) reads as an empty section, so each check on it
