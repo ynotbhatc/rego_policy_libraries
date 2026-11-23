@@ -1,0 +1,55 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/provider_change/schema.json",
+ "title": "Input facts for provider_change",
+ "description": "Input paths referenced in the sources of enforcement/provider/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "provider_change",
+ "x-entrypoint": "data.provider_change.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "enforcement/provider/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "action": {
+   "description": "Read in provider_change.rego."
+  },
+  "address": {
+   "description": "Read in provider_change.rego."
+  },
+  "config": {
+   "description": "Read in provider_change.rego."
+  },
+  "kind": {
+   "description": "Read in provider_change.rego."
+  },
+  "planned_state": {
+   "description": "Read in provider_change.rego."
+  },
+  "prior_state": {
+   "description": "Read in provider_change.rego."
+  },
+  "resource_type": {
+   "description": "Read in provider_change.rego."
+  },
+  "unknown_paths": {
+   "description": "Read in provider_change.rego."
+  },
+  "version": {
+   "description": "Read in provider_change.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "action",
+  "address",
+  "config",
+  "kind",
+  "planned_state",
+  "prior_state",
+  "resource_type",
+  "unknown_paths",
+  "version"
+ ]
+}

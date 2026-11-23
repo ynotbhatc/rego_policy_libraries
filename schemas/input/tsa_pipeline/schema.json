@@ -1,0 +1,31 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/tsa_pipeline/schema.json",
+ "title": "Input facts for tsa_pipeline",
+ "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/tsa_pipeline/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "tsa_pipeline",
+ "x-entrypoint": "data.tsa_pipeline.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/critical_infrastructure/tsa_pipeline/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in tsa_pipeline_main.rego."
+  },
+  "entity_name": {
+   "description": "Read in tsa_pipeline_main.rego."
+  },
+  "pipeline_type": {
+   "description": "Read in tsa_pipeline_main.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "entity_name",
+  "pipeline_type"
+ ]
+}

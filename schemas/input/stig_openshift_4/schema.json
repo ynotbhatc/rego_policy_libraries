@@ -1,0 +1,445 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig_openshift_4/schema.json",
+ "title": "Input facts for stig_openshift_4",
+ "description": "Facts the module in benchmarks/stig/openshift_4/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig_openshift_4",
+ "x-entrypoint": "data.stig_openshift_4.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/openshift_4/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.openshift_4.core_rules_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "attest": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "cntr_os_000090_rbac_review": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "cntr_os_000560_windows_scf": {
+     "description": "Read in core.rego."
+    },
+    "cntr_os_000660_role_review": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "oauth": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "identity_providers": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "corp-ldap"
+        ]
+       },
+       "type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "LDAP"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "openshift": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "cluster_version": {
+     "description": "Read in core.rego."
+    },
+    "cnv_shareable_disk_vms": {
+     "description": "Read in core.rego."
+    },
+    "hyperconverged": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "spec": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "featureGates": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "nonRoot": {
+           "description": "Read in core.rego."
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "image_config": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "spec": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "allowedRegistriesForImport": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "domainName": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "registry.redhat.io"
+            ]
+           },
+           "insecure": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "boolean",
+            "x-type-source": "fixture",
+            "examples": [
+             false
+            ]
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "virtualization_enabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
+    }
+   }
+  },
+  "rhcos": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "nodes": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "audit_rules": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -k execpriv"
+         ]
+        },
+        "examples": [
+         [
+          "-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -k execpriv",
+          "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -k execpriv",
+          "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -k execpriv"
+         ]
+        ]
+       },
+       "boot_entries_options": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "options root=UUID=1 rw audit=1 audit_backlog_limit=8192 page_poison=1 fips=1"
+         ]
+        },
+        "examples": [
+         [
+          "options root=UUID=1 rw audit=1 audit_backlog_limit=8192 page_poison=1 fips=1"
+         ]
+        ]
+       },
+       "cpu_flags": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "fpu"
+         ]
+        },
+        "examples": [
+         [
+          "fpu",
+          "nx",
+          "lm"
+         ]
+        ]
+       },
+       "dmesg_nx": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "[    0.000000] NX (Execute Disable) protection: active"
+        ]
+       },
+       "fips_enabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "1"
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "worker-0"
+        ]
+       },
+       "sshd_active": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "inactive"
+        ]
+       },
+       "sshd_config": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "ClientAliveCountMax": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0"
+          ]
+         },
+         "ClientAliveInterval": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "600"
+          ]
+         },
+         "PermitRootLogin": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "no"
+          ]
+         }
+        }
+       },
+       "sshd_enabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "disabled"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "scc": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "items": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "allowPrivilegedContainer": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "groups": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "system:authenticated"
+         ]
+        },
+        "examples": [
+         [
+          "system:authenticated"
+         ]
+        ]
+       },
+       "metadata": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "restricted-v2"
+          ]
+         }
+        }
+       },
+       "runAsUser": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "type": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "MustRunAsRange"
+          ]
+         }
+        }
+       },
+       "users": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "system:admin"
+         ]
+        },
+        "examples": [
+         []
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_openshift_4_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "attest",
+  "attest.cntr_os_000090_rbac_review",
+  "attest.cntr_os_000560_windows_scf",
+  "attest.cntr_os_000660_role_review",
+  "oauth",
+  "oauth.identity_providers",
+  "oauth.identity_providers[].name",
+  "oauth.identity_providers[].type",
+  "openshift",
+  "openshift.cluster_version",
+  "openshift.cnv_shareable_disk_vms",
+  "openshift.hyperconverged",
+  "openshift.hyperconverged.spec",
+  "openshift.hyperconverged.spec.featureGates",
+  "openshift.hyperconverged.spec.featureGates.nonRoot",
+  "openshift.image_config",
+  "openshift.image_config.spec",
+  "openshift.image_config.spec.allowedRegistriesForImport",
+  "openshift.image_config.spec.allowedRegistriesForImport[].domainName",
+  "openshift.image_config.spec.allowedRegistriesForImport[].insecure",
+  "openshift.virtualization_enabled",
+  "rhcos",
+  "rhcos.nodes",
+  "rhcos.nodes[].audit_rules",
+  "rhcos.nodes[].boot_entries_options",
+  "rhcos.nodes[].cpu_flags",
+  "rhcos.nodes[].dmesg_nx",
+  "rhcos.nodes[].fips_enabled",
+  "rhcos.nodes[].name",
+  "rhcos.nodes[].sshd_active",
+  "rhcos.nodes[].sshd_config",
+  "rhcos.nodes[].sshd_config.ClientAliveCountMax",
+  "rhcos.nodes[].sshd_config.ClientAliveInterval",
+  "rhcos.nodes[].sshd_config.PermitRootLogin",
+  "rhcos.nodes[].sshd_enabled",
+  "scc",
+  "scc.items",
+  "scc.items[].allowPrivilegedContainer",
+  "scc.items[].groups",
+  "scc.items[].metadata",
+  "scc.items[].metadata.name",
+  "scc.items[].runAsUser",
+  "scc.items[].runAsUser.type",
+  "scc.items[].users",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

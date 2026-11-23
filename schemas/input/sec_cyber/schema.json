@@ -1,0 +1,235 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sec_cyber/schema.json",
+ "title": "Input facts for sec_cyber",
+ "description": "Input paths referenced in the sources of frameworks/financial/sec_cyber/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "sec_cyber",
+ "x-entrypoint": "data.sec_cyber.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/financial/sec_cyber/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "annual_disclosure": {
+   "description": "Read in sec_cyber_main.rego.",
+   "properties": {
+    "material_risks": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "identified_and_disclosed": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "previous_incidents": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "impact_disclosed": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "risk_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "integrated_with_overall_risk": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "strategy_documented": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "third_party_risk": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "assessment_process": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in sec_cyber_main.rego."
+  },
+  "entity_name": {
+   "description": "Read in sec_cyber_main.rego."
+  },
+  "fiscal_year_end": {
+   "description": "Read in sec_cyber_main.rego."
+  },
+  "governance": {
+   "description": "Read in sec_cyber_main.rego.",
+   "properties": {
+    "board": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "informed_of_risks_frequency": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "oversight_process_disclosed": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "oversight_responsibility_assigned": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "ciso_or_equivalent": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "cybersecurity_roles_defined": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "expertise_or_expertise_access": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "reports_to_board": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_disclosure": {
+   "description": "Read in sec_cyber_main.rego.",
+   "properties": {
+    "delay_request": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "national_security_process": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "form_8k": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "filed_within_4_business_days": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "includes_material_impact": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "includes_nature_and_scope": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "incident_register": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "materiality_determination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_documented": {
+       "description": "Read in sec_cyber_main.rego."
+      },
+      "timely": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "risk_management": {
+   "description": "Read in sec_cyber_main.rego.",
+   "properties": {
+    "assessments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "regular_risk_assessments": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "incident_response": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "plan_exists": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "program": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "formal_program_exists": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    },
+    "standards": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "framework_adopted": {
+       "description": "Read in sec_cyber_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "ticker": {
+   "description": "Read in sec_cyber_main.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "annual_disclosure",
+  "annual_disclosure.material_risks",
+  "annual_disclosure.material_risks.identified_and_disclosed",
+  "annual_disclosure.previous_incidents",
+  "annual_disclosure.previous_incidents.impact_disclosed",
+  "annual_disclosure.risk_management",
+  "annual_disclosure.risk_management.integrated_with_overall_risk",
+  "annual_disclosure.risk_management.strategy_documented",
+  "annual_disclosure.third_party_risk",
+  "annual_disclosure.third_party_risk.assessment_process",
+  "assessment_date",
+  "entity_name",
+  "fiscal_year_end",
+  "governance",
+  "governance.board",
+  "governance.board.informed_of_risks_frequency",
+  "governance.board.oversight_process_disclosed",
+  "governance.board.oversight_responsibility_assigned",
+  "governance.management",
+  "governance.management.ciso_or_equivalent",
+  "governance.management.cybersecurity_roles_defined",
+  "governance.management.expertise_or_expertise_access",
+  "governance.management.reports_to_board",
+  "incident_disclosure",
+  "incident_disclosure.delay_request",
+  "incident_disclosure.delay_request.national_security_process",
+  "incident_disclosure.form_8k",
+  "incident_disclosure.form_8k.filed_within_4_business_days",
+  "incident_disclosure.form_8k.includes_material_impact",
+  "incident_disclosure.form_8k.includes_nature_and_scope",
+  "incident_disclosure.incident_register",
+  "incident_disclosure.incident_register.maintained",
+  "incident_disclosure.materiality_determination",
+  "incident_disclosure.materiality_determination.process_documented",
+  "incident_disclosure.materiality_determination.timely",
+  "risk_management",
+  "risk_management.assessments",
+  "risk_management.assessments.regular_risk_assessments",
+  "risk_management.incident_response",
+  "risk_management.incident_response.plan_exists",
+  "risk_management.program",
+  "risk_management.program.formal_program_exists",
+  "risk_management.standards",
+  "risk_management.standards.framework_adopted",
+  "ticker"
+ ]
+}

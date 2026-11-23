@@ -1,0 +1,913 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/stig.rke2/schema.json",
+ "title": "Input facts for stig.rke2",
+ "description": "Facts the module in benchmarks/stig/rke2/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "stig.rke2",
+ "x-entrypoint": "data.stig.rke2.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/stig/rke2/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.stig.rke2_test.green_fixture",
+ "type": "object",
+ "properties": {
+  "attest": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "kube_system_resources_approved": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "no_sensitive_values_in_workload_env": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rke2_images_signature_verified": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rke2_only_essential_components_enabled": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rke2_pps_ppsm_cal_compliant": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "rke2_supported_version_and_current_images": {
+     "description": "Read in core.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "cluster": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "images": {
+     "description": "Read in core.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "rancher/hardened-kubernetes:v1.30.2-rke2r1-build20240611"
+      ]
+     },
+     "examples": [
+      [
+       "rancher/hardened-kubernetes:v1.30.2-rke2r1-build20240611",
+       "rancher/hardened-etcd:v3.5.13-k3s1-build20240531"
+      ]
+     ]
+    },
+    "namespace_resources": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "default": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "service/kubernetes"
+        ]
+       },
+       "examples": [
+        [
+         "service/kubernetes"
+        ]
+       ]
+      },
+      "kube-node-lease": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "kube-public": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      }
+     }
+    },
+    "version": {
+     "description": "Read in core.rego."
+    }
+   }
+  },
+  "collection_status": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "images": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    },
+    "namespace_resources": {
+     "description": "Read in core.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ok"
+     ]
+    }
+   }
+  },
+  "kubelet": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "flags": {
+     "description": "Read in core.rego."
+    }
+   }
+  },
+  "rke2": {
+   "description": "Read in core.rego.",
+   "type": "object",
+   "properties": {
+    "args": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "kube_apiserver": {
+       "description": "Read in core.rego.",
+       "type": "object",
+       "properties": {
+        "anonymous-auth": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "false"
+         ]
+        },
+        "audit-log-maxage": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "30"
+         ]
+        },
+        "audit-log-mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "blocking-strict"
+         ]
+        },
+        "audit-policy-file": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/etc/rancher/rke2/audit-policy.yaml"
+         ]
+        },
+        "authorization-mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Node,RBAC"
+         ]
+        },
+        "tls-cipher-suites": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
+         ]
+        },
+        "tls-min-version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "VersionTLS12"
+         ]
+        }
+       }
+      },
+      "kube_controller_manager": {
+       "description": "Read in core.rego.",
+       "type": "object",
+       "properties": {
+        "bind-address": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "127.0.0.1"
+         ]
+        },
+        "tls-cipher-suites": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
+         ]
+        },
+        "tls-min-version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "VersionTLS12"
+         ]
+        },
+        "use-service-account-credentials": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "true"
+         ]
+        }
+       }
+      },
+      "kube_scheduler": {
+       "description": "Read in core.rego.",
+       "type": "object",
+       "properties": {
+        "tls-cipher-suites": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
+         ]
+        },
+        "tls-min-version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "VersionTLS12"
+         ]
+        }
+       }
+      },
+      "kubelet": {
+       "description": "Read in core.rego.",
+       "type": "object",
+       "properties": {
+        "anonymous-auth": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "false"
+         ]
+        },
+        "authorization-mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Webhook"
+         ]
+        },
+        "protect-kernel-defaults": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "true"
+         ]
+        },
+        "read-only-port": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "0"
+         ]
+        },
+        "streaming-connection-idle-timeout": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "5m"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "audit_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "apiVersion": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "audit.k8s.io/v1"
+       ]
+      },
+      "kind": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Policy"
+       ]
+      },
+      "metadata": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "rke2-audit-policy"
+         ]
+        }
+       }
+      },
+      "rules": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "level": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Metadata"
+          ]
+         },
+         "resources": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "group": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              ""
+             ]
+            },
+            "resources": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "secrets"
+              ]
+             },
+             "examples": [
+              [
+               "secrets"
+              ]
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "config": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "pod-security-admission-config-file": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/rancher/rke2/rke2-pss.yaml"
+       ]
+      },
+      "profile": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "cis"
+       ]
+      },
+      "write-kubeconfig-mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "0600"
+       ]
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in core.rego."
+     },
+     "x-variable-key": "<k>"
+    },
+    "files": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "agent": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0640"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "kubelet.kubeconfig"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         }
+        }
+       }
+      },
+      "bin": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0750"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "kubectl"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         }
+        }
+       }
+      },
+      "data": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0750"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "v1.30.2-rke2r1-a1b2c3"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         }
+        }
+       }
+      },
+      "etc": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0600"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "config.yaml"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         }
+        }
+       }
+      },
+      "root": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0700"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "agent"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         }
+        }
+       }
+      },
+      "server": {
+       "description": "Read in core.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "group": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0700"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "cred"
+          ]
+         },
+         "owner": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "pss_defaults": {
+     "description": "Read in core.rego.",
+     "type": "object",
+     "properties": {
+      "audit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "restricted"
+       ]
+      },
+      "audit-version": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "latest"
+       ]
+      },
+      "enforce": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "restricted"
+       ]
+      },
+      "enforce-version": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "latest"
+       ]
+      },
+      "warn": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "restricted"
+       ]
+      },
+      "warn-version": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "latest"
+       ]
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in core.rego."
+     },
+     "x-variable-key": "<k>"
+    }
+   }
+  },
+  "system_info": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "hostname": {
+     "description": "Read in stig_rke2_complete.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "attest",
+  "attest.kube_system_resources_approved",
+  "attest.no_sensitive_values_in_workload_env",
+  "attest.rke2_images_signature_verified",
+  "attest.rke2_only_essential_components_enabled",
+  "attest.rke2_pps_ppsm_cal_compliant",
+  "attest.rke2_supported_version_and_current_images",
+  "cluster",
+  "cluster.images",
+  "cluster.namespace_resources",
+  "cluster.namespace_resources.default",
+  "cluster.namespace_resources[\"kube-node-lease\"]",
+  "cluster.namespace_resources[\"kube-public\"]",
+  "cluster.version",
+  "collection_status",
+  "collection_status.images",
+  "collection_status.namespace_resources",
+  "kubelet",
+  "kubelet.flags",
+  "rke2",
+  "rke2.args",
+  "rke2.args.kube_apiserver",
+  "rke2.args.kube_apiserver[\"anonymous-auth\"]",
+  "rke2.args.kube_apiserver[\"audit-log-maxage\"]",
+  "rke2.args.kube_apiserver[\"audit-log-mode\"]",
+  "rke2.args.kube_apiserver[\"audit-policy-file\"]",
+  "rke2.args.kube_apiserver[\"authorization-mode\"]",
+  "rke2.args.kube_apiserver[\"tls-cipher-suites\"]",
+  "rke2.args.kube_apiserver[\"tls-min-version\"]",
+  "rke2.args.kube_controller_manager",
+  "rke2.args.kube_controller_manager[\"bind-address\"]",
+  "rke2.args.kube_controller_manager[\"tls-cipher-suites\"]",
+  "rke2.args.kube_controller_manager[\"tls-min-version\"]",
+  "rke2.args.kube_controller_manager[\"use-service-account-credentials\"]",
+  "rke2.args.kube_scheduler",
+  "rke2.args.kube_scheduler[\"tls-cipher-suites\"]",
+  "rke2.args.kube_scheduler[\"tls-min-version\"]",
+  "rke2.args.kubelet",
+  "rke2.args.kubelet[\"anonymous-auth\"]",
+  "rke2.args.kubelet[\"authorization-mode\"]",
+  "rke2.args.kubelet[\"protect-kernel-defaults\"]",
+  "rke2.args.kubelet[\"read-only-port\"]",
+  "rke2.args.kubelet[\"streaming-connection-idle-timeout\"]",
+  "rke2.audit_policy",
+  "rke2.audit_policy.apiVersion",
+  "rke2.audit_policy.kind",
+  "rke2.audit_policy.metadata",
+  "rke2.audit_policy.metadata.name",
+  "rke2.audit_policy.rules",
+  "rke2.audit_policy.rules[].level",
+  "rke2.audit_policy.rules[].resources",
+  "rke2.audit_policy.rules[].resources[].group",
+  "rke2.audit_policy.rules[].resources[].resources",
+  "rke2.config",
+  "rke2.config.profile",
+  "rke2.config[\"pod-security-admission-config-file\"]",
+  "rke2.config[\"write-kubeconfig-mode\"]",
+  "rke2.files",
+  "rke2.files.agent",
+  "rke2.files.agent[].group",
+  "rke2.files.agent[].mode",
+  "rke2.files.agent[].name",
+  "rke2.files.agent[].owner",
+  "rke2.files.bin",
+  "rke2.files.bin[].group",
+  "rke2.files.bin[].mode",
+  "rke2.files.bin[].name",
+  "rke2.files.bin[].owner",
+  "rke2.files.data",
+  "rke2.files.data[].group",
+  "rke2.files.data[].mode",
+  "rke2.files.data[].name",
+  "rke2.files.data[].owner",
+  "rke2.files.etc",
+  "rke2.files.etc[].group",
+  "rke2.files.etc[].mode",
+  "rke2.files.etc[].name",
+  "rke2.files.etc[].owner",
+  "rke2.files.root",
+  "rke2.files.root[].group",
+  "rke2.files.root[].mode",
+  "rke2.files.root[].name",
+  "rke2.files.root[].owner",
+  "rke2.files.server",
+  "rke2.files.server[].group",
+  "rke2.files.server[].mode",
+  "rke2.files.server[].name",
+  "rke2.files.server[].owner",
+  "rke2.pss_defaults",
+  "rke2.pss_defaults.audit",
+  "rke2.pss_defaults.enforce",
+  "rke2.pss_defaults.warn",
+  "rke2.pss_defaults[\"audit-version\"]",
+  "rke2.pss_defaults[\"enforce-version\"]",
+  "rke2.pss_defaults[\"warn-version\"]",
+  "system_info",
+  "system_info.hostname"
+ ]
+}

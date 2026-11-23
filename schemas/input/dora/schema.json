@@ -1,0 +1,731 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/dora/schema.json",
+ "title": "Input facts for dora",
+ "description": "Input paths referenced in the sources of frameworks/financial/dora/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "dora",
+ "x-entrypoint": "data.dora.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/financial/dora/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in dora_main.rego."
+  },
+  "dora": {
+   "description": "Read in dora_rts_ict_risk.rego.",
+   "properties": {
+    "rts": {
+     "description": "Read in dora_rts_ict_risk.rego.",
+     "properties": {
+      "obligations": {
+       "description": "Read in dora_rts_ict_risk.rego."
+      },
+      "simplified_framework": {
+       "description": "Read in dora_rts_ict_risk.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in dora_main.rego."
+  },
+  "entity_type": {
+   "description": "Read in dora_main.rego."
+  },
+  "ict_risk_management": {
+   "description": "Read in dora_main.rego.",
+   "properties": {
+    "annual_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "completed": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "asset_inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "backup_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "at_rest": {
+       "description": "Read in dora_main.rego."
+      },
+      "in_transit": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "governance_framework": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "mfa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enabled": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "patch_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "privileged_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "managed": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "recovery_objectives": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "rpo_defined": {
+       "description": "Read in dora_main.rego."
+      },
+      "rto_defined": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "risk_appetite": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "defined": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "threat_intelligence": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_reporting": {
+   "description": "Read in dora_main.rego.",
+   "properties": {
+    "classification_process": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "final_report": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "within_1_month": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "incident_register": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "initial_notification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "within_4_hours": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "intermediate_report": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "within_72_hours": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "root_cause_analysis": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "performed": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "information_sharing": {
+   "description": "Read in dora_main.rego.",
+   "properties": {
+    "arrangements": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "in_place": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "resilience_testing": {
+   "description": "Read in dora_main.rego, dora_rts_tlpt.rego.",
+   "properties": {
+    "basic_testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "continuity_drills": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "conducted": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "test_results": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "remediated": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "tlpt": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "attestation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "obtained": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "closure": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "blue_team_report_10_weeks": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "purple_teaming_conducted": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "red_team_report_4_weeks": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "summary_report_8_weeks": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "conducted": {
+       "description": "Read in dora_main.rego."
+      },
+      "frequency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "three_year_cycle_met": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "internal_testers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authority_approved_and_disclosed": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "policy_established": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "organisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "control_team_lead_appointed": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "secrecy_controls_established": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "preparation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "control_team_established": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "initiation_submitted_3_months": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "providers_contracted_before_testing": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "scope_spec_approved_by_board": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "providers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "compliance_documented": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "prohibited_activities_defined": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "red_team_requirements_met": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "restoration_procedures_agreed": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "selection_evidence_collected": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "ti_team_requirements_met": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "red_team": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "active_phase_min_12_weeks": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "legup_and_suspension_procedures": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "test_plan_approved": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "weekly_reporting": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "remediation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "plan_submitted_8_weeks": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "risk_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "live_system_risk_assessed": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "pooled_joint_assessed": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "scope_determination": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "performed": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      },
+      "threat_intelligence": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "min_three_scenarios_selected": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "report_approved": {
+         "description": "Read in dora_rts_tlpt.rego."
+        },
+        "targeted_scenarios_produced": {
+         "description": "Read in dora_rts_tlpt.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "third_party_risk": {
+   "description": "Read in dora_main.rego, dora_rts_subcontracting.rego.",
+   "properties": {
+    "concentration_risk": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "assessed": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "contracts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "audit_rights": {
+       "description": "Read in dora_main.rego."
+      },
+      "exit_strategy": {
+       "description": "Read in dora_main.rego."
+      },
+      "sla_defined": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "critical_providers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "identified": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "due_diligence": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "performed": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "register": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in dora_main.rego."
+      }
+     }
+    },
+    "subcontracting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "contract": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "audit_rights_flow_down": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "chain_continuity_required": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "data_location_specified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "eligible_services_specified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "flow_down_obligations": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "material_change_notification_clause": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "monitoring_reporting_obligations": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "provider_responsibility_clause": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "remediation_timeline_documented": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "security_standards_specified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "termination_rights_clause": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      },
+      "due_diligence": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_rights_parity_verified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "concentration_risk_assessed": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "entity_monitoring_capacity_verified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "failure_impact_assessed": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "full_chain_identified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "location_risk_assessed": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "provider_monitoring_capacity_verified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "provider_vetting_capability_verified": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "regulatory_compliance_enabled": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "supervisory_access_obstacles_assessed": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      },
+      "group_consistency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ensured": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      },
+      "material_changes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approval_before_implementation": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "notice_period_defined": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "risk_tolerance_objection_process": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      },
+      "permissibility_decision": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      },
+      "risk_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "covers_chain_complexity": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "independent_of_provider": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        },
+        "periodic_review_performed": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      },
+      "termination": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "triggers_defined": {
+         "description": "Read in dora_rts_subcontracting.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "dora",
+  "dora.rts",
+  "dora.rts.obligations",
+  "dora.rts.simplified_framework",
+  "entity_name",
+  "entity_type",
+  "ict_risk_management",
+  "ict_risk_management.annual_review",
+  "ict_risk_management.annual_review.completed",
+  "ict_risk_management.asset_inventory",
+  "ict_risk_management.asset_inventory.maintained",
+  "ict_risk_management.backup_policy",
+  "ict_risk_management.backup_policy.documented",
+  "ict_risk_management.encryption",
+  "ict_risk_management.encryption.at_rest",
+  "ict_risk_management.encryption.in_transit",
+  "ict_risk_management.governance_framework",
+  "ict_risk_management.governance_framework.documented",
+  "ict_risk_management.mfa",
+  "ict_risk_management.mfa.enabled",
+  "ict_risk_management.patch_management",
+  "ict_risk_management.patch_management.process_exists",
+  "ict_risk_management.privileged_access",
+  "ict_risk_management.privileged_access.managed",
+  "ict_risk_management.recovery_objectives",
+  "ict_risk_management.recovery_objectives.rpo_defined",
+  "ict_risk_management.recovery_objectives.rto_defined",
+  "ict_risk_management.risk_appetite",
+  "ict_risk_management.risk_appetite.defined",
+  "ict_risk_management.threat_intelligence",
+  "ict_risk_management.threat_intelligence.process_exists",
+  "incident_reporting",
+  "incident_reporting.classification_process",
+  "incident_reporting.classification_process.documented",
+  "incident_reporting.final_report",
+  "incident_reporting.final_report.within_1_month",
+  "incident_reporting.incident_register",
+  "incident_reporting.incident_register.maintained",
+  "incident_reporting.initial_notification",
+  "incident_reporting.initial_notification.within_4_hours",
+  "incident_reporting.intermediate_report",
+  "incident_reporting.intermediate_report.within_72_hours",
+  "incident_reporting.root_cause_analysis",
+  "incident_reporting.root_cause_analysis.performed",
+  "information_sharing",
+  "information_sharing.arrangements",
+  "information_sharing.arrangements.in_place",
+  "resilience_testing",
+  "resilience_testing.basic_testing",
+  "resilience_testing.basic_testing.annual",
+  "resilience_testing.continuity_drills",
+  "resilience_testing.continuity_drills.conducted",
+  "resilience_testing.test_results",
+  "resilience_testing.test_results.remediated",
+  "resilience_testing.tlpt",
+  "resilience_testing.tlpt.attestation",
+  "resilience_testing.tlpt.attestation.obtained",
+  "resilience_testing.tlpt.closure",
+  "resilience_testing.tlpt.closure.blue_team_report_10_weeks",
+  "resilience_testing.tlpt.closure.purple_teaming_conducted",
+  "resilience_testing.tlpt.closure.red_team_report_4_weeks",
+  "resilience_testing.tlpt.closure.summary_report_8_weeks",
+  "resilience_testing.tlpt.conducted",
+  "resilience_testing.tlpt.frequency",
+  "resilience_testing.tlpt.frequency.three_year_cycle_met",
+  "resilience_testing.tlpt.internal_testers",
+  "resilience_testing.tlpt.internal_testers.authority_approved_and_disclosed",
+  "resilience_testing.tlpt.internal_testers.policy_established",
+  "resilience_testing.tlpt.organisation",
+  "resilience_testing.tlpt.organisation.control_team_lead_appointed",
+  "resilience_testing.tlpt.organisation.secrecy_controls_established",
+  "resilience_testing.tlpt.preparation",
+  "resilience_testing.tlpt.preparation.control_team_established",
+  "resilience_testing.tlpt.preparation.initiation_submitted_3_months",
+  "resilience_testing.tlpt.preparation.providers_contracted_before_testing",
+  "resilience_testing.tlpt.preparation.scope_spec_approved_by_board",
+  "resilience_testing.tlpt.providers",
+  "resilience_testing.tlpt.providers.compliance_documented",
+  "resilience_testing.tlpt.providers.prohibited_activities_defined",
+  "resilience_testing.tlpt.providers.red_team_requirements_met",
+  "resilience_testing.tlpt.providers.restoration_procedures_agreed",
+  "resilience_testing.tlpt.providers.selection_evidence_collected",
+  "resilience_testing.tlpt.providers.ti_team_requirements_met",
+  "resilience_testing.tlpt.red_team",
+  "resilience_testing.tlpt.red_team.active_phase_min_12_weeks",
+  "resilience_testing.tlpt.red_team.legup_and_suspension_procedures",
+  "resilience_testing.tlpt.red_team.test_plan_approved",
+  "resilience_testing.tlpt.red_team.weekly_reporting",
+  "resilience_testing.tlpt.remediation",
+  "resilience_testing.tlpt.remediation.plan_submitted_8_weeks",
+  "resilience_testing.tlpt.risk_management",
+  "resilience_testing.tlpt.risk_management.live_system_risk_assessed",
+  "resilience_testing.tlpt.risk_management.pooled_joint_assessed",
+  "resilience_testing.tlpt.scope_determination",
+  "resilience_testing.tlpt.scope_determination.performed",
+  "resilience_testing.tlpt.threat_intelligence",
+  "resilience_testing.tlpt.threat_intelligence.min_three_scenarios_selected",
+  "resilience_testing.tlpt.threat_intelligence.report_approved",
+  "resilience_testing.tlpt.threat_intelligence.targeted_scenarios_produced",
+  "third_party_risk",
+  "third_party_risk.concentration_risk",
+  "third_party_risk.concentration_risk.assessed",
+  "third_party_risk.contracts",
+  "third_party_risk.contracts.audit_rights",
+  "third_party_risk.contracts.exit_strategy",
+  "third_party_risk.contracts.sla_defined",
+  "third_party_risk.critical_providers",
+  "third_party_risk.critical_providers.identified",
+  "third_party_risk.due_diligence",
+  "third_party_risk.due_diligence.performed",
+  "third_party_risk.register",
+  "third_party_risk.register.maintained",
+  "third_party_risk.subcontracting",
+  "third_party_risk.subcontracting.contract",
+  "third_party_risk.subcontracting.contract.audit_rights_flow_down",
+  "third_party_risk.subcontracting.contract.chain_continuity_required",
+  "third_party_risk.subcontracting.contract.data_location_specified",
+  "third_party_risk.subcontracting.contract.eligible_services_specified",
+  "third_party_risk.subcontracting.contract.flow_down_obligations",
+  "third_party_risk.subcontracting.contract.material_change_notification_clause",
+  "third_party_risk.subcontracting.contract.monitoring_reporting_obligations",
+  "third_party_risk.subcontracting.contract.provider_responsibility_clause",
+  "third_party_risk.subcontracting.contract.remediation_timeline_documented",
+  "third_party_risk.subcontracting.contract.security_standards_specified",
+  "third_party_risk.subcontracting.contract.termination_rights_clause",
+  "third_party_risk.subcontracting.due_diligence",
+  "third_party_risk.subcontracting.due_diligence.access_rights_parity_verified",
+  "third_party_risk.subcontracting.due_diligence.concentration_risk_assessed",
+  "third_party_risk.subcontracting.due_diligence.entity_monitoring_capacity_verified",
+  "third_party_risk.subcontracting.due_diligence.failure_impact_assessed",
+  "third_party_risk.subcontracting.due_diligence.full_chain_identified",
+  "third_party_risk.subcontracting.due_diligence.location_risk_assessed",
+  "third_party_risk.subcontracting.due_diligence.provider_monitoring_capacity_verified",
+  "third_party_risk.subcontracting.due_diligence.provider_vetting_capability_verified",
+  "third_party_risk.subcontracting.due_diligence.regulatory_compliance_enabled",
+  "third_party_risk.subcontracting.due_diligence.supervisory_access_obstacles_assessed",
+  "third_party_risk.subcontracting.group_consistency",
+  "third_party_risk.subcontracting.group_consistency.ensured",
+  "third_party_risk.subcontracting.material_changes",
+  "third_party_risk.subcontracting.material_changes.approval_before_implementation",
+  "third_party_risk.subcontracting.material_changes.notice_period_defined",
+  "third_party_risk.subcontracting.material_changes.risk_tolerance_objection_process",
+  "third_party_risk.subcontracting.permissibility_decision",
+  "third_party_risk.subcontracting.permissibility_decision.documented",
+  "third_party_risk.subcontracting.risk_assessment",
+  "third_party_risk.subcontracting.risk_assessment.covers_chain_complexity",
+  "third_party_risk.subcontracting.risk_assessment.independent_of_provider",
+  "third_party_risk.subcontracting.risk_assessment.periodic_review_performed",
+  "third_party_risk.subcontracting.termination",
+  "third_party_risk.subcontracting.termination.triggers_defined"
+ ]
+}

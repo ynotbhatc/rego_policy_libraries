@@ -1,0 +1,885 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_oci/schema.json",
+ "title": "Input facts for cis_oci",
+ "description": "Facts the module in benchmarks/cis/oci/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_oci",
+ "x-entrypoint": "data.cis_oci.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/oci/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_oci.main_test.green",
+ "type": "object",
+ "properties": {
+  "oci": {
+   "description": "Read in cis_oci_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "analytics_instances": {
+     "description": "Read in cis_oci_foundations.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "network_access": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "allowlist"
+        ]
+       }
+      }
+     }
+    },
+    "autonomous_databases": {
+     "description": "Read in cis_oci_foundations.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "network_access": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "private"
+        ]
+       }
+      }
+     }
+    },
+    "block_storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "boot_volumes": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "kms_key_id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "ocid1.key.a"
+          ]
+         }
+        }
+       }
+      },
+      "volumes": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "kms_key_id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "ocid1.key.a"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "cloud_guard": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "target_root": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "compute": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "instances": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "in_transit_encryption_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "legacy_imds_endpoints_disabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "secure_boot_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "events": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "rules": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "event_types": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "com.oraclecloud.identitycontrolplane.createidentityprovider"
+           ]
+          },
+          "examples": [
+           [
+            "com.oraclecloud.identitycontrolplane.createidentityprovider",
+            "com.oraclecloud.identitycontrolplane.deleteidentityprovider",
+            "com.oraclecloud.identitycontrolplane.updateidentityprovider"
+           ]
+          ]
+         },
+         "has_notification_action": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "file_storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "file_systems": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "kms_key_id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "ocid1.key.a"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "iam": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "compartments": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "root"
+          ]
+         },
+         "root": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      },
+      "dynamic_groups": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "instances"
+          ]
+         }
+        }
+       }
+      },
+      "password_policy": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "object",
+       "properties": {
+        "max_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          365
+         ]
+        },
+        "minimum_length": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          14
+         ]
+        },
+        "reuse_prevented": {
+         "description": "Read in cis_oci_foundations.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "policies": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "svc"
+          ]
+         },
+         "statements": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Allow group NetworkAdmins to manage virtual-network-family in tenancy"
+           ]
+          },
+          "examples": [
+           [
+            "Allow group NetworkAdmins to manage virtual-network-family in tenancy",
+            "Allow group StorageAdmins to manage volume-family in tenancy where request.permission != 'VOLUME_DELETE'"
+           ]
+          ]
+         }
+        }
+       }
+      },
+      "root_compartment_resources": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "users": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "active": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "api_keys": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "age_days": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              30
+             ]
+            }
+           }
+          }
+         },
+         "auth_tokens": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+          },
+          "examples": [
+           []
+          ]
+         },
+         "console_password": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "customer_secret_keys": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+          },
+          "examples": [
+           []
+          ]
+         },
+         "db_passwords": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+          },
+          "examples": [
+           []
+          ]
+         },
+         "email": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "alice@example.com"
+          ]
+         },
+         "is_tenancy_admin": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         },
+         "last_activity_days": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           3
+          ]
+         },
+         "mfa_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "alice"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "integration_instances": {
+     "description": "Read in cis_oci_foundations.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "network_access": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "private"
+        ]
+       }
+      }
+     }
+    },
+    "kms": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "keys": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "customer_managed": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "rotation_interval_days": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           365
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "network": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "security_groups": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "ingress": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "port_max": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              3389
+             ]
+            },
+            "port_min": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              3389
+             ]
+            },
+            "protocol": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "6"
+             ]
+            },
+            "source": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "10.0.0.0/8"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "security_lists": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "ingress": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "port_max": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              22
+             ]
+            },
+            "port_min": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              22
+             ]
+            },
+            "protocol": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "1"
+             ]
+            },
+            "source": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "0.0.0.0/0"
+             ]
+            }
+           }
+          }
+         },
+         "is_default": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "vcn": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "vcn1"
+          ]
+         }
+        }
+       }
+      },
+      "subnets": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "flow_logs_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "notifications": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "topics": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "subscriptions": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           2
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "object_storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "buckets": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "kms_key_id": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "ocid1.key.a"
+          ]
+         },
+         "public_access_type": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "NoPublicAccess"
+          ]
+         },
+         "versioning": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Enabled"
+          ]
+         },
+         "write_logging_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "tagging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "default_tags": {
+       "description": "Read in cis_oci_foundations.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Oracle-Tags.CreatedBy"
+        ]
+       },
+       "examples": [
+        [
+         "Oracle-Tags.CreatedBy"
+        ]
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "oci",
+  "oci.analytics_instances",
+  "oci.analytics_instances[].network_access",
+  "oci.autonomous_databases",
+  "oci.autonomous_databases[].network_access",
+  "oci.block_storage",
+  "oci.block_storage.boot_volumes",
+  "oci.block_storage.boot_volumes[].kms_key_id",
+  "oci.block_storage.volumes",
+  "oci.block_storage.volumes[].kms_key_id",
+  "oci.cloud_guard",
+  "oci.cloud_guard.enabled",
+  "oci.cloud_guard.target_root",
+  "oci.compute",
+  "oci.compute.instances",
+  "oci.compute.instances[].in_transit_encryption_enabled",
+  "oci.compute.instances[].legacy_imds_endpoints_disabled",
+  "oci.compute.instances[].secure_boot_enabled",
+  "oci.events",
+  "oci.events.rules",
+  "oci.events.rules[].enabled",
+  "oci.events.rules[].event_types",
+  "oci.events.rules[].has_notification_action",
+  "oci.file_storage",
+  "oci.file_storage.file_systems",
+  "oci.file_storage.file_systems[].kms_key_id",
+  "oci.iam",
+  "oci.iam.compartments",
+  "oci.iam.compartments[].name",
+  "oci.iam.compartments[].root",
+  "oci.iam.dynamic_groups",
+  "oci.iam.dynamic_groups[].name",
+  "oci.iam.password_policy",
+  "oci.iam.password_policy.max_age_days",
+  "oci.iam.password_policy.minimum_length",
+  "oci.iam.password_policy.reuse_prevented",
+  "oci.iam.policies",
+  "oci.iam.policies[].name",
+  "oci.iam.policies[].statements",
+  "oci.iam.root_compartment_resources",
+  "oci.iam.users",
+  "oci.iam.users[].active",
+  "oci.iam.users[].api_keys",
+  "oci.iam.users[].api_keys[].age_days",
+  "oci.iam.users[].auth_tokens",
+  "oci.iam.users[].console_password",
+  "oci.iam.users[].customer_secret_keys",
+  "oci.iam.users[].db_passwords",
+  "oci.iam.users[].email",
+  "oci.iam.users[].is_tenancy_admin",
+  "oci.iam.users[].last_activity_days",
+  "oci.iam.users[].mfa_enabled",
+  "oci.iam.users[].name",
+  "oci.integration_instances",
+  "oci.integration_instances[].network_access",
+  "oci.kms",
+  "oci.kms.keys",
+  "oci.kms.keys[].customer_managed",
+  "oci.kms.keys[].rotation_interval_days",
+  "oci.network",
+  "oci.network.security_groups",
+  "oci.network.security_groups[].ingress",
+  "oci.network.security_groups[].ingress[].port_max",
+  "oci.network.security_groups[].ingress[].port_min",
+  "oci.network.security_groups[].ingress[].protocol",
+  "oci.network.security_groups[].ingress[].source",
+  "oci.network.security_lists",
+  "oci.network.security_lists[].ingress",
+  "oci.network.security_lists[].ingress[].port_max",
+  "oci.network.security_lists[].ingress[].port_min",
+  "oci.network.security_lists[].ingress[].protocol",
+  "oci.network.security_lists[].ingress[].source",
+  "oci.network.security_lists[].is_default",
+  "oci.network.security_lists[].vcn",
+  "oci.network.subnets",
+  "oci.network.subnets[].flow_logs_enabled",
+  "oci.notifications",
+  "oci.notifications.topics",
+  "oci.notifications.topics[].subscriptions",
+  "oci.object_storage",
+  "oci.object_storage.buckets",
+  "oci.object_storage.buckets[].kms_key_id",
+  "oci.object_storage.buckets[].public_access_type",
+  "oci.object_storage.buckets[].versioning",
+  "oci.object_storage.buckets[].write_logging_enabled",
+  "oci.tagging",
+  "oci.tagging.default_tags"
+ ]
+}

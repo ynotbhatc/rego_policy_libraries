@@ -1,0 +1,3625 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/iso27701/schema.json",
+ "title": "Input facts for iso27701",
+ "description": "Facts the module in frameworks/privacy/iso27701/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "iso27701",
+ "x-entrypoint": "data.iso27701.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/privacy/iso27701/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.iso27701.main_test._good",
+ "type": "object",
+ "properties": {
+  "iso27701": {
+   "description": "Read in iso27701_main.rego.",
+   "type": "object",
+   "properties": {
+    "attestations": {
+     "description": "Read in iso27701_main.rego.",
+     "type": "object",
+     "properties": {
+      "5.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.2.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.4.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.4.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.4.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.5.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.5.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.5.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.6.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.6.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.6.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.7.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.7.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.7.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.8.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.8.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.10.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.10.2.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.11.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.11.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.11.2.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.11.2.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.11.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.12.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.12.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.13.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.13.1.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.14.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.15.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.15.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.15.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.15.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.15.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.2.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.3.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.3.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.3.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.4.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.5.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.5.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.5.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.5.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.5.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.6.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.8.2.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.8.2.9": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.2.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.3.9": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.4.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.5.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.5.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.4.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.5.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Privacy officer"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "evidence": {
+     "description": "Read in iso27701_main.rego.",
+     "type": "object",
+     "properties": {
+      "accounts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "dormant_enabled_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "shared_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "authentication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "failed_login_lockout": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "mfa_for_pii_systems": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "backup": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "encrypted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "last_success_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        }
+       }
+      },
+      "crypto": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "weak_algorithms_permitted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      },
+      "encryption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "pii_at_rest_encrypted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "audit_daemon_active": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "central_forwarding": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "log_access_restricted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "pii_access_logged": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "transport": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "cleartext_services_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "tls_min_version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1.2
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "iso27701",
+  "iso27701.attestations",
+  "iso27701.attestations[\"5.2.1\"]",
+  "iso27701.attestations[\"5.2.1\"].attested",
+  "iso27701.attestations[\"5.2.1\"].by",
+  "iso27701.attestations[\"5.2.1\"].date",
+  "iso27701.attestations[\"5.2.2\"]",
+  "iso27701.attestations[\"5.2.2\"].attested",
+  "iso27701.attestations[\"5.2.2\"].by",
+  "iso27701.attestations[\"5.2.2\"].date",
+  "iso27701.attestations[\"5.2.3\"]",
+  "iso27701.attestations[\"5.2.3\"].attested",
+  "iso27701.attestations[\"5.2.3\"].by",
+  "iso27701.attestations[\"5.2.3\"].date",
+  "iso27701.attestations[\"5.2.4\"]",
+  "iso27701.attestations[\"5.2.4\"].attested",
+  "iso27701.attestations[\"5.2.4\"].by",
+  "iso27701.attestations[\"5.2.4\"].date",
+  "iso27701.attestations[\"5.3.1\"]",
+  "iso27701.attestations[\"5.3.1\"].attested",
+  "iso27701.attestations[\"5.3.1\"].by",
+  "iso27701.attestations[\"5.3.1\"].date",
+  "iso27701.attestations[\"5.3.2\"]",
+  "iso27701.attestations[\"5.3.2\"].attested",
+  "iso27701.attestations[\"5.3.2\"].by",
+  "iso27701.attestations[\"5.3.2\"].date",
+  "iso27701.attestations[\"5.3.3\"]",
+  "iso27701.attestations[\"5.3.3\"].attested",
+  "iso27701.attestations[\"5.3.3\"].by",
+  "iso27701.attestations[\"5.3.3\"].date",
+  "iso27701.attestations[\"5.4.1.2\"]",
+  "iso27701.attestations[\"5.4.1.2\"].attested",
+  "iso27701.attestations[\"5.4.1.2\"].by",
+  "iso27701.attestations[\"5.4.1.2\"].date",
+  "iso27701.attestations[\"5.4.1.3\"]",
+  "iso27701.attestations[\"5.4.1.3\"].attested",
+  "iso27701.attestations[\"5.4.1.3\"].by",
+  "iso27701.attestations[\"5.4.1.3\"].date",
+  "iso27701.attestations[\"5.4.2\"]",
+  "iso27701.attestations[\"5.4.2\"].attested",
+  "iso27701.attestations[\"5.4.2\"].by",
+  "iso27701.attestations[\"5.4.2\"].date",
+  "iso27701.attestations[\"5.5.1\"]",
+  "iso27701.attestations[\"5.5.1\"].attested",
+  "iso27701.attestations[\"5.5.1\"].by",
+  "iso27701.attestations[\"5.5.1\"].date",
+  "iso27701.attestations[\"5.5.2\"]",
+  "iso27701.attestations[\"5.5.2\"].attested",
+  "iso27701.attestations[\"5.5.2\"].by",
+  "iso27701.attestations[\"5.5.2\"].date",
+  "iso27701.attestations[\"5.5.3\"]",
+  "iso27701.attestations[\"5.5.3\"].attested",
+  "iso27701.attestations[\"5.5.3\"].by",
+  "iso27701.attestations[\"5.5.3\"].date",
+  "iso27701.attestations[\"5.5.4\"]",
+  "iso27701.attestations[\"5.5.4\"].attested",
+  "iso27701.attestations[\"5.5.4\"].by",
+  "iso27701.attestations[\"5.5.4\"].date",
+  "iso27701.attestations[\"5.5.5\"]",
+  "iso27701.attestations[\"5.5.5\"].attested",
+  "iso27701.attestations[\"5.5.5\"].by",
+  "iso27701.attestations[\"5.5.5\"].date",
+  "iso27701.attestations[\"5.6.1\"]",
+  "iso27701.attestations[\"5.6.1\"].attested",
+  "iso27701.attestations[\"5.6.1\"].by",
+  "iso27701.attestations[\"5.6.1\"].date",
+  "iso27701.attestations[\"5.6.2\"]",
+  "iso27701.attestations[\"5.6.2\"].attested",
+  "iso27701.attestations[\"5.6.2\"].by",
+  "iso27701.attestations[\"5.6.2\"].date",
+  "iso27701.attestations[\"5.6.3\"]",
+  "iso27701.attestations[\"5.6.3\"].attested",
+  "iso27701.attestations[\"5.6.3\"].by",
+  "iso27701.attestations[\"5.6.3\"].date",
+  "iso27701.attestations[\"5.7.1\"]",
+  "iso27701.attestations[\"5.7.1\"].attested",
+  "iso27701.attestations[\"5.7.1\"].by",
+  "iso27701.attestations[\"5.7.1\"].date",
+  "iso27701.attestations[\"5.7.2\"]",
+  "iso27701.attestations[\"5.7.2\"].attested",
+  "iso27701.attestations[\"5.7.2\"].by",
+  "iso27701.attestations[\"5.7.2\"].date",
+  "iso27701.attestations[\"5.7.3\"]",
+  "iso27701.attestations[\"5.7.3\"].attested",
+  "iso27701.attestations[\"5.7.3\"].by",
+  "iso27701.attestations[\"5.7.3\"].date",
+  "iso27701.attestations[\"5.8.1\"]",
+  "iso27701.attestations[\"5.8.1\"].attested",
+  "iso27701.attestations[\"5.8.1\"].by",
+  "iso27701.attestations[\"5.8.1\"].date",
+  "iso27701.attestations[\"5.8.2\"]",
+  "iso27701.attestations[\"5.8.2\"].attested",
+  "iso27701.attestations[\"5.8.2\"].by",
+  "iso27701.attestations[\"5.8.2\"].date",
+  "iso27701.attestations[\"6.10.2.1\"]",
+  "iso27701.attestations[\"6.10.2.1\"].attested",
+  "iso27701.attestations[\"6.10.2.1\"].by",
+  "iso27701.attestations[\"6.10.2.1\"].date",
+  "iso27701.attestations[\"6.10.2.4\"]",
+  "iso27701.attestations[\"6.10.2.4\"].attested",
+  "iso27701.attestations[\"6.10.2.4\"].by",
+  "iso27701.attestations[\"6.10.2.4\"].date",
+  "iso27701.attestations[\"6.11.1.2\"]",
+  "iso27701.attestations[\"6.11.1.2\"].attested",
+  "iso27701.attestations[\"6.11.1.2\"].by",
+  "iso27701.attestations[\"6.11.1.2\"].date",
+  "iso27701.attestations[\"6.11.2.1\"]",
+  "iso27701.attestations[\"6.11.2.1\"].attested",
+  "iso27701.attestations[\"6.11.2.1\"].by",
+  "iso27701.attestations[\"6.11.2.1\"].date",
+  "iso27701.attestations[\"6.11.2.5\"]",
+  "iso27701.attestations[\"6.11.2.5\"].attested",
+  "iso27701.attestations[\"6.11.2.5\"].by",
+  "iso27701.attestations[\"6.11.2.5\"].date",
+  "iso27701.attestations[\"6.11.2.7\"]",
+  "iso27701.attestations[\"6.11.2.7\"].attested",
+  "iso27701.attestations[\"6.11.2.7\"].by",
+  "iso27701.attestations[\"6.11.2.7\"].date",
+  "iso27701.attestations[\"6.11.3.1\"]",
+  "iso27701.attestations[\"6.11.3.1\"].attested",
+  "iso27701.attestations[\"6.11.3.1\"].by",
+  "iso27701.attestations[\"6.11.3.1\"].date",
+  "iso27701.attestations[\"6.12.1.1\"]",
+  "iso27701.attestations[\"6.12.1.1\"].attested",
+  "iso27701.attestations[\"6.12.1.1\"].by",
+  "iso27701.attestations[\"6.12.1.1\"].date",
+  "iso27701.attestations[\"6.12.1.2\"]",
+  "iso27701.attestations[\"6.12.1.2\"].attested",
+  "iso27701.attestations[\"6.12.1.2\"].by",
+  "iso27701.attestations[\"6.12.1.2\"].date",
+  "iso27701.attestations[\"6.13.1.1\"]",
+  "iso27701.attestations[\"6.13.1.1\"].attested",
+  "iso27701.attestations[\"6.13.1.1\"].by",
+  "iso27701.attestations[\"6.13.1.1\"].date",
+  "iso27701.attestations[\"6.13.1.5\"]",
+  "iso27701.attestations[\"6.13.1.5\"].attested",
+  "iso27701.attestations[\"6.13.1.5\"].by",
+  "iso27701.attestations[\"6.13.1.5\"].date",
+  "iso27701.attestations[\"6.14.2.1\"]",
+  "iso27701.attestations[\"6.14.2.1\"].attested",
+  "iso27701.attestations[\"6.14.2.1\"].by",
+  "iso27701.attestations[\"6.14.2.1\"].date",
+  "iso27701.attestations[\"6.15.1.1\"]",
+  "iso27701.attestations[\"6.15.1.1\"].attested",
+  "iso27701.attestations[\"6.15.1.1\"].by",
+  "iso27701.attestations[\"6.15.1.1\"].date",
+  "iso27701.attestations[\"6.15.1.3\"]",
+  "iso27701.attestations[\"6.15.1.3\"].attested",
+  "iso27701.attestations[\"6.15.1.3\"].by",
+  "iso27701.attestations[\"6.15.1.3\"].date",
+  "iso27701.attestations[\"6.15.2.1\"]",
+  "iso27701.attestations[\"6.15.2.1\"].attested",
+  "iso27701.attestations[\"6.15.2.1\"].by",
+  "iso27701.attestations[\"6.15.2.1\"].date",
+  "iso27701.attestations[\"6.15.2.2\"]",
+  "iso27701.attestations[\"6.15.2.2\"].attested",
+  "iso27701.attestations[\"6.15.2.2\"].by",
+  "iso27701.attestations[\"6.15.2.2\"].date",
+  "iso27701.attestations[\"6.15.2.3\"]",
+  "iso27701.attestations[\"6.15.2.3\"].attested",
+  "iso27701.attestations[\"6.15.2.3\"].by",
+  "iso27701.attestations[\"6.15.2.3\"].date",
+  "iso27701.attestations[\"6.2.1.1\"]",
+  "iso27701.attestations[\"6.2.1.1\"].attested",
+  "iso27701.attestations[\"6.2.1.1\"].by",
+  "iso27701.attestations[\"6.2.1.1\"].date",
+  "iso27701.attestations[\"6.3.1.1\"]",
+  "iso27701.attestations[\"6.3.1.1\"].attested",
+  "iso27701.attestations[\"6.3.1.1\"].by",
+  "iso27701.attestations[\"6.3.1.1\"].date",
+  "iso27701.attestations[\"6.3.2.1\"]",
+  "iso27701.attestations[\"6.3.2.1\"].attested",
+  "iso27701.attestations[\"6.3.2.1\"].by",
+  "iso27701.attestations[\"6.3.2.1\"].date",
+  "iso27701.attestations[\"6.3.2.2\"]",
+  "iso27701.attestations[\"6.3.2.2\"].attested",
+  "iso27701.attestations[\"6.3.2.2\"].by",
+  "iso27701.attestations[\"6.3.2.2\"].date",
+  "iso27701.attestations[\"6.4.2.2\"]",
+  "iso27701.attestations[\"6.4.2.2\"].attested",
+  "iso27701.attestations[\"6.4.2.2\"].by",
+  "iso27701.attestations[\"6.4.2.2\"].date",
+  "iso27701.attestations[\"6.5.2.1\"]",
+  "iso27701.attestations[\"6.5.2.1\"].attested",
+  "iso27701.attestations[\"6.5.2.1\"].by",
+  "iso27701.attestations[\"6.5.2.1\"].date",
+  "iso27701.attestations[\"6.5.2.2\"]",
+  "iso27701.attestations[\"6.5.2.2\"].attested",
+  "iso27701.attestations[\"6.5.2.2\"].by",
+  "iso27701.attestations[\"6.5.2.2\"].date",
+  "iso27701.attestations[\"6.5.3.1\"]",
+  "iso27701.attestations[\"6.5.3.1\"].attested",
+  "iso27701.attestations[\"6.5.3.1\"].by",
+  "iso27701.attestations[\"6.5.3.1\"].date",
+  "iso27701.attestations[\"6.5.3.2\"]",
+  "iso27701.attestations[\"6.5.3.2\"].attested",
+  "iso27701.attestations[\"6.5.3.2\"].by",
+  "iso27701.attestations[\"6.5.3.2\"].date",
+  "iso27701.attestations[\"6.5.3.3\"]",
+  "iso27701.attestations[\"6.5.3.3\"].attested",
+  "iso27701.attestations[\"6.5.3.3\"].by",
+  "iso27701.attestations[\"6.5.3.3\"].date",
+  "iso27701.attestations[\"6.6.2.2\"]",
+  "iso27701.attestations[\"6.6.2.2\"].attested",
+  "iso27701.attestations[\"6.6.2.2\"].by",
+  "iso27701.attestations[\"6.6.2.2\"].date",
+  "iso27701.attestations[\"6.8.2.7\"]",
+  "iso27701.attestations[\"6.8.2.7\"].attested",
+  "iso27701.attestations[\"6.8.2.7\"].by",
+  "iso27701.attestations[\"6.8.2.7\"].date",
+  "iso27701.attestations[\"6.8.2.9\"]",
+  "iso27701.attestations[\"6.8.2.9\"].attested",
+  "iso27701.attestations[\"6.8.2.9\"].by",
+  "iso27701.attestations[\"6.8.2.9\"].date",
+  "iso27701.attestations[\"7.2.1\"]",
+  "iso27701.attestations[\"7.2.1\"].attested",
+  "iso27701.attestations[\"7.2.1\"].by",
+  "iso27701.attestations[\"7.2.1\"].date",
+  "iso27701.attestations[\"7.2.2\"]",
+  "iso27701.attestations[\"7.2.2\"].attested",
+  "iso27701.attestations[\"7.2.2\"].by",
+  "iso27701.attestations[\"7.2.2\"].date",
+  "iso27701.attestations[\"7.2.3\"]",
+  "iso27701.attestations[\"7.2.3\"].attested",
+  "iso27701.attestations[\"7.2.3\"].by",
+  "iso27701.attestations[\"7.2.3\"].date",
+  "iso27701.attestations[\"7.2.4\"]",
+  "iso27701.attestations[\"7.2.4\"].attested",
+  "iso27701.attestations[\"7.2.4\"].by",
+  "iso27701.attestations[\"7.2.4\"].date",
+  "iso27701.attestations[\"7.2.5\"]",
+  "iso27701.attestations[\"7.2.5\"].attested",
+  "iso27701.attestations[\"7.2.5\"].by",
+  "iso27701.attestations[\"7.2.5\"].date",
+  "iso27701.attestations[\"7.2.6\"]",
+  "iso27701.attestations[\"7.2.6\"].attested",
+  "iso27701.attestations[\"7.2.6\"].by",
+  "iso27701.attestations[\"7.2.6\"].date",
+  "iso27701.attestations[\"7.2.7\"]",
+  "iso27701.attestations[\"7.2.7\"].attested",
+  "iso27701.attestations[\"7.2.7\"].by",
+  "iso27701.attestations[\"7.2.7\"].date",
+  "iso27701.attestations[\"7.2.8\"]",
+  "iso27701.attestations[\"7.2.8\"].attested",
+  "iso27701.attestations[\"7.2.8\"].by",
+  "iso27701.attestations[\"7.2.8\"].date",
+  "iso27701.attestations[\"7.3.1\"]",
+  "iso27701.attestations[\"7.3.1\"].attested",
+  "iso27701.attestations[\"7.3.1\"].by",
+  "iso27701.attestations[\"7.3.1\"].date",
+  "iso27701.attestations[\"7.3.10\"]",
+  "iso27701.attestations[\"7.3.10\"].attested",
+  "iso27701.attestations[\"7.3.10\"].by",
+  "iso27701.attestations[\"7.3.10\"].date",
+  "iso27701.attestations[\"7.3.2\"]",
+  "iso27701.attestations[\"7.3.2\"].attested",
+  "iso27701.attestations[\"7.3.2\"].by",
+  "iso27701.attestations[\"7.3.2\"].date",
+  "iso27701.attestations[\"7.3.3\"]",
+  "iso27701.attestations[\"7.3.3\"].attested",
+  "iso27701.attestations[\"7.3.3\"].by",
+  "iso27701.attestations[\"7.3.3\"].date",
+  "iso27701.attestations[\"7.3.4\"]",
+  "iso27701.attestations[\"7.3.4\"].attested",
+  "iso27701.attestations[\"7.3.4\"].by",
+  "iso27701.attestations[\"7.3.4\"].date",
+  "iso27701.attestations[\"7.3.5\"]",
+  "iso27701.attestations[\"7.3.5\"].attested",
+  "iso27701.attestations[\"7.3.5\"].by",
+  "iso27701.attestations[\"7.3.5\"].date",
+  "iso27701.attestations[\"7.3.6\"]",
+  "iso27701.attestations[\"7.3.6\"].attested",
+  "iso27701.attestations[\"7.3.6\"].by",
+  "iso27701.attestations[\"7.3.6\"].date",
+  "iso27701.attestations[\"7.3.7\"]",
+  "iso27701.attestations[\"7.3.7\"].attested",
+  "iso27701.attestations[\"7.3.7\"].by",
+  "iso27701.attestations[\"7.3.7\"].date",
+  "iso27701.attestations[\"7.3.8\"]",
+  "iso27701.attestations[\"7.3.8\"].attested",
+  "iso27701.attestations[\"7.3.8\"].by",
+  "iso27701.attestations[\"7.3.8\"].date",
+  "iso27701.attestations[\"7.3.9\"]",
+  "iso27701.attestations[\"7.3.9\"].attested",
+  "iso27701.attestations[\"7.3.9\"].by",
+  "iso27701.attestations[\"7.3.9\"].date",
+  "iso27701.attestations[\"7.4.1\"]",
+  "iso27701.attestations[\"7.4.1\"].attested",
+  "iso27701.attestations[\"7.4.1\"].by",
+  "iso27701.attestations[\"7.4.1\"].date",
+  "iso27701.attestations[\"7.4.2\"]",
+  "iso27701.attestations[\"7.4.2\"].attested",
+  "iso27701.attestations[\"7.4.2\"].by",
+  "iso27701.attestations[\"7.4.2\"].date",
+  "iso27701.attestations[\"7.4.3\"]",
+  "iso27701.attestations[\"7.4.3\"].attested",
+  "iso27701.attestations[\"7.4.3\"].by",
+  "iso27701.attestations[\"7.4.3\"].date",
+  "iso27701.attestations[\"7.4.4\"]",
+  "iso27701.attestations[\"7.4.4\"].attested",
+  "iso27701.attestations[\"7.4.4\"].by",
+  "iso27701.attestations[\"7.4.4\"].date",
+  "iso27701.attestations[\"7.4.5\"]",
+  "iso27701.attestations[\"7.4.5\"].attested",
+  "iso27701.attestations[\"7.4.5\"].by",
+  "iso27701.attestations[\"7.4.5\"].date",
+  "iso27701.attestations[\"7.4.6\"]",
+  "iso27701.attestations[\"7.4.6\"].attested",
+  "iso27701.attestations[\"7.4.6\"].by",
+  "iso27701.attestations[\"7.4.6\"].date",
+  "iso27701.attestations[\"7.4.7\"]",
+  "iso27701.attestations[\"7.4.7\"].attested",
+  "iso27701.attestations[\"7.4.7\"].by",
+  "iso27701.attestations[\"7.4.7\"].date",
+  "iso27701.attestations[\"7.4.8\"]",
+  "iso27701.attestations[\"7.4.8\"].attested",
+  "iso27701.attestations[\"7.4.8\"].by",
+  "iso27701.attestations[\"7.4.8\"].date",
+  "iso27701.attestations[\"7.5.1\"]",
+  "iso27701.attestations[\"7.5.1\"].attested",
+  "iso27701.attestations[\"7.5.1\"].by",
+  "iso27701.attestations[\"7.5.1\"].date",
+  "iso27701.attestations[\"7.5.2\"]",
+  "iso27701.attestations[\"7.5.2\"].attested",
+  "iso27701.attestations[\"7.5.2\"].by",
+  "iso27701.attestations[\"7.5.2\"].date",
+  "iso27701.attestations[\"7.5.3\"]",
+  "iso27701.attestations[\"7.5.3\"].attested",
+  "iso27701.attestations[\"7.5.3\"].by",
+  "iso27701.attestations[\"7.5.3\"].date",
+  "iso27701.attestations[\"7.5.4\"]",
+  "iso27701.attestations[\"7.5.4\"].attested",
+  "iso27701.attestations[\"7.5.4\"].by",
+  "iso27701.attestations[\"7.5.4\"].date",
+  "iso27701.attestations[\"8.2.1\"]",
+  "iso27701.attestations[\"8.2.1\"].attested",
+  "iso27701.attestations[\"8.2.1\"].by",
+  "iso27701.attestations[\"8.2.1\"].date",
+  "iso27701.attestations[\"8.2.2\"]",
+  "iso27701.attestations[\"8.2.2\"].attested",
+  "iso27701.attestations[\"8.2.2\"].by",
+  "iso27701.attestations[\"8.2.2\"].date",
+  "iso27701.attestations[\"8.2.3\"]",
+  "iso27701.attestations[\"8.2.3\"].attested",
+  "iso27701.attestations[\"8.2.3\"].by",
+  "iso27701.attestations[\"8.2.3\"].date",
+  "iso27701.attestations[\"8.2.4\"]",
+  "iso27701.attestations[\"8.2.4\"].attested",
+  "iso27701.attestations[\"8.2.4\"].by",
+  "iso27701.attestations[\"8.2.4\"].date",
+  "iso27701.attestations[\"8.2.5\"]",
+  "iso27701.attestations[\"8.2.5\"].attested",
+  "iso27701.attestations[\"8.2.5\"].by",
+  "iso27701.attestations[\"8.2.5\"].date",
+  "iso27701.attestations[\"8.2.6\"]",
+  "iso27701.attestations[\"8.2.6\"].attested",
+  "iso27701.attestations[\"8.2.6\"].by",
+  "iso27701.attestations[\"8.2.6\"].date",
+  "iso27701.attestations[\"8.3.1\"]",
+  "iso27701.attestations[\"8.3.1\"].attested",
+  "iso27701.attestations[\"8.3.1\"].by",
+  "iso27701.attestations[\"8.3.1\"].date",
+  "iso27701.attestations[\"8.4.1\"]",
+  "iso27701.attestations[\"8.4.1\"].attested",
+  "iso27701.attestations[\"8.4.1\"].by",
+  "iso27701.attestations[\"8.4.1\"].date",
+  "iso27701.attestations[\"8.4.2\"]",
+  "iso27701.attestations[\"8.4.2\"].attested",
+  "iso27701.attestations[\"8.4.2\"].by",
+  "iso27701.attestations[\"8.4.2\"].date",
+  "iso27701.attestations[\"8.5.1\"]",
+  "iso27701.attestations[\"8.5.1\"].attested",
+  "iso27701.attestations[\"8.5.1\"].by",
+  "iso27701.attestations[\"8.5.1\"].date",
+  "iso27701.attestations[\"8.5.2\"]",
+  "iso27701.attestations[\"8.5.2\"].attested",
+  "iso27701.attestations[\"8.5.2\"].by",
+  "iso27701.attestations[\"8.5.2\"].date",
+  "iso27701.attestations[\"8.5.3\"]",
+  "iso27701.attestations[\"8.5.3\"].attested",
+  "iso27701.attestations[\"8.5.3\"].by",
+  "iso27701.attestations[\"8.5.3\"].date",
+  "iso27701.attestations[\"8.5.4\"]",
+  "iso27701.attestations[\"8.5.4\"].attested",
+  "iso27701.attestations[\"8.5.4\"].by",
+  "iso27701.attestations[\"8.5.4\"].date",
+  "iso27701.attestations[\"8.5.5\"]",
+  "iso27701.attestations[\"8.5.5\"].attested",
+  "iso27701.attestations[\"8.5.5\"].by",
+  "iso27701.attestations[\"8.5.5\"].date",
+  "iso27701.attestations[\"8.5.6\"]",
+  "iso27701.attestations[\"8.5.6\"].attested",
+  "iso27701.attestations[\"8.5.6\"].by",
+  "iso27701.attestations[\"8.5.6\"].date",
+  "iso27701.attestations[\"8.5.7\"]",
+  "iso27701.attestations[\"8.5.7\"].attested",
+  "iso27701.attestations[\"8.5.7\"].by",
+  "iso27701.attestations[\"8.5.7\"].date",
+  "iso27701.attestations[\"8.5.8\"]",
+  "iso27701.attestations[\"8.5.8\"].attested",
+  "iso27701.attestations[\"8.5.8\"].by",
+  "iso27701.attestations[\"8.5.8\"].date",
+  "iso27701.evidence",
+  "iso27701.evidence.accounts",
+  "iso27701.evidence.accounts.dormant_enabled_accounts",
+  "iso27701.evidence.accounts.shared_accounts",
+  "iso27701.evidence.authentication",
+  "iso27701.evidence.authentication.failed_login_lockout",
+  "iso27701.evidence.authentication.mfa_for_pii_systems",
+  "iso27701.evidence.backup",
+  "iso27701.evidence.backup.configured",
+  "iso27701.evidence.backup.encrypted",
+  "iso27701.evidence.backup.last_success_age_days",
+  "iso27701.evidence.crypto",
+  "iso27701.evidence.crypto.weak_algorithms_permitted",
+  "iso27701.evidence.encryption",
+  "iso27701.evidence.encryption.pii_at_rest_encrypted",
+  "iso27701.evidence.logging",
+  "iso27701.evidence.logging.audit_daemon_active",
+  "iso27701.evidence.logging.central_forwarding",
+  "iso27701.evidence.logging.log_access_restricted",
+  "iso27701.evidence.logging.pii_access_logged",
+  "iso27701.evidence.transport",
+  "iso27701.evidence.transport.cleartext_services_enabled",
+  "iso27701.evidence.transport.tls_min_version"
+ ]
+}

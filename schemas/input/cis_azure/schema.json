@@ -1,0 +1,2714 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_azure/schema.json",
+ "title": "Input facts for cis_azure",
+ "description": "Facts the module in benchmarks/cis/azure/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_azure",
+ "x-entrypoint": "data.cis_azure.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/azure/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_azure.l2_test.green",
+ "type": "object",
+ "properties": {
+  "activity_log_alerts": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "actions": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "actionGroups": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "actionGroupId": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/microsoft.insights/actionGroups/ag-secops"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "condition": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "allOf": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "equals": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Administrative"
+           ]
+          },
+          "field": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "category"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "enabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "alert-0"
+      ]
+     },
+     "scopes": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/subscriptions/00000000-0000-0000-0000-000000000001"
+       ]
+      },
+      "examples": [
+       [
+        "/subscriptions/00000000-0000-0000-0000-000000000001"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  "application_gateway_waf_policies": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "id": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/waf-appgw"
+      ]
+     },
+     "managedRules": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "managedRuleSets": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "ruleGroupOverrides": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+           },
+           "examples": [
+            []
+           ]
+          },
+          "ruleSetType": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "OWASP"
+           ]
+          },
+          "ruleSetVersion": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "3.2"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "waf-appgw"
+      ]
+     },
+     "policySettings": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "requestBodyCheck": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "state": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Enabled"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "application_gateways": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "enableHttp2": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "firewallPolicy": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/waf-appgw"
+        ]
+       }
+      }
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "agw-prod"
+      ]
+     },
+     "sslPolicy": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "minProtocolVersion": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "TLSv1_3"
+        ]
+       },
+       "policyType": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "CustomV2"
+        ]
+       }
+      }
+     },
+     "sslProfiles": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "inherit"
+         ]
+        },
+        "sslPolicy": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "application_insights": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "appi-prod"
+      ]
+     },
+     "provisioningState": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Succeeded"
+      ]
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in cis_azure_main.rego."
+  },
+  "attest": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "activity_log_alert_scopes_recorded": {
+     "description": "Read in cis_azure_foundations.rego."
+    },
+    "activity_log_storage_cmk_encrypted": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "admin_accounts_not_used_daily": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "defender_alerts_exported_to_siem": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "defender_easm_workspace_configured": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "defender_for_iot_hub_on": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "defender_vulnerability_assessment_on": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "disabled_users_hold_no_roles": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "emergency_access_accounts_can_regain_access": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "entra_activity_logs_exported": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "graph_activity_logs_exported": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "guest_users_reviewed": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "intune_logs_sent_to_log_analytics": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "managed_hsm_used_where_required": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mcsb_policies_not_disabled": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mfa_remember_trusted_devices_disabled": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mfa_required_to_join_devices": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "mission_critical_resources_locked": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "network_security_perimeter_enforced": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "non_privileged_role_assignments_reviewed": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "nsg_flow_logs_sent_to_log_analytics": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "privileged_role_assignments_reviewed": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "production_resources_avoid_basic_free_consumption_skus": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "public_ip_addresses_reviewed": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "resource_lock_admin_role_assigned": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "resource_logging_enabled_for_supported_services": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "service_health_event_types_recorded": {
+     "description": "Read in cis_azure_foundations.rego."
+    },
+    "subscription_tenant_transfer_blocked": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "tenant_creator_assignments_reviewed": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "vnet_flow_logs_sent_to_log_analytics": {
+     "description": "Read in cis_azure_foundations.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "bastion_hosts": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "enableShareableLink": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       false
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "bas-core"
+      ]
+     },
+     "sku": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Standard"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "cis_profile": {
+   "description": "Read in cis_azure_foundations.rego, l2_validation.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "Read in cis_azure_foundations.rego, l2_validation.rego."
+    }
+   }
+  },
+  "defender_pricings": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "extensions": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "isEnabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "True"
+         ]
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "AgentlessVmScanning"
+         ]
+        }
+       }
+      },
+      "examples": [
+       []
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "CloudPosture"
+      ]
+     },
+     "pricingTier": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Standard"
+      ]
+     },
+     "subPlan": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "P2"
+      ]
+     }
+    }
+   }
+  },
+  "defender_settings": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "enabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "WDATP"
+      ]
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in cis_azure_main.rego."
+  },
+  "flow_logs": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "enabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "fl-vnet-core"
+      ]
+     },
+     "retentionPolicy": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "days": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         90
+        ]
+       },
+       "enabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     },
+     "targetResourceId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/virtualNetworks/vnet-core"
+      ]
+     }
+    }
+   }
+  },
+  "front_door_profiles": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "custom_domains": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "id": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Cdn/profiles/fd-prod/customDomains/www-example-com"
+         ]
+        }
+       }
+      }
+     },
+     "endpoints": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "id": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Cdn/profiles/fd-prod/afdEndpoints/www"
+         ]
+        }
+       }
+      }
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "fd-prod"
+      ]
+     },
+     "security_policies": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "waf"
+         ]
+        },
+        "parameters": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "associations": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "domains": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object",
+               "properties": {
+                "id": {
+                 "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                 "type": "string",
+                 "x-type-source": "fixture",
+                 "examples": [
+                  "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Cdn/profiles/fd-prod/afdEndpoints/www"
+                 ]
+                }
+               }
+              }
+             },
+             "patternsToMatch": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "/*"
+               ]
+              },
+              "examples": [
+               [
+                "/*"
+               ]
+              ]
+             }
+            }
+           }
+          },
+          "type": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "WebApplicationFirewall"
+           ]
+          },
+          "wafPolicy": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "id": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waffd"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "front_door_waf_policies": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "id": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waffd"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "waffd"
+      ]
+     },
+     "policySettings": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "enabledState": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Enabled"
+        ]
+       },
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Prevention"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "key_vaults": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "certificates": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "tls-www"
+         ]
+        },
+        "policy": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "x509CertificateProperties": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "validityInMonths": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              12
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "diagnostic_settings": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "logs": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "categoryGroup": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "audit"
+            ]
+           },
+           "enabled": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "boolean",
+            "x-type-source": "fixture",
+            "examples": [
+             true
+            ]
+           }
+          }
+         }
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "audit-to-law"
+         ]
+        },
+        "workspaceId": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.OperationalInsights/workspaces/law-core"
+         ]
+        }
+       }
+      }
+     },
+     "enablePurgeProtection": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "enableRbacAuthorization": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "keys": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attributes": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            true
+           ]
+          },
+          "expires": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "2027-06-30T00:00:00+00:00"
+           ]
+          }
+         }
+        },
+        "kid": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "https://kv-rbac.vault.azure.net/keys/cmk"
+         ]
+        },
+        "kty": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "RSA-HSM"
+         ]
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "cmk"
+         ]
+        },
+        "rotation_policy": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "expiresIn": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "P2Y"
+           ]
+          },
+          "lifetimeActions": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "action": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "Rotate"
+              ]
+             },
+             "timeAfterCreate": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": [
+               "null",
+               "string"
+              ],
+              "x-type-source": "fixture",
+              "examples": [
+               "P18M"
+              ]
+             },
+             "timeBeforeExpiry": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": [
+               "null",
+               "string"
+              ],
+              "x-type-source": "fixture",
+              "examples": [
+               "P30D"
+              ]
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "kv-rbac"
+      ]
+     },
+     "networkAcls": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "defaultAction": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Deny"
+        ]
+       }
+      }
+     },
+     "privateEndpointConnections": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "privateLinkServiceConnectionState": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "status": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Approved"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "publicNetworkAccess": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Disabled"
+      ]
+     },
+     "secrets": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attributes": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "enabled": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            true
+           ]
+          },
+          "expires": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "2027-01-31T00:00:00+00:00"
+           ]
+          }
+         }
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "api-token"
+         ]
+        }
+       }
+      }
+     },
+     "sku": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "premium"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "log_analytics_workspaces": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "law-core"
+      ]
+     },
+     "publicNetworkAccessForIngestion": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Disabled"
+      ]
+     },
+     "publicNetworkAccessForQuery": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Disabled"
+      ]
+     }
+    }
+   }
+  },
+  "managed_hsms": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "diagnostic_settings": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "logs": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "categoryGroup": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "audit"
+            ]
+           },
+           "enabled": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "boolean",
+            "x-type-source": "fixture",
+            "examples": [
+             true
+            ]
+           }
+          }
+         }
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "audit-to-law"
+         ]
+        },
+        "workspaceId": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.OperationalInsights/workspaces/law-core"
+         ]
+        }
+       }
+      }
+     },
+     "enablePurgeProtection": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "hsm-core"
+      ]
+     },
+     "privateEndpointConnections": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "privateLinkServiceConnectionState": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "status": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "Approved"
+           ]
+          }
+         }
+        }
+       }
+      }
+     },
+     "publicNetworkAccess": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Disabled"
+      ]
+     }
+    }
+   }
+  },
+  "management_group_hierarchy_settings": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "defaultManagementGroup": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "/providers/Microsoft.Management/managementGroups/landing-zones"
+     ]
+    },
+    "requireAuthorizationForGroupCreation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "tenantId": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "11111111-1111-1111-1111-111111111111"
+     ]
+    }
+   }
+  },
+  "network_security_groups": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "nsg-app"
+      ]
+     },
+     "securityRules": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "access": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Allow"
+         ]
+        },
+        "destinationAddressPrefix": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "*"
+         ]
+        },
+        "destinationPortRange": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "443"
+         ]
+        },
+        "direction": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Inbound"
+         ]
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "allow-https-internal"
+         ]
+        },
+        "priority": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          100
+         ]
+        },
+        "protocol": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Tcp"
+         ]
+        },
+        "sourceAddressPrefix": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "10.0.0.0/8"
+         ]
+        },
+        "sourcePortRange": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "*"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "network_watchers": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "location": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "eastus"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "NetworkWatcher_eastus"
+      ]
+     },
+     "provisioningState": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Succeeded"
+      ]
+     }
+    }
+   }
+  },
+  "public_ip_addresses": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "ddosSettings": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "protectionMode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Enabled"
+        ]
+       }
+      }
+     },
+     "ddos_protection_status": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "isWorkloadProtected": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "True"
+        ]
+       }
+      }
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "pip-agw"
+      ]
+     },
+     "natGateway": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/natGateways/nat-core"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "regions_in_use": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "string",
+    "x-type-source": "fixture",
+    "examples": [
+     "eastus"
+    ]
+   },
+   "examples": [
+    [
+     "eastus"
+    ]
+   ]
+  },
+  "role_assigned_service_principals": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "appId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "22222222-2222-2222-2222-222222222222"
+      ]
+     },
+     "appOwnerOrganizationId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "11111111-1111-1111-1111-111111111111"
+      ]
+     },
+     "application_password_credentials": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     },
+     "displayName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "id-deploy"
+      ]
+     },
+     "passwordCredentials": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+      },
+      "examples": [
+       []
+      ]
+     },
+     "servicePrincipalType": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ManagedIdentity"
+      ]
+     }
+    }
+   }
+  },
+  "role_assignments": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "@Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {acdd72a7-3385-48ef-bd42-f606fba81ae7}"
+      ]
+     },
+     "principalId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "p-1"
+      ]
+     },
+     "principalType": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "User"
+      ]
+     },
+     "roleDefinitionName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Owner"
+      ]
+     },
+     "scope": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/subscriptions/00000000-0000-0000-0000-000000000001"
+      ]
+     }
+    }
+   }
+  },
+  "role_definitions": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "assignableScopes": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/subscriptions/00000000-0000-0000-0000-000000000001"
+       ]
+      },
+      "examples": [
+       [
+        "/subscriptions/00000000-0000-0000-0000-000000000001"
+       ]
+      ]
+     },
+     "permissions": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "actions": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "Microsoft.Compute/virtualMachines/start/action"
+          ]
+         },
+         "examples": [
+          [
+           "Microsoft.Compute/virtualMachines/start/action"
+          ]
+         ]
+        }
+       }
+      }
+     },
+     "roleName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "VM Operator"
+      ]
+     },
+     "roleType": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "CustomRole"
+      ]
+     }
+    }
+   }
+  },
+  "root_role_assignments": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+   },
+   "examples": [
+    []
+   ]
+  },
+  "security_contacts": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "emails": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "secops@example.com"
+      ]
+     },
+     "isEnabled": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "default"
+      ]
+     },
+     "notificationsByRole": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "roles": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Owner"
+         ]
+        },
+        "examples": [
+         [
+          "Owner"
+         ]
+        ]
+       },
+       "state": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "On"
+        ]
+       }
+      }
+     },
+     "notificationsSources": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "minimalRiskLevel": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Critical"
+         ]
+        },
+        "minimalSeverity": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "High"
+         ]
+        },
+        "sourceType": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Alert"
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "security_defaults": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "object",
+   "properties": {
+    "isEnabled": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "storage_accounts": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "allowBlobPublicAccess": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       false
+      ]
+     },
+     "blob_service_properties": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "deleteRetentionPolicy": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "days": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           7
+          ]
+         },
+         "enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      }
+     },
+     "defaultToOAuthAuthentication": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "enableHttpsTrafficOnly": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "kind": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "StorageV2"
+      ]
+     },
+     "minimumTlsVersion": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "TLS1_2"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "stcore"
+      ]
+     },
+     "networkRuleSet": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "defaultAction": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Deny"
+        ]
+       }
+      }
+     },
+     "publicNetworkAccess": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Disabled"
+      ]
+     }
+    }
+   }
+  },
+  "subscription_diagnostic_settings": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "logs": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "category": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Administrative"
+         ]
+        },
+        "enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "activity-to-law"
+      ]
+     },
+     "workspaceId": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.OperationalInsights/workspaces/law-core"
+      ]
+     }
+    }
+   }
+  },
+  "subscription_id": {
+   "description": "Read in cis_azure_foundations.rego, cis_azure_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "00000000-0000-0000-0000-000000000001"
+   ]
+  },
+  "tenant_id": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "11111111-1111-1111-1111-111111111111"
+   ]
+  },
+  "users": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "perUserMfaState": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "enforced"
+      ]
+     },
+     "userPrincipalName": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "alice@example.com"
+      ]
+     }
+    }
+   }
+  },
+  "virtual_machines": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vm-linux"
+      ]
+     },
+     "osProfile": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "linuxConfiguration": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "patchSettings": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "assessmentMode": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "AutomaticByPlatform"
+            ]
+           }
+          }
+         }
+        }
+       },
+       "windowsConfiguration": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "patchSettings": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "assessmentMode": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "AutomaticByPlatform"
+            ]
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "virtual_network_gateways": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vgw-p2s"
+      ]
+     },
+     "vpnClientConfiguration": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": [
+       "null",
+       "object"
+      ],
+      "properties": {
+       "vpnAuthenticationTypes": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "AAD"
+         ]
+        },
+        "examples": [
+         [
+          "AAD"
+         ]
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "virtual_networks": {
+   "description": "Read in cis_azure_foundations.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "enableDdosProtection": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "boolean",
+      "x-type-source": "fixture",
+      "examples": [
+       true
+      ]
+     },
+     "location": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "eastus"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "vnet-core"
+      ]
+     },
+     "subnets": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "defaultOutboundAccess": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "delegations": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "array",
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+         },
+         "examples": [
+          []
+         ]
+        },
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "snet-app"
+         ]
+        },
+        "networkSecurityGroup": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": [
+          "null",
+          "object"
+         ],
+         "properties": {
+          "id": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-core/providers/Microsoft.Network/networkSecurityGroups/nsg-app"
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "activity_log_alerts",
+  "activity_log_alerts[].actions",
+  "activity_log_alerts[].actions.actionGroups",
+  "activity_log_alerts[].actions.actionGroups[].actionGroupId",
+  "activity_log_alerts[].condition",
+  "activity_log_alerts[].condition.allOf",
+  "activity_log_alerts[].condition.allOf[].equals",
+  "activity_log_alerts[].condition.allOf[].field",
+  "activity_log_alerts[].enabled",
+  "activity_log_alerts[].name",
+  "activity_log_alerts[].scopes",
+  "application_gateway_waf_policies",
+  "application_gateway_waf_policies[].id",
+  "application_gateway_waf_policies[].managedRules",
+  "application_gateway_waf_policies[].managedRules.managedRuleSets",
+  "application_gateway_waf_policies[].managedRules.managedRuleSets[].ruleGroupOverrides",
+  "application_gateway_waf_policies[].managedRules.managedRuleSets[].ruleSetType",
+  "application_gateway_waf_policies[].managedRules.managedRuleSets[].ruleSetVersion",
+  "application_gateway_waf_policies[].name",
+  "application_gateway_waf_policies[].policySettings",
+  "application_gateway_waf_policies[].policySettings.requestBodyCheck",
+  "application_gateway_waf_policies[].policySettings.state",
+  "application_gateways",
+  "application_gateways[].enableHttp2",
+  "application_gateways[].firewallPolicy",
+  "application_gateways[].firewallPolicy.id",
+  "application_gateways[].name",
+  "application_gateways[].sslPolicy",
+  "application_gateways[].sslPolicy.minProtocolVersion",
+  "application_gateways[].sslPolicy.policyType",
+  "application_gateways[].sslProfiles",
+  "application_gateways[].sslProfiles[].name",
+  "application_gateways[].sslProfiles[].sslPolicy",
+  "application_insights",
+  "application_insights[].name",
+  "application_insights[].provisioningState",
+  "assessment_date",
+  "attest",
+  "attest.activity_log_alert_scopes_recorded",
+  "attest.activity_log_storage_cmk_encrypted",
+  "attest.admin_accounts_not_used_daily",
+  "attest.defender_alerts_exported_to_siem",
+  "attest.defender_easm_workspace_configured",
+  "attest.defender_for_iot_hub_on",
+  "attest.defender_vulnerability_assessment_on",
+  "attest.disabled_users_hold_no_roles",
+  "attest.emergency_access_accounts_can_regain_access",
+  "attest.entra_activity_logs_exported",
+  "attest.graph_activity_logs_exported",
+  "attest.guest_users_reviewed",
+  "attest.intune_logs_sent_to_log_analytics",
+  "attest.managed_hsm_used_where_required",
+  "attest.mcsb_policies_not_disabled",
+  "attest.mfa_remember_trusted_devices_disabled",
+  "attest.mfa_required_to_join_devices",
+  "attest.mission_critical_resources_locked",
+  "attest.network_security_perimeter_enforced",
+  "attest.non_privileged_role_assignments_reviewed",
+  "attest.nsg_flow_logs_sent_to_log_analytics",
+  "attest.privileged_role_assignments_reviewed",
+  "attest.production_resources_avoid_basic_free_consumption_skus",
+  "attest.public_ip_addresses_reviewed",
+  "attest.resource_lock_admin_role_assigned",
+  "attest.resource_logging_enabled_for_supported_services",
+  "attest.service_health_event_types_recorded",
+  "attest.subscription_tenant_transfer_blocked",
+  "attest.tenant_creator_assignments_reviewed",
+  "attest.vnet_flow_logs_sent_to_log_analytics",
+  "bastion_hosts",
+  "bastion_hosts[].enableShareableLink",
+  "bastion_hosts[].name",
+  "bastion_hosts[].sku",
+  "bastion_hosts[].sku.name",
+  "cis_profile",
+  "cis_profile.level",
+  "defender_pricings",
+  "defender_pricings[].extensions",
+  "defender_pricings[].extensions[].isEnabled",
+  "defender_pricings[].extensions[].name",
+  "defender_pricings[].name",
+  "defender_pricings[].pricingTier",
+  "defender_pricings[].subPlan",
+  "defender_settings",
+  "defender_settings[].enabled",
+  "defender_settings[].name",
+  "entity_name",
+  "flow_logs",
+  "flow_logs[].enabled",
+  "flow_logs[].name",
+  "flow_logs[].retentionPolicy",
+  "flow_logs[].retentionPolicy.days",
+  "flow_logs[].retentionPolicy.enabled",
+  "flow_logs[].targetResourceId",
+  "front_door_profiles",
+  "front_door_profiles[].custom_domains",
+  "front_door_profiles[].custom_domains[].id",
+  "front_door_profiles[].endpoints",
+  "front_door_profiles[].endpoints[].id",
+  "front_door_profiles[].name",
+  "front_door_profiles[].security_policies",
+  "front_door_profiles[].security_policies[].name",
+  "front_door_profiles[].security_policies[].parameters",
+  "front_door_profiles[].security_policies[].parameters.associations",
+  "front_door_profiles[].security_policies[].parameters.associations[].domains",
+  "front_door_profiles[].security_policies[].parameters.associations[].domains[].id",
+  "front_door_profiles[].security_policies[].parameters.associations[].patternsToMatch",
+  "front_door_profiles[].security_policies[].parameters.type",
+  "front_door_profiles[].security_policies[].parameters.wafPolicy",
+  "front_door_profiles[].security_policies[].parameters.wafPolicy.id",
+  "front_door_waf_policies",
+  "front_door_waf_policies[].id",
+  "front_door_waf_policies[].name",
+  "front_door_waf_policies[].policySettings",
+  "front_door_waf_policies[].policySettings.enabledState",
+  "front_door_waf_policies[].policySettings.mode",
+  "key_vaults",
+  "key_vaults[].certificates",
+  "key_vaults[].certificates[].name",
+  "key_vaults[].certificates[].policy",
+  "key_vaults[].certificates[].policy.x509CertificateProperties",
+  "key_vaults[].certificates[].policy.x509CertificateProperties.validityInMonths",
+  "key_vaults[].diagnostic_settings",
+  "key_vaults[].diagnostic_settings[].logs",
+  "key_vaults[].diagnostic_settings[].logs[].categoryGroup",
+  "key_vaults[].diagnostic_settings[].logs[].enabled",
+  "key_vaults[].diagnostic_settings[].name",
+  "key_vaults[].diagnostic_settings[].workspaceId",
+  "key_vaults[].enablePurgeProtection",
+  "key_vaults[].enableRbacAuthorization",
+  "key_vaults[].keys",
+  "key_vaults[].keys[].attributes",
+  "key_vaults[].keys[].attributes.enabled",
+  "key_vaults[].keys[].attributes.expires",
+  "key_vaults[].keys[].kid",
+  "key_vaults[].keys[].kty",
+  "key_vaults[].keys[].name",
+  "key_vaults[].keys[].rotation_policy",
+  "key_vaults[].keys[].rotation_policy.expiresIn",
+  "key_vaults[].keys[].rotation_policy.lifetimeActions",
+  "key_vaults[].keys[].rotation_policy.lifetimeActions[].action",
+  "key_vaults[].keys[].rotation_policy.lifetimeActions[].timeAfterCreate",
+  "key_vaults[].keys[].rotation_policy.lifetimeActions[].timeBeforeExpiry",
+  "key_vaults[].name",
+  "key_vaults[].networkAcls",
+  "key_vaults[].networkAcls.defaultAction",
+  "key_vaults[].privateEndpointConnections",
+  "key_vaults[].privateEndpointConnections[].privateLinkServiceConnectionState",
+  "key_vaults[].privateEndpointConnections[].privateLinkServiceConnectionState.status",
+  "key_vaults[].publicNetworkAccess",
+  "key_vaults[].secrets",
+  "key_vaults[].secrets[].attributes",
+  "key_vaults[].secrets[].attributes.enabled",
+  "key_vaults[].secrets[].attributes.expires",
+  "key_vaults[].secrets[].name",
+  "key_vaults[].sku",
+  "key_vaults[].sku.name",
+  "log_analytics_workspaces",
+  "log_analytics_workspaces[].name",
+  "log_analytics_workspaces[].publicNetworkAccessForIngestion",
+  "log_analytics_workspaces[].publicNetworkAccessForQuery",
+  "managed_hsms",
+  "managed_hsms[].diagnostic_settings",
+  "managed_hsms[].diagnostic_settings[].logs",
+  "managed_hsms[].diagnostic_settings[].logs[].categoryGroup",
+  "managed_hsms[].diagnostic_settings[].logs[].enabled",
+  "managed_hsms[].diagnostic_settings[].name",
+  "managed_hsms[].diagnostic_settings[].workspaceId",
+  "managed_hsms[].enablePurgeProtection",
+  "managed_hsms[].name",
+  "managed_hsms[].privateEndpointConnections",
+  "managed_hsms[].privateEndpointConnections[].privateLinkServiceConnectionState",
+  "managed_hsms[].privateEndpointConnections[].privateLinkServiceConnectionState.status",
+  "managed_hsms[].publicNetworkAccess",
+  "management_group_hierarchy_settings",
+  "management_group_hierarchy_settings.defaultManagementGroup",
+  "management_group_hierarchy_settings.requireAuthorizationForGroupCreation",
+  "management_group_hierarchy_settings.tenantId",
+  "network_security_groups",
+  "network_security_groups[].name",
+  "network_security_groups[].securityRules",
+  "network_security_groups[].securityRules[].access",
+  "network_security_groups[].securityRules[].destinationAddressPrefix",
+  "network_security_groups[].securityRules[].destinationPortRange",
+  "network_security_groups[].securityRules[].direction",
+  "network_security_groups[].securityRules[].name",
+  "network_security_groups[].securityRules[].priority",
+  "network_security_groups[].securityRules[].protocol",
+  "network_security_groups[].securityRules[].sourceAddressPrefix",
+  "network_security_groups[].securityRules[].sourcePortRange",
+  "network_watchers",
+  "network_watchers[].location",
+  "network_watchers[].name",
+  "network_watchers[].provisioningState",
+  "public_ip_addresses",
+  "public_ip_addresses[].ddosSettings",
+  "public_ip_addresses[].ddosSettings.protectionMode",
+  "public_ip_addresses[].ddos_protection_status",
+  "public_ip_addresses[].ddos_protection_status.isWorkloadProtected",
+  "public_ip_addresses[].name",
+  "public_ip_addresses[].natGateway",
+  "public_ip_addresses[].natGateway.id",
+  "regions_in_use",
+  "role_assigned_service_principals",
+  "role_assigned_service_principals[].appId",
+  "role_assigned_service_principals[].appOwnerOrganizationId",
+  "role_assigned_service_principals[].application_password_credentials",
+  "role_assigned_service_principals[].displayName",
+  "role_assigned_service_principals[].passwordCredentials",
+  "role_assigned_service_principals[].servicePrincipalType",
+  "role_assignments",
+  "role_assignments[].condition",
+  "role_assignments[].principalId",
+  "role_assignments[].principalType",
+  "role_assignments[].roleDefinitionName",
+  "role_assignments[].scope",
+  "role_definitions",
+  "role_definitions[].assignableScopes",
+  "role_definitions[].permissions",
+  "role_definitions[].permissions[].actions",
+  "role_definitions[].roleName",
+  "role_definitions[].roleType",
+  "root_role_assignments",
+  "security_contacts",
+  "security_contacts[].emails",
+  "security_contacts[].isEnabled",
+  "security_contacts[].name",
+  "security_contacts[].notificationsByRole",
+  "security_contacts[].notificationsByRole.roles",
+  "security_contacts[].notificationsByRole.state",
+  "security_contacts[].notificationsSources",
+  "security_contacts[].notificationsSources[].minimalRiskLevel",
+  "security_contacts[].notificationsSources[].minimalSeverity",
+  "security_contacts[].notificationsSources[].sourceType",
+  "security_defaults",
+  "security_defaults.isEnabled",
+  "storage_accounts",
+  "storage_accounts[].allowBlobPublicAccess",
+  "storage_accounts[].blob_service_properties",
+  "storage_accounts[].blob_service_properties.deleteRetentionPolicy",
+  "storage_accounts[].blob_service_properties.deleteRetentionPolicy.days",
+  "storage_accounts[].blob_service_properties.deleteRetentionPolicy.enabled",
+  "storage_accounts[].defaultToOAuthAuthentication",
+  "storage_accounts[].enableHttpsTrafficOnly",
+  "storage_accounts[].kind",
+  "storage_accounts[].minimumTlsVersion",
+  "storage_accounts[].name",
+  "storage_accounts[].networkRuleSet",
+  "storage_accounts[].networkRuleSet.defaultAction",
+  "storage_accounts[].publicNetworkAccess",
+  "subscription_diagnostic_settings",
+  "subscription_diagnostic_settings[].logs",
+  "subscription_diagnostic_settings[].logs[].category",
+  "subscription_diagnostic_settings[].logs[].enabled",
+  "subscription_diagnostic_settings[].name",
+  "subscription_diagnostic_settings[].workspaceId",
+  "subscription_id",
+  "tenant_id",
+  "users",
+  "users[].perUserMfaState",
+  "users[].userPrincipalName",
+  "virtual_machines",
+  "virtual_machines[].name",
+  "virtual_machines[].osProfile",
+  "virtual_machines[].osProfile.linuxConfiguration",
+  "virtual_machines[].osProfile.linuxConfiguration.patchSettings",
+  "virtual_machines[].osProfile.linuxConfiguration.patchSettings.assessmentMode",
+  "virtual_machines[].osProfile.windowsConfiguration",
+  "virtual_machines[].osProfile.windowsConfiguration.patchSettings",
+  "virtual_machines[].osProfile.windowsConfiguration.patchSettings.assessmentMode",
+  "virtual_network_gateways",
+  "virtual_network_gateways[].name",
+  "virtual_network_gateways[].vpnClientConfiguration",
+  "virtual_network_gateways[].vpnClientConfiguration.vpnAuthenticationTypes",
+  "virtual_networks",
+  "virtual_networks[].enableDdosProtection",
+  "virtual_networks[].location",
+  "virtual_networks[].name",
+  "virtual_networks[].subnets",
+  "virtual_networks[].subnets[].defaultOutboundAccess",
+  "virtual_networks[].subnets[].delegations",
+  "virtual_networks[].subnets[].name",
+  "virtual_networks[].subnets[].networkSecurityGroup",
+  "virtual_networks[].subnets[].networkSecurityGroup.id"
+ ]
+}

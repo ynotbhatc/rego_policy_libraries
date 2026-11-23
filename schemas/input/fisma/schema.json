@@ -1,0 +1,2365 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/fisma/schema.json",
+ "title": "Input facts for fisma",
+ "description": "Input paths referenced in the sources of frameworks/federal/fisma/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "fisma",
+ "x-entrypoint": "data.fisma.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/federal/fisma/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "ato": {
+   "description": "Read in authority_to_operate.rego.",
+   "properties": {
+    "authorization_package": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "poam": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "action_items": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_tolerance_acceptable": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "risk_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "current_assessment": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "impact_analyzed": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "likelihood_determined": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "methodology_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_determination_made": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "threat_sources_identified": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "vulnerabilities_identified": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "sar": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_controls_assessed": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "assessment_current": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "assessment_procedures_followed": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "findings_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "independent_assessment_conducted": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "recommendations_provided": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_ratings_assigned": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "ssp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "control_implementation_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "document_current": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "interconnections_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "responsible_parties_identified": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "system_boundary_defined": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "system_categorization_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "version_approved": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "supporting_docs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "configuration_management_plan": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "contingency_plan_current": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "continuous_monitoring_plan": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "incident_response_plan": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "interconnection_agreements": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "privacy_impact_assessment": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      }
+     }
+    },
+    "authorizing_official": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "accountability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "backup_ao_identified": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "delegation_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "responsibility_matrix_signed": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "succession_planning": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "decision_framework": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "decision_criteria_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "escalation_procedures": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "review_process_established": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_tolerance_defined": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "oversight": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "monitoring_requirements_defined": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "performance_metrics_defined": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "reporting_requirements_established": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "review_cycles_scheduled": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "role": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "accountability_accepted": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "authority_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "decision_criteria_established": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "responsibilities_understood": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      }
+     }
+    },
+    "controls": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "deficiencies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "compensating_controls_implemented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "critical_deficiencies_resolved": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "high_deficiencies_plan_approved": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "moderate_deficiencies_documented": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "implementation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "configuration_verified": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "evidence_artifacts_available": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "implementation_percentage": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "procedures_documented": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "inheritance": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "common_controls_authorized": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "inheritance_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "provider_assessments_current": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "responsibility_matrix_accurate": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "examine_procedures_conducted": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "independent_testing": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "interview_procedures_conducted": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "sampling_adequate": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "test_procedures_conducted": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      }
+     }
+    },
+    "ongoing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "change_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorization_updates": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "change_control_process": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "impact_assessment_procedures": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "stakeholder_notification": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "continuous_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "procedures_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "reporting_established": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "strategy_approved": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "tools_configured": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "incident_response": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorization_review_triggers": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "coordination_mechanisms": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "impact_assessment_process": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "incident_procedures_current": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "reauthorization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "process_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "resource_planning": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "schedule_established": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "triggers_defined": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      }
+     }
+    },
+    "poam": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "completeness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_weaknesses_documented": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "dependencies_identified": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_ratings_accurate": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "root_cause_analysis_conducted": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "remediation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "alternative_approaches_considered": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "cost_benefit_analyzed": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "feasibility_assessed": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "strategies_documented": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "resources": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "funding_identified": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "personnel_assigned": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "technical_resources_available": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "vendor_support_confirmed": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "timeline": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "contingency_planning": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "critical_items_timeline": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "dependencies_considered": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "milestones_reasonable": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "progress_tracking_implemented": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      }
+     }
+    },
+    "risk_assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "impact_analysis": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "likelihood_determination": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_calculation": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "threat_vulnerability_pairing": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "uncertainty_factors_considered": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "residual_risk": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "compensating_controls_effective": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "high_risks_mitigated": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "overall_risk_level": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "risk_tolerance_within_limits": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "threats": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "threat_intelligence_considered": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "threat_sources": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      },
+      "vulnerabilities": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "code_review_conducted": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "configuration_review_current": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "identified_vulnerabilities": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "penetration_test_current": {
+         "description": "Read in authority_to_operate.rego."
+        },
+        "vulnerability_scan_current": {
+         "description": "Read in authority_to_operate.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "continuous_monitoring": {
+   "description": "Read in continuous_monitoring.rego.",
+   "properties": {
+    "assessments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "control_assessments": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "assessment_procedures_current": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "findings_tracked": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "remediation_monitored": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "schedule_maintained": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      }
+     }
+    },
+    "automation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "automated_analysis_capabilities": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "automated_data_collection": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "automated_tools_deployed": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "dashboard_capabilities": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "tool_integration_implemented": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "configuration": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "baseline_configurations_maintained": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "configuration_changes_tracked": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "configuration_drift_monitored": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "remediation_automated": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "unauthorized_changes_detected": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "controls": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "compensating_controls_monitored": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "control_effectiveness_monitored": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "control_failures_detected": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "control_inheritance_verified": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "incident_response": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_collection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "chain_of_custody": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "evidence_handling": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "forensic_capabilities": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "log_preservation": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "detection_capabilities": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "endpoint_detection": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "ids_ips_deployed": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "network_monitoring": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "siem_deployed": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "user_behavior_analytics": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "lessons_learned": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "control_updates": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "post_incident_reviews": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "process_improvements": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "training_updates": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "procedures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "containment_procedures_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "escalation_procedures_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "incident_response_plan_current": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "recovery_procedures_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      }
+     }
+    },
+    "metrics": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_metrics": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "penetration_testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "remediation_tracked": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "results_analyzed": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "scope_defined": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "testing_scheduled": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "procedures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "configuration_monitoring_procedures": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "log_analysis_procedures": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "malware_detection_procedures": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "network_monitoring_procedures": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "vulnerability_assessment_procedures": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "program": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "governance_structure_established": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "iscm_strategy_documented": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "objectives_stated": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "risk_tolerance_defined": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "scope_defined": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "red_team": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "exercises_conducted": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "findings_documented": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "improvements_implemented": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "scenarios_realistic": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dashboard_current": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "executive_summaries_provided": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "risk_posture_reported": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "trend_analysis_provided": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "metrics": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "benchmarking_conducted": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "improvement_recommendations": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "performance_trends_analyzed": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "security_metrics_current": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "regulatory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "agency_reporting_compliant": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "fisma_reporting_current": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "omb_reporting_compliant": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "timeline_compliance": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "stakeholder": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorizing_officials_informed": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "feedback_mechanisms": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "system_owners_informed": {
+         "description": "Read in continuous_monitoring.rego."
+        },
+        "users_notified": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      }
+     }
+    },
+    "risk_assessments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "impact_analysis_current": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "risk_assessment_current": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "threat_assessment_current": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "vulnerability_assessment_current": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "roles": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authorizing_officials": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "responsibilities_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "iscm_program_manager": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "assigned": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "risk_executive": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "responsibilities_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "security_control_assessors": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "responsibilities_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "system_owners": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "responsibilities_defined": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      }
+     }
+    },
+    "scope": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "monitored_systems": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "strategy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "configuration_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "frequency": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "control_assessments": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "frequency": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "penetration_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "frequency": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      },
+      "vulnerability_scanning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "frequency": {
+         "description": "Read in continuous_monitoring.rego."
+        }
+       }
+      }
+     }
+    },
+    "threat_intelligence": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "attribution_analysis": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "feeds_integrated": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "indicators_monitored": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "threat_hunting_conducted": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "tools": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "deployed_tools": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    },
+    "vulnerabilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "false_positive_management": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "remediation_tracking": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "risk_scoring_implemented": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "scanning_current": {
+       "description": "Read in continuous_monitoring.rego."
+      },
+      "vulnerability_database_current": {
+       "description": "Read in continuous_monitoring.rego."
+      }
+     }
+    }
+   }
+  },
+  "fisma": {
+   "description": "Read in fisma_main.rego.",
+   "properties": {
+    "assess": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_controls_assessed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "assessment_plan_approved": {
+         "description": "Read in fisma_main.rego."
+        },
+        "assessment_procedures_nist_800_53a": {
+         "description": "Read in fisma_main.rego."
+        },
+        "independent_assessor": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "findings": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "deficiencies_identified": {
+         "description": "Read in fisma_main.rego."
+        },
+        "recommendations_provided": {
+         "description": "Read in fisma_main.rego."
+        },
+        "risk_ratings_assigned": {
+         "description": "Read in fisma_main.rego."
+        },
+        "security_assessment_report_complete": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "procedures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "depth_coverage_adequate": {
+         "description": "Read in fisma_main.rego."
+        },
+        "examine_procedures_used": {
+         "description": "Read in fisma_main.rego."
+        },
+        "interview_procedures_used": {
+         "description": "Read in fisma_main.rego."
+        },
+        "test_procedures_used": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "remediation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "plan_of_actions": {
+         "description": "Read in fisma_main.rego.",
+         "additionalProperties": {
+          "description": "Read in fisma_main.rego."
+         },
+         "x-variable-key": "<_>"
+        }
+       }
+      }
+     }
+    },
+    "authorize": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "decision": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorization_current": {
+         "description": "Read in fisma_main.rego."
+        },
+        "authorization_expiration_date": {
+         "description": "Read in fisma_main.rego."
+        },
+        "authorization_letter_issued": {
+         "description": "Read in fisma_main.rego."
+        },
+        "authorizing_official_decision": {
+         "description": "Read in fisma_main.rego."
+        },
+        "decision_rationale_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "interim_conditions_met": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "package": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "plan_of_action_milestones_current": {
+         "description": "Read in fisma_main.rego."
+        },
+        "risk_assessment_current": {
+         "description": "Read in fisma_main.rego."
+        },
+        "security_assessment_report_current": {
+         "description": "Read in fisma_main.rego."
+        },
+        "system_security_plan_current": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "risk_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "methodology_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "residual_risk_acceptable": {
+         "description": "Read in fisma_main.rego."
+        },
+        "risk_determination_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "threat_analysis_completed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "vulnerability_analysis_completed": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "terms_conditions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorization_boundary_defined": {
+         "description": "Read in fisma_main.rego."
+        },
+        "authorization_period_defined": {
+         "description": "Read in fisma_main.rego."
+        },
+        "conditions_compliance_required": {
+         "description": "Read in fisma_main.rego."
+        },
+        "reporting_requirements_defined": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      }
+     }
+    },
+    "categorize": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approval": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorizing_official_endorsed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "senior_agency_iso_reviewed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "system_owner_approved": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "impact_analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "assumptions_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "business_impact_assessed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "methodology_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "risk_factors_identified": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "information_types": {
+       "description": "Read in fisma_main.rego.",
+       "additionalProperties": {
+        "description": "Read in fisma_main.rego."
+       },
+       "x-variable-key": "<_>"
+      },
+      "system_categorization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "availability_impact": {
+         "description": "Read in fisma_main.rego."
+        },
+        "confidentiality_impact": {
+         "description": "Read in fisma_main.rego."
+        },
+        "integrity_impact": {
+         "description": "Read in fisma_main.rego."
+        },
+        "overall_impact": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      }
+     }
+    },
+    "implement": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "change_control_applied": {
+         "description": "Read in fisma_main.rego."
+        },
+        "configuration_management_applied": {
+         "description": "Read in fisma_main.rego."
+        },
+        "implementation_percentage": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "documentation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "control_descriptions_complete": {
+         "description": "Read in fisma_main.rego."
+        },
+        "implementation_guidance_followed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "implementation_parameters_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "responsible_entities_identified": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "evidence": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "artifacts_collected": {
+         "description": "Read in fisma_main.rego."
+        },
+        "configuration_baselines_established": {
+         "description": "Read in fisma_main.rego."
+        },
+        "procedures_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "testing_results_documented": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "ssp": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "complete_control_descriptions": {
+         "description": "Read in fisma_main.rego."
+        },
+        "current_version": {
+         "description": "Read in fisma_main.rego."
+        },
+        "document_exists": {
+         "description": "Read in fisma_main.rego."
+        },
+        "interconnections_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "system_boundary_documented": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      }
+     }
+    },
+    "monitor": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "configuration_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "baseline_configurations_maintained": {
+         "description": "Read in fisma_main.rego."
+        },
+        "change_control_enforced": {
+         "description": "Read in fisma_main.rego."
+        },
+        "configuration_deviations_tracked": {
+         "description": "Read in fisma_main.rego."
+        },
+        "unauthorized_changes_detected": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "continuous_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automated_tools_deployed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "frequency_requirements_met": {
+         "description": "Read in fisma_main.rego."
+        },
+        "manual_assessments_scheduled": {
+         "description": "Read in fisma_main.rego."
+        },
+        "strategy_implemented": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "ongoing_assessments": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "control_assessments_ongoing": {
+         "description": "Read in fisma_main.rego."
+        },
+        "risk_reassessments_scheduled": {
+         "description": "Read in fisma_main.rego."
+        },
+        "threat_intelligence_integrated": {
+         "description": "Read in fisma_main.rego."
+        },
+        "vulnerability_assessments_current": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "reporting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dashboard_updates_current": {
+         "description": "Read in fisma_main.rego."
+        },
+        "escalation_procedures_followed": {
+         "description": "Read in fisma_main.rego."
+        },
+        "metrics_collection_automated": {
+         "description": "Read in fisma_main.rego."
+        },
+        "security_status_reports_current": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      }
+     }
+    },
+    "prepare": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "common_controls": {
+       "description": "Read in fisma_main.rego.",
+       "additionalProperties": {
+        "description": "Read in fisma_main.rego."
+       },
+       "x-variable-key": "<_>"
+      },
+      "continuous_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automation_level_defined": {
+         "description": "Read in fisma_main.rego."
+        },
+        "frequency_defined": {
+         "description": "Read in fisma_main.rego."
+        },
+        "reporting_requirements_defined": {
+         "description": "Read in fisma_main.rego."
+        },
+        "strategy_documented": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "impact_prioritization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "high_impact_systems_identified": {
+         "description": "Read in fisma_main.rego."
+        },
+        "low_impact_systems_identified": {
+         "description": "Read in fisma_main.rego."
+        },
+        "moderate_impact_systems_identified": {
+         "description": "Read in fisma_main.rego."
+        },
+        "prioritization_criteria_documented": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "risk_strategy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approved": {
+         "description": "Read in fisma_main.rego."
+        },
+        "communicated": {
+         "description": "Read in fisma_main.rego."
+        },
+        "documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "review_frequency_defined": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "roles": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorizing_official": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assigned": {
+           "description": "Read in fisma_main.rego."
+          }
+         }
+        },
+        "control_assessor": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assigned": {
+           "description": "Read in fisma_main.rego."
+          }
+         }
+        },
+        "information_system_security_officer": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assigned": {
+           "description": "Read in fisma_main.rego."
+          }
+         }
+        },
+        "senior_agency_iso": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assigned": {
+           "description": "Read in fisma_main.rego."
+          }
+         }
+        },
+        "system_owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assigned": {
+           "description": "Read in fisma_main.rego."
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "select": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "allocation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "common_controls_identified": {
+         "description": "Read in fisma_main.rego."
+        },
+        "hybrid_controls_identified": {
+         "description": "Read in fisma_main.rego."
+        },
+        "responsibility_matrix_documented": {
+         "description": "Read in fisma_main.rego."
+        },
+        "system_specific_controls_identified": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "compensating_controls": {
+       "description": "Read in fisma_main.rego.",
+       "additionalProperties": {
+        "description": "Read in fisma_main.rego."
+       },
+       "x-variable-key": "<_>"
+      },
+      "control_baselines": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "baseline_applied": {
+         "description": "Read in fisma_main.rego."
+        },
+        "nist_sp_800_53_revision": {
+         "description": "Read in fisma_main.rego."
+        },
+        "selected_controls": {
+         "description": "Read in fisma_main.rego."
+        }
+       }
+      },
+      "tailoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "tailored_controls": {
+         "description": "Read in fisma_main.rego.",
+         "additionalProperties": {
+          "description": "Read in fisma_main.rego."
+         },
+         "x-variable-key": "<_>"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "ssp": {
+   "description": "Read in system_security_plan.rego.",
+   "properties": {
+    "categorization": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "availability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "impact_level": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "confidentiality": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "impact_level": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "impact_analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "assumptions_documented": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "methodology_described": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "threat_sources_identified": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "vulnerability_considerations": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "information_types": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "integrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "impact_level": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "overall_impact_level": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "rationale": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "availability_rationale": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "confidentiality_rationale": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "integrity_rationale": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "overall_rationale": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      }
+     }
+    },
+    "controls": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "baseline": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "nist_sp_800_53_baseline": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "revision": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "selected_controls": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "implemented_controls": {
+       "description": "Read in system_security_plan.rego."
+      }
+     }
+    },
+    "document": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "approval_signatures_present": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "format": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "page_numbering_consistent": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "table_of_contents_present": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "version_control": {
+       "description": "Read in system_security_plan.rego."
+      }
+     }
+    },
+    "environment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_flows": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "hardware": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "network": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "architecture_diagram_current": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "network_connections": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "network_topology_documented": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "software": {
+       "description": "Read in system_security_plan.rego."
+      }
+     }
+    },
+    "maintenance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "change_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approval_authorities_defined": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "change_request_process": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "impact_assessment_required": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "notification_procedures": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "distribution": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorized_recipients_list": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "confidentiality_marking": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "controlled_distribution": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "distribution_tracking": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "review_cycle": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "frequency": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "next_review_date": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "responsible_parties_assigned": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "review_criteria_defined": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "version_control": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approval_workflow_defined": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "change_tracking_implemented": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "historical_versions_maintained": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "version_numbering_scheme": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      }
+     }
+    },
+    "roles": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authorizing_official": {
+       "description": "Read in system_security_plan.rego.",
+       "properties": {
+        "name": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "delegation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "backup_personnel_identified": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "delegation_agreements_current": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "succession_planning_documented": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "isso": {
+       "description": "Read in system_security_plan.rego.",
+       "properties": {
+        "name": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "senior_agency_iso": {
+       "description": "Read in system_security_plan.rego.",
+       "properties": {
+        "name": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "system_administrator": {
+       "description": "Read in system_security_plan.rego.",
+       "properties": {
+        "name": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "system_owner": {
+       "description": "Read in system_security_plan.rego.",
+       "properties": {
+        "name": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      }
+     }
+    },
+    "system_identification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "boundary": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "components": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "data_flows_documented": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "logical_boundary_described": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "network_architecture_documented": {
+         "description": "Read in system_security_plan.rego."
+        },
+        "physical_boundary_described": {
+         "description": "Read in system_security_plan.rego."
+        }
+       }
+      },
+      "ownership": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "authorizing_official": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "name": {
+           "description": "Read in system_security_plan.rego."
+          },
+          "title": {
+           "description": "Read in system_security_plan.rego."
+          }
+         }
+        },
+        "system_owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "contact_info": {
+           "description": "Read in system_security_plan.rego."
+          },
+          "name": {
+           "description": "Read in system_security_plan.rego."
+          },
+          "organization": {
+           "description": "Read in system_security_plan.rego."
+          },
+          "title": {
+           "description": "Read in system_security_plan.rego."
+          }
+         }
+        }
+       }
+      },
+      "system_abbreviation": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "system_description": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "system_name": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "system_purpose": {
+       "description": "Read in system_security_plan.rego."
+      },
+      "system_version": {
+       "description": "Read in system_security_plan.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "ato",
+  "ato.authorization_package",
+  "ato.authorization_package.poam",
+  "ato.authorization_package.poam.action_items",
+  "ato.authorization_package.poam.risk_tolerance_acceptable",
+  "ato.authorization_package.risk_assessment",
+  "ato.authorization_package.risk_assessment.current_assessment",
+  "ato.authorization_package.risk_assessment.impact_analyzed",
+  "ato.authorization_package.risk_assessment.likelihood_determined",
+  "ato.authorization_package.risk_assessment.methodology_documented",
+  "ato.authorization_package.risk_assessment.risk_determination_made",
+  "ato.authorization_package.risk_assessment.threat_sources_identified",
+  "ato.authorization_package.risk_assessment.vulnerabilities_identified",
+  "ato.authorization_package.sar",
+  "ato.authorization_package.sar.all_controls_assessed",
+  "ato.authorization_package.sar.assessment_current",
+  "ato.authorization_package.sar.assessment_procedures_followed",
+  "ato.authorization_package.sar.findings_documented",
+  "ato.authorization_package.sar.independent_assessment_conducted",
+  "ato.authorization_package.sar.recommendations_provided",
+  "ato.authorization_package.sar.risk_ratings_assigned",
+  "ato.authorization_package.ssp",
+  "ato.authorization_package.ssp.control_implementation_documented",
+  "ato.authorization_package.ssp.document_current",
+  "ato.authorization_package.ssp.interconnections_documented",
+  "ato.authorization_package.ssp.responsible_parties_identified",
+  "ato.authorization_package.ssp.system_boundary_defined",
+  "ato.authorization_package.ssp.system_categorization_documented",
+  "ato.authorization_package.ssp.version_approved",
+  "ato.authorization_package.supporting_docs",
+  "ato.authorization_package.supporting_docs.configuration_management_plan",
+  "ato.authorization_package.supporting_docs.contingency_plan_current",
+  "ato.authorization_package.supporting_docs.continuous_monitoring_plan",
+  "ato.authorization_package.supporting_docs.incident_response_plan",
+  "ato.authorization_package.supporting_docs.interconnection_agreements",
+  "ato.authorization_package.supporting_docs.privacy_impact_assessment",
+  "ato.authorizing_official",
+  "ato.authorizing_official.accountability",
+  "ato.authorizing_official.accountability.backup_ao_identified",
+  "ato.authorizing_official.accountability.delegation_documented",
+  "ato.authorizing_official.accountability.responsibility_matrix_signed",
+  "ato.authorizing_official.accountability.succession_planning",
+  "ato.authorizing_official.decision_framework",
+  "ato.authorizing_official.decision_framework.decision_criteria_documented",
+  "ato.authorizing_official.decision_framework.escalation_procedures",
+  "ato.authorizing_official.decision_framework.review_process_established",
+  "ato.authorizing_official.decision_framework.risk_tolerance_defined",
+  "ato.authorizing_official.oversight",
+  "ato.authorizing_official.oversight.monitoring_requirements_defined",
+  "ato.authorizing_official.oversight.performance_metrics_defined",
+  "ato.authorizing_official.oversight.reporting_requirements_established",
+  "ato.authorizing_official.oversight.review_cycles_scheduled",
+  "ato.authorizing_official.role",
+  "ato.authorizing_official.role.accountability_accepted",
+  "ato.authorizing_official.role.authority_documented",
+  "ato.authorizing_official.role.decision_criteria_established",
+  "ato.authorizing_official.role.responsibilities_understood",
+  "ato.controls",
+  "ato.controls.deficiencies",
+  "ato.controls.deficiencies.compensating_controls_implemented",
+  "ato.controls.deficiencies.critical_deficiencies_resolved",
+  "ato.controls.deficiencies.high_deficiencies_plan_approved",
+  "ato.controls.deficiencies.moderate_deficiencies_documented",
+  "ato.controls.implementation",
+  "ato.controls.implementation.configuration_verified",
+  "ato.controls.implementation.evidence_artifacts_available",
+  "ato.controls.implementation.implementation_percentage",
+  "ato.controls.implementation.procedures_documented",
+  "ato.controls.inheritance",
+  "ato.controls.inheritance.common_controls_authorized",
+  "ato.controls.inheritance.inheritance_documented",
+  "ato.controls.inheritance.provider_assessments_current",
+  "ato.controls.inheritance.responsibility_matrix_accurate",
+  "ato.controls.testing",
+  "ato.controls.testing.examine_procedures_conducted",
+  "ato.controls.testing.independent_testing",
+  "ato.controls.testing.interview_procedures_conducted",
+  "ato.controls.testing.sampling_adequate",
+  "ato.controls.testing.test_procedures_conducted",
+  "ato.ongoing",
+  "ato.ongoing.change_management",
+  "ato.ongoing.change_management.authorization_updates",
+  "ato.ongoing.change_management.change_control_process",
+  "ato.ongoing.change_management.impact_assessment_procedures",
+  "ato.ongoing.change_management.stakeholder_notification",
+  "ato.ongoing.continuous_monitoring",
+  "ato.ongoing.continuous_monitoring.procedures_documented",
+  "ato.ongoing.continuous_monitoring.reporting_established",
+  "ato.ongoing.continuous_monitoring.strategy_approved",
+  "ato.ongoing.continuous_monitoring.tools_configured",
+  "ato.ongoing.incident_response",
+  "ato.ongoing.incident_response.authorization_review_triggers",
+  "ato.ongoing.incident_response.coordination_mechanisms",
+  "ato.ongoing.incident_response.impact_assessment_process",
+  "ato.ongoing.incident_response.incident_procedures_current",
+  "ato.ongoing.reauthorization",
+  "ato.ongoing.reauthorization.process_documented",
+  "ato.ongoing.reauthorization.resource_planning",
+  "ato.ongoing.reauthorization.schedule_established",
+  "ato.ongoing.reauthorization.triggers_defined",
+  "ato.poam",
+  "ato.poam.completeness",
+  "ato.poam.completeness.all_weaknesses_documented",
+  "ato.poam.completeness.dependencies_identified",
+  "ato.poam.completeness.risk_ratings_accurate",
+  "ato.poam.completeness.root_cause_analysis_conducted",
+  "ato.poam.remediation",
+  "ato.poam.remediation.alternative_approaches_considered",
+  "ato.poam.remediation.cost_benefit_analyzed",
+  "ato.poam.remediation.feasibility_assessed",
+  "ato.poam.remediation.strategies_documented",
+  "ato.poam.resources",
+  "ato.poam.resources.funding_identified",
+  "ato.poam.resources.personnel_assigned",
+  "ato.poam.resources.technical_resources_available",
+  "ato.poam.resources.vendor_support_confirmed",
+  "ato.poam.timeline",
+  "ato.poam.timeline.contingency_planning",
+  "ato.poam.timeline.critical_items_timeline",
+  "ato.poam.timeline.dependencies_considered",
+  "ato.poam.timeline.milestones_reasonable",
+  "ato.poam.timeline.progress_tracking_implemented",
+  "ato.risk_assessment",
+  "ato.risk_assessment.analysis",
+  "ato.risk_assessment.analysis.impact_analysis",
+  "ato.risk_assessment.analysis.likelihood_determination",
+  "ato.risk_assessment.analysis.risk_calculation",
+  "ato.risk_assessment.analysis.threat_vulnerability_pairing",
+  "ato.risk_assessment.analysis.uncertainty_factors_considered",
+  "ato.risk_assessment.residual_risk",
+  "ato.risk_assessment.residual_risk.compensating_controls_effective",
+  "ato.risk_assessment.residual_risk.high_risks_mitigated",
+  "ato.risk_assessment.residual_risk.overall_risk_level",
+  "ato.risk_assessment.residual_risk.risk_tolerance_within_limits",
+  "ato.risk_assessment.threats",
+  "ato.risk_assessment.threats.threat_intelligence_considered",
+  "ato.risk_assessment.threats.threat_sources",
+  "ato.risk_assessment.vulnerabilities",
+  "ato.risk_assessment.vulnerabilities.code_review_conducted",
+  "ato.risk_assessment.vulnerabilities.configuration_review_current",
+  "ato.risk_assessment.vulnerabilities.identified_vulnerabilities",
+  "ato.risk_assessment.vulnerabilities.penetration_test_current",
+  "ato.risk_assessment.vulnerabilities.vulnerability_scan_current",
+  "continuous_monitoring",
+  "continuous_monitoring.assessments",
+  "continuous_monitoring.assessments.control_assessments",
+  "continuous_monitoring.assessments.control_assessments.assessment_procedures_current",
+  "continuous_monitoring.assessments.control_assessments.findings_tracked",
+  "continuous_monitoring.assessments.control_assessments.remediation_monitored",
+  "continuous_monitoring.assessments.control_assessments.schedule_maintained",
+  "continuous_monitoring.automation",
+  "continuous_monitoring.automation.automated_analysis_capabilities",
+  "continuous_monitoring.automation.automated_data_collection",
+  "continuous_monitoring.automation.automated_tools_deployed",
+  "continuous_monitoring.automation.dashboard_capabilities",
+  "continuous_monitoring.automation.tool_integration_implemented",
+  "continuous_monitoring.configuration",
+  "continuous_monitoring.configuration.baseline_configurations_maintained",
+  "continuous_monitoring.configuration.configuration_changes_tracked",
+  "continuous_monitoring.configuration.configuration_drift_monitored",
+  "continuous_monitoring.configuration.remediation_automated",
+  "continuous_monitoring.configuration.unauthorized_changes_detected",
+  "continuous_monitoring.controls",
+  "continuous_monitoring.controls.compensating_controls_monitored",
+  "continuous_monitoring.controls.control_effectiveness_monitored",
+  "continuous_monitoring.controls.control_failures_detected",
+  "continuous_monitoring.controls.control_inheritance_verified",
+  "continuous_monitoring.incident_response",
+  "continuous_monitoring.incident_response.data_collection",
+  "continuous_monitoring.incident_response.data_collection.chain_of_custody",
+  "continuous_monitoring.incident_response.data_collection.evidence_handling",
+  "continuous_monitoring.incident_response.data_collection.forensic_capabilities",
+  "continuous_monitoring.incident_response.data_collection.log_preservation",
+  "continuous_monitoring.incident_response.detection_capabilities",
+  "continuous_monitoring.incident_response.detection_capabilities.endpoint_detection",
+  "continuous_monitoring.incident_response.detection_capabilities.ids_ips_deployed",
+  "continuous_monitoring.incident_response.detection_capabilities.network_monitoring",
+  "continuous_monitoring.incident_response.detection_capabilities.siem_deployed",
+  "continuous_monitoring.incident_response.detection_capabilities.user_behavior_analytics",
+  "continuous_monitoring.incident_response.lessons_learned",
+  "continuous_monitoring.incident_response.lessons_learned.control_updates",
+  "continuous_monitoring.incident_response.lessons_learned.post_incident_reviews",
+  "continuous_monitoring.incident_response.lessons_learned.process_improvements",
+  "continuous_monitoring.incident_response.lessons_learned.training_updates",
+  "continuous_monitoring.incident_response.procedures",
+  "continuous_monitoring.incident_response.procedures.containment_procedures_defined",
+  "continuous_monitoring.incident_response.procedures.escalation_procedures_defined",
+  "continuous_monitoring.incident_response.procedures.incident_response_plan_current",
+  "continuous_monitoring.incident_response.procedures.recovery_procedures_defined",
+  "continuous_monitoring.metrics",
+  "continuous_monitoring.metrics.security_metrics",
+  "continuous_monitoring.penetration_testing",
+  "continuous_monitoring.penetration_testing.remediation_tracked",
+  "continuous_monitoring.penetration_testing.results_analyzed",
+  "continuous_monitoring.penetration_testing.scope_defined",
+  "continuous_monitoring.penetration_testing.testing_scheduled",
+  "continuous_monitoring.procedures",
+  "continuous_monitoring.procedures.configuration_monitoring_procedures",
+  "continuous_monitoring.procedures.log_analysis_procedures",
+  "continuous_monitoring.procedures.malware_detection_procedures",
+  "continuous_monitoring.procedures.network_monitoring_procedures",
+  "continuous_monitoring.procedures.vulnerability_assessment_procedures",
+  "continuous_monitoring.program",
+  "continuous_monitoring.program.governance_structure_established",
+  "continuous_monitoring.program.iscm_strategy_documented",
+  "continuous_monitoring.program.objectives_stated",
+  "continuous_monitoring.program.risk_tolerance_defined",
+  "continuous_monitoring.program.scope_defined",
+  "continuous_monitoring.red_team",
+  "continuous_monitoring.red_team.exercises_conducted",
+  "continuous_monitoring.red_team.findings_documented",
+  "continuous_monitoring.red_team.improvements_implemented",
+  "continuous_monitoring.red_team.scenarios_realistic",
+  "continuous_monitoring.reporting",
+  "continuous_monitoring.reporting.management",
+  "continuous_monitoring.reporting.management.dashboard_current",
+  "continuous_monitoring.reporting.management.executive_summaries_provided",
+  "continuous_monitoring.reporting.management.risk_posture_reported",
+  "continuous_monitoring.reporting.management.trend_analysis_provided",
+  "continuous_monitoring.reporting.metrics",
+  "continuous_monitoring.reporting.metrics.benchmarking_conducted",
+  "continuous_monitoring.reporting.metrics.improvement_recommendations",
+  "continuous_monitoring.reporting.metrics.performance_trends_analyzed",
+  "continuous_monitoring.reporting.metrics.security_metrics_current",
+  "continuous_monitoring.reporting.regulatory",
+  "continuous_monitoring.reporting.regulatory.agency_reporting_compliant",
+  "continuous_monitoring.reporting.regulatory.fisma_reporting_current",
+  "continuous_monitoring.reporting.regulatory.omb_reporting_compliant",
+  "continuous_monitoring.reporting.regulatory.timeline_compliance",
+  "continuous_monitoring.reporting.stakeholder",
+  "continuous_monitoring.reporting.stakeholder.authorizing_officials_informed",
+  "continuous_monitoring.reporting.stakeholder.feedback_mechanisms",
+  "continuous_monitoring.reporting.stakeholder.system_owners_informed",
+  "continuous_monitoring.reporting.stakeholder.users_notified",
+  "continuous_monitoring.risk_assessments",
+  "continuous_monitoring.risk_assessments.impact_analysis_current",
+  "continuous_monitoring.risk_assessments.risk_assessment_current",
+  "continuous_monitoring.risk_assessments.threat_assessment_current",
+  "continuous_monitoring.risk_assessments.vulnerability_assessment_current",
+  "continuous_monitoring.roles",
+  "continuous_monitoring.roles.authorizing_officials",
+  "continuous_monitoring.roles.authorizing_officials.responsibilities_defined",
+  "continuous_monitoring.roles.iscm_program_manager",
+  "continuous_monitoring.roles.iscm_program_manager.assigned",
+  "continuous_monitoring.roles.risk_executive",
+  "continuous_monitoring.roles.risk_executive.responsibilities_defined",
+  "continuous_monitoring.roles.security_control_assessors",
+  "continuous_monitoring.roles.security_control_assessors.responsibilities_defined",
+  "continuous_monitoring.roles.system_owners",
+  "continuous_monitoring.roles.system_owners.responsibilities_defined",
+  "continuous_monitoring.scope",
+  "continuous_monitoring.scope.monitored_systems",
+  "continuous_monitoring.strategy",
+  "continuous_monitoring.strategy.configuration_monitoring",
+  "continuous_monitoring.strategy.configuration_monitoring.frequency",
+  "continuous_monitoring.strategy.control_assessments",
+  "continuous_monitoring.strategy.control_assessments.frequency",
+  "continuous_monitoring.strategy.penetration_testing",
+  "continuous_monitoring.strategy.penetration_testing.frequency",
+  "continuous_monitoring.strategy.vulnerability_scanning",
+  "continuous_monitoring.strategy.vulnerability_scanning.frequency",
+  "continuous_monitoring.threat_intelligence",
+  "continuous_monitoring.threat_intelligence.attribution_analysis",
+  "continuous_monitoring.threat_intelligence.feeds_integrated",
+  "continuous_monitoring.threat_intelligence.indicators_monitored",
+  "continuous_monitoring.threat_intelligence.threat_hunting_conducted",
+  "continuous_monitoring.tools",
+  "continuous_monitoring.tools.deployed_tools",
+  "continuous_monitoring.vulnerabilities",
+  "continuous_monitoring.vulnerabilities.false_positive_management",
+  "continuous_monitoring.vulnerabilities.remediation_tracking",
+  "continuous_monitoring.vulnerabilities.risk_scoring_implemented",
+  "continuous_monitoring.vulnerabilities.scanning_current",
+  "continuous_monitoring.vulnerabilities.vulnerability_database_current",
+  "fisma",
+  "fisma.assess",
+  "fisma.assess.assessment",
+  "fisma.assess.assessment.all_controls_assessed",
+  "fisma.assess.assessment.assessment_plan_approved",
+  "fisma.assess.assessment.assessment_procedures_nist_800_53a",
+  "fisma.assess.assessment.independent_assessor",
+  "fisma.assess.findings",
+  "fisma.assess.findings.deficiencies_identified",
+  "fisma.assess.findings.recommendations_provided",
+  "fisma.assess.findings.risk_ratings_assigned",
+  "fisma.assess.findings.security_assessment_report_complete",
+  "fisma.assess.procedures",
+  "fisma.assess.procedures.depth_coverage_adequate",
+  "fisma.assess.procedures.examine_procedures_used",
+  "fisma.assess.procedures.interview_procedures_used",
+  "fisma.assess.procedures.test_procedures_used",
+  "fisma.assess.remediation",
+  "fisma.assess.remediation.plan_of_actions",
+  "fisma.authorize",
+  "fisma.authorize.decision",
+  "fisma.authorize.decision.authorization_current",
+  "fisma.authorize.decision.authorization_expiration_date",
+  "fisma.authorize.decision.authorization_letter_issued",
+  "fisma.authorize.decision.authorizing_official_decision",
+  "fisma.authorize.decision.decision_rationale_documented",
+  "fisma.authorize.decision.interim_conditions_met",
+  "fisma.authorize.package",
+  "fisma.authorize.package.plan_of_action_milestones_current",
+  "fisma.authorize.package.risk_assessment_current",
+  "fisma.authorize.package.security_assessment_report_current",
+  "fisma.authorize.package.system_security_plan_current",
+  "fisma.authorize.risk_assessment",
+  "fisma.authorize.risk_assessment.methodology_documented",
+  "fisma.authorize.risk_assessment.residual_risk_acceptable",
+  "fisma.authorize.risk_assessment.risk_determination_documented",
+  "fisma.authorize.risk_assessment.threat_analysis_completed",
+  "fisma.authorize.risk_assessment.vulnerability_analysis_completed",
+  "fisma.authorize.terms_conditions",
+  "fisma.authorize.terms_conditions.authorization_boundary_defined",
+  "fisma.authorize.terms_conditions.authorization_period_defined",
+  "fisma.authorize.terms_conditions.conditions_compliance_required",
+  "fisma.authorize.terms_conditions.reporting_requirements_defined",
+  "fisma.categorize",
+  "fisma.categorize.approval",
+  "fisma.categorize.approval.authorizing_official_endorsed",
+  "fisma.categorize.approval.senior_agency_iso_reviewed",
+  "fisma.categorize.approval.system_owner_approved",
+  "fisma.categorize.impact_analysis",
+  "fisma.categorize.impact_analysis.assumptions_documented",
+  "fisma.categorize.impact_analysis.business_impact_assessed",
+  "fisma.categorize.impact_analysis.methodology_documented",
+  "fisma.categorize.impact_analysis.risk_factors_identified",
+  "fisma.categorize.information_types",
+  "fisma.categorize.system_categorization",
+  "fisma.categorize.system_categorization.availability_impact",
+  "fisma.categorize.system_categorization.confidentiality_impact",
+  "fisma.categorize.system_categorization.integrity_impact",
+  "fisma.categorize.system_categorization.overall_impact",
+  "fisma.implement",
+  "fisma.implement.controls",
+  "fisma.implement.controls.change_control_applied",
+  "fisma.implement.controls.configuration_management_applied",
+  "fisma.implement.controls.implementation_percentage",
+  "fisma.implement.documentation",
+  "fisma.implement.documentation.control_descriptions_complete",
+  "fisma.implement.documentation.implementation_guidance_followed",
+  "fisma.implement.documentation.implementation_parameters_documented",
+  "fisma.implement.documentation.responsible_entities_identified",
+  "fisma.implement.evidence",
+  "fisma.implement.evidence.artifacts_collected",
+  "fisma.implement.evidence.configuration_baselines_established",
+  "fisma.implement.evidence.procedures_documented",
+  "fisma.implement.evidence.testing_results_documented",
+  "fisma.implement.ssp",
+  "fisma.implement.ssp.complete_control_descriptions",
+  "fisma.implement.ssp.current_version",
+  "fisma.implement.ssp.document_exists",
+  "fisma.implement.ssp.interconnections_documented",
+  "fisma.implement.ssp.system_boundary_documented",
+  "fisma.monitor",
+  "fisma.monitor.configuration_management",
+  "fisma.monitor.configuration_management.baseline_configurations_maintained",
+  "fisma.monitor.configuration_management.change_control_enforced",
+  "fisma.monitor.configuration_management.configuration_deviations_tracked",
+  "fisma.monitor.configuration_management.unauthorized_changes_detected",
+  "fisma.monitor.continuous_monitoring",
+  "fisma.monitor.continuous_monitoring.automated_tools_deployed",
+  "fisma.monitor.continuous_monitoring.frequency_requirements_met",
+  "fisma.monitor.continuous_monitoring.manual_assessments_scheduled",
+  "fisma.monitor.continuous_monitoring.strategy_implemented",
+  "fisma.monitor.ongoing_assessments",
+  "fisma.monitor.ongoing_assessments.control_assessments_ongoing",
+  "fisma.monitor.ongoing_assessments.risk_reassessments_scheduled",
+  "fisma.monitor.ongoing_assessments.threat_intelligence_integrated",
+  "fisma.monitor.ongoing_assessments.vulnerability_assessments_current",
+  "fisma.monitor.reporting",
+  "fisma.monitor.reporting.dashboard_updates_current",
+  "fisma.monitor.reporting.escalation_procedures_followed",
+  "fisma.monitor.reporting.metrics_collection_automated",
+  "fisma.monitor.reporting.security_status_reports_current",
+  "fisma.prepare",
+  "fisma.prepare.common_controls",
+  "fisma.prepare.continuous_monitoring",
+  "fisma.prepare.continuous_monitoring.automation_level_defined",
+  "fisma.prepare.continuous_monitoring.frequency_defined",
+  "fisma.prepare.continuous_monitoring.reporting_requirements_defined",
+  "fisma.prepare.continuous_monitoring.strategy_documented",
+  "fisma.prepare.impact_prioritization",
+  "fisma.prepare.impact_prioritization.high_impact_systems_identified",
+  "fisma.prepare.impact_prioritization.low_impact_systems_identified",
+  "fisma.prepare.impact_prioritization.moderate_impact_systems_identified",
+  "fisma.prepare.impact_prioritization.prioritization_criteria_documented",
+  "fisma.prepare.risk_strategy",
+  "fisma.prepare.risk_strategy.approved",
+  "fisma.prepare.risk_strategy.communicated",
+  "fisma.prepare.risk_strategy.documented",
+  "fisma.prepare.risk_strategy.review_frequency_defined",
+  "fisma.prepare.roles",
+  "fisma.prepare.roles.authorizing_official",
+  "fisma.prepare.roles.authorizing_official.assigned",
+  "fisma.prepare.roles.control_assessor",
+  "fisma.prepare.roles.control_assessor.assigned",
+  "fisma.prepare.roles.information_system_security_officer",
+  "fisma.prepare.roles.information_system_security_officer.assigned",
+  "fisma.prepare.roles.senior_agency_iso",
+  "fisma.prepare.roles.senior_agency_iso.assigned",
+  "fisma.prepare.roles.system_owner",
+  "fisma.prepare.roles.system_owner.assigned",
+  "fisma.select",
+  "fisma.select.allocation",
+  "fisma.select.allocation.common_controls_identified",
+  "fisma.select.allocation.hybrid_controls_identified",
+  "fisma.select.allocation.responsibility_matrix_documented",
+  "fisma.select.allocation.system_specific_controls_identified",
+  "fisma.select.compensating_controls",
+  "fisma.select.control_baselines",
+  "fisma.select.control_baselines.baseline_applied",
+  "fisma.select.control_baselines.nist_sp_800_53_revision",
+  "fisma.select.control_baselines.selected_controls",
+  "fisma.select.tailoring",
+  "fisma.select.tailoring.tailored_controls",
+  "ssp",
+  "ssp.categorization",
+  "ssp.categorization.availability",
+  "ssp.categorization.availability.impact_level",
+  "ssp.categorization.confidentiality",
+  "ssp.categorization.confidentiality.impact_level",
+  "ssp.categorization.impact_analysis",
+  "ssp.categorization.impact_analysis.assumptions_documented",
+  "ssp.categorization.impact_analysis.methodology_described",
+  "ssp.categorization.impact_analysis.threat_sources_identified",
+  "ssp.categorization.impact_analysis.vulnerability_considerations",
+  "ssp.categorization.information_types",
+  "ssp.categorization.integrity",
+  "ssp.categorization.integrity.impact_level",
+  "ssp.categorization.overall_impact_level",
+  "ssp.categorization.rationale",
+  "ssp.categorization.rationale.availability_rationale",
+  "ssp.categorization.rationale.confidentiality_rationale",
+  "ssp.categorization.rationale.integrity_rationale",
+  "ssp.categorization.rationale.overall_rationale",
+  "ssp.controls",
+  "ssp.controls.baseline",
+  "ssp.controls.baseline.nist_sp_800_53_baseline",
+  "ssp.controls.baseline.revision",
+  "ssp.controls.baseline.selected_controls",
+  "ssp.controls.implemented_controls",
+  "ssp.document",
+  "ssp.document.approval_signatures_present",
+  "ssp.document.format",
+  "ssp.document.page_numbering_consistent",
+  "ssp.document.table_of_contents_present",
+  "ssp.document.version_control",
+  "ssp.environment",
+  "ssp.environment.data_flows",
+  "ssp.environment.hardware",
+  "ssp.environment.network",
+  "ssp.environment.network.architecture_diagram_current",
+  "ssp.environment.network.network_connections",
+  "ssp.environment.network.network_topology_documented",
+  "ssp.environment.software",
+  "ssp.maintenance",
+  "ssp.maintenance.change_management",
+  "ssp.maintenance.change_management.approval_authorities_defined",
+  "ssp.maintenance.change_management.change_request_process",
+  "ssp.maintenance.change_management.impact_assessment_required",
+  "ssp.maintenance.change_management.notification_procedures",
+  "ssp.maintenance.distribution",
+  "ssp.maintenance.distribution.authorized_recipients_list",
+  "ssp.maintenance.distribution.confidentiality_marking",
+  "ssp.maintenance.distribution.controlled_distribution",
+  "ssp.maintenance.distribution.distribution_tracking",
+  "ssp.maintenance.review_cycle",
+  "ssp.maintenance.review_cycle.frequency",
+  "ssp.maintenance.review_cycle.next_review_date",
+  "ssp.maintenance.review_cycle.responsible_parties_assigned",
+  "ssp.maintenance.review_cycle.review_criteria_defined",
+  "ssp.maintenance.version_control",
+  "ssp.maintenance.version_control.approval_workflow_defined",
+  "ssp.maintenance.version_control.change_tracking_implemented",
+  "ssp.maintenance.version_control.historical_versions_maintained",
+  "ssp.maintenance.version_control.version_numbering_scheme",
+  "ssp.roles",
+  "ssp.roles.authorizing_official",
+  "ssp.roles.authorizing_official.name",
+  "ssp.roles.delegation",
+  "ssp.roles.delegation.backup_personnel_identified",
+  "ssp.roles.delegation.delegation_agreements_current",
+  "ssp.roles.delegation.succession_planning_documented",
+  "ssp.roles.isso",
+  "ssp.roles.isso.name",
+  "ssp.roles.senior_agency_iso",
+  "ssp.roles.senior_agency_iso.name",
+  "ssp.roles.system_administrator",
+  "ssp.roles.system_administrator.name",
+  "ssp.roles.system_owner",
+  "ssp.roles.system_owner.name",
+  "ssp.system_identification",
+  "ssp.system_identification.boundary",
+  "ssp.system_identification.boundary.components",
+  "ssp.system_identification.boundary.data_flows_documented",
+  "ssp.system_identification.boundary.logical_boundary_described",
+  "ssp.system_identification.boundary.network_architecture_documented",
+  "ssp.system_identification.boundary.physical_boundary_described",
+  "ssp.system_identification.ownership",
+  "ssp.system_identification.ownership.authorizing_official",
+  "ssp.system_identification.ownership.authorizing_official.name",
+  "ssp.system_identification.ownership.authorizing_official.title",
+  "ssp.system_identification.ownership.system_owner",
+  "ssp.system_identification.ownership.system_owner.contact_info",
+  "ssp.system_identification.ownership.system_owner.name",
+  "ssp.system_identification.ownership.system_owner.organization",
+  "ssp.system_identification.ownership.system_owner.title",
+  "ssp.system_identification.system_abbreviation",
+  "ssp.system_identification.system_description",
+  "ssp.system_identification.system_name",
+  "ssp.system_identification.system_purpose",
+  "ssp.system_identification.system_version"
+ ]
+}

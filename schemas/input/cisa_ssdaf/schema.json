@@ -1,0 +1,266 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cisa_ssdaf/schema.json",
+ "title": "Input facts for cisa_ssdaf",
+ "description": "Facts the module in frameworks/federal/cisa_ssdaf/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cisa_ssdaf",
+ "x-entrypoint": "data.cisa_ssdaf.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/federal/cisa_ssdaf/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cisa_ssdaf.main_test._full",
+ "type": "object",
+ "properties": {
+  "attest": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "III.signature": {
+     "description": "Read in cisa_ssdaf_main.rego."
+    }
+   }
+  },
+  "cisa_ssdaf": {
+   "description": "Read in cisa_ssdaf_main.rego.",
+   "type": "object",
+   "properties": {
+    "attestations": {
+     "description": "Read in cisa_ssdaf_main.rego.",
+     "type": "object",
+     "properties": {
+      "1a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "1b.i": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "1b.ii": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "1c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "1d": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "1e": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "1f": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4a": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4b": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "4c": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "III.notify": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "scope": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "continuous_delivery": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "developed_after_2022_09_14": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "developed_by_federal_agency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "freely_obtained_publicly_available": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "major_version_change_after_2022_09_14": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "open_source_obtained_directly_by_agency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      }
+     }
+    },
+    "signatory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "date": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "2026-10-13"
+       ]
+      },
+      "name": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "<signatory>"
+       ]
+      },
+      "type": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "ceo"
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "attest",
+  "attest[\"III.signature\"]",
+  "cisa_ssdaf",
+  "cisa_ssdaf.attestations",
+  "cisa_ssdaf.attestations[\"1a\"]",
+  "cisa_ssdaf.attestations[\"1b.i\"]",
+  "cisa_ssdaf.attestations[\"1b.ii\"]",
+  "cisa_ssdaf.attestations[\"1c\"]",
+  "cisa_ssdaf.attestations[\"1d\"]",
+  "cisa_ssdaf.attestations[\"1e\"]",
+  "cisa_ssdaf.attestations[\"1f\"]",
+  "cisa_ssdaf.attestations[\"2\"]",
+  "cisa_ssdaf.attestations[\"3\"]",
+  "cisa_ssdaf.attestations[\"4\"]",
+  "cisa_ssdaf.attestations[\"4a\"]",
+  "cisa_ssdaf.attestations[\"4b\"]",
+  "cisa_ssdaf.attestations[\"4c\"]",
+  "cisa_ssdaf.attestations[\"III.notify\"]",
+  "cisa_ssdaf.scope",
+  "cisa_ssdaf.scope.continuous_delivery",
+  "cisa_ssdaf.scope.developed_after_2022_09_14",
+  "cisa_ssdaf.scope.developed_by_federal_agency",
+  "cisa_ssdaf.scope.freely_obtained_publicly_available",
+  "cisa_ssdaf.scope.major_version_change_after_2022_09_14",
+  "cisa_ssdaf.scope.open_source_obtained_directly_by_agency",
+  "cisa_ssdaf.signatory",
+  "cisa_ssdaf.signatory.date",
+  "cisa_ssdaf.signatory.name",
+  "cisa_ssdaf.signatory.type"
+ ]
+}

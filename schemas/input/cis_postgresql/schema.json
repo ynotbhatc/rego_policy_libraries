@@ -1,0 +1,1480 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_postgresql/schema.json",
+ "title": "Input facts for cis_postgresql",
+ "description": "Facts the module in benchmarks/cis/postgresql/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_postgresql",
+ "x-entrypoint": "data.cis_postgresql.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/postgresql/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis.postgresql_17_test.green",
+ "type": "object",
+ "properties": {
+  "postgresql": {
+   "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego, cis_postgresql_17.rego.",
+   "type": "object",
+   "properties": {
+    "account_lockout": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "archive_config": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "archive_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "archive_command": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "pgbackrest --stanza=main archive-push %p"
+       ]
+      },
+      "archive_library": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        ""
+       ]
+      },
+      "archive_mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      }
+     }
+    },
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "authorized_package_repositories": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "base_backups_functional": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "bound_to_ip_address": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "excessive_admin_privileges_revoked": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "excessive_dml_privileges_revoked": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "file_permissions_mask_correct": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "host_tcp_login_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "interactive_login_disabled": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "latest_security_patches_applied": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "local_socket_login_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "login_accounts_have_passwords": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "miscellaneous_settings_correct": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "no_passwords_on_command_line": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "only_required_packages_installed": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "password_complexity_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pgcrypto_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "postmaster_parameters_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "predefined_roles_used": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "replication_command_logging_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "replication_only_user_used": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "row_level_security_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "runtime_parameter_attack_vectors_reviewed": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "service_file_has_no_passwords": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sighup_parameters_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "streaming_replication_parameters_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "subdirectories_outside_data_cluster": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sudo_configured_correctly": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "superuser_parameters_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "syslog_facility_correct": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unused_accounts_locked": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "user_parameters_configured": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "authentication": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "pg_hba_entries": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "auth_method": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "peer"
+          ]
+         },
+         "connection_type": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "local"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "available_extensions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "set_user"
+      ]
+     },
+     "examples": [
+      [
+       "set_user",
+       "pgaudit"
+      ]
+     ]
+    },
+    "backend_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "ignore_system_indexes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "jit_debugging_support": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "jit_profiling_support": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "log_connections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "log_disconnections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "post_auth_delay": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "0"
+       ]
+      }
+     }
+    },
+    "backup": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "backup_encryption": {
+     "description": "Read in cis_postgresql_13.rego."
+    },
+    "backup_methods": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "pgbackrest"
+      ]
+     },
+     "examples": [
+      [
+       "pgbackrest",
+       "pg_dump"
+      ]
+     ]
+    },
+    "backup_policy": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "backup_retention": {
+     "description": "Read in cis_postgresql_13.rego."
+    },
+    "checkpoint_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "cluster": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "check_db_dir_rc": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "initialized": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "columns": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "compliance": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego."
+    },
+    "config_files": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "config_security": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "connection": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "connection_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "cost_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "cryptography": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "fips_140_2_enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "openssl_fips_mode": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "databases": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "directories": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "durability_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "extensions": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "failover": {
+     "description": "Read in cis_postgresql_13.rego."
+    },
+    "file_permissions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "backup_files": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "certificates": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "config_files": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "data_cluster": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "data_directory": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "extension_directory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "group": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "mode": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "0755"
+         ]
+        },
+        "owner": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "root"
+         ]
+        },
+        "path": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/usr/pgsql-17/share/extension"
+         ]
+        }
+       }
+      },
+      "extensions": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "external_config": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "log_files": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "pgpass": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "private_keys": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "scripts": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "service_files": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "socket_files": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "ssl_crl": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "tablespaces": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "temp_files": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "wal_archive": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      }
+     }
+    },
+    "foreign_data_wrappers": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "functions": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "installation": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "languages": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "large_objects": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "library_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "locale": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "logging": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "debug_pretty_print": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "debug_print_parse": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "debug_print_plan": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "debug_print_rewritten": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "log_checkpoints": {
+       "description": "Read in cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "log_connections": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "log_destination": {
+       "description": "Read in cis_postgresql_17.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "csvlog,stderr"
+       ]
+      },
+      "log_directory": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/var/log/postgres"
+       ]
+      },
+      "log_disconnections": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "log_error_verbosity": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "verbose"
+       ]
+      },
+      "log_file_mode": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "0600"
+       ]
+      },
+      "log_filename": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "postgresql-%Y%m%d.log"
+       ]
+      },
+      "log_hostname": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "off"
+       ]
+      },
+      "log_line_prefix": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "%m [%p]: [%l-1] db=%d,user=%u,app=%a,client=%h "
+       ]
+      },
+      "log_lock_waits": {
+       "description": "Read in cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "log_min_error_statement": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "error"
+       ]
+      },
+      "log_min_messages": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "warning"
+       ]
+      },
+      "log_parameter_max_length": {
+       "description": "Read in cis_postgresql_15.rego."
+      },
+      "log_recovery_conflict_waits": {
+       "description": "Read in cis_postgresql_15.rego."
+      },
+      "log_rotation_age": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "1d"
+       ]
+      },
+      "log_rotation_size": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "1GB"
+       ]
+      },
+      "log_statement": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "ddl"
+       ]
+      },
+      "log_timezone": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "UTC"
+       ]
+      },
+      "log_truncate_on_rotation": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "logging_collector": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "syslog_facility": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "syslog_ident": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "postgres"
+       ]
+      },
+      "syslog_sequence_numbers": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      },
+      "syslog_split_messages": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "on"
+       ]
+      }
+     }
+    },
+    "memory_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "monitoring": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "network_security": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "objects": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "parallel_query": {
+     "description": "Read in cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "parallel_settings": {
+     "description": "Read in cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "password_policy": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "pgaudit": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "log": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "ddl, write"
+       ]
+      },
+      "log_catalog": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "log_level": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "log_parameter": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      }
+     }
+    },
+    "point_in_time_recovery": {
+     "description": "Read in cis_postgresql_13.rego."
+    },
+    "policy": {
+     "description": "Read in cis_postgresql_17.rego.",
+     "type": "object",
+     "properties": {
+      "authorized_security_definer_functions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "public.audit_fn"
+        ]
+       },
+       "examples": [
+        [
+         "public.audit_fn"
+        ]
+       ]
+      },
+      "authorized_superusers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "postgres"
+        ]
+       },
+       "examples": [
+        [
+         "postgres"
+        ]
+       ]
+      }
+     }
+    },
+    "predefined_roles": {
+     "description": "Read in cis_postgresql_15.rego."
+    },
+    "preload_libraries": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "process": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "process_security": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego."
+    },
+    "publications": {
+     "description": "Read in cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "replication_authentication": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "replication_monitoring": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "replication_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "replication_ssl": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "replication_users": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "resource_limits": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego."
+    },
+    "roles": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "connection_limit": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         10
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "postgres"
+        ]
+       }
+      }
+     }
+    },
+    "schemas": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "security_definer_functions": {
+     "description": "Read in cis_postgresql_15.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "audit_fn"
+        ]
+       },
+       "prosecdef": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "schema": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "public"
+        ]
+       }
+      }
+     }
+    },
+    "security_monitoring": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego."
+    },
+    "sequences": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "service": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "shared_preload_libraries": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "pgaudit,pg_stat_statements"
+       ]
+      }
+     }
+    },
+    "ssl": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "non_ssl_client_connections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "ssl_ciphers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384"
+       ]
+      },
+      "ssl_min_protocol_version": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TLSv1.3"
+       ]
+      },
+      "tls12_unapproved_cipher_sessions": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      }
+     }
+    },
+    "standby_configuration": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "standby_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "statistics_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "streaming_replication": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "subscriptions": {
+     "description": "Read in cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "superuser_activity": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "superuser_login_roles": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "postgres"
+      ]
+     },
+     "examples": [
+      [
+       "postgres"
+      ]
+     ]
+    },
+    "superuser_restrictions": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "synchronous_replication": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "system": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "pgpassword_processes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "pgpassword_profile_files": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+       },
+       "examples": [
+        []
+       ]
+      },
+      "psql_history_files": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "path": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "/home/doug/.psql_history"
+          ]
+         },
+         "symlink_target": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "/dev/null"
+          ]
+         }
+        }
+       }
+      },
+      "sudo_config": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      },
+      "umask": {
+       "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+      }
+     }
+    },
+    "tables": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "tablespaces": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "tcp_keepalives": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "timeouts": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "update_policy": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "users": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "vacuum_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "version": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "version_info": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    },
+    "wal_settings": {
+     "description": "Read in cis_postgresql_13.rego, cis_postgresql_14.rego, cis_postgresql_15.rego."
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "postgresql",
+  "postgresql.account_lockout",
+  "postgresql.archive_config",
+  "postgresql.archive_settings",
+  "postgresql.archive_settings.archive_command",
+  "postgresql.archive_settings.archive_library",
+  "postgresql.archive_settings.archive_mode",
+  "postgresql.attest",
+  "postgresql.attest.authorized_package_repositories",
+  "postgresql.attest.base_backups_functional",
+  "postgresql.attest.bound_to_ip_address",
+  "postgresql.attest.excessive_admin_privileges_revoked",
+  "postgresql.attest.excessive_dml_privileges_revoked",
+  "postgresql.attest.file_permissions_mask_correct",
+  "postgresql.attest.host_tcp_login_configured",
+  "postgresql.attest.interactive_login_disabled",
+  "postgresql.attest.latest_security_patches_applied",
+  "postgresql.attest.local_socket_login_configured",
+  "postgresql.attest.login_accounts_have_passwords",
+  "postgresql.attest.miscellaneous_settings_correct",
+  "postgresql.attest.no_passwords_on_command_line",
+  "postgresql.attest.only_required_packages_installed",
+  "postgresql.attest.password_complexity_configured",
+  "postgresql.attest.pgcrypto_configured",
+  "postgresql.attest.postmaster_parameters_configured",
+  "postgresql.attest.predefined_roles_used",
+  "postgresql.attest.replication_command_logging_configured",
+  "postgresql.attest.replication_only_user_used",
+  "postgresql.attest.row_level_security_configured",
+  "postgresql.attest.runtime_parameter_attack_vectors_reviewed",
+  "postgresql.attest.service_file_has_no_passwords",
+  "postgresql.attest.sighup_parameters_configured",
+  "postgresql.attest.streaming_replication_parameters_configured",
+  "postgresql.attest.subdirectories_outside_data_cluster",
+  "postgresql.attest.sudo_configured_correctly",
+  "postgresql.attest.superuser_parameters_configured",
+  "postgresql.attest.syslog_facility_correct",
+  "postgresql.attest.unused_accounts_locked",
+  "postgresql.attest.user_parameters_configured",
+  "postgresql.authentication",
+  "postgresql.authentication.pg_hba_entries",
+  "postgresql.authentication.pg_hba_entries[].auth_method",
+  "postgresql.authentication.pg_hba_entries[].connection_type",
+  "postgresql.available_extensions",
+  "postgresql.backend_settings",
+  "postgresql.backend_settings.ignore_system_indexes",
+  "postgresql.backend_settings.jit_debugging_support",
+  "postgresql.backend_settings.jit_profiling_support",
+  "postgresql.backend_settings.log_connections",
+  "postgresql.backend_settings.log_disconnections",
+  "postgresql.backend_settings.post_auth_delay",
+  "postgresql.backup",
+  "postgresql.backup_encryption",
+  "postgresql.backup_methods",
+  "postgresql.backup_policy",
+  "postgresql.backup_retention",
+  "postgresql.checkpoint_settings",
+  "postgresql.cluster",
+  "postgresql.cluster.check_db_dir_rc",
+  "postgresql.cluster.initialized",
+  "postgresql.columns",
+  "postgresql.compliance",
+  "postgresql.config_files",
+  "postgresql.config_security",
+  "postgresql.connection",
+  "postgresql.connection_settings",
+  "postgresql.cost_settings",
+  "postgresql.cryptography",
+  "postgresql.cryptography.fips_140_2_enabled",
+  "postgresql.cryptography.openssl_fips_mode",
+  "postgresql.databases",
+  "postgresql.directories",
+  "postgresql.durability_settings",
+  "postgresql.extensions",
+  "postgresql.failover",
+  "postgresql.file_permissions",
+  "postgresql.file_permissions.backup_files",
+  "postgresql.file_permissions.certificates",
+  "postgresql.file_permissions.config_files",
+  "postgresql.file_permissions.data_cluster",
+  "postgresql.file_permissions.data_directory",
+  "postgresql.file_permissions.extension_directory",
+  "postgresql.file_permissions.extension_directory.group",
+  "postgresql.file_permissions.extension_directory.mode",
+  "postgresql.file_permissions.extension_directory.owner",
+  "postgresql.file_permissions.extension_directory.path",
+  "postgresql.file_permissions.extensions",
+  "postgresql.file_permissions.external_config",
+  "postgresql.file_permissions.log_files",
+  "postgresql.file_permissions.pgpass",
+  "postgresql.file_permissions.private_keys",
+  "postgresql.file_permissions.scripts",
+  "postgresql.file_permissions.service_files",
+  "postgresql.file_permissions.socket_files",
+  "postgresql.file_permissions.ssl_crl",
+  "postgresql.file_permissions.tablespaces",
+  "postgresql.file_permissions.temp_files",
+  "postgresql.file_permissions.wal_archive",
+  "postgresql.foreign_data_wrappers",
+  "postgresql.functions",
+  "postgresql.installation",
+  "postgresql.languages",
+  "postgresql.large_objects",
+  "postgresql.library_settings",
+  "postgresql.locale",
+  "postgresql.logging",
+  "postgresql.logging.debug_pretty_print",
+  "postgresql.logging.debug_print_parse",
+  "postgresql.logging.debug_print_plan",
+  "postgresql.logging.debug_print_rewritten",
+  "postgresql.logging.log_checkpoints",
+  "postgresql.logging.log_connections",
+  "postgresql.logging.log_destination",
+  "postgresql.logging.log_directory",
+  "postgresql.logging.log_disconnections",
+  "postgresql.logging.log_error_verbosity",
+  "postgresql.logging.log_file_mode",
+  "postgresql.logging.log_filename",
+  "postgresql.logging.log_hostname",
+  "postgresql.logging.log_line_prefix",
+  "postgresql.logging.log_lock_waits",
+  "postgresql.logging.log_min_error_statement",
+  "postgresql.logging.log_min_messages",
+  "postgresql.logging.log_parameter_max_length",
+  "postgresql.logging.log_recovery_conflict_waits",
+  "postgresql.logging.log_rotation_age",
+  "postgresql.logging.log_rotation_size",
+  "postgresql.logging.log_statement",
+  "postgresql.logging.log_timezone",
+  "postgresql.logging.log_truncate_on_rotation",
+  "postgresql.logging.logging_collector",
+  "postgresql.logging.syslog_facility",
+  "postgresql.logging.syslog_ident",
+  "postgresql.logging.syslog_sequence_numbers",
+  "postgresql.logging.syslog_split_messages",
+  "postgresql.memory_settings",
+  "postgresql.monitoring",
+  "postgresql.network_security",
+  "postgresql.objects",
+  "postgresql.parallel_query",
+  "postgresql.parallel_settings",
+  "postgresql.password_policy",
+  "postgresql.pgaudit",
+  "postgresql.pgaudit.log",
+  "postgresql.pgaudit.log_catalog",
+  "postgresql.pgaudit.log_level",
+  "postgresql.pgaudit.log_parameter",
+  "postgresql.point_in_time_recovery",
+  "postgresql.policy",
+  "postgresql.policy.authorized_security_definer_functions",
+  "postgresql.policy.authorized_superusers",
+  "postgresql.predefined_roles",
+  "postgresql.preload_libraries",
+  "postgresql.process",
+  "postgresql.process_security",
+  "postgresql.publications",
+  "postgresql.replication_authentication",
+  "postgresql.replication_monitoring",
+  "postgresql.replication_settings",
+  "postgresql.replication_ssl",
+  "postgresql.replication_users",
+  "postgresql.resource_limits",
+  "postgresql.roles",
+  "postgresql.roles[].connection_limit",
+  "postgresql.roles[].name",
+  "postgresql.schemas",
+  "postgresql.security_definer_functions",
+  "postgresql.security_definer_functions[].name",
+  "postgresql.security_definer_functions[].prosecdef",
+  "postgresql.security_definer_functions[].schema",
+  "postgresql.security_monitoring",
+  "postgresql.sequences",
+  "postgresql.service",
+  "postgresql.service.enabled",
+  "postgresql.settings",
+  "postgresql.settings.shared_preload_libraries",
+  "postgresql.ssl",
+  "postgresql.ssl.enabled",
+  "postgresql.ssl.non_ssl_client_connections",
+  "postgresql.ssl.ssl_ciphers",
+  "postgresql.ssl.ssl_min_protocol_version",
+  "postgresql.ssl.tls12_unapproved_cipher_sessions",
+  "postgresql.standby_configuration",
+  "postgresql.standby_settings",
+  "postgresql.statistics_settings",
+  "postgresql.streaming_replication",
+  "postgresql.subscriptions",
+  "postgresql.superuser_activity",
+  "postgresql.superuser_login_roles",
+  "postgresql.superuser_restrictions",
+  "postgresql.synchronous_replication",
+  "postgresql.system",
+  "postgresql.system.pgpassword_processes",
+  "postgresql.system.pgpassword_profile_files",
+  "postgresql.system.psql_history_files",
+  "postgresql.system.psql_history_files[].path",
+  "postgresql.system.psql_history_files[].symlink_target",
+  "postgresql.system.sudo_config",
+  "postgresql.system.umask",
+  "postgresql.tables",
+  "postgresql.tablespaces",
+  "postgresql.tcp_keepalives",
+  "postgresql.timeouts",
+  "postgresql.update_policy",
+  "postgresql.users",
+  "postgresql.vacuum_settings",
+  "postgresql.version",
+  "postgresql.version_info",
+  "postgresql.wal_settings"
+ ]
+}

@@ -1,0 +1,2621 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/tisax/schema.json",
+ "title": "Input facts for tisax",
+ "description": "Facts the module in frameworks/management/tisax/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "tisax",
+ "x-entrypoint": "data.tisax.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/management/tisax/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.tisax.main_test._good",
+ "type": "object",
+ "properties": {
+  "assessment_date": {
+   "description": "Read in tisax_main.rego."
+  },
+  "assessment_level": {
+   "description": "Read in tisax_main.rego."
+  },
+  "company_scope": {
+   "description": "Read in tisax_main.rego."
+  },
+  "entity_name": {
+   "description": "Read in tisax_main.rego."
+  },
+  "tisax": {
+   "description": "Read in tisax_main.rego.",
+   "type": "object",
+   "properties": {
+    "attestations": {
+     "description": "Read in tisax_main.rego.",
+     "type": "object",
+     "properties": {
+      "1.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.5.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.6.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.6.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "1.6.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "2.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "2.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "2.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "2.1.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "3.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "3.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "4.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.2.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "5.3.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "6.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "7.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.12": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.13": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.1.9": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "8.2.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.1.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.4.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.5.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.5.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.6.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.6.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.7.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.7.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      },
+      "9.8.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "attested": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "by": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "ISMS owner"
+         ]
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "2026-11-01"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "evidence": {
+     "description": "Read in tisax_main.rego.",
+     "type": "object",
+     "properties": {
+      "access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "dormant_enabled_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "remote_root_login_permitted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "unapproved_privileged_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "accounts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "default_credential_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "empty_password_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "password_min_length": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          14
+         ]
+        },
+        "shared_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "authentication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "failed_login_lockout": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "mfa_privileged_access": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "session_idle_timeout_minutes": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          10
+         ]
+        }
+       }
+      },
+      "backup": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "configured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "last_restore_test_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          90
+         ]
+        },
+        "last_success_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        }
+       }
+      },
+      "crypto": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "system_policy_approved": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "weak_algorithms_permitted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      },
+      "endpoint": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "disk_encryption_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "removable_storage_restricted": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "logging": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "audit_daemon_active": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "central_forwarding": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "time_synchronized": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "malware": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "agent_running": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "on_access_scanning": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "signature_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1
+         ]
+        }
+       }
+      },
+      "network": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "default_deny_inbound": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "host_firewall_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "software": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "package_signature_verification": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "unapproved_packages": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        }
+       }
+      },
+      "system_audit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "high_findings_past_due": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "last_test_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          200
+         ]
+        }
+       }
+      },
+      "transport": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "cleartext_services_enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "tls_min_version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          1.2
+         ]
+        }
+       }
+      },
+      "vulnerabilities": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "critical_past_due": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "last_scan_age_days": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          7
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "assessment_date",
+  "assessment_level",
+  "company_scope",
+  "entity_name",
+  "tisax",
+  "tisax.attestations",
+  "tisax.attestations[\"1.1.1\"]",
+  "tisax.attestations[\"1.1.1\"].attested",
+  "tisax.attestations[\"1.1.1\"].by",
+  "tisax.attestations[\"1.1.1\"].date",
+  "tisax.attestations[\"1.2.1\"]",
+  "tisax.attestations[\"1.2.1\"].attested",
+  "tisax.attestations[\"1.2.1\"].by",
+  "tisax.attestations[\"1.2.1\"].date",
+  "tisax.attestations[\"1.2.2\"]",
+  "tisax.attestations[\"1.2.2\"].attested",
+  "tisax.attestations[\"1.2.2\"].by",
+  "tisax.attestations[\"1.2.2\"].date",
+  "tisax.attestations[\"1.2.3\"]",
+  "tisax.attestations[\"1.2.3\"].attested",
+  "tisax.attestations[\"1.2.3\"].by",
+  "tisax.attestations[\"1.2.3\"].date",
+  "tisax.attestations[\"1.3.1\"]",
+  "tisax.attestations[\"1.3.1\"].attested",
+  "tisax.attestations[\"1.3.1\"].by",
+  "tisax.attestations[\"1.3.1\"].date",
+  "tisax.attestations[\"1.3.2\"]",
+  "tisax.attestations[\"1.3.2\"].attested",
+  "tisax.attestations[\"1.3.2\"].by",
+  "tisax.attestations[\"1.3.2\"].date",
+  "tisax.attestations[\"1.3.3\"]",
+  "tisax.attestations[\"1.3.3\"].attested",
+  "tisax.attestations[\"1.3.3\"].by",
+  "tisax.attestations[\"1.3.3\"].date",
+  "tisax.attestations[\"1.4.1\"]",
+  "tisax.attestations[\"1.4.1\"].attested",
+  "tisax.attestations[\"1.4.1\"].by",
+  "tisax.attestations[\"1.4.1\"].date",
+  "tisax.attestations[\"1.5.1\"]",
+  "tisax.attestations[\"1.5.1\"].attested",
+  "tisax.attestations[\"1.5.1\"].by",
+  "tisax.attestations[\"1.5.1\"].date",
+  "tisax.attestations[\"1.5.2\"]",
+  "tisax.attestations[\"1.5.2\"].attested",
+  "tisax.attestations[\"1.5.2\"].by",
+  "tisax.attestations[\"1.5.2\"].date",
+  "tisax.attestations[\"1.6.1\"]",
+  "tisax.attestations[\"1.6.1\"].attested",
+  "tisax.attestations[\"1.6.1\"].by",
+  "tisax.attestations[\"1.6.1\"].date",
+  "tisax.attestations[\"1.6.2\"]",
+  "tisax.attestations[\"1.6.2\"].attested",
+  "tisax.attestations[\"1.6.2\"].by",
+  "tisax.attestations[\"1.6.2\"].date",
+  "tisax.attestations[\"1.6.3\"]",
+  "tisax.attestations[\"1.6.3\"].attested",
+  "tisax.attestations[\"1.6.3\"].by",
+  "tisax.attestations[\"1.6.3\"].date",
+  "tisax.attestations[\"2.1.1\"]",
+  "tisax.attestations[\"2.1.1\"].attested",
+  "tisax.attestations[\"2.1.1\"].by",
+  "tisax.attestations[\"2.1.1\"].date",
+  "tisax.attestations[\"2.1.2\"]",
+  "tisax.attestations[\"2.1.2\"].attested",
+  "tisax.attestations[\"2.1.2\"].by",
+  "tisax.attestations[\"2.1.2\"].date",
+  "tisax.attestations[\"2.1.3\"]",
+  "tisax.attestations[\"2.1.3\"].attested",
+  "tisax.attestations[\"2.1.3\"].by",
+  "tisax.attestations[\"2.1.3\"].date",
+  "tisax.attestations[\"2.1.4\"]",
+  "tisax.attestations[\"2.1.4\"].attested",
+  "tisax.attestations[\"2.1.4\"].by",
+  "tisax.attestations[\"2.1.4\"].date",
+  "tisax.attestations[\"3.1.1\"]",
+  "tisax.attestations[\"3.1.1\"].attested",
+  "tisax.attestations[\"3.1.1\"].by",
+  "tisax.attestations[\"3.1.1\"].date",
+  "tisax.attestations[\"3.1.3\"]",
+  "tisax.attestations[\"3.1.3\"].attested",
+  "tisax.attestations[\"3.1.3\"].by",
+  "tisax.attestations[\"3.1.3\"].date",
+  "tisax.attestations[\"4.1.1\"]",
+  "tisax.attestations[\"4.1.1\"].attested",
+  "tisax.attestations[\"4.1.1\"].by",
+  "tisax.attestations[\"4.1.1\"].date",
+  "tisax.attestations[\"5.2.1\"]",
+  "tisax.attestations[\"5.2.1\"].attested",
+  "tisax.attestations[\"5.2.1\"].by",
+  "tisax.attestations[\"5.2.1\"].date",
+  "tisax.attestations[\"5.2.2\"]",
+  "tisax.attestations[\"5.2.2\"].attested",
+  "tisax.attestations[\"5.2.2\"].by",
+  "tisax.attestations[\"5.2.2\"].date",
+  "tisax.attestations[\"5.2.8\"]",
+  "tisax.attestations[\"5.2.8\"].attested",
+  "tisax.attestations[\"5.2.8\"].by",
+  "tisax.attestations[\"5.2.8\"].date",
+  "tisax.attestations[\"5.3.1\"]",
+  "tisax.attestations[\"5.3.1\"].attested",
+  "tisax.attestations[\"5.3.1\"].by",
+  "tisax.attestations[\"5.3.1\"].date",
+  "tisax.attestations[\"5.3.2\"]",
+  "tisax.attestations[\"5.3.2\"].attested",
+  "tisax.attestations[\"5.3.2\"].by",
+  "tisax.attestations[\"5.3.2\"].date",
+  "tisax.attestations[\"5.3.3\"]",
+  "tisax.attestations[\"5.3.3\"].attested",
+  "tisax.attestations[\"5.3.3\"].by",
+  "tisax.attestations[\"5.3.3\"].date",
+  "tisax.attestations[\"5.3.4\"]",
+  "tisax.attestations[\"5.3.4\"].attested",
+  "tisax.attestations[\"5.3.4\"].by",
+  "tisax.attestations[\"5.3.4\"].date",
+  "tisax.attestations[\"6.1.1\"]",
+  "tisax.attestations[\"6.1.1\"].attested",
+  "tisax.attestations[\"6.1.1\"].by",
+  "tisax.attestations[\"6.1.1\"].date",
+  "tisax.attestations[\"6.1.2\"]",
+  "tisax.attestations[\"6.1.2\"].attested",
+  "tisax.attestations[\"6.1.2\"].by",
+  "tisax.attestations[\"6.1.2\"].date",
+  "tisax.attestations[\"6.1.3\"]",
+  "tisax.attestations[\"6.1.3\"].attested",
+  "tisax.attestations[\"6.1.3\"].by",
+  "tisax.attestations[\"6.1.3\"].date",
+  "tisax.attestations[\"7.1.1\"]",
+  "tisax.attestations[\"7.1.1\"].attested",
+  "tisax.attestations[\"7.1.1\"].by",
+  "tisax.attestations[\"7.1.1\"].date",
+  "tisax.attestations[\"7.1.2\"]",
+  "tisax.attestations[\"7.1.2\"].attested",
+  "tisax.attestations[\"7.1.2\"].by",
+  "tisax.attestations[\"7.1.2\"].date",
+  "tisax.attestations[\"8.1.1\"]",
+  "tisax.attestations[\"8.1.1\"].attested",
+  "tisax.attestations[\"8.1.1\"].by",
+  "tisax.attestations[\"8.1.1\"].date",
+  "tisax.attestations[\"8.1.10\"]",
+  "tisax.attestations[\"8.1.10\"].attested",
+  "tisax.attestations[\"8.1.10\"].by",
+  "tisax.attestations[\"8.1.10\"].date",
+  "tisax.attestations[\"8.1.11\"]",
+  "tisax.attestations[\"8.1.11\"].attested",
+  "tisax.attestations[\"8.1.11\"].by",
+  "tisax.attestations[\"8.1.11\"].date",
+  "tisax.attestations[\"8.1.12\"]",
+  "tisax.attestations[\"8.1.12\"].attested",
+  "tisax.attestations[\"8.1.12\"].by",
+  "tisax.attestations[\"8.1.12\"].date",
+  "tisax.attestations[\"8.1.13\"]",
+  "tisax.attestations[\"8.1.13\"].attested",
+  "tisax.attestations[\"8.1.13\"].by",
+  "tisax.attestations[\"8.1.13\"].date",
+  "tisax.attestations[\"8.1.2\"]",
+  "tisax.attestations[\"8.1.2\"].attested",
+  "tisax.attestations[\"8.1.2\"].by",
+  "tisax.attestations[\"8.1.2\"].date",
+  "tisax.attestations[\"8.1.3\"]",
+  "tisax.attestations[\"8.1.3\"].attested",
+  "tisax.attestations[\"8.1.3\"].by",
+  "tisax.attestations[\"8.1.3\"].date",
+  "tisax.attestations[\"8.1.4\"]",
+  "tisax.attestations[\"8.1.4\"].attested",
+  "tisax.attestations[\"8.1.4\"].by",
+  "tisax.attestations[\"8.1.4\"].date",
+  "tisax.attestations[\"8.1.5\"]",
+  "tisax.attestations[\"8.1.5\"].attested",
+  "tisax.attestations[\"8.1.5\"].by",
+  "tisax.attestations[\"8.1.5\"].date",
+  "tisax.attestations[\"8.1.6\"]",
+  "tisax.attestations[\"8.1.6\"].attested",
+  "tisax.attestations[\"8.1.6\"].by",
+  "tisax.attestations[\"8.1.6\"].date",
+  "tisax.attestations[\"8.1.7\"]",
+  "tisax.attestations[\"8.1.7\"].attested",
+  "tisax.attestations[\"8.1.7\"].by",
+  "tisax.attestations[\"8.1.7\"].date",
+  "tisax.attestations[\"8.1.8\"]",
+  "tisax.attestations[\"8.1.8\"].attested",
+  "tisax.attestations[\"8.1.8\"].by",
+  "tisax.attestations[\"8.1.8\"].date",
+  "tisax.attestations[\"8.1.9\"]",
+  "tisax.attestations[\"8.1.9\"].attested",
+  "tisax.attestations[\"8.1.9\"].by",
+  "tisax.attestations[\"8.1.9\"].date",
+  "tisax.attestations[\"8.2.1\"]",
+  "tisax.attestations[\"8.2.1\"].attested",
+  "tisax.attestations[\"8.2.1\"].by",
+  "tisax.attestations[\"8.2.1\"].date",
+  "tisax.attestations[\"8.2.2\"]",
+  "tisax.attestations[\"8.2.2\"].attested",
+  "tisax.attestations[\"8.2.2\"].by",
+  "tisax.attestations[\"8.2.2\"].date",
+  "tisax.attestations[\"8.2.3\"]",
+  "tisax.attestations[\"8.2.3\"].attested",
+  "tisax.attestations[\"8.2.3\"].by",
+  "tisax.attestations[\"8.2.3\"].date",
+  "tisax.attestations[\"8.2.4\"]",
+  "tisax.attestations[\"8.2.4\"].attested",
+  "tisax.attestations[\"8.2.4\"].by",
+  "tisax.attestations[\"8.2.4\"].date",
+  "tisax.attestations[\"8.2.5\"]",
+  "tisax.attestations[\"8.2.5\"].attested",
+  "tisax.attestations[\"8.2.5\"].by",
+  "tisax.attestations[\"8.2.5\"].date",
+  "tisax.attestations[\"8.2.6\"]",
+  "tisax.attestations[\"8.2.6\"].attested",
+  "tisax.attestations[\"8.2.6\"].by",
+  "tisax.attestations[\"8.2.6\"].date",
+  "tisax.attestations[\"8.2.7\"]",
+  "tisax.attestations[\"8.2.7\"].attested",
+  "tisax.attestations[\"8.2.7\"].by",
+  "tisax.attestations[\"8.2.7\"].date",
+  "tisax.attestations[\"9.1.1\"]",
+  "tisax.attestations[\"9.1.1\"].attested",
+  "tisax.attestations[\"9.1.1\"].by",
+  "tisax.attestations[\"9.1.1\"].date",
+  "tisax.attestations[\"9.2.1\"]",
+  "tisax.attestations[\"9.2.1\"].attested",
+  "tisax.attestations[\"9.2.1\"].by",
+  "tisax.attestations[\"9.2.1\"].date",
+  "tisax.attestations[\"9.3.1\"]",
+  "tisax.attestations[\"9.3.1\"].attested",
+  "tisax.attestations[\"9.3.1\"].by",
+  "tisax.attestations[\"9.3.1\"].date",
+  "tisax.attestations[\"9.4.1\"]",
+  "tisax.attestations[\"9.4.1\"].attested",
+  "tisax.attestations[\"9.4.1\"].by",
+  "tisax.attestations[\"9.4.1\"].date",
+  "tisax.attestations[\"9.5.1\"]",
+  "tisax.attestations[\"9.5.1\"].attested",
+  "tisax.attestations[\"9.5.1\"].by",
+  "tisax.attestations[\"9.5.1\"].date",
+  "tisax.attestations[\"9.5.2\"]",
+  "tisax.attestations[\"9.5.2\"].attested",
+  "tisax.attestations[\"9.5.2\"].by",
+  "tisax.attestations[\"9.5.2\"].date",
+  "tisax.attestations[\"9.5.3\"]",
+  "tisax.attestations[\"9.5.3\"].attested",
+  "tisax.attestations[\"9.5.3\"].by",
+  "tisax.attestations[\"9.5.3\"].date",
+  "tisax.attestations[\"9.6.1\"]",
+  "tisax.attestations[\"9.6.1\"].attested",
+  "tisax.attestations[\"9.6.1\"].by",
+  "tisax.attestations[\"9.6.1\"].date",
+  "tisax.attestations[\"9.6.2\"]",
+  "tisax.attestations[\"9.6.2\"].attested",
+  "tisax.attestations[\"9.6.2\"].by",
+  "tisax.attestations[\"9.6.2\"].date",
+  "tisax.attestations[\"9.7.1\"]",
+  "tisax.attestations[\"9.7.1\"].attested",
+  "tisax.attestations[\"9.7.1\"].by",
+  "tisax.attestations[\"9.7.1\"].date",
+  "tisax.attestations[\"9.7.2\"]",
+  "tisax.attestations[\"9.7.2\"].attested",
+  "tisax.attestations[\"9.7.2\"].by",
+  "tisax.attestations[\"9.7.2\"].date",
+  "tisax.attestations[\"9.8.1\"]",
+  "tisax.attestations[\"9.8.1\"].attested",
+  "tisax.attestations[\"9.8.1\"].by",
+  "tisax.attestations[\"9.8.1\"].date",
+  "tisax.evidence",
+  "tisax.evidence.access",
+  "tisax.evidence.access.dormant_enabled_accounts",
+  "tisax.evidence.access.remote_root_login_permitted",
+  "tisax.evidence.access.unapproved_privileged_accounts",
+  "tisax.evidence.accounts",
+  "tisax.evidence.accounts.default_credential_accounts",
+  "tisax.evidence.accounts.empty_password_accounts",
+  "tisax.evidence.accounts.password_min_length",
+  "tisax.evidence.accounts.shared_accounts",
+  "tisax.evidence.authentication",
+  "tisax.evidence.authentication.failed_login_lockout",
+  "tisax.evidence.authentication.mfa_privileged_access",
+  "tisax.evidence.authentication.session_idle_timeout_minutes",
+  "tisax.evidence.backup",
+  "tisax.evidence.backup.configured",
+  "tisax.evidence.backup.last_restore_test_age_days",
+  "tisax.evidence.backup.last_success_age_days",
+  "tisax.evidence.crypto",
+  "tisax.evidence.crypto.system_policy_approved",
+  "tisax.evidence.crypto.weak_algorithms_permitted",
+  "tisax.evidence.endpoint",
+  "tisax.evidence.endpoint.disk_encryption_enabled",
+  "tisax.evidence.endpoint.removable_storage_restricted",
+  "tisax.evidence.logging",
+  "tisax.evidence.logging.audit_daemon_active",
+  "tisax.evidence.logging.central_forwarding",
+  "tisax.evidence.logging.time_synchronized",
+  "tisax.evidence.malware",
+  "tisax.evidence.malware.agent_running",
+  "tisax.evidence.malware.on_access_scanning",
+  "tisax.evidence.malware.signature_age_days",
+  "tisax.evidence.network",
+  "tisax.evidence.network.default_deny_inbound",
+  "tisax.evidence.network.host_firewall_enabled",
+  "tisax.evidence.software",
+  "tisax.evidence.software.package_signature_verification",
+  "tisax.evidence.software.unapproved_packages",
+  "tisax.evidence.system_audit",
+  "tisax.evidence.system_audit.high_findings_past_due",
+  "tisax.evidence.system_audit.last_test_age_days",
+  "tisax.evidence.transport",
+  "tisax.evidence.transport.cleartext_services_enabled",
+  "tisax.evidence.transport.tls_min_version",
+  "tisax.evidence.vulnerabilities",
+  "tisax.evidence.vulnerabilities.critical_past_due",
+  "tisax.evidence.vulnerabilities.last_scan_age_days"
+ ]
+}

@@ -1,0 +1,934 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist_privacy_framework/schema.json",
+ "title": "Input facts for nist_privacy_framework",
+ "description": "Facts the module in frameworks/privacy/nist_privacy_framework/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "nist_privacy_framework",
+ "x-entrypoint": "data.nist_privacy_framework.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/privacy/nist_privacy_framework/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist_privacy_framework.main_test._green",
+ "type": "object",
+ "properties": {
+  "nist_privacy_framework": {
+   "description": "Read in nist_privacy_framework_main.rego.",
+   "type": "object",
+   "properties": {
+    "subcategories": {
+     "description": "Read in nist_privacy_framework_main.rego.",
+     "type": "object",
+     "properties": {
+      "CM.AW-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.AW-P8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.PO-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CM.PO-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DM-P9": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DP-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DP-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DP-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DP-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.DP-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.PO-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.PO-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.PO-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "CT.PO-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.AT-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.AT-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.AT-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.AT-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.MT-P7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.PO-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "GV.RM-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.BE-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.BE-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.BE-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.DE-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.DE-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.DE-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.DE-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.DE-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.IM-P8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ID.RA-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AC-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AC-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AC-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AC-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AC-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.AC-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.DS-P8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.MA-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.MA-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PO-P9": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PT-P1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PT-P2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PT-P3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "PR.PT-P4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "nist_privacy_framework",
+  "nist_privacy_framework.subcategories",
+  "nist_privacy_framework.subcategories[\"CM.AW-P1\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P2\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P3\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P4\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P5\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P6\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P7\"]",
+  "nist_privacy_framework.subcategories[\"CM.AW-P8\"]",
+  "nist_privacy_framework.subcategories[\"CM.PO-P1\"]",
+  "nist_privacy_framework.subcategories[\"CM.PO-P2\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P1\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P10\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P2\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P3\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P4\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P5\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P6\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P7\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P8\"]",
+  "nist_privacy_framework.subcategories[\"CT.DM-P9\"]",
+  "nist_privacy_framework.subcategories[\"CT.DP-P1\"]",
+  "nist_privacy_framework.subcategories[\"CT.DP-P2\"]",
+  "nist_privacy_framework.subcategories[\"CT.DP-P3\"]",
+  "nist_privacy_framework.subcategories[\"CT.DP-P4\"]",
+  "nist_privacy_framework.subcategories[\"CT.DP-P5\"]",
+  "nist_privacy_framework.subcategories[\"CT.PO-P1\"]",
+  "nist_privacy_framework.subcategories[\"CT.PO-P2\"]",
+  "nist_privacy_framework.subcategories[\"CT.PO-P3\"]",
+  "nist_privacy_framework.subcategories[\"CT.PO-P4\"]",
+  "nist_privacy_framework.subcategories[\"GV.AT-P1\"]",
+  "nist_privacy_framework.subcategories[\"GV.AT-P2\"]",
+  "nist_privacy_framework.subcategories[\"GV.AT-P3\"]",
+  "nist_privacy_framework.subcategories[\"GV.AT-P4\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P1\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P2\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P3\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P4\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P5\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P6\"]",
+  "nist_privacy_framework.subcategories[\"GV.MT-P7\"]",
+  "nist_privacy_framework.subcategories[\"GV.PO-P1\"]",
+  "nist_privacy_framework.subcategories[\"GV.PO-P2\"]",
+  "nist_privacy_framework.subcategories[\"GV.PO-P3\"]",
+  "nist_privacy_framework.subcategories[\"GV.PO-P4\"]",
+  "nist_privacy_framework.subcategories[\"GV.PO-P5\"]",
+  "nist_privacy_framework.subcategories[\"GV.PO-P6\"]",
+  "nist_privacy_framework.subcategories[\"GV.RM-P1\"]",
+  "nist_privacy_framework.subcategories[\"GV.RM-P2\"]",
+  "nist_privacy_framework.subcategories[\"GV.RM-P3\"]",
+  "nist_privacy_framework.subcategories[\"ID.BE-P1\"]",
+  "nist_privacy_framework.subcategories[\"ID.BE-P2\"]",
+  "nist_privacy_framework.subcategories[\"ID.BE-P3\"]",
+  "nist_privacy_framework.subcategories[\"ID.DE-P1\"]",
+  "nist_privacy_framework.subcategories[\"ID.DE-P2\"]",
+  "nist_privacy_framework.subcategories[\"ID.DE-P3\"]",
+  "nist_privacy_framework.subcategories[\"ID.DE-P4\"]",
+  "nist_privacy_framework.subcategories[\"ID.DE-P5\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P1\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P2\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P3\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P4\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P5\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P6\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P7\"]",
+  "nist_privacy_framework.subcategories[\"ID.IM-P8\"]",
+  "nist_privacy_framework.subcategories[\"ID.RA-P1\"]",
+  "nist_privacy_framework.subcategories[\"ID.RA-P2\"]",
+  "nist_privacy_framework.subcategories[\"ID.RA-P3\"]",
+  "nist_privacy_framework.subcategories[\"ID.RA-P4\"]",
+  "nist_privacy_framework.subcategories[\"ID.RA-P5\"]",
+  "nist_privacy_framework.subcategories[\"PR.AC-P1\"]",
+  "nist_privacy_framework.subcategories[\"PR.AC-P2\"]",
+  "nist_privacy_framework.subcategories[\"PR.AC-P3\"]",
+  "nist_privacy_framework.subcategories[\"PR.AC-P4\"]",
+  "nist_privacy_framework.subcategories[\"PR.AC-P5\"]",
+  "nist_privacy_framework.subcategories[\"PR.AC-P6\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P1\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P2\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P3\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P4\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P5\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P6\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P7\"]",
+  "nist_privacy_framework.subcategories[\"PR.DS-P8\"]",
+  "nist_privacy_framework.subcategories[\"PR.MA-P1\"]",
+  "nist_privacy_framework.subcategories[\"PR.MA-P2\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P1\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P10\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P2\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P3\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P4\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P5\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P6\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P7\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P8\"]",
+  "nist_privacy_framework.subcategories[\"PR.PO-P9\"]",
+  "nist_privacy_framework.subcategories[\"PR.PT-P1\"]",
+  "nist_privacy_framework.subcategories[\"PR.PT-P2\"]",
+  "nist_privacy_framework.subcategories[\"PR.PT-P3\"]",
+  "nist_privacy_framework.subcategories[\"PR.PT-P4\"]"
+ ]
+}

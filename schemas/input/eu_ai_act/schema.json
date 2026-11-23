@@ -1,0 +1,1161 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/eu_ai_act/schema.json",
+ "title": "Input facts for eu_ai_act",
+ "description": "Facts the module in governance/eu_ai_act/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "eu_ai_act",
+ "x-entrypoint": "data.eu_ai_act.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "governance/eu_ai_act/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.eu_ai_act.main_test.clean_minimal",
+ "type": "object",
+ "properties": {
+  "eu_ai_act": {
+   "description": "Read in eu_ai_act_governance.rego, eu_ai_act_gpai.rego, eu_ai_act_high_risk.rego, eu_ai_act_main.rego and 2 more.",
+   "type": "object",
+   "properties": {
+    "governance": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "confidentiality": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "competent_authority_confidentiality_binding": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "confidentiality_obligations_documented": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "trade_secrets_protected_in_assessments": {
+         "description": "Read in eu_ai_act_governance.rego."
+        }
+       }
+      },
+      "deployer": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "annex_iii_use_case": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "data_breach_reporting_established": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "fundamental_rights_impact_assessment_conducted": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "high_risk_public_or_private_sector": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "human_oversight_assigned": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "input_data_relevance_verified": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "oversight_persons_adequately_trained": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "registered_use_in_eu_database": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "uses_system_per_provider_instructions": {
+         "description": "Read in eu_ai_act_governance.rego."
+        }
+       }
+      },
+      "deployer_as_provider": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "conformity_assessment_redone": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "placed_under_own_name_or_trademark": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "provider_obligations_assumed": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "substantially_modified_high_risk_ai": {
+         "description": "Read in eu_ai_act_governance.rego."
+        }
+       }
+      },
+      "fria": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "affected_fundamental_rights_identified": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "assessment_conducted": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "assessment_required": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "notification_of_affected_persons_process": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "results_available_to_competent_authorities": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "risk_mitigation_measures_identified": {
+         "description": "Read in eu_ai_act_governance.rego."
+        }
+       }
+      },
+      "fundamental_rights_bodies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "cooperation_procedure_established": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "dpa_access_granted": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "equality_body_access_granted": {
+         "description": "Read in eu_ai_act_governance.rego."
+        }
+       }
+      },
+      "post_market": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "corrective_actions_taken_when_needed": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "monitoring_covers_annex_vii_content": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "monitoring_plan_established": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "near_misses_tracked": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "performance_metrics_collected": {
+         "description": "Read in eu_ai_act_governance.rego."
+        },
+        "serious_incidents_reported_to_authority": {
+         "description": "Read in eu_ai_act_governance.rego."
+        }
+       }
+      }
+     }
+    },
+    "gpai": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "article_53": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "copyright_compliance_policy_established": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "copyright_compliance_policy_published": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "downstream_documentation_adequate": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "information_provided_to_downstream_providers": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "model_cards_or_equivalent": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "technical_documentation_drawn_up": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "technical_documentation_kept_current": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "training_data_summary_adequate": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "training_data_summary_published": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        }
+       }
+      },
+      "article_54": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "authorized_representative_designated": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "provider_established_outside_eu": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "representative_has_full_mandate": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "representative_registered_with_national_authority": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        }
+       }
+      },
+      "article_55": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "adversarial_testing_performed": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "commission_designated": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "cybersecurity_measures_proportionate": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "energy_efficiency_reporting_provided": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "model_evaluation_conducted": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "notification_timely": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "notified_to_ai_office": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "physical_cybersecurity_protections": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "serious_incident_reporting_established": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "systemic_risk_mitigation_measures_documented": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "systemic_risk_model": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "training_flops": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "training_flops_exceeds_threshold": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        }
+       }
+      },
+      "article_56": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "code_of_practice_adhered_to": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "equivalent_compliance_demonstrated": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        },
+        "equivalent_compliance_documented": {
+         "description": "Read in eu_ai_act_gpai.rego."
+        }
+       }
+      }
+     }
+    },
+    "high_risk": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "accuracy_robustness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "accuracy_levels_specified": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "cybersecurity_measures_implemented": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "metrics_publicly_disclosed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "resilience_against_manipulation_demonstrated": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "robustness_against_errors_demonstrated": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "safety_critical_system": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "technical_redundancy_solutions_implemented": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "data_governance": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "data_lineage_documented": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "datasets_adequate_for_intended_purpose": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "datasets_examined_for_biases": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "gdpr_compliant_practices": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "processes_personal_data": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "test_data_governance_established": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "training_data_governance_established": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "validation_data_governance_established": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "human_oversight": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "effective_monitoring_by_natural_persons": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "halt_capability_provided": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "over_reliance_prevention_documented": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "override_capability_provided": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "oversight_measures_built_in": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "oversight_measures_specified_for_deployers": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "responsible_persons_identified": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "provider_obligations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "ce_marking_affixed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "ce_marking_required": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "conformity_assessment_completed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "eu_declaration_of_conformity_drawn_up": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "post_market_monitoring_in_place": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "registered_in_eu_database": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "serious_incident_reporting_procedure": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "quality_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "competence_awareness_training_procedures": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "corrective_action_procedures": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "design_development_control_procedures": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "qms_established": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "resource_management_documented": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "written_compliance_policies": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "record_keeping": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "automatic_logging_enabled": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "biometric_logs_retained_for_law_enforcement_duration": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "event_types_sufficient": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "is_biometric_system": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "log_retention_period_adequate": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "logs_enable_post_hoc_audit": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "risk_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "residual_risks_communicated": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "risks_evaluated_with_representative_data": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "risks_identified": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "system_documented": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "system_established": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "updated_post_market": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "technical_documentation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "available_to_national_authorities": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "contains_annex_iv_content": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "describes_design_specifications": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "kept_up_to_date": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "prepared_before_market_placement": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      },
+      "transparency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "accuracy_level_disclosed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "capability_limitations_disclosed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "human_oversight_measures_described": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "instructions_for_use_provided": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "intended_purpose_disclosed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "known_risks_disclosed": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        },
+        "residual_risks_disclosed_to_deployers": {
+         "description": "Read in eu_ai_act_high_risk.rego."
+        }
+       }
+      }
+     }
+    },
+    "prohibited": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "biometric_categorization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "infers_political_opinion": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "infers_race": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "infers_religion": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "infers_sexual_orientation": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "infers_trade_union_membership": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "law_enforcement_strict_conditions": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "csam": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "can_generate_csam": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "effective_safeguards_prevent_output": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "generated_csam": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "emotion_recognition": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "deployed_in_educational_institution": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "deployed_in_workplace": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "exception_claimed": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "exception_documented": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "medical_purpose": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "safety_purpose": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "facial_recognition_scraping": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "database_created_by_scraping": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "legal_basis_documented": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "scraping_targeted": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "scraping_untargeted": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "intimate_imagery": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "can_generate_realistic_intimate_imagery": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "effective_safeguards_prevent_output": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "generated_without_consent": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "predictive_policing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "assesses_individual_criminal_risk": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "based_solely_on_profiling": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "crime_prediction_without_human_review": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "objective_factual_basis_present": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "uses_only_group_characteristics": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "realtime_biometric_id": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "deployed_by_law_enforcement": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "deployed_in_public_spaces": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "exception_applies": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "geographically_unlimited": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "limited_to_annex_ii_offenses": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "prior_independent_body_authorization": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "prior_judicial_authorization": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "social_scoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "deployed_by_public_authority": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "evaluates_persons_based_on_social_behavior": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "treatment_is_disproportionate": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "treatment_is_unjustified": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      },
+      "subliminal_manipulation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "exploits_cognitive_biases": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "exploits_psychological_weaknesses": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "uses_subliminal_techniques": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      },
+      "vulnerability_exploitation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "causes_significant_harm": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "distorts_behavior": {
+         "description": "Read in eu_ai_act_prohibited.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        },
+        "harm_prevented_by_safeguards": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "targets_age_vulnerability": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "targets_disability_vulnerability": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        },
+        "targets_social_economic_situation": {
+         "description": "Read in eu_ai_act_prohibited.rego."
+        }
+       }
+      }
+     }
+    },
+    "system_classification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "risk_tier": {
+       "description": "Read in eu_ai_act_main.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "minimal_risk"
+       ]
+      }
+     }
+    },
+    "transparency": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "biometric_categorization": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "persons_notified": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "system_deployed": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        }
+       }
+      },
+      "chatbot": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "disclosure_at_interaction_start": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "impersonates_human": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "interacts_with_natural_persons": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "obvious_ai_context": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "obvious_ai_context_documented": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "users_informed_of_ai_nature": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        }
+       }
+      },
+      "deep_fake": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "generates_synthetic_audio": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "generates_synthetic_image": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "generates_synthetic_video": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "labeled_as_ai_generated": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "legitimate_purpose_evident": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "machine_readable_disclosure_embedded": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "purpose_documented": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        }
+       }
+      },
+      "deployment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "affected_persons_informed": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "deployer_of_emotion_recognition": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "high_risk_system": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "information_provided_before_exposure": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "registered_in_eu_database": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        }
+       }
+      },
+      "emotion_recognition": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "consent_obtained": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "gdpr_compliant": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "persons_notified": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "processes_personal_data": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "requires_consent": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "system_deployed": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        }
+       }
+      },
+      "public_interest_text": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "disclosure_format_compliant": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "editorial_review_process_documented": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "generates_text_on_public_interest": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "human_editorial_responsibility_taken": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        },
+        "labeled_as_ai_generated": {
+         "description": "Read in eu_ai_act_transparency.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "eu_ai_act",
+  "eu_ai_act.governance",
+  "eu_ai_act.governance.confidentiality",
+  "eu_ai_act.governance.confidentiality.competent_authority_confidentiality_binding",
+  "eu_ai_act.governance.confidentiality.confidentiality_obligations_documented",
+  "eu_ai_act.governance.confidentiality.trade_secrets_protected_in_assessments",
+  "eu_ai_act.governance.deployer",
+  "eu_ai_act.governance.deployer.annex_iii_use_case",
+  "eu_ai_act.governance.deployer.data_breach_reporting_established",
+  "eu_ai_act.governance.deployer.fundamental_rights_impact_assessment_conducted",
+  "eu_ai_act.governance.deployer.high_risk_public_or_private_sector",
+  "eu_ai_act.governance.deployer.human_oversight_assigned",
+  "eu_ai_act.governance.deployer.input_data_relevance_verified",
+  "eu_ai_act.governance.deployer.oversight_persons_adequately_trained",
+  "eu_ai_act.governance.deployer.registered_use_in_eu_database",
+  "eu_ai_act.governance.deployer.uses_system_per_provider_instructions",
+  "eu_ai_act.governance.deployer_as_provider",
+  "eu_ai_act.governance.deployer_as_provider.conformity_assessment_redone",
+  "eu_ai_act.governance.deployer_as_provider.placed_under_own_name_or_trademark",
+  "eu_ai_act.governance.deployer_as_provider.provider_obligations_assumed",
+  "eu_ai_act.governance.deployer_as_provider.substantially_modified_high_risk_ai",
+  "eu_ai_act.governance.fria",
+  "eu_ai_act.governance.fria.affected_fundamental_rights_identified",
+  "eu_ai_act.governance.fria.assessment_conducted",
+  "eu_ai_act.governance.fria.assessment_required",
+  "eu_ai_act.governance.fria.notification_of_affected_persons_process",
+  "eu_ai_act.governance.fria.results_available_to_competent_authorities",
+  "eu_ai_act.governance.fria.risk_mitigation_measures_identified",
+  "eu_ai_act.governance.fundamental_rights_bodies",
+  "eu_ai_act.governance.fundamental_rights_bodies.cooperation_procedure_established",
+  "eu_ai_act.governance.fundamental_rights_bodies.dpa_access_granted",
+  "eu_ai_act.governance.fundamental_rights_bodies.equality_body_access_granted",
+  "eu_ai_act.governance.post_market",
+  "eu_ai_act.governance.post_market.corrective_actions_taken_when_needed",
+  "eu_ai_act.governance.post_market.monitoring_covers_annex_vii_content",
+  "eu_ai_act.governance.post_market.monitoring_plan_established",
+  "eu_ai_act.governance.post_market.near_misses_tracked",
+  "eu_ai_act.governance.post_market.performance_metrics_collected",
+  "eu_ai_act.governance.post_market.serious_incidents_reported_to_authority",
+  "eu_ai_act.gpai",
+  "eu_ai_act.gpai.article_53",
+  "eu_ai_act.gpai.article_53.copyright_compliance_policy_established",
+  "eu_ai_act.gpai.article_53.copyright_compliance_policy_published",
+  "eu_ai_act.gpai.article_53.downstream_documentation_adequate",
+  "eu_ai_act.gpai.article_53.information_provided_to_downstream_providers",
+  "eu_ai_act.gpai.article_53.model_cards_or_equivalent",
+  "eu_ai_act.gpai.article_53.technical_documentation_drawn_up",
+  "eu_ai_act.gpai.article_53.technical_documentation_kept_current",
+  "eu_ai_act.gpai.article_53.training_data_summary_adequate",
+  "eu_ai_act.gpai.article_53.training_data_summary_published",
+  "eu_ai_act.gpai.article_54",
+  "eu_ai_act.gpai.article_54.authorized_representative_designated",
+  "eu_ai_act.gpai.article_54.provider_established_outside_eu",
+  "eu_ai_act.gpai.article_54.representative_has_full_mandate",
+  "eu_ai_act.gpai.article_54.representative_registered_with_national_authority",
+  "eu_ai_act.gpai.article_55",
+  "eu_ai_act.gpai.article_55.adversarial_testing_performed",
+  "eu_ai_act.gpai.article_55.commission_designated",
+  "eu_ai_act.gpai.article_55.cybersecurity_measures_proportionate",
+  "eu_ai_act.gpai.article_55.energy_efficiency_reporting_provided",
+  "eu_ai_act.gpai.article_55.model_evaluation_conducted",
+  "eu_ai_act.gpai.article_55.notification_timely",
+  "eu_ai_act.gpai.article_55.notified_to_ai_office",
+  "eu_ai_act.gpai.article_55.physical_cybersecurity_protections",
+  "eu_ai_act.gpai.article_55.serious_incident_reporting_established",
+  "eu_ai_act.gpai.article_55.systemic_risk_mitigation_measures_documented",
+  "eu_ai_act.gpai.article_55.systemic_risk_model",
+  "eu_ai_act.gpai.article_55.training_flops",
+  "eu_ai_act.gpai.article_55.training_flops_exceeds_threshold",
+  "eu_ai_act.gpai.article_56",
+  "eu_ai_act.gpai.article_56.code_of_practice_adhered_to",
+  "eu_ai_act.gpai.article_56.equivalent_compliance_demonstrated",
+  "eu_ai_act.gpai.article_56.equivalent_compliance_documented",
+  "eu_ai_act.high_risk",
+  "eu_ai_act.high_risk.accuracy_robustness",
+  "eu_ai_act.high_risk.accuracy_robustness.accuracy_levels_specified",
+  "eu_ai_act.high_risk.accuracy_robustness.cybersecurity_measures_implemented",
+  "eu_ai_act.high_risk.accuracy_robustness.metrics_publicly_disclosed",
+  "eu_ai_act.high_risk.accuracy_robustness.resilience_against_manipulation_demonstrated",
+  "eu_ai_act.high_risk.accuracy_robustness.robustness_against_errors_demonstrated",
+  "eu_ai_act.high_risk.accuracy_robustness.safety_critical_system",
+  "eu_ai_act.high_risk.accuracy_robustness.technical_redundancy_solutions_implemented",
+  "eu_ai_act.high_risk.data_governance",
+  "eu_ai_act.high_risk.data_governance.data_lineage_documented",
+  "eu_ai_act.high_risk.data_governance.datasets_adequate_for_intended_purpose",
+  "eu_ai_act.high_risk.data_governance.datasets_examined_for_biases",
+  "eu_ai_act.high_risk.data_governance.gdpr_compliant_practices",
+  "eu_ai_act.high_risk.data_governance.processes_personal_data",
+  "eu_ai_act.high_risk.data_governance.test_data_governance_established",
+  "eu_ai_act.high_risk.data_governance.training_data_governance_established",
+  "eu_ai_act.high_risk.data_governance.validation_data_governance_established",
+  "eu_ai_act.high_risk.human_oversight",
+  "eu_ai_act.high_risk.human_oversight.effective_monitoring_by_natural_persons",
+  "eu_ai_act.high_risk.human_oversight.halt_capability_provided",
+  "eu_ai_act.high_risk.human_oversight.over_reliance_prevention_documented",
+  "eu_ai_act.high_risk.human_oversight.override_capability_provided",
+  "eu_ai_act.high_risk.human_oversight.oversight_measures_built_in",
+  "eu_ai_act.high_risk.human_oversight.oversight_measures_specified_for_deployers",
+  "eu_ai_act.high_risk.human_oversight.responsible_persons_identified",
+  "eu_ai_act.high_risk.provider_obligations",
+  "eu_ai_act.high_risk.provider_obligations.ce_marking_affixed",
+  "eu_ai_act.high_risk.provider_obligations.ce_marking_required",
+  "eu_ai_act.high_risk.provider_obligations.conformity_assessment_completed",
+  "eu_ai_act.high_risk.provider_obligations.eu_declaration_of_conformity_drawn_up",
+  "eu_ai_act.high_risk.provider_obligations.post_market_monitoring_in_place",
+  "eu_ai_act.high_risk.provider_obligations.registered_in_eu_database",
+  "eu_ai_act.high_risk.provider_obligations.serious_incident_reporting_procedure",
+  "eu_ai_act.high_risk.quality_management",
+  "eu_ai_act.high_risk.quality_management.competence_awareness_training_procedures",
+  "eu_ai_act.high_risk.quality_management.corrective_action_procedures",
+  "eu_ai_act.high_risk.quality_management.design_development_control_procedures",
+  "eu_ai_act.high_risk.quality_management.qms_established",
+  "eu_ai_act.high_risk.quality_management.resource_management_documented",
+  "eu_ai_act.high_risk.quality_management.written_compliance_policies",
+  "eu_ai_act.high_risk.record_keeping",
+  "eu_ai_act.high_risk.record_keeping.automatic_logging_enabled",
+  "eu_ai_act.high_risk.record_keeping.biometric_logs_retained_for_law_enforcement_duration",
+  "eu_ai_act.high_risk.record_keeping.event_types_sufficient",
+  "eu_ai_act.high_risk.record_keeping.is_biometric_system",
+  "eu_ai_act.high_risk.record_keeping.log_retention_period_adequate",
+  "eu_ai_act.high_risk.record_keeping.logs_enable_post_hoc_audit",
+  "eu_ai_act.high_risk.risk_management",
+  "eu_ai_act.high_risk.risk_management.residual_risks_communicated",
+  "eu_ai_act.high_risk.risk_management.risks_evaluated_with_representative_data",
+  "eu_ai_act.high_risk.risk_management.risks_identified",
+  "eu_ai_act.high_risk.risk_management.system_documented",
+  "eu_ai_act.high_risk.risk_management.system_established",
+  "eu_ai_act.high_risk.risk_management.updated_post_market",
+  "eu_ai_act.high_risk.technical_documentation",
+  "eu_ai_act.high_risk.technical_documentation.available_to_national_authorities",
+  "eu_ai_act.high_risk.technical_documentation.contains_annex_iv_content",
+  "eu_ai_act.high_risk.technical_documentation.describes_design_specifications",
+  "eu_ai_act.high_risk.technical_documentation.kept_up_to_date",
+  "eu_ai_act.high_risk.technical_documentation.prepared_before_market_placement",
+  "eu_ai_act.high_risk.transparency",
+  "eu_ai_act.high_risk.transparency.accuracy_level_disclosed",
+  "eu_ai_act.high_risk.transparency.capability_limitations_disclosed",
+  "eu_ai_act.high_risk.transparency.human_oversight_measures_described",
+  "eu_ai_act.high_risk.transparency.instructions_for_use_provided",
+  "eu_ai_act.high_risk.transparency.intended_purpose_disclosed",
+  "eu_ai_act.high_risk.transparency.known_risks_disclosed",
+  "eu_ai_act.high_risk.transparency.residual_risks_disclosed_to_deployers",
+  "eu_ai_act.prohibited",
+  "eu_ai_act.prohibited.biometric_categorization",
+  "eu_ai_act.prohibited.biometric_categorization.infers_political_opinion",
+  "eu_ai_act.prohibited.biometric_categorization.infers_race",
+  "eu_ai_act.prohibited.biometric_categorization.infers_religion",
+  "eu_ai_act.prohibited.biometric_categorization.infers_sexual_orientation",
+  "eu_ai_act.prohibited.biometric_categorization.infers_trade_union_membership",
+  "eu_ai_act.prohibited.biometric_categorization.law_enforcement_strict_conditions",
+  "eu_ai_act.prohibited.csam",
+  "eu_ai_act.prohibited.csam.can_generate_csam",
+  "eu_ai_act.prohibited.csam.effective_safeguards_prevent_output",
+  "eu_ai_act.prohibited.csam.generated_csam",
+  "eu_ai_act.prohibited.emotion_recognition",
+  "eu_ai_act.prohibited.emotion_recognition.deployed_in_educational_institution",
+  "eu_ai_act.prohibited.emotion_recognition.deployed_in_workplace",
+  "eu_ai_act.prohibited.emotion_recognition.exception_claimed",
+  "eu_ai_act.prohibited.emotion_recognition.exception_documented",
+  "eu_ai_act.prohibited.emotion_recognition.medical_purpose",
+  "eu_ai_act.prohibited.emotion_recognition.safety_purpose",
+  "eu_ai_act.prohibited.facial_recognition_scraping",
+  "eu_ai_act.prohibited.facial_recognition_scraping.database_created_by_scraping",
+  "eu_ai_act.prohibited.facial_recognition_scraping.legal_basis_documented",
+  "eu_ai_act.prohibited.facial_recognition_scraping.scraping_targeted",
+  "eu_ai_act.prohibited.facial_recognition_scraping.scraping_untargeted",
+  "eu_ai_act.prohibited.intimate_imagery",
+  "eu_ai_act.prohibited.intimate_imagery.can_generate_realistic_intimate_imagery",
+  "eu_ai_act.prohibited.intimate_imagery.effective_safeguards_prevent_output",
+  "eu_ai_act.prohibited.intimate_imagery.generated_without_consent",
+  "eu_ai_act.prohibited.predictive_policing",
+  "eu_ai_act.prohibited.predictive_policing.assesses_individual_criminal_risk",
+  "eu_ai_act.prohibited.predictive_policing.based_solely_on_profiling",
+  "eu_ai_act.prohibited.predictive_policing.crime_prediction_without_human_review",
+  "eu_ai_act.prohibited.predictive_policing.objective_factual_basis_present",
+  "eu_ai_act.prohibited.predictive_policing.uses_only_group_characteristics",
+  "eu_ai_act.prohibited.realtime_biometric_id",
+  "eu_ai_act.prohibited.realtime_biometric_id.deployed_by_law_enforcement",
+  "eu_ai_act.prohibited.realtime_biometric_id.deployed_in_public_spaces",
+  "eu_ai_act.prohibited.realtime_biometric_id.exception_applies",
+  "eu_ai_act.prohibited.realtime_biometric_id.geographically_unlimited",
+  "eu_ai_act.prohibited.realtime_biometric_id.limited_to_annex_ii_offenses",
+  "eu_ai_act.prohibited.realtime_biometric_id.prior_independent_body_authorization",
+  "eu_ai_act.prohibited.realtime_biometric_id.prior_judicial_authorization",
+  "eu_ai_act.prohibited.social_scoring",
+  "eu_ai_act.prohibited.social_scoring.deployed_by_public_authority",
+  "eu_ai_act.prohibited.social_scoring.evaluates_persons_based_on_social_behavior",
+  "eu_ai_act.prohibited.social_scoring.treatment_is_disproportionate",
+  "eu_ai_act.prohibited.social_scoring.treatment_is_unjustified",
+  "eu_ai_act.prohibited.subliminal_manipulation",
+  "eu_ai_act.prohibited.subliminal_manipulation.exploits_cognitive_biases",
+  "eu_ai_act.prohibited.subliminal_manipulation.exploits_psychological_weaknesses",
+  "eu_ai_act.prohibited.subliminal_manipulation.uses_subliminal_techniques",
+  "eu_ai_act.prohibited.vulnerability_exploitation",
+  "eu_ai_act.prohibited.vulnerability_exploitation.causes_significant_harm",
+  "eu_ai_act.prohibited.vulnerability_exploitation.distorts_behavior",
+  "eu_ai_act.prohibited.vulnerability_exploitation.harm_prevented_by_safeguards",
+  "eu_ai_act.prohibited.vulnerability_exploitation.targets_age_vulnerability",
+  "eu_ai_act.prohibited.vulnerability_exploitation.targets_disability_vulnerability",
+  "eu_ai_act.prohibited.vulnerability_exploitation.targets_social_economic_situation",
+  "eu_ai_act.system_classification",
+  "eu_ai_act.system_classification.risk_tier",
+  "eu_ai_act.transparency",
+  "eu_ai_act.transparency.biometric_categorization",
+  "eu_ai_act.transparency.biometric_categorization.persons_notified",
+  "eu_ai_act.transparency.biometric_categorization.system_deployed",
+  "eu_ai_act.transparency.chatbot",
+  "eu_ai_act.transparency.chatbot.disclosure_at_interaction_start",
+  "eu_ai_act.transparency.chatbot.impersonates_human",
+  "eu_ai_act.transparency.chatbot.interacts_with_natural_persons",
+  "eu_ai_act.transparency.chatbot.obvious_ai_context",
+  "eu_ai_act.transparency.chatbot.obvious_ai_context_documented",
+  "eu_ai_act.transparency.chatbot.users_informed_of_ai_nature",
+  "eu_ai_act.transparency.deep_fake",
+  "eu_ai_act.transparency.deep_fake.generates_synthetic_audio",
+  "eu_ai_act.transparency.deep_fake.generates_synthetic_image",
+  "eu_ai_act.transparency.deep_fake.generates_synthetic_video",
+  "eu_ai_act.transparency.deep_fake.labeled_as_ai_generated",
+  "eu_ai_act.transparency.deep_fake.legitimate_purpose_evident",
+  "eu_ai_act.transparency.deep_fake.machine_readable_disclosure_embedded",
+  "eu_ai_act.transparency.deep_fake.purpose_documented",
+  "eu_ai_act.transparency.deployment",
+  "eu_ai_act.transparency.deployment.affected_persons_informed",
+  "eu_ai_act.transparency.deployment.deployer_of_emotion_recognition",
+  "eu_ai_act.transparency.deployment.high_risk_system",
+  "eu_ai_act.transparency.deployment.information_provided_before_exposure",
+  "eu_ai_act.transparency.deployment.registered_in_eu_database",
+  "eu_ai_act.transparency.emotion_recognition",
+  "eu_ai_act.transparency.emotion_recognition.consent_obtained",
+  "eu_ai_act.transparency.emotion_recognition.gdpr_compliant",
+  "eu_ai_act.transparency.emotion_recognition.persons_notified",
+  "eu_ai_act.transparency.emotion_recognition.processes_personal_data",
+  "eu_ai_act.transparency.emotion_recognition.requires_consent",
+  "eu_ai_act.transparency.emotion_recognition.system_deployed",
+  "eu_ai_act.transparency.public_interest_text",
+  "eu_ai_act.transparency.public_interest_text.disclosure_format_compliant",
+  "eu_ai_act.transparency.public_interest_text.editorial_review_process_documented",
+  "eu_ai_act.transparency.public_interest_text.generates_text_on_public_interest",
+  "eu_ai_act.transparency.public_interest_text.human_editorial_responsibility_taken",
+  "eu_ai_act.transparency.public_interest_text.labeled_as_ai_generated"
+ ]
+}

@@ -1,0 +1,256 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/itar/schema.json",
+ "title": "Input facts for itar",
+ "description": "Facts the module in frameworks/regulatory/itar/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "itar",
+ "x-entrypoint": "data.itar.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/regulatory/itar/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.itar.main_test.compliant_input",
+ "type": "object",
+ "properties": {
+  "access": {
+   "description": "Read in itar_main.rego.",
+   "type": "object",
+   "properties": {
+    "aukus": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "both_parties_on_authorized_user_list": {
+       "description": "Read in itar_main.rego."
+      },
+      "ddtc_registration_current": {
+       "description": "Read in itar_main.rego."
+      },
+      "item_not_on_excluded_technology_list": {
+       "description": "Read in itar_main.rego."
+      }
+     }
+    },
+    "foreign_person_authorization_documented": {
+     "description": "Read in itar_main.rego."
+    },
+    "physical_controls": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "system_access_controls": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "us_persons_only_enforced": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in itar_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "2026-09-02"
+   ]
+  },
+  "encryption": {
+   "description": "Read in itar_main.rego.",
+   "type": "object",
+   "properties": {
+    "end_to_end_fips_validated": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "keys_withheld_from_foreign_persons": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "no_storage_in_proscribed_or_russia": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "not_sent_from_proscribed_or_russia": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in itar_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "Example Defense Supplier"
+   ]
+  },
+  "jurisdiction": {
+   "description": "Read in itar_main.rego.",
+   "type": "object",
+   "properties": {
+    "classification_reviewed_after_usml_revision": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "technical_data_identified": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "program": {
+   "description": "Read in itar_main.rego.",
+   "type": "object",
+   "properties": {
+    "empowered_official_designated": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "subcontractor_flowdown": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "training_provided": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "violation_disclosure_process": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "written_compliance_program": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "records": {
+   "description": "Read in itar_main.rego.",
+   "type": "object",
+   "properties": {
+    "access_logging": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "retention_5_years": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "registration": {
+   "description": "Read in itar_main.rego.",
+   "type": "object",
+   "properties": {
+    "ddtc_current": {
+     "description": "Read in itar_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access",
+  "access.aukus",
+  "access.aukus.both_parties_on_authorized_user_list",
+  "access.aukus.ddtc_registration_current",
+  "access.aukus.item_not_on_excluded_technology_list",
+  "access.foreign_person_authorization_documented",
+  "access.physical_controls",
+  "access.system_access_controls",
+  "access.us_persons_only_enforced",
+  "assessment_date",
+  "encryption",
+  "encryption.end_to_end_fips_validated",
+  "encryption.keys_withheld_from_foreign_persons",
+  "encryption.no_storage_in_proscribed_or_russia",
+  "encryption.not_sent_from_proscribed_or_russia",
+  "entity_name",
+  "jurisdiction",
+  "jurisdiction.classification_reviewed_after_usml_revision",
+  "jurisdiction.technical_data_identified",
+  "program",
+  "program.empowered_official_designated",
+  "program.subcontractor_flowdown",
+  "program.training_provided",
+  "program.violation_disclosure_process",
+  "program.written_compliance_program",
+  "records",
+  "records.access_logging",
+  "records.retention_5_years",
+  "registration",
+  "registration.ddtc_current"
+ ]
+}

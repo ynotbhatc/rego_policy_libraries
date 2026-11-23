@@ -1,0 +1,1565 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_vmware_esxi_9/schema.json",
+ "title": "Input facts for cis_vmware_esxi_9",
+ "description": "Facts the module in benchmarks/cis/vmware/esxi_9/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "cis_vmware_esxi_9",
+ "x-entrypoint": "data.cis_vmware_esxi_9.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/cis/vmware/esxi_9/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_vmware_esxi_9_test.green",
+ "type": "object",
+ "properties": {
+  "cis_profile": {
+   "description": "Read in cis_vmware_esxi_9.rego, cis_vmware_esxi_9_main.rego.",
+   "type": "object",
+   "properties": {
+    "level": {
+     "description": "Read in cis_vmware_esxi_9.rego, cis_vmware_esxi_9_main.rego."
+    }
+   }
+  },
+  "esxi": {
+   "description": "Read in cis_vmware_esxi_9.rego.",
+   "type": "object",
+   "properties": {
+    "advanced_settings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "Config.HostAgent.plugins.solo.enableMob": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "false"
+       ]
+      },
+      "Config.HostAgent.vmacore.soap.sessionTimeout": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        30
+       ]
+      },
+      "Mem.MemEagerZero": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "Mem.ShareForceSalting": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "Net.BMCNetworkEnable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "Net.BlockGuestBPDU": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        1
+       ]
+      },
+      "Net.DVFilterBindIpAddress": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        ""
+       ]
+      },
+      "Security.AccountLockFailures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        5
+       ]
+      },
+      "Security.AccountUnlockTime": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        900
+       ]
+      },
+      "Security.PasswordHistory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        5
+       ]
+      },
+      "Security.PasswordQualityControl": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "retry=3 min=disabled,disabled,disabled,disabled,15"
+       ]
+      },
+      "Syslog.global.logHost": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "udp://10.0.0.30:514"
+       ]
+      },
+      "UserVars.DcuiTimeOut": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        600
+       ]
+      },
+      "UserVars.ESXiShellInteractiveTimeOut": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        300
+       ]
+      },
+      "UserVars.ESXiShellTimeOut": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        3600
+       ]
+      },
+      "UserVars.HostClientSessionTimeout": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        900
+       ]
+      },
+      "UserVars.SuppressHyperthreadWarning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      },
+      "UserVars.SuppressShellWarning": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        0
+       ]
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in cis_vmware_esxi_9.rego."
+     },
+     "x-variable-key": "<k>"
+    },
+    "attest": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "amd_sev_es_enabled_where_supported": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_record_location_persistent": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "audit_storage_seven_days": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "bmc_authentication_secure": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "bmc_hardened": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "bmc_remote_logging": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "bmc_time_synchronized": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "cim_access_limited": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dcui_access_list_accurate": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "dcui_host_client_banner_approved": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "esxi_patches_current": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "esxi_release_in_general_support": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "hardware_firmware_inventoried": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "intel_sgx_enabled_where_supported": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "intel_txt_enabled_where_supported": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "iscsi_chap_secrets_unique": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "lockdown_exception_users_accurate": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "log_detail_sufficient": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "management_traffic_isolated": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "password_max_days_approved": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "snmp_access_limited": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ssh_banner_file_approved": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sshd_ciphers_fips": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sshd_crypto_modules_fips": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "storage_traffic_isolated": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "system_log_location_persistent": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tls_highest_version_only": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_auto_add_features_limited": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_auto_remove_features_limited": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_logs_to_system_logger": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_msi_transforms_limited": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_recustomize_blocked": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_setinfo_size_limit_approved": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_updates_current": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_upgrade_policy_approved": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_version_supported": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tpm_2_0_configured": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unneeded_ahci_controllers_removed": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "unused_ports_secured": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "virtual_hardware_mgmt_interfaces_absent": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "audit_records": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "remote_host_enabled": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "storage_active": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "datastores": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "ds-a"
+        ]
+       }
+      }
+     }
+    },
+    "encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "mode": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TPM"
+       ]
+      },
+      "require_secure_boot": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "firewall": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "default_action": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "DROP"
+       ]
+      },
+      "enabled": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "rulesets": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "allowed_ip_all": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "sshServer"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "iscsi_adapters": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "chap_type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "Required"
+        ]
+       },
+       "device": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "vmhba64"
+        ]
+       },
+       "mutual_chap_enabled": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    },
+    "kernel_settings": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "object",
+     "properties": {
+      "disableHwrng": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "FALSE"
+       ]
+      },
+      "execInstalledOnly": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "TRUE"
+       ]
+      }
+     }
+    },
+    "lockdown_mode": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "strict"
+     ]
+    },
+    "ntp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "servers": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "10.0.0.123"
+        ]
+       },
+       "examples": [
+        [
+         "10.0.0.123",
+         "10.0.1.123"
+        ]
+       ]
+      }
+     }
+    },
+    "passwd": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "dcui": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "shell": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/sbin/nologin"
+         ]
+        }
+       }
+      },
+      "vpxuser": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "shell": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "/sbin/nologin"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "secure_boot": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "services": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "object",
+     "properties": {
+      "TSM": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "object",
+       "properties": {
+        "policy": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "off"
+         ]
+        },
+        "running": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      },
+      "TSM-SSH": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "object",
+       "properties": {
+        "policy": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "off"
+         ]
+        },
+        "running": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      },
+      "ntpd": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "object",
+       "properties": {
+        "policy": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "on"
+         ]
+        },
+        "running": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "slpd": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "object",
+       "properties": {
+        "policy": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "off"
+         ]
+        },
+        "running": {
+         "description": "Read in cis_vmware_esxi_9.rego.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          false
+         ]
+        }
+       }
+      }
+     }
+    },
+    "snmp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      }
+     }
+    },
+    "software": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "acceptance_level": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "PartnerSupported"
+       ]
+      }
+     }
+    },
+    "sshd_config": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "allowstreamlocalforwarding": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no"
+       ]
+      },
+      "allowtcpforwarding": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no"
+       ]
+      },
+      "banner": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "/etc/issue"
+       ]
+      },
+      "clientalivecountmax": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        3
+       ]
+      },
+      "clientaliveinterval": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        200
+       ]
+      },
+      "gatewayports": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no"
+       ]
+      },
+      "hostbasedauthentication": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no"
+       ]
+      },
+      "ignorerhosts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "yes"
+       ]
+      },
+      "permittunnel": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no"
+       ]
+      },
+      "permituserenvironment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no"
+       ]
+      }
+     },
+     "additionalProperties": {
+      "description": "Read in cis_vmware_esxi_9.rego."
+     },
+     "x-variable-key": "<k>"
+    },
+    "syslog": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "check_ssl_certs": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "log_filtering_enabled": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "log_level": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "info"
+       ]
+      },
+      "strict_x509_compliance": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "vms": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "advanced_settings": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "RemoteDisplay.maxConnections": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "1"
+          ]
+         },
+         "isolation.device.connectable.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "isolation.device.edit.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "isolation.tools.copy.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "isolation.tools.diskShrink.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "isolation.tools.diskWiper.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "isolation.tools.dnd.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "isolation.tools.paste.disable": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "log.keepOld": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "10"
+          ]
+         },
+         "log.rotateSize": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "1024000"
+          ]
+         },
+         "logging": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "mks.enable3d": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "FALSE"
+          ]
+         },
+         "pciPassthru0.present": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "FALSE"
+          ]
+         },
+         "tools.guest.desktop.autolock": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "TRUE"
+          ]
+         },
+         "tools.guestlib.enableHostInfo": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "FALSE"
+          ]
+         },
+         "usb.present": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "FALSE"
+          ]
+         }
+        }
+       },
+       "config": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "efi_secure_boot_enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "ft_encryption_mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "ftEncryptionRequired"
+          ]
+         },
+         "migrate_encryption": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "required"
+          ]
+         },
+         "version": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "vmx-21"
+          ]
+         }
+        }
+       },
+       "device_types": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        },
+        "examples": [
+         []
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "vm-a"
+        ]
+       },
+       "tools_config": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "appinfo.disabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "true"
+          ]
+         },
+         "containerinfo.poll-interval": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "0"
+          ]
+         },
+         "globalconf.enabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "false"
+          ]
+         },
+         "guestoperations.disabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "true"
+          ]
+         },
+         "gueststoreupgrade.policy": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "off"
+          ]
+         },
+         "logging.log": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "true"
+          ]
+         },
+         "servicediscovery.disabled": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "true"
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "vswitches": {
+     "description": "Read in cis_vmware_esxi_9.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "vSwitch0"
+        ]
+       },
+       "portgroups": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "name": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "VM Network"
+           ]
+          },
+          "security": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "forged_transmits": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "boolean",
+             "x-type-source": "fixture",
+             "examples": [
+              false
+             ]
+            }
+           }
+          },
+          "vlan_id": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            20
+           ]
+          }
+         }
+        }
+       },
+       "security": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "forged_transmits": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         },
+         "mac_changes": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         },
+         "promiscuous_mode": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           false
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "wbem": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enabled": {
+       "description": "Read in cis_vmware_esxi_9.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cis_profile",
+  "cis_profile.level",
+  "esxi",
+  "esxi.advanced_settings",
+  "esxi.advanced_settings[\"Config.HostAgent.plugins.solo.enableMob\"]",
+  "esxi.advanced_settings[\"Config.HostAgent.vmacore.soap.sessionTimeout\"]",
+  "esxi.advanced_settings[\"Mem.MemEagerZero\"]",
+  "esxi.advanced_settings[\"Mem.ShareForceSalting\"]",
+  "esxi.advanced_settings[\"Net.BMCNetworkEnable\"]",
+  "esxi.advanced_settings[\"Net.BlockGuestBPDU\"]",
+  "esxi.advanced_settings[\"Net.DVFilterBindIpAddress\"]",
+  "esxi.advanced_settings[\"Security.AccountLockFailures\"]",
+  "esxi.advanced_settings[\"Security.AccountUnlockTime\"]",
+  "esxi.advanced_settings[\"Security.PasswordHistory\"]",
+  "esxi.advanced_settings[\"Security.PasswordQualityControl\"]",
+  "esxi.advanced_settings[\"Syslog.global.logHost\"]",
+  "esxi.advanced_settings[\"UserVars.DcuiTimeOut\"]",
+  "esxi.advanced_settings[\"UserVars.ESXiShellInteractiveTimeOut\"]",
+  "esxi.advanced_settings[\"UserVars.ESXiShellTimeOut\"]",
+  "esxi.advanced_settings[\"UserVars.HostClientSessionTimeout\"]",
+  "esxi.advanced_settings[\"UserVars.SuppressHyperthreadWarning\"]",
+  "esxi.advanced_settings[\"UserVars.SuppressShellWarning\"]",
+  "esxi.attest",
+  "esxi.attest.amd_sev_es_enabled_where_supported",
+  "esxi.attest.audit_record_location_persistent",
+  "esxi.attest.audit_storage_seven_days",
+  "esxi.attest.bmc_authentication_secure",
+  "esxi.attest.bmc_hardened",
+  "esxi.attest.bmc_remote_logging",
+  "esxi.attest.bmc_time_synchronized",
+  "esxi.attest.cim_access_limited",
+  "esxi.attest.dcui_access_list_accurate",
+  "esxi.attest.dcui_host_client_banner_approved",
+  "esxi.attest.esxi_patches_current",
+  "esxi.attest.esxi_release_in_general_support",
+  "esxi.attest.hardware_firmware_inventoried",
+  "esxi.attest.intel_sgx_enabled_where_supported",
+  "esxi.attest.intel_txt_enabled_where_supported",
+  "esxi.attest.iscsi_chap_secrets_unique",
+  "esxi.attest.lockdown_exception_users_accurate",
+  "esxi.attest.log_detail_sufficient",
+  "esxi.attest.management_traffic_isolated",
+  "esxi.attest.password_max_days_approved",
+  "esxi.attest.snmp_access_limited",
+  "esxi.attest.ssh_banner_file_approved",
+  "esxi.attest.sshd_ciphers_fips",
+  "esxi.attest.sshd_crypto_modules_fips",
+  "esxi.attest.storage_traffic_isolated",
+  "esxi.attest.system_log_location_persistent",
+  "esxi.attest.tls_highest_version_only",
+  "esxi.attest.tools_auto_add_features_limited",
+  "esxi.attest.tools_auto_remove_features_limited",
+  "esxi.attest.tools_logs_to_system_logger",
+  "esxi.attest.tools_msi_transforms_limited",
+  "esxi.attest.tools_recustomize_blocked",
+  "esxi.attest.tools_setinfo_size_limit_approved",
+  "esxi.attest.tools_updates_current",
+  "esxi.attest.tools_upgrade_policy_approved",
+  "esxi.attest.tools_version_supported",
+  "esxi.attest.tpm_2_0_configured",
+  "esxi.attest.unneeded_ahci_controllers_removed",
+  "esxi.attest.unused_ports_secured",
+  "esxi.attest.virtual_hardware_mgmt_interfaces_absent",
+  "esxi.audit_records",
+  "esxi.audit_records.remote_host_enabled",
+  "esxi.audit_records.storage_active",
+  "esxi.datastores",
+  "esxi.datastores[].name",
+  "esxi.encryption",
+  "esxi.encryption.mode",
+  "esxi.encryption.require_secure_boot",
+  "esxi.firewall",
+  "esxi.firewall.default_action",
+  "esxi.firewall.enabled",
+  "esxi.firewall.rulesets",
+  "esxi.firewall.rulesets[].allowed_ip_all",
+  "esxi.firewall.rulesets[].enabled",
+  "esxi.firewall.rulesets[].name",
+  "esxi.iscsi_adapters",
+  "esxi.iscsi_adapters[].chap_type",
+  "esxi.iscsi_adapters[].device",
+  "esxi.iscsi_adapters[].mutual_chap_enabled",
+  "esxi.kernel_settings",
+  "esxi.kernel_settings.disableHwrng",
+  "esxi.kernel_settings.execInstalledOnly",
+  "esxi.lockdown_mode",
+  "esxi.ntp",
+  "esxi.ntp.servers",
+  "esxi.passwd",
+  "esxi.passwd.dcui",
+  "esxi.passwd.dcui.shell",
+  "esxi.passwd.vpxuser",
+  "esxi.passwd.vpxuser.shell",
+  "esxi.secure_boot",
+  "esxi.secure_boot.enabled",
+  "esxi.services",
+  "esxi.services.TSM",
+  "esxi.services.TSM.policy",
+  "esxi.services.TSM.running",
+  "esxi.services.ntpd",
+  "esxi.services.ntpd.policy",
+  "esxi.services.ntpd.running",
+  "esxi.services.slpd",
+  "esxi.services.slpd.policy",
+  "esxi.services.slpd.running",
+  "esxi.services[\"TSM-SSH\"]",
+  "esxi.services[\"TSM-SSH\"].policy",
+  "esxi.services[\"TSM-SSH\"].running",
+  "esxi.snmp",
+  "esxi.snmp.enabled",
+  "esxi.software",
+  "esxi.software.acceptance_level",
+  "esxi.sshd_config",
+  "esxi.sshd_config.allowstreamlocalforwarding",
+  "esxi.sshd_config.allowtcpforwarding",
+  "esxi.sshd_config.banner",
+  "esxi.sshd_config.clientalivecountmax",
+  "esxi.sshd_config.clientaliveinterval",
+  "esxi.sshd_config.gatewayports",
+  "esxi.sshd_config.hostbasedauthentication",
+  "esxi.sshd_config.ignorerhosts",
+  "esxi.sshd_config.permittunnel",
+  "esxi.sshd_config.permituserenvironment",
+  "esxi.syslog",
+  "esxi.syslog.check_ssl_certs",
+  "esxi.syslog.log_filtering_enabled",
+  "esxi.syslog.log_level",
+  "esxi.syslog.strict_x509_compliance",
+  "esxi.vms",
+  "esxi.vms[].advanced_settings",
+  "esxi.vms[].advanced_settings.logging",
+  "esxi.vms[].advanced_settings[\"RemoteDisplay.maxConnections\"]",
+  "esxi.vms[].advanced_settings[\"isolation.device.connectable.disable\"]",
+  "esxi.vms[].advanced_settings[\"isolation.device.edit.disable\"]",
+  "esxi.vms[].advanced_settings[\"isolation.tools.copy.disable\"]",
+  "esxi.vms[].advanced_settings[\"isolation.tools.diskShrink.disable\"]",
+  "esxi.vms[].advanced_settings[\"isolation.tools.diskWiper.disable\"]",
+  "esxi.vms[].advanced_settings[\"isolation.tools.dnd.disable\"]",
+  "esxi.vms[].advanced_settings[\"isolation.tools.paste.disable\"]",
+  "esxi.vms[].advanced_settings[\"log.keepOld\"]",
+  "esxi.vms[].advanced_settings[\"log.rotateSize\"]",
+  "esxi.vms[].advanced_settings[\"mks.enable3d\"]",
+  "esxi.vms[].advanced_settings[\"pciPassthru0.present\"]",
+  "esxi.vms[].advanced_settings[\"tools.guest.desktop.autolock\"]",
+  "esxi.vms[].advanced_settings[\"tools.guestlib.enableHostInfo\"]",
+  "esxi.vms[].advanced_settings[\"usb.present\"]",
+  "esxi.vms[].config",
+  "esxi.vms[].config.efi_secure_boot_enabled",
+  "esxi.vms[].config.ft_encryption_mode",
+  "esxi.vms[].config.migrate_encryption",
+  "esxi.vms[].config.version",
+  "esxi.vms[].device_types",
+  "esxi.vms[].name",
+  "esxi.vms[].tools_config",
+  "esxi.vms[].tools_config[\"appinfo.disabled\"]",
+  "esxi.vms[].tools_config[\"containerinfo.poll-interval\"]",
+  "esxi.vms[].tools_config[\"globalconf.enabled\"]",
+  "esxi.vms[].tools_config[\"guestoperations.disabled\"]",
+  "esxi.vms[].tools_config[\"gueststoreupgrade.policy\"]",
+  "esxi.vms[].tools_config[\"logging.log\"]",
+  "esxi.vms[].tools_config[\"servicediscovery.disabled\"]",
+  "esxi.vswitches",
+  "esxi.vswitches[].name",
+  "esxi.vswitches[].portgroups",
+  "esxi.vswitches[].portgroups[].name",
+  "esxi.vswitches[].portgroups[].security",
+  "esxi.vswitches[].portgroups[].security.forged_transmits",
+  "esxi.vswitches[].portgroups[].vlan_id",
+  "esxi.vswitches[].security",
+  "esxi.vswitches[].security.forged_transmits",
+  "esxi.vswitches[].security.mac_changes",
+  "esxi.vswitches[].security.promiscuous_mode",
+  "esxi.wbem",
+  "esxi.wbem.enabled"
+ ]
+}

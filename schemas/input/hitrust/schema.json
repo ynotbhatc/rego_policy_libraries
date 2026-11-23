@@ -1,0 +1,727 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/hitrust/schema.json",
+ "title": "Input facts for hitrust",
+ "description": "Input paths referenced in the sources of frameworks/management/hitrust/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "hitrust",
+ "x-entrypoint": "data.hitrust.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/management/hitrust/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "access_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "periodic": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "mfa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "critical_systems": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "password_policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "strong": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "policy": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "privileged_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "termination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "prompt_revocation": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "user_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "formal_registration": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "access_management": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "phi": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "minimum_necessary": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "remote_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "wireless": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "secured": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in hitrust_main.rego."
+  },
+  "asset_management": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "classification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "phi_labeled": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "disposal": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "secure_media_sanitization": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "maintained": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "audit": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "logs": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "protected_from_tampering": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "retention_6_years": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "phi_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "logged": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "regular": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "business_continuity": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "bcp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "tested": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "drp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "phi_systems": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "compliance": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "hipaa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "breach_notification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "plan": {
+         "description": "Read in hitrust_main.rego."
+        }
+       }
+      },
+      "privacy_rule": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "policies": {
+         "description": "Read in hitrust_main.rego."
+        }
+       }
+      },
+      "security_rule": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "policies": {
+         "description": "Read in hitrust_main.rego."
+        }
+       }
+      }
+     }
+    },
+    "legal": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "periodic_review": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in hitrust_main.rego."
+  },
+  "entity_type": {
+   "description": "Read in hitrust_main.rego."
+  },
+  "hr_security": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "background_checks": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "performed": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "confidentiality": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "agreements_signed": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "sanctions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "policy_documented": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_response": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "phi_breach": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "procedures": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "tested_annually": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "hhs_60_days": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "operations": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "backup": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "phi_backed_up": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "change_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "formal_process": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "malware": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "protection_deployed": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "network_monitoring": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enabled": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "patch_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "timely": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "vulnerability_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "scanning": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "physical_security": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "equipment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "secured": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "perimeter": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controlled_access": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "visitor_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "logged": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "privacy": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "minimum_necessary": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enforced": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "notice": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "provided_to_patients": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "patient_rights": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "risk_management": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "conducted": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "periodic_review": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "phi_scope": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "encryption": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "phi_at_rest": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "phi_in_transit": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "treatment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "plan_documented": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "secure_development": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "phi": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "no_phi_in_test": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "requirements": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_included": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "testing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_testing": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "security_policy": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "dissemination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "to_workforce": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "phi_specific": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "security_program": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "isms": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "established": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "policies": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual_review": {
+       "description": "Read in hitrust_main.rego."
+      },
+      "approved_by_management": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "third_party": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "assessment": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_evaluation": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "baa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "executed": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "contracts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "security_requirements": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "training": {
+   "description": "Read in hitrust_main.rego.",
+   "properties": {
+    "completion": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "tracked": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "hipaa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "all_workforce_annual": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    },
+    "phi_handling": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "included": {
+       "description": "Read in hitrust_main.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.access_review",
+  "access_control.access_review.periodic",
+  "access_control.mfa",
+  "access_control.mfa.critical_systems",
+  "access_control.password_policy",
+  "access_control.password_policy.strong",
+  "access_control.policy",
+  "access_control.policy.documented",
+  "access_control.privileged_access",
+  "access_control.privileged_access.controlled",
+  "access_control.termination",
+  "access_control.termination.prompt_revocation",
+  "access_control.user_access",
+  "access_control.user_access.formal_registration",
+  "access_management",
+  "access_management.phi",
+  "access_management.phi.minimum_necessary",
+  "access_management.remote_access",
+  "access_management.remote_access.controlled",
+  "access_management.wireless",
+  "access_management.wireless.secured",
+  "assessment_date",
+  "asset_management",
+  "asset_management.classification",
+  "asset_management.classification.phi_labeled",
+  "asset_management.disposal",
+  "asset_management.disposal.secure_media_sanitization",
+  "asset_management.inventory",
+  "asset_management.inventory.maintained",
+  "audit",
+  "audit.logs",
+  "audit.logs.protected_from_tampering",
+  "audit.logs.retention_6_years",
+  "audit.phi_access",
+  "audit.phi_access.logged",
+  "audit.review",
+  "audit.review.regular",
+  "business_continuity",
+  "business_continuity.bcp",
+  "business_continuity.bcp.documented",
+  "business_continuity.bcp.tested",
+  "business_continuity.drp",
+  "business_continuity.drp.phi_systems",
+  "compliance",
+  "compliance.hipaa",
+  "compliance.hipaa.breach_notification",
+  "compliance.hipaa.breach_notification.plan",
+  "compliance.hipaa.privacy_rule",
+  "compliance.hipaa.privacy_rule.policies",
+  "compliance.hipaa.security_rule",
+  "compliance.hipaa.security_rule.policies",
+  "compliance.legal",
+  "compliance.legal.periodic_review",
+  "entity_name",
+  "entity_type",
+  "hr_security",
+  "hr_security.background_checks",
+  "hr_security.background_checks.performed",
+  "hr_security.confidentiality",
+  "hr_security.confidentiality.agreements_signed",
+  "hr_security.sanctions",
+  "hr_security.sanctions.policy_documented",
+  "incident_response",
+  "incident_response.phi_breach",
+  "incident_response.phi_breach.procedures",
+  "incident_response.plan",
+  "incident_response.plan.documented",
+  "incident_response.plan.tested_annually",
+  "incident_response.reporting",
+  "incident_response.reporting.hhs_60_days",
+  "operations",
+  "operations.backup",
+  "operations.backup.phi_backed_up",
+  "operations.change_management",
+  "operations.change_management.formal_process",
+  "operations.malware",
+  "operations.malware.protection_deployed",
+  "operations.network_monitoring",
+  "operations.network_monitoring.enabled",
+  "operations.patch_management",
+  "operations.patch_management.timely",
+  "operations.vulnerability_management",
+  "operations.vulnerability_management.scanning",
+  "physical_security",
+  "physical_security.equipment",
+  "physical_security.equipment.secured",
+  "physical_security.perimeter",
+  "physical_security.perimeter.controlled_access",
+  "physical_security.visitor_access",
+  "physical_security.visitor_access.logged",
+  "privacy",
+  "privacy.minimum_necessary",
+  "privacy.minimum_necessary.enforced",
+  "privacy.notice",
+  "privacy.notice.provided_to_patients",
+  "privacy.patient_rights",
+  "privacy.patient_rights.process_exists",
+  "risk_management",
+  "risk_management.assessment",
+  "risk_management.assessment.conducted",
+  "risk_management.assessment.periodic_review",
+  "risk_management.assessment.phi_scope",
+  "risk_management.encryption",
+  "risk_management.encryption.phi_at_rest",
+  "risk_management.encryption.phi_in_transit",
+  "risk_management.treatment",
+  "risk_management.treatment.plan_documented",
+  "secure_development",
+  "secure_development.phi",
+  "secure_development.phi.no_phi_in_test",
+  "secure_development.requirements",
+  "secure_development.requirements.security_included",
+  "secure_development.testing",
+  "secure_development.testing.security_testing",
+  "security_policy",
+  "security_policy.dissemination",
+  "security_policy.dissemination.to_workforce",
+  "security_policy.phi_specific",
+  "security_policy.phi_specific.documented",
+  "security_program",
+  "security_program.isms",
+  "security_program.isms.established",
+  "security_program.policies",
+  "security_program.policies.annual_review",
+  "security_program.policies.approved_by_management",
+  "third_party",
+  "third_party.assessment",
+  "third_party.assessment.security_evaluation",
+  "third_party.baa",
+  "third_party.baa.executed",
+  "third_party.contracts",
+  "third_party.contracts.security_requirements",
+  "training",
+  "training.completion",
+  "training.completion.tracked",
+  "training.hipaa",
+  "training.hipaa.all_workforce_annual",
+  "training.phi_handling",
+  "training.phi_handling.included"
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/uk_dpa_2018/schema.json",
+ "title": "Input facts for uk_dpa_2018",
+ "description": "Input paths referenced in the sources of frameworks/privacy/uk_dpa_2018/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "uk_dpa_2018",
+ "x-entrypoint": "data.uk_dpa_2018.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/privacy/uk_dpa_2018/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "uk_dpa_2018": {
+   "description": "Read in uk_dpa_2018_main.rego.",
+   "properties": {
+    "duties": {
+     "description": "Read in uk_dpa_2018_main.rego."
+    },
+    "scope": {
+     "description": "Read in uk_dpa_2018_main.rego.",
+     "additionalProperties": {
+      "description": "Read in uk_dpa_2018_main.rego."
+     },
+     "x-variable-key": "<k>"
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "uk_dpa_2018",
+  "uk_dpa_2018.duties",
+  "uk_dpa_2018.scope"
+ ]
+}

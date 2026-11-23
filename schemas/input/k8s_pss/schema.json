@@ -1,0 +1,217 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/k8s_pss/schema.json",
+ "title": "Input facts for k8s_pss",
+ "description": "Facts the module in benchmarks/pss/kubernetes/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "k8s_pss",
+ "x-entrypoint": "data.k8s_pss.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "benchmarks/pss/kubernetes/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.k8s_pss.main_test.restricted_pod",
+ "type": "object",
+ "properties": {
+  "pod": {
+   "description": "Read in pss_validation.rego.",
+   "type": "object",
+   "properties": {
+    "metadata": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "name": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "web"
+       ]
+      }
+     }
+    },
+    "spec": {
+     "description": "Read in pss_validation.rego.",
+     "type": "object",
+     "properties": {
+      "containers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "image": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "registry.access.redhat.com/ubi9/ubi-minimal:latest"
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "app"
+          ]
+         },
+         "ports": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "containerPort": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              8080
+             ]
+            }
+           }
+          }
+         },
+         "securityContext": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "allowPrivilegeEscalation": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "boolean",
+            "x-type-source": "fixture",
+            "examples": [
+             false
+            ]
+           },
+           "capabilities": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "drop": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "array",
+              "x-type-source": "fixture",
+              "items": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "ALL"
+               ]
+              },
+              "examples": [
+               [
+                "ALL"
+               ]
+              ]
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "hostIPC": {
+       "description": "Read in pss_validation.rego."
+      },
+      "hostNetwork": {
+       "description": "Read in pss_validation.rego."
+      },
+      "hostPID": {
+       "description": "Read in pss_validation.rego."
+      },
+      "securityContext": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "runAsNonRoot": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "seccompProfile": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "type": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "RuntimeDefault"
+           ]
+          }
+         }
+        }
+       }
+      },
+      "volumes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "emptyDir": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object"
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "scratch"
+          ]
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "pss_profile": {
+   "description": "Read in pss_validation.rego."
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "pod",
+  "pod.metadata",
+  "pod.metadata.name",
+  "pod.spec",
+  "pod.spec.containers",
+  "pod.spec.containers[].image",
+  "pod.spec.containers[].name",
+  "pod.spec.containers[].ports",
+  "pod.spec.containers[].ports[].containerPort",
+  "pod.spec.containers[].securityContext",
+  "pod.spec.containers[].securityContext.allowPrivilegeEscalation",
+  "pod.spec.containers[].securityContext.capabilities",
+  "pod.spec.containers[].securityContext.capabilities.drop",
+  "pod.spec.hostIPC",
+  "pod.spec.hostNetwork",
+  "pod.spec.hostPID",
+  "pod.spec.securityContext",
+  "pod.spec.securityContext.runAsNonRoot",
+  "pod.spec.securityContext.seccompProfile",
+  "pod.spec.securityContext.seccompProfile.type",
+  "pod.spec.volumes",
+  "pod.spec.volumes[].emptyDir",
+  "pod.spec.volumes[].name",
+  "pss_profile"
+ ]
+}

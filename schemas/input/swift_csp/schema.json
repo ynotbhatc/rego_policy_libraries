@@ -1,0 +1,555 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/swift_csp/schema.json",
+ "title": "Input facts for swift_csp",
+ "description": "Input paths referenced in the sources of frameworks/financial/swift_csp/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "swift_csp",
+ "x-entrypoint": "data.swift_csp.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/financial/swift_csp/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "access_control": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "access_reviews": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "periodic": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "privileged_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "mfa": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "least_privilege": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "role_based": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "assessment_date": {
+   "description": "Read in swift_csp_main.rego."
+  },
+  "authentication": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "passwords": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "change_on_compromise": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "strong_policy": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "back_office": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "data_flows": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encrypted": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "credential_storage": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "encrypted": {
+     "description": "Read in swift_csp_main.rego."
+    }
+   }
+  },
+  "data_security": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "internal_flows": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encrypted": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "entity_name": {
+   "description": "Read in swift_csp_main.rego."
+  },
+  "environment": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "data_flow": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "secure_zone": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "defined": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "network_segmentation": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "transaction_business_controls": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "implemented": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "hardening": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "swift_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "baseline_applied": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "unnecessary_services": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "disabled": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "incident_response": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "plan": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "swift_notification_included": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "swift_specific": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_notification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "process_exists": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "infrastructure": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "virtualisation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "host_hardened": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "swift_vms_isolated": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "virtualised": {
+     "description": "Read in swift_csp_main.rego."
+    }
+   }
+  },
+  "logging": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "minimum_2_5_years_archived": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "minimum_3_months_online": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "all_events_captured": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_transactions": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "logged": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "malware_protection": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "swift_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "antimalware_deployed": {
+       "description": "Read in swift_csp_main.rego."
+      },
+      "signatures_current": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "network": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "internet_access": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "restricted_from_swift_zone": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "jump_server": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "deployed": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "outbound_filtering": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "enabled": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "next_attestation_due": {
+   "description": "Read in swift_csp_main.rego."
+  },
+  "os_security": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "admin_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "not_used_for_daily_tasks": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "restricted": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "outsourcing": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "service_provider": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cscf_compliant": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_activities": {
+     "description": "Read in swift_csp_main.rego."
+    }
+   }
+  },
+  "patch_management": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "os": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "critical_patches_within_3_months": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_components": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "current": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "sessions": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "operator": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "encrypted": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "software_integrity": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "swift_components": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "verified": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "swift_bic": {
+   "description": "Read in swift_csp_main.rego."
+  },
+  "token_management": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "hardware_tokens": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "used_for_swift": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "tokens": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "secure_storage": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "training": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "social_engineering": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "included": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_staff": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "annual": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "transmission": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "swift_messages": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "integrity_protected": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  },
+  "user_type": {
+   "description": "Read in swift_csp_main.rego."
+  },
+  "vulnerability_scanning": {
+   "description": "Read in swift_csp_main.rego.",
+   "properties": {
+    "findings": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "remediated_timely": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    },
+    "swift_zone": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "quarterly": {
+       "description": "Read in swift_csp_main.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "access_control",
+  "access_control.access_reviews",
+  "access_control.access_reviews.periodic",
+  "access_control.privileged_access",
+  "access_control.privileged_access.mfa",
+  "access_control.swift_systems",
+  "access_control.swift_systems.least_privilege",
+  "access_control.swift_systems.role_based",
+  "assessment_date",
+  "authentication",
+  "authentication.passwords",
+  "authentication.passwords.change_on_compromise",
+  "authentication.passwords.strong_policy",
+  "back_office",
+  "back_office.data_flows",
+  "back_office.data_flows.encrypted",
+  "credential_storage",
+  "credential_storage.encrypted",
+  "data_security",
+  "data_security.internal_flows",
+  "data_security.internal_flows.encrypted",
+  "entity_name",
+  "environment",
+  "environment.data_flow",
+  "environment.data_flow.documented",
+  "environment.secure_zone",
+  "environment.secure_zone.defined",
+  "environment.secure_zone.network_segmentation",
+  "environment.transaction_business_controls",
+  "environment.transaction_business_controls.implemented",
+  "hardening",
+  "hardening.swift_systems",
+  "hardening.swift_systems.baseline_applied",
+  "hardening.unnecessary_services",
+  "hardening.unnecessary_services.disabled",
+  "incident_response",
+  "incident_response.plan",
+  "incident_response.plan.swift_notification_included",
+  "incident_response.plan.swift_specific",
+  "incident_response.swift_notification",
+  "incident_response.swift_notification.process_exists",
+  "infrastructure",
+  "infrastructure.virtualisation",
+  "infrastructure.virtualisation.host_hardened",
+  "infrastructure.virtualisation.swift_vms_isolated",
+  "infrastructure.virtualised",
+  "logging",
+  "logging.retention",
+  "logging.retention.minimum_2_5_years_archived",
+  "logging.retention.minimum_3_months_online",
+  "logging.swift_systems",
+  "logging.swift_systems.all_events_captured",
+  "logging.swift_transactions",
+  "logging.swift_transactions.logged",
+  "malware_protection",
+  "malware_protection.swift_systems",
+  "malware_protection.swift_systems.antimalware_deployed",
+  "malware_protection.swift_systems.signatures_current",
+  "network",
+  "network.internet_access",
+  "network.internet_access.restricted_from_swift_zone",
+  "network.jump_server",
+  "network.jump_server.deployed",
+  "network.outbound_filtering",
+  "network.outbound_filtering.enabled",
+  "next_attestation_due",
+  "os_security",
+  "os_security.admin_accounts",
+  "os_security.admin_accounts.not_used_for_daily_tasks",
+  "os_security.privileged_accounts",
+  "os_security.privileged_accounts.restricted",
+  "outsourcing",
+  "outsourcing.service_provider",
+  "outsourcing.service_provider.cscf_compliant",
+  "outsourcing.swift_activities",
+  "patch_management",
+  "patch_management.os",
+  "patch_management.os.critical_patches_within_3_months",
+  "patch_management.swift_components",
+  "patch_management.swift_components.current",
+  "sessions",
+  "sessions.operator",
+  "sessions.operator.encrypted",
+  "software_integrity",
+  "software_integrity.swift_components",
+  "software_integrity.swift_components.verified",
+  "swift_bic",
+  "token_management",
+  "token_management.hardware_tokens",
+  "token_management.hardware_tokens.used_for_swift",
+  "token_management.tokens",
+  "token_management.tokens.secure_storage",
+  "training",
+  "training.social_engineering",
+  "training.social_engineering.included",
+  "training.swift_staff",
+  "training.swift_staff.annual",
+  "transmission",
+  "transmission.swift_messages",
+  "transmission.swift_messages.integrity_protected",
+  "user_type",
+  "vulnerability_scanning",
+  "vulnerability_scanning.findings",
+  "vulnerability_scanning.findings.remediated_timely",
+  "vulnerability_scanning.swift_zone",
+  "vulnerability_scanning.swift_zone.quarterly"
+ ]
+}

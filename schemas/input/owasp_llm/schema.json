@@ -1,0 +1,367 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/owasp_llm/schema.json",
+ "title": "Input facts for owasp_llm",
+ "description": "Facts the module in governance/owasp_llm/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "owasp_llm",
+ "x-entrypoint": "data.owasp_llm.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "governance/owasp_llm/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.owasp_llm.main_test.all_true",
+ "type": "object",
+ "properties": {
+  "owasp_llm": {
+   "description": "Read in owasp_llm_main.rego.",
+   "type": "object",
+   "properties": {
+    "llm01": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "high_impact_actions_gated": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "privilege_separation_enforced": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "untrusted_input_filtered": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm02": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "data_sanitized_before_use": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "outputs_scanned_for_sensitive_data": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "retrieval_access_controlled": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm03": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "consequential_actions_require_human": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "downstream_permissions_least_privilege": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tools_minimized": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm04": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "aibom_maintained": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "model_artifacts_verified": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vetted_sources_only": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm05": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "behavior_shaping_stores_write_restricted": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pre_release_behavioral_testing": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "training_data_provenance_tracked": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm06": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "rate_limits_enforced": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "spend_circuit_breakers": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "workflow_resource_metering": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm07": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "high_stakes_outputs_grounded": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "independent_verification_path": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "limitations_communicated": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm08": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "guardrails_outside_model": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "no_secrets_in_model_visible_context": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "sensitive_config_separated": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm09": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "embedding_leakage_monitored": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "retrieval_authorization_enforced": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "vector_stores_tenant_isolated": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "llm10": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "deterministic_output_validation": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "generated_code_sandboxed": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "output_treated_as_untrusted": {
+       "description": "Read in owasp_llm_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "owasp_llm",
+  "owasp_llm.llm01",
+  "owasp_llm.llm01.high_impact_actions_gated",
+  "owasp_llm.llm01.privilege_separation_enforced",
+  "owasp_llm.llm01.untrusted_input_filtered",
+  "owasp_llm.llm02",
+  "owasp_llm.llm02.data_sanitized_before_use",
+  "owasp_llm.llm02.outputs_scanned_for_sensitive_data",
+  "owasp_llm.llm02.retrieval_access_controlled",
+  "owasp_llm.llm03",
+  "owasp_llm.llm03.consequential_actions_require_human",
+  "owasp_llm.llm03.downstream_permissions_least_privilege",
+  "owasp_llm.llm03.tools_minimized",
+  "owasp_llm.llm04",
+  "owasp_llm.llm04.aibom_maintained",
+  "owasp_llm.llm04.model_artifacts_verified",
+  "owasp_llm.llm04.vetted_sources_only",
+  "owasp_llm.llm05",
+  "owasp_llm.llm05.behavior_shaping_stores_write_restricted",
+  "owasp_llm.llm05.pre_release_behavioral_testing",
+  "owasp_llm.llm05.training_data_provenance_tracked",
+  "owasp_llm.llm06",
+  "owasp_llm.llm06.rate_limits_enforced",
+  "owasp_llm.llm06.spend_circuit_breakers",
+  "owasp_llm.llm06.workflow_resource_metering",
+  "owasp_llm.llm07",
+  "owasp_llm.llm07.high_stakes_outputs_grounded",
+  "owasp_llm.llm07.independent_verification_path",
+  "owasp_llm.llm07.limitations_communicated",
+  "owasp_llm.llm08",
+  "owasp_llm.llm08.guardrails_outside_model",
+  "owasp_llm.llm08.no_secrets_in_model_visible_context",
+  "owasp_llm.llm08.sensitive_config_separated",
+  "owasp_llm.llm09",
+  "owasp_llm.llm09.embedding_leakage_monitored",
+  "owasp_llm.llm09.retrieval_authorization_enforced",
+  "owasp_llm.llm09.vector_stores_tenant_isolated",
+  "owasp_llm.llm10",
+  "owasp_llm.llm10.deterministic_output_validation",
+  "owasp_llm.llm10.generated_code_sandboxed",
+  "owasp_llm.llm10.output_treated_as_untrusted"
+ ]
+}

@@ -1,0 +1,2615 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/gdpr/schema.json",
+ "title": "Input facts for gdpr",
+ "description": "Input paths referenced in the sources of frameworks/privacy/gdpr/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "x-framework-key": "gdpr",
+ "x-entrypoint": "data.gdpr.main.compliance_report",
+ "x-derivation": "paths-only",
+ "x-source": [
+  "frameworks/privacy/gdpr/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "type": "object",
+ "properties": {
+  "cookies": {
+   "description": "Read in gdpr_cookies_tracking.rego.",
+   "properties": {
+    "categories": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "marketing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "consent_required": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "necessary": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "no_consent_required": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "preferences": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "consent_required": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "statistics": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "consent_required": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    },
+    "cmp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "consent_expiry": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "configured": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "consent_string": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "stored_and_passed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "iab_tcf_or_equivalent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "compliant": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "implemented": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "re_consent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "triggered_on_material_change": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "vendor_list": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "current": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    },
+    "consent": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "freely_given": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "granular": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "per_purpose_or_per_cookie": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "informed": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "mechanism": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "clearly_displayed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "cookie_wall": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "not_used": {
+           "description": "Read in gdpr_cookies_tracking.rego."
+          }
+         }
+        },
+        "decline_as_easy_as_accept": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "implemented": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "prior_to_placement": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "records": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "choices_stored": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "cmp_version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "stored": {
+           "description": "Read in gdpr_cookies_tracking.rego."
+          }
+         }
+        },
+        "retention_months": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "timestamp": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "stored": {
+           "description": "Read in gdpr_cookies_tracking.rego."
+          }
+         }
+        },
+        "user_id_or_session": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "stored": {
+           "description": "Read in gdpr_cookies_tracking.rego."
+          }
+         }
+        }
+       }
+      },
+      "records_maintained": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "specific": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "unambiguous_affirmative_act": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "withdrawal": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "easy": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "effects_honored": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    },
+    "fingerprinting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "consent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "obtained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "privacy_notice": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "disclosed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "purpose": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "used": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "all_cookies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "listed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "categories": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "classified": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "maintained": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "regularly_reviewed": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "retention_period": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "third_party_cookies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "identified": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    },
+    "local_storage": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "classified": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "consent_required_where_non_essential": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "retention": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "managed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    },
+    "notice": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "available": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "duration_of_each_cookie": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "explained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "how_to_withdraw_consent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "explained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "link_from_banner": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "plain_language": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "purpose_of_each_cookie": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "explained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "third_parties": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "identified": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    },
+    "strictly_necessary": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "identified": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "not_used_for_tracking": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "only_essential_functionality": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "tracking_pixels": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "consent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "obtained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "third_parties": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "disclosed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "used": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    }
+   }
+  },
+  "gdpr": {
+   "description": "Read in gdpr_compliance.rego, gdpr_controller_processor.rego, gdpr_cookies_tracking.rego, gdpr_data_transfers.rego.",
+   "properties": {
+    "breach_notification": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "data_subjects": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "notified_when_high_risk": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "detection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "controls_in_place": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "register": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "maintained": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "risk_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "performed": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "supervisory_authority": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "within_72_hours": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "childrens_data": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "age_verification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "behavioural_advertising": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_to_children": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "parental_consent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "required_under_16": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "verification": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "privacy_notice": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "child_friendly": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "profiling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_to_children": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "services_directed_at_children": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "consent": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "freely_given": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "informed": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "pre_ticked_boxes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_used": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "records_maintained": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "specific": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "unambiguous": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "withdrawal_as_easy_as_giving": {
+       "description": "Read in gdpr_compliance.rego."
+      }
+     }
+    },
+    "controller": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "compliance_demonstrable": {
+       "description": "Read in gdpr_controller_processor.rego."
+      },
+      "data_protection_policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approved_by_management": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "communicated": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "covers_all_processing": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "documented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "reviewed_annually": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "measures_proportionate_to_processing_risk": {
+       "description": "Read in gdpr_controller_processor.rego."
+      },
+      "policies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "implemented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "reviewed_regularly": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "technical_organisational_measures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "data_minimisation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "collection_limited_to_purpose": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "fields_reviewed_regularly": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "unnecessary_data": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_collected": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "data_subject_rights": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "free_of_charge": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "identity_verification": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "process_defined": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "response_within_30_days": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "erasure": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "backups_addressed": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "process_defined": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "secure_deletion_implemented": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "third_parties_notified": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "objection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "direct_marketing": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "always_honoured": {
+           "description": "Read in gdpr_compliance.rego."
+          }
+         }
+        },
+        "process_defined": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "portability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "common_format_used": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "machine_readable": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "structured_format_available": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "rectification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "process_defined": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "third_parties_notified": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "dpia": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "dpo": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "consulted": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "high_risk_processing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "triggers_dpia": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "large_scale_monitoring": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "triggers_dpia": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "new_technologies": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "triggers_dpia": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "results": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "dpo": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "appointed": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "contact_details": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "notified_to_supervisory_authority": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "published": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "independence": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "guaranteed": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "mandatory": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "resources": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "adequate": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "international_transfers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "adequacy_decision_or_safeguards": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "data_subjects": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "informed": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "mechanism": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "occur": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "scc_or_bcr": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "joint_controllers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "agreement": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "essence_available_to_data_subjects": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "arrangement_exists": {
+       "description": "Read in gdpr_controller_processor.rego."
+      },
+      "contact_point": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "designated": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "data_subjects": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "can_exercise_rights_against_either": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "responsibilities": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "defined": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "lawful_basis": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "documented": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "recorded_per_processing_activity": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "reviewed_regularly": {
+       "description": "Read in gdpr_compliance.rego."
+      }
+     }
+    },
+    "privacy_by_default": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "limited_to_minimum_necessary": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "data_collection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "minimum_required": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "opt_in": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "required_not_opt_out": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "retention": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "shortest_necessary": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "settings": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "most_private_by_default": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "privacy_by_design": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "access_controls": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "privacy_protective_defaults": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "data_minimisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "technical_controls": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "default_settings": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "privacy_protective": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "encryption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "default_for_personal_data": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "implemented_at_design_phase": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "principles": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_minimisation": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "purpose_limitation": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "storage_limitation": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "pseudonymisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "default_where_possible": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "purpose_limitation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "technical_enforcement": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "sdlc_integrated": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "storage_limitation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "automated_deletion": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "processors": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "contract": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "audit_rights": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "controller_can_audit": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "confidentiality": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "staff_bound": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "data_subject_rights": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assistance_provided": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "deletion_return": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "on_contract_end": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "information": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "provided_to_controller": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "processing_only_on_instructions": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "security_measures": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "article_32_compliant": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "sub_processors": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "prior_authorisation_required": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        }
+       }
+      },
+      "contracts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "article_28_compliant": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "processing_instructions_documented": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "required": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "sub_processor_approval": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "required": {
+           "description": "Read in gdpr_compliance.rego."
+          }
+         }
+        }
+       }
+      },
+      "due_diligence": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "performed": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "inventory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "maintained": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "selection": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented_assessment": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "only_gdpr_compliant_processors": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "security_capabilities_assessed": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "technical_measures_verified": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "staff": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "confidentiality_bound": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "processing_only_on_instructions": {
+         "description": "Read in gdpr_controller_processor.rego."
+        },
+        "training": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "gdpr_awareness": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "records_of_processing": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controller_record": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "complete": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "includes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_categories": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "purposes": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "recipients": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "retention_periods": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "security_measures": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "maintained": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "regularly_reviewed": {
+       "description": "Read in gdpr_compliance.rego."
+      }
+     }
+    },
+    "retention": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "automated_deletion": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "legal_hold": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "process_defined": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "periods": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "defined_per_category": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "policy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "regular": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "rop": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "controller": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "categories_of_data_subjects": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "categories_of_personal_data": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "dpo_contact": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "name_and_contact": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "purposes": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "recipients": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "retention_periods": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "security_measures": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "third_country_transfers": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        }
+       }
+      },
+      "processor": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "categories_of_processing": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "controllers_processed_for": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "name_and_contact": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "security_measures": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        },
+        "third_country_transfers": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_controller_processor.rego."
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    "security": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "availability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ensured": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "confidentiality": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ensured": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "effectiveness": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "regularly_tested": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "encryption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "integrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ensured": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "measures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "proportionate_to_risk": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "pseudonymisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "resilience": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "ensured": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "restore_capability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "tested": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "risk_assessment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "performed": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "special_category_data": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "additional_safeguards": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "dpia": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "conducted": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "explicit_consent": {
+       "description": "Read in gdpr_compliance.rego."
+      },
+      "legal_basis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "processed": {
+       "description": "Read in gdpr_compliance.rego."
+      }
+     }
+    },
+    "sub_processors": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "authorisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "controller_approval": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "changes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "controller_notified": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "contracts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "same_obligations_as_processor": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "inventory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "maintained": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "liability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "processor_remains_liable": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "supervisory_authority": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "cooperation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "policy": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "investigations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "documented_process": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      },
+      "requests": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "response_procedure": {
+         "description": "Read in gdpr_controller_processor.rego."
+        }
+       }
+      }
+     }
+    },
+    "technical_measures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "anonymisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "process_defined": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "availability": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "backup_and_recovery": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "confidentiality": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "access_controls": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "encryption": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "personal_data_at_rest": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "personal_data_in_transit": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "integrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "checksums_or_signatures": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "pseudonymisation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "resilience": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "systems_resilient": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "restore": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "timely_restoration_capability": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      },
+      "testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "effectiveness_evaluated": {
+         "description": "Read in gdpr_compliance.rego."
+        },
+        "regular_security_testing": {
+         "description": "Read in gdpr_compliance.rego."
+        }
+       }
+      }
+     }
+    },
+    "transfers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "adequacy": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "countries_verified": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "list_current": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "monitoring": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "for_withdrawal": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        }
+       }
+      },
+      "bcr": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "approved_by_lead_dpa": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "covers_all_entities": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "dpo_responsible": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "enforceable_by_data_subjects": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "legally_binding": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "published": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "used": {
+         "description": "Read in gdpr_data_transfers.rego."
+        }
+       }
+      },
+      "derogations": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "basis": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "contract_performance": {
+           "description": "Read in gdpr_data_transfers.rego."
+          },
+          "documented": {
+           "description": "Read in gdpr_data_transfers.rego."
+          },
+          "explicit_consent": {
+           "description": "Read in gdpr_data_transfers.rego."
+          },
+          "legal_claims": {
+           "description": "Read in gdpr_data_transfers.rego."
+          },
+          "public_interest": {
+           "description": "Read in gdpr_data_transfers.rego."
+          },
+          "vital_interests": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "used": {
+         "description": "Read in gdpr_data_transfers.rego."
+        }
+       }
+      },
+      "destination_countries": {
+       "description": "Read in gdpr_data_transfers.rego."
+      },
+      "general": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "adequacy_or_safeguards": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "in_place": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "compliance_documented": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "onward_transfers": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "restricted": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        }
+       }
+      },
+      "inventory": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "all_third_country_flows": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "maintained": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "mechanism_per_transfer": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "documented": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "regularly_reviewed": {
+         "description": "Read in gdpr_data_transfers.rego."
+        }
+       }
+      },
+      "log": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "data_categories": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "recorded": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "date": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "recorded": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "legal_basis": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "recorded": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "maintained": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "recipient": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "recorded": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        }
+       }
+      },
+      "scc": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "eu_commission_approved_version": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "not_amended_invalidly": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "signed_by_parties": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "transfer_impact_assessment": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "performed": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "used": {
+         "description": "Read in gdpr_data_transfers.rego."
+        }
+       }
+      },
+      "supplementary_measures": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "contractual": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "additional_commitments": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "effective": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "technical": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "end_to_end_encryption": {
+           "description": "Read in gdpr_data_transfers.rego."
+          },
+          "pseudonymisation": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        }
+       }
+      },
+      "tia": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "destination_country_laws": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assessed": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "documented": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "performed": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "public_authority_access": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "assessed": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "supplementary_measures": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "identified_if_needed": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "supplementary_measures_required": {
+         "description": "Read in gdpr_data_transfers.rego."
+        }
+       }
+      },
+      "transparency": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "countries": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "identified": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "privacy_notice": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "mentions_transfers": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "safeguards": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "mentioned": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        }
+       }
+      },
+      "us_transfers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "dpf_certification": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "verified": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "mechanism": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "eu_us_dpf_or_scc": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        },
+        "occur": {
+         "description": "Read in gdpr_data_transfers.rego."
+        },
+        "recipient": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "properties": {
+          "certified_or_scc_signed": {
+           "description": "Read in gdpr_data_transfers.rego."
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "marketing": {
+   "description": "Read in gdpr_cookies_tracking.rego.",
+   "properties": {
+    "behavioural_advertising": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "consent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "obtained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "opt_out": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "easy": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "profiling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "disclosed": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "sensitive_categories": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "not_targeted": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "used": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "email": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "double_opt_in": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "implemented": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "existing_customers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "soft_opt_in_if_similar_products": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "opt_in": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "required": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "records": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "maintained": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      },
+      "unsubscribe": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "properties": {
+        "honored_within_10_days": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        },
+        "in_every_email": {
+         "description": "Read in gdpr_cookies_tracking.rego."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "profiling": {
+   "description": "Read in gdpr_cookies_tracking.rego.",
+   "properties": {
+    "data_subjects": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "informed": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "right_to_contest": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      },
+      "right_to_human_review": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "lawful_basis": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "one_of_three_bases": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "solely_automated_with_legal_effect": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "used": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    },
+    "special_category_data": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "properties": {
+      "not_used_without_explicit_consent": {
+       "description": "Read in gdpr_cookies_tracking.rego."
+      }
+     }
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "cookies",
+  "cookies.categories",
+  "cookies.categories.marketing",
+  "cookies.categories.marketing.consent_required",
+  "cookies.categories.necessary",
+  "cookies.categories.necessary.no_consent_required",
+  "cookies.categories.preferences",
+  "cookies.categories.preferences.consent_required",
+  "cookies.categories.statistics",
+  "cookies.categories.statistics.consent_required",
+  "cookies.cmp",
+  "cookies.cmp.consent_expiry",
+  "cookies.cmp.consent_expiry.configured",
+  "cookies.cmp.consent_string",
+  "cookies.cmp.consent_string.stored_and_passed",
+  "cookies.cmp.iab_tcf_or_equivalent",
+  "cookies.cmp.iab_tcf_or_equivalent.compliant",
+  "cookies.cmp.implemented",
+  "cookies.cmp.re_consent",
+  "cookies.cmp.re_consent.triggered_on_material_change",
+  "cookies.cmp.vendor_list",
+  "cookies.cmp.vendor_list.current",
+  "cookies.consent",
+  "cookies.consent.freely_given",
+  "cookies.consent.granular",
+  "cookies.consent.granular.per_purpose_or_per_cookie",
+  "cookies.consent.informed",
+  "cookies.consent.mechanism",
+  "cookies.consent.mechanism.clearly_displayed",
+  "cookies.consent.mechanism.cookie_wall",
+  "cookies.consent.mechanism.cookie_wall.not_used",
+  "cookies.consent.mechanism.decline_as_easy_as_accept",
+  "cookies.consent.mechanism.implemented",
+  "cookies.consent.mechanism.prior_to_placement",
+  "cookies.consent.records",
+  "cookies.consent.records.choices_stored",
+  "cookies.consent.records.cmp_version",
+  "cookies.consent.records.cmp_version.stored",
+  "cookies.consent.records.retention_months",
+  "cookies.consent.records.timestamp",
+  "cookies.consent.records.timestamp.stored",
+  "cookies.consent.records.user_id_or_session",
+  "cookies.consent.records.user_id_or_session.stored",
+  "cookies.consent.records_maintained",
+  "cookies.consent.specific",
+  "cookies.consent.unambiguous_affirmative_act",
+  "cookies.consent.withdrawal",
+  "cookies.consent.withdrawal.easy",
+  "cookies.consent.withdrawal.effects_honored",
+  "cookies.fingerprinting",
+  "cookies.fingerprinting.consent",
+  "cookies.fingerprinting.consent.obtained",
+  "cookies.fingerprinting.privacy_notice",
+  "cookies.fingerprinting.privacy_notice.disclosed",
+  "cookies.fingerprinting.purpose",
+  "cookies.fingerprinting.purpose.documented",
+  "cookies.fingerprinting.used",
+  "cookies.inventory",
+  "cookies.inventory.all_cookies",
+  "cookies.inventory.all_cookies.listed",
+  "cookies.inventory.categories",
+  "cookies.inventory.categories.classified",
+  "cookies.inventory.maintained",
+  "cookies.inventory.regularly_reviewed",
+  "cookies.inventory.retention_period",
+  "cookies.inventory.retention_period.documented",
+  "cookies.inventory.third_party_cookies",
+  "cookies.inventory.third_party_cookies.identified",
+  "cookies.local_storage",
+  "cookies.local_storage.classified",
+  "cookies.local_storage.consent_required_where_non_essential",
+  "cookies.local_storage.retention",
+  "cookies.local_storage.retention.managed",
+  "cookies.notice",
+  "cookies.notice.available",
+  "cookies.notice.duration_of_each_cookie",
+  "cookies.notice.duration_of_each_cookie.explained",
+  "cookies.notice.how_to_withdraw_consent",
+  "cookies.notice.how_to_withdraw_consent.explained",
+  "cookies.notice.link_from_banner",
+  "cookies.notice.plain_language",
+  "cookies.notice.purpose_of_each_cookie",
+  "cookies.notice.purpose_of_each_cookie.explained",
+  "cookies.notice.third_parties",
+  "cookies.notice.third_parties.identified",
+  "cookies.strictly_necessary",
+  "cookies.strictly_necessary.documented",
+  "cookies.strictly_necessary.identified",
+  "cookies.strictly_necessary.not_used_for_tracking",
+  "cookies.strictly_necessary.only_essential_functionality",
+  "cookies.tracking_pixels",
+  "cookies.tracking_pixels.consent",
+  "cookies.tracking_pixels.consent.obtained",
+  "cookies.tracking_pixels.third_parties",
+  "cookies.tracking_pixels.third_parties.disclosed",
+  "cookies.tracking_pixels.used",
+  "gdpr",
+  "gdpr.breach_notification",
+  "gdpr.breach_notification.data_subjects",
+  "gdpr.breach_notification.data_subjects.notified_when_high_risk",
+  "gdpr.breach_notification.detection",
+  "gdpr.breach_notification.detection.controls_in_place",
+  "gdpr.breach_notification.policy",
+  "gdpr.breach_notification.policy.documented",
+  "gdpr.breach_notification.register",
+  "gdpr.breach_notification.register.maintained",
+  "gdpr.breach_notification.risk_assessment",
+  "gdpr.breach_notification.risk_assessment.performed",
+  "gdpr.breach_notification.supervisory_authority",
+  "gdpr.breach_notification.supervisory_authority.within_72_hours",
+  "gdpr.childrens_data",
+  "gdpr.childrens_data.age_verification",
+  "gdpr.childrens_data.age_verification.implemented",
+  "gdpr.childrens_data.behavioural_advertising",
+  "gdpr.childrens_data.behavioural_advertising.not_to_children",
+  "gdpr.childrens_data.parental_consent",
+  "gdpr.childrens_data.parental_consent.required_under_16",
+  "gdpr.childrens_data.parental_consent.verification",
+  "gdpr.childrens_data.privacy_notice",
+  "gdpr.childrens_data.privacy_notice.child_friendly",
+  "gdpr.childrens_data.profiling",
+  "gdpr.childrens_data.profiling.not_to_children",
+  "gdpr.childrens_data.services_directed_at_children",
+  "gdpr.consent",
+  "gdpr.consent.freely_given",
+  "gdpr.consent.informed",
+  "gdpr.consent.pre_ticked_boxes",
+  "gdpr.consent.pre_ticked_boxes.not_used",
+  "gdpr.consent.records_maintained",
+  "gdpr.consent.specific",
+  "gdpr.consent.unambiguous",
+  "gdpr.consent.withdrawal_as_easy_as_giving",
+  "gdpr.controller",
+  "gdpr.controller.compliance_demonstrable",
+  "gdpr.controller.data_protection_policy",
+  "gdpr.controller.data_protection_policy.approved_by_management",
+  "gdpr.controller.data_protection_policy.communicated",
+  "gdpr.controller.data_protection_policy.covers_all_processing",
+  "gdpr.controller.data_protection_policy.documented",
+  "gdpr.controller.data_protection_policy.reviewed_annually",
+  "gdpr.controller.measures_proportionate_to_processing_risk",
+  "gdpr.controller.policies",
+  "gdpr.controller.policies.documented",
+  "gdpr.controller.policies.implemented",
+  "gdpr.controller.policies.reviewed_regularly",
+  "gdpr.controller.technical_organisational_measures",
+  "gdpr.controller.technical_organisational_measures.implemented",
+  "gdpr.data_minimisation",
+  "gdpr.data_minimisation.collection_limited_to_purpose",
+  "gdpr.data_minimisation.fields_reviewed_regularly",
+  "gdpr.data_minimisation.unnecessary_data",
+  "gdpr.data_minimisation.unnecessary_data.not_collected",
+  "gdpr.data_subject_rights",
+  "gdpr.data_subject_rights.access",
+  "gdpr.data_subject_rights.access.free_of_charge",
+  "gdpr.data_subject_rights.access.identity_verification",
+  "gdpr.data_subject_rights.access.process_defined",
+  "gdpr.data_subject_rights.access.response_within_30_days",
+  "gdpr.data_subject_rights.erasure",
+  "gdpr.data_subject_rights.erasure.backups_addressed",
+  "gdpr.data_subject_rights.erasure.process_defined",
+  "gdpr.data_subject_rights.erasure.secure_deletion_implemented",
+  "gdpr.data_subject_rights.erasure.third_parties_notified",
+  "gdpr.data_subject_rights.objection",
+  "gdpr.data_subject_rights.objection.direct_marketing",
+  "gdpr.data_subject_rights.objection.direct_marketing.always_honoured",
+  "gdpr.data_subject_rights.objection.process_defined",
+  "gdpr.data_subject_rights.portability",
+  "gdpr.data_subject_rights.portability.common_format_used",
+  "gdpr.data_subject_rights.portability.machine_readable",
+  "gdpr.data_subject_rights.portability.structured_format_available",
+  "gdpr.data_subject_rights.rectification",
+  "gdpr.data_subject_rights.rectification.process_defined",
+  "gdpr.data_subject_rights.rectification.third_parties_notified",
+  "gdpr.dpia",
+  "gdpr.dpia.dpo",
+  "gdpr.dpia.dpo.consulted",
+  "gdpr.dpia.high_risk_processing",
+  "gdpr.dpia.high_risk_processing.triggers_dpia",
+  "gdpr.dpia.large_scale_monitoring",
+  "gdpr.dpia.large_scale_monitoring.triggers_dpia",
+  "gdpr.dpia.new_technologies",
+  "gdpr.dpia.new_technologies.triggers_dpia",
+  "gdpr.dpia.policy",
+  "gdpr.dpia.policy.documented",
+  "gdpr.dpia.results",
+  "gdpr.dpia.results.documented",
+  "gdpr.dpo",
+  "gdpr.dpo.appointed",
+  "gdpr.dpo.contact_details",
+  "gdpr.dpo.contact_details.notified_to_supervisory_authority",
+  "gdpr.dpo.contact_details.published",
+  "gdpr.dpo.independence",
+  "gdpr.dpo.independence.guaranteed",
+  "gdpr.dpo.mandatory",
+  "gdpr.dpo.resources",
+  "gdpr.dpo.resources.adequate",
+  "gdpr.international_transfers",
+  "gdpr.international_transfers.adequacy_decision_or_safeguards",
+  "gdpr.international_transfers.data_subjects",
+  "gdpr.international_transfers.data_subjects.informed",
+  "gdpr.international_transfers.mechanism",
+  "gdpr.international_transfers.mechanism.documented",
+  "gdpr.international_transfers.occur",
+  "gdpr.international_transfers.scc_or_bcr",
+  "gdpr.international_transfers.scc_or_bcr.implemented",
+  "gdpr.joint_controllers",
+  "gdpr.joint_controllers.agreement",
+  "gdpr.joint_controllers.agreement.documented",
+  "gdpr.joint_controllers.agreement.essence_available_to_data_subjects",
+  "gdpr.joint_controllers.arrangement_exists",
+  "gdpr.joint_controllers.contact_point",
+  "gdpr.joint_controllers.contact_point.designated",
+  "gdpr.joint_controllers.data_subjects",
+  "gdpr.joint_controllers.data_subjects.can_exercise_rights_against_either",
+  "gdpr.joint_controllers.responsibilities",
+  "gdpr.joint_controllers.responsibilities.defined",
+  "gdpr.lawful_basis",
+  "gdpr.lawful_basis.documented",
+  "gdpr.lawful_basis.recorded_per_processing_activity",
+  "gdpr.lawful_basis.reviewed_regularly",
+  "gdpr.privacy_by_default",
+  "gdpr.privacy_by_default.access",
+  "gdpr.privacy_by_default.access.limited_to_minimum_necessary",
+  "gdpr.privacy_by_default.data_collection",
+  "gdpr.privacy_by_default.data_collection.minimum_required",
+  "gdpr.privacy_by_default.opt_in",
+  "gdpr.privacy_by_default.opt_in.required_not_opt_out",
+  "gdpr.privacy_by_default.retention",
+  "gdpr.privacy_by_default.retention.shortest_necessary",
+  "gdpr.privacy_by_default.settings",
+  "gdpr.privacy_by_default.settings.most_private_by_default",
+  "gdpr.privacy_by_design",
+  "gdpr.privacy_by_design.access_controls",
+  "gdpr.privacy_by_design.access_controls.privacy_protective_defaults",
+  "gdpr.privacy_by_design.data_minimisation",
+  "gdpr.privacy_by_design.data_minimisation.technical_controls",
+  "gdpr.privacy_by_design.default_settings",
+  "gdpr.privacy_by_design.default_settings.privacy_protective",
+  "gdpr.privacy_by_design.encryption",
+  "gdpr.privacy_by_design.encryption.default_for_personal_data",
+  "gdpr.privacy_by_design.implemented_at_design_phase",
+  "gdpr.privacy_by_design.principles",
+  "gdpr.privacy_by_design.principles.data_minimisation",
+  "gdpr.privacy_by_design.principles.purpose_limitation",
+  "gdpr.privacy_by_design.principles.storage_limitation",
+  "gdpr.privacy_by_design.pseudonymisation",
+  "gdpr.privacy_by_design.pseudonymisation.default_where_possible",
+  "gdpr.privacy_by_design.purpose_limitation",
+  "gdpr.privacy_by_design.purpose_limitation.technical_enforcement",
+  "gdpr.privacy_by_design.sdlc_integrated",
+  "gdpr.privacy_by_design.storage_limitation",
+  "gdpr.privacy_by_design.storage_limitation.automated_deletion",
+  "gdpr.processors",
+  "gdpr.processors.contract",
+  "gdpr.processors.contract.audit_rights",
+  "gdpr.processors.contract.audit_rights.controller_can_audit",
+  "gdpr.processors.contract.confidentiality",
+  "gdpr.processors.contract.confidentiality.staff_bound",
+  "gdpr.processors.contract.data_subject_rights",
+  "gdpr.processors.contract.data_subject_rights.assistance_provided",
+  "gdpr.processors.contract.deletion_return",
+  "gdpr.processors.contract.deletion_return.on_contract_end",
+  "gdpr.processors.contract.information",
+  "gdpr.processors.contract.information.provided_to_controller",
+  "gdpr.processors.contract.processing_only_on_instructions",
+  "gdpr.processors.contract.security_measures",
+  "gdpr.processors.contract.security_measures.article_32_compliant",
+  "gdpr.processors.contract.sub_processors",
+  "gdpr.processors.contract.sub_processors.prior_authorisation_required",
+  "gdpr.processors.contracts",
+  "gdpr.processors.contracts.article_28_compliant",
+  "gdpr.processors.contracts.processing_instructions_documented",
+  "gdpr.processors.contracts.required",
+  "gdpr.processors.contracts.sub_processor_approval",
+  "gdpr.processors.contracts.sub_processor_approval.required",
+  "gdpr.processors.due_diligence",
+  "gdpr.processors.due_diligence.performed",
+  "gdpr.processors.inventory",
+  "gdpr.processors.inventory.maintained",
+  "gdpr.processors.selection",
+  "gdpr.processors.selection.documented_assessment",
+  "gdpr.processors.selection.only_gdpr_compliant_processors",
+  "gdpr.processors.selection.security_capabilities_assessed",
+  "gdpr.processors.selection.technical_measures_verified",
+  "gdpr.processors.staff",
+  "gdpr.processors.staff.confidentiality_bound",
+  "gdpr.processors.staff.processing_only_on_instructions",
+  "gdpr.processors.staff.training",
+  "gdpr.processors.staff.training.gdpr_awareness",
+  "gdpr.records_of_processing",
+  "gdpr.records_of_processing.controller_record",
+  "gdpr.records_of_processing.controller_record.complete",
+  "gdpr.records_of_processing.includes",
+  "gdpr.records_of_processing.includes.data_categories",
+  "gdpr.records_of_processing.includes.purposes",
+  "gdpr.records_of_processing.includes.recipients",
+  "gdpr.records_of_processing.includes.retention_periods",
+  "gdpr.records_of_processing.includes.security_measures",
+  "gdpr.records_of_processing.maintained",
+  "gdpr.records_of_processing.regularly_reviewed",
+  "gdpr.retention",
+  "gdpr.retention.automated_deletion",
+  "gdpr.retention.automated_deletion.implemented",
+  "gdpr.retention.legal_hold",
+  "gdpr.retention.legal_hold.process_defined",
+  "gdpr.retention.periods",
+  "gdpr.retention.periods.defined_per_category",
+  "gdpr.retention.policy",
+  "gdpr.retention.policy.documented",
+  "gdpr.retention.review",
+  "gdpr.retention.review.regular",
+  "gdpr.rop",
+  "gdpr.rop.controller",
+  "gdpr.rop.controller.categories_of_data_subjects",
+  "gdpr.rop.controller.categories_of_data_subjects.documented",
+  "gdpr.rop.controller.categories_of_personal_data",
+  "gdpr.rop.controller.categories_of_personal_data.documented",
+  "gdpr.rop.controller.dpo_contact",
+  "gdpr.rop.controller.dpo_contact.documented",
+  "gdpr.rop.controller.name_and_contact",
+  "gdpr.rop.controller.name_and_contact.documented",
+  "gdpr.rop.controller.purposes",
+  "gdpr.rop.controller.purposes.documented",
+  "gdpr.rop.controller.recipients",
+  "gdpr.rop.controller.recipients.documented",
+  "gdpr.rop.controller.retention_periods",
+  "gdpr.rop.controller.retention_periods.documented",
+  "gdpr.rop.controller.security_measures",
+  "gdpr.rop.controller.security_measures.documented",
+  "gdpr.rop.controller.third_country_transfers",
+  "gdpr.rop.controller.third_country_transfers.documented",
+  "gdpr.rop.processor",
+  "gdpr.rop.processor.categories_of_processing",
+  "gdpr.rop.processor.categories_of_processing.documented",
+  "gdpr.rop.processor.controllers_processed_for",
+  "gdpr.rop.processor.controllers_processed_for.documented",
+  "gdpr.rop.processor.name_and_contact",
+  "gdpr.rop.processor.name_and_contact.documented",
+  "gdpr.rop.processor.security_measures",
+  "gdpr.rop.processor.security_measures.documented",
+  "gdpr.rop.processor.third_country_transfers",
+  "gdpr.rop.processor.third_country_transfers.documented",
+  "gdpr.security",
+  "gdpr.security.availability",
+  "gdpr.security.availability.ensured",
+  "gdpr.security.confidentiality",
+  "gdpr.security.confidentiality.ensured",
+  "gdpr.security.effectiveness",
+  "gdpr.security.effectiveness.regularly_tested",
+  "gdpr.security.encryption",
+  "gdpr.security.encryption.implemented",
+  "gdpr.security.integrity",
+  "gdpr.security.integrity.ensured",
+  "gdpr.security.measures",
+  "gdpr.security.measures.proportionate_to_risk",
+  "gdpr.security.pseudonymisation",
+  "gdpr.security.pseudonymisation.implemented",
+  "gdpr.security.resilience",
+  "gdpr.security.resilience.ensured",
+  "gdpr.security.restore_capability",
+  "gdpr.security.restore_capability.tested",
+  "gdpr.security.risk_assessment",
+  "gdpr.security.risk_assessment.performed",
+  "gdpr.special_category_data",
+  "gdpr.special_category_data.additional_safeguards",
+  "gdpr.special_category_data.additional_safeguards.implemented",
+  "gdpr.special_category_data.dpia",
+  "gdpr.special_category_data.dpia.conducted",
+  "gdpr.special_category_data.explicit_consent",
+  "gdpr.special_category_data.legal_basis",
+  "gdpr.special_category_data.legal_basis.documented",
+  "gdpr.special_category_data.processed",
+  "gdpr.sub_processors",
+  "gdpr.sub_processors.authorisation",
+  "gdpr.sub_processors.authorisation.controller_approval",
+  "gdpr.sub_processors.changes",
+  "gdpr.sub_processors.changes.controller_notified",
+  "gdpr.sub_processors.contracts",
+  "gdpr.sub_processors.contracts.same_obligations_as_processor",
+  "gdpr.sub_processors.inventory",
+  "gdpr.sub_processors.inventory.maintained",
+  "gdpr.sub_processors.liability",
+  "gdpr.sub_processors.liability.processor_remains_liable",
+  "gdpr.supervisory_authority",
+  "gdpr.supervisory_authority.cooperation",
+  "gdpr.supervisory_authority.cooperation.policy",
+  "gdpr.supervisory_authority.investigations",
+  "gdpr.supervisory_authority.investigations.documented_process",
+  "gdpr.supervisory_authority.requests",
+  "gdpr.supervisory_authority.requests.response_procedure",
+  "gdpr.technical_measures",
+  "gdpr.technical_measures.anonymisation",
+  "gdpr.technical_measures.anonymisation.process_defined",
+  "gdpr.technical_measures.availability",
+  "gdpr.technical_measures.availability.backup_and_recovery",
+  "gdpr.technical_measures.confidentiality",
+  "gdpr.technical_measures.confidentiality.access_controls",
+  "gdpr.technical_measures.encryption",
+  "gdpr.technical_measures.encryption.personal_data_at_rest",
+  "gdpr.technical_measures.encryption.personal_data_in_transit",
+  "gdpr.technical_measures.integrity",
+  "gdpr.technical_measures.integrity.checksums_or_signatures",
+  "gdpr.technical_measures.pseudonymisation",
+  "gdpr.technical_measures.pseudonymisation.implemented",
+  "gdpr.technical_measures.resilience",
+  "gdpr.technical_measures.resilience.systems_resilient",
+  "gdpr.technical_measures.restore",
+  "gdpr.technical_measures.restore.timely_restoration_capability",
+  "gdpr.technical_measures.testing",
+  "gdpr.technical_measures.testing.effectiveness_evaluated",
+  "gdpr.technical_measures.testing.regular_security_testing",
+  "gdpr.transfers",
+  "gdpr.transfers.adequacy",
+  "gdpr.transfers.adequacy.countries_verified",
+  "gdpr.transfers.adequacy.list_current",
+  "gdpr.transfers.adequacy.monitoring",
+  "gdpr.transfers.adequacy.monitoring.for_withdrawal",
+  "gdpr.transfers.bcr",
+  "gdpr.transfers.bcr.approved_by_lead_dpa",
+  "gdpr.transfers.bcr.covers_all_entities",
+  "gdpr.transfers.bcr.dpo_responsible",
+  "gdpr.transfers.bcr.enforceable_by_data_subjects",
+  "gdpr.transfers.bcr.legally_binding",
+  "gdpr.transfers.bcr.published",
+  "gdpr.transfers.bcr.used",
+  "gdpr.transfers.derogations",
+  "gdpr.transfers.derogations.basis",
+  "gdpr.transfers.derogations.basis.contract_performance",
+  "gdpr.transfers.derogations.basis.documented",
+  "gdpr.transfers.derogations.basis.explicit_consent",
+  "gdpr.transfers.derogations.basis.legal_claims",
+  "gdpr.transfers.derogations.basis.public_interest",
+  "gdpr.transfers.derogations.basis.vital_interests",
+  "gdpr.transfers.derogations.used",
+  "gdpr.transfers.destination_countries",
+  "gdpr.transfers.general",
+  "gdpr.transfers.general.adequacy_or_safeguards",
+  "gdpr.transfers.general.adequacy_or_safeguards.in_place",
+  "gdpr.transfers.general.compliance_documented",
+  "gdpr.transfers.general.onward_transfers",
+  "gdpr.transfers.general.onward_transfers.restricted",
+  "gdpr.transfers.inventory",
+  "gdpr.transfers.inventory.all_third_country_flows",
+  "gdpr.transfers.inventory.all_third_country_flows.documented",
+  "gdpr.transfers.inventory.maintained",
+  "gdpr.transfers.inventory.mechanism_per_transfer",
+  "gdpr.transfers.inventory.mechanism_per_transfer.documented",
+  "gdpr.transfers.inventory.regularly_reviewed",
+  "gdpr.transfers.log",
+  "gdpr.transfers.log.data_categories",
+  "gdpr.transfers.log.data_categories.recorded",
+  "gdpr.transfers.log.date",
+  "gdpr.transfers.log.date.recorded",
+  "gdpr.transfers.log.legal_basis",
+  "gdpr.transfers.log.legal_basis.recorded",
+  "gdpr.transfers.log.maintained",
+  "gdpr.transfers.log.recipient",
+  "gdpr.transfers.log.recipient.recorded",
+  "gdpr.transfers.scc",
+  "gdpr.transfers.scc.eu_commission_approved_version",
+  "gdpr.transfers.scc.not_amended_invalidly",
+  "gdpr.transfers.scc.signed_by_parties",
+  "gdpr.transfers.scc.transfer_impact_assessment",
+  "gdpr.transfers.scc.transfer_impact_assessment.performed",
+  "gdpr.transfers.scc.used",
+  "gdpr.transfers.supplementary_measures",
+  "gdpr.transfers.supplementary_measures.contractual",
+  "gdpr.transfers.supplementary_measures.contractual.additional_commitments",
+  "gdpr.transfers.supplementary_measures.effective",
+  "gdpr.transfers.supplementary_measures.technical",
+  "gdpr.transfers.supplementary_measures.technical.end_to_end_encryption",
+  "gdpr.transfers.supplementary_measures.technical.pseudonymisation",
+  "gdpr.transfers.tia",
+  "gdpr.transfers.tia.destination_country_laws",
+  "gdpr.transfers.tia.destination_country_laws.assessed",
+  "gdpr.transfers.tia.documented",
+  "gdpr.transfers.tia.performed",
+  "gdpr.transfers.tia.public_authority_access",
+  "gdpr.transfers.tia.public_authority_access.assessed",
+  "gdpr.transfers.tia.supplementary_measures",
+  "gdpr.transfers.tia.supplementary_measures.identified_if_needed",
+  "gdpr.transfers.tia.supplementary_measures_required",
+  "gdpr.transfers.transparency",
+  "gdpr.transfers.transparency.countries",
+  "gdpr.transfers.transparency.countries.identified",
+  "gdpr.transfers.transparency.privacy_notice",
+  "gdpr.transfers.transparency.privacy_notice.mentions_transfers",
+  "gdpr.transfers.transparency.safeguards",
+  "gdpr.transfers.transparency.safeguards.mentioned",
+  "gdpr.transfers.us_transfers",
+  "gdpr.transfers.us_transfers.dpf_certification",
+  "gdpr.transfers.us_transfers.dpf_certification.verified",
+  "gdpr.transfers.us_transfers.mechanism",
+  "gdpr.transfers.us_transfers.mechanism.eu_us_dpf_or_scc",
+  "gdpr.transfers.us_transfers.occur",
+  "gdpr.transfers.us_transfers.recipient",
+  "gdpr.transfers.us_transfers.recipient.certified_or_scc_signed",
+  "marketing",
+  "marketing.behavioural_advertising",
+  "marketing.behavioural_advertising.consent",
+  "marketing.behavioural_advertising.consent.obtained",
+  "marketing.behavioural_advertising.opt_out",
+  "marketing.behavioural_advertising.opt_out.easy",
+  "marketing.behavioural_advertising.profiling",
+  "marketing.behavioural_advertising.profiling.disclosed",
+  "marketing.behavioural_advertising.sensitive_categories",
+  "marketing.behavioural_advertising.sensitive_categories.not_targeted",
+  "marketing.behavioural_advertising.used",
+  "marketing.email",
+  "marketing.email.double_opt_in",
+  "marketing.email.double_opt_in.implemented",
+  "marketing.email.existing_customers",
+  "marketing.email.existing_customers.soft_opt_in_if_similar_products",
+  "marketing.email.opt_in",
+  "marketing.email.opt_in.required",
+  "marketing.email.records",
+  "marketing.email.records.maintained",
+  "marketing.email.unsubscribe",
+  "marketing.email.unsubscribe.honored_within_10_days",
+  "marketing.email.unsubscribe.in_every_email",
+  "profiling",
+  "profiling.data_subjects",
+  "profiling.data_subjects.informed",
+  "profiling.data_subjects.right_to_contest",
+  "profiling.data_subjects.right_to_human_review",
+  "profiling.lawful_basis",
+  "profiling.lawful_basis.one_of_three_bases",
+  "profiling.solely_automated_with_legal_effect",
+  "profiling.solely_automated_with_legal_effect.used",
+  "profiling.special_category_data",
+  "profiling.special_category_data.not_used_without_explicit_consent"
+ ]
+}
