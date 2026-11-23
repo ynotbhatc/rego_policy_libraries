@@ -509866,7 +509866,7 @@
      {
       "uuid": "82faf5e6-db9e-50fc-b65c-e58dccf2ce97",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/soc2.json",
-      "description": "Controls of soc2 evaluated by the Rego Policy Libraries (287 controls, 13 Rego modules).",
+      "description": "Controls of soc2 evaluated by the Rego Policy Libraries (299 controls, 13 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -511726,6 +511726,56 @@
         ]
        },
        {
+        "uuid": "304f55b1-a939-54a6-9358-24d64ae15332",
+        "control-id": "soc2-P1.1",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Privacy notice given to data subjects",
+        "props": [
+         {
+          "name": "label",
+          "value": "P1.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "36d1a0ef-e7e0-5962-9403-33bdeb15d9ae",
+        "control-id": "soc2-P2.1",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Choices and consent explained to data subjects",
+        "props": [
+         {
+          "name": "label",
+          "value": "P2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "44327c62-d0ce-5f01-903a-ba870b57c7a2",
         "control-id": "soc2-P3.1",
         "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Collection limited to stated purposes",
@@ -511826,6 +511876,31 @@
         ]
        },
        {
+        "uuid": "62d2cb56-db5e-5c20-b9c4-7a2404de4b4d",
+        "control-id": "soc2-P4.3",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Personal information disposed of securely",
+        "props": [
+         {
+          "name": "label",
+          "value": "P4.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "80906a34-9425-5ce1-9f60-e1b9bf9e2d34",
         "control-id": "soc2-P5.1",
         "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Data subject access",
@@ -511901,6 +511976,106 @@
         ]
        },
        {
+        "uuid": "8f7aadac-38a4-50c5-97e9-6e37eca5fddd",
+        "control-id": "soc2-P6.2",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Record kept of authorised disclosures",
+        "props": [
+         {
+          "name": "label",
+          "value": "P6.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ab8cb47c-3f21-5a88-a010-0014537553b6",
+        "control-id": "soc2-P6.3",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Record kept of unauthorised disclosures",
+        "props": [
+         {
+          "name": "label",
+          "value": "P6.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2095c0cb-e407-5b36-adb0-174c990bed6c",
+        "control-id": "soc2-P6.4",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Privacy commitments obtained from third parties",
+        "props": [
+         {
+          "name": "label",
+          "value": "P6.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b068e40d-e912-5df3-b67a-be3f809378b8",
+        "control-id": "soc2-P6.5",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Third parties report unauthorised disclosures",
+        "props": [
+         {
+          "name": "label",
+          "value": "P6.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "6e3297e1-cfb5-5132-8d64-1b5ee7d624d4",
         "control-id": "soc2-P6.6",
         "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Breach notification within commitments",
@@ -511926,6 +512101,31 @@
         ]
        },
        {
+        "uuid": "73b7ee90-770d-567d-9ba1-18373df396b3",
+        "control-id": "soc2-P6.7",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Account of personal information held and shared, on request",
+        "props": [
+         {
+          "name": "label",
+          "value": "P6.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "29216b28-b9be-5447-bbce-00b1ce37b0ba",
         "control-id": "soc2-P7.1",
         "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Personal data quality maintained",
@@ -511933,6 +512133,56 @@
          {
           "name": "label",
           "value": "P7.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "21f8e9fc-9bdf-5c3a-be3b-4c1330e8b2c3",
+        "control-id": "soc2-P8.1",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Privacy inquiries, complaints and disputes resolved",
+        "props": [
+         {
+          "name": "label",
+          "value": "P8.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "44501f53-8676-5f47-9f93-0e464806b9d9",
+        "control-id": "soc2-PI1.1",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Processing specifications defined and communicated",
+        "props": [
+         {
+          "name": "label",
+          "value": "PI1.1"
          },
          {
           "name": "rego-package",
@@ -511983,6 +512233,56 @@
          {
           "name": "label",
           "value": "PI1.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4bca1d9c-4067-597c-9c40-e2b7d29b9509",
+        "control-id": "soc2-PI1.4",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Outputs complete, accurate and delivered as intended",
+        "props": [
+         {
+          "name": "label",
+          "value": "PI1.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.criteria"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "02a6b147-f1ad-54d9-9302-a92cb21bd570",
+        "control-id": "soc2-PI1.5",
+        "description": "Evaluated by Rego package soc2.criteria (frameworks/management/soc2/criteria/soc2_criteria.rego): Stored data kept complete and accurate",
+        "props": [
+         {
+          "name": "label",
+          "value": "PI1.5"
          },
          {
           "name": "rego-package",
