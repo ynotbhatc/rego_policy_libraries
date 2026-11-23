@@ -138,7 +138,9 @@ def build(classes_for_bundle, name, out, by_class):
     if not eps:
         return None
     target = out / f"{name}.tar.gz"
-    cmd = ["opa", "build", "-t", "wasm", "-o", str(target)]
+    # test modules never belong in a wasm bundle: opa only skips *_test.rego by itself, and this repo's tests are
+    # tests/test_*.rego, whose helper functions (`f(x) := r if { r := ... with input as x }`) the wasm planner rejects
+    cmd = ["opa", "build", "-t", "wasm", "-o", str(target), "--ignore", "tests", "--ignore", "test_*.rego"]
     for e in sorted(eps):
         cmd += ["-e", e]
     # pass top-level dirs that contain this class's policies; opa ignores tests by name
