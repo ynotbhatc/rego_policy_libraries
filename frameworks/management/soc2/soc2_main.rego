@@ -467,9 +467,9 @@ soc2_detailed_findings := findings if {
 #                     CC1.2, CC1.4, CC3.2, CC7.4, CC9.1 and CC9.2 also still need the records read before
 #                     (control_environment, human_resources, risk_management, incident_response,
 #                     business_continuity, vendor_management, subservice_organizations)
-# control_results gives one row per criterion: status pass | fail | not_assessed and reason pass | fail |
-# evidence_missing | attestation_missing. Missing evidence or a missing attestation is not_assessed, never a
-# pass. total_controls = rows; failed_controls = rows that did not pass; compliant = every row passed, the
+# control_results gives one row per criterion: status pass | fail | evidence_missing | not_attested, the
+# vocabulary of nist_800_53.main and tisax.main. Missing evidence or a missing attestation is evidence_missing
+# and an unsigned attestation is not_attested; neither is ever a pass. total_controls = rows; failed_controls = rows that did not pass; compliant = every row passed, the
 # description prerequisites hold and the input carries no unreadable attestation.
 #
 # Optional categories: their criteria are evaluated for each category the entity puts in scope
@@ -729,7 +729,7 @@ _in_scope_ids := [id | some id in cc.order; _id_in_scope(id)]
 
 control_results := [cc.result_of[id] | some id in _in_scope_ids]
 
-control_result_counts := {s: count([r | some r in control_results; r.status == s]) | some s in ["pass", "fail", "not_assessed"]}
+control_result_counts := {s: count([r | some r in control_results; r.status == s]) | some s in ["pass", "fail", "evidence_missing", "not_attested"]}
 
 basis_counts := {b: count([r | some r in control_results; r.basis == b]) | some b in ["evidence", "attestation"]}
 
@@ -816,7 +816,7 @@ default compliance_report := {
 compliance_report := {
 	"framework_key": "soc2",
 	"standard": "SOC 2 - AICPA Trust Services Criteria (TSP section 100, 2017, points of focus revised 2022)",
-	"scope_note": "Evaluates all 33 common criteria (10 from evidence, 23 by signed attestation) plus the mapped criteria of the optional categories in scope; not_assessed is never a pass; category-module verdicts are advisory",
+	"scope_note": "Evaluates all 33 common criteria (10 from evidence, 23 by signed attestation) plus the mapped criteria of the optional categories in scope; evidence_missing and not_attested are never a pass; category-module verdicts are advisory",
 	"compliant": _soc2_report_compliant,
 	"total_controls": count(control_results),
 	"failed_controls": count(failed_criteria),

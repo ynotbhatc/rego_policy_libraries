@@ -29,8 +29,7 @@ test_cc1_1_fail if {
 test_cc1_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC1.1"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.1").status == "not_assessed"
-	_row(r, "CC1.1").reason == "attestation_missing"
+	_row(r, "CC1.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -51,8 +50,7 @@ test_cc1_2_fail if {
 test_cc1_2_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC1.2"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.2").status == "not_assessed"
-	_row(r, "CC1.2").reason == "attestation_missing"
+	_row(r, "CC1.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -63,11 +61,10 @@ test_cc1_2_record_false_fails_despite_attestation if {
 	_row(r, "CC1.2").status == "fail"
 }
 
-test_cc1_2_record_missing_is_not_assessed if {
+test_cc1_2_record_missing_is_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/control_environment/governance/board_oversight"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.2").status == "not_assessed"
-	_row(r, "CC1.2").reason == "evidence_missing"
+	_row(r, "CC1.2").status == "evidence_missing"
 }
 
 test_cc1_3_pass if {
@@ -87,8 +84,7 @@ test_cc1_3_fail if {
 test_cc1_3_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC1.3"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.3").status == "not_assessed"
-	_row(r, "CC1.3").reason == "attestation_missing"
+	_row(r, "CC1.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -109,8 +105,7 @@ test_cc1_4_fail if {
 test_cc1_4_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC1.4"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.4").status == "not_assessed"
-	_row(r, "CC1.4").reason == "attestation_missing"
+	_row(r, "CC1.4").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -121,11 +116,10 @@ test_cc1_4_record_false_fails_despite_attestation if {
 	_row(r, "CC1.4").status == "fail"
 }
 
-test_cc1_4_record_missing_is_not_assessed if {
+test_cc1_4_record_missing_is_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/human_resources/background_checks"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.4").status == "not_assessed"
-	_row(r, "CC1.4").reason == "evidence_missing"
+	_row(r, "CC1.4").status == "evidence_missing"
 }
 
 test_cc1_5_pass if {
@@ -145,8 +139,7 @@ test_cc1_5_fail if {
 test_cc1_5_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC1.5"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC1.5").status == "not_assessed"
-	_row(r, "CC1.5").reason == "attestation_missing"
+	_row(r, "CC1.5").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -167,8 +160,7 @@ test_cc2_1_fail if {
 test_cc2_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC2.1"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC2.1").status == "not_assessed"
-	_row(r, "CC2.1").reason == "attestation_missing"
+	_row(r, "CC2.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -189,8 +181,7 @@ test_cc2_2_fail if {
 test_cc2_2_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC2.2"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC2.2").status == "not_assessed"
-	_row(r, "CC2.2").reason == "attestation_missing"
+	_row(r, "CC2.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -211,8 +202,7 @@ test_cc2_3_fail if {
 test_cc2_3_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC2.3"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC2.3").status == "not_assessed"
-	_row(r, "CC2.3").reason == "attestation_missing"
+	_row(r, "CC2.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -233,8 +223,7 @@ test_cc3_1_fail if {
 test_cc3_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC3.1"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC3.1").status == "not_assessed"
-	_row(r, "CC3.1").reason == "attestation_missing"
+	_row(r, "CC3.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -255,8 +244,7 @@ test_cc3_2_fail if {
 test_cc3_2_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC3.2"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC3.2").status == "not_assessed"
-	_row(r, "CC3.2").reason == "attestation_missing"
+	_row(r, "CC3.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -267,11 +255,10 @@ test_cc3_2_record_false_fails_despite_attestation if {
 	_row(r, "CC3.2").status == "fail"
 }
 
-test_cc3_2_record_missing_is_not_assessed if {
+test_cc3_2_record_missing_is_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/risk_management/risk_assessment/periodic"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC3.2").status == "not_assessed"
-	_row(r, "CC3.2").reason == "evidence_missing"
+	_row(r, "CC3.2").status == "evidence_missing"
 }
 
 test_cc3_3_pass if {
@@ -291,8 +278,7 @@ test_cc3_3_fail if {
 test_cc3_3_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC3.3"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC3.3").status == "not_assessed"
-	_row(r, "CC3.3").reason == "attestation_missing"
+	_row(r, "CC3.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -313,8 +299,7 @@ test_cc3_4_fail if {
 test_cc3_4_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC3.4"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC3.4").status == "not_assessed"
-	_row(r, "CC3.4").reason == "attestation_missing"
+	_row(r, "CC3.4").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -335,8 +320,7 @@ test_cc4_1_fail if {
 test_cc4_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC4.1"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC4.1").status == "not_assessed"
-	_row(r, "CC4.1").reason == "attestation_missing"
+	_row(r, "CC4.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -357,8 +341,7 @@ test_cc4_2_fail if {
 test_cc4_2_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC4.2"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC4.2").status == "not_assessed"
-	_row(r, "CC4.2").reason == "attestation_missing"
+	_row(r, "CC4.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -379,8 +362,7 @@ test_cc5_1_fail if {
 test_cc5_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC5.1"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC5.1").status == "not_assessed"
-	_row(r, "CC5.1").reason == "attestation_missing"
+	_row(r, "CC5.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -401,8 +383,7 @@ test_cc5_2_fail if {
 test_cc5_2_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC5.2"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC5.2").status == "not_assessed"
-	_row(r, "CC5.2").reason == "attestation_missing"
+	_row(r, "CC5.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -423,8 +404,7 @@ test_cc5_3_fail if {
 test_cc5_3_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC5.3"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC5.3").status == "not_assessed"
-	_row(r, "CC5.3").reason == "attestation_missing"
+	_row(r, "CC5.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -445,8 +425,7 @@ test_cc6_1_fail if {
 test_cc6_1_evidence_missing if {
 	inp := json.remove(fixture, ["/access_controls/privileged_users"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.1").status == "not_assessed"
-	_row(r, "CC6.1").reason == "evidence_missing"
+	_row(r, "CC6.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -467,8 +446,7 @@ test_cc6_2_fail if {
 test_cc6_2_evidence_missing if {
 	inp := json.remove(fixture, ["/user_management/automated_provisioning"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.2").status == "not_assessed"
-	_row(r, "CC6.2").reason == "evidence_missing"
+	_row(r, "CC6.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -489,8 +467,7 @@ test_cc6_3_fail if {
 test_cc6_3_evidence_missing if {
 	inp := json.remove(fixture, ["/access_controls/role_based_access"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.3").status == "not_assessed"
-	_row(r, "CC6.3").reason == "evidence_missing"
+	_row(r, "CC6.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -511,8 +488,7 @@ test_cc6_4_fail if {
 test_cc6_4_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC6.4"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.4").status == "not_assessed"
-	_row(r, "CC6.4").reason == "attestation_missing"
+	_row(r, "CC6.4").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -533,8 +509,7 @@ test_cc6_5_fail if {
 test_cc6_5_evidence_missing if {
 	inp := json.remove(fixture, ["/data_disposal/procedures/documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.5").status == "not_assessed"
-	_row(r, "CC6.5").reason == "evidence_missing"
+	_row(r, "CC6.5").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -555,8 +530,7 @@ test_cc6_6_fail if {
 test_cc6_6_evidence_missing if {
 	inp := json.remove(fixture, ["/remote_access/vpn_required"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.6").status == "not_assessed"
-	_row(r, "CC6.6").reason == "evidence_missing"
+	_row(r, "CC6.6").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -577,8 +551,7 @@ test_cc6_7_fail if {
 test_cc6_7_evidence_missing if {
 	inp := json.remove(fixture, ["/encryption/in_transit/enabled"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.7").status == "not_assessed"
-	_row(r, "CC6.7").reason == "evidence_missing"
+	_row(r, "CC6.7").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -599,8 +572,7 @@ test_cc6_8_fail if {
 test_cc6_8_evidence_missing if {
 	inp := json.remove(fixture, ["/security/edr/coverage/comprehensive"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC6.8").status == "not_assessed"
-	_row(r, "CC6.8").reason == "evidence_missing"
+	_row(r, "CC6.8").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -621,8 +593,7 @@ test_cc7_1_fail if {
 test_cc7_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/configuration_management/baseline/established"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC7.1").status == "not_assessed"
-	_row(r, "CC7.1").reason == "evidence_missing"
+	_row(r, "CC7.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -643,8 +614,7 @@ test_cc7_2_fail if {
 test_cc7_2_evidence_missing if {
 	inp := json.remove(fixture, ["/access_controls/access_logging/enabled"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC7.2").status == "not_assessed"
-	_row(r, "CC7.2").reason == "evidence_missing"
+	_row(r, "CC7.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -665,8 +635,7 @@ test_cc7_3_fail if {
 test_cc7_3_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC7.3"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC7.3").status == "not_assessed"
-	_row(r, "CC7.3").reason == "attestation_missing"
+	_row(r, "CC7.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -687,8 +656,7 @@ test_cc7_4_fail if {
 test_cc7_4_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC7.4"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC7.4").status == "not_assessed"
-	_row(r, "CC7.4").reason == "attestation_missing"
+	_row(r, "CC7.4").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -699,11 +667,10 @@ test_cc7_4_record_false_fails_despite_attestation if {
 	_row(r, "CC7.4").status == "fail"
 }
 
-test_cc7_4_record_missing_is_not_assessed if {
+test_cc7_4_record_missing_is_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/incident_response/program/established"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC7.4").status == "not_assessed"
-	_row(r, "CC7.4").reason == "evidence_missing"
+	_row(r, "CC7.4").status == "evidence_missing"
 }
 
 test_cc7_5_pass if {
@@ -723,8 +690,7 @@ test_cc7_5_fail if {
 test_cc7_5_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC7.5"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC7.5").status == "not_assessed"
-	_row(r, "CC7.5").reason == "attestation_missing"
+	_row(r, "CC7.5").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -745,8 +711,7 @@ test_cc8_1_fail if {
 test_cc8_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/change_management/process/documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC8.1").status == "not_assessed"
-	_row(r, "CC8.1").reason == "evidence_missing"
+	_row(r, "CC8.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -767,8 +732,7 @@ test_cc9_1_fail if {
 test_cc9_1_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC9.1"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC9.1").status == "not_assessed"
-	_row(r, "CC9.1").reason == "attestation_missing"
+	_row(r, "CC9.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -779,11 +743,10 @@ test_cc9_1_record_false_fails_despite_attestation if {
 	_row(r, "CC9.1").status == "fail"
 }
 
-test_cc9_1_record_missing_is_not_assessed if {
+test_cc9_1_record_missing_is_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/business_continuity/plan/documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC9.1").status == "not_assessed"
-	_row(r, "CC9.1").reason == "evidence_missing"
+	_row(r, "CC9.1").status == "evidence_missing"
 }
 
 test_cc9_2_pass if {
@@ -803,8 +766,7 @@ test_cc9_2_fail if {
 test_cc9_2_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/attestations/CC9.2"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC9.2").status == "not_assessed"
-	_row(r, "CC9.2").reason == "attestation_missing"
+	_row(r, "CC9.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -815,11 +777,10 @@ test_cc9_2_record_false_fails_despite_attestation if {
 	_row(r, "CC9.2").status == "fail"
 }
 
-test_cc9_2_record_missing_is_not_assessed if {
+test_cc9_2_record_missing_is_evidence_missing if {
 	inp := json.remove(fixture, ["/soc2/vendor_management/due_diligence/performed"])
 	r := main.compliance_report with input as inp
-	_row(r, "CC9.2").status == "not_assessed"
-	_row(r, "CC9.2").reason == "evidence_missing"
+	_row(r, "CC9.2").status == "evidence_missing"
 }
 
 test_a1_1_pass if {
@@ -839,8 +800,7 @@ test_a1_1_fail if {
 test_a1_1_evidence_missing if {
 	inp := json.remove(fixture, ["/capacity_management/monitoring/enabled"])
 	r := main.compliance_report with input as inp
-	_row(r, "A1.1").status == "not_assessed"
-	_row(r, "A1.1").reason == "evidence_missing"
+	_row(r, "A1.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -861,8 +821,7 @@ test_a1_2_fail if {
 test_a1_2_evidence_missing if {
 	inp := json.remove(fixture, ["/backup/automated_backups/enabled"])
 	r := main.compliance_report with input as inp
-	_row(r, "A1.2").status == "not_assessed"
-	_row(r, "A1.2").reason == "evidence_missing"
+	_row(r, "A1.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -883,8 +842,7 @@ test_a1_3_fail if {
 test_a1_3_evidence_missing if {
 	inp := json.remove(fixture, ["/backup/recovery_testing/frequency_days"])
 	r := main.compliance_report with input as inp
-	_row(r, "A1.3").status == "not_assessed"
-	_row(r, "A1.3").reason == "evidence_missing"
+	_row(r, "A1.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -905,8 +863,7 @@ test_c1_1_fail if {
 test_c1_1_evidence_missing if {
 	inp := json.remove(fixture, ["/data_classification/system_defined"])
 	r := main.compliance_report with input as inp
-	_row(r, "C1.1").status == "not_assessed"
-	_row(r, "C1.1").reason == "evidence_missing"
+	_row(r, "C1.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -927,8 +884,7 @@ test_c1_2_fail if {
 test_c1_2_evidence_missing if {
 	inp := json.remove(fixture, ["/data_disposal/procedures/documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "C1.2").status == "not_assessed"
-	_row(r, "C1.2").reason == "evidence_missing"
+	_row(r, "C1.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -949,8 +905,7 @@ test_pi1_2_fail if {
 test_pi1_2_evidence_missing if {
 	inp := json.remove(fixture, ["/data_processing/input_validation/enabled"])
 	r := main.compliance_report with input as inp
-	_row(r, "PI1.2").status == "not_assessed"
-	_row(r, "PI1.2").reason == "evidence_missing"
+	_row(r, "PI1.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -971,8 +926,7 @@ test_pi1_3_fail if {
 test_pi1_3_evidence_missing if {
 	inp := json.remove(fixture, ["/data_processing/authorization/required"])
 	r := main.compliance_report with input as inp
-	_row(r, "PI1.3").status == "not_assessed"
-	_row(r, "PI1.3").reason == "evidence_missing"
+	_row(r, "PI1.3").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -993,8 +947,7 @@ test_p3_1_fail if {
 test_p3_1_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/collection/policy_documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "P3.1").status == "not_assessed"
-	_row(r, "P3.1").reason == "evidence_missing"
+	_row(r, "P3.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1015,8 +968,7 @@ test_p3_2_fail if {
 test_p3_2_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/consent/explicit_consent_required"])
 	r := main.compliance_report with input as inp
-	_row(r, "P3.2").status == "not_assessed"
-	_row(r, "P3.2").reason == "evidence_missing"
+	_row(r, "P3.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1037,8 +989,7 @@ test_p4_1_fail if {
 test_p4_1_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/use/purpose_limitation"])
 	r := main.compliance_report with input as inp
-	_row(r, "P4.1").status == "not_assessed"
-	_row(r, "P4.1").reason == "evidence_missing"
+	_row(r, "P4.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1059,8 +1010,7 @@ test_p4_2_fail if {
 test_p4_2_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/retention/policies_documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "P4.2").status == "not_assessed"
-	_row(r, "P4.2").reason == "evidence_missing"
+	_row(r, "P4.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1081,8 +1031,7 @@ test_p5_1_fail if {
 test_p5_1_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/data_subject_rights/access_request/supported"])
 	r := main.compliance_report with input as inp
-	_row(r, "P5.1").status == "not_assessed"
-	_row(r, "P5.1").reason == "evidence_missing"
+	_row(r, "P5.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1103,8 +1052,7 @@ test_p5_2_fail if {
 test_p5_2_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/data_subject_rights/rectification/supported"])
 	r := main.compliance_report with input as inp
-	_row(r, "P5.2").status == "not_assessed"
-	_row(r, "P5.2").reason == "evidence_missing"
+	_row(r, "P5.2").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1125,8 +1073,7 @@ test_p6_1_fail if {
 test_p6_1_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/third_party_sharing/documented_agreements"])
 	r := main.compliance_report with input as inp
-	_row(r, "P6.1").status == "not_assessed"
-	_row(r, "P6.1").reason == "evidence_missing"
+	_row(r, "P6.1").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1147,8 +1094,7 @@ test_p6_6_fail if {
 test_p6_6_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/breach_notification/procedures_documented"])
 	r := main.compliance_report with input as inp
-	_row(r, "P6.6").status == "not_assessed"
-	_row(r, "P6.6").reason == "evidence_missing"
+	_row(r, "P6.6").status == "evidence_missing"
 	r.compliant == false
 }
 
@@ -1169,7 +1115,6 @@ test_p7_1_fail if {
 test_p7_1_evidence_missing if {
 	inp := json.remove(fixture, ["/privacy/data_quality/accuracy_verification"])
 	r := main.compliance_report with input as inp
-	_row(r, "P7.1").status == "not_assessed"
-	_row(r, "P7.1").reason == "evidence_missing"
+	_row(r, "P7.1").status == "evidence_missing"
 	r.compliant == false
 }

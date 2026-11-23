@@ -33,9 +33,9 @@ test_empty_input_scores_all_mapped_criteria_all_failed if {
 	r.total_controls == 49
 	r.failed_controls == 49
 	r.compliant == false
-	r.control_result_counts == {"pass": 0, "fail": 0, "not_assessed": 49}
-	"SOC 2 CC6.6: Access from outside the system boundary protected - not assessed - evidence missing: input.remote_access.session_timeout.configured, input.remote_access.session_timeout.max_idle_minutes, input.remote_access.vpn_encryption.enabled, input.remote_access.vpn_required, input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not of the expected type" in r.violations
-	"SOC 2 CC1.1: Integrity and ethics upheld across the entity - not assessed - no attestation at input.soc2.attestations[\"CC1.1\"]; this organisational criterion is met only by {attested: true, by, date}" in r.violations
+	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 49, "not_attested": 0}
+	"SOC 2 CC6.6: Access from outside the system boundary protected - evidence missing - input.remote_access.session_timeout.configured, input.remote_access.session_timeout.max_idle_minutes, input.remote_access.vpn_encryption.enabled, input.remote_access.vpn_required, input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not of the expected type" in r.violations
+	"SOC 2 CC1.1: Integrity and ethics upheld across the entity - evidence missing - no attestation at input.soc2.attestations[\"CC1.1\"]; this organisational criterion is met only by {attested: true, by, date}" in r.violations
 	some v in r.violations
 	startswith(v, "SOC 2 scope: evidence missing - input.soc2.categories_in_scope")
 }
@@ -122,7 +122,7 @@ test_all_criteria_pass_with_scope_and_description_is_compliant if {
 	r.total_controls == 49
 	r.failed_controls == 0
 	r.violations == []
-	r.control_result_counts == {"pass": 49, "fail": 0, "not_assessed": 0}
+	r.control_result_counts == {"pass": 49, "fail": 0, "evidence_missing": 0, "not_attested": 0}
 	r.basis_counts == {"evidence": 26, "attestation": 23}
 	r.coverage.common_criteria_evaluated == 33
 }
@@ -163,35 +163,35 @@ test_fail_outranks_missing_evidence if {
 	count(row.findings) == 2
 }
 
-test_missing_commitment_is_not_assessed if {
+test_missing_commitment_is_evidence_missing if {
 	inp := json.remove(fx.fixture, ["/soc2/commitments/max_idle_minutes"])
 	r := main.compliance_report with input as inp
 	row := [x | some x in r.control_results; x.id == "CC6.6"][0]
-	row.status == "not_assessed"
-	row.reason == "evidence_missing"
+	row.status == "evidence_missing"
 }
 
-test_string_where_boolean_belongs_is_not_assessed if {
+test_string_where_boolean_belongs_is_evidence_missing if {
 	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/change_management/approval/required", "value": "true"}])
 	r := main.compliance_report with input as inp
 	row := [x | some x in r.control_results; x.id == "CC8.1"][0]
-	row.status == "not_assessed"
+	row.status == "evidence_missing"
 	r.compliant == false
 }
 
-test_unsigned_attestation_fails if {
+test_unsigned_attestation_is_not_attested if {
 	inp := json.remove(fx.fixture, ["/soc2/attestations/CC3.3/by"])
 	r := main.compliance_report with input as inp
 	row := [x | some x in r.control_results; x.id == "CC3.3"][0]
-	row.status == "fail"
-	row.reason == "fail"
+	row.status == "not_attested"
+	r.compliant == false
+	"CC3.3" in r.failed_criteria
 }
 
-test_attestation_true_as_string_fails if {
+test_attestation_true_as_string_is_not_attested if {
 	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/attestations/CC5.2/attested", "value": "true"}])
 	r := main.compliance_report with input as inp
 	row := [x | some x in r.control_results; x.id == "CC5.2"][0]
-	row.status == "fail"
+	row.status == "not_attested"
 }
 
 test_unknown_attestation_key_blocks_compliance if {
@@ -220,15 +220,17 @@ test_attestations_not_an_object_is_a_finding if {
 	"SOC 2 input: input.soc2.attestations is not an object; no attestation can be read" in r.violations
 }
 
-test_status_values_are_pass_fail_not_assessed if {
+test_status_values_are_the_shared_vocabulary if {
 	r1 := main.compliance_report with input as {}
 	r2 := main.compliance_report with input as fx.fixture
 	inp := json.patch(fx.fixture, [{"op": "replace", "path": "/soc2/attestations/CC1.1/attested", "value": false}])
 	r3 := main.compliance_report with input as inp
 	every r in [r1, r2, r3] {
 		every row in r.control_results {
-			row.status in {"pass", "fail", "not_assessed"}
+			row.status in {"pass", "fail", "evidence_missing", "not_attested"}
+			not "reason" in object.keys(row)
 		}
+		object.keys(r.control_result_counts) == {"pass", "fail", "evidence_missing", "not_attested"}
 	}
 }
 
@@ -333,5 +335,5 @@ test_in_scope_criterion_failure_is_reported_by_id if {
 	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
 	r.compliant == false
 	"A1.3" in r.failed_criteria
-	"SOC 2 A1.3: Recovery testing carried out - not assessed - evidence missing: input.backup.recovery_testing.frequency_days, input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not of the expected type" in r.violations
+	"SOC 2 A1.3: Recovery testing carried out - evidence missing - input.backup.recovery_testing.frequency_days, input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not of the expected type" in r.violations
 }
