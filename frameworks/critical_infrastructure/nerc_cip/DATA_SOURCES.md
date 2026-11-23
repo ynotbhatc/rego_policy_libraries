@@ -30,6 +30,51 @@ Each section below maps to one or more keys in that object.
 
 ---
 
+## Standard versions the policies evaluate
+
+The modules follow the versions that are mandatory and enforceable in the United
+States. Checked on 2026-11-23 against NERC's "US Effective Date Status - Functional
+Applicability" workbook, linked from <https://www.nerc.com/standards/reliability-standards>
+(`/globalassets/align-reports/us-effective-date-status---functional-applicability.xlsx`).
+
+| Standard | Enforceable version | US effective date | Approved, future effective date |
+|---|---|---|---|
+| CIP-002 | CIP-002-5.1a | 2016-12-27 | CIP-002-8 on 2028-07-01 |
+| CIP-003 | **CIP-003-9** | 2026-04-01 | CIP-003-10 on 2028-07-01, CIP-003-11 on 2029-07-01 |
+| CIP-004 | **CIP-004-7** | 2024-01-01 | CIP-004-8 on 2028-07-01 |
+| CIP-005 | CIP-005-7 | 2022-10-01 | CIP-005-8 on 2028-07-01 |
+| CIP-006 | CIP-006-6 | 2016-07-01 | CIP-006-7.1 on 2028-07-01 |
+| CIP-007 | CIP-007-6 | 2016-07-01 | CIP-007-7.1 on 2028-07-01 |
+| CIP-008 | CIP-008-6 | 2021-01-01 | CIP-008-7.1 on 2028-07-01 |
+| CIP-009 | CIP-009-6 | 2016-07-01 | CIP-009-7.1 on 2028-07-01 |
+| CIP-010 | CIP-010-4 | 2022-10-01 | CIP-010-5 on 2028-07-01 |
+| CIP-011 | CIP-011-3 | 2024-01-01 | CIP-011-4.1 on 2028-07-01 |
+| CIP-012 | **CIP-012-2** | 2026-07-01 | none |
+| CIP-013 | CIP-013-2 | 2022-10-01 | CIP-013-3 on 2028-07-01 |
+| CIP-014 | CIP-014-3 | 2022-06-16 | CIP-014-4 on 2028-10-01 |
+| CIP-015 | none yet | not enforceable | CIP-015-1 on 2028-10-01, CIP-015-2 on 2029-10-01 |
+
+Bold rows changed in the 2026-11-23 audit (the modules cited CIP-003-8, CIP-004-6 and
+CIP-012-1). CIP-015-1 is evaluated ahead of its effective date.
+
+## Dates
+
+Every date field is an RFC 3339 timestamp (`2026-11-23T00:00:00Z`); epoch nanoseconds
+are also accepted. The policies compare dates with the evaluation time:
+
+- a date **later than the evaluation time** is a finding ("... is later than the
+  evaluation time"): a review that has not happened yet is not evidence that it was done;
+- an **absent or unparseable** date is reported as `evidence missing — input.<path> not
+  collected or not an RFC 3339 date`, in addition to the control failing;
+- a date-only string such as `2026-11-23` is not RFC 3339 and counts as unparseable.
+
+Each finding carries a `requirement` label that is a requirement or part of the cited
+standard version (for example `R4.4` for the CIP-007-6 15-day log review). Checks that
+have no numbered part in the standard are labelled with their parent requirement and
+say "supporting check" in the description.
+
+---
+
 ## CIP-002 — BES Cyber System Categorization
 
 | Input field | Type | Source system | Collection method | Status |
@@ -57,7 +102,7 @@ Each section below maps to one or more keys in that object.
 
 ---
 
-## CIP-003 — Security Management Controls
+## CIP-003 — Security Management Controls (CIP-003-9)
 
 | Input field | Type | Source system | Collection method | Status |
 |---|---|---|---|---|
@@ -69,9 +114,15 @@ Each section below maps to one or more keys in that object.
 | `cybersecurity_policies.last_review_date` | epoch ns | GRC platform | Policy review date field | **Stubbed** |
 | `cybersecurity_policies.cip_senior_manager_approved` | bool | GRC / DocuSign | Approval record | **Stubbed** |
 | `cybersecurity_policies.areas.*` | bool ×7 | GRC platform | Policy coverage matrix | **Stubbed** |
-| `information_sharing_plan.documented` | bool | GRC platform | Document existence | **Stubbed** |
-| `information_sharing_plan.nerc_contact_included` | bool | GRC platform | Plan content check | **Stubbed** |
-| `information_sharing_plan.last_review_date` | ISO-8601 | GRC platform | Review date field | **Stubbed** |
+| `cybersecurity_organization.delegated_authority` | object or `false` | GRC platform | R4: delegation record (`exists`, `documented`, `current`, `delegate_name`, `scope_defined`), or `false` when no delegations are used. Absent = evidence missing | **Stubbed** |
+| `cybersecurity_policies.areas.*` | bool ×9 | GRC platform | R1 Parts 1.1.1–1.1.9: `personnel_and_training`, `electronic_security_perimeters`, `physical_security`, `systems_security_management`, `incident_response`, `recovery_plans`, `configuration_management`, `information_protection`, `cip_exceptional_circumstances` | **Stubbed** |
+| `cybersecurity_policies.low_impact_areas.*` | bool ×7 | GRC platform | R1 Parts 1.2.1–1.2.7: `cyber_security_awareness`, `physical_security_controls`, `electronic_access_controls`, `cyber_security_incident_response`, `transient_cyber_assets_and_removable_media`, `vendor_electronic_remote_access` (new in -9), `cip_exceptional_circumstances` | **Stubbed** |
+| `information_sharing_plan.*` | bool / RFC 3339 | GRC platform | Advisory only: not a CIP-003 requirement, reported under `report.advisory` | **Stubbed** |
+| `low_impact_plan.cyber_security_awareness` | bool | GRC platform | Attachment 1 Section 1 | **Stubbed** |
+| `low_impact_plan.vendor_electronic_remote_access.allowed` | bool (required) | GRC / network | Attachment 1 Section 6 (new in -9): do assets with low impact BES Cyber Systems allow vendor electronic remote access? `false` = not applicable; absent = evidence missing | **Stubbed** |
+| `low_impact_plan.vendor_electronic_remote_access.determine_method` | bool | Remote access gateway / PAM | Section 6.1: method to determine vendor electronic remote access | **Stubbed** |
+| `low_impact_plan.vendor_electronic_remote_access.disable_method` | bool | Remote access gateway / PAM | Section 6.2: method to disable it | **Stubbed** |
+| `low_impact_plan.vendor_electronic_remote_access.malicious_communications_detection` | bool | IDS / firewall | Section 6.3: detection of known or suspected malicious communications | **Stubbed** |
 | `low_impact_plan.documented` | bool | GRC platform | Low-impact plan existence | **Stubbed** |
 | `low_impact_plan.electronic_access_controls` | bool | GRC platform | Plan content verification | **Stubbed** |
 | `low_impact_plan.cyber_security_incident_response` | bool | GRC platform | As above | **Stubbed** |
@@ -87,9 +138,18 @@ Each section below maps to one or more keys in that object.
 **Ansible approach:** Most of these are attestation fields. Collect via a survey
 form or ServiceNow GRC REST API (`/api/now/table/u_cip_policy_attestation`).
 
+**Applicability:** R1 Part 1.2 and R2 (the low impact plan, Transient Cyber Assets,
+Removable Media and Section 6) apply when `bes_cyber_systems` holds a low impact system,
+and also when no inventory is supplied. R1 Part 1.1 applies likewise for high and medium
+impact systems.
+
+**Product entrypoint (`nerc_cip_main`):** reads
+`cybersecurity_organization.low_impact_vendor_remote_access.{allowed, determine_method,
+disable_method, malicious_communications_detection}` for Section 6.
+
 ---
 
-## CIP-004 — Personnel & Training
+## CIP-004 — Personnel & Training (CIP-004-7)
 
 | Input field | Type | Source system | Collection method | Status |
 |---|---|---|---|---|
@@ -107,6 +167,13 @@ form or ServiceNow GRC REST API (`/api/now/table/u_cip_policy_attestation`).
 | `security_awareness.program_documented` | bool | GRC platform | Program document | **Stubbed** |
 | `security_awareness.quarterly_reinforcement` | bool | LMS / email platform | Quarterly delivery records | **Stubbed** |
 | `security_awareness.last_reinforcement_date` | ISO-8601 | LMS | Last delivery date | **Stubbed** |
+| `personnel[].cyber_security_training.last_completion_date` | RFC 3339 | LMS | R2.3: training at least once every 15 calendar months | **Stubbed** |
+| `bcsi_access.program_documented` | bool | GRC platform | R6 (new in -7): access management program for provisioned access to BCSI | **Stubbed** |
+| `bcsi_access.provisioned[]` | list (required; `[]` = none) | IAM / document repository / PACS | One entry per individual with provisioned access to BCSI. Absent = evidence missing | **Stubbed** |
+| `bcsi_access.provisioned[].authorized_before_provisioning` | bool | IAM / ITSM | R6.1 (or `cip_exceptional_circumstance: true`) | **Stubbed** |
+| `bcsi_access.provisioned[].authorization_record`, `.need_verified` | bool | IAM / GRC | R6.2.1 and R6.2.2 | **Stubbed** |
+| `bcsi_access.provisioned[].last_verification_date` | RFC 3339 | GRC | R6.2: verified at least once every 15 calendar months | **Stubbed** |
+| `bcsi_access.provisioned[].termination_date`, `.access_removed_date` | RFC 3339 | HR / IAM | R6.3: access removed by the end of the next calendar day (UTC) after the termination action | **Stubbed** |
 
 **Ansible approach:**
 - AD group membership: `community.windows.win_domain_group_membership` or LDAP query
@@ -323,7 +390,7 @@ form or ServiceNow GRC REST API (`/api/now/table/u_cip_policy_attestation`).
 
 ---
 
-## CIP-012 — Communications Protection Between Control Centers
+## CIP-012 — Communications Protection Between Control Centers (CIP-012-2)
 
 | Input field | Type | Source system | Collection method | Status |
 |---|---|---|---|---|
@@ -331,7 +398,10 @@ form or ServiceNow GRC REST API (`/api/now/table/u_cip_policy_attestation`).
 | `control_center_communications.criticality_assessed` | bool | GRC | Criticality assessment completion | **Stubbed** |
 | `control_center_communications.links[].encrypted` | bool | Network device / VPN | Firewall/VPN tunnel status (Cisco, Palo Alto) | **Stubbed** |
 | `control_center_communications.links[].authenticated` | bool | Network device | Authentication configuration on link | **Stubbed** |
-| `control_center_communications.links[].availability_measures` | bool | Network / NOC | Redundancy and monitoring | **Stubbed** |
+| `control_center_communications.links[].availability_protection` | bool | Network / NOC | R1 Part 1.2 (new in -2): method against the loss of the ability to communicate (alternative path, carrier service level, ...) | **Stubbed** |
+| `control_center_communications.links[].other_entity_operated` | bool (required) | Network documentation | R1 Part 1.5: is the far-end Control Center owned or operated by another Responsible Entity? Absent = finding | **Stubbed** |
+| `control_center_communications.links[].responsibilities_documented` | bool | GRC / inter-entity agreement | R1 Part 1.5: required when `other_entity_operated` is true | **Stubbed** |
+| `communication_contingency.recovery_procedures` | bool | GRC / NOC | R1 Part 1.3 (new in -2): methods to initiate the recovery of communication links | **Stubbed** |
 | `control_center_communications.last_test_date` | ISO-8601 | GRC / NOC records | Communication test record | **Stubbed** |
 | `communication_monitoring.enabled` | bool | SIEM / NOC monitoring | Monitoring tool active status | **Stubbed** |
 | `communication_monitoring.anomaly_detection` | bool | SIEM / IDS | Anomaly detection rule existence | **Stubbed** |
@@ -344,6 +414,13 @@ form or ServiceNow GRC REST API (`/api/now/table/u_cip_policy_attestation`).
 - VPN/link status: `cisco.ios.ios_command` (`show crypto ipsec sa`) or `paloaltonetworks.panos.panos_tunnel`
 - Link encryption: query Palo Alto GP or Cisco ISE via REST
 - Test records: ServiceNow query
+
+**Product entrypoint (`nerc_cip_main`):** reads `links[].encrypted`, `links[].authenticated`,
+`links[].availability_protected` (Part 1.2) and
+`control_center_communications.recovery_methods_documented` (Part 1.3).
+
+CIP-012-2 has one requirement (R1, Parts 1.1–1.5). Monitoring, log review, plan review
+and testing are kept as R1 supporting checks (implementation evidence).
 
 ---
 
@@ -400,7 +477,13 @@ form or ServiceNow GRC REST API (`/api/now/table/u_cip_policy_attestation`).
 
 ---
 
-## CIP-015 — Internal Network Security Monitoring (INSM)
+## CIP-015 — Internal Network Security Monitoring (INSM) (CIP-015-1, effective 2028-10-01)
+
+CIP-015-1 is approved (FERC order 2025-06-26, Docket RM24-7-000) and not yet enforceable
+in the United States. Its requirements are R1 (Parts 1.1 data feeds, 1.2 detection of
+anomalous activity, 1.3 evaluation), R2 (retention of INSM data) and R3 (protection of
+INSM data). The module checks R1 Parts 1.2 and 1.3 plus supporting scope and
+documentation checks; Part 1.1, R2 and R3 are not implemented.
 
 | Input field | Type | Source system | Collection method | Status |
 |---|---|---|---|---|
