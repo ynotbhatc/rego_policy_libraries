@@ -46,11 +46,18 @@
 #   central_counterparty, central_securities_depository, trading_venue, microenterprise
 #                         true | false, MUST be declared when Title II is evaluated (each undeclared one is a
 #                         violation). They open the rows the act addresses to those entities only (Art.16(2),
-#                         17(2), 24(2)-(4), 25(3)-(4)) and close the two "other than microenterprises" points
-#                         (Art.4(2)(c), Art.25(2)(c)). Not read for Title III.
+#                         17(2), 24(2)-(4), 25(3)-(4)); microenterprise: true closes the two "other than
+#                         microenterprises" points (Art.4(2)(c), Art.25(2)(c)), which stay open when it is
+#                         false, undeclared or not a boolean. Not read for Title III.
 #   obligations           {"Art.3(1)(a)": true, ...}. Missing or non-object -> FAIL-CLOSED violation. A
 #                         non-true value on an evaluated row is a violation; an id that is not a row is a
 #                         violation; an id of the title not being evaluated is accepted and ignored.
+#
+# Counts: total_controls = controls_evaluated = the rows of the evaluated title that apply to the declared
+#   roles (Title II 206-228, Title III 80); rows_carried = 308, both titles, which no single entity is
+#   assessed against. passed_controls (= attested) + failed_controls == total_controls on every input.
+#   input_contract_violations (gate, roles, obligations container, unknown ids) are findings, not rows:
+#   violation_count == failed_controls + input_contract_violations.
 #
 # Relationship to dora.main: dora.main's Pillar 1 checks cite Regulation (EU) 2022/2554 itself (Arts 5-13);
 # none cited this RTS, so nothing was re-keyed. Every message here starts "DORA RTS 2024/1774", so the
@@ -566,7 +573,9 @@ _attested(id) if _obligations[id] == true
 
 _applies("")
 
-_applies("not_microenterprise") if _in.microenterprise == false
+# "Other than microenterprises" points (Art.4(2)(c), Art.25(2)(c)): only an explicit boolean true closes them.
+# Undeclared or wrong-typed is not an exemption: the points stay open (and the role is reported undeclared).
+_applies("not_microenterprise") if not _in.microenterprise == true
 
 _applies(role) if {
 	role in {"central_counterparty", "central_securities_depository", "trading_venue"}
@@ -637,6 +646,20 @@ chapter_reports[k] := rpt if {
 	}
 }
 
+# Rows of the evaluated title that apply to this entity and are attested true.
+attested_rows contains id if {
+	some id, _ in applicable
+	_attested(id)
+}
+
+# Findings about the input itself (gate or role undeclared, obligations container missing, unknown id). They
+# make the report non-compliant but are not rows of the act, so they are counted apart from the controls:
+# violation_count == failed_controls + input_contract_violations.
+input_contract_notices contains msg if {
+	some msg in violation
+	startswith(msg, "DORA RTS 2024/1774 Input Contract:")
+}
+
 rows_by_title := {t: count({id | some id; r := obligations[id]; startswith(r.chapter, concat("", [t, "."]))}) | some t in {"II", "III"}}
 
 compliance_report := {
@@ -648,10 +671,14 @@ compliance_report := {
 		"title_evaluated": title_evaluated,
 	},
 	"entity_roles": {role: _bool(object.get(_in, role, null)) | some role, _ in entity_roles},
-	"total_controls": 308,
+	"rows_carried": count(obligations),
 	"rows_by_title": rows_by_title,
+	"total_controls": count(applicable),
 	"controls_evaluated": count(applicable),
-	"attested": count({id | some id; _ = applicable[id]; _attested(id)}),
+	"attested": count(attested_rows),
+	"passed_controls": count(attested_rows),
+	"failed_controls": count(applicable) - count(attested_rows),
+	"input_contract_violations": count(input_contract_notices),
 	"chapters": chapter_reports,
 	"violations": violation,
 	"violation_count": count(violation),

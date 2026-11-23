@@ -181,10 +181,18 @@ compliant if {
 	count(violation) == 0
 }
 
+# Every check is one `violation contains` rule with its own message, so each violation is one failed check
+# and passed + failed == total on every input. total_controls is the number of those rules; the tests pin it
+# (on an empty input every rule fires and the count must equal total_controls).
+total_controls := 30
+
 compliance_report := {
 	"family": "ICT subcontracting (critical/important functions)",
 	"regulation": "Commission Delegated Regulation (EU) 2025/532, in force 2025-07-22",
-	"controls_evaluated": 30,
+	"total_controls": total_controls,
+	"controls_evaluated": total_controls,
+	"passed_controls": total_controls - count(violation),
+	"failed_controls": count(violation),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,
