@@ -138,9 +138,16 @@ _checks_conditional contains "PS-3(3)" if {
 
 applicable_checks := _checks_all_levels | _checks_conditional
 
-_cm := object.get(input, "continuous_monitoring", {})
+# A section that is absent, null or not an object reads as empty, so every check on it reports
+# missing evidence. (object.get on a null section is undefined, which silenced the whole section.)
+_section(key) := value if {
+	value := object.get(input, key, null)
+	is_object(value)
+} else := {}
 
-_auth := object.get(input, "authorization", {})
+_cm := _section("continuous_monitoring")
+
+_auth := _section("authorization")
 
 violation_impact_level contains msg if {
 	impact_level_norm == "unknown"
@@ -152,13 +159,21 @@ violation_impact_level contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_authorization contains msg if {
-	not _auth.fedramp_authorized
-	not _auth.in_process
+	not _auth.fedramp_authorized == true
+	not _auth.in_process == true
 	msg := "FedRAMP CA-6: Service is not FedRAMP authorized and not in process (input.authorization.fedramp_authorized / in_process). Federal agencies may only use FedRAMP authorized cloud services for federal data."
 }
 
+# Only the booleans true and false are evidence: a string such as "true" is a collection error, not a status.
 violation_authorization contains msg if {
-	_auth.fedramp_authorized
+	some field in ["fedramp_authorized", "in_process"]
+	value := _auth[field]
+	not is_boolean(value)
+	msg := sprintf("FedRAMP CA-6: evidence invalid — input.authorization.%s must be true or false, got %v", [field, json.marshal(value)])
+}
+
+violation_authorization contains msg if {
+	_auth.fedramp_authorized == true
 	not _auth.authorization_type in {"ATO", "P-ATO"}
 	msg := sprintf(
 		"FedRAMP CA-6: Authorization type '%v' is not valid. Must be ATO (agency authorization) or P-ATO (provisional authorization).",
@@ -167,7 +182,7 @@ violation_authorization contains msg if {
 }
 
 violation_authorization contains msg if {
-	_auth.fedramp_authorized
+	_auth.fedramp_authorized == true
 	is_number(_auth.ato_expiry_days)
 	_auth.ato_expiry_days < 90
 	msg := sprintf(
@@ -180,7 +195,7 @@ violation_authorization contains msg if {
 # SC-13 Cryptographic Protection — FedRAMP: FIPS-validated or NSA-approved
 # ---------------------------------------------------------------------------
 
-_crypto := object.get(input, "cryptography", {})
+_crypto := _section("cryptography")
 
 violation_crypto contains msg if {
 	object.get(_crypto, "fips_140_validated", false) != true
@@ -250,7 +265,7 @@ violation_crypto contains msg if {
 # Below High the location is agency-defined; set data_residency.us_only_required when the agency requires it.
 # ---------------------------------------------------------------------------
 
-_residency := object.get(input, "data_residency", {})
+_residency := _section("data_residency")
 
 violation_data_residency contains msg if {
 	_applies_sa_9_5
@@ -286,6 +301,12 @@ violation_data_residency contains msg if {
 violation_personnel contains msg if {
 	not is_array(object.get(input, "personnel", null))
 	msg := "FedRAMP PS-3: evidence missing — input.personnel not collected"
+}
+
+violation_personnel contains msg if {
+	some i, person in object.get(input, "personnel", [])
+	not is_boolean(object.get(person, "admin_access", null))
+	msg := sprintf("FedRAMP PS-3: evidence invalid — input.personnel[%d].admin_access must be true or false, got %v", [i, json.marshal(object.get(person, "admin_access", null))])
 }
 
 violation_personnel contains msg if {
@@ -431,7 +452,7 @@ violation_3pao contains msg if {
 # CA-8 Penetration Testing and IR-8 Incident Response Plan (every level)
 # ---------------------------------------------------------------------------
 
-_svc := object.get(input, "cloud_service", {})
+_svc := _section("cloud_service")
 
 violation_testing_response contains msg if {
 	not _svc.penetration_test_annual == true

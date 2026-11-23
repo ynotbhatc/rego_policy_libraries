@@ -8,6 +8,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — FedRAMP Rev 5: three malformed inputs no longer pass (2026-11-22)
+- `input.cryptography: null` (and any section sent as null or a non-object: `authorization`,
+  `continuous_monitoring`, `data_residency`, `cloud_service`) reads as an empty section, so each check on it
+  reports missing evidence. Before, `object.get` on the null section was undefined and the whole section
+  raised nothing.
+- `authorization.fedramp_authorized` and `authorization.in_process` must be the booleans true or false. The
+  string `"true"` was truthy and passed CA-6; it is now `evidence invalid`.
+- `personnel[].admin_access` must be a boolean. The string `"true"` skipped the PS-3 screening checks for
+  that person; a missing or non-boolean value is now `evidence invalid`.
+- Three entries leave `scripts/bad_input_known_failures.txt`. Collectors that send these fields as strings
+  will see new findings: send booleans.
+
 ### Added — FedRAMP Rev 5 takes technical verdicts from benchmark results through the crosswalk (2026-11-22)
 - `crosswalk/framework_maps/data.json` gains `fedramp_rev5_low`, `fedramp_rev5_moderate`, `fedramp_rev5_high`
   and `fedramp_rev5_li_saas`: identity maps (FedRAMP control id to the same NIST SP 800-53 Rev 5 id) for the

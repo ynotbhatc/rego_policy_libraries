@@ -2,7 +2,7 @@
 # entrypoints that pass, go undefined or error on empty / missing / null / string-typed input.
 # `make check-bad-input` fails only on a failure NOT listed here. Fix the module, then regenerate.
 # Format: <package> <case> <kind>: <detail>. Kinds: pass, score-rise, undefined, error.
-# 195 entrypoints, 124 with an all-pass fixture, 8538 cases, 1321 failures in 80 packages.
+# 195 entrypoints, 124 with an all-pass fixture, 8544 cases, 1318 failures in 80 packages.
 # Entrypoints without an all-pass fixture (base cases only): 71
 
 aca_155_260.main keys_null undefined: compliance_report is undefined
@@ -878,13 +878,10 @@ eu_ai_act.main boolstr:eu_ai_act.prohibited.realtime_biometric_id.deployed_in_pu
 eu_ai_act.main boolstr:eu_ai_act.prohibited.social_scoring.deployed_by_public_authority pass: compliant=true score=null
 eu_ai_act.main boolstr:eu_ai_act.prohibited.subliminal_manipulation.uses_subliminal_techniques pass: compliant=true score=null
 eu_ai_act.main boolstr:eu_ai_act.prohibited.vulnerability_exploitation.distorts_behavior pass: compliant=true score=null
-fedramp.main boolstr:authorization.fedramp_authorized pass: compliant=true score=null
 fedramp.main boolstr:cloud_service.redundant_processing pass: compliant=true score=null
 fedramp.main boolstr:data_residency.processing_locations[0].us_territory pass: compliant=true score=null
 fedramp.main boolstr:data_residency.storage_locations[0].us_territory pass: compliant=true score=null
-fedramp.main boolstr:personnel[0].admin_access pass: compliant=true score=null
 fedramp.main drop:data_residency pass: compliant=true score=null
-fedramp.main null:cryptography pass: compliant=true score=null
 fedramp.main null:data_residency pass: compliant=true score=null
 ferpa.main boolstr:ferpa.access.amendment_procedure_documented pass: compliant=true score=null
 ferpa.main boolstr:ferpa.access.hearing_available pass: compliant=true score=null
