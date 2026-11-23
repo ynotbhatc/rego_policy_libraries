@@ -8,6 +8,34 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — SOC 2 and ISO 27701 per-control status values match NIST SP 800-53 and TISAX (breaking) (2026-11-22)
+- **Breaking change to the status values** in `control_results` of `soc2.main` (and `soc2.criteria`) and
+  `iso27701.main`. Both now use the vocabulary of `nist_800_53.main` and `tisax.main`: `pass`, `fail`,
+  `evidence_missing`, `not_attested`. The status `not_assessed` is gone from both, and so is the per-row
+  `reason` field: every value it carried is now the status itself, or (`reason: pass` / `fail` in SOC 2) was
+  the status already.
+
+  | module | old status / reason | new status |
+  |---|---|---|
+  | SOC 2 | `not_assessed` / `evidence_missing` | `evidence_missing` |
+  | SOC 2 | `not_assessed` / `attestation_missing` (no attestation) | `evidence_missing` |
+  | SOC 2 | `fail` / `fail` (attestation present, not signed) | `not_attested` |
+  | SOC 2 | `fail` / `fail` (attestation says `attested: false`) | `fail` (unchanged) |
+  | ISO 27701 | `not_assessed` / `evidence_missing` | `evidence_missing` |
+  | ISO 27701 | `not_assessed` / `not_attested` | `not_attested` |
+
+- `control_result_counts` keys are now `pass`, `fail`, `evidence_missing`, `not_attested` in both modules
+  (was `pass`, `fail`, `not_assessed`). Finding text changes with them (`evidence missing - ...`,
+  `not attested - ...`; no more `not assessed`).
+- Precedence in SOC 2 is that of NIST: fail > not_attested > evidence_missing > pass. Missing evidence and an
+  unsigned attestation never pass; `total_controls`, `failed_controls` and `compliant` are unchanged.
+- Out of scope is not a status in any of the four: rows outside the scope are left out and the scope is shown
+  in `categories_in_scope` (SOC 2), `group_results` (ISO 27701), `part_results` (TISAX) or `baseline_results`
+  (NIST). TISAX's top-level `not_assessed` list (superseded 3.1.2) and NIST's `withdrawn_not_assessed` are
+  catalogue notes, not statuses, and are unchanged.
+- One difference is kept on purpose: in SOC 2 and ISO 27701 an attestation that says `attested: false` is a
+  `fail` (an explicit refusal), where TISAX and NIST report it as `not_attested`.
+
 ### Added — SOC 2: all 33 common criteria with per-criterion results (2026-11-22)
 - `frameworks/management/soc2` now evaluates every common criterion of the 2017 Trust Services Criteria
   (points of focus revised 2022), CC1.1 to CC9.2 (was 12 of 33). New module `soc2.criteria`
