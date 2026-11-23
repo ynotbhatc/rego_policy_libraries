@@ -1,5 +1,5 @@
 # METADATA
-# title: "NIST SP 800-53 Rev 5 — catalog check: all 300 base controls, every Low/Moderate/High baseline control, 523 ids"
+# title: "NIST SP 800-53 Rev 5 — catalog check: all 300 base controls, every Low/Moderate/High and Privacy baseline control, 542 ids"
 # custom:
 #   class: compliance
 #   framework: nist_sp_800_53
@@ -29,13 +29,13 @@ import rego.v1
 # Coverage (checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0, which is also the
 # catalog behind this repo's converters/exports/oscal profiles, commit 78650f02): the catalog has 20
 # families and 1,014 controls and enhancements that are not withdrawn (300 base controls). This module
-# evaluates 523 of them: all 300 base controls, in all 20 families, and 223 enhancements, which is every control
+# evaluates 542 of them: all 300 base controls, in all 20 families, and 242 enhancements, which is every control
 # the NIST SP 800-53B Low (149), Moderate (287) and High (370) baselines and the FedRAMP Rev 5 Low (156), Moderate
-# (323) and High (410) baselines select. The Privacy baseline is evaluated for 77 of its 96 ids; the 491 other
-# enhancements (in no impact baseline) are not evaluated.
+# (323) and High (410) baselines select, and all 96 ids of the Privacy baseline. The 472 other enhancements (in
+# none of those baselines) are not evaluated.
 # A base control never fails on an enhancement's requirement. Organizational controls with no machine-checkable
 # evidence require a signed attestation ({attested: true, by, date}). A compliant result means "no finding in the
-# 523 evaluated ids", nothing more. control_results gives every id's outcome, and baseline_results says, for each
+# 542 evaluated ids", nothing more. control_results gives every id's outcome, and baseline_results says, for each
 # 800-53B and FedRAMP baseline, which of its controls are evaluated and how they came out and which are not
 # evaluated; that is a statement about this module, not a baseline authorization. Withdrawn controls are not assessed.
 #
@@ -350,7 +350,7 @@ compliance_report := object.union(
 	{
 		"framework": "NIST SP 800-53 Rev 5",
 		"version": "Rev 5",
-		"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 523 of 1,014 active controls and enhancements (all 300 base controls; every 800-53B and FedRAMP Low, Moderate and High control); per-baseline results, not a baseline authorization",
+		"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 542 of 1,014 active controls and enhancements (all 300 base controls; every 800-53B Low, Moderate, High and Privacy control and every FedRAMP Low, Moderate and High control); per-baseline results, not a baseline authorization",
 		"assessed_at": assessed_at,
 		"total_controls": total_controls,
 		"failed_controls": failed_controls,
