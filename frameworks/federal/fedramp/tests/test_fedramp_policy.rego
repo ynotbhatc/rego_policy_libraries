@@ -284,3 +284,31 @@ test_sha1_without_usage_is_missing_evidence if {
 test_object_entries_for_approved_algorithms_pass if {
 	not "SC-13" in _ids(_algos([{"algorithm": "AES-256", "usage": "encryption"}, "SHA-384"]))
 }
+
+# A section sent as null reads as empty: every check on it reports missing evidence.
+test_null_cryptography_section_is_not_compliant if {
+	inp := object.union(_at("low"), {"cryptography": null})
+	not fedramp.fedramp_compliant with input as inp
+	some msg in fedramp.violation_crypto with input as inp
+	contains(msg, "SC-13")
+}
+
+# The string "true" is not the boolean true.
+test_string_true_authorization_is_not_compliant if {
+	inp := json.patch(_at("low"), [{"op": "replace", "path": "/authorization/fedramp_authorized", "value": "true"}])
+	not fedramp.fedramp_compliant with input as inp
+	some msg in fedramp.violation_authorization with input as inp
+	contains(msg, "evidence invalid")
+}
+
+test_string_true_admin_access_is_not_compliant if {
+	inp := json.patch(_at("low"), [{"op": "replace", "path": "/personnel/0/admin_access", "value": "true"}])
+	not fedramp.fedramp_compliant with input as inp
+	some msg in fedramp.violation_personnel with input as inp
+	contains(msg, "evidence invalid")
+}
+
+test_boolean_false_admin_access_is_valid_evidence if {
+	inp := json.patch(_at("low"), [{"op": "add", "path": "/personnel/-", "value": {"name": "dev1", "admin_access": false}}])
+	fedramp.fedramp_compliant with input as inp
+}

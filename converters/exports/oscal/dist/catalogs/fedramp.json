@@ -131,10 +131,15 @@
        {
         "id": "fedramp-FedRAMP-CA-6_obj.1",
         "name": "assessment-objective",
-        "prose": "Authorization type '%v' is not valid. Must be ATO (agency authorization) or P-ATO (provisional authorization)."
+        "prose": "evidence invalid — input.authorization.%s must be true or false, got %v"
        },
        {
         "id": "fedramp-FedRAMP-CA-6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Authorization type '%v' is not valid. Must be ATO (agency authorization) or P-ATO (provisional authorization)."
+       },
+       {
+        "id": "fedramp-FedRAMP-CA-6_obj.3",
         "name": "assessment-objective",
         "prose": "ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration."
        }
@@ -269,6 +274,11 @@
        },
        {
         "id": "fedramp-FedRAMP-PS-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.personnel[%d].admin_access must be true or false, got %v"
+       },
+       {
+        "id": "fedramp-FedRAMP-PS-3_obj.2",
         "name": "assessment-objective",
         "prose": "Personnel '%v' has administrative access without a completed background check. Individuals must be screened before access is authorized."
        }
