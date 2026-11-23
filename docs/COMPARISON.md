@@ -102,11 +102,14 @@ controls of their own. The 190 catalogs are one per framework key, not one per s
 
 **What to quote.** Use "30,357 control-level checks" only with its definition (per-file parser hits). For a number
 that means "distinct requirements of a standard", take a module's declared `standard_total` where it has one
-(352 for the RHEL 9 benchmark above), not the sum. The 90 % density rule in `scripts/coverage_stamp.py` only flags a
-module whose cited ids fall below 90 % of its own declared total; a module can sit above that line and still be
-short or long by a few. Windows Server 2019 is an example the other way: it declares 400, evaluates all 400
-(398 from facts, 2 Manual by attestation) and the counter sees 399 distinct ids, because the two attestation
-recommendations sit in a table shape the counter does not read as ids and one report key is read as an id.
+(352 for the RHEL 9 benchmark above), not the sum. `scripts/coverage_stamp.py` compares each declared total with
+the distinct control ids the counter finds, with no tolerance: a module is `full` only when the two are equal, a
+module below its declared total is listed with the real number and fails CI unless its reason is recorded
+(`KNOWN_GAPS`), and a module above it is labelled `over`, which is not a claim that every declared control is
+present (extension checks and fail-closed notices carry ids too). Windows Server 2019 shows what the counter can
+and cannot see: the module declares 400 and evaluates all 400 (398 from facts, 2 Manual by attestation), and the
+counter finds 398 ids, because the two attestation recommendations sit in a table shape it does not read as ids.
+The tables are in [COVERAGE_SCAN.md](COVERAGE_SCAN.md).
 
 The per-control result lists a report carries (`control_results`, with its static index of id, basis, profile and
 evidence paths) are **not** counted: they restate controls already counted from their violation rules. The counter

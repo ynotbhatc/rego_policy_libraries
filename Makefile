@@ -112,13 +112,15 @@ check-coverage:
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
 # matches the module and the OSCAL baseline profiles; the PCI DSS evidence_spec blocks match their rule bodies;
 # the Linux STIG collector contract matches the rule tables; standards.yaml matches the module versions;
-# the input schemas (schemas/input/) match their sources and pass their self-tests
+# the input schemas (schemas/input/) match their sources and pass their self-tests; the site catalog's sections
+# hold every policy file once and add up to the README policy count
 check-generated: check-no-data check-standards
 	@python3 scripts/gen_nist_800_53_index.py --check
 	@echo "NIST 800-53 index current"
 	@python3 scripts/gen_pci_dss_evidence_spec.py --check
 	@python3 tools/stig_generators/gen_collector_contract.py --check
 	@OPA=$(OPA) python3 scripts/gen_input_schemas.py --check
+	@python3 scripts/gen_pages_catalog.py --check
 
 # one JSON Schema per framework key for the facts its module reads, generated from the rule tables, the collector
 # manifests and the sources (docs/INPUT_SCHEMAS.md); validate a document with scripts/validate_input.py
