@@ -72,6 +72,7 @@ xccdf:
 	@python3 converters/exports/xccdf_ids/build.py
 
 check-converters:
+	@python3 converters/packaging/wasm/build.py --check-data-paths
 	@bash converters/packaging/wasm/test/roundtrip.sh
 	@bash converters/packaging/gatekeeper/test/roundtrip.sh
 	@bash converters/packaging/kubewarden/test/roundtrip.sh

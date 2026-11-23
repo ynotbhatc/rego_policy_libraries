@@ -27,6 +27,16 @@ OPA WASM SDK, no server required. The entrypoint for a framework is `<framework>
 Every SDK takes the same three things: the `policy.wasm`, the bundle's `data.json`, and an input document in the
 shape the framework's header documents. The output is the same `compliance_report` object OPA returns.
 
+## Data in the bundle
+
+A `data.json` in the tree is in the bundle's `data.json` at its path from the repository root:
+`crosswalk/stig_800_53/data.json` is `data.crosswalk.stig_800_53`, which is where the modules read it. `build.py`
+passes each top-level directory to opa as `<dir>:<path>` for that reason (a bare path roots the data at the
+directory, `data.stig_800_53`), checks every bundle it builds and fails when a data file is elsewhere.
+`python3 converters/packaging/wasm/build.py --check-data-paths` runs the check alone on a plain bundle, in a few
+seconds and with any opa binary; `make check-converters` includes it. Sample and fixture JSON in the policy trees
+is loaded by opa as data too; it now sits under `data.<top-level directory>` and no module reads it.
+
 ## Round-trip test
 
 `test/roundtrip.sh` evaluates each fixture in `test/fixtures/` with the Rego target and with the WASM target

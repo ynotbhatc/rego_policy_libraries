@@ -8,6 +8,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — crosswalk data lands at `data.crosswalk.*` in the wasm bundles (2026-11-22)
+- `converters/packaging/wasm/build.py` passed each top-level directory to `opa build` as a bare path, so
+  `crosswalk/stig_800_53/data.json` was in the opa-compliance bundle at `data.stig_800_53` and the modules,
+  which read `data.crosswalk.stig_800_53`, saw no map there (`spine_loaded` false, so benchmark results could
+  only end in the `FAIL-CLOSED` finding). Directories are now passed as `<dir>:<path>`, so every data file is at its
+  path from the repository root (`data.crosswalk.stig_800_53`, `data.crosswalk.framework_maps`,
+  `data.crosswalk.attack_800_53`).
+- Every wasm build checks its own `data.json` and fails when a data file is not at that path.
+  `build.py --check-data-paths` runs the check on a plain bundle without the wasm compile, and
+  `make check-converters` runs it.
+- Sample and fixture JSON in the policy trees, which opa also loads as data, moves with it from `data.<path
+  below the top-level directory>` to `data.<top-level directory>.<path>`; no module reads it.
+- Not changed: the bundle published to GHCR excludes `crosswalk/` and every `*.json`
+  (`.github/workflows/publish-ghcr.yml`), so it carries neither the crosswalk packages nor their data.
+
 ### Added — SOC 2: all 33 common criteria with per-criterion results (2026-11-22)
 - `frameworks/management/soc2` now evaluates every common criterion of the 2017 Trust Services Criteria
   (points of focus revised 2022), CC1.1 to CC9.2 (was 12 of 33). New module `soc2.criteria`
