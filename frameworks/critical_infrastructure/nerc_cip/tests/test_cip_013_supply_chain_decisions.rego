@@ -14,7 +14,7 @@ test_incomplete_assessment_violation if {
 		"vendor_risk_assessments": {"v1": {"covers": object.union(covers_all, {"third_party_dependencies": false})}},
 	}
 	not c.vendor_assessments_comprehensive with input as i
-	count([v | some v in c.violations with input as i; v.requirement == "R2"; contains(v.description, "third-party dependencies")]) == 1
+	count([v | some v in c.violations with input as i; v.requirement == "R1.1"; contains(v.description, "third-party dependencies")]) == 1
 	not c.compliant with input as i
 }
 

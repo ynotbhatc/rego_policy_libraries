@@ -11,12 +11,12 @@
 #     expected: 94
 #     found: 95
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.oracle_26ai
 
 # CIS Oracle Database 26ai Benchmark v1.0.0 (CIS renamed the Oracle Database 23ai benchmark to 26ai; supersedes cis.oracle_23ai).

@@ -82,7 +82,7 @@ test_late_nerc_notification_breaks_compliance if {
 	i := object.union(good, {"reportable_cyber_incidents": [inc]})
 	not c.nerc_notification_timely with input as i
 	not c.compliant with input as i
-	count([v | some v in c.violations with input as i; v.requirement == "R5"]) == 1
+	count([v | some v in c.violations with input as i; v.requirement == "R4.2"]) == 1
 }
 
 test_timely_notification_iso_passes if {

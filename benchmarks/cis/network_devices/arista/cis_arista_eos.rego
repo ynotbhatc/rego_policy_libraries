@@ -9,14 +9,14 @@
 #     checks: 36
 #     cited: 34
 #     expected: 33
-#     found: 34
+#     found: 33
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_arista_eos
 
 # CIS Arista EOS Benchmark v1.0.0

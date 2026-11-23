@@ -13,12 +13,12 @@
 #     expected: 87
 #     found: 88
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.oracle_23ai
 
 # DEPRECATED: CIS renamed this benchmark to Oracle Database 26ai. New consumers must query the package

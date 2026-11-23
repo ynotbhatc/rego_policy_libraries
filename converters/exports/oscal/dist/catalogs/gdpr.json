@@ -66,6 +66,105 @@
     ],
     "controls": [
      {
+      "id": "gdpr-dpo_requirements",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dpo_requirements"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dpo_requirements"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#670fa584-4a29-5b8c-97eb-d94f0776d14e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-dpo_requirements_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-international_transfers",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "international_transfers"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "international_transfers"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#670fa584-4a29-5b8c-97eb-d94f0776d14e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-international_transfers_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-special_category_data",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "special_category_data"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "special_category_data"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.compliance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#670fa584-4a29-5b8c-97eb-d94f0776d14e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-special_category_data_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_compliance.rego (package gdpr.compliance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "gdpr-gdpr.compliance-1",
       "title": "dpia process",
       "props": [
@@ -882,6 +981,39 @@
     ],
     "controls": [
      {
+      "id": "gdpr-joint_controller_arrangement",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "joint_controller_arrangement"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "joint_controller_arrangement"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.controller_processor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e3f51396-8707-5aaa-bf0d-b08c4fc52f02",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-joint_controller_arrangement_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_controller_processor.rego (package gdpr.controller_processor); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "gdpr-gdpr.controller_processor-1",
       "title": "accountability",
       "props": [
@@ -1268,6 +1400,171 @@
      }
     ],
     "controls": [
+     {
+      "id": "gdpr-automated_decision_making",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "automated_decision_making"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "automated_decision_making"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb3b5ae3-b86e-5782-aeb1-870bb2cab3a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-automated_decision_making_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-behavioural_advertising",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "behavioural_advertising"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "behavioural_advertising"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb3b5ae3-b86e-5782-aeb1-870bb2cab3a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-behavioural_advertising_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-childrens_data",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "childrens_data"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "childrens_data"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb3b5ae3-b86e-5782-aeb1-870bb2cab3a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-childrens_data_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-fingerprinting_controlled",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fingerprinting_controlled"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fingerprinting_controlled"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb3b5ae3-b86e-5782-aeb1-870bb2cab3a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-fingerprinting_controlled_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "gdpr-tracking_pixels_compliant",
+      "title": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "tracking_pixels_compliant"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tracking_pixels_compliant"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "gdpr.cookies_tracking"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb3b5ae3-b86e-5782-aeb1-870bb2cab3a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "gdpr-tracking_pixels_compliant_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/gdpr/gdpr_cookies_tracking.rego (package gdpr.cookies_tracking); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
      {
       "id": "gdpr-gdpr.cookies_tracking-1",
       "title": "mechanism",

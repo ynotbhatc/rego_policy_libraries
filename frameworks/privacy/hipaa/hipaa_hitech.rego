@@ -42,7 +42,7 @@
 #     expected: 17
 #     found: 19
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: report

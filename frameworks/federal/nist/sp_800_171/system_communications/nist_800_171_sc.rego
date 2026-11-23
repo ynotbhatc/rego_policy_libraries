@@ -9,14 +9,14 @@
 #     checks: 28
 #     cited: 10
 #     expected: 10
-#     found: 28
+#     found: 10
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171.system_communications
 
 import rego.v1

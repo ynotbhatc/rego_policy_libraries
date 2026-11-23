@@ -11,9 +11,9 @@
 #     checks: 0
 #     cited: 0
 #     expected: 428
-#     found: 427
+#     found: 426
 #     scope: directory
-#     density: full
+#     density: partial
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report

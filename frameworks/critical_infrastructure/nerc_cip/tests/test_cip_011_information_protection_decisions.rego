@@ -44,6 +44,6 @@ test_third_party_undeclared_fails_closed if {
 
 test_report_includes_new_requirements if {
 	r := c.report with input as {}
-	r.requirements.R2_redeployment_bcsi_cleared == false
-	r.requirements.R_third_party_agreements == false
+	r.requirements.R2_1_redeployment_bcsi_cleared == false
+	r.requirements.R1_2_third_party_agreements == false
 }

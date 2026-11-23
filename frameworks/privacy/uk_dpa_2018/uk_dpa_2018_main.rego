@@ -77,14 +77,14 @@
 #     checks: 157
 #     cited: 151
 #     expected: 151
-#     found: 157
+#     found: 151
 #     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package uk_dpa_2018.main
 
 import rego.v1

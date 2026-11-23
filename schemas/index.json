@@ -5,8 +5,8 @@
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 111,
-  "paths-only": 71
+  "static-scan+fixture": 113,
+  "paths-only": 69
  },
  "schemas": {
   "aca_155_260": {
@@ -127,9 +127,9 @@
    ]
   },
   "cfr_part_11": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/cfr_part_11/schema.json",
-   "known_paths": 86,
+   "known_paths": 97,
    "required_paths": 0,
    "source": [
     "frameworks/regulatory/cfr_part_11/"
@@ -849,7 +849,7 @@
   "fisma": {
    "derivation": "paths-only",
    "schema": "schemas/input/fisma/schema.json",
-   "known_paths": 513,
+   "known_paths": 517,
    "required_paths": 0,
    "source": [
     "frameworks/federal/fisma/"
@@ -1029,16 +1029,16 @@
   "nerc_cip": {
    "derivation": "paths-only",
    "schema": "schemas/input/nerc_cip/schema.json",
-   "known_paths": 411,
+   "known_paths": 417,
    "required_paths": 0,
    "source": [
     "frameworks/critical_infrastructure/nerc_cip/"
    ]
   },
   "nis2": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/nis2/schema.json",
-   "known_paths": 84,
+   "known_paths": 106,
    "required_paths": 0,
    "source": [
     "frameworks/compliance/nis2/"
@@ -1083,7 +1083,7 @@
   "nist.rmf": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist.rmf/schema.json",
-   "known_paths": 90,
+   "known_paths": 91,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/risk_management_framework/"
@@ -1362,7 +1362,7 @@
   "sox": {
    "derivation": "paths-only",
    "schema": "schemas/input/sox/schema.json",
-   "known_paths": 50,
+   "known_paths": 52,
    "required_paths": 0,
    "source": [
     "frameworks/financial/sox/"

@@ -2,21 +2,173 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nis2/schema.json",
  "title": "Input facts for nis2",
- "description": "Input paths referenced in the sources of frameworks/compliance/nis2/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/compliance/nis2/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "nis2",
  "x-entrypoint": "data.nis2.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/compliance/nis2/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nis2.main_test.full",
  "type": "object",
  "properties": {
   "access_control": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "principle_of_least_privilege": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "enforced": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "privileged_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "managed": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "applicability": {
+   "description": "Read in nis2_main.rego.",
+   "type": "object",
+   "properties": {
+    "encryption_at_rest": {
+     "description": "Read in nis2_main.rego."
+    },
+    "encryption_in_transit": {
+     "description": "Read in nis2_main.rego."
+    },
+    "secured_emergency_communications": {
+     "description": "Read in nis2_main.rego."
+    },
+    "secured_voice_video_text_communications": {
+     "description": "Read in nis2_main.rego."
+    },
+    "strong_authentication_critical_systems": {
+     "description": "Read in nis2_main.rego."
+    },
+    "strong_authentication_privileged_accounts": {
+     "description": "Read in nis2_main.rego."
+    },
+    "strong_authentication_remote_access": {
+     "description": "Read in nis2_main.rego."
+    }
+   },
+   "additionalProperties": {
+    "description": "Read in nis2_main.rego.",
+    "properties": {
+     "justification": {
+      "description": "Read in nis2_main.rego."
+     }
+    }
+   },
+   "x-variable-key": "<measure>"
+  },
+  "assessment_date": {
+   "description": "Read in nis2_main.rego."
+  },
+  "asset_management": {
+   "description": "Read in nis2_main.rego.",
+   "type": "object",
+   "properties": {
+    "inventory": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "maintained": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "business_continuity": {
+   "description": "Read in nis2_main.rego.",
+   "type": "object",
+   "properties": {
+    "bcp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "tested_annually": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "crisis_management": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "plan_exists": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "drp": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "documented": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "continuous_authentication": {
+   "description": "Read in nis2_main.rego.",
+   "type": "object",
+   "properties": {
+    "critical_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
        "description": "Read in nis2_main.rego."
@@ -25,56 +177,18 @@
     },
     "privileged_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
-      "managed": {
-       "description": "Read in nis2_main.rego."
-      }
-     }
-    }
-   }
-  },
-  "assessment_date": {
-   "description": "Read in nis2_main.rego."
-  },
-  "asset_management": {
-   "description": "Read in nis2_main.rego.",
-   "properties": {
-    "inventory": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "maintained": {
-       "description": "Read in nis2_main.rego."
-      }
-     }
-    }
-   }
-  },
-  "business_continuity": {
-   "description": "Read in nis2_main.rego.",
-   "properties": {
-    "bcp": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "documented": {
-       "description": "Read in nis2_main.rego."
-      },
-      "tested_annually": {
+      "enforced": {
        "description": "Read in nis2_main.rego."
       }
      }
     },
-    "crisis_management": {
+    "remote_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
-      "plan_exists": {
-       "description": "Read in nis2_main.rego."
-      }
-     }
-    },
-    "drp": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "documented": {
+      "enforced": {
        "description": "Read in nis2_main.rego."
       }
      }
@@ -83,23 +197,41 @@
   },
   "cryptography": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "encryption": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "data_in_transit": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "sensitive_data_at_rest": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -107,12 +239,19 @@
   },
   "cyber_hygiene": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "patch_policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "exists": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -120,20 +259,33 @@
   },
   "effectiveness_assessment": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "audit": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "regular": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "penetration_testing": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "annual": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -150,15 +302,27 @@
   },
   "governance": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "management_body": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "approved_measures": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "oversight_accountability": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -166,12 +330,19 @@
   },
   "hr_security": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "joiners_movers_leavers": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "process_exists": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -179,34 +350,66 @@
   },
   "incident_handling": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "log_retention": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "minimum_1_year": {
        "description": "Read in nis2_main.rego."
+      },
+      "period_defined": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "plan": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "significant_incident": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "early_warning_24h": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "final_report_1month": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "notification_72h": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -214,28 +417,47 @@
   },
   "mfa": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "critical_systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "privileged_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "remote_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -243,28 +465,47 @@
   },
   "risk_management": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "risk_analysis": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "risk_review": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "frequency_annual": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "security_policies": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "approved_by_management": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -273,30 +514,83 @@
   "sector": {
    "description": "Read in nis2_main.rego."
   },
+  "secure_communications": {
+   "description": "Read in nis2_main.rego.",
+   "type": "object",
+   "properties": {
+    "emergency_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "secured": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "voice_video_text": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "secured": {
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
   "secure_development": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "patch_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "timely": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "sdlc_policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "vulnerability_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "process_exists": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -304,28 +598,47 @@
   },
   "supply_chain": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "contractual_requirements": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "security_clauses": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "critical_suppliers": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "identified": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "vendor_assessment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "process_exists": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -333,20 +646,33 @@
   },
   "training": {
    "description": "Read in nis2_main.rego.",
+   "type": "object",
    "properties": {
     "cybersecurity_awareness": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "conducted_annually": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "management_body": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "cybersecurity_training": {
-       "description": "Read in nis2_main.rego."
+       "description": "Read in nis2_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -360,6 +686,15 @@
   "access_control.principle_of_least_privilege.enforced",
   "access_control.privileged_accounts",
   "access_control.privileged_accounts.managed",
+  "applicability",
+  "applicability.encryption_at_rest",
+  "applicability.encryption_in_transit",
+  "applicability.secured_emergency_communications",
+  "applicability.secured_voice_video_text_communications",
+  "applicability.strong_authentication_critical_systems",
+  "applicability.strong_authentication_privileged_accounts",
+  "applicability.strong_authentication_remote_access",
+  "applicability[\"<measure>\"].justification",
   "assessment_date",
   "asset_management",
   "asset_management.inventory",
@@ -372,6 +707,13 @@
   "business_continuity.crisis_management.plan_exists",
   "business_continuity.drp",
   "business_continuity.drp.documented",
+  "continuous_authentication",
+  "continuous_authentication.critical_systems",
+  "continuous_authentication.critical_systems.enforced",
+  "continuous_authentication.privileged_accounts",
+  "continuous_authentication.privileged_accounts.enforced",
+  "continuous_authentication.remote_access",
+  "continuous_authentication.remote_access.enforced",
   "cryptography",
   "cryptography.encryption",
   "cryptography.encryption.data_in_transit",
@@ -399,6 +741,7 @@
   "incident_handling",
   "incident_handling.log_retention",
   "incident_handling.log_retention.minimum_1_year",
+  "incident_handling.log_retention.period_defined",
   "incident_handling.plan",
   "incident_handling.plan.documented",
   "incident_handling.significant_incident",
@@ -420,6 +763,11 @@
   "risk_management.security_policies",
   "risk_management.security_policies.approved_by_management",
   "sector",
+  "secure_communications",
+  "secure_communications.emergency_systems",
+  "secure_communications.emergency_systems.secured",
+  "secure_communications.voice_video_text",
+  "secure_communications.voice_video_text.secured",
   "secure_development",
   "secure_development.patch_management",
   "secure_development.patch_management.timely",

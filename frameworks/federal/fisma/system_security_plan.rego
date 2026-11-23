@@ -227,17 +227,45 @@ software_inventory_complete if {
 	}
 }
 
+# NIST SP 800-53 Rev 5 PL-2a: the plan must "describe the operational environment for the system and any dependencies
+# on or connections to other systems or system components". A system may have no connections, so an empty
+# network_connections passes only when input.ssp.environment.network.has_network_connections is the boolean false.
 network_architecture_documented if {
 	input.ssp.environment.network.architecture_diagram_current == true
 	input.ssp.environment.network.network_topology_documented == true
-	count(input.ssp.environment.network.network_connections) >= 0
+	_network_connections_evidence
 	every conn in input.ssp.environment.network.network_connections {
-		conn.source != ""
-		conn.destination != ""
-		conn.protocol != ""
-		conn.port != ""
+		_text(conn.source)
+		_text(conn.destination)
+		_text(conn.protocol)
+		_port(conn.port)
 		conn.security_controls_applied == true
 	}
+}
+
+_port(value) if _text(value)
+
+_port(value) if is_number(value)
+
+# ssp.environment.network.network_connections is evidence only as an array (missing, null or another type is missing
+# evidence). Empty passes only when ssp.environment.network.has_network_connections is the boolean false; a non-empty
+# list with that fact false is a contradiction.
+_network_connections_evidence if {
+	is_array(input.ssp.environment.network.network_connections)
+	count(input.ssp.environment.network.network_connections) > 0
+	not _no_network_connections_declared
+}
+
+_network_connections_evidence if {
+	input.ssp.environment.network.network_connections == []
+	_no_network_connections_declared
+}
+
+_no_network_connections_declared if input.ssp.environment.network.has_network_connections == false
+
+_text(value) if {
+	is_string(value)
+	trim_space(value) != ""
 }
 
 data_flows_mapped if {

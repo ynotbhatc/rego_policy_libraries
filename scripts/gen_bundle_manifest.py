@@ -19,6 +19,14 @@ the specific sub-roots `aac/aap/policy` and `aac/repo`, leaving
 Test packages (package ends in `_test`, or any `tests` path segment) are
 excluded — they are ignored at build time and must not claim a root.
 
+`crosswalk/` is a policy tree like the others: `data.crosswalk.correlation` and
+`data.crosswalk.framework_overlay` are imported by the NIST SP 800-53 and FedRAMP
+modules, and the three `crosswalk/*/data.json` documents sit under the same
+`crosswalk` root. A bundle built without it still loads, but those modules then
+report every benchmark-derived control as not evaluated. The build step must not
+`--ignore crosswalk` or `--ignore '*.json'` (in bundle mode OPA reads only files
+named data.json / data.yaml, and the crosswalk ones are the only ones in the tree).
+
 Usage: gen_bundle_manifest.py <revision> [policy_dir ...]
 Writes ./.manifest.
 """
@@ -30,7 +38,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-DEFAULT_DIRS = ["benchmarks", "frameworks", "enforcement", "governance", "threat_detection"]
+DEFAULT_DIRS = ["benchmarks", "frameworks", "enforcement", "governance", "threat_detection", "crosswalk"]
 _PKG = re.compile(r"^package\s+([A-Za-z0-9_.]+)", re.MULTILINE)
 
 

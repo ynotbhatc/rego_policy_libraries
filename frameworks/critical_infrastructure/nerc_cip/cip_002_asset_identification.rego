@@ -7,13 +7,13 @@
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
 #     checks: 22
-#     cited: 6
+#     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nerc_cip.cip_002
 
 import rego.v1
@@ -39,6 +39,39 @@ default eacms_classified := false
 
 default pacs_classified := false
 
+# -----------------------------------------------------------------------------
+# Dated evidence
+# -----------------------------------------------------------------------------
+
+# Date normaliser: RFC 3339 strings or epoch nanoseconds; anything else is
+# undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# Evaluation clock. Tests pin it with `with time.now_ns as <ns>`.
+now_ns := time.now_ns()
+
+ns_per_day := 86400000000000
+
+# Age in days of a dated record. Undefined when the date is absent, not a date,
+# or later than the evaluation time: an activity dated in the future has not
+# happened yet and is not evidence that it was done.
+age_days(v) := (now_ns - date_ns(v)) / ns_per_day if date_ns(v) <= now_ns
+
+# Days from start to end. Undefined when either date is absent or not a date,
+# or when the end date is later than the evaluation time.
+days_between(start, end) := (date_ns(end) - date_ns(start)) / ns_per_day if date_ns(end) <= now_ns
+
+# Why a dated record cannot be used: "future", or "missing" when it is absent,
+# of the wrong type or not RFC 3339. Undefined for a usable date.
+date_problem(v) := "future" if date_ns(v) > now_ns
+
+date_problem(v) := "missing" if not date_ns(v)
+
 # CIP-002-5.1a: BES Cyber System Categorization
 # Requirement: Identify and categorize BES Cyber Systems and their associated
 # BES Cyber Assets according to the impact they could have on the reliability
@@ -51,7 +84,8 @@ default pacs_classified := false
 # R1: BES Cyber System Identification and Categorization
 # =============================================================================
 
-# R1.1 - Each BES Cyber System must be identified
+# R1 - Each BES Cyber System must be identified (Parts 1.1 high impact, 1.2 medium
+# impact, 1.3 assets containing low impact BES Cyber Systems)
 all_bes_cyber_systems_identified if {
 	count(object.get(input, ["bes_cyber_systems"], [])) > 0
 	every system in input.bes_cyber_systems {
@@ -62,7 +96,7 @@ all_bes_cyber_systems_identified if {
 	}
 }
 
-# R1.2 - Each BES Cyber System must be categorized per Attachment 1
+# R1 - Each BES Cyber System must be categorized per Attachment 1
 all_bes_cyber_systems_categorized if {
 	violations := [system |
 		system := input.bes_cyber_systems[_]
@@ -75,7 +109,8 @@ valid_impact_categorization(cat) if cat == "high"
 valid_impact_categorization(cat) if cat == "medium"
 valid_impact_categorization(cat) if cat == "low"
 
-# High Impact BES Cyber Systems — Attachment 1, Criterion 2
+# R1.1 - High Impact BES Cyber Systems — Attachment 1, Section 1 (the fact keys
+# under attachment1.high_impact_criteria keep their historical criterion_2_* names)
 high_impact_criteria_documented if {
 	every system in input.bes_cyber_systems {
 		system.impact_categorization != "high"
@@ -92,7 +127,8 @@ high_impact_criteria_documented if {
 	input.attachment1.high_impact_criteria.rationale_documented == true
 }
 
-# Medium Impact BES Cyber Systems — Attachment 1, Criterion 3
+# R1.2 - Medium Impact BES Cyber Systems — Attachment 1, Section 2 (the fact keys
+# under attachment1.medium_impact_criteria keep their historical criterion_3_* names)
 medium_impact_criteria_documented if {
 	every system in input.bes_cyber_systems {
 		system.impact_categorization != "medium"
@@ -116,15 +152,13 @@ categorization_criteria_documented if {
 }
 
 # =============================================================================
-# R2: Annual Review
+# R2: Review and Approval (Parts 2.1 and 2.2)
 # =============================================================================
 
-# R2 - Review and update the identification and categorization of BES Cyber Systems
-# at least every 15 calendar months
+# R2.1 - Review the identifications in R1 (and update them if there are changes)
+# at least once every 15 calendar months
 annual_review_performed if {
-	last_review_ns := time.parse_rfc3339_ns(input.categorization_documentation.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
-	review_age_days <= 455 # 15 calendar months
+	age_days(input.categorization_documentation.last_review_date) <= 455 # 15 calendar months
 }
 
 # Applicability must be declared (decisions 2026-10-19): an explicit
@@ -141,17 +175,24 @@ review_triggered_by_changes if {
 	}
 }
 
-# =============================================================================
-# R3: CIP Senior Manager Approval
-# =============================================================================
-
-# R3 - Have the CIP Senior Manager or delegate approve the identifications
-# and categorizations in Requirement R1 at least once each calendar year
+# R2.2 - Have the CIP Senior Manager or delegate approve the identifications
+# required by R1 at least once every 15 calendar months. (CIP-002-5.1a has two
+# requirements; there is no R3.)
 cip_senior_manager_approval if {
 	input.categorization_documentation.cip_senior_manager_approved == true
-	approval_ns := time.parse_rfc3339_ns(input.categorization_documentation.approval_date)
-	approval_age_days := (time.now_ns() - approval_ns) / (((24 * 60) * 60) * 1000000000)
-	approval_age_days <= 365
+	age_days(input.categorization_documentation.approval_date) <= 455 # 15 calendar months
+}
+
+dated_evidence contains {
+	"requirement": "R2.1",
+	"path": "categorization_documentation.last_review_date",
+	"value": object.get(input, ["categorization_documentation", "last_review_date"], null),
+}
+
+dated_evidence contains {
+	"requirement": "R2.2",
+	"path": "categorization_documentation.approval_date",
+	"value": object.get(input, ["categorization_documentation", "approval_date"], null),
 }
 
 # =============================================================================
@@ -228,7 +269,7 @@ violations contains v if {
 	not annual_review_performed
 	v := {
 		"standard": "CIP-002",
-		"requirement": "R2",
+		"requirement": "R2.1",
 		"severity": "high",
 		"description": "BES Cyber System categorization not reviewed within 15 calendar months",
 		"remediation": "Review and update categorization at least every 15 calendar months",
@@ -239,9 +280,9 @@ violations contains v if {
 	not high_impact_criteria_documented
 	v := {
 		"standard": "CIP-002",
-		"requirement": "R1",
+		"requirement": "R1.1",
 		"severity": "high",
-		"description": "High impact (Attachment 1, Criterion 2) criteria not evaluated for the identified high impact BES Cyber Systems",
+		"description": "High impact (Attachment 1, Section 1) criteria not evaluated for the identified high impact BES Cyber Systems",
 		"remediation": "Evaluate every Attachment 1 Section 1 criterion and document the rationale",
 	}
 }
@@ -250,9 +291,9 @@ violations contains v if {
 	not medium_impact_criteria_documented
 	v := {
 		"standard": "CIP-002",
-		"requirement": "R1",
+		"requirement": "R1.2",
 		"severity": "high",
-		"description": "Medium impact (Attachment 1, Criterion 3) criteria not evaluated for the identified medium impact BES Cyber Systems",
+		"description": "Medium impact (Attachment 1, Section 2) criteria not evaluated for the identified medium impact BES Cyber Systems",
 		"remediation": "Evaluate every Attachment 1 Section 2 criterion and document the rationale",
 	}
 }
@@ -286,7 +327,7 @@ violations contains v if {
 	object.get(input, "bes_environment_changes", null) != null
 	v := {
 		"standard": "CIP-002",
-		"requirement": "R2",
+		"requirement": "R2.1",
 		"severity": "medium",
 		"description": "Changes to the BES environment were not assessed for categorization impact",
 		"remediation": "Assess every environment change for categorization impact and update the categorization where needed",
@@ -297,17 +338,44 @@ violations contains v if {
 	not cip_senior_manager_approval
 	v := {
 		"standard": "CIP-002",
-		"requirement": "R3",
+		"requirement": "R2.2",
 		"severity": "medium",
-		"description": "CIP Senior Manager has not approved categorizations within the past calendar year",
-		"remediation": "Obtain CIP Senior Manager or delegate approval of categorizations annually",
+		"description": "CIP Senior Manager or delegate has not approved the identifications within 15 calendar months",
+		"remediation": "Obtain CIP Senior Manager or delegate approval of the R1 identifications at least once every 15 calendar months",
+	}
+}
+
+# A dated record that is absent, not a date, or later than the evaluation time
+# gets its own finding, so missing evidence is not reported as "overdue" and a
+# future date is never read as a completed activity.
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "missing"
+	v := {
+		"standard": "CIP-002",
+		"requirement": e.requirement,
+		"severity": "medium",
+		"description": sprintf("evidence missing — input.%s not collected or not an RFC 3339 date", [e.path]),
+		"remediation": sprintf("Collect input.%s as an RFC 3339 timestamp", [e.path]),
+	}
+}
+
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "future"
+	v := {
+		"standard": "CIP-002",
+		"requirement": e.requirement,
+		"severity": "high",
+		"description": sprintf("input.%s (%v) is later than the evaluation time — a future date is not evidence of a completed activity", [e.path, e.value]),
+		"remediation": sprintf("Record in input.%s the date the activity was actually completed", [e.path]),
 	}
 }
 
 undeclared := {
 	"electronic_access_control_systems": "R1",
 	"physical_access_control_systems": "R1",
-	"bes_environment_changes": "R2",
+	"bes_environment_changes": "R2.1",
 }
 
 violations contains v if {
@@ -349,13 +417,13 @@ report := {
 		"R1_identification": all_bes_cyber_systems_identified,
 		"R1_categorization": all_bes_cyber_systems_categorized,
 		"R1_criteria_documented": categorization_criteria_documented,
-		"R2_annual_review": annual_review_performed,
-		"R3_senior_manager_approval": cip_senior_manager_approval,
-		"R1_high_impact_criteria": high_impact_criteria_documented,
-		"R1_medium_impact_criteria": medium_impact_criteria_documented,
+		"R2_1_review_current": annual_review_performed,
+		"R2_2_senior_manager_approval": cip_senior_manager_approval,
+		"R1_1_high_impact_criteria": high_impact_criteria_documented,
+		"R1_2_medium_impact_criteria": medium_impact_criteria_documented,
 		"R1_eacms_classified": eacms_classified,
 		"R1_pacs_classified": pacs_classified,
-		"R2_changes_assessed": review_triggered_by_changes,
+		"R2_1_changes_assessed": review_triggered_by_changes,
 	},
 	"systems": {
 		"total": count(object.get(input, ["bes_cyber_systems"], [])),

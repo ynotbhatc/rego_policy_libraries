@@ -11,12 +11,12 @@
 #     expected: 72
 #     found: 80
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.postgresql_17
 
 # CIS PostgreSQL 17 Benchmark v1.1.0

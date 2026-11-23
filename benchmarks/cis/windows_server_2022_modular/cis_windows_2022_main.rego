@@ -13,7 +13,7 @@
 #     expected: 408
 #     found: 406
 #     scope: directory
-#     density: full
+#     density: partial
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report

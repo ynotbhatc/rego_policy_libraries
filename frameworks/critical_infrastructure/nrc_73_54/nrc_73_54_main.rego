@@ -38,12 +38,12 @@
 #     expected: 34
 #     found: 36
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nrc_73_54.main
 
 import rego.v1

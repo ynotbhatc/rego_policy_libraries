@@ -11,10 +11,19 @@ What is stamped (custom.coverage):
   cited      how many of those carry a citable control id (CIS 1.3.1, §7122(a)(1), RHEL-09-611010, ...)
   expected   the standard's own count when the module declares it (`standard_total`, cited to the standard's text),
              else the total the module declares for its own table (`total_controls: 172`)
-  found      what is compared with expected: the module's own checks, or (scope: directory) the sum over the
-             directory when the declaring file is an orchestrator with no checks of its own
-  density    full | partial | sparse | stub | orchestrator | unrecognised
-             with expected: checks/expected >= 0.9 full, >= 0.5 partial, else sparse
+  found      what is compared with expected, counted so that nothing is counted twice: distinct control ids
+             (control_ids(): a bare snake_case word among numbered ids is a section or report key; "CSF DE.AE-02" beside
+             "DE.AE-02" is one control), or, for a module whose own total counts checks rather than ids, distinct
+             (id, text) checks. With scope: directory (the declaring file is an orchestrator) the ids and checks of
+             the directory are united, not summed, so a control two files evaluate is one.
+  density    full | over | partial | sparse | stub | orchestrator | unrecognised
+             with expected: found == expected full; found < expected partial (>= half) or sparse, always with
+                            the real number, and --check fails unless the module is in KNOWN_GAPS with its reason;
+                            found > expected "over": the module holds more than it declares (extension checks,
+                            fail-closed notices, or a stale declaration), which is not evidence that every
+                            declared control is there, so it is not called full.
+                            (Until 2026-11-23 anything at or above 90 % of the declared total, with no upper
+                            bound, was "full": 399 of 400 and 198 of 7 both read as full.)
              without:       >= 10 checks ok -> "full" is not claimed; "sized" means no basis to judge, so the
                             label is by size: >= 10 "sized", 3..9 "sparse", 1..2 "stub"
              orchestrator   0 checks and the file only aggregates section modules (<name>_main / _complete)
@@ -41,18 +50,56 @@ import argparse, collections, json, pathlib, re, sys
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from rego_ast import parse_tree, checks, tables, package, rule_name  # noqa: E402
+from rego_ast import parse_tree, checks, items, tables, package, rule_name  # noqa: E402
 
 ORCH = re.compile(r"(_main|_complete|_simplified)\.rego$")
 TOTAL_KEYS = ("standard_total", "total_controls", "controls_total", "total_recommendations", "total_checks")  # first match wins
-# Modules legitimately below their own declared total, with the reason. Everything else below 90 % fails --check.
+# Modules found below their own declared total, each with the reason. Any other module below its declared total
+# (by any amount: there is no tolerance) fails --check. An entry whose module is no longer below is reported, not failed.
+_WIN_MANUAL = ("the two Manual recommendations are decided by attestation (attestation_validation.rego, "
+               "REQUIRES_ATTESTATION), a table shape the counter does not read as control ids; the module's own "
+               "CONTROL_INDEX lists every recommendation")
 KNOWN_GAPS = {
+    "benchmarks/cis/windows_10_modular/cis_windows_10_main.rego": _WIN_MANUAL,
+    "benchmarks/cis/windows_11_modular/cis_windows_11_main.rego": _WIN_MANUAL,
+    "benchmarks/cis/windows_server_2016_modular/cis_windows_2016_main.rego": _WIN_MANUAL,
+    "benchmarks/cis/windows_server_2019_modular/cis_windows_2019_main.rego": _WIN_MANUAL,
+    "benchmarks/cis/windows_server_2022_modular/cis_windows_2022_main.rego": _WIN_MANUAL,
+    "benchmarks/cis/windows_server_2025_modular/cis_windows_2025_main.rego": _WIN_MANUAL,
+    "frameworks/compliance/ncsc_caf/caf_main.rego":
+        "different units: the section modules cite no Contributing Outcome ids, so 22 uncited violation rules are "
+        "set against the 23 outcomes the orchestrator declares, and caf_a3_asset_management.rego is in a shape the "
+        "counter does not read. Open work: cite the outcome id in each finding",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design
 OVERLAYS = {"benchmarks/supply_chain/", "crosswalk/"}
 GATES = {"enforcement/", "governance/ai/action_classification.rego", "governance/ai/context_validation.rego", "governance/ai/authorization.rego",
          "governance/exceptions/", "governance/mcp/", "governance/oidc/"}
+
+
+def control_ids(ids):
+    """The ids that stand for controls, each once. Beside numbered ids, a bare snake_case word is a section name
+    or a report key the counter picked up ("logging", "risk_breakdown"), not a control; and "<word> <id>" beside
+    a bare "<id>" is the same control cited two ways ("CSF DE.AE-02" / "DE.AE-02"). Used only for the comparison
+    with a declared total; the published check count (`make count`) is not changed by this."""
+    kept = {i.strip() for i in ids}
+    if any(re.search(r"\d", i) for i in kept):
+        kept = {i for i in kept if not re.fullmatch(r"[a-z_]+", i)}
+    out = set()
+    for i in kept:
+        word, _, rest = i.partition(" ")
+        out.add(rest.strip() if rest.strip() in kept and word.rstrip(":").isalpha() else i)
+    return out
+
+
+def density_of(found, expected):
+    """Label for a module with a declared total. No tolerance either way: equal is full, short is short."""
+    if found == expected:
+        return "full"
+    if found > expected:
+        return "over"
+    return "partial" if found * 2 >= expected else "sparse"
 
 
 def version():
@@ -131,7 +178,9 @@ def scan(root=ROOT):
                         expected = int(found_keys[k]["value"]); expected_key = k; break
         pkg = package(ast)
         record(pkg)
+        its = items(ast)
         rows[rel] = {"checks": n, "cited": len(ids), "expected": expected, "found": None, "scope": None, "_expected_key": expected_key, "_ids": ids,
+                     "_pairs": {(cid, (text or "").strip()) for cid, text, _ in its if cid},
                      "tested": pkg in tested, "entrypoint": entry, "guard": None, "as_of": ver,
                      "_package": pkg, "_uncited": uncited, "_has_meta": "# METADATA" in (root / rel).read_text(errors="ignore")}
     # density. An orchestrator declares the whole framework's total while its controls live in sibling modules,
@@ -145,24 +194,27 @@ def scan(root=ROOT):
     def siblings(rel):
         d = rel.rsplit("/", 1)[0] + "/"
         return sum(1 for rel2 in rows if rel2.startswith(d) and rel2 != rel)
-    def subtree(rel, units):
-        d = rel.rsplit("/", 1)[0] + "/"
-        if units == "ids":
-            return len(set().union(*(r2["_ids"] for rel2, r2 in rows.items() if rel2.startswith(d))))
-        return sum(r2["checks"] for rel2, r2 in rows.items() if rel2.startswith(d))
+    def counted(members):
+        """(distinct control ids, distinct checks) over the given rows. Ids and (id, text) checks are united, so a
+        control or a check that two files of one directory hold is counted once; uncited checks have no identity
+        to compare and are added per file."""
+        ids = control_ids(set().union(*(m["_ids"] for m in members)))
+        pairs = set().union(*(m["_pairs"] for m in members))
+        return len(ids), len(pairs) + sum(m["_uncited"] for m in members)
     for rel, r in rows.items():
         n, expected = r["checks"], r["expected"]
-        # a standard_total counts the standard's controls, so it is compared with distinct cited ids;
-        # a module's own total_controls counts its checks, so it is compared with checks
-        units = "ids" if r["_expected_key"] == "standard_total" else "checks"
-        own = len(r["_ids"]) if units == "ids" else n
         if expected and (ORCH.search(rel) or n == 0):
-            found, scope = subtree(rel, units), "directory"
+            d = rel.rsplit("/", 1)[0] + "/"
+            members, scope = [r2 for rel2, r2 in rows.items() if rel2.startswith(d)], "directory"
         else:
-            found, scope = own, "module"
+            members, scope = [r], "module"
         if expected:
-            ratio = found / expected
-            density, basis = ("full" if ratio >= 0.9 else "partial" if ratio >= 0.5 else "sparse"), "declared-total"
+            n_ids, n_checks = counted(members)
+            # a standard_total counts the standard's controls, so it is compared with distinct control ids. A
+            # module's own total_controls counts either its controls or its checks: ids when they match it
+            # exactly (several checks per control), else its checks.
+            found = n_ids if (r["_expected_key"] == "standard_total" or n_ids == expected) else n_checks
+            density, basis = density_of(found, expected), "declared-total"
             r["found"], r["scope"] = found, scope
         elif any(rel.startswith(o) for o in OVERLAYS):
             density, basis = "overlay", "role"        # scores or correlates other modules; holds no checks of its own
@@ -257,8 +309,8 @@ def parse_stamp(src):
     return out
 
 
-def check(root=ROOT):
-    rows = scan(root)
+def check(root=ROOT, rows=None):
+    rows = scan(root) if rows is None else rows
     stale = []
     for rel, cov in rows.items():
         if not cov["_has_meta"]:
@@ -298,20 +350,28 @@ def report(rows, out_path):
          "## How to read it", "",
          "- **checks**: distinct control ids a module evaluates plus any violation rule without an id (the `make count` rule, `scripts/rego_ast.py`).",
          "- **expected**: only when the module itself declares a total in its report literal (`total_controls: 172`). We do not invent expectations.",
-         "- **density**: `full` / `partial` / `sparse` against a declared total; without one, `sized` (≥ 10), `sparse` (3–9), `stub` (1–2) say only how big the module is. `section` is a small module that an orchestrator in the same tree aggregates (judged there). `orchestrator` aggregates section modules and holds no checks of its own. `overlay` scores or correlates other modules (supply chain, crosswalk) and `gate` is an allow/deny decision; both hold no control checks by design. `unrecognised` means zero checks in a shape the counter does not read yet: a counter work item, not a verdict on the policy.", "",
+         "- **found**: what is compared with a declared total: distinct control ids (a bare snake_case word among numbered ids is a section or report key, not a control; one control cited two ways is one), or distinct checks where the module's own total counts checks. Within a directory ids and checks are united, not summed, so nothing is counted twice.",
+         "- **density**: against a declared total, `full` only when found equals it; `partial` / `sparse` when found is below it (any shortfall, listed below with the real number); `over` when found is above it, which says the module holds more than it declares and is not a claim that every declared control is present. Without a declared total, `sized` (≥ 10), `sparse` (3–9), `stub` (1–2) say only how big the module is. `section` is a small module that an orchestrator in the same tree aggregates (judged there). `orchestrator` aggregates section modules and holds no checks of its own. `overlay` scores or correlates other modules (supply chain, crosswalk) and `gate` is an allow/deny decision; both hold no control checks by design. `unrecognised` means zero checks in a shape the counter does not read yet: a counter work item, not a verdict on the policy.", "",
          "## Distribution", "", "| density | modules |", "|---|---|"]
-    for k in ("full", "partial", "sparse", "stub", "sized", "section", "orchestrator", "overlay", "gate", "unrecognised"):
+    for k in ("full", "over", "partial", "sparse", "stub", "sized", "section", "orchestrator", "overlay", "gate", "unrecognised"):
         L.append(f"| {k} | {by_density.get(k, 0)} |")
     L += ["", "## By family", "", "| family | modules | checks | declared total (modules declaring) | tested modules |", "|---|---|---|---|---|"]
     for k, f in sorted(fw.items(), key=lambda x: -x[1]["checks"]):
         L.append(f"| `{k}` | {f['files']} | {f['checks']:,} | {f['expected'] or '—'} ({f['declared']}) | {f['tested']}/{f['files']} |")
-    gaps = [(rel, r) for rel, r in rows.items() if r["expected"] and r["found"] < 0.9 * r["expected"]]
-    L += ["", "## Modules below their own declared total", "", "The module says how many controls the standard has; the parser finds fewer. These are the concrete \"missing controls\" the scan can prove.", "",
-          "| module | declared | found | scope | gap | density |", "|---|---|---|---|---|---|"]
+    gaps = [(rel, r) for rel, r in rows.items() if r["expected"] and r["found"] < r["expected"]]
+    L += ["", f"## Modules below their own declared total ({len(gaps)})", "", "The module says how many controls the standard has; the parser finds fewer, by any amount. Each is either a real gap or a shape the counter does not read; the reason is recorded in `KNOWN_GAPS` (`scripts/coverage_stamp.py`), and CI fails on one that is not.", "",
+          "| module | declared | found | scope | gap | density | reason |", "|---|---|---|---|---|---|---|"]
     for rel, r in sorted(gaps, key=lambda x: x[1]["found"] - x[1]["expected"]):
-        L.append(f"| `{rel}` | {r['expected']} | {r['found']} | {r['scope']} | {r['expected'] - r['found']} | {r['density']} |")
+        L.append(f"| `{rel}` | {r['expected']} | {r['found']} | {r['scope']} | {r['expected'] - r['found']} | {r['density']} | {KNOWN_GAPS.get(rel, 'not recorded')} |")
     if not gaps:
-        L.append("| — | | | | | |")
+        L.append("| — | | | | | | |")
+    over = [(rel, r) for rel, r in rows.items() if r["expected"] and r["found"] > r["expected"]]
+    L += ["", f"## Modules above their own declared total ({len(over)})", "", "The parser finds more than the module declares: extension checks beside the standard's own, fail-closed and input-contract notices that carry an id, several checks per control where the total counts controls, or a declaration that is out of date. The count cannot show that every declared control is present, so these are labelled `over`, not `full`.", "",
+          "| module | declared | found | scope | excess |", "|---|---|---|---|---|"]
+    for rel, r in sorted(over, key=lambda x: (x[1]["expected"] - x[1]["found"], x[0])):
+        L.append(f"| `{rel}` | {r['expected']} | {r['found']} | {r['scope']} | {r['found'] - r['expected']} |")
+    if not over:
+        L.append("| — | | | | |")
     thin = [(rel, r) for rel, r in rows.items() if r["density"] in ("sparse", "stub") and r["basis"] == "size"]
     L += ["", f"## Sparse and stub modules without a declared total ({len(thin)})", "", "Small by size; whether that is a gap depends on the standard, which these modules do not declare. Declaring `total_controls` in the report literal moves them into the table above.", "",
           "| module | checks | cited | tested |", "|---|---|---|---|"]
@@ -326,7 +386,7 @@ def report(rows, out_path):
           "Measured by evaluating the whole tree on empty input. `self`: the module's own report is not compliant on empty input. `orchestrator`: the module is silent on empty input, but an orchestrator in its tree that references it is fail-closed, so the gap is caught one level up (by design for sectioned benchmarks). `none`: silent on empty input and nothing above it catches that — **these are fail-open**, the work queue for the library's fail-closed rule.", "",
           f"### Fail-open modules, no guard ({len(none)})", ""] + [f"- `{rel}`" for rel in none]
     untested = [rel for rel, r in rows.items() if not r["tested"] and r["checks"] > 0]
-    L += ["", f"## Modules with checks but no test file ({len(untested)})", "", "Work queue, same as docs/COVERAGE.md.", ""]
+    L += ["", f"## Modules with checks but no test file ({len(untested)})", "", "Work queue, same as COVERAGE.md.", ""]
     L += [f"- `{rel}`" for rel in sorted(untested)]
     nometa = [rel for rel, r in rows.items() if not r["_has_meta"]]
     L += ["", f"## Modules without a METADATA block ({len(nometa)}) — not stamped", ""] + [f"- `{rel}`" for rel in sorted(nometa)]
@@ -339,24 +399,29 @@ def main():
     ap.add_argument("--check", action="store_true"); ap.add_argument("--report", default=None); ap.add_argument("--json", default=None)
     a = ap.parse_args()
     if a.check:
-        stale = check()
+        rows = scan()
+        stale = check(rows=rows)
         for rel, why in stale[:30]:
             print(f"STALE {rel}: {why}")
         print(f"coverage stamps: {'all current' if not stale else str(len(stale)) + ' stale — run: python3 scripts/coverage_stamp.py'}")
-        # the counting rule is validated against every module's own declared total: a module that declares
-        # total_controls and is found below 90 % of it is either a real gap (named here) or a counter regression
-        rows = scan()
-        below = sorted(rel for rel, r in rows.items() if r["expected"] and r["found"] < 0.9 * r["expected"])
+        # the counting rule is validated against every module's own declared total: a module that declares a
+        # total and is found below it, by any amount, is either a real gap or a shape the counter does not read.
+        # Either way it is named in KNOWN_GAPS with its reason, or the check fails.
+        declaring = {rel: r for rel, r in rows.items() if r["expected"]}
+        below = sorted(rel for rel, r in declaring.items() if r["found"] < r["expected"])
+        above = sorted(rel for rel, r in declaring.items() if r["found"] > r["expected"])
         unexpected = [rel for rel in below if rel not in KNOWN_GAPS]
-        print(f"declared totals: {sum(1 for r in rows.values() if r['expected']) - len(below)} of {sum(1 for r in rows.values() if r['expected'])} modules within 10 % of their own declared total; known gaps: {len(KNOWN_GAPS)}")
-        if unexpected:
-            for rel in unexpected:
-                print(f"BELOW DECLARED {rel}: found {rows[rel]['found']} of {rows[rel]['expected']} — a real gap (add to KNOWN_GAPS with its reason) or a counter regression")
+        print(f"declared totals: {len(declaring)} modules declare one; {len(declaring) - len(below) - len(above)} equal, "
+              f"{len(above)} above (labelled over), {len(below)} below ({len(below) - len(unexpected)} with a recorded reason)")
+        for rel in unexpected:
+            print(f"BELOW DECLARED {rel}: found {rows[rel]['found']} of {rows[rel]['expected']} — a real gap or a counter regression; fix it, or add it to KNOWN_GAPS with its reason")
+        for rel in sorted(set(KNOWN_GAPS) - set(below)):
+            print(f"note: KNOWN_GAPS lists {rel}, which is {'no longer below its declared total' if rel in rows else 'not in the tree'}; remove the entry")
         return 1 if (stale or unexpected) else 0
     rows, changed, skipped = stamp()
     print(f"stamped {changed} modules ({len(rows)} scanned, {len(skipped)} without a METADATA block skipped)")
     if a.json:
-        pathlib.Path(a.json).write_text(json.dumps(rows, indent=1))
+        pathlib.Path(a.json).write_text(json.dumps(rows, indent=1, default=sorted))
     if a.report:
         g, t, u, n = report(rows, a.report)
         print(f"report -> {a.report}: {g} below declared total, {t} sparse/stub by size, {u} unrecognised, {n} untested")

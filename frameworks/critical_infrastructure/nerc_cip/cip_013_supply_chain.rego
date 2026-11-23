@@ -6,14 +6,14 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 28
-#     cited: 13
+#     checks: 29
+#     cited: 12
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nerc_cip.cip_013
 
 import rego.v1
@@ -49,12 +49,26 @@ default vendor_vulnerability_notification_process := false
 # associated with BES Cyber Systems.
 #
 # NERC Standards Reference: CIP-013-2
+# (mandatory and enforceable in the United States; CIP-013-3 is approved with an
+# effective date of 2028-07-01).
+# Source: https://www.nerc.com/globalassets/standards/reliability-standards/cip/cip-013-2.pdf
+#
+# CIP-013-2 has three requirements:
+#   R1  supply chain cyber security risk management plan: 1.1 identify and assess
+#       risks in planning and procurement; 1.2.1 vendor incident notification,
+#       1.2.2 coordination of responses, 1.2.3 notification when vendor access
+#       should end (not implemented), 1.2.4 disclosure of known vulnerabilities,
+#       1.2.5 software integrity and authenticity, 1.2.6 controls for
+#       vendor-initiated remote access
+#   R2  implement the plan
+#   R3  review and CIP Senior Manager approval at least once every 15 calendar months
+# There is no R4, R5 or R6.
 
 # =============================================================================
 # R1: Supply Chain Cyber Security Risk Management Plan
 # =============================================================================
 
-# R1.1 - One or more documented plans that include a process to identify and
+# R1 - One or more documented plans that include a process to identify and
 # assess cyber security risks in the supply chain
 
 supply_chain_cyber_security_plan_implemented if {
@@ -65,20 +79,20 @@ supply_chain_cyber_security_plan_implemented if {
 	input.supply_chain_plan.vendor_requirements_defined == true
 }
 
-# R1.2.1 - Notification from vendors about identified security vulnerabilities
+# R1.2.4 - Disclosure by vendors of known vulnerabilities
 vendor_vulnerability_notification_process if {
 	input.supply_chain_plan.processes.vendor_vulnerability_notification == true
 	input.supply_chain_plan.processes.notification_response_procedures == true
 }
 
-# R1.2.2 - Notification from vendors of vendor-identified incidents related to
+# R1.2.1 - Notification from vendors of vendor-identified incidents related to
 # delivered products and services
 vendor_incident_notification_process if {
 	input.supply_chain_plan.processes.vendor_incident_notification == true
 	input.supply_chain_plan.processes.incident_escalation_procedures == true
 }
 
-# R1.2.3 - Verification of software integrity and authenticity of all
+# R1.2.5 - Verification of software integrity and authenticity of all
 # software and patches provided by vendors
 software_authenticity_verification_process if {
 	input.supply_chain_plan.processes.software_integrity_verification == true
@@ -86,14 +100,13 @@ software_authenticity_verification_process if {
 	input.supply_chain_plan.processes.vendor_provided_verification_method == true
 }
 
-# R1.2.4 - Coordination of responses to vendor-identified incidents
+# R1.2.2 - Coordination of responses to vendor-identified incidents
 incident_coordination_process if {
 	input.supply_chain_plan.processes.vendor_incident_coordination == true
 	input.supply_chain_plan.processes.information_sharing_agreements == true
 }
 
-# R1.2.5 - Verification that remote access sessions by vendors are monitored,
-# logged, and controlled
+# R1.2.6 - Coordination of controls for vendor-initiated remote access
 vendor_remote_access_controlled if {
 	input.supply_chain_plan.processes.vendor_remote_access_policy == true
 	input.supply_chain_plan.processes.vendor_remote_access_monitoring == true
@@ -102,7 +115,7 @@ vendor_remote_access_controlled if {
 }
 
 # =============================================================================
-# R2: Vendor Risk Assessments
+# R1 Part 1.1: Vendor Risk Assessments
 # =============================================================================
 
 vendor_risk_assessments_performed if {
@@ -114,8 +127,12 @@ vendor_risk_assessments_performed if {
 	count(violations) == 0
 }
 
-# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
-# are also accepted. Anything else is undefined, so the caller fails closed.
+# -----------------------------------------------------------------------------
+# Dated evidence
+# -----------------------------------------------------------------------------
+
+# Date normaliser: RFC 3339 strings or epoch nanoseconds; anything else is
+# undefined, so the caller fails closed.
 date_ns(v) := n if {
 	is_string(v)
 	n := time.parse_rfc3339_ns(v)
@@ -123,11 +140,30 @@ date_ns(v) := n if {
 
 date_ns(v) := v if is_number(v)
 
+# Evaluation clock. Tests pin it with `with time.now_ns as <ns>`.
+now_ns := time.now_ns()
+
+ns_per_day := 86400000000000
+
+# Age in days of a dated record. Undefined when the date is absent, not a date,
+# or later than the evaluation time: an activity dated in the future has not
+# happened yet and is not evidence that it was done.
+age_days(v) := (now_ns - date_ns(v)) / ns_per_day if date_ns(v) <= now_ns
+
+# Days from start to end. Undefined when either date is absent or not a date,
+# or when the end date is later than the evaluation time.
+days_between(start, end) := (date_ns(end) - date_ns(start)) / ns_per_day if date_ns(end) <= now_ns
+
+# Why a dated record cannot be used: "future", or "missing" when it is absent,
+# of the wrong type or not RFC 3339. Undefined for a usable date.
+date_problem(v) := "future" if date_ns(v) > now_ns
+
+date_problem(v) := "missing" if not date_ns(v)
+
 vendor_risk_assessment_current(vendor) if {
 	assessment := input.vendor_risk_assessments[vendor.vendor_id]
 	assessment.completed == true
-	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (((24 * 60) * 60) * 1000000000)
-	assessment_age_days <= 1095 # 3 years
+	age_days(assessment.completion_date) <= 1095 # 3 years
 	assessment.risks_identified == true
 	assessment.mitigation_plan_exists == true
 }
@@ -156,7 +192,7 @@ vendor_assessments_comprehensive if {
 }
 
 # =============================================================================
-# R3: Plan Implementation and Vendor Engagement
+# R2: Plan Implementation and Vendor Engagement
 # =============================================================================
 
 # Procurement controls in vendor contracts
@@ -179,7 +215,8 @@ vendor_contract_adequate(vendor) if {
 }
 
 # =============================================================================
-# R4: Supply Chain Monitoring
+# R2 (supporting): Supply Chain Monitoring — implementation evidence, not a
+# numbered part of CIP-013-2
 # =============================================================================
 
 supply_chain_monitoring_implemented if {
@@ -197,27 +234,46 @@ vendor_notification_monitoring if {
 }
 
 # =============================================================================
-# R5: Plan Review
+# R3: Plan Review and Approval
 # =============================================================================
 
 # Review the supply chain cyber security risk management plan within
 # 15 calendar months of the last review and after triggered events
 supply_chain_plan_review_current if {
-	last_review_ns := date_ns(input.supply_chain_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
-	review_age_days <= 455
+	age_days(input.supply_chain_plan.last_review_date) <= 455
 }
 
 # CIP Senior Manager must approve the plan
 cip_senior_manager_approved if {
 	input.supply_chain_plan.cip_senior_manager_approved == true
-	approval_ns := date_ns(input.supply_chain_plan.approval_date)
-	approval_age_days := (time.now_ns() - approval_ns) / (((24 * 60) * 60) * 1000000000)
-	approval_age_days <= 455
+	age_days(input.supply_chain_plan.approval_date) <= 455
+}
+
+# Dated evidence the recency checks read.
+dated_evidence contains {
+	"requirement": "R3",
+	"path": "supply_chain_plan.last_review_date",
+	"value": object.get(input, ["supply_chain_plan", "last_review_date"], null),
+}
+
+dated_evidence contains {
+	"requirement": "R3",
+	"path": "supply_chain_plan.approval_date",
+	"value": object.get(input, ["supply_chain_plan", "approval_date"], null),
+}
+
+dated_evidence contains {
+	"requirement": "R1.1",
+	"path": sprintf("vendor_risk_assessments[%v].completion_date", [vendor.vendor_id]),
+	"value": object.get(input, ["vendor_risk_assessments", vendor.vendor_id, "completion_date"], null),
+} if {
+	some vendor in input.vendors
+	vendor.criticality_level in ["high", "medium"]
+	input.vendor_risk_assessments[vendor.vendor_id].completed == true
 }
 
 # =============================================================================
-# R6: Incident Response Coordination with Vendors
+# R1 Part 1.2.2: Incident Response Coordination with Vendors
 # =============================================================================
 
 incident_response_coordination_established if {
@@ -246,7 +302,7 @@ violations contains v if {
 	not vendor_vulnerability_notification_process
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R1.2.1",
+		"requirement": "R1.2.4",
 		"severity": "high",
 		"description": "Process for receiving vendor vulnerability notifications not documented",
 		"remediation": "Establish process for vendors to notify of security vulnerabilities in supplied products",
@@ -257,7 +313,7 @@ violations contains v if {
 	not software_authenticity_verification_process
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R1.2.3",
+		"requirement": "R1.2.5",
 		"severity": "critical",
 		"description": "Software integrity and authenticity verification process not established",
 		"remediation": "Implement software hash/signature verification for all vendor-provided software and patches",
@@ -268,7 +324,7 @@ violations contains v if {
 	not vendor_remote_access_controlled
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R1.2.5",
+		"requirement": "R1.2.6",
 		"severity": "critical",
 		"description": "Vendor remote access not adequately monitored, logged, and controlled",
 		"remediation": "Implement vendor remote access controls with monitoring, logging, and active session management",
@@ -279,7 +335,7 @@ violations contains v if {
 	not vendor_risk_assessments_performed
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R2",
+		"requirement": "R1.1",
 		"severity": "high",
 		"description": "Vendor risk assessments not current for one or more high/medium criticality vendors",
 		"remediation": "Conduct comprehensive vendor risk assessments within 3 years for all critical vendors",
@@ -290,7 +346,7 @@ violations contains v if {
 	not vendor_contracts_include_security_requirements
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R3",
+		"requirement": "R2",
 		"severity": "high",
 		"description": "Vendor contracts missing required security requirements for critical vendors",
 		"remediation": "Include security requirements, vulnerability/incident notification clauses, and audit rights in vendor contracts",
@@ -301,7 +357,7 @@ violations contains v if {
 	not supply_chain_plan_review_current
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R5",
+		"requirement": "R3",
 		"severity": "medium",
 		"description": "Supply chain cyber security risk management plan not reviewed within 15 calendar months",
 		"remediation": "Review and update supply chain plan within 15 calendar months; obtain CIP Senior Manager re-approval",
@@ -312,7 +368,7 @@ violations contains v if {
 	not vendor_assessments_comprehensive
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R2",
+		"requirement": "R1.1",
 		"severity": "medium",
 		"description": "Vendor risk assessment does not cover vulnerability disclosure, incident response, software development practices and third-party dependencies for every high/medium vendor",
 		"remediation": "Extend each vendor risk assessment to cover all four supply chain factors",
@@ -324,10 +380,10 @@ violations contains v if {
 	not vendor_incident_notification_process
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R1.2.2",
+		"requirement": "R1.2.1",
 		"severity": "medium",
-		"description": "CIP-013 R1.2.2: vendor incident notification process requirement not met",
-		"remediation": "Satisfy and evidence the vendor incident notification process requirement (CIP-013 R1.2.2)",
+		"description": "CIP-013 R1.2.1: vendor incident notification process requirement not met",
+		"remediation": "Satisfy and evidence the vendor incident notification process requirement (CIP-013 R1.2.1)",
 	}
 }
 
@@ -335,10 +391,10 @@ violations contains v if {
 	not incident_coordination_process
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R1.2.4",
+		"requirement": "R1.2.2",
 		"severity": "medium",
-		"description": "CIP-013 R1.2.4: incident coordination process requirement not met",
-		"remediation": "Satisfy and evidence the incident coordination process requirement (CIP-013 R1.2.4)",
+		"description": "CIP-013 R1.2.2: incident coordination process requirement not met",
+		"remediation": "Satisfy and evidence the incident coordination process requirement (CIP-013 R1.2.2)",
 	}
 }
 
@@ -346,10 +402,10 @@ violations contains v if {
 	not supply_chain_monitoring_implemented
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R4",
+		"requirement": "R2",
 		"severity": "medium",
-		"description": "CIP-013 R4: supply chain monitoring implemented requirement not met",
-		"remediation": "Satisfy and evidence the supply chain monitoring implemented requirement (CIP-013 R4)",
+		"description": "CIP-013 R2: supply chain monitoring implemented requirement not met",
+		"remediation": "Satisfy and evidence the supply chain monitoring implemented requirement (CIP-013 R2)",
 	}
 }
 
@@ -357,10 +413,10 @@ violations contains v if {
 	not vendor_notification_monitoring
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R1",
+		"requirement": "R2",
 		"severity": "medium",
-		"description": "CIP-013 R1: vendor notification monitoring requirement not met",
-		"remediation": "Satisfy and evidence the vendor notification monitoring requirement (CIP-013 R1)",
+		"description": "CIP-013 R2: vendor notification monitoring requirement not met",
+		"remediation": "Satisfy and evidence the vendor notification monitoring requirement (CIP-013 R2)",
 	}
 }
 
@@ -368,10 +424,10 @@ violations contains v if {
 	not cip_senior_manager_approved
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R5",
+		"requirement": "R3",
 		"severity": "medium",
-		"description": "CIP-013 R5: cip senior manager approved requirement not met",
-		"remediation": "Satisfy and evidence the cip senior manager approved requirement (CIP-013 R5)",
+		"description": "CIP-013 R3: cip senior manager approved requirement not met",
+		"remediation": "Satisfy and evidence the cip senior manager approved requirement (CIP-013 R3)",
 	}
 }
 
@@ -379,10 +435,37 @@ violations contains v if {
 	not incident_response_coordination_established
 	v := {
 		"standard": "CIP-013",
-		"requirement": "R6",
+		"requirement": "R1.2.2",
 		"severity": "medium",
-		"description": "CIP-013 R6: incident response coordination established requirement not met",
-		"remediation": "Satisfy and evidence the incident response coordination established requirement (CIP-013 R6)",
+		"description": "CIP-013 R1.2.2: incident response coordination established requirement not met",
+		"remediation": "Satisfy and evidence the incident response coordination established requirement (CIP-013 R1.2.2)",
+	}
+}
+
+# A dated record that is absent, not a date, or later than the evaluation time
+# gets its own finding, so missing evidence is not reported as "overdue" and a
+# future date is never read as a completed activity.
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "missing"
+	v := {
+		"standard": "CIP-013",
+		"requirement": e.requirement,
+		"severity": "medium",
+		"description": sprintf("evidence missing — input.%s not collected or not an RFC 3339 date", [e.path]),
+		"remediation": sprintf("Collect input.%s as an RFC 3339 timestamp", [e.path]),
+	}
+}
+
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "future"
+	v := {
+		"standard": "CIP-013",
+		"requirement": e.requirement,
+		"severity": "high",
+		"description": sprintf("input.%s (%v) is later than the evaluation time — a future date is not evidence of a completed activity", [e.path, e.value]),
+		"remediation": sprintf("Record in input.%s the date the activity was actually completed", [e.path]),
 	}
 }
 
@@ -415,18 +498,18 @@ report := {
 	"compliant": compliant,
 	"requirements": {
 		"R1_plan_implemented": supply_chain_cyber_security_plan_implemented,
-		"R1_2_1_vuln_notification": vendor_vulnerability_notification_process,
-		"R1_2_2_incident_notification": vendor_incident_notification_process,
-		"R1_2_3_software_authenticity": software_authenticity_verification_process,
-		"R1_2_4_incident_coordination": incident_coordination_process,
-		"R1_2_5_vendor_remote_access": vendor_remote_access_controlled,
-		"R2_vendor_risk_assessments": vendor_risk_assessments_performed,
-		"R3_vendor_contracts": vendor_contracts_include_security_requirements,
-		"R4_supply_chain_monitoring": supply_chain_monitoring_implemented,
-		"R5_plan_review_current": supply_chain_plan_review_current,
-		"R5_senior_manager_approved": cip_senior_manager_approved,
-		"R6_ir_coordination": incident_response_coordination_established,
-		"R2_vendor_assessments_comprehensive": vendor_assessments_comprehensive,
+		"R1_1_vendor_risk_assessments": vendor_risk_assessments_performed,
+		"R1_1_vendor_assessments_comprehensive": vendor_assessments_comprehensive,
+		"R1_2_1_incident_notification": vendor_incident_notification_process,
+		"R1_2_2_incident_coordination": incident_coordination_process,
+		"R1_2_2_ir_coordination": incident_response_coordination_established,
+		"R1_2_4_vuln_notification": vendor_vulnerability_notification_process,
+		"R1_2_5_software_authenticity": software_authenticity_verification_process,
+		"R1_2_6_vendor_remote_access": vendor_remote_access_controlled,
+		"R2_vendor_contracts": vendor_contracts_include_security_requirements,
+		"R2_supporting_supply_chain_monitoring": supply_chain_monitoring_implemented,
+		"R3_plan_review_current": supply_chain_plan_review_current,
+		"R3_senior_manager_approved": cip_senior_manager_approved,
 	},
 	"vendor_summary": {
 		"total_vendors": count(object.get(input, ["vendors"], [])),

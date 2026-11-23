@@ -11,12 +11,12 @@
 #     expected: 35
 #     found: 36
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist_800_82.main
 
 import rego.v1

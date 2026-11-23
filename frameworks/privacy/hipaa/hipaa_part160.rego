@@ -41,12 +41,12 @@
 #     expected: 8
 #     found: 10
 #     scope: module
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.part160
 
 import rego.v1

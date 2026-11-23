@@ -9,9 +9,9 @@
 #     checks: 0
 #     cited: 0
 #     expected: 332
-#     found: 337
+#     found: 336
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report

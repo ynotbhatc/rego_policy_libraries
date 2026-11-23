@@ -49,14 +49,14 @@
 #     checks: 129
 #     cited: 127
 #     expected: 100
-#     found: 127
+#     found: 124
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist_privacy_framework.main
 
 import rego.v1

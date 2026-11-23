@@ -9,14 +9,14 @@
 #     checks: 0
 #     cited: 0
 #     expected: 336
-#     found: 341
+#     found: 340
 #     scope: directory
-#     density: full
+#     density: over
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_suse16.main
 
 # Bridge: expose cis_suse16 under the /v1/data/<framework>/main/compliance_report convention, with the

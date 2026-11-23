@@ -9,14 +9,14 @@
 #     checks: 11
 #     cited: 4
 #     expected: 4
-#     found: 11
+#     found: 4
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_171.system_information
 
 import rego.v1

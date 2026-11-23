@@ -9,14 +9,14 @@
 #     checks: 73
 #     cited: 73
 #     expected: 64
-#     found: 73
+#     found: 64
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_fortinet_fortigate
 
 # CIS FortiGate 7.4.x Benchmark v1.0.1

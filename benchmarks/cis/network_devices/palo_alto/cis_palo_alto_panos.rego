@@ -9,7 +9,7 @@
 #     checks: 87
 #     cited: 87
 #     expected: 79
-#     found: 87
+#     found: 79
 #     scope: module
 #     density: full
 #     basis: declared-total

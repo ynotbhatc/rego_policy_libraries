@@ -169,52 +169,66 @@ security_control_baselines_selected if {
 	count(input.fisma.select.control_baselines.selected_controls) > 0
 }
 
+# NIST SP 800-53 Rev 5 PL-11: "Tailor the selected control baseline by applying specified tailoring actions."
+# PL-2a: the plan includes "a rationale for any tailoring decisions". A baseline used as published is possible, so an
+# empty tailored_controls passes only when input.fisma.select.tailoring.tailoring_applied is the boolean false.
 control_tailoring_completed if {
-	count(input.fisma.select.tailoring.tailored_controls) >= 0
-	violations := [tailored |
-		tailored := input.fisma.select.tailoring.tailored_controls[_]
-		not tailored.control_id != ""
-	]
-	count(violations) == 0
-	violations2 := [tailored |
-		tailored := input.fisma.select.tailoring.tailored_controls[_]
-		not tailored.tailoring_action in ["add", "remove", "modify", "substitute"]
-	]
-	count(violations2) == 0
-	violations3 := [tailored |
-		tailored := input.fisma.select.tailoring.tailored_controls[_]
-		not tailored.rationale != ""
-	]
-	count(violations3) == 0
-	violations4 := [tailored |
-		tailored := input.fisma.select.tailoring.tailored_controls[_]
-		not tailored.approval_documented == true
-	]
-	count(violations4) == 0
+	_tailored_controls_evidence
+	every tailored in input.fisma.select.tailoring.tailored_controls {
+		_text(tailored.control_id)
+		tailored.tailoring_action in ["add", "remove", "modify", "substitute"]
+		_text(tailored.rationale)
+		tailored.approval_documented == true
+	}
 }
 
+# PL-11 discussion: tailoring includes "selecting compensating controls". None may be needed, so an empty
+# compensating_controls passes only when input.fisma.select.compensating_controls_used is the boolean false.
 compensating_controls_identified if {
-	count(input.fisma.select.compensating_controls) >= 0
-	violations := [comp |
-		comp := input.fisma.select.compensating_controls[_]
-		not comp.baseline_control_id != ""
-	]
-	count(violations) == 0
-	violations2 := [comp |
-		comp := input.fisma.select.compensating_controls[_]
-		not comp.compensating_control_id != ""
-	]
-	count(violations2) == 0
-	violations3 := [comp |
-		comp := input.fisma.select.compensating_controls[_]
-		not comp.rationale != ""
-	]
-	count(violations3) == 0
-	violations4 := [comp |
-		comp := input.fisma.select.compensating_controls[_]
-		not comp.risk_acceptance_documented == true
-	]
-	count(violations4) == 0
+	_compensating_controls_evidence
+	every comp in input.fisma.select.compensating_controls {
+		_text(comp.baseline_control_id)
+		_text(comp.compensating_control_id)
+		_text(comp.rationale)
+		comp.risk_acceptance_documented == true
+	}
+}
+
+# fisma.select.tailoring.tailored_controls is evidence only as an array (missing, null or another type is missing
+# evidence). Empty passes only when fisma.select.tailoring.tailoring_applied is the boolean false; a non-empty list
+# with that fact false is a contradiction.
+_tailored_controls_evidence if {
+	is_array(input.fisma.select.tailoring.tailored_controls)
+	count(input.fisma.select.tailoring.tailored_controls) > 0
+	not _no_tailored_controls_declared
+}
+
+_tailored_controls_evidence if {
+	input.fisma.select.tailoring.tailored_controls == []
+	_no_tailored_controls_declared
+}
+
+_no_tailored_controls_declared if input.fisma.select.tailoring.tailoring_applied == false
+
+# fisma.select.compensating_controls is evidence only as an array (missing, null or another type is missing evidence).
+# Empty passes only when fisma.select.compensating_controls_used is the boolean false; a non-empty list with that fact
+# false is a contradiction.
+_compensating_controls_evidence if {
+	is_array(input.fisma.select.compensating_controls)
+	count(input.fisma.select.compensating_controls) > 0
+	not _no_compensating_controls_declared
+}
+
+_compensating_controls_evidence if {
+	input.fisma.select.compensating_controls == []
+	_no_compensating_controls_declared
+}
+
+_no_compensating_controls_declared if input.fisma.select.compensating_controls_used == false
+
+_text(value) if {
+	is_string(value)
+	trim_space(value) != ""
 }
 
 security_control_allocation_documented if {
@@ -294,33 +308,29 @@ assessment_findings_documented if {
 	input.fisma.assess.findings.risk_ratings_assigned == true
 }
 
+# NIST SP 800-53 Rev 5 CA-5a: the POA&M documents "the planned remediation actions of the organization to correct
+# weaknesses or deficiencies noted during the assessment of the controls and to reduce or eliminate known
+# vulnerabilities in the system". plan_of_actions must be an array; an empty one passes only when
+# input.fisma.assess.remediation.open_weaknesses_count is the number 0 (the fact fisma.ato reads for its POA&M).
 remediation_plans_developed if {
-	count(input.fisma.assess.remediation.plan_of_actions) >= 0
-	violations := [poa |
-		poa := input.fisma.assess.remediation.plan_of_actions[_]
-		not poa.finding_id != ""
-	]
-	count(violations) == 0
-	violations2 := [poa |
-		poa := input.fisma.assess.remediation.plan_of_actions[_]
-		not poa.remediation_strategy != ""
-	]
-	count(violations2) == 0
-	violations3 := [poa |
-		poa := input.fisma.assess.remediation.plan_of_actions[_]
-		not poa.target_completion_date != ""
-	]
-	count(violations3) == 0
-	violations4 := [poa |
-		poa := input.fisma.assess.remediation.plan_of_actions[_]
-		not poa.responsible_party != ""
-	]
-	count(violations4) == 0
-	violations5 := [poa |
-		poa := input.fisma.assess.remediation.plan_of_actions[_]
-		not poa.risk_level in ["low", "moderate", "high", "very_high"]
-	]
-	count(violations5) == 0
+	_poam_tracks_open_weaknesses
+	every poa in input.fisma.assess.remediation.plan_of_actions {
+		_text(poa.finding_id)
+		_text(poa.remediation_strategy)
+		_text(poa.target_completion_date)
+		_text(poa.responsible_party)
+		poa.risk_level in ["low", "moderate", "high", "very_high"]
+	}
+}
+
+_poam_tracks_open_weaknesses if {
+	is_array(input.fisma.assess.remediation.plan_of_actions)
+	count(input.fisma.assess.remediation.plan_of_actions) > 0
+}
+
+_poam_tracks_open_weaknesses if {
+	input.fisma.assess.remediation.plan_of_actions == []
+	input.fisma.assess.remediation.open_weaknesses_count == 0
 }
 
 # RMF Step 6: AUTHORIZE - Make risk-based authorization decision

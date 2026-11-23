@@ -512,21 +512,22 @@ frameworks:
 
   # ---------------------------------------------------------------- critical infrastructure / OT
   nerc_cip:
-    note: per-standard versions; upstream CIP-003-9, CIP-012-2, CIP-015-2 not yet in the module (STANDARDS_UPDATE_REGISTRY.md)
+    note: "per-standard versions = the versions mandatory and enforceable in the US on 2026-11-23 (NERC 'US Effective Date Status - Functional Applicability' workbook, linked from the check url). CIP-003-9 effective 2026-04-01, CIP-004-7 2024-01-01, CIP-012-2 2026-07-01. CIP-015-1 is approved and not yet enforceable (effective 2028-10-01). Approved with a future effective date, not in the modules: CIP-002-8, CIP-003-10, CIP-004-8, CIP-005-8, CIP-006-7.1, CIP-007-7.1, CIP-008-7.1, CIP-009-7.1, CIP-010-5, CIP-011-4.1, CIP-013-3 (all 2028-07-01), CIP-014-4 (2028-10-01), CIP-003-11 (2029-07-01), CIP-015-2 (2029-10-01)"
     standards:
-      - {standard: NERC CIP-002, version: CIP-002-5.1a, publisher: NERC, literal: "CIP-002-5.1a", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-003, version: CIP-003-8, publisher: NERC, literal: "CIP-003-8", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-004, version: CIP-004-6, publisher: NERC, literal: "CIP-004-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-005, version: CIP-005-7, publisher: NERC, literal: "CIP-005-7", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-006, version: CIP-006-6, publisher: NERC, literal: "CIP-006-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-007, version: CIP-007-6, publisher: NERC, literal: "CIP-007-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-008, version: CIP-008-6, publisher: NERC, literal: "CIP-008-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-009, version: CIP-009-6, publisher: NERC, literal: "CIP-009-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-010, version: CIP-010-4, publisher: NERC, literal: "CIP-010-4", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-011, version: CIP-011-3, publisher: NERC, literal: "CIP-011-3", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-012, version: CIP-012-1, publisher: NERC, literal: "CIP-012-1", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-013, version: CIP-013-2, publisher: NERC, literal: "CIP-013-2", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
-      - {standard: NERC CIP-014, version: CIP-014-3, publisher: NERC, literal: "CIP-014-3", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-002, version: CIP-002-5.1a, publisher: NERC, literal: "CIP-002-5.1a", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-003, version: CIP-003-9, publisher: NERC, literal: "CIP-003-9", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-004, version: CIP-004-7, publisher: NERC, literal: "CIP-004-7", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-005, version: CIP-005-7, publisher: NERC, literal: "CIP-005-7", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-006, version: CIP-006-6, publisher: NERC, literal: "CIP-006-6", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-007, version: CIP-007-6, publisher: NERC, literal: "CIP-007-6", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-008, version: CIP-008-6, publisher: NERC, literal: "CIP-008-6", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-009, version: CIP-009-6, publisher: NERC, literal: "CIP-009-6", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-010, version: CIP-010-4, publisher: NERC, literal: "CIP-010-4", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-011, version: CIP-011-3, publisher: NERC, literal: "CIP-011-3", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-012, version: CIP-012-2, publisher: NERC, literal: "CIP-012-2", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-013, version: CIP-013-2, publisher: NERC, literal: "CIP-013-2", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-014, version: CIP-014-3, publisher: NERC, literal: "CIP-014-3", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
+      - {standard: NERC CIP-015, version: CIP-015-1, publisher: NERC, literal: "CIP-015-1", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
   iec_62443:
     standards:
       - {standard: IEC 62443-3-3 (and -2-1, -2-4, -3-2 references), version: unknown, publisher: IEC / ISA, check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "module cites the parts but no edition year"}}

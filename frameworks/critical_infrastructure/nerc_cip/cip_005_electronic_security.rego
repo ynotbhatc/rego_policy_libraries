@@ -7,13 +7,13 @@
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
 #     checks: 24
-#     cited: 12
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nerc_cip.cip_005
 
 import rego.v1
@@ -47,6 +47,22 @@ default unused_ports_disabled := false
 # BES Cyber Systems against compromise.
 #
 # NERC Standards Reference: CIP-005-7
+# (mandatory and enforceable in the United States; CIP-005-8 is approved with an
+# effective date of 2028-07-01).
+# Source: https://www.nerc.com/globalassets/standards/reliability-standards/cip/cip-005-7.pdf
+#
+# Requirement parts of CIP-005-7 and the checks that read them:
+#   R1  1.1 Cyber Assets inside a defined ESP, 1.2 External Routable Connectivity
+#       through an identified EAP, 1.3 inbound and outbound access permissions
+#       with deny by default, 1.4 Dial-up Connectivity authentication (not
+#       implemented), 1.5 detection of malicious communications
+#   R2  2.1 Intermediate System, 2.2 encryption, 2.3 multi-factor authentication,
+#       2.4 and 2.5 vendor remote access sessions (not implemented)
+#   R3  vendor remote access to EACMS and PACS, 3.1 and 3.2 (not implemented)
+#
+# Unused ports, EAP access-attempt logging, idle session timeout and session
+# monitoring are not numbered parts of CIP-005-7. They are kept as supporting
+# checks under R1 or R2 and say so in the finding.
 
 # =============================================================================
 # R1: Electronic Security Perimeter (ESP)
@@ -68,7 +84,8 @@ system_in_esp(system) if {
 	esp.boundary_documented == true
 }
 
-# R1.2 - Each ESP must have identifiable Electronic Access Points (EAPs)
+# R1.2 - External Routable Connectivity goes through an identified Electronic
+# Access Point (EAP): each ESP has identified EAPs
 electronic_security_perimeters_documented if {
 	every esp_id in input.electronic_security_perimeter_ids {
 		esp := input.electronic_security_perimeters[esp_id]
@@ -79,7 +96,7 @@ electronic_security_perimeters_documented if {
 	}
 }
 
-# R1.3 - Each EAP must have controls for inbound and outbound access
+# R1.3 - Each EAP requires inbound and outbound access permissions
 electronic_access_points_controlled if {
 	# No EAP inventory is no evidence (an ESP with no EAPs is not "controlled").
 	is_array(input.electronic_access_points)
@@ -102,14 +119,16 @@ eap_controls_adequate(eap) if {
 	eap.logging.retention_adequate == true
 }
 
-# R1.4 - Deny by default all access that is not explicitly allowed
+# R1.3 - ...and denies all other access by default. (Part 1.4 is Dial-up
+# Connectivity authentication, which is not implemented.)
 deny_by_default_implemented if {
 	every eap in input.electronic_access_points {
 		eap.access_control.default_deny == true
 	}
 }
 
-# R1.5 - Physical I/O ports not used must be disabled or protected
+# R1 (supporting) - Unused ports disabled. This is a CIP-007-6 R1 control, not a
+# numbered part of CIP-005-7 (Part 1.5 is detection of malicious communications).
 unused_ports_disabled if {
 	is_array(input.bes_cyber_systems)
 
@@ -129,14 +148,14 @@ unused_io_ports_vulnerable(system) if {
 # R2: Remote Access Management
 # =============================================================================
 
-# R2.1 - Implement a process to authenticate remote access users/machines
+# R2.3 - Multi-factor authentication for all Interactive Remote Access sessions
 remote_access_authentication_implemented if {
 	input.remote_access.policy_documented == true
 	input.remote_access.authentication.multi_factor == true
 	input.remote_access.authentication.implemented == true
 }
 
-# R2.2 - Use encryption for all remote access connections
+# R2.2 - Encryption for all Interactive Remote Access sessions
 remote_access_encrypted if {
 	# The session list must have been collected (an empty list means no sessions).
 	is_array(input.remote_access_sessions)
@@ -147,14 +166,15 @@ remote_access_encrypted if {
 	count(violations) == 0
 }
 
-# R2.3 - Terminate remote access sessions that are inactive for 15 minutes
+# R2 (supporting) - Terminate remote access sessions that are inactive for 15
+# minutes; not a numbered part of CIP-005-7
 remote_access_session_timeout if {
 	is_number(input.remote_access.session_management.idle_timeout_minutes)
 	input.remote_access.session_management.idle_timeout_minutes <= 15
 	input.remote_access.session_management.timeout_implemented == true
 }
 
-# Controlled intermediate systems (jump hosts)
+# R2.1 - Intermediate System for Interactive Remote Access
 controlled_intermediary if {
 	not input.remote_access.uses_intermediary_device
 } else if {
@@ -164,7 +184,8 @@ controlled_intermediary if {
 	input.remote_access.intermediary_device.monitored == true
 }
 
-# R2.4 - Monitor remote access sessions
+# R2 (supporting) - Monitor remote access sessions; not a numbered part (Part 2.4
+# is determining active vendor remote access sessions)
 remote_access_monitored if {
 	is_array(input.remote_access_sessions)
 	violations := [session |
@@ -183,10 +204,11 @@ remote_access_managed if {
 }
 
 # =============================================================================
-# R3: ESP Monitoring
+# R1 Part 1.5: Detection of malicious communications (ESP monitoring)
 # =============================================================================
 
-# All ESPs must have monitoring enabled for access attempts
+# R1.5 - Methods for detecting known or suspected malicious communications,
+# inbound and outbound: every ESP is monitored with alerting
 esp_monitoring_enabled if {
 	every esp_id in input.electronic_security_perimeter_ids {
 		esp := input.electronic_security_perimeters[esp_id]
@@ -197,7 +219,8 @@ esp_monitoring_enabled if {
 	}
 }
 
-# Access attempts (successful and failed) must be logged
+# R1 (supporting) - Access attempts (successful and failed) logged at each EAP;
+# not a numbered part of CIP-005-7
 access_attempt_logging if {
 	every eap in input.electronic_access_points {
 		eap.logging.successful_access_logged == true
@@ -246,7 +269,7 @@ violations contains v if {
 	not deny_by_default_implemented
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R1.4",
+		"requirement": "R1.3",
 		"severity": "high",
 		"description": "Deny-by-default not implemented at one or more Electronic Access Points",
 		"remediation": "Configure firewall/ACL rules to deny all access not explicitly permitted",
@@ -257,7 +280,7 @@ violations contains v if {
 	not remote_access_authentication_implemented
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R2.1",
+		"requirement": "R2.3",
 		"severity": "critical",
 		"description": "Multi-factor authentication not implemented for remote access",
 		"remediation": "Implement multi-factor authentication for all remote access to BES Cyber Systems",
@@ -279,9 +302,9 @@ violations contains v if {
 	not remote_access_session_timeout
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R2.3",
+		"requirement": "R2",
 		"severity": "high",
-		"description": "Remote access sessions do not terminate after 15 minutes of inactivity",
+		"description": "Remote access sessions do not terminate after 15 minutes of inactivity (R2 supporting check, not a numbered part of CIP-005-7)",
 		"remediation": "Configure session timeout of 15 minutes or less for remote access",
 	}
 }
@@ -290,7 +313,7 @@ violations contains v if {
 	not esp_monitoring_enabled
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R1",
+		"requirement": "R1.5",
 		"severity": "high",
 		"description": "ESP monitoring not enabled or alerting not configured",
 		"remediation": "Enable monitoring, logging, and alerting for all ESP access attempts",
@@ -302,10 +325,10 @@ violations contains v if {
 	not unused_ports_disabled
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R1.5",
+		"requirement": "R1",
 		"severity": "medium",
-		"description": "CIP-005 R1.5: unused ports disabled requirement not met",
-		"remediation": "Satisfy and evidence the unused ports disabled requirement (CIP-005 R1.5)",
+		"description": "CIP-005 R1: unused ports disabled requirement not met (supporting check; the control itself is CIP-007-6 R1)",
+		"remediation": "Disable or protect unused ports on every high and medium impact BES Cyber System",
 	}
 }
 
@@ -313,10 +336,10 @@ violations contains v if {
 	not remote_access_managed
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R1",
+		"requirement": "R2",
 		"severity": "medium",
-		"description": "CIP-005 R1: remote access managed requirement not met",
-		"remediation": "Satisfy and evidence the remote access managed requirement (CIP-005 R1)",
+		"description": "CIP-005 R2: remote access managed requirement not met",
+		"remediation": "Satisfy and evidence the remote access management requirement (CIP-005 R2)",
 	}
 }
 
@@ -324,10 +347,10 @@ violations contains v if {
 	not access_attempt_logging
 	v := {
 		"standard": "CIP-005",
-		"requirement": "R3",
+		"requirement": "R1",
 		"severity": "medium",
-		"description": "CIP-005 R3: access attempt logging requirement not met",
-		"remediation": "Satisfy and evidence the access attempt logging requirement (CIP-005 R3)",
+		"description": "CIP-005 R1: access attempt logging requirement not met (supporting check, not a numbered part of CIP-005-7)",
+		"remediation": "Log successful and failed access attempts at every Electronic Access Point",
 	}
 }
 
@@ -356,14 +379,14 @@ report := {
 		"R1_1_systems_in_esp": all_applicable_systems_in_esp,
 		"R1_2_esps_documented": electronic_security_perimeters_documented,
 		"R1_3_eap_controls": electronic_access_points_controlled,
-		"R1_4_deny_by_default": deny_by_default_implemented,
-		"R1_5_unused_ports_disabled": unused_ports_disabled,
-		"R2_1_remote_access_auth": remote_access_authentication_implemented,
+		"R1_3_deny_by_default": deny_by_default_implemented,
+		"R1_5_esp_monitoring": esp_monitoring_enabled,
+		"R1_supporting_unused_ports_disabled": unused_ports_disabled,
+		"R1_supporting_access_logging": access_attempt_logging,
 		"R2_2_remote_access_encrypted": remote_access_encrypted,
-		"R2_3_session_timeout": remote_access_session_timeout,
-		"R2_4_session_monitoring": remote_access_monitored,
-		"R3_esp_monitoring": esp_monitoring_enabled,
-		"R3_access_logging": access_attempt_logging,
+		"R2_3_remote_access_mfa": remote_access_authentication_implemented,
+		"R2_supporting_session_timeout": remote_access_session_timeout,
+		"R2_supporting_session_monitoring": remote_access_monitored,
 	},
 	"esp_summary": {
 		"total_esps": count(object.get(input, ["electronic_security_perimeter_ids"], [])),
