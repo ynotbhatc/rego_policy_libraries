@@ -60,7 +60,7 @@ test_late_post_event_update_fails_and_is_listed if {
 	ev := {"plan_review_triggered": true, "event_date": "2026-01-01T00:00:00Z", "plan_review_completion_date": "2026-09-01T00:00:00Z"}
 	i := object.union(base, {"qualifying_recovery_events": [ev]})
 	not c.post_event_plan_updates with input as i
-	count([v | some v in c.violations with input as i; v.requirement == "R2.2"]) == 1
+	count([v | some v in c.violations with input as i; v.requirement == "R3.1"; contains(v.description, "within 90 days")]) == 1
 }
 
 test_timely_post_event_update_iso if {

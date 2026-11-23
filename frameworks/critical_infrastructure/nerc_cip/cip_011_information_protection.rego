@@ -43,8 +43,12 @@ default information_protection_program := false
 
 default media_sanitization_verified := false
 
-# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
-# are also accepted. Anything else is undefined, so the caller fails closed.
+# -----------------------------------------------------------------------------
+# Dated evidence
+# -----------------------------------------------------------------------------
+
+# Date normaliser: RFC 3339 strings or epoch nanoseconds; anything else is
+# undefined, so the caller fails closed.
 date_ns(v) := n if {
 	is_string(v)
 	n := time.parse_rfc3339_ns(v)
@@ -52,12 +56,44 @@ date_ns(v) := n if {
 
 date_ns(v) := v if is_number(v)
 
+# Evaluation clock. Tests pin it with `with time.now_ns as <ns>`.
+now_ns := time.now_ns()
+
+ns_per_day := 86400000000000
+
+# Age in days of a dated record. Undefined when the date is absent, not a date,
+# or later than the evaluation time: an activity dated in the future has not
+# happened yet and is not evidence that it was done.
+age_days(v) := (now_ns - date_ns(v)) / ns_per_day if date_ns(v) <= now_ns
+
+# Days from start to end. Undefined when either date is absent or not a date,
+# or when the end date is later than the evaluation time.
+days_between(start, end) := (date_ns(end) - date_ns(start)) / ns_per_day if date_ns(end) <= now_ns
+
+# Why a dated record cannot be used: "future", or "missing" when it is absent,
+# of the wrong type or not RFC 3339. Undefined for a usable date.
+date_problem(v) := "future" if date_ns(v) > now_ns
+
+date_problem(v) := "missing" if not date_ns(v)
+
 # CIP-011-3: Information Protection
 # Requirement: Prevent unauthorized access to BES Cyber System Information
 # by specifying information protection requirements in support of protecting
 # BES Cyber Systems against compromise.
 #
 # NERC Standards Reference: CIP-011-3
+# (mandatory and enforceable in the United States from 2024-01-01; CIP-011-4.1 is
+# approved with an effective date of 2028-07-01).
+# Source: https://www.nerc.com/globalassets/standards/reliability-standards/cip/cip-011-3.pdf
+#
+# CIP-011-3 has two requirements:
+#   R1  information protection program: 1.1 method(s) to identify BCSI, 1.2
+#       method(s) to protect and securely handle BCSI
+#   R2  BES Cyber Asset reuse and disposal: 2.1 reuse, 2.2 disposal
+#
+# Authorizing, verifying and revoking provisioned access to BCSI is CIP-004-7 R6
+# (see cip_004_personnel_training.rego). The access checks below are kept as
+# evidence for Part 1.2 and are labelled R1.2. There is no R3, R4 or R5.
 
 # =============================================================================
 # R1: Information Protection Program
@@ -81,7 +117,7 @@ bcsi_categories_addressed if {
 	input.bes_cyber_system_information.categories.incident_response_plans == true
 }
 
-# R1.2 - Establish an information protection program
+# R1.2 - Method(s) to protect and securely handle BCSI
 information_protection_program if {
 	input.information_protection.program_documented == true
 	input.information_protection.procedures_documented == true
@@ -91,10 +127,11 @@ information_protection_program if {
 }
 
 # =============================================================================
-# R2: Information Access Controls
+# R1 Part 1.2: Information Access Controls
 # =============================================================================
 
-# R2 - Implement access controls for BCSI that allow only authorized access
+# R1.2 - Access controls for BCSI that allow only authorized access (the access
+# management program itself is CIP-004-7 R6)
 information_access_controls_enforced if {
 	violations := [access |
 		access := input.information_access[_]
@@ -124,8 +161,12 @@ bcsi_access_need_to_know if {
 
 # Access authorization reviewed at least every 15 calendar months
 bcsi_review_current(person) if {
-	review_age_days := (time.now_ns() - date_ns(person.last_review_date)) / (((24 * 60) * 60) * 1000000000)
-	review_age_days <= 455
+	age_days(person.last_review_date) <= 455
+}
+
+# Dated evidence the recency check reads.
+dated_evidence contains {"requirement": "R1.2", "path": sprintf("bcsi_access_list[%v].last_review_date", [object.get(person, "person_id", i)]), "value": object.get(person, "last_review_date", null)} if {
+	some i, person in input.bcsi_access_list
 }
 
 bcsi_access_reviewed if {
@@ -141,7 +182,7 @@ bcsi_access_reviewed if {
 }
 
 # =============================================================================
-# R3: Storage Protection
+# R1 Part 1.2: Storage Protection
 # =============================================================================
 
 # BCSI in storage must be protected from unauthorized access
@@ -165,7 +206,7 @@ bcsi_physical_access_controlled if {
 }
 
 # =============================================================================
-# R4: Transmission Protection
+# R1 Part 1.2: Transmission Protection
 # =============================================================================
 
 # BCSI transmitted outside the ESP must be protected
@@ -192,10 +233,11 @@ transmission_protected(transmission) if {
 }
 
 # =============================================================================
-# R5: Disposal and Redeployment
+# R2: BES Cyber Asset Reuse and Disposal
 # =============================================================================
 
-# R5 - Protect BCSI on devices being disposed or redeployed
+# R2.2 - Prevent the unauthorized retrieval of BCSI from Cyber Assets being
+# disposed of (Part 2.1 covers release for reuse)
 information_disposal_procedures_implemented if {
 	input.information_disposal.procedures_documented == true
 	input.information_disposal.secure_deletion_methods == true
@@ -285,7 +327,7 @@ violations contains v if {
 	not information_access_controls_enforced
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R2",
+		"requirement": "R1.2",
 		"severity": "critical",
 		"description": "Access controls for BCSI inadequate or unauthorized access possible",
 		"remediation": "Implement and enforce access controls limiting BCSI to authorized personnel with need to know",
@@ -296,9 +338,9 @@ violations contains v if {
 	not bcsi_access_reviewed
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R2",
+		"requirement": "R1.2",
 		"severity": "high",
-		"description": "BCSI access authorization not reviewed within 15 calendar months",
+		"description": "BCSI access authorization not reviewed within 15 calendar months (R1.2 supporting check; the verification itself is CIP-004-7 R6.2)",
 		"remediation": "Review and reauthorize BCSI access for all personnel within 15 calendar months",
 	}
 }
@@ -329,7 +371,7 @@ violations contains v if {
 	not information_disposal_procedures_implemented
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R3",
+		"requirement": "R2.2",
 		"severity": "high",
 		"description": "BCSI disposal procedures not documented or media sanitization not implemented",
 		"remediation": "Implement documented media sanitization and disposal procedures per NIST SP 800-88",
@@ -340,7 +382,7 @@ violations contains v if {
 	not redeployment_bcsi_cleared
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R2",
+		"requirement": "R2.1",
 		"severity": "high",
 		"description": "BCSI not verified as cleared before system redeployment or release for reuse (or system_redeployments not declared)",
 		"remediation": "Clear BCSI and document the clearing method before redeployment; declare system_redeployments (false when none)",
@@ -351,7 +393,7 @@ violations contains v if {
 	not third_party_bcsi_agreements
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R1",
+		"requirement": "R1.2",
 		"severity": "high",
 		"description": "BCSI shared with a third party without an agreement, security requirements, documented need and sharing log (or bcsi_third_party_sharing not declared)",
 		"remediation": "Put an agreement with security requirements in place and log every BCSI sharing; declare bcsi_third_party_sharing (false when none)",
@@ -374,10 +416,10 @@ violations contains v if {
 	not bcsi_access_need_to_know
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R2",
+		"requirement": "R1.2",
 		"severity": "medium",
-		"description": "CIP-011 R2: bcsi access need to know requirement not met",
-		"remediation": "Satisfy and evidence the bcsi access need to know requirement (CIP-011 R2)",
+		"description": "CIP-011 R1.2: bcsi access need to know requirement not met",
+		"remediation": "Satisfy and evidence the bcsi access need to know requirement (CIP-011 R1.2)",
 	}
 }
 
@@ -385,10 +427,10 @@ violations contains v if {
 	not bcsi_electronic_access_controlled
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R1",
+		"requirement": "R1.2",
 		"severity": "medium",
-		"description": "CIP-011 R1: bcsi electronic access controlled requirement not met",
-		"remediation": "Satisfy and evidence the bcsi electronic access controlled requirement (CIP-011 R1)",
+		"description": "CIP-011 R1.2: bcsi electronic access controlled requirement not met",
+		"remediation": "Satisfy and evidence the bcsi electronic access controlled requirement (CIP-011 R1.2)",
 	}
 }
 
@@ -396,10 +438,10 @@ violations contains v if {
 	not bcsi_physical_access_controlled
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R1",
+		"requirement": "R1.2",
 		"severity": "medium",
-		"description": "CIP-011 R1: bcsi physical access controlled requirement not met",
-		"remediation": "Satisfy and evidence the bcsi physical access controlled requirement (CIP-011 R1)",
+		"description": "CIP-011 R1.2: bcsi physical access controlled requirement not met",
+		"remediation": "Satisfy and evidence the bcsi physical access controlled requirement (CIP-011 R1.2)",
 	}
 }
 
@@ -407,10 +449,37 @@ violations contains v if {
 	not media_sanitization_verified
 	v := {
 		"standard": "CIP-011",
-		"requirement": "R3",
+		"requirement": "R2.2",
 		"severity": "medium",
-		"description": "CIP-011 R3: media sanitization verified requirement not met",
-		"remediation": "Satisfy and evidence the media sanitization verified requirement (CIP-011 R3)",
+		"description": "CIP-011 R2.2: media sanitization verified requirement not met",
+		"remediation": "Satisfy and evidence the media sanitization verified requirement (CIP-011 R2.2)",
+	}
+}
+
+# A dated record that is absent, not a date, or later than the evaluation time
+# gets its own finding, so missing evidence is not reported as "overdue" and a
+# future date is never read as a completed activity.
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "missing"
+	v := {
+		"standard": "CIP-011",
+		"requirement": e.requirement,
+		"severity": "medium",
+		"description": sprintf("evidence missing — input.%s not collected or not an RFC 3339 date", [e.path]),
+		"remediation": sprintf("Collect input.%s as an RFC 3339 timestamp", [e.path]),
+	}
+}
+
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "future"
+	v := {
+		"standard": "CIP-011",
+		"requirement": e.requirement,
+		"severity": "high",
+		"description": sprintf("input.%s (%v) is later than the evaluation time — a future date is not evidence of a completed activity", [e.path, e.value]),
+		"remediation": sprintf("Record in input.%s the date the activity was actually completed", [e.path]),
 	}
 }
 
@@ -445,17 +514,17 @@ report := {
 		"R1_1_bcsi_identified": bes_cyber_system_information_identified,
 		"R1_1_categories_addressed": bcsi_categories_addressed,
 		"R1_2_protection_program": information_protection_program,
-		"R2_access_controls": information_access_controls_enforced,
-		"R2_need_to_know": bcsi_access_need_to_know,
-		"R2_access_reviewed": bcsi_access_reviewed,
-		"R_storage_protected": bcsi_storage_protected,
-		"R_electronic_access_controlled": bcsi_electronic_access_controlled,
-		"R_physical_access_controlled": bcsi_physical_access_controlled,
-		"R_transmission_protected": bcsi_transmission_protected,
-		"R3_disposal_procedures": information_disposal_procedures_implemented,
-		"R3_media_sanitization": media_sanitization_verified,
-		"R2_redeployment_bcsi_cleared": redeployment_bcsi_cleared,
-		"R_third_party_agreements": third_party_bcsi_agreements,
+		"R1_2_access_controls": information_access_controls_enforced,
+		"R1_2_need_to_know": bcsi_access_need_to_know,
+		"R1_2_access_reviewed": bcsi_access_reviewed,
+		"R1_2_storage_protected": bcsi_storage_protected,
+		"R1_2_electronic_access_controlled": bcsi_electronic_access_controlled,
+		"R1_2_physical_access_controlled": bcsi_physical_access_controlled,
+		"R1_2_transmission_protected": bcsi_transmission_protected,
+		"R1_2_third_party_agreements": third_party_bcsi_agreements,
+		"R2_1_redeployment_bcsi_cleared": redeployment_bcsi_cleared,
+		"R2_2_disposal_procedures": information_disposal_procedures_implemented,
+		"R2_2_media_sanitization": media_sanitization_verified,
 	},
 	"violations": violations,
 	"violation_count": count(violations),

@@ -43,14 +43,38 @@ default recovery_plans_documented := false
 
 default recovery_testing_performed := false
 
-# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
-# are also accepted. Anything else is undefined, so the caller fails closed.
+# -----------------------------------------------------------------------------
+# Dated evidence
+# -----------------------------------------------------------------------------
+
+# Date normaliser: RFC 3339 strings or epoch nanoseconds; anything else is
+# undefined, so the caller fails closed.
 date_ns(v) := n if {
 	is_string(v)
 	n := time.parse_rfc3339_ns(v)
 }
 
 date_ns(v) := v if is_number(v)
+
+# Evaluation clock. Tests pin it with `with time.now_ns as <ns>`.
+now_ns := time.now_ns()
+
+ns_per_day := 86400000000000
+
+# Age in days of a dated record. Undefined when the date is absent, not a date,
+# or later than the evaluation time: an activity dated in the future has not
+# happened yet and is not evidence that it was done.
+age_days(v) := (now_ns - date_ns(v)) / ns_per_day if date_ns(v) <= now_ns
+
+# Days from start to end. Undefined when either date is absent or not a date,
+# or when the end date is later than the evaluation time.
+days_between(start, end) := (date_ns(end) - date_ns(start)) / ns_per_day if date_ns(end) <= now_ns
+
+# Why a dated record cannot be used: "future", or "missing" when it is absent,
+# of the wrong type or not RFC 3339. Undefined for a usable date.
+date_problem(v) := "future" if date_ns(v) > now_ns
+
+date_problem(v) := "missing" if not date_ns(v)
 
 # Per-system requirements need the BES Cyber System inventory to have been collected.
 bes_inventory_present if is_array(input.bes_cyber_systems)
@@ -60,6 +84,22 @@ bes_inventory_present if is_array(input.bes_cyber_systems)
 # continued stability, operability, and reliability of the Bulk Electric System.
 #
 # NERC Standards Reference: CIP-009-6
+# (mandatory and enforceable in the United States; CIP-009-7.1 is approved with
+# an effective date of 2028-07-01).
+# Source: https://www.nerc.com/globalassets/standards/reliability-standards/cip/cip-009-6.pdf
+#
+# Requirement parts of CIP-009-6 and the checks that read them:
+#   R1  recovery plan: 1.1 activation conditions, 1.2 roles, 1.3 backup and
+#       storage, 1.4 verification of backups (inside the 1.3 check), 1.5 data
+#       preservation
+#   R2  implementation and testing: 2.1 plan test every 15 calendar months, 2.2
+#       test of recovery information every 15 calendar months, 2.3 operational
+#       exercise every 36 calendar months (not implemented)
+#   R3  plan review, update and communication: 3.1 within 90 days of a test or
+#       recovery, 3.2 within 60 days of a change (not implemented)
+#
+# CIP-009-6 has no periodic plan review, no network reconnection part and no
+# activation-criteria test. Those checks are kept as supporting checks and say so.
 
 # =============================================================================
 # R1: Recovery Plans
@@ -102,13 +142,15 @@ backup_procedures_adequate(system) if {
 	backup.backup_integrity_verification == true
 }
 
-# R1.4 - One or more processes to preserve and storage of logs
+# R1.5 - One or more processes to preserve data for determining the cause of a
+# Cyber Security Incident that triggers activation of the plan
 log_preservation_process if {
 	input.recovery_plans.log_preservation.process_documented == true
 	input.recovery_plans.log_preservation.forensic_preservation_addressed == true
 }
 
-# R1.5 - One or more processes to reestablish network connectivity
+# R1 (supporting) - Process to reestablish network connectivity; not a numbered
+# part of CIP-009-6
 network_reconnection_process if {
 	input.recovery_plans.network_reconnection.process_documented == true
 	input.recovery_plans.network_reconnection.validation_steps_defined == true
@@ -135,10 +177,11 @@ recovery_plan_exists(system) if {
 }
 
 # =============================================================================
-# R2: Plan Review and Communication
+# R3: Plan Review, Update and Communication
 # =============================================================================
 
-# R2.1 - Review and update recovery plans within 15 calendar months
+# R3 (supporting) - Recovery plans reviewed within 15 calendar months. CIP-009-6
+# has no periodic review; R3 is event-driven (Parts 3.1 and 3.2).
 recovery_plans_current if {
 	bes_inventory_present
 
@@ -153,27 +196,31 @@ recovery_plans_current if {
 }
 
 recovery_plan_current(plan) if {
-	plan_age_days := (time.now_ns() - date_ns(plan.last_review_date)) / (((24 * 60) * 60) * 1000000000)
-	plan_age_days <= 455
+	age_days(plan.last_review_date) <= 455
 }
 
-# R2.2 - After qualifying event, update plan within 90 days
-# Conditional applicability: R2.2 applies only after a qualifying event; no
-# qualifying_recovery_events list means none occurred.
+# R3.1 - After a recovery plan test or actual recovery, update the plan within
+# 90 days. Applicability must be declared: `qualifying_recovery_events: false`
+# (or an empty list) states that none occurred; an absent key is "applicability
+# not determined" and fails closed.
 post_event_plan_updates if {
-	not input.qualifying_recovery_events
+	input.qualifying_recovery_events == false
 }
 
 post_event_plan_updates if {
+	is_array(input.qualifying_recovery_events)
 	every event in input.qualifying_recovery_events {
 		event.plan_review_triggered == true
-		update_age_days := (date_ns(event.plan_review_completion_date) - date_ns(event.event_date)) / (((24 * 60) * 60) * 1000000000)
-		is_number(update_age_days)
-		update_age_days <= 90
+
+		# A review dated after the evaluation time has not been completed.
+		days_between(event.event_date, event.plan_review_completion_date) <= 90
 	}
 }
 
-# R2.3 - Communicate the plans to personnel with recovery roles
+recovery_events_undeclared if object.get(input, "qualifying_recovery_events", null) == null
+
+# R3.1 - Notify each person or group with a defined role of the plan updates
+# (Part 3.1.3)
 plans_communicated if {
 	is_array(input.recovery_team)
 	count(input.recovery_team) > 0
@@ -185,10 +232,10 @@ plans_communicated if {
 }
 
 # =============================================================================
-# R3: Recovery Plan Testing
+# R2: Recovery Plan Testing
 # =============================================================================
 
-# R3.1 - Test the recovery plan(s) at least once every 15 calendar months
+# R2.1 - Test the recovery plan(s) at least once every 15 calendar months
 recovery_testing_performed if {
 	bes_inventory_present
 	violations := [system |
@@ -201,14 +248,13 @@ recovery_testing_performed if {
 
 recovery_testing_current(system) if {
 	testing := input.recovery_testing[system.system_id]
-	testing.last_test_date
-	test_age_days := (time.now_ns() - date_ns(testing.last_test_date)) / (((24 * 60) * 60) * 1000000000)
-	test_age_days <= 455
+	age_days(testing.last_test_date) <= 455
 	testing.test_documented == true
 	testing.issues_resolved == true
 }
 
-# R3.2 - Test each backup and storage process at least once every 15 calendar months
+# R2.2 - Test a representative sample of the information used to recover BES
+# Cyber System functionality at least once every 15 calendar months
 backup_testing_performed if {
 	bes_inventory_present
 	violations := [system |
@@ -221,18 +267,35 @@ backup_testing_performed if {
 
 backup_test_current(system) if {
 	backup := input.backup_procedures[system.system_id]
-	backup_test_age_days := (time.now_ns() - date_ns(backup.last_test_date)) / (((24 * 60) * 60) * 1000000000)
-	backup_test_age_days <= 455
+	age_days(backup.last_test_date) <= 455
 	backup.test_documented == true
 	backup.restoration_verified == true
 }
 
-# R3.3 - Test each activation criteria to ensure viability
+# R2 (supporting) - Activation criteria tested; not a numbered part of CIP-009-6
+# (Part 2.3 is the 36 calendar month operational exercise)
 activation_criteria_tested if {
 	input.recovery_plans.activation_criteria_tested == true
-	last_test_ns := time.parse_rfc3339_ns(input.recovery_plans.last_activation_test_date)
-	test_age_days := (time.now_ns() - last_test_ns) / (((24 * 60) * 60) * 1000000000)
-	test_age_days <= 455
+	age_days(input.recovery_plans.last_activation_test_date) <= 455
+}
+
+# Dated evidence the recency checks read.
+dated_evidence contains {"requirement": "R2", "path": "recovery_plans.last_activation_test_date", "value": object.get(input, ["recovery_plans", "last_activation_test_date"], null)}
+
+dated_evidence contains {"requirement": e.requirement, "path": sprintf("%s[%v].%s", [e.collection, system.system_id, e.field]), "value": object.get(input, [e.collection, system.system_id, e.field], null)} if {
+	some system in input.bes_cyber_systems
+	system.impact_categorization in ["high", "medium"]
+	some e in [
+		{"requirement": "R3", "collection": "recovery_plans", "field": "last_review_date"},
+		{"requirement": "R2.1", "collection": "recovery_testing", "field": "last_test_date"},
+		{"requirement": "R2.2", "collection": "backup_procedures", "field": "last_test_date"},
+	]
+}
+
+dated_evidence contains {"requirement": "R3.1", "path": sprintf("qualifying_recovery_events[%v].%s", [object.get(event, "event_id", i), field]), "value": object.get(event, field, null)} if {
+	some i, event in input.qualifying_recovery_events
+	event.plan_review_triggered == true
+	some field in ["event_date", "plan_review_completion_date"]
 }
 
 # =============================================================================
@@ -276,18 +339,30 @@ violations contains v if {
 	not recovery_plans_current
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R2.1",
+		"requirement": "R3",
 		"severity": "medium",
-		"description": "One or more recovery plans not reviewed within 15 calendar months",
+		"description": "One or more recovery plans not reviewed within 15 calendar months (R3 supporting check: CIP-009-6 has no periodic review)",
 		"remediation": "Review, update, and communicate all recovery plans within 15 calendar months",
 	}
 }
 
 violations contains v if {
+	recovery_events_undeclared
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R3.1",
+		"severity": "medium",
+		"description": "CIP-009 R3.1: applicability not determined — qualifying_recovery_events not declared",
+		"remediation": "Declare qualifying_recovery_events as a list of recovery plan tests and actual recoveries, or set it to false when none occurred",
+	}
+}
+
+violations contains v if {
+	not recovery_events_undeclared
 	not post_event_plan_updates
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R2.2",
+		"requirement": "R3.1",
 		"severity": "medium",
 		"description": "Recovery plan not reviewed and updated within 90 days after a qualifying event",
 		"remediation": "Complete the post-event plan review and update within 90 days",
@@ -298,7 +373,7 @@ violations contains v if {
 	not recovery_testing_performed
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R3.1",
+		"requirement": "R2.1",
 		"severity": "high",
 		"description": "Recovery plan not tested within 15 calendar months for one or more systems",
 		"remediation": "Test recovery plans at least every 15 calendar months per documented test plan",
@@ -309,7 +384,7 @@ violations contains v if {
 	not backup_testing_performed
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R3.2",
+		"requirement": "R2.2",
 		"severity": "high",
 		"description": "Backup restoration not tested within 15 calendar months for some systems",
 		"remediation": "Test backup restoration for all applicable systems within 15 calendar months",
@@ -332,10 +407,10 @@ violations contains v if {
 	not log_preservation_process
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R1.4",
+		"requirement": "R1.5",
 		"severity": "medium",
-		"description": "CIP-009 R1.4: log preservation process requirement not met",
-		"remediation": "Satisfy and evidence the log preservation process requirement (CIP-009 R1.4)",
+		"description": "CIP-009 R1.5: log preservation process requirement not met",
+		"remediation": "Satisfy and evidence the log preservation process requirement (CIP-009 R1.5)",
 	}
 }
 
@@ -343,10 +418,10 @@ violations contains v if {
 	not network_reconnection_process
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R1.5",
+		"requirement": "R1",
 		"severity": "medium",
-		"description": "CIP-009 R1.5: network reconnection process requirement not met",
-		"remediation": "Satisfy and evidence the network reconnection process requirement (CIP-009 R1.5)",
+		"description": "CIP-009 R1: network reconnection process requirement not met",
+		"remediation": "Satisfy and evidence the network reconnection process requirement (CIP-009 R1)",
 	}
 }
 
@@ -354,10 +429,10 @@ violations contains v if {
 	not plans_communicated
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R2.3",
+		"requirement": "R3.1",
 		"severity": "medium",
-		"description": "CIP-009 R2.3: plans communicated requirement not met",
-		"remediation": "Satisfy and evidence the plans communicated requirement (CIP-009 R2.3)",
+		"description": "CIP-009 R3.1: plans communicated requirement not met",
+		"remediation": "Satisfy and evidence the plans communicated requirement (CIP-009 R3.1)",
 	}
 }
 
@@ -365,10 +440,37 @@ violations contains v if {
 	not activation_criteria_tested
 	v := {
 		"standard": "CIP-009",
-		"requirement": "R3.3",
+		"requirement": "R2",
 		"severity": "medium",
-		"description": "CIP-009 R3.3: activation criteria tested requirement not met",
-		"remediation": "Satisfy and evidence the activation criteria tested requirement (CIP-009 R3.3)",
+		"description": "CIP-009 R2: activation criteria tested requirement not met",
+		"remediation": "Satisfy and evidence the activation criteria tested requirement (CIP-009 R2)",
+	}
+}
+
+# A dated record that is absent, not a date, or later than the evaluation time
+# gets its own finding, so missing evidence is not reported as "overdue" and a
+# future date is never read as a completed activity.
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "missing"
+	v := {
+		"standard": "CIP-009",
+		"requirement": e.requirement,
+		"severity": "medium",
+		"description": sprintf("evidence missing — input.%s not collected or not an RFC 3339 date", [e.path]),
+		"remediation": sprintf("Collect input.%s as an RFC 3339 timestamp", [e.path]),
+	}
+}
+
+violations contains v if {
+	some e in dated_evidence
+	date_problem(e.value) == "future"
+	v := {
+		"standard": "CIP-009",
+		"requirement": e.requirement,
+		"severity": "high",
+		"description": sprintf("input.%s (%v) is later than the evaluation time — a future date is not evidence of a completed activity", [e.path, e.value]),
+		"remediation": sprintf("Record in input.%s the date the activity was actually completed", [e.path]),
 	}
 }
 
@@ -402,14 +504,14 @@ report := {
 		"R1_1_activation_criteria": recovery_plan_activation_criteria,
 		"R1_2_roles_defined": recovery_plan_roles_defined,
 		"R1_3_backup_processes": backup_processes_documented,
-		"R1_4_log_preservation": log_preservation_process,
-		"R1_5_network_reconnection": network_reconnection_process,
-		"R2_1_plans_current": recovery_plans_current,
-		"R2_2_post_event_updates": post_event_plan_updates,
-		"R2_3_plans_communicated": plans_communicated,
-		"R3_1_recovery_tested": recovery_testing_performed,
-		"R3_2_backup_tested": backup_testing_performed,
-		"R3_3_activation_criteria_tested": activation_criteria_tested,
+		"R1_5_log_preservation": log_preservation_process,
+		"R1_supporting_network_reconnection": network_reconnection_process,
+		"R2_1_recovery_tested": recovery_testing_performed,
+		"R2_2_backup_tested": backup_testing_performed,
+		"R2_supporting_activation_criteria_tested": activation_criteria_tested,
+		"R3_1_post_event_updates": post_event_plan_updates,
+		"R3_1_plans_communicated": plans_communicated,
+		"R3_supporting_plans_current": recovery_plans_current,
 	},
 	"violations": violations,
 	"violation_count": count(violations),
