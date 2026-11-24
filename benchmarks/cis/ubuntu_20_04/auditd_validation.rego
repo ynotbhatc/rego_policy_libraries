@@ -68,7 +68,32 @@ permission_violations contains msg if {
 service_violations contains msg if {
 	not input.packages.auditd == true
 	not input.packages.audit == true
+	audit_package_answered
 	msg := "CIS 4.1.1.1: auditd package not installed"
+}
+
+# the package is reported under either name; at least one of the two must be a boolean answer
+audit_package_names := ["auditd", "audit"]
+
+audit_package_answered if {
+	some name in audit_package_names
+	is_boolean(input.packages[name])
+}
+
+service_violations contains msg if {
+	not audit_package_answered
+	every name in audit_package_names {
+		is_null(object.get(input, ["packages", name], null))
+	}
+	msg := "CIS 4.1.1.1: evidence missing — packages.auditd not collected"
+}
+
+service_violations contains msg if {
+	some name in audit_package_names
+	v := object.get(input, ["packages", name], null)
+	not is_null(v)
+	not is_boolean(v)
+	msg := sprintf("CIS 4.1.1.1: evidence missing — packages.%s is not a boolean (got %s)", [name, type_name(v)])
 }
 
 # CIS 4.1.1.2: auditd service must be turned on and running
@@ -228,6 +253,23 @@ permission_violations contains msg if {
 	group := input.auditd.log_permissions.gr_name
 	not group in ["root", "adm"]
 	msg := sprintf("CIS 4.1.4.2: Audit log group not root or adm (group: %s)", [group])
+}
+
+# fields compared as text: a collected section must carry them
+service_violations contains msg if {
+	is_object(input.services["auditd.service"])
+	some key in ["status", "state"]
+	not is_string(object.get(input.services["auditd.service"], key, null))
+	msg := sprintf("CIS 4.1.1.2: evidence missing — services.auditd.service.%s not collected", [key])
+}
+
+log_permission_fields := {"mode": "4.1.4.1", "pw_name": "4.1.4.2", "gr_name": "4.1.4.2"}
+
+permission_violations contains msg if {
+	is_object(input.auditd.log_permissions)
+	some key, ctl in log_permission_fields
+	is_null(object.get(input.auditd.log_permissions, key, null))
+	msg := sprintf("CIS %s: evidence missing — auditd.log_permissions.%s not collected", [ctl, key])
 }
 
 report := {

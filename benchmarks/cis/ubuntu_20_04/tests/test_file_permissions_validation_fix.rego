@@ -21,7 +21,7 @@ test_full_evidence_compliant if {
 test_empty_input_not_compliant if {
 	not data.cis_ubuntu_20_04.file_permissions.compliant with input as {}
 	v := data.cis_ubuntu_20_04.file_permissions.violations with input as {}
-	count({m | some m in v; contains(m, "evidence missing")}) == 6
+	count({m | some m in v; contains(m, "evidence missing")}) == 7
 }
 
 test_each_missing_section_flagged if {

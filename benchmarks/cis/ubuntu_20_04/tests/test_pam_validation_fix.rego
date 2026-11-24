@@ -12,6 +12,7 @@ good_pam := {
 	"remember_configured": true, "remember_count": 5,
 	"pass_min_days": 1, "pass_max_days": 365, "pass_warn_age": 7, "inactive_days": 30,
 	"tmout_configured": true, "tmout_value": 600,
+	"users_with_future_password_change": [], "system_accounts_with_login_shell": [],
 }
 
 with_pam(overrides) := {"pam": object.union(good_pam, overrides)}

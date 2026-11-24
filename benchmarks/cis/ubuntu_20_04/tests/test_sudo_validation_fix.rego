@@ -4,7 +4,7 @@ import rego.v1
 
 # Validation fix pass 2026-10-17.
 
-good := {"sudo": {"installed": true, "use_pty": true, "logfile_configured": true, "su_restricted": true, "timestamp_timeout": 5, "sudoers_mode": "0440"}}
+good := {"sudo": {"installed": true, "use_pty": true, "logfile_configured": true, "su_restricted": true, "timestamp_timeout": 5, "sudoers_mode": "0440", "sudoers_world_readable": false, "nopasswd_entries": [], "noauthenticate_entries": []}}
 
 test_good_input_compliant if {
 	data.cis_ubuntu_20_04.sudo.compliant with input as good

@@ -99,25 +99,25 @@ pwquality_violations contains msg if {
 
 # CIS 5.4.2: checked condition — lockout for failed password attempts
 faillock_violations contains msg if {
-	not input.pam.faillock_configured == true
+	input.pam.faillock_configured == false
 	msg := "CIS 5.4.2: pam_faillock (or pam_tally2) not configured for failed password lockout"
 }
 
 faillock_violations contains msg if {
-	input.pam.faillock_configured
+	input.pam.faillock_configured == true
 	is_number(input.pam.faillock_deny)
 	input.pam.faillock_deny > 5
 	msg := sprintf("CIS 5.4.2: Account lockout threshold is %d attempts, should be 5 or less", [input.pam.faillock_deny])
 }
 
 faillock_violations contains msg if {
-	input.pam.faillock_configured
+	input.pam.faillock_configured == true
 	not is_number(object.get(input, ["pam", "faillock_deny"], 0))
 	msg := "CIS 5.4.2: evidence missing — pam.faillock_deny is not a number"
 }
 
 faillock_violations contains msg if {
-	input.pam.faillock_configured
+	input.pam.faillock_configured == true
 	is_number(input.pam.faillock_unlock_time)
 	input.pam.faillock_unlock_time > 0
 	input.pam.faillock_unlock_time < 900
@@ -125,26 +125,26 @@ faillock_violations contains msg if {
 }
 
 faillock_violations contains msg if {
-	input.pam.faillock_configured
+	input.pam.faillock_configured == true
 	not is_number(object.get(input, ["pam", "faillock_unlock_time"], 0))
 	msg := "CIS 5.4.2: evidence missing — pam.faillock_unlock_time is not a number"
 }
 
 # CIS 5.4.3: password reuse must be limited to named principals
 faillock_violations contains msg if {
-	not input.pam.remember_configured == true
+	input.pam.remember_configured == false
 	msg := "CIS 5.4.3: Password history (remember) not configured in PAM"
 }
 
 faillock_violations contains msg if {
-	input.pam.remember_configured
+	input.pam.remember_configured == true
 	is_number(input.pam.remember_count)
 	input.pam.remember_count < 5
 	msg := sprintf("CIS 5.4.3: Password history remembers only %d passwords, should be 5 or more", [input.pam.remember_count])
 }
 
 faillock_violations contains msg if {
-	input.pam.remember_configured
+	input.pam.remember_configured == true
 	not is_number(object.get(input, ["pam", "remember_count"], 0))
 	msg := "CIS 5.4.3: evidence missing — pam.remember_count is not a number"
 }
@@ -230,19 +230,19 @@ account_violations contains msg if {
 
 # TMOUT for idle session timeout
 account_violations contains msg if {
-	not input.pam.tmout_configured == true
+	input.pam.tmout_configured == false
 	msg := "CIS 5.5.x: TMOUT is not configured for automatic session timeout"
 }
 
 account_violations contains msg if {
-	input.pam.tmout_configured
+	input.pam.tmout_configured == true
 	is_number(input.pam.tmout_value)
 	input.pam.tmout_value > 900
 	msg := sprintf("CIS 5.5.x: TMOUT is %d seconds, should be 900 or less", [input.pam.tmout_value])
 }
 
 account_violations contains msg if {
-	input.pam.tmout_configured
+	input.pam.tmout_configured == true
 	not is_number(object.get(input, ["pam", "tmout_value"], 0))
 	msg := "CIS 5.5.x: evidence missing — pam.tmout_value is not a number"
 }
@@ -256,6 +256,99 @@ account_violations contains msg if {
 account_violations contains msg if {
 	not bits.and(octal(input.pam.default_umask), 23) == 23
 	msg := sprintf("CIS 5.5.x: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: a yes/no fact is answered only by a JSON boolean. A missing fact, null, a string
+# ("true", "false", "no") or a number is an evidence problem: the control fails and the finding names it.
+# ---------------------------------------------------------------------------
+flag_problem(path) := "not collected" if is_null(object.get(input, path, null))
+
+flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(input, path, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
+
+# a number that must be collected: missing and null are "not collected" (a wrong type is reported by the rule that reads it)
+number_missing(path) if is_null(object.get(input, path, null))
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags_faillock_violations := [
+	["CIS 5.4.2", ["pam", "faillock_configured"]],
+	["CIS 5.4.3", ["pam", "remember_configured"]],
+]
+
+faillock_violations contains msg if {
+	some [prefix, path] in required_flags_faillock_violations
+	msg := flag_evidence(prefix, path)
+}
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags_account_violations := [
+	["CIS 5.5.x", ["pam", "tmout_configured"]],
+]
+
+account_violations contains msg if {
+	some [prefix, path] in required_flags_account_violations
+	msg := flag_evidence(prefix, path)
+}
+
+# Numbers that must be collected: a missing value is not a passing value.
+required_numbers := {
+	"pass_min_days": "5.5.1",
+	"pass_max_days": "5.5.2",
+	"pass_warn_age": "5.5.3",
+}
+
+password_aging_violations contains msg if {
+	some key, ctl in required_numbers
+	number_missing(["pam", key])
+	msg := sprintf("CIS %s: evidence missing — pam.%s not collected", [ctl, key])
+}
+
+account_violations contains msg if {
+	number_missing(["pam", "inactive_days"])
+	msg := "CIS 5.5.4: evidence missing — pam.inactive_days not collected"
+}
+
+# numbers read only when the feature they belong to is configured: [finding prefix, key, gate key]
+gated_numbers := [
+	["CIS 5.4.2", "faillock_deny", "faillock_configured"],
+	["CIS 5.4.2", "faillock_unlock_time", "faillock_configured"],
+	["CIS 5.4.3", "remember_count", "remember_configured"],
+	["CIS 5.5.x", "tmout_value", "tmout_configured"],
+]
+
+gated_number_violations contains msg if {
+	some [prefix, key, gate] in gated_numbers
+	input.pam[gate] == true
+	number_missing(["pam", key])
+	msg := sprintf("%s: evidence missing — pam.%s not collected", [prefix, key])
+}
+
+faillock_violations contains msg if {
+	some msg in gated_number_violations
+	not startswith(msg, "CIS 5.5.x:")
+}
+
+account_violations contains msg if {
+	some msg in gated_number_violations
+	startswith(msg, "CIS 5.5.x:")
+}
+
+# offender lists: an empty list is an answer ("none found"), a missing list is not
+required_lists := {
+	"users_with_future_password_change": "5.5.5",
+	"system_accounts_with_login_shell": "5.6",
+}
+
+account_violations contains msg if {
+	some key, ctl in required_lists
+	not is_array(object.get(input, ["pam", key], null))
+	msg := sprintf("CIS %s: evidence missing — pam.%s not collected", [ctl, key])
 }
 
 report := {
