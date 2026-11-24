@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 54
+#     checks: 56
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package eu_ai_act.high_risk
 
 import rego.v1
@@ -22,6 +22,104 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# =============================================================================
+# Applicability is stated, never inferred
+# =============================================================================
+# Four obligations depend on a fact about the system (it processes personal data, it is a biometric system,
+# it is safety-critical, it needs CE marking). "Does not apply" is the explicit boolean false: a fact that
+# was not collected leaves the obligation's scope undetermined and is a finding.
+
+_applicability_facts := {
+	["data_governance", "processes_personal_data"]: "Article 10",
+	["record_keeping", "is_biometric_system"]: "Article 12",
+	["accuracy_robustness", "safety_critical_system"]: "Article 15",
+	["provider_obligations", "ce_marking_required"]: "Article 16",
+}
+
+violations contains msg if {
+	some path, article in _applicability_facts
+	object.get(input, array.concat(["eu_ai_act", "high_risk"], path), "__absent__") == "__absent__"
+	msg := sprintf("%s: evidence missing — eu_ai_act.high_risk.%s not collected; applicability undetermined", [article, concat(".", path)])
+}
+
+# =============================================================================
+# Evidence typing (bad input never passes, issue #301)
+# =============================================================================
+# Every fact this module reads is a yes/no. Only the booleans true and false are evidence: a string such
+# as "true", "false" or "no", a number or null is a collection error and is reported as a finding, whether
+# the fact states an obligation or says that one does not apply. (A fact that is absent is handled by the
+# rule that reads it.)
+
+_boolean_facts := {
+	["accuracy_robustness", "accuracy_levels_specified"],
+	["accuracy_robustness", "cybersecurity_measures_implemented"],
+	["accuracy_robustness", "metrics_publicly_disclosed"],
+	["accuracy_robustness", "resilience_against_manipulation_demonstrated"],
+	["accuracy_robustness", "robustness_against_errors_demonstrated"],
+	["accuracy_robustness", "safety_critical_system"],
+	["accuracy_robustness", "technical_redundancy_solutions_implemented"],
+	["data_governance", "data_lineage_documented"],
+	["data_governance", "datasets_adequate_for_intended_purpose"],
+	["data_governance", "datasets_examined_for_biases"],
+	["data_governance", "gdpr_compliant_practices"],
+	["data_governance", "processes_personal_data"],
+	["data_governance", "test_data_governance_established"],
+	["data_governance", "training_data_governance_established"],
+	["data_governance", "validation_data_governance_established"],
+	["human_oversight", "effective_monitoring_by_natural_persons"],
+	["human_oversight", "halt_capability_provided"],
+	["human_oversight", "over_reliance_prevention_documented"],
+	["human_oversight", "override_capability_provided"],
+	["human_oversight", "oversight_measures_built_in"],
+	["human_oversight", "oversight_measures_specified_for_deployers"],
+	["human_oversight", "responsible_persons_identified"],
+	["provider_obligations", "ce_marking_affixed"],
+	["provider_obligations", "ce_marking_required"],
+	["provider_obligations", "conformity_assessment_completed"],
+	["provider_obligations", "eu_declaration_of_conformity_drawn_up"],
+	["provider_obligations", "post_market_monitoring_in_place"],
+	["provider_obligations", "registered_in_eu_database"],
+	["provider_obligations", "serious_incident_reporting_procedure"],
+	["quality_management", "competence_awareness_training_procedures"],
+	["quality_management", "corrective_action_procedures"],
+	["quality_management", "design_development_control_procedures"],
+	["quality_management", "qms_established"],
+	["quality_management", "resource_management_documented"],
+	["quality_management", "written_compliance_policies"],
+	["record_keeping", "automatic_logging_enabled"],
+	["record_keeping", "biometric_logs_retained_for_law_enforcement_duration"],
+	["record_keeping", "event_types_sufficient"],
+	["record_keeping", "is_biometric_system"],
+	["record_keeping", "log_retention_period_adequate"],
+	["record_keeping", "logs_enable_post_hoc_audit"],
+	["risk_management", "residual_risks_communicated"],
+	["risk_management", "risks_evaluated_with_representative_data"],
+	["risk_management", "risks_identified"],
+	["risk_management", "system_documented"],
+	["risk_management", "system_established"],
+	["risk_management", "updated_post_market"],
+	["technical_documentation", "available_to_national_authorities"],
+	["technical_documentation", "contains_annex_iv_content"],
+	["technical_documentation", "describes_design_specifications"],
+	["technical_documentation", "kept_up_to_date"],
+	["technical_documentation", "prepared_before_market_placement"],
+	["transparency", "accuracy_level_disclosed"],
+	["transparency", "capability_limitations_disclosed"],
+	["transparency", "human_oversight_measures_described"],
+	["transparency", "instructions_for_use_provided"],
+	["transparency", "intended_purpose_disclosed"],
+	["transparency", "known_risks_disclosed"],
+	["transparency", "residual_risks_disclosed_to_deployers"],
+}
+
+violations contains msg if {
+	some path in _boolean_facts
+	value := object.get(input, array.concat(["eu_ai_act", "high_risk"], path), "__absent__")
+	value != "__absent__"
+	not is_boolean(value)
+	msg := sprintf("%s: evidence invalid — eu_ai_act.high_risk.%s is not a boolean (got %s)", ["Title III (Articles 6-49) input contract", concat(".", path), type_name(value)])
 }
 
 # =============================================================================

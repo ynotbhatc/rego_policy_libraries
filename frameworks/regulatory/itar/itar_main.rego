@@ -47,16 +47,60 @@ compliant if {
 	count(violations) == 0
 }
 
+# ── Evidence rule (bad input never passes, issue #301) ───────────────────────
+# A yes/no fact passes only as the boolean true. A fact that is missing, null,
+# a string such as "true" / "false" / "no", or a number is an evidence problem:
+# the control fails and the finding says which ("evidence missing: <field> not
+# collected" / "evidence invalid: <field> is not a boolean (got string)").
+# Where a control accepts alternatives, any one alternative that is true
+# satisfies it, but an alternative of the wrong type fails it: the verdict
+# never rests on mistyped evidence.
+
+_absent := "__absent__"
+
+_value(path) := object.get(input, path, _absent)
+
+_yes(path) if _value(path) == true
+
+_collected(path) if _value(path) != _absent
+
+_mistyped(path) if {
+	_collected(path)
+	not is_boolean(_value(path))
+}
+
+_unmet(facts) if {
+	every path in facts {
+		not _yes(path)
+	}
+}
+
+_unmet(facts) if {
+	some path in facts
+	_mistyped(path)
+}
+
+_problem(path) := sprintf("evidence missing: input.%s not collected", [concat(".", path)]) if not _collected(path)
+
+_problem(path) := sprintf("evidence invalid: input.%s is not a boolean (got %s)", [concat(".", path), type_name(_value(path))]) if _mistyped(path)
+
+_evidence(facts) := sprintf(" [%s]", [concat("; ", problems)]) if {
+	problems := [_problem(path) | some path in facts]
+	count(problems) > 0
+} else := ""
+
 # ── Registration & Jurisdiction ──────────────────────────────────────────────
 
 violations contains msg if {
-	not input.registration.ddtc_current
-	msg := "ITAR 22 CFR 122.1: DDTC registration not current for manufacturer/exporter of defense articles or technical data"
+	facts := [["registration", "ddtc_current"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 122.1: DDTC registration not current for manufacturer/exporter of defense articles or technical data%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.jurisdiction.technical_data_identified
-	msg := "ITAR 22 CFR 120.33/121.1: USML-controlled technical data not identified and classified (jurisdiction/classification determinations not documented)"
+	facts := [["jurisdiction", "technical_data_identified"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.33/121.1: USML-controlled technical data not identified and classified (jurisdiction/classification determinations not documented)%s", [_evidence(facts)])
 }
 
 # The USML moved under us: revisions to §§121.0/121.1/126.9 effective
@@ -65,8 +109,9 @@ violations contains msg if {
 # XX(a)(10)/(a)(11) UUV re-scope effective 2026-10-19. Pre-revision
 # classification determinations may now be wrong in either direction.
 violations contains msg if {
-	not input.jurisdiction.classification_reviewed_after_usml_revision == true
-	msg := "ITAR 22 CFR 121.1 (as revised eff. 2025-09-15 and 2026-10-19): classification determinations not re-reviewed against the current USML — pre-revision determinations may misclassify items moved to or from the EAR"
+	facts := [["jurisdiction", "classification_reviewed_after_usml_revision"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 121.1 (as revised eff. 2025-09-15 and 2026-10-19): classification determinations not re-reviewed against the current USML — pre-revision determinations may misclassify items moved to or from the EAR%s", [_evidence(facts)])
 }
 
 # ── Access Restriction (the core safeguarding obligation) ────────────────────
@@ -81,21 +126,45 @@ _aukus_exemption_documented if {
 	input.access.aukus.ddtc_registration_current == true
 }
 
-violations contains msg if {
-	not input.access.us_persons_only_enforced
-	not input.access.foreign_person_authorization_documented
+_aukus_facts := [
+	["access", "aukus", "both_parties_on_authorized_user_list"],
+	["access", "aukus", "item_not_on_excluded_technology_list"],
+	["access", "aukus", "ddtc_registration_current"],
+]
+
+# No path satisfied, or any fact of any path sent with the wrong type.
+_access_restriction_unmet(facts) if {
 	not _aukus_exemption_documented
-	msg := "ITAR 22 CFR 120.50/127.1: Access to ITAR technical data not restricted to U.S. persons, with no export authorization documented and no AUKUS §126.7 exemption eligibility documented (authorized-user status both parties + item off the Excluded Technology List + current DDTC registration) — unauthorized foreign-person access is a deemed export"
+	_unmet(facts)
+}
+
+_access_restriction_unmet(facts) if {
+	some path in array.concat(facts, _aukus_facts)
+	_mistyped(path)
+}
+
+# The AUKUS facts are named only when they were sent with the wrong type: most entities do not use that path.
+_aukus_note := sprintf(" [%s]", [concat("; ", problems)]) if {
+	problems := [_problem(path) | some path in _aukus_facts; _mistyped(path)]
+	count(problems) > 0
+} else := ""
+
+violations contains msg if {
+	facts := [["access", "us_persons_only_enforced"], ["access", "foreign_person_authorization_documented"]]
+	_access_restriction_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.50/127.1: Access to ITAR technical data not restricted to U.S. persons, with no export authorization documented and no AUKUS §126.7 exemption eligibility documented (authorized-user status both parties + item off the Excluded Technology List + current DDTC registration) — unauthorized foreign-person access is a deemed export%s%s", [_evidence(facts), _aukus_note])
 }
 
 violations contains msg if {
-	not input.access.system_access_controls
-	msg := "ITAR: Logical access controls not implemented on systems storing ITAR technical data (authentication, authorization, segregation from general data)"
+	facts := [["access", "system_access_controls"]]
+	_unmet(facts)
+	msg := sprintf("ITAR: Logical access controls not implemented on systems storing ITAR technical data (authentication, authorization, segregation from general data)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.access.physical_controls
-	msg := "ITAR: Physical access controls not implemented where ITAR technical data or defense articles are located"
+	facts := [["access", "physical_controls"]]
+	_unmet(facts)
+	msg := sprintf("ITAR: Physical access controls not implemented where ITAR technical data or defense articles are located%s", [_evidence(facts)])
 }
 
 # ── §120.54 — Encrypted Transfer/Storage Carve-out ───────────────────────────
@@ -109,62 +178,73 @@ violations contains msg if {
 # third party.
 
 violations contains msg if {
-	not input.encryption.end_to_end_fips_validated
-	msg := "ITAR 22 CFR 120.54(a)(5)(ii)-(iii): Technical data transfers/cloud storage not secured with end-to-end encryption using FIPS 140-compliant (or equivalent, >=AES-128) modules — without it, transit or storage abroad is an export requiring authorization"
+	facts := [["encryption", "end_to_end_fips_validated"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.54(a)(5)(ii)-(iii): Technical data transfers/cloud storage not secured with end-to-end encryption using FIPS 140-compliant (or equivalent, >=AES-128) modules — without it, transit or storage abroad is an export requiring authorization%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.encryption.no_storage_in_proscribed_or_russia
-	msg := "ITAR 22 CFR 120.54(a)(5)(iv): No assurance that encrypted technical data is not intentionally sent to a person in, or stored in, a §126.1 proscribed country or the Russian Federation"
+	facts := [["encryption", "no_storage_in_proscribed_or_russia"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.54(a)(5)(iv): No assurance that encrypted technical data is not intentionally sent to a person in, or stored in, a §126.1 proscribed country or the Russian Federation%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.encryption.not_sent_from_proscribed_or_russia == true
-	msg := "ITAR 22 CFR 120.54(a)(5)(v): No assurance that encrypted technical data is not sent from a §126.1 proscribed country or the Russian Federation"
+	facts := [["encryption", "not_sent_from_proscribed_or_russia"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.54(a)(5)(v): No assurance that encrypted technical data is not sent from a §126.1 proscribed country or the Russian Federation%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.encryption.keys_withheld_from_foreign_persons
-	msg := "ITAR 22 CFR 120.54(b)(1): Means of decryption not withheld from third parties — end-to-end encryption requires that decryption capability is provided to no third party"
+	facts := [["encryption", "keys_withheld_from_foreign_persons"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.54(b)(1): Means of decryption not withheld from third parties — end-to-end encryption requires that decryption capability is provided to no third party%s", [_evidence(facts)])
 }
 
 # ── Compliance Program (DDTC consent-agreement staples) ──────────────────────
 
 violations contains msg if {
-	not input.program.written_compliance_program
-	msg := "ITAR: Written export compliance program not established (DDTC compliance program guidelines)"
+	facts := [["program", "written_compliance_program"]]
+	_unmet(facts)
+	msg := sprintf("ITAR: Written export compliance program not established (DDTC compliance program guidelines)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.program.empowered_official_designated
-	msg := "ITAR 22 CFR 120.67: Empowered Official not designated for export authorization decisions"
+	facts := [["program", "empowered_official_designated"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 120.67: Empowered Official not designated for export authorization decisions%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.program.training_provided
-	msg := "ITAR: Export-control training not provided to personnel with access to ITAR technical data"
+	facts := [["program", "training_provided"]]
+	_unmet(facts)
+	msg := sprintf("ITAR: Export-control training not provided to personnel with access to ITAR technical data%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.program.subcontractor_flowdown
-	msg := "ITAR: ITAR safeguarding obligations not flowed down to subcontractors and service providers handling technical data"
+	facts := [["program", "subcontractor_flowdown"]]
+	_unmet(facts)
+	msg := sprintf("ITAR: ITAR safeguarding obligations not flowed down to subcontractors and service providers handling technical data%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.program.violation_disclosure_process
-	msg := "ITAR 22 CFR 127.12: Process for voluntary disclosure of suspected violations not established"
+	facts := [["program", "violation_disclosure_process"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 127.12: Process for voluntary disclosure of suspected violations not established%s", [_evidence(facts)])
 }
 
 # ── Recordkeeping ────────────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.records.retention_5_years
-	msg := "ITAR 22 CFR 122.5/123.22: Export-related records not maintained for the required 5-year period"
+	facts := [["records", "retention_5_years"]]
+	_unmet(facts)
+	msg := sprintf("ITAR 22 CFR 122.5/123.22: Export-related records not maintained for the required 5-year period%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.records.access_logging
-	msg := "ITAR: Access to ITAR technical data not logged (who accessed what, when — the record a deemed-export investigation requires)"
+	facts := [["records", "access_logging"]]
+	_unmet(facts)
+	msg := sprintf("ITAR: Access to ITAR technical data not logged (who accessed what, when — the record a deemed-export investigation requires)%s", [_evidence(facts)])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────

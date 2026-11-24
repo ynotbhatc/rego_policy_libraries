@@ -6,10 +6,10 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 4
-#     cited: 1
-#     density: section
-#     basis: role
+#     checks: 10
+#     cited: 6
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -43,25 +43,25 @@ import rego.v1
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	not input.mfa.enabled_for_phi_access
+	not input.mfa.enabled_for_phi_access == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Multi-factor authentication is not enabled for ePHI access. MFA is required for all ePHI system access."
 }
 
 advisories contains msg if {
-	input.mfa.enabled_for_phi_access
-	not input.mfa.required_for_remote_access
+	input.mfa.enabled_for_phi_access == true
+	not input.mfa.required_for_remote_access == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): MFA is not required for remote ePHI access. Remote access must always require MFA."
 }
 
 advisories contains msg if {
-	input.mfa.enabled_for_phi_access
-	not input.mfa.required_for_privileged_accounts
+	input.mfa.enabled_for_phi_access == true
+	not input.mfa.required_for_privileged_accounts == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): MFA is not required for privileged accounts. All privileged ePHI system accounts must use MFA."
 }
 
 advisories contains msg if {
 	"sms" in input.mfa.methods_allowed
-	not input.mfa.stronger_method_also_available
+	not input.mfa.stronger_method_also_available == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): SMS-only MFA is configured. SMS is susceptible to SIM swapping. Offer TOTP or hardware key as alternatives."
 }
 
@@ -99,7 +99,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.password_policy.complexity_required
+	not input.password_policy.complexity_required == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
 }
 
@@ -131,7 +131,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.password_policy.lockout_enabled
+	not input.password_policy.lockout_enabled == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Account lockout is not enabled. Accounts must lock after repeated failed authentication attempts."
 }
 
@@ -169,7 +169,7 @@ advisories contains msg if {
 
 advisories contains msg if {
 	some acct in input.privileged_accounts
-	not acct.mfa_enrolled
+	not acct.mfa_enrolled == true
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Privileged account '%v' is not enrolled in MFA. All privileged accounts must use MFA.",
 		[acct.username],
@@ -181,12 +181,12 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	not input.authentication.re_authentication_for_sensitive_ops
+	not input.authentication.re_authentication_for_sensitive_ops == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Re-authentication is not required for sensitive ePHI operations (delete, export). Require re-auth for high-risk actions."
 }
 
 advisories contains msg if {
-	input.authentication.concurrent_sessions_unlimited
+	input.authentication.concurrent_sessions_unlimited == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Unlimited concurrent sessions are permitted. Limit concurrent sessions for ePHI access to detect credential sharing."
 }
 
@@ -198,7 +198,7 @@ advisories contains msg if {
 	some svc in input.users
 	svc.is_service_account == true
 	svc.phi_access == true
-	not svc.certificate_based_auth
+	not svc.certificate_based_auth == true
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Service account '%v' with ePHI access uses password authentication. Service accounts should use certificate-based authentication.",
 		[svc.username],
@@ -211,6 +211,90 @@ advisories contains msg if {
 
 violations contains msg if some msg in violation_procedure
 violations contains msg if some msg in violation_credentials
+
+# ---------------------------------------------------------------------------
+# Evidence typing (bad input never passes, issue #301)
+# Only the booleans true and false are yes/no evidence, and only a number is a count or a period. A section
+# sent as null, a string such as "true", "false" or "90", or a number where a yes/no belongs is a collection
+# error: it is a finding against this standard whether the fact decides a control or only feeds an
+# advisory, because the verdict cannot rest on evidence of the wrong type. A fact that is absent is handled
+# by the rule that reads it (a required fact fails its control; an advisory fact is reported as an advisory).
+# ---------------------------------------------------------------------------
+
+_std := "164.312(d)"
+
+# section -> the yes/no facts and the numeric facts this module reads from it
+_typed_sections := {
+	"mfa": {"bool": {"enabled_for_phi_access", "required_for_remote_access", "required_for_privileged_accounts", "stronger_method_also_available"}, "num": {}},
+	"password_policy": {"bool": {"complexity_required", "lockout_enabled"}, "num": {"minimum_length", "max_age_days", "history_count", "lockout_threshold"}},
+	"authentication": {"bool": {"ephi_access_requires_authentication", "re_authentication_for_sensitive_ops", "concurrent_sessions_unlimited"}, "num": {}},
+}
+
+# list -> the yes/no facts and the numeric facts this module reads from each entry
+_typed_items := {
+	"users": {"bool": {"using_default_password", "password_never_expires", "phi_access", "is_service_account", "certificate_based_auth"}, "num": {}},
+	"privileged_accounts": {"bool": {"mfa_enrolled"}, "num": {}},
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_sections
+	v := input[s]
+	not is_object(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not an object (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	v := input[s]
+	not is_array(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not a list (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.bool
+	v := input[s][f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a boolean (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.num
+	v := input[s][f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a number (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	not is_object(item)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d] is not an object (got %s)", [_std, s, i, type_name(item)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.bool
+	v := item[f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a boolean (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.num
+	v := item[f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a number (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+violations contains msg if some msg in evidence_invalid
 
 # ---------------------------------------------------------------------------
 # Compliance

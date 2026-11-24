@@ -6,10 +6,10 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 8
-#     cited: 3
-#     density: section
-#     basis: role
+#     checks: 15
+#     cited: 8
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -37,7 +37,6 @@ import rego.v1
 #   input.vpn                   - VPN configuration
 #   input.phi_systems[]         - systems transmitting ePHI
 #   input.email                 - email configuration
-#   input.api                   - API security configuration
 # =============================================================================
 
 _addressable_ids := {"164.312(e)(2)(i)", "164.312(e)(2)(ii)"}
@@ -96,7 +95,7 @@ weak_ciphers := {
 
 violation_transmission_security contains msg if {
 	some phi_system in input.phi_systems
-	not phi_system.transmission_encrypted
+	not phi_system.transmission_encrypted == true
 	msg := sprintf(
 		"HIPAA 164.312(e)(2)(ii): System '%v' transmits ePHI without encryption. All ePHI in transit must be protected.",
 		[phi_system.name],
@@ -125,7 +124,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.network.phi_network_segmented
+	not input.network.phi_network_segmented == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Network carrying ePHI is not segmented. ePHI traffic should be isolated from general network traffic."
 }
 
@@ -163,7 +162,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.tls.certificate_expiry_monitoring
+	not input.tls.certificate_expiry_monitoring == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): TLS certificate expiry is not monitored. Expired certificates break encrypted ePHI transmission."
 }
 
@@ -177,7 +176,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.tls.mutual_tls_for_phi_apis
+	not input.tls.mutual_tls_for_phi_apis == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): APIs transmitting ePHI do not use mutual TLS (mTLS). mTLS provides stronger authentication for ePHI endpoints."
 }
 
@@ -186,13 +185,13 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	input.network.remote_phi_access_enabled
-	not input.vpn.required_for_remote_phi_access
+	input.network.remote_phi_access_enabled == true
+	not input.vpn.required_for_remote_phi_access == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Remote ePHI access is permitted without VPN. VPN or equivalent encrypted tunnel is required."
 }
 
 advisories contains msg if {
-	input.vpn.required_for_remote_phi_access
+	input.vpn.required_for_remote_phi_access == true
 	input.vpn.protocol in {"PPTP", "L2TP_no_ipsec"}
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): VPN protocol '%v' is insecure. Use IKEv2/IPsec, OpenVPN, or WireGuard.",
@@ -201,7 +200,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	input.vpn.split_tunneling_enabled
+	input.vpn.split_tunneling_enabled == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): VPN split tunneling is enabled. ePHI traffic must route entirely through the encrypted VPN tunnel."
 }
 
@@ -221,7 +220,7 @@ violation_transmission_integrity contains msg if {
 advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.api_endpoint == true
-	not phi_system.request_signing_enabled
+	not phi_system.request_signing_enabled == true
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): API endpoint '%v' transmitting ePHI does not use request signing. Implement HMAC or digital signatures.",
 		[phi_system.name],
@@ -233,14 +232,20 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_email contains msg if {
-	input.email.phi_sent_via_email
-	not input.email.encrypted_email_required
+	input.email.phi_sent_via_email == true
+	not input.email.encrypted_email_required == true
 	msg := "HIPAA 164.312(e)(2)(ii): ePHI is sent via email without encryption enforcement."
 }
 
+# Whether ePHI is sent by email is stated, true or false: an absent answer is not "no email".
+violation_email contains msg if {
+	object.get(input, ["email", "phi_sent_via_email"], null) == null
+	msg := "HIPAA 164.312(e)(2)(ii): evidence missing — email.phi_sent_via_email not collected. Whether ePHI is sent by email must be stated (true or false) before email encryption can be judged."
+}
+
 advisories contains msg if {
-	input.email.phi_sent_via_email
-	not input.email.dlp_enabled
+	input.email.phi_sent_via_email == true
+	not input.email.dlp_enabled == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Data Loss Prevention (DLP) is not enabled on email. DLP prevents accidental unencrypted ePHI transmission."
 }
 
@@ -268,6 +273,90 @@ violations contains msg if {
 	count(object.get(input, "phi_systems", [])) == 0
 	msg := "HIPAA 164.312(e): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Transmission Security. Declare the ePHI systems to be evaluated."
 }
+
+# ---------------------------------------------------------------------------
+# Evidence typing (bad input never passes, issue #301)
+# Only the booleans true and false are yes/no evidence, and only a number is a count or a period. A section
+# sent as null, a string such as "true", "false" or "90", or a number where a yes/no belongs is a collection
+# error: it is a finding against this standard whether the fact decides a control or only feeds an
+# advisory, because the verdict cannot rest on evidence of the wrong type. A fact that is absent is handled
+# by the rule that reads it (a required fact fails its control; an advisory fact is reported as an advisory).
+# ---------------------------------------------------------------------------
+
+_std := "164.312(e)"
+
+# section -> the yes/no facts and the numeric facts this module reads from it
+_typed_sections := {
+	"network": {"bool": {"phi_network_segmented", "remote_phi_access_enabled", "message_authentication_enabled", "transmission_integrity_controls_implemented"}, "num": {}},
+	"tls": {"bool": {"certificate_expiry_monitoring", "mutual_tls_for_phi_apis"}, "num": {"certificate_expiry_days"}},
+	"vpn": {"bool": {"required_for_remote_phi_access", "split_tunneling_enabled"}, "num": {}},
+	"email": {"bool": {"phi_sent_via_email", "encrypted_email_required", "dlp_enabled"}, "num": {}},
+}
+
+# list -> the yes/no facts and the numeric facts this module reads from each entry
+_typed_items := {
+	"phi_systems": {"bool": {"transmission_encrypted", "request_signing_enabled"}, "num": {}},
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_sections
+	v := input[s]
+	not is_object(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not an object (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	v := input[s]
+	not is_array(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not a list (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.bool
+	v := input[s][f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a boolean (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.num
+	v := input[s][f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a number (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	not is_object(item)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d] is not an object (got %s)", [_std, s, i, type_name(item)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.bool
+	v := item[f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a boolean (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.num
+	v := item[f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a number (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+violations contains msg if some msg in evidence_invalid
 
 # ---------------------------------------------------------------------------
 # Compliance

@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 32
+#     checks: 33
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package eu_ai_act.prohibited
 
 import rego.v1
@@ -63,6 +63,72 @@ violations contains msg if {
 	some section, article in assessed_practices
 	not practice_assessed(section)
 	msg := sprintf("Article %s: evidence missing — eu_ai_act.prohibited.%s was not assessed", [article, section])
+}
+
+# =============================================================================
+# Evidence typing (bad input never passes, issue #301)
+# =============================================================================
+# Every fact this module reads is a yes/no. Only the booleans true and false are evidence: a string such
+# as "true", "false" or "no", a number or null is a collection error and is reported as a finding, whether
+# the fact states an obligation or says that one does not apply. (A fact that is absent is handled by the
+# rule that reads it.)
+
+_boolean_facts := {
+	["biometric_categorization", "infers_political_opinion"],
+	["biometric_categorization", "infers_race"],
+	["biometric_categorization", "infers_religion"],
+	["biometric_categorization", "infers_sexual_orientation"],
+	["biometric_categorization", "infers_trade_union_membership"],
+	["biometric_categorization", "law_enforcement_strict_conditions"],
+	["csam", "can_generate_csam"],
+	["csam", "effective_safeguards_prevent_output"],
+	["csam", "generated_csam"],
+	["emotion_recognition", "deployed_in_educational_institution"],
+	["emotion_recognition", "deployed_in_workplace"],
+	["emotion_recognition", "exception_claimed"],
+	["emotion_recognition", "exception_documented"],
+	["emotion_recognition", "medical_purpose"],
+	["emotion_recognition", "safety_purpose"],
+	["facial_recognition_scraping", "database_created_by_scraping"],
+	["facial_recognition_scraping", "legal_basis_documented"],
+	["facial_recognition_scraping", "scraping_targeted"],
+	["facial_recognition_scraping", "scraping_untargeted"],
+	["intimate_imagery", "can_generate_realistic_intimate_imagery"],
+	["intimate_imagery", "effective_safeguards_prevent_output"],
+	["intimate_imagery", "generated_without_consent"],
+	["predictive_policing", "assesses_individual_criminal_risk"],
+	["predictive_policing", "based_solely_on_profiling"],
+	["predictive_policing", "crime_prediction_without_human_review"],
+	["predictive_policing", "objective_factual_basis_present"],
+	["predictive_policing", "uses_only_group_characteristics"],
+	["realtime_biometric_id", "deployed_by_law_enforcement"],
+	["realtime_biometric_id", "deployed_in_public_spaces"],
+	["realtime_biometric_id", "exception_applies"],
+	["realtime_biometric_id", "geographically_unlimited"],
+	["realtime_biometric_id", "limited_to_annex_ii_offenses"],
+	["realtime_biometric_id", "prior_independent_body_authorization"],
+	["realtime_biometric_id", "prior_judicial_authorization"],
+	["social_scoring", "deployed_by_public_authority"],
+	["social_scoring", "evaluates_persons_based_on_social_behavior"],
+	["social_scoring", "treatment_is_disproportionate"],
+	["social_scoring", "treatment_is_unjustified"],
+	["subliminal_manipulation", "exploits_cognitive_biases"],
+	["subliminal_manipulation", "exploits_psychological_weaknesses"],
+	["subliminal_manipulation", "uses_subliminal_techniques"],
+	["vulnerability_exploitation", "causes_significant_harm"],
+	["vulnerability_exploitation", "distorts_behavior"],
+	["vulnerability_exploitation", "harm_prevented_by_safeguards"],
+	["vulnerability_exploitation", "targets_age_vulnerability"],
+	["vulnerability_exploitation", "targets_disability_vulnerability"],
+	["vulnerability_exploitation", "targets_social_economic_situation"],
+}
+
+violations contains msg if {
+	some path in _boolean_facts
+	value := object.get(input, array.concat(["eu_ai_act", "prohibited"], path), "__absent__")
+	value != "__absent__"
+	not is_boolean(value)
+	msg := sprintf("%s: evidence invalid — eu_ai_act.prohibited.%s is not a boolean (got %s)", [sprintf("Article %s", [assessed_practices[path[0]]]), concat(".", path), type_name(value)])
 }
 
 # =============================================================================
