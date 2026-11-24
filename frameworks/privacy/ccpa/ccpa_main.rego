@@ -6,10 +6,10 @@
 #   source: us-state
 #   domains: [privacy, us-state]
 #   coverage:
-#     checks: 0
-#     cited: 0
+#     checks: 7
+#     cited: 7
 #     expected: 7
-#     found: 198
+#     found: 210
 #     scope: directory
 #     density: over
 #     basis: declared-total
@@ -41,44 +41,45 @@ overall_compliant if {
 	admt.compliant
 }
 
-modules_passing := count([m |
-	some m in [
-		consumer_rights.compliant,
-		business_obligations.compliant,
-		sensitive_data.compliant,
-		data_practices.compliant,
-		cybersecurity_audits.compliant,
-		risk_assessments.compliant,
-		admt.compliant,
-	]
-	m == true
-])
+_modules := {
+	"consumer_rights": {"title": "Consumer Rights", "compliant": consumer_rights.compliant, "findings": consumer_rights.violations},
+	"business_obligations": {"title": "Business Obligations", "compliant": business_obligations.compliant, "findings": business_obligations.violations},
+	"sensitive_data": {"title": "Sensitive Personal Information", "compliant": sensitive_data.compliant, "findings": sensitive_data.violations},
+	"data_practices": {"title": "Data Practices", "compliant": data_practices.compliant, "findings": data_practices.violations},
+	"cybersecurity_audits": {"title": "Cybersecurity Audits (11 CCR §§7120–7124)", "compliant": cybersecurity_audits.compliant, "findings": cybersecurity_audits.violations},
+	"risk_assessments": {"title": "Risk Assessments (11 CCR §§7150–7157)", "compliant": risk_assessments.compliant, "findings": risk_assessments.violations},
+	"admt": {"title": "Automated Decisionmaking Technology (11 CCR §§7200–7222)", "compliant": admt.compliant, "findings": admt.violations},
+}
+
+modules_passing := count([name | some name, m in _modules; m.compliant == true])
+
+# The seven modules are the units this aggregator decides on: total_controls is the module count, a failing
+# module is one violation, and passed + failed == total. The detailed rows of every module are carried in
+# `findings` (and per module under modules.<name>.details), so the number of violations can never exceed the
+# declared total. Before 2026-11-24 `violations` held the detail rows (118 on empty input against a total of 7).
+_module_violations := [msg |
+	some name in sort(object.keys(_modules))
+	m := _modules[name]
+	not m.compliant == true
+	msg := sprintf("CCPA/CPRA %s: module not compliant — %d finding(s), listed in findings and in modules.%s.details", [m.title, count(m.findings), name])
+]
+
+_findings := [f |
+	some name in sort(object.keys(_modules))
+	some f in sort(_modules[name].findings)
+]
 
 compliance_report := {
 	"framework": "California Consumer Privacy Act (CCPA / CPRA)",
 	"compliant": overall_compliant,
 	"total_controls": 7,
-	"violations": array.concat(
-		array.concat(
-			array.concat(
-				[v | some v in consumer_rights.violations],
-				[v | some v in business_obligations.violations],
-			),
-			array.concat(
-				[v | some v in sensitive_data.violations],
-				[v | some v in data_practices.violations],
-			),
-		),
-		array.concat(
-			array.concat(
-				[v | some v in cybersecurity_audits.violations],
-				[v | some v in risk_assessments.violations],
-			),
-			[v | some v in admt.violations],
-		),
-	),
-	"violation_count": ((count(consumer_rights.violations) + count(business_obligations.violations)) + (count(sensitive_data.violations) + count(data_practices.violations))) + ((count(cybersecurity_audits.violations) + count(risk_assessments.violations)) + count(admt.violations)),
-	"failed_controls": min([7, ((count(consumer_rights.violations) + count(business_obligations.violations)) + (count(sensitive_data.violations) + count(data_practices.violations))) + ((count(cybersecurity_audits.violations) + count(risk_assessments.violations)) + count(admt.violations))]),
+	"violations": _module_violations,
+	"violation_count": count(_module_violations),
+	"failed_controls": count(_module_violations),
+	"passed_controls": 7 - count(_module_violations),
+	"not_applicable_controls": 0,
+	"findings": _findings,
+	"finding_count": count(_findings),
 	"standard": "CCPA/CPRA — California Consumer Privacy Act (as amended by CPRA 2023) + 2025 CPPA Regulations (cybersecurity audits, risk assessments, ADMT; effective 2026-01-01)",
 	"overall_compliant": overall_compliant,
 	"modules_passing": modules_passing,

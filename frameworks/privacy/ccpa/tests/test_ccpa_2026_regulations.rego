@@ -115,7 +115,10 @@ _activities_one := object.union(_activities_none, {"selling_or_sharing": {"in_us
 
 _ra_report_ok := {k: true | some k, _ in ra._report_checks}
 
-_ra_timing_ok := {k: true | some k, _ in ra._timing_checks}
+# Facts that switch an obligation on or off are stated, never left out (evidence rule 2026-11-24).
+_ra_timing_ok := object.union({k: true | some k, _ in ra._timing_checks}, {"legacy_processing_continuing": false})
+
+_ra_no_admt_provider := {"provides_admt_to_recipient_businesses": false}
 
 _ra_submission_ok := {k: true | some k, _ in ra._submission_checks}
 
@@ -125,16 +128,23 @@ _ra_input := {"ccpa": {"risk_assessments": {
 	"report": _ra_report_ok,
 	"timing": _ra_timing_ok,
 	"submission": _ra_submission_ok,
+	"admt_provider": _ra_no_admt_provider,
 }}}
 
 test_ra_empty_input_fails_closed if {
 	r := ra.compliance_report with input as {}
 	r.compliant == false
-	r.violation_count == 6
+
+	# six undeclared activities plus two undeclared conditions (§7153(a) provider, §7155(b) legacy processing)
+	r.violation_count == 8
 }
 
 test_ra_no_activities_in_use_is_compliant_once_declared if {
-	ra.compliant with input as {"ccpa": {"risk_assessments": {"activities": _activities_none}}}
+	ra.compliant with input as {"ccpa": {"risk_assessments": {
+		"activities": _activities_none,
+		"admt_provider": _ra_no_admt_provider,
+		"timing": {"legacy_processing_continuing": false},
+	}}}
 }
 
 test_ra_activity_in_use_with_full_evidence_is_compliant if {
@@ -180,7 +190,7 @@ _notice_ok := {k: true | some k, _ in admt._notice_checks}
 
 _opt_out_ok := {k: true | some k, _ in admt._opt_out_checks}
 
-_access_ok := {k: true | some k, _ in admt._access_checks}
+_access_ok := object.union({k: true | some k, _ in admt._access_checks}, {"aggregate_responses_used": false})
 
 _admt_input := {"ccpa": {"admt": {
 	"uses_admt_for_significant_decisions": true,
@@ -202,7 +212,9 @@ test_admt_declared_not_used_is_compliant if {
 
 test_admt_used_without_evidence_is_many_violations if {
 	r := admt.compliance_report with input as {"ccpa": {"admt": {"uses_admt_for_significant_decisions": true}}}
-	r.violation_count == 33
+
+	# 33 unmet facts plus the undeclared aggregate-response condition (§7222(j))
+	r.violation_count == 34
 }
 
 test_admt_full_evidence_is_compliant if {
