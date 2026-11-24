@@ -11,9 +11,6 @@ report := data.nist_800_82.main.compliance_report
 violations := data.nist_800_82.main.violations
 
 all_pass := {
-	"nist_800_82": {
-		"target_impact": "high",
-	},
 	"risk_assessment": {
 		"ot_specific": {
 			"conducted": true,
