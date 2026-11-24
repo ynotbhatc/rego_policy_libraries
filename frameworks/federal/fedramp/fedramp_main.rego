@@ -6,7 +6,7 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 44
+#     checks: 55
 #     cited: 13
 #     density: orchestrator
 #     basis: role
@@ -61,6 +61,11 @@ import data.crosswalk.framework_overlay as overlay
 #   input.personnel[]             - admin personnel (admin_access, background_check_completed, us_person)
 #   input.personnel_requirements  - us_persons_required_for_admin (agency PS-3(3) criterion, optional)
 #   input.data_residency          - storage_locations[] / processing_locations[], us_only_required (optional)
+#   The two selectors add a requirement FedRAMP leaves to the agency (SA-9(5) location for data below High
+#   impact; PS-3(3) "personnel screening criteria - as required by specific information"). Absent or null
+#   states no agency requirement, false states it explicitly, any other value is invalid evidence and the
+#   check is applied. At High the SA-9(5) location is fixed by FedRAMP and does not depend on the selector.
+#   Lists (algorithms_in_use, personnel, the location lists) must be non-empty lists of well-formed entries.
 #
 # Benchmark results (optional): the same input may carry STIG results in the two shapes
 # data.crosswalk.correlation reads, and no other:
@@ -173,6 +178,13 @@ _section(key) := value if {
 	is_object(value)
 } else := {}
 
+# Why a yes/no fact did not count, appended to the finding. Boolean false keeps the plain finding.
+_bool_problem(section, name, field) := "" if {
+	section[field] == false
+} else := sprintf(" [evidence missing: input.%s.%s not collected]", [name, field]) if {
+	object.get(section, field, null) == null
+} else := sprintf(" [evidence invalid: input.%s.%s is not a boolean (got %s)]", [name, field, type_name(section[field])])
+
 _cm := _section("continuous_monitoring")
 
 _auth := _section("authorization")
@@ -219,6 +231,14 @@ violation_authorization contains msg if {
 	)
 }
 
+# ato_expiry_days is optional (a P-ATO under continuous authorization carries no expiry date), but when it is
+# sent it is a number: a string such as "30" skipped the 90-day comparison and passed.
+violation_authorization contains msg if {
+	value := _auth.ato_expiry_days
+	not is_number(value)
+	msg := sprintf("FedRAMP CA-6: evidence invalid — input.authorization.ato_expiry_days is not a number (got %s)", [type_name(value)])
+}
+
 # ---------------------------------------------------------------------------
 # SC-13 Cryptographic Protection — FedRAMP: FIPS-validated or NSA-approved
 # ---------------------------------------------------------------------------
@@ -234,6 +254,27 @@ violation_crypto contains msg if {
 violation_crypto contains msg if {
 	not is_array(object.get(_crypto, "algorithms_in_use", null))
 	msg := "FedRAMP SC-13: evidence missing — input.cryptography.algorithms_in_use not collected"
+}
+
+# An empty inventory, or an entry that names no algorithm, is not an inventory: nothing was judged.
+violation_crypto contains msg if {
+	is_array(_crypto.algorithms_in_use)
+	count(_crypto.algorithms_in_use) == 0
+	msg := "FedRAMP SC-13: evidence missing — input.cryptography.algorithms_in_use is empty; the algorithms in use were not collected"
+}
+
+violation_crypto contains msg if {
+	is_array(_crypto.algorithms_in_use)
+	some i, algo in _crypto.algorithms_in_use
+	not _algo_named(algo)
+	msg := sprintf("FedRAMP SC-13: evidence invalid — input.cryptography.algorithms_in_use[%d] names no algorithm (got %s); an entry is a string or {\"algorithm\", \"usage\"}", [i, type_name(algo)])
+}
+
+violation_crypto contains msg if {
+	some field in ["fips_140_validated", "nsa_approved"]
+	value := _crypto[field]
+	not is_boolean(value)
+	msg := sprintf("FedRAMP SC-13: evidence invalid — input.cryptography.%s is not a boolean (got %s)", [field, type_name(value)])
 }
 
 # Algorithm status per NIST SP 800-131A Rev. 2 (March 2019) unless noted:
@@ -254,16 +295,25 @@ _algo_name(a) := a if is_string(a)
 
 _algo_name(a) := object.get(a, "algorithm", "") if is_object(a)
 
+_algo_named(a) if {
+	is_string(_algo_name(a))
+	trim_space(_algo_name(a)) != ""
+}
+
 _algo_usage(a) := object.get(a, "usage", null) if is_object(a)
 
 _algo_usage(a) := null if is_string(a)
+
+# Entries that can be judged: the list must be a list (a string is not iterated character by character,
+# an object not key by key) and the entry must name an algorithm.
+_algorithms := [a | is_array(_crypto.algorithms_in_use); some a in _crypto.algorithms_in_use; _algo_named(a)]
 
 _sha1_names := {"SHA1", "SHA-1"}
 
 _sha1_allowed_usages := {"signature_verification", "hmac", "kdf", "rng", "non_signature"}
 
 violation_crypto contains msg if {
-	some algo in object.get(_crypto, "algorithms_in_use", [])
+	some algo in _algorithms
 	upper(_algo_name(algo)) in _disallowed_algorithms
 	msg := sprintf(
 		"FedRAMP SC-13: Cryptographic algorithm '%v' is not approved or is disallowed for applying protection (NIST SP 800-131A Rev. 2). Use NIST-approved algorithms in FIPS-validated modules, or NSA-approved cryptography.",
@@ -272,14 +322,14 @@ violation_crypto contains msg if {
 }
 
 violation_crypto contains msg if {
-	some algo in object.get(_crypto, "algorithms_in_use", [])
+	some algo in _algorithms
 	upper(_algo_name(algo)) in _sha1_names
 	_algo_usage(algo) == "signature_generation"
 	msg := "FedRAMP SC-13: SHA-1 used for digital signature generation, which NIST SP 800-131A Rev. 2 disallows outside protocol-specific allowances."
 }
 
 violation_crypto contains msg if {
-	some algo in object.get(_crypto, "algorithms_in_use", [])
+	some algo in _algorithms
 	upper(_algo_name(algo)) in _sha1_names
 	not _algo_usage(algo) in (_sha1_allowed_usages | {"signature_generation"})
 	msg := sprintf(
@@ -307,23 +357,49 @@ violation_data_residency contains msg if {
 	msg := sprintf("FedRAMP SA-9(5): evidence invalid — input.data_residency.us_only_required must be true or false, got %v; the location check is applied until it is", [_selector_shown(["data_residency", "us_only_required"])])
 }
 
+# A location list that is empty states no location, so nothing was shown to be in the United States.
 violation_data_residency contains msg if {
 	_applies_sa_9_5
-	some location in object.get(_residency, "storage_locations", [])
+	some field in ["storage_locations", "processing_locations"]
+	is_array(_residency[field])
+	count(_residency[field]) == 0
+	msg := sprintf("FedRAMP SA-9(5): evidence missing — input.data_residency.%s is empty; no location was collected", [field])
+}
+
+_locations(field) := [l | is_array(_residency[field]); some l in _residency[field]]
+
+_region(location) := object.get(location, "region", "unknown") if is_object(location)
+
+_region(location) := "unknown" if not is_object(location)
+
+# Why a location does not count as U.S.: boolean false keeps the plain finding, anything else is named.
+_us_territory_problem(location) := "" if {
+	is_object(location)
+	location.us_territory == false
+} else := " [evidence missing: us_territory not collected for this location]" if {
+	is_object(location)
+	object.get(location, "us_territory", null) == null
+} else := sprintf(" [evidence invalid: us_territory is not a boolean (got %s)]", [type_name(location.us_territory)]) if {
+	is_object(location)
+} else := sprintf(" [evidence invalid: the location entry is not an object (got %s)]", [type_name(location)])
+
+violation_data_residency contains msg if {
+	_applies_sa_9_5
+	some location in _locations("storage_locations")
 	not location.us_territory == true
 	msg := sprintf(
-		"FedRAMP SA-9(5): Federal data stored in non-US location '%v'. Storage must be in U.S./U.S. Territories or locations under U.S. jurisdiction.",
-		[object.get(location, "region", "unknown")],
+		"FedRAMP SA-9(5): Federal data stored in non-US location '%v'. Storage must be in U.S./U.S. Territories or locations under U.S. jurisdiction.%s",
+		[_region(location), _us_territory_problem(location)],
 	)
 }
 
 violation_data_residency contains msg if {
 	_applies_sa_9_5
-	some location in object.get(_residency, "processing_locations", [])
+	some location in _locations("processing_locations")
 	not location.us_territory == true
 	msg := sprintf(
-		"FedRAMP SA-9(5): Federal data processed in non-US location '%v'. Processing must be in U.S./U.S. Territories or locations under U.S. jurisdiction.",
-		[object.get(location, "region", "unknown")],
+		"FedRAMP SA-9(5): Federal data processed in non-US location '%v'. Processing must be in U.S./U.S. Territories or locations under U.S. jurisdiction.%s",
+		[_region(location), _us_territory_problem(location)],
 	)
 }
 
@@ -336,14 +412,33 @@ violation_personnel contains msg if {
 	msg := "FedRAMP PS-3: evidence missing — input.personnel not collected"
 }
 
+# An empty list names nobody, so nobody was shown to be screened; an entry that is not an object is not a
+# person record (object.get on it is an error, which used to drop the entry without a finding).
 violation_personnel contains msg if {
-	some i, person in object.get(input, "personnel", [])
+	is_array(input.personnel)
+	count(input.personnel) == 0
+	msg := "FedRAMP PS-3: evidence missing — input.personnel is empty; no personnel record was collected"
+}
+
+violation_personnel contains msg if {
+	is_array(input.personnel)
+	some i, person in input.personnel
+	not is_object(person)
+	msg := sprintf("FedRAMP PS-3: evidence invalid — input.personnel[%d] is not an object (got %s)", [i, type_name(person)])
+}
+
+_personnel := [p | is_array(input.personnel); some p in input.personnel; is_object(p)]
+
+violation_personnel contains msg if {
+	is_array(input.personnel)
+	some i, person in input.personnel
+	is_object(person)
 	not is_boolean(object.get(person, "admin_access", null))
 	msg := sprintf("FedRAMP PS-3: evidence invalid — input.personnel[%d].admin_access must be true or false, got %v", [i, json.marshal(object.get(person, "admin_access", null))])
 }
 
 violation_personnel contains msg if {
-	some person in object.get(input, "personnel", [])
+	some person in _personnel
 	person.admin_access == true
 	not person.background_check_completed == true
 	msg := sprintf(
@@ -361,7 +456,7 @@ violation_personnel contains msg if {
 violation_personnel contains msg if {
 	applies_moderate_high
 	_us_persons_required
-	some person in object.get(input, "personnel", [])
+	some person in _personnel
 	person.admin_access == true
 	not person.us_person == true
 	not person.foreign_national_waiver == true
@@ -439,22 +534,62 @@ default kev_assessed := false
 
 kev_assessed if is_array(object.get(_cm, "kev_findings", null))
 
-_today_ns := time.parse_ns("2006-01-02", input.assessment_date) if is_string(input.assessment_date)
+_today_ns := _date_ns(input.assessment_date)
 
-_today_ns := time.now_ns() if not is_string(input.assessment_date)
+_today_ns := time.now_ns() if not _date_ns(input.assessment_date)
 
 violation_conmon contains msg if {
 	kev_assessed
 	some k in _cm.kev_findings
+	is_object(k)
 	not is_string(object.get(k, "due_date", null))
 	msg := sprintf("FedRAMP RA-5: evidence missing — due_date not collected for KEV finding %v", [object.get(k, "cve", "unknown")])
+}
+
+# A due date that is not a YYYY-MM-DD date cannot be compared (time.parse_ns is then undefined and the
+# past-due rule below would say nothing), and the same holds for assessment_date, the "today" it is
+# compared with. Both are findings, as is a remediated flag that is not a boolean.
+_date_ns(s) := time.parse_ns("2006-01-02", s) if {
+	is_string(s)
+	regex.match(`^[0-9]{4}-[0-9]{2}-[0-9]{2}$`, s)
+}
+
+violation_conmon contains msg if {
+	kev_assessed
+	some k in _cm.kev_findings
+	is_string(object.get(k, "due_date", null))
+	not _date_ns(k.due_date)
+	msg := sprintf("FedRAMP RA-5: evidence invalid — due_date %v of KEV finding %v is not a YYYY-MM-DD date", [json.marshal(k.due_date), object.get(k, "cve", "unknown")])
+}
+
+violation_conmon contains msg if {
+	kev_assessed
+	some i, k in _cm.kev_findings
+	not is_object(k)
+	msg := sprintf("FedRAMP RA-5: evidence invalid — input.continuous_monitoring.kev_findings[%d] is not an object (got %s)", [i, type_name(k)])
+}
+
+violation_conmon contains msg if {
+	kev_assessed
+	some k in _cm.kev_findings
+	value := k.remediated
+	not is_boolean(value)
+	msg := sprintf("FedRAMP RA-5: evidence invalid — remediated of KEV finding %v is not a boolean (got %s)", [object.get(k, "cve", "unknown"), type_name(value)])
+}
+
+violation_conmon contains msg if {
+	kev_assessed
+	count(_cm.kev_findings) > 0
+	value := input.assessment_date
+	not _date_ns(value)
+	msg := sprintf("FedRAMP RA-5: evidence invalid — input.assessment_date %v is not a YYYY-MM-DD date, so KEV due dates cannot be compared with it", [json.marshal(value)])
 }
 
 violation_conmon contains msg if {
 	kev_assessed
 	some k in _cm.kev_findings
 	not k.remediated == true
-	due := time.parse_ns("2006-01-02", k.due_date)
+	due := _date_ns(k.due_date)
 	_today_ns > due
 	msg := sprintf(
 		"FedRAMP RA-5: KEV-listed %v is unremediated past its CISA KEV due date %v. KEV due dates take precedence over the 30-day parameter.",
@@ -510,7 +645,7 @@ violation_testing_response contains msg if {
 violation_contingency contains msg if {
 	applies_moderate_high
 	not _svc.redundant_processing == true
-	msg := "FedRAMP CP-7: No alternate processing site is configured (input.cloud_service.redundant_processing). CP-7 is in the Moderate and High baselines."
+	msg := sprintf("FedRAMP CP-7: No alternate processing site is configured (input.cloud_service.redundant_processing). CP-7 is in the Moderate and High baselines.%s", [_bool_problem(_svc, "cloud_service", "redundant_processing")])
 }
 
 # ---------------------------------------------------------------------------
