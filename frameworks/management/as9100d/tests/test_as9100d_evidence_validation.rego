@@ -452,3 +452,74 @@ test_new_row_is_attested_and_9_1_2_keeps_its_clause_id if {
 	count({id | some id, _ in main.items; contains(id, "-")}) == 0
 	count({id | some id, it in main.items; it.kind == "fact"}) == 18
 }
+
+# ── Evidence rule (data-driven, audit 2026-11-24): a string is never a yes/no fact ───────────────────
+# Every boolean in the all-pass fixture, replaced in turn by its string form and by a number, must stop the
+# report passing: this includes flags on records the checks do not otherwise consult (traceable on an
+# out-of-service instrument, outputs_recorded on a review record).
+
+_bool_paths := [p | walk(fx.full, [p, v]); is_boolean(v)]
+
+_fails_with(p, bad) if {
+	r := main.compliance_report with input as json.patch(fx.full, [{"op": "replace", "path": p, "value": bad}])
+	r.compliant == false
+}
+
+# One test per bad value, so each stays small.
+test_every_boolean_as_string_true_never_passes if {
+	count(_bool_paths) > 50
+	every p in _bool_paths {
+		_fails_with(p, "true")
+	}
+}
+
+test_every_boolean_as_string_false_never_passes if {
+	every p in _bool_paths {
+		_fails_with(p, "false")
+	}
+}
+
+test_every_boolean_as_number_never_passes if {
+	every p in _bool_paths {
+		_fails_with(p, 1)
+	}
+}
+
+# Null or removed: every boolean except the two that are optional on a record that does not need them
+# (outputs_recorded on a review record: 9.3.3 decides outputs; traceable on an out-of-service instrument).
+_optional_flag(p) if p[count(p) - 1] == "outputs_recorded"
+
+_optional_flag(p) if {
+	p[count(p) - 1] == "traceable"
+	row := object.get(fx.full, array.slice(p, 0, count(p) - 1), {})
+	row.in_service == false
+}
+
+_required_bool_paths := [p | some p in _bool_paths; not _optional_flag(p)]
+
+test_every_required_boolean_null_never_passes if {
+	count(_required_bool_paths) == count(_bool_paths) - 2
+	every p in _required_bool_paths {
+		_fails_with(p, null)
+	}
+}
+
+# json.remove needs the string form of a path that goes through an array index.
+test_every_required_boolean_removed_never_passes if {
+	every p in _required_bool_paths {
+		path := concat("/", [sprintf("%v", [k]) | some k in p])
+		r := main.compliance_report with input as json.remove(fx.full, [path])
+		r.compliant == false
+	}
+}
+
+test_traceable_and_outputs_recorded_wrong_type_are_named if {
+	inp := json.patch(fx.full, [{"op": "replace", "path": "/as9100d/management_review/reviews/0/outputs_recorded", "value": "true"}])
+	pv := performance.violations with input as inp
+	_names(pv, "9.3.1", "outputs_recorded is not a boolean (got string)")
+	some i, e in fx.full.as9100d.measuring_equipment
+	e.in_service == false
+	inp2 := json.patch(fx.full, [{"op": "add", "path": sprintf("/as9100d/measuring_equipment/%d/traceable", [i]), "value": "true"}])
+	sv := support.violations with input as inp2
+	_names(sv, "7.1.5.2", "traceable is not a boolean (got string)")
+}
