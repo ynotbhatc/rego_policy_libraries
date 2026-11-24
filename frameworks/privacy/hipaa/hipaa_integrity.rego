@@ -36,7 +36,6 @@ import rego.v1
 # 164.308(a)(7)(ii)(A) and 164.310(d)(2)(i)-(ii) (hipaa.security_rule), not by 164.312(c); this module reports
 # its former checks of them, and its library frequencies, as `advisories` only.
 #   input.integrity             - integrity control configuration
-#   input.transmission          - data in transit controls
 #   input.backup                - backup and recovery configuration
 # =============================================================================
 
@@ -87,7 +86,7 @@ violation_data_integrity contains msg if {
 
 advisories contains msg if {
 	some phi_system in input.phi_systems
-	phi_system.integrity_checking_enabled
+	phi_system.integrity_checking_enabled == true
 	is_number(phi_system.integrity_check_frequency_hours)
 	phi_system.integrity_check_frequency_hours > 24
 	msg := sprintf(
@@ -98,7 +97,7 @@ advisories contains msg if {
 
 advisories contains msg if {
 	some phi_system in input.phi_systems
-	phi_system.integrity_checking_enabled
+	phi_system.integrity_checking_enabled == true
 	not is_number(object.get(phi_system, "integrity_check_frequency_hours", null))
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): evidence missing — integrity_check_frequency_hours not collected for system '%v'.",
@@ -107,12 +106,12 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.integrity.change_management_process
+	not input.integrity.change_management_process == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): No change management process for ePHI systems. Changes must be controlled to prevent unauthorized alteration."
 }
 
 advisories contains msg if {
-	not input.integrity.write_protection_on_archived_phi
+	not input.integrity.write_protection_on_archived_phi == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Archived ePHI is not write-protected. Historical records must be protected from modification."
 }
 
@@ -134,7 +133,7 @@ violation_phi_authentication contains msg if {
 }
 
 advisories contains msg if {
-	input.integrity.checksum_or_hash_enabled
+	input.integrity.checksum_or_hash_enabled == true
 	input.integrity.hash_algorithm in {"MD5", "SHA1"}
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Hash algorithm '%v' is cryptographically weak. Use SHA-256 or stronger for ePHI integrity verification.",
@@ -143,7 +142,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.integrity.digital_signatures_for_phi_export
+	not input.integrity.digital_signatures_for_phi_export == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): ePHI exports do not use digital signatures. Signatures provide non-repudiation and integrity assurance."
 }
 
@@ -152,12 +151,12 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	not input.backup.regular_backups_enabled
+	not input.backup.regular_backups_enabled == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Regular backups of ePHI are not configured. Backups are essential for recovery from corruption or destruction."
 }
 
 advisories contains msg if {
-	input.backup.regular_backups_enabled
+	input.backup.regular_backups_enabled == true
 	is_number(input.backup.backup_frequency_hours)
 	input.backup.backup_frequency_hours > 24
 	msg := sprintf(
@@ -167,23 +166,23 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	input.backup.regular_backups_enabled
+	input.backup.regular_backups_enabled == true
 	not is_number(object.get(input, ["backup", "backup_frequency_hours"], null))
 	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — backup.backup_frequency_hours not collected. Backup cadence cannot be verified."
 }
 
 advisories contains msg if {
-	not input.backup.offsite_or_cloud_backup
+	not input.backup.offsite_or_cloud_backup == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
 }
 
 advisories contains msg if {
-	not input.backup.restore_tested
+	not input.backup.restore_tested == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): ePHI backup restoration has not been tested. Backups must be verified to ensure recoverability."
 }
 
 advisories contains msg if {
-	input.backup.restore_tested
+	input.backup.restore_tested == true
 	is_number(input.backup.restore_test_days)
 	input.backup.restore_test_days > 90
 	msg := sprintf(
@@ -197,18 +196,18 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	input.backup.restore_tested
+	input.backup.restore_tested == true
 	not is_number(object.get(input, ["backup", "restore_test_days"], null))
 	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — backup.restore_test_days not collected. Restore-test recency cannot be verified."
 }
 
 advisories contains msg if {
-	not input.integrity.secure_deletion_policy
+	not input.integrity.secure_deletion_policy == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): No secure deletion policy for ePHI. Media containing ePHI must be securely destroyed when no longer needed."
 }
 
 advisories contains msg if {
-	input.integrity.media_reuse_without_sanitization
+	input.integrity.media_reuse_without_sanitization == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Media containing ePHI is being reused without sanitization. Media must be sanitized before reuse."
 }
 
@@ -234,6 +233,88 @@ violations contains msg if {
 	count(object.get(input, "phi_systems", [])) == 0
 	msg := "HIPAA 164.312(c): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Integrity. Declare the ePHI systems to be evaluated."
 }
+
+# ---------------------------------------------------------------------------
+# Evidence typing (bad input never passes, issue #301)
+# Only the booleans true and false are yes/no evidence, and only a number is a count or a period. A section
+# sent as null, a string such as "true", "false" or "90", or a number where a yes/no belongs is a collection
+# error: it is a finding against this standard whether the fact decides a control or only feeds an
+# advisory, because the verdict cannot rest on evidence of the wrong type. A fact that is absent is handled
+# by the rule that reads it (a required fact fails its control; an advisory fact is reported as an advisory).
+# ---------------------------------------------------------------------------
+
+_std := "164.312(c)"
+
+# section -> the yes/no facts and the numeric facts this module reads from it
+_typed_sections := {
+	"integrity": {"bool": {"policies_and_procedures_implemented", "change_management_process", "write_protection_on_archived_phi", "checksum_or_hash_enabled", "digital_signatures_for_phi_export", "secure_deletion_policy", "media_reuse_without_sanitization"}, "num": {}},
+	"backup": {"bool": {"regular_backups_enabled", "offsite_or_cloud_backup", "restore_tested"}, "num": {"backup_frequency_hours", "restore_test_days"}},
+}
+
+# list -> the yes/no facts and the numeric facts this module reads from each entry
+_typed_items := {
+	"phi_systems": {"bool": {"integrity_checking_enabled"}, "num": {"integrity_check_frequency_hours"}},
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_sections
+	v := input[s]
+	not is_object(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not an object (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	v := input[s]
+	not is_array(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not a list (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.bool
+	v := input[s][f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a boolean (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.num
+	v := input[s][f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a number (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	not is_object(item)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d] is not an object (got %s)", [_std, s, i, type_name(item)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.bool
+	v := item[f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a boolean (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.num
+	v := item[f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a number (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+violations contains msg if some msg in evidence_invalid
 
 # ---------------------------------------------------------------------------
 # Compliance

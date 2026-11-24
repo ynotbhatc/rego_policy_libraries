@@ -109,7 +109,7 @@ test_logoff_timeout_missing_is_a_violation if {
 }
 
 test_access_review_period_is_advisory_only if {
-	inp := object.union(fx.full_input, {"users": [{"username": "alice", "phi_access": true, "phi_access_justified": true, "last_access_review_days": 200}]})
+	inp := object.union(fx.full_input, {"users": [{"username": "alice", "shared_account": false, "phi_access": true, "phi_access_justified": true, "last_access_review_days": 200}]})
 	ac.compliant with input as inp
 	some a in ac.advisories with input as inp
 	contains(a, "200 days")

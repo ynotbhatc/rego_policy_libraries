@@ -294,6 +294,36 @@ advisories contains "Advisory (CMS EHR incentive program measure, not a HIPAA re
 
 default compliant := false
 
+# Evidence typing (bad input never passes, issue #301): an advisory fact never decides `compliant` by its
+# value, but a value of the wrong type (the string "true", "12", null) is a collection error and is reported
+# as an input-contract finding. An advisory fact that is simply absent stays an advisory.
+_advisory_bool_paths := {
+	["enforcement", "cap_template", "available"],
+	["enforcement", "compliance_monitoring", "internal"],
+	["enforcement", "audit_response", "procedures_defined"],
+	["enforcement", "hhs_ocr_cooperation", "policy"],
+	["ehr", "access_controls", "unique_user_id"],
+	["ehr", "access_controls", "emergency_access", "procedure"],
+	["ehr", "access_controls", "automatic_logoff", "configured"],
+	["ehr", "encryption", "at_rest"],
+	["ehr", "encryption", "in_transit"],
+	["ehr", "audit_log", "enabled"],
+	["ehr", "audit_log", "tamper_evident"],
+	["ehr", "integrity", "data_authentication"],
+	["meaningful_use", "security_risk_analysis", "conducted"],
+	["meaningful_use", "security_risk_analysis", "annually"],
+	["meaningful_use", "security_updates", "implemented"],
+	["meaningful_use", "security_deficiencies", "corrected"],
+}
+
+violations contains msg if {
+	some path in _advisory_bool_paths
+	v := object.get(input, array.concat(["hitech"], path), "__absent__")
+	v != "__absent__"
+	not is_boolean(v)
+	msg := sprintf("HIPAA Breach Notification Rule Input Contract: evidence invalid — input.hitech.%v is not a boolean (got %v)", [concat(".", path), type_name(v)])
+}
+
 compliant if count(violations) == 0
 
 _scope := object.get(input, ["hipaa", "scope"], {})
@@ -364,6 +394,22 @@ violations contains msg if {
 	some id, r in applicable
 	not _satisfied(id)
 	msg := sprintf("HIPAA %v %v (%v): %v", [id, r.title, r.status, _unmet(id)])
+}
+
+# An attestation is the boolean true or false. Any other value (the string "true", null, 1) is a collection
+# error. A row that needs the attestation already fails as "not attested"; this finding covers the rows that
+# would otherwise pass over it (decided by facts, satisfied by a documented alternative, or not applicable),
+# so mistyped evidence is never silently accepted (bad input never passes, issue #301).
+_row_fails(id) if {
+	applicable[id]
+	not _satisfied(id)
+}
+
+violations contains msg if {
+	some id, v in _attestations
+	not is_boolean(v)
+	not _row_fails(id)
+	msg := sprintf("HIPAA Breach Notification Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_d[\"%v\"] is not a boolean (got %v)", [id, type_name(v)])
 }
 
 violations contains msg if {

@@ -32,7 +32,6 @@ import rego.v1
 #
 # Input shape:
 #   input.audit_logging         - audit logging configuration
-#   input.audit_logs[]          - audit log entries/metadata
 #   input.phi_systems[]         - systems with ePHI
 #   input.monitoring            - monitoring/alerting configuration
 # =============================================================================
@@ -43,7 +42,7 @@ import rego.v1
 
 violation_audit_enabled contains msg if {
 	some phi_system in input.phi_systems
-	not phi_system.audit_logging_enabled
+	not phi_system.audit_logging_enabled == true
 	msg := sprintf(
 		"HIPAA 164.312(b): Audit logging is not enabled on ePHI system '%v'. All ePHI systems must record activity.",
 		[phi_system.name],
@@ -71,7 +70,7 @@ required_audit_events := {
 
 advisories contains msg if {
 	some phi_system in input.phi_systems
-	phi_system.audit_logging_enabled
+	phi_system.audit_logging_enabled == true
 	some required_event in required_audit_events
 	not required_event in phi_system.audited_events
 	msg := sprintf(
@@ -81,22 +80,22 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.audit_logging.includes_user_id
+	not input.audit_logging.includes_user_id == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not capture user identity. Logs must identify who performed each action."
 }
 
 advisories contains msg if {
-	not input.audit_logging.includes_timestamp
+	not input.audit_logging.includes_timestamp == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not include timestamps. All log entries must be timestamped."
 }
 
 advisories contains msg if {
-	not input.audit_logging.includes_source_ip
+	not input.audit_logging.includes_source_ip == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not capture source IP address. Network source must be recorded for ePHI access."
 }
 
 advisories contains msg if {
-	not input.audit_logging.includes_action_type
+	not input.audit_logging.includes_action_type == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not capture action type (read/write/delete). Action type must be recorded."
 }
 
@@ -119,7 +118,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.audit_logging.offsite_backup_enabled
+	not input.audit_logging.offsite_backup_enabled == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs are not backed up offsite. Log integrity requires backup to prevent tampering or loss."
 }
 
@@ -128,12 +127,12 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	not input.audit_logging.tamper_evident
+	not input.audit_logging.tamper_evident == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs are not tamper-evident. Logs must be protected from modification or deletion."
 }
 
 advisories contains msg if {
-	not input.audit_logging.centralized
+	not input.audit_logging.centralized == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs are not centralized. Distributed logs increase the risk of incomplete collection and tampering."
 }
 
@@ -166,12 +165,12 @@ violation_audit_review contains msg if {
 }
 
 advisories contains msg if {
-	not input.monitoring.automated_alerting_enabled
+	not input.monitoring.automated_alerting_enabled == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): No automated alerting on audit log anomalies. Suspicious ePHI access should trigger immediate alerts."
 }
 
 advisories contains msg if {
-	not input.monitoring.unauthorized_access_alerts
+	not input.monitoring.unauthorized_access_alerts == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): No alerts configured for unauthorized ePHI access attempts. Failed access attempts must be monitored."
 }
 
@@ -180,7 +179,7 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	not input.monitoring.after_hours_access_alerts
+	not input.monitoring.after_hours_access_alerts == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): No monitoring for after-hours ePHI access. Unusual access times are a key indicator of unauthorized activity."
 }
 
@@ -196,6 +195,88 @@ violations contains msg if {
 	count(object.get(input, "phi_systems", [])) == 0
 	msg := "HIPAA 164.312(b): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Audit Controls. Declare the ePHI systems to be evaluated."
 }
+
+# ---------------------------------------------------------------------------
+# Evidence typing (bad input never passes, issue #301)
+# Only the booleans true and false are yes/no evidence, and only a number is a count or a period. A section
+# sent as null, a string such as "true", "false" or "90", or a number where a yes/no belongs is a collection
+# error: it is a finding against this standard whether the fact decides a control or only feeds an
+# advisory, because the verdict cannot rest on evidence of the wrong type. A fact that is absent is handled
+# by the rule that reads it (a required fact fails its control; an advisory fact is reported as an advisory).
+# ---------------------------------------------------------------------------
+
+_std := "164.312(b)"
+
+# section -> the yes/no facts and the numeric facts this module reads from it
+_typed_sections := {
+	"audit_logging": {"bool": {"includes_user_id", "includes_timestamp", "includes_source_ip", "includes_action_type", "offsite_backup_enabled", "tamper_evident", "centralized"}, "num": {"retention_days"}},
+	"monitoring": {"bool": {"audit_review_performed", "automated_alerting_enabled", "unauthorized_access_alerts", "after_hours_access_alerts"}, "num": {"audit_review_frequency_days"}},
+}
+
+# list -> the yes/no facts and the numeric facts this module reads from each entry
+_typed_items := {
+	"phi_systems": {"bool": {"audit_logging_enabled"}, "num": {}},
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_sections
+	v := input[s]
+	not is_object(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not an object (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	v := input[s]
+	not is_array(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not a list (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.bool
+	v := input[s][f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a boolean (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.num
+	v := input[s][f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a number (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	not is_object(item)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d] is not an object (got %s)", [_std, s, i, type_name(item)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.bool
+	v := item[f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a boolean (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.num
+	v := item[f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a number (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+violations contains msg if some msg in evidence_invalid
 
 # ---------------------------------------------------------------------------
 # Compliance

@@ -440,6 +440,16 @@ advisories contains "Advisory (library practice, not a 45 CFR requirement): no a
 	not _p.workforce.training.frequency.annual == true
 }
 
+# Evidence typing (bad input never passes, issue #301): an advisory fact never decides `compliant` by its
+# value, but a value of the wrong type (the string "true", "12", null) is a collection error and is reported
+# as an input-contract finding. An advisory fact that is simply absent stays an advisory.
+violations contains msg if {
+	v := object.get(input, ["hipaa", "privacy", "workforce", "training", "frequency", "annual"], "__absent__")
+	v != "__absent__"
+	not is_boolean(v)
+	msg := sprintf("HIPAA Privacy Rule Input Contract: evidence invalid — input.hipaa.privacy.workforce.training.frequency.annual is not a boolean (got %v)", [type_name(v)])
+}
+
 _fact_pass contains "164.530(d)(1)" if {
 	_p.complaints.process.documented == true
 	_p.complaints.contact_info.published == true
@@ -567,6 +577,22 @@ violations contains msg if {
 	some id, r in applicable
 	not _satisfied(id)
 	msg := sprintf("HIPAA %v %v (%v): %v", [id, r.title, r.status, _unmet(id)])
+}
+
+# An attestation is the boolean true or false. Any other value (the string "true", null, 1) is a collection
+# error. A row that needs the attestation already fails as "not attested"; this finding covers the rows that
+# would otherwise pass over it (decided by facts, satisfied by a documented alternative, or not applicable),
+# so mistyped evidence is never silently accepted (bad input never passes, issue #301).
+_row_fails(id) if {
+	applicable[id]
+	not _satisfied(id)
+}
+
+violations contains msg if {
+	some id, v in _attestations
+	not is_boolean(v)
+	not _row_fails(id)
+	msg := sprintf("HIPAA Privacy Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_e[\"%v\"] is not a boolean (got %v)", [id, type_name(v)])
 }
 
 violations contains msg if {
