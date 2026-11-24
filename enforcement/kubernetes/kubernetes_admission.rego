@@ -6,7 +6,7 @@
 #   source: aac
 #   domains: [kubernetes]
 #   coverage:
-#     checks: 28
+#     checks: 30
 #     cited: 0
 #     density: gate
 #     basis: role
@@ -390,7 +390,10 @@ violations contains sprintf("Security: %s '%s' shares host network namespace —
 violations contains sprintf("Security: Container '%s' in %s '%s' allows privilege escalation — set allowPrivilegeEscalation: false", [_name(container), resource_kind, resource_name]) if {
 	resource_kind in workload_kinds
 	some container in all_containers
-	container.securityContext.allowPrivilegeEscalation != false
+
+	# unset allows escalation (the Kubernetes default), so only the boolean false passes. `x != false` on an
+	# unset field is undefined, which let a container with no securityContext through.
+	not object.get(container, ["securityContext", "allowPrivilegeEscalation"], null) == false
 	not _on(object.get(container, ["securityContext", "privileged"], null))
 }
 
@@ -398,7 +401,7 @@ violations contains sprintf("Security: Container '%s' in %s '%s' does not set re
 	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
 	some container in all_containers
-	container.securityContext.readOnlyRootFilesystem != true
+	not object.get(container, ["securityContext", "readOnlyRootFilesystem"], null) == true
 	not annotation_true("admission.kubernetes.io/skip-readonly-check")
 }
 
@@ -441,7 +444,9 @@ violations contains sprintf("ServiceAccount: %s '%s' uses default service accoun
 violations contains sprintf("ServiceAccount: %s '%s' auto-mounts service account token — set automountServiceAccountToken: false if API access not needed", [resource_kind, resource_name]) if {
 	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
-	pod_spec.automountServiceAccountToken != false
+
+	# unset mounts the token (the Kubernetes default), so only the boolean false passes
+	not object.get(pod_spec, "automountServiceAccountToken", null) == false
 	not annotation_true("admission.kubernetes.io/requires-sa-token")
 }
 

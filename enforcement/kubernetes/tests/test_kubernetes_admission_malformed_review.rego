@@ -111,8 +111,21 @@ test_required_setting_of_another_type_is_denied if {
 	}
 }
 
-test_run_as_non_root_removed_is_denied if {
-	_denied_with(json.patch(good_review, [{"op": "remove", "path": concat("", [_c, "/securityContext/runAsNonRoot"])}]), "runs as root")
+# Unset is the insecure Kubernetes default for each of them (escalation allowed, root filesystem writable,
+# root permitted, token mounted). The three `!=` comparisons were undefined on an unset field, so a workload
+# that simply left the setting out was admitted.
+test_required_setting_removed_is_denied if {
+	every path, needle in _required {
+		_denied_with(json.patch(good_review, [{"op": "remove", "path": path}]), needle)
+	}
+}
+
+test_container_without_a_security_context_is_denied if {
+	inp := json.patch(good_review, [{"op": "remove", "path": concat("", [_c, "/securityContext"])}])
+	_denied_with(inp, "allows privilege escalation")
+	_denied_with(inp, "readOnlyRootFilesystem")
+	_denied_with(inp, "runs as root")
+	_denied_with(inp, "drops no capabilities")
 }
 
 test_null_or_empty_label_is_a_missing_label if {
