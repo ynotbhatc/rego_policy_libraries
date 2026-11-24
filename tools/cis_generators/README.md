@@ -11,6 +11,17 @@ short description of the check before anything is written. The benchmark
 sentence is not copied into the module, the tests, or the committed keyword
 digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 
+Typed evidence (2026-11-24). `cis_genlib.emit_control` takes two optional keys on a control: `typed`, a list of
+Rego set expressions that name wrong-typed facts the check reads (each becomes `<id>: evidence invalid — <path>
+must be <type>, got <value>` and fails the recommendation in place of the plain finding), and `empty`, a
+`(list expression, wording)` pair for a list that was collected and holds nothing (a failed recommendation with
+its own wording, where an absent key stays "evidence missing"). `cis_genlib.LEVEL_HELPERS` is the shared
+Level 1 / Level 2 selection: `input.cis_profile.level` must be the number 1 or 2; any other value is an evidence
+finding, the report is scoped at Level 2 and every Level 2 recommendation fails with it. `gen_palo_alto.py` and
+`gen_esxi.py` use all three; `gen_ios_27.py` carries the same selector rule for level and ownership. The other
+generators that select a level still default a bad value to Level 2 and should move to `LEVEL_HELPERS` when they
+are next run.
+
 - `gen_oracle_db_23ai.py <23ai.txt>` — CIS Oracle Database 23ai Benchmark v1.0.0,
   all 87 recommendations. Logic is written from each recommendation's audit SQL:
   parameter and profile checks read the queried value, privilege checks read the
