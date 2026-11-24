@@ -67,6 +67,26 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   Hand-written files in a module directory, such as the framework-key bridges `cis_windows_2019_key_main.rego`
   and `cis_windows_2022_key_main.rego`, are left in place, and a generator aborts rather than overwrite one.
 
+  Value types (all six Windows generators, 2026-11-24): the type the audit procedure states for a registry value
+  is part of the check. A row with no `vtype` reads a `REG_DWORD` and accepts a JSON number only; `"vtype": "sz"`
+  (a fifth element on a `reg_all` item) is a number held in a `REG_SZ` and accepts the string only;
+  `"vtype": "any"` is a row whose audit procedure states both types or none, where either is read. Numeric
+  `secedit` keys and `auditpol` setting values are numbers; a user right is a list of SID strings. A value of the
+  wrong type fails the row and its finding ends `-- evidence: <input path> is not a number (got string)`.
+  `stated_types`, `vtype` and `typed` in `gen_windows_server_2022.py` derive it; the evaluator side is `_as`,
+  `_reads` and `_type_problem` in `windows_lib.rego.tmpl`. A tier selector (`next_generation`, `bitlocker`) that
+  is supplied but is not a boolean puts its tier's rows in scope as not assessed
+  (`windows_lib_selector.rego.tmpl`, shared by the server template and the Windows 10/11 profile block). The
+  generated fixtures hold each value as the collector sends it, and `test_lib.rego` retypes every number of the
+  all-pass fixture and requires every typed row to fail.
+
+  Regenerating: the committed modules are the generator output plus three things a plain run does not
+  reproduce: the `custom.coverage` stamps (`python3 scripts/coverage_stamp.py`), `opa fmt`, and hand edits
+  made after generation by #337/#338 (`is_number` guards in the `*_main.rego` and 2025 `*_complete.rego`
+  files, the "#300 type traps" tests appended to the lib tests, and `findings` in `control_results`, which the
+  generator emits for every module but only the 2022 module was regenerated with). Diff a regeneration against
+  the tree before committing it.
+
   Per-control results (all six Windows generators): `compliance_report.control_results` holds one object per
   recommendation in natural id order, `{id, status, basis, in_scope, profile, evidence}`, and
   `control_result_counts` the count per status. Status is one of `pass`, `fail`, `evidence_missing` (the row's

@@ -421,6 +421,7 @@ status_r_wn25_cc_000260 := "Open" if not r_wn25_cc_000260
 default r_wn25_cc_000270 := false
 
 r_wn25_cc_000270 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application"].MaxSize)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application"].MaxSize >= 32768
 }
 
@@ -439,6 +440,7 @@ status_r_wn25_cc_000270 := "Open" if not r_wn25_cc_000270
 default r_wn25_cc_000280 := false
 
 r_wn25_cc_000280 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security"].MaxSize)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security"].MaxSize >= 5120000
 }
 
@@ -457,6 +459,7 @@ status_r_wn25_cc_000280 := "Open" if not r_wn25_cc_000280
 default r_wn25_cc_000290 := false
 
 r_wn25_cc_000290 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System"].MaxSize)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System"].MaxSize >= 32768
 }
 

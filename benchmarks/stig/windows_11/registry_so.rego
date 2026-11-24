@@ -137,6 +137,7 @@ status_r_wn11_so_000050 := "Open" if not r_wn11_so_000050
 default r_wn11_so_000055 := false
 
 r_wn11_so_000055 if {
+	is_number(input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters"].MaximumPasswordAge)
 	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters"].MaximumPasswordAge <= 30
 	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters"].MaximumPasswordAge > 0
 }
@@ -174,6 +175,7 @@ status_r_wn11_so_000060 := "Open" if not r_wn11_so_000060
 default r_wn11_so_000070 := false
 
 r_wn11_so_000070 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].InactivityTimeoutSecs)
 	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].InactivityTimeoutSecs <= 900
 	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].InactivityTimeoutSecs > 0
 }
@@ -212,6 +214,7 @@ status_r_wn11_so_000075 := "Open" if not r_wn11_so_000075
 default r_wn11_so_000085 := false
 
 r_wn11_so_000085 if {
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].CachedLogonsCount)
 	to_number(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].CachedLogonsCount) <= 10
 }
 
@@ -230,6 +233,7 @@ status_r_wn11_so_000085 := "Open" if not r_wn11_so_000085
 default r_wn11_so_000095 := false
 
 r_wn11_so_000095 if {
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].SCRemoveOption)
 	to_number(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].SCRemoveOption) in {1, 2}
 }
 

@@ -313,6 +313,9 @@ default next_generation := false
 
 next_generation if _cis_profile.next_generation == true
 
+# The opt-in tiers and the selector that turns each on.
+TIER_SELECTOR := {"BL": "bitlocker", "NG": "next_generation"}
+
 profile := {
 	"level": level,
 	"level_defaulted": level_defaulted,
@@ -320,23 +323,25 @@ profile := {
 	"next_generation": next_generation,
 }
 
-_tier_selected(tier) if tier == "L1"
+_tier_decided(tier) if tier == "L1"
 
-_tier_selected(tier) if {
+_tier_decided(tier) if {
 	tier == "L2"
+	is_number(level)
 	level >= 2
 }
 
-_tier_selected(tier) if {
+_tier_decided(tier) if {
 	tier == "BL"
 	bitlocker
 }
 
-_tier_selected(tier) if {
+_tier_decided(tier) if {
 	tier == "NG"
 	next_generation
 }
 
+{{SELECTOR_BLOCK}}
 in_scope(profiles) if {
 	some p in profiles
 	_tier_selected(p)
@@ -359,9 +364,13 @@ LIB_CHANGES = [
 """),
     ("""_assessable(c) if {
 	not _role_undecided(c.profiles)
+	not _selector_undecided(c.profiles)
 	_collected(c.kind)
 }
-""", """_assessable(c) if _collected(c.kind)
+""", """_assessable(c) if {
+	not _selector_undecided(c.profiles)
+	_collected(c.kind)
+}
 """),
     ("""_cmp(v, "ne", want) if {
 	is_string(v)
@@ -408,13 +417,25 @@ _found(c) := sprintf("%v", [sort(_key_values(c.path))]) if c.kind == "reg_key_va
 """),
     ("""_why_not_assessed(c) := "the server role (input.cis_profile.role) was not supplied and this recommendation applies to one role only" if _role_undecided(c.profiles)
 
-_why_not_assessed(c) := sprintf("input.%s was not collected (for registry_users: no S-1-5-21 user hive)", [INPUT_KEY[c.kind]]) if not _role_undecided(c.profiles)
-""", """_why_not_assessed(c) := sprintf("input.%s was not collected (for registry_users: no S-1-5-21 user hive)", [INPUT_KEY[c.kind]])
+_why_not_assessed(c) := sprintf("input.%s was not collected (for registry_users: no S-1-5-21 user hive)", [INPUT_KEY[c.kind]]) if {
+	not _role_undecided(c.profiles)
+	not _selector_undecided(c.profiles)
+}
+
+_why_not_assessed(c) := sprintf("%s, so the profile cannot place this recommendation", [concat("; ", _selector_problems(c.profiles))]) if {
+	not _role_undecided(c.profiles)
+	_selector_undecided(c.profiles)
+}
+""", """_why_not_assessed(c) := sprintf("input.%s was not collected (for registry_users: no S-1-5-21 user hive)", [INPUT_KEY[c.kind]]) if not _selector_undecided(c.profiles)
+
+_why_not_assessed(c) := sprintf("%s, so the profile cannot place this recommendation", [concat("; ", _selector_problems(c.profiles))]) if _selector_undecided(c.profiles)
 """),
     ("""			results[cid] == "not_assessed"
 			not _role_undecided(c.profiles)
+			not _selector_undecided(c.profiles)
 		}),
 """, """			results[cid] == "not_assessed"
+			not _selector_undecided(c.profiles)
 		}),
 """),
     ("""# Copied into benchmarks/cis/windows_server_2022_modular/lib.rego by tools/cis_generators/gen_windows_server_2022.py
@@ -432,6 +453,7 @@ def lib_text():
     if "# Profile." not in lib[start:end] or "_role_undecided(profiles) if" not in lib[start:end]:
         sys.exit("windows_lib.rego.tmpl: the profile block moved")
     lib = lib[:start] + PROFILE_BLOCK + lib[end:]
+    lib = lib.replace("{{SELECTOR_BLOCK}}\n", base.selector_block() + "\n")
     lib = _sub(lib, LIB_CHANGES, "windows_lib.rego.tmpl")
     lib = _rename(lib)
     lib = lib.replace("{{SECTIONS}}", "\n".join(f'\t"{p}": data.{PKG}.{p}.SECTION,' for p in base.SECTIONS.values()))
@@ -511,7 +533,13 @@ FULL_PROFILE = {"level": 2, "bitlocker": True, "next_generation": True}
 
 
 def fixture(checks, recs):
-    fx = {"cis_profile": dict(FULL_PROFILE), "registry": {}, "registry_users": {basetests.USER_SID: {}},
+    profile = dict(FULL_PROFILE)
+    # A selector whose tier holds no recommendation (Next Generation in the Windows 11 workbook) selects nothing,
+    # so the all-pass fixture does not carry it: a fixture leaf should be one whose value changes the result.
+    for tier, key in (("BL", "bitlocker"), ("NG", "next_generation")):
+        if not any(tier in r["profiles"] for r in recs.values()):
+            del profile[key]
+    fx = {"cis_profile": profile, "registry": {}, "registry_users": {basetests.USER_SID: {}},
           "audit_policy": {}, "secedit": {"system_access": {}, "privilege_rights": {}}}
     owners = {}
     for rid, c in checks.items():
@@ -786,6 +814,8 @@ LIB_TEST_CHANGES = [
     ('"profiles": ["L1_DC", "L1_MS"]', '"profiles": ["L1"]'),
     ('"profiles": ["L1_MS"]', '"profiles": ["L1"]'),
     ('"profiles": ["L2_MS"]', '"profiles": ["L2"]'),
+    ('"profiles": ["NG_MS"]', '"profiles": ["NG"]'),
+    ("fixtures_test.fixture_ms", "fixtures_test.fixture_all"),
     ('{"cis_profile": {"role": "member_server", "level": 1}, ', '{"cis_profile": {"level": 1}, '),
     ("""test_role_specific_row_is_not_assessed_without_a_role if {
 	row := {"kind": "reg", "profiles": ["L1"], "path": "HKLM\\\\X", "name": "V", "op": "eq", "value": 1}
@@ -810,6 +840,15 @@ test_next_generation_row_needs_the_opt_in if {
 	row := {"kind": "reg", "profiles": ["NG"], "path": "HKLM\\\\X", "name": "V", "op": "eq", "value": 1}
 	status(row) == "not_applicable" with input as with_value(1)
 	status(row) == "pass" with input as {"cis_profile": {"level": 1, "next_generation": true}, "registry": {"HKLM\\\\X": {"V": 1}}}
+}
+
+test_a_mistyped_bitlocker_selector_is_not_assessed if {
+	row := {"kind": "reg", "profiles": ["BL"], "path": "HKLM\\\\X", "name": "V", "op": "eq", "value": 1}
+	every bad in ["true", "false", 1, null] {
+		status(row) == "not_assessed" with input as {"cis_profile": {"level": 2, "bitlocker": bad}, "registry": {"HKLM\\\\X": {"V": 1}}}
+	}
+	status(row) == "not_applicable" with input as {"cis_profile": {"level": 2, "bitlocker": false}, "registry": {"HKLM\\\\X": {"V": 1}}}
+	status(row) == "not_assessed" with input as {"cis_profile": "level 2", "registry": {"HKLM\\\\X": {"V": 1}}}
 }
 
 test_numeric_ne_rejects_the_ruled_out_value_only if {

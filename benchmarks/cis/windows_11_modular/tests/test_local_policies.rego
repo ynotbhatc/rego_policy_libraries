@@ -680,7 +680,7 @@ test_2_3_7_6_passes_on_a_compliant_host if {
 }
 
 test_2_3_7_6_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["2.3.7.6"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"CachedLogonsCount": 5}}})
+	data.cis_windows_11.lib.results["2.3.7.6"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"CachedLogonsCount": "5"}}})
 }
 
 test_2_3_7_6_evidence_missing_is_not_a_pass if {
@@ -704,7 +704,7 @@ test_2_3_7_8_passes_on_a_compliant_host if {
 }
 
 test_2_3_7_8_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["2.3.7.8"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ScRemoveOption": 4}}})
+	data.cis_windows_11.lib.results["2.3.7.8"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ScRemoveOption": "4"}}})
 }
 
 test_2_3_7_8_evidence_missing_is_not_a_pass if {

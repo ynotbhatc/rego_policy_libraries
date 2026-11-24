@@ -140,7 +140,7 @@ test_18_5_1_passes_on_a_compliant_host if {
 }
 
 test_18_5_1_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["18.5.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"AutoAdminLogon": 1}}})
+	data.cis_windows_11.lib.results["18.5.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"AutoAdminLogon": "1"}}})
 }
 
 test_18_5_1_evidence_missing_is_not_a_pass if {
@@ -2684,7 +2684,7 @@ test_18_10_26_1_1_passes_on_a_compliant_host if {
 }
 
 test_18_10_26_1_1_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["18.10.26.1.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {"Retention": 1}}})
+	data.cis_windows_11.lib.results["18.10.26.1.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {"Retention": "1"}}})
 }
 
 test_18_10_26_1_1_evidence_missing_is_not_a_pass if {
@@ -2708,7 +2708,7 @@ test_18_10_26_2_1_passes_on_a_compliant_host if {
 }
 
 test_18_10_26_2_1_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["18.10.26.2.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {"Retention": 1}}})
+	data.cis_windows_11.lib.results["18.10.26.2.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {"Retention": "1"}}})
 }
 
 test_18_10_26_2_1_evidence_missing_is_not_a_pass if {
@@ -2732,7 +2732,7 @@ test_18_10_26_3_1_passes_on_a_compliant_host if {
 }
 
 test_18_10_26_3_1_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["18.10.26.3.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {"Retention": 1}}})
+	data.cis_windows_11.lib.results["18.10.26.3.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {"Retention": "1"}}})
 }
 
 test_18_10_26_3_1_evidence_missing_is_not_a_pass if {
@@ -2756,7 +2756,7 @@ test_18_10_26_4_1_passes_on_a_compliant_host if {
 }
 
 test_18_10_26_4_1_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_11.lib.results["18.10.26.4.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {"Retention": 1}}})
+	data.cis_windows_11.lib.results["18.10.26.4.1"] == "fail" with input as object.union(data.cis_windows_11.fixtures_test.fixture_all, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {"Retention": "1"}}})
 }
 
 test_18_10_26_4_1_evidence_missing_is_not_a_pass if {

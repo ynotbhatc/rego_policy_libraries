@@ -304,7 +304,7 @@ test_2_3_7_8_fails_when_its_facts_do_not_comply if {
 }
 
 test_2_3_7_9_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2019.lib.results["2.3.7.9"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ScRemoveOption": 4}}})
+	data.cis_windows_server_2019.lib.results["2.3.7.9"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ScRemoveOption": "4"}}})
 }
 
 test_2_3_8_1_fails_when_its_facts_do_not_comply if {

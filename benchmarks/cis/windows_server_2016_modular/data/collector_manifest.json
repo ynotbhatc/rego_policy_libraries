@@ -3,10 +3,10 @@
     "benchmark": "CIS Microsoft Windows Server 2016 Benchmark v4.0.0",
     "contract": {
       "cis_profile": "{role: member_server|domain_controller, level: 1|2, next_generation: bool}",
-      "registry": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD int | REG_SZ string | REG_MULTI_SZ list>}}; omit a value that does not exist",
+      "registry": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD / REG_QWORD: JSON number | REG_SZ / REG_EXPAND_SZ: string, also when it holds a number | REG_MULTI_SZ: list of strings>}}; omit a value that does not exist. The type is evidence: a number sent as a string (or a REG_SZ number sent as a number) fails the recommendation",
       "registry_users": "{'<user SID, S-1-5-21-...>': {'<path below HKU\\\\<SID>\\\\ as listed>': {'<value name>': <value>}}} for every loaded user profile hive; other HKU keys are ignored",
-      "audit_policy": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value: 0 none, 1 success, 2 failure, 3 both>}",
-      "secedit": "{system_access: {<key>: <int|string>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export",
+      "audit_policy": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value as a JSON number: 0 none, 1 success, 2 failure, 3 both>}",
+      "secedit": "{system_access: {<key>: <JSON number for a numeric key, string for NewAdministratorName / NewGuestName>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export; omit a right nobody holds",
       "attestations": "[{control_id, attested_by, attested_on, evidence_ref}] for the Manual recommendations"
     },
     "registry": [

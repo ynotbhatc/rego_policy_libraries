@@ -57,11 +57,11 @@ fixture_ms := {
 	"registry": {
 		"HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 1},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {
-			"AutoAdminLogon": 0,
+			"AutoAdminLogon": "0",
 			"CachedLogonsCount": 4,
 			"ForceUnlockLogon": 1,
 			"PasswordExpiryWarning": 5,
-			"ScRemoveOption": 3,
+			"ScRemoveOption": "3",
 		},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings": {"DisableProxyAuthenticationSchemes": 287},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp": {"DisableWpad": 1},
@@ -258,19 +258,19 @@ fixture_ms := {
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {
 			"MaxSize": 196608,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {
 			"DisableMotWOnInsecurePathCopy": 0,
@@ -651,9 +651,9 @@ fixture_dc := {
 	"registry": {
 		"HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 1},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {
-			"AutoAdminLogon": 0,
+			"AutoAdminLogon": "0",
 			"PasswordExpiryWarning": 5,
-			"ScRemoveOption": 3,
+			"ScRemoveOption": "3",
 		},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings": {"DisableProxyAuthenticationSchemes": 287},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp": {"DisableWpad": 1},
@@ -835,19 +835,19 @@ fixture_dc := {
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {
 			"MaxSize": 196608,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {
 			"DisableMotWOnInsecurePathCopy": 0,

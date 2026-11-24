@@ -53,17 +53,28 @@ def _bad(op, value):
     raise ValueError(op)
 
 
+def _as_collected(v, vtype):
+    """The value as the collector sends it: a number held in a REG_SZ (vtype "sz") arrives as a string."""
+    if vtype == "sz" and isinstance(v, int) and not isinstance(v, bool):
+        return str(v)
+    return v
+
+
 def _facts(c, good):
     """The facts one check reads, as a partial input document."""
     k = c["kind"]
-    pick = _good if good else _bad
+
+    def pick(op, value):
+        return _as_collected((_good if good else _bad)(op, value), c.get("vtype"))
+
     if k == "reg":
         return {"registry": {c["path"]: {c["name"]: pick(c["op"], c["value"])}}}
     if k == "reg_all":
         out = {}
-        for n, (path, name, op, value) in enumerate(c["items"]):
+        for n, item in enumerate(c["items"]):
+            path, name, op, value = item[:4]
             v = _good(op, value) if (good or n > 0) else _bad(op, value)
-            out.setdefault(path, {})[name] = v
+            out.setdefault(path, {})[name] = _as_collected(v, item[4] if len(item) > 4 else None)
         return {"registry": out}
     if k == "reg_absent":
         return {} if good else {"registry": {c["path"]: {c["name"]: 1}}}

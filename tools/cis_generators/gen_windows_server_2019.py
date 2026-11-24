@@ -180,7 +180,7 @@ _auditpol_collected if {
 _collected(kind) if {
 	not kind in {"ureg", "auditpol"}
 """),
-    ("""[sprintf("%s -- found: %s", [c.msg, _found(c)]) | some cid; c := controls[cid]; results[cid] == "fail"],""",
+    ("""[sprintf("%s -- found: %s%s", [c.msg, _found(c), _type_note(c)]) | some cid; c := controls[cid]; results[cid] == "fail"],""",
      """[_fail_msg(c) | some cid; c := controls[cid]; results[cid] == "fail"],"""),
     ("""[sprintf("%s -- NOT ASSESSED: %s (counted as failed)", [c.msg, _why_not_assessed(c)]) |""",
      """[sprintf("%s -- evidence missing — %s (NOT ASSESSED, counted as failed)", [c.msg, _why_not_assessed(c)]) |"""),
@@ -225,7 +225,7 @@ _field(c) := sprintf("audit_policy %s", [c.guid]) if c.kind == "auditpol"
 
 _fail_msg(c) := sprintf("%s -- evidence missing — %s not collected (counted as failed)", [c.msg, _field(c)]) if _missing(c)
 
-_fail_msg(c) := sprintf("%s -- found: %s", [c.msg, _found(c)]) if not _missing(c)
+_fail_msg(c) := sprintf("%s -- found: %s%s", [c.msg, _found(c), _type_note(c)]) if not _missing(c)
 
 _why_not_assessed(c) := "the server role"""),
 ]
@@ -233,6 +233,7 @@ _why_not_assessed(c) := "the server role"""),
 
 def lib_text():
     lib = (HERE / "windows_lib.rego.tmpl").read_text()
+    lib = lib.replace("{{SELECTOR_BLOCK}}\n", base.selector_block())
     lib = _sub(lib, LIB_CHANGES, "windows_lib.rego.tmpl")
     lib = _rename(lib)
     lib = lib.replace("{{SECTIONS}}", "\n".join(f'\t"{p}": data.{PKG}.{p}.SECTION,' for p in base.SECTIONS.values()))
