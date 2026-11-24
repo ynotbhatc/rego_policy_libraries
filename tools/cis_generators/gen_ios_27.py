@@ -95,6 +95,8 @@ def rflag(k, want):
 
 def pnum(k, ok, bad, good):
     p = PC(k)
+    if any(op in " ".join(ok) for op in (">=", "<=")):  # an ordered comparison passes on a string; == does not (#300)
+        ok = [f"is_number({p})"] + ok
     return {"kind": "fact", "ev": [f"is_number({p})"], "label": f"ios_profile.passcode.{k}", "ok": [ok], "fail": rep(ptr("passcode", k), bad),
             "miss": rm(ptr("passcode", k)), "g": [("passcode", k, good)]}
 
@@ -107,7 +109,8 @@ def mail(k, want):
     a = f"{ROOT}.mail_accounts"
     return {"kind": "fact", "ev": [f"is_array({a})"], "label": "ios_profile.mail_accounts",
             "ok": [[f'every acct in {a} {{ object.get(acct, "{k}", null) == {str(want).lower()} }}']],
-            "fail": [{"op": "add", "path": ptr("mail_accounts", "0", k), "value": not want}], "miss": rm(ptr("mail_accounts")), "g": []}
+            "fail": [{"op": "add", "path": ptr("mail_accounts", "0", k), "value": not want}], "miss": rm(ptr("mail_accounts")), "g": [],
+            "mail": (k, want)}
 
 
 # Apple's restrictions payload: safariAcceptCookies 0 = block all, 1 = current website only, 1.5 = websites
@@ -278,15 +281,19 @@ def build(pairs):
 
 
 def green(info, owner):
-    g = {"restrictions": {}, "passcode": {}, "profile": {"consent_message": "Authorised use only", "removal": "always" if owner == "end_user" else "never"},
-         "mail_accounts": [{"PreventMove": True, "allowMailDrop": False}], "attest": {}}
+    g = {"restrictions": {}, "passcode": {}, "profile": {"removal": "always" if owner == "end_user" else "never"},
+         "mail_accounts": [{}], "attest": {}}
     for rid, x in info.items():
+        if not any(p["ownership"] == owner for p in x["profiles"]):
+            continue  # a key no recommendation of this ownership reads is not part of its all-pass fixture
         e = x["entry"]
         if e["kind"] == "attest":
             g["attest"][e["attest"]] = True
         else:
             for grp, k, v in e.get("g", []):
                 g[grp][k] = v
+            if "mail" in e:
+                g["mail_accounts"][0][e["mail"][0]] = e["mail"][1]
     return {"ios_profile": g, "cis_profile": {"level": 2, "ownership": owner}}
 
 
@@ -326,7 +333,7 @@ def emit(ids, info, out):
          "# input.device_config) in place. Messages use our own wording, not CIS text.",
          f"# {len(ids)} recommendations ({n_auto} Automated, {len(ids) - n_auto} Manual) over four profiles: Level 1 / Level 2 for",
          "# end-user owned and institutionally owned devices. input.cis_profile.ownership (end_user | institutional, default",
-         "# institutional) and input.cis_profile.level (1 | 2, default 2, includes Level 1) select the recommendations in scope:",
+         "# institutional) and input.cis_profile.level (the number 1 | 2, default 2, includes Level 1) select the recommendations in scope:",
          f"# end_user {sc[('end_user', 1)]} / {sc[('end_user', 2)]}, institutional {sc[('institutional', 1)]} / {sc[('institutional', 2)]} at Level 1 / Level 2.",
          f"# {len(ids) - n_att} are decided from configuration-profile keys and fail closed ('<id>: evidence missing — <path> not collected');",
          f"# {n_att} are attestation booleans under input.ios_profile.attest (false or absent => violation): on-device settings and judgement",
@@ -347,8 +354,25 @@ def emit(ids, info, out):
          "default level := 2", "", "level := 1 if _cis_profile.level == 1", "",
          'default _ownership := "institutional"', "", "_ownership := o if {", "\to := _cis_profile.ownership", '\to in {"end_user", "institutional"}', "}", "",
          "_applies(id) if {", "\tsome p in recommendations[id].profiles", "\tp.ownership == _ownership", "\tp.level <= level", "}", "",
+         "# A profile selector that is present and not one of its values is invalid evidence, never a default. A bad level is",
+         "# scoped at Level 2 and fails every Level 2 recommendation of the ownership; a bad ownership is scoped as institutional",
+         "# and fails every recommendation, because the set that applies could not be chosen.",
+         "default _level_invalid := false", "", "_level_invalid if {", "\tcp := input.cis_profile", "\tnot is_object(cp)", "}", "",
+         "_level_invalid if {", "\tlv := input.cis_profile.level", "\tnot lv in {1, 2}", "}", "",
+         "default _ownership_invalid := false", "", "_ownership_invalid if {", "\tcp := input.cis_profile", "\tnot is_object(cp)", "}", "",
+         "_ownership_invalid if {", "\to := input.cis_profile.ownership", '\tnot o in {"end_user", "institutional"}', "}", "",
+         "_selector_got(k) := json.marshal(input.cis_profile[k]) if is_object(input.cis_profile)", "",
+         "_selector_got(_) := json.marshal(cp) if {", "\tcp := input.cis_profile", "\tnot is_object(cp)", "}", "",
+         '_level_finding := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_selector_got("level")])', "",
+         '_ownership_finding := sprintf("evidence invalid — cis_profile.ownership must be \\"end_user\\" or \\"institutional\\", got %s", [_selector_got("ownership")])', "",
+         '_v_profile contains sprintf("cis_profile.level: %s; the report is scoped at Level 2", [_level_finding]) if _level_invalid', "",
+         '_v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be scoped", [id, _level_finding]) if {',
+         "\t_level_invalid", "\tsome id, r in recommendations", "\tsome p in r.profiles", "\tp.ownership == _ownership", "\tp.level == 2", "}", "",
+         '_v_profile contains sprintf("cis_profile.ownership: %s; the report is scoped as institutional", [_ownership_finding]) if _ownership_invalid', "",
+         '_v_profile contains sprintf("%s: %s, so this recommendation could not be scoped", [id, _ownership_finding]) if {',
+         "\t_ownership_invalid", "\tsome id in in_scope", "}", "",
          "default compliant := false", "", "compliant if {", "\tinput.ios_profile", "\tcount(violations) == 0", "}", "",
-         "violations := _v_2 | _v_3 | _v_4", ""]
+         "violations := ((_v_2 | _v_3) | _v_4) | _v_profile", ""]
     for sec in ("2", "3", "4"):
         L.append(f"# section {sec}")
         for rid in ids:
@@ -437,8 +461,138 @@ def emit_tests(ids, info, out, sc):
               "\tvs := b.violations with input as inp", f"\t{rego_str(msg)} in vs", "}", "",
               f"test_{i}_evidence_missing if {{", f"\tinp := json.patch({gname}, {json.dumps(e['miss'])})",
               "\tvs := b.violations with input as inp", f"\t{rego_str(mmsg)} in vs", f"\tnot {rego_str(msg)} in vs", "}", ""]
+    T += ["# #300 type traps: a non-number must not pass r_2_4_4.", "test_r_2_4_4_number_type_traps if {",
+          '\tdata.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": 2}}}',
+          '\tnot data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": "1"}}}',
+          '\tnot data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": null}}}',
+          '\tnot data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": "not-a-number"}}}', "}", ""]
     os.makedirs(f"{out}/tests", exist_ok=True)
     open(f"{out}/tests/test_{FILE}_recommendations.rego", "w").write("\n".join(T))
+
+
+EVIDENCE = '''package PKG_test
+
+import rego.v1
+
+# Generated by GEN: wrong-typed, null and removed facts never pass, and the profile selectors are
+# never defaulted from a bad value. Data-driven over every leaf of both green fixtures.
+
+_ev_report(inp) := r if r := m.compliance_report with input as inp
+
+_ev_passes(inp) if {
+	r := _ev_report(inp)
+	_ev_report_passes(r)
+}
+
+_ev_report_passes(r) if r.compliant == true
+
+_ev_report_passes(r) if r.failed_controls == 0
+
+_ev_report_passes(r) if r.compliance_percentage >= 100
+
+_ev_greens := [green_end_user, green_institutional]
+
+_ev_leaves(g) := [[path, v] | walk(g, [path, v]); not is_object(v); not is_array(v)]
+
+# values that are not evidence for a fact of this leaf's type
+_ev_wrong(v) := [sprintf("%v", [v]), null, true] if is_number(v)
+
+_ev_wrong(v) := ["true", "false", null, 0, 1] if is_boolean(v)
+
+_ev_wrong(v) := [null, 0, true, ""] if is_string(v)
+
+_ev_survivors := {[i, path, json.marshal(nv)] |
+	some i, g in _ev_greens
+	some [path, v] in _ev_leaves(g)
+	some nv in _ev_wrong(v)
+	_ev_passes(json.patch(g, [{"op": "replace", "path": path, "value": nv}]))
+}
+
+# the selectors have documented defaults when absent (institutional, Level 2); every other leaf must be present.
+# On the end-user fixture the default ownership changes the scope, so its removal fails too.
+_ev_removal_survivors := {[i, path] |
+	some i, g in _ev_greens
+	some [path, _] in _ev_leaves(g)
+	path[0] != "cis_profile"
+	_ev_passes(json.patch(g, [{"op": "remove", "path": path}]))
+}
+
+test_no_wrong_typed_leaf_passes if {
+	count(_ev_leaves(green_end_user)) > 40
+	count(_ev_leaves(green_institutional)) > 60
+	count(_ev_survivors) == 0
+}
+
+test_no_removed_leaf_passes if count(_ev_removal_survivors) == 0
+
+_ev_profile(g, k, v) := json.patch(g, [{"op": "add", "path": concat("/", ["/cis_profile", k]), "value": v}])
+
+test_level_must_be_the_number_1_or_2 if {
+	every lv in ["2", "1", 3, 0, null, true] {
+		r := _ev_report(_ev_profile(green_institutional, "level", lv))
+		r.compliant == false
+		r.profile.level == 2
+		r.total_controls == INST2
+		r.failed_controls == INST2 - INST1
+		r.compliance_percentage < 100
+		some v in r.violations
+		startswith(v, "cis_profile.level: evidence invalid — cis_profile.level must be the number 1 or 2, got ")
+	}
+	e := _ev_report(_ev_profile(green_end_user, "level", "2"))
+	e.total_controls == EU2
+	e.failed_controls == EU2 - EU1
+}
+
+test_ownership_must_be_one_of_its_values if {
+	every o in ["enduser", "End_User", "", 1, null, true] {
+		r := _ev_report(_ev_profile(green_institutional, "ownership", o))
+		r.compliant == false
+		r.profile.ownership == "institutional"
+		r.total_controls == INST2
+		r.failed_controls == INST2
+		r.compliance_percentage == 0
+		some v in r.violations
+		startswith(v, "cis_profile.ownership: evidence invalid — cis_profile.ownership must be \\"end_user\\" or \\"institutional\\", got ")
+	}
+}
+
+test_profile_that_is_not_an_object_is_invalid if {
+	r := _ev_report(json.patch(green_institutional, [{"op": "replace", "path": "/cis_profile", "value": "2"}]))
+	r.compliant == false
+	r.failed_controls == r.total_controls
+}
+
+test_valid_and_absent_selectors if {
+	_ev_report(green_institutional).compliant == true
+	_ev_report(green_end_user).compliant == true
+	_ev_report(_ev_profile(green_institutional, "level", 1)).total_controls == INST1
+	_ev_report(_ev_profile(green_institutional, "level", 1)).failed_controls == 0
+	_ev_report(_ev_profile(green_end_user, "level", 1)).total_controls == EU1
+	_ev_report(_ev_profile(green_end_user, "level", 1)).failed_controls == 0
+	# absent selectors keep their documented defaults: institutional, Level 2
+	d := _ev_report(json.remove(green_institutional, ["cis_profile"]))
+	d.compliant == true
+	d.total_controls == INST2
+}
+
+test_report_counts_hold_on_bad_input if {
+	every inp in [{}, {"ios_profile": null}, {"ios_profile": "true"}, {"ios_profile": {}}, {"cis_profile": {"level": "1"}}, {"cis_profile": {"ownership": 7}}] {
+		r := _ev_report(inp)
+		r.compliant == false
+		r.passed_controls + r.failed_controls == r.total_controls
+		r.failed_controls > 0
+	}
+}
+'''
+
+
+def emit_evidence_tests(out, sc):
+    t = EVIDENCE.replace("PKG_test", f"{PKG}_test\n\nimport data.{PKG}.main as m", 1).replace("import rego.v1\n\n", "", 1)
+    t = t.replace(f"package {PKG}_test\n\nimport data.{PKG}.main as m", f"package {PKG}_test\n\nimport rego.v1\n\nimport data.{PKG}.main as m", 1)
+    for k, v in {"INST2": sc[("institutional", 2)], "INST1": sc[("institutional", 1)], "EU2": sc[("end_user", 2)], "EU1": sc[("end_user", 1)],
+                 "GEN": GEN}.items():
+        t = t.replace(k, str(v))
+    open(f"{out}/tests/test_{FILE}_evidence.rego", "w").write(t)
 
 
 def main(xlsx, root):
@@ -447,6 +601,7 @@ def main(xlsx, root):
     os.makedirs(out, exist_ok=True)
     sc = emit(ids, info, out)
     emit_tests(ids, info, out, sc)
+    emit_evidence_tests(out, sc)
     print(f"{FILE}: {len(ids)} recommendations; scope {sc}")
 
 

@@ -1,6 +1,6 @@
 # CIS Apple iOS 27 Benchmark v1.0.0
 
-**Version:** v1.0 · generated 2026-11-17 by `tools/cis_generators/gen_ios_27.py` from the CIS workbook
+**Version:** v1.1 · generated 2026-11-17, profile-selector validation 2026-11-24, by `tools/cis_generators/gen_ios_27.py` from the CIS workbook
 
 105 recommendations (end-user and institutionally owned device profiles, Level 1 and Level 2; some belong to both
 ownerships). 80 are decided from configuration-profile keys and fail closed with an "evidence missing" message when
@@ -20,6 +20,12 @@ is `1` or `2` (default `2`, includes Level 1). `total_controls` is the number in
 | institutional | 56 | 69 |
 
 On empty input every in-scope recommendation fails (`failed_controls == total_controls`).
+
+The defaults apply only when the selector is absent. A selector that is present with any other value is invalid
+evidence, not a default: `level` other than the number `1` or `2` (the string `"2"` included) scopes the report at
+Level 2 and fails every Level 2 recommendation of the ownership; `ownership` other than `end_user` or `institutional`
+scopes it as institutional and fails every recommendation, because the set that applies could not be chosen. Both
+carry a `cis_profile.<selector>: evidence invalid — …` finding.
 
 ## Facts
 
