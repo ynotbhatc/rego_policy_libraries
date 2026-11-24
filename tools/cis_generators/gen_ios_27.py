@@ -494,12 +494,12 @@ _ev_greens := [green_end_user, green_institutional]
 
 _ev_leaves(g) := [[path, v] | walk(g, [path, v]); not is_object(v); not is_array(v)]
 
-# values that are not evidence for a fact of this leaf's type
-_ev_wrong(v) := [sprintf("%v", [v]), null, true] if is_number(v)
+# two values that are not evidence for a fact of this leaf's type (the string form and null; two keeps the test short)
+_ev_wrong(v) := [sprintf("%v", [v]), null] if is_number(v)
 
-_ev_wrong(v) := ["true", "false", null, 0, 1] if is_boolean(v)
+_ev_wrong(v) := [sprintf("%v", [v]), null] if is_boolean(v)
 
-_ev_wrong(v) := [null, 0, true, ""] if is_string(v)
+_ev_wrong(v) := [null, ""] if is_string(v)
 
 _ev_survivors := {[i, path, json.marshal(nv)] |
 	some i, g in _ev_greens

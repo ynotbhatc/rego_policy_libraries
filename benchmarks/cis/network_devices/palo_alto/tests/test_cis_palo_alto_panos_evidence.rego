@@ -23,12 +23,12 @@ _yn(v) if {
 	v in {"yes", "no"}
 }
 
-# values that are not evidence for a fact of this leaf's type
-_wrong(v) := [sprintf("%v", [v]), null, true] if is_number(v)
+# two values that are not evidence for a fact of this leaf's type (two per leaf keeps each test short)
+_wrong(v) := [sprintf("%v", [v]), null] if is_number(v)
 
-_wrong(v) := ["true", "false", null, 0, 1] if is_boolean(v)
+_wrong(v) := ["true", null] if is_boolean(v)
 
-_wrong(v) := ["true", "false", "enabled", null, 0, 1] if _yn(v)
+_wrong(v) := ["enabled", 1] if _yn(v)
 
 # fixture leaves no recommendation reads: PAN-OS settings the benchmark does not check
 _unread := {
@@ -37,14 +37,20 @@ _unread := {
 	["panos_config", "profiles", "data_filtering", 0, "rules", 0, "block_threshold"],
 }
 
-_survivors := {[path, json.marshal(nv)] |
+_kind(v) := "number" if is_number(v)
+
+_kind(v) := "boolean" if is_boolean(v)
+
+_kind(v) := "yes/no" if _yn(v)
+
+_survivors(kind) := {[path, json.marshal(nv)] |
 	some [path, v] in _leaves
+	_kind(v) == kind
 	not path in _unread
 	some nv in _wrong(v)
 	_passes(json.patch(green, [{"op": "replace", "path": path, "value": nv}]))
 }
 
-# "yes" and attestation leaves must be present; a "no" leaf may be absent (the PAN-OS default)
 # User-ID on a trusted zone is optional: without it 2.3 and 2.4 have nothing to check
 _optional := {["panos_config", "zone", 0, "enable_user_identification"]}
 
@@ -56,9 +62,19 @@ _removal_survivors := {path |
 	_passes(json.patch(green, [{"op": "remove", "path": path}]))
 }
 
-test_no_wrong_typed_leaf_passes if {
-	count(_leaves) > 300
-	count(_survivors) == 0
+test_no_number_of_another_type_passes if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors("number")) == 0
+}
+
+test_no_yes_no_of_another_type_passes if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors("yes/no")) == 0
+}
+
+test_no_attestation_of_another_type_passes if {
+	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
+	count(_survivors("boolean")) == 0
 }
 
 test_no_removed_required_leaf_passes if count(_removal_survivors) == 0

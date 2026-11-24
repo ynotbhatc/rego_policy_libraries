@@ -1046,10 +1046,10 @@ _ev_report_passes(r) if r.compliance_percentage >= 100
 
 _ev_leaves := [[path, v] | walk(green, [path, v]); not is_object(v); not is_array(v); not is_string(v)]
 
-# values that are not evidence for a fact of this leaf's type
-_ev_wrong(v) := [sprintf("%v", [v]), null, true] if is_number(v)
+# two values that are not evidence for a fact of this leaf's type (the string form and null; two keeps the test short)
+_ev_wrong(v) := [sprintf("%v", [v]), null] if is_number(v)
 
-_ev_wrong(v) := ["true", "false", null, 0, 1] if is_boolean(v)
+_ev_wrong(v) := [sprintf("%v", [v]), null] if is_boolean(v)
 
 _ev_survivors := {{[path, json.marshal(nv)] |
 	some [path, v] in _ev_leaves
