@@ -45,27 +45,27 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # CIS 1.3.1: AIDE installed
 aide_violations contains msg if {
-	not input.aide.installed
+	not input.aide.installed == true
 	msg := "CIS 1.3.1: AIDE (Advanced Intrusion Detection Environment) is not installed"
 }
 
 # CIS 1.3.2: AIDE scheduled
 aide_violations contains msg if {
 	input.aide.installed
-	not input.aide.cron_configured
-	not input.aide.systemd_timer_configured
+	not input.aide.cron_configured == true
+	not input.aide.systemd_timer_configured == true
 	msg := "CIS 1.3.2: AIDE is not scheduled to run regularly (no cron job or systemd timer)"
 }
 
 aide_violations contains msg if {
 	input.aide.installed
-	not input.aide.database_exists
+	not input.aide.database_exists == true
 	msg := "CIS 1.3.1: AIDE database has not been initialized (run aideinit)"
 }
 
 # CIS 1.4.1: GRUB boot loader password
 grub_violations contains msg if {
-	not input.grub.password_configured
+	not input.grub.password_configured == true
 	msg := "CIS 1.4.1: GRUB boot loader password is not configured"
 }
 
@@ -93,7 +93,7 @@ grub_violations contains msg if {
 
 # CIS 1.4.3: Single user mode authentication
 grub_violations contains msg if {
-	not input.grub.sulogin_configured
+	not input.grub.sulogin_configured == true
 	msg := "CIS 1.4.3: Single user mode does not require authentication (sulogin not configured)"
 }
 
@@ -122,7 +122,7 @@ process_hardening_violations contains msg if {
 
 # CIS 1.5.2: ASLR enabled
 process_hardening_violations contains msg if {
-	not input.process_hardening.aslr_enabled
+	not input.process_hardening.aslr_enabled == true
 	msg := "CIS 1.5.2: Address Space Layout Randomization (ASLR) is not enabled (kernel.randomize_va_space != 2)"
 }
 
@@ -134,13 +134,13 @@ process_hardening_violations contains msg if {
 
 # CIS 1.5.4: ptrace scope
 process_hardening_violations contains msg if {
-	not input.process_hardening.ptrace_scope_restricted
+	not input.process_hardening.ptrace_scope_restricted == true
 	msg := "CIS 1.5.4: ptrace scope is not restricted (kernel.yama.ptrace_scope should be >= 1)"
 }
 
 # AppArmor boot configuration (Ubuntu-specific)
 apparmor_boot_violations contains msg if {
-	not input.apparmor.bootloader_enabled
+	not input.apparmor.bootloader_enabled == true
 	msg := "CIS 1.6.1.2: AppArmor is not enabled in bootloader configuration"
 }
 

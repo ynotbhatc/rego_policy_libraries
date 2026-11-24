@@ -40,19 +40,19 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # CIS 5.3.1: sudo must be present
 violations contains msg if {
-	not input.sudo.installed
+	not input.sudo.installed == true
 	msg := "CIS 5.3.1: sudo is not installed"
 }
 
 # CIS 5.3.2: sudo commands must allocate a pseudo-terminal
 violations contains msg if {
-	not input.sudo.use_pty
+	not input.sudo.use_pty == true
 	msg := "CIS 5.3.2: sudo is not configured to use pty (Defaults use_pty not found)"
 }
 
 # CIS 5.3.3: a log file for sudo must exist
 violations contains msg if {
-	not input.sudo.logfile_configured
+	not input.sudo.logfile_configured == true
 	msg := "CIS 5.3.3: sudo log file is not configured (Defaults logfile not found)"
 }
 
@@ -90,7 +90,7 @@ violations contains msg if {
 
 # CIS 5.3.7: access to the su command must be restricted
 violations contains msg if {
-	not input.sudo.su_restricted
+	not input.sudo.su_restricted == true
 	msg := "CIS 5.3.7: su command is not restricted (pam_wheel.so not configured)"
 }
 

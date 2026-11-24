@@ -28,13 +28,13 @@ compliant if {
 
 # CIS 5.1.1: cron daemon must be turned on and running
 violations contains msg if {
-	not input.cron.crond_enabled
+	not input.cron.crond_enabled == true
 	msg := "CIS 5.1.1: cron daemon (cron) is not enabled"
 }
 
 violations contains msg if {
 	input.cron.crond_enabled
-	not input.cron.crond_running
+	not input.cron.crond_running == true
 	msg := "CIS 5.1.1: cron daemon (cron) is not running"
 }
 
@@ -209,7 +209,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.cron.cron_allow_exists
+	not input.cron.cron_allow_exists == true
 	msg := "CIS 5.1.8: /etc/cron.allow does not exist - should be created"
 }
 
@@ -232,7 +232,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.cron.at_allow_exists
+	not input.cron.at_allow_exists == true
 	msg := "CIS 5.1.9: /etc/at.allow does not exist - should be created"
 }
 

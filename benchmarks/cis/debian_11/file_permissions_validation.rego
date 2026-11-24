@@ -80,7 +80,7 @@ critical_file_violations contains msg if {
 }
 
 critical_file_violations contains msg if {
-	not input.ssh_private_keys.all_compliant
+	not input.ssh_private_keys.all_compliant == true
 	msg := "SSH Private Keys: One or more SSH host keys have insecure permissions"
 }
 
@@ -92,7 +92,7 @@ world_writable_violations contains msg if {
 }
 
 world_writable_violations contains msg if {
-	not input.world_writable.compliant
+	not input.world_writable.compliant == true
 	is_number(input.world_writable.count)
 	input.world_writable.count > 0
 	msg := sprintf("CIS 6.1.10: %d world-writable files found on system", [input.world_writable.count])
@@ -111,7 +111,7 @@ ownership_violations contains msg if {
 }
 
 ownership_violations contains msg if {
-	not input.unowned_files.compliant
+	not input.unowned_files.compliant == true
 	is_number(input.unowned_files.count)
 	input.unowned_files.count > 0
 	msg := sprintf("CIS 6.1.11: %d unowned files found on system", [input.unowned_files.count])
@@ -130,7 +130,7 @@ ownership_violations contains msg if {
 }
 
 ownership_violations contains msg if {
-	not input.ungrouped_files.compliant
+	not input.ungrouped_files.compliant == true
 	is_number(input.ungrouped_files.count)
 	input.ungrouped_files.count > 0
 	msg := sprintf("CIS 6.1.12: %d ungrouped files found on system", [input.ungrouped_files.count])
