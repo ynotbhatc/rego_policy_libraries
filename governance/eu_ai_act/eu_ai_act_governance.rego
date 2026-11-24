@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 30
+#     checks: 31
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package eu_ai_act.governance
 
 import rego.v1
@@ -22,6 +22,56 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# =============================================================================
+# Evidence typing (bad input never passes, issue #301)
+# =============================================================================
+# Every fact this module reads is a yes/no. Only the booleans true and false are evidence: a string such
+# as "true", "false" or "no", a number or null is a collection error and is reported as a finding, whether
+# the fact states an obligation or says that one does not apply. (A fact that is absent is handled by the
+# rule that reads it.)
+
+_boolean_facts := {
+	["confidentiality", "competent_authority_confidentiality_binding"],
+	["confidentiality", "confidentiality_obligations_documented"],
+	["confidentiality", "trade_secrets_protected_in_assessments"],
+	["deployer", "annex_iii_use_case"],
+	["deployer", "data_breach_reporting_established"],
+	["deployer", "fundamental_rights_impact_assessment_conducted"],
+	["deployer", "high_risk_public_or_private_sector"],
+	["deployer", "human_oversight_assigned"],
+	["deployer", "input_data_relevance_verified"],
+	["deployer", "oversight_persons_adequately_trained"],
+	["deployer", "registered_use_in_eu_database"],
+	["deployer", "uses_system_per_provider_instructions"],
+	["deployer_as_provider", "conformity_assessment_redone"],
+	["deployer_as_provider", "placed_under_own_name_or_trademark"],
+	["deployer_as_provider", "provider_obligations_assumed"],
+	["deployer_as_provider", "substantially_modified_high_risk_ai"],
+	["fria", "affected_fundamental_rights_identified"],
+	["fria", "assessment_conducted"],
+	["fria", "assessment_required"],
+	["fria", "notification_of_affected_persons_process"],
+	["fria", "results_available_to_competent_authorities"],
+	["fria", "risk_mitigation_measures_identified"],
+	["fundamental_rights_bodies", "cooperation_procedure_established"],
+	["fundamental_rights_bodies", "dpa_access_granted"],
+	["fundamental_rights_bodies", "equality_body_access_granted"],
+	["post_market", "corrective_actions_taken_when_needed"],
+	["post_market", "monitoring_covers_annex_vii_content"],
+	["post_market", "monitoring_plan_established"],
+	["post_market", "near_misses_tracked"],
+	["post_market", "performance_metrics_collected"],
+	["post_market", "serious_incidents_reported_to_authority"],
+}
+
+violations contains msg if {
+	some path in _boolean_facts
+	value := object.get(input, array.concat(["eu_ai_act", "governance"], path), "__absent__")
+	value != "__absent__"
+	not is_boolean(value)
+	msg := sprintf("%s: evidence invalid — eu_ai_act.governance.%s is not a boolean (got %s)", ["Title VI (Articles 26-28, 72) input contract", concat(".", path), type_name(value)])
 }
 
 # =============================================================================
