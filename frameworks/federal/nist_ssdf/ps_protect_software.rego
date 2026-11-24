@@ -6,14 +6,14 @@
 #   source: nist
 #   domains: [us-federal, secure-development]
 #   coverage:
-#     checks: 4
+#     checks: 7
 #     cited: 4
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist_ssdf.ps
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Protect the Software (PS)

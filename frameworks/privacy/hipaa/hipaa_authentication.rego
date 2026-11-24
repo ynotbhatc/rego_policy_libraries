@@ -6,10 +6,10 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 4
-#     cited: 1
-#     density: section
-#     basis: role
+#     checks: 10
+#     cited: 6
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

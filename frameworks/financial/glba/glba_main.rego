@@ -6,10 +6,10 @@
 #   source: us-federal
 #   domains: [financial, banking]
 #   coverage:
-#     checks: 34
-#     cited: 26
+#     checks: 35
+#     cited: 27
 #     expected: 33
-#     found: 34
+#     found: 35
 #     scope: directory
 #     density: over
 #     basis: declared-total
@@ -124,7 +124,7 @@ _entity_type_stated if {
 
 violations contains msg if {
 	not _entity_type_stated
-	msg := concat("", ["GLBA input contract (16 CFR 314.1(b)): the kind of financial institution assessed is not stated", _entity_type_problem])
+	msg := sprintf("GLBA input contract (16 CFR 314.1(b)): the kind of financial institution assessed is not stated%s", [_entity_type_problem])
 }
 
 _entity_type_problem := " [evidence missing: input.entity_type not collected]" if {
@@ -136,7 +136,7 @@ _entity_type_problem := " [evidence missing: input.entity_type not collected]" i
 violations contains msg if {
 	facts := [["qualified_individual", "designated"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(a): Qualified Individual not designated to oversee, implement, and enforce the information security program", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(a): Qualified Individual not designated to oversee, implement, and enforce the information security program%s", [_evidence(facts)])
 }
 
 # ── 314.4(b) — Risk Assessment ───────────────────────────────────────────────
@@ -145,21 +145,21 @@ violations contains msg if {
 	not small_exempt
 	facts := [["risk_assessment", "written"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(b)(1): Written risk assessment not performed", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(b)(1): Written risk assessment not performed%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	not small_exempt
 	facts := [["risk_assessment", "criteria_documented"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(b)(1): Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(b)(1): Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	not small_exempt
 	facts := [["risk_assessment", "periodic_reassessment"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(b)(2): Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(b)(2): Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(1) — Access Controls ────────────────────────────────────────────
@@ -167,19 +167,19 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["access_control", "authenticate_users"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(1): Access controls do not authenticate users before permitting access to customer information", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(1): Access controls do not authenticate users before permitting access to customer information%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["access_control", "least_privilege"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(1): Access to customer information not limited to what is needed to perform duties and functions", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(1): Access to customer information not limited to what is needed to perform duties and functions%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["access_control", "periodic_review"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(1): Access permissions to customer information not periodically reviewed", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(1): Access permissions to customer information not periodically reviewed%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(2) — Data and System Inventory ──────────────────────────────────
@@ -187,13 +187,13 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["inventory", "data_identified"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(2): Customer information not identified and its location not inventoried", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(2): Customer information not identified and its location not inventoried%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["inventory", "systems_inventoried"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(2): Systems, devices, platforms, and personnel handling customer information not inventoried", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(2): Systems, devices, platforms, and personnel handling customer information not inventoried%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(3) — Encryption ─────────────────────────────────────────────────
@@ -201,13 +201,13 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["encryption", "customer_info", "in_transit"], ["encryption", "compensating_controls_approved"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(3): Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(3): Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["encryption", "customer_info", "at_rest"], ["encryption", "compensating_controls_approved"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(3): Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(3): Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(4) — Secure Development ─────────────────────────────────────────
@@ -215,13 +215,13 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["secure_development", "inhouse_practices"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(4): Secure development practices not adopted for in-house applications handling customer information", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(4): Secure development practices not adopted for in-house applications handling customer information%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["secure_development", "external_apps_assessed"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(4): Security of externally developed applications handling customer information not assessed", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(4): Security of externally developed applications handling customer information not assessed%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(5) — Multi-Factor Authentication ────────────────────────────────
@@ -229,7 +229,7 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["mfa", "all_information_systems"], ["mfa", "equivalent_approved_in_writing"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(5): MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(5): MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(6) — Secure Disposal ────────────────────────────────────────────
@@ -237,13 +237,13 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["disposal", "within_two_years"], ["disposal", "retention_justified"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(6): Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(6): Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["disposal", "retention_policy_reviewed"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(6): Data retention policy not periodically reviewed to minimize unnecessary retention of customer information", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(6): Data retention policy not periodically reviewed to minimize unnecessary retention of customer information%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(7) — Change Management ──────────────────────────────────────────
@@ -251,7 +251,7 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["change_management", "procedures_adopted"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(7): Change management procedures not adopted for the information system", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(7): Change management procedures not adopted for the information system%s", [_evidence(facts)])
 }
 
 # ── 314.4(c)(8) — Monitoring and Logging ─────────────────────────────────────
@@ -259,13 +259,13 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["monitoring", "authorized_user_activity"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(8): Activity of authorized users not monitored and logged", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(8): Activity of authorized users not monitored and logged%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["monitoring", "unauthorized_access_detection"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(c)(8): Unauthorized access to, use of, or tampering with customer information not detected", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(c)(8): Unauthorized access to, use of, or tampering with customer information not detected%s", [_evidence(facts)])
 }
 
 # ── 314.4(d) — Regular Testing ───────────────────────────────────────────────
@@ -276,14 +276,14 @@ violations contains msg if {
 	not small_exempt
 	facts := [["testing", "continuous_monitoring"], ["testing", "penetration_test", "annual"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(d)(2)(i): Neither continuous monitoring nor annual penetration testing is in place", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(d)(2)(i): Neither continuous monitoring nor annual penetration testing is in place%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	not small_exempt
 	facts := [["testing", "continuous_monitoring"], ["testing", "vulnerability_assessment", "semi_annual"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(d)(2)(ii): Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(d)(2)(ii): Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place%s", [_evidence(facts)])
 }
 
 # ── 314.4(e) — Training and Personnel ────────────────────────────────────────
@@ -291,19 +291,19 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["training", "security_awareness"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(e)(1): Security awareness training not provided to personnel", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(e)(1): Security awareness training not provided to personnel%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["personnel", "qualified_infosec_staff"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(e)(2): Qualified information security personnel not employed or engaged", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(e)(2): Qualified information security personnel not employed or engaged%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["personnel", "knowledge_current"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(e)(4): Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(e)(4): Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures%s", [_evidence(facts)])
 }
 
 # ── 314.4(f) — Service Provider Oversight ────────────────────────────────────
@@ -311,19 +311,19 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["service_providers", "capability_assessed"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(f)(1): Service providers not selected based on ability to maintain appropriate safeguards", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(f)(1): Service providers not selected based on ability to maintain appropriate safeguards%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["service_providers", "contracts_require_safeguards"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(f)(2): Service provider contracts do not require implementation and maintenance of safeguards", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(f)(2): Service provider contracts do not require implementation and maintenance of safeguards%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["service_providers", "periodic_assessment"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(f)(3): Service providers not periodically assessed based on the risk they present", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(f)(3): Service providers not periodically assessed based on the risk they present%s", [_evidence(facts)])
 }
 
 # ── 314.4(g) — Program Evaluation ────────────────────────────────────────────
@@ -331,7 +331,7 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["program", "adjusted_from_findings"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(g): Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(g): Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact%s", [_evidence(facts)])
 }
 
 # ── 314.4(h) — Incident Response Plan ────────────────────────────────────────
@@ -340,21 +340,21 @@ violations contains msg if {
 	not small_exempt
 	facts := [["incident_response", "plan", "written"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(h): Written incident response plan not established", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(h): Written incident response plan not established%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	not small_exempt
 	facts := [["incident_response", "plan", "roles_defined"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(h)(3): Roles, responsibilities, and levels of decision-making authority not defined in incident response plan", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(h)(3): Roles, responsibilities, and levels of decision-making authority not defined in incident response plan%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	not small_exempt
 	facts := [["incident_response", "plan", "post_event_revision"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(h)(7): Incident response plan lacks process for evaluation and revision following a security event", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(h)(7): Incident response plan lacks process for evaluation and revision following a security event%s", [_evidence(facts)])
 }
 
 # ── 314.4(i) — Annual Board Report ───────────────────────────────────────────
@@ -363,14 +363,14 @@ violations contains msg if {
 	not small_exempt
 	facts := [["board_report", "annual_written"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(i): Qualified Individual has not reported in writing to the board (or equivalent) at least annually", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(i): Qualified Individual has not reported in writing to the board (or equivalent) at least annually%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	not small_exempt
 	facts := [["board_report", "covers_program_status"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.4(i)(1)-(2): Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses", _evidence(facts)])
+	msg := sprintf("16 CFR 314.4(i)(1)-(2): Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses%s", [_evidence(facts)])
 }
 
 # ── 314.4(j) / §314.5 — FTC Breach Notification (2024 amendment) ─────────────
@@ -378,7 +378,7 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["breach_notification", "ftc_process_within_30_days"]]
 	_unmet(facts)
-	msg := concat("", ["16 CFR 314.5: Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers", _evidence(facts)])
+	msg := sprintf("16 CFR 314.5: Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers%s", [_evidence(facts)])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────

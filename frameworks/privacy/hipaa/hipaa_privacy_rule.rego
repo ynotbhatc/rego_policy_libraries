@@ -60,7 +60,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 115
+#     checks: 117
 #     cited: 110
 #     expected: 110
 #     found: 110
@@ -70,7 +70,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.privacy_rule
 
 import rego.v1

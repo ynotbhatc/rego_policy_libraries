@@ -100,31 +100,31 @@ _evidence(facts) := sprintf(" [%s]", [concat("; ", problems)]) if {
 violations contains msg if {
 	facts := [["edm", "governance_framework_established"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT EDM01: Governance framework for enterprise I&T not established and maintained by the governing body", _evidence(facts)])
+	msg := sprintf("COBIT EDM01: Governance framework for enterprise I&T not established and maintained by the governing body%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["edm", "benefits_delivery_overseen"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT EDM02: Benefits delivery from I&T investments not evaluated, directed, and monitored", _evidence(facts)])
+	msg := sprintf("COBIT EDM02: Benefits delivery from I&T investments not evaluated, directed, and monitored%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["edm", "risk_optimization_overseen"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT EDM03: I&T risk appetite not defined and risk optimization not overseen by the governing body", _evidence(facts)])
+	msg := sprintf("COBIT EDM03: I&T risk appetite not defined and risk optimization not overseen by the governing body%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["edm", "resource_optimization_overseen"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT EDM04: I&T resource optimization (people, process, technology) not overseen", _evidence(facts)])
+	msg := sprintf("COBIT EDM04: I&T resource optimization (people, process, technology) not overseen%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["edm", "stakeholder_engagement"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT EDM05: Stakeholder engagement and transparent I&T reporting not directed and monitored", _evidence(facts)])
+	msg := sprintf("COBIT EDM05: Stakeholder engagement and transparent I&T reporting not directed and monitored%s", [_evidence(facts)])
 }
 
 # ── APO — Align, Plan and Organize ───────────────────────────────────────────
@@ -132,31 +132,31 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["apo", "it_strategy_documented"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT APO02: I&T strategy aligned to enterprise goals not documented and maintained", _evidence(facts)])
+	msg := sprintf("COBIT APO02: I&T strategy aligned to enterprise goals not documented and maintained%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["apo", "enterprise_architecture_managed"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT APO03: Enterprise architecture not managed", _evidence(facts)])
+	msg := sprintf("COBIT APO03: Enterprise architecture not managed%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["apo", "risk_management_operated"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT APO12: I&T risk management process not operated (identify, assess, respond, monitor)", _evidence(facts)])
+	msg := sprintf("COBIT APO12: I&T risk management process not operated (identify, assess, respond, monitor)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["apo", "security_management_defined"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT APO13: Information security management system not defined and operated (see ISO 27001 module for ISMS technical depth)", _evidence(facts)])
+	msg := sprintf("COBIT APO13: Information security management system not defined and operated (see ISO 27001 module for ISMS technical depth)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["apo", "vendor_management_operated"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT APO10: Vendor/third-party service management not operated", _evidence(facts)])
+	msg := sprintf("COBIT APO10: Vendor/third-party service management not operated%s", [_evidence(facts)])
 }
 
 # ── BAI — Build, Acquire and Implement ───────────────────────────────────────
@@ -164,13 +164,13 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["bai", "change_management_operated"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT BAI06: I&T change management process not operated", _evidence(facts)])
+	msg := sprintf("COBIT BAI06: I&T change management process not operated%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["bai", "configuration_management_operated"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT BAI10: Configuration management (asset/CI baseline and tracking) not operated", _evidence(facts)])
+	msg := sprintf("COBIT BAI10: Configuration management (asset/CI baseline and tracking) not operated%s", [_evidence(facts)])
 }
 
 # ── DSS — Deliver, Service and Support ───────────────────────────────────────
@@ -178,19 +178,19 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["dss", "operations_managed"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT DSS01: I&T operations management not performed to defined procedures", _evidence(facts)])
+	msg := sprintf("COBIT DSS01: I&T operations management not performed to defined procedures%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["dss", "incident_management_operated"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT DSS02: Service request and incident management process not operated", _evidence(facts)])
+	msg := sprintf("COBIT DSS02: Service request and incident management process not operated%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["dss", "security_services_delivered"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT DSS05: Security services not delivered and monitored (see NIST CSF / CIS modules for the technical assessment behind this objective)", _evidence(facts)])
+	msg := sprintf("COBIT DSS05: Security services not delivered and monitored (see NIST CSF / CIS modules for the technical assessment behind this objective)%s", [_evidence(facts)])
 }
 
 # ── MEA — Monitor, Evaluate and Assess ───────────────────────────────────────
@@ -198,19 +198,19 @@ violations contains msg if {
 violations contains msg if {
 	facts := [["mea", "performance_monitoring_operated"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT MEA01: Performance and conformance monitoring of I&T not operated", _evidence(facts)])
+	msg := sprintf("COBIT MEA01: Performance and conformance monitoring of I&T not operated%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["mea", "internal_control_assessed"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT MEA02: System of internal control not monitored and assessed", _evidence(facts)])
+	msg := sprintf("COBIT MEA02: System of internal control not monitored and assessed%s", [_evidence(facts)])
 }
 
 violations contains msg if {
 	facts := [["mea", "external_compliance_assessed"]]
 	_unmet(facts)
-	msg := concat("", ["COBIT MEA03: Compliance with external requirements not evaluated (regulatory watch, mapping, attestation)", _evidence(facts)])
+	msg := sprintf("COBIT MEA03: Compliance with external requirements not evaluated (regulatory watch, mapping, attestation)%s", [_evidence(facts)])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────

@@ -45,7 +45,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 48
+#     checks: 49
 #     cited: 45
 #     expected: 43
 #     found: 45
