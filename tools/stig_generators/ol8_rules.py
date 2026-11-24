@@ -221,7 +221,10 @@ _pwq(opt) := ns if {
 	count(ns) == count(vs)
 }
 
-_num_val(v) := v if is_number(v)
+_num_val(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
 
 _num_val(v) := to_number(trim_space(v)) if {
 	is_string(v)

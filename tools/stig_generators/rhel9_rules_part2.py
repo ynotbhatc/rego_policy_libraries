@@ -63,7 +63,11 @@ _nonroot_dev_mount(m) if {
 _mount_has_option(m, opt) if {
 	is_array(m.options)
 	opt in m.options
-}''')
+}
+
+# /boot and /boot/efi are the two file systems the check leaves out. A helper on the whole entry, because
+# `not f.mount in {...}` is undefined for an entry without a mount and would drop it from the checked list.
+_boot_fs(f) if f.mount in {"/boot", "/boot/efi"}''')
 
 # ── configuration_management: data at rest ───────────────────────────────────────────────────────
 _FS = [{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt": [{"name": "luks-b74f6910", "type": "LUKS2"}]},
@@ -72,13 +76,14 @@ _FS = [{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt": [{"name": "luk
        {"mount": "/boot/efi", "device": "/dev/nvme0n1p1", "crypt": []}]
 R("configuration_management", "RHEL-09-231190", "persistent_filesystems_encrypted", [("disk_encryption", "filesystems")],
   [["fss := input.disk_encryption.filesystems", "is_array(fss)",
-    'checked := [f | some f in fss; not f.mount in {"/boot", "/boot/efi"}]', "count(checked) > 0",
+    'checked := [f | some f in fss; not _boot_fs(f)]', "count(checked) > 0",
     "every f in checked {\n\t_luks_parent(f)\n}"]],
   {"disk_encryption": {"filesystems": _FS}},
   [{"disk_encryption": {"filesystems": [dict(_FS[0], crypt=[])] + _FS[1:]}},
    {"disk_encryption": {"filesystems": [dict(_FS[0], crypt=[{"name": "plain0", "type": "PLAIN"}])] + _FS[1:]}},
    {"disk_encryption": {"filesystems": [{"mount": "/", "device": "/dev/sda3"}] + _FS[2:]}},
-   {"disk_encryption": {"filesystems": _FS[2:]}}],
+   {"disk_encryption": {"filesystems": _FS[2:]}},
+   {"disk_encryption": {"filesystems": _FS[:2] + [{"device": "/dev/nvme0n1p2", "crypt": []}]}}],
   "every persistent file system except /boot and /boot/efi must sit on a crypt block device of type LUKS "
   "(lsblk --tree, cryptsetup status), or the administrator must show how the file systems are encrypted "
   "(input.attest.rhel_09_231190_encryption_evidence)",

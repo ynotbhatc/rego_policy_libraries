@@ -17,7 +17,8 @@ is not read by any rule: RHEL-09-671010 reports `evidence missing — fips.fips_
   (read only in a branch, e.g. a service's config when its package is installed).
 - **Accepted** (from the helper the rule reads it through):
   `_str` string or integer (decimal text), trimmed; `_kw` the same, compared case-insensitively;
-  `_num` a number or a string holding a decimal integer (anything else is not a pass);
+  `_num` a whole number, or a string holding a decimal integer with optional surrounding whitespace (`3`, `"3"`,
+  `" 3 "`); null, a boolean, a fraction (`3.5`), an empty or non-numeric string and a list are not a pass;
   `_collected` presence only. A path read directly (`input.x`) takes the fixture type; a boolean passes only
   on `true` (or the literal the rule compares with).
 - **Collect the observed value, not a verdict**: the policy holds the expected value (`"1"`, `"masked"`, a

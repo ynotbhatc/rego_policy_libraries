@@ -2487,6 +2487,12 @@ test_rhel_09_231190_fail_4 if {
 	contains(f.detail, "RHEL-09-231190: check failed")
 }
 
+test_rhel_09_231190_fail_5 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as object.union(green_fixture, {"disk_encryption": {"filesystems": [{"mount": "/", "device": "/dev/mapper/rhel-root", "crypt": [{"name": "luks-b74f6910", "type": "LUKS2"}]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "crypt": [{"name": "luks-b74f6910", "type": "LUKS2"}]}, {"device": "/dev/nvme0n1p2", "crypt": []}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231190: check failed")
+}
+
 test_rhel_09_231190_evidence_missing_1 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231190 with input as json.remove(green_fixture, [["disk_encryption", "filesystems"]])
 	f.status == "Open"
