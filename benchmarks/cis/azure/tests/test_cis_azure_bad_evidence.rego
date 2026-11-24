@@ -117,3 +117,62 @@ test_api_string_settings_still_pass if {
 	e.isEnabled == "True"
 	_passes(_green)
 }
+
+# input.cis_profile.level is the number 1 or 2. A string (the strings "1" and "level1" included), null or another
+# number never selects a profile: the report is scoped at Level 2 and every Level 2 recommendation says so.
+test_level_of_another_type_is_invalid_evidence if {
+	every bad in ["1", "2", "level1", "Level 1", null, 3, true] {
+		r := _report with input as object.union(_green, {"cis_profile": {"level": bad}})
+		full := _report with input as object.union(_green, {"cis_profile": {"level": 2}})
+		r.compliant == false
+		r.total_controls == full.total_controls
+		every id in {i | some i, rec in data.cis_azure.recommendations; rec.level == 2} {
+			some v in r.violations
+			startswith(v, sprintf("%s: ", [id]))
+			endswith(v, sprintf("evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [json.marshal(bad)]))
+		}
+	}
+	every bad in ["1", null, []] {
+		r := _report with input as object.union(_green, {"cis_profile": bad})
+		r.compliant == false
+	}
+}
+
+test_level_number_selects_the_profile if {
+	l1 := _report with input as object.union(_green, {"cis_profile": {"level": 1}})
+	l2 := _report with input as object.union(_green, {"cis_profile": {"level": 2}})
+	none := _report with input as object.remove(_green, ["cis_profile"])
+	l1.compliant == true
+	l2.compliant == true
+	none.compliant == true
+	l1.total_controls < l2.total_controls
+	none.total_controls == l2.total_controls
+}
+
+# A boolean read inside a searched list item (an activity log alert, the WDATP Defender setting, the default
+# security contact) that arrives as another type fails its recommendation, and the finding names the fact and
+# the type that was sent, like every other boolean read.
+test_nested_boolean_of_the_wrong_type_is_named if {
+	cases := [
+		["/activity_log_alerts/0/enabled", "evidence invalid — activity log alert alert-0: enabled must be true or false, got %s"],
+		[sprintf("/activity_log_alerts/%d/enabled", [count(_green.activity_log_alerts) - 1]), "evidence invalid — activity log alert alert-service-health: enabled must be true or false, got %s"],
+		["/defender_settings/0/enabled", "evidence invalid — Defender setting WDATP: enabled must be true or false, got %s"],
+		["/security_contacts/0/isEnabled", "evidence invalid — the default security contact's isEnabled must be true or false, got %s"],
+	]
+	every c in cases {
+		every bad in ["true", "false", 1] {
+			r := _report with input as json.patch(_green, [{"op": "replace", "path": c[0], "value": bad}])
+			r.compliant == false
+			want := sprintf(c[1], [type_name(bad)])
+			named := [v | some v in r.violations; endswith(v, want)]
+			count(named) == 1
+			r.evidence_invalid_count >= 1
+		}
+	}
+}
+
+# One alert with a bad `enabled` fails the recommendation that alert serves, not the other sixteen.
+test_bad_alert_fails_only_its_own_recommendation if {
+	r := _report with input as json.patch(_green, [{"op": "replace", "path": "/activity_log_alerts/0/enabled", "value": "true"}])
+	count({split(v, ":")[0] | some v in r.violations}) == 1
+}

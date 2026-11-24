@@ -123,6 +123,41 @@ TITLE_OVERRIDE = {
     "7.5.4": "Marketplace model endpoints are isolated in a VPC",
 }
 
+# profile selection, emitted verbatim into the engine
+LEVEL_REGO = r'''default level := 2
+
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
+'''
+
 
 def load(path):
     if path.lower().endswith(".xlsx"):
@@ -386,7 +421,9 @@ F("2.13", "groups", ["iam_users"],
   add("/iam_users/0/attached_policies/-", {"PolicyName": "Direct"}))
 F("2.14", "administrative privileges", ["iam_policies"],
   [("attached policy %s has an Allow statement with Action * on Resource *", ['nm(x, "PolicyName")'],
-    [each("iam_policies"), 'object.get(x, "AttachmentCount", 1) > 0', "admin_policy(x)"]),
+    # only the number 0 says the policy is attached nowhere: absent, null (null > 0 is false in Rego, so a null count
+    # used to clear an administrative policy) and any other type keep the policy in scope
+    [each("iam_policies"), 'not object.get(x, "AttachmentCount", null) == 0', "admin_policy(x)"]),
    ("policy %s: default version document not collected", ['nm(x, "PolicyName")'],
     [each("iam_policies"), "not policy_doc_ok(x)"])],
   add("/iam_policies/0/DefaultVersionDocument/Statement/-", {"Effect": "Allow", "Action": "*", "Resource": "*"}))
@@ -549,7 +586,10 @@ F("7.1.6", "long-term api keys", ["bedrock_api_keys"],
    ("Bedrock API key of %s: status or creation date not collected", ['nm(x, "UserName")'],
     [each("bedrock_api_keys"), 'not has_str(x, "Status")']),
    ("Bedrock API key of %s: status or creation date not collected", ['nm(x, "UserName")'],
-    [each("bedrock_api_keys"), 'lower(object.get(x, "Status", "")) == "active"', "not age_days(object.get(x, \"CreateDate\", null))"])],
+    [each("bedrock_api_keys"), 'lower(object.get(x, "Status", "")) == "active"', "not age_days(object.get(x, \"CreateDate\", null))"]),
+   # the status is one of the three values IAM returns for a service-specific credential; any other word is not an answer
+   ("Bedrock API key of %s: status %s is not Active, Inactive or Expired", ['nm(x, "UserName")', "x.Status"],
+    [each("bedrock_api_keys"), 'has_str(x, "Status")', 'not lower(x.Status) in {"active", "inactive", "expired"}'])],
   add("/bedrock_api_keys/0/CreateDate", "2026-01-01T00:00:00Z"))
 F("7.2.4", "content and prompt-attack filters", ["bedrock_guardrails"],
   [("guardrail %s has no content policy filters", ['nm(x, "name")'], [each("bedrock_guardrails"), "not has_filters(x)"]),
@@ -806,7 +846,7 @@ def engine(wb):
              CONTRACT, "", "import rego.v1", "",
              "default compliant := false", "", "compliant if count(violations) == 0", "",
              "# ── profile ──────────────────────────────────────────────────────────────────────────",
-             "default level := 2", "", 'level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}', "",
+             *LEVEL_REGO.split("\n"),
              "in_scope contains id if {", "\tsome id, r in recommendations", "\tr.level <= level", "}", "",
              "_in_scope(id) if id in in_scope", ""]
     rec = {}

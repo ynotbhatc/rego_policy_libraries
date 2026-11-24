@@ -91,7 +91,36 @@ compliant if count(violations) == 0
 # ── profile ──────────────────────────────────────────────────────────────────────────
 default level := 2
 
-level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
 
 in_scope contains id if {
 	some id, r in recommendations
@@ -2390,6 +2419,15 @@ _messages contains "6.1.2.1: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Authorization/policyAssignments/write", false)
 }
 
+_messages contains sprintf("6.1.2.1: checked condition — Activity Log Alert Exists for Create Policy Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.1")
+	_ev_6_1_2_1
+	not operation_alerted("Microsoft.Authorization/policyAssignments/write", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/policyAssignments/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.2 (Automated, Level 1)
 default _ev_6_1_2_2 := false
 
@@ -2406,6 +2444,15 @@ _messages contains "6.1.2.2: checked condition — Activity Log Alert exists for
 	_in_scope("6.1.2.2")
 	_ev_6_1_2_2
 	not operation_alerted("Microsoft.Authorization/policyAssignments/delete", false)
+}
+
+_messages contains sprintf("6.1.2.2: checked condition — Activity Log Alert exists for Delete Policy Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.2")
+	_ev_6_1_2_2
+	not operation_alerted("Microsoft.Authorization/policyAssignments/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/policyAssignments/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.3 (Automated, Level 1)
@@ -2426,6 +2473,15 @@ _messages contains "6.1.2.3: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Network/networkSecurityGroups/write", true)
 }
 
+_messages contains sprintf("6.1.2.3: checked condition — Activity Log Alert Exists for Create or Update Network Security Group — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.3")
+	_ev_6_1_2_3
+	not operation_alerted("Microsoft.Network/networkSecurityGroups/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/networkSecurityGroups/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.4 (Automated, Level 1)
 default _ev_6_1_2_4 := false
 
@@ -2442,6 +2498,15 @@ _messages contains "6.1.2.4: checked condition — Activity Log Alert Exists for
 	_in_scope("6.1.2.4")
 	_ev_6_1_2_4
 	not operation_alerted("Microsoft.Network/networkSecurityGroups/delete", true)
+}
+
+_messages contains sprintf("6.1.2.4: checked condition — Activity Log Alert Exists for Delete Network Security Group — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.4")
+	_ev_6_1_2_4
+	not operation_alerted("Microsoft.Network/networkSecurityGroups/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/networkSecurityGroups/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.5 (Automated, Level 1)
@@ -2462,6 +2527,15 @@ _messages contains "6.1.2.5: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Security/securitySolutions/write", true)
 }
 
+_messages contains sprintf("6.1.2.5: checked condition — Activity Log Alert Exists for Create or Update Security Solution — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.5")
+	_ev_6_1_2_5
+	not operation_alerted("Microsoft.Security/securitySolutions/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Security/securitySolutions/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.6 (Automated, Level 1)
 default _ev_6_1_2_6 := false
 
@@ -2478,6 +2552,15 @@ _messages contains "6.1.2.6: checked condition — Activity Log Alert Exists for
 	_in_scope("6.1.2.6")
 	_ev_6_1_2_6
 	not operation_alerted("Microsoft.Security/securitySolutions/delete", true)
+}
+
+_messages contains sprintf("6.1.2.6: checked condition — Activity Log Alert Exists for Delete Security Solution — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.6")
+	_ev_6_1_2_6
+	not operation_alerted("Microsoft.Security/securitySolutions/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Security/securitySolutions/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.7 (Automated, Level 1)
@@ -2498,6 +2581,15 @@ _messages contains "6.1.2.7: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Sql/servers/firewallRules/write", true)
 }
 
+_messages contains sprintf("6.1.2.7: checked condition — Activity Log Alert Exists for Create or Update SQL Server Firewall Rule — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.7")
+	_ev_6_1_2_7
+	not operation_alerted("Microsoft.Sql/servers/firewallRules/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Sql/servers/firewallRules/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.8 (Automated, Level 1)
 default _ev_6_1_2_8 := false
 
@@ -2514,6 +2606,15 @@ _messages contains "6.1.2.8: checked condition — Activity Log Alert Exists for
 	_in_scope("6.1.2.8")
 	_ev_6_1_2_8
 	not operation_alerted("Microsoft.Sql/servers/firewallRules/delete", true)
+}
+
+_messages contains sprintf("6.1.2.8: checked condition — Activity Log Alert Exists for Delete SQL Server Firewall Rule — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.8")
+	_ev_6_1_2_8
+	not operation_alerted("Microsoft.Sql/servers/firewallRules/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Sql/servers/firewallRules/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.9 (Automated, Level 1)
@@ -2534,6 +2635,15 @@ _messages contains "6.1.2.9: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Network/publicIPAddresses/write", true)
 }
 
+_messages contains sprintf("6.1.2.9: checked condition — Activity Log Alert Exists for Create or Update Public IP Address — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.9")
+	_ev_6_1_2_9
+	not operation_alerted("Microsoft.Network/publicIPAddresses/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/publicIPAddresses/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.10 (Automated, Level 1)
 default _ev_6_1_2_10 := false
 
@@ -2550,6 +2660,15 @@ _messages contains "6.1.2.10: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.10")
 	_ev_6_1_2_10
 	not operation_alerted("Microsoft.Network/publicIPAddresses/delete", true)
+}
+
+_messages contains sprintf("6.1.2.10: checked condition — Activity Log Alert Exists for Delete Public IP Address — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.10")
+	_ev_6_1_2_10
+	not operation_alerted("Microsoft.Network/publicIPAddresses/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/publicIPAddresses/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.11 (Automated, Level 1)
@@ -2570,6 +2689,17 @@ _messages contains "6.1.2.11: checked condition — an Activity Log Alert Exists
 	not service_health_alerted
 }
 
+_messages contains sprintf("6.1.2.11: checked condition — an Activity Log Alert Exists for Service Health — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.11")
+	_ev_6_1_2_11
+	not service_health_alerted
+	some a in input.activity_log_alerts
+	some c in alert_conditions(a)
+	_cond_field(c) == "category"
+	lower(c.equals) == "servicehealth"
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.12 (Automated, Level 1)
 default _ev_6_1_2_12 := false
 
@@ -2586,6 +2716,15 @@ _messages contains "6.1.2.12: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.12")
 	_ev_6_1_2_12
 	not operation_alerted("Microsoft.Authorization/roleAssignments/write", false)
+}
+
+_messages contains sprintf("6.1.2.12: checked condition — Activity Log Alert Exists for Create Role Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.12")
+	_ev_6_1_2_12
+	not operation_alerted("Microsoft.Authorization/roleAssignments/write", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/roleAssignments/write")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.13 (Automated, Level 1)
@@ -2606,6 +2745,15 @@ _messages contains "6.1.2.13: checked condition — Activity Log Alert Exists fo
 	not operation_alerted("Microsoft.Authorization/roleAssignments/delete", false)
 }
 
+_messages contains sprintf("6.1.2.13: checked condition — Activity Log Alert Exists for Delete Role Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.13")
+	_ev_6_1_2_13
+	not operation_alerted("Microsoft.Authorization/roleAssignments/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/roleAssignments/delete")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.14 (Automated, Level 1)
 default _ev_6_1_2_14 := false
 
@@ -2622,6 +2770,15 @@ _messages contains "6.1.2.14: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.14")
 	_ev_6_1_2_14
 	not operation_alerted("Microsoft.Authorization/policyExemptions/write", false)
+}
+
+_messages contains sprintf("6.1.2.14: checked condition — Activity Log Alert Exists for Create or Update Policy Exemption — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.14")
+	_ev_6_1_2_14
+	not operation_alerted("Microsoft.Authorization/policyExemptions/write", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/policyExemptions/write")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.15 (Automated, Level 1)
@@ -2642,6 +2799,15 @@ _messages contains "6.1.2.15: checked condition — Activity Log Alert Exists fo
 	not operation_alerted("Microsoft.Insights/diagnosticSettings/delete", false)
 }
 
+_messages contains sprintf("6.1.2.15: checked condition — Activity Log Alert Exists for Delete Diagnostic Setting — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.15")
+	_ev_6_1_2_15
+	not operation_alerted("Microsoft.Insights/diagnosticSettings/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Insights/diagnosticSettings/delete")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.16 (Automated, Level 1)
 default _ev_6_1_2_16 := false
 
@@ -2660,6 +2826,15 @@ _messages contains "6.1.2.16: checked condition — Activity Log Alert Exists fo
 	not operation_alerted("Microsoft.Authorization/locks/delete", false)
 }
 
+_messages contains sprintf("6.1.2.16: checked condition — Activity Log Alert Exists for Delete Resource Lock — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.16")
+	_ev_6_1_2_16
+	not operation_alerted("Microsoft.Authorization/locks/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/locks/delete")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.17 (Automated, Level 1)
 default _ev_6_1_2_17 := false
 
@@ -2676,6 +2851,15 @@ _messages contains "6.1.2.17: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.17")
 	_ev_6_1_2_17
 	not operation_alerted("Microsoft.KeyVault/vaults/accessPolicies/write", true)
+}
+
+_messages contains sprintf("6.1.2.17: checked condition — Activity Log Alert Exists for Update Key Vault Access Policy — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.17")
+	_ev_6_1_2_17
+	not operation_alerted("Microsoft.KeyVault/vaults/accessPolicies/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.KeyVault/vaults/accessPolicies/write")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.3.1 (Automated, Level 2)
@@ -3436,6 +3620,15 @@ _messages contains "8.1.3.3: required value of 'Endpoint protection' Component S
 	not defender_setting_on("WDATP")
 }
 
+_messages contains sprintf("8.1.3.3: required value of 'Endpoint protection' Component Status is 'On' — evidence invalid — Defender setting %v: enabled must be true or false, got %v", [nm(s), type_name(p(s, "enabled"))]) if {
+	_in_scope("8.1.3.3")
+	_ev_8_1_3_3
+	not defender_setting_on("WDATP")
+	some s in input.defender_settings
+	lower(s.name) == "wdatp"
+	not_boolean(s, "enabled")
+}
+
 # 8.1.3.4 (Automated, Level 2)
 default _ev_8_1_3_4 := false
 
@@ -3751,6 +3944,13 @@ _messages contains "8.1.14: checked condition — Microsoft Defender for Cloud S
 	_in_scope("8.1.14")
 	_ev_8_1_14
 	count(default_contacts) == 0
+}
+
+_messages contains sprintf("8.1.14: checked condition — Microsoft Defender for Cloud Sends Security Alert Emails to Users with the 'Owner' Role — evidence invalid — the default security contact's isEnabled must be true or false, got %v", [type_name(p(c, "isEnabled"))]) if {
+	_in_scope("8.1.14")
+	_ev_8_1_14
+	some c in default_contacts
+	not_boolean(c, "isEnabled")
 }
 
 # 8.1.15 (Automated, Level 1)

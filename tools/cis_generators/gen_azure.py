@@ -29,6 +29,41 @@ OWNED = ["cis_azure_foundations.rego", "cis_azure_main.rego", "l2_validation.reg
          "tests/test_cis_azure_v7_controls.rego", "tests/test_cis_azure_v7_logic.rego",
          "tests/test_cis_azure_v7_reports.rego", "tests/test_cis_azure_v7_l2.rego"]
 
+# profile selection, emitted verbatim into the engine
+LEVEL_REGO = r'''default level := 2
+
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
+'''
+
 
 def load(path):
     if path.lower().endswith(".xlsx"):
@@ -365,16 +400,25 @@ A("6.1.1.6", "virtual network flow logs", "vnet_flow_logs_sent_to_log_analytics"
 A("6.1.1.7", "microsoft graph activity logs", "graph_activity_logs_exported")
 A("6.1.1.8", "microsoft entra activity logs", "entra_activity_logs_exported")
 A("6.1.1.9", "intune logs", "intune_logs_sent_to_log_analytics")
+ALERT_ENABLED_INVALID = "evidence invalid — activity log alert %v: enabled must be true or false, got %v"
+ALERT_ENABLED_ARGS = ["nm(a)", 'type_name(p(a, "enabled"))']
 for _i, (_cid, _kw, _op, _narrow) in enumerate(ADMIN_OPS):
     F(_cid, _kw, ["activity_log_alerts"],
       [(f"no enabled activity log alert with an action group covers {_op} for the subscription without extra conditions", [],
-        [f'not operation_alerted("{_op}", {"true" if _narrow else "false"})'])],
+        [f'not operation_alerted("{_op}", {"true" if _narrow else "false"})']),
+       # the alert that names this operation carries an `enabled` that is not a boolean: the finding says so
+       (ALERT_ENABLED_INVALID, ALERT_ENABLED_ARGS,
+        [f'not operation_alerted("{_op}", {"true" if _narrow else "false"})', "some a in input.activity_log_alerts",
+         f'admin_alert(a, "{_op}")', 'not_boolean(a, "enabled")'])],
       [add(f"/activity_log_alerts/{_i}/enabled", False),
        add(f"/activity_log_alerts/{_i}/condition/allOf/-", {"field": "resourceGroup", "equals": "rg-core"}),
        add(f"/activity_log_alerts/{_i}/actions/actionGroups", [])])
 F("6.1.2.11", "service health", ["activity_log_alerts"],
   [("no enabled activity log alert with an action group covers Service Health for the subscription without narrowing conditions", [],
-    ["not service_health_alerted"])],
+    ["not service_health_alerted"]),
+   (ALERT_ENABLED_INVALID, ALERT_ENABLED_ARGS,
+    ["not service_health_alerted", "some a in input.activity_log_alerts", "some c in alert_conditions(a)",
+     '_cond_field(c) == "category"', 'lower(c.equals) == "servicehealth"', 'not_boolean(a, "enabled")'])],
   [add(f"/activity_log_alerts/{SH}/scopes", [RG]),
    add(f"/activity_log_alerts/{SH}/condition/allOf/-", {"field": "properties.impactedServices[*].ServiceName", "containsAny": ["Storage"]})])
 F("6.1.3.1", "application insights", ["application_insights"],
@@ -517,7 +561,9 @@ plan("8.1.2.1", "apis", "Api")
 plan("8.1.3.1", "defender for servers", "VirtualMachines")
 A("8.1.3.2", "vulnerability assessment", "defender_vulnerability_assessment_on")
 F("8.1.3.3", "endpoint protection", ["defender_settings"],
-  [("the Defender for Endpoint integration (WDATP setting) is not enabled", [], ['not defender_setting_on("WDATP")'])],
+  [("the Defender for Endpoint integration (WDATP setting) is not enabled", [], ['not defender_setting_on("WDATP")']),
+   ("evidence invalid — Defender setting %v: enabled must be true or false, got %v", ["nm(s)", 'type_name(p(s, "enabled"))'],
+    ['not defender_setting_on("WDATP")', "some s in input.defender_settings", 'lower(s.name) == "wdatp"', 'not_boolean(s, "enabled")'])],
   add("/defender_settings/0/enabled", False))
 F("8.1.3.4", "agentless scanning", [DP],
   [("agentless machine scanning is not on under Defender for Servers Plan 2 or Defender CSPM", [], ["not agentless_scanning_on"])],
@@ -569,7 +615,10 @@ for _cid, _kw, _pred, _what, _fail in [
         ("8.1.17", "attack paths", "contact_attack_path_set", "does not send attack path notifications with a minimum risk level",
          rm(f"/{SC}/0/notificationsSources/1"))]:
     F(_cid, _kw, [SC],
-      [(f"the default security contact {_what}", [], ["some c in default_contacts", f"not {_pred}(c)"]), NO_DEFAULT],
+      [(f"the default security contact {_what}", [], ["some c in default_contacts", f"not {_pred}(c)"]), NO_DEFAULT]
+      # only 8.1.14 reads the contact's isEnabled
+      + ([("evidence invalid — the default security contact's isEnabled must be true or false, got %v", ['type_name(p(c, "isEnabled"))'],
+           ["some c in default_contacts", 'not_boolean(c, "isEnabled")'])] if _cid == "8.1.14" else []),
       _fail)
 A("8.1.18", "easm", "defender_easm_workspace_configured")
 A("8.2.1", "iot hub", "defender_for_iot_hub_on")
@@ -839,7 +888,7 @@ def engine(wb):
              CONTRACT, "", "import rego.v1", "",
              "default compliant := false", "", "compliant if count(violations) == 0", "",
              "# ── profile ──────────────────────────────────────────────────────────────────────────",
-             "default level := 2", "", 'level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}', "",
+             *LEVEL_REGO.split("\n"),
              "in_scope contains id if {", "\tsome id, r in recommendations", "\tr.level <= level", "}", "",
              "_in_scope(id) if id in in_scope", ""]
     rec = {}
