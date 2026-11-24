@@ -61,19 +61,62 @@ pod_present if {
 # Containers across all three classes. Ephemeral containers carry no
 # probes/lifecycle but share the securityContext surface.
 all_containers := array.concat(
-	array.concat(
-		object.get(input.pod.spec, "containers", []),
-		object.get(input.pod.spec, "initContainers", []),
-	),
-	object.get(input.pod.spec, "ephemeralContainers", []),
+	array.concat(_container_list("containers"), _container_list("initContainers")),
+	_container_list("ephemeralContainers"),
 )
 
-probe_containers := array.concat(
-	object.get(input.pod.spec, "containers", []),
-	object.get(input.pod.spec, "initContainers", []),
-)
+probe_containers := array.concat(_container_list("containers"), _container_list("initContainers"))
 
-pod_sc := object.get(input.pod.spec, "securityContext", {})
+# A container list as the manifest states it. Missing, null or anything that is not a list reads as empty
+# here (array.concat on a string is an error, and every container rule then went silent); the fail-closed
+# rule below reports a manifest whose containers cannot be read.
+_container_list(field) := list if {
+	list := object.get(input.pod.spec, field, null)
+	is_array(list)
+} else := []
+
+default containers_readable := false
+
+containers_readable if {
+	main := object.get(input.pod.spec, "containers", null)
+	is_array(main)
+	count(main) > 0
+	every field in ["containers", "initContainers", "ephemeralContainers"] {
+		_list_of_objects(object.get(input.pod.spec, field, null))
+	}
+}
+
+_list_of_objects(list) if is_null(list)
+
+_list_of_objects(list) if {
+	is_array(list)
+	every c in list {
+		is_object(c)
+	}
+}
+
+# The pod securityContext when it is an object; anything else reads as empty and is reported below
+# (object.get on a string is an error, which silenced every rule that reads the security context).
+default pod_sc := {}
+
+pod_sc := sc if {
+	sc := input.pod.spec.securityContext
+	is_object(sc)
+}
+
+_unreadable_security_contexts contains "pod" if {
+	sc := input.pod.spec.securityContext
+	not is_null(sc)
+	not is_object(sc)
+}
+
+_unreadable_security_contexts contains sprintf("container %q", [object.get(c, "name", "?")]) if {
+	some c in all_containers
+	is_object(c)
+	sc := c.securityContext
+	not is_null(sc)
+	not is_object(sc)
+}
 
 # A switch that must stay off is off only as the boolean false or when unset. Any other value turns the
 # finding on: true, and also the strings "true" and "false" and numbers, which Kubernetes would reject.
@@ -97,12 +140,18 @@ baseline_violations contains msg if {
 	msg := "PSS baseline (fail-closed): no pod manifest supplied at input.pod — nothing was evaluated"
 }
 
-# A Pod and a workload's pod template both carry metadata, and the AppArmor annotations live there. A
-# manifest without it (absent, null or not an object) was not collected whole, so it cannot be cleared.
+# A pod has at least one container (the API server rejects one without), and each container is an object.
+# A manifest whose containers cannot be read has nothing the per-container controls could judge, so it is
+# reported instead of passing them by default. This is input handling, not a control of either profile.
 baseline_violations contains msg if {
 	pod_present
-	not is_object(object.get(input.pod, "metadata", null))
-	msg := "PSS baseline (fail-closed): input.pod.metadata is missing or not an object — the manifest is incomplete and its AppArmor annotations cannot be evaluated"
+	not containers_readable
+	msg := "PSS baseline (fail-closed): input.pod.spec.containers is not a non-empty list of container objects (or initContainers / ephemeralContainers is not a list of objects) — the containers were not evaluated"
+}
+
+baseline_violations contains msg if {
+	some where in _unreadable_security_contexts
+	msg := sprintf("PSS baseline (fail-closed): %s securityContext is not an object — its settings were not evaluated", [where])
 }
 
 # ── hostProcess (Windows) ────────────────────────────────────────────────────
@@ -230,16 +279,47 @@ baseline_violations contains msg if {
 	msg := sprintf("PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost", [object.get(c, "name", "?"), t])
 }
 
-# The annotation form (container.apparmor.security.beta.kubernetes.io/<container>), still honoured by the
-# kubelet: allowed values are runtime/default and localhost/*.
+# The annotation form, which the Baseline AppArmor control lists beside the field form:
+# metadata.annotations["container.apparmor.security.beta.kubernetes.io/*"], allowed values undefined / nil,
+# runtime/default and localhost/*. The standard does not require a pod to carry metadata or annotations,
+# so their absence (or null) is the allowed "undefined".
 baseline_violations contains msg if {
-	annotations := object.get(input.pod, ["metadata", "annotations"], {})
-	is_object(annotations)
-	some key, value in annotations
+	some key, value in _annotations
 	startswith(key, "container.apparmor.security.beta.kubernetes.io/")
 	not _apparmor_annotation_allowed(value)
 	msg := sprintf("PSS baseline (apparmor): annotation %s is %v, not runtime/default or localhost/*", [key, value])
 }
+
+# metadata, or its annotations, set to something that is not an object: the annotation form cannot be read,
+# so the AppArmor control cannot be cleared.
+baseline_violations contains msg if {
+	pod_present
+	not _annotations_readable
+	msg := "PSS baseline (apparmor): input.pod.metadata or its annotations is not an object — the AppArmor annotations cannot be evaluated"
+}
+
+default _annotations := {}
+
+_annotations := a if {
+	a := input.pod.metadata.annotations
+	is_object(a)
+}
+
+_annotations_readable if {
+	meta := object.get(input.pod, "metadata", null)
+	_object_or_null(meta)
+	_object_or_null(object.get(_as_object(meta), "annotations", null))
+}
+
+_object_or_null(x) if is_null(x)
+
+_object_or_null(x) if is_object(x)
+
+_as_object(x) := x if {
+	is_object(x)
+} else := {}
+
+_apparmor_annotation_allowed(value) if is_null(value)
 
 _apparmor_annotation_allowed(value) if value == "runtime/default"
 
