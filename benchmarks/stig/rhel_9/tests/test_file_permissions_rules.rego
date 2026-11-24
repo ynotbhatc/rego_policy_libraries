@@ -1682,6 +1682,10 @@ test_rhel_09_411070_pass_4 if {
 	data.stig.rhel_9.file_permissions.status_rhel_09_411070 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/false", "home": "/home/disauser", "home_exists": true, "home_gid": 100}]})
 }
 
+test_rhel_09_411070_pass_5 if {
+	data.stig.rhel_9.file_permissions.status_rhel_09_411070 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": "1002", "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": 1002}]})
+}
+
 test_rhel_09_653080_pass if {
 	data.stig.rhel_9.file_permissions.status_rhel_09_653080 == "Not_a_Finding" with input as green_fixture
 }
