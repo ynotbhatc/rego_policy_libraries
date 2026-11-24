@@ -165,7 +165,7 @@ measures_not_appropriate[measure] := justification if {
 	justification := trim_space(input.applicability[measure].justification)
 }
 
-# Logging. The Directive does not mention logs and neither text sets a one-year period. Implementing Regulation
+# Logging. The Directive itself does not mention logs and neither text sets a one-year period. Implementing Regulation
 # (EU) 2024/2690 Annex 3.2.5 (section 3, incident handling, Article 21(2)(b)) requires the entities it covers to
 # "maintain and back up logs for a predefined period". The check is therefore a defined retention period;
 # the earlier field minimum_1_year still counts, because a one-year minimum is a defined period.
@@ -214,7 +214,7 @@ violations contains msg if {
 
 violations contains msg if {
 	not _log_retention_defined
-	msg := "NIS2 Art.21(2)(b): No defined retention period for security logs (library criterion; the Directive does not mention logs)"
+	msg := "NIS2 Art.21(2)(b): No defined retention period for security logs (library criterion: Directive (EU) 2022/2555 itself does not mention logs; Implementing Regulation (EU) 2024/2690 Annex 3.2.5 requires the entities it covers to maintain and back up logs for a predefined period)"
 }
 
 # ── Article 21(2)(c) — Business Continuity ──────────────────────────────────
