@@ -40,7 +40,11 @@ _green_facts := {
 	"information_protection": {"backups": {"regular_backups": true, "tested_restoration": true, "secure_storage": true}},
 }
 
-_all_attested := {sid: true | some sid, _ in main.subcategories}
+# One attestation per attestation-basis subcategory (77). The 29 facts-basis ids carry none: the module
+# decides them from facts and documents a value supplied for them as "accepted and ignored", so an
+# all-pass input does not need one (round 2, audit 2026-11-24: the fixture used to attest all 106, and
+# removing an ignored attestation then looked like missing evidence that still passed).
+_all_attested := {sid: true | some sid, s in main.subcategories; s.basis == "attestation"}
 
 _green := object.union(_green_facts, {"nist_csf": {"subcategories": _all_attested}})
 
@@ -155,7 +159,7 @@ test_one_false_fact_fails_its_subcategory if {
 }
 
 test_attestation_for_facts_id_is_ignored if {
-	inp := json.patch(_green, [{"op": "replace", "path": "/nist_csf/subcategories/PR.AA-06", "value": false}])
+	inp := json.patch(_green, [{"op": "add", "path": "/nist_csf/subcategories/PR.AA-06", "value": false}])
 	r := main.compliance_report with input as inp
 	r.compliant == true
 }

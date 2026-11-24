@@ -917,3 +917,82 @@ test_report_with_every_fact_as_a_string_fails_every_fact_requirement if {
 		r.requirements[id].satisfied == false
 	}
 }
+
+# ── Round 2 (audit 2026-11-24): facts of the 11 retired Rev 2 checks ─────────────────────────────────
+# Rev 3 withdrew those slots, so the facts decide no requirement: false or absent leaves the report
+# compliant. A fact sent with the wrong type is still a collection error and is listed in
+# retired_rev2_input_findings, outside `violations`.
+
+_retired_facts := [[rev2, fact] | some rev2, facts in main.retired_rev2_facts; some fact in facts]
+
+_retired_rule(rule) := v if {
+	some pkg
+	v := data.nist.sp800_171[pkg][rule]
+	is_boolean(v)
+}
+
+_bad_for("boolean") := ["true", "false", "no", 0, 1, null, []]
+
+_bad_for("number") := ["5", "24", true, null, []]
+
+test_retired_facts_table_covers_every_retired_check if {
+	count(main.retired_rev2_facts) == 11
+	object.keys(main.retired_rev2_facts) == object.keys(main.retired_rev2_checks)
+	count(_retired_facts) == 33
+	count([f | some f in _retired_facts; f[1].type == "number"]) == 1
+}
+
+# the table names the facts the family rules really read: each rule is true on the green input and false
+# once any one of its listed facts is boolean false
+test_retired_facts_table_in_step_with_family_rules if {
+	every x in _retired_facts {
+		rule := main.retired_rev2_checks[x[0]].rule
+		_retired_rule(rule) == true with input as _green
+		_retired_rule(rule) == false with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": false}])
+	}
+}
+
+test_green_has_no_retired_input_findings if {
+	r := main.compliance_report with input as _green
+	r.compliant == true
+	r.retired_rev2_input_findings == []
+}
+
+test_retired_fact_false_or_absent_gates_nothing_and_is_not_a_finding if {
+	every x in _retired_facts {
+		r := main.compliance_report with input as json.remove(_green, [x[1].path])
+		r.compliant == true
+		r.retired_rev2_input_findings == []
+	}
+	bools := [x | some x in _retired_facts; x[1].type == "boolean"]
+	r2 := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": false} | some x in bools])
+	r2.compliant == true
+	r2.retired_rev2_input_findings == []
+}
+
+test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict if {
+	every x in _retired_facts {
+		every bad in _bad_for(x[1].type) {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
+			r.compliant == true
+			r.violation_count == 0
+			r.requirements_satisfied == 97
+			count(r.retired_rev2_input_findings) == 1
+			contains(r.retired_rev2_input_findings[0], sprintf("input.%s is not a %s (got %s)", [concat(".", x[1].path), x[1].type, type_name(bad)]))
+			contains(r.retired_rev2_input_findings[0], sprintf("retired Rev 2 check %s ", [x[0]]))
+		}
+	}
+}
+
+test_every_retired_fact_as_a_string_lists_every_one if {
+	r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": "true"} | some x in _retired_facts])
+	r.compliant == true
+	count(r.retired_rev2_input_findings) == 33
+}
+
+test_retired_input_findings_defined_without_input if {
+	r := main.compliance_report with input as {}
+	r.retired_rev2_input_findings == []
+	r2 := main.compliance_report with input as "x"
+	r2.retired_rev2_input_findings == []
+}
