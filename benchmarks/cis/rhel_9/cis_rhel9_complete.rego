@@ -5018,12 +5018,20 @@ section_inputs := {
 	"section_6_2_user_group": ["user_group"],
 }
 
-section_assessed(name) if {
-	some k in section_inputs[name]
-	input[k]
+# a section input counts as collected unless it is absent, null or false (null used to count as collected,
+# so a nulled section was reported as assessed while a dropped one was NOT ASSESSED)
+input_collected(k) if {
+	v := object.get(input, k, null)
+	v != null
+	v != false
 }
 
-missing_inputs := {name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}
+section_assessed(name) if {
+	some k in section_inputs[name]
+	input_collected(k)
+}
+
+missing_inputs := {name: [k | some k in section_inputs[name]; not input_collected(k)] | some name, _ in section_inputs}
 
 not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
 

@@ -108,13 +108,34 @@ compliant if {
 # sys.configurations rows, matched by lowercased name (the workbook spells names with mixed case)
 _cfg_rows(name) := [v | some k, v in input.sql.configurations; lower(k) == name]
 
+# a numeric catalog column (sys.configurations values, key_length): a JSON number only. Undefined for anything
+# else, so a string such as "0" is not evidence; raw input never reaches to_number (to_number(null) is 0 and
+# to_number(true) is 1, which read as a disabled and an enabled option).
+_n(v) := v if is_number(v)
+
+# the option was collected: at least one row, and both values of every row are numeric
+_cfg_collected(name) if {
+	rows := _cfg_rows(name)
+	count(rows) > 0
+	every v in rows {
+		is_number(_n(v.value_configured))
+		is_number(_n(v.value_in_use))
+	}
+}
+
+# the option was sent but is unreadable: a row whose values are not both numbers
+_cfg_bad(name) if {
+	count(_cfg_rows(name)) > 0
+	not _cfg_collected(name)
+}
+
 # both value_configured and value_in_use must equal want, in every row the collector supplied for that name
 _cfg_is(name, want) if {
 	rows := _cfg_rows(name)
 	count(rows) > 0
 	every v in rows {
-		to_number(v.value_configured) == want
-		to_number(v.value_in_use) == want
+		_n(v.value_configured) == want
+		_n(v.value_in_use) == want
 	}
 }
 
@@ -186,7 +207,7 @@ r_2_1 if {
 default e_2_1 := false
 
 e_2_1 if {
-	count(_cfg_rows("ad hoc distributed queries")) > 0
+	_cfg_collected("ad hoc distributed queries")
 }
 
 violations contains "2.1: evidence missing — sql.configurations['ad hoc distributed queries'] not collected" if {
@@ -205,6 +226,7 @@ default r_2_2 := false
 
 r_2_2 if {
 	_cfg_is("clr strict security", 1)
+	not _cfg_bad("clr enabled")
 }
 
 r_2_2 if {
@@ -215,10 +237,11 @@ default e_2_2 := false
 
 e_2_2 if {
 	_cfg_is("clr strict security", 1)
+	not _cfg_bad("clr enabled")
 }
 
 e_2_2 if {
-	count(_cfg_rows("clr enabled")) > 0
+	_cfg_collected("clr enabled")
 }
 
 violations contains "2.2: evidence missing — sql.configurations['clr enabled'] not collected" if {
@@ -242,7 +265,7 @@ r_2_3 if {
 default e_2_3 := false
 
 e_2_3 if {
-	count(_cfg_rows("cross db ownership chaining")) > 0
+	_cfg_collected("cross db ownership chaining")
 }
 
 violations contains "2.3: evidence missing — sql.configurations['cross db ownership chaining'] not collected" if {
@@ -266,7 +289,7 @@ r_2_4 if {
 default e_2_4 := false
 
 e_2_4 if {
-	count(_cfg_rows("database mail xps")) > 0
+	_cfg_collected("database mail xps")
 }
 
 violations contains "2.4: evidence missing — sql.configurations['database mail xps'] not collected" if {
@@ -290,7 +313,7 @@ r_2_5 if {
 default e_2_5 := false
 
 e_2_5 if {
-	count(_cfg_rows("ole automation procedures")) > 0
+	_cfg_collected("ole automation procedures")
 }
 
 violations contains "2.5: evidence missing — sql.configurations['ole automation procedures'] not collected" if {
@@ -314,7 +337,7 @@ r_2_6 if {
 default e_2_6 := false
 
 e_2_6 if {
-	count(_cfg_rows("remote access")) > 0
+	_cfg_collected("remote access")
 }
 
 violations contains "2.6: evidence missing — sql.configurations['remote access'] not collected" if {
@@ -347,7 +370,7 @@ e_2_7 if {
 
 e_2_7 if {
 	is_boolean(input.sql.is_clustered)
-	count(_cfg_rows("remote admin connections")) > 0
+	_cfg_collected("remote admin connections")
 }
 
 violations contains "2.7: evidence missing — sql.is_clustered / sql.configurations['remote admin connections'] not collected" if {
@@ -371,7 +394,7 @@ r_2_8 if {
 default e_2_8 := false
 
 e_2_8 if {
-	count(_cfg_rows("scan for startup procs")) > 0
+	_cfg_collected("scan for startup procs")
 }
 
 violations contains "2.8: evidence missing — sql.configurations['scan for startup procs'] not collected" if {
@@ -575,7 +598,7 @@ r_2_17 if {
 default e_2_17 := false
 
 e_2_17 if {
-	count(_cfg_rows("clr strict security")) > 0
+	_cfg_collected("clr strict security")
 }
 
 violations contains "2.17: evidence missing — sql.configurations['clr strict security'] not collected" if {
@@ -964,7 +987,7 @@ r_5_2 if {
 default e_5_2 := false
 
 e_5_2 if {
-	count(_cfg_rows("default trace enabled")) > 0
+	_cfg_collected("default trace enabled")
 }
 
 violations contains "5.2: evidence missing — sql.configurations['default trace enabled'] not collected" if {
@@ -1091,13 +1114,14 @@ violations contains "7.1: required value of 'Symmetric Key encryption algorithm'
 default r_7_2 := false
 
 r_7_2 if {
-	every k in input.sql.asymmetric_keys { to_number(k.key_length) >= 2048 }
+	every k in input.sql.asymmetric_keys { _n(k.key_length) >= 2048 }
 }
 
 default e_7_2 := false
 
 e_7_2 if {
 	is_array(input.sql.asymmetric_keys)
+	every k in input.sql.asymmetric_keys { is_number(_n(k.key_length)) }
 }
 
 violations contains "7.2: evidence missing — sql.asymmetric_keys not collected" if {

@@ -85,6 +85,11 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes.
+fnum(v) := v if is_number(v)
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -203,6 +208,12 @@ sudo_defaults_has(re) if {
 
 sudo_logfile if sudo_defaults_has(`(^|[\s,])logfile\s*=`)
 
+# sudo.logfile_exists is optional (the Defaults logfile line is the audited setting): absent or null it is not
+# read; when the collector sends it, it must be a boolean, so "false" or 0 is never taken for "the file exists"
+sudo_logfile_flag_collected if object.get(input, ["sudo", "logfile_exists"], null) == null
+
+sudo_logfile_flag_collected if is_boolean(input.sudo.logfile_exists)
+
 sudo_timeouts := [num(m[1]) |
 	some l in active_lines(input.sudo.sudoers_content)
 	regex.match(`^Defaults\b`, l)
@@ -258,6 +269,7 @@ default e_5_2_3 := false
 
 e_5_2_3 if {
 	text_collected(input.sudo.sudoers_content)
+	sudo_logfile_flag_collected
 }
 
 default p_5_2_3 := false

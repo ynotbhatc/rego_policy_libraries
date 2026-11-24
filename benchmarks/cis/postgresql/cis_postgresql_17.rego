@@ -229,13 +229,38 @@ _pgaudit_covers(classes, r) if {
 	not concat("", ["-", r]) in classes
 }
 
-_secdef(f) if f.prosecdef == true
+# a row of security_definer_functions counts as SECURITY DEFINER unless prosecdef says otherwise (false, "f",
+# "false"): a missing, null or unreadable prosecdef does not take the function off the list
+_not_secdef(f) if f.prosecdef == false
 
-_secdef(f) if lower(sprintf("%v", [f.prosecdef])) in {"t", "true"}
+_not_secdef(f) if {
+	is_string(f.prosecdef)
+	lower(trim_space(f.prosecdef)) in {"f", "false"}
+}
+
+# schema and name are tested inside this helper: under `not`, a missing f.schema or f.name would make the
+# whole expression undefined and drop the row, so the function would count as authorized
+_authorized_secdef(f) if {
+	is_string(f.schema)
+	is_string(f.name)
+	sprintf("%s.%s", [f.schema, f.name]) in _policy_list("authorized_security_definer_functions")
+}
 
 _unauthorized_secdef(f) if {
-	_secdef(f)
-	not sprintf("%s.%s", [f.schema, f.name]) in _policy_list("authorized_security_definer_functions")
+	not _not_secdef(f)
+	not _authorized_secdef(f)
+}
+
+# 5.5: a predefined role (pg_*) is exempt; every other row, a row without a name included, needs a numeric
+# connection limit other than -1
+_role_limit_ok(r) if {
+	is_string(r.name)
+	startswith(r.name, "pg_")
+}
+
+_role_limit_ok(r) if {
+	is_number(r.connection_limit)
+	r.connection_limit != -1
 }
 
 _approved_ciphers := {
@@ -612,10 +637,7 @@ missing contains {"id": "5.5", "field": "postgresql.roles"} if not _is_arr(["pos
 passed contains "5.5" if {
 	pg := input.postgresql
 	is_array(pg.roles)
-	every r in [r | some r in pg.roles; not startswith(r.name, "pg_")] {
-		is_number(r.connection_limit)
-		r.connection_limit != -1
-	}
+	every r in pg.roles { _role_limit_ok(r) }
 }
 
 # 5.6 (Manual)
@@ -672,6 +694,7 @@ passed contains "6.8" if {
 	pg := input.postgresql
 	_on(pg.ssl.enabled)
 	is_array(pg.authentication.pg_hba_entries)
+	every e in pg.authentication.pg_hba_entries { is_string(e.connection_type) }
 	count([e | some e in pg.authentication.pg_hba_entries; lower(e.connection_type) in {"host", "hostnossl"}]) == 0
 	count(pg.ssl.non_ssl_client_connections) == 0
 }

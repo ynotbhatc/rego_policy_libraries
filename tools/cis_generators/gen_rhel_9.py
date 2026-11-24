@@ -529,6 +529,11 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes.
+fnum(v) := v if is_number(v)
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -893,8 +898,8 @@ put("1.8.2", "disable-user-list", gdm(["gdm_disable_user_list", "gdm_disable_use
                                       {"gdm_disable_user_list": True, "gdm_disable_user_list_override_allowed": False},
                                       {"gdm_disable_user_list": False, "gdm_disable_user_list_override_allowed": False}))
 put("1.8.3", "screen lock", gdm(["gdm_idle_delay", "gdm_lock_delay", "gdm_lock_override_allowed"],
-                                [f"num({IS}gdm_idle_delay) > 0", f"num({IS}gdm_idle_delay) <= 900",
-                                 f"num({IS}gdm_lock_delay) >= 0", f"num({IS}gdm_lock_delay) <= 5",
+                                [f"fnum({IS}gdm_idle_delay) > 0", f"fnum({IS}gdm_idle_delay) <= 900",
+                                 f"fnum({IS}gdm_lock_delay) >= 0", f"fnum({IS}gdm_lock_delay) <= 5",
                                  IS + "gdm_lock_override_allowed == false"],
                                 {"gdm_idle_delay": 900, "gdm_lock_delay": 5, "gdm_lock_override_allowed": False},
                                 {"gdm_idle_delay": 0, "gdm_lock_delay": 5, "gdm_lock_override_allowed": False}))
@@ -984,8 +989,8 @@ put("2.3.1", "time synchronization is in use", alt(boolean(["chronyd", "installe
                                                    ['is_boolean(input.packages.chrony)'], ['input.packages.chrony == true'],
                                                    [["packages", "chrony"]], "packages.chrony"))
 put("2.3.2", "chrony is configured", custom(
-    [f'{CH}servers_configured != null', f'{CH}pools_configured != null'],
-    [[f'num({CH}servers_configured) > 0'], [f'num({CH}pools_configured) > 0']],
+    [f'is_number({CH}servers_configured)', f'is_number({CH}pools_configured)'],
+    [[f'fnum({CH}servers_configured) > 0'], [f'fnum({CH}pools_configured) > 0']],
     "chronyd.servers_configured/pools_configured",
     {"chronyd": {"servers_configured": 0, "pools_configured": 1}},
     {"chronyd": {"servers_configured": 0, "pools_configured": 0}},
@@ -1218,7 +1223,8 @@ put("5.2.4", "use pty", custom([f'text_collected({ref(SU)})'],
                                dotted(SU), nest(SU, "Defaults use_pty\nroot ALL=(ALL) ALL"),
                                nest(SU, "Defaults !use_pty\nroot ALL=(ALL) ALL"), reads=[SU]))
 put("5.2.5", "ensure sudo log file exists", custom(
-    [f'text_collected({ref(SU)})'], [['sudo_logfile', f'not {SD}logfile_exists == false']], "sudo.sudoers_content/logfile_exists",
+    [f'text_collected({ref(SU)})', 'sudo_logfile_flag_collected'], [['sudo_logfile', f'not {SD}logfile_exists == false']],
+    "sudo.sudoers_content/logfile_exists",
     {"sudo": {"sudoers_content": 'Defaults logfile="/var/log/sudo.log"', "logfile_exists": True}},
     {"sudo": {"sudoers_content": "# Defaults logfile=/var/log/sudo.log"}}, reads=[SU, ["sudo", "logfile_exists"]]))
 put("5.2.6", "password for escalation", text_has(SU, "(^|[\\s:,])NOPASSWD\\s*:", False,
@@ -1361,8 +1367,8 @@ def shadow_rule(defs_path, defs_cond, user_cond, good_def, bad_def, good_user):
     """login.defs default AND every user that has a password."""
     dp = ref(defs_path)
     return custom(
-        [f'{dp} != null', f'is_array({ref(SH)})', f'count({ref(SH)}) > 0'],
-        [[f'v := num({dp})'] + defs_cond + [f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ {user_cond} }}']],
+        [f'is_number({dp})', f'is_array({ref(SH)})', f'count({ref(SH)}) > 0', f'every u in {ref(SH)} {{ is_boolean(u.has_password) }}'],
+        [[f'v := fnum({dp})'] + defs_cond + [f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ {user_cond} }}']],
         f"{dotted(defs_path)}/user_group.shadow_entries",
         merge(nest(defs_path, good_def), nest(SH, [dict({"user": "alice", "has_password": True}, **good_user)])),
         merge(nest(defs_path, bad_def), nest(SH, [dict({"user": "alice", "has_password": True}, **good_user)])),
@@ -1370,19 +1376,19 @@ def shadow_rule(defs_path, defs_cond, user_cond, good_def, bad_def, good_user):
 
 
 put("5.4.1.1", "password expiration is", shadow_rule(["pam", "pass_max_days"], ['v >= 1', 'v <= 365'],
-                                                     'num(u.max_days) >= 1; num(u.max_days) <= 365', 365, 99999, {"max_days": 365}))
+                                                     'fnum(u.max_days) >= 1; fnum(u.max_days) <= 365', 365, 99999, {"max_days": 365}))
 put("5.4.1.2", "minimum password days", attest("minimum_password_days_reviewed"))
-put("5.4.1.3", "expiration warning days", shadow_rule(["pam", "pass_warn_age"], ['v >= 7'], 'num(u.warn_days) >= 7', 7, 3,
+put("5.4.1.3", "expiration warning days", shadow_rule(["pam", "pass_warn_age"], ['v >= 7'], 'fnum(u.warn_days) >= 7', 7, 3,
                                                       {"warn_days": 7}))
 put("5.4.1.4", "ensure strong password hashing algorithm", custom(
     [f'text_collected({PA}encrypt_method)'], [[f'upper({PA}encrypt_method) in {{"SHA512", "YESCRYPT"}}']], "pam.encrypt_method",
     {"pam": {"encrypt_method": "SHA512"}}, {"pam": {"encrypt_method": "MD5"}}, reads=[["pam", "encrypt_method"]]))
 # INACTIVE: -1 (and any negative value) disables the lock and fails, like a value over 45 (decisions 2026-10-19)
 put("5.4.1.5", "inactive password lock", shadow_rule(["pam", "inactive_days"], ['v >= 0', 'v <= 45'],
-                                                     'num(u.inactive) >= 0; num(u.inactive) <= 45', 30, -1, {"inactive": 30}))
+                                                     'fnum(u.inactive) >= 0; fnum(u.inactive) <= 45', 30, -1, {"inactive": 30}))
 put("5.4.1.6", "last password change date", custom(
-    [f'is_array({ref(SH)})', f'count({ref(SH)}) > 0'],
-    [[f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ num(u.last_change) <= today_days }}']], dotted(SH),
+    [f'is_array({ref(SH)})', f'count({ref(SH)}) > 0', f'every u in {ref(SH)} {{ is_boolean(u.has_password) }}'],
+    [[f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ fnum(u.last_change) <= today_days }}']], dotted(SH),
     nest(SH, [{"user": "alice", "has_password": True, "last_change": 19000}]),
     nest(SH, [{"user": "alice", "has_password": True, "last_change": 9999999}]), reads=[SH]))
 UG = "input.user_group."
@@ -1432,8 +1438,8 @@ put("5.4.2.8", "without a valid login shell are locked", custom(
 put("5.4.3.1", "nologin is not listed", text_has(["user_group", "shells_content"], "/nologin\\b", False,
                                                   "/bin/bash\n/bin/sh", "/bin/bash\n/usr/sbin/nologin"))
 put("5.4.3.2", "shell timeout", custom(
-    [f'{PA}tmout != null', f'is_boolean({PA}tmout_readonly_exported)'],
-    [[f'num({PA}tmout) > 0', f'num({PA}tmout) <= 900', f'{PA}tmout_readonly_exported == true']],
+    [f'is_number({PA}tmout)', f'is_boolean({PA}tmout_readonly_exported)'],
+    [[f'fnum({PA}tmout) > 0', f'fnum({PA}tmout) <= 900', f'{PA}tmout_readonly_exported == true']],
     "pam.tmout/tmout_readonly_exported", {"pam": {"tmout": 900, "tmout_readonly_exported": True}},
     {"pam": {"tmout": 0, "tmout_readonly_exported": True}}, {"pam": {"tmout": 900}},
     reads=[["pam", "tmout"], ["pam", "tmout_readonly_exported"]]))
@@ -1744,7 +1750,7 @@ put("7.1.10", "access to /etc/security/opasswd", _op)
 def sweep_ev(lists, counts):
     """ev_alts: the offender lists collected, and either a sweep that finished or something found"""
     base = [f'is_array({x})' for x in lists]
-    finished = [f'not {c.rsplit(".", 1)[0]}.truncated == true' for c in counts]
+    finished = [f'object.get({c.rsplit(".", 1)[0]}, "truncated", false) == false' for c in counts]
     found = [[f'count({x}) > 0'] for x in lists] + [[f'is_number(object.get({c.rsplit(".", 1)[0]}, "count", 0))',
                                                       f'object.get({c.rsplit(".", 1)[0]}, "count", 0) > 0'] for c in counts]
     return [base + finished] + [base + f for f in found]
@@ -1855,6 +1861,13 @@ selinux_config_mode := input.ansible_facts.ansible_selinux.config_mode if {
     "services": r'''
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
+
+# sent but not a string (a number, a boolean, a list): unreadable, so not proof of loopback-only
+mta_interfaces_open if {
+	v := object.get(input, ["mta", "inet_interfaces"], null)
+	v != null
+	not is_string(v)
+}
 
 # Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
 # 0.0.0.0 is the wildcard address (all interfaces), not loopback.
@@ -1979,6 +1992,12 @@ sudo_defaults_has(re) if {
 }
 
 sudo_logfile if sudo_defaults_has(`(^|[\s,])logfile\s*=`)
+
+# sudo.logfile_exists is optional (the Defaults logfile line is the audited setting): absent or null it is not
+# read; when the collector sends it, it must be a boolean, so "false" or 0 is never taken for "the file exists"
+sudo_logfile_flag_collected if object.get(input, ["sudo", "logfile_exists"], null) == null
+
+sudo_logfile_flag_collected if is_boolean(input.sudo.logfile_exists)
 
 sudo_timeouts := [num(m[1]) |
 	some l in active_lines(input.sudo.sudoers_content)
@@ -2925,12 +2944,20 @@ failing_ids := {{split(v, ":")[0] | some v in all_violations}}
 
 section_inputs := {json.dumps(sec_inputs, indent=1)}
 
-section_assessed(name) if {{
-	some k in section_inputs[name]
-	input[k]
+# a section input counts as collected unless it is absent, null or false (null used to count as collected,
+# so a nulled section was reported as assessed while a dropped one was NOT ASSESSED)
+input_collected(k) if {{
+	v := object.get(input, k, null)
+	v != null
+	v != false
 }}
 
-missing_inputs := {{name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}}
+section_assessed(name) if {{
+	some k in section_inputs[name]
+	input_collected(k)
+}}
+
+missing_inputs := {{name: [k | some k in section_inputs[name]; not input_collected(k)] | some name, _ in section_inputs}}
 
 not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
 

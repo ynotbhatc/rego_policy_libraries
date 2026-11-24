@@ -220,8 +220,24 @@ test_2_7_not_applicable_on_cluster if {
 }
 
 test_config_names_match_case_insensitively if {
-	ok := json.patch(green, [{"op": "remove", "path": "/sql/configurations/database mail xps"}, {"op": "add", "path": "/sql/configurations/Database Mail XPs", "value": {"value_configured": "0", "value_in_use": "0"}}])
+	ok := json.patch(green, [{"op": "remove", "path": "/sql/configurations/database mail xps"}, {"op": "add", "path": "/sql/configurations/Database Mail XPs", "value": {"value_configured": 0, "value_in_use": 0}}])
 	b.compliant with input as ok
+}
+
+test_config_values_must_be_numbers if {
+	every bad in ["0", "1", "abc", null, true, false, [0]] {
+		inp := json.patch(green, [{"op": "replace", "path": "/sql/configurations/remote access/value_in_use", "value": bad}])
+		not b.compliant with input as inp
+		"2.6: evidence missing — sql.configurations['remote access'] not collected" in b.violations with input as inp
+	}
+}
+
+test_7_2_key_length_must_be_a_number if {
+	every bad in ["2048", "4096", "abc", null, true] {
+		inp := json.patch(green, [{"op": "replace", "path": "/sql/asymmetric_keys/0/key_length", "value": bad}])
+		not b.compliant with input as inp
+		"7.2: evidence missing — sql.asymmetric_keys not collected" in b.violations with input as inp
+	}
 }
 
 test_5_1_unlimited_error_logs_passes if {

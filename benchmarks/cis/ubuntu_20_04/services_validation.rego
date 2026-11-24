@@ -52,31 +52,31 @@ autofs_violations contains violation if {
 
 # CIS 2.1.1: Time synchronization
 time_sync_violations contains violation if {
-	not input.time_synchronization.has_active_service
+	not input.time_synchronization.has_active_service == true
 	violation := "CIS 2.1.1: No time synchronization service is active (chrony, systemd-timesyncd, or ntp)"
 }
 
 time_sync_violations contains violation if {
-	not input.time_synchronization.compliant
+	not input.time_synchronization.compliant == true
 	violation := "CIS 2.1.1: Time synchronization not properly configured"
 }
 
 # systemd-timesyncd (Ubuntu default) or chrony
 time_sync_violations contains violation if {
 	input.time_synchronization.active_service == "systemd-timesyncd"
-	not input.timesyncd.service_active
+	not input.timesyncd.service_active == true
 	violation := "CIS 2.1.1: systemd-timesyncd is selected but not active"
 }
 
 time_sync_violations contains violation if {
 	input.time_synchronization.active_service == "chronyd"
-	not input.chronyd.service_active
+	not input.chronyd.service_active == true
 	violation := "CIS 2.1.1: chronyd is selected but not active"
 }
 
 time_sync_violations contains violation if {
 	input.time_synchronization.active_service == "chronyd"
-	not input.chronyd.has_time_sources
+	not input.chronyd.has_time_sources == true
 	violation := "CIS 2.1.1: chronyd has no time sources configured"
 }
 

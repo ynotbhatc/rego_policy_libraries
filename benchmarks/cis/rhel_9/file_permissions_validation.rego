@@ -85,6 +85,11 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes.
+fnum(v) := v if is_number(v)
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -457,7 +462,7 @@ default e_7_1_11 := false
 e_7_1_11 if {
 	is_array(input.world_writable.files)
 	is_array(input.sticky_bit.world_writable_without_sticky)
-	not input.world_writable.truncated == true
+	object.get(input.world_writable, "truncated", false) == false
 }
 
 e_7_1_11 if {
@@ -501,8 +506,8 @@ default e_7_1_12 := false
 e_7_1_12 if {
 	is_array(input.unowned_files.files)
 	is_array(input.ungrouped_files.files)
-	not input.unowned_files.truncated == true
-	not input.ungrouped_files.truncated == true
+	object.get(input.unowned_files, "truncated", false) == false
+	object.get(input.ungrouped_files, "truncated", false) == false
 }
 
 e_7_1_12 if {

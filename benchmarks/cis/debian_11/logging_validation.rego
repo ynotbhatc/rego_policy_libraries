@@ -67,20 +67,20 @@ log_file_violations contains msg if {
 
 # CIS 4.2.1.1: rsyslog installed
 rsyslog_violations contains msg if {
-	not input.rsyslog.installed
+	not input.rsyslog.installed == true
 	msg := "CIS 4.2.1.1: rsyslog is not installed"
 }
 
 # CIS 4.2.1.2: rsyslog service enabled and active
 rsyslog_violations contains msg if {
 	input.rsyslog.installed
-	not input.rsyslog.service_active
+	not input.rsyslog.service_active == true
 	msg := "CIS 4.2.1.2: rsyslog service is not active"
 }
 
 rsyslog_violations contains msg if {
 	input.rsyslog.installed
-	not input.rsyslog.service_enabled
+	not input.rsyslog.service_enabled == true
 	msg := "CIS 4.2.1.2: rsyslog service is not enabled"
 }
 
@@ -116,7 +116,7 @@ rsyslog_violations contains msg if {
 
 # CIS 4.2.1.6: Remote logging (conditional)
 rsyslog_violations contains msg if {
-	not input.rsyslog.remote_logging_configured
+	not input.rsyslog.remote_logging_configured == true
 	input.require_remote_logging == true
 	msg := "CIS 4.2.1.6: rsyslog not configured to send logs to remote host"
 }
@@ -135,7 +135,7 @@ journald_violations contains msg if {
 
 # CIS 4.2.2.3: systemd-journald active
 journald_violations contains msg if {
-	not input.journald.service_active
+	not input.journald.service_active == true
 	msg := "CIS 4.2.2.3: systemd-journald service is not active"
 }
 
@@ -160,7 +160,7 @@ log_file_violations contains msg if {
 
 # logrotate installed
 rsyslog_violations contains msg if {
-	not input.logrotate.installed
+	not input.logrotate.installed == true
 	msg := "CIS 4.2.x: logrotate is not installed (logs may fill disk)"
 }
 

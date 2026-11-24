@@ -30,12 +30,40 @@ package stig.oracle_database_19c.core
 
 import rego.v1
 
+# a numeric value as Oracle reports it: a number, or a string holding a decimal number ("3", "0.0034").
+# Undefined for anything else (UNLIMITED, DEFAULT, null, a boolean): to_number(null) is 0 and to_number(true)
+# is 1, so raw input is never passed to to_number.
+_num(v) := v if is_number(v)
+
+_num(v) := to_number(trim_space(v)) if {
+	is_string(v)
+	regex.match(`^\s*-?[0-9]+(\.[0-9]+)?\s*$`, v)
+}
+
+# a query result that lists names (policies, files): an array whose every member is a non-empty string.
+# count() of a string is its length, so a list is never counted before it is known to be one.
+_named_list(v) if {
+	is_array(v)
+	every s in v {
+		is_string(s)
+		trim_space(s) != ""
+	}
+}
+
+# a profile limit that is set: a number, or a string other than NULL / DEFAULT / empty
+_limit_set(v) if is_number(v)
+
+_limit_set(v) if {
+	is_string(v)
+	not upper(trim_space(v)) in {"NULL", "DEFAULT", ""}
+}
+
 # ── profile helpers: every profile the collector reports must satisfy the limit (DEFAULT must be
 # resolved by the collector to the DEFAULT profile's value; UNLIMITED fails numeric comparisons) ──
 profiles_every_le(resource, max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) <= max
+		_num(p[resource]) <= max
 	}
 }
 
@@ -49,14 +77,14 @@ profiles_every_eq(resource, val) if {
 profiles_every_set(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		not upper(p[resource]) in {"NULL", "DEFAULT", ""}
+		_limit_set(p[resource])
 	}
 }
 
 profiles_every_numeric(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) >= 0
+		_num(p[resource]) >= 0
 	}
 }
 
@@ -64,16 +92,18 @@ profiles_every_numeric(resource) if {
 profiles_every_effective_life_le(max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p.PASSWORD_LIFE_TIME) + to_number(p.PASSWORD_GRACE_TIME) <= max
+		_num(p.PASSWORD_LIFE_TIME) + _num(p.PASSWORD_GRACE_TIME) <= max
 	}
 }
 
 # standard auditing on, or at least one unified audit policy enabled
 audit_enabled if {
-	lower(input.oracle.parameters.audit_trail) != "none"
+	is_string(input.oracle.parameters.audit_trail)
+	not lower(trim_space(input.oracle.parameters.audit_trail)) in {"none", ""}
 }
 
 audit_enabled if {
+	_named_list(input.oracle.unified_audit_policies_enabled)
 	count(input.oracle.unified_audit_policies_enabled) > 0
 }
 
@@ -117,7 +147,7 @@ status_r_o19c_00_000200 := "Open" if not r_o19c_00_000200
 default r_o19c_00_000300 := false
 
 r_o19c_00_000300 if {
-	to_number(input.oracle.parameters.max_idle_time) > 0
+	_num(input.oracle.parameters.max_idle_time) > 0
 }
 
 finding_r_o19c_00_000300 := {
@@ -496,6 +526,7 @@ status_r_o19c_00_008100 := "Open" if not r_o19c_00_008100
 default r_o19c_00_008200 := false
 
 r_o19c_00_008200 if {
+	is_array(input.oracle.unauthorized_object_owners)
 	count(input.oracle.unauthorized_object_owners) == 0
 }
 
@@ -514,6 +545,7 @@ status_r_o19c_00_008200 := "Open" if not r_o19c_00_008200
 default r_o19c_00_008300 := false
 
 r_o19c_00_008300 if {
+	is_array(input.oracle.direct_admin_privilege_grantees)
 	count(input.oracle.direct_admin_privilege_grantees) == 0
 }
 
@@ -568,6 +600,7 @@ status_r_o19c_00_008600 := "Open" if not r_o19c_00_008600
 default r_o19c_00_008700 := false
 
 r_o19c_00_008700 if {
+	is_array(input.oracle.unauthorized_db_links)
 	count(input.oracle.unauthorized_db_links) == 0
 }
 
@@ -586,6 +619,7 @@ status_r_o19c_00_008700 := "Open" if not r_o19c_00_008700
 default r_o19c_00_009000 := false
 
 r_o19c_00_009000 if {
+	is_array(input.oracle.grantable_privileges_non_dba)
 	count(input.oracle.grantable_privileges_non_dba) == 0
 }
 
@@ -658,6 +692,7 @@ status_r_o19c_00_009400 := "Open" if not r_o19c_00_009400
 default r_o19c_00_009500 := false
 
 r_o19c_00_009500 if {
+	is_array(input.oracle.unauthorized_admin_option_system_privileges)
 	count(input.oracle.unauthorized_admin_option_system_privileges) == 0
 }
 
@@ -676,6 +711,7 @@ status_r_o19c_00_009500 := "Open" if not r_o19c_00_009500
 default r_o19c_00_009600 := false
 
 r_o19c_00_009600 if {
+	is_array(input.oracle.public_system_privileges)
 	count(input.oracle.public_system_privileges) == 0
 }
 
@@ -694,6 +730,7 @@ status_r_o19c_00_009600 := "Open" if not r_o19c_00_009600
 default r_o19c_00_009700 := false
 
 r_o19c_00_009700 if {
+	is_array(input.oracle.unauthorized_admin_option_roles)
 	count(input.oracle.unauthorized_admin_option_roles) == 0
 }
 
@@ -712,6 +749,7 @@ status_r_o19c_00_009700 := "Open" if not r_o19c_00_009700
 default r_o19c_00_009800 := false
 
 r_o19c_00_009800 if {
+	is_array(input.oracle.unauthorized_public_object_privileges)
 	count(input.oracle.unauthorized_public_object_privileges) == 0
 }
 
@@ -748,6 +786,7 @@ status_r_o19c_00_009900 := "Open" if not r_o19c_00_009900
 default r_o19c_00_010000 := false
 
 r_o19c_00_010000 if {
+	is_array(input.oracle.public_granted_roles)
 	count(input.oracle.public_granted_roles) == 0
 }
 
@@ -766,6 +805,7 @@ status_r_o19c_00_010000 := "Open" if not r_o19c_00_010000
 default r_o19c_00_010100 := false
 
 r_o19c_00_010100 if {
+	is_array(input.oracle.unauthorized_default_admin_roles)
 	count(input.oracle.unauthorized_default_admin_roles) == 0
 }
 
@@ -896,6 +936,7 @@ r_o19c_00_011300 if {
 }
 
 r_o19c_00_011300 if {
+	_named_list(input.oracle.unified_audit_sys_policies)
 	count(input.oracle.unified_audit_sys_policies) > 0
 }
 
@@ -991,6 +1032,7 @@ status_r_o19c_00_011800 := "Open" if not r_o19c_00_011800
 default r_o19c_00_011900 := false
 
 r_o19c_00_011900 if {
+	is_array(input.oracle.users_with_default_password)
 	count(input.oracle.users_with_default_password) == 0
 }
 
@@ -1117,6 +1159,7 @@ status_r_o19c_00_012500 := "Open" if not r_o19c_00_012500
 default r_o19c_00_012900 := false
 
 r_o19c_00_012900 if {
+	is_array(input.oracle.sample_schemas_present)
 	count(input.oracle.sample_schemas_present) == 0
 }
 
@@ -1135,6 +1178,7 @@ status_r_o19c_00_012900 := "Open" if not r_o19c_00_012900
 default r_o19c_00_013000 := false
 
 r_o19c_00_013000 if {
+	is_array(input.oracle.unused_components_installed)
 	count(input.oracle.unused_components_installed) == 0
 }
 
@@ -1153,6 +1197,7 @@ status_r_o19c_00_013000 := "Open" if not r_o19c_00_013000
 default r_o19c_00_013100 := false
 
 r_o19c_00_013100 if {
+	is_array(input.oracle.unused_integrated_options_enabled)
 	count(input.oracle.unused_integrated_options_enabled) == 0
 }
 
@@ -1799,6 +1844,7 @@ status_r_o19c_00_020400 := "Open" if not r_o19c_00_020400
 default r_o19c_00_020500 := false
 
 r_o19c_00_020500 if {
+	_named_list(input.oracle.control_files)
 	count(input.oracle.control_files) >= 3
 }
 
@@ -1817,8 +1863,12 @@ status_r_o19c_00_020500 := "Open" if not r_o19c_00_020500
 default r_o19c_00_020600 := false
 
 r_o19c_00_020600 if {
+	is_array(input.oracle.redo_log_groups)
 	count(input.oracle.redo_log_groups) >= 3
-	every g in input.oracle.redo_log_groups { count(g.members) >= 2 }
+	every g in input.oracle.redo_log_groups {
+		_named_list(g.members)
+		count(g.members) >= 2
+	}
 }
 
 finding_r_o19c_00_020600 := {

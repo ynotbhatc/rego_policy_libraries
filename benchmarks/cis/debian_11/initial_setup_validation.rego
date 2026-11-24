@@ -81,19 +81,19 @@ violations contains msg if {
 
 # CIS 1.3: Filesystem Integrity Checking (AIDE)
 violations contains msg if {
-	not input.initial_setup.aide_installed
+	not input.initial_setup.aide_installed == true
 	msg := "CIS 1.3.1: AIDE is not installed"
 }
 
 violations contains msg if {
 	input.initial_setup.aide_installed
-	not input.initial_setup.aide_cron_configured
+	not input.initial_setup.aide_cron_configured == true
 	msg := "CIS 1.3.2: AIDE is not configured to run on a schedule (cron job missing)"
 }
 
 # CIS 1.4: Secure Boot Settings (GRUB)
 violations contains msg if {
-	not input.initial_setup.grub_password_configured
+	not input.initial_setup.grub_password_configured == true
 	msg := "CIS 1.4.1: GRUB boot loader password is not configured"
 }
 
@@ -103,7 +103,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.initial_setup.grub_owner_root
+	not input.initial_setup.grub_owner_root == true
 	msg := "CIS 1.4.2: GRUB configuration file is not owned by root"
 }
 
@@ -114,7 +114,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.initial_setup.aslr_enabled
+	not input.initial_setup.aslr_enabled == true
 	msg := "CIS 1.5.2: Address Space Layout Randomization (ASLR) is not enabled"
 }
 
@@ -124,13 +124,13 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.initial_setup.ptrace_scope_restricted
+	not input.initial_setup.ptrace_scope_restricted == true
 	msg := "CIS 1.5.4: ptrace scope is not restricted (kernel.yama.ptrace_scope should be >= 1)"
 }
 
 # CIS 1.7: Command Line Warning Banners
 violations contains msg if {
-	not input.initial_setup.motd_exists
+	not input.initial_setup.motd_exists == true
 	msg := "CIS 1.7.1: /etc/motd does not exist"
 }
 
@@ -146,7 +146,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.initial_setup.issue_exists
+	not input.initial_setup.issue_exists == true
 	msg := "CIS 1.7.2: /etc/issue does not exist"
 }
 
@@ -162,7 +162,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.initial_setup.issue_net_exists
+	not input.initial_setup.issue_net_exists == true
 	msg := "CIS 1.7.3: /etc/issue.net does not exist"
 }
 
@@ -196,21 +196,21 @@ violations contains msg if {
 violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.server_environment
-	not input.initial_setup.gui_required
+	not input.initial_setup.gui_required == true
 	msg := "CIS 1.8.1: GNOME Display Manager (GDM) installed on server without GUI requirement"
 }
 
 violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.gui_required
-	not input.initial_setup.gdm_banner_configured
+	not input.initial_setup.gdm_banner_configured == true
 	msg := "CIS 1.8.2: GDM login banner is not configured"
 }
 
 violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.gui_required
-	not input.initial_setup.gdm_screen_lock_enabled
+	not input.initial_setup.gdm_screen_lock_enabled == true
 	msg := "CIS 1.8.3: GDM automatic screen lock is not enabled"
 }
 

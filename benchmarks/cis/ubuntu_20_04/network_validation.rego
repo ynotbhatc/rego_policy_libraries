@@ -89,13 +89,13 @@ sysctl_violations contains msg if {
 # CIS 3.1.1: IP forwarding disabled
 ip_forwarding_violations contains msg if {
 	input.ip_forwarding.ipv4_forwarding != 0
-	not input.ip_forwarding.ipv4_compliant
+	not input.ip_forwarding.ipv4_compliant == true
 	msg := sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv4_forwarding])
 }
 
 ip_forwarding_violations contains msg if {
 	input.ip_forwarding.ipv6_forwarding != 0
-	not input.ip_forwarding.ipv6_compliant
+	not input.ip_forwarding.ipv6_compliant == true
 	msg := sprintf("CIS 3.1.1: IPv6 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv6_forwarding])
 }
 
@@ -142,7 +142,7 @@ sysctl_violations contains msg if {
 # CIS 3.3.1: IPv6 disabled if required
 ipv6_violations contains msg if {
 	input.require_ipv6_disabled == true
-	not input.ipv6.disabled
+	not input.ipv6.disabled == true
 	is_number(input.ipv6.address_count)
 	input.ipv6.address_count > 0
 	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %s, addresses: %d)", [input.ipv6.status, input.ipv6.address_count])
@@ -150,14 +150,14 @@ ipv6_violations contains msg if {
 
 ipv6_violations contains msg if {
 	input.require_ipv6_disabled == true
-	not input.ipv6.disabled
+	not input.ipv6.disabled == true
 	not is_number(object.get(input, ["ipv6", "address_count"], 0))
 	msg := "CIS 3.3.1: evidence missing — ipv6.address_count is not a number"
 }
 
 # CIS 3.2.9: IPv6 router advertisements disabled
 ipv6_violations contains msg if {
-	not input.ipv6.disabled
+	not input.ipv6.disabled == true
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "ipv6.conf.")
 	contains(param.parameter, ".accept_ra")
@@ -174,13 +174,13 @@ network_interface_violations contains msg if {
 
 network_interface_violations contains msg if {
 	input.wireless_interfaces
-	not input.wireless_interfaces.compliant
+	not input.wireless_interfaces.compliant == true
 	msg := sprintf("CIS 3.3.2: %v wireless interfaces found on server (should have 0)", [object.get(input, ["wireless_interfaces", "count"], "unknown number of")])
 }
 
 # CIS 3.5.x: Firewall (Ubuntu uses ufw or nftables)
 network_interface_violations contains msg if {
-	not input.firewall.active
+	not input.firewall.active == true
 	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [object.get(input, ["firewall", "type"], "unknown")])
 }
 
@@ -203,7 +203,7 @@ network_interface_violations contains msg if {
 risk_level := "critical" if {
 	input.ip_forwarding.ipv4_forwarding != 0
 } else := "critical" if {
-	not input.firewall.active
+	not input.firewall.active == true
 } else := "high" if {
 	is_number(input.sysctl_parameters.non_compliant_count)
 	input.sysctl_parameters.non_compliant_count > 5

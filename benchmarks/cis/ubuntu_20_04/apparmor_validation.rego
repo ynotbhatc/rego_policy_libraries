@@ -34,18 +34,18 @@ violations := array.concat(
 
 # CIS 1.6.1.1: AppArmor must be present
 install_violations contains msg if {
-	not input.apparmor.installed
+	not input.apparmor.installed == true
 	msg := "CIS 1.6.1.1: AppArmor is not installed"
 }
 
 install_violations contains msg if {
-	not input.apparmor.utils_installed
+	not input.apparmor.utils_installed == true
 	msg := "CIS 1.6.1.1: apparmor-utils is not installed"
 }
 
 # CIS 1.6.1.2: AppArmor must be turned on in the bootloader configuration
 service_violations contains msg if {
-	not input.apparmor.bootloader_enabled
+	not input.apparmor.bootloader_enabled == true
 	msg := "CIS 1.6.1.2: AppArmor is not enabled in bootloader (apparmor=1 security=apparmor missing from GRUB_CMDLINE_LINUX)"
 }
 
@@ -103,12 +103,12 @@ profile_violations contains msg if {
 
 # AppArmor service must be active
 service_violations contains msg if {
-	not input.apparmor.service_active
+	not input.apparmor.service_active == true
 	msg := "CIS 1.6.1.2: AppArmor service is not active"
 }
 
 service_violations contains msg if {
-	not input.apparmor.service_enabled
+	not input.apparmor.service_enabled == true
 	msg := "CIS 1.6.1.2: AppArmor service is not enabled"
 }
 

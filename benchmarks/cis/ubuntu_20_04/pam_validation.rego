@@ -99,7 +99,7 @@ pwquality_violations contains msg if {
 
 # CIS 5.4.2: checked condition — lockout for failed password attempts
 faillock_violations contains msg if {
-	not input.pam.faillock_configured
+	not input.pam.faillock_configured == true
 	msg := "CIS 5.4.2: pam_faillock (or pam_tally2) not configured for failed password lockout"
 }
 
@@ -132,7 +132,7 @@ faillock_violations contains msg if {
 
 # CIS 5.4.3: password reuse must be limited to named principals
 faillock_violations contains msg if {
-	not input.pam.remember_configured
+	not input.pam.remember_configured == true
 	msg := "CIS 5.4.3: Password history (remember) not configured in PAM"
 }
 
@@ -230,7 +230,7 @@ account_violations contains msg if {
 
 # TMOUT for idle session timeout
 account_violations contains msg if {
-	not input.pam.tmout_configured
+	not input.pam.tmout_configured == true
 	msg := "CIS 5.5.x: TMOUT is not configured for automatic session timeout"
 }
 
