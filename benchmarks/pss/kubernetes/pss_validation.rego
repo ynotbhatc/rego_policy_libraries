@@ -75,6 +75,21 @@ probe_containers := array.concat(
 
 pod_sc := object.get(input.pod.spec, "securityContext", {})
 
+# A switch that must stay off is off only as the boolean false or when unset. Any other value turns the
+# finding on: true, and also the strings "true" and "false" and numbers, which Kubernetes would reject.
+_on(value) if {
+	not is_null(value)
+	value != false
+}
+
+# runAsUser set to 0, or to something that is not a number (a string "0" is not a non-root UID)
+_root_uid(value) if value == 0
+
+_root_uid(value) if {
+	not is_null(value)
+	not is_number(value)
+}
+
 # ═════════════════════════════════ BASELINE ═════════════════════════════════
 
 baseline_violations contains msg if {
@@ -82,33 +97,41 @@ baseline_violations contains msg if {
 	msg := "PSS baseline (fail-closed): no pod manifest supplied at input.pod — nothing was evaluated"
 }
 
+# A Pod and a workload's pod template both carry metadata, and the AppArmor annotations live there. A
+# manifest without it (absent, null or not an object) was not collected whole, so it cannot be cleared.
+baseline_violations contains msg if {
+	pod_present
+	not is_object(object.get(input.pod, "metadata", null))
+	msg := "PSS baseline (fail-closed): input.pod.metadata is missing or not an object — the manifest is incomplete and its AppArmor annotations cannot be evaluated"
+}
+
 # ── hostProcess (Windows) ────────────────────────────────────────────────────
 
 baseline_violations contains msg if {
-	object.get(pod_sc, ["windowsOptions", "hostProcess"], false) == true
+	_on(object.get(pod_sc, ["windowsOptions", "hostProcess"], null))
 	msg := "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true"
 }
 
 baseline_violations contains msg if {
 	some c in all_containers
-	object.get(c, ["securityContext", "windowsOptions", "hostProcess"], false) == true
+	_on(object.get(c, ["securityContext", "windowsOptions", "hostProcess"], null))
 	msg := sprintf("PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true", [object.get(c, "name", "?")])
 }
 
 # ── Host namespaces ──────────────────────────────────────────────────────────
 
 baseline_violations contains msg if {
-	input.pod.spec.hostNetwork == true
+	_on(object.get(input.pod.spec, "hostNetwork", null))
 	msg := "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace"
 }
 
 baseline_violations contains msg if {
-	input.pod.spec.hostPID == true
+	_on(object.get(input.pod.spec, "hostPID", null))
 	msg := "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace"
 }
 
 baseline_violations contains msg if {
-	input.pod.spec.hostIPC == true
+	_on(object.get(input.pod.spec, "hostIPC", null))
 	msg := "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace"
 }
 
@@ -116,7 +139,7 @@ baseline_violations contains msg if {
 
 baseline_violations contains msg if {
 	some c in all_containers
-	object.get(c, ["securityContext", "privileged"], false) == true
+	_on(object.get(c, ["securityContext", "privileged"], null))
 	msg := sprintf("PSS baseline (privileged): container %q runs privileged", [object.get(c, "name", "?")])
 }
 
@@ -205,6 +228,24 @@ baseline_violations contains msg if {
 	t := object.get(c, ["securityContext", "appArmorProfile", "type"], "RuntimeDefault")
 	not t in APPARMOR_ALLOWED
 	msg := sprintf("PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost", [object.get(c, "name", "?"), t])
+}
+
+# The annotation form (container.apparmor.security.beta.kubernetes.io/<container>), still honoured by the
+# kubelet: allowed values are runtime/default and localhost/*.
+baseline_violations contains msg if {
+	annotations := object.get(input.pod, ["metadata", "annotations"], {})
+	is_object(annotations)
+	some key, value in annotations
+	startswith(key, "container.apparmor.security.beta.kubernetes.io/")
+	not _apparmor_annotation_allowed(value)
+	msg := sprintf("PSS baseline (apparmor): annotation %s is %v, not runtime/default or localhost/*", [key, value])
+}
+
+_apparmor_annotation_allowed(value) if value == "runtime/default"
+
+_apparmor_annotation_allowed(value) if {
+	is_string(value)
+	startswith(value, "localhost/")
 }
 
 # ── SELinux ──────────────────────────────────────────────────────────────────
@@ -311,7 +352,7 @@ pod_run_as_nonroot if {
 }
 
 container_nonroot_ok(c) if {
-	object.get(c, ["securityContext", "runAsNonRoot"], false) == true
+	_on(object.get(c, ["securityContext", "runAsNonRoot"], null))
 }
 
 container_nonroot_ok(c) if {
@@ -326,13 +367,13 @@ restricted_violations contains msg if {
 }
 
 restricted_violations contains msg if {
-	object.get(pod_sc, "runAsUser", 1) == 0
+	_root_uid(object.get(pod_sc, "runAsUser", null))
 	msg := "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed"
 }
 
 restricted_violations contains msg if {
 	some c in all_containers
-	object.get(c, ["securityContext", "runAsUser"], 1) == 0
+	_root_uid(object.get(c, ["securityContext", "runAsUser"], null))
 	msg := sprintf("PSS restricted (run-as-user): container %q sets runAsUser=0 (root)", [object.get(c, "name", "?")])
 }
 
