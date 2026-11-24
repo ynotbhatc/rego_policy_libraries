@@ -277,9 +277,13 @@ test_string_migration_planned_still_flagged if {
 		"pqc_migration_planned": "no",
 	}}])
 	v := main.violations with input as inp
-	count(v) == 1
+
+	# two findings since 2026-11-24: the migration finding, and the flag's wrong type named as invalid evidence
+	count(v) == 2
 	some msg in v
 	contains(msg, "RSA-2048")
+	some msg2 in v
+	contains(msg2, "pqc_migration_planned is not a boolean (got string)")
 }
 
 # pqc-02: an unrecognized profile fails closed with an explicit violation.
@@ -434,4 +438,41 @@ test_report_counts_inventory if {
 	r.inventory_assets_pqc == 3
 	r.inventory_assets_quantum_vulnerable == 0
 	r.compliant == true
+}
+
+# ── Evidence rule (data-driven, audit 2026-11-24): only the boolean true passes a yes/no fact ────────
+
+_evidence_bool_paths := [p | walk(base, [p, v]); is_boolean(v)]
+
+_evidence_flag_paths := [p | some p in _evidence_bool_paths; p[count(p) - 1] == "pqc_migration_planned"]
+
+_evidence_attested_paths := [p | some p in _evidence_bool_paths; p[count(p) - 1] != "pqc_migration_planned"]
+
+test_evidence_base_fixture_passes if {
+	r := main.compliance_report with input as base
+	r.compliant == true
+	count(_evidence_attested_paths) > 0
+	count(_evidence_flag_paths) > 0
+}
+
+test_evidence_attested_boolean_wrong_type_null_or_removed_never_passes if {
+	every p in _evidence_attested_paths {
+		every bad in ["true", "false", "no", 0, 1, null] {
+			r := main.compliance_report with input as json.patch(base, [{"op": "replace", "path": p, "value": bad}])
+			r.compliant == false
+		}
+		r2 := main.compliance_report with input as json.remove(base, [p])
+		r2.compliant == false
+	}
+}
+
+test_evidence_migration_flag_wrong_type_never_passes_on_any_row if {
+	every p in _evidence_flag_paths {
+		every bad in ["true", "false", "no", 0, 1] {
+			r := main.compliance_report with input as json.patch(base, [{"op": "replace", "path": p, "value": bad}])
+			r.compliant == false
+			some v in r.violations
+			contains(v, "pqc_migration_planned is not a boolean")
+		}
+	}
 }

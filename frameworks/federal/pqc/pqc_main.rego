@@ -580,6 +580,22 @@ _findings contains {"control": "data.input_contract_and_inventory_evidence", "ms
 	)
 }
 
+# pqc_migration_planned is a yes/no fact: when a row carries it, it must be a boolean. A string such as
+# "true" or "no" is a collection error on any row, including a post-quantum row where the flag is not
+# consulted, so it is reported rather than ignored. (Leaving the flag out, or null, on a row that does
+# not need it is not an error; on a row that needs it the migration findings below already fire.)
+_findings contains {"control": "data.input_contract_and_inventory_evidence", "msg": msg} if {
+	some i, item in _inv_rows
+	is_object(item)
+	value := object.get(item, "pqc_migration_planned", null)
+	value != null
+	not is_boolean(value)
+	msg := sprintf(
+		"PQC Input Contract: evidence invalid — crypto_inventory[%v].pqc_migration_planned is not a boolean (got %v)",
+		[i, type_name(value)],
+	)
+}
+
 # Every well-formed row must classify. An algorithm name the vocabulary does
 # not fully consume is reported by asset — never silently passed.
 _findings contains {"control": "data.unrecognised_algorithm", "msg": msg} if {

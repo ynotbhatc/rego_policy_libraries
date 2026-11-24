@@ -6,7 +6,7 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 42
+#     checks: 44
 #     cited: 13
 #     density: orchestrator
 #     basis: role
@@ -115,9 +115,37 @@ default baseline_size := null
 
 baseline_size := baseline_sizes[impact_level_norm]
 
-_us_only_required if object.get(input, ["data_residency", "us_only_required"], false) == true
+# Agency selectors. Only the boolean true turns a selector on and only the boolean false (or leaving the
+# optional selector out) turns it off. Any other value ("true", "false", 1, ...) is a collection error:
+# the check it selects is applied rather than skipped, and the value is reported as invalid evidence.
+_selector_value(path) := object.get(input, path, null)
 
-_us_persons_required if object.get(input, ["personnel_requirements", "us_persons_required_for_admin"], false) == true
+_selector_invalid(path) if {
+	value := _selector_value(path)
+	value != null
+	not is_boolean(value)
+}
+
+# A selector's section sent as something other than an object (a string, a number) is the same error.
+_selector_invalid(path) if {
+	section := object.get(input, path[0], null)
+	section != null
+	not is_object(section)
+}
+
+_selector_shown(path) := json.marshal(_selector_value(path)) if is_object(object.get(input, path[0], null))
+
+_selector_shown(path) := sprintf("a %v for input.%v", [type_name(object.get(input, path[0], null)), path[0]]) if {
+	not is_object(object.get(input, path[0], null))
+}
+
+_us_only_required if _selector_value(["data_residency", "us_only_required"]) == true
+
+_us_only_required if _selector_invalid(["data_residency", "us_only_required"])
+
+_us_persons_required if _selector_value(["personnel_requirements", "us_persons_required_for_admin"]) == true
+
+_us_persons_required if _selector_invalid(["personnel_requirements", "us_persons_required_for_admin"])
 
 _applies_sa_9_5 if applies_high
 
@@ -275,6 +303,11 @@ violation_data_residency contains msg if {
 }
 
 violation_data_residency contains msg if {
+	_selector_invalid(["data_residency", "us_only_required"])
+	msg := sprintf("FedRAMP SA-9(5): evidence invalid — input.data_residency.us_only_required must be true or false, got %v; the location check is applied until it is", [_selector_shown(["data_residency", "us_only_required"])])
+}
+
+violation_data_residency contains msg if {
 	_applies_sa_9_5
 	some location in object.get(_residency, "storage_locations", [])
 	not location.us_territory == true
@@ -317,6 +350,12 @@ violation_personnel contains msg if {
 		"FedRAMP PS-3: Personnel '%v' has administrative access without a completed background check. Individuals must be screened before access is authorized.",
 		[object.get(person, "name", "unknown")],
 	)
+}
+
+violation_personnel contains msg if {
+	applies_moderate_high
+	_selector_invalid(["personnel_requirements", "us_persons_required_for_admin"])
+	msg := sprintf("FedRAMP PS-3(3): evidence invalid — input.personnel_requirements.us_persons_required_for_admin must be true or false, got %v; the US-person check is applied until it is", [_selector_shown(["personnel_requirements", "us_persons_required_for_admin"])])
 }
 
 violation_personnel contains msg if {

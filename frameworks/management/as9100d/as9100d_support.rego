@@ -237,6 +237,16 @@ _gaps["7.1.5.2"] contains r if {
 	r := sprintf("in-service equipment %v records a calibration date in the future (calibrated_on: %v)", [_label(e), e.calibrated_on])
 }
 
+# traceable is a yes/no fact: when an entry carries it, it must be a boolean, in service or not. A string such
+# as "true" on an out-of-service entry is a collection error and is reported, not ignored.
+_gaps["7.1.5.2"] contains r if {
+	some e in _equipment
+	value := object.get(e, "traceable", null)
+	value != null
+	not is_boolean(value)
+	r := sprintf("evidence invalid — equipment %v: traceable is not a boolean (got %v)", [_label(e), type_name(value)])
+}
+
 _gaps["7.1.5.2"] contains r if {
 	some e in _equipment
 	e.in_service == true

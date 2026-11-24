@@ -105,6 +105,7 @@ cryptographic_policy if {
 	input.cryptography.policy.regularly_reviewed == true
 
 	# Policy should specify approved algorithms
+	is_array(input.cryptography.policy.approved_algorithms)
 	count(input.cryptography.policy.approved_algorithms) > 0
 
 	# Policy should address key management
@@ -137,8 +138,13 @@ key_generation_secure if {
 	input.key_management.generation.documented_process == true
 
 	# Key specifications should be properly configured
+	_is_collection(input.key_management.key_specifications)
 	count(input.key_management.key_specifications) > 0
 }
+
+_is_collection(x) if is_array(x)
+
+_is_collection(x) if is_object(x)
 
 # Minimum key lengths based on algorithm
 minimum_key_length(algorithm) := 2048 if {
@@ -359,6 +365,8 @@ unapproved_algorithms_in_use := [a |
 weak_algorithms_disabled if {
 	# Check no weak algorithms are in use; spellings are normalised (case, "-", "_", spaces) so SHA-1, sha1,
 	# TLSv1.0 and 3des are all recognised.
+	# The list of algorithms in use must be collected: a missing list is not evidence that none is weak.
+	is_array(input.cryptography.algorithms_in_use)
 	count([alg | some alg in input.cryptography.algorithms_in_use; _weak_algorithm(alg)]) == 0
 }
 

@@ -28,46 +28,79 @@ import rego.v1
 # 2.0 subcategory and the check is a fair reading of that text. The other checks were removed; their lineage
 # is the `legacy` data table at the end.
 
+# ── Evidence rule ────────────────────────────────────────────────────────────
+# Only the boolean true passes a yes/no fact. A fact that is missing, null, or any
+# other type ("true", "false", "no", 0, 1) is an evidence problem: the control fails
+# and the finding names the problem. A boolean false keeps the plain finding.
+
+default _input := {}
+
+_input := input if is_object(input)
+
+_fact(path) := object.get(_input, path, null)
+
+_not_true(path) if _fact(path) != true
+
+_finding(msg, path) := msg if _fact(path) == false
+
+_finding(msg, path) := sprintf("%s [evidence missing — input.%s not collected]", [msg, concat(".", path)]) if {
+	_fact(path) == null
+}
+
+_finding(msg, path) := sprintf("%s [evidence invalid — input.%s is not a boolean (got %s)]", [msg, concat(".", path), type_name(_fact(path))]) if {
+	value := _fact(path)
+	value != null
+	not is_boolean(value)
+}
+
 default compliant := false
 
 violation contains msg if {
-	not input.identify.asset_management.physical_devices_inventoried
-	msg := "CSF ID.AM-01: Physical devices and systems not inventoried"
+	_not_true(["identify", "asset_management", "physical_devices_inventoried"])
+	finding := "CSF ID.AM-01: Physical devices and systems not inventoried"
+	msg := _finding(finding, ["identify", "asset_management", "physical_devices_inventoried"])
 }
 
 violation contains msg if {
-	not input.identify.asset_management.organizational_communication_mapped
-	msg := "CSF ID.AM-03: Organizational communication and data flows not mapped"
+	_not_true(["identify", "asset_management", "organizational_communication_mapped"])
+	finding := "CSF ID.AM-03: Organizational communication and data flows not mapped"
+	msg := _finding(finding, ["identify", "asset_management", "organizational_communication_mapped"])
 }
 
 violation contains msg if {
-	not input.identify.asset_management.resources_prioritized
-	msg := "CSF ID.AM-05: Resources not prioritized based on classification/criticality"
+	_not_true(["identify", "asset_management", "resources_prioritized"])
+	finding := "CSF ID.AM-05: Resources not prioritized based on classification/criticality"
+	msg := _finding(finding, ["identify", "asset_management", "resources_prioritized"])
 }
 
 violation contains msg if {
-	not input.identify.risk_assessment.asset_vulnerabilities_identified
-	msg := "CSF ID.RA-01: Asset vulnerabilities not identified and documented"
+	_not_true(["identify", "risk_assessment", "asset_vulnerabilities_identified"])
+	finding := "CSF ID.RA-01: Asset vulnerabilities not identified and documented"
+	msg := _finding(finding, ["identify", "risk_assessment", "asset_vulnerabilities_identified"])
 }
 
 violation contains msg if {
-	not input.identify.risk_assessment.cyber_threat_intelligence_received
-	msg := "CSF ID.RA-02: Cyber threat intelligence not received from information-sharing forums"
+	_not_true(["identify", "risk_assessment", "cyber_threat_intelligence_received"])
+	finding := "CSF ID.RA-02: Cyber threat intelligence not received from information-sharing forums"
+	msg := _finding(finding, ["identify", "risk_assessment", "cyber_threat_intelligence_received"])
 }
 
 violation contains msg if {
-	not input.identify.risk_assessment.threats_identified_and_documented
-	msg := "CSF ID.RA-03: Internal and external threats not identified or documented"
+	_not_true(["identify", "risk_assessment", "threats_identified_and_documented"])
+	finding := "CSF ID.RA-03: Internal and external threats not identified or documented"
+	msg := _finding(finding, ["identify", "risk_assessment", "threats_identified_and_documented"])
 }
 
 violation contains msg if {
-	not input.identify.risk_assessment.potential_impacts_identified
-	msg := "CSF ID.RA-04: Potential business impacts and likelihoods not identified"
+	_not_true(["identify", "risk_assessment", "potential_impacts_identified"])
+	finding := "CSF ID.RA-04: Potential business impacts and likelihoods not identified"
+	msg := _finding(finding, ["identify", "risk_assessment", "potential_impacts_identified"])
 }
 
 violation contains msg if {
-	not input.identify.risk_assessment.risk_determined
-	msg := "CSF ID.RA-05: Threats/vulnerabilities/likelihoods/impacts not used to determine risk"
+	_not_true(["identify", "risk_assessment", "risk_determined"])
+	finding := "CSF ID.RA-05: Threats/vulnerabilities/likelihoods/impacts not used to determine risk"
+	msg := _finding(finding, ["identify", "risk_assessment", "risk_determined"])
 }
 
 compliant if count(violation) == 0

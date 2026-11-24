@@ -87,7 +87,15 @@ controls := {
 
 notification_clocks := {"incident_hours": 72, "control_weakness_business_days": 10}
 
-_in := object.get(input, "apra_cps234", {})
+# The module's facts. Anything other than an object here (no input at all, null, a string, a number) reads
+# as no facts: every check then reports its finding and the report stays defined and non-compliant.
+# (object.get on a null or string container is an error, which made the whole report undefined.)
+default _in := {}
+
+_in := v if {
+	v := input.apra_cps234
+	is_object(v)
+}
 
 violations contains msg if {
 	not _in.third_party_managed_assets == true
@@ -113,7 +121,32 @@ _attested(id) if _in.controls[id] == true
 violations contains msg if {
 	some id, c in applicable
 	not _attested(id)
-	msg := sprintf("CPS 234 para %v (%v): %v — not attested", [id, sections[c.s], c.text])
+	msg := sprintf("CPS 234 para %v (%v): %v — not attested%v", [id, sections[c.s], c.text, _attestation_problem(id)])
+}
+
+# Why a non-true attestation did not count: only the boolean true attests. A boolean false is a plain
+# "not attested"; a missing id and a wrong-typed value are evidence problems and are named.
+_attestation_problem(id) := "" if _controls_given[id] == false
+
+_attestation_problem(id) := " [evidence missing — attestation not collected]" if {
+	not _has_attestation(id)
+}
+
+_attestation_problem(id) := sprintf(" [evidence invalid — attestation is not a boolean (got %v)]", [type_name(_controls_given[id])]) if {
+	_has_attestation(id)
+	not is_boolean(_controls_given[id])
+}
+
+_has_attestation(id) if {
+	some k, _ in _controls_given
+	k == id
+}
+
+default _controls_given := {}
+
+_controls_given := c if {
+	c := _in.controls
+	is_object(c)
 }
 
 violations contains msg if {
