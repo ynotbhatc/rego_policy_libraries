@@ -16,7 +16,7 @@
 #
 # Fail-closed: every fact is a boolean that must be affirmatively true.
 # Empty input yields all 40 violations. A fact that is absent, null or of another type (the strings
-# "true" and "false", 0, 1) fires its control and is listed in evidence_findings.
+# "true" and "false", 0, 1) fires its control and is listed in evidence_problems.
 #
 # Input contract — input.cis_gke.*  (all fields bool)
 #
@@ -350,14 +350,14 @@ _section(name) := value if {
 	is_object(value)
 } else := {}
 
-evidence_findings contains msg if {
+evidence_problems contains msg if {
 	some section, fields in _facts
 	some field in fields
 	object.get(_section(section), field, null) == null
 	msg := sprintf("evidence missing: cis_gke.%s.%s not collected", [section, field])
 }
 
-evidence_findings contains msg if {
+evidence_problems contains msg if {
 	some section, fields in _facts
 	some field in fields
 	value := object.get(_section(section), field, null)
@@ -385,7 +385,7 @@ compliance_report := {
 	"total_controls": 40,
 	"violations": violations,
 	"violation_count": count(violations),
-	"evidence_findings": evidence_findings,
+	"evidence_problems": evidence_problems,
 	"failed_controls": min([40, count(violations)]),
 	"section_summary": section_summary,
 }

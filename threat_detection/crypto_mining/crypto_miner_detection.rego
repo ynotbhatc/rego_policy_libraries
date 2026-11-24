@@ -211,11 +211,12 @@ violations contains msg if {
 # =============================================================================
 
 # fail-closed: a host with no facts has not been checked, so it is not reported clean
-# A fact is present when it is a list (an empty list says the collector looked and found none). The fields
+# A fact is present when it is a list (an empty list says the collector looked and found none), and every
+# one of the six must be sent: a detection whose list was not collected did not run. The fields
 # the detections read, with their types: a fact or a field of another type cannot be searched, so it is
 # reported and the host is not clean.
 fact_fields := {
-	"running_processes": {"name": "string", "cmdline": "string"},
+	"running_processes": {"name": "string", "cmdline": "string", "pid": "number", "cpu_percent": "number", "running_time_minutes": "number"},
 	"installed_packages": {"name": "string"},
 	"network_connections": {"remote_host": "string", "remote_port": "number"},
 	"systemd_services": {"name": "string", "exec_start": "string"},
@@ -226,6 +227,13 @@ fact_fields := {
 _facts_present if {
 	some fact, _ in fact_fields
 	is_array(input[fact])
+}
+
+violations contains msg if {
+	_facts_present
+	some fact, _ in fact_fields
+	not fact in object.keys(input)
+	msg := sprintf("EVIDENCE MISSING - %s not collected (a list; empty when there are none); the host was NOT evaluated on it", [fact])
 }
 
 violations contains msg if {

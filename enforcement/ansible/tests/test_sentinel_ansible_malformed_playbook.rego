@@ -8,8 +8,8 @@ import rego.v1
 import data.sentinel.ansible as gate
 import data.sentinel_ansible.main
 
+# sentinel_environment is left out: the gate then judges the playbook as production, the strictest reading
 good_playbook := {
-	"sentinel_environment": "production",
 	"plays": [{
 		"name": "Deploy the web tier",
 		"hosts": "webservers",

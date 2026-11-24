@@ -10,7 +10,6 @@ import data.sentinel_kubernetes.main
 
 good_deployment := {
 	"kind": "Deployment",
-	"namespace": "shop",
 	"existing_policies": [{"name": "default-deny", "namespace": "shop"}],
 	"manifest": {
 		"metadata": {"name": "web", "namespace": "shop", "labels": {"app": "web", "version": "1.4.2", "team": "shop"}},
@@ -64,7 +63,7 @@ test_input_that_is_not_a_manifest_is_denied if {
 }
 
 test_kind_of_the_wrong_type_is_denied if {
-	every bad in [1, true, ["Deployment"]] {
+	every bad in [null, 1, true, ["Deployment"]] {
 		inp := json.patch(good_deployment, [{"op": "replace", "path": "/kind", "value": bad}])
 		_denied(inp)
 		_k8s000(inp)

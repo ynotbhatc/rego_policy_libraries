@@ -99,10 +99,9 @@ violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.manifest is
 }
 
 violation_k8s_000 contains msg if {
-	kind := object.get(input, "kind", null)
-	kind != null
-	not is_string(kind)
-	msg := sprintf("SENTINEL-K8S-000: Malformed input: input.kind must be a string, got %v.", [type_name(kind)])
+	"kind" in object.keys(input)
+	not is_string(input.kind)
+	msg := sprintf("SENTINEL-K8S-000: Malformed input: input.kind must be a string, got %v.", [type_name(input.kind)])
 }
 
 violation_k8s_000 contains msg if {

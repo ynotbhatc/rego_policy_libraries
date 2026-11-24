@@ -43,7 +43,7 @@
 #     unused_components_removed, cis_benchmark_adherence}
 #
 # Fail-closed: only the boolean true meets a control. A fact that is absent, null or of another
-# type (the strings "true" and "false", 0, 1) fires its control and is listed in evidence_findings.
+# type (the strings "true" and "false", 0, 1) fires its control and is listed in evidence_problems.
 #
 # OPA query path: /v1/data/nsa_cisa_k8s/main/compliance_report
 
@@ -319,14 +319,14 @@ _section(name) := value if {
 	is_object(value)
 } else := {}
 
-evidence_findings contains msg if {
+evidence_problems contains msg if {
 	some section, fields in _facts
 	some field in fields
 	object.get(_section(section), field, null) == null
 	msg := sprintf("evidence missing: nsa_cisa.%s.%s not collected", [section, field])
 }
 
-evidence_findings contains msg if {
+evidence_problems contains msg if {
 	some section, fields in _facts
 	some field in fields
 	value := object.get(_section(section), field, null)
@@ -364,7 +364,7 @@ compliance_report := {
 	"total_controls": 43,
 	"violations": violations,
 	"violation_count": count(violations),
-	"evidence_findings": evidence_findings,
+	"evidence_problems": evidence_problems,
 	"failed_controls": min([43, count(violations)]),
 	"section_summary": section_summary,
 }

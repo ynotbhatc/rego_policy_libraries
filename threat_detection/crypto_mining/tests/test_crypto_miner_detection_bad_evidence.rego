@@ -81,5 +81,13 @@ test_string_port_is_reported if {
 	"EVIDENCE INVALID - network_connections[0].remote_port must be a number, got string" in detect.violations with input as inp
 }
 
-# Facts may be partial (decided before this change): a list that was not sent is not judged.
-test_partial_facts_are_still_accepted if _clean({"running_processes": [], "network_connections": []})
+# Every one of the six lists must be sent: a detection whose list was not collected did not run.
+test_missing_fact_list_is_not_clean if {
+	every fact, _ in detect.fact_fields {
+		inp := object.remove(clean_host, [fact])
+		_not_clean(inp)
+		sprintf("EVIDENCE MISSING - %s not collected (a list; empty when there are none); the host was NOT evaluated on it", [fact]) in detect.violations with input as inp
+	}
+}
+
+test_all_six_lists_empty_is_clean if _clean({fact: [] | some fact, _ in detect.fact_fields})
