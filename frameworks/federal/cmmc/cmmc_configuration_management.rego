@@ -48,11 +48,12 @@ violation_cm_1 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
-	not system.baseline_configuration_documented
-	msg := sprintf(
+	not system.baseline_configuration_documented == true
+	finding := sprintf(
 		"CMMC CM.L2-3.4.1: System '%v' has no documented baseline configuration. Baselines must be established for all CUI systems.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "baseline_configuration_documented")])
 }
 
 # CM.L2-3.4.2 — Establish and enforce security configuration settings
@@ -60,42 +61,47 @@ violation_cm_2 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
-	not system.security_configuration_enforced
-	msg := sprintf(
+	not system.security_configuration_enforced == true
+	finding := sprintf(
 		"CMMC CM.L2-3.4.2: System '%v' does not enforce security configuration settings. STIGs or CIS Benchmarks must be applied.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "security_configuration_enforced")])
 }
 
 # CM.L2-3.4.3 — Track, review, approve/disapprove changes to systems
 violation_cm_3 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.configuration.change_control_process
-	msg := "CMMC CM.L2-3.4.3: No change control process. All changes to CUI systems must go through an approval process."
+	not input.configuration.change_control_process == true
+	finding := "CMMC CM.L2-3.4.3: No change control process. All changes to CUI systems must go through an approval process."
+	msg := concat("", [finding, _ev_input("configuration.change_control_process")])
 }
 
 violation_cm_3 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.configuration.changes_reviewed_before_implementation
-	msg := "CMMC CM.L2-3.4.3: Changes are not reviewed before implementation. Security impact analysis is required for all changes."
+	not input.configuration.changes_reviewed_before_implementation == true
+	finding := "CMMC CM.L2-3.4.3: Changes are not reviewed before implementation. Security impact analysis is required for all changes."
+	msg := concat("", [finding, _ev_input("configuration.changes_reviewed_before_implementation")])
 }
 
 # CM.L2-3.4.4 — Analyze impact of changes prior to implementation
 violation_cm_4 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.configuration.security_impact_analysis
-	msg := "CMMC CM.L2-3.4.4: No security impact analysis process. Changes must be analyzed for security impact before implementation."
+	not input.configuration.security_impact_analysis == true
+	finding := "CMMC CM.L2-3.4.4: No security impact analysis process. Changes must be analyzed for security impact before implementation."
+	msg := concat("", [finding, _ev_input("configuration.security_impact_analysis")])
 }
 
 # CM.L2-3.4.5 — Define, document, approve, and enforce access restrictions for change
 violation_cm_5 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.configuration.change_access_restricted
-	msg := "CMMC CM.L2-3.4.5: Change access is not restricted. Only authorized personnel should be able to make changes to CUI systems."
+	not input.configuration.change_access_restricted == true
+	finding := "CMMC CM.L2-3.4.5: Change access is not restricted. Only authorized personnel should be able to make changes to CUI systems."
+	msg := concat("", [finding, _ev_input("configuration.change_access_restricted")])
 }
 
 # CM.L2-3.4.6 — Employ principle of least functionality
@@ -123,8 +129,9 @@ violation_cm_6 contains msg if {
 violation_cm_7 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.software.application_whitelist_enabled
-	msg := "CMMC CM.L2-3.4.7: Application whitelisting is not enabled. Only authorized software should be permitted to execute."
+	not input.software.application_whitelist_enabled == true
+	finding := "CMMC CM.L2-3.4.7: Application whitelisting is not enabled. Only authorized software should be permitted to execute."
+	msg := concat("", [finding, _ev_input("software.application_whitelist_enabled")])
 }
 
 violation_cm_7 contains msg if {
@@ -151,16 +158,18 @@ violation_cm_7 contains msg if {
 violation_cm_8 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.software.deny_by_default
-	msg := "CMMC CM.L2-3.4.8: Software policy is allow-by-default. Implement deny-by-exception (whitelist approach) for software execution."
+	not input.software.deny_by_default == true
+	finding := "CMMC CM.L2-3.4.8: Software policy is allow-by-default. Implement deny-by-exception (whitelist approach) for software execution."
+	msg := concat("", [finding, _ev_input("software.deny_by_default")])
 }
 
 # CM.L2-3.4.9 — Control and monitor user-installed software
 violation_cm_9 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.software.user_install_controlled
-	msg := "CMMC CM.L2-3.4.9: User-installed software is not controlled. Users must be prevented from installing unauthorized software."
+	not input.software.user_install_controlled == true
+	finding := "CMMC CM.L2-3.4.9: User-installed software is not controlled. Users must be prevented from installing unauthorized software."
+	msg := concat("", [finding, _ev_input("software.user_install_controlled")])
 }
 
 _by_practice := {
@@ -177,7 +186,7 @@ violations contains msg if {
 # Input contract: every CM practice is gated on cmmc_level >= 2. This finding
 # names no practice (data.cmmc reports the missing level itself).
 violations contains "CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the configuration-management practices were not evaluated and the domain is reported non-compliant" if {
-	not is_number(object.get(input, "cmmc_level", null))
+	not is_number(object.get(_facts, "cmmc_level", null))
 }
 
 # The per-system practices iterate input.systems; with no systems they never
@@ -216,7 +225,7 @@ _inventory_missing(id) if {
 
 compliance_report := {
 	"domain": "Configuration Management (CM)",
-	"cmmc_level": object.get(input, "cmmc_level", 0),
+	"cmmc_level": object.get(_facts, "cmmc_level", 0),
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
@@ -224,3 +233,25 @@ compliance_report := {
 	"total_practices": count(practices),
 	"passing": count([p | some p in practices; p.compliant == true]),
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

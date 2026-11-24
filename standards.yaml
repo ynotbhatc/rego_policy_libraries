@@ -530,7 +530,8 @@ frameworks:
       - {standard: NERC CIP-015, version: CIP-015-1, publisher: NERC, literal: "CIP-015-1", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
   iec_62443:
     standards:
-      - {standard: IEC 62443-3-3 (and -2-1, -2-4, -3-2 references), version: unknown, publisher: IEC / ISA, check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "module cites the parts but no edition year"}}
+      - {standard: IEC 62443-3-3 (FR 1-7, 51 SRs), version: "2013", publisher: IEC / ISA, literal: "IEC 62443-3-3:2013", check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "edition 1.0 (2013) is the current edition of part 3-3; an edition 2 is in development"}}
+      - {standard: IEC 62443-2-1 / -2-3 / -2-4 / -3-2 (management, patching, service provider, risk assessment modules), version: unknown, publisher: IEC / ISA, check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "these four modules cite the part but no edition year; 62443-2-1:2024 (ed. 2) replaced the 2010 CSMS edition the part 2-1 module follows"}}
 
   # ---------------------------------------------------------------- EU, UK and international
   gdpr:

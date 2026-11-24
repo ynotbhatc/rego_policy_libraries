@@ -27,6 +27,10 @@ import rego.v1
 # Publisher: International Electrotechnical Commission (IEC)
 # Scope: OT/ICS/SCADA cybersecurity for industrial environments
 #
+# Edition: the seven foundational requirements (FR 1-7, 51 SRs) are those of
+# IEC 62443-3-3:2013 (edition 1.0). The Part 2-1, 2-3, 2-4 and 3-2 modules name
+# no edition year.
+#
 # Coverage:
 #   Part 2-1 — Security Management System (CSMS)          [part2_security_management.rego]
 #   Part 2-3 — Patch Management                           [part2_patch_management.rego]

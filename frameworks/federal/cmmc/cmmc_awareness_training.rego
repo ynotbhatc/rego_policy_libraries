@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -63,13 +63,15 @@ compliant_3_2_1 if {
 }
 
 violation_3_2_1 contains msg if {
-	not input.training.security_awareness_program
-	msg := "3.2.1: No organizational security awareness program established"
+	not input.training.security_awareness_program == true
+	finding := "3.2.1: No organizational security awareness program established"
+	msg := concat("", [finding, _ev_input("training.security_awareness_program")])
 }
 
 violation_3_2_1 contains msg if {
-	not input.training.all_users_trained
-	msg := "3.2.1: Not all users have completed security awareness training"
+	not input.training.all_users_trained == true
+	finding := "3.2.1: Not all users have completed security awareness training"
+	msg := concat("", [finding, _ev_input("training.all_users_trained")])
 }
 
 violation_3_2_1 contains "3.2.1: evidence missing - input.org_defined.awareness_training_interval_days (organisation-defined value, NIST SP 800-171A (R2 3.2.1 names no period)) not supplied or not a number" if {
@@ -99,18 +101,21 @@ compliant_3_2_2 if {
 }
 
 violation_3_2_2 contains msg if {
-	not input.training.role_based_training
-	msg := "3.2.2: Role-based security training is not implemented"
+	not input.training.role_based_training == true
+	finding := "3.2.2: Role-based security training is not implemented"
+	msg := concat("", [finding, _ev_input("training.role_based_training")])
 }
 
 violation_3_2_2 contains msg if {
-	not input.training.privileged_user_training
-	msg := "3.2.2: Privileged users have not received specialized security training"
+	not input.training.privileged_user_training == true
+	finding := "3.2.2: Privileged users have not received specialized security training"
+	msg := concat("", [finding, _ev_input("training.privileged_user_training")])
 }
 
 violation_3_2_2 contains msg if {
-	not input.training.training_records_maintained
-	msg := "3.2.2: Training completion records are not maintained"
+	not input.training.training_records_maintained == true
+	finding := "3.2.2: Training completion records are not maintained"
+	msg := concat("", [finding, _ev_input("training.training_records_maintained")])
 }
 
 # ---------------------------------------------------------------------------
@@ -127,18 +132,21 @@ compliant_3_2_3 if {
 }
 
 violation_3_2_3 contains msg if {
-	not input.training.phishing_awareness_training
-	msg := "3.2.3: Phishing awareness training is not included in security program"
+	not input.training.phishing_awareness_training == true
+	finding := "3.2.3: Phishing awareness training is not included in security program"
+	msg := concat("", [finding, _ev_input("training.phishing_awareness_training")])
 }
 
 violation_3_2_3 contains msg if {
-	not input.training.social_engineering_training
-	msg := "3.2.3: Social engineering recognition training is not provided"
+	not input.training.social_engineering_training == true
+	finding := "3.2.3: Social engineering recognition training is not provided"
+	msg := concat("", [finding, _ev_input("training.social_engineering_training")])
 }
 
 violation_3_2_3 contains msg if {
-	not input.training.insider_threat_training
-	msg := "3.2.3: Insider threat awareness training is not provided"
+	not input.training.insider_threat_training == true
+	finding := "3.2.3: Insider threat awareness training is not provided"
+	msg := concat("", [finding, _ev_input("training.insider_threat_training")])
 }
 
 # ---------------------------------------------------------------------------
@@ -202,3 +210,25 @@ compliance_report := {
 	"violations": all_violations,
 	"practices": practices,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

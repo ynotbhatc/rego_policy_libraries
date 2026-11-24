@@ -113,7 +113,12 @@ test_two_findings_for_one_practice_count_once if {
 	r := data.cmmc.main.compliance_report with input as inp
 	r.failed_controls == 1
 	r.failed_practices == ["AC.L1-b.1.i"]
-	count([v | some v in r.violations; startswith(v, "CMMC AC.L1-b.1.i: Unauthorized user")]) == 2
+
+	# one row for the practice, both findings kept under "findings"
+	count([v | some v in r.violations; startswith(v, "CMMC AC.L1-b.1.i: ")]) == 1
+	count([v | some v in r.violations; startswith(v, "CMMC AC.L1-b.1.i: 2 findings - (1) Unauthorized user 'a'")]) == 1
+	count([v | some v in r.findings; startswith(v, "CMMC AC.L1-b.1.i: Unauthorized user")]) == 2
+	r.violation_count == 1
 }
 
 test_user_without_authorized_fact_fails_closed if {
@@ -165,7 +170,36 @@ test_level_2_failed_never_exceeds_total if {
 	r := data.cmmc.main.compliance_report with input as {"cmmc_level": 2}
 	r.total_controls == 110
 	r.failed_controls == 110
-	count(r.violations) > r.failed_controls
+
+	# one row per failed practice; the findings (several per practice) are listed apart
+	r.input_contract_violations == 0
+	r.violation_count == r.failed_controls
+	r.finding_count > r.failed_controls
+}
+
+test_rows_never_outnumber_failed_practices_plus_contract_findings if {
+	every inp in [{}, reviewer_case, level_1_facts, at_level(1), at_level(2), at_level(3), {"cmmc_level": "2"}] {
+		r := data.cmmc.main.compliance_report with input as inp
+		r.violation_count == count(r.violations)
+		r.violation_count == r.failed_controls + r.input_contract_violations
+		r.passed_controls + r.failed_controls == r.total_controls
+	}
+}
+
+test_empty_input_rows if {
+	r := data.cmmc.main.compliance_report with input as {}
+	r.total_controls == 110
+	r.failed_controls == 110
+	r.input_contract_violations == 2
+	r.violation_count == 112
+}
+
+# OPA receives no input document at all (empty request body): the report is still defined.
+test_no_input_document_report_is_defined if {
+	r := data.cmmc.main.compliance_report
+	r.compliant == false
+	r.failed_controls == 110
+	r.assessed_level == null
 }
 
 # --- level contract -------------------------------------------------------------

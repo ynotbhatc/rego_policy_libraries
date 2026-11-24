@@ -68,7 +68,7 @@ This page is written by hand and is not the full list: the [site catalog](https:
 | **CISA Secure Software Development Attestation Form v1.0** | `frameworks/federal/cisa_ssdaf/` | the 15 attestation items with their scope gates; each item carries its EO 4(e) subsection and SSDF tasks |
 | **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
 | **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
-| **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 153 requirements evaluated (the report's declared total) |
+| **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 112 directive subparagraphs (34 in 01G, 78 in 02G) decided by 175 checks |
 | **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled |
 | **CISA CPG 2.0 (Oct 2025)** | `frameworks/federal/cisa_cpg/` | All 34 goals, six CSF-2.0 functions incl. GOVERN, per-function rollup |
 | **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
@@ -177,7 +177,10 @@ Modules for IEC 62443 Industrial Automation and Control Systems (IACS) Security 
 
 Both currently-effective TSA pipeline cybersecurity directives, in
 `frameworks/critical_infrastructure/tsa_pipeline/` — 12 section modules plus an
-orchestrator, covering 112 directive subparagraphs.
+orchestrator, covering 112 directive subparagraphs (34 in 01G, 78 in 02G; each
+section module declares its own figure as `requirements_evaluated`). The 175
+checks that decide them are reported as `total_checks` / `total_controls`; one
+subparagraph can take several checks.
 
 | Directive | Effective | Sections covered |
 |---|---|---|

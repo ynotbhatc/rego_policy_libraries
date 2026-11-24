@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -63,8 +63,9 @@ compliant_3_3_1 if {
 }
 
 violation_3_3_1 contains msg if {
-	not input.audit.logging_enabled
-	msg := "3.3.1: System audit logging is not enabled"
+	not input.audit.logging_enabled == true
+	finding := "3.3.1: System audit logging is not enabled"
+	msg := concat("", [finding, _ev_input("audit.logging_enabled")])
 }
 
 violation_3_3_1 contains "3.3.1: evidence missing - input.org_defined.audit_log_retention_days (organisation-defined value, NIST SP 800-171A 3.3.1[e]) not supplied or not a number" if {
@@ -81,8 +82,9 @@ violation_3_3_1 contains msg if {
 }
 
 violation_3_3_1 contains msg if {
-	not input.audit.auditd_active
-	msg := "3.3.1: auditd service is not active"
+	not input.audit.auditd_active == true
+	finding := "3.3.1: auditd service is not active"
+	msg := concat("", [finding, _ev_input("audit.auditd_active")])
 }
 
 # ---------------------------------------------------------------------------
@@ -99,13 +101,15 @@ compliant_3_3_2 if {
 }
 
 violation_3_3_2 contains msg if {
-	not input.audit.user_activity_tracked
-	msg := "3.3.2: Individual user activity is not uniquely tracked in audit logs"
+	not input.audit.user_activity_tracked == true
+	finding := "3.3.2: Individual user activity is not uniquely tracked in audit logs"
+	msg := concat("", [finding, _ev_input("audit.user_activity_tracked")])
 }
 
 violation_3_3_2 contains msg if {
-	not input.audit.audit_rules_configured
-	msg := "3.3.2: Audit rules are not configured to trace user actions"
+	not input.audit.audit_rules_configured == true
+	finding := "3.3.2: Audit rules are not configured to trace user actions"
+	msg := concat("", [finding, _ev_input("audit.audit_rules_configured")])
 }
 
 violation_3_3_2 contains msg if {
@@ -125,8 +129,9 @@ compliant_3_3_3 if {
 }
 
 violation_3_3_3 contains msg if {
-	not input.audit.event_review_process
-	msg := "3.3.3: No documented process for reviewing and updating logged audit events"
+	not input.audit.event_review_process == true
+	finding := "3.3.3: No documented process for reviewing and updating logged audit events"
+	msg := concat("", [finding, _ev_input("audit.event_review_process")])
 }
 
 violation_3_3_3 contains "3.3.3: evidence missing - input.org_defined.audit_event_review_interval_days (organisation-defined value, NIST SP 800-171A 3.3.3[a]) not supplied or not a number" if {
@@ -155,8 +160,9 @@ compliant_3_3_4 if {
 }
 
 violation_3_3_4 contains msg if {
-	not input.audit.failure_alerting_enabled
-	msg := "3.3.4: Alerting for audit log process failures is not configured"
+	not input.audit.failure_alerting_enabled == true
+	finding := "3.3.4: Alerting for audit log process failures is not configured"
+	msg := concat("", [finding, _ev_input("audit.failure_alerting_enabled")])
 }
 
 violation_3_3_4 contains msg if {
@@ -182,13 +188,15 @@ compliant_3_3_5 if {
 }
 
 violation_3_3_5 contains msg if {
-	not input.audit.centralized_logging
-	msg := "3.3.5: Audit logs are not centralized — cannot correlate across systems"
+	not input.audit.centralized_logging == true
+	finding := "3.3.5: Audit logs are not centralized — cannot correlate across systems"
+	msg := concat("", [finding, _ev_input("audit.centralized_logging")])
 }
 
 violation_3_3_5 contains msg if {
-	not input.audit.siem_integrated
-	msg := "3.3.5: No SIEM or log correlation tool integrated for audit analysis"
+	not input.audit.siem_integrated == true
+	finding := "3.3.5: No SIEM or log correlation tool integrated for audit analysis"
+	msg := concat("", [finding, _ev_input("audit.siem_integrated")])
 }
 
 # ---------------------------------------------------------------------------
@@ -204,8 +212,9 @@ compliant_3_3_6 if {
 }
 
 violation_3_3_6 contains msg if {
-	not input.audit.report_generation_capability
-	msg := "3.3.6: No capability for audit record reduction and report generation"
+	not input.audit.report_generation_capability == true
+	finding := "3.3.6: No capability for audit record reduction and report generation"
+	msg := concat("", [finding, _ev_input("audit.report_generation_capability")])
 }
 
 violation_3_3_6 contains msg if {
@@ -227,8 +236,9 @@ compliant_3_3_7 if {
 }
 
 violation_3_3_7 contains msg if {
-	not input.audit.ntp_configured
-	msg := "3.3.7: NTP/chrony is not configured for clock synchronization"
+	not input.audit.ntp_configured == true
+	finding := "3.3.7: NTP/chrony is not configured for clock synchronization"
+	msg := concat("", [finding, _ev_input("audit.ntp_configured")])
 }
 
 violation_3_3_7 contains msg if {
@@ -237,8 +247,9 @@ violation_3_3_7 contains msg if {
 }
 
 violation_3_3_7 contains msg if {
-	not input.audit.time_sync_active
-	msg := "3.3.7: Time synchronization service (chronyd/ntpd) is not active"
+	not input.audit.time_sync_active == true
+	finding := "3.3.7: Time synchronization service (chronyd/ntpd) is not active"
+	msg := concat("", [finding, _ev_input("audit.time_sync_active")])
 }
 
 # ---------------------------------------------------------------------------
@@ -255,18 +266,21 @@ compliant_3_3_8 if {
 }
 
 violation_3_3_8 contains msg if {
-	not input.audit.log_file_permissions_correct
-	msg := "3.3.8: Audit log file permissions allow unauthorized access"
+	not input.audit.log_file_permissions_correct == true
+	finding := "3.3.8: Audit log file permissions allow unauthorized access"
+	msg := concat("", [finding, _ev_input("audit.log_file_permissions_correct")])
 }
 
 violation_3_3_8 contains msg if {
-	not input.audit.log_dir_permissions_correct
-	msg := "3.3.8: Audit log directory permissions allow unauthorized access"
+	not input.audit.log_dir_permissions_correct == true
+	finding := "3.3.8: Audit log directory permissions allow unauthorized access"
+	msg := concat("", [finding, _ev_input("audit.log_dir_permissions_correct")])
 }
 
 violation_3_3_8 contains msg if {
-	not input.audit.auditd_immutable_config
-	msg := "3.3.8: auditd configuration is not protected from modification (missing -e 2)"
+	not input.audit.auditd_immutable_config == true
+	finding := "3.3.8: auditd configuration is not protected from modification (missing -e 2)"
+	msg := concat("", [finding, _ev_input("audit.auditd_immutable_config")])
 }
 
 # ---------------------------------------------------------------------------
@@ -294,7 +308,7 @@ _admins_within_defined_subset if {
 }
 
 violation_3_3_9 contains "3.3.9: evidence missing - input.org_defined.audit_logging_managers (organisation-defined subset of privileged users, NIST SP 800-171A 3.3.9[a]) not supplied or not an array" if {
-	not is_array(object.get(input, ["org_defined", "audit_logging_managers"], null))
+	not is_array(object.get(_facts, ["org_defined", "audit_logging_managers"], null))
 }
 
 violation_3_3_9 contains msg if {
@@ -305,8 +319,9 @@ violation_3_3_9 contains msg if {
 }
 
 violation_3_3_9 contains msg if {
-	not input.audit.management_restricted
-	msg := "3.3.9: Audit log management is not restricted to privileged users"
+	not input.audit.management_restricted == true
+	finding := "3.3.9: Audit log management is not restricted to privileged users"
+	msg := concat("", [finding, _ev_input("audit.management_restricted")])
 }
 
 violation_3_3_9 contains msg if {
@@ -435,3 +450,25 @@ compliance_report := {
 	"violations": all_violations,
 	"practices": practices,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

@@ -33,18 +33,21 @@ compliant_3_8_1 if {
 }
 
 violation_3_8_1 contains msg if {
-	not input.media.digital_media_protected
-	msg := "3.8.1: Digital media containing CUI is not protected"
+	not input.media.digital_media_protected == true
+	finding := "3.8.1: Digital media containing CUI is not protected"
+	msg := concat("", [finding, _ev_input("media.digital_media_protected")])
 }
 
 violation_3_8_1 contains msg if {
-	not input.media.paper_media_protected
-	msg := "3.8.1: Paper media containing CUI is not protected"
+	not input.media.paper_media_protected == true
+	finding := "3.8.1: Paper media containing CUI is not protected"
+	msg := concat("", [finding, _ev_input("media.paper_media_protected")])
 }
 
 violation_3_8_1 contains msg if {
-	not input.media.media_access_controlled
-	msg := "3.8.1: Access to CUI media is not controlled"
+	not input.media.media_access_controlled == true
+	finding := "3.8.1: Access to CUI media is not controlled"
+	msg := concat("", [finding, _ev_input("media.media_access_controlled")])
 }
 
 # 3.8.2 — Limit access to CUI on system media to authorized users. (L2)
@@ -56,13 +59,15 @@ compliant_3_8_2 if {
 }
 
 violation_3_8_2 contains msg if {
-	not input.media.media_access_restricted_to_authorized
-	msg := "3.8.2: CUI media access is not restricted to authorized users"
+	not input.media.media_access_restricted_to_authorized == true
+	finding := "3.8.2: CUI media access is not restricted to authorized users"
+	msg := concat("", [finding, _ev_input("media.media_access_restricted_to_authorized")])
 }
 
 violation_3_8_2 contains msg if {
-	not input.media.media_access_list_maintained
-	msg := "3.8.2: No maintained list of users authorized to access CUI media"
+	not input.media.media_access_list_maintained == true
+	finding := "3.8.2: No maintained list of users authorized to access CUI media"
+	msg := concat("", [finding, _ev_input("media.media_access_list_maintained")])
 }
 
 # 3.8.3 — Sanitize or destroy system media before disposal or reuse. (L1: MP.L1-b.1.vii)
@@ -75,18 +80,21 @@ compliant_3_8_3 if {
 }
 
 violation_3_8_3 contains msg if {
-	not input.media.sanitization_policy_exists
-	msg := "3.8.3: No media sanitization policy before disposal or reuse"
+	not input.media.sanitization_policy_exists == true
+	finding := "3.8.3: No media sanitization policy before disposal or reuse"
+	msg := concat("", [finding, _ev_input("media.sanitization_policy_exists")])
 }
 
 violation_3_8_3 contains msg if {
-	not input.media.nist_800_88_compliant
-	msg := "3.8.3: Media sanitization does not comply with NIST SP 800-88 guidelines"
+	not input.media.nist_800_88_compliant == true
+	finding := "3.8.3: Media sanitization does not comply with NIST SP 800-88 guidelines"
+	msg := concat("", [finding, _ev_input("media.nist_800_88_compliant")])
 }
 
 violation_3_8_3 contains msg if {
-	not input.media.sanitization_records_kept
-	msg := "3.8.3: Media sanitization/destruction records are not maintained"
+	not input.media.sanitization_records_kept == true
+	finding := "3.8.3: Media sanitization/destruction records are not maintained"
+	msg := concat("", [finding, _ev_input("media.sanitization_records_kept")])
 }
 
 # 3.8.4 — Mark media with necessary CUI markings and distribution
@@ -99,13 +107,15 @@ compliant_3_8_4 if {
 }
 
 violation_3_8_4 contains msg if {
-	not input.media.cui_marking_policy
-	msg := "3.8.4: No policy for marking media with CUI designations"
+	not input.media.cui_marking_policy == true
+	finding := "3.8.4: No policy for marking media with CUI designations"
+	msg := concat("", [finding, _ev_input("media.cui_marking_policy")])
 }
 
 violation_3_8_4 contains msg if {
-	not input.media.media_labeled_with_classification
-	msg := "3.8.4: CUI media is not labeled with appropriate markings and distribution limits"
+	not input.media.media_labeled_with_classification == true
+	finding := "3.8.4: CUI media is not labeled with appropriate markings and distribution limits"
+	msg := concat("", [finding, _ev_input("media.media_labeled_with_classification")])
 }
 
 # 3.8.5 — Control access to media containing CUI and maintain accountability
@@ -119,18 +129,21 @@ compliant_3_8_5 if {
 }
 
 violation_3_8_5 contains msg if {
-	not input.media.transport_controls_implemented
-	msg := "3.8.5: No controls for CUI media during transport"
+	not input.media.transport_controls_implemented == true
+	finding := "3.8.5: No controls for CUI media during transport"
+	msg := concat("", [finding, _ev_input("media.transport_controls_implemented")])
 }
 
 violation_3_8_5 contains msg if {
-	not input.media.chain_of_custody_maintained
-	msg := "3.8.5: Chain of custody is not maintained for CUI media in transport"
+	not input.media.chain_of_custody_maintained == true
+	finding := "3.8.5: Chain of custody is not maintained for CUI media in transport"
+	msg := concat("", [finding, _ev_input("media.chain_of_custody_maintained")])
 }
 
 violation_3_8_5 contains msg if {
-	not input.media.encrypted_during_transport
-	msg := "3.8.5: CUI media is not encrypted during transport"
+	not input.media.encrypted_during_transport == true
+	finding := "3.8.5: CUI media is not encrypted during transport"
+	msg := concat("", [finding, _ev_input("media.encrypted_during_transport")])
 }
 
 # 3.8.6 — Implement cryptographic mechanisms to protect CUI during transport
@@ -143,13 +156,15 @@ compliant_3_8_6 if {
 }
 
 violation_3_8_6 contains msg if {
-	not input.media.encryption_at_rest
-	msg := "3.8.6: CUI media is not encrypted at rest"
+	not input.media.encryption_at_rest == true
+	finding := "3.8.6: CUI media is not encrypted at rest"
+	msg := concat("", [finding, _ev_input("media.encryption_at_rest")])
 }
 
 violation_3_8_6 contains msg if {
-	not input.media.fips_validated_encryption
-	msg := "3.8.6: Media encryption does not use FIPS-validated cryptographic modules"
+	not input.media.fips_validated_encryption == true
+	finding := "3.8.6: Media encryption does not use FIPS-validated cryptographic modules"
+	msg := concat("", [finding, _ev_input("media.fips_validated_encryption")])
 }
 
 # 3.8.7 — Control the use of removable media on system components. (L2)
@@ -161,13 +176,15 @@ compliant_3_8_7 if {
 }
 
 violation_3_8_7 contains msg if {
-	not input.media.removable_media_policy
-	msg := "3.8.7: No policy controlling use of removable media on system components"
+	not input.media.removable_media_policy == true
+	finding := "3.8.7: No policy controlling use of removable media on system components"
+	msg := concat("", [finding, _ev_input("media.removable_media_policy")])
 }
 
 violation_3_8_7 contains msg if {
-	not input.media.unauthorized_removable_media_blocked
-	msg := "3.8.7: Unauthorized removable media is not blocked (USB, SD cards, etc.)"
+	not input.media.unauthorized_removable_media_blocked == true
+	finding := "3.8.7: Unauthorized removable media is not blocked (USB, SD cards, etc.)"
+	msg := concat("", [finding, _ev_input("media.unauthorized_removable_media_blocked")])
 }
 
 # 3.8.8 — Prohibit the use of portable storage devices when such devices have
@@ -180,13 +197,15 @@ compliant_3_8_8 if {
 }
 
 violation_3_8_8 contains msg if {
-	not input.media.unowned_portable_storage_prohibited
-	msg := "3.8.8: Portable storage devices without identifiable owners are not prohibited"
+	not input.media.unowned_portable_storage_prohibited == true
+	finding := "3.8.8: Portable storage devices without identifiable owners are not prohibited"
+	msg := concat("", [finding, _ev_input("media.unowned_portable_storage_prohibited")])
 }
 
 violation_3_8_8 contains msg if {
-	not input.media.device_registration_required
-	msg := "3.8.8: Portable storage devices are not required to be registered/identified"
+	not input.media.device_registration_required == true
+	finding := "3.8.8: Portable storage devices are not required to be registered/identified"
+	msg := concat("", [finding, _ev_input("media.device_registration_required")])
 }
 
 # 3.8.9 — Protect the confidentiality of backup CUI at storage locations. (L2)
@@ -199,18 +218,21 @@ compliant_3_8_9 if {
 }
 
 violation_3_8_9 contains msg if {
-	not input.media.backup_cui_encrypted
-	msg := "3.8.9: Backup CUI is not encrypted at storage locations"
+	not input.media.backup_cui_encrypted == true
+	finding := "3.8.9: Backup CUI is not encrypted at storage locations"
+	msg := concat("", [finding, _ev_input("media.backup_cui_encrypted")])
 }
 
 violation_3_8_9 contains msg if {
-	not input.media.backup_storage_access_controlled
-	msg := "3.8.9: Access to backup CUI storage locations is not controlled"
+	not input.media.backup_storage_access_controlled == true
+	finding := "3.8.9: Access to backup CUI storage locations is not controlled"
+	msg := concat("", [finding, _ev_input("media.backup_storage_access_controlled")])
 }
 
 violation_3_8_9 contains msg if {
-	not input.media.backup_integrity_verified
-	msg := "3.8.9: Backup integrity is not verified to detect unauthorized modification"
+	not input.media.backup_integrity_verified == true
+	finding := "3.8.9: Backup integrity is not verified to detect unauthorized modification"
+	msg := concat("", [finding, _ev_input("media.backup_integrity_verified")])
 }
 
 # ---------------------------------------------------------------------------
@@ -300,3 +322,25 @@ compliance_report := {
 	"practices": practices,
 	"level_1_passing": level_1_passing,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

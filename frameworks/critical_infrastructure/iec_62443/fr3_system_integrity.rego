@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 29
+#     checks: 30
 #     cited: 10
 #     density: sized
 #     basis: size
@@ -19,7 +19,10 @@ package iec_62443.fr3
 import rego.v1
 
 # =============================================================================
-# IEC 62443-3-3 FR 3 — System Integrity (SI)
+# IEC 62443-3-3:2013 FR 3 — System Integrity (SI)
+#
+# Edition: IEC 62443-3-3:2013 (edition 1.0, System security requirements and
+# security levels). SR and RE numbers below are that edition's.
 #
 # Purpose: Ensure the integrity of the IACS by protecting against unauthorized
 # modification of hardware, software, and data in transit and at rest.
@@ -60,7 +63,11 @@ import rego.v1
 default compliant := false
 
 # A missing patch delay fails closed: an undocumented delay is not within the limit.
-patch_delay_within(n) if input.patch_management.max_patch_delay_days <= n
+# A value that is not a number does not meet the limit (null and strings do not compare as numbers).
+patch_delay_within(n) if {
+	is_number(input.patch_management.max_patch_delay_days)
+	input.patch_management.max_patch_delay_days <= n
+}
 
 # ---------------------------------------------------------------------------
 # SR 3.1 — Communication integrity
@@ -69,11 +76,12 @@ patch_delay_within(n) if input.patch_management.max_patch_delay_days <= n
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.communication_integrity
-	msg := sprintf(
+	not system.communication_integrity == true
+	finding := sprintf(
 		"IEC 62443 SR 3.1 (SI): ICS system '%v' does not protect communication integrity. IACS communications must use mechanisms (checksums, MACs, digital signatures) to detect unauthorized modification.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "communication_integrity")])
 }
 
 # SR 3.1 RE 1 (SL 2+): Cryptographic integrity protection
@@ -81,11 +89,12 @@ violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.cryptographic_integrity_protection
-	msg := sprintf(
+	not system.cryptographic_integrity_protection == true
+	finding := sprintf(
 		"IEC 62443 SR 3.1 RE 1 SL%v (SI): ICS system '%v' does not use cryptographic mechanisms for communication integrity. HMAC or digital signatures are required at Security Level 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "cryptographic_integrity_protection")])
 }
 
 # ---------------------------------------------------------------------------
@@ -97,33 +106,36 @@ violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.malware_protection
-	not system.application_whitelisting
-	msg := sprintf(
+	not system.malware_protection == true
+	not system.application_whitelisting == true
+	finding := sprintf(
 		"IEC 62443 SR 3.2 SL%v (SI): ICS system '%v' has neither malware protection nor application whitelisting. One of these controls is required at Security Level 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "malware_protection"), _ev_item(system, "application_whitelisting")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	system.malware_protection
-	not system.malware_definitions_current
-	msg := sprintf(
+	system.malware_protection == true
+	not system.malware_definitions_current == true
+	finding := sprintf(
 		"IEC 62443 SR 3.2 (SI): ICS system '%v' malware definitions are not current. Malware signatures must be updated at least weekly, or more frequently if the system is Internet-connected.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "malware_definitions_current")])
 }
 
 # SR 3.2 RE 1 (SL 3+): Malware protection at all entry points
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 3
-	not input.network.malware_protection_at_boundaries
-	msg := sprintf(
+	not input.network.malware_protection_at_boundaries == true
+	finding := sprintf(
 		"IEC 62443 SR 3.2 RE 1 SL%v (SI): Malware protection is not deployed at all IACS network entry points. Boundary-level malware scanning is required at Security Level 3+.",
 		[input.target_sl],
 	)
+	msg := concat("", [finding, _ev_input("network.malware_protection_at_boundaries")])
 }
 
 # ---------------------------------------------------------------------------
@@ -133,21 +145,23 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.security_function_testing
-	msg := sprintf(
+	not system.security_function_testing == true
+	finding := sprintf(
 		"IEC 62443 SR 3.3 (SI): ICS system '%v' has no security function verification process. Security controls must be periodically tested to confirm they operate as intended.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "security_function_testing")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
-	not input.security_management.security_testing_schedule_documented
-	msg := sprintf(
+	not input.security_management.security_testing_schedule_documented == true
+	finding := sprintf(
 		"IEC 62443 SR 3.3 RE 1 SL%v (SI): No documented schedule for security function verification. A formal testing schedule is required at Security Level 2+.",
 		[input.target_sl],
 	)
+	msg := concat("", [finding, _ev_input("security_management.security_testing_schedule_documented")])
 }
 
 # ---------------------------------------------------------------------------
@@ -157,29 +171,32 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.software_integrity_verification
-	msg := sprintf(
+	not system.software_integrity_verification == true
+	finding := sprintf(
 		"IEC 62443 SR 3.4 (SI): ICS system '%v' does not verify software integrity. File integrity monitoring or hash verification must be implemented to detect unauthorized changes.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "software_integrity_verification")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.firmware_integrity_checking
-	msg := sprintf(
+	not system.firmware_integrity_checking == true
+	finding := sprintf(
 		"IEC 62443 SR 3.4 (SI): ICS system '%v' does not verify firmware integrity. Firmware must be verified against known-good hashes before and after updates.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "firmware_integrity_checking")])
 }
 
 violations contains msg if {
-	not input.patch_management.process_documented
-	msg := "IEC 62443 SR 3.4 (SI): No patch management process documented. Security patches for IACS components must be evaluated and applied through a controlled process."
+	not input.patch_management.process_documented == true
+	finding := "IEC 62443 SR 3.4 (SI): No patch management process documented. Security patches for IACS components must be evaluated and applied through a controlled process."
+	msg := concat("", [finding, _ev_input("patch_management.process_documented")])
 }
 
 violations contains msg if {
-	input.patch_management.process_documented
+	input.patch_management.process_documented == true
 	not patch_delay_within(90)
 	msg := sprintf(
 		"IEC 62443 SR 3.4 (SI): Critical IACS patches are delayed up to %v days. Critical security patches must be evaluated within 30 days and applied within 90 days.",
@@ -192,11 +209,12 @@ violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.automated_integrity_checking
-	msg := sprintf(
+	not system.automated_integrity_checking == true
+	finding := sprintf(
 		"IEC 62443 SR 3.4 RE 1 SL%v (SI): ICS system '%v' lacks automated integrity checking. Automated file integrity monitoring is required at Security Level 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "automated_integrity_checking")])
 }
 
 # ---------------------------------------------------------------------------
@@ -206,11 +224,12 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.input_validation
-	msg := sprintf(
+	not system.input_validation == true
+	finding := sprintf(
 		"IEC 62443 SR 3.5 (SI): ICS system '%v' does not validate inputs. All external inputs (HMI, APIs, data feeds) must be validated to prevent injection attacks and unexpected behavior.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "input_validation")])
 }
 
 # ---------------------------------------------------------------------------
@@ -220,11 +239,12 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.deterministic_output_verification
-	msg := sprintf(
+	not system.deterministic_output_verification == true
+	finding := sprintf(
 		"IEC 62443 SR 3.6 (SI): ICS system '%v' does not enforce output range checking. Control outputs must remain within safe operational bounds even under error or attack conditions.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "deterministic_output_verification")])
 }
 
 # ---------------------------------------------------------------------------
@@ -234,16 +254,17 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.error_handling_implemented
-	msg := sprintf(
+	not system.error_handling_implemented == true
+	finding := sprintf(
 		"IEC 62443 SR 3.7 (SI): ICS system '%v' does not implement secure error handling. Errors must not expose sensitive information and must fail to a known safe state.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "error_handling_implemented")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	system.error_messages_expose_sensitive_data
+	system.error_messages_expose_sensitive_data == true
 	msg := sprintf(
 		"IEC 62443 SR 3.7 (SI): ICS system '%v' error messages expose sensitive system information. Error messages must be sanitized before display to operators.",
 		[system.name],
@@ -257,11 +278,12 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.session_integrity
-	msg := sprintf(
+	not system.session_integrity == true
+	finding := sprintf(
 		"IEC 62443 SR 3.8 (SI): ICS system '%v' does not protect session integrity. Session tokens must be cryptographically protected against hijacking and replay attacks.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "session_integrity")])
 }
 
 # SR 3.8 RE 1 (SL 2+): Invalidate sessions on privilege change
@@ -269,11 +291,12 @@ violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.session_invalidated_on_privilege_change
-	msg := sprintf(
+	not system.session_invalidated_on_privilege_change == true
+	finding := sprintf(
 		"IEC 62443 SR 3.8 RE 1 SL%v (SI): ICS system '%v' does not invalidate sessions when privileges change. Sessions must be re-established after any privilege modification.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "session_invalidated_on_privilege_change")])
 }
 
 # ---------------------------------------------------------------------------
@@ -283,26 +306,29 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.audit_log_tamper_protection
-	msg := sprintf(
+	not system.audit_log_tamper_protection == true
+	finding := sprintf(
 		"IEC 62443 SR 3.9 (SI): ICS system '%v' audit logs are not tamper-protected. Audit records must be write-protected and access-controlled to preserve their evidential value.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "audit_log_tamper_protection")])
 }
 
 violations contains msg if {
-	not input.monitoring.log_access_controlled
-	msg := "IEC 62443 SR 3.9 (SI): IACS audit log access is not controlled. Only authorized personnel should be able to read audit logs; no one should be able to modify or delete them."
+	not input.monitoring.log_access_controlled == true
+	finding := "IEC 62443 SR 3.9 (SI): IACS audit log access is not controlled. Only authorized personnel should be able to read audit logs; no one should be able to modify or delete them."
+	msg := concat("", [finding, _ev_input("monitoring.log_access_controlled")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
-	not input.monitoring.logs_sent_to_immutable_store
-	msg := sprintf(
+	not input.monitoring.logs_sent_to_immutable_store == true
+	finding := sprintf(
 		"IEC 62443 SR 3.9 RE 1 SL%v (SI): Audit logs are not forwarded to an immutable store. Write-once log forwarding (SIEM, syslog-ng with WORM storage) is required at Security Level 2+.",
 		[input.target_sl],
 	)
+	msg := concat("", [finding, _ev_input("monitoring.logs_sent_to_immutable_store")])
 }
 
 # ---------------------------------------------------------------------------
@@ -315,31 +341,31 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 3.1 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.2 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.3 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.5 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.6 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.7 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.8 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 # SL-dependent requirements are gated on target_sl. Without a number they
@@ -375,3 +401,62 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 }
+
+# ---------------------------------------------------------------------------
+# Facts that decide whether a requirement applies, or that fail it when true,
+# must be stated as booleans. "Does not apply" is the boolean false; an absent
+# fact, null or a string such as "false" is an evidence problem and a finding.
+# Rows: [fact, requirement, lowest target SL at which the fact is read].
+# ---------------------------------------------------------------------------
+
+_stated_system_facts := [
+	["malware_protection", "SR 3.2", 1],
+	["application_whitelisting", "SR 3.2", 2],
+	["error_messages_expose_sensitive_data", "SR 3.7", 1],
+]
+
+_sl_at_least(n) if n <= 1
+
+_sl_at_least(n) if {
+	is_number(input.target_sl)
+	input.target_sl >= n
+}
+
+violations contains msg if {
+	some [fact, requirement, min_sl] in _stated_system_facts
+	_sl_at_least(min_sl)
+	some system in input.ics_systems
+	not is_boolean(object.get(system, fact, null))
+	msg := sprintf(
+		"IEC 62443 %s (SI): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
+	)
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

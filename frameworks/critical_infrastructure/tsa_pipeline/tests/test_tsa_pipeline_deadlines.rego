@@ -278,3 +278,48 @@ test_control_room_mfa_exemption_with_compensating_controls_is_compliant if {
 	}}}
 	not violation_matching(violations, "III.C.2")
 }
+
+# --- audit 2026-11-24: a missing hour count is evidence missing, never "0 hours" -------------
+
+_reported(extra) := {"incident_reporting": {"incidents": [object.union({"id": "INC-9", "reported_to_cisa": true, "sd_reporting_stated": true, "initial_report_incomplete": false}, extra)]}}
+
+_ii_c_3(inp) := {v |
+	some v in data.tsa_pipeline.sd01_reporting.violations with input as inp
+	contains(v, "II.C.3")
+	contains(v, "INC-9")
+}
+
+test_reported_incident_without_hours_is_a_72_hour_finding if {
+	some v in _ii_c_3(_reported({}))
+	contains(v, "evidence missing")
+	contains(v, "hours_to_report")
+}
+
+test_reported_incident_with_string_or_null_hours_is_a_finding if {
+	every bad in ["80", "10", null, true] {
+		count(_ii_c_3(_reported({"hours_to_report": bad}))) == 1
+	}
+}
+
+test_reported_incident_within_72_hours_has_no_72_hour_finding if {
+	count(_ii_c_3(_reported({"hours_to_report": 10}))) == 0
+	count(_ii_c_3(_reported({"hours_to_report": 80}))) == 1
+}
+
+test_incomplete_report_without_supplement_hours_is_a_finding if {
+	inp := _reported({"hours_to_report": 10, "initial_report_incomplete": true})
+	some v in data.tsa_pipeline.sd01_reporting.violations with input as inp
+	contains(v, "II.C.5.f")
+	contains(v, "supplemental_hours_after_available")
+}
+
+# --- the two counts the report carries -----------------------------------------------------
+
+test_requirements_are_the_112_subparagraphs_and_checks_are_counted_apart if {
+	r := data.tsa_pipeline.main.compliance_report with input as {}
+	r.total_requirements_evaluated == 112
+	r.total_checks == 175
+	r.total_controls == 175
+	r.failed_controls == r.violation_count
+	r.failed_controls <= r.total_controls
+}
