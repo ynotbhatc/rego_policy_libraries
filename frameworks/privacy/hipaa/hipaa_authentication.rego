@@ -176,6 +176,13 @@ advisories contains msg if {
 	)
 }
 
+# An absent privileged-account list is not "no privileged accounts" (that is an empty list): the advisory
+# above iterates the list, so an uncollected list left no trace. It is stated as not collected.
+advisories contains msg if {
+	object.get(input, "privileged_accounts", null) == null
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — privileged_accounts not collected; MFA enrolment of privileged accounts was not reviewed (send an empty list when there are none)."
+}
+
 # ---------------------------------------------------------------------------
 # Session authentication
 # ---------------------------------------------------------------------------

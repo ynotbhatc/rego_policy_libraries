@@ -144,3 +144,72 @@ test_entity_type_must_be_stated if {
 		startswith(v, "GLBA input contract (16 CFR 314.1(b))")
 	}
 }
+
+# Audit 2026-11-24 round 2: the declared total agrees with the rule set. 34 checks of 16 CFR 314.4(a)-(j),
+# one finding each (it said 33 while 34 rules reported). The 314.1(b) applicability finding is an
+# input-contract finding: in violation_count, not in failed_controls.
+_counts_add_up(report) if {
+	report.total_controls == 34
+	report.failed_controls <= report.total_controls
+	report.passed_controls >= 0
+	(report.passed_controls + report.failed_controls) + report.not_applicable_controls == report.total_controls
+	report.violation_count == report.failed_controls + report.input_contract_findings
+}
+
+test_declared_total_matches_rule_set_on_empty_input if {
+	report := main.compliance_report with input as {}
+	report.failed_controls == 34
+	report.passed_controls == 0
+	report.not_applicable_controls == 0
+	report.input_contract_findings == 1
+	report.violation_count == 35
+	_counts_add_up(report)
+}
+
+test_one_finding_per_paragraph_group_on_empty_input if {
+	report := main.compliance_report with input as {}
+	expected := {
+		"16 CFR 314.4(a)": 1, "16 CFR 314.4(b)": 3, "16 CFR 314.4(c)(1)": 3, "16 CFR 314.4(c)(2)": 2,
+		"16 CFR 314.4(c)(3)": 2, "16 CFR 314.4(c)(4)": 2, "16 CFR 314.4(c)(5)": 1, "16 CFR 314.4(c)(6)": 2,
+		"16 CFR 314.4(c)(7)": 1, "16 CFR 314.4(c)(8)": 2, "16 CFR 314.4(d)": 2, "16 CFR 314.4(e)": 3,
+		"16 CFR 314.4(f)": 3, "16 CFR 314.4(g)": 1, "16 CFR 314.4(h)": 3, "16 CFR 314.4(i)": 2,
+		"16 CFR 314.5": 1,
+	}
+	every prefix, n in expected {
+		count([v | some v in report.violations; startswith(v, prefix)]) == n
+	}
+	sum([n | some _, n in expected]) == 34
+}
+
+test_counts_add_up_on_every_kind_of_input if {
+	inputs := [
+		{}, ok, {"small_institution_exemption": true},
+		object.union(ok, {"small_institution_exemption": true}),
+		json.patch(ok, [{"op": "remove", "path": "/entity_type"}]),
+		{"entity_type": "auto dealer"},
+		{"entity_type": "auto dealer", "small_institution_exemption": true},
+	]
+	every inp in inputs {
+		report := main.compliance_report with input as inp
+		_counts_add_up(report)
+	}
+}
+
+test_exemption_counts_not_applicable if {
+	report := main.compliance_report with input as {"entity_type": "tax preparer", "small_institution_exemption": true}
+	report.not_applicable_controls == 10
+	report.failed_controls == 24
+	report.passed_controls == 0
+	report.input_contract_findings == 0
+	passing := main.compliance_report with input as object.union(ok, {"small_institution_exemption": true})
+	passing.compliant == true
+	passing.passed_controls == 24
+	passing.not_applicable_controls == 10
+}
+
+test_all_pass_counts if {
+	report := main.compliance_report with input as ok
+	report.passed_controls == 34
+	report.failed_controls == 0
+	report.not_applicable_controls == 0
+}

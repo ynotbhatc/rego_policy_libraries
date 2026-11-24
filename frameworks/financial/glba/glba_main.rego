@@ -8,7 +8,7 @@
 #   coverage:
 #     checks: 35
 #     cited: 27
-#     expected: 33
+#     expected: 34
 #     found: 35
 #     scope: directory
 #     density: over
@@ -405,8 +405,33 @@ compliance_report := {
 	"small_institution_exemption": small_exempt,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
-	"total_controls": 33,
+	"total_controls": 34,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([33, count(violations)]),
+	"failed_controls": count(_control_findings),
+	"passed_controls": (total_controls - count(_control_findings)) - not_applicable_controls,
+	"not_applicable_controls": not_applicable_controls,
+	"input_contract_findings": count(_contract_findings),
+	"counting": "total_controls counts the 34 checks of 16 CFR 314.4(a)-(j), one finding each; the 314.1(b) applicability finding is an input-contract finding, counted in violation_count and not in failed_controls",
 }
+
+# ── Counting ─────────────────────────────────────────────────────────────────
+# One control per check rule above, one finding per control. By paragraph of 16 CFR 314.4:
+#   (a) 1 · (b) 3 · (c)(1) 3 · (c)(2) 2 · (c)(3) 2 · (c)(4) 2 · (c)(5) 1 · (c)(6) 2 · (c)(7) 1 · (c)(8) 2
+#   (d) 2 · (e) 3 · (f) 3 · (g) 1 · (h) 3 · (i) 2 · (j) 1  = 34
+# The total was declared as 33 while 34 rules reported: on empty input 34 control findings sat beside a
+# total of 33 and failed_controls was capped. No two rules test the same requirement, so the rule set is
+# right and the declared total was one short (audit 2026-11-24).
+total_controls := 34
+
+# The rules the small-institution exemption switches off: (b) 3, (d) 2, (h) 3, (i) 2.
+_exemptible_controls := 10
+
+default not_applicable_controls := 0
+
+not_applicable_controls := _exemptible_controls if small_exempt
+
+# The applicability finding (314.1(b)) is about the input, not one of the 34 controls.
+_contract_findings := {v | some v in violations; startswith(v, "GLBA input contract")}
+
+_control_findings := violations - _contract_findings
