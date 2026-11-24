@@ -211,12 +211,48 @@ violations contains msg if {
 # =============================================================================
 
 # fail-closed: a host with no facts has not been checked, so it is not reported clean
-_facts_present if input.running_processes
-_facts_present if input.installed_packages
-_facts_present if input.network_connections
-_facts_present if input.systemd_services
-_facts_present if input.cron_jobs
-_facts_present if input.suspicious_files
+# A fact is present when it is a list (an empty list says the collector looked and found none). The fields
+# the detections read, with their types: a fact or a field of another type cannot be searched, so it is
+# reported and the host is not clean.
+fact_fields := {
+	"running_processes": {"name": "string", "cmdline": "string"},
+	"installed_packages": {"name": "string"},
+	"network_connections": {"remote_host": "string", "remote_port": "number"},
+	"systemd_services": {"name": "string", "exec_start": "string"},
+	"cron_jobs": {"command": "string"},
+	"suspicious_files": {"path": "string", "content": "string"},
+}
+
+_facts_present if {
+	some fact, _ in fact_fields
+	is_array(input[fact])
+}
+
+violations contains msg if {
+	some fact, _ in fact_fields
+	fact in object.keys(input)
+	not is_array(input[fact])
+	msg := sprintf("EVIDENCE INVALID - %s must be a list, got %s; the host was NOT evaluated on it", [fact, type_name(input[fact])])
+}
+
+violations contains msg if {
+	some fact, _ in fact_fields
+	is_array(input[fact])
+	some i, item in input[fact]
+	not is_object(item)
+	msg := sprintf("EVIDENCE INVALID - %s[%d] must be an object, got %s", [fact, i, type_name(item)])
+}
+
+violations contains msg if {
+	some fact, fields in fact_fields
+	is_array(input[fact])
+	some i, item in input[fact]
+	some field, type in fields
+	value := item[field]
+	not is_null(value)
+	type_name(value) != type
+	msg := sprintf("EVIDENCE INVALID - %s[%d].%s must be a %s, got %s", [fact, i, field, type, type_name(value)])
+}
 
 violations contains "FAIL-CLOSED - no facts supplied (running_processes, installed_packages, network_connections, systemd_services, cron_jobs, suspicious_files); the host was NOT evaluated" if {
 	not _facts_present
