@@ -1297,7 +1297,34 @@ violations contains msg if {
 	some id, r in annex_a
 	not _fact_evaluated(id)
 	not _attested(id)
-	msg := sprintf("ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true", [id, r.title, r.theme, id])
+	msg := sprintf("ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true%v", [id, r.title, r.theme, id, _attestation_problem(id)])
+}
+
+# Why a non-true attestation did not count: only the boolean true attests. A boolean false is a plain
+# "not attested"; a missing id and a wrong-typed value are evidence problems and are named.
+_attestation_problem(id) := "" if _attestations[id] == false
+
+_attestation_problem(id) := " [evidence missing — attestation not collected]" if {
+	not _has_attestation(id)
+}
+
+_attestation_problem(id) := sprintf(" [evidence invalid — attestation is not a boolean (got %v)]", [type_name(_attestations[id])]) if {
+	_has_attestation(id)
+	not is_boolean(_attestations[id])
+}
+
+_has_attestation(id) if {
+	some k, _ in _attestations
+	k == id
+}
+
+# An attestation for a fact-evaluated control does not decide it, but it is still evidence in the
+# record: a value that is not a boolean is a collection error and is reported.
+violations contains msg if {
+	some id, value in _attestations
+	_fact_evaluated(id)
+	not is_boolean(value)
+	msg := sprintf("ISO/IEC 27001 Input Contract: attestation for %v is not a boolean (got %v) — input.iso27001.annex_a[\"%v\"] must be true or false", [id, type_name(value), id])
 }
 
 violations contains msg if {
