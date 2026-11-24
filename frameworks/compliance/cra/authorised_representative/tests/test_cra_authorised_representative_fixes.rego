@@ -22,7 +22,8 @@ test_cra_art18_declared_not_applicable_is_compliant if {
 
 test_cra_art18_appointed_without_written_mandate_is_violation_even_if_required_absent if {
 	i := {"authorised_representative": {"manufacturer_outside_eu": true, "appointed": true}}
-	"CRA Art.18(1): Written mandate from the manufacturer to the authorised representative not in place" in m.violation with input as i
+	some v in m.violation with input as i
+	startswith(v, "CRA Art.18(1): Written mandate from the manufacturer to the authorised representative not in place")
 }
 
 test_cra_art18_non_eu_not_appointed_is_violation if {
@@ -33,8 +34,8 @@ test_cra_art18_non_eu_not_appointed_is_violation if {
 test_cra_art18_fully_compliant_non_eu if {
 	i := {"authorised_representative": {
 		"manufacturer_outside_eu": true, "appointed": true, "written_mandate_in_place": true,
-		"mandate_enables_required_tasks": true, "contact_in_user_info": true,
-		"tasks": {"keeps_declaration_of_conformity": true, "keeps_technical_documentation": true, "retention_10_years": true, "provide_info_on_request": true, "cooperate_on_cyber_risk_action": true},
+		"mandate_enables_required_tasks": true, "contact_in_user_info": true, "manufacturer_breaching_cra": false,
+		"tasks": {"keeps_declaration_of_conformity": true, "keeps_technical_documentation": true, "retention_10_years": true, "provide_info_on_request": true, "cooperate_on_cyber_risk_action": true, "essential_requirements_delegated": false, "conformity_assessment_delegated": false},
 	}}
 	m.compliant with input as i
 }

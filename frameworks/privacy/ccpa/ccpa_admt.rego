@@ -6,14 +6,14 @@
 #   source: us-state
 #   domains: [privacy, us-state, ai]
 #   coverage:
-#     checks: 45
+#     checks: 46
 #     cited: 40
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package ccpa.admt
 
 import rego.v1
@@ -49,14 +49,16 @@ compliant if {
 
 default _in := {}
 
-_in := input.ccpa.admt
+# A section sent as null or as a non-object reads as empty (object.get on null made the whole report undefined).
+_in := input.ccpa.admt if is_object(input.ccpa.admt)
 
 compliance_date := "2027-01-01T00:00:00Z"
 
 violations contains msg if {
-	not _in.uses_admt_for_significant_decisions == true
+	note := _unmet(_root, ["ccpa", "admt", "uses_admt_for_significant_decisions"])
 	not _in.uses_admt_for_significant_decisions == false
-	msg := "CCPA §7200(a): uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
+	text := "CCPA §7200(a): uses_admt_for_significant_decisions must be declared true or false — whether ADMT makes significant decisions about consumers cannot be assumed"
+	msg := concat("", [text, note])
 }
 
 _uses if _in.uses_admt_for_significant_decisions == true
@@ -76,8 +78,9 @@ _notice_checks := {
 
 violations contains msg if {
 	_uses
-	some key, msg in _notice_checks
-	not _in.pre_use_notice[key] == true
+	some key, text in _notice_checks
+	note := _unmet(_root, ["ccpa", "admt", "pre_use_notice", key])
+	msg := concat("", [text, note])
 }
 
 # ── §7221 — Opt-out of ADMT ───────────────────────────────────────────────
@@ -104,8 +107,9 @@ _human_appeal_checks := {
 violations contains msg if {
 	_uses
 	_exception == "human_appeal"
-	some key, msg in _human_appeal_checks
-	not _in.opt_out.human_appeal[key] == true
+	some key, text in _human_appeal_checks
+	note := _unmet(_root, ["ccpa", "admt", "opt_out", "human_appeal", key])
+	msg := concat("", [text, note])
 }
 
 # Admission/hiring and work-allocation exceptions (§7221(b)(2)-(3)): sole use plus no unlawful discrimination.
@@ -117,8 +121,9 @@ _assessment_exception_checks := {
 violations contains msg if {
 	_uses
 	_exception in {"admission_or_hiring", "work_allocation_or_compensation"}
-	some key, msg in _assessment_exception_checks
-	not _in.opt_out.exception_conditions[key] == true
+	some key, text in _assessment_exception_checks
+	note := _unmet(_root, ["ccpa", "admt", "opt_out", "exception_conditions", key])
+	msg := concat("", [text, note])
 }
 
 # When no exception applies, the opt-out must be offered and run properly.
@@ -148,8 +153,9 @@ _opt_out_checks := {
 
 violations contains msg if {
 	_opt_out_required
-	some key, msg in _opt_out_checks
-	not _in.opt_out[key] == true
+	some key, text in _opt_out_checks
+	note := _unmet(_root, ["ccpa", "admt", "opt_out", key])
+	msg := concat("", [text, note])
 }
 
 # ── §7222 — Access to ADMT ────────────────────────────────────────────────
@@ -168,19 +174,31 @@ _access_checks := {
 
 violations contains msg if {
 	_uses
-	some key, msg in _access_checks
-	not _in.access[key] == true
+	some key, text in _access_checks
+	note := _unmet(_root, ["ccpa", "admt", "access", key])
+	msg := concat("", [text, note])
 }
 
 # Aggregate responses are only allowed when the ADMT was used on the consumer more than four times in 12 months (§7222(j)).
 violations contains msg if {
 	_uses
 	_in.access.aggregate_responses_used == true
-	not _in.access.aggregate_only_when_more_than_four_uses_in_12_months == true
-	msg := "CCPA §7222(j): aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period"
+	note := _unmet(_root, ["ccpa", "admt", "access", "aggregate_only_when_more_than_four_uses_in_12_months"])
+	text := "CCPA §7222(j): aggregate-level access responses are given without the ADMT having been used on the consumer more than four times in a 12-month period"
+	msg := concat("", [text, note])
 }
 
 # ── Report ────────────────────────────────────────────────────────────────
+
+# ── Facts that switch an obligation on or off ───────────────────────────
+# Each must be stated as true or false wherever its own condition holds. A missing, null or
+# non-boolean value is an evidence problem and is reported; it is never read as "does not apply".
+_conditions contains ["CCPA §7222(j)", ["access", "aggregate_responses_used"]] if _uses
+
+violations contains msg if {
+	some [cite, path] in _conditions
+	msg := sprintf("%s: applicability not determined — %s", [cite, _problem(_root, array.concat(["ccpa", "admt"], path))])
+}
 
 compliance_report := {
 	"standard": "CCPA Regulations — Article 11 Automated Decisionmaking Technology (11 CCR §§7200–7222, effective 2026-01-01)",
@@ -193,3 +211,30 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
+
+# ── Evidence helpers ─────────────────────────────────────────────────────────
+# Evidence rule: only the boolean true passes a yes/no fact. _unmet is defined when the fact is not the
+# boolean true; its value is appended to the finding and names the evidence problem (missing, null, or a
+# value that is not a boolean, such as the strings "true" and "false"). A collected false adds nothing.
+# _problem names the same evidence problem for a fact that switches an obligation on or off: such a fact
+# must be stated as true or false and is never inferred from a missing field.
+# The input document itself may be absent or not an object: every fact then reads as not collected.
+default _root := {}
+
+_root := input if is_object(input)
+
+_fact(root, path) := value if {
+	is_object(root)
+	value := object.get(root, path, null)
+} else := null
+
+_problem(root, path) := sprintf("evidence missing: %s not collected", [concat(".", path)]) if _fact(root, path) == null
+
+_problem(root, path) := sprintf("evidence invalid: %s is not a boolean (got %s)", [concat(".", path), type_name(_fact(root, path))]) if {
+	_fact(root, path) != null
+	not is_boolean(_fact(root, path))
+}
+
+_unmet(root, path) := "" if _fact(root, path) == false
+
+_unmet(root, path) := concat("", [" — ", _problem(root, path)]) if not is_boolean(_fact(root, path))
