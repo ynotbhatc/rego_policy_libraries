@@ -53,6 +53,13 @@ deny contains msg if {
 	some msg in violations
 }
 
+# The review as an object. With no input document at all, or an input that is not an object, object.get on
+# `input` is undefined or an error and the whole report used to go undefined (the product then drops the
+# row). It now reads as an empty review: the request is not evaluable, which is a reported violation.
+default _input := {}
+
+_input := input if is_object(input)
+
 default compliant := false
 
 compliant if count(violations) == 0
@@ -61,7 +68,7 @@ compliant if count(violations) == 0
 # NAMESPACE CLASSIFICATION
 # =============================================================================
 
-production_namespaces := object.get(input, ["policy", "production_namespaces"], {"default", "kube-system"})
+production_namespaces := object.get(_input, ["policy", "production_namespaces"], {"default", "kube-system"})
 
 system_namespaces := {"kube-system", "kube-public", "kube-node-lease"}
 
@@ -79,9 +86,18 @@ is_dev_namespace(ns) if startswith(ns, "test-")
 is_dev_namespace(ns) if startswith(ns, "sandbox-")
 is_dev_namespace(ns) if ns == "staging"
 
-namespace := object.get(input, ["request", "namespace"], "default")
-resource_kind := object.get(input, ["request", "kind", "kind"], "")
-resource_object := object.get(input, ["request", "object"], {})
+namespace := object.get(_input, ["request", "namespace"], "default")
+resource_kind := object.get(_input, ["request", "kind", "kind"], "")
+
+# request.object that is not an object (a string, a list) reads as empty: object.get on it would be an
+# error and take the report with it. request_evaluable reports it.
+default resource_object := {}
+
+resource_object := obj if {
+	obj := object.get(_input, ["request", "object"], {})
+	is_object(obj)
+}
+
 resource_name := object.get(resource_object, ["metadata", "name"], "unnamed")
 
 # =============================================================================
@@ -160,7 +176,7 @@ violations contains sprintf("Resources: Container '%s' in %s '%s' has no memory 
 # APPROVED IMAGE REGISTRIES
 # =============================================================================
 
-approved_registries := object.get(input, ["policy", "approved_registries"], {
+approved_registries := object.get(_input, ["policy", "approved_registries"], {
 	"ghcr.io",
 	"quay.io",
 	"registry.access.redhat.com",
@@ -222,7 +238,7 @@ is_latest_tag(image) if {
 violations contains sprintf("ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production", [container.name, resource_kind, resource_name]) if {
 	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
-	object.get(input, ["policy", "require_image_digest"], false)
+	object.get(_input, ["policy", "require_image_digest"], false)
 	some container in all_containers
 	not contains(container.image, "@sha256:")
 }

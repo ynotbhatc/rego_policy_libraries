@@ -79,3 +79,28 @@ test_annotation_true_opts_out if {
 	w := object.union(template({"containers": [container({"readinessProbe": {}, "livenessProbe": {}, "securityContext": {"allowPrivilegeEscalation": false, "readOnlyRootFilesystem": false, "runAsNonRoot": true, "capabilities": {"drop": ["ALL"]}}})]}), {"metadata": {"annotations": {"admission.kubernetes.io/skip-readonly-check": "true"}}})
 	not has_violation(review("Deployment", w), "readOnlyRootFilesystem")
 }
+
+# ── Audit 2026-11-24: the report is defined and failing on no input and on malformed reviews ────────
+
+_report_fails(r) if {
+	is_object(r)
+	r.compliant == false
+	r.allow == false
+	r.violation_count >= 1
+	some v in r.violations
+	contains(v, "request cannot be evaluated")
+}
+
+test_report_defined_and_failing_on_non_object_input if {
+	every bad in [null, "true", 1, true, [], {}] {
+		_report_fails(data.kubernetes.admission.compliance_report) with input as bad
+	}
+}
+
+test_report_defined_and_failing_on_malformed_request if {
+	every bad in [null, "true", 1, [], {}] {
+		_report_fails(data.kubernetes.admission.compliance_report) with input as {"request": bad}
+		_report_fails(data.kubernetes.admission.compliance_report) with input as {"request": {"kind": {"kind": "Pod"}, "object": bad}}
+		_report_fails(data.kubernetes.admission.compliance_report) with input as {"request": {"kind": bad, "object": {"metadata": {"name": "x"}}}}
+	}
+}
