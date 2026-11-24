@@ -90,3 +90,43 @@ test_missing_fact_list_is_not_clean if {
 }
 
 test_all_six_lists_empty_is_clean if _clean({fact: [] | some fact in detect.fact_names})
+
+# A null field is not a searchable value: it is reported like any other wrong type (it used to be skipped,
+# so a host whose every field was null read as clean).
+test_null_field_is_not_clean if {
+	every row in detect.fact_fields {
+		[fact, field, type] := row
+		inp := object.union(clean_host, {fact: [{field: null}]})
+		_not_clean(inp)
+		sprintf("EVIDENCE INVALID - %s[0].%s must be a %s, got null", [fact, field, type]) in detect.violations with input as inp
+	}
+}
+
+test_all_fields_null_is_not_clean if {
+	inp := {fact: [{field: null | some [f, field, _] in detect.fact_fields; f == fact}] | some fact in detect.fact_names}
+	_not_clean(inp)
+}
+
+# The field a detection matches on must be sent for every item.
+test_item_without_its_matched_field_is_not_clean if {
+	every fact, fields in detect.required_fields {
+		every field in fields {
+			inp := object.union(clean_host, {fact: [object.remove(_full_item[fact], [field])]})
+			_not_clean(inp)
+			sprintf("EVIDENCE MISSING - %s[0].%s not collected; the item was NOT evaluated on it", [fact, field]) in detect.violations with input as inp
+		}
+	}
+}
+
+_full_item := {
+	"running_processes": {"name": "sshd", "cmdline": "/usr/sbin/sshd -D", "pid": 812, "cpu_percent": 0.3, "running_time_minutes": 4000},
+	"installed_packages": {"name": "openssh-server"},
+	"network_connections": {"remote_host": "repo.example.com", "remote_port": 443, "state": "ESTABLISHED"},
+	"systemd_services": {"name": "sshd.service", "exec_start": "/usr/sbin/sshd -D"},
+	"cron_jobs": {"command": "/usr/bin/dnf -y makecache"},
+	"suspicious_files": {"path": "/tmp/notes.txt", "content": "hello"},
+}
+
+test_full_items_are_clean if {
+	_clean({fact: [item] | some fact, item in _full_item})
+}

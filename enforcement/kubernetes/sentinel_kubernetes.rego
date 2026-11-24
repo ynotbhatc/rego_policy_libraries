@@ -88,6 +88,12 @@ _nonempty_string(v) if {
 	trim_space(v) != ""
 }
 
+# A resource quantity is a non-empty string ("500m", "256Mi") or a number. null, false and "" are no limit
+# (`not x` is false for null, so a null limit used to count as set).
+_quantity(v) if _nonempty_string(v)
+
+_quantity(v) if is_number(v)
+
 # ---------------------------------------------------------------------------
 # SENTINEL-K8S-000 — The manifest must be readable
 # A document that is not a manifest is denied, never waved through. (A readable manifest of a kind
@@ -198,7 +204,7 @@ violation_k8s_003 contains msg if {
 
 violation_k8s_004 contains msg if {
 	some container in containers
-	not container.resources.limits.cpu
+	not _quantity(object.get(container, ["resources", "limits", "cpu"], null))
 	msg := sprintf(
 		"SENTINEL-K8S-004: Container '%v' has no CPU limit. CPU limits prevent noisy-neighbor issues and resource exhaustion.",
 		[_name(container)],
@@ -207,7 +213,7 @@ violation_k8s_004 contains msg if {
 
 violation_k8s_004 contains msg if {
 	some container in containers
-	not container.resources.limits.memory
+	not _quantity(object.get(container, ["resources", "limits", "memory"], null))
 	msg := sprintf(
 		"SENTINEL-K8S-004: Container '%v' has no memory limit. Memory limits prevent OOM conditions from affecting other workloads.",
 		[_name(container)],
@@ -216,7 +222,7 @@ violation_k8s_004 contains msg if {
 
 violation_k8s_004 contains msg if {
 	some container in containers
-	not container.resources.requests.cpu
+	not _quantity(object.get(container, ["resources", "requests", "cpu"], null))
 	msg := sprintf(
 		"SENTINEL-K8S-004: Container '%v' has no CPU request. Resource requests are required for proper scheduler decisions.",
 		[_name(container)],
@@ -343,7 +349,7 @@ required_labels := {"app", "version", "team"}
 
 violation_k8s_011 contains msg if {
 	some label in required_labels
-	not input.manifest.metadata.labels[label]
+	not _nonempty_string(object.get(input, ["manifest", "metadata", "labels", label], null))
 	msg := sprintf(
 		"SENTINEL-K8S-011: Required label '%v' is missing from %v '%v'. Labels are required for observability and incident response.",
 		[label, input.kind, _manifest_name],

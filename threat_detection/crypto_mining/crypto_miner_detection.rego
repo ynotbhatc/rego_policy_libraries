@@ -266,9 +266,28 @@ violations contains msg if {
 	is_array(input[fact])
 	some i, item in input[fact]
 	value := item[field]
-	not is_null(value)
 	type_name(value) != type
 	msg := sprintf("EVIDENCE INVALID - %s[%d].%s must be a %s, got %s", [fact, i, field, type, type_name(value)])
+}
+
+# The field each detection matches on must be there: an item without it was not searched.
+required_fields := {
+	"running_processes": {"name"},
+	"installed_packages": {"name"},
+	"network_connections": {"remote_host", "remote_port"},
+	"systemd_services": {"name"},
+	"cron_jobs": {"command"},
+	"suspicious_files": {"path"},
+}
+
+violations contains msg if {
+	some fact, fields in required_fields
+	is_array(input[fact])
+	some i, item in input[fact]
+	is_object(item)
+	some field in fields
+	not field in object.keys(item)
+	msg := sprintf("EVIDENCE MISSING - %s[%d].%s not collected; the item was NOT evaluated on it", [fact, i, field])
 }
 
 violations contains "FAIL-CLOSED - no facts supplied (running_processes, installed_packages, network_connections, systemd_services, cron_jobs, suspicious_files); the host was NOT evaluated" if {
