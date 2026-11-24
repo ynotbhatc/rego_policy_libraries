@@ -63,33 +63,39 @@ default compliant := false
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.risk_assessment.conducted
-	msg := "IEC 62443-3-2 ZCR 1: No cybersecurity risk assessment has been conducted. A formal risk assessment is the foundation for all IEC 62443 security decisions and must precede system design or security level assignment."
+	not input.risk_assessment.conducted == true
+	finding := "IEC 62443-3-2 ZCR 1: No cybersecurity risk assessment has been conducted. A formal risk assessment is the foundation for all IEC 62443 security decisions and must precede system design or security level assignment."
+	msg := concat("", [finding, _ev_input("risk_assessment.conducted")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.asset_inventory_complete
-	msg := "IEC 62443-3-2 ZCR 1: Asset inventory is incomplete. A complete inventory of all IACS assets (hardware, software, firmware, communication paths) is a prerequisite for risk assessment."
+	not input.risk_assessment.asset_inventory_complete == true
+	finding := "IEC 62443-3-2 ZCR 1: Asset inventory is incomplete. A complete inventory of all IACS assets (hardware, software, firmware, communication paths) is a prerequisite for risk assessment."
+	msg := concat("", [finding, _ev_input("risk_assessment.asset_inventory_complete")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.threat_modeling_performed
-	msg := "IEC 62443-3-2 ZCR 1: No threat modeling performed. Threat modeling (identifying threat actors, threat vectors, and attack scenarios) is required to understand the IACS threat landscape."
+	not input.risk_assessment.threat_modeling_performed == true
+	finding := "IEC 62443-3-2 ZCR 1: No threat modeling performed. Threat modeling (identifying threat actors, threat vectors, and attack scenarios) is required to understand the IACS threat landscape."
+	msg := concat("", [finding, _ev_input("risk_assessment.threat_modeling_performed")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.consequence_analysis_performed
-	msg := "IEC 62443-3-2 ZCR 1: No consequence analysis performed. The impact of potential cyber incidents on safety, operations, environment, financial, and reputation must be analyzed."
+	not input.risk_assessment.consequence_analysis_performed == true
+	finding := "IEC 62443-3-2 ZCR 1: No consequence analysis performed. The impact of potential cyber incidents on safety, operations, environment, financial, and reputation must be analyzed."
+	msg := concat("", [finding, _ev_input("risk_assessment.consequence_analysis_performed")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.vulnerability_assessment_performed
-	msg := "IEC 62443-3-2 ZCR 1: No vulnerability assessment performed. Identify vulnerabilities in IACS components through analysis of known CVEs, configuration weaknesses, and architectural gaps."
+	not input.risk_assessment.vulnerability_assessment_performed == true
+	finding := "IEC 62443-3-2 ZCR 1: No vulnerability assessment performed. Identify vulnerabilities in IACS components through analysis of known CVEs, configuration weaknesses, and architectural gaps."
+	msg := concat("", [finding, _ev_input("risk_assessment.vulnerability_assessment_performed")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.cyber_risk_identified
-	msg := "IEC 62443-3-2 ZCR 1: IACS cybersecurity risks have not been formally identified and documented. Risk register with likelihood, consequence, and risk rating is required."
+	not input.risk_assessment.cyber_risk_identified == true
+	finding := "IEC 62443-3-2 ZCR 1: IACS cybersecurity risks have not been formally identified and documented. Risk register with likelihood, consequence, and risk rating is required."
+	msg := concat("", [finding, _ev_input("risk_assessment.cyber_risk_identified")])
 }
 
 # ---------------------------------------------------------------------------
@@ -97,8 +103,9 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.risk_assessment.zones_and_conduits_defined
-	msg := "IEC 62443-3-2 ZCR 2: Zones and conduits have not been formally defined. Partitioning the IACS into security zones and defining conduits between zones is a core IEC 62443 architectural requirement."
+	not input.risk_assessment.zones_and_conduits_defined == true
+	finding := "IEC 62443-3-2 ZCR 2: Zones and conduits have not been formally defined. Partitioning the IACS into security zones and defining conduits between zones is a core IEC 62443 architectural requirement."
+	msg := concat("", [finding, _ev_input("risk_assessment.zones_and_conduits_defined")])
 }
 
 violations contains msg if {
@@ -108,11 +115,12 @@ violations contains msg if {
 
 violations contains msg if {
 	some zone in input.zones
-	not zone.risk_assessment_documented
-	msg := sprintf(
+	not zone.risk_assessment_documented == true
+	finding := sprintf(
 		"IEC 62443-3-2 ZCR 2: Zone '%v' has no documented risk assessment. Each zone must have a zone-specific risk assessment driving its target security level assignment.",
 		[object.get(zone, "name", "<unnamed>")],
 	)
+	msg := concat("", [finding, _ev_item(zone, "risk_assessment_documented")])
 }
 
 # ---------------------------------------------------------------------------
@@ -120,17 +128,19 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.risk_assessment.target_sl_assigned_per_zone
-	msg := "IEC 62443-3-2 ZCR 3: Target security levels (SL-T) have not been assigned per zone. Each zone must have a SL-T derived from the risk assessment results (SL 1–4)."
+	not input.risk_assessment.target_sl_assigned_per_zone == true
+	finding := "IEC 62443-3-2 ZCR 3: Target security levels (SL-T) have not been assigned per zone. Each zone must have a SL-T derived from the risk assessment results (SL 1–4)."
+	msg := concat("", [finding, _ev_input("risk_assessment.target_sl_assigned_per_zone")])
 }
 
 violations contains msg if {
 	some zone in input.zones
-	not zone.security_level_defined
-	msg := sprintf(
+	not zone.security_level_defined == true
+	finding := sprintf(
 		"IEC 62443-3-2 ZCR 3: Zone '%v' does not have a defined security level. All zones must have an explicit SL-T (1–4) based on the zone risk assessment.",
 		[object.get(zone, "name", "<unnamed>")],
 	)
+	msg := concat("", [finding, _ev_item(zone, "security_level_defined")])
 }
 
 # Validate that high-criticality zones have appropriate SL
@@ -145,13 +155,13 @@ violations contains msg if {
 	)
 }
 
+# Every zone: the SL-T itself is evidence, and it must be a number (a string such as "3" is a collection error).
 violations contains msg if {
 	some zone in input.zones
-	zone.criticality == "high"
 	not is_number(object.get(zone, "security_level", null))
 	msg := sprintf(
-		"IEC 62443-3-2 ZCR 3: evidence missing - high-criticality zone '%v' has no numeric security_level, so its SL-T cannot be verified.",
-		[object.get(zone, "name", "<unnamed>")],
+		"IEC 62443-3-2 ZCR 3: evidence missing - zone '%v' has no numeric security_level (got %s), so its SL-T cannot be verified.",
+		[object.get(zone, "name", "<unnamed>"), type_name(object.get(zone, "security_level", null))],
 	)
 }
 
@@ -160,8 +170,9 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.risk_assessment.high_level_security_requirements
-	msg := "IEC 62443-3-2 ZCR 4: High-level security requirements (HLSRs) have not been derived from the risk assessment. HLSRs form the basis for selecting and implementing specific security controls (mapped to IEC 62443-3-3 SRs)."
+	not input.risk_assessment.high_level_security_requirements == true
+	finding := "IEC 62443-3-2 ZCR 4: High-level security requirements (HLSRs) have not been derived from the risk assessment. HLSRs form the basis for selecting and implementing specific security controls (mapped to IEC 62443-3-3 SRs)."
+	msg := concat("", [finding, _ev_input("risk_assessment.high_level_security_requirements")])
 }
 
 # ---------------------------------------------------------------------------
@@ -169,8 +180,9 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.risk_assessment.residual_risk_accepted
-	msg := "IEC 62443-3-2 ZCR 5: Residual risk after security control implementation has not been formally evaluated and accepted. Senior management must accept documented residual risk."
+	not input.risk_assessment.residual_risk_accepted == true
+	finding := "IEC 62443-3-2 ZCR 5: Residual risk after security control implementation has not been formally evaluated and accepted. Senior management must accept documented residual risk."
+	msg := concat("", [finding, _ev_input("risk_assessment.residual_risk_accepted")])
 }
 
 # ---------------------------------------------------------------------------
@@ -178,7 +190,7 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	input.risk_assessment.conducted
+	input.risk_assessment.conducted == true
 	is_number(input.risk_assessment.review_frequency_months)
 	input.risk_assessment.review_frequency_months > 24
 	msg := sprintf(
@@ -188,7 +200,7 @@ violations contains msg if {
 }
 
 violations contains "IEC 62443-3-2: evidence missing - input.risk_assessment.review_frequency_months is not a number" if {
-	input.risk_assessment.conducted
+	input.risk_assessment.conducted == true
 	not is_number(object.get(input, ["risk_assessment", "review_frequency_months"], null))
 }
 
@@ -199,11 +211,12 @@ violations contains "IEC 62443-3-2: evidence missing - input.risk_assessment.rev
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 3
-	not input.risk_assessment.third_party_review
-	msg := sprintf(
+	not input.risk_assessment.third_party_review == true
+	finding := sprintf(
 		"IEC 62443-3-2 (SL%v): Risk assessment has not been reviewed by an independent third party. At Security Level 3+, an independent review by a qualified ICS security assessor is strongly recommended.",
 		[input.target_sl],
 	)
+	msg := concat("", [finding, _ev_input("risk_assessment.third_party_review")])
 }
 
 # ---------------------------------------------------------------------------
@@ -226,3 +239,25 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

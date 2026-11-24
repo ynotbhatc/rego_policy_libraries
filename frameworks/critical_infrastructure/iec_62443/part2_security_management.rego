@@ -61,17 +61,19 @@ default compliant := false
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.security_management.csms_documented
-	msg := "IEC 62443-2-1 (CSMS): No documented Cyber Security Management System. A CSMS addressing people, process, and technology controls for the IACS is required."
+	not input.security_management.csms_documented == true
+	finding := "IEC 62443-2-1 (CSMS): No documented Cyber Security Management System. A CSMS addressing people, process, and technology controls for the IACS is required."
+	msg := concat("", [finding, _ev_input("security_management.csms_documented")])
 }
 
 violations contains msg if {
-	not input.security_management.policy_approved
-	msg := "IEC 62443-2-1 (CSMS): IACS cybersecurity policy has not been approved by senior management. Management authorization and ownership of the security policy is required."
+	not input.security_management.policy_approved == true
+	finding := "IEC 62443-2-1 (CSMS): IACS cybersecurity policy has not been approved by senior management. Management authorization and ownership of the security policy is required."
+	msg := concat("", [finding, _ev_input("security_management.policy_approved")])
 }
 
 violations contains msg if {
-	input.security_management.policy_approved
+	input.security_management.policy_approved == true
 	is_number(input.security_management.policy_review_cycle_months)
 	input.security_management.policy_review_cycle_months > 12
 	msg := sprintf(
@@ -81,13 +83,14 @@ violations contains msg if {
 }
 
 violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_management.policy_review_cycle_months is not a number" if {
-	input.security_management.policy_approved
+	input.security_management.policy_approved == true
 	not is_number(object.get(input, ["security_management", "policy_review_cycle_months"], null))
 }
 
 violations contains msg if {
-	not input.security_management.roles_responsibilities_defined
-	msg := "IEC 62443-2-1 (CSMS): Security roles and responsibilities are not defined. Ownership of each security control, including an IACS Security Manager role, must be assigned."
+	not input.security_management.roles_responsibilities_defined == true
+	finding := "IEC 62443-2-1 (CSMS): Security roles and responsibilities are not defined. Ownership of each security control, including an IACS Security Manager role, must be assigned."
+	msg := concat("", [finding, _ev_input("security_management.roles_responsibilities_defined")])
 }
 
 # ---------------------------------------------------------------------------
@@ -95,17 +98,19 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.security_management.risk_management_process
-	msg := "IEC 62443-2-1 (CSMS): No IACS risk management process. A formal process for identifying, assessing, and treating cybersecurity risks to the IACS is required."
+	not input.security_management.risk_management_process == true
+	finding := "IEC 62443-2-1 (CSMS): No IACS risk management process. A formal process for identifying, assessing, and treating cybersecurity risks to the IACS is required."
+	msg := concat("", [finding, _ev_input("security_management.risk_management_process")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.conducted
-	msg := "IEC 62443-2-1 (CSMS): No IACS cybersecurity risk assessment has been conducted. A risk assessment is the foundation for all security decisions."
+	not input.risk_assessment.conducted == true
+	finding := "IEC 62443-2-1 (CSMS): No IACS cybersecurity risk assessment has been conducted. A risk assessment is the foundation for all security decisions."
+	msg := concat("", [finding, _ev_input("risk_assessment.conducted")])
 }
 
 violations contains msg if {
-	input.risk_assessment.conducted
+	input.risk_assessment.conducted == true
 	is_number(input.risk_assessment.review_frequency_months)
 	input.risk_assessment.review_frequency_months > 24
 	msg := sprintf(
@@ -115,23 +120,26 @@ violations contains msg if {
 }
 
 violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.risk_assessment.review_frequency_months is not a number" if {
-	input.risk_assessment.conducted
+	input.risk_assessment.conducted == true
 	not is_number(object.get(input, ["risk_assessment", "review_frequency_months"], null))
 }
 
 violations contains msg if {
-	not input.risk_assessment.asset_inventory_complete
-	msg := "IEC 62443-2-1 (CSMS): IACS asset inventory is incomplete. A complete asset inventory is a prerequisite for risk assessment and security program effectiveness."
+	not input.risk_assessment.asset_inventory_complete == true
+	finding := "IEC 62443-2-1 (CSMS): IACS asset inventory is incomplete. A complete asset inventory is a prerequisite for risk assessment and security program effectiveness."
+	msg := concat("", [finding, _ev_input("risk_assessment.asset_inventory_complete")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.threat_modeling_performed
-	msg := "IEC 62443-2-1 (CSMS): No threat modeling performed for IACS. Threat modeling (identifying realistic threat actors and attack vectors) must inform risk treatment decisions."
+	not input.risk_assessment.threat_modeling_performed == true
+	finding := "IEC 62443-2-1 (CSMS): No threat modeling performed for IACS. Threat modeling (identifying realistic threat actors and attack vectors) must inform risk treatment decisions."
+	msg := concat("", [finding, _ev_input("risk_assessment.threat_modeling_performed")])
 }
 
 violations contains msg if {
-	not input.risk_assessment.consequence_analysis_performed
-	msg := "IEC 62443-2-1 (CSMS): No consequence analysis performed. Impact analysis of cyber incidents on safety, operations, environment, and business continuity is required."
+	not input.risk_assessment.consequence_analysis_performed == true
+	finding := "IEC 62443-2-1 (CSMS): No consequence analysis performed. Impact analysis of cyber incidents on safety, operations, environment, and business continuity is required."
+	msg := concat("", [finding, _ev_input("risk_assessment.consequence_analysis_performed")])
 }
 
 # ---------------------------------------------------------------------------
@@ -139,12 +147,13 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.security_management.security_awareness_training
-	msg := "IEC 62443-2-1 (CSMS): No security awareness training for IACS personnel. All employees with IACS access must receive role-appropriate cybersecurity training."
+	not input.security_management.security_awareness_training == true
+	finding := "IEC 62443-2-1 (CSMS): No security awareness training for IACS personnel. All employees with IACS access must receive role-appropriate cybersecurity training."
+	msg := concat("", [finding, _ev_input("security_management.security_awareness_training")])
 }
 
 violations contains msg if {
-	input.security_management.security_awareness_training
+	input.security_management.security_awareness_training == true
 	is_number(input.security_management.training_frequency_months)
 	input.security_management.training_frequency_months > 12
 	msg := sprintf(
@@ -154,7 +163,7 @@ violations contains msg if {
 }
 
 violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_management.training_frequency_months is not a number" if {
-	input.security_management.security_awareness_training
+	input.security_management.security_awareness_training == true
 	not is_number(object.get(input, ["security_management", "training_frequency_months"], null))
 }
 
@@ -163,8 +172,9 @@ violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_man
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.security_management.incident_response_capability
-	msg := "IEC 62443-2-1 (CSMS): No IACS incident response capability. A documented ICS-specific incident response plan with trained personnel and clear escalation paths is required."
+	not input.security_management.incident_response_capability == true
+	finding := "IEC 62443-2-1 (CSMS): No IACS incident response capability. A documented ICS-specific incident response plan with trained personnel and clear escalation paths is required."
+	msg := concat("", [finding, _ev_input("security_management.incident_response_capability")])
 }
 
 # ---------------------------------------------------------------------------
@@ -172,13 +182,15 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.security_management.supply_chain_security
-	msg := "IEC 62443-2-1 (CSMS): No supply chain security program for IACS. Security requirements must extend to OT vendors, integrators, and managed service providers with IACS access."
+	not input.security_management.supply_chain_security == true
+	finding := "IEC 62443-2-1 (CSMS): No supply chain security program for IACS. Security requirements must extend to OT vendors, integrators, and managed service providers with IACS access."
+	msg := concat("", [finding, _ev_input("security_management.supply_chain_security")])
 }
 
 violations contains msg if {
-	not input.security_management.third_party_security_requirements
-	msg := "IEC 62443-2-1 (CSMS): Security requirements are not imposed on third parties. All vendors and contractors with IACS access must meet defined security requirements (ref: IEC 62443-2-4)."
+	not input.security_management.third_party_security_requirements == true
+	finding := "IEC 62443-2-1 (CSMS): Security requirements are not imposed on third parties. All vendors and contractors with IACS access must meet defined security requirements (ref: IEC 62443-2-4)."
+	msg := concat("", [finding, _ev_input("security_management.third_party_security_requirements")])
 }
 
 # ---------------------------------------------------------------------------
@@ -186,17 +198,19 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.security_management.security_metrics_tracked
-	msg := "IEC 62443-2-1 (CSMS): No security metrics tracked. The CSMS must define and track key performance indicators (KPIs) for measuring security effectiveness."
+	not input.security_management.security_metrics_tracked == true
+	finding := "IEC 62443-2-1 (CSMS): No security metrics tracked. The CSMS must define and track key performance indicators (KPIs) for measuring security effectiveness."
+	msg := concat("", [finding, _ev_input("security_management.security_metrics_tracked")])
 }
 
 violations contains msg if {
-	not input.security_management.csms_audit_conducted
-	msg := "IEC 62443-2-1 (CSMS): No CSMS audit conducted. The CSMS must be periodically audited against the defined objectives and requirements."
+	not input.security_management.csms_audit_conducted == true
+	finding := "IEC 62443-2-1 (CSMS): No CSMS audit conducted. The CSMS must be periodically audited against the defined objectives and requirements."
+	msg := concat("", [finding, _ev_input("security_management.csms_audit_conducted")])
 }
 
 violations contains msg if {
-	input.security_management.csms_audit_conducted
+	input.security_management.csms_audit_conducted == true
 	is_number(input.security_management.csms_audit_frequency_months)
 	input.security_management.csms_audit_frequency_months > 24
 	msg := sprintf(
@@ -206,7 +220,7 @@ violations contains msg if {
 }
 
 violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_management.csms_audit_frequency_months is not a number" if {
-	input.security_management.csms_audit_conducted
+	input.security_management.csms_audit_conducted == true
 	not is_number(object.get(input, ["security_management", "csms_audit_frequency_months"], null))
 }
 
@@ -223,3 +237,25 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

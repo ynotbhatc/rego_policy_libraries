@@ -19,7 +19,10 @@ package iec_62443.fr4
 import rego.v1
 
 # =============================================================================
-# IEC 62443-3-3 FR 4 — Data Confidentiality (DC)
+# IEC 62443-3-3:2013 FR 4 — Data Confidentiality (DC)
+#
+# Edition: IEC 62443-3-3:2013 (edition 1.0, System security requirements and
+# security levels). SR and RE numbers below are that edition's.
 #
 # Purpose: Ensure confidentiality of information on communication channels
 # and in data repositories used by or within the IACS.
@@ -56,22 +59,24 @@ violations contains msg if {
 
 	# unknown (absent) counts as sensitive: only an explicit false exempts the system
 	object.get(system, "sensitive_data_transmitted", true) != false
-	not system.data_encrypted_in_transit
-	msg := sprintf(
+	not system.data_encrypted_in_transit == true
+	finding := sprintf(
 		"IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' transmits sensitive data without encryption. All sensitive IACS communications must be encrypted in transit at Security Level 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "data_encrypted_in_transit")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.data_at_rest_protected
-	msg := sprintf(
+	not system.data_at_rest_protected == true
+	finding := sprintf(
 		"IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' does not protect data at rest. Configuration databases, historian data, and operational data must be encrypted or access-controlled at Security Level 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "data_at_rest_protected")])
 }
 
 # SR 4.1 RE 1 (SL 3+): Encryption of all IACS data in transit
@@ -79,21 +84,23 @@ violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
-	not system.data_encrypted_in_transit
-	msg := sprintf(
+	not system.data_encrypted_in_transit == true
+	finding := sprintf(
 		"IEC 62443 SR 4.1 RE 1 SL%v (DC): ICS system '%v' does not encrypt all communications in transit. At Security Level 3+, all IACS data in transit must be encrypted regardless of sensitivity classification.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "data_encrypted_in_transit")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	system.data_encrypted_in_transit
-	not system.tls_version_current
-	msg := sprintf(
+	system.data_encrypted_in_transit == true
+	not system.tls_version_current == true
+	finding := sprintf(
 		"IEC 62443 SR 4.1 (DC): ICS system '%v' uses outdated TLS version. TLS 1.2 minimum is required; TLS 1.3 is recommended for IACS communications.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "tls_version_current")])
 }
 
 # ---------------------------------------------------------------------------
@@ -103,31 +110,34 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.media_sanitization_procedure
-	msg := sprintf(
+	not system.media_sanitization_procedure == true
+	finding := sprintf(
 		"IEC 62443 SR 4.2 (DC): ICS system '%v' has no media sanitization procedure. Storage media must be securely sanitized before reuse or disposal to prevent residual data leakage.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "media_sanitization_procedure")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.memory_scrubbing_on_deallocation
-	msg := sprintf(
+	not system.memory_scrubbing_on_deallocation == true
+	finding := sprintf(
 		"IEC 62443 SR 4.2 (DC): ICS system '%v' does not clear sensitive data from memory on deallocation. Cryptographic keys, passwords, and process data must be zeroed before memory is released.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "memory_scrubbing_on_deallocation")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.secure_deletion_capability
-	msg := sprintf(
+	not system.secure_deletion_capability == true
+	finding := sprintf(
 		"IEC 62443 SR 4.2 RE 1 SL%v (DC): ICS system '%v' has no secure deletion capability. Overwrite or cryptographic erasure of sensitive data must be available at Security Level 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "secure_deletion_capability")])
 }
 
 # ---------------------------------------------------------------------------
@@ -137,46 +147,50 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.approved_cryptographic_algorithms
-	msg := sprintf(
+	not system.approved_cryptographic_algorithms == true
+	finding := sprintf(
 		"IEC 62443 SR 4.3 (DC): ICS system '%v' does not use approved cryptographic algorithms. Cryptography must be based on vetted algorithms (AES-128+, SHA-256+, RSA-2048+, or NIST-approved equivalents).",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "approved_cryptographic_algorithms")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.cryptographic_key_management
-	msg := sprintf(
+	not system.cryptographic_key_management == true
+	finding := sprintf(
 		"IEC 62443 SR 4.3 (DC): ICS system '%v' has no cryptographic key management. Keys must have defined generation, distribution, storage, rotation, and revocation procedures.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "cryptographic_key_management")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
-	not system.fips_140_2_compliant
-	msg := sprintf(
+	not system.fips_140_2_compliant == true
+	finding := sprintf(
 		"IEC 62443 SR 4.3 RE 1 SL%v (DC): ICS system '%v' cryptographic modules are not FIPS 140-2 validated. FIPS 140-2 Level 2+ is required for cryptographic implementations at Security Level 3+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "fips_140_2_compliant")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	system.cryptographic_key_management
-	not system.key_rotation_policy
-	msg := sprintf(
+	system.cryptographic_key_management == true
+	not system.key_rotation_policy == true
+	finding := sprintf(
 		"IEC 62443 SR 4.3 (DC): ICS system '%v' has no key rotation policy. Cryptographic keys must be rotated on a defined schedule and immediately upon suspected compromise.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "key_rotation_policy")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	system.uses_deprecated_ciphers
+	system.uses_deprecated_ciphers == true
 	msg := sprintf(
 		"IEC 62443 SR 4.3 (DC): ICS system '%v' uses deprecated cryptographic ciphers (DES, 3DES, RC4, MD5). These must be replaced with currently approved algorithms.",
 		[system.name],
@@ -231,3 +245,55 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 }
+
+# ---------------------------------------------------------------------------
+# Facts that decide whether a requirement applies, or that fail it when true,
+# must be stated as booleans. "Does not apply" is the boolean false; an absent
+# fact, null or a string such as "false" is an evidence problem and a finding.
+# Rows: [fact, requirement, lowest target SL at which the fact is read].
+# ---------------------------------------------------------------------------
+
+_stated_system_facts := [
+	["sensitive_data_transmitted", "SR 4.1", 2],
+	["uses_deprecated_ciphers", "SR 4.3", 1],
+]
+
+_sl_at_least(n) if n <= 1
+
+_sl_at_least(n) if {
+	is_number(input.target_sl)
+	input.target_sl >= n
+}
+
+violations contains msg if {
+	some [fact, requirement, min_sl] in _stated_system_facts
+	_sl_at_least(min_sl)
+	some system in input.ics_systems
+	not is_boolean(object.get(system, fact, null))
+	msg := sprintf(
+		"IEC 62443 %s (DC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
+	)
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

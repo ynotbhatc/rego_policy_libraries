@@ -19,7 +19,10 @@ package iec_62443.fr5
 import rego.v1
 
 # =============================================================================
-# IEC 62443-3-3 FR 5 — Restricted Data Flow (RDF)
+# IEC 62443-3-3:2013 FR 5 — Restricted Data Flow (RDF)
+#
+# Edition: IEC 62443-3-3:2013 (edition 1.0, System security requirements and
+# security levels). SR and RE numbers below are that edition's.
 #
 # Purpose: Restrict and control the flow of information within and between
 # IACS zones and conduits, and between the IACS and external networks.
@@ -86,17 +89,19 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not input.network.it_ot_segmentation
-	msg := "IEC 62443 SR 5.1 (RDF): IT and OT networks are not segmented. Industrial control systems must be isolated from corporate IT networks to prevent lateral movement."
+	not input.network.it_ot_segmentation == true
+	finding := "IEC 62443 SR 5.1 (RDF): IT and OT networks are not segmented. Industrial control systems must be isolated from corporate IT networks to prevent lateral movement."
+	msg := concat("", [finding, _ev_input("network.it_ot_segmentation")])
 }
 
 violations contains msg if {
-	not input.network.network_inventory_documented
-	msg := "IEC 62443 SR 5.1 (RDF): Network inventory is not documented. A complete inventory of all IACS network assets and their zone assignments is required."
+	not input.network.network_inventory_documented == true
+	finding := "IEC 62443 SR 5.1 (RDF): Network inventory is not documented. A complete inventory of all IACS network assets and their zone assignments is required."
+	msg := concat("", [finding, _ev_input("network.network_inventory_documented")])
 }
 
 violations contains msg if {
-	input.network.direct_internet_connectivity_to_ics
+	input.network.direct_internet_connectivity_to_ics == true
 	msg := "IEC 62443 SR 5.1 (RDF): ICS systems have direct Internet connectivity. IACS must never be directly accessible from the Internet — air-gap or multi-layer DMZ is required."
 }
 
@@ -118,29 +123,32 @@ violations contains msg if {
 
 violations contains msg if {
 	some zone in input.zones
-	not zone.security_level_defined
-	msg := sprintf(
+	not zone.security_level_defined == true
+	finding := sprintf(
 		"IEC 62443 SR 5.2 (RDF): Zone '%v' does not have a defined security level. Every zone must have an assigned Security Level (SL) target and capability documented.",
 		[zone.name],
 	)
+	msg := concat("", [finding, _ev_item(zone, "security_level_defined")])
 }
 
 violations contains msg if {
 	some conduit in input.conduits
-	not conduit.firewall_or_dmz
-	msg := sprintf(
+	not conduit.firewall_or_dmz == true
+	finding := sprintf(
 		"IEC 62443 SR 5.2 (RDF): Conduit between zones '%v' and '%v' has no firewall or DMZ. Every zone boundary must be protected by a firewall or equivalent boundary control.",
 		[conduit.source_zone, conduit.dest_zone],
 	)
+	msg := concat("", [finding, _ev_item(conduit, "firewall_or_dmz")])
 }
 
 violations contains msg if {
 	some conduit in input.conduits
-	not conduit.traffic_filtered
-	msg := sprintf(
+	not conduit.traffic_filtered == true
+	finding := sprintf(
 		"IEC 62443 SR 5.2 (RDF): Conduit between zones '%v' and '%v' does not filter traffic. Only explicitly authorized traffic flows must be permitted across zone boundaries.",
 		[conduit.source_zone, conduit.dest_zone],
 	)
+	msg := concat("", [finding, _ev_item(conduit, "traffic_filtered")])
 }
 
 # IT/OT boundary requires unidirectional gateway at SL 3+
@@ -150,16 +158,18 @@ violations contains msg if {
 	some conduit in input.conduits
 	zone_class(conduit.source_zone) == "it"
 	zone_class(conduit.dest_zone) == "ot"
-	not conduit.unidirectional_gateway
-	msg := sprintf(
+	not conduit.unidirectional_gateway == true
+	finding := sprintf(
 		"IEC 62443 SR 5.2 RE 1 SL%v (RDF): The IT/OT boundary between corporate and ICS control zones lacks a unidirectional gateway (data diode). Required at Security Level 3+ for critical infrastructure.",
 		[input.target_sl],
 	)
+	msg := concat("", [finding, _ev_item(conduit, "unidirectional_gateway")])
 }
 
 violations contains msg if {
-	not input.network.dmz_implemented
-	msg := "IEC 62443 SR 5.2 (RDF): No DMZ is implemented between corporate IT and OT networks. A DMZ with controlled ingress/egress is required to isolate IACS from external networks."
+	not input.network.dmz_implemented == true
+	finding := "IEC 62443 SR 5.2 (RDF): No DMZ is implemented between corporate IT and OT networks. A DMZ with controlled ingress/egress is required to isolate IACS from external networks."
+	msg := concat("", [finding, _ev_input("network.dmz_implemented")])
 }
 
 # SR 5.2 RE 2 (SL 3+): Encrypted zone-to-zone communications
@@ -167,11 +177,12 @@ violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 3
 	some conduit in input.conduits
-	not conduit.encrypted
-	msg := sprintf(
+	not conduit.encrypted == true
+	finding := sprintf(
 		"IEC 62443 SR 5.2 RE 2 SL%v (RDF): Conduit between zones '%v' and '%v' is not encrypted. All inter-zone IACS communications must be encrypted at Security Level 3+.",
 		[input.target_sl, conduit.source_zone, conduit.dest_zone],
 	)
+	msg := concat("", [finding, _ev_item(conduit, "encrypted")])
 }
 
 # ---------------------------------------------------------------------------
@@ -183,7 +194,7 @@ violations contains msg if {
 	some zone in input.zones
 	is_number(zone.security_level)
 	zone.security_level >= 2
-	zone.general_purpose_comms_unrestricted
+	zone.general_purpose_comms_unrestricted == true
 	msg := sprintf(
 		"IEC 62443 SR 5.3 (RDF): Zone '%v' (SL %v) permits unrestricted general-purpose communications (email, instant messaging). These must be restricted or prohibited within high-security IACS zones.",
 		[zone.name, zone.security_level],
@@ -192,7 +203,7 @@ violations contains msg if {
 
 violations contains msg if {
 	some zone in input.zones
-	zone.general_purpose_comms_unrestricted
+	zone.general_purpose_comms_unrestricted == true
 	not is_number(object.get(zone, "security_level", null))
 	msg := sprintf(
 		"IEC 62443 SR 5.3 (RDF): evidence missing - zone '%v' permits unrestricted general-purpose communications and has no numeric security_level, so the restriction cannot be evaluated.",
@@ -203,11 +214,12 @@ violations contains msg if {
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
-	not input.network.general_purpose_comms_policy
-	msg := sprintf(
+	not input.network.general_purpose_comms_policy == true
+	finding := sprintf(
 		"IEC 62443 SR 5.3 SL%v (RDF): No policy governing general-purpose communications within IACS zones. Permitted communication types must be explicitly defined and restricted.",
 		[input.target_sl],
 	)
+	msg := concat("", [finding, _ev_input("network.general_purpose_comms_policy")])
 }
 
 # ---------------------------------------------------------------------------
@@ -217,35 +229,38 @@ violations contains msg if {
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.application_partitioning
-	msg := sprintf(
+	not system.application_partitioning == true
+	finding := sprintf(
 		"IEC 62443 SR 5.4 (RDF): ICS system '%v' does not partition IACS applications from general-purpose applications. Business applications must not run on the same platform as control applications.",
 		[system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "application_partitioning")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
-	not system.virtualization_isolation
-	system.uses_shared_platform
-	msg := sprintf(
+	not system.virtualization_isolation == true
+	system.uses_shared_platform == true
+	finding := sprintf(
 		"IEC 62443 SR 5.4 RE 1 SL%v (RDF): ICS system '%v' uses a shared platform without virtualization isolation. Hypervisor-based isolation is required when IACS and non-IACS workloads share hardware at SL 2+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "virtualization_isolation")])
 }
 
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
-	not system.dedicated_hardware
+	not system.dedicated_hardware == true
 	system.criticality == "high"
-	msg := sprintf(
+	finding := sprintf(
 		"IEC 62443 SR 5.4 RE 2 SL%v (RDF): High-criticality ICS system '%v' does not run on dedicated hardware. Physical hardware separation from non-IACS workloads is required for high-criticality systems at SL 3+.",
 		[input.target_sl, system.name],
 	)
+	msg := concat("", [finding, _ev_item(system, "dedicated_hardware")])
 }
 
 # ---------------------------------------------------------------------------
@@ -293,3 +308,68 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 }
+
+# ---------------------------------------------------------------------------
+# Facts that decide whether a requirement applies, or that fail it when true,
+# must be stated as booleans. "Does not apply" is the boolean false; an absent
+# fact, null or a string such as "false" is an evidence problem and a finding.
+# Rows: [fact, requirement, lowest target SL at which the fact is read].
+# ---------------------------------------------------------------------------
+
+_stated_system_facts := [
+	["uses_shared_platform", "SR 5.4 RE 1", 2],
+]
+
+_sl_at_least(n) if n <= 1
+
+_sl_at_least(n) if {
+	is_number(input.target_sl)
+	input.target_sl >= n
+}
+
+violations contains msg if {
+	some [fact, requirement, min_sl] in _stated_system_facts
+	_sl_at_least(min_sl)
+	some system in input.ics_systems
+	not is_boolean(object.get(system, fact, null))
+	msg := sprintf(
+		"IEC 62443 %s (RDF): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
+	)
+}
+
+violations contains msg if {
+	some zone in input.zones
+	not is_boolean(object.get(zone, "general_purpose_comms_unrestricted", null))
+	msg := sprintf(
+		"IEC 62443 SR 5.3 (RDF): zone '%v' does not state general_purpose_comms_unrestricted as true or false, so the requirement cannot be decided.%s",
+		[object.get(zone, "name", "<unnamed>"), _ev_item(zone, "general_purpose_comms_unrestricted")],
+	)
+}
+
+violations contains msg if {
+	not is_boolean(object.get(_facts, ["network", "direct_internet_connectivity_to_ics"], null))
+	msg := concat("", ["IEC 62443 SR 5.1 (RDF): input.network.direct_internet_connectivity_to_ics is not stated as true or false, so direct Internet connectivity of the IACS cannot be ruled out.", _ev_input("network.direct_internet_connectivity_to_ics")])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])
