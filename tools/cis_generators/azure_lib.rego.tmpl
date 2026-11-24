@@ -38,11 +38,18 @@ truthy(v) if {
 	lower(trim_space(v)) == "true"
 }
 
-p_true(x, k) if truthy(p(x, k))
+# Azure returns these properties as JSON booleans, so only the booleans are read: the strings "true" and
+# "false" are a collection error (reported through not_boolean), never a met or an unmet setting. truthy is
+# for the two properties the API itself returns as the strings "True" / "False" (Defender plan extensions,
+# the DDoS protection status of a public IP).
+p_true(x, k) if p(x, k) == true
 
 p_false(x, k) if p(x, k) == false
 
-p_false(x, k) if lower(trim_space(p(x, k))) == "false"
+not_boolean(x, k) if {
+	v := p(x, k)
+	not is_boolean(v)
+}
 
 nonempty(s) if {
 	is_string(s)
@@ -408,6 +415,8 @@ allow_priorities(n, direction) := [pr |
 	is_number(pr)
 ]
 
+rule_priority_collected(r) if is_number(p(r, "priority"))
+
 # A deny-all rule in this direction that is evaluated after every custom allow rule and before
 # the platform default rules (priority number above the highest custom allow).
 deny_all_after_allows(n, direction) if {
@@ -671,6 +680,13 @@ kv_premium(v) if lower(p(v, "sku").name) == "premium"
 
 # Keys, secrets and certificates are checked unless explicitly disabled.
 item_in_scope(k) if object.get(object.get(k, "attributes", {}), "enabled", true) != false
+
+# attributes.enabled, when the item carries it, is a boolean; any other value leaves the item in scope and is reported.
+item_enabled_invalid(k) if {
+	v := k.attributes.enabled
+	not is_null(v)
+	not is_boolean(v)
+}
 
 has_expiry(k) if {
 	some f in ["expires", "exp"]

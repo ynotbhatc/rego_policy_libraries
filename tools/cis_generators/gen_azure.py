@@ -12,6 +12,7 @@ azure_lib.rego.tmpl. The generator writes only the files listed in OWNED and run
 """
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -243,7 +244,27 @@ def rm(p):
     return {"op": "remove", "path": p}
 
 
+_BOOL_READ = re.compile(r'\bp_(?:true|false)\((\w+(?:\.\w+)*), "(\w+)"\)')
+
+
+def _boolean_findings(rules):
+    """Azure returns the properties read with p_true / p_false as JSON booleans, and only true and false are read. For
+    each such read, one more finding: the property is present but is a string or a number (a collection error)."""
+    out = []
+    for _detail, args, lines in rules:
+        for i, ln in enumerate(lines):
+            m = _BOOL_READ.search(ln)
+            if not m:
+                continue
+            var, prop = m.groups()
+            tail = " (%v)" * len(args)
+            out.append((f"evidence invalid — {prop} must be true or false, got %v" + (" on" + tail if args else ""),
+                        [f'type_name(p({var}, "{prop}"))'] + list(args), lines[:i] + [f'not_boolean({var}, "{prop}")']))
+    return out
+
+
 def F(cid, kw, ev, rules, fail, miss=None):
+    rules = list(rules) + _boolean_findings(rules)
     C.append({"id": cid, "kw": kw, "kind": "fact", "ev": ev, "rules": rules, "fail": fail if isinstance(fail, list) else [fail],
               "miss": miss or [rm("/" + ev[0])]})
 
@@ -444,6 +465,8 @@ FL = "flow_logs"
 F("7.6", "virtual network flow log retention", [FL],
   [("virtual network flow log %v keeps logs for fewer than 90 days (or retention not collected)", ["nm(x)"],
     [each(FL), "flow_log_target_collected(x)", "not nsg_flow_log(x)", "not retention_ok(x)"]),
+   ("evidence invalid — enabled must be true or false, got %v on (%v)", ['type_name(p(x, "enabled"))', "nm(x)"],
+    [each(FL), "not nsg_flow_log(x)", 'not_boolean(x, "enabled")']),
    ("flow log %v: targetResourceId not collected", ["nm(x)"], [each(FL), "not flow_log_target_collected(x)"])],
   add(f"/{FL}/0/retentionPolicy/days", 30))
 VGW = "virtual_network_gateways"
@@ -455,6 +478,8 @@ F("7.7", "point-to-site", [VGW],
 F("7.8", "virtualnetwork", [NSG],
   [("network security group %v has no %v deny-all rule evaluated after its allow rules", ["nm(x)", "d"],
     [each(NSG), "is_array(nsg_rules(x))", 'some d in ["inbound", "outbound"]', "not deny_all_after_allows(x, d)"]),
+   ("evidence invalid — network security group %v: rule %v has no numeric priority", ["nm(x)", "nm(r)"],
+    [each(NSG), "some r in nsg_rules(x)", "not rule_priority_collected(r)"]),
    ("network security group %v: securityRules not collected", ["nm(x)"], [each(NSG), "not nsg_rules_collected(x)"])],
   add(f"/{NSG}/0/securityRules/3/priority", 50))
 A("7.9", "network security perimeter", "network_security_perimeter_enforced")
@@ -579,6 +604,9 @@ for _cid, _kw, _mode, _items, _what, _fail in [
     F(_cid, _kw, [KV],
       [(f"key vault %v: enabled {_what} %v has no expiration date", ["nm(x)", "nm(k)"],
         [each(KV), f"{_mode}(x)", f"some k in x.{_items}", "item_in_scope(k)", "not has_expiry(k)"]),
+       (f"evidence invalid — key vault %v: {_what} %v attributes.enabled must be true or false, got %v",
+        ["nm(x)", "nm(k)", "type_name(k.attributes.enabled)"],
+        [each(KV), f"{_mode}(x)", f"some k in x.{_items}", "item_enabled_invalid(k)"]),
        (f"key vault %v: {_items} not collected", ["nm(x)"], [each(KV), f"{_mode}(x)", f'not has_list(x, "{_items}")']),
        ("key vault %v: enableRbacAuthorization not collected", ["nm(x)"], [each(KV), "not kv_mode_known(x)"])],
       rm(_fail) if _fail else add(f"/{KV}/-", LEGACY_KV))
@@ -609,8 +637,8 @@ BH = "bastion_hosts"
 F("8.4.1", "bastion host exists", [BH],
   [("no Azure Bastion host exists in the subscription", [], [f"count(input.{BH}) == 0"])], add(f"/{BH}", []))
 F("8.4.2", "shareable link", [BH],
-  [("Bastion host %v (Standard or Premium) has shareable links enabled", ["nm(x)"],
-    [each(BH), "shareable_link_capable(x)", 'p_true(x, "enableShareableLink")']),
+  [("Bastion host %v (Standard or Premium) does not have shareable links turned off", ["nm(x)"],
+    [each(BH), "shareable_link_capable(x)", 'not p_false(x, "enableShareableLink")']),
    ("Bastion host %v: sku not collected", ["nm(x)"], [each(BH), "not sku_collected(x)"])],
   add(f"/{BH}/0/enableShareableLink", True))
 PIP = "public_ip_addresses"
@@ -643,7 +671,9 @@ for _cid, _kw, _body, _what, _fail in [
          add(f"/{SA}/0/minimumTlsVersion", "TLS1_0")),
         ("9.2.5", "blob anonymous access", 'not p_false(x, "allowBlobPublicAccess")', "does not have anonymous blob access disabled",
          rm(f"/{SA}/1/allowBlobPublicAccess"))]:
-    F(_cid, _kw, [SA], [(f"storage account %v {_what}", ["nm(x)"], [each(SA), _body])], _fail)
+    F(_cid, _kw, [SA], [(f"storage account %v {_what}", ["nm(x)"], [each(SA), _body])] + ([
+        ("evidence invalid — %v must be true or false, got %v on (%v)", ["k", "type_name(p(x, k))", "nm(x)"],
+         [each(SA), 'some k in ["enableHttpsTrafficOnly", "supportsHttpsTrafficOnly"]', "not_boolean(x, k)"])] if _cid == "9.2.3" else []), _fail)
 
 C.sort(key=lambda c: sort_key(c["id"]))
 GREEN["attest"] = {c["attest"]: True for c in C if c["kind"] == "attest"}
@@ -843,6 +873,9 @@ total_controls := count(in_scope)
 
 evidence_violations := [v | some v in violations; contains(v, ": evidence missing — ")]
 
+# A property that was collected with the wrong type (a string or a number where Azure returns a boolean).
+evidence_invalid := [v | some v in violations; contains(v, " — evidence invalid — ")]
+
 section_names := {json.dumps(SECTION_NAMES)}
 
 # Counts are distinct recommendations, never messages: one control can fail on many resources.
@@ -973,6 +1006,7 @@ compliance_report := {{
 	"violations": _violations,
 	"violation_count": count(_violations),
 	"evidence_missing_count": count(bench.evidence_violations),
+	"evidence_invalid_count": count(bench.evidence_invalid),
 	"section_results": {{
 		"identity_access": _section("5"),
 		"logging_monitoring": _section("6"),
