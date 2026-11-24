@@ -85,6 +85,11 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes.
+fnum(v) := v if is_number(v)
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -197,6 +202,13 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
+
+# sent but not a string (a number, a boolean, a list): unreadable, so not proof of loopback-only
+mta_interfaces_open if {
+	v := object.get(input, ["mta", "inet_interfaces"], null)
+	v != null
+	not is_string(v)
+}
 
 # Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
 # 0.0.0.0 is the wildcard address (all interfaces), not loopback.
@@ -1195,18 +1207,18 @@ violations contains "2.3.1: not met — time synchronization must be in use" if 
 default e_2_3_2 := false
 
 e_2_3_2 if {
-	input.chronyd.servers_configured != null
-	input.chronyd.pools_configured != null
+	is_number(input.chronyd.servers_configured)
+	is_number(input.chronyd.pools_configured)
 }
 
 default p_2_3_2 := false
 
 p_2_3_2 if {
-	num(input.chronyd.servers_configured) > 0
+	fnum(input.chronyd.servers_configured) > 0
 }
 
 p_2_3_2 if {
-	num(input.chronyd.pools_configured) > 0
+	fnum(input.chronyd.pools_configured) > 0
 }
 
 violations contains "2.3.2: evidence missing — chronyd.servers_configured/pools_configured not collected" if not e_2_3_2
