@@ -26,6 +26,7 @@ test_steward_all_declared_and_met_still_requires_art24_policy if {
 	i := {"oss_steward": {
 		"is_legal_person": true, "not_manufacturer_of_product": true, "provides_systematic_sustained_support": true,
 		"ensures_product_viability": true, "oss_product_intended_for_commercial_activities": true,
+		"involved_in_development": false, "provides_development_infrastructure": false,
 	}}
 	not m.compliant with input as i
 	count([x | some x in m.violation with input as i; contains(x, "applicability not determined")]) == 0
