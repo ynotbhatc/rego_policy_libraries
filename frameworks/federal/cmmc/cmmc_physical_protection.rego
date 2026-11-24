@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -59,18 +59,21 @@ compliant_3_10_1 if {
 }
 
 violation_3_10_1 contains msg if {
-	not input.physical.access_control_implemented
-	msg := "3.10.1: Physical access controls are not implemented for CUI systems/equipment"
+	not input.physical.access_control_implemented == true
+	finding := "3.10.1: Physical access controls are not implemented for CUI systems/equipment"
+	msg := concat("", [finding, _ev_input("physical.access_control_implemented")])
 }
 
 violation_3_10_1 contains msg if {
-	not input.physical.authorized_personnel_list_maintained
-	msg := "3.10.1: No maintained list of individuals authorized for physical access"
+	not input.physical.authorized_personnel_list_maintained == true
+	finding := "3.10.1: No maintained list of individuals authorized for physical access"
+	msg := concat("", [finding, _ev_input("physical.authorized_personnel_list_maintained")])
 }
 
 violation_3_10_1 contains msg if {
-	not input.physical.physical_access_logs_kept
-	msg := "3.10.1: Physical access logs are not maintained"
+	not input.physical.physical_access_logs_kept == true
+	finding := "3.10.1: Physical access logs are not maintained"
+	msg := concat("", [finding, _ev_input("physical.physical_access_logs_kept")])
 }
 
 # 3.10.2 — Protect and monitor the physical facility and support infrastructure
@@ -84,18 +87,21 @@ compliant_3_10_2 if {
 }
 
 violation_3_10_2 contains msg if {
-	not input.physical.facility_monitoring
-	msg := "3.10.2: Physical facility housing CUI systems is not monitored"
+	not input.physical.facility_monitoring == true
+	finding := "3.10.2: Physical facility housing CUI systems is not monitored"
+	msg := concat("", [finding, _ev_input("physical.facility_monitoring")])
 }
 
 violation_3_10_2 contains msg if {
-	not input.physical.cctv_or_equivalent
-	msg := "3.10.2: No surveillance (CCTV or equivalent) protecting CUI facility"
+	not input.physical.cctv_or_equivalent == true
+	finding := "3.10.2: No surveillance (CCTV or equivalent) protecting CUI facility"
+	msg := concat("", [finding, _ev_input("physical.cctv_or_equivalent")])
 }
 
 violation_3_10_2 contains msg if {
-	not input.physical.environmental_controls
-	msg := "3.10.2: Environmental controls (temperature, humidity, fire suppression) not implemented"
+	not input.physical.environmental_controls == true
+	finding := "3.10.2: Environmental controls (temperature, humidity, fire suppression) not implemented"
+	msg := concat("", [finding, _ev_input("physical.environmental_controls")])
 }
 
 # 3.10.3 — Escort visitors and monitor visitor activity. (L1: PE.L1-b.1.ix)
@@ -108,18 +114,21 @@ compliant_3_10_3 if {
 }
 
 violation_3_10_3 contains msg if {
-	not input.physical.visitor_escort_required
-	msg := "3.10.3: Visitors to CUI areas are not required to be escorted"
+	not input.physical.visitor_escort_required == true
+	finding := "3.10.3: Visitors to CUI areas are not required to be escorted"
+	msg := concat("", [finding, _ev_input("physical.visitor_escort_required")])
 }
 
 violation_3_10_3 contains msg if {
-	not input.physical.visitor_log_maintained
-	msg := "3.10.3: Visitor activity logs are not maintained"
+	not input.physical.visitor_log_maintained == true
+	finding := "3.10.3: Visitor activity logs are not maintained"
+	msg := concat("", [finding, _ev_input("physical.visitor_log_maintained")])
 }
 
 violation_3_10_3 contains msg if {
-	not input.physical.visitor_badges_issued
-	msg := "3.10.3: Visitors are not issued distinguishing badges or credentials"
+	not input.physical.visitor_badges_issued == true
+	finding := "3.10.3: Visitors are not issued distinguishing badges or credentials"
+	msg := concat("", [finding, _ev_input("physical.visitor_badges_issued")])
 }
 
 # 3.10.4 — Maintain audit logs of physical access. (L1: PE.L1-b.1.ix)
@@ -132,8 +141,9 @@ compliant_3_10_4 if {
 }
 
 violation_3_10_4 contains msg if {
-	not input.physical.physical_access_audit_logs
-	msg := "3.10.4: Audit logs of physical access to CUI areas are not maintained"
+	not input.physical.physical_access_audit_logs == true
+	finding := "3.10.4: Audit logs of physical access to CUI areas are not maintained"
+	msg := concat("", [finding, _ev_input("physical.physical_access_audit_logs")])
 }
 
 violation_3_10_4 contains "3.10.4: evidence missing - input.org_defined.physical_access_log_retention_days (organisation-defined value, NIST SP 800-171A (R2 3.10.4 names no period)) not supplied or not a number" if {
@@ -150,8 +160,9 @@ violation_3_10_4 contains msg if {
 }
 
 violation_3_10_4 contains msg if {
-	not input.physical.access_logs_reviewed_regularly
-	msg := "3.10.4: Physical access audit logs are not reviewed on a regular basis"
+	not input.physical.access_logs_reviewed_regularly == true
+	finding := "3.10.4: Physical access audit logs are not reviewed on a regular basis"
+	msg := concat("", [finding, _ev_input("physical.access_logs_reviewed_regularly")])
 }
 
 # 3.10.5 — Control and manage physical access devices. (L1: PE.L1-b.1.ix)
@@ -164,18 +175,21 @@ compliant_3_10_5 if {
 }
 
 violation_3_10_5 contains msg if {
-	not input.physical.access_devices_inventoried
-	msg := "3.10.5: Physical access devices (keycards, badges) are not inventoried"
+	not input.physical.access_devices_inventoried == true
+	finding := "3.10.5: Physical access devices (keycards, badges) are not inventoried"
+	msg := concat("", [finding, _ev_input("physical.access_devices_inventoried")])
 }
 
 violation_3_10_5 contains msg if {
-	not input.physical.lost_credentials_revoked
-	msg := "3.10.5: Lost or stolen physical access credentials are not immediately revoked"
+	not input.physical.lost_credentials_revoked == true
+	finding := "3.10.5: Lost or stolen physical access credentials are not immediately revoked"
+	msg := concat("", [finding, _ev_input("physical.lost_credentials_revoked")])
 }
 
 violation_3_10_5 contains msg if {
-	not input.physical.access_devices_audited_annually
-	msg := "3.10.5: Physical access device inventory is not audited at least annually"
+	not input.physical.access_devices_audited_annually == true
+	finding := "3.10.5: Physical access device inventory is not audited at least annually"
+	msg := concat("", [finding, _ev_input("physical.access_devices_audited_annually")])
 }
 
 # 3.10.6 — Enforce safeguarding measures for CUI at alternate work sites. (L2)
@@ -188,18 +202,21 @@ compliant_3_10_6 if {
 }
 
 violation_3_10_6 contains msg if {
-	not input.physical.remote_work_policy
-	msg := "3.10.6: No policy for safeguarding CUI at alternate work sites (remote work)"
+	not input.physical.remote_work_policy == true
+	finding := "3.10.6: No policy for safeguarding CUI at alternate work sites (remote work)"
+	msg := concat("", [finding, _ev_input("physical.remote_work_policy")])
 }
 
 violation_3_10_6 contains msg if {
-	not input.physical.alternate_site_controls_defined
-	msg := "3.10.6: Physical and technical controls at alternate CUI sites are not defined"
+	not input.physical.alternate_site_controls_defined == true
+	finding := "3.10.6: Physical and technical controls at alternate CUI sites are not defined"
+	msg := concat("", [finding, _ev_input("physical.alternate_site_controls_defined")])
 }
 
 violation_3_10_6 contains msg if {
-	not input.physical.vpn_required_for_remote_cui_access
-	msg := "3.10.6: VPN or equivalent is not required for CUI access at alternate sites"
+	not input.physical.vpn_required_for_remote_cui_access == true
+	finding := "3.10.6: VPN or equivalent is not required for CUI access at alternate sites"
+	msg := concat("", [finding, _ev_input("physical.vpn_required_for_remote_cui_access")])
 }
 
 # ---------------------------------------------------------------------------
@@ -306,3 +323,25 @@ compliance_report := {
 	"practices": practices,
 	"level_1_passing": level_1_passing,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])
