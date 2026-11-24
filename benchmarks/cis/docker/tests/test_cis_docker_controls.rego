@@ -38,10 +38,7 @@ green := {
 				"ops",
 			],
 		},
-		"daemon_process": {
-			"user": "dockeruser",
-			"rootless": true,
-		},
+		"daemon_process": {"user": "dockeruser"},
 		"daemon": {
 			"icc": false,
 			"log-level": "info",
@@ -353,14 +350,8 @@ green := {
 		},
 		"swarm": {
 			"listeners": [
-				{
-					"port": 2377,
-					"address": "10.0.0.5",
-				},
-				{
-					"port": 7946,
-					"address": "10.0.0.5",
-				},
+				{"address": "10.0.0.5"},
+				{"address": "10.0.0.5"},
 			],
 			"data_path_addr": "10.0.1.5",
 		},
@@ -447,13 +438,37 @@ test_level_1_profile_leaves_level_2_out if {
 	_has_id(r.violations, "5.5")
 }
 
-test_level_accepts_string_and_defaults_to_2 if {
-	r1 := b.compliance_report with input as {"cis_profile": {"level": "1"}}
-	r1.profile.level == 1
-	r2 := b.compliance_report with input as {"cis_profile": {"level": "one"}}
-	r2.profile.level == 2
-	r2.profile.level_defaulted == true
+# the level is the number 1 or 2: a string (the strings "1" and "2" included), null or another number never
+# selects a profile; the report is scoped at Level 2 and every Level 2 recommendation in scope says so
+test_level_of_another_type_is_invalid_evidence if {
+	every bad in ["1", "2", "one", null, 3, true] {
+		r := b.compliance_report with input as object.union(green, {"cis_profile": {"level": bad}})
+		r.profile.level == 2
+		r.profile.level_defaulted == true
+		r.compliant == false
+		r.level_2.total > 0
+		r.level_2.failed == r.level_2.total
+		r.failed_controls == r.level_2.total
+		r.passed_controls + r.failed_controls == r.total_controls
+		every id in {i | some i, rec in b.recommendations; rec.level == 2; not rec.swarm; not rec.mac} {
+			_has(r.violations, sprintf("%s: evidence invalid — cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, json.marshal(bad)]))
+		}
+	}
+	every bad in ["1", null, []] {
+		r := b.compliance_report with input as object.union(green, {"cis_profile": bad})
+		r.compliant == false
+		r.level_2.failed == r.level_2.total
+	}
 }
+
+test_level_absent_defaults_to_2_without_a_finding if {
+	r := b.compliance_report with input as json.remove(green, ["/cis_profile/level"])
+	r.profile.level == 2
+	r.profile.level_defaulted == true
+	r.compliant == true
+}
+
+_has(vs, msg) if msg in vs
 
 # swarm applicability is decided by the collected state and stated in the report
 test_swarm_inactive_excludes_swarm_profile_explicitly if {
