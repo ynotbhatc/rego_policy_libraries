@@ -4,6 +4,10 @@
     python3 tools/cis_generators/gen_palo_alto.py /tmp/pa.json benchmarks/cis/network_devices/palo_alto
     opa fmt -w benchmarks/cis/network_devices/palo_alto
 
+Typed facts (2026-11-24): fact(typed=[T(...)]) names the numbers, yes/no values, lists and strings a check reads; a
+wrong type is an "evidence invalid" finding (helpers _bad, _n, _yes). fact(nonempty=<kind>) makes a collected, empty
+profiles.<kind> list a failed recommendation ("no <kind> profile configured") instead of missing evidence.
+
 Every recommendation in the workbook gets a rule. Each logic entry carries a keyword that must occur in the
 workbook title of its id; the run aborts on any count, id, status, profile or keyword mismatch. Titles are
 replaced by our own wording (OWN below, else neutralize.py) before anything is written. Writes only the files
@@ -14,7 +18,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cis_genlib import load_workbook_json, emit_control, emit_tests, table  # noqa: E402
+from cis_genlib import LEVEL_HELPERS, LEVEL_VIOLATIONS, load_workbook_json, emit_control, emit_tests, table  # noqa: E402
 
 WB = load_workbook_json(sys.argv[1])  # JSON from dump_workbook.py
 OUT = sys.argv[2]
@@ -34,10 +38,32 @@ def rm(path):
     return [{"op": "remove", "path": "/panos_config" + path}]
 
 
-def fact(cid, kw, ev, label, ok, fail, miss, ok2=None):
+KIND_LABEL = {"virus": "antivirus", "spyware": "anti-spyware", "vulnerability": "vulnerability protection",
+              "url_filtering": "URL filtering", "data_filtering": "data filtering", "wildfire_analysis": "WildFire analysis"}
+YN, NUM, LST, STR = "yes/no", "number", "list", "string"
+
+
+def T(root, keys, via=()):
+    """Rego: the wrong-typed facts under panos_config.<root>. keys: key name -> type ("*" = every key directly under
+    the root); via: when given, the fact must sit under one of these path segments."""
+    v = "{" + ", ".join(json.dumps(x) for x in via) + "}" if via else "set()"
+    return f"_bad({json.dumps(root.split('.'))}, {v}, {json.dumps(keys)})"
+
+
+def fact(cid, kw, ev, label, ok, fail, miss, ok2=None, typed=None, nonempty=None):
+    """typed: T(...) expressions for the yes/no, number, list and string facts the check reads (a wrong type is an
+    "evidence invalid" finding). nonempty: a profiles.<kind> list the check needs at least one entry of; a collected
+    empty list fails the recommendation as "no <kind> profile configured" (an absent key is still missing evidence)."""
     KW[cid] = kw
-    return {"id": cid, "kind": "fact", "ev": ev, "label": "panos_config." + label, "ok": [ok] + ([ok2] if ok2 else []),
-            "fail": fail, "miss": miss}
+    c = {"id": cid, "kind": "fact", "ev": ev, "label": "panos_config." + label, "ok": [ok] + ([ok2] if ok2 else []),
+         "fail": fail, "miss": miss}
+    if typed:
+        c["typed"] = typed
+    if nonempty:
+        expr = f"{P}.profiles.{nonempty}"
+        c["ok"] = [o if o[0].startswith("not _licensed") else [f"count({expr}) > 0"] + o for o in c["ok"]]
+        c["empty"] = (expr, f"no {KIND_LABEL[nonempty]} profile configured")
+    return c
 
 
 def att(cid, kw, key):
@@ -88,8 +114,8 @@ OWN.update({
 
 def pwc(cid, kw, key, op, n, bad):
     return fact(cid, kw, [f"is_object({PWC})"], "mgt_config.password_complexity",
-                [f"to_number({PWC}.{key}) {op} {n}"], add(f"/mgt_config/password_complexity/{key.replace('.', '/')}", bad),
-                rm("/mgt_config/password_complexity"))
+                [f'_n({PWC}, "{key}") {op} {n}'], add(f"/mgt_config/password_complexity/{key}", bad),
+                rm("/mgt_config/password_complexity"), typed=[T("mgt_config.password_complexity", {key: NUM})])
 
 
 C += [
@@ -103,45 +129,54 @@ C += [
          [f"is_string({SYS}.login_banner)", f'trim_space({SYS}.login_banner) != ""'],
          add("/deviceconfig/system/login_banner", " "), rm("/deviceconfig/system")),
     fact("1.1.3", "high dp load", [f"is_object({MGMT})"], "deviceconfig.setting.management",
-         [f'{MGMT}.enable_log_high_dp_load == "yes"'],
-         add("/deviceconfig/setting/management/enable_log_high_dp_load", "no"), rm("/deviceconfig/setting/management")),
+         [f'_yes({MGMT}, "enable_log_high_dp_load")'],
+         add("/deviceconfig/setting/management/enable_log_high_dp_load", "no"), rm("/deviceconfig/setting/management"),
+         typed=[T("deviceconfig.setting.management", {"enable_log_high_dp_load": YN})]),
     att("1.2.1", "permitted ip addresses", "management_permitted_ips_reviewed"),
     att("1.2.2", "management profiles where", "management_profile_permitted_ips_reviewed"),
     fact("1.2.3", "management interface", [f"is_object({SYS}.service)"], "deviceconfig.system.service",
-         [f'{SYS}.service.disable_http == "yes"', f'{SYS}.service.disable_telnet == "yes"'],
-         add("/deviceconfig/system/service/disable_telnet", "no"), rm("/deviceconfig/system/service")),
+         [f'_yes({SYS}.service, "disable_http")', f'_yes({SYS}.service, "disable_telnet")'],
+         add("/deviceconfig/system/service/disable_telnet", "no"), rm("/deviceconfig/system/service"),
+         typed=[T("deviceconfig.system.service", {"disable_http": YN, "disable_telnet": YN})]),
     fact("1.2.4", "all management profiles", [f"is_array({P}.network.profiles.interface_management)"],
          "network.profiles.interface_management",
          [f'every p in {P}.network.profiles.interface_management {{ not _yes(p, "http"); not _yes(p, "telnet") }}'],
-         add("/network/profiles/interface_management/0/http", "yes"), rm("/network/profiles/interface_management")),
+         add("/network/profiles/interface_management/0/http", "yes"), rm("/network/profiles/interface_management"),
+         typed=[T("network.profiles.interface_management", {"http": YN, "telnet": YN})]),
     att("1.2.5", "certificate", "admin_web_certificate_valid"),
     fact("1.3.1", "password complexity", [f"is_object({PWC})"], "mgt_config.password_complexity",
-         [f'{PWC}.enabled == "yes"', f'{PWC}.block_username_inclusion == "yes"'],
-         add("/mgt_config/password_complexity/enabled", "no"), rm("/mgt_config/password_complexity")),
+         [f'_yes({PWC}, "enabled")', f'_yes({PWC}, "block_username_inclusion")'],
+         add("/mgt_config/password_complexity/enabled", "no"), rm("/mgt_config/password_complexity"),
+         typed=[T("mgt_config.password_complexity", {"enabled": YN, "block_username_inclusion": YN})]),
     pwc("1.3.2", "minimum length", "minimum_length", ">=", 12, 8),
     pwc("1.3.3", "uppercase", "minimum_uppercase_letters", ">=", 1, 0),
     pwc("1.3.4", "lowercase", "minimum_lowercase_letters", ">=", 1, 0),
     pwc("1.3.5", "numeric", "minimum_numeric_letters", ">=", 1, 0),
     pwc("1.3.6", "special characters", "minimum_special_characters", ">=", 1, 0),
     fact("1.3.7", "change period", [f"is_object({PWC})"], "mgt_config.password_complexity",
-         [f"n := to_number({PWC}.password_change.expiration_period)", "n > 0", "n <= 90"],
-         add("/mgt_config/password_complexity/password_change/expiration_period", 0), rm("/mgt_config/password_complexity")),
+         [f'n := _n(object.get({PWC}, "password_change", {{}}), "expiration_period")', "n > 0", "n <= 90"],
+         add("/mgt_config/password_complexity/password_change/expiration_period", 0), rm("/mgt_config/password_complexity"),
+         typed=[T("mgt_config.password_complexity.password_change", {"expiration_period": NUM})]),
     pwc("1.3.8", "differs by characters", "new_password_differs_by_characters", ">=", 3, 2),
     pwc("1.3.9", "reuse limit", "password_history_count", ">=", 24, 10),
     fact("1.3.10", "password profiles", [f"is_array({P}.mgt_config.password_profile)"], "mgt_config.password_profile",
          [f"every pp in {P}.mgt_config.password_profile {{ _expiry_ok(pp) }}"],
-         add("/mgt_config/password_profile/0/password_change/expiration_period", 0), rm("/mgt_config/password_profile")),
+         add("/mgt_config/password_profile/0/password_change/expiration_period", 0), rm("/mgt_config/password_profile"),
+         typed=[T("mgt_config.password_profile", {"expiration_period": NUM})]),
     fact("1.4.1", "idle timeout", [f"is_object({MGMT})"], "deviceconfig.setting.management",
-         [f"n := to_number({MGMT}.idle_timeout)", "n > 0", "n <= 10"],
-         add("/deviceconfig/setting/management/idle_timeout", 0), rm("/deviceconfig/setting/management")),
+         [f'n := _n({MGMT}, "idle_timeout")', "n > 0", "n <= 10"],
+         add("/deviceconfig/setting/management/idle_timeout", 0), rm("/deviceconfig/setting/management"),
+         typed=[T("deviceconfig.setting.management", {"idle_timeout": NUM})]),
     fact("1.4.2", "lockout time", [f"is_array({P}.shared.authentication_profile)", f"count({P}.shared.authentication_profile) > 0"],
          "shared.authentication_profile", [f"every a in {P}.shared.authentication_profile {{ _lockout_ok(a) }}"],
-         add("/shared/authentication_profile/0/lockout/lockout_time", 0), rm("/shared/authentication_profile")),
+         add("/shared/authentication_profile/0/lockout/lockout_time", 0), rm("/shared/authentication_profile"),
+         typed=[T("shared.authentication_profile", {"failed_attempts": NUM, "lockout_time": NUM})]),
     fact("1.5.1", "v3", [f"is_object({SYS}.snmp_setting)"], "deviceconfig.system.snmp_setting",
          [f'lower({SYS}.snmp_setting.access_setting.version) == "v3"'],
          add("/deviceconfig/system/snmp_setting/access_setting/version", "v2c"), rm("/deviceconfig/system/snmp_setting")),
     fact("1.6.1", "update server identity", [f"is_object({SYS})"], "deviceconfig.system",
-         [f'{SYS}.server_verification == "yes"'], add("/deviceconfig/system/server_verification", "no"), rm("/deviceconfig/system")),
+         [f'_yes({SYS}, "server_verification")'], add("/deviceconfig/system/server_verification", "no"), rm("/deviceconfig/system"),
+         typed=[T("deviceconfig.system", {"server_verification": YN})]),
     fact("1.6.2", "ntp", [f"is_object({SYS}.ntp_servers)"], "deviceconfig.system.ntp_servers",
          ["_ntp_ok"], add("/deviceconfig/system/ntp_servers/secondary_ntp_server/ntp_server_address", "10.0.0.123"),
          rm("/deviceconfig/system/ntp_servers")),
@@ -155,6 +190,12 @@ RULES = [f"is_array({P}.rulebase.security)", f"count({P}.rulebase.security) > 0"
 UNTR = [f"is_array({P}.site.untrusted_zones)", f"count({P}.site.untrusted_zones) > 0"]
 INET = [f"is_array({P}.site.internet_zones)", f"count({P}.site.internet_zones) > 0"]
 HA = f"{P}.deviceconfig.high_availability"
+# shape of a security rule: a wrong type here would drop the rule from the allow / Internet-bound sets unnoticed
+RULE_T = T("rulebase.security", dict({"disabled": YN, "action": STR, "group": LST},
+                                     **{k: LST for k in ["from", "to", "source", "destination", "application", "service"]},
+                                     **{k: LST for k in KIND_LABEL}))
+ZONE_T = T("zone", {"enable_user_identification": YN})
+LIC_T = T("licenses", {"expired": YN, "feature": STR})
 US = f"{SYS}.update_schedule"
 OWN.update({
     "2.1": "traffic from trusted zones must carry a mapped user name",
@@ -175,32 +216,36 @@ OWN.update({
 C += [
     att("2.1", "mapped to usernames", "user_mapping_verified_in_logs"),
     fact("2.2", "wmi probing", [f"is_object({P}.user_id.setting)"], "user_id.setting",
-         [f'not _yes({P}.user_id.setting, "enable_probing")'], add("/user_id/setting/enable_probing", "yes"), rm("/user_id/setting")),
+         [f'not _yes({P}.user_id.setting, "enable_probing")'], add("/user_id/setting/enable_probing", "yes"), rm("/user_id/setting"),
+         typed=[T("user_id.setting", {"enable_probing": YN})]),
     fact("2.3", "internal trusted", ZONES + UNTR, "{zone,site.untrusted_zones}",
          ["count({lower(z.name) | some z in _uid_zones} & _untrusted) == 0"],
-         add("/zone/1/enable_user_identification", "yes"), rm("/site/untrusted_zones")),
+         add("/zone/1/enable_user_identification", "yes"), rm("/site/untrusted_zones"), typed=[ZONE_T]),
     fact("2.4", "include/exclude", ZONES + [f"is_array({P}.user_id.include_exclude_network)"],
          "{zone,user_id.include_exclude_network}", ["count(_uid_zones) == 0"],
          add("/user_id/include_exclude_network/0/discovery", "exclude"), rm("/user_id/include_exclude_network"),
          ok2=[f'some e in {P}.user_id.include_exclude_network', 'lower(object.get(e, "discovery", "")) == "include"',
-              '_nonempty(object.get(e, "network_address", ""))']),
+              '_nonempty(object.get(e, "network_address", ""))'], typed=[ZONE_T]),
     att("2.5", "minimal permissions", "userid_account_minimal_groups"),
     att("2.6", "interactive logon", "userid_account_no_interactive_logon"),
     att("2.7", "remote access", "userid_account_no_remote_access"),
     fact("2.8", "untrusted zones", RULES + UNTR, "{rulebase.security,site.untrusted_zones}",
          ["some r in _rules", "_deny(r)", '"msrpc" in _ls(r, "application")', "_to_all_untrusted(r)"],
-         add("/rulebase/security/2/application", ["dns"]), rm("/rulebase/security")),
+         add("/rulebase/security/2/application", ["dns"]), rm("/rulebase/security"), typed=[RULE_T]),
     fact("3.1", "fully-synchronized", [f"is_object({HA})"], "deviceconfig.high_availability",
-         [f'{HA}.enabled == "yes"', f"is_string({HA}.interface.ha2.port)", f'{HA}.interface.ha2.port != ""',
-          f'{HA}.state_synchronization.enabled == "yes"'],
-         add("/deviceconfig/high_availability/state_synchronization/enabled", "no"), rm("/deviceconfig/high_availability")),
+         [f'_yes({HA}, "enabled")', f"is_string({HA}.interface.ha2.port)", f'{HA}.interface.ha2.port != ""',
+          f'_yes({HA}.state_synchronization, "enabled")'],
+         add("/deviceconfig/high_availability/state_synchronization/enabled", "no"), rm("/deviceconfig/high_availability"),
+         typed=[T("deviceconfig.high_availability", {"enabled": YN})]),
     fact("3.2", "link monitoring", [f"is_object({HA})"], "deviceconfig.high_availability",
          [f'_monitor_ok(object.get({HA}, "link_monitoring", {{}}), "link_group", "interface")'],
          add("/deviceconfig/high_availability/link_monitoring/enabled", "no"), rm("/deviceconfig/high_availability"),
-         ok2=[f'_monitor_ok(object.get({HA}, "path_monitoring", {{}}), "path_group", "destination_ip")']),
+         ok2=[f'_monitor_ok(object.get({HA}, "path_monitoring", {{}}), "path_group", "destination_ip")'],
+         typed=[T("deviceconfig.high_availability", {"enabled": YN})]),
     fact("3.3", "preemptive", [f"is_object({HA})"], "deviceconfig.high_availability",
          [f'{HA}.active_passive.passive_link_state == "auto"', f'not _yes(object.get({HA}, "election_option", {{}}), "preemptive")'],
-         add("/deviceconfig/high_availability/election_option/preemptive", "yes"), rm("/deviceconfig/high_availability")),
+         add("/deviceconfig/high_availability/election_option/preemptive", "yes"), rm("/deviceconfig/high_availability"),
+         typed=[T("deviceconfig.high_availability", {"preemptive": YN})]),
     fact("4.1", "antivirus update", [f"is_object({US})"], "deviceconfig.system.update_schedule",
          [f'{US}.anti_virus.action == "download-and-install"', f'{US}.anti_virus.recurrence == "hourly"'],
          add("/deviceconfig/system/update_schedule/anti_virus/recurrence", "daily"), rm("/deviceconfig/system/update_schedule")),
@@ -216,7 +261,8 @@ PR = f"{P}.profiles"
 
 
 def plist(kind):
-    return [f"is_array({PR}.{kind})", f"count({PR}.{kind}) > 0"]
+    """evidence for a profile list: the key was collected. An empty list is a finding (fact(nonempty=kind)), not missing evidence."""
+    return [f"is_array({PR}.{kind})"]
 
 
 OWN.update({
@@ -234,13 +280,16 @@ C += [
     att("5.1", "file size", "wildfire_file_size_limits_reviewed"),
     fact("5.2", "wildfire analysis profile", RULES + plist("wildfire_analysis"), "{rulebase.security,profiles.wildfire_analysis}",
          ['every r in _allow_rules { _has_profile(r, "wildfire_analysis") }'],
-         rm("/rulebase/security/0/profile_setting/profiles/wildfire_analysis"), rm("/profiles/wildfire_analysis")),
+         rm("/rulebase/security/0/profile_setting/profiles/wildfire_analysis"), rm("/profiles/wildfire_analysis"),
+         typed=[RULE_T], nonempty="wildfire_analysis"),
     fact("5.3", "decrypted content", [f"is_object({P}.deviceconfig.setting.ssl_decrypt)"], "deviceconfig.setting.ssl_decrypt",
-         [f'{P}.deviceconfig.setting.ssl_decrypt.allow_forward_decrypted_content == "yes"'],
-         add("/deviceconfig/setting/ssl_decrypt/allow_forward_decrypted_content", "no"), rm("/deviceconfig/setting/ssl_decrypt")),
+         [f'_yes({P}.deviceconfig.setting.ssl_decrypt, "allow_forward_decrypted_content")'],
+         add("/deviceconfig/setting/ssl_decrypt/allow_forward_decrypted_content", "no"), rm("/deviceconfig/setting/ssl_decrypt"),
+         typed=[T("deviceconfig.setting.ssl_decrypt", {"allow_forward_decrypted_content": YN})]),
     fact("5.4", "session information", [f"is_object({WF})"], "deviceconfig.setting.wildfire",
-         [f'every _, v in object.get({WF}, "session_info_select", {{}}) {{ v != "yes" }}'],
-         add("/deviceconfig/setting/wildfire/session_info_select/exclude_username", "yes"), rm("/deviceconfig/setting/wildfire")),
+         [f'sis := object.get({WF}, "session_info_select", {{}})', "is_object(sis)", "every k, _ in sis { not _yes(sis, k) }"],
+         add("/deviceconfig/setting/wildfire/session_info_select/exclude_username", "yes"), rm("/deviceconfig/setting/wildfire"),
+         typed=[T("deviceconfig.setting.wildfire.session_info_select", {"*": YN})]),
     fact("5.5", "alerts", [f"is_array({P}.shared.log_forwarding_profile)"], "shared.log_forwarding_profile",
          [f"some lf in {P}.shared.log_forwarding_profile", 'some m in _l(lf, "match_list")',
           'lower(object.get(m, "log_type", "")) == "wildfire"', "_sends(m)"],
@@ -251,7 +300,8 @@ C += [
     att("5.7", "cloud region", "wildfire_cloud_region_approved"),
     fact("5.8", "inline cloud analysis", plist("wildfire_analysis"), "profiles.wildfire_analysis",
          [f"every p in {PR}.wildfire_analysis {{ _wf_inline_ok(p) }}"],
-         add("/profiles/wildfire_analysis/0/cloud_inline_analysis", "no"), rm("/profiles/wildfire_analysis")),
+         add("/profiles/wildfire_analysis/0/cloud_inline_analysis", "no"), rm("/profiles/wildfire_analysis"),
+         typed=[T("profiles.wildfire_analysis", {"cloud_inline_analysis": YN})], nonempty="wildfire_analysis"),
 ]
 
 # ── section 6 (6.1-6.14): security profiles ─────────────────────────────────────────
@@ -276,45 +326,52 @@ OWN.update({
 })
 
 
-def rule_prof(cid, kw, kind, rules_var, ev, label, miss):
-    return fact(cid, kw, ev, label, [f'every r in {rules_var} {{ _has_profile(r, "{kind}") }}'], rm(f"{R0}/{kind}"), miss)
+def rule_prof(cid, kw, kind, rules_var, ev, label, miss, nonempty=None):
+    return fact(cid, kw, ev, label, [f'every r in {rules_var} {{ _has_profile(r, "{kind}") }}'], rm(f"{R0}/{kind}"), miss,
+                typed=[RULE_T], nonempty=nonempty)
 
 
 C += [
     fact("6.1", "reset-both", plist("virus"), "profiles.virus",
          [f'every p in {PR}.virus {{ _av_decoders_ok(p, "action"); _av_decoders_ok(p, "wildfire_action") }}'],
-         add("/profiles/virus/0/decoder/0/wildfire_action", "alert"), rm("/profiles/virus")),
+         add("/profiles/virus/0/decoder/0/wildfire_action", "alert"), rm("/profiles/virus"), nonempty="virus"),
     rule_prof("6.2", "antivirus profile", "virus", "_allow_rules", RULES + plist("virus"),
-              "{rulebase.security,profiles.virus}", rm("/profiles/virus")),
+              "{rulebase.security,profiles.virus}", rm("/profiles/virus"), nonempty="virus"),
     fact("6.3", "anti-spyware profile is configured", plist("spyware"), "profiles.spyware",
          [f"some p in {PR}.spyware", "_spyware_block_rule(p)"],
-         add("/profiles/spyware/0/rules/0/action", "alert"), rm("/profiles/spyware")),
+         add("/profiles/spyware/0/rules/0/action", "alert"), rm("/profiles/spyware"), nonempty="spyware"),
     fact("6.4", "sinkholing", RULES + plist("spyware"), "{rulebase.security,profiles.spyware}",
          ['count(_inuse("spyware")) > 0', f'every n in _inuse("spyware") {{ some p in {PR}.spyware; p.name == n; _sinkhole_ok(p) }}'],
-         add("/profiles/spyware/0/botnet_domains/lists/0/action", "alert"), rm("/profiles/spyware")),
+         add("/profiles/spyware/0/botnet_domains/lists/0/action", "alert"), rm("/profiles/spyware"),
+         typed=[RULE_T], nonempty="spyware"),
     rule_prof("6.5", "permitting traffic to the internet", "spyware", "_inet_out_rules", RULES + INET + plist("spyware"),
-              "{rulebase.security,site.internet_zones,profiles.spyware}", rm("/site/internet_zones")),
+              "{rulebase.security,site.internet_zones,profiles.spyware}", rm("/site/internet_zones"), nonempty="spyware"),
     fact("6.6", "critical and high", plist("vulnerability"), "profiles.vulnerability",
          [f"some p in {PR}.vulnerability", "_vuln_ok(p)"],
-         add("/profiles/vulnerability/0/rules/0/action", "alert"), rm("/profiles/vulnerability")),
+         add("/profiles/vulnerability/0/rules/0/action", "alert"), rm("/profiles/vulnerability"), nonempty="vulnerability"),
     rule_prof("6.7", "security rules allowing", "vulnerability", "_allow_rules", RULES, "rulebase.security", rm("/rulebase/security")),
     fact("6.8", "pan-db", LIC, "licenses", ['_licensed({"pan-db url filtering", "advanced url filtering"})'],
-         add("/licenses/0/expired", "yes"), rm("/licenses")),
+         add("/licenses/0/expired", "yes"), rm("/licenses"), typed=[LIC_T]),
     fact("6.9", "override", plist("url_filtering") + URLC, "{profiles.url_filtering,site.url_block_categories}",
          [f'every p in {PR}.url_filtering {{ count(_ls({P}.site, "url_block_categories") - (_ls(p, "block") | _ls(p, "override"))) == 0 }}'],
-         add("/profiles/url_filtering/0/block", ["malware"]), rm("/site/url_block_categories")),
+         add("/profiles/url_filtering/0/block", ["malware"]), rm("/site/url_block_categories"), nonempty="url_filtering"),
     fact("6.10", "logged", plist("url_filtering"), "profiles.url_filtering",
          [f'every p in {PR}.url_filtering {{ count(_l(p, "allow")) == 0 }}'],
-         add("/profiles/url_filtering/0/allow", ["news"]), rm("/profiles/url_filtering")),
+         add("/profiles/url_filtering/0/allow", ["news"]), rm("/profiles/url_filtering"),
+         typed=[T("profiles.url_filtering", {"allow": LST})], nonempty="url_filtering"),
     fact("6.11", "http header", plist("url_filtering"), "profiles.url_filtering",
          [f"every p in {PR}.url_filtering {{ _url_header_logging(p) }}"],
-         add("/profiles/url_filtering/0/log_http_hdr_xff", "no"), rm("/profiles/url_filtering")),
+         add("/profiles/url_filtering/0/log_http_hdr_xff", "no"), rm("/profiles/url_filtering"),
+         typed=[T("profiles.url_filtering", {k: YN for k in ["log_container_page_only", "log_http_hdr_user_agent",
+                                                              "log_http_hdr_referer", "log_http_hdr_xff"]})],
+         nonempty="url_filtering"),
     rule_prof("6.12", "secure url filtering", "url_filtering", "_inet_out_rules", RULES + INET,
               "{rulebase.security,site.internet_zones}", rm("/site/internet_zones")),
     fact("6.13", "credit card", plist("data_filtering"), "profiles.data_filtering",
          [f'some p in {PR}.data_filtering', 'some x in _l(p, "rules")', 'count(_l(x, "data_object")) > 0',
-          'to_number(object.get(x, "alert_threshold", 0)) > 0'],
-         add("/profiles/data_filtering/0/rules/0/alert_threshold", 0), rm("/profiles/data_filtering")),
+          '_n(x, "alert_threshold") > 0'],
+         add("/profiles/data_filtering/0/rules/0/alert_threshold", 0), rm("/profiles/data_filtering"),
+         typed=[T("profiles.data_filtering", {"alert_threshold": NUM})], nonempty="data_filtering"),
     rule_prof("6.14", "data filtering", "data_filtering", "_inet_rules", RULES + INET,
               "{rulebase.security,site.internet_zones}", rm("/site/internet_zones")),
 ]
@@ -324,6 +381,8 @@ ZP = f"{P}.network.profiles.zone_protection"
 ZPE = [f"is_array({ZP})"]
 ZPATH = "/network/profiles/zone_protection/0"
 ATP = '{"advanced threat prevention"}'
+DISCARDS = ["discard_ip_spoof", "discard_overlapping_tcp_segment_mismatch", "discard_strict_source_routing",
+            "discard_loose_source_routing", "discard_malformed_option"]
 OWN.update({
     "6.15": "untrusted zones must have a zone protection profile answering SYN floods with SYN cookies",
     "6.16": "untrusted zones must have zone protection flood limits on for every flood type",
@@ -341,40 +400,51 @@ OWN.update({
 C += [
     fact("6.15", "syn cookies", ZONES + UNTR + ZPE, "{zone,site.untrusted_zones,network.profiles.zone_protection}",
          ["_untrusted_known", "every z in _untrusted_zone_objs { _syn_cookies(_zpp(z)) }"],
-         add(f"{ZPATH}/flood/tcp_syn/action", "red"), rm("/network/profiles/zone_protection")),
+         add(f"{ZPATH}/flood/tcp_syn/action", "red"), rm("/network/profiles/zone_protection"),
+         typed=[T("network.profiles.zone_protection", {"enable": YN, "alarm_rate": NUM, "activate_rate": NUM, "maximal_rate": NUM}, via=["tcp_syn"])]),
     fact("6.16", "flood protection", ZONES + UNTR + ZPE, "{zone,site.untrusted_zones,network.profiles.zone_protection}",
          ["_untrusted_known", "every z in _untrusted_zone_objs { _floods_ok(_zpp(z)) }"],
-         add(f"{ZPATH}/flood/udp/enable", "no"), rm("/network/profiles/zone_protection")),
+         add(f"{ZPATH}/flood/udp/enable", "no"), rm("/network/profiles/zone_protection"),
+         typed=[T("network.profiles.zone_protection", {"enable": YN, "alarm_rate": NUM, "activate_rate": NUM, "maximal_rate": NUM}, via=["flood"])]),
     fact("6.17", "reconnaissance", ZONES + ZPE, "{zone,network.profiles.zone_protection}",
          [f"every z in {P}.zone {{ _recon_ok(_zpp(z)) }}"],
-         add(f"{ZPATH}/scan/host_sweep/action", "allow"), rm("/network/profiles/zone_protection")),
+         add(f"{ZPATH}/scan/host_sweep/action", "allow"), rm("/network/profiles/zone_protection"),
+         typed=[T("network.profiles.zone_protection", {"enable": YN, "interval": NUM, "threshold": NUM, "duration": NUM},
+                  via=["scan"])]),
     fact("6.18", "specially crafted", ZONES + ZPE, "{zone,network.profiles.zone_protection}",
          [f"every z in {P}.zone {{ _drops_ok(_zpp(z)) }}"],
-         add(f"{ZPATH}/discard_ip_spoof", "no"), rm("/network/profiles/zone_protection")),
+         add(f"{ZPATH}/discard_ip_spoof", "no"), rm("/network/profiles/zone_protection"),
+         typed=[T("network.profiles.zone_protection", {k: YN for k in DISCARDS})]),
     fact("6.19", "credential submission", plist("url_filtering"), "profiles.url_filtering",
          [f"every p in {PR}.url_filtering {{ _cred_ok(p) }}"],
-         add("/profiles/url_filtering/0/credential_enforcement/mode", "disabled"), rm("/profiles/url_filtering")),
+         add("/profiles/url_filtering/0/credential_enforcement/mode", "disabled"), rm("/profiles/url_filtering"),
+         typed=[T("profiles.url_filtering", {k: LST for k in ["allow", "alert", "block", "continue"]})],
+         nonempty="url_filtering"),
     fact("6.20", "inline ml action", plist("virus"), "profiles.virus",
          [f'every p in {PR}.virus {{ _av_decoders_ok(p, "mlav_action") }}'],
-         add("/profiles/virus/0/decoder/0/mlav_action", "alert"), rm("/profiles/virus")),
+         add("/profiles/virus/0/decoder/0/mlav_action", "alert"), rm("/profiles/virus"), nonempty="virus"),
     fact("6.21", "all file types", plist("virus"), "profiles.virus",
          [f"every p in {PR}.virus {{ _mlav_ok(p) }}"],
-         add("/profiles/virus/0/mlav_engine_filebased_enabled/0/mlav_policy_action", "disable"), rm("/profiles/virus")),
+         add("/profiles/virus/0/mlav_engine_filebased_enabled/0/mlav_policy_action", "disable"), rm("/profiles/virus"),
+         nonempty="virus"),
     fact("6.22", "vulnerability protection profiles", LIC + plist("vulnerability"), "{licenses,profiles.vulnerability}",
          [f"not _licensed({ATP})"], add("/profiles/vulnerability/0/cloud_inline_analysis", "no"), rm("/licenses"),
-         ok2=[f'every p in {PR}.vulnerability {{ _inline_cloud_ok(p, "mica_engine_vulnerability_enabled", "alert") }}']),
+         ok2=[f'every p in {PR}.vulnerability {{ _inline_cloud_ok(p, "mica_engine_vulnerability_enabled", "alert") }}'],
+         typed=[LIC_T, T("profiles.vulnerability", {"cloud_inline_analysis": YN})], nonempty="vulnerability"),
     fact("6.23", "cloud inline categorization", LIC + plist("url_filtering"), "{licenses,profiles.url_filtering}",
          ['not _licensed({"advanced threat prevention", "advanced url filtering"})'],
          add("/profiles/url_filtering/0/cloud_inline_cat", "no"), rm("/licenses"),
-         ok2=[f'every p in {PR}.url_filtering {{ _yes(p, "local_inline_cat"); _yes(p, "cloud_inline_cat") }}']),
+         ok2=[f'every p in {PR}.url_filtering {{ _yes(p, "local_inline_cat"); _yes(p, "cloud_inline_cat") }}'],
+         typed=[LIC_T, T("profiles.url_filtering", {"local_inline_cat": YN, "cloud_inline_cat": YN})], nonempty="url_filtering"),
     fact("6.24", "anti-spyware profiles are enabled", LIC + plist("spyware"), "{licenses,profiles.spyware}",
          [f"not _licensed({ATP})"], add("/profiles/spyware/0/mica_engine_spyware_enabled/0/inline_policy_action", "alert"),
          rm("/licenses"),
-         ok2=[f'every p in {PR}.spyware {{ _inline_cloud_ok(p, "mica_engine_spyware_enabled", "reset-both") }}']),
+         ok2=[f'every p in {PR}.spyware {{ _inline_cloud_ok(p, "mica_engine_spyware_enabled", "reset-both") }}'],
+         typed=[LIC_T, T("profiles.spyware", {"cloud_inline_analysis": YN})], nonempty="spyware"),
     fact("6.25", "dns security", LIC + plist("spyware"), "{licenses,profiles.spyware}",
          ['not _licensed({"dns security", "advanced dns security"})'],
          add("/profiles/spyware/0/botnet_domains/dns_security_categories/0/packet_capture", "disable"), rm("/licenses"),
-         ok2=[f"every p in {PR}.spyware {{ _dns_security_ok(p) }}"]),
+         ok2=[f"every p in {PR}.spyware {{ _dns_security_ok(p) }}"], typed=[LIC_T], nonempty="spyware"),
 ]
 
 # ── sections 7-8: security policies, decryption ─────────────────────────────────────
@@ -392,17 +462,19 @@ OWN.update({
 C += [
     fact("7.1", "more trusted zone", RULES + UNTR, "{rulebase.security,site.untrusted_zones}",
          ["every r in _untrusted_inbound { _app_named(r); _service_named(r) }"],
-         add("/rulebase/security/3/application", ["any"]), rm("/site/untrusted_zones")),
+         add("/rulebase/security/3/application", ["any"]), rm("/site/untrusted_zones"), typed=[RULE_T]),
     fact("7.2", "service setting of any", RULES, "rulebase.security", ["every r in _allow_rules { _service_named(r) }"],
-         add("/rulebase/security/0/service", ["any"]), rm("/rulebase/security")),
+         add("/rulebase/security/0/service", ["any"]), rm("/rulebase/security"), typed=[RULE_T]),
     fact("7.3", "threat intelligence", RULES, "rulebase.security", ['_edl_deny("destination")', '_edl_deny("source")'],
-         add("/rulebase/security/4/destination", ["any"]), rm("/rulebase/security")),
+         add("/rulebase/security/4/destination", ["any"]), rm("/rulebase/security"), typed=[RULE_T]),
     fact("7.4", "built-in default", [f"is_array({P}.rulebase.default_security_rules)"], "rulebase.default_security_rules",
          [f'every n in {{"intrazone-default", "interzone-default"}} {{ some d in {P}.rulebase.default_security_rules; d.name == n; _yes(d, "log_end") }}'],
-         add("/rulebase/default_security_rules/0/log_end", "no"), rm("/rulebase/default_security_rules")),
+         add("/rulebase/default_security_rules/0/log_end", "no"), rm("/rulebase/default_security_rules"),
+         typed=[T("rulebase.default_security_rules", {"log_end": YN})]),
     fact("8.1", "ssl forward proxy", DEC + INET, "{rulebase.decryption,site.internet_zones}",
          [f"some d in {P}.rulebase.decryption", "_forward_proxy_inet(d)"],
-         add("/rulebase/decryption/0/type", "ssl-inbound-inspection"), rm("/rulebase/decryption")),
+         add("/rulebase/decryption/0/type", "ssl-inbound-inspection"), rm("/rulebase/decryption"),
+         typed=[T("rulebase.decryption", {"disabled": YN, "to": LST})]),
     att("8.2", "inbound inspection", "ssl_inbound_inspection_reviewed"),
     att("8.3", "decryption", "decryption_certificate_trusted"),
 ]
@@ -584,15 +656,68 @@ GREEN = {"panos_config": {
 
 # ── Rego helpers ───────────────────────────────────────────────────────────────────────
 HELPERS = r'''# ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent or other => 2, the stricter
-default _level := 2
+'''
+HELPERS += LEVEL_HELPERS + r'''
+# PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean; absent is the PAN-OS default ("no").
+# Any other value is not read as either: the recommendation that reads it reports "evidence invalid" (_bad).
+_yes(o, k) if object.get(o, k, "no") == true
 
-_level := 1 if input.cis_profile.level == 1
+_yes(o, k) if {
+	v := object.get(o, k, "no")
+	is_string(v)
+	lower(v) == "yes"
+}
 
-_applies(id) if recommendations[id].level <= _level
+# a number fact: only a JSON number counts ("14" is a string); absent or any other type is undefined
+_n(o, k) := v if {
+	v := object.get(o, k, null)
+	is_number(v)
+}
 
-# PAN-OS booleans are "yes" / "no"; absent is the PAN-OS default ("no")
-_yes(o, k) if lower(sprintf("%v", [object.get(o, k, "no")])) == "yes"
+_type_ok("yes/no", v) if is_boolean(v)
+
+_type_ok("yes/no", v) if {
+	is_string(v)
+	lower(v) in {"yes", "no"}
+}
+
+_type_ok("number", v) if is_number(v)
+
+_type_ok("list", v) if is_array(v)
+
+_type_ok("string", v) if is_string(v)
+
+_type_want := {"yes/no": "\"yes\" or \"no\"", "number": "a number", "list": "a list", "string": "a string"}
+
+# wrong-typed facts under input.panos_config.<root>. keys maps a key name to the type its value must have ("*": every
+# key directly under the root); via, when not empty, names path segments one of which the fact must sit under.
+# A fact that is absent is not reported here (absent has its own meaning per check); null is a wrong type.
+_bad(root, via, keys) := {msg |
+	sub := object.get(input.panos_config, root, null)
+	walk(sub, [path, v])
+	count(path) > 0
+	k := path[count(path) - 1]
+	is_string(k)
+	t := _key_type(keys, k, count(path))
+	_via_ok(via, path)
+	not _type_ok(t, v)
+	full := array.concat(root, [sprintf("%v", [s]) | some s in path])
+	msg := sprintf("panos_config.%s must be %s, got %s", [concat(".", full), _type_want[t], json.marshal(v)])
+}
+
+_key_type(keys, k, _) := keys[k]
+
+_key_type(keys, k, depth) := keys["*"] if {
+	not keys[k]
+	depth == 1
+}
+
+_via_ok(via, _) if count(via) == 0
+
+_via_ok(via, path) if {
+	some s in path
+	s in via
+}
 
 _nonempty(v) if {
 	is_string(v)
@@ -743,7 +868,7 @@ _log_dest_ok(field, profs) if {
 }
 
 _expiry_ok(pp) if {
-	n := to_number(object.get(object.get(pp, "password_change", {}), "expiration_period", 0))
+	n := _n(object.get(pp, "password_change", {}), "expiration_period")
 	n > 0
 	n <= 90
 }
@@ -751,8 +876,8 @@ _expiry_ok(pp) if {
 # 0 failed attempts or 0 lockout time means lockout is off
 _lockout_ok(a) if {
 	lo := object.get(a, "lockout", {})
-	to_number(object.get(lo, "failed_attempts", 0)) > 0
-	to_number(object.get(lo, "lockout_time", 0)) > 0
+	_n(lo, "failed_attempts") > 0
+	_n(lo, "lockout_time") > 0
 }
 
 default _ntp_ok := false
@@ -889,7 +1014,7 @@ default _untrusted_known := false
 _untrusted_known if count(_untrusted - {lower(z.name) | some z in input.panos_config.zone}) == 0
 
 _rate_ok(f) if {
-	every k in ["alarm_rate", "activate_rate", "maximal_rate"] { to_number(object.get(f, k, 0)) > 0 }
+	every k in ["alarm_rate", "activate_rate", "maximal_rate"] { _n(f, k) > 0 }
 }
 
 _syn_cookies(p) if {
@@ -912,15 +1037,15 @@ _scan_ok(s, k, acts) if {
 	x := object.get(s, k, {})
 	_yes(x, "enable")
 	lower(object.get(x, "action", "")) in acts
-	to_number(object.get(x, "interval", 0)) > 0
-	to_number(object.get(x, "threshold", 0)) > 0
+	_n(x, "interval") > 0
+	_n(x, "threshold") > 0
 }
 
 _recon_ok(p) if {
 	s := object.get(p, "scan", {})
 	_scan_ok(s, "tcp_port_scan", {"block-ip"})
 	lower(object.get(s.tcp_port_scan, "track_by", "")) == "source"
-	to_number(object.get(s.tcp_port_scan, "duration", 0)) > 0
+	_n(s.tcp_port_scan, "duration") > 0
 	_scan_ok(s, "host_sweep", {"block", "block-ip"})
 	_scan_ok(s, "udp_port_scan", {"alert", "block", "block-ip"})
 }
@@ -968,9 +1093,14 @@ HEADER = META.format(title=BENCH, checks=N_TOTAL, density="sized", basis="size",
 # "CIS Palo Alto PAN-OS Benchmark v1.2.0" and implemented a handful of rules; it is replaced in place.
 # {N_TOTAL} recommendations ({N_AUTO} Automated, {N_TOTAL - N_AUTO} Manual; {N_L1} Level 1, {N_L2} Level 2), every one in the
 # benchmark; ids, levels and assessment status read from the workbook. Messages use our own wording, not CIS text.
-# Profile: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent => 2. total_controls counts the
-# recommendations in the selected profile.
+# Profile: input.cis_profile.level, the number 1 or 2 (Level 2 includes Level 1); absent => 2; any other value (the
+# string "2" included) => "evidence invalid", scoped at Level 2. total_controls counts the recommendations in the
+# selected profile.
 # Automated checks fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
+# Typed facts: a number must be a JSON number and a yes/no must be "yes" / "no" or a JSON boolean; a list the check
+# counts must be a list. Anything else => "<id>: evidence invalid — <field> must be <type>, got <value>".
+# A profiles.<kind> list that was collected and is empty fails its recommendations as "(no <kind> profile configured)";
+# only an absent key is missing evidence.
 # Manual recommendations with a decidable configuration fact are checked like Automated ones:
 #   {", ".join(manual_fact)}.
 # Attestation booleans under input.panos_config.attest (false or absent => violation): {", ".join(attest_ids)}.
@@ -980,7 +1110,8 @@ HEADER = META.format(title=BENCH, checks=N_TOTAL, density="sized", basis="size",
 #
 # Input contract (input.panos_config): the running configuration (`show config running`, XML converted to JSON)
 # with "-" in element names written as "_", every <entry> list written as an array of objects keyed by "name",
-# every <member> list as an array of strings, and booleans as "yes"/"no". Paths are flattened as follows:
+# every <member> list as an array of strings, booleans as "yes"/"no" (JSON true/false read the same) and numbers
+# as JSON numbers. Paths are flattened as follows:
 #   deviceconfig.system            : login_banner, server_verification, service{{disable_http, disable_telnet}},
 #                                    snmp_setting.access_setting.version ("v3"), ntp_servers.{{primary,secondary}}_ntp_server
 #                                    .ntp_server_address, update_schedule.{{anti_virus,threats,wildfire}}{{action, recurrence}}
@@ -1020,6 +1151,7 @@ compliant if {{
 violations := [v |
 	arrays := [
 {chr(10).join(f"		{s}_violations," for s in SECTIONS)}
+		profile_violations,
 	]
 	some a in arrays
 	some v in a
@@ -1028,6 +1160,7 @@ violations := [v |
 '''
 
 parts = [HEADER]
+parts.append(LEVEL_VIOLATIONS)
 for s in SECTIONS:
     parts.append(f"# {STITLE[s]}\n{s}_violations := sort([m | some m in _v_{s}])\n")
 parts.append(HELPERS)

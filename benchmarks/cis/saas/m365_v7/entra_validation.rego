@@ -426,11 +426,13 @@ violation contains msg if {
 	msg := "CIS 5.2.2.10: no enabled Conditional Access policy requires a managed device to register security information, so an attacker can enrol their own MFA method"
 }
 
-# CIS 5.2.2.11 -- sign-in frequency for Intune enrolment.
+# CIS 5.2.2.11 -- sign-in frequency for Intune enrolment. The session control must be switched on: an
+# interval of everyTime on a signInFrequency whose isEnabled is false (or is not a boolean) enforces nothing.
 default intune_enrolment_frequency := false
 
 intune_enrolment_frequency if {
 	some p in enabled_policies
+	object.get(session(p), ["signInFrequency", "isEnabled"], false) == true
 	object.get(session(p), ["signInFrequency", "frequencyInterval"], "") == "everyTime"
 }
 
@@ -543,7 +545,8 @@ violation contains msg if {
 
 violation contains msg if {
 	available("device_registration_policy")
-	_number(input.entra.device_registration.user_device_quota) > MAX_DEVICES_PER_USER
+	is_number(input.entra.device_registration.user_device_quota)
+	input.entra.device_registration.user_device_quota > MAX_DEVICES_PER_USER
 	msg := sprintf("CIS 5.1.4.2: the maximum number of devices per user is %v; the benchmark expects a limit of %d or fewer", [input.entra.device_registration.user_device_quota, MAX_DEVICES_PER_USER])
 }
 
@@ -998,10 +1001,12 @@ decidable contains "5.1.4.1" if {
 	is_string(input.entra.device_registration.azure_ad_join_allowed_to_join)
 }
 
-# an absent quota reads as 0 and passes, so the quota itself must have been collected
+# an absent quota reads as 0 and passes, so the quota itself must have been collected. Graph returns
+# userDeviceQuota as an Int32, so only a JSON number is evidence here: "10" is a collection defect (unlike the
+# directory settings read through _number, which Graph returns as strings)
 decidable contains "5.1.4.2" if {
 	available("device_registration_policy")
-	is_number(_number(input.entra.device_registration.user_device_quota))
+	is_number(input.entra.device_registration.user_device_quota)
 }
 
 decidable contains "5.1.4.3" if {

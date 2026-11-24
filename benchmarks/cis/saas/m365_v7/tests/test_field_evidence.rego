@@ -179,10 +179,29 @@ OTHER_CASES := [
 	{"pkg": "entra", "id": "5.1.5.1", "expect": "evidence_missing", "patch": {"entra": {"authorization_policy": {"permission_grant_policy_ids_assigned": "ManagePermissionGrantsForSelf.microsoft-user-default-low"}}}},
 	{"pkg": "entra", "id": "5.1.6.3", "expect": "evidence_missing", "remove": ["entra/authorization_policy/allow_invites_from"]},
 	{"pkg": "entra", "id": "5.1.6.3", "expect": "fail", "patch": {"entra": {"authorization_policy": {"allow_invites_from": "everyone"}}}},
-	{"pkg": "entra", "id": "5.1.4.2", "expect": "fail", "patch": {"entra": {"device_registration": {"user_device_quota": "50"}}}},
+	# userDeviceQuota is an Int32 in Graph: a number is read, a string (numeric or not) is not evidence
+	{"pkg": "entra", "id": "5.1.4.2", "expect": "fail", "patch": {"entra": {"device_registration": {"user_device_quota": 50}}}},
+	{"pkg": "entra", "id": "5.1.4.2", "expect": "evidence_missing", "patch": {"entra": {"device_registration": {"user_device_quota": "50"}}}},
+	{"pkg": "entra", "id": "5.1.4.2", "expect": "evidence_missing", "patch": {"entra": {"device_registration": {"user_device_quota": "10"}}}},
 	{"pkg": "entra", "id": "5.1.4.2", "expect": "evidence_missing", "patch": {"entra": {"device_registration": {"user_device_quota": "unlimited"}}}},
 	{"pkg": "entra", "id": "5.2.3.8", "expect": "evidence_missing", "patch": {"entra": {"lockout": {"threshold": "ten"}}}},
 	{"pkg": "entra", "id": "5.2.3.8", "expect": "fail", "patch": {"entra": {"lockout": {"threshold": "50"}}}},
+	# directory settings are strings in Graph; the same value as a number reads the same
+	{"pkg": "entra", "id": "5.2.3.8", "expect": "pass", "patch": {"entra": {"lockout": {"threshold": 10}}}},
+	{"pkg": "entra", "id": "5.2.3.8", "expect": "fail", "patch": {"entra": {"lockout": {"threshold": 50}}}},
+	{"pkg": "entra", "id": "5.2.3.9", "expect": "pass", "patch": {"entra": {"lockout": {"duration_seconds": 60}}}},
+	{"pkg": "entra", "id": "5.2.3.9", "expect": "fail", "patch": {"entra": {"lockout": {"duration_seconds": 30}}}},
+	{"pkg": "entra", "id": "5.2.3.9", "expect": "evidence_missing", "patch": {"entra": {"lockout": {"duration_seconds": true}}}},
+	# 5.2.2.11: everyTime on a sign-in frequency that is switched off, or whose switch is not a boolean, enforces nothing
+	{"pkg": "entra", "id": "5.2.2.11", "expect": "fail", "patch": {"entra": {"conditional_access_policies": [{"state": "enabled", "session_controls": {"signInFrequency": {"frequencyInterval": "everyTime", "isEnabled": false}}}]}}},
+	{"pkg": "entra", "id": "5.2.2.11", "expect": "fail", "patch": {"entra": {"conditional_access_policies": [{"state": "enabled", "session_controls": {"signInFrequency": {"frequencyInterval": "everyTime", "isEnabled": "true"}}}]}}},
+	{"pkg": "entra", "id": "5.2.2.11", "expect": "fail", "patch": {"entra": {"conditional_access_policies": [{"state": "enabled", "session_controls": {"signInFrequency": {"frequencyInterval": "everyTime"}}}]}}},
+	{"pkg": "entra", "id": "5.2.2.11", "expect": "pass", "patch": {"entra": {"conditional_access_policies": [{"state": "enabled", "session_controls": {"signInFrequency": {"frequencyInterval": "everyTime", "isEnabled": true}}}]}}},
+	# 6.1.2 is sampled: the sample size and limit are part of its evidence
+	{"pkg": "exchange", "id": "6.1.2", "expect": "evidence_missing", "patch": {"exchange": {"mailbox_audit": {"sampled": "1"}}}},
+	{"pkg": "exchange", "id": "6.1.2", "expect": "evidence_missing", "patch": {"exchange": {"mailbox_audit": {"sample_limit": "100"}}}},
+	{"pkg": "exchange", "id": "6.1.2", "expect": "evidence_missing", "remove": ["exchange/mailbox_audit/sampled"]},
+	{"pkg": "exchange", "id": "6.1.2", "expect": "evidence_missing", "patch": {"exchange": {"mailbox_audit": {"sampled": null}}}},
 	{"pkg": "entra", "id": "5.2.3.3", "expect": "evidence_missing", "patch": {"entra": {"password_protection": {"on_premises_check_enabled": "maybe"}}}},
 	{"pkg": "entra", "id": "5.2.3.6", "expect": "evidence_missing", "remove": ["entra/system_preferred_mfa_state"]},
 	# D9: transferMethods is one comma-separated string in Graph

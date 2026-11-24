@@ -31,6 +31,7 @@ package cis_opnsense
 #                          authserver[] {name, type}, webgui {protocol, ssl-hsts,
 #                          session_timeout, nodnsrebindcheck}
 #   input.ntpd           : prefer (space separated)
+#   input.filter         : always sent, {"rule": []} when there are no legacy rules; absent or null is missing evidence
 #   input.filter.rule[]  : legacy firewall rules (type, interface, floating, disabled, log, descr,
 #                          protocol, source{any|network|address}, destination{..., port})
 #   input.OPNsense       : the MVC subtree, verbatim. Used here:
@@ -276,7 +277,21 @@ all_rules := array.concat(legacy_rules, mvc_rules)
 
 # A real OPNsense always has rules (the factory LAN allow rules at least). An empty rule set
 # means the section was not collected (the collector defaults filter to {"rule": []}).
-rules_collected if count(all_rules) > 0
+# The legacy <filter> section is in every config.xml, and the collector sends it as {"rule": []} when the rule
+# base is MVC-only. Absent, null or anything but an object, the section was not collected: MVC rules alone do not
+# show that no legacy rule exists, so the rule controls report missing evidence.
+default legacy_filter_collected := false
+
+legacy_filter_collected if is_object(input.filter)
+
+rules_collected if {
+	legacy_filter_collected
+	count(all_rules) > 0
+}
+
+rules_missing := "input.filter not collected" if not legacy_filter_collected
+
+rules_missing := "input.filter.rule / input.OPNsense.Firewall.Filter.rules not collected" if legacy_filter_collected
 
 active_rules := [r | some r in all_rules; r.enabled]
 
@@ -534,7 +549,7 @@ section_3_violations contains "3.2: no TOTP authentication server (two-factor lo
 
 # ── Section 4: Firewall Policy ────────────────────────────────────────────────────────
 
-section_4_violations contains sprintf("%s: evidence missing — input.filter.rule / input.OPNsense.Firewall.Filter.rules not collected", [id]) if {
+section_4_violations contains sprintf("%s: evidence missing — %s", [id, rules_missing]) if {
 	not rules_collected
 	some id in ["4.1.2", "4.1.3", "4.1.4", "4.1.8"]
 }
@@ -619,7 +634,7 @@ section_5_violations contains "5.2.1: DNSSEC support is not enabled on Unbound D
 # visible in config. 6.1 is checked on every enabled block/reject rule (stricter than the
 # benchmark); 6.2 on deny rules aimed at the firewall itself ((self) or <if>ip) or at the
 # SSH / web GUI ports.
-section_6_violations contains sprintf("%s: evidence missing — input.filter.rule / input.OPNsense.Firewall.Filter.rules not collected", [id]) if {
+section_6_violations contains sprintf("%s: evidence missing — %s", [id, rules_missing]) if {
 	not rules_collected
 	some id in ["6.1", "6.2"]
 }

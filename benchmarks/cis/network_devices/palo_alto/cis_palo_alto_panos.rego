@@ -24,9 +24,14 @@ package cis_palo_alto_panos
 # "CIS Palo Alto PAN-OS Benchmark v1.2.0" and implemented a handful of rules; it is replaced in place.
 # 79 recommendations (62 Automated, 17 Manual; 69 Level 1, 10 Level 2), every one in the
 # benchmark; ids, levels and assessment status read from the workbook. Messages use our own wording, not CIS text.
-# Profile: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent => 2. total_controls counts the
-# recommendations in the selected profile.
+# Profile: input.cis_profile.level, the number 1 or 2 (Level 2 includes Level 1); absent => 2; any other value (the
+# string "2" included) => "evidence invalid", scoped at Level 2. total_controls counts the recommendations in the
+# selected profile.
 # Automated checks fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
+# Typed facts: a number must be a JSON number and a yes/no must be "yes" / "no" or a JSON boolean; a list the check
+# counts must be a list. Anything else => "<id>: evidence invalid — <field> must be <type>, got <value>".
+# A profiles.<kind> list that was collected and is empty fails its recommendations as "(no <kind> profile configured)";
+# only an absent key is missing evidence.
 # Manual recommendations with a decidable configuration fact are checked like Automated ones:
 #   1.2.4, 5.8, 6.2, 6.20, 6.24, 6.25, 7.4.
 # Attestation booleans under input.panos_config.attest (false or absent => violation): 1.2.1, 1.2.2, 1.2.5, 1.6.3, 1.7.1, 2.1, 2.5, 2.6, 2.7, 5.1, 5.7, 8.2, 8.3.
@@ -36,7 +41,8 @@ package cis_palo_alto_panos
 #
 # Input contract (input.panos_config): the running configuration (`show config running`, XML converted to JSON)
 # with "-" in element names written as "_", every <entry> list written as an array of objects keyed by "name",
-# every <member> list as an array of strings, and booleans as "yes"/"no". Paths are flattened as follows:
+# every <member> list as an array of strings, booleans as "yes"/"no" (JSON true/false read the same) and numbers
+# as JSON numbers. Paths are flattened as follows:
 #   deviceconfig.system            : login_banner, server_verification, service{disable_http, disable_telnet},
 #                                    snmp_setting.access_setting.version ("v3"), ntp_servers.{primary,secondary}_ntp_server
 #                                    .ntp_server_address, update_schedule.{anti_virus,threats,wildfire}{action, recurrence}
@@ -83,10 +89,14 @@ violations := [v |
 		security_profiles_violations,
 		security_policies_violations,
 		decryption_violations,
+		profile_violations,
 	]
 	some a in arrays
 	some v in a
 ]
+
+# cis_profile.level that is not the number 1 or 2 (see _level_invalid)
+profile_violations := sort([m | some m in _v_profile])
 
 # 1 Device setup
 device_setup_violations := sort([m | some m in _v_device_setup])
@@ -113,15 +123,104 @@ security_policies_violations := sort([m | some m in _v_security_policies])
 decryption_violations := sort([m | some m in _v_decryption])
 
 # ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent or other => 2, the stricter
+# profile selection: input.cis_profile.level is the number 1 or 2 (Level 2 includes Level 1); absent => 2. Anything
+# else ("2", 3, null, a cis_profile that is not an object) is invalid evidence: the report is scoped at Level 2, the
+# stricter, and every Level 2 recommendation carries the finding, because the profile that decides them was not readable.
 default _level := 2
 
 _level := 1 if input.cis_profile.level == 1
 
 _applies(id) if recommendations[id].level <= _level
 
-# PAN-OS booleans are "yes" / "no"; absent is the PAN-OS default ("no")
-_yes(o, k) if lower(sprintf("%v", [object.get(o, k, "no")])) == "yes"
+default _level_invalid := false
+
+_level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_finding := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_level_got])
+
+_v_profile contains sprintf("cis_profile.level: %s; the report is scoped at Level 2", [_level_finding]) if _level_invalid
+
+_v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be scoped", [id, _level_finding]) if {
+	_level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
+
+# PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean; absent is the PAN-OS default ("no").
+# Any other value is not read as either: the recommendation that reads it reports "evidence invalid" (_bad).
+_yes(o, k) if object.get(o, k, "no") == true
+
+_yes(o, k) if {
+	v := object.get(o, k, "no")
+	is_string(v)
+	lower(v) == "yes"
+}
+
+# a number fact: only a JSON number counts ("14" is a string); absent or any other type is undefined
+_n(o, k) := v if {
+	v := object.get(o, k, null)
+	is_number(v)
+}
+
+_type_ok("yes/no", v) if is_boolean(v)
+
+_type_ok("yes/no", v) if {
+	is_string(v)
+	lower(v) in {"yes", "no"}
+}
+
+_type_ok("number", v) if is_number(v)
+
+_type_ok("list", v) if is_array(v)
+
+_type_ok("string", v) if is_string(v)
+
+_type_want := {"yes/no": "\"yes\" or \"no\"", "number": "a number", "list": "a list", "string": "a string"}
+
+# wrong-typed facts under input.panos_config.<root>. keys maps a key name to the type its value must have ("*": every
+# key directly under the root); via, when not empty, names path segments one of which the fact must sit under.
+# A fact that is absent is not reported here (absent has its own meaning per check); null is a wrong type.
+_bad(root, via, keys) := {msg |
+	sub := object.get(input.panos_config, root, null)
+	walk(sub, [path, v])
+	count(path) > 0
+	k := path[count(path) - 1]
+	is_string(k)
+	t := _key_type(keys, k, count(path))
+	_via_ok(via, path)
+	not _type_ok(t, v)
+	full := array.concat(root, [sprintf("%v", [s]) | some s in path])
+	msg := sprintf("panos_config.%s must be %s, got %s", [concat(".", full), _type_want[t], json.marshal(v)])
+}
+
+_key_type(keys, k, _) := keys[k]
+
+_key_type(keys, k, depth) := keys["*"] if {
+	not keys[k]
+	depth == 1
+}
+
+_via_ok(via, _) if count(via) == 0
+
+_via_ok(via, path) if {
+	some s in path
+	s in via
+}
 
 _nonempty(v) if {
 	is_string(v)
@@ -271,7 +370,7 @@ _log_dest_ok(field, profs) if {
 }
 
 _expiry_ok(pp) if {
-	n := to_number(object.get(object.get(pp, "password_change", {}), "expiration_period", 0))
+	n := _n(object.get(pp, "password_change", {}), "expiration_period")
 	n > 0
 	n <= 90
 }
@@ -279,8 +378,8 @@ _expiry_ok(pp) if {
 # 0 failed attempts or 0 lockout time means lockout is off
 _lockout_ok(a) if {
 	lo := object.get(a, "lockout", {})
-	to_number(object.get(lo, "failed_attempts", 0)) > 0
-	to_number(object.get(lo, "lockout_time", 0)) > 0
+	_n(lo, "failed_attempts") > 0
+	_n(lo, "lockout_time") > 0
 }
 
 default _ntp_ok := false
@@ -417,7 +516,7 @@ default _untrusted_known := false
 _untrusted_known if count(_untrusted - {lower(z.name) | some z in input.panos_config.zone}) == 0
 
 _rate_ok(f) if {
-	every k in ["alarm_rate", "activate_rate", "maximal_rate"] { to_number(object.get(f, k, 0)) > 0 }
+	every k in ["alarm_rate", "activate_rate", "maximal_rate"] { _n(f, k) > 0 }
 }
 
 _syn_cookies(p) if {
@@ -440,15 +539,15 @@ _scan_ok(s, k, acts) if {
 	x := object.get(s, k, {})
 	_yes(x, "enable")
 	lower(object.get(x, "action", "")) in acts
-	to_number(object.get(x, "interval", 0)) > 0
-	to_number(object.get(x, "threshold", 0)) > 0
+	_n(x, "interval") > 0
+	_n(x, "threshold") > 0
 }
 
 _recon_ok(p) if {
 	s := object.get(p, "scan", {})
 	_scan_ok(s, "tcp_port_scan", {"block-ip"})
 	lower(object.get(s.tcp_port_scan, "track_by", "")) == "source"
-	to_number(object.get(s.tcp_port_scan, "duration", 0)) > 0
+	_n(s.tcp_port_scan, "duration") > 0
 	_scan_ok(s, "host_sweep", {"block", "block-ip"})
 	_scan_ok(s, "udp_port_scan", {"alert", "block", "block-ip"})
 }
@@ -551,7 +650,7 @@ _v_device_setup contains "1.1.2: a login banner must be configured" if {
 default r_1_1_3 := false
 
 r_1_1_3 if {
-	input.panos_config.deviceconfig.setting.management.enable_log_high_dp_load == "yes"
+	_yes(input.panos_config.deviceconfig.setting.management, "enable_log_high_dp_load")
 }
 
 default e_1_1_3 := false
@@ -565,10 +664,20 @@ _v_device_setup contains "1.1.3: evidence missing — panos_config.deviceconfig.
 	not e_1_1_3
 }
 
+x_1_1_3 := _bad(["deviceconfig", "setting", "management"], set(), {"enable_log_high_dp_load": "yes/no"})
+
+_v_device_setup contains msg if {
+	_applies("1.1.3")
+	e_1_1_3
+	some m in x_1_1_3
+	msg := sprintf("%s: evidence invalid — %s", ["1.1.3", m])
+}
+
 _v_device_setup contains "1.1.3: logging under high dataplane load must be turned on" if {
 	_applies("1.1.3")
 	e_1_1_3
 	not r_1_1_3
+	count(x_1_1_3) == 0
 }
 
 # 1.2.1 (Manual, Level 1)
@@ -599,8 +708,8 @@ _v_device_setup contains "1.2.2: interface management profiles offering SSH, HTT
 default r_1_2_3 := false
 
 r_1_2_3 if {
-	input.panos_config.deviceconfig.system.service.disable_http == "yes"
-	input.panos_config.deviceconfig.system.service.disable_telnet == "yes"
+	_yes(input.panos_config.deviceconfig.system.service, "disable_http")
+	_yes(input.panos_config.deviceconfig.system.service, "disable_telnet")
 }
 
 default e_1_2_3 := false
@@ -614,10 +723,20 @@ _v_device_setup contains "1.2.3: evidence missing — panos_config.deviceconfig.
 	not e_1_2_3
 }
 
+x_1_2_3 := _bad(["deviceconfig", "system", "service"], set(), {"disable_http": "yes/no", "disable_telnet": "yes/no"})
+
+_v_device_setup contains msg if {
+	_applies("1.2.3")
+	e_1_2_3
+	some m in x_1_2_3
+	msg := sprintf("%s: evidence invalid — %s", ["1.2.3", m])
+}
+
 _v_device_setup contains "1.2.3: the management interface must not offer HTTP or Telnet" if {
 	_applies("1.2.3")
 	e_1_2_3
 	not r_1_2_3
+	count(x_1_2_3) == 0
 }
 
 # 1.2.4 (Manual, Level 1) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -638,10 +757,20 @@ _v_device_setup contains "1.2.4: evidence missing — panos_config.network.profi
 	not e_1_2_4
 }
 
+x_1_2_4 := _bad(["network", "profiles", "interface_management"], set(), {"http": "yes/no", "telnet": "yes/no"})
+
+_v_device_setup contains msg if {
+	_applies("1.2.4")
+	e_1_2_4
+	some m in x_1_2_4
+	msg := sprintf("%s: evidence invalid — %s", ["1.2.4", m])
+}
+
 _v_device_setup contains "1.2.4: interface management profiles must not offer HTTP or Telnet" if {
 	_applies("1.2.4")
 	e_1_2_4
 	not r_1_2_4
+	count(x_1_2_4) == 0
 }
 
 # 1.2.5 (Manual, Level 2)
@@ -660,8 +789,8 @@ _v_device_setup contains "1.2.5: the web admin interface certificate must be val
 default r_1_3_1 := false
 
 r_1_3_1 if {
-	input.panos_config.mgt_config.password_complexity.enabled == "yes"
-	input.panos_config.mgt_config.password_complexity.block_username_inclusion == "yes"
+	_yes(input.panos_config.mgt_config.password_complexity, "enabled")
+	_yes(input.panos_config.mgt_config.password_complexity, "block_username_inclusion")
 }
 
 default e_1_3_1 := false
@@ -675,17 +804,27 @@ _v_device_setup contains "1.3.1: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_1
 }
 
+x_1_3_1 := _bad(["mgt_config", "password_complexity"], set(), {"enabled": "yes/no", "block_username_inclusion": "yes/no"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.1")
+	e_1_3_1
+	some m in x_1_3_1
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.1", m])
+}
+
 _v_device_setup contains "1.3.1: admin password complexity must be enforced with username inclusion blocked" if {
 	_applies("1.3.1")
 	e_1_3_1
 	not r_1_3_1
+	count(x_1_3_1) == 0
 }
 
 # 1.3.2 (Automated, Level 1)
 default r_1_3_2 := false
 
 r_1_3_2 if {
-	to_number(input.panos_config.mgt_config.password_complexity.minimum_length) >= 12
+	_n(input.panos_config.mgt_config.password_complexity, "minimum_length") >= 12
 }
 
 default e_1_3_2 := false
@@ -699,17 +838,27 @@ _v_device_setup contains "1.3.2: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_2
 }
 
+x_1_3_2 := _bad(["mgt_config", "password_complexity"], set(), {"minimum_length": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.2")
+	e_1_3_2
+	some m in x_1_3_2
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.2", m])
+}
+
 _v_device_setup contains "1.3.2: admin passwords must be at least 12 characters long" if {
 	_applies("1.3.2")
 	e_1_3_2
 	not r_1_3_2
+	count(x_1_3_2) == 0
 }
 
 # 1.3.3 (Automated, Level 1)
 default r_1_3_3 := false
 
 r_1_3_3 if {
-	to_number(input.panos_config.mgt_config.password_complexity.minimum_uppercase_letters) >= 1
+	_n(input.panos_config.mgt_config.password_complexity, "minimum_uppercase_letters") >= 1
 }
 
 default e_1_3_3 := false
@@ -723,17 +872,27 @@ _v_device_setup contains "1.3.3: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_3
 }
 
+x_1_3_3 := _bad(["mgt_config", "password_complexity"], set(), {"minimum_uppercase_letters": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.3")
+	e_1_3_3
+	some m in x_1_3_3
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.3", m])
+}
+
 _v_device_setup contains "1.3.3: admin passwords must contain at least 1 upper-case letter" if {
 	_applies("1.3.3")
 	e_1_3_3
 	not r_1_3_3
+	count(x_1_3_3) == 0
 }
 
 # 1.3.4 (Automated, Level 1)
 default r_1_3_4 := false
 
 r_1_3_4 if {
-	to_number(input.panos_config.mgt_config.password_complexity.minimum_lowercase_letters) >= 1
+	_n(input.panos_config.mgt_config.password_complexity, "minimum_lowercase_letters") >= 1
 }
 
 default e_1_3_4 := false
@@ -747,17 +906,27 @@ _v_device_setup contains "1.3.4: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_4
 }
 
+x_1_3_4 := _bad(["mgt_config", "password_complexity"], set(), {"minimum_lowercase_letters": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.4")
+	e_1_3_4
+	some m in x_1_3_4
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.4", m])
+}
+
 _v_device_setup contains "1.3.4: admin passwords must contain at least 1 lower-case letter" if {
 	_applies("1.3.4")
 	e_1_3_4
 	not r_1_3_4
+	count(x_1_3_4) == 0
 }
 
 # 1.3.5 (Automated, Level 1)
 default r_1_3_5 := false
 
 r_1_3_5 if {
-	to_number(input.panos_config.mgt_config.password_complexity.minimum_numeric_letters) >= 1
+	_n(input.panos_config.mgt_config.password_complexity, "minimum_numeric_letters") >= 1
 }
 
 default e_1_3_5 := false
@@ -771,17 +940,27 @@ _v_device_setup contains "1.3.5: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_5
 }
 
+x_1_3_5 := _bad(["mgt_config", "password_complexity"], set(), {"minimum_numeric_letters": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.5")
+	e_1_3_5
+	some m in x_1_3_5
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.5", m])
+}
+
 _v_device_setup contains "1.3.5: admin passwords must contain at least 1 digit" if {
 	_applies("1.3.5")
 	e_1_3_5
 	not r_1_3_5
+	count(x_1_3_5) == 0
 }
 
 # 1.3.6 (Automated, Level 1)
 default r_1_3_6 := false
 
 r_1_3_6 if {
-	to_number(input.panos_config.mgt_config.password_complexity.minimum_special_characters) >= 1
+	_n(input.panos_config.mgt_config.password_complexity, "minimum_special_characters") >= 1
 }
 
 default e_1_3_6 := false
@@ -795,17 +974,27 @@ _v_device_setup contains "1.3.6: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_6
 }
 
+x_1_3_6 := _bad(["mgt_config", "password_complexity"], set(), {"minimum_special_characters": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.6")
+	e_1_3_6
+	some m in x_1_3_6
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.6", m])
+}
+
 _v_device_setup contains "1.3.6: admin passwords must contain at least 1 special character" if {
 	_applies("1.3.6")
 	e_1_3_6
 	not r_1_3_6
+	count(x_1_3_6) == 0
 }
 
 # 1.3.7 (Automated, Level 1)
 default r_1_3_7 := false
 
 r_1_3_7 if {
-	n := to_number(input.panos_config.mgt_config.password_complexity.password_change.expiration_period)
+	n := _n(object.get(input.panos_config.mgt_config.password_complexity, "password_change", {}), "expiration_period")
 	n > 0
 	n <= 90
 }
@@ -821,17 +1010,27 @@ _v_device_setup contains "1.3.7: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_7
 }
 
+x_1_3_7 := _bad(["mgt_config", "password_complexity", "password_change"], set(), {"expiration_period": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.7")
+	e_1_3_7
+	some m in x_1_3_7
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.7", m])
+}
+
 _v_device_setup contains "1.3.7: admin passwords must expire within 1 to 90 days" if {
 	_applies("1.3.7")
 	e_1_3_7
 	not r_1_3_7
+	count(x_1_3_7) == 0
 }
 
 # 1.3.8 (Automated, Level 1)
 default r_1_3_8 := false
 
 r_1_3_8 if {
-	to_number(input.panos_config.mgt_config.password_complexity.new_password_differs_by_characters) >= 3
+	_n(input.panos_config.mgt_config.password_complexity, "new_password_differs_by_characters") >= 3
 }
 
 default e_1_3_8 := false
@@ -845,17 +1044,27 @@ _v_device_setup contains "1.3.8: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_8
 }
 
+x_1_3_8 := _bad(["mgt_config", "password_complexity"], set(), {"new_password_differs_by_characters": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.8")
+	e_1_3_8
+	some m in x_1_3_8
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.8", m])
+}
+
 _v_device_setup contains "1.3.8: a new admin password must differ from the old one by at least 3 characters" if {
 	_applies("1.3.8")
 	e_1_3_8
 	not r_1_3_8
+	count(x_1_3_8) == 0
 }
 
 # 1.3.9 (Automated, Level 1)
 default r_1_3_9 := false
 
 r_1_3_9 if {
-	to_number(input.panos_config.mgt_config.password_complexity.password_history_count) >= 24
+	_n(input.panos_config.mgt_config.password_complexity, "password_history_count") >= 24
 }
 
 default e_1_3_9 := false
@@ -869,10 +1078,20 @@ _v_device_setup contains "1.3.9: evidence missing — panos_config.mgt_config.pa
 	not e_1_3_9
 }
 
+x_1_3_9 := _bad(["mgt_config", "password_complexity"], set(), {"password_history_count": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.9")
+	e_1_3_9
+	some m in x_1_3_9
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.9", m])
+}
+
 _v_device_setup contains "1.3.9: admin passwords must not repeat any of the last 24" if {
 	_applies("1.3.9")
 	e_1_3_9
 	not r_1_3_9
+	count(x_1_3_9) == 0
 }
 
 # 1.3.10 (Automated, Level 1)
@@ -893,17 +1112,27 @@ _v_device_setup contains "1.3.10: evidence missing — panos_config.mgt_config.p
 	not e_1_3_10
 }
 
+x_1_3_10 := _bad(["mgt_config", "password_profile"], set(), {"expiration_period": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.3.10")
+	e_1_3_10
+	some m in x_1_3_10
+	msg := sprintf("%s: evidence invalid — %s", ["1.3.10", m])
+}
+
 _v_device_setup contains "1.3.10: password profiles must not be weaker than the global rules (expiry 1 to 90 days)" if {
 	_applies("1.3.10")
 	e_1_3_10
 	not r_1_3_10
+	count(x_1_3_10) == 0
 }
 
 # 1.4.1 (Automated, Level 1)
 default r_1_4_1 := false
 
 r_1_4_1 if {
-	n := to_number(input.panos_config.deviceconfig.setting.management.idle_timeout)
+	n := _n(input.panos_config.deviceconfig.setting.management, "idle_timeout")
 	n > 0
 	n <= 10
 }
@@ -919,10 +1148,20 @@ _v_device_setup contains "1.4.1: evidence missing — panos_config.deviceconfig.
 	not e_1_4_1
 }
 
+x_1_4_1 := _bad(["deviceconfig", "setting", "management"], set(), {"idle_timeout": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.4.1")
+	e_1_4_1
+	some m in x_1_4_1
+	msg := sprintf("%s: evidence invalid — %s", ["1.4.1", m])
+}
+
 _v_device_setup contains "1.4.1: management idle timeout must be 1 to 10 minutes" if {
 	_applies("1.4.1")
 	e_1_4_1
 	not r_1_4_1
+	count(x_1_4_1) == 0
 }
 
 # 1.4.2 (Automated, Level 1)
@@ -944,10 +1183,20 @@ _v_device_setup contains "1.4.2: evidence missing — panos_config.shared.authen
 	not e_1_4_2
 }
 
+x_1_4_2 := _bad(["shared", "authentication_profile"], set(), {"failed_attempts": "number", "lockout_time": "number"})
+
+_v_device_setup contains msg if {
+	_applies("1.4.2")
+	e_1_4_2
+	some m in x_1_4_2
+	msg := sprintf("%s: evidence invalid — %s", ["1.4.2", m])
+}
+
 _v_device_setup contains "1.4.2: authentication profiles must lock out after failed attempts for a non-zero time" if {
 	_applies("1.4.2")
 	e_1_4_2
 	not r_1_4_2
+	count(x_1_4_2) == 0
 }
 
 # 1.5.1 (Automated, Level 1)
@@ -978,7 +1227,7 @@ _v_device_setup contains "1.5.1: SNMP polling must use version 3" if {
 default r_1_6_1 := false
 
 r_1_6_1 if {
-	input.panos_config.deviceconfig.system.server_verification == "yes"
+	_yes(input.panos_config.deviceconfig.system, "server_verification")
 }
 
 default e_1_6_1 := false
@@ -992,10 +1241,20 @@ _v_device_setup contains "1.6.1: evidence missing — panos_config.deviceconfig.
 	not e_1_6_1
 }
 
+x_1_6_1 := _bad(["deviceconfig", "system"], set(), {"server_verification": "yes/no"})
+
+_v_device_setup contains msg if {
+	_applies("1.6.1")
+	e_1_6_1
+	some m in x_1_6_1
+	msg := sprintf("%s: evidence invalid — %s", ["1.6.1", m])
+}
+
 _v_device_setup contains "1.6.1: the update server identity must be verified" if {
 	_applies("1.6.1")
 	e_1_6_1
 	not r_1_6_1
+	count(x_1_6_1) == 0
 }
 
 # 1.6.2 (Automated, Level 1)
@@ -1076,10 +1335,20 @@ _v_user_identification contains "2.2: evidence missing — panos_config.user_id.
 	not e_2_2
 }
 
+x_2_2 := _bad(["user_id", "setting"], set(), {"enable_probing": "yes/no"})
+
+_v_user_identification contains msg if {
+	_applies("2.2")
+	e_2_2
+	some m in x_2_2
+	msg := sprintf("%s: evidence invalid — %s", ["2.2", m])
+}
+
 _v_user_identification contains "2.2: User-ID client (WMI) probing must be off" if {
 	_applies("2.2")
 	e_2_2
 	not r_2_2
+	count(x_2_2) == 0
 }
 
 # 2.3 (Automated, Level 1)
@@ -1103,10 +1372,20 @@ _v_user_identification contains "2.3: evidence missing — panos_config.{zone,si
 	not e_2_3
 }
 
+x_2_3 := _bad(["zone"], set(), {"enable_user_identification": "yes/no"})
+
+_v_user_identification contains msg if {
+	_applies("2.3")
+	e_2_3
+	some m in x_2_3
+	msg := sprintf("%s: evidence invalid — %s", ["2.3", m])
+}
+
 _v_user_identification contains "2.3: User-ID must be on only for trusted internal zones" if {
 	_applies("2.3")
 	e_2_3
 	not r_2_3
+	count(x_2_3) == 0
 }
 
 # 2.4 (Automated, Level 1)
@@ -1135,10 +1414,20 @@ _v_user_identification contains "2.4: evidence missing — panos_config.{zone,us
 	not e_2_4
 }
 
+x_2_4 := _bad(["zone"], set(), {"enable_user_identification": "yes/no"})
+
+_v_user_identification contains msg if {
+	_applies("2.4")
+	e_2_4
+	some m in x_2_4
+	msg := sprintf("%s: evidence invalid — %s", ["2.4", m])
+}
+
 _v_user_identification contains "2.4: with User-ID on, the user mapping must name its trusted networks as include entries" if {
 	_applies("2.4")
 	e_2_4
 	not r_2_4
+	count(x_2_4) == 0
 }
 
 # 2.5 (Manual, Level 1)
@@ -1201,20 +1490,30 @@ _v_user_identification contains "2.8: evidence missing — panos_config.{rulebas
 	not e_2_8
 }
 
+x_2_8 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_user_identification contains msg if {
+	_applies("2.8")
+	e_2_8
+	some m in x_2_8
+	msg := sprintf("%s: evidence invalid — %s", ["2.8", m])
+}
+
 _v_user_identification contains "2.8: a rule must block msrpc from the User-ID agent toward every untrusted zone" if {
 	_applies("2.8")
 	e_2_8
 	not r_2_8
+	count(x_2_8) == 0
 }
 
 # 3.1 (Automated, Level 1)
 default r_3_1 := false
 
 r_3_1 if {
-	input.panos_config.deviceconfig.high_availability.enabled == "yes"
+	_yes(input.panos_config.deviceconfig.high_availability, "enabled")
 	is_string(input.panos_config.deviceconfig.high_availability.interface.ha2.port)
 	input.panos_config.deviceconfig.high_availability.interface.ha2.port != ""
-	input.panos_config.deviceconfig.high_availability.state_synchronization.enabled == "yes"
+	_yes(input.panos_config.deviceconfig.high_availability.state_synchronization, "enabled")
 }
 
 default e_3_1 := false
@@ -1228,10 +1527,20 @@ _v_high_availability contains "3.1: evidence missing — panos_config.deviceconf
 	not e_3_1
 }
 
+x_3_1 := _bad(["deviceconfig", "high_availability"], set(), {"enabled": "yes/no"})
+
+_v_high_availability contains msg if {
+	_applies("3.1")
+	e_3_1
+	some m in x_3_1
+	msg := sprintf("%s: evidence invalid — %s", ["3.1", m])
+}
+
 _v_high_availability contains "3.1: HA must be on with an HA2 data link and session synchronization" if {
 	_applies("3.1")
 	e_3_1
 	not r_3_1
+	count(x_3_1) == 0
 }
 
 # 3.2 (Automated, Level 1)
@@ -1256,10 +1565,20 @@ _v_high_availability contains "3.2: evidence missing — panos_config.deviceconf
 	not e_3_2
 }
 
+x_3_2 := _bad(["deviceconfig", "high_availability"], set(), {"enabled": "yes/no"})
+
+_v_high_availability contains msg if {
+	_applies("3.2")
+	e_3_2
+	some m in x_3_2
+	msg := sprintf("%s: evidence invalid — %s", ["3.2", m])
+}
+
 _v_high_availability contains "3.2: HA must fail over on link or path monitoring (failure condition any)" if {
 	_applies("3.2")
 	e_3_2
 	not r_3_2
+	count(x_3_2) == 0
 }
 
 # 3.3 (Automated, Level 1)
@@ -1281,10 +1600,20 @@ _v_high_availability contains "3.3: evidence missing — panos_config.deviceconf
 	not e_3_3
 }
 
+x_3_3 := _bad(["deviceconfig", "high_availability"], set(), {"preemptive": "yes/no"})
+
+_v_high_availability contains msg if {
+	_applies("3.3")
+	e_3_3
+	some m in x_3_3
+	msg := sprintf("%s: evidence invalid — %s", ["3.3", m])
+}
+
 _v_high_availability contains "3.3: HA passive link state must be auto and preemption must be off" if {
 	_applies("3.3")
 	e_3_3
 	not r_3_3
+	count(x_3_3) == 0
 }
 
 # 4.1 (Automated, Level 1)
@@ -1353,6 +1682,7 @@ _v_wildfire contains "5.1: WildFire upload size limits must be at or above the d
 default r_5_2 := false
 
 r_5_2 if {
+	count(input.panos_config.profiles.wildfire_analysis) > 0
 	every r in _allow_rules { _has_profile(r, "wildfire_analysis") }
 }
 
@@ -1362,7 +1692,6 @@ e_5_2 if {
 	is_array(input.panos_config.rulebase.security)
 	count(input.panos_config.rulebase.security) > 0
 	is_array(input.panos_config.profiles.wildfire_analysis)
-	count(input.panos_config.profiles.wildfire_analysis) > 0
 }
 
 _v_wildfire contains "5.2: evidence missing — panos_config.{rulebase.security,profiles.wildfire_analysis} not collected" if {
@@ -1370,17 +1699,36 @@ _v_wildfire contains "5.2: evidence missing — panos_config.{rulebase.security,
 	not e_5_2
 }
 
+x_5_2 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_wildfire contains msg if {
+	_applies("5.2")
+	e_5_2
+	some m in x_5_2
+	msg := sprintf("%s: evidence invalid — %s", ["5.2", m])
+}
+
+_v_wildfire contains "5.2: every allow rule must carry a WildFire analysis profile (no WildFire analysis profile configured)" if {
+	_applies("5.2")
+	e_5_2
+	not r_5_2
+	count(x_5_2) == 0
+	count(input.panos_config.profiles.wildfire_analysis) == 0
+}
+
 _v_wildfire contains "5.2: every allow rule must carry a WildFire analysis profile" if {
 	_applies("5.2")
 	e_5_2
 	not r_5_2
+	count(x_5_2) == 0
+	count(input.panos_config.profiles.wildfire_analysis) > 0
 }
 
 # 5.3 (Automated, Level 1)
 default r_5_3 := false
 
 r_5_3 if {
-	input.panos_config.deviceconfig.setting.ssl_decrypt.allow_forward_decrypted_content == "yes"
+	_yes(input.panos_config.deviceconfig.setting.ssl_decrypt, "allow_forward_decrypted_content")
 }
 
 default e_5_3 := false
@@ -1394,17 +1742,29 @@ _v_wildfire contains "5.3: evidence missing — panos_config.deviceconfig.settin
 	not e_5_3
 }
 
+x_5_3 := _bad(["deviceconfig", "setting", "ssl_decrypt"], set(), {"allow_forward_decrypted_content": "yes/no"})
+
+_v_wildfire contains msg if {
+	_applies("5.3")
+	e_5_3
+	some m in x_5_3
+	msg := sprintf("%s: evidence invalid — %s", ["5.3", m])
+}
+
 _v_wildfire contains "5.3: decrypted content must be forwarded to WildFire" if {
 	_applies("5.3")
 	e_5_3
 	not r_5_3
+	count(x_5_3) == 0
 }
 
 # 5.4 (Automated, Level 1)
 default r_5_4 := false
 
 r_5_4 if {
-	every _, v in object.get(input.panos_config.deviceconfig.setting.wildfire, "session_info_select", {}) { v != "yes" }
+	sis := object.get(input.panos_config.deviceconfig.setting.wildfire, "session_info_select", {})
+	is_object(sis)
+	every k, _ in sis { not _yes(sis, k) }
 }
 
 default e_5_4 := false
@@ -1418,10 +1778,20 @@ _v_wildfire contains "5.4: evidence missing — panos_config.deviceconfig.settin
 	not e_5_4
 }
 
+x_5_4 := _bad(["deviceconfig", "setting", "wildfire", "session_info_select"], set(), {"*": "yes/no"})
+
+_v_wildfire contains msg if {
+	_applies("5.4")
+	e_5_4
+	some m in x_5_4
+	msg := sprintf("%s: evidence invalid — %s", ["5.4", m])
+}
+
 _v_wildfire contains "5.4: WildFire session information must include every field" if {
 	_applies("5.4")
 	e_5_4
 	not r_5_4
+	count(x_5_4) == 0
 }
 
 # 5.5 (Automated, Level 1)
@@ -1491,6 +1861,7 @@ _v_wildfire contains "5.7: the WildFire public cloud region must be the approved
 default r_5_8 := false
 
 r_5_8 if {
+	count(input.panos_config.profiles.wildfire_analysis) > 0
 	every p in input.panos_config.profiles.wildfire_analysis { _wf_inline_ok(p) }
 }
 
@@ -1498,7 +1869,6 @@ default e_5_8 := false
 
 e_5_8 if {
 	is_array(input.panos_config.profiles.wildfire_analysis)
-	count(input.panos_config.profiles.wildfire_analysis) > 0
 }
 
 _v_wildfire contains "5.8: evidence missing — panos_config.profiles.wildfire_analysis not collected" if {
@@ -1506,16 +1876,36 @@ _v_wildfire contains "5.8: evidence missing — panos_config.profiles.wildfire_a
 	not e_5_8
 }
 
+x_5_8 := _bad(["profiles", "wildfire_analysis"], set(), {"cloud_inline_analysis": "yes/no"})
+
+_v_wildfire contains msg if {
+	_applies("5.8")
+	e_5_8
+	some m in x_5_8
+	msg := sprintf("%s: evidence invalid — %s", ["5.8", m])
+}
+
+_v_wildfire contains "5.8: WildFire profiles must block PE files through inline cloud analysis (no WildFire analysis profile configured)" if {
+	_applies("5.8")
+	e_5_8
+	not r_5_8
+	count(x_5_8) == 0
+	count(input.panos_config.profiles.wildfire_analysis) == 0
+}
+
 _v_wildfire contains "5.8: WildFire profiles must block PE files through inline cloud analysis" if {
 	_applies("5.8")
 	e_5_8
 	not r_5_8
+	count(x_5_8) == 0
+	count(input.panos_config.profiles.wildfire_analysis) > 0
 }
 
 # 6.1 (Automated, Level 1)
 default r_6_1 := false
 
 r_6_1 if {
+	count(input.panos_config.profiles.virus) > 0
 	every p in input.panos_config.profiles.virus { _av_decoders_ok(p, "action"); _av_decoders_ok(p, "wildfire_action")}
 }
 
@@ -1523,7 +1913,6 @@ default e_6_1 := false
 
 e_6_1 if {
 	is_array(input.panos_config.profiles.virus)
-	count(input.panos_config.profiles.virus) > 0
 }
 
 _v_security_profiles contains "6.1: evidence missing — panos_config.profiles.virus not collected" if {
@@ -1531,16 +1920,25 @@ _v_security_profiles contains "6.1: evidence missing — panos_config.profiles.v
 	not e_6_1
 }
 
+_v_security_profiles contains "6.1: antivirus decoders must reset both ends for signature and WildFire actions (imap and pop3 may alert) (no antivirus profile configured)" if {
+	_applies("6.1")
+	e_6_1
+	not r_6_1
+	count(input.panos_config.profiles.virus) == 0
+}
+
 _v_security_profiles contains "6.1: antivirus decoders must reset both ends for signature and WildFire actions (imap and pop3 may alert)" if {
 	_applies("6.1")
 	e_6_1
 	not r_6_1
+	count(input.panos_config.profiles.virus) > 0
 }
 
 # 6.2 (Manual, Level 1) -- Manual in the workbook; decidable from configuration, so checked like Automated
 default r_6_2 := false
 
 r_6_2 if {
+	count(input.panos_config.profiles.virus) > 0
 	every r in _allow_rules { _has_profile(r, "virus") }
 }
 
@@ -1550,7 +1948,6 @@ e_6_2 if {
 	is_array(input.panos_config.rulebase.security)
 	count(input.panos_config.rulebase.security) > 0
 	is_array(input.panos_config.profiles.virus)
-	count(input.panos_config.profiles.virus) > 0
 }
 
 _v_security_profiles contains "6.2: evidence missing — panos_config.{rulebase.security,profiles.virus} not collected" if {
@@ -1558,16 +1955,36 @@ _v_security_profiles contains "6.2: evidence missing — panos_config.{rulebase.
 	not e_6_2
 }
 
+x_6_2 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.2")
+	e_6_2
+	some m in x_6_2
+	msg := sprintf("%s: evidence invalid — %s", ["6.2", m])
+}
+
+_v_security_profiles contains "6.2: every allow rule must carry an antivirus profile (no antivirus profile configured)" if {
+	_applies("6.2")
+	e_6_2
+	not r_6_2
+	count(x_6_2) == 0
+	count(input.panos_config.profiles.virus) == 0
+}
+
 _v_security_profiles contains "6.2: every allow rule must carry an antivirus profile" if {
 	_applies("6.2")
 	e_6_2
 	not r_6_2
+	count(x_6_2) == 0
+	count(input.panos_config.profiles.virus) > 0
 }
 
 # 6.3 (Automated, Level 1)
 default r_6_3 := false
 
 r_6_3 if {
+	count(input.panos_config.profiles.spyware) > 0
 	some p in input.panos_config.profiles.spyware
 	_spyware_block_rule(p)
 }
@@ -1576,7 +1993,6 @@ default e_6_3 := false
 
 e_6_3 if {
 	is_array(input.panos_config.profiles.spyware)
-	count(input.panos_config.profiles.spyware) > 0
 }
 
 _v_security_profiles contains "6.3: evidence missing — panos_config.profiles.spyware not collected" if {
@@ -1584,16 +2000,25 @@ _v_security_profiles contains "6.3: evidence missing — panos_config.profiles.s
 	not e_6_3
 }
 
+_v_security_profiles contains "6.3: an anti-spyware profile must reset critical, high and medium threats of any category (no anti-spyware profile configured)" if {
+	_applies("6.3")
+	e_6_3
+	not r_6_3
+	count(input.panos_config.profiles.spyware) == 0
+}
+
 _v_security_profiles contains "6.3: an anti-spyware profile must reset critical, high and medium threats of any category" if {
 	_applies("6.3")
 	e_6_3
 	not r_6_3
+	count(input.panos_config.profiles.spyware) > 0
 }
 
 # 6.4 (Automated, Level 1)
 default r_6_4 := false
 
 r_6_4 if {
+	count(input.panos_config.profiles.spyware) > 0
 	count(_inuse("spyware")) > 0
 	every n in _inuse("spyware") { some p in input.panos_config.profiles.spyware; p.name == n; _sinkhole_ok(p)}
 }
@@ -1604,7 +2029,6 @@ e_6_4 if {
 	is_array(input.panos_config.rulebase.security)
 	count(input.panos_config.rulebase.security) > 0
 	is_array(input.panos_config.profiles.spyware)
-	count(input.panos_config.profiles.spyware) > 0
 }
 
 _v_security_profiles contains "6.4: evidence missing — panos_config.{rulebase.security,profiles.spyware} not collected" if {
@@ -1612,16 +2036,36 @@ _v_security_profiles contains "6.4: evidence missing — panos_config.{rulebase.
 	not e_6_4
 }
 
+x_6_4 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.4")
+	e_6_4
+	some m in x_6_4
+	msg := sprintf("%s: evidence invalid — %s", ["6.4", m])
+}
+
+_v_security_profiles contains "6.4: anti-spyware profiles in use must sinkhole the Palo Alto DNS list with IPv4 and IPv6 sinkhole addresses (no anti-spyware profile configured)" if {
+	_applies("6.4")
+	e_6_4
+	not r_6_4
+	count(x_6_4) == 0
+	count(input.panos_config.profiles.spyware) == 0
+}
+
 _v_security_profiles contains "6.4: anti-spyware profiles in use must sinkhole the Palo Alto DNS list with IPv4 and IPv6 sinkhole addresses" if {
 	_applies("6.4")
 	e_6_4
 	not r_6_4
+	count(x_6_4) == 0
+	count(input.panos_config.profiles.spyware) > 0
 }
 
 # 6.5 (Automated, Level 1)
 default r_6_5 := false
 
 r_6_5 if {
+	count(input.panos_config.profiles.spyware) > 0
 	every r in _inet_out_rules { _has_profile(r, "spyware") }
 }
 
@@ -1633,7 +2077,6 @@ e_6_5 if {
 	is_array(input.panos_config.site.internet_zones)
 	count(input.panos_config.site.internet_zones) > 0
 	is_array(input.panos_config.profiles.spyware)
-	count(input.panos_config.profiles.spyware) > 0
 }
 
 _v_security_profiles contains "6.5: evidence missing — panos_config.{rulebase.security,site.internet_zones,profiles.spyware} not collected" if {
@@ -1641,16 +2084,36 @@ _v_security_profiles contains "6.5: evidence missing — panos_config.{rulebase.
 	not e_6_5
 }
 
+x_6_5 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.5")
+	e_6_5
+	some m in x_6_5
+	msg := sprintf("%s: evidence invalid — %s", ["6.5", m])
+}
+
+_v_security_profiles contains "6.5: every allow rule toward the Internet must carry an anti-spyware profile (no anti-spyware profile configured)" if {
+	_applies("6.5")
+	e_6_5
+	not r_6_5
+	count(x_6_5) == 0
+	count(input.panos_config.profiles.spyware) == 0
+}
+
 _v_security_profiles contains "6.5: every allow rule toward the Internet must carry an anti-spyware profile" if {
 	_applies("6.5")
 	e_6_5
 	not r_6_5
+	count(x_6_5) == 0
+	count(input.panos_config.profiles.spyware) > 0
 }
 
 # 6.6 (Automated, Level 1)
 default r_6_6 := false
 
 r_6_6 if {
+	count(input.panos_config.profiles.vulnerability) > 0
 	some p in input.panos_config.profiles.vulnerability
 	_vuln_ok(p)
 }
@@ -1659,7 +2122,6 @@ default e_6_6 := false
 
 e_6_6 if {
 	is_array(input.panos_config.profiles.vulnerability)
-	count(input.panos_config.profiles.vulnerability) > 0
 }
 
 _v_security_profiles contains "6.6: evidence missing — panos_config.profiles.vulnerability not collected" if {
@@ -1667,10 +2129,18 @@ _v_security_profiles contains "6.6: evidence missing — panos_config.profiles.v
 	not e_6_6
 }
 
+_v_security_profiles contains "6.6: a vulnerability profile must block critical and high threats and keep at least the default action below (no vulnerability protection profile configured)" if {
+	_applies("6.6")
+	e_6_6
+	not r_6_6
+	count(input.panos_config.profiles.vulnerability) == 0
+}
+
 _v_security_profiles contains "6.6: a vulnerability profile must block critical and high threats and keep at least the default action below" if {
 	_applies("6.6")
 	e_6_6
 	not r_6_6
+	count(input.panos_config.profiles.vulnerability) > 0
 }
 
 # 6.7 (Automated, Level 1)
@@ -1692,10 +2162,20 @@ _v_security_profiles contains "6.7: evidence missing — panos_config.rulebase.s
 	not e_6_7
 }
 
+x_6_7 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.7")
+	e_6_7
+	some m in x_6_7
+	msg := sprintf("%s: evidence invalid — %s", ["6.7", m])
+}
+
 _v_security_profiles contains "6.7: every allow rule must carry a vulnerability protection profile" if {
 	_applies("6.7")
 	e_6_7
 	not r_6_7
+	count(x_6_7) == 0
 }
 
 # 6.8 (Automated, Level 1)
@@ -1716,16 +2196,27 @@ _v_security_profiles contains "6.8: evidence missing — panos_config.licenses n
 	not e_6_8
 }
 
+x_6_8 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"})
+
+_v_security_profiles contains msg if {
+	_applies("6.8")
+	e_6_8
+	some m in x_6_8
+	msg := sprintf("%s: evidence invalid — %s", ["6.8", m])
+}
+
 _v_security_profiles contains "6.8: a PAN-DB URL filtering license must be active" if {
 	_applies("6.8")
 	e_6_8
 	not r_6_8
+	count(x_6_8) == 0
 }
 
 # 6.9 (Automated, Level 1)
 default r_6_9 := false
 
 r_6_9 if {
+	count(input.panos_config.profiles.url_filtering) > 0
 	every p in input.panos_config.profiles.url_filtering { count(_ls(input.panos_config.site, "url_block_categories") - (_ls(p, "block") | _ls(p, "override"))) == 0 }
 }
 
@@ -1733,7 +2224,6 @@ default e_6_9 := false
 
 e_6_9 if {
 	is_array(input.panos_config.profiles.url_filtering)
-	count(input.panos_config.profiles.url_filtering) > 0
 	is_array(input.panos_config.site.url_block_categories)
 	count(input.panos_config.site.url_block_categories) > 0
 }
@@ -1743,16 +2233,25 @@ _v_security_profiles contains "6.9: evidence missing — panos_config.{profiles.
 	not e_6_9
 }
 
+_v_security_profiles contains "6.9: URL filtering profiles must block or override every organisation-designated category (no URL filtering profile configured)" if {
+	_applies("6.9")
+	e_6_9
+	not r_6_9
+	count(input.panos_config.profiles.url_filtering) == 0
+}
+
 _v_security_profiles contains "6.9: URL filtering profiles must block or override every organisation-designated category" if {
 	_applies("6.9")
 	e_6_9
 	not r_6_9
+	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 # 6.10 (Automated, Level 1)
 default r_6_10 := false
 
 r_6_10 if {
+	count(input.panos_config.profiles.url_filtering) > 0
 	every p in input.panos_config.profiles.url_filtering { count(_l(p, "allow")) == 0 }
 }
 
@@ -1760,7 +2259,6 @@ default e_6_10 := false
 
 e_6_10 if {
 	is_array(input.panos_config.profiles.url_filtering)
-	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 _v_security_profiles contains "6.10: evidence missing — panos_config.profiles.url_filtering not collected" if {
@@ -1768,16 +2266,36 @@ _v_security_profiles contains "6.10: evidence missing — panos_config.profiles.
 	not e_6_10
 }
 
+x_6_10 := _bad(["profiles", "url_filtering"], set(), {"allow": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.10")
+	e_6_10
+	some m in x_6_10
+	msg := sprintf("%s: evidence invalid — %s", ["6.10", m])
+}
+
+_v_security_profiles contains "6.10: URL filtering profiles must log (alert) every category they let through (no URL filtering profile configured)" if {
+	_applies("6.10")
+	e_6_10
+	not r_6_10
+	count(x_6_10) == 0
+	count(input.panos_config.profiles.url_filtering) == 0
+}
+
 _v_security_profiles contains "6.10: URL filtering profiles must log (alert) every category they let through" if {
 	_applies("6.10")
 	e_6_10
 	not r_6_10
+	count(x_6_10) == 0
+	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 # 6.11 (Automated, Level 1)
 default r_6_11 := false
 
 r_6_11 if {
+	count(input.panos_config.profiles.url_filtering) > 0
 	every p in input.panos_config.profiles.url_filtering { _url_header_logging(p) }
 }
 
@@ -1785,7 +2303,6 @@ default e_6_11 := false
 
 e_6_11 if {
 	is_array(input.panos_config.profiles.url_filtering)
-	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 _v_security_profiles contains "6.11: evidence missing — panos_config.profiles.url_filtering not collected" if {
@@ -1793,10 +2310,29 @@ _v_security_profiles contains "6.11: evidence missing — panos_config.profiles.
 	not e_6_11
 }
 
+x_6_11 := _bad(["profiles", "url_filtering"], set(), {"log_container_page_only": "yes/no", "log_http_hdr_user_agent": "yes/no", "log_http_hdr_referer": "yes/no", "log_http_hdr_xff": "yes/no"})
+
+_v_security_profiles contains msg if {
+	_applies("6.11")
+	e_6_11
+	some m in x_6_11
+	msg := sprintf("%s: evidence invalid — %s", ["6.11", m])
+}
+
+_v_security_profiles contains "6.11: URL filtering profiles must log User-Agent, Referer and X-Forwarded-For on every page (no URL filtering profile configured)" if {
+	_applies("6.11")
+	e_6_11
+	not r_6_11
+	count(x_6_11) == 0
+	count(input.panos_config.profiles.url_filtering) == 0
+}
+
 _v_security_profiles contains "6.11: URL filtering profiles must log User-Agent, Referer and X-Forwarded-For on every page" if {
 	_applies("6.11")
 	e_6_11
 	not r_6_11
+	count(x_6_11) == 0
+	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 # 6.12 (Automated, Level 1)
@@ -1820,27 +2356,37 @@ _v_security_profiles contains "6.12: evidence missing — panos_config.{rulebase
 	not e_6_12
 }
 
+x_6_12 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.12")
+	e_6_12
+	some m in x_6_12
+	msg := sprintf("%s: evidence invalid — %s", ["6.12", m])
+}
+
 _v_security_profiles contains "6.12: every allow rule toward the Internet must carry a URL filtering profile" if {
 	_applies("6.12")
 	e_6_12
 	not r_6_12
+	count(x_6_12) == 0
 }
 
 # 6.13 (Automated, Level 1)
 default r_6_13 := false
 
 r_6_13 if {
+	count(input.panos_config.profiles.data_filtering) > 0
 	some p in input.panos_config.profiles.data_filtering
 	some x in _l(p, "rules")
 	count(_l(x, "data_object")) > 0
-	to_number(object.get(x, "alert_threshold", 0)) > 0
+	_n(x, "alert_threshold") > 0
 }
 
 default e_6_13 := false
 
 e_6_13 if {
 	is_array(input.panos_config.profiles.data_filtering)
-	count(input.panos_config.profiles.data_filtering) > 0
 }
 
 _v_security_profiles contains "6.13: evidence missing — panos_config.profiles.data_filtering not collected" if {
@@ -1848,10 +2394,29 @@ _v_security_profiles contains "6.13: evidence missing — panos_config.profiles.
 	not e_6_13
 }
 
+x_6_13 := _bad(["profiles", "data_filtering"], set(), {"alert_threshold": "number"})
+
+_v_security_profiles contains msg if {
+	_applies("6.13")
+	e_6_13
+	some m in x_6_13
+	msg := sprintf("%s: evidence invalid — %s", ["6.13", m])
+}
+
+_v_security_profiles contains "6.13: a data filtering profile must alert on sensitive data patterns above a threshold (no data filtering profile configured)" if {
+	_applies("6.13")
+	e_6_13
+	not r_6_13
+	count(x_6_13) == 0
+	count(input.panos_config.profiles.data_filtering) == 0
+}
+
 _v_security_profiles contains "6.13: a data filtering profile must alert on sensitive data patterns above a threshold" if {
 	_applies("6.13")
 	e_6_13
 	not r_6_13
+	count(x_6_13) == 0
+	count(input.panos_config.profiles.data_filtering) > 0
 }
 
 # 6.14 (Automated, Level 1)
@@ -1875,10 +2440,20 @@ _v_security_profiles contains "6.14: evidence missing — panos_config.{rulebase
 	not e_6_14
 }
 
+x_6_14 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.14")
+	e_6_14
+	some m in x_6_14
+	msg := sprintf("%s: evidence invalid — %s", ["6.14", m])
+}
+
 _v_security_profiles contains "6.14: every allow rule to or from the Internet must carry a data filtering profile" if {
 	_applies("6.14")
 	e_6_14
 	not r_6_14
+	count(x_6_14) == 0
 }
 
 # 6.15 (Automated, Level 1)
@@ -1904,10 +2479,20 @@ _v_security_profiles contains "6.15: evidence missing — panos_config.{zone,sit
 	not e_6_15
 }
 
+x_6_15 := _bad(["network", "profiles", "zone_protection"], {"tcp_syn"}, {"enable": "yes/no", "alarm_rate": "number", "activate_rate": "number", "maximal_rate": "number"})
+
+_v_security_profiles contains msg if {
+	_applies("6.15")
+	e_6_15
+	some m in x_6_15
+	msg := sprintf("%s: evidence invalid — %s", ["6.15", m])
+}
+
 _v_security_profiles contains "6.15: untrusted zones must have a zone protection profile answering SYN floods with SYN cookies" if {
 	_applies("6.15")
 	e_6_15
 	not r_6_15
+	count(x_6_15) == 0
 }
 
 # 6.16 (Automated, Level 2)
@@ -1933,10 +2518,20 @@ _v_security_profiles contains "6.16: evidence missing — panos_config.{zone,sit
 	not e_6_16
 }
 
+x_6_16 := _bad(["network", "profiles", "zone_protection"], {"flood"}, {"enable": "yes/no", "alarm_rate": "number", "activate_rate": "number", "maximal_rate": "number"})
+
+_v_security_profiles contains msg if {
+	_applies("6.16")
+	e_6_16
+	some m in x_6_16
+	msg := sprintf("%s: evidence invalid — %s", ["6.16", m])
+}
+
 _v_security_profiles contains "6.16: untrusted zones must have zone protection flood limits on for every flood type" if {
 	_applies("6.16")
 	e_6_16
 	not r_6_16
+	count(x_6_16) == 0
 }
 
 # 6.17 (Automated, Level 1)
@@ -1959,10 +2554,20 @@ _v_security_profiles contains "6.17: evidence missing — panos_config.{zone,net
 	not e_6_17
 }
 
+x_6_17 := _bad(["network", "profiles", "zone_protection"], {"scan"}, {"enable": "yes/no", "interval": "number", "threshold": "number", "duration": "number"})
+
+_v_security_profiles contains msg if {
+	_applies("6.17")
+	e_6_17
+	some m in x_6_17
+	msg := sprintf("%s: evidence invalid — %s", ["6.17", m])
+}
+
 _v_security_profiles contains "6.17: every zone must have zone protection with TCP and UDP port scan and host sweep detection on" if {
 	_applies("6.17")
 	e_6_17
 	not r_6_17
+	count(x_6_17) == 0
 }
 
 # 6.18 (Automated, Level 1)
@@ -1985,16 +2590,27 @@ _v_security_profiles contains "6.18: evidence missing — panos_config.{zone,net
 	not e_6_18
 }
 
+x_6_18 := _bad(["network", "profiles", "zone_protection"], set(), {"discard_ip_spoof": "yes/no", "discard_overlapping_tcp_segment_mismatch": "yes/no", "discard_strict_source_routing": "yes/no", "discard_loose_source_routing": "yes/no", "discard_malformed_option": "yes/no"})
+
+_v_security_profiles contains msg if {
+	_applies("6.18")
+	e_6_18
+	some m in x_6_18
+	msg := sprintf("%s: evidence invalid — %s", ["6.18", m])
+}
+
 _v_security_profiles contains "6.18: every zone must have zone protection dropping spoofed, mismatched-overlap, source-routed and malformed packets" if {
 	_applies("6.18")
 	e_6_18
 	not r_6_18
+	count(x_6_18) == 0
 }
 
 # 6.19 (Automated, Level 1)
 default r_6_19 := false
 
 r_6_19 if {
+	count(input.panos_config.profiles.url_filtering) > 0
 	every p in input.panos_config.profiles.url_filtering { _cred_ok(p) }
 }
 
@@ -2002,7 +2618,6 @@ default e_6_19 := false
 
 e_6_19 if {
 	is_array(input.panos_config.profiles.url_filtering)
-	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 _v_security_profiles contains "6.19: evidence missing — panos_config.profiles.url_filtering not collected" if {
@@ -2010,16 +2625,36 @@ _v_security_profiles contains "6.19: evidence missing — panos_config.profiles.
 	not e_6_19
 }
 
+x_6_19 := _bad(["profiles", "url_filtering"], set(), {"allow": "list", "alert": "list", "block": "list", "continue": "list"})
+
+_v_security_profiles contains msg if {
+	_applies("6.19")
+	e_6_19
+	some m in x_6_19
+	msg := sprintf("%s: evidence invalid — %s", ["6.19", m])
+}
+
+_v_security_profiles contains "6.19: URL filtering profiles must block or continue credential submission and keep credential detection on (no URL filtering profile configured)" if {
+	_applies("6.19")
+	e_6_19
+	not r_6_19
+	count(x_6_19) == 0
+	count(input.panos_config.profiles.url_filtering) == 0
+}
+
 _v_security_profiles contains "6.19: URL filtering profiles must block or continue credential submission and keep credential detection on" if {
 	_applies("6.19")
 	e_6_19
 	not r_6_19
+	count(x_6_19) == 0
+	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 # 6.20 (Manual, Level 1) -- Manual in the workbook; decidable from configuration, so checked like Automated
 default r_6_20 := false
 
 r_6_20 if {
+	count(input.panos_config.profiles.virus) > 0
 	every p in input.panos_config.profiles.virus { _av_decoders_ok(p, "mlav_action") }
 }
 
@@ -2027,7 +2662,6 @@ default e_6_20 := false
 
 e_6_20 if {
 	is_array(input.panos_config.profiles.virus)
-	count(input.panos_config.profiles.virus) > 0
 }
 
 _v_security_profiles contains "6.20: evidence missing — panos_config.profiles.virus not collected" if {
@@ -2035,16 +2669,25 @@ _v_security_profiles contains "6.20: evidence missing — panos_config.profiles.
 	not e_6_20
 }
 
+_v_security_profiles contains "6.20: the antivirus WildFire inline ML action must reset both ends (imap and pop3 may alert) (no antivirus profile configured)" if {
+	_applies("6.20")
+	e_6_20
+	not r_6_20
+	count(input.panos_config.profiles.virus) == 0
+}
+
 _v_security_profiles contains "6.20: the antivirus WildFire inline ML action must reset both ends (imap and pop3 may alert)" if {
 	_applies("6.20")
 	e_6_20
 	not r_6_20
+	count(input.panos_config.profiles.virus) > 0
 }
 
 # 6.21 (Automated, Level 1)
 default r_6_21 := false
 
 r_6_21 if {
+	count(input.panos_config.profiles.virus) > 0
 	every p in input.panos_config.profiles.virus { _mlav_ok(p) }
 }
 
@@ -2052,7 +2695,6 @@ default e_6_21 := false
 
 e_6_21 if {
 	is_array(input.panos_config.profiles.virus)
-	count(input.panos_config.profiles.virus) > 0
 }
 
 _v_security_profiles contains "6.21: evidence missing — panos_config.profiles.virus not collected" if {
@@ -2060,10 +2702,18 @@ _v_security_profiles contains "6.21: evidence missing — panos_config.profiles.
 	not e_6_21
 }
 
+_v_security_profiles contains "6.21: antivirus WildFire inline ML must be on for every file model (no antivirus profile configured)" if {
+	_applies("6.21")
+	e_6_21
+	not r_6_21
+	count(input.panos_config.profiles.virus) == 0
+}
+
 _v_security_profiles contains "6.21: antivirus WildFire inline ML must be on for every file model" if {
 	_applies("6.21")
 	e_6_21
 	not r_6_21
+	count(input.panos_config.profiles.virus) > 0
 }
 
 # 6.22 (Automated, Level 1)
@@ -2074,6 +2724,7 @@ r_6_22 if {
 }
 
 r_6_22 if {
+	count(input.panos_config.profiles.vulnerability) > 0
 	every p in input.panos_config.profiles.vulnerability { _inline_cloud_ok(p, "mica_engine_vulnerability_enabled", "alert") }
 }
 
@@ -2082,7 +2733,6 @@ default e_6_22 := false
 e_6_22 if {
 	is_array(input.panos_config.licenses)
 	is_array(input.panos_config.profiles.vulnerability)
-	count(input.panos_config.profiles.vulnerability) > 0
 }
 
 _v_security_profiles contains "6.22: evidence missing — panos_config.{licenses,profiles.vulnerability} not collected" if {
@@ -2090,10 +2740,29 @@ _v_security_profiles contains "6.22: evidence missing — panos_config.{licenses
 	not e_6_22
 }
 
+x_6_22 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _bad(["profiles", "vulnerability"], set(), {"cloud_inline_analysis": "yes/no"})
+
+_v_security_profiles contains msg if {
+	_applies("6.22")
+	e_6_22
+	some m in x_6_22
+	msg := sprintf("%s: evidence invalid — %s", ["6.22", m])
+}
+
+_v_security_profiles contains "6.22: with Advanced Threat Prevention, vulnerability profiles must run inline cloud analysis (models alert) (no vulnerability protection profile configured)" if {
+	_applies("6.22")
+	e_6_22
+	not r_6_22
+	count(x_6_22) == 0
+	count(input.panos_config.profiles.vulnerability) == 0
+}
+
 _v_security_profiles contains "6.22: with Advanced Threat Prevention, vulnerability profiles must run inline cloud analysis (models alert)" if {
 	_applies("6.22")
 	e_6_22
 	not r_6_22
+	count(x_6_22) == 0
+	count(input.panos_config.profiles.vulnerability) > 0
 }
 
 # 6.23 (Automated, Level 1)
@@ -2104,6 +2773,7 @@ r_6_23 if {
 }
 
 r_6_23 if {
+	count(input.panos_config.profiles.url_filtering) > 0
 	every p in input.panos_config.profiles.url_filtering { _yes(p, "local_inline_cat"); _yes(p, "cloud_inline_cat")}
 }
 
@@ -2112,7 +2782,6 @@ default e_6_23 := false
 e_6_23 if {
 	is_array(input.panos_config.licenses)
 	is_array(input.panos_config.profiles.url_filtering)
-	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 _v_security_profiles contains "6.23: evidence missing — panos_config.{licenses,profiles.url_filtering} not collected" if {
@@ -2120,10 +2789,29 @@ _v_security_profiles contains "6.23: evidence missing — panos_config.{licenses
 	not e_6_23
 }
 
+x_6_23 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _bad(["profiles", "url_filtering"], set(), {"local_inline_cat": "yes/no", "cloud_inline_cat": "yes/no"})
+
+_v_security_profiles contains msg if {
+	_applies("6.23")
+	e_6_23
+	some m in x_6_23
+	msg := sprintf("%s: evidence invalid — %s", ["6.23", m])
+}
+
+_v_security_profiles contains "6.23: with an advanced license, URL filtering profiles must run local and cloud inline categorization (no URL filtering profile configured)" if {
+	_applies("6.23")
+	e_6_23
+	not r_6_23
+	count(x_6_23) == 0
+	count(input.panos_config.profiles.url_filtering) == 0
+}
+
 _v_security_profiles contains "6.23: with an advanced license, URL filtering profiles must run local and cloud inline categorization" if {
 	_applies("6.23")
 	e_6_23
 	not r_6_23
+	count(x_6_23) == 0
+	count(input.panos_config.profiles.url_filtering) > 0
 }
 
 # 6.24 (Manual, Level 1) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -2134,6 +2822,7 @@ r_6_24 if {
 }
 
 r_6_24 if {
+	count(input.panos_config.profiles.spyware) > 0
 	every p in input.panos_config.profiles.spyware { _inline_cloud_ok(p, "mica_engine_spyware_enabled", "reset-both") }
 }
 
@@ -2142,7 +2831,6 @@ default e_6_24 := false
 e_6_24 if {
 	is_array(input.panos_config.licenses)
 	is_array(input.panos_config.profiles.spyware)
-	count(input.panos_config.profiles.spyware) > 0
 }
 
 _v_security_profiles contains "6.24: evidence missing — panos_config.{licenses,profiles.spyware} not collected" if {
@@ -2150,10 +2838,29 @@ _v_security_profiles contains "6.24: evidence missing — panos_config.{licenses
 	not e_6_24
 }
 
+x_6_24 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _bad(["profiles", "spyware"], set(), {"cloud_inline_analysis": "yes/no"})
+
+_v_security_profiles contains msg if {
+	_applies("6.24")
+	e_6_24
+	some m in x_6_24
+	msg := sprintf("%s: evidence invalid — %s", ["6.24", m])
+}
+
+_v_security_profiles contains "6.24: with Advanced Threat Prevention, anti-spyware profiles must run inline cloud analysis (models reset both) (no anti-spyware profile configured)" if {
+	_applies("6.24")
+	e_6_24
+	not r_6_24
+	count(x_6_24) == 0
+	count(input.panos_config.profiles.spyware) == 0
+}
+
 _v_security_profiles contains "6.24: with Advanced Threat Prevention, anti-spyware profiles must run inline cloud analysis (models reset both)" if {
 	_applies("6.24")
 	e_6_24
 	not r_6_24
+	count(x_6_24) == 0
+	count(input.panos_config.profiles.spyware) > 0
 }
 
 # 6.25 (Manual, Level 1) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -2164,6 +2871,7 @@ r_6_25 if {
 }
 
 r_6_25 if {
+	count(input.panos_config.profiles.spyware) > 0
 	every p in input.panos_config.profiles.spyware { _dns_security_ok(p) }
 }
 
@@ -2172,7 +2880,6 @@ default e_6_25 := false
 e_6_25 if {
 	is_array(input.panos_config.licenses)
 	is_array(input.panos_config.profiles.spyware)
-	count(input.panos_config.profiles.spyware) > 0
 }
 
 _v_security_profiles contains "6.25: evidence missing — panos_config.{licenses,profiles.spyware} not collected" if {
@@ -2180,10 +2887,29 @@ _v_security_profiles contains "6.25: evidence missing — panos_config.{licenses
 	not e_6_25
 }
 
+x_6_25 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"})
+
+_v_security_profiles contains msg if {
+	_applies("6.25")
+	e_6_25
+	some m in x_6_25
+	msg := sprintf("%s: evidence invalid — %s", ["6.25", m])
+}
+
+_v_security_profiles contains "6.25: with DNS Security, anti-spyware profiles must sinkhole every DNS Security category (C2 with extended capture) (no anti-spyware profile configured)" if {
+	_applies("6.25")
+	e_6_25
+	not r_6_25
+	count(x_6_25) == 0
+	count(input.panos_config.profiles.spyware) == 0
+}
+
 _v_security_profiles contains "6.25: with DNS Security, anti-spyware profiles must sinkhole every DNS Security category (C2 with extended capture)" if {
 	_applies("6.25")
 	e_6_25
 	not r_6_25
+	count(x_6_25) == 0
+	count(input.panos_config.profiles.spyware) > 0
 }
 
 # 7.1 (Automated, Level 2)
@@ -2207,10 +2933,20 @@ _v_security_policies contains "7.1: evidence missing — panos_config.{rulebase.
 	not e_7_1
 }
 
+x_7_1 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_policies contains msg if {
+	_applies("7.1")
+	e_7_1
+	some m in x_7_1
+	msg := sprintf("%s: evidence invalid — %s", ["7.1", m])
+}
+
 _v_security_policies contains "7.1: allow rules from an untrusted to a more trusted zone must name the application and the service" if {
 	_applies("7.1")
 	e_7_1
 	not r_7_1
+	count(x_7_1) == 0
 }
 
 # 7.2 (Automated, Level 1)
@@ -2232,10 +2968,20 @@ _v_security_policies contains "7.2: evidence missing — panos_config.rulebase.s
 	not e_7_2
 }
 
+x_7_2 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_policies contains msg if {
+	_applies("7.2")
+	e_7_2
+	some m in x_7_2
+	msg := sprintf("%s: evidence invalid — %s", ["7.2", m])
+}
+
 _v_security_policies contains "7.2: allow rules must not use service any" if {
 	_applies("7.2")
 	e_7_2
 	not r_7_2
+	count(x_7_2) == 0
 }
 
 # 7.3 (Automated, Level 1)
@@ -2258,10 +3004,20 @@ _v_security_policies contains "7.3: evidence missing — panos_config.rulebase.s
 	not e_7_3
 }
 
+x_7_3 := _bad(["rulebase", "security"], set(), {"disabled": "yes/no", "action": "string", "group": "list", "from": "list", "to": "list", "source": "list", "destination": "list", "application": "list", "service": "list", "virus": "list", "spyware": "list", "vulnerability": "list", "url_filtering": "list", "data_filtering": "list", "wildfire_analysis": "list"})
+
+_v_security_policies contains msg if {
+	_applies("7.3")
+	e_7_3
+	some m in x_7_3
+	msg := sprintf("%s: evidence invalid — %s", ["7.3", m])
+}
+
 _v_security_policies contains "7.3: deny rules must block traffic to and from the Palo Alto malicious, high-risk, Tor-exit and bulletproof IP lists" if {
 	_applies("7.3")
 	e_7_3
 	not r_7_3
+	count(x_7_3) == 0
 }
 
 # 7.4 (Manual, Level 1) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -2282,10 +3038,20 @@ _v_security_policies contains "7.4: evidence missing — panos_config.rulebase.d
 	not e_7_4
 }
 
+x_7_4 := _bad(["rulebase", "default_security_rules"], set(), {"log_end": "yes/no"})
+
+_v_security_policies contains msg if {
+	_applies("7.4")
+	e_7_4
+	some m in x_7_4
+	msg := sprintf("%s: evidence invalid — %s", ["7.4", m])
+}
+
 _v_security_policies contains "7.4: the intrazone and interzone default rules must log at session end" if {
 	_applies("7.4")
 	e_7_4
 	not r_7_4
+	count(x_7_4) == 0
 }
 
 # 8.1 (Automated, Level 1)
@@ -2309,10 +3075,20 @@ _v_decryption contains "8.1: evidence missing — panos_config.{rulebase.decrypt
 	not e_8_1
 }
 
+x_8_1 := _bad(["rulebase", "decryption"], set(), {"disabled": "yes/no", "to": "list"})
+
+_v_decryption contains msg if {
+	_applies("8.1")
+	e_8_1
+	some m in x_8_1
+	msg := sprintf("%s: evidence invalid — %s", ["8.1", m])
+}
+
 _v_decryption contains "8.1: an SSL forward proxy decryption rule must cover traffic toward the Internet" if {
 	_applies("8.1")
 	e_8_1
 	not r_8_1
+	count(x_8_1) == 0
 }
 
 # 8.2 (Manual, Level 1)
