@@ -7,11 +7,17 @@
     .rego file of that key's directories, so the registry cannot drift from the module text;
   * every check names a known method with its required fields;
   * the hand-written docs/FRAMEWORKS.md agrees with the checked files (docs_errors): every path it names exists,
-    every version it quotes is the one standards.yaml records for the keys under that path, every "N recommendations"
-    is a total a module under that path declares (the custom.coverage `expected` stamp), the STIG platform count
+    every version it quotes is the one standards.yaml records for the keys under that path, every "N recommendations",
+    "N requirements" and "N controls" is a total a module under that path declares (the custom.coverage `expected`
+    stamp, or the integer in its report's total_controls / total_requirements field) or a count the module's own
+    text states in the same words, the STIG platform count
     is the number of benchmarks/stig directories, the "validated today" sentence names as many standards as
     scripts/coverage_labels.json labels validated, no cell says only "Full", and docs/COVERAGE.md is not a second
     copy of the generated COVERAGE.md.
+  * STANDARDS_UPDATE_REGISTRY.md agrees with standards.yaml (registry_errors): every row of its table is mapped
+    to framework keys by standards.yaml `registry_rows`, and the row's "Implemented version" cell, up to the first
+    "upstream", states every version standards.yaml records for those keys. A module version bumped without the
+    registry row fails here (the NERC CIP row kept CIP-003-8 after the module moved to CIP-003-9).
   Versions marked "unknown" are listed as warnings for a human to settle; they do not fail.
 
 Network mode (monthly job): runs each check once and prints, per standard, one of
@@ -117,8 +123,31 @@ def bare(v: str) -> str:
 DOC = ROOT / "docs" / "FRAMEWORKS.md"
 DOC_PATH = re.compile(r"`((?:benchmarks|frameworks|governance|enforcement|threat_detection|crosswalk)/[^`\s]*)`")
 DOC_VERSION = re.compile(r"(?<![\w.])(v\d+(?:\.\d+)+|V\d+R\d+)\b")
-DOC_RECS = re.compile(r"\b(\d[\d,]*) recommendations\b")
+# "352 recommendations", "112 requirements", "197 controls". Not the tail of another token ("800-53 controls",
+# "Rev 2 requirements").
+DOC_RECS = re.compile(r"(?<![\w.-])(?<!Rev )(?<!Rev\. )(\d[\d,]*) (recommendations|requirements|controls)\b")
 EXPECTED_STAMP = re.compile(r"(?m)^#     expected: (\d+)$")
+# a total the report states: "total_controls": 59, or "total_requirements": _declared with `_declared := 153`
+TOTAL_FIELD = re.compile(r"\"total_(?:controls|requirements|recommendations|checks)\w*\"\s*:\s*([^\n]+)")
+IDENT = re.compile(r"\b[A-Za-z_]\w*\b")
+
+
+def declared_totals(text: str) -> set[int]:
+    """Totals a module's source declares: the custom.coverage `expected` stamp, an integer literal in a report's
+    total_controls / total_requirements / total_recommendations field, and an integer a name used in such a field
+    is assigned (`_declared_controls := 153`)."""
+    out = {int(x) for x in EXPECTED_STAMP.findall(text)}
+    for expr in TOTAL_FIELD.findall(text):
+        expr = expr.split(" #")[0]
+        out |= {int(x) for x in re.findall(r"(?<![\w.])\d+(?![\w.])", expr)}
+        for name in set(IDENT.findall(expr)):
+            out |= {int(x) for x in re.findall(rf"(?m)^{re.escape(name)}\s*:?=\s*(\d+)\s*(?:#.*)?$", text)}
+    return out
+
+
+def states_count(text: str, n: int, noun: str) -> bool:
+    """The module's own text says "<n> <noun>" (words may sit between: "15 basic safeguarding requirements")."""
+    return re.search(rf"(?<![\w.-]){n}\s+(?:[\w./()-]+\s+){{0,4}}{noun[:-1]}", text, re.I) is not None
 
 
 def _doc_dirs(path: str) -> list[Path]:
@@ -159,12 +188,15 @@ def docs_errors(reg: dict, live: dict[str, set[Path]]) -> list[str]:
                 if bare(tok) not in known:
                     errs.append(f"{where}: quotes {tok}, which standards.yaml does not record for the keys under "
                                 f"{', '.join(str(d.relative_to(ROOT)) for d in dirs)} ({', '.join(keys)})")
-        declared = {int(x) for d in dirs for f in d.rglob("*.rego") if not is_test(f)
-                    for x in EXPECTED_STAMP.findall(f.read_text(encoding="utf-8", errors="replace"))}
-        for tok in DOC_RECS.findall(line):
-            if declared and int(tok.replace(",", "")) not in declared:
-                errs.append(f"{where}: says {tok} recommendations; the modules under that path declare "
-                            f"{', '.join(map(str, sorted(declared)))} (custom.coverage expected)")
+        texts = [f.read_text(encoding="utf-8", errors="replace") for d in dirs for f in sorted(d.rglob("*.rego"))
+                 if not is_test(f)]
+        declared = set().union(*map(declared_totals, texts)) if texts else set()
+        for tok, noun in DOC_RECS.findall(line):
+            n = int(tok.replace(",", ""))
+            if declared and n not in declared and not any(states_count(t, n, noun) for t in texts):
+                errs.append(f"{where}: says {tok} {noun}; the modules under that path declare "
+                            f"{', '.join(map(str, sorted(declared)))} (custom.coverage expected, or the report's "
+                            f"total_* field) and none of them states \"{n} {noun}\"")
     m = re.search(r"DISA STIGs — (\d+) platforms", text)
     stig = [d for d in (ROOT / "benchmarks" / "stig").iterdir() if d.is_dir() and not d.name.startswith("_") and d.name != "tests"]
     if m and int(m.group(1)) != len(stig):
@@ -178,6 +210,105 @@ def docs_errors(reg: dict, live: dict[str, set[Path]]) -> list[str]:
     copy = ROOT / "docs" / "COVERAGE.md"
     if copy.exists() and re.search(r"\d+ of \d+ policy files have tests", copy.read_text(encoding="utf-8")):
         errs.append("docs/COVERAGE.md is a second copy of the generated COVERAGE.md and goes stale; keep it a pointer")
+    return errs
+
+
+REGISTRY_DOC = ROOT / "STANDARDS_UPDATE_REGISTRY.md"
+VERSION_TOKEN = re.compile(r"(?<![\w.])(v\d+(?:\.\d+)+|V\d+R\d+)\b")
+
+
+def norm_version(v: str) -> str:
+    """One spelling for comparison: no emphasis marks, lower case, "Rev 3" / "Rev. 3" / "Revision 3" / "r3" -> "r3",
+    no leading "v"."""
+    v = re.sub(r"[*`]", "", str(v)).lower()
+    v = re.sub(r"\b(?:rev(?:ision)?\.?\s*|r)(?=\d)", "r", v)
+    return re.sub(r"(?<![\w.])v(?=\d)", "", v).strip()
+
+
+def has_version(clause: str, version: str) -> bool:
+    """`version` stands in `clause` as a whole token ("2.0" is not found in "2.0.1" or "12.0")."""
+    return re.search(rf"(?<![\w.]){re.escape(norm_version(version))}(?!\.?\w)", norm_version(clause)) is not None
+
+
+def registry_rows(text: str) -> list[tuple[int, str, str]]:
+    """(line number, row title, "Implemented version" cell) for every row of the registry table."""
+    rows, on = [], False
+    for n, line in enumerate(text.splitlines(), 1):
+        if not line.startswith("|"):
+            on = False
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) >= 2 and cells[1].lower().startswith("implemented version"):
+            on = True
+            continue
+        if on and len(cells) >= 2 and not set(cells[0]) <= set("-: "):
+            rows.append((n, cells[0], cells[1]))
+    return rows
+
+
+def implemented_clause(cell: str) -> str:
+    """The part of an "Implemented version" cell that speaks about the module: everything before the first
+    "upstream". What follows describes the publisher's newer releases and is not compared."""
+    return re.split(r"(?i)\bupstream\b", cell, maxsplit=1)[0]
+
+
+def registry_errors(reg: dict, text: str | None = None) -> list[str]:
+    """STANDARDS_UPDATE_REGISTRY.md against standards.yaml. standards.yaml `registry_rows` maps each row title of
+    the registry table to the framework keys the row speaks for:
+
+        "NERC CIP": [nerc_cip]                 every version standards.yaml records for the key (other than
+                                               "current" / "unknown") must stand in the row's implemented clause
+        "MITRE ATLAS (crosswalk)": ["owasp_llm:MITRE ATLAS"]    only the standards whose name contains the text
+        "DISA STIGs": {family: stig_}          a summary row: every vX.Y.Z / VnRn token in the implemented clause
+                                               must be a version some key with that prefix records
+        "FedRAMP 20x KSI": []                  nothing to compare (say why in a YAML comment)
+
+    A row with no mapping, and a mapping with no row, are errors: a new row has to say which keys it speaks for."""
+    if text is None:
+        if not REGISTRY_DOC.exists():
+            return []
+        text = REGISTRY_DOC.read_text(encoding="utf-8")
+    name = REGISTRY_DOC.name
+    mapping = reg.get("registry_rows") or {}
+    entries = reg.get("frameworks") or {}
+    errs: list[str] = []
+    rows = registry_rows(text)
+    titles = {t for _, t, _ in rows}
+    for t in sorted(set(mapping) - titles):
+        errs.append(f"standards.yaml registry_rows: {t!r} is not a row title in {name}")
+    for n, title, cell in rows:
+        where = f"{name}:{n} ({title})"
+        if title not in mapping:
+            errs.append(f"{where}: row has no entry in standards.yaml registry_rows (name the framework keys it "
+                        "speaks for, or [] when there is no version to compare)")
+            continue
+        m = mapping[title]
+        clause = implemented_clause(cell)
+        if isinstance(m, dict):
+            prefix = str(m.get("family", ""))
+            known = {norm_version(s.get("version", "")) for k, e in entries.items() if k.startswith(prefix) and prefix
+                     for s in ((e or {}).get("standards") or [])}
+            if not known:
+                errs.append(f"{where}: registry_rows family {prefix!r} matches no framework key")
+            for tok in sorted(set(VERSION_TOKEN.findall(clause))):
+                if norm_version(tok) not in known:
+                    errs.append(f"{where}: says {tok}; no {prefix}* key in standards.yaml records that version")
+            continue
+        for item in m or []:
+            key, _, only = str(item).partition(":")
+            if key not in entries:
+                errs.append(f"{where}: registry_rows names {key!r}, which is not a framework key in standards.yaml")
+                continue
+            stds = [s for s in ((entries[key] or {}).get("standards") or []) if only in str(s.get("standard", ""))]
+            if only and not stds:
+                errs.append(f"{where}: registry_rows names {item!r}; {key} has no standard containing {only!r}")
+            for s in stds:
+                ver = str(s.get("version", ""))
+                if ver in ("unknown", "current", ""):
+                    continue
+                if not has_version(clause, ver):
+                    errs.append(f"{where}: standards.yaml records {s.get('standard')} = {ver} for {key}; the row's "
+                                f"implemented version (the text before \"upstream\") does not say {ver}")
     return errs
 
 
@@ -501,6 +632,7 @@ def main() -> int:
         errs, warns = validate(reg, live)
         doc_errs = docs_errors(reg, live)
         errs += doc_errs
+        errs += registry_errors(reg)
         for w in [] if args.quiet else warns:
             print(f"warning: {w}")
         for e in errs:
@@ -511,6 +643,8 @@ def main() -> int:
             return 3
         print(f"standards.yaml matches the modules: {n} keys, {len(warns)} version(s) unknown")
         print("docs/FRAMEWORKS.md agrees with standards.yaml, the declared totals and the coverage labels")
+        print("STANDARDS_UPDATE_REGISTRY.md states the implemented versions standards.yaml records "
+              f"({len(registry_rows(REGISTRY_DOC.read_text(encoding='utf-8')))} rows)")
         return 0
 
     results = run_checks(reg, set(args.only.split(",")) if args.only else None)

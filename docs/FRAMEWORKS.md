@@ -51,7 +51,7 @@ This page is written by hand and is not the full list: the [site catalog](https:
 | **NIST SP 800-171A Rev 3** | `frameworks/federal/nist/sp_800_171a/` | all 422 assessment determination statements, rolled up per requirement; examine / interview / test methods carried as data |
 | **NIST SP 800-171 Rev 2** | `frameworks/federal/nist/sp_800_171_r2/` | the 110 requirements DFARS 7012 and CMMC 2.0 Level 2 still assess, basic / derived classification from CPRT |
 | **NISPOM (32 CFR 117)** | `frameworks/federal/nispom/` | 599 contractor obligations from the CFR text, 18 programme gates (FOCI, classified IS, SAP, SCI, RD, NNPI, NATO …) |
-| **FAR 52.204-21 / -25 / -27** | `frameworks/federal/far_cyber/` | basic safeguarding (15 requirements), covered telecom (Section 889) reporting clocks, ByteDance prohibition; per-clause gates |
+| **FAR 52.204-21 / -25 / -27** | `frameworks/federal/far_cyber/` | basic safeguarding (the 15 paragraph (b)(1) requirements), covered telecom (Section 889) reporting clocks, ByteDance prohibition; per-clause gates |
 | **CISA TIC 3.0 Security Capabilities Catalog v3.3** | `frameworks/federal/cisa_tic3/` | 116 capabilities, universal + 12 PEP groups, group gate |
 | **DOE C2M2 v2.1** | `frameworks/critical_infrastructure/c2m2/` | all 356 practices in 10 domains, target-MIL gate and cumulative MIL scoring |
 | **NRC 10 CFR 73.54 + USCG 33 CFR 101 Subpart F** | `frameworks/critical_infrastructure/nrc_73_54/`, `frameworks/critical_infrastructure/maritime_33cfr101f/` | nuclear licensee cyber rule (34 paragraphs) and the 2025 maritime cybersecurity rule (105 obligations, compliance dates as data) |
@@ -68,7 +68,7 @@ This page is written by hand and is not the full list: the [site catalog](https:
 | **CISA Secure Software Development Attestation Form v1.0** | `frameworks/federal/cisa_ssdaf/` | the 15 attestation items with their scope gates; each item carries its EO 4(e) subsection and SSDF tasks |
 | **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
 | **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
-| **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 112 requirements |
+| **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 153 requirements evaluated (the report's declared total) |
 | **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled |
 | **CISA CPG 2.0 (Oct 2025)** | `frameworks/federal/cisa_cpg/` | All 34 goals, six CSF-2.0 functions incl. GOVERN, per-function rollup |
 | **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
