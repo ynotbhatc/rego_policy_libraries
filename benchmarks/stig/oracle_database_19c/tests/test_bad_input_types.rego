@@ -50,9 +50,23 @@ test_number_and_decimal_string_pass if {
 }
 
 test_profile_limit_null_is_not_set if {
-	every bad in [null, true, "DEFAULT", "NULL", "", " "] {
+	every bad in [null, true, "DEFAULT", "NULL", "", " ", 7, 0, ["ORA12C_STIG_VERIFY_FUNCTION"]] {
 		compliant(set("/oracle/profiles/ORA_STIG_PROFILE/PASSWORD_VERIFY_FUNCTION", bad)) == false
 	}
+}
+
+# O19C-00-008600: the instance name must not contain the version number. `not contains(null, "19")` is true
+# (the call is undefined), so a null, numeric or empty instance name used to read as "does not contain it".
+test_instance_name_and_version_must_be_text if {
+	every bad in [null, true, 7, "", " ", ["PRODDB"], "ORCL19"] {
+		"O19C-00-008600" in open_ids(set("/oracle/instance_name", bad))
+	}
+	every bad in [null, true, 19, "", "nineteen", ["19.0.0.0.0"]] {
+		"O19C-00-008600" in open_ids(set("/oracle/version", bad))
+	}
+	"O19C-00-008600" in open_ids(json.patch(green, [{"op": "remove", "path": "/oracle/instance_name"}]))
+	"O19C-00-008600" in open_ids(json.patch(green, [{"op": "remove", "path": "/oracle/version"}]))
+	compliant(set("/oracle/instance_name", "PRODDB")) == true
 }
 
 test_control_files_must_be_a_list_of_names if {
@@ -81,9 +95,78 @@ test_audit_enabled_needs_a_real_policy_list if {
 
 # "the query returns no rows" is an empty array; an empty string or object is not that evidence
 test_empty_query_result_must_be_an_array if {
-	every p in ["/oracle/unauthorized_object_owners", "/oracle/direct_admin_privilege_grantees", "/oracle/unauthorized_db_links"] {
-		every bad in ["", {}, null, 0, false] {
+	every p in empty_query_results {
+		every bad in ["", {}, null, 0, false, "none"] {
 			compliant(set(p, bad)) == false
 		}
 	}
+}
+
+# every "no rows returned" fact of the module (all 15), not a sample: O19C-00-014800 was left without the
+# array test in the first pass
+empty_query_results := [
+	"/oracle/unauthorized_object_owners",
+	"/oracle/direct_admin_privilege_grantees",
+	"/oracle/unauthorized_db_links",
+	"/oracle/grantable_privileges_non_dba",
+	"/oracle/unauthorized_admin_option_system_privileges",
+	"/oracle/public_system_privileges",
+	"/oracle/unauthorized_admin_option_roles",
+	"/oracle/unauthorized_public_object_privileges",
+	"/oracle/public_granted_roles",
+	"/oracle/unauthorized_default_admin_roles",
+	"/oracle/users_with_default_password",
+	"/oracle/sample_schemas_present",
+	"/oracle/unused_components_installed",
+	"/oracle/unused_integrated_options_enabled",
+	"/oracle/users_with_10g_password_verifier",
+]
+
+test_empty_query_result_removed_or_with_rows_does_not_pass if {
+	every p in empty_query_results {
+		compliant(json.patch(green, [{"op": "remove", "path": p}])) == false
+		compliant(set(p, ["ROW"])) == false
+	}
+}
+
+test_every_empty_query_result_is_in_the_fixture if {
+	every p in empty_query_results {
+		green.oracle[trim_prefix(p, "/oracle/")] == []
+	}
+	count(empty_query_results) == count([k | some k, v in green.oracle; v == []])
+}
+
+# O19C-00-001800 / O19C-00-002000 accept either auditing mode: standard auditing (audit_trail other than NONE)
+# or unified auditing (at least one enabled policy). With standard auditing on, the unified list may be absent
+# or null; with neither, both rules are Open.
+open_ids(inp) := {f.stig_id |
+	r := data.stig.oracle_database_19c.main.compliance_report with input as inp
+	some f in r.open_findings
+}
+
+test_standard_auditing_alone_satisfies_the_audit_rules if {
+	compliant(json.patch(green, [{"op": "remove", "path": "/oracle/unified_audit_policies_enabled"}])) == true
+	compliant(set("/oracle/unified_audit_policies_enabled", null)) == true
+}
+
+test_unified_auditing_alone_satisfies_the_audit_rules if {
+	compliant(set("/oracle/parameters/audit_trail", "NONE")) == true
+	compliant(json.patch(green, [{"op": "remove", "path": "/oracle/parameters/audit_trail"}])) == true
+}
+
+test_neither_auditing_mode_opens_both_audit_rules if {
+	every trail in ["NONE", "none", "", null] {
+		every unified in [null, [], "ORA_SECURECONFIG", [null], [""], true, 1] {
+			inp := json.patch(green, [
+				{"op": "add", "path": "/oracle/parameters/audit_trail", "value": trail},
+				{"op": "add", "path": "/oracle/unified_audit_policies_enabled", "value": unified},
+			])
+			open_ids(inp) == {"O19C-00-001800", "O19C-00-002000"}
+		}
+	}
+	both_gone := json.patch(green, [
+		{"op": "remove", "path": "/oracle/parameters/audit_trail"},
+		{"op": "remove", "path": "/oracle/unified_audit_policies_enabled"},
+	])
+	open_ids(both_gone) == {"O19C-00-001800", "O19C-00-002000"}
 }

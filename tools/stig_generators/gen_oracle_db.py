@@ -28,11 +28,10 @@ def boolfact(path, val=True):
     return ([f"input.{path} == {str(val).lower()}"], [("BOOL", path, val)])
 
 def empty_list(path, sample=None):      # a query that must return no rows; the collector supplies the rows
-    if path.startswith("oracle."):      # an array, then empty: count("") and count({}) are 0 too
-        return ([f"is_array(input.{path})", f"count(input.{path}) == 0"], [("BOOL", path, [])])
-    return ([f"count(input.{path}) == 0"], [("BOOL", path, [])])
+    # an array, then empty: count("") and count({}) are 0 too
+    return ([f"is_array(input.{path})", f"count(input.{path}) == 0"], [("BOOL", path, [])])
 
-def num_ge(path, n, fx):               # Oracle only: _num is an ORA_HELPERS function
+def num_ge(path, n, fx):               # _num is a NUM_HELPERS function, emitted for both platforms
     return ([f"_num(input.{path}) >= {n}"], [("BOOL", path, fx)])
 
 def num_gt(path, n, fx):
@@ -68,10 +67,10 @@ def my_var_in(name, vals, fx):
     return ([f'upper(input.mysql.variables["{name}"]) in {{{s}}}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_var_num_ge(name, n, fx):
-    return ([f'to_number(input.mysql.variables["{name}"]) >= {n}'], [("MAP2", "mysql.variables", name, fx)])
+    return ([f'_num(input.mysql.variables["{name}"]) >= {n}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_var_num_gt(name, n, fx):
-    return ([f'to_number(input.mysql.variables["{name}"]) > {n}'], [("MAP2", "mysql.variables", name, fx)])
+    return ([f'_num(input.mysql.variables["{name}"]) > {n}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_plugin_active(name):
     return ([f'upper(input.mysql.plugins["{name}"]) == "ACTIVE"'], [("BOOL", f"mysql.plugins.{name}", "ACTIVE")])
@@ -84,9 +83,9 @@ def either(name, *parts):               # OR: emitted as extra rule clauses; fix
 
 
 # Helpers emitted once per platform (shared by rules)
-ORA_HELPERS = """
-# a numeric value as Oracle reports it: a number, or a string holding a decimal number ("3", "0.0034").
-# Undefined for anything else (UNLIMITED, DEFAULT, null, a boolean): to_number(null) is 0 and to_number(true)
+NUM_HELPERS = """
+# a numeric value as @DB@ reports it: a number, or a string holding a decimal number (@EX@).
+# Undefined for anything else (@NOT@null, a boolean): to_number(null) is 0 and to_number(true)
 # is 1, so raw input is never passed to to_number.
 _num(v) := v if is_number(v)
 
@@ -104,10 +103,11 @@ _named_list(v) if {
 		trim_space(s) != ""
 	}
 }
+"""
 
-# a profile limit that is set: a number, or a string other than NULL / DEFAULT / empty
-_limit_set(v) if is_number(v)
-
+ORA_HELPERS = NUM_HELPERS.replace("@DB@", "Oracle").replace("@EX@", '"3", "0.0034"').replace("@NOT@", "UNLIMITED, DEFAULT, ") + """
+# a profile limit that names something (PASSWORD_VERIFY_FUNCTION): a string other than NULL / DEFAULT / empty.
+# DBA_PROFILES.LIMIT is text; a number, a boolean or null is not a function name.
 _limit_set(v) if {
 	is_string(v)
 	not upper(trim_space(v)) in {"NULL", "DEFAULT", ""}
@@ -163,7 +163,9 @@ audit_enabled if {
 }
 """
 
-MY_HELPERS = """
+# MySQL: SHOW VARIABLES and performance_schema.global_variables return every value as text (VARIABLE_VALUE is
+# a varchar column), so a decimal string is the collected form of a numeric variable.
+MY_HELPERS = NUM_HELPERS.replace("@DB@", "MySQL").replace("@EX@", '"50"; SHOW VARIABLES returns text').replace("@NOT@", '"", ON, ') + """
 # ── audit helpers: the audit_log plugin must be active and at least one audit filter defined ──
 audit_log_active if {
 	upper(input.mysql.plugins.audit_log) == "ACTIVE"
@@ -171,6 +173,7 @@ audit_log_active if {
 
 audit_configured if {
 	audit_log_active
+	_named_list(input.mysql.audit.filters)
 	count(input.mysql.audit.filters) > 0
 }
 
@@ -232,7 +235,9 @@ PLATFORMS = {
             "O19C-00-008200": empty_list("oracle.unauthorized_object_owners"),
             "O19C-00-008300": empty_list("oracle.direct_admin_privilege_grantees"),
             "O19C-00-008400": attest("oracle.attest.configured_per_dod_guidance"),
-            "O19C-00-008600": (["not contains(input.oracle.instance_name, split(input.oracle.version, \".\")[0])"],
+            "O19C-00-008600": (["is_string(input.oracle.instance_name)", "trim_space(input.oracle.instance_name) != \"\"",
+                                "is_string(input.oracle.version)", "major := split(trim_space(input.oracle.version), \".\")[0]",
+                                "regex.match(`^[0-9]+$`, major)", "not contains(input.oracle.instance_name, major)"],
                                [("BOOL", "oracle.instance_name", "PRODDB"), ("BOOL", "oracle.version", "19.0.0.0.0")]),
             "O19C-00-008700": empty_list("oracle.unauthorized_db_links"),
             "O19C-00-009000": empty_list("oracle.grantable_privileges_non_dba"),
@@ -310,7 +315,7 @@ PLATFORMS = {
             "O19C-00-020500": (["_named_list(input.oracle.control_files)", "count(input.oracle.control_files) >= 3"], [("BOOL", "oracle.control_files", ["/u01/oradata/control01.ctl", "/u02/oradata/control02.ctl", "/u03/oradata/control03.ctl"])]),
             "O19C-00-020600": (["is_array(input.oracle.redo_log_groups)", "count(input.oracle.redo_log_groups) >= 3",
                                 "every g in input.oracle.redo_log_groups {\n\t\t_named_list(g.members)\n\t\tcount(g.members) >= 2\n\t}"],
-                               [("BOOL", "oracle.redo_log_groups", [{"group": 1, "members": ["/u01/redo01a.log", "/u02/redo01b.log"]}, {"group": 2, "members": ["/u01/redo02a.log", "/u02/redo02b.log"]}, {"group": 3, "members": ["/u01/redo03a.log", "/u02/redo03b.log"]}])]),
+                               [("BOOL", "oracle.redo_log_groups", [{"members": ["/u01/redo01a.log", "/u02/redo01b.log"]}, {"members": ["/u01/redo02a.log", "/u02/redo02b.log"]}, {"members": ["/u01/redo03a.log", "/u02/redo03b.log"]}])]),
         },
     },
     "oracle_mysql_8": {
@@ -343,7 +348,7 @@ PLATFORMS = {
             "MYS8-00-004900": attest("mysql.attest.pki_identity_mapped_to_accounts"),
             "MYS8-00-005000": both(my_plugin_active("validate_password"), my_var_num_ge("validate_password.length", 15, "15"),
                                    my_var_in("validate_password.policy", ["MEDIUM", "STRONG"], "STRONG")),
-            "MYS8-00-005100": (['count(input.mysql.users) > 0', 'every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
+            "MYS8-00-005100": (['is_array(input.mysql.users)', 'count(input.mysql.users) > 0', 'every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
                                [("BOOL", "mysql.users", [{"user": "app", "host": "%", "plugin": "caching_sha2_password"}])]),
             "MYS8-00-005200": MY_TLS,
             "MYS8-00-005300": attest("mysql.attest.authentication_feedback_obscured"),
@@ -480,6 +485,9 @@ def emit(key, cfg):
          '\t\t"overall_compliant": overall_compliant,', '\t\t"fully_compliant": fully_compliant,', "\t},",
          '\t"findings": all_findings,', "}", "",
          "# Uniform library entrypoint contract.", "compliance_report := {",
+         "\t# every rule's DISA status (Not_a_Finding, Open, Not_Applicable, Not_Reviewed), for rollups such as",
+         "\t# crosswalk.correlation; violations stay the open findings",
+         '\t"rule_results": [{"rule": f.stig_id, "status": f.status} | some f in all_findings],',
          '\t"total_controls": count(all_findings),', '\t"open_findings": open_findings,',
          '\t"passed_controls": count(all_findings) - count(open_findings),', '\t"failed_controls": count(open_findings),',
          '\t"compliant": fully_compliant,', "}"]
