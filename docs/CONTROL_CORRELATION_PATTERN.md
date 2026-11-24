@@ -205,16 +205,23 @@ maps — those citing a fetchable NIST/standards-body source — are scored.
 No mapping is invented; where an authoritative source does not exist, the entry
 says so.
 
-Seeded state (2026-09-03), from an authoritative-source audit:
+State at 2026-11-24 (seeded 2026-09-03 from an authoritative-source audit; the three NIST-published maps were
+generated on 2026-11-24 by `scripts/gen_nist_framework_maps.py`, which records each source's URL, sha256 and
+publication date in the map's `meta`):
 
 | Framework map | Status | Source |
 |---|---|---|
 | NIST 800-53B Low / Moderate / High baselines | **authoritative** | NIST OSCAL content (`usnistgov/oscal-content`, Rev 5.2.0) |
-| NIST 800-171 r3 → 800-53 | pending | SP 800-171r3 Appendix C — PDF only, no NIST machine-readable export |
-| NIST CSF 2.0 → 800-53 | pending | NIST OLIR (final 2025-11-17) — fetch via CPRT flat JSON |
-| ISO/IEC 27001:2022 ↔ 800-53 | pending | NIST OLIR ref 155 — **submitter authorship unverified; confirm before scoring** |
-| PCI DSS v4 → 800-53 | pending | **no authoritative direct mapping exists** (PCI SSC publishes only PCI→CSF 2.0) |
-| CIS Controls v8.1 → 800-53 | pending | CIS whitepaper (authoritative) but registration-gated download |
+| FedRAMP Rev 5 Low / Moderate / High / LI-SaaS | **authoritative** | FedRAMP OSCAL baseline profiles (`scripts/gen_fedramp_framework_maps.py`) |
+| NIST 800-171 r3 → 800-53 | **authoritative** (97 requirements, 157 pairs) | NIST CPRT JSON export of SP 800-171 Rev 3: each requirement's source controls |
+| NIST CSF 2.0 → 800-53 | **authoritative** (106 Subcategories, 736 pairs) | NIST OLIR informative reference 186, CSF 2.0 → SP 800-53 Rev 5.2.0 (posted 2025-11-17) |
+| ISO/IEC 27001:2022 ↔ 800-53 | **authoritative** (91 Annex A controls + 30 clauses, 643 pairs) | NIST OLIR informative reference 155; the catalog names NIST as developer and the file matches the hash it records. NIST's table runs 800-53 → ISO and is inverted; ISO identifiers only |
+| PCI DSS v4 → 800-53 | pending | no source whose licence allows it: PCI SSC publishes no PCI → 800-53 mapping, and the one PCI DSS 4.0.1 → CSF 2.0 reference in OLIR (id 183) is from an independent submitter |
+| CIS Controls v8.1 → 800-53 | pending (local build) | CIS workbook is CC BY-NC-ND 4.0, so it is not vendored in this Apache-2.0 repository; the generator builds the map from a workbook the user downloads (`--cis-file`) |
+
+The CSF, 171 and ISO maps send one framework id to several 800-53 controls and enhancements; what that means for
+"satisfied" is in `crosswalk/README.md` ("Reading a non-identity map"). The CSF 2.0 and SP 800-171 modules do not
+read them yet.
 
 **First grounded result:** a STIG assessment addresses **54 of the 177 base
 controls in the 800-53 Moderate baseline** (Low: 36/131, High: 59/188) — an
