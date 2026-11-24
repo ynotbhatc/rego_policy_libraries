@@ -99,7 +99,7 @@ test_missing_area_attestation_is_scored_and_reported if {
 		with data.sox.data_entry as detail_true.data_entry
 		with data.sox.authorization as detail_true.authorization
 		with data.sox.input_completeness as detail_true.input_completeness
-	f == ["Input controls are not attested as in place (data.sox.application_controls.input_validation.comprehensive)"]
+	f == ["Input controls are not attested as in place (sox.application_controls.input_validation.comprehensive)"]
 	c := data.sox.application_controls.control_counts with data.sox.input_validation as detail_true.input_validation
 		with data.sox.data_entry as detail_true.data_entry
 		with data.sox.authorization as detail_true.authorization
