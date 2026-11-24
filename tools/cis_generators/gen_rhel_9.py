@@ -965,7 +965,7 @@ put("2.1.19", "mail transfer agents", custom(
     {"mta": {"has_mta": True, "non_loopback_listeners": ["0.0.0.0:25"], "inet_interfaces": "all"}},
     {"mta": {"has_mta": True}},
     reads=[["mta", "has_mta"], ["mta", "non_loopback_listeners"], ["mta", "inet_interfaces"]],
-    ev_alts=[['input.mta.has_mta == false'], ['is_array(input.mta.non_loopback_listeners)']]))
+    ev_alts=[['input.mta.has_mta == false'], ['mta_flag_readable', 'is_array(input.mta.non_loopback_listeners)']]))
 put("2.1.20", "graphical user interface", custom(
     None,
     [['input.gui.environment_installed == false'],
@@ -1870,6 +1870,12 @@ selinux_config_mode := input.ansible_facts.ansible_selinux.config_mode if {
 }
 ''',
     "services": r'''
+# mta.has_mta is optional beside the listener list (the audit procedure reads the listening sockets), but once
+# sent it is a boolean: "false" or 0 is unreadable evidence, not a statement that an MTA is or is not installed
+mta_flag_readable if object.get(input, ["mta", "has_mta"], null) == null
+
+mta_flag_readable if is_boolean(input.mta.has_mta)
+
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
 

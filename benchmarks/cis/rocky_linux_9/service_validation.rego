@@ -208,6 +208,12 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 	e.current_value != null
 ]
 
+# mta.has_mta is optional beside the listener list (the audit procedure reads the listening sockets), but once
+# sent it is a boolean: "false" or 0 is unreadable evidence, not a statement that an MTA is or is not installed
+mta_flag_readable if object.get(input, ["mta", "has_mta"], null) == null
+
+mta_flag_readable if is_boolean(input.mta.has_mta)
+
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
 
@@ -907,6 +913,7 @@ e_2_1_19 if {
 }
 
 e_2_1_19 if {
+	mta_flag_readable
 	is_array(input.mta.non_loopback_listeners)
 }
 

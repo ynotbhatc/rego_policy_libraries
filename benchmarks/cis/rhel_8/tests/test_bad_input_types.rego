@@ -123,3 +123,11 @@ test_unit_that_must_be_off_needs_a_string_state if {
 		findings(sec, json.patch(fx, [op])) > 0
 	}
 }
+
+# mta.has_mta may be left out when the listener list is collected, but a wrong-typed flag is not ignored
+test_mta_flag_of_the_wrong_type_does_not_pass if {
+	every bad in ["true", "false", "no", 0, 1] {
+		findings("services", json.patch(fx, [{"op": "replace", "path": "/mta/has_mta", "value": bad}])) > 0
+	}
+	findings("services", json.patch(fx, [{"op": "remove", "path": "/mta/has_mta"}])) == 0
+}
