@@ -43,7 +43,13 @@ import rego.v1
 #     }, ...
 #   }
 #
-# Input: same as crosswalk.correlation (input.findings).
+# A map need not be the identity. The NIST-published maps (nist_csf_2_0, nist_800_171_r3, iso_27001_2022;
+# scripts/gen_nist_framework_maps.py) send one framework id to several 800-53 controls and enhancements. The
+# rules above are unchanged for them: one gap among the mapped controls is a gap; "satisfied" needs every mapped
+# id evaluated and satisfied, which a mapped enhancement prevents (the spine is at base-control granularity), so
+# such an id reads "not_covered" with the evaluated controls under `spine` and the rest under `not_evaluated`.
+#
+# Input: same as crosswalk.correlation (input.findings, input.reports).
 
 import data.crosswalk.correlation
 
@@ -121,6 +127,25 @@ _evidence_status(ctrls) := "gap" if {
 	count(ctrls) > 0
 	every c in ctrls { _control_status[c] == "satisfied" }
 } else := "not_covered"
+
+# The reverse index of an authoritative map: for an 800-53 id, the framework ids that map to it. A framework
+# module reads it to say which of its controls a spine verdict lands on, and which verdicts land on none
+# (data.crosswalk.framework_overlay.inherited_by[<key>][<800-53 id>]). Read from the map alone; no input needed.
+inherited_by[fw][c] := fcs if {
+	some fw, spec in _maps
+	spec.status == "authoritative"
+	some c in {x | some xs in spec.map; some x in xs}
+	fcs := sort({fc | some fc, ctrls in spec.map; c in ctrls})
+}
+
+# Where an authoritative map comes from, for a framework module to cite beside the verdicts it takes through it:
+# the map's name, source, granularity and, for a generated map, its meta (source URL, sha256, publication date,
+# licence, the relationship the publisher states, counts).
+map_info[fw] := info if {
+	some fw, spec in _maps
+	spec.status == "authoritative"
+	info := {k: v | some k, v in spec; k != "map"}
+}
 
 frameworks_reported := sort([fw | some fw; _ = coverage[fw]])
 
