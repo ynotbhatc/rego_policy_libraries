@@ -31,13 +31,69 @@ import rego.v1
 #   input.plays[].tasks[].tags  — task tags (required for auditability)
 #   input.environment           — "production" | "staging" | "development"
 
+#
+# A document that is not a readable playbook is denied, never waved through (SENTINEL-ANS-000): the gate
+# judges input.plays, so that list must be there and every play, task list, vars map and tag list must
+# have the shape the rules below read.
+
+# =============================================================================
+# PLAYBOOK SHAPE (SENTINEL-ANS-000)
+# =============================================================================
+
+violations contains msg if {
+	not is_array(object.get(input, "plays", null))
+	msg := sprintf("SENTINEL-ANS-000: Malformed playbook: input.plays must be a list of plays, got %v; nothing was evaluated", [_type(object.get(input, "plays", null))])
+}
+
+violations contains msg if {
+	some i, play in input.plays
+	problem := _play_problems(play)[_]
+	msg := sprintf("SENTINEL-ANS-000: Malformed playbook: play [%v] %v", [i, problem])
+}
+
+_type(v) := "nothing" if v == null
+
+_type(v) := type_name(v) if v != null
+
+_play_problems(play) := {"is not a mapping"} if not is_object(play)
+
+_play_problems(play) := {p |
+	some p, bad in {
+		"has a name that is not a string": _set_and_not(play, "name", {"string"}),
+		"has vars that are not a mapping": _set_and_not(play, "vars", {"object"}),
+		"has tasks that are not a list": _set_and_not(play, "tasks", {"array"}),
+		"has a task that is not a mapping": _bad_task(play),
+		"has a task whose tags are not a string or a list": _bad_task_tags(play),
+	}
+	bad
+} if is_object(play)
+
+# the key is set (present and not null) and its value is of none of the allowed types
+_set_and_not(o, key, types) if {
+	v := object.get(o, key, null)
+	v != null
+	not type_name(v) in types
+} else := false
+
+_bad_task(play) if {
+	some task in play.tasks
+	not is_object(task)
+} else := false
+
+_bad_task_tags(play) if {
+	some task in play.tasks
+	_set_and_not(task, "tags", {"string", "array"})
+} else := false
+
 # =============================================================================
 # PLAYS MUST HAVE A NAME
 # =============================================================================
 
 violations contains msg if {
 	some i, play in input.plays
-	not play.name
+
+	# a null name is no name (`not play.name` is false for null)
+	not is_string(object.get(play, "name", null))
 	msg := sprintf(
 		"SENTINEL-ANS-001: Play [%v] has no 'name' field — all plays must be named for auditability",
 		[i],
@@ -109,13 +165,17 @@ violations contains msg if {
 	some play in input.plays
 	some task in object.get(play, "tasks", [])
 	task_name := object.get(task, "name", "(unnamed task)")
-	task_tags := object.get(task, "tags", [])
-	count(task_tags) == 0
+	_no_tags(object.get(task, "tags", null))
 	msg := sprintf(
 		"SENTINEL-ANS-004: Task '%v' in play '%v' has no tags — tags required for selective execution and audit",
 		[task_name, object.get(play, "name", "(unnamed)")],
 	)
 }
+
+# no tags: the key is absent, null, or an empty string or list
+_no_tags(tags) if tags == null
+
+_no_tags(tags) if count(tags) == 0
 
 # =============================================================================
 # ALLOW / RESULT
