@@ -72,7 +72,7 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 50
+#     checks: 51
 #     cited: 47
 #     expected: 97
 #     found: 123

@@ -57,42 +57,50 @@ default compliant := false
 
 violation contains msg if {
 	_not_true(["identify", "asset_management", "physical_devices_inventoried"])
-	msg := _finding("CSF ID.AM-01: Physical devices and systems not inventoried", ["identify", "asset_management", "physical_devices_inventoried"])
+	finding := "CSF ID.AM-01: Physical devices and systems not inventoried"
+	msg := _finding(finding, ["identify", "asset_management", "physical_devices_inventoried"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "asset_management", "organizational_communication_mapped"])
-	msg := _finding("CSF ID.AM-03: Organizational communication and data flows not mapped", ["identify", "asset_management", "organizational_communication_mapped"])
+	finding := "CSF ID.AM-03: Organizational communication and data flows not mapped"
+	msg := _finding(finding, ["identify", "asset_management", "organizational_communication_mapped"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "asset_management", "resources_prioritized"])
-	msg := _finding("CSF ID.AM-05: Resources not prioritized based on classification/criticality", ["identify", "asset_management", "resources_prioritized"])
+	finding := "CSF ID.AM-05: Resources not prioritized based on classification/criticality"
+	msg := _finding(finding, ["identify", "asset_management", "resources_prioritized"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "risk_assessment", "asset_vulnerabilities_identified"])
-	msg := _finding("CSF ID.RA-01: Asset vulnerabilities not identified and documented", ["identify", "risk_assessment", "asset_vulnerabilities_identified"])
+	finding := "CSF ID.RA-01: Asset vulnerabilities not identified and documented"
+	msg := _finding(finding, ["identify", "risk_assessment", "asset_vulnerabilities_identified"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "risk_assessment", "cyber_threat_intelligence_received"])
-	msg := _finding("CSF ID.RA-02: Cyber threat intelligence not received from information-sharing forums", ["identify", "risk_assessment", "cyber_threat_intelligence_received"])
+	finding := "CSF ID.RA-02: Cyber threat intelligence not received from information-sharing forums"
+	msg := _finding(finding, ["identify", "risk_assessment", "cyber_threat_intelligence_received"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "risk_assessment", "threats_identified_and_documented"])
-	msg := _finding("CSF ID.RA-03: Internal and external threats not identified or documented", ["identify", "risk_assessment", "threats_identified_and_documented"])
+	finding := "CSF ID.RA-03: Internal and external threats not identified or documented"
+	msg := _finding(finding, ["identify", "risk_assessment", "threats_identified_and_documented"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "risk_assessment", "potential_impacts_identified"])
-	msg := _finding("CSF ID.RA-04: Potential business impacts and likelihoods not identified", ["identify", "risk_assessment", "potential_impacts_identified"])
+	finding := "CSF ID.RA-04: Potential business impacts and likelihoods not identified"
+	msg := _finding(finding, ["identify", "risk_assessment", "potential_impacts_identified"])
 }
 
 violation contains msg if {
 	_not_true(["identify", "risk_assessment", "risk_determined"])
-	msg := _finding("CSF ID.RA-05: Threats/vulnerabilities/likelihoods/impacts not used to determine risk", ["identify", "risk_assessment", "risk_determined"])
+	finding := "CSF ID.RA-05: Threats/vulnerabilities/likelihoods/impacts not used to determine risk"
+	msg := _finding(finding, ["identify", "risk_assessment", "risk_determined"])
 }
 
 compliant if count(violation) == 0

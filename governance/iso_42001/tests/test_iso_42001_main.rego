@@ -213,5 +213,5 @@ test_evidence_organization_role_required if {
 	}
 	report := main.compliance_report with input as object.remove(conformant_input, ["organization_role"])
 	report.compliant == false
-	"ISO 42001 4.1: [evidence missing — input.organization_role not collected]" in report.violations
+	"ISO 42001 4.1: The organization's AI role (input.organization_role) is not stated [evidence missing — input.organization_role not collected]" in report.violations
 }

@@ -6,7 +6,7 @@
 #   source: iso
 #   domains: [ai]
 #   coverage:
-#     checks: 38
+#     checks: 39
 #     cited: 38
 #     expected: 38
 #     found: 38
@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iso_42001.main
 
 import rego.v1
@@ -76,21 +76,26 @@ compliant if {
 
 violations contains msg if {
 	_not_true(["context", "internal_external_issues_determined"])
-	msg := _finding("ISO 42001 4.1: Internal and external issues relevant to the AIMS not determined (including the organization's role as AI provider, deployer, or user)", ["context", "internal_external_issues_determined"])
+	finding := "ISO 42001 4.1: Internal and external issues relevant to the AIMS not determined (including the organization's role as AI provider, deployer, or user)"
+	msg := _finding(finding, ["context", "internal_external_issues_determined"])
 }
 
 # The organization's AI role (provider, deployer, user, ...) scopes the whole assessment and is part of
 # the 4.1 determination: a report without it has no stated subject, so it is an evidence problem on 4.1.
 violations contains msg if {
-	_fact(["organization_role"]) == null
-	msg := "ISO 42001 4.1: [evidence missing — input.organization_role not collected]"
+	problem := _role_problem
+	finding := "ISO 42001 4.1: The organization's AI role (input.organization_role) is not stated"
+	msg := sprintf("%s [%s]", [finding, problem])
 }
 
-violations contains msg if {
+_role_problem := "evidence missing — input.organization_role not collected" if {
+	_fact(["organization_role"]) == null
+}
+
+_role_problem := sprintf("evidence invalid — input.organization_role is not a non-empty string (got %s)", [type_name(role)]) if {
 	role := _fact(["organization_role"])
 	role != null
 	not _nonempty_string(role)
-	msg := sprintf("ISO 42001 4.1: [evidence invalid — input.organization_role is not a non-empty string (got %s)]", [type_name(role)])
 }
 
 _nonempty_string(value) if {
@@ -100,213 +105,250 @@ _nonempty_string(value) if {
 
 violations contains msg if {
 	_not_true(["context", "interested_parties_identified"])
-	msg := _finding("ISO 42001 4.2: Interested parties and their requirements relevant to the AIMS not identified", ["context", "interested_parties_identified"])
+	finding := "ISO 42001 4.2: Interested parties and their requirements relevant to the AIMS not identified"
+	msg := _finding(finding, ["context", "interested_parties_identified"])
 }
 
 violations contains msg if {
 	_not_true(["context", "aims_scope_documented"])
-	msg := _finding("ISO 42001 4.3: Scope of the AI management system not determined and documented", ["context", "aims_scope_documented"])
+	finding := "ISO 42001 4.3: Scope of the AI management system not determined and documented"
+	msg := _finding(finding, ["context", "aims_scope_documented"])
 }
 
 # ── Clause 5 — Leadership ────────────────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["leadership", "top_management_commitment"])
-	msg := _finding("ISO 42001 5.1: Top management leadership and commitment to the AIMS not demonstrated", ["leadership", "top_management_commitment"])
+	finding := "ISO 42001 5.1: Top management leadership and commitment to the AIMS not demonstrated"
+	msg := _finding(finding, ["leadership", "top_management_commitment"])
 }
 
 violations contains msg if {
 	_not_true(["leadership", "ai_policy_established"])
-	msg := _finding("ISO 42001 5.2 / A.2.2: AI policy not established, documented, and communicated", ["leadership", "ai_policy_established"])
+	finding := "ISO 42001 5.2 / A.2.2: AI policy not established, documented, and communicated"
+	msg := _finding(finding, ["leadership", "ai_policy_established"])
 }
 
 violations contains msg if {
 	_not_true(["leadership", "roles_responsibilities_assigned"])
-	msg := _finding("ISO 42001 5.3 / A.3.2: AI roles, responsibilities, and authorities not assigned and communicated", ["leadership", "roles_responsibilities_assigned"])
+	finding := "ISO 42001 5.3 / A.3.2: AI roles, responsibilities, and authorities not assigned and communicated"
+	msg := _finding(finding, ["leadership", "roles_responsibilities_assigned"])
 }
 
 # ── Clause 6 — Planning ──────────────────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["planning", "ai_risk_assessment_process"])
-	msg := _finding("ISO 42001 6.1.2: AI risk assessment process not established (criteria, identification, analysis, evaluation)", ["planning", "ai_risk_assessment_process"])
+	finding := "ISO 42001 6.1.2: AI risk assessment process not established (criteria, identification, analysis, evaluation)"
+	msg := _finding(finding, ["planning", "ai_risk_assessment_process"])
 }
 
 violations contains msg if {
 	_not_true(["planning", "ai_impact_assessment_process"])
-	msg := _finding("ISO 42001 6.1.4 / A.5: AI system impact assessment process not established — impacts on individuals, groups, and society", ["planning", "ai_impact_assessment_process"])
+	finding := "ISO 42001 6.1.4 / A.5: AI system impact assessment process not established — impacts on individuals, groups, and society"
+	msg := _finding(finding, ["planning", "ai_impact_assessment_process"])
 }
 
 violations contains msg if {
 	_not_true(["planning", "risk_treatment_plan"])
-	msg := _finding("ISO 42001 6.1.3: AI risk treatment plan not produced with controls selected against Annex A", ["planning", "risk_treatment_plan"])
+	finding := "ISO 42001 6.1.3: AI risk treatment plan not produced with controls selected against Annex A"
+	msg := _finding(finding, ["planning", "risk_treatment_plan"])
 }
 
 violations contains msg if {
 	_not_true(["planning", "measurable_objectives"])
-	msg := _finding("ISO 42001 6.2: Measurable AI objectives not established with plans to achieve them", ["planning", "measurable_objectives"])
+	finding := "ISO 42001 6.2: Measurable AI objectives not established with plans to achieve them"
+	msg := _finding(finding, ["planning", "measurable_objectives"])
 }
 
 # ── Clause 7 — Support ───────────────────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["support", "resources_determined"])
-	msg := _finding("ISO 42001 7.1 / A.4: Resources for the AIMS not determined (data, tooling, computing, human resources documented per A.4.2-A.4.6)", ["support", "resources_determined"])
+	finding := "ISO 42001 7.1 / A.4: Resources for the AIMS not determined (data, tooling, computing, human resources documented per A.4.2-A.4.6)"
+	msg := _finding(finding, ["support", "resources_determined"])
 }
 
 violations contains msg if {
 	_not_true(["support", "competence_ensured"])
-	msg := _finding("ISO 42001 7.2: Competence of persons doing AIMS work not ensured or evidenced", ["support", "competence_ensured"])
+	finding := "ISO 42001 7.2: Competence of persons doing AIMS work not ensured or evidenced"
+	msg := _finding(finding, ["support", "competence_ensured"])
 }
 
 violations contains msg if {
 	_not_true(["support", "awareness_program"])
-	msg := _finding("ISO 42001 7.3: Personnel not made aware of the AI policy and their AIMS contribution", ["support", "awareness_program"])
+	finding := "ISO 42001 7.3: Personnel not made aware of the AI policy and their AIMS contribution"
+	msg := _finding(finding, ["support", "awareness_program"])
 }
 
 violations contains msg if {
 	_not_true(["support", "documented_information_controlled"])
-	msg := _finding("ISO 42001 7.5: Documented information required by the AIMS not created, updated, and controlled", ["support", "documented_information_controlled"])
+	finding := "ISO 42001 7.5: Documented information required by the AIMS not created, updated, and controlled"
+	msg := _finding(finding, ["support", "documented_information_controlled"])
 }
 
 # ── Clause 8 — Operation ─────────────────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["operation", "processes_planned_controlled"])
-	msg := _finding("ISO 42001 8.1: Operational planning and control of AIMS processes not implemented", ["operation", "processes_planned_controlled"])
+	finding := "ISO 42001 8.1: Operational planning and control of AIMS processes not implemented"
+	msg := _finding(finding, ["operation", "processes_planned_controlled"])
 }
 
 violations contains msg if {
 	_not_true(["operation", "risk_assessments_at_intervals"])
-	msg := _finding("ISO 42001 8.2: AI risk assessments not performed at planned intervals and on significant change", ["operation", "risk_assessments_at_intervals"])
+	finding := "ISO 42001 8.2: AI risk assessments not performed at planned intervals and on significant change"
+	msg := _finding(finding, ["operation", "risk_assessments_at_intervals"])
 }
 
 violations contains msg if {
 	_not_true(["operation", "impact_assessments_performed"])
-	msg := _finding("ISO 42001 8.4: AI system impact assessments not performed per the 6.1.4 process", ["operation", "impact_assessments_performed"])
+	finding := "ISO 42001 8.4: AI system impact assessments not performed per the 6.1.4 process"
+	msg := _finding(finding, ["operation", "impact_assessments_performed"])
 }
 
 # ── Clause 9 — Performance Evaluation ────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["performance", "monitoring_measurement"])
-	msg := _finding("ISO 42001 9.1: AIMS performance not monitored, measured, analyzed, and evaluated", ["performance", "monitoring_measurement"])
+	finding := "ISO 42001 9.1: AIMS performance not monitored, measured, analyzed, and evaluated"
+	msg := _finding(finding, ["performance", "monitoring_measurement"])
 }
 
 violations contains msg if {
 	_not_true(["performance", "internal_audit_program"])
-	msg := _finding("ISO 42001 9.2: Internal audit program for the AIMS not conducted at planned intervals", ["performance", "internal_audit_program"])
+	finding := "ISO 42001 9.2: Internal audit program for the AIMS not conducted at planned intervals"
+	msg := _finding(finding, ["performance", "internal_audit_program"])
 }
 
 violations contains msg if {
 	_not_true(["performance", "management_review"])
-	msg := _finding("ISO 42001 9.3: Management review of the AIMS not performed at planned intervals", ["performance", "management_review"])
+	finding := "ISO 42001 9.3: Management review of the AIMS not performed at planned intervals"
+	msg := _finding(finding, ["performance", "management_review"])
 }
 
 # ── Clause 10 — Improvement ──────────────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["improvement", "nonconformity_corrective_action"])
-	msg := _finding("ISO 42001 10.2: Nonconformities not reacted to with corrective action and effectiveness review", ["improvement", "nonconformity_corrective_action"])
+	finding := "ISO 42001 10.2: Nonconformities not reacted to with corrective action and effectiveness review"
+	msg := _finding(finding, ["improvement", "nonconformity_corrective_action"])
 }
 
 # ── Annex A.3 — Internal Organization ────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "concern_reporting_process"])
-	msg := _finding("ISO 42001 A.3.3: Process for reporting concerns about the organization's role in AI systems not established", ["annex_a", "concern_reporting_process"])
+	finding := "ISO 42001 A.3.3: Process for reporting concerns about the organization's role in AI systems not established"
+	msg := _finding(finding, ["annex_a", "concern_reporting_process"])
 }
 
 # ── Annex A.4 — Resources for AI Systems ─────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "resources_documented"])
-	msg := _finding("ISO 42001 A.4.2: Resources for each AI system life-cycle stage (data, tooling, system, computing, human) not documented", ["annex_a", "resources_documented"])
+	finding := "ISO 42001 A.4.2: Resources for each AI system life-cycle stage (data, tooling, system, computing, human) not documented"
+	msg := _finding(finding, ["annex_a", "resources_documented"])
 }
 
 # ── Annex A.6 — AI System Life Cycle ─────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "responsible_development_objectives"])
-	msg := _finding("ISO 42001 A.6.1.2: Objectives for responsible development of AI systems not identified and documented", ["annex_a", "lifecycle", "responsible_development_objectives"])
+	finding := "ISO 42001 A.6.1.2: Objectives for responsible development of AI systems not identified and documented"
+	msg := _finding(finding, ["annex_a", "lifecycle", "responsible_development_objectives"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "requirements_specified"])
-	msg := _finding("ISO 42001 A.6.2.2: AI system requirements and specifications not documented", ["annex_a", "lifecycle", "requirements_specified"])
+	finding := "ISO 42001 A.6.2.2: AI system requirements and specifications not documented"
+	msg := _finding(finding, ["annex_a", "lifecycle", "requirements_specified"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "verification_validation"])
-	msg := _finding("ISO 42001 A.6.2.4: Verification and validation measures for AI systems not defined and applied", ["annex_a", "lifecycle", "verification_validation"])
+	finding := "ISO 42001 A.6.2.4: Verification and validation measures for AI systems not defined and applied"
+	msg := _finding(finding, ["annex_a", "lifecycle", "verification_validation"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "deployment_plan"])
-	msg := _finding("ISO 42001 A.6.2.5: AI system deployment plan (requirements met before deployment) not documented", ["annex_a", "lifecycle", "deployment_plan"])
+	finding := "ISO 42001 A.6.2.5: AI system deployment plan (requirements met before deployment) not documented"
+	msg := _finding(finding, ["annex_a", "lifecycle", "deployment_plan"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "operation_monitoring"])
-	msg := _finding("ISO 42001 A.6.2.6: AI system operation and monitoring (performance, drift, failures) not implemented", ["annex_a", "lifecycle", "operation_monitoring"])
+	finding := "ISO 42001 A.6.2.6: AI system operation and monitoring (performance, drift, failures) not implemented"
+	msg := _finding(finding, ["annex_a", "lifecycle", "operation_monitoring"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "technical_documentation"])
-	msg := _finding("ISO 42001 A.6.2.7: Technical documentation for each AI system not maintained for interested parties", ["annex_a", "lifecycle", "technical_documentation"])
+	finding := "ISO 42001 A.6.2.7: Technical documentation for each AI system not maintained for interested parties"
+	msg := _finding(finding, ["annex_a", "lifecycle", "technical_documentation"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "lifecycle", "event_logging"])
-	msg := _finding("ISO 42001 A.6.2.8: Event logs of AI system behavior not recorded and retained", ["annex_a", "lifecycle", "event_logging"])
+	finding := "ISO 42001 A.6.2.8: Event logs of AI system behavior not recorded and retained"
+	msg := _finding(finding, ["annex_a", "lifecycle", "event_logging"])
 }
 
 # ── Annex A.7 — Data for AI Systems ──────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "data", "management_process"])
-	msg := _finding("ISO 42001 A.7.2: Data management process for AI system data (privacy, security, transparency implications) not defined", ["annex_a", "data", "management_process"])
+	finding := "ISO 42001 A.7.2: Data management process for AI system data (privacy, security, transparency implications) not defined"
+	msg := _finding(finding, ["annex_a", "data", "management_process"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "data", "provenance_recorded"])
-	msg := _finding("ISO 42001 A.7.5: Provenance of data used in AI systems not recorded", ["annex_a", "data", "provenance_recorded"])
+	finding := "ISO 42001 A.7.5: Provenance of data used in AI systems not recorded"
+	msg := _finding(finding, ["annex_a", "data", "provenance_recorded"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "data", "quality_criteria"])
-	msg := _finding("ISO 42001 A.7.4: Data quality requirements and criteria for AI system data not defined and measured", ["annex_a", "data", "quality_criteria"])
+	finding := "ISO 42001 A.7.4: Data quality requirements and criteria for AI system data not defined and measured"
+	msg := _finding(finding, ["annex_a", "data", "quality_criteria"])
 }
 
 # ── Annex A.8 — Information for Interested Parties ───────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "interested_parties", "user_information"])
-	msg := _finding("ISO 42001 A.8.2: Information enabling users to understand and use AI systems appropriately not provided", ["annex_a", "interested_parties", "user_information"])
+	finding := "ISO 42001 A.8.2: Information enabling users to understand and use AI systems appropriately not provided"
+	msg := _finding(finding, ["annex_a", "interested_parties", "user_information"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "interested_parties", "incident_reporting"])
-	msg := _finding("ISO 42001 A.8.4: Process for reporting AI system incidents to interested parties not established", ["annex_a", "interested_parties", "incident_reporting"])
+	finding := "ISO 42001 A.8.4: Process for reporting AI system incidents to interested parties not established"
+	msg := _finding(finding, ["annex_a", "interested_parties", "incident_reporting"])
 }
 
 # ── Annex A.9 — Responsible Use ──────────────────────────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "responsible_use", "objectives_defined"])
-	msg := _finding("ISO 42001 A.9.2/A.9.3: Objectives and processes for responsible use of AI systems (intended-use alignment) not documented", ["annex_a", "responsible_use", "objectives_defined"])
+	finding := "ISO 42001 A.9.2/A.9.3: Objectives and processes for responsible use of AI systems (intended-use alignment) not documented"
+	msg := _finding(finding, ["annex_a", "responsible_use", "objectives_defined"])
 }
 
 # ── Annex A.10 — Third-Party Relationships ───────────────────────────────────
 
 violations contains msg if {
 	_not_true(["annex_a", "third_party", "responsibilities_allocated"])
-	msg := _finding("ISO 42001 A.10.2: Responsibilities between the organization and third parties (suppliers, partners, customers) in the AI life cycle not allocated", ["annex_a", "third_party", "responsibilities_allocated"])
+	finding := "ISO 42001 A.10.2: Responsibilities between the organization and third parties (suppliers, partners, customers) in the AI life cycle not allocated"
+	msg := _finding(finding, ["annex_a", "third_party", "responsibilities_allocated"])
 }
 
 violations contains msg if {
 	_not_true(["annex_a", "third_party", "supplier_process"])
-	msg := _finding("ISO 42001 A.10.3: Process to ensure supplier services align with the organization's responsible-AI approach not established", ["annex_a", "third_party", "supplier_process"])
+	finding := "ISO 42001 A.10.3: Process to ensure supplier services align with the organization's responsible-AI approach not established"
+	msg := _finding(finding, ["annex_a", "third_party", "supplier_process"])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────

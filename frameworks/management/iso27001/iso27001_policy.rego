@@ -113,7 +113,7 @@
 #   source: iso
 #   domains: [isms]
 #   coverage:
-#     checks: 109
+#     checks: 110
 #     cited: 100
 #     expected: 93
 #     found: 94

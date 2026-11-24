@@ -57,7 +57,8 @@ default compliant := false
 
 violation contains msg if {
 	_not_true(["recover", "recovery_planning", "recovery_plan_executed"])
-	msg := _finding("CSF RC.RP-01: Recovery plan not executed during or after a cybersecurity incident", ["recover", "recovery_planning", "recovery_plan_executed"])
+	finding := "CSF RC.RP-01: Recovery plan not executed during or after a cybersecurity incident"
+	msg := _finding(finding, ["recover", "recovery_planning", "recovery_plan_executed"])
 }
 
 compliant if count(violation) == 0

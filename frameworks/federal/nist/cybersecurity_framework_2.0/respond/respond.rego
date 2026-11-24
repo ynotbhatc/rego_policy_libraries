@@ -57,22 +57,26 @@ default compliant := false
 
 violation contains msg if {
 	_not_true(["respond", "analysis", "vulnerability_disclosures_addressed"])
-	msg := _finding("CSF ID.RA-08: Vulnerability disclosures from internal/external sources not addressed (fact check carried from CSF 1.1 RS.AN-05, which CPRT records as moved to ID.RA-08)", ["respond", "analysis", "vulnerability_disclosures_addressed"])
+	finding := "CSF ID.RA-08: Vulnerability disclosures from internal/external sources not addressed (fact check carried from CSF 1.1 RS.AN-05, which CPRT records as moved to ID.RA-08)"
+	msg := _finding(finding, ["respond", "analysis", "vulnerability_disclosures_addressed"])
 }
 
 violation contains msg if {
 	_not_true(["respond", "communications", "events_reported_within_criteria"])
-	msg := _finding("CSF RS.CO-02: Incidents not reported consistent with established criteria", ["respond", "communications", "events_reported_within_criteria"])
+	finding := "CSF RS.CO-02: Incidents not reported consistent with established criteria"
+	msg := _finding(finding, ["respond", "communications", "events_reported_within_criteria"])
 }
 
 violation contains msg if {
 	_not_true(["respond", "communications", "information_shared_with_stakeholders"])
-	msg := _finding("CSF RS.CO-03: Response information not shared with internal stakeholders", ["respond", "communications", "information_shared_with_stakeholders"])
+	finding := "CSF RS.CO-03: Response information not shared with internal stakeholders"
+	msg := _finding(finding, ["respond", "communications", "information_shared_with_stakeholders"])
 }
 
 violation contains msg if {
 	_not_true(["respond", "mitigation", "incidents_contained"])
-	msg := _finding("CSF RS.MI-01: Incidents not contained", ["respond", "mitigation", "incidents_contained"])
+	finding := "CSF RS.MI-01: Incidents not contained"
+	msg := _finding(finding, ["respond", "mitigation", "incidents_contained"])
 }
 
 compliant if count(violation) == 0

@@ -62,7 +62,7 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 112
+#     checks: 113
 #     cited: 109
 #     expected: 106
 #     found: 109

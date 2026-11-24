@@ -57,32 +57,38 @@ default compliant := false
 
 violation contains msg if {
 	_not_true(["detect", "anomalies_events", "detected_events_analyzed"])
-	msg := _finding("CSF DE.AE-02: Detected events not analyzed to understand attack targets/methods", ["detect", "anomalies_events", "detected_events_analyzed"])
+	finding := "CSF DE.AE-02: Detected events not analyzed to understand attack targets/methods"
+	msg := _finding(finding, ["detect", "anomalies_events", "detected_events_analyzed"])
 }
 
 violation contains msg if {
 	_not_true(["detect", "anomalies_events", "event_data_aggregated"])
-	msg := _finding("CSF DE.AE-03: Event data not aggregated and correlated from multiple sources", ["detect", "anomalies_events", "event_data_aggregated"])
+	finding := "CSF DE.AE-03: Event data not aggregated and correlated from multiple sources"
+	msg := _finding(finding, ["detect", "anomalies_events", "event_data_aggregated"])
 }
 
 violation contains msg if {
 	_not_true(["detect", "anomalies_events", "impact_determined"])
-	msg := _finding("CSF DE.AE-04: Impact of events not determined", ["detect", "anomalies_events", "impact_determined"])
+	finding := "CSF DE.AE-04: Impact of events not determined"
+	msg := _finding(finding, ["detect", "anomalies_events", "impact_determined"])
 }
 
 violation contains msg if {
 	_not_true(["detect", "continuous_monitoring", "network_monitored"])
-	msg := _finding("CSF DE.CM-01: Network not monitored to detect potential cybersecurity events", ["detect", "continuous_monitoring", "network_monitored"])
+	finding := "CSF DE.CM-01: Network not monitored to detect potential cybersecurity events"
+	msg := _finding(finding, ["detect", "continuous_monitoring", "network_monitored"])
 }
 
 violation contains msg if {
 	_not_true(["detect", "continuous_monitoring", "physical_environment_monitored"])
-	msg := _finding("CSF DE.CM-02: Physical environment not monitored for unauthorized access", ["detect", "continuous_monitoring", "physical_environment_monitored"])
+	finding := "CSF DE.CM-02: Physical environment not monitored for unauthorized access"
+	msg := _finding(finding, ["detect", "continuous_monitoring", "physical_environment_monitored"])
 }
 
 violation contains msg if {
 	_not_true(["detect", "continuous_monitoring", "external_provider_activity_monitored"])
-	msg := _finding("CSF DE.CM-06: External service provider activity not monitored", ["detect", "continuous_monitoring", "external_provider_activity_monitored"])
+	finding := "CSF DE.CM-06: External service provider activity not monitored"
+	msg := _finding(finding, ["detect", "continuous_monitoring", "external_provider_activity_monitored"])
 }
 
 compliant if count(violation) == 0
