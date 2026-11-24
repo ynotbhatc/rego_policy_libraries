@@ -10,7 +10,7 @@
 #   source: aac
 #   domains: [threat, cryptomining]
 #   coverage:
-#     checks: 21
+#     checks: 22
 #     cited: 1
 #     density: sized
 #     basis: size

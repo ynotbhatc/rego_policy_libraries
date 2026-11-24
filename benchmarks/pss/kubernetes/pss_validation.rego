@@ -35,10 +35,10 @@
 #   source: kubernetes
 #   domains: [kubernetes, container]
 #   coverage:
-#     checks: 34
+#     checks: 36
 #     cited: 0
 #     expected: 18
-#     found: 34
+#     found: 36
 #     scope: module
 #     density: over
 #     basis: declared-total
