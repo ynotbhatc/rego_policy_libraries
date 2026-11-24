@@ -84,6 +84,15 @@ _scc_privileged(s) if s.allowPrivilegedContainer == true
 
 _scc_privileged(s) if object.get(s, ["runAsUser", "type"], "") != "MustRunAsRange"
 
+# The allow* fields are booleans in the API object. A string or a number in their place can be read neither as
+# a refusal nor as a grant, so the SCC counts as an offender until the fact is collected with its real type.
+_scc_offender(s) if {
+	some field in ["allowHostIPC", "allowHostPID", "allowHostPorts", "allowHostNetwork", "allowHostDirVolumePlugin", "allowPrivilegedContainer"]
+	value := s[field]
+	not is_null(value)
+	not is_boolean(value)
+}
+
 _scc_subjects(s) := {x | some k in ["users", "groups"]; xs := object.get(s, k, []); some x in xs}
 
 _scc_offender(s) if {
@@ -132,7 +141,7 @@ def nodes_rule(sid, name, conds, bad_nodes, expect, fix, comment, extra_ev=(), e
 # ── cluster configuration ─────────────────────────────────────────────────────────────────────────────────────
 T.R("core", "CNTR-OS-000010", "registries_secure", [("openshift", "image_config")],
     [["ic := input.openshift.image_config", 'allowed := object.get(ic, ["spec", "allowedRegistriesForImport"], [])', "is_array(allowed)",
-      "count([r | some r in allowed; r.insecure == true]) == 0",
+      'count([r | some r in allowed; object.get(r, "insecure", false) != false]) == 0',
       'insecure := object.get(ic, ["spec", "registrySources", "insecureRegistries"], [])', "is_array(insecure)", "count(insecure) == 0"]],
     {"openshift": {"image_config": {"spec": {"allowedRegistriesForImport": [{"domainName": "registry.redhat.io", "insecure": False}]}}}},
     [{"openshift": {"image_config": {"spec": {"allowedRegistriesForImport": [{"domainName": "r.example", "insecure": True}]}}}},
