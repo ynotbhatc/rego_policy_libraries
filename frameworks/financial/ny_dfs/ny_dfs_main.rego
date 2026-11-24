@@ -64,171 +64,201 @@ compliant if {
 # ── 500.2 — Cybersecurity Program ────────────────────────────────────────────
 
 violations contains msg if {
-	not input.cybersecurity_program.exists
-	msg := "23 NYCRR 500.2: Cybersecurity program not established to protect information systems and nonpublic information"
+	note := _unmet(_root, ["cybersecurity_program", "exists"])
+	text := "23 NYCRR 500.2: Cybersecurity program not established to protect information systems and nonpublic information"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.cybersecurity_program.risk_based.design
-	msg := "23 NYCRR 500.2(b): Cybersecurity program not designed based on covered entity's risk assessment"
+	note := _unmet(_root, ["cybersecurity_program", "risk_based", "design"])
+	text := "23 NYCRR 500.2(b): Cybersecurity program not designed based on covered entity's risk assessment"
+	msg := concat("", [text, note])
 }
 
 # ── 500.3 — Cybersecurity Policy ─────────────────────────────────────────────
 
 violations contains msg if {
-	not input.cybersecurity_policy.documented
-	msg := "23 NYCRR 500.3: Written cybersecurity policy not implemented and maintained"
+	note := _unmet(_root, ["cybersecurity_policy", "documented"])
+	text := "23 NYCRR 500.3: Written cybersecurity policy not implemented and maintained"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.cybersecurity_policy.board_approved
-	msg := "23 NYCRR 500.3: Cybersecurity policy not approved by senior officer or board"
+	note := _unmet(_root, ["cybersecurity_policy", "board_approved"])
+	text := "23 NYCRR 500.3: Cybersecurity policy not approved by senior officer or board"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.cybersecurity_policy.annual_review
-	msg := "23 NYCRR 500.3: Cybersecurity policy not reviewed at least annually"
+	note := _unmet(_root, ["cybersecurity_policy", "annual_review"])
+	text := "23 NYCRR 500.3: Cybersecurity policy not reviewed at least annually"
+	msg := concat("", [text, note])
 }
 
 # ── 500.4 — CISO ─────────────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.ciso.designated
-	msg := "23 NYCRR 500.4(a): Qualified CISO not designated to oversee cybersecurity program"
+	note := _unmet(_root, ["ciso", "designated"])
+	text := "23 NYCRR 500.4(a): Qualified CISO not designated to oversee cybersecurity program"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.ciso.annual_report.to_board
-	msg := "23 NYCRR 500.4(b): CISO has not provided annual report to board on cybersecurity program"
+	note := _unmet(_root, ["ciso", "annual_report", "to_board"])
+	text := "23 NYCRR 500.4(b): CISO has not provided annual report to board on cybersecurity program"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.ciso.annual_report.includes_material_issues
-	msg := "23 NYCRR 500.4(b): CISO annual report does not address material cybersecurity issues"
+	note := _unmet(_root, ["ciso", "annual_report", "includes_material_issues"])
+	text := "23 NYCRR 500.4(b): CISO annual report does not address material cybersecurity issues"
+	msg := concat("", [text, note])
 }
 
 # ── 500.5 — Penetration Testing & Vulnerability Assessments ──────────────────
 
 violations contains msg if {
-	not input.testing.penetration_test.annual
-	msg := "23 NYCRR 500.5(a)(1): Annual penetration testing of information systems not performed"
+	note := _unmet(_root, ["testing", "penetration_test", "annual"])
+	text := "23 NYCRR 500.5(a)(1): Annual penetration testing of information systems not performed"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.testing.vulnerability_assessment.semi_annual
-	msg := "23 NYCRR 500.5(a)(2): Bi-annual automated vulnerability scans not conducted"
+	note := _unmet(_root, ["testing", "vulnerability_assessment", "semi_annual"])
+	text := "23 NYCRR 500.5(a)(2): Bi-annual automated vulnerability scans not conducted"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.testing.findings.remediation_tracked
-	msg := "23 NYCRR 500.5: Penetration test and vulnerability assessment findings not tracked to remediation"
+	note := _unmet(_root, ["testing", "findings", "remediation_tracked"])
+	text := "23 NYCRR 500.5: Penetration test and vulnerability assessment findings not tracked to remediation"
+	msg := concat("", [text, note])
 }
 
 # ── 500.6 — Audit Trail ──────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.audit_trail.systems.tamper_resistant
-	msg := "23 NYCRR 500.6(a): Audit trail systems not designed to protect against tampering and alteration"
+	note := _unmet(_root, ["audit_trail", "systems", "tamper_resistant"])
+	text := "23 NYCRR 500.6(a): Audit trail systems not designed to protect against tampering and alteration"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.audit_trail.retention.minimum_3_years_financial
-	msg := "23 NYCRR 500.6(b): Financial records audit trail not retained for minimum 3 years"
+	note := _unmet(_root, ["audit_trail", "retention", "minimum_3_years_financial"])
+	text := "23 NYCRR 500.6(b): Financial records audit trail not retained for minimum 3 years"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.audit_trail.retention.minimum_5_years_security
-	msg := "23 NYCRR 500.6(b): Cybersecurity event audit trail not retained for minimum 5 years"
+	note := _unmet(_root, ["audit_trail", "retention", "minimum_5_years_security"])
+	text := "23 NYCRR 500.6(b): Cybersecurity event audit trail not retained for minimum 5 years"
+	msg := concat("", [text, note])
 }
 
 # ── 500.7 — Access Privileges ────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.access_control.least_privilege.enforced
-	msg := "23 NYCRR 500.7: Least privilege not enforced — access limited to what is necessary for job function"
+	note := _unmet(_root, ["access_control", "least_privilege", "enforced"])
+	text := "23 NYCRR 500.7: Least privilege not enforced — access limited to what is necessary for job function"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.access_control.privileged_accounts.regular_review
-	msg := "23 NYCRR 500.7(b): Privileged account access not reviewed at least annually"
+	note := _unmet(_root, ["access_control", "privileged_accounts", "regular_review"])
+	text := "23 NYCRR 500.7(b): Privileged account access not reviewed at least annually"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.access_control.terminated_users.prompt_revocation
-	msg := "23 NYCRR 500.7(c): Access not promptly revoked for terminated employees"
+	note := _unmet(_root, ["access_control", "terminated_users", "prompt_revocation"])
+	text := "23 NYCRR 500.7(c): Access not promptly revoked for terminated employees"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.access_control.password_policy.strong
-	msg := "23 NYCRR 500.7(d): Strong password policy not enforced for system access"
+	note := _unmet(_root, ["access_control", "password_policy", "strong"])
+	text := "23 NYCRR 500.7(d): Strong password policy not enforced for system access"
+	msg := concat("", [text, note])
 }
 
 # ── 500.9 — Risk Assessment ───────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.risk_assessment.conducted
-	msg := "23 NYCRR 500.9: Cybersecurity risk assessment not conducted"
+	note := _unmet(_root, ["risk_assessment", "conducted"])
+	text := "23 NYCRR 500.9: Cybersecurity risk assessment not conducted"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.risk_assessment.periodic_review
-	msg := "23 NYCRR 500.9(a): Risk assessment not reviewed and updated periodically"
+	note := _unmet(_root, ["risk_assessment", "periodic_review"])
+	text := "23 NYCRR 500.9(a): Risk assessment not reviewed and updated periodically"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.risk_assessment.covers_nonpublic_information
-	msg := "23 NYCRR 500.9(a)(2): Risk assessment does not address risks to nonpublic information"
+	note := _unmet(_root, ["risk_assessment", "covers_nonpublic_information"])
+	text := "23 NYCRR 500.9(a)(2): Risk assessment does not address risks to nonpublic information"
+	msg := concat("", [text, note])
 }
 
 # ── 500.10 — Cybersecurity Personnel ─────────────────────────────────────────
 
 violations contains msg if {
-	not input.personnel.qualified_staff.available
-	msg := "23 NYCRR 500.10(a): Qualified cybersecurity personnel not employed or engaged"
+	note := _unmet(_root, ["personnel", "qualified_staff", "available"])
+	text := "23 NYCRR 500.10(a): Qualified cybersecurity personnel not employed or engaged"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.personnel.training.cybersecurity.annual
-	msg := "23 NYCRR 500.10(b): Annual cybersecurity training not provided to all relevant personnel"
+	note := _unmet(_root, ["personnel", "training", "cybersecurity", "annual"])
+	text := "23 NYCRR 500.10(b): Annual cybersecurity training not provided to all relevant personnel"
+	msg := concat("", [text, note])
 }
 
 # ── 500.11 — Third-Party Service Provider Security ────────────────────────────
 
 violations contains msg if {
-	not input.third_party.policy.documented
-	msg := "23 NYCRR 500.11: Written third-party service provider security policy not implemented"
+	note := _unmet(_root, ["third_party", "policy", "documented"])
+	text := "23 NYCRR 500.11: Written third-party service provider security policy not implemented"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.third_party.contracts.security_controls_required
-	msg := "23 NYCRR 500.11(a)(1): Third-party contracts do not require implementation of security controls"
+	note := _unmet(_root, ["third_party", "contracts", "security_controls_required"])
+	text := "23 NYCRR 500.11(a)(1): Third-party contracts do not require implementation of security controls"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.third_party.contracts.prompt_notification_required
-	msg := "23 NYCRR 500.11(a)(2): Third-party contracts do not require prompt notification of cybersecurity events"
+	note := _unmet(_root, ["third_party", "contracts", "prompt_notification_required"])
+	text := "23 NYCRR 500.11(a)(2): Third-party contracts do not require prompt notification of cybersecurity events"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.third_party.assessment.periodic_due_diligence
-	msg := "23 NYCRR 500.11(a)(3): Periodic due diligence of third-party service providers not conducted"
+	note := _unmet(_root, ["third_party", "assessment", "periodic_due_diligence"])
+	text := "23 NYCRR 500.11(a)(3): Periodic due diligence of third-party service providers not conducted"
+	msg := concat("", [text, note])
 }
 
 # ── 500.12 — Multi-Factor Authentication ─────────────────────────────────────
 
 violations contains msg if {
-	not input.mfa.remote_access.enforced
-	msg := "23 NYCRR 500.12: MFA not implemented for remote access to information systems"
+	note := _unmet(_root, ["mfa", "remote_access", "enforced"])
+	text := "23 NYCRR 500.12: MFA not implemented for remote access to information systems"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.mfa.third_party_access.enforced
-	msg := "23 NYCRR 500.12: MFA not implemented for third-party access to internal networks"
+	note := _unmet(_root, ["mfa", "third_party_access", "enforced"])
+	text := "23 NYCRR 500.12: MFA not implemented for third-party access to internal networks"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.mfa.privileged_accounts.enforced
-	msg := "23 NYCRR 500.12: MFA not implemented for privileged account access"
+	note := _unmet(_root, ["mfa", "privileged_accounts", "enforced"])
+	text := "23 NYCRR 500.12: MFA not implemented for privileged account access"
+	msg := concat("", [text, note])
 }
 
 # Final-tranche obligation (enforceable since 2025-11-01): MFA for ANY
@@ -247,87 +277,102 @@ violations contains msg if {
 # 500.13(a) (second amendment, enforceable 2025-11-01): written policies
 # and procedures for a complete, accurate asset inventory.
 violations contains msg if {
-	not input.asset_inventory.maintained == true
-	msg := "23 NYCRR 500.13(a) (second amendment, enforceable 2025-11-01): complete asset inventory of information systems not maintained"
+	note := _unmet(_root, ["asset_inventory", "maintained"])
+	text := "23 NYCRR 500.13(a) (second amendment, enforceable 2025-11-01): complete asset inventory of information systems not maintained"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
 	input.asset_inventory.maintained == true
-	not input.asset_inventory.tracks_required_fields == true
-	msg := "23 NYCRR 500.13(a): asset inventory does not track the required fields — owner, location, classification/sensitivity, support expiration date, recovery time objectives"
+	note := _unmet(_root, ["asset_inventory", "tracks_required_fields"])
+	text := "23 NYCRR 500.13(a): asset inventory does not track the required fields — owner, location, classification/sensitivity, support expiration date, recovery time objectives"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.data_retention.policy.documented
-	msg := "23 NYCRR 500.13: Data retention and disposal policy not documented"
+	note := _unmet(_root, ["data_retention", "policy", "documented"])
+	text := "23 NYCRR 500.13: Data retention and disposal policy not documented"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.data_retention.nonpublic_info.disposed_when_no_longer_needed
-	msg := "23 NYCRR 500.13: Nonpublic information not securely disposed when no longer needed"
+	note := _unmet(_root, ["data_retention", "nonpublic_info", "disposed_when_no_longer_needed"])
+	text := "23 NYCRR 500.13: Nonpublic information not securely disposed when no longer needed"
+	msg := concat("", [text, note])
 }
 
 # ── 500.14 — Training and Monitoring ─────────────────────────────────────────
 
 violations contains msg if {
-	not input.training.security_awareness.annual
-	msg := "23 NYCRR 500.14(a): Annual cybersecurity awareness training not provided to all personnel"
+	note := _unmet(_root, ["training", "security_awareness", "annual"])
+	text := "23 NYCRR 500.14(a): Annual cybersecurity awareness training not provided to all personnel"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.monitoring.anomalous_activity.systems_in_place
-	msg := "23 NYCRR 500.14(b): Monitoring systems not in place to detect anomalous activity"
+	note := _unmet(_root, ["monitoring", "anomalous_activity", "systems_in_place"])
+	text := "23 NYCRR 500.14(b): Monitoring systems not in place to detect anomalous activity"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.monitoring.user_activity.privileged_users_monitored
-	msg := "23 NYCRR 500.14(b): Authorized user activity not monitored to detect unauthorized access"
+	note := _unmet(_root, ["monitoring", "user_activity", "privileged_users_monitored"])
+	text := "23 NYCRR 500.14(b): Authorized user activity not monitored to detect unauthorized access"
+	msg := concat("", [text, note])
 }
 
 # ── 500.15 — Encryption ───────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.encryption.nonpublic_info.in_transit
-	msg := "23 NYCRR 500.15: Nonpublic information not encrypted in transit over external networks"
+	note := _unmet(_root, ["encryption", "nonpublic_info", "in_transit"])
+	text := "23 NYCRR 500.15: Nonpublic information not encrypted in transit over external networks"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.encryption.nonpublic_info.at_rest
-	msg := "23 NYCRR 500.15: Nonpublic information not encrypted at rest"
+	note := _unmet(_root, ["encryption", "nonpublic_info", "at_rest"])
+	text := "23 NYCRR 500.15: Nonpublic information not encrypted at rest"
+	msg := concat("", [text, note])
 }
 
 # ── 500.16 — Incident Response Plan ──────────────────────────────────────────
 
 violations contains msg if {
-	not input.incident_response.plan.documented
-	msg := "23 NYCRR 500.16: Written incident response plan not established and maintained"
+	note := _unmet(_root, ["incident_response", "plan", "documented"])
+	text := "23 NYCRR 500.16: Written incident response plan not established and maintained"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.incident_response.plan.tested_annually
-	msg := "23 NYCRR 500.16: Incident response plan not tested at least annually"
+	note := _unmet(_root, ["incident_response", "plan", "tested_annually"])
+	text := "23 NYCRR 500.16: Incident response plan not tested at least annually"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.incident_response.plan.roles_defined
-	msg := "23 NYCRR 500.16(b)(1): Roles and responsibilities not defined in incident response plan"
+	note := _unmet(_root, ["incident_response", "plan", "roles_defined"])
+	text := "23 NYCRR 500.16(b)(1): Roles and responsibilities not defined in incident response plan"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.business_continuity.plan.documented
-	msg := "23 NYCRR 500.16: Business continuity plan not established for material cybersecurity events"
+	note := _unmet(_root, ["business_continuity", "plan", "documented"])
+	text := "23 NYCRR 500.16: Business continuity plan not established for material cybersecurity events"
+	msg := concat("", [text, note])
 }
 
 # ── 500.17 — Notices to Superintendent ───────────────────────────────────────
 
 violations contains msg if {
-	not input.superintendent_notice.process.within_72_hours
-	msg := "23 NYCRR 500.17(a): Process not established to notify DFS Superintendent within 72 hours of material cybersecurity event"
+	note := _unmet(_root, ["superintendent_notice", "process", "within_72_hours"])
+	text := "23 NYCRR 500.17(a): Process not established to notify DFS Superintendent within 72 hours of material cybersecurity event"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
-	not input.superintendent_notice.annual_certification.filed
-	msg := "23 NYCRR 500.17(b): Annual certification of compliance not filed with DFS Superintendent"
+	note := _unmet(_root, ["superintendent_notice", "annual_certification", "filed"])
+	text := "23 NYCRR 500.17(b): Annual certification of compliance not filed with DFS Superintendent"
+	msg := concat("", [text, note])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────
@@ -363,3 +408,30 @@ compliance_report := {
 	"violation_count": count(violations),
 	"failed_controls": min([44, count(violations)]),
 }
+
+# ── Evidence helpers ─────────────────────────────────────────────────────────
+# Evidence rule: only the boolean true passes a yes/no fact. _unmet is defined when the fact is not the
+# boolean true; its value is appended to the finding and names the evidence problem (missing, null, or a
+# value that is not a boolean, such as the strings "true" and "false"). A collected false adds nothing.
+# _problem names the same evidence problem for a fact that switches an obligation on or off: such a fact
+# must be stated as true or false and is never inferred from a missing field.
+# The input document itself may be absent or not an object: every fact then reads as not collected.
+default _root := {}
+
+_root := input if is_object(input)
+
+_fact(root, path) := value if {
+	is_object(root)
+	value := object.get(root, path, null)
+} else := null
+
+_problem(root, path) := sprintf("evidence missing: %s not collected", [concat(".", path)]) if _fact(root, path) == null
+
+_problem(root, path) := sprintf("evidence invalid: %s is not a boolean (got %s)", [concat(".", path), type_name(_fact(root, path))]) if {
+	_fact(root, path) != null
+	not is_boolean(_fact(root, path))
+}
+
+_unmet(root, path) := "" if _fact(root, path) == false
+
+_unmet(root, path) := concat("", [" — ", _problem(root, path)]) if not is_boolean(_fact(root, path))
