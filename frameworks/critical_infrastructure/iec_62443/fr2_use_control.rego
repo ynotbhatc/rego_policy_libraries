@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 37
+#     checks: 38
 #     cited: 13
 #     density: sized
 #     basis: size
@@ -428,35 +428,35 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 2.2 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.3 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.4 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.5 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.6 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.7 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.8 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 2.12 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 # SL-dependent requirements are gated on target_sl. Without a number they
@@ -526,6 +526,12 @@ violations contains msg if {
 		"IEC 62443 %s (UC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
 		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
 	)
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
 }
 
 # ---------------------------------------------------------------------------

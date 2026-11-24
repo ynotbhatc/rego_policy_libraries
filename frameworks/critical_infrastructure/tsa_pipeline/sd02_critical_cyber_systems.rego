@@ -6,14 +6,14 @@
 #   source: tsa
 #   domains: [ot, pipeline]
 #   coverage:
-#     checks: 11
+#     checks: 15
 #     cited: 5
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package tsa_pipeline.sd02_critical_cyber_systems
 
 import rego.v1

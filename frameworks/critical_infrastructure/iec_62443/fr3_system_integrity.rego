@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 29
+#     checks: 30
 #     cited: 10
 #     density: sized
 #     basis: size
@@ -341,31 +341,31 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 3.1 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.2 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.3 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.5 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.6 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.7 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 3.8 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 # SL-dependent requirements are gated on target_sl. Without a number they
@@ -431,6 +431,12 @@ violations contains msg if {
 		"IEC 62443 %s (SI): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
 		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
 	)
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
 }
 
 # ---------------------------------------------------------------------------

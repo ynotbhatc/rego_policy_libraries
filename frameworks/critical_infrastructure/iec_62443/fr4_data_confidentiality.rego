@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 16
+#     checks: 17
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iec_62443.fr4
 
 import rego.v1
@@ -203,7 +203,7 @@ violations contains msg if {
 
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
 violations contains "IEC 62443 SR 4.1 (DC): FAIL-CLOSED - facts 'input.ics_systems' were not supplied or are empty; this module cannot be evaluated and is reported non-compliant" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 # SL-dependent requirements are gated on target_sl; without it they never run.
@@ -217,11 +217,11 @@ violations contains "IEC 62443 SR 4.1 (DC): evidence missing - input.target_sl n
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 4.2 (DC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 4.3 (DC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 compliant if count(violations) == 0
@@ -274,6 +274,12 @@ violations contains msg if {
 		"IEC 62443 %s (DC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
 		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
 	)
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
 }
 
 # ---------------------------------------------------------------------------

@@ -109,7 +109,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	count(object.get(input, "zones", [])) == 0
+	not _zones_collected
 	msg := "IEC 62443-3-2 ZCR 2: No security zones defined. The IACS must be divided into security zones based on criticality, function, and required security level."
 }
 
@@ -238,6 +238,12 @@ compliance_report := {
 	"target_sl": object.get(input, "target_sl", 0),
 	"compliant": compliant,
 	"violations": violations,
+}
+
+# The zone inventory is evidence only as a non-empty array (null or a string is "not collected").
+_zones_collected if {
+	is_array(input.zones)
+	count(input.zones) > 0
 }
 
 # ---------------------------------------------------------------------------

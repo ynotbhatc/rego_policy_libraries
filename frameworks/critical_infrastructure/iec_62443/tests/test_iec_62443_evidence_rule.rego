@@ -362,6 +362,17 @@ _mutations contains {"case": sprintf("%s removed", [_label(p)]), "input": inp} i
 	inp := json.patch(all_pass, [{"op": "remove", "path": p}])
 }
 
+# Every top-level section removed, null, a string and an empty array.
+_mutations contains {"case": sprintf("%s := %s", [key, json.marshal(bad)]), "input": inp} if {
+	some key, _ in all_pass
+	some bad in [null, "true", []]
+	inp := object.union(all_pass, {key: bad})
+}
+
+_mutations contains {"case": sprintf("%s removed", [key]), "input": object.remove(all_pass, [key])} if {
+	some key, _ in all_pass
+}
+
 # The mutated inputs that still pass (empty when the evidence rule holds).
 escapes contains m.case if {
 	some m in _mutations

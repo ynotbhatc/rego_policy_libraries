@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 38
+#     checks: 39
 #     cited: 14
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iec_62443.fr1
 
 import rego.v1
@@ -431,31 +431,31 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 1.1 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.2 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.7 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.10 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.11 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.12 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.13 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 1.8 (IAC): evidence missing — input.authentication not collected, so this requirement cannot be verified" if {
@@ -527,6 +527,12 @@ violations contains msg if {
 		"IEC 62443 %s (IAC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
 		[requirement, object.get(system, "name", "<unnamed>"), fact, _ev_item(system, fact)],
 	)
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
 }
 
 # ---------------------------------------------------------------------------

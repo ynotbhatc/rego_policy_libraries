@@ -396,19 +396,19 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 7.2 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 7.5 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 7.6 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 7.7 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 # SL-dependent requirements are gated on target_sl. Without a number they
@@ -442,6 +442,12 @@ compliance_report := {
 	"passing_srs": fr7_passing_srs,
 	"compliant": compliant,
 	"violations": violations,
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
 }
 
 # ---------------------------------------------------------------------------

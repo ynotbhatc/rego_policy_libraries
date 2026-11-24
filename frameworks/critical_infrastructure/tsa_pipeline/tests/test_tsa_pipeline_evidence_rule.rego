@@ -51,7 +51,6 @@ all_pass := {
 			"policy_documented": true,
 		},
 	},
-	"assessment_date": "2026-11-24",
 	"assessment_plan": {
 		"annual_report": {
 			"methods_documented": true,
@@ -168,7 +167,6 @@ all_pass := {
 		"us_citizen_primary_intelligence_contact": true,
 		"us_person_restricted_info_procedures": true,
 	},
-	"entity_name": "Example Pipeline",
 	"implementation_plan": {
 		"amendments": {
 			"denials": [
@@ -328,7 +326,6 @@ all_pass := {
 			},
 		],
 	},
-	"pipeline_type": "natural_gas",
 	"records": {
 		"activity_snapshot": {
 			"east_west_traffic": true,
@@ -394,6 +391,17 @@ _mutations contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)])
 _mutations contains {"case": sprintf("%s removed", [_label(p)]), "input": inp} if {
 	some p in array.concat(_bool_leaves, _number_leaves)
 	inp := json.patch(all_pass, [{"op": "remove", "path": p}])
+}
+
+# Every top-level section removed, null, a string and an empty array.
+_mutations contains {"case": sprintf("%s := %s", [key, json.marshal(bad)]), "input": inp} if {
+	some key, _ in all_pass
+	some bad in [null, "true", []]
+	inp := object.union(all_pass, {key: bad})
+}
+
+_mutations contains {"case": sprintf("%s removed", [key]), "input": object.remove(all_pass, [key])} if {
+	some key, _ in all_pass
 }
 
 # The mutated inputs that still pass (empty when the evidence rule holds).

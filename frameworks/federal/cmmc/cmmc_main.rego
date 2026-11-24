@@ -6,7 +6,7 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 49
+#     checks: 50
 #     cited: 17
 #     density: orchestrator
 #     basis: role

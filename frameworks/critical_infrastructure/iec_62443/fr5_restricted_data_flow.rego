@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 20
+#     checks: 24
 #     cited: 5
 #     density: sized
 #     basis: size
@@ -84,7 +84,7 @@ zone_class(name) := z.type if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	count(object.get(input, "zones", [])) == 0
+	not _zones_collected
 	msg := "IEC 62443 SR 5.1 (RDF): No network zones defined. IEC 62443 requires the IACS to be segmented into security zones with clearly defined boundaries."
 }
 
@@ -109,7 +109,7 @@ violations contains msg if {
 violations contains msg if {
 	is_number(input.target_sl)
 	input.target_sl >= 2
-	count(object.get(input, "zones", [])) < 3
+	not _three_zones_defined
 	msg := sprintf(
 		"IEC 62443 SR 5.1 RE 1 SL%v (RDF): Insufficient zone segmentation. At Security Level 2+, at minimum three distinct zones are required: corporate IT, DMZ, and OT/ICS control.",
 		[input.target_sl],
@@ -273,7 +273,7 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains "IEC 62443 SR 5.4 (RDF): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
-	count(object.get(input, "ics_systems", [])) == 0
+	not _ics_systems_collected
 }
 
 violations contains "IEC 62443 SR 5.3 (RDF): evidence missing — input.network not collected, so this requirement cannot be verified" if {
@@ -350,6 +350,33 @@ violations contains msg if {
 violations contains msg if {
 	not is_boolean(object.get(_facts, ["network", "direct_internet_connectivity_to_ics"], null))
 	msg := concat("", ["IEC 62443 SR 5.1 (RDF): input.network.direct_internet_connectivity_to_ics is not stated as true or false, so direct Internet connectivity of the IACS cannot be ruled out.", _ev_input("network.direct_internet_connectivity_to_ics")])
+}
+
+# An inventory is evidence only as a non-empty array: null, a string or an empty list is "not collected".
+_ics_systems_collected if {
+	is_array(input.ics_systems)
+	count(input.ics_systems) > 0
+}
+
+# The zone inventory is evidence only as a non-empty array (null or a string is "not collected").
+_zones_collected if {
+	is_array(input.zones)
+	count(input.zones) > 0
+}
+
+_three_zones_defined if {
+	is_array(input.zones)
+	count(input.zones) >= 3
+}
+
+# SR 5.2 is decided per conduit: without the conduit inventory the zone boundaries cannot be verified.
+violations contains "IEC 62443 SR 5.2 (RDF): evidence missing - input.conduits not collected (absent, not an array or empty), so zone boundary protection cannot be verified" if {
+	not _conduits_collected
+}
+
+_conduits_collected if {
+	is_array(input.conduits)
+	count(input.conduits) > 0
 }
 
 # ---------------------------------------------------------------------------

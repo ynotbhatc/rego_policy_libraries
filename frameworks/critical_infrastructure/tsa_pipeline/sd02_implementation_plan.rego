@@ -6,14 +6,14 @@
 #   source: tsa
 #   domains: [ot, pipeline]
 #   coverage:
-#     checks: 14
+#     checks: 20
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package tsa_pipeline.sd02_implementation_plan
 
 import rego.v1
@@ -267,7 +267,7 @@ violations contains msg if {
 
 violations contains msg if {
 	some c in pending_changes
-	is_number(object.get(c, "duration_days", null))
+	is_number(c.duration_days)
 	c.duration_days >= 45
 	value := object.get(c, "days_since_effective", null)
 	not is_number(value)

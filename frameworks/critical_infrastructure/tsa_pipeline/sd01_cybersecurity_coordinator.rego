@@ -6,14 +6,14 @@
 #   source: tsa
 #   domains: [ot, pipeline]
 #   coverage:
-#     checks: 16
+#     checks: 19
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package tsa_pipeline.sd01_coordinator
 
 import rego.v1
