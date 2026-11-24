@@ -2229,7 +2229,34 @@ violations contains msg if {
 	some sid, s in subcategories
 	s.basis == "attestation"
 	not _attested(sid)
-	msg := sprintf("NIST CSF 2.0 %v (%v %v): not attested satisfied — %v", [sid, s.category, categories[s.category].title, s.text])
+	msg := sprintf("NIST CSF 2.0 %v (%v %v): not attested satisfied — %v%v", [sid, s.category, categories[s.category].title, s.text, _attestation_problem(sid)])
+}
+
+# Why a non-true attestation did not count: only the boolean true attests. A boolean false is a plain
+# "not attested"; a missing id and a wrong-typed value are evidence problems and are named.
+_attestation_problem(sid) := "" if _given[sid] == false
+
+_attestation_problem(sid) := " [evidence missing — attestation not collected]" if {
+	not _has_attestation(sid)
+}
+
+_attestation_problem(sid) := sprintf(" [evidence invalid — attestation is not a boolean (got %v)]", [type_name(_given[sid])]) if {
+	_has_attestation(sid)
+	not is_boolean(_given[sid])
+}
+
+_has_attestation(sid) if {
+	some k, _ in _given
+	k == sid
+}
+
+# An attestation for a facts-basis subcategory does not decide it, but it is still evidence in the
+# record: a value that is not a boolean is a collection error and is reported.
+violations contains msg if {
+	some sid, value in _given
+	subcategories[sid].basis == "facts"
+	not is_boolean(value)
+	msg := sprintf("NIST CSF 2.0 Input Contract: attestation for facts-basis subcategory %v is not a boolean (got %v) — input.nist_csf.subcategories[\"%v\"] must be true or false", [sid, type_name(value), sid])
 }
 
 violations contains msg if {

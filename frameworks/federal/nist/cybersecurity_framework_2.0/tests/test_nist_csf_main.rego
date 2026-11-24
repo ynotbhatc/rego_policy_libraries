@@ -214,3 +214,96 @@ test_rejected_moved_carries_are_attested if {
 	main.compliance_report.legacy_fact_checks["DE.AE-05"].status == "retired" with input as {}
 	main.compliance_report.legacy_fact_checks["RS.AN-04"].status == "retired" with input as {}
 }
+
+# ── Evidence rule (data-driven, audit 2026-11-24): only the boolean true passes a yes/no fact ────────
+
+_fact_bool_paths := [p | walk(_green_facts, [p, v]); is_boolean(v)]
+
+_bad_values := ["false", "true", "no", "yes", 0, 1, null, [], {}]
+
+test_every_fact_boolean_wrong_type_or_null_never_passes if {
+	count(_fact_bool_paths) > 40
+	every p in _fact_bool_paths {
+		every bad in _bad_values {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": bad}])
+			r.compliant == false
+			r.violation_count >= 1
+		}
+	}
+}
+
+test_every_fact_boolean_removed_never_passes if {
+	every p in _fact_bool_paths {
+		r := main.compliance_report with input as json.remove(_green, [p])
+		r.compliant == false
+	}
+}
+
+# The four fact modules that used bare `not input.x` (identify, detect, respond, recover) name the problem.
+_named_paths := [p | some p in _fact_bool_paths; p[0] in {"identify", "detect", "respond", "recover"}]
+
+test_bare_not_modules_name_the_evidence_problem if {
+	count(_named_paths) == 19
+	every p in _named_paths {
+		r1 := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": "false"}])
+		some v1 in r1.violations
+		contains(v1, sprintf("[evidence invalid — input.%v is not a boolean (got string)]", [concat(".", p)]))
+		r2 := main.compliance_report with input as json.remove(_green, [p])
+		some v2 in r2.violations
+		contains(v2, sprintf("[evidence missing — input.%v not collected]", [concat(".", p)]))
+		r3 := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": false}])
+		r3.violation_count == 1
+		some v3 in r3.violations
+		not contains(v3, "[evidence")
+	}
+}
+
+test_null_or_string_fact_sections_never_pass if {
+	every k, _ in _green_facts {
+		every bad in [null, "true", "1", 1, true] {
+			r := main.compliance_report with input as object.union(_green, {k: bad})
+			r.compliant == false
+		}
+	}
+}
+
+test_every_attestation_rejects_non_boolean_and_missing if {
+	ids := [sid | some sid, s in main.subcategories; s.basis == "attestation"]
+	count(ids) > 0
+	every sid in ids {
+		every bad in ["true", "false", "yes", 0, 1, null] {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": ["nist_csf", "subcategories", sid], "value": bad}])
+			r.compliant == false
+			some v in r.violations
+			contains(v, sid)
+			contains(v, "[evidence invalid — attestation is not a boolean")
+		}
+		r2 := main.compliance_report with input as json.remove(_green, [["nist_csf", "subcategories", sid]])
+		r2.compliant == false
+		some v2 in r2.violations
+		contains(v2, sid)
+		contains(v2, "[evidence missing — attestation not collected]")
+	}
+}
+
+test_non_boolean_attestation_on_a_facts_subcategory_is_reported if {
+	ids := [sid | some sid, s in main.subcategories; s.basis == "facts"]
+	count(ids) > 0
+	every sid in ids {
+		every bad in ["true", "false", 1, null] {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": ["nist_csf", "subcategories", sid], "value": bad}])
+			r.compliant == false
+			some v in r.violations
+			contains(v, sprintf("attestation for facts-basis subcategory %v is not a boolean", [sid]))
+		}
+		r2 := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": ["nist_csf", "subcategories", sid], "value": false}])
+		r2.compliant == true
+	}
+}
+
+test_key_entrypoint_follows_the_same_rule if {
+	every p in _named_paths {
+		r := data.nist_csf.main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": "true"}])
+		r.compliant == false
+	}
+}
