@@ -29,6 +29,7 @@ import rego.v1
 default r_wn11_00_000032 := false
 
 r_wn11_00_000032 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\FVE"].MinimumPIN)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\FVE"].MinimumPIN >= 6
 }
 
@@ -137,6 +138,7 @@ status_r_wn11_00_000210 := "Open" if not r_wn11_00_000210
 default r_wn11_au_000500 := false
 
 r_wn11_au_000500 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application"].MaxSize)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application"].MaxSize >= 32768
 }
 
@@ -155,6 +157,7 @@ status_r_wn11_au_000500 := "Open" if not r_wn11_au_000500
 default r_wn11_au_000505 := false
 
 r_wn11_au_000505 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security"].MaxSize)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security"].MaxSize >= 5120000
 }
 
@@ -173,6 +176,7 @@ status_r_wn11_au_000505 := "Open" if not r_wn11_au_000505
 default r_wn11_au_000510 := false
 
 r_wn11_au_000510 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System"].MaxSize)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System"].MaxSize >= 32768
 }
 

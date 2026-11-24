@@ -137,6 +137,7 @@ status_r_wn25_so_000090 := "Open" if not r_wn25_so_000090
 default r_wn25_so_000100 := false
 
 r_wn25_so_000100 if {
+	is_number(input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters"].MaximumPasswordAge)
 	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters"].MaximumPasswordAge <= 30
 	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters"].MaximumPasswordAge > 0
 }
@@ -174,6 +175,7 @@ status_r_wn25_so_000110 := "Open" if not r_wn25_so_000110
 default r_wn25_so_000120 := false
 
 r_wn25_so_000120 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].InactivityTimeoutSecs)
 	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].InactivityTimeoutSecs <= 900
 	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].InactivityTimeoutSecs > 0
 }
@@ -212,6 +214,7 @@ status_r_wn25_so_000130 := "Open" if not r_wn25_so_000130
 default r_wn25_so_000150 := false
 
 r_wn25_so_000150 if {
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].scremoveoption)
 	to_number(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].scremoveoption) in {1, 2}
 }
 

@@ -155,6 +155,7 @@ status_r_wn19_ms_000040 := "Open" if not r_wn19_ms_000040
 default r_wn19_ms_000050 := false
 
 r_wn19_ms_000050 if {
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].CachedLogonsCount)
 	to_number(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"].CachedLogonsCount) <= 4
 }
 

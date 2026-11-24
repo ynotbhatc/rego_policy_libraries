@@ -53,17 +53,16 @@ fixture_all := {
 	"cis_profile": {
 		"bitlocker": true,
 		"level": 2,
-		"next_generation": true,
 	},
 	"registry": {
 		"HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 1},
 		"HKLM\\SOFTWARE\\Microsoft\\Policies\\PassportForWork\\Biometrics": {"EnableESSwithSupportedPeripherals": 1},
 		"HKLM\\SOFTWARE\\Microsoft\\WcmSvc\\wifinetworkmanager\\config": {"AutoConnectAllowedOEM": 0},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {
-			"AutoAdminLogon": 0,
-			"CachedLogonsCount": 4,
+			"AutoAdminLogon": "0",
+			"CachedLogonsCount": "4",
 			"PasswordExpiryWarning": 5,
-			"ScRemoveOption": 3,
+			"ScRemoveOption": "3",
 		},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings": {"DisableProxyAuthenticationSchemes": 287},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp": {"DisableWpad": 1},
@@ -354,19 +353,19 @@ fixture_all := {
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {
 			"MaxSize": 196608,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {
 			"MaxSize": 32768,
-			"Retention": 0,
+			"Retention": "0",
 		},
 		"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {
 			"DisableGraphRecentItems": 1,

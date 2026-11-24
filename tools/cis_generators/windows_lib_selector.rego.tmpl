@@ -1,0 +1,49 @@
+# Read into lib.rego at {{SELECTOR_BLOCK}} by the Windows generators (windows_lib.rego.tmpl and the Windows 10/11
+# profile block share it) -- not a module on its own.
+# A selector that is supplied but is not a boolean ("true", 1, null), or a cis_profile that is not an object,
+# decides nothing: only `true` opts a tier in and only `false` or an absent selector leaves it out. Its tier's
+# rows are then in scope and not assessed (counted as failed), as a role-specific row is when no role is given,
+# so a mistyped selector can never shrink the assessment into a pass.
+_profile_malformed if {
+	p := input.cis_profile
+	not is_object(p)
+}
+
+_selectors := {key | some _, key in TIER_SELECTOR}
+
+_selector_problem(key) := sprintf("input.cis_profile is not an object (got %s)", [type_name(input.cis_profile)]) if {
+	key in _selectors
+	_profile_malformed
+}
+
+_selector_problem(key) := sprintf("input.cis_profile.%s is not a boolean (got %s)", [key, type_name(v)]) if {
+	key in _selectors
+	not _profile_malformed
+	v := _cis_profile[key]
+	not is_boolean(v)
+}
+
+_tier_undecided(tier) if _selector_problem(TIER_SELECTOR[tier])
+
+_tier_selected(tier) if _tier_decided(tier)
+
+_tier_selected(tier) if _tier_undecided(tier)
+
+_tier(p) := split(p, "_")[0]
+
+_any_tier_decided(profiles) if {
+	some p in profiles
+	_tier_decided(_tier(p))
+}
+
+# in scope only through a tier whose selector decides nothing
+_selector_undecided(profiles) if {
+	some p in profiles
+	_tier_undecided(_tier(p))
+	not _any_tier_decided(profiles)
+}
+
+_selector_problems(profiles) := sort({_selector_problem(TIER_SELECTOR[_tier(p)]) |
+	some p in profiles
+	_tier_undecided(_tier(p))
+})

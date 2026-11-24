@@ -884,6 +884,7 @@ status_r_wn11_cc_000255 := "Open" if not r_wn11_cc_000255
 default r_wn11_cc_000260 := false
 
 r_wn11_cc_000260 if {
+	is_number(input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity"].MinimumPINLength)
 	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity"].MinimumPINLength >= 6
 }
 

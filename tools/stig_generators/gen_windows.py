@@ -206,15 +206,25 @@ def _fixture_value(d):
 
 
 def _condition(ref, d):
-    """The Rego condition line(s) for one derived block."""
+    """The Rego condition line(s) for one derived block.
+
+    Every ordering comparison is guarded by the value's type. Rego orders values of different types (null and
+    booleans sort below every number, strings and collections above), so an unguarded `x >= 6` holds for any
+    string and `x <= 10` for null or a boolean; to_number() reads null as 0 and true as 1. A REG_DWORD is a
+    number, a number held as REG_SZ is a string, and anything else fails the rule."""
     if d["mode"] == "sz_num":
+        guard = [f"\tis_string({ref})"]
         ref = f"to_number({ref})"
+    else:
+        guard = []
     nums = d["nums"]
     if d["op"] == "==":
         if len(nums) == 1:
-            return [f"\t{ref} == {nums[0]}"]
-        return [f"\t{ref} in {{{', '.join(str(n) for n in nums)}}}"]
-    lines = [f"\t{ref} {d['op']} {nums[0]}"]
+            return guard + [f"\t{ref} == {nums[0]}"]
+        return guard + [f"\t{ref} in {{{', '.join(str(n) for n in nums)}}}"]
+    if d["mode"] != "sz_num":
+        guard = [f"\tis_number({ref})"]
+    lines = guard + [f"\t{ref} {d['op']} {nums[0]}"]
     if d["exclude_zero"]:
         lines.append(f"\t{ref} > 0")
     return lines
