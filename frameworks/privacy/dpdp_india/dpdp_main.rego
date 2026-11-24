@@ -58,9 +58,15 @@ compliant if {
 	count(violations) == 0
 }
 
+# The module's facts. Anything other than an object here (no input at all, null, a string, a number) reads
+# as no facts: every check then reports its finding and the report stays defined and non-compliant.
+# (object.get on a null or string container is an error, which made the whole report undefined.)
 default _in := {}
 
-_in := input.dpdp
+_in := v if {
+	v := input.dpdp
+	is_object(v)
+}
 
 rules_commencement := {
 	"rules_1_2_17_to_21": "2025-11-13",

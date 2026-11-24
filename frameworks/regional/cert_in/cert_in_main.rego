@@ -52,9 +52,15 @@ compliant if {
 	count(violations) == 0
 }
 
+# The module's facts. Anything other than an object here (no input at all, null, a string, a number) reads
+# as no facts: every check then reports its finding and the report stays defined and non-compliant.
+# (object.get on a null or string container is an error, which made the whole report undefined.)
 default _in := {}
 
-_in := input.cert_in
+_in := v if {
+	v := input.cert_in
+	is_object(v)
+}
 
 effective_date := "2022-06-27"
 
