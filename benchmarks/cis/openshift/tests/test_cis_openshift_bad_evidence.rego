@@ -11,17 +11,13 @@ _green := data.cis_openshift_4_test.green
 _report := data.cis_openshift.main.compliance_report
 
 # leaves the module does not read (path pattern: reason): no value of theirs can change the result
-_unread := {
-	"kubelet/nodes/[0-9]+/config/authentication/webhook/enabled": "no recommendation reads it (4.2.2 reads authentication.anonymous.enabled)",
-	"kubelet/nodes/[0-9]+/config/kubeAPIQPS": "4.2.8 is a manual review, decided by attest.kubelet_kube_api_qps_reviewed",
-	"openshift/kube_(controller_manager|scheduler)_pod/spec/containers/0/(liveness|readiness)Probe/httpGet/port": "only the probe path is read (1.3.x, 1.4.x)",
-}
+_unread := {}
 
 # leaves that may be left out or null (the module then takes the stricter reading, or the check does not
 # depend on them); a value of the wrong type is still a finding. Path pattern: reason.
 _optional := {
 	"openshift/kube_apiserver_endpoint_ports/[0-9]+": "removing one of several endpoint ports leaves a valid list",
-	"scc/items/[0-9]+/allow[A-Za-z]+": "5.2.x need one SCC that refuses; the others may omit the field",
+	"scc/items/[0-9]+/allowPrivilegeEscalation": "optional in the SCC API (unset allows escalation); 5.2.5 needs one SCC that sets it to false and an SCC without it is not counted as one",
 }
 
 _key(p) := concat("/", [sprintf("%v", [x]) | some x in p])
@@ -97,4 +93,21 @@ test_string_port_is_not_a_port if {
 	r := _report with input as inp
 	some msg in r.violations
 	startswith(msg, "1.2.14: ")
+}
+
+# 5.2.1 to 5.2.4: the four fields are required in the SCC API object. An SCC collected without one of them,
+# or with null, is reported under the recommendation that reads it even though another SCC still refuses.
+test_scc_without_a_required_field_never_passes if {
+	fields := {"allowPrivilegedContainer": "5.2.1", "allowHostPID": "5.2.2", "allowHostIPC": "5.2.3", "allowHostNetwork": "5.2.4"}
+	every i, scc in _green.scc.items {
+		every field, id in fields {
+			path := sprintf("/scc/items/%d/%s", [i, field])
+			msg := sprintf("%s: evidence missing — SCC %s: %s not collected", [id, scc.metadata.name, field])
+			every patch in [{"op": "remove", "path": path}, {"op": "replace", "path": path, "value": null}] {
+				inp := json.patch(_green, [patch])
+				not _passes(inp)
+				msg in _report.violations with input as inp
+			}
+		}
+	}
 }

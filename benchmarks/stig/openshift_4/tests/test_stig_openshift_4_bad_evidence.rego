@@ -17,7 +17,6 @@ _unread := {}
 # depend on them); a value of the wrong type is still a finding. Path pattern: reason.
 _optional := {
 	"openshift/image_config/spec/allowedRegistriesForImport/[0-9]+/insecure": "the API omits insecure when it is false",
-	"scc/items/[0-9]+/allowPrivilegedContainer": "CNTR-OS-000660 reads an SCC as privileged only on an explicit true (or on a runAsUser other than MustRunAsRange)",
 }
 
 _key(p) := concat("/", [sprintf("%v", [x]) | some x in p])
@@ -79,5 +78,33 @@ test_exception_lists_name_real_leaves if {
 	every pattern, _ in object.union(_unread, _optional) {
 		some k in keys
 		regex.match(sprintf("^%s$", [pattern]), k)
+	}
+}
+
+# CNTR-OS-000660: the six allow* fields are required fields of the SCC API object. An SCC collected without
+# one of them (or with null) is not cleared, whatever its other fields say.
+test_scc_without_a_required_allow_field_never_passes if {
+	every i in [0, 1] {
+		every field in ["allowHostDirVolumePlugin", "allowHostIPC", "allowHostNetwork", "allowHostPID", "allowHostPorts", "allowPrivilegedContainer"] {
+			path := sprintf("/scc/items/%d/%s", [i, field])
+			not _passes(json.patch(_green, [{"op": "remove", "path": path}]))
+			not _passes(json.patch(_green, [{"op": "replace", "path": path, "value": null}]))
+		}
+	}
+}
+
+# CNTR-OS-001010 reads what `systemctl is-enabled` / `is-active` print. A word systemctl never prints is not
+# an answer: "false", "no", "true" and "" used to pass as "not enabled".
+test_sshd_state_that_systemctl_never_prints_never_passes if {
+	every field in ["sshd_enabled", "sshd_active"] {
+		every bad in ["false", "true", "no", "", "0", null, false, 0] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": sprintf("/rhcos/nodes/0/%s", [field]), "value": bad}]))
+		}
+	}
+	every ok in ["disabled", "masked", "static", "Disabled"] {
+		_passes(json.patch(_green, [{"op": "replace", "path": "/rhcos/nodes/0/sshd_enabled", "value": ok}]))
+	}
+	every ok in ["inactive", "failed"] {
+		_passes(json.patch(_green, [{"op": "replace", "path": "/rhcos/nodes/0/sshd_active", "value": ok}]))
 	}
 }

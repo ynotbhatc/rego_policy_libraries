@@ -450,6 +450,21 @@ _v_policies contains sprintf("%s: evidence invalid — SCC %v: %s must be true o
 	not is_boolean(s[field])
 }
 
+# allowPrivilegedContainer, allowHostPID, allowHostIPC and allowHostNetwork are required fields of the SCC API
+# object, so `oc get scc -o json` always carries them. An SCC collected without one (or with null) was not
+# collected whole: it is reported under the recommendation that reads the field, even when another SCC meets
+# it. allowPrivilegeEscalation is optional in the API (unset means escalation is allowed) and is not listed.
+_scc_required_fields := {"allowPrivilegedContainer", "allowHostPID", "allowHostIPC", "allowHostNetwork"}
+
+_v_policies contains sprintf("%s: evidence missing — SCC %v: %s not collected", [id, object.get(s, ["metadata", "name"], "<unnamed>"), field]) if {
+	some [field, id] in _scc_boolean_fields
+	field in _scc_required_fields
+	_applies(id)
+	_scc_collected
+	some s in input.scc.items
+	is_null(object.get(s, field, null))
+}
+
 # the audit names exactly two objects as expected in the default namespace: the kubernetes and openshift Services
 _default_ns_allowed(r) if r in {"service/kubernetes", "service/openshift"}
 
