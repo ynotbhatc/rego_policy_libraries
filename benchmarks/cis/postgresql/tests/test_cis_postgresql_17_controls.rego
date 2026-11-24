@@ -1208,6 +1208,27 @@ test_4_5_fail_1 if {
 	"4.5: excessive function privileges must be revoked — requirement not met" in vs
 }
 
+test_4_5_fail_2 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "escalate"}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: excessive function privileges must be revoked — requirement not met" in vs
+}
+
+test_4_5_fail_3 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"name": "audit_fn", "prosecdef": true}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: excessive function privileges must be revoked — requirement not met" in vs
+}
+
+test_4_5_fail_4 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "prosecdef": true}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: excessive function privileges must be revoked — requirement not met" in vs
+}
+
 test_4_5_evidence_missing_1 if {
 	inp := json.patch(green, [{"op": "remove", "path": "/postgresql/security_definer_functions"}])
 	not "4.5" in b.passed with input as inp
@@ -1407,6 +1428,20 @@ test_5_5_fail_1 if {
 
 test_5_5_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app"}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: per-account connection limits must be used — requirement not met" in vs
+}
+
+test_5_5_fail_3 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"connection_limit": -1}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: per-account connection limits must be used — requirement not met" in vs
+}
+
+test_5_5_fail_4 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app", "connection_limit": "10"}]}])
 	not "5.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"5.5: per-account connection limits must be used — requirement not met" in vs
@@ -1619,6 +1654,13 @@ test_6_8_fail_2 if {
 }
 
 test_6_8_fail_3 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/authentication/pg_hba_entries", "value": [{"auth_method": "trust"}]}])
+	not "6.8" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"6.8: TLS must be turned on and configured correctly — requirement not met" in vs
+}
+
+test_6_8_fail_4 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/ssl/non_ssl_client_connections", "value": [{"pid": 7, "usename": "app"}]}])
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
