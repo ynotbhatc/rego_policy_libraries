@@ -113,7 +113,7 @@
 #   source: iso
 #   domains: [isms]
 #   coverage:
-#     checks: 110
+#     checks: 112
 #     cited: 100
 #     expected: 93
 #     found: 94
@@ -1352,6 +1352,137 @@ violations contains msg if {
 }
 
 # -----------------------------------------------------------------------------
+# Advisory facts: typed, never scored
+# -----------------------------------------------------------------------------
+# The facts below are read only by the checks in unmapped_fact_rules (and the sub-checks they are built
+# from). They decide no Annex A control, so their absence or a plain false changes no verdict. A value of
+# the wrong type is a different matter: it is a collection error, and before this table a string or null
+# there was dropped without a word. Each such value is listed in advisory_evidence_findings (and in the
+# report under the same name). These findings are NOT violations: `compliant` is the Annex A verdict and
+# an advisory fact cannot change it.
+# Not typed here: encryption.data_in_transit.minimum_tls_version (string or number by the cryptography
+# module's own rule) and cryptography.algorithms_in_use (a list; it also feeds A.8.24, which fails on a
+# non-list).
+advisory_fact_types := {
+	"api.certificate_pinning": "boolean",
+	"api.payload_encryption": "boolean",
+	"api.tls_required": "boolean",
+	"api.token_encryption": "boolean",
+	"backup.encryption.enabled": "boolean",
+	"backup.encryption.integrity_verification": "boolean",
+	"backup.encryption.key_escrow": "boolean",
+	"backup.encryption.separate_keys": "boolean",
+	"certificates.lifecycle.automated_renewal": "boolean",
+	"certificates.lifecycle.expiry_monitoring": "boolean",
+	"certificates.lifecycle.secure_generation": "boolean",
+	"certificates.regular_renewal": "boolean",
+	"certificates.revocation_checking": "boolean",
+	"certificates.secure_storage": "boolean",
+	"certificates.trusted_ca_only": "boolean",
+	"cicd.access_controlled": "boolean",
+	"cicd.artifact_signing": "boolean",
+	"cicd.container_scanning": "boolean",
+	"cicd.gates.approval_required_for_production": "boolean",
+	"cicd.gates.quality_checks_required": "boolean",
+	"cicd.gates.security_scan_required": "boolean",
+	"cicd.infrastructure_as_code_scanning": "boolean",
+	"cicd.pipeline_as_code": "boolean",
+	"cicd.secrets_management.no_plaintext_secrets": "boolean",
+	"cicd.secrets_management.vault_used": "boolean",
+	"cryptography.quantum_resistance.assessment_completed": "boolean",
+	"cryptography.quantum_resistance.migration_plan": "boolean",
+	"cryptography.quantum_resistance.timeline_defined": "boolean",
+	"database.connections.certificate_validation": "boolean",
+	"database.connections.ssl_required": "boolean",
+	"database.encryption.at_rest": "boolean",
+	"database.encryption.in_transit": "boolean",
+	"database.encryption.key_rotation": "boolean",
+	"database.encryption.transparent_encryption": "boolean",
+	"digital_signatures.code_signing": "boolean",
+	"digital_signatures.document_signing": "boolean",
+	"digital_signatures.non_repudiation": "boolean",
+	"digital_signatures.timestamp_verification": "boolean",
+	"dns_security.dnssec_enabled": "boolean",
+	"dns_security.internal_external_separated": "boolean",
+	"dns_security.monitoring_enabled": "boolean",
+	"dns_security.recursive_queries_restricted": "boolean",
+	"dns_security.response_rate_limiting": "boolean",
+	"encryption.application_data.configuration_files": "boolean",
+	"encryption.application_data.sensitive_fields": "boolean",
+	"encryption.data_at_rest.enabled": "boolean",
+	"encryption.data_at_rest.key_management_integrated": "boolean",
+	"encryption.data_at_rest.strong_algorithms": "boolean",
+	"encryption.data_in_transit.certificate_validation": "boolean",
+	"encryption.data_in_transit.perfect_forward_secrecy": "boolean",
+	"encryption.data_in_transit.tls_enforced": "boolean",
+	"encryption.filesystem.full_disk_encryption": "boolean",
+	"encryption.filesystem.secure_boot": "boolean",
+	"hsm.available": "boolean",
+	"hsm.cryptographic_operations": "boolean",
+	"hsm.fips_140_2_level": "number",
+	"hsm.key_generation": "boolean",
+	"hsm.key_storage": "boolean",
+	"hsm.tamper_protection": "boolean",
+	"key_management.rotation.automated_process": "boolean",
+	"key_management.storage.audit_logged": "boolean",
+	"key_management.storage.backup_encrypted": "boolean",
+	"key_management.storage.hardware_security_modules": "boolean",
+	"key_management.usage.audit_logged": "boolean",
+	"network.https.enforced": "boolean",
+	"network.https.hsts_enabled": "boolean",
+	"network.https.secure_cookies": "boolean",
+	"network.ssh.key_based_auth": "boolean",
+	"network.ssh.protocol_version": "number",
+	"network.ssh.strong_ciphers": "boolean",
+	"network.vpn.certificate_based": "boolean",
+	"network.vpn.strong_encryption": "boolean",
+	"pki.certificate_authority.audited": "boolean",
+	"pki.certificate_authority.trusted": "boolean",
+	"pki.certificate_policies.documented": "boolean",
+	"pki.certificate_revocation.crl_available": "boolean",
+	"pki.certificate_revocation.ocsp_enabled": "boolean",
+	"sca.enabled": "boolean",
+	"sca.known_vulnerabilities_flagged": "boolean",
+	"sca.license_compliance_checked": "boolean",
+	"sca.policy_enforcement": "boolean",
+	"sca.sbom_generated": "boolean",
+	"test_data.generators.approved_tools": "boolean",
+	"test_data.synthetic_data.available": "boolean",
+	"test_data.synthetic_data.realistic_for_testing": "boolean",
+}
+
+default _root := {}
+
+_root := input if is_object(input)
+
+_absent := {"__iso27001_absent__": true}
+
+_advisory_value(path) := object.get(_root, split(path, "."), _absent)
+
+# every proper prefix of an advisory fact path ("api", "encryption", "encryption.filesystem", ...)
+_advisory_sections contains concat(".", array.slice(parts, 0, n)) if {
+	some path, _ in advisory_fact_types
+	parts := split(path, ".")
+	some n in numbers.range(1, count(parts) - 1)
+}
+
+advisory_evidence_findings contains msg if {
+	some path, want in advisory_fact_types
+	value := _advisory_value(path)
+	value != _absent
+	type_name(value) != want
+	msg := sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(value)])
+}
+
+advisory_evidence_findings contains msg if {
+	some section in _advisory_sections
+	value := _advisory_value(section)
+	value != _absent
+	not is_object(value)
+	msg := sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not an object (got %v) — the facts under it feed only checks listed in unmapped_fact_rules", [section, type_name(value)])
+}
+
+# -----------------------------------------------------------------------------
 # Report
 # -----------------------------------------------------------------------------
 
@@ -1423,6 +1554,8 @@ compliance_report := {
 	"iso27002": iso27002_status,
 	"isms_domains": iso27001_assessment.isms_results,
 	"unmapped_fact_rules": unmapped_fact_rules,
+	"advisory_evidence_findings": sort(advisory_evidence_findings),
+	"advisory_evidence_finding_count": count(advisory_evidence_findings),
 	"violation_count": count(violations),
 	"violations": violations,
 }
