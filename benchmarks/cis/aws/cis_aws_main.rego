@@ -122,6 +122,7 @@ compliance_report := {
 	"violations": _violations,
 	"violation_count": count(_violations),
 	"evidence_missing_count": count(bench.evidence_violations),
+	"evidence_invalid_count": count(bench.evidence_invalid),
 	"section_results": {
 		"identity_access": _section("2"),
 		"storage": _section("3"),

@@ -977,7 +977,13 @@ nonempty(s) if {
 	trim_space(s) != ""
 }
 
-# Booleans as the CLI prints them (true) or as the credential report prints them ("true").
+# Booleans the AWS APIs return as JSON booleans: only true and false are read. A string in their place is a
+# collection error, reported by the typed-fact rules at the end of these helpers, never a setting.
+is_true(v) if v == true
+
+is_false(v) if v == false
+
+# Credential report columns only: the report is CSV, so its booleans arrive as the strings "true" / "false".
 truthy(v) if v == true
 
 truthy(v) if {
@@ -1119,13 +1125,22 @@ nacl_entry_covers(e, proto, _) if {
 	not has_obj(e, "PortRange")
 }
 
-nacl_ingress(e) if falsy(e.Egress)
+nacl_ingress(e) if is_false(e.Egress)
 
 nacl_entry_collected(e) if {
 	is_number(e.RuleNumber)
 	is_string(e.RuleAction)
 	is_string(e.Protocol)
 	is_boolean(e.Egress)
+	nacl_ports_collected(e)
+}
+
+# An entry without a PortRange covers every port; a PortRange must carry numeric bounds.
+nacl_ports_collected(e) if object.get(e, "PortRange", null) == null
+
+nacl_ports_collected(e) if {
+	is_number(e.PortRange.From)
+	is_number(e.PortRange.To)
 }
 
 nacl_allow_protos(e) := {"6", "17"} if proto_norm(e.Protocol) == "-1"
@@ -1215,7 +1230,7 @@ bedrock_types_logged(t) := {ty |
 	ty := ty0
 }
 
-trail_covers_region(t, _) if truthy(t.IsMultiRegionTrail)
+trail_covers_region(t, _) if is_true(t.IsMultiRegionTrail)
 
 trail_covers_region(t, r) if t.HomeRegion == r
 
@@ -1368,7 +1383,7 @@ region_has_hub(r) if {
 region_ebs_encrypted(r) if {
 	some e in input.ebs_encryption_by_default
 	region_of(e) == r
-	truthy(e.EbsEncryptionByDefault)
+	is_true(e.EbsEncryptionByDefault)
 }
 
 vpc_has_flow_log(v) if {
@@ -1450,7 +1465,7 @@ required_bedrock_types := {lower(v) | some v in input.bedrock_resource_types_in_
 region_has_bedrock_trail(r) if {
 	some t in input.cloudtrail_trails
 	trail_covers_region(t, r)
-	truthy(t.status.IsLogging)
+	is_true(t.status.IsLogging)
 	count(bedrock_types_logged(t)) > 0
 	required_bedrock_types - bedrock_types_logged(t) == set()
 }
@@ -1469,7 +1484,7 @@ logging_destination_ok(c) if {
 
 logging_destination_ok(c) if nonempty(c.s3Config.bucketName)
 
-modality_on(c, m) if truthy(c[sprintf("%sDataDeliveryEnabled", [m])])
+modality_on(c, m) if is_true(c[sprintf("%sDataDeliveryEnabled", [m])])
 
 kb_logging_ok(kb) if {
 	some s in input.log_delivery_sources
@@ -1519,7 +1534,7 @@ main_tables(s) := [t |
 	some t in input.route_tables
 	t.VpcId == sn.VpcId
 	some a in t.Associations
-	truthy(a.Main)
+	is_true(a.Main)
 ]
 
 subnet_tables(s) := explicit_tables(s) if count(explicit_tables(s)) > 0
@@ -1566,7 +1581,7 @@ matching_rules(n) := [rule |
 
 private_bedrock_rule(n) if {
 	some rule in matching_rules(n)
-	falsy(rule.AllowFromPublic)
+	is_false(rule.AllowFromPublic)
 	"bedrock.amazonaws.com" in rule.SourceServices
 }
 
@@ -1575,9 +1590,64 @@ model_vpc_ok(m) if {
 	count(m.VpcConfig.Subnets) > 0
 }
 
-pw_min_length_ok if input.password_policy.MinimumPasswordLength >= 14
+pw_min_length_ok if {
+	is_number(input.password_policy.MinimumPasswordLength)
+	input.password_policy.MinimumPasswordLength >= 14
+}
 
-pw_reuse_ok if input.password_policy.PasswordReusePrevention >= 24
+pw_reuse_ok if {
+	is_number(input.password_policy.PasswordReusePrevention)
+	input.password_policy.PasswordReusePrevention >= 24
+}
+
+# ── typed facts ───────────────────────────────────────────────────────────────────────
+# Facts the AWS APIs return as JSON booleans or numbers, by inventory, each with the recommendation it is
+# reported under. A value of another type (the string "true", "14") is a collection error: the checks above
+# do not read it as the setting, and it is named here so the recommendation fails on the evidence.
+typed_facts := {
+	"boolean": {
+		"rds_instances": {"StorageEncrypted": "3.2.1", "AutoMinorVersionUpgrade": "3.2.2", "PubliclyAccessible": "3.2.3"},
+		"efs_file_systems": {"Encrypted": "3.3.1"},
+		"cloudtrail_trails": {"LogFileValidationEnabled": "4.2", "IsMultiRegionTrail": "4.8", "IsLogging": "7.4.1"},
+		"kms_keys": {"KeyRotationEnabled": "4.6"},
+		"ebs_encryption_by_default": {"EbsEncryptionByDefault": "6.1.1"},
+		"network_acls": {"Egress": "6.2"},
+		"bedrock_invocation_logging": {
+			"textDataDeliveryEnabled": "7.4.2", "imageDataDeliveryEnabled": "7.4.2",
+			"embeddingDataDeliveryEnabled": "7.4.2", "videoDataDeliveryEnabled": "7.4.2",
+		},
+		"vpc_endpoints": {"PrivateDnsEnabled": "7.5.1"},
+		"route_tables": {"Main": "7.5.2"},
+		"opensearch_serverless_network_policies": {"AllowFromPublic": "7.5.3"},
+		"bedrock_marketplace_endpoints": {"EnableNetworkIsolation": "7.5.4"},
+	},
+	"number": {
+		"account_summary": {"AccountAccessKeysPresent": "2.4", "AccountMFAEnabled": "2.5", "AccountPasswordPresent": "2.5"},
+		"password_policy": {"MinimumPasswordLength": "2.8", "PasswordReusePrevention": "2.9"},
+		"iam_policies": {"AttachmentCount": "2.14"},
+		"network_acls": {"From": "6.2", "To": "6.2", "RuleNumber": "6.2"},
+	},
+}
+
+fact_path(path) := concat("", [seg |
+	some x in path
+	seg := _fact_segment(x)
+])
+
+_fact_segment(x) := sprintf("[%d]", [x]) if is_number(x)
+
+_fact_segment(x) := sprintf(".%s", [x]) if is_string(x)
+
+_messages contains sprintf("%s: %s — evidence invalid — input.%s%s must be a %s, got %s", [id, recommendations[id].title, inventory, fact_path(path), type, type_name(value)]) if {
+	some type, inventories in typed_facts
+	some inventory, facts in inventories
+	walk(input[inventory], [path, value])
+	count(path) > 0
+	id := facts[path[count(path) - 1]]
+	_in_scope(id)
+	not is_null(value)
+	type_name(value) != type
+}
 
 # ── recommendations ───────────────────────────────────────────────────────────────────
 
@@ -2299,7 +2369,7 @@ _messages contains sprintf("3.2.1: RDS storage is encrypted — RDS instance %s:
 	_in_scope("3.2.1")
 	_ev_3_2_1
 	some x in input.rds_instances
-	not truthy(object.get(x, "StorageEncrypted", null))
+	not is_true(object.get(x, "StorageEncrypted", null))
 }
 
 # 3.2.2 (Automated, Level 1)
@@ -2318,7 +2388,7 @@ _messages contains sprintf("3.2.2: RDS minor engine upgrades are automatic — R
 	_in_scope("3.2.2")
 	_ev_3_2_2
 	some x in input.rds_instances
-	not truthy(object.get(x, "AutoMinorVersionUpgrade", null))
+	not is_true(object.get(x, "AutoMinorVersionUpgrade", null))
 }
 
 # 3.2.3 (Automated, Level 1)
@@ -2337,7 +2407,7 @@ _messages contains sprintf("3.2.3: RDS instances are not reachable from the inte
 	_in_scope("3.2.3")
 	_ev_3_2_3
 	some x in input.rds_instances
-	not falsy(object.get(x, "PubliclyAccessible", null))
+	not is_false(object.get(x, "PubliclyAccessible", null))
 }
 
 # 3.3.1 (Automated, Level 1)
@@ -2356,7 +2426,7 @@ _messages contains sprintf("3.3.1: EFS file systems are encrypted — EFS file s
 	_in_scope("3.3.1")
 	_ev_3_3_1
 	some x in input.efs_file_systems
-	not truthy(object.get(x, "Encrypted", null))
+	not is_true(object.get(x, "Encrypted", null))
 }
 
 # 4.2 (Automated, Level 2)
@@ -2381,7 +2451,7 @@ _messages contains sprintf("4.2: CloudTrail validates log file integrity — tra
 	_in_scope("4.2")
 	_ev_4_2
 	some x in input.cloudtrail_trails
-	not truthy(object.get(x, "LogFileValidationEnabled", null))
+	not is_true(object.get(x, "LogFileValidationEnabled", null))
 }
 
 # 4.3 (Automated, Level 2)
@@ -2474,7 +2544,7 @@ _messages contains sprintf("4.6: Customer symmetric KMS keys rotate — customer
 	some x in input.kms_keys
 	x.KeySpec == "SYMMETRIC_DEFAULT"
 	object.get(x, "KeyManager", "") != "AWS"
-	not truthy(object.get(x, "KeyRotationEnabled", null))
+	not is_true(object.get(x, "KeyRotationEnabled", null))
 }
 
 _messages contains sprintf("4.6: Customer symmetric KMS keys rotate — key %s: key spec not collected", [nm(x, "KeyId")]) if {
@@ -2526,7 +2596,7 @@ _messages contains sprintf("4.8: CloudTrail records S3 object writes — trail %
 	_in_scope("4.8")
 	_ev_4_8
 	some x in input.cloudtrail_trails
-	not truthy(object.get(x, "IsMultiRegionTrail", null))
+	not is_true(object.get(x, "IsMultiRegionTrail", null))
 }
 
 _messages contains sprintf("4.8: CloudTrail records S3 object writes — trail %s does not log every S3 object write event", [nm(x, "Name")]) if {
@@ -2566,7 +2636,7 @@ _messages contains sprintf("4.9: CloudTrail records S3 object reads — trail %s
 	_in_scope("4.9")
 	_ev_4_9
 	some x in input.cloudtrail_trails
-	not truthy(object.get(x, "IsMultiRegionTrail", null))
+	not is_true(object.get(x, "IsMultiRegionTrail", null))
 }
 
 _messages contains sprintf("4.9: CloudTrail records S3 object reads — trail %s does not log every S3 object read event", [nm(x, "Name")]) if {
@@ -3123,7 +3193,7 @@ _messages contains sprintf("7.5.1: Bedrock is reached over interface VPC endpoin
 	_ev_7_5_1
 	some q in input.bedrock_endpoint_requirements
 	some e in req_endpoints(q)
-	not truthy(object.get(e, "PrivateDnsEnabled", null))
+	not is_true(object.get(e, "PrivateDnsEnabled", null))
 	not attested("bedrock_endpoint_specific_dns_used")
 }
 
@@ -3208,7 +3278,7 @@ _messages contains sprintf("7.5.3: Knowledge base vector stores are not public �
 	some x in input.bedrock_knowledge_bases
 	n := kb_collection_name(x)
 	some rule in matching_rules(n)
-	truthy(rule.AllowFromPublic)
+	is_true(rule.AllowFromPublic)
 }
 
 _messages contains sprintf("7.5.3: Knowledge base vector stores are not public — collection %s has no network rule that is private and lists bedrock.amazonaws.com", [n]) if {
@@ -3250,7 +3320,7 @@ _messages contains sprintf("7.5.4: Marketplace model endpoints are isolated in a
 	_ev_7_5_4
 	some x in input.bedrock_marketplace_endpoints
 	some m in x.models
-	not truthy(object.get(m, "EnableNetworkIsolation", null))
+	not is_true(object.get(m, "EnableNetworkIsolation", null))
 }
 
 _messages contains sprintf("7.5.4: Marketplace model endpoints are isolated in a VPC — endpoint %s: model %s has no VPC configuration with subnets and security groups", [nm(x, "endpointArn"), nm(m, "ModelName")]) if {
@@ -3271,6 +3341,9 @@ failing_controls := {control_id(v) | some v in violations}
 total_controls := count(in_scope)
 
 evidence_violations := [v | some v in violations; contains(v, ": evidence missing — ")]
+
+# A fact that was collected with the wrong type (a string where the AWS API returns a boolean or a number).
+evidence_invalid := [v | some v in violations; contains(v, " — evidence invalid — ")]
 
 section_names := {"2": "identity_access", "3": "storage", "4": "logging", "5": "monitoring", "6": "networking", "7": "generative_ai"}
 
