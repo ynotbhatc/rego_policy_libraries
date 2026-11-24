@@ -14,7 +14,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cis_genlib import load_workbook_json, emit_control, emit_tests, table  # noqa: E402
+from cis_genlib import LEVEL_HELPERS, LEVEL_VIOLATIONS, load_workbook_json, emit_control, emit_tests, table  # noqa: E402
 from neutralize import neutralize_title  # noqa: E402
 
 WB = load_workbook_json(sys.argv[1])
@@ -192,10 +192,10 @@ entry("1.2.7", "line console 0", "the console line exec-timeout must be 1 to 10 
 entry("1.2.8", "line vty", "every vty line block must have an exec-timeout of 1 to 10 minutes", VTY_EV, SEC,
       [["every s in _vty { _exec_ok(s) }"]], S_rep(r"^line vty", r"^exec-timeout", "exec-timeout 0 0"), rm("/sections"))
 entry("1.2.9", "secure-server", "when the HTTP server is on, ip http max-connections must be 1 or 2", LN_EV, LN,
-      [["not _http_on"], ["some n in _nums(" + R(r'^ip http max-connections\s+(\d+)') + ")", "n >= 1", "n <= 2"]],
+      [["not _http_on"], ["some n in _nums(" + R(r'^ip http max-connections\s+(\d+)') + ")", "is_number(n)", "n >= 1", "n <= 2"]],
       L_rep(r"^ip http max-connections", "ip http max-connections 10"), rm("/lines"))
 entry("1.2.10", "ip http", "when the HTTP server is on, the ip http idle timeout must be 1 to 600 seconds", LN_EV, LN,
-      [["not _http_on"], ["some n in _nums(" + R(r'^ip http timeout-policy idle\s+(\d+)') + ")", "n >= 1", "n <= 600"]],
+      [["not _http_on"], ["some n in _nums(" + R(r'^ip http timeout-policy idle\s+(\d+)') + ")", "is_number(n)", "n >= 1", "n <= 600"]],
       L_rep(r"^ip http timeout-policy", "ip http timeout-policy idle 0 life 86400 requests 3"), rm("/lines"))
 BAN = [f"is_object({P}.banners)"]
 for cid, kw, b in [("1.3.1", "banner exec", "exec"), ("1.3.2", "banner login", "login"), ("1.3.3", "banner motd", "motd")]:
@@ -237,7 +237,7 @@ entry("2.1.1.1.2", "ip domain-name", "a global ip domain name must be set", LN_E
       L_rep(r"^ip domain name", "ip domain name vrf MGMT example.net"), rm("/lines"))
 att("2.1.1.1.3", "modulus", "the RSA key modulus must be at least 2048 bits", "rsa_modulus_2048_or_more")
 entry("2.1.1.1.4", "ip ssh timeout", "ip ssh time-out must be 1 to 60 seconds", LN_EV, LN,
-      [["some n in _nums(" + R(r'^ip ssh time-out\s+(\d+)') + ")", "n >= 1", "n <= 60"]],
+      [["some n in _nums(" + R(r'^ip ssh time-out\s+(\d+)') + ")", "is_number(n)", "n >= 1", "n <= 60"]],
       L_rep(r"^ip ssh time-out", "ip ssh time-out 120"), rm("/lines"))
 entry("2.1.1.1.5", "authentication-retries", "ip ssh authentication-retries must be at most 3 (unset is the default 3)",
       LN_EV, LN, [["every n in _nums(" + R(r'^ip ssh authentication-retries\s+(\d+)') + ") { n >= 1; n <= 3 }"]],
@@ -253,7 +253,7 @@ entry("2.2.1", "logging enable", "archive configuration-change logging must be e
       [["some s in _secs(" + R(r'^archive\s*$') + ")", "_sec_has(s, " + R(r'^logging enable\s*$') + ")"]],
       S_rm(r"^archive", r"^logging enable"), rm("/sections"))
 entry("2.2.2", "logging buffered", "logging buffered must set a size of at least 64000 bytes", LN_EV, LN,
-      [["some n in _nums(" + R(r'^logging buffered\s+(\d+)') + ")", "n >= 64000"]],
+      [["some n in _nums(" + R(r'^logging buffered\s+(\d+)') + ")", "is_number(n)", "n >= 64000"]],
       L_rep(r"^logging buffered", "logging buffered 4096"), rm("/lines"))
 lp("2.2.3", "logging console", "console logging must be limited to level critical", r"^logging console critical\s*$")
 lp("2.2.4", "logging host", "a syslog host must be set by IP address",
@@ -342,14 +342,7 @@ attest_ids = [c["id"] for c in C if c["kind"] == "attest"]
 manual_fact = [c["id"] for c in C if c["kind"] == "fact" and WB[c["id"]]["assessment"] == "Manual"]
 
 # ── Rego helpers ──────────────────────────────────────────────────────────────────────────────
-HELPERS = r'''# ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent or other => 2, the stricter
-default _level := 2
-
-_level := 1 if input.cis_profile.level == 1
-
-_applies(id) if recommendations[id].level <= _level
-
+HELPERS = "# ── helpers ──────────────────────────────────────────────────────────────────\n" + LEVEL_HELPERS + r'''
 # Top-level running-config lines never start with whitespace and a comment starts with "!", so every pattern is
 # anchored at ^ on a command word and cannot hit a commented line, an indented child line or a longer command
 # (no aaa new-model does not match ^aaa new-model).
@@ -506,8 +499,9 @@ HEADER = META.format(title=BENCH, checks=N_TOTAL, density="sized", basis="size",
 # hand-written Cisco modules (cis_cisco_ios, cis.network.cisco) are generic IOS and do not claim IOS XE.
 # {N_TOTAL} recommendations ({N_AUTO} Automated, {N_TOTAL - N_AUTO} Manual; {N_L1} Level 1, {N_L2} Level 2), every one in the
 # benchmark; ids, levels and assessment status read from the workbook. Messages use our own wording, not CIS text.
-# Profile: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent => 2. total_controls counts the
-# recommendations in the selected profile.
+# Profile: input.cis_profile.level, the number 1 or 2 (Level 2 includes Level 1); absent => 2; any other value (the
+# string "2", 3, null) is invalid evidence, reported as such, with the report scoped at Level 2 and the Level 2
+# recommendations failed. total_controls counts the recommendations in the selected profile.
 # Automated checks fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
 # Manual recommendations with a decidable configuration fact are checked like Automated ones:
 #   {", ".join(manual_fact)}.
@@ -538,6 +532,7 @@ compliant if {{
 violations := [v |
 	arrays := [
 {SECLIST}
+		profile_violations,
 	]
 	some a in arrays
 	some v in a
@@ -545,6 +540,7 @@ violations := [v |
 
 '''
 parts = [HEADER]
+parts.append(LEVEL_VIOLATIONS)
 for s in SECTIONS:
     parts.append(f"# {STITLE[s]}\n{s}_violations := sort([m | some m in _v_{s}])\n")
 parts.append(HELPERS)
@@ -694,6 +690,35 @@ test_level_1_profile_scopes_the_report if {{
 	e := b.compliance_report with input as {{"cis_profile": {{"level": 1}}}}
 	e.total_controls == {N_L1}
 	e.failed_controls == {N_L1}
+}}
+
+# cis_profile.level must be the number 1 or 2: anything else is reported, the report is scoped at Level 2 and
+# the Level 2 recommendations fail, so a mistyped level can never shrink the assessment into a pass
+test_level_must_be_the_number_1_or_2 if {{
+	every lv in ["1", "2", "high", 0, 3, 1.5, true, false, null, [1], {{"level": 1}}] {{
+		r := b.compliance_report with input as json.patch(green, [{{"op": "add", "path": "/cis_profile", "value": {{"level": lv}}}}])
+		r.compliant == false
+		r.level == 2
+		r.total_controls == {N_TOTAL}
+		r.failed_controls == {N_L2}
+		r.passed_controls + r.failed_controls == r.total_controls
+		some v in r.violations
+		startswith(v, "cis_profile.level: evidence invalid — cis_profile.level must be the number 1 or 2, got ")
+	}}
+	every cp in ["1", 1, null, [1], true] {{
+		r := b.compliance_report with input as json.patch(green, [{{"op": "add", "path": "/cis_profile", "value": cp}}])
+		r.compliant == false
+		r.failed_controls == {N_L2}
+	}}
+}}
+
+test_level_numbers_and_absent_level_are_valid if {{
+	l2 := b.compliance_report with input as json.patch(green, [{{"op": "add", "path": "/cis_profile", "value": {{"level": 2}}}}])
+	l2.compliant == true
+	l2.total_controls == {N_TOTAL}
+	none := b.compliance_report with input as json.patch(green, [{{"op": "add", "path": "/cis_profile", "value": {{}}}}])
+	none.compliant == true
+	none.total_controls == {N_TOTAL}
 }}
 
 test_level_2_only_recommendation_skipped_at_level_1 if {{

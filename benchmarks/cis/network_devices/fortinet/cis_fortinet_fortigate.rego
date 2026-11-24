@@ -111,6 +111,10 @@ security_fabric_violations := sort([m | some m in _v_security_fabric])
 security_profiles_violations := sort([m | some m in _v_security_profiles])
 
 # ── helpers ──────────────────────────────────────────────────────────────────
+# A numeric setting is a JSON number, as the FortiOS REST API returns it. A string holding digits, a boolean or
+# null is not a number: to_number read "14" as 14, true as 1 and null as 0, so null passed every "or less" bound.
+_num(v) := v if is_number(v)
+
 default _global_collected := false
 
 _global_collected if {
@@ -566,7 +570,7 @@ default r_2_2_1 := false
 
 r_2_2_1 if {
 	input.fortigate_config.system.password_policy.status == "enable"
-	to_number(input.fortigate_config.system.password_policy.minimum_length) >= 14
+	_num(input.fortigate_config.system.password_policy.minimum_length) >= 14
 	{"admin-password", "ipsec-preshared-key"} - _words(input.fortigate_config.system.password_policy.apply_to) == set()
 }
 
@@ -589,10 +593,10 @@ _v_administration contains "2.2.1: 'Password Policy' must be turned on" if {
 default r_2_2_2 := false
 
 r_2_2_2 if {
-	n := to_number(input.fortigate_config.system.global.admin_lockout_threshold)
+	n := _num(input.fortigate_config.system.global.admin_lockout_threshold)
 	n > 0
 	n <= 3
-	t := to_number(input.fortigate_config.system.global.admin_lockout_duration)
+	t := _num(input.fortigate_config.system.global.admin_lockout_duration)
 	t > 0
 	t <= 900
 }
@@ -689,8 +693,8 @@ default r_2_3_4 := false
 
 r_2_3_4 if {
 	input.fortigate_config.system.snmp.sysinfo.status == "enable"
-	to_number(input.fortigate_config.system.snmp.sysinfo.trap_free_memory_threshold) >= 20
-	to_number(input.fortigate_config.system.snmp.sysinfo.trap_freeable_memory_threshold) <= 50
+	_num(input.fortigate_config.system.snmp.sysinfo.trap_free_memory_threshold) >= 20
+	_num(input.fortigate_config.system.snmp.sysinfo.trap_freeable_memory_threshold) <= 50
 }
 
 default e_2_3_4 := false
@@ -769,7 +773,7 @@ _v_administration contains "2.4.3: admin accounts with different privileges must
 default r_2_4_4 := false
 
 r_2_4_4 if {
-	n := to_number(input.fortigate_config.system.global.admintimeout)
+	n := _num(input.fortigate_config.system.global.admintimeout)
 	n > 0
 	n <= 5
 }
@@ -965,7 +969,7 @@ _v_system_settings contains "2.5.3: HA Reserved Management Interface must be exp
 default r_2_5_4 := false
 
 r_2_5_4 if {
-	to_number(object.get(input.fortigate_config.system.ha, "group_id", 0)) > 0
+	_num(object.get(input.fortigate_config.system.ha, "group_id", 0)) > 0
 }
 
 default e_2_5_4 := false

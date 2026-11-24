@@ -24,8 +24,9 @@ package cis_cisco_ios_xe_17
 # hand-written Cisco modules (cis_cisco_ios, cis.network.cisco) are generic IOS and do not claim IOS XE.
 # 84 recommendations (51 Automated, 33 Manual; 75 Level 1, 9 Level 2), every one in the
 # benchmark; ids, levels and assessment status read from the workbook. Messages use our own wording, not CIS text.
-# Profile: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent => 2. total_controls counts the
-# recommendations in the selected profile.
+# Profile: input.cis_profile.level, the number 1 or 2 (Level 2 includes Level 1); absent => 2; any other value (the
+# string "2", 3, null) is invalid evidence, reported as such, with the report scoped at Level 2 and the Level 2
+# recommendations failed. total_controls counts the recommendations in the selected profile.
 # Automated checks fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
 # Manual recommendations with a decidable configuration fact are checked like Automated ones:
 #   1.2.1, 1.5.4, 1.5.5, 2.1.1.2, 2.1.2, 2.1.3, 2.1.7, 2.3.1.4, 2.4.2, 2.4.4, 3.1.1, 3.1.2, 3.1.3.
@@ -58,10 +59,14 @@ violations := [v |
 		management_plane_violations,
 		control_plane_violations,
 		data_plane_violations,
+		profile_violations,
 	]
 	some a in arrays
 	some v in a
 ]
+
+# cis_profile.level that is not the number 1 or 2 (see _level_invalid)
+profile_violations := sort([m | some m in _v_profile])
 
 # 1 Management plane
 management_plane_violations := sort([m | some m in _v_management_plane])
@@ -73,12 +78,43 @@ control_plane_violations := sort([m | some m in _v_control_plane])
 data_plane_violations := sort([m | some m in _v_data_plane])
 
 # ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent or other => 2, the stricter
+# profile selection: input.cis_profile.level is the number 1 or 2 (Level 2 includes Level 1); absent => 2. Anything
+# else ("2", 3, null, a cis_profile that is not an object) is invalid evidence: the report is scoped at Level 2, the
+# stricter, and every Level 2 recommendation carries the finding, because the profile that decides them was not readable.
 default _level := 2
 
 _level := 1 if input.cis_profile.level == 1
 
 _applies(id) if recommendations[id].level <= _level
+
+default _level_invalid := false
+
+_level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_finding := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_level_got])
+
+_v_profile contains sprintf("cis_profile.level: %s; the report is scoped at Level 2", [_level_finding]) if _level_invalid
+
+_v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be scoped", [id, _level_finding]) if {
+	_level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
 
 # Top-level running-config lines never start with whitespace and a comment starts with "!", so every pattern is
 # anchored at ^ on a command word and cannot hit a commented line, an indented child line or a longer command

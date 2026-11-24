@@ -369,3 +369,60 @@ test_fixture_passes_and_empty_input_fails if {
 	empty := data.cis_windows_11.main.compliance_report with input as {}
 	empty.compliant == false
 }
+
+# A registry key that is not an object of values (a string, a list, null where the key's values belong) fails
+# every row that reads it, a "must not exist" row included, and each failing row carries a finding that names the
+# key: the violations never run short of the failed count.
+test_a_key_that_is_not_an_object_fails_its_rows_and_is_named if {
+	absent := {"kind": "reg_absent", "profiles": ["L1"], "path": "HKLM\\X", "name": "V", "msg": "CIS T"}
+	both := {
+		"kind": "reg_all", "profiles": ["L1"], "msg": "CIS T",
+		"items": [["HKLM\\X", "V", "eq", 1], ["HKLM\\X", "W", "eq", 1], ["HKLM\\Y", "V", "eq", 1]],
+	}
+	every bad in ["text", ["V"], null, 1, true] {
+		inp := {"cis_profile": ms, "registry": {"HKLM\\X": bad, "HKLM\\Y": {"V": 1}}}
+		note := sprintf(" -- evidence: registry.HKLM\\X is not an object (got %s)", [type_name(bad)])
+		status(reg("eq", 1)) == "fail" with input as inp
+		status(reg("eq_or_absent", 4)) == "fail" with input as inp
+		status(absent) == "fail" with input as inp
+		status(both) == "fail" with input as inp
+		one := findings(object.union(reg("eq", 1), {"msg": "CIS T"})) with input as inp
+		one == [concat("", ["CIS T -- found: null", note])]
+		gone := findings(absent) with input as inp
+		gone == [concat("", ["CIS T -- found: null", note])]
+		all := findings(both) with input as inp
+		all == [concat("", ["CIS T -- found: [null, null, 1]", note])]
+	}
+}
+
+test_a_user_hive_that_is_not_an_object_fails_and_is_named if {
+	row := {"kind": "ureg", "profiles": ["L1"], "path": "K", "name": "V", "op": "eq", "value": 1, "msg": "CIS T"}
+	good := {"cis_profile": ms, "registry_users": {"S-1-5-21-1-2-3-1001": {"K": {"V": 1}}}}
+	status(row) == "pass" with input as good
+	bad_hive := {"cis_profile": ms, "registry_users": {"S-1-5-21-1-2-3-1001": "loaded", "S-1-5-21-1-2-3-1002": {"K": {"V": 1}}}}
+	status(row) == "fail" with input as bad_hive
+	m1 := findings(row) with input as bad_hive
+	count(m1) == 1
+	contains(m1[0], " -- evidence: registry_users.S-1-5-21-1-2-3-1001 is not an object (got string)")
+	bad_key := {"cis_profile": ms, "registry_users": {"S-1-5-21-1-2-3-1001": {"K": [1]}}}
+	status(row) == "fail" with input as bad_key
+	m2 := findings(row) with input as bad_key
+	count(m2) == 1
+	contains(m2[0], " -- evidence: registry_users.S-1-5-21-1-2-3-1001.K is not an object (got array)")
+}
+
+# A value absent from a collected input fails, and the finding says the evidence is missing and names the value
+# (the same wording in every CIS Windows module); a value that is present and wrong keeps the "found:" form.
+test_a_missing_value_is_reported_as_missing_evidence if {
+	inp := {"cis_profile": ms, "registry": {"HKLM\\X": {"other": 1}}}
+	status(reg("eq", 1)) == "fail" with input as inp
+	msgs := findings(object.union(reg("eq", 1), {"msg": "CIS T"})) with input as inp
+	msgs == ["CIS T -- evidence missing — registry HKLM\\X\\V not collected (counted as failed)"]
+	nul := findings(object.union(reg("eq", 1), {"msg": "CIS T"})) with input as with_value(null)
+	nul == msgs
+	sec := {"kind": "secedit", "profiles": ["L1"], "key": "PasswordHistorySize", "op": "ge", "value": 24, "msg": "CIS T"}
+	smsg := findings(sec) with input as {"cis_profile": ms, "secedit": {"system_access": {"A": 1}}}
+	smsg == ["CIS T -- evidence missing — secedit.system_access.PasswordHistorySize not collected (counted as failed)"]
+	none := findings(object.union(reg("eq", 1), {"msg": "CIS T"})) with input as {"cis_profile": ms, "secedit": {"system_access": {"A": 1}}}
+	none == ["CIS T -- evidence missing — input.registry was not collected (for registry_users: no S-1-5-21 user hive) (NOT ASSESSED, counted as failed)"]
+}

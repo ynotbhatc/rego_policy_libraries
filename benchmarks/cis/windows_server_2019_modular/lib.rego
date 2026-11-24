@@ -314,7 +314,20 @@ _cmp(v, "has_all", flags) if {
 	}
 }
 
-_value(hive, path, name) := object.get(object.get(hive, path, {}), name, null)
+# A registry key is an object of its values. A key (or a user hive) that holds anything else -- a string, a
+# list, null -- is a collector fault: no value under it is defined, so every row that reads it fails, an "absent"
+# row included, and the finding names the key (see _key_problems).
+_key_ok(hive, path) if {
+	is_object(hive)
+	is_object(object.get(hive, path, {}))
+}
+
+_value(hive, path, name) := object.get(object.get(hive, path, {}), name, null) if _key_ok(hive, path)
+
+# the value as a finding shows it: null under a key that is not an object, where _value is undefined
+_shown(hive, path, name) := _value(hive, path, name) if _key_ok(hive, path)
+
+_shown(hive, path, _) := null if not _key_ok(hive, path)
 
 _empty(null) := true
 
@@ -420,11 +433,11 @@ status(c) := "fail" if {
 	not _passes(c)
 }
 
-_found(c) := sprintf("%v", [_value(input.registry, c.path, c.name)]) if c.kind in {"reg", "reg_absent"}
+_found(c) := sprintf("%v", [_shown(input.registry, c.path, c.name)]) if c.kind in {"reg", "reg_absent"}
 
-_found(c) := sprintf("%v", [[_value(input.registry, i[0], i[1]) | some i in c.items]]) if c.kind == "reg_all"
+_found(c) := sprintf("%v", [[_shown(input.registry, i[0], i[1]) | some i in c.items]]) if c.kind == "reg_all"
 
-_found(c) := sprintf("%v", [{sid: _value(hive, c.path, c.name) | some sid, hive in _user_hives}]) if c.kind == "ureg"
+_found(c) := sprintf("%v", [{sid: _shown(hive, c.path, c.name) | some sid, hive in _user_hives}]) if c.kind == "ureg"
 
 _found(c) := sprintf("%v", [object.get(object.get(input.secedit, "system_access", {}), c.key, null)]) if c.kind == "secedit"
 
@@ -434,11 +447,11 @@ _found(c) := sprintf("%v", [object.get(input.audit_policy, c.guid, null)]) if c.
 
 # Every value a row compares, as [input path, value as collected, vtype, comparison, required value]: what the
 # finding names when a value is of the wrong type for its setting.
-_reads(c) := [[sprintf("registry.%s.%s", [c.path, c.name]), _value(input.registry, c.path, c.name), _vtype(c), c.op, c.value]] if c.kind == "reg"
+_reads(c) := [[sprintf("registry.%s.%s", [c.path, c.name]), _shown(input.registry, c.path, c.name), _vtype(c), c.op, c.value]] if c.kind == "reg"
 
-_reads(c) := [[sprintf("registry.%s.%s", [i[0], i[1]]), _value(input.registry, i[0], i[1]), _item_vtype(i), i[2], i[3]] | some i in c.items] if c.kind == "reg_all"
+_reads(c) := [[sprintf("registry.%s.%s", [i[0], i[1]]), _shown(input.registry, i[0], i[1]), _item_vtype(i), i[2], i[3]] | some i in c.items] if c.kind == "reg_all"
 
-_reads(c) := [[sprintf("registry_users.%s.%s.%s", [sid, c.path, c.name]), _value(hive, c.path, c.name), _vtype(c), c.op, c.value] | some sid, hive in _user_hives] if c.kind == "ureg"
+_reads(c) := [[sprintf("registry_users.%s.%s.%s", [sid, c.path, c.name]), _shown(hive, c.path, c.name), _vtype(c), c.op, c.value] | some sid, hive in _user_hives] if c.kind == "ureg"
 
 _reads(c) := [[sprintf("secedit.system_access.%s", [c.key]), object.get(object.get(input.secedit, "system_access", {}), c.key, null), "dword", c.op, c.value]] if c.kind == "secedit"
 
@@ -460,7 +473,7 @@ _wants_string(op, want) if {
 	is_string(want)
 }
 
-# a missing value is reported as found: null, not as a type problem
+# a missing value is reported as missing evidence (see _missing), not as a type problem
 _type_problem(r) := sprintf("%s is not a number (got %s)", [r[0], type_name(r[1])]) if {
 	_wants_number(r[3], r[4])
 	r[2] in {"dword", "any"}
@@ -499,7 +512,26 @@ _rights_problems(c) := [] if {
 
 _rights_problems(c) := [] if c.kind != "rights"
 
-_type_problems(c) := array.concat([_type_problem(r) | some r in _reads(c)], _rights_problems(c))
+# Every registry key a row reads, as [input path of the key, hive, key, input path of the hive].
+_keys(c) := [[sprintf("registry.%s", [c.path]), input.registry, c.path, "registry"]] if c.kind in {"reg", "reg_absent"}
+
+_keys(c) := [[sprintf("registry.%s", [i[0]]), input.registry, i[0], "registry"] | some i in c.items] if c.kind == "reg_all"
+
+_keys(c) := [[sprintf("registry_users.%s.%s", [sid, c.path]), hive, c.path, sprintf("registry_users.%s", [sid])] | some sid, hive in _user_hives] if c.kind == "ureg"
+
+_keys(c) := [] if not c.kind in {"reg", "reg_absent", "reg_all", "ureg"}
+
+_key_problem(k) := sprintf("%s is not an object (got %s)", [k[3], type_name(k[1])]) if not is_object(k[1])
+
+_key_problem(k) := sprintf("%s is not an object (got %s)", [k[0], type_name(k[1][k[2]])]) if {
+	is_object(k[1])
+	not _key_ok(k[1], k[2])
+}
+
+# a key that is not an object, once per key however many values the row reads under it
+_key_problems(c) := sort({_key_problem(k) | some k in _keys(c)})
+
+_type_problems(c) := array.concat(array.concat([_type_problem(r) | some r in _reads(c)], _rights_problems(c)), _key_problems(c))
 
 # appended to a failing row's finding: empty unless a value is of the wrong type for its setting
 _type_note(c) := "" if count(_type_problems(c)) == 0
@@ -507,7 +539,8 @@ _type_note(c) := "" if count(_type_problems(c)) == 0
 _type_note(c) := sprintf(" -- evidence: %s", [concat("; ", _type_problems(c))]) if count(_type_problems(c)) > 0
 
 # A value absent from a collected input fails (the benchmark's state is a configured value), and the message
-# says the evidence was missing rather than reporting "found: null".
+# says the evidence was missing rather than reporting "found: null". A value under a key that is not an object
+# is not "absent": that row keeps the "found:" form and its evidence note names the key.
 _missing(c) if {
 	c.kind == "reg"
 	_value(input.registry, c.path, c.name) == null

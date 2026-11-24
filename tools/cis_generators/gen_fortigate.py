@@ -71,11 +71,11 @@ C = [
     glob("2.1.12", [f'{G}.log_single_cpu_high == "enable"'], ("log_single_cpu_high", "disable")),
     glob("2.1.13", [f'{G}.gui_display_hostname == "disable"'], ("gui_display_hostname", "enable")),
     fact("2.2.1", [f"is_object({F}.system.password_policy)"], "system.password_policy",
-         [f'{F}.system.password_policy.status == "enable"', f"to_number({F}.system.password_policy.minimum_length) >= 14",
+         [f'{F}.system.password_policy.status == "enable"', f"_num({F}.system.password_policy.minimum_length) >= 14",
           f'{{"admin-password", "ipsec-preshared-key"}} - _words({F}.system.password_policy.apply_to) == set()'],
          add("/system/password_policy/minimum_length", 8), rm("/system/password_policy")),
-    glob("2.2.2", [f"n := to_number({G}.admin_lockout_threshold)", "n > 0", "n <= 3",
-                   f"t := to_number({G}.admin_lockout_duration)", "t > 0", "t <= 900"], ("admin_lockout_threshold", 5)),
+    glob("2.2.2", [f"n := _num({G}.admin_lockout_threshold)", "n > 0", "n <= 3",
+                   f"t := _num({G}.admin_lockout_duration)", "t > 0", "t <= 900"], ("admin_lockout_threshold", 5)),
     fact("2.3.1", [f"is_object({F}.system.snmp.sysinfo)", f"is_array({F}.system.snmp.community)", f"is_array({F}.system.snmp.user)"],
          "system.snmp.{sysinfo,community,user}",
          [f'{F}.system.snmp.sysinfo.status == "enable"', f"count({F}.system.snmp.community) == 0", f"count({F}.system.snmp.user) > 0"],
@@ -87,15 +87,15 @@ C = [
          [f'every u in {F}.system.snmp.user {{ object.get(u, "queries", "enable") == "disable" }}'],
          add("/system/snmp/user/0/queries", "enable"), rm("/system/snmp/user")),
     fact("2.3.4", [f"is_object({F}.system.snmp.sysinfo)"], "system.snmp.sysinfo",
-         [f'{F}.system.snmp.sysinfo.status == "enable"', f"to_number({F}.system.snmp.sysinfo.trap_free_memory_threshold) >= 20",
-          f"to_number({F}.system.snmp.sysinfo.trap_freeable_memory_threshold) <= 50"],
+         [f'{F}.system.snmp.sysinfo.status == "enable"', f"_num({F}.system.snmp.sysinfo.trap_free_memory_threshold) >= 20",
+          f"_num({F}.system.snmp.sysinfo.trap_freeable_memory_threshold) <= 50"],
          add("/system/snmp/sysinfo/trap_free_memory_threshold", 5), rm("/system/snmp/sysinfo")),
     fact("2.4.1", ADM, "system.admin", [f'every a in {F}.system.admin {{ lower(a.name) != "admin" }}'],
          add("/system/admin/0/name", "admin"), rm("/system/admin")),
     fact("2.4.2", ADM, "system.admin", [f"every a in {F}.system.admin {{ _restricted_trusthosts(a) }}"],
          add("/system/admin/0/trusthosts", []), rm("/system/admin")),
     att("2.4.3", "admin_profiles_reviewed"),
-    glob("2.4.4", [f"n := to_number({G}.admintimeout)", "n > 0", "n <= 5"], ("admintimeout", 30)),
+    glob("2.4.4", [f"n := _num({G}.admintimeout)", "n > 0", "n <= 5"], ("admintimeout", 30)),
     fact("2.4.5", IFACE, "system.interface",
          [f'every i in {F}.system.interface {{ count(_access(i) & {{"http", "telnet"}}) == 0 }}'],
          add("/system/interface/1/allowaccess", "https ssh http"), rm("/system/interface")),
@@ -115,7 +115,7 @@ C = [
     fact("2.5.3", HA, "system.ha",
          [f'{F}.system.ha.ha_mgmt_status == "enable"', f'count(object.get({F}.system.ha, "ha_mgmt_interfaces", [])) > 0'],
          add("/system/ha/ha_mgmt_status", "disable"), rm("/system/ha"), ok2=["_ha_standalone"]),
-    fact("2.5.4", HA, "system.ha", [f'to_number(object.get({F}.system.ha, "group_id", 0)) > 0'],
+    fact("2.5.4", HA, "system.ha", [f'_num(object.get({F}.system.ha, "group_id", 0)) > 0'],
          add("/system/ha/group_id", 0), rm("/system/ha")),
     att("3.1", "unused_policies_reviewed"),
     fact("3.2", POL, "firewall.policy",
@@ -381,6 +381,10 @@ violations := [v |
 '''
 
 HELPERS = r'''# ── helpers ──────────────────────────────────────────────────────────────────
+# A numeric setting is a JSON number, as the FortiOS REST API returns it. A string holding digits, a boolean or
+# null is not a number: to_number read "14" as 14, true as 1 and null as 0, so null passed every "or less" bound.
+_num(v) := v if is_number(v)
+
 default _global_collected := false
 
 _global_collected if {
@@ -594,6 +598,58 @@ test_standalone_unit_passes_ha_cluster_checks if {{
 	not _has_id(vs, "2.5.2")
 	not _has_id(vs, "2.5.3")
 	_has_id(vs, "2.5.1")
+}}
+
+# Evidence rule: every numeric setting the recommendations compare, replaced by its digits in a string, a boolean
+# or null, fails its recommendation; so does a yes/no setting holding a boolean or null instead of "enable".
+_numeric_facts := [
+	["2.2.1", "/fortigate_config/system/password_policy/minimum_length"],
+	["2.2.2", "/fortigate_config/system/global/admin_lockout_threshold"],
+	["2.2.2", "/fortigate_config/system/global/admin_lockout_duration"],
+	["2.3.4", "/fortigate_config/system/snmp/sysinfo/trap_free_memory_threshold"],
+	["2.3.4", "/fortigate_config/system/snmp/sysinfo/trap_freeable_memory_threshold"],
+	["2.4.4", "/fortigate_config/system/global/admintimeout"],
+	["2.5.4", "/fortigate_config/system/ha/group_id"],
+]
+
+test_numeric_setting_of_a_wrong_type_fails if {{
+	every f in _numeric_facts {{
+		every bad in ["1", "14", true, false, null, [1]] {{
+			vs := b.violations with input as json.patch(green, [{{"op": "replace", "path": f[1], "value": bad}}])
+			_has_id(vs, f[0])
+		}}
+	}}
+}}
+
+# Every leaf of the green fixture that holds "enable", as a JSON pointer. Left out: three leaves no recommendation
+# reads (the policies' internet_service flags and the FortiAnalyzer status ride along in the fixture), and
+# content_disarm, which 4.2.5 needs on one protocol of a proxy profile while the fixture enables it on two.
+_enable_paths contains path if {{
+	some p, v
+	walk(green, [p, v])
+	v == "enable"
+	not p[count(p) - 1] in {{"internet_service", "internet_service_src", "content_disarm"}}
+	p != ["fortigate_config", "log", "fortianalyzer", "setting", "status"]
+	path := concat("", [sprintf("/%v", [x]) | some x in p])
+}}
+
+test_content_disarm_of_a_wrong_type_fails if {{
+	every bad in [true, false, null, "true", "yes", 1] {{
+		inp := json.patch(green, [
+			{{"op": "replace", "path": "/fortigate_config/antivirus/profile/0/http/content_disarm", "value": bad}},
+			{{"op": "replace", "path": "/fortigate_config/antivirus/profile/0/smtp/content_disarm", "value": bad}},
+		])
+		not b.compliant with input as inp
+	}}
+}}
+
+test_enable_setting_of_a_wrong_type_fails if {{
+	count(_enable_paths) >= 20
+	every path in _enable_paths {{
+		every bad in [true, false, null, "true", "yes", 1] {{
+			not b.compliant with input as json.patch(green, [{{"op": "replace", "path": path, "value": bad}}])
+		}}
+	}}
 }}
 
 {emit_tests("cis_fortinet_fortigate", C, WB, GREEN, "/fortigate_config/attest")}'''

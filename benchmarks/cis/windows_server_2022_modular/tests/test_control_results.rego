@@ -4,20 +4,26 @@ package cis_windows_server_2022.control_results_test
 import rego.v1
 
 # control_results: one result per recommendation; statuses agree with total_controls, failed_controls and
-# the violation messages. Message kinds: '-- found:' fail, '-- NOT ASSESSED:' evidence missing, the Manual
-# attestation messages not attested. Section-level NOT ASSESSED and FAIL-CLOSED lines cite no id.
+# the violation messages. Message kinds: '-- found:' and '-- evidence missing — <value> not collected
+# (counted as failed)' are a fail (the input was collected, the value is wrong or absent); '(NOT ASSESSED,
+# counted as failed)' is evidence missing (the input itself was not collected, or the profile cannot place the
+# row); the Manual attestation messages are not attested. Section-level NOT ASSESSED and FAIL-CLOSED lines
+# cite no id.
 
 FAILING := {"fail", "evidence_missing", "not_attested"}
 
-# both wordings of the not-assessed suffix the Windows generators emit
-_missing(m) if contains(m, " -- NOT ASSESSED: ")
-
-_missing(m) if contains(m, " -- evidence missing — ")
+_missing(m) if contains(m, "(NOT ASSESSED, counted as failed)")
 
 _kind(m) := "evidence_missing" if _missing(m)
 
 _kind(m) := "fail" if {
 	contains(m, " -- found: ")
+	not _missing(m)
+}
+
+_kind(m) := "fail" if {
+	contains(m, " not collected (counted as failed)")
+	not contains(m, " -- found: ")
 	not _missing(m)
 }
 
