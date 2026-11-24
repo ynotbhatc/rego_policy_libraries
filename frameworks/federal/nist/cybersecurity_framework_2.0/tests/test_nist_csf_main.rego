@@ -294,8 +294,6 @@ _facts_row_unsatisfied(row) if {
 
 # Bulk form: every id is given the bad value in ONE input, and every id must have its own finding. Findings
 # are per id, so this proves each id separately without one full evaluation per id and value.
-_bulk(ids, value) := object.union(_green, {"nist_csf": {"subcategories": object.union(_green.nist_csf.subcategories, {id: value | some id in ids})}})
-
 _att_ids := {sid | some sid, s in main.subcategories; s.basis == "attestation"}
 
 _fact_att_ids := {sid | some sid, s in main.subcategories; s.basis == "facts"}
@@ -303,7 +301,7 @@ _fact_att_ids := {sid | some sid, s in main.subcategories; s.basis == "facts"}
 test_every_attested_id_rejects_non_boolean if {
 	count(_att_ids) > 0
 	every bad in ["true", null] {
-		r := main.compliance_report with input as _bulk(_att_ids, bad)
+		r := main.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["nist_csf", "subcategories", x], "value": bad} | some x in _att_ids])
 		r.compliant == false
 		every id in _att_ids {
 			some v in r.violations
@@ -324,7 +322,7 @@ test_every_attested_id_missing_is_named if {
 }
 
 test_every_attested_id_false_is_a_plain_finding if {
-	r := main.compliance_report with input as _bulk(_att_ids, false)
+	r := main.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["nist_csf", "subcategories", x], "value": false} | some x in _att_ids])
 	r.compliant == false
 	count([v | some v in r.violations; contains(v, "[evidence")]) == 0
 	every id in _att_ids {
@@ -335,7 +333,7 @@ test_every_attested_id_false_is_a_plain_finding if {
 
 test_one_non_boolean_attestation_alone_fails if {
 	some id in _att_ids
-	r := main.compliance_report with input as _bulk({id}, "true")
+	r := main.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["nist_csf", "subcategories", x], "value": "true"} | some x in {id}])
 	r.compliant == false
 	r.violation_count == 1
 }
@@ -343,13 +341,13 @@ test_one_non_boolean_attestation_alone_fails if {
 test_non_boolean_attestation_on_a_fact_id_is_reported if {
 	count(_fact_att_ids) > 0
 	every bad in ["true", null] {
-		r := main.compliance_report with input as _bulk(_fact_att_ids, bad)
+		r := main.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["nist_csf", "subcategories", x], "value": bad} | some x in _fact_att_ids])
 		r.compliant == false
 		every id in _fact_att_ids {
 			some v in r.violations
 			contains(v, sprintf("attestation for facts-basis subcategory %v is not a boolean", [id]))
 		}
 	}
-	ok := main.compliance_report with input as _bulk(_fact_att_ids, false)
+	ok := main.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["nist_csf", "subcategories", x], "value": false} | some x in _fact_att_ids])
 	ok.compliant == true
 }

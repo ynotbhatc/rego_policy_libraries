@@ -1185,8 +1185,6 @@ test_weak_algorithm_advisory_needs_the_list if {
 
 # Bulk form: every id is given the bad value in ONE input, and every id must have its own finding. Findings
 # are per id, so this proves each id separately without one full evaluation per id and value.
-_bulk(ids, value) := object.union(_green, {"iso27001": {"annex_a": object.union(_green.iso27001.annex_a, {id: value | some id in ids})}})
-
 _att_ids := {id | some id, _ in iso27001.annex_a; not iso27001.fact_checks[id]}
 
 _fact_att_ids := {id | some id, _ in iso27001.fact_checks}
@@ -1194,7 +1192,7 @@ _fact_att_ids := {id | some id, _ in iso27001.fact_checks}
 test_every_attested_id_rejects_non_boolean if {
 	count(_att_ids) > 0
 	every bad in ["true", null] {
-		r := iso27001.compliance_report with input as _bulk(_att_ids, bad)
+		r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": bad} | some x in _att_ids])
 		r.compliant == false
 		every id in _att_ids {
 			some v in r.violations
@@ -1215,7 +1213,7 @@ test_every_attested_id_missing_is_named if {
 }
 
 test_every_attested_id_false_is_a_plain_finding if {
-	r := iso27001.compliance_report with input as _bulk(_att_ids, false)
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": false} | some x in _att_ids])
 	r.compliant == false
 	count([v | some v in r.violations; contains(v, "[evidence")]) == 0
 	every id in _att_ids {
@@ -1226,7 +1224,7 @@ test_every_attested_id_false_is_a_plain_finding if {
 
 test_one_non_boolean_attestation_alone_fails if {
 	some id in _att_ids
-	r := iso27001.compliance_report with input as _bulk({id}, "true")
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": "true"} | some x in {id}])
 	r.compliant == false
 	r.violation_count == 1
 }
@@ -1234,14 +1232,14 @@ test_one_non_boolean_attestation_alone_fails if {
 test_non_boolean_attestation_on_a_fact_id_is_reported if {
 	count(_fact_att_ids) > 0
 	every bad in ["true", null] {
-		r := iso27001.compliance_report with input as _bulk(_fact_att_ids, bad)
+		r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": bad} | some x in _fact_att_ids])
 		r.compliant == false
 		every id in _fact_att_ids {
 			some v in r.violations
 			contains(v, sprintf("attestation for %v is not a boolean", [id]))
 		}
 	}
-	ok := iso27001.compliance_report with input as _bulk(_fact_att_ids, false)
+	ok := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": false} | some x in _fact_att_ids])
 	ok.compliant == true
 }
 
