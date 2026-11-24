@@ -130,6 +130,12 @@ default _get(_, _) := null
 
 _get(o, k) := object.get(o, k, null) if is_object(o)
 
+# a count that is a number above zero; a string, null or a missing value is not a count
+_positive(v) if {
+	is_number(v)
+	v > 0
+}
+
 # ── Automated checks ─────────────────────────────────────────────────────────
 _evidence_key := {
 	"7.1.1": "lifecycle_audit",
@@ -187,7 +193,7 @@ _null_id_rejected if {
 	_ri.null_id_error_code == -32600
 }
 
-fail contains ["7.1.2", "no audit entries sampled for the request id"] if not _get(_ri, "entries_sampled") > 0
+fail contains ["7.1.2", "no audit entries sampled for the request id"] if not _positive(_get(_ri, "entries_sampled"))
 
 fail contains ["7.1.2", sprintf("audit entries without the JSON-RPC request id: %v", [object.get(_ri, "entries_missing_id", "not reported")])] if {
 	not _get(_ri, "entries_missing_id") == 0

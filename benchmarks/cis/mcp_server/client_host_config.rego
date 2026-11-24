@@ -139,6 +139,12 @@ default _get(_, _) := null
 
 _get(o, k) := object.get(o, k, null) if is_object(o)
 
+# a count that is a number above zero; a string, null or a missing value is not a count
+_positive(v) if {
+	is_number(v)
+	v > 0
+}
+
 # ── Automated checks ─────────────────────────────────────────────────────────
 _evidence_key := {
 	"4.1.4": "sampling",
@@ -163,7 +169,7 @@ fail contains ["4.1.4", "whether Sampling is in use (in_use) not reported"] if n
 
 fail contains ["4.1.4", "no sampling events reviewed"] if {
 	_sp.in_use == true
-	not _get(_sp, "events_reviewed") > 0
+	not _positive(_get(_sp, "events_reviewed"))
 }
 
 fail contains ["4.1.4", "sampling events lack a user decision or redaction check"] if {
