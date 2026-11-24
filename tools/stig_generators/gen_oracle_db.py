@@ -28,13 +28,15 @@ def boolfact(path, val=True):
     return ([f"input.{path} == {str(val).lower()}"], [("BOOL", path, val)])
 
 def empty_list(path, sample=None):      # a query that must return no rows; the collector supplies the rows
+    if path.startswith("oracle."):      # an array, then empty: count("") and count({}) are 0 too
+        return ([f"is_array(input.{path})", f"count(input.{path}) == 0"], [("BOOL", path, [])])
     return ([f"count(input.{path}) == 0"], [("BOOL", path, [])])
 
-def num_ge(path, n, fx):
-    return ([f"to_number(input.{path}) >= {n}"], [("BOOL", path, fx)])
+def num_ge(path, n, fx):               # Oracle only: _num is an ORA_HELPERS function
+    return ([f"_num(input.{path}) >= {n}"], [("BOOL", path, fx)])
 
 def num_gt(path, n, fx):
-    return ([f"to_number(input.{path}) > {n}"], [("BOOL", path, fx)])
+    return ([f"_num(input.{path}) > {n}"], [("BOOL", path, fx)])
 
 def ora_param(name, val, fx=None):      # V$PARAMETER value, compared case-insensitively
     return ([f'lower(input.oracle.parameters["{name}"]) == "{val.lower()}"'], [("MAP2", "oracle.parameters", name, fx or val)])
@@ -83,12 +85,40 @@ def either(name, *parts):               # OR: emitted as extra rule clauses; fix
 
 # Helpers emitted once per platform (shared by rules)
 ORA_HELPERS = """
+# a numeric value as Oracle reports it: a number, or a string holding a decimal number ("3", "0.0034").
+# Undefined for anything else (UNLIMITED, DEFAULT, null, a boolean): to_number(null) is 0 and to_number(true)
+# is 1, so raw input is never passed to to_number.
+_num(v) := v if is_number(v)
+
+_num(v) := to_number(trim_space(v)) if {
+	is_string(v)
+	regex.match(`^\\s*-?[0-9]+(\\.[0-9]+)?\\s*$`, v)
+}
+
+# a query result that lists names (policies, files): an array whose every member is a non-empty string.
+# count() of a string is its length, so a list is never counted before it is known to be one.
+_named_list(v) if {
+	is_array(v)
+	every s in v {
+		is_string(s)
+		trim_space(s) != ""
+	}
+}
+
+# a profile limit that is set: a number, or a string other than NULL / DEFAULT / empty
+_limit_set(v) if is_number(v)
+
+_limit_set(v) if {
+	is_string(v)
+	not upper(trim_space(v)) in {"NULL", "DEFAULT", ""}
+}
+
 # ── profile helpers: every profile the collector reports must satisfy the limit (DEFAULT must be
 # resolved by the collector to the DEFAULT profile's value; UNLIMITED fails numeric comparisons) ──
 profiles_every_le(resource, max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) <= max
+		_num(p[resource]) <= max
 	}
 }
 
@@ -102,14 +132,14 @@ profiles_every_eq(resource, val) if {
 profiles_every_set(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		not upper(p[resource]) in {"NULL", "DEFAULT", ""}
+		_limit_set(p[resource])
 	}
 }
 
 profiles_every_numeric(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) >= 0
+		_num(p[resource]) >= 0
 	}
 }
 
@@ -117,16 +147,18 @@ profiles_every_numeric(resource) if {
 profiles_every_effective_life_le(max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p.PASSWORD_LIFE_TIME) + to_number(p.PASSWORD_GRACE_TIME) <= max
+		_num(p.PASSWORD_LIFE_TIME) + _num(p.PASSWORD_GRACE_TIME) <= max
 	}
 }
 
 # standard auditing on, or at least one unified audit policy enabled
 audit_enabled if {
-	lower(input.oracle.parameters.audit_trail) != "none"
+	is_string(input.oracle.parameters.audit_trail)
+	not lower(trim_space(input.oracle.parameters.audit_trail)) in {"none", ""}
 }
 
 audit_enabled if {
+	_named_list(input.oracle.unified_audit_policies_enabled)
 	count(input.oracle.unified_audit_policies_enabled) > 0
 }
 """
@@ -221,7 +253,7 @@ PLATFORMS = {
             "O19C-00-010800": attest("oracle.attest.data_log_audit_files_in_dedicated_directories"),
             "O19C-00-011200": boolfact("oracle.network.access_restriction_enforced"),
             "O19C-00-011300": either("sys_audit", ora_param("audit_sys_operations", "TRUE"),
-                                     (["count(input.oracle.unified_audit_sys_policies) > 0"], [])),
+                                     (["_named_list(input.oracle.unified_audit_sys_policies)", "count(input.oracle.unified_audit_sys_policies) > 0"], [])),
             "O19C-00-011500": boolfact("oracle.filesystem.diag_dir_world_accessible", False),
             "O19C-00-011600": either("cman", boolfact("oracle.cman.present", False),
                                      (['lower(input.oracle.cman.remote_admin) == "no"'], [])),
@@ -275,8 +307,9 @@ PLATFORMS = {
             "O19C-00-019800": attest("oracle.attest.compromised_password_list_checked"),
             "O19C-00-019900": attest("oracle.attest.password_change_required_on_account_recovery"),
             "O19C-00-020400": attest("oracle.attest.trust_store_contains_only_approved_anchors"),
-            "O19C-00-020500": (["count(input.oracle.control_files) >= 3"], [("BOOL", "oracle.control_files", ["/u01/oradata/control01.ctl", "/u02/oradata/control02.ctl", "/u03/oradata/control03.ctl"])]),
-            "O19C-00-020600": (["count(input.oracle.redo_log_groups) >= 3", "every g in input.oracle.redo_log_groups { count(g.members) >= 2 }"],
+            "O19C-00-020500": (["_named_list(input.oracle.control_files)", "count(input.oracle.control_files) >= 3"], [("BOOL", "oracle.control_files", ["/u01/oradata/control01.ctl", "/u02/oradata/control02.ctl", "/u03/oradata/control03.ctl"])]),
+            "O19C-00-020600": (["is_array(input.oracle.redo_log_groups)", "count(input.oracle.redo_log_groups) >= 3",
+                                "every g in input.oracle.redo_log_groups {\n\t\t_named_list(g.members)\n\t\tcount(g.members) >= 2\n\t}"],
                                [("BOOL", "oracle.redo_log_groups", [{"group": 1, "members": ["/u01/redo01a.log", "/u02/redo01b.log"]}, {"group": 2, "members": ["/u01/redo02a.log", "/u02/redo02b.log"]}, {"group": 3, "members": ["/u01/redo03a.log", "/u02/redo03b.log"]}])]),
         },
     },
