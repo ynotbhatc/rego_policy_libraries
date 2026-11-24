@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [cloud, oracle]
 #   coverage:
-#     checks: 55
+#     checks: 62
 #     cited: 54
 #     expected: 54
 #     found: 54
@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_oci.main
 
 # CIS Oracle Cloud Infrastructure Foundations Benchmark v3.1 (CIS lists 3.1.1 as current)
@@ -26,7 +26,9 @@ package cis_oci.main
 # prowler/compliance/oraclecloud/cis_3.1_oraclecloud.json); the fact each one reads is
 # the OCI resource the benchmark's audit procedure inspects.
 #
-# Input contract (facts the collector supplies from the OCI APIs; every list may be empty):
+# Input contract (facts the collector supplies from the OCI APIs; every list may be empty, but must be
+# sent: an absent or null list was not collected and is reported as missing evidence. Booleans are the
+# JSON booleans and numbers are JSON numbers; a string in their place is reported and never passes):
 #   input.oci.iam.password_policy        : {minimum_length, max_age_days, reuse_prevented}
 #   input.oci.iam.users[]                : {name, email, console_password, mfa_enabled, is_tenancy_admin,
 #                                           api_keys[{age_days}], customer_secret_keys[{age_days}],
@@ -71,15 +73,25 @@ _internet(src) if src == "::/0"
 _opens(rule, port) if {
 	_internet(rule.source)
 	rule.protocol in {"all", "6", "tcp", "TCP"}
+	_covers(rule, port)
+}
+
+_covers(rule, port) if {
+	is_number(rule.port_min)
+	is_number(rule.port_max)
 	rule.port_min <= port
 	rule.port_max >= port
 }
 
 # a rule with no port range covers every port
-_opens(rule, _) if {
-	_internet(rule.source)
-	rule.protocol in {"all", "6", "tcp", "TCP"}
-	not rule.port_min
+_covers(rule, _) if object.get(rule, "port_min", null) == null
+
+# a bound that is not a number cannot be compared, so the rule is read as covering the port
+_covers(rule, _) if {
+	some bound in ["port_min", "port_max"]
+	value := object.get(rule, bound, null)
+	value != null
+	not is_number(value)
 }
 
 # an enabled Events rule with a Notifications action covering every listed event type
@@ -94,7 +106,8 @@ _notified(types) if {
 
 _rotated(keys, days) if {
 	every k in keys {
-		object.get(k, "age_days", 99999) <= days
+		is_number(k.age_days)
+		k.age_days <= days
 	}
 }
 
@@ -103,6 +116,17 @@ _all_cmk(items) if {
 		object.get(i, "kms_key_id", "") != ""
 		i.kms_key_id != null
 	}
+}
+
+# a number at or above / at or below the bound; a string, null or a missing value is neither
+_at_least(value, bound) if {
+	is_number(value)
+	value >= bound
+}
+
+_at_most(value, bound) if {
+	is_number(value)
+	value <= bound
 }
 
 # ── Section 1: Identity and Access Management ────────────────────────────────
@@ -140,21 +164,21 @@ violations contains "1.3: checked condition — IAM administrators cannot update
 }
 
 violations contains "1.4: checked condition — IAM password policy requires minimum length of 14 or greater" if {
-	not object.get(object.get(input, ["oci", "iam", "password_policy"], {}), "minimum_length", 0) >= 14
+	not _at_least(object.get(input, ["oci", "iam", "password_policy", "minimum_length"], null), 14)
 }
 
 violations contains "1.5: checked condition — IAM password policy expires passwords within 365 days" if {
-	not object.get(object.get(input, ["oci", "iam", "password_policy"], {}), "max_age_days", 99999) <= 365
+	not _at_most(object.get(input, ["oci", "iam", "password_policy", "max_age_days"], null), 365)
 }
 
 violations contains "1.6: checked condition — IAM password policy prevents password reuse" if {
-	not input.oci.iam.password_policy.reuse_prevented
+	not input.oci.iam.password_policy.reuse_prevented == true
 }
 
 violations contains sprintf("1.7: MFA must be turned on for all users with a console password (%s)", [u.name]) if {
 	some u in input.oci.iam.users
 	u.console_password == true
-	not u.mfa_enabled
+	not u.mfa_enabled == true
 }
 
 violations contains sprintf("1.8: checked condition — user API keys rotate within 90 days (%s)", [u.name]) if {
@@ -203,7 +227,7 @@ violations contains "1.15: checked condition — storage service-level admins ca
 violations contains sprintf("1.16: OCI IAM credentials unused for 45 days or more must be turned off (%s)", [u.name]) if {
 	some u in input.oci.iam.users
 	u.active == true
-	object.get(u, "last_activity_days", 99999) >= 45
+	not _at_most(object.get(u, "last_activity_days", null), 44)
 }
 
 violations contains sprintf("1.17: there must be only one active API Key for any single OCI IAM user (%s)", [u.name]) if {
@@ -263,17 +287,17 @@ violations contains "2.8: Oracle Autonomous Shared Databases (ADB) access must b
 
 violations contains "3.1: Compute Instance Legacy Metadata service endpoint must be turned off" if {
 	some i in input.oci.compute.instances
-	not i.legacy_imds_endpoints_disabled
+	not i.legacy_imds_endpoints_disabled == true
 }
 
 violations contains "3.2: Secure Boot must be turned on for Compute Instance" if {
 	some i in input.oci.compute.instances
-	not i.secure_boot_enabled
+	not i.secure_boot_enabled == true
 }
 
 violations contains "3.3: In-transit Encryption must be turned on for Compute Instance" if {
 	some i in input.oci.compute.instances
-	not i.in_transit_encryption_enabled
+	not i.in_transit_encryption_enabled == true
 }
 
 # ── Section 4: Logging and Monitoring ────────────────────────────────────────
@@ -334,7 +358,7 @@ violations contains "4.12: a notification must be explicitly configured for chan
 
 violations contains "4.13: VCN flow logging must be turned on for all subnets" if {
 	some s in input.oci.network.subnets
-	not s.flow_logs_enabled
+	not s.flow_logs_enabled == true
 }
 
 violations contains "4.14: Cloud Guard must be turned on in the root compartment of the tenancy" if {
@@ -353,12 +377,12 @@ violations contains "4.15: a notification must be explicitly configured for Orac
 violations contains "4.16: customer created Customer Managed Key (CMK) must be rotated at least annually" if {
 	some k in input.oci.kms.keys
 	k.customer_managed == true
-	not object.get(k, "rotation_interval_days", 99999) <= 365
+	not _at_most(object.get(k, "rotation_interval_days", null), 365)
 }
 
 violations contains "4.17: write level Object Storage logging must be turned on for all buckets" if {
 	some b in input.oci.object_storage.buckets
-	not b.write_logging_enabled
+	not b.write_logging_enabled == true
 }
 
 violations contains "4.18: a notification must be explicitly configured for Local OCI User Authentication" if {
@@ -396,7 +420,7 @@ violations contains "5.3.1: File Storage Systems must be encrypted with Customer
 # ── Section 6: Asset Management ──────────────────────────────────────────────
 
 violations contains "6.1: Create at least one compartment in your tenancy to store cloud resources" if {
-	count([c | some c in input.oci.iam.compartments; not c.root]) == 0
+	count([c | some c in input.oci.iam.compartments; c.root == false]) == 0
 }
 
 violations contains "6.2: no resources must be created in the root compartment" if {
@@ -407,6 +431,98 @@ violations contains "6.2: no resources must be created in the root compartment" 
 
 violations contains "CIS OCI: FAIL-CLOSED - facts 'input.oci' were not supplied; the tenancy was not evaluated" if {
 	not input.oci
+}
+
+# ── evidence: a fact of the wrong type, or a list that was not collected, is a finding ──────────────
+# Each entry is reported under the first recommendation that reads it. A list with nothing in it is sent
+# as an empty list; a list that is absent or null was not collected, and its recommendations are not met.
+
+_lists := {
+	"iam.users": "1.7", "iam.policies": "1.1", "iam.dynamic_groups": "1.14", "iam.compartments": "6.1",
+	"iam.root_compartment_resources": "6.2", "network.security_lists": "2.1", "network.security_groups": "2.3",
+	"network.subnets": "4.13", "integration_instances": "2.6", "analytics_instances": "2.7",
+	"autonomous_databases": "2.8", "compute.instances": "3.1", "tagging.default_tags": "4.1",
+	"notifications.topics": "4.2", "events.rules": "4.3", "kms.keys": "4.16", "object_storage.buckets": "4.17",
+	"block_storage.volumes": "5.2.1", "block_storage.boot_volumes": "5.2.2", "file_storage.file_systems": "5.3.1",
+}
+
+_fact(path) := object.get(input, array.concat(["oci"], split(path, ".")), null)
+
+violations contains sprintf("%s: evidence missing: oci.%s not collected (a list; empty when there are none)", [id, path]) if {
+	input.oci
+	some path, id in _lists
+	_fact(path) == null
+}
+
+violations contains sprintf("%s: oci.%s is not a list (got %s)", [id, path, type_name(_fact(path))]) if {
+	some path, id in _lists
+	_fact(path) != null
+	not is_array(_fact(path))
+}
+
+# fields read from each item of a list: [recommendation, list, field, type, must be present]
+_fields := [
+	["1.7", "iam.users", "console_password", "boolean", true],
+	["1.7", "iam.users", "mfa_enabled", "boolean", true],
+	["1.12", "iam.users", "is_tenancy_admin", "boolean", true],
+	["1.16", "iam.users", "active", "boolean", true],
+	["1.16", "iam.users", "last_activity_days", "number", false],
+	["6.1", "iam.compartments", "root", "boolean", true],
+	["2.5", "network.security_lists", "is_default", "boolean", true],
+	["4.13", "network.subnets", "flow_logs_enabled", "boolean", true],
+	["3.1", "compute.instances", "legacy_imds_endpoints_disabled", "boolean", true],
+	["3.2", "compute.instances", "secure_boot_enabled", "boolean", true],
+	["3.3", "compute.instances", "in_transit_encryption_enabled", "boolean", true],
+	["4.2", "notifications.topics", "subscriptions", "number", false],
+	["4.3", "events.rules", "enabled", "boolean", false],
+	["4.3", "events.rules", "has_notification_action", "boolean", false],
+	["4.16", "kms.keys", "customer_managed", "boolean", true],
+	["4.16", "kms.keys", "rotation_interval_days", "number", false],
+	["4.17", "object_storage.buckets", "write_logging_enabled", "boolean", true],
+]
+
+violations contains sprintf("%s: evidence missing: oci.%s[%d].%s not collected", [id, path, i, field]) if {
+	some [id, path, field, _, true] in _fields
+	is_array(_fact(path))
+	some i, item in _fact(path)
+	object.get(item, field, null) == null
+}
+
+violations contains sprintf("%s: oci.%s[%d].%s is not a %s (got %s)", [id, path, i, field, type, type_name(value)]) if {
+	some [id, path, field, type, _] in _fields
+	is_array(_fact(path))
+	some i, item in _fact(path)
+	value := object.get(item, field, null)
+	value != null
+	type_name(value) != type
+}
+
+# the password policy is one object, not a list
+_policy_fields := [["1.4", "minimum_length", "number"], ["1.5", "max_age_days", "number"], ["1.6", "reuse_prevented", "boolean"]]
+
+violations contains sprintf("%s: evidence missing: oci.iam.password_policy.%s not collected", [id, field]) if {
+	input.oci
+	some [id, field, _] in _policy_fields
+	_fact(sprintf("iam.password_policy.%s", [field])) == null
+}
+
+violations contains sprintf("%s: oci.iam.password_policy.%s is not a %s (got %s)", [id, field, type, type_name(value)]) if {
+	some [id, field, type] in _policy_fields
+	value := _fact(sprintf("iam.password_policy.%s", [field]))
+	value != null
+	type_name(value) != type
+}
+
+# ingress port bounds, when a rule carries them, are numbers
+violations contains sprintf("%s: oci.%s[%d].ingress[%d].%s is not a number (got %s)", [id, path, i, j, bound, type_name(value)]) if {
+	some path, id in {"network.security_lists": "2.1", "network.security_groups": "2.3"}
+	is_array(_fact(path))
+	some i, item in _fact(path)
+	some j, rule in item.ingress
+	some bound in ["port_min", "port_max"]
+	value := object.get(rule, bound, null)
+	value != null
+	not is_number(value)
 }
 
 # ── report ───────────────────────────────────────────────────────────────────

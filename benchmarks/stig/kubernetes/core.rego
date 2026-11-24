@@ -1671,7 +1671,8 @@ r_cntr_k8_000960 if {
 	count(missing_r_cntr_k8_000960) == 0
 	is_array(input.workloads.user_pod_host_ports)
 	every p in input.workloads.user_pod_host_ports {
-		to_number(p) >= 1024
+		is_number(p)
+		p >= 1024
 	}
 	input.collection_status.user_pod_host_ports == "ok"
 }

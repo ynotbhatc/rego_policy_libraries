@@ -1,0 +1,111 @@
+# Bad evidence never passes (CIS AWS Foundations v7.0.0): every boolean and number in the all-pass fixture is sent as a
+# string, as null and not at all, and the report must not come back compliant. The two sets below are the
+# only exceptions, each with its reason; a new leaf in the fixture is covered without editing this file.
+
+package cis_aws.bad_evidence_test
+
+import rego.v1
+
+_green := data.cis_aws.v7_controls_test.green
+
+_report := data.cis_aws.main.compliance_report
+
+# leaves the module does not read: no value of theirs can change the result
+_unread := set()
+
+# leaves that may be left out or null (the module then takes the stricter reading, or the check does not
+# depend on them); a value of the wrong type is still a finding
+_optional := {
+	# 2.5 is met by AccountMFAEnabled == 1 alone
+	"account_summary/AccountPasswordPresent",
+	# a modality that is not in use need not be logged (7.4.2)
+	"bedrock_invocation_logging/0/loggingConfig/embeddingDataDeliveryEnabled",
+	# a modality that is not in use need not be logged (7.4.2)
+	"bedrock_invocation_logging/0/loggingConfig/imageDataDeliveryEnabled",
+	# a modality that is not in use need not be logged (7.4.2)
+	"bedrock_invocation_logging/0/loggingConfig/videoDataDeliveryEnabled",
+	# a policy without an AttachmentCount is treated as attached and is checked (2.14)
+	"iam_policies/0/AttachmentCount",
+	# EC2 omits Main on an explicit subnet association
+	"route_tables/0/Associations/0/Main",
+}
+
+_key(p) := concat("/", [sprintf("%v", [x]) | some x in p])
+
+_booleans := [p | walk(_green, [p, v]); is_boolean(v); not _key(p) in _unread]
+
+_numbers := [p | walk(_green, [p, v]); is_number(v); not _key(p) in _unread]
+
+_passes(inp) if _report.compliant == true with input as inp
+
+test_fixture_passes_and_has_leaves if {
+	_passes(_green)
+	count(_booleans) + count(_numbers) > 0
+}
+
+test_empty_and_null_input_fail if {
+	not _passes({})
+	not _passes(null)
+}
+
+test_boolean_of_the_wrong_type_never_passes if {
+	every p in _booleans {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_null_or_removed_never_passes if {
+	every p in [q | some q in _booleans; not _key(q) in _optional] {
+		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": null}]))
+		not _passes(json.patch(_green, [{"op": "remove", "path": p}]))
+	}
+}
+
+test_number_as_string_never_passes if {
+	every p in _numbers {
+		v := json.patch(_green, [{"op": "replace", "path": p, "value": "x"}])
+		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": sprintf("%v", [object.get(_green, p, 0)])}]))
+		not _passes(v)
+	}
+}
+
+test_number_null_or_removed_never_passes if {
+	every p in [q | some q in _numbers; not _key(q) in _optional] {
+		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": null}]))
+		not _passes(json.patch(_green, [{"op": "remove", "path": p}]))
+	}
+}
+
+# The exception lists stay honest: a listed leaf must exist in the fixture.
+test_exception_lists_name_real_leaves if {
+	keys := {_key(p) | walk(_green, [p, v]); not is_object(v); not is_array(v)}
+	every k in _unread | _optional {
+		k in keys
+	}
+}
+
+# The finding names the fact and the type that was sent.
+test_string_boolean_is_named if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/rds_instances/0/StorageEncrypted", "value": "true"}])
+	r := _report with input as inp
+	some msg in r.violations
+	startswith(msg, "3.2.1: ")
+	contains(msg, "evidence invalid — input.rds_instances[0].StorageEncrypted must be a boolean, got string")
+	r.evidence_invalid_count == 1
+}
+
+test_string_number_is_named if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/password_policy/MinimumPasswordLength", "value": "14"}])
+	r := _report with input as inp
+	some msg in r.violations
+	startswith(msg, "2.8: ")
+	contains(msg, "evidence invalid — input.password_policy.MinimumPasswordLength must be a number, got string")
+}
+
+# The credential report is CSV: its "true" / "false" strings are the API's own type and stay accepted.
+test_credential_report_strings_still_pass if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/credential_report/0/mfa_active", "value": "true"}])
+	_passes(inp)
+}

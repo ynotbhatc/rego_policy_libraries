@@ -422,26 +422,26 @@ F("3.1.4", "block public access", ["s3_buckets"],
   add("/s3_buckets/0/public_access_block/BlockPublicAcls", False))
 F("3.2.1", "encryption-at-rest", ["rds_instances"],
   [("RDS instance %s: storage encryption is off or not reported", ['nm(x, "DBInstanceIdentifier")'],
-    [each("rds_instances"), "not truthy(object.get(x, \"StorageEncrypted\", null))"])],
+    [each("rds_instances"), "not is_true(object.get(x, \"StorageEncrypted\", null))"])],
   add("/rds_instances/0/StorageEncrypted", False))
 F("3.2.2", "auto minor version", ["rds_instances"],
   [("RDS instance %s: automatic minor version upgrade is off or not reported", ['nm(x, "DBInstanceIdentifier")'],
-    [each("rds_instances"), "not truthy(object.get(x, \"AutoMinorVersionUpgrade\", null))"])],
+    [each("rds_instances"), "not is_true(object.get(x, \"AutoMinorVersionUpgrade\", null))"])],
   add("/rds_instances/0/AutoMinorVersionUpgrade", False))
 F("3.2.3", "publicly accessible", ["rds_instances"],
   [("RDS instance %s is publicly accessible or its flag was not reported", ['nm(x, "DBInstanceIdentifier")'],
-    [each("rds_instances"), "not falsy(object.get(x, \"PubliclyAccessible\", null))"])],
+    [each("rds_instances"), "not is_false(object.get(x, \"PubliclyAccessible\", null))"])],
   add("/rds_instances/0/PubliclyAccessible", True))
 F("3.3.1", "efs", ["efs_file_systems"],
   [("EFS file system %s: encryption is off or not reported", ['nm(x, "FileSystemId")'],
-    [each("efs_file_systems"), "not truthy(object.get(x, \"Encrypted\", null))"])],
+    [each("efs_file_systems"), "not is_true(object.get(x, \"Encrypted\", null))"])],
   add("/efs_file_systems/0/Encrypted", False))
 
 # Section 4: logging
 F("4.2", "log file validation", ["cloudtrail_trails"],
   [("no trail was collected, so no log file is validated", [], ["count(input.cloudtrail_trails) == 0"]),
    ("trail %s has log file validation off or not reported", ['nm(x, "Name")'],
-    [each("cloudtrail_trails"), "not truthy(object.get(x, \"LogFileValidationEnabled\", null))"])],
+    [each("cloudtrail_trails"), "not is_true(object.get(x, \"LogFileValidationEnabled\", null))"])],
   add("/cloudtrail_trails/0/LogFileValidationEnabled", False))
 F("4.3", "aws config", ["regions", "config_recorders", "config_recorder_status"],
   [("no regions were collected, so Config coverage cannot be judged", [], ["count(input.regions) == 0"]),
@@ -458,7 +458,7 @@ F("4.5", "encrypted at rest", ["cloudtrail_trails"],
   add("/cloudtrail_trails/0/KmsKeyId", ""))
 F("4.6", "rotation", ["kms_keys"],
   [("customer symmetric key %s has rotation off or not reported", ['nm(x, "KeyId")'],
-    [each("kms_keys"), 'x.KeySpec == "SYMMETRIC_DEFAULT"', 'object.get(x, "KeyManager", "") != "AWS"', "not truthy(object.get(x, \"KeyRotationEnabled\", null))"]),
+    [each("kms_keys"), 'x.KeySpec == "SYMMETRIC_DEFAULT"', 'object.get(x, "KeyManager", "") != "AWS"', "not is_true(object.get(x, \"KeyRotationEnabled\", null))"]),
    ("key %s: key spec not collected", ['nm(x, "KeyId")'], [each("kms_keys"), 'not has_str(x, "KeySpec")'])],
   add("/kms_keys/0/KeyRotationEnabled", False))
 F("4.7", "flow logging", ["vpcs", "flow_logs"],
@@ -467,7 +467,7 @@ F("4.7", "flow logging", ["vpcs", "flow_logs"],
 for _cid, _kw, _dir in [("4.8", "write events", "write"), ("4.9", "read events", "read")]:
     F(_cid, _kw, ["cloudtrail_trails"],
       [("no trail was collected, so no S3 object-level events are recorded", [], ["count(input.cloudtrail_trails) == 0"]),
-       ("trail %s is not a multi-region trail", ['nm(x, "Name")'], [each("cloudtrail_trails"), "not truthy(object.get(x, \"IsMultiRegionTrail\", null))"]),
+       ("trail %s is not a multi-region trail", ['nm(x, "Name")'], [each("cloudtrail_trails"), "not is_true(object.get(x, \"IsMultiRegionTrail\", null))"]),
        (f"trail %s does not log every S3 object {_dir} event", ['nm(x, "Name")'],
         [each("cloudtrail_trails"), "trail_selectors_collected(x)", f'not trail_logs_s3(x, "{_dir}")']),
        ("trail %s: event selectors not collected", ['nm(x, "Name")'],
@@ -589,7 +589,7 @@ F("7.5.1", "interface vpc endpoints", ["bedrock_endpoint_requirements", "vpc_end
    ("endpoint %s carries the default full-access policy, or its policy was not collected", ['nm(e, "VpcEndpointId")'],
     [each("bedrock_endpoint_requirements", "q"), "some e in req_endpoints(q)", "not endpoint_policy_restricted(e)"]),
    ("endpoint %s has private DNS off and callers are not recorded as using the endpoint-specific name", ['nm(e, "VpcEndpointId")'],
-    [each("bedrock_endpoint_requirements", "q"), "some e in req_endpoints(q)", "not truthy(object.get(e, \"PrivateDnsEnabled\", null))",
+    [each("bedrock_endpoint_requirements", "q"), "some e in req_endpoints(q)", "not is_true(object.get(e, \"PrivateDnsEnabled\", null))",
      'not attested("bedrock_endpoint_specific_dns_used")'])],
   add("/vpc_endpoints/0/PrivateDnsEnabled", False))
 F("7.5.2", "private vpc", ["bedrock_jobs", "subnets", "route_tables"],
@@ -608,7 +608,7 @@ F("7.5.3", "vector stores", ["bedrock_knowledge_bases", "opensearch_serverless_c
    ("knowledge base %s: backing collection could not be resolved", ['nm(x, "knowledgeBaseId")'],
     [each("bedrock_knowledge_bases"), 'x.storageConfiguration.type == "OPENSEARCH_SERVERLESS"', "not kb_collection_name(x)"]),
    ("collection %s has a network rule that allows public access", ["n"],
-    [each("bedrock_knowledge_bases"), "n := kb_collection_name(x)", "some rule in matching_rules(n)", "truthy(rule.AllowFromPublic)"]),
+    [each("bedrock_knowledge_bases"), "n := kb_collection_name(x)", "some rule in matching_rules(n)", "is_true(rule.AllowFromPublic)"]),
    ("collection %s has no network rule that is private and lists bedrock.amazonaws.com", ["n"],
     [each("bedrock_knowledge_bases"), "n := kb_collection_name(x)", "not private_bedrock_rule(n)"])],
   add("/opensearch_serverless_network_policies/0/policy/0/AllowFromPublic", True))
@@ -618,7 +618,7 @@ F("7.5.4", "marketplace", ["bedrock_marketplace_endpoints"],
    ("endpoint %s: no backing model was collected", ['nm(x, "endpointArn")'],
     [each("bedrock_marketplace_endpoints"), "count(x.models) == 0"]),
    ("endpoint %s: model %s does not enable network isolation", ['nm(x, "endpointArn")', 'nm(m, "ModelName")'],
-    [each("bedrock_marketplace_endpoints"), "some m in x.models", "not truthy(object.get(m, \"EnableNetworkIsolation\", null))"]),
+    [each("bedrock_marketplace_endpoints"), "some m in x.models", "not is_true(object.get(m, \"EnableNetworkIsolation\", null))"]),
    ("endpoint %s: model %s has no VPC configuration with subnets and security groups", ['nm(x, "endpointArn")', 'nm(m, "ModelName")'],
     [each("bedrock_marketplace_endpoints"), "some m in x.models", "not model_vpc_ok(m)"])],
   add("/bedrock_marketplace_endpoints/0/models/0/EnableNetworkIsolation", False))
@@ -841,6 +841,9 @@ total_controls := count(in_scope)
 
 evidence_violations := [v | some v in violations; contains(v, ": evidence missing — ")]
 
+# A fact that was collected with the wrong type (a string where the AWS API returns a boolean or a number).
+evidence_invalid := [v | some v in violations; contains(v, " — evidence invalid — ")]
+
 section_names := {json.dumps(SECTION_NAMES)}
 
 # Counts are distinct recommendations, never messages: one control can fail on many resources.
@@ -970,6 +973,7 @@ compliance_report := {{
 	"violations": _violations,
 	"violation_count": count(_violations),
 	"evidence_missing_count": count(bench.evidence_violations),
+	"evidence_invalid_count": count(bench.evidence_invalid),
 	"section_results": {{
 		"identity_access": _section("2"),
 		"storage": _section("3"),

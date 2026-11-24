@@ -159,12 +159,8 @@ _bool(v) := "true" if lower(trim_space(v)) in {"1", "t", "true"}
 
 _bool(v) := "false" if lower(trim_space(v)) in {"0", "f", "false"}
 
+# Endpoint and container ports are numbers in the API objects; a string in their place is not a port.
 _port(p) := p if is_number(p)
-
-_port(p) := to_number(p) if {
-	is_string(p)
-	regex.match(`^[0-9]+$`, p)
-}
 
 # ── OpenShift objects and config files under input.openshift ─────────────────
 _obj(name) := o if {
@@ -433,6 +429,25 @@ _scc_collected if {
 	is_array(input.scc.items)
 	count(input.scc.items) > 0
 	input.collection_status.scc == "ok"
+}
+
+# The SCC allow* fields are booleans in the API object. A string or a number in their place is a collection
+# error: it is not read as a refusal, and it is reported under the recommendation that reads the field.
+_scc_boolean_fields := [
+	["allowPrivilegedContainer", "5.2.1"],
+	["allowHostPID", "5.2.2"],
+	["allowHostIPC", "5.2.3"],
+	["allowHostNetwork", "5.2.4"],
+	["allowPrivilegeEscalation", "5.2.5"],
+]
+
+_v_policies contains sprintf("%s: evidence invalid — SCC %v: %s must be true or false, got %s", [id, object.get(s, ["metadata", "name"], "<unnamed>"), field, type_name(s[field])]) if {
+	some [field, id] in _scc_boolean_fields
+	_applies(id)
+	_scc_collected
+	some s in input.scc.items
+	not is_null(s[field])
+	not is_boolean(s[field])
 }
 
 # the audit names exactly two objects as expected in the default namespace: the kubernetes and openshift Services

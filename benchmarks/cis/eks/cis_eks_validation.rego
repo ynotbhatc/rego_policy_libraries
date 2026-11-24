@@ -13,6 +13,9 @@
 #     collected" (never a pass).
 #   - Manual: each control passes only on an explicit attestation
 #     (input.cis_eks.attest.<key> == true).
+#   - A boolean fact sent as another type (the strings "true" and "false" included) is
+#     "CIS EKS <id>: evidence invalid — <path> is not a boolean (got <type>)" for each
+#     control that reads it (see boolean_facts), never a pass.
 #   Each control emits at most one message, so empty input yields exactly 47.
 #
 # Input contract — input.cis_eks.*
@@ -56,14 +59,14 @@
 #   source: cis
 #   domains: [kubernetes, cloud, aws]
 #   coverage:
-#     checks: 69
+#     checks: 70
 #     cited: 63
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_eks.main
 
 import rego.v1
@@ -249,11 +252,61 @@ violations contains msg if {
 	msg := sprintf("CIS EKS %s: evidence missing — %s not collected", [id, concat(", ", m)])
 }
 
-# A control's logic runs only when all its evidence is present, so the
-# evidence-missing message and the finding are mutually exclusive.
+# Booleans the Automated controls read: [inventory, property, a control that reads it]. Kubernetes and AWS
+# return them as JSON booleans; a string or a number in their place (the strings "true" and "false" included)
+# is a collection error, so the control reports invalid evidence and its logic does not run on the value.
+boolean_facts := [
+	["cluster", "enabled", "2.1.1"],
+	["nodes", "exists", "3.1.1"],
+	["nodes", "exists", "3.1.2"],
+	["nodes", "exists", "3.1.3"],
+	["nodes", "exists", "3.1.4"],
+	["workloads", "automountServiceAccountToken", "4.1.6"],
+	["workloads", "privileged", "4.2.1"],
+	["workloads", "hostPID", "4.2.2"],
+	["workloads", "hostIPC", "4.2.3"],
+	["workloads", "hostNetwork", "4.2.4"],
+	["workloads", "allowPrivilegeEscalation", "4.2.5"],
+	["service_accounts", "automountServiceAccountToken", "4.1.6"],
+	["service_accounts", "automountServiceAccountToken", "5.2.1"],
+	["ecr", "scanOnPush", "5.1.1"],
+]
+
+_fact_path(path) := concat("", [seg |
+	some x in path
+	seg := _fact_segment(x)
+])
+
+_fact_segment(x) := sprintf("[%d]", [x]) if is_number(x)
+
+_fact_segment(x) := sprintf(".%s", [x]) if is_string(x)
+
+_invalid_facts contains [id, msg] if {
+	some [inventory, property, id] in boolean_facts
+	walk(eks[inventory], [path, value])
+	count(path) > 0
+	path[count(path) - 1] == property
+	not is_null(value)
+	not is_boolean(value)
+	msg := sprintf("%s%s is not a boolean (got %s)", [inventory, _fact_path(path), type_name(value)])
+}
+
+invalid_evidence(id) := sort([msg | some [i, msg] in _invalid_facts; i == id])
+
+violations contains msg if {
+	some id, _ in requires
+	count(missing_evidence(id)) == 0
+	bad := invalid_evidence(id)
+	count(bad) > 0
+	msg := sprintf("CIS EKS %s: evidence invalid — %s", [id, concat(", ", bad)])
+}
+
+# A control's logic runs only when all its evidence is present and well typed, so the evidence-missing
+# message, the evidence-invalid message and the finding are mutually exclusive.
 evaluated(id) if {
 	requires[id]
 	count(missing_evidence(id)) == 0
+	count(invalid_evidence(id)) == 0
 }
 
 # ── Manual controls: attestation ─────────────────────────────────────────────
@@ -462,7 +515,7 @@ sa_automount_false(ns, name) if {
 token_mounted(w) if pod_spec(w).automountServiceAccountToken == true
 
 token_mounted(w) if {
-	not "automountServiceAccountToken" in object.keys(pod_spec(w))
+	object.get(pod_spec(w), "automountServiceAccountToken", null) == null
 	not sa_automount_false(ns_of(w), sa_name(w))
 }
 
