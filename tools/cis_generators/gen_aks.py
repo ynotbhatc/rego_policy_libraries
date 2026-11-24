@@ -242,7 +242,8 @@ C += [
     att("sa_dedicated", "dedicated kubernetes service accounts", "workloads must use dedicated, least-privilege ServiceAccounts", "dedicated_workload_service_accounts"),
     cluster("kms", "kms", "Kubernetes Secrets must be encrypted at rest with AKS KMS (infrastructure encryption or Key Vault KMS)",
             ['_cluster_has("securityProfile")'], "aks.cluster.securityProfile",
-            [['_cv(["securityProfile", "kubernetesResourceObjectEncryptionProfile", "infrastructureEncryption"]) == "Enabled"'],
+            [['_cv(["securityProfile", "kubernetesResourceObjectEncryptionProfile", "infrastructureEncryption"]) == "Enabled"',
+              'not _cv_not_boolean(["securityProfile", "azureKeyVaultKms", "enabled"])'],
              ['_cv(["securityProfile", "azureKeyVaultKms", "enabled"]) == true']],
             add("/aks/cluster/securityProfile", {"azureKeyVaultKms": {"enabled": False}}), rm("/aks/cluster/securityProfile")),
     cluster("endpoint", "control plane endpoint", "the API server must be private, or public with a non-wildcard authorized IP range list", API_EV, API_LABEL,
@@ -256,7 +257,7 @@ C += [
             add("/aks/cluster/apiServerAccessProfile/enablePublicFqdn", True), rm("/aks/cluster/apiServerAccessProfile")),
     cluster("private_nodes", "private nodes", "node pools must not give their nodes public IP addresses",
             ["is_array(_cluster.agentPoolProfiles)", "count(_cluster.agentPoolProfiles) > 0"], "aks.cluster.agentPoolProfiles",
-            [['every p in _cluster.agentPoolProfiles { is_object(p); object.get(p, "enableNodePublicIP", false) != true }']],
+            [['every p in _cluster.agentPoolProfiles { is_object(p); object.get(p, "enableNodePublicIP", null) in {false, null} }']],
             add("/aks/cluster/agentPoolProfiles/0/enableNodePublicIP", True), rm("/aks/cluster/agentPoolProfiles")),
 ]
 if NODES:
@@ -425,7 +426,7 @@ HEADER = meta(BENCH, "sized", "size") + f'''package {KEY}
 #
 # Input contract (NEW marks the paths this module introduces):
 #   aks.cluster                      : NEW the `az aks show` object, ARM field names (apiServerAccessProfile, agentPoolProfiles,
-#                                      networkProfile, securityProfile, aadProfile, enableRbac, disableLocalAccounts)
+#                                      networkProfile, securityProfile, aadProfile{', enableRbac' if NODES else ''}, disableLocalAccounts)
 #   aks.subscription_tenant_id       : NEW the Entra tenant of the subscription holding the cluster
 {NODE_FACTS}#   pod_security.<list>[]            : NEW customer workload offenders, "namespace/pod[/container]" strings, AKS-managed system
 #                                      namespaces excluded: privileged_containers, host_pid_pods, host_ipc_pods,
@@ -487,6 +488,14 @@ _cluster_has(k) if k in object.keys(_cluster)
 
 # a cluster value, null when absent
 _cv(path) := object.get(_cluster, path, null)
+
+# A boolean cluster setting sent as a string or a number is a collection error: the recommendation that reads it
+# is not met, whatever else holds. An unset (null or absent) setting is not this error.
+_cv_not_boolean(path) if {
+	v := _cv(path)
+	not is_null(v)
+	not is_boolean(v)
+}
 
 # an unset (null) apiServerAccessProfile is a public cluster with no restriction
 _api_profile := p if {
