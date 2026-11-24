@@ -65,3 +65,30 @@ test_tamper_detected_is_critical if {
 	msgs := c.all_violations with input as {"devices": [d], "device_standards": stds}
 	count([m | some m in msgs; contains(m, "CRITICAL")]) == 1
 }
+
+# Audit 2026-11-24 round 2: tamper_status is a status word (a string). Null, a boolean, a number, an empty
+# string or a list is not a reported status. Before, only a missing field or boolean false was reported;
+# null read as "reported, no tamper" and the device passed.
+test_tamper_status_must_be_a_non_empty_string if {
+	every bad in [null, true, false, 0, 1, "", "  ", [], {}] {
+		d := json.patch(good_device, [{"op": "replace", "path": "/security/tamper_status", "value": bad}])
+		msgs := c.all_violations with input as {"devices": [d], "device_standards": stds}
+		count([m | some m in msgs; contains(m, "Tamper status not reported")]) == 1
+		count([m | some m in msgs; contains(m, "CRITICAL")]) == 0
+		not c.no_tamper_detected(d)
+	}
+}
+
+test_tamper_status_problem_is_named if {
+	d := json.patch(good_device, [{"op": "replace", "path": "/security/tamper_status", "value": null}])
+	msgs := c.all_violations with input as {"devices": [d], "device_standards": stds}
+	count([m | some m in msgs; contains(m, "evidence missing: security.tamper_status is null")]) == 1
+	d2 := json.patch(good_device, [{"op": "replace", "path": "/security/tamper_status", "value": 1}])
+	msgs2 := c.all_violations with input as {"devices": [d2], "device_standards": stds}
+	count([m | some m in msgs2; contains(m, "is not a non-empty string (got number)")]) == 1
+}
+
+test_reported_status_still_passes if {
+	msgs := c.all_violations with input as {"devices": [good_device], "device_standards": stds}
+	count(msgs) == 0
+}
