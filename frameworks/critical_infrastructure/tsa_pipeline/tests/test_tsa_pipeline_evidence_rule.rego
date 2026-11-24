@@ -376,39 +376,50 @@ _bad_booleans := ["false", "true", "no", null, 0, 1]
 
 _label(p) := concat(".", [sprintf("%v", [s]) | some s in p])
 
-_mutations contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)]), "input": inp} if {
+# Each case is a name and a JSON patch; the mutated input is built only when the case is evaluated.
+_cases contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)]), "patch": [{"op": "replace", "path": p, "value": bad}]} if {
 	some p in _bool_leaves
 	some bad in _bad_booleans
-	inp := json.patch(all_pass, [{"op": "replace", "path": p, "value": bad}])
 }
 
-_mutations contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)]), "input": inp} if {
+_cases contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)]), "patch": [{"op": "replace", "path": p, "value": bad}]} if {
 	some p in _number_leaves
 	some bad in [sprintf("%v", [object.get(all_pass, p, null)]), null]
-	inp := json.patch(all_pass, [{"op": "replace", "path": p, "value": bad}])
 }
 
-_mutations contains {"case": sprintf("%s removed", [_label(p)]), "input": inp} if {
+_cases contains {"case": sprintf("%s removed", [_label(p)]), "patch": [{"op": "remove", "path": p}]} if {
 	some p in array.concat(_bool_leaves, _number_leaves)
-	inp := json.patch(all_pass, [{"op": "remove", "path": p}])
 }
 
 # Every top-level section removed, null, a string and an empty array.
-_mutations contains {"case": sprintf("%s := %s", [key, json.marshal(bad)]), "input": inp} if {
+_cases contains {"case": sprintf("%s := %s", [key, json.marshal(bad)]), "patch": [{"op": "replace", "path": [key], "value": bad}]} if {
 	some key, _ in all_pass
 	some bad in [null, "true", []]
-	inp := object.union(all_pass, {key: bad})
 }
 
-_mutations contains {"case": sprintf("%s removed", [key]), "input": object.remove(all_pass, [key])} if {
+_cases contains {"case": sprintf("%s removed", [key]), "patch": [{"op": "remove", "path": [key]}]} if {
 	some key, _ in all_pass
 }
 
-# The mutated inputs that still pass (empty when the evidence rule holds).
-escapes contains m.case if {
-	some m in _mutations
-	data.tsa_pipeline.main.compliance_report.compliant == true with input as m.input
+# The cases are evaluated in 16 shards (first hex digit of the md5 of the case name) so that no single test
+# runs long enough to meet the suite's 30 s per-test timeout.
+_shards := ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+
+# The mutated inputs of one shard that still pass (empty when the evidence rule holds). Only the shard asked
+# for is evaluated, and each mutated input is built when its case is reached.
+escapes_in(shard) := {c.case |
+	some c in _cases
+
+	# inline, not a rule lookup: a rule referenced after `with` is evaluated again for every case
+	substring(crypto.md5(c.case), 0, 1) == shard
+	inp := json.patch(all_pass, c.patch)
+	data.tsa_pipeline.main.compliance_report.compliant == true with input as inp
 }
+
+# Every escape, for debugging: opa eval 'data.<this package>.escapes'
+escapes := {x | some shard in _shards; some x in escapes_in(shard)}
+
+_clean(shard) if count(escapes_in(shard)) == 0
 
 test_fixture_passes if {
 	r := data.tsa_pipeline.main.compliance_report with input as all_pass
@@ -422,7 +433,41 @@ test_empty_input_fails if {
 	count(r.violations) > 0
 }
 
-test_no_bad_evidence_passes if {
-	count(_mutations) > 500
-	count(escapes) == 0
+test_the_cases_are_many_and_every_one_is_in_a_shard if {
+	count(_cases) > 1000
+	every c in _cases {
+		substring(crypto.md5(c.case), 0, 1) in _shards
+	}
 }
+
+test_no_bad_evidence_passes_shard_0 if _clean("0")
+
+test_no_bad_evidence_passes_shard_1 if _clean("1")
+
+test_no_bad_evidence_passes_shard_2 if _clean("2")
+
+test_no_bad_evidence_passes_shard_3 if _clean("3")
+
+test_no_bad_evidence_passes_shard_4 if _clean("4")
+
+test_no_bad_evidence_passes_shard_5 if _clean("5")
+
+test_no_bad_evidence_passes_shard_6 if _clean("6")
+
+test_no_bad_evidence_passes_shard_7 if _clean("7")
+
+test_no_bad_evidence_passes_shard_8 if _clean("8")
+
+test_no_bad_evidence_passes_shard_9 if _clean("9")
+
+test_no_bad_evidence_passes_shard_a if _clean("a")
+
+test_no_bad_evidence_passes_shard_b if _clean("b")
+
+test_no_bad_evidence_passes_shard_c if _clean("c")
+
+test_no_bad_evidence_passes_shard_d if _clean("d")
+
+test_no_bad_evidence_passes_shard_e if _clean("e")
+
+test_no_bad_evidence_passes_shard_f if _clean("f")

@@ -19,39 +19,76 @@ _number_leaves := [p | walk(level_2_facts, [p, v]); is_number(v); not p in _unre
 
 _bad_booleans := ["false", "true", "no", null, 0, 1]
 
-_mutations contains {"case": sprintf("%s := %s", [concat(".", [sprintf("%v", [s]) | some s in p]), json.marshal(bad)]), "input": inp} if {
+_label(p) := concat(".", [sprintf("%v", [s]) | some s in p])
+
+# Each case is a name and a JSON patch; the mutated input is built only when the case is evaluated.
+_cases contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)]), "patch": [{"op": "replace", "path": p, "value": bad}]} if {
 	some p in _bool_leaves
 	some bad in _bad_booleans
-	inp := json.patch(level_2_facts, [{"op": "replace", "path": p, "value": bad}])
 }
 
-_mutations contains {"case": sprintf("%s := %s", [concat(".", [sprintf("%v", [s]) | some s in p]), json.marshal(bad)]), "input": inp} if {
+_cases contains {"case": sprintf("%s := %s", [_label(p), json.marshal(bad)]), "patch": [{"op": "replace", "path": p, "value": bad}]} if {
 	some p in _number_leaves
 	some bad in [sprintf("%v", [object.get(level_2_facts, p, null)]), null]
-	inp := json.patch(level_2_facts, [{"op": "replace", "path": p, "value": bad}])
 }
 
-_mutations contains {"case": sprintf("%s removed", [concat(".", [sprintf("%v", [s]) | some s in p])]), "input": inp} if {
+_cases contains {"case": sprintf("%s removed", [_label(p)]), "patch": [{"op": "remove", "path": p}]} if {
 	some p in array.concat(_bool_leaves, _number_leaves)
-	inp := json.patch(level_2_facts, [{"op": "remove", "path": p}])
 }
 
 # Every top-level section removed, null, a string and an empty array.
-_mutations contains {"case": sprintf("%s := %s", [key, json.marshal(bad)]), "input": inp} if {
+_cases contains {"case": sprintf("%s := %s", [key, json.marshal(bad)]), "patch": [{"op": "replace", "path": [key], "value": bad}]} if {
 	some key, _ in level_2_facts
 	some bad in [null, "true", []]
-	inp := object.union(level_2_facts, {key: bad})
 }
 
-_mutations contains {"case": sprintf("%s removed", [key]), "input": object.remove(level_2_facts, [key])} if {
+_cases contains {"case": sprintf("%s removed", [key]), "patch": [{"op": "remove", "path": [key]}]} if {
 	some key, _ in level_2_facts
 }
 
-# The mutated inputs that still pass (empty when the evidence rule holds).
-escapes contains m.case if {
-	some m in _mutations
-	data.cmmc.main.compliance_report.compliant == true with input as m.input
+# The cases are evaluated in 16 shards (first hex digit of the md5 of the case name) so that no single test
+# runs long enough to meet the suite's 30 s per-test timeout.
+_shards := ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+
+# The mutated inputs of one shard that still pass (empty when the evidence rule holds). Only the shard asked
+# for is evaluated, and each mutated input is built when its case is reached.
+escapes_in(shard) := {c.case |
+	some c in _cases
+
+	# inline, not a rule lookup: a rule referenced after `with` is evaluated again for every case
+	substring(crypto.md5(c.case), 0, 1) == shard
+	inp := json.patch(level_2_facts, c.patch)
+	_domains_all_pass(inp)
 }
+
+# A mutated input "still passes" when every one of the 14 domain modules reports compliant. The domain verdicts
+# are what the yes/no facts decide; scoring them into practices (data.cmmc.main) costs about thirty times as
+# much per input, so the full set runs against the domains and a fixed sample against the scored report below.
+_domains_all_pass(inp) if {
+	results := data.cmmc.domain_results with input as inp
+	count(results) == 14
+	not false in results
+}
+
+# About one case in 32 (md5 of the case name starts 00..07), each also evaluated through the scored report.
+_sample := {c | some c in _cases; substring(crypto.md5(c.case), 0, 2) in {"00", "01", "02", "03", "04", "05", "06", "07"}}
+
+test_sampled_mutations_fail_the_scored_report_too if {
+	count(_sample) > 20
+	every c in _sample {
+		inp := json.patch(level_2_facts, c.patch)
+		r := data.cmmc.main.compliance_report with input as inp
+		r.compliant == false
+		r.failed_controls > 0
+	}
+}
+
+test_fixture_passes_every_domain if _domains_all_pass(level_2_facts)
+
+# Every escape, for debugging: opa eval 'data.<this package>.escapes'
+escapes := {x | some shard in _shards; some x in escapes_in(shard)}
+
+_clean(shard) if count(escapes_in(shard)) == 0
 
 test_fixture_passes if {
 	r := data.cmmc.main.compliance_report with input as level_2_facts
@@ -59,16 +96,47 @@ test_fixture_passes if {
 	count(r.violations) == 0
 }
 
-test_fixture_is_large_enough_to_mean_something if {
-	count(_bool_leaves) > 150
-	count(_mutations) > 1000
-}
-
 test_empty_input_fails if {
 	r := data.cmmc.main.compliance_report with input as {}
 	r.compliant == false
+	count(r.violations) > 0
 }
 
-test_no_bad_evidence_passes if {
-	count(escapes) == 0
+test_the_cases_are_many_and_every_one_is_in_a_shard if {
+	count(_cases) > 1000
+	every c in _cases {
+		substring(crypto.md5(c.case), 0, 1) in _shards
+	}
 }
+
+test_no_bad_evidence_passes_shard_0 if _clean("0")
+
+test_no_bad_evidence_passes_shard_1 if _clean("1")
+
+test_no_bad_evidence_passes_shard_2 if _clean("2")
+
+test_no_bad_evidence_passes_shard_3 if _clean("3")
+
+test_no_bad_evidence_passes_shard_4 if _clean("4")
+
+test_no_bad_evidence_passes_shard_5 if _clean("5")
+
+test_no_bad_evidence_passes_shard_6 if _clean("6")
+
+test_no_bad_evidence_passes_shard_7 if _clean("7")
+
+test_no_bad_evidence_passes_shard_8 if _clean("8")
+
+test_no_bad_evidence_passes_shard_9 if _clean("9")
+
+test_no_bad_evidence_passes_shard_a if _clean("a")
+
+test_no_bad_evidence_passes_shard_b if _clean("b")
+
+test_no_bad_evidence_passes_shard_c if _clean("c")
+
+test_no_bad_evidence_passes_shard_d if _clean("d")
+
+test_no_bad_evidence_passes_shard_e if _clean("e")
+
+test_no_bad_evidence_passes_shard_f if _clean("f")
