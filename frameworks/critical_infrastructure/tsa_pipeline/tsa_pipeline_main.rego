@@ -247,9 +247,25 @@ pipeline_type := input.pipeline_type
 
 # ── Complete compliance report ───────────────────────────────────────────────
 
-# Control universe: the twelve section modules carry 153 violation rules between them. The report's
-# total never drops below the finding count (129 fire with no facts).
-_declared_controls := 153
+# Two different counts, kept apart:
+#   requirements  the directive subparagraphs the twelve section modules evaluate. Each section declares
+#                 its own figure (requirements_evaluated, listed in its header); they sum to 112
+#                 (01G: II.B 12, II.C 16, II.D 6 = 34; 02G: 7 + 8 + 5 + 8 + 12 + 4 + 13 + 10 + 11 = 78).
+#   checks        the violation rules that decide them, 175 across the twelve modules. One subparagraph
+#                 can take several checks (a yes/no fact, a deadline, the evidence for each).
+# total_controls is the check count and never drops below the finding count (145 fire with no facts).
+_declared_controls := 175
+
+_section_reports := [
+	sd01_coordinator.compliance_report, sd01_reporting.compliance_report, sd01_vulnerability_assessment.compliance_report,
+	sd02_critical_cyber_systems.compliance_report, sd02_implementation_plan.compliance_report,
+	sd02_network_segmentation.compliance_report, sd02_access_control.compliance_report,
+	sd02_continuous_monitoring.compliance_report, sd02_patch_management.compliance_report,
+	sd02_incident_response_plan.compliance_report, sd02_assessment_plan.compliance_report, sd02_records.compliance_report,
+]
+
+# 112 when every section report is defined (they are: each is built from defaulted facts).
+total_requirements_evaluated := sum([r.requirements_evaluated | some r in _section_reports])
 
 compliance_report := {
 	"framework": "TSA Pipeline Security Directives",
@@ -269,7 +285,8 @@ compliance_report := {
 	"total_sections": total_sections,
 	"passing_sections": passing_sections,
 	"section_compliance_score": section_compliance_score,
-	"total_requirements_evaluated": _declared_controls,
+	"total_requirements_evaluated": total_requirements_evaluated,
+	"total_checks": _declared_controls,
 	"total_controls": max([_declared_controls, count(all_violations)]),
 	"violation_count": count(all_violations),
 	"failed_controls": min([max([_declared_controls, count(all_violations)]), count(all_violations)]),

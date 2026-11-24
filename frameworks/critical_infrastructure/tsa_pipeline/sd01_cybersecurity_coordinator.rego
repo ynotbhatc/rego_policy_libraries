@@ -131,8 +131,9 @@ violations contains msg if {
 
 violations contains msg if {
 	some c in all_coordinators
-	object.get(c, "corporate_level", false) == false
-	msg := sprintf("TSA SD Pipeline-2021-01G II.B.1.a: Cybersecurity Coordinator '%s' is not designated at the corporate level", [coordinator_name(c)])
+	not object.get(c, "corporate_level", null) == true
+	finding := sprintf("TSA SD Pipeline-2021-01G II.B.1.a: Cybersecurity Coordinator '%s' is not designated at the corporate level", [coordinator_name(c)])
+	msg := concat("", [finding, _ev_item(c, "corporate_level")])
 }
 
 # ── II.B.1.b — U.S. citizen eligible for a security clearance ────────────────
@@ -145,35 +146,40 @@ violations contains msg if {
 
 # ── II.B.1.c — Non-U.S. citizen coordinators ─────────────────────────────────
 
+# A coordinator not shown to be a U.S. citizen (false, absent or not a boolean) counts as a non-U.S. citizen.
 non_us_citizen_designated if {
 	some c in all_coordinators
-	object.get(c, "us_citizen", false) == false
+	not object.get(c, "us_citizen", null) == true
 }
 
 violations contains msg if {
 	non_us_citizen_designated
-	object.get(facts, ["cybersecurity_coordinator", "us_citizen_primary_intelligence_contact"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.1.c.i: A non-U.S. citizen is designated as a Cybersecurity Coordinator, but the U.S. citizen Coordinator is not established as the primary contact for cyber-related intelligence information restricted to U.S. persons"
+	not object.get(facts, ["cybersecurity_coordinator", "us_citizen_primary_intelligence_contact"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.1.c.i: A non-U.S. citizen is designated as a Cybersecurity Coordinator, but the U.S. citizen Coordinator is not established as the primary contact for cyber-related intelligence information restricted to U.S. persons"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.us_citizen_primary_intelligence_contact")])
 }
 
 violations contains msg if {
 	some c in all_coordinators
-	object.get(c, "us_citizen", false) == false
+	not object.get(c, "us_citizen", null) == true
 	not has_trusted_traveler_membership(c)
-	msg := sprintf("TSA SD Pipeline-2021-01G II.B.1.c.ii: Cybersecurity Coordinator '%s' is a non-U.S. citizen but is not a current member of NEXUS, Global Entry, or another TSA-determined comparable security threat assessment program", [coordinator_name(c)])
+	finding := sprintf("TSA SD Pipeline-2021-01G II.B.1.c.ii: Cybersecurity Coordinator '%s' is a non-U.S. citizen but is not a current member of NEXUS, Global Entry, or another TSA-determined comparable security threat assessment program", [coordinator_name(c)])
+	msg := concat("", [finding, _ev_item(c, "us_citizen")])
 }
 
 violations contains msg if {
 	non_us_citizen_designated
-	object.get(facts, ["cybersecurity_coordinator", "us_person_restricted_info_procedures"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.1.c.iii: No established and implemented procedures ensuring U.S.-person-restricted information is not shared with, or maintained on any system accessible by, a non-U.S. person"
+	not object.get(facts, ["cybersecurity_coordinator", "us_person_restricted_info_procedures"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.1.c.iii: No established and implemented procedures ensuring U.S.-person-restricted information is not shared with, or maintained on any system accessible by, a non-U.S. person"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.us_person_restricted_info_procedures")])
 }
 
 # ── II.B.1.d — Written submission to TSA ─────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["cybersecurity_coordinator", "submitted_to_tsa"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.1.d: Cybersecurity Coordinator information not provided in writing to TSA (SurfOps-SD@tsa.dhs.gov) — names, titles, phone numbers, and email addresses are required for all primary and alternate Coordinators"
+	not object.get(facts, ["cybersecurity_coordinator", "submitted_to_tsa"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.1.d: Cybersecurity Coordinator information not provided in writing to TSA (SurfOps-SD@tsa.dhs.gov) — names, titles, phone numbers, and email addresses are required for all primary and alternate Coordinators"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.submitted_to_tsa")])
 }
 
 violations contains msg if {
@@ -185,16 +191,18 @@ violations contains msg if {
 
 violations contains msg if {
 	some c in all_coordinators
-	object.get(c, "us_citizen", false) == false
+	not object.get(c, "us_citizen", null) == true
 	object.get(c, "known_traveler_number", "") == ""
-	msg := sprintf("TSA SD Pipeline-2021-01G II.B.1.d: Non-U.S. citizen Cybersecurity Coordinator '%s' has no NEXUS PASS ID (Known Traveler Number) or other applicable program number on file with TSA", [coordinator_name(c)])
+	finding := sprintf("TSA SD Pipeline-2021-01G II.B.1.d: Non-U.S. citizen Cybersecurity Coordinator '%s' has no NEXUS PASS ID (Known Traveler Number) or other applicable program number on file with TSA", [coordinator_name(c)])
+	msg := concat("", [finding, _ev_item(c, "us_citizen")])
 }
 
 # ── II.B.1.e — Currency of information (7-day deadline) ──────────────────────
 
 violations contains msg if {
-	object.get(facts, ["cybersecurity_coordinator", "information_current"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.1.e: Cybersecurity Coordinator information on file with TSA is not current"
+	not object.get(facts, ["cybersecurity_coordinator", "information_current"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.1.e: Cybersecurity Coordinator information on file with TSA is not current"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.information_current")])
 }
 
 violations contains msg if {
@@ -207,23 +215,27 @@ violations contains msg if {
 # ── II.B.2 — Coordinator duties ──────────────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["cybersecurity_coordinator", "primary_contact_for_tsa_cisa"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.2.a: Cybersecurity Coordinator is not established as the primary contact for cybersecurity-related activities and communications with TSA and CISA"
+	not object.get(facts, ["cybersecurity_coordinator", "primary_contact_for_tsa_cisa"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.2.a: Cybersecurity Coordinator is not established as the primary contact for cybersecurity-related activities and communications with TSA and CISA"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.primary_contact_for_tsa_cisa")])
 }
 
 violations contains msg if {
-	object.get(facts, ["cybersecurity_coordinator", "available_24x7"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.2.b: Cybersecurity Coordinator and alternate(s) are not accessible to TSA and CISA 24 hours a day, seven days a week, including when the U.S. Government is closed"
+	not object.get(facts, ["cybersecurity_coordinator", "available_24x7"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.2.b: Cybersecurity Coordinator and alternate(s) are not accessible to TSA and CISA 24 hours a day, seven days a week, including when the U.S. Government is closed"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.available_24x7")])
 }
 
 violations contains msg if {
-	object.get(facts, ["cybersecurity_coordinator", "internal_coordination_documented"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.2.c: No documented process for the Cybersecurity Coordinator to coordinate cyber and related security practices and procedures internally"
+	not object.get(facts, ["cybersecurity_coordinator", "internal_coordination_documented"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.2.c: No documented process for the Cybersecurity Coordinator to coordinate cyber and related security practices and procedures internally"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.internal_coordination_documented")])
 }
 
 violations contains msg if {
-	object.get(facts, ["cybersecurity_coordinator", "law_enforcement_liaison_established"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.B.2.d: Cybersecurity Coordinator has no established working relationship with appropriate law enforcement and emergency response agencies"
+	not object.get(facts, ["cybersecurity_coordinator", "law_enforcement_liaison_established"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.B.2.d: Cybersecurity Coordinator has no established working relationship with appropriate law enforcement and emergency response agencies"
+	msg := concat("", [finding, _ev_input("cybersecurity_coordinator.law_enforcement_liaison_established")])
 }
 
 # ── Compliance report ────────────────────────────────────────────────────────
@@ -240,3 +252,51 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# ---------------------------------------------------------------------------
+# Stated facts. A fact that decides whether a requirement applies must be the
+# boolean true or false, and a measured value must be a number: an absent fact,
+# null or a string is an evidence problem and a finding, never a silent pass.
+# Rows: [path under input, directive paragraph].
+# ---------------------------------------------------------------------------
+
+_required_numbers := [
+	[["cybersecurity_coordinator", "days_since_information_change"], "II.B.1.e"],
+]
+
+violations contains msg if {
+	some [path, paragraph] in _required_numbers
+	value := object.get(facts, path, null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-01G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked", [paragraph, concat(".", path), type_name(value)])
+}
+
+violations contains msg if {
+	some c in all_coordinators
+	not is_boolean(object.get(c, "us_citizen", null))
+	msg := sprintf("TSA SD Pipeline-2021-01G II.B.1.b: Cybersecurity Coordinator '%s' does not state us_citizen as true or false, so the requirement cannot be decided%s", [coordinator_name(c), _ev_item(c, "us_citizen")])
+}
+
+violations contains msg if {
+	some c in all_coordinators
+	not is_boolean(object.get(c, "clearance_eligible", null))
+	msg := sprintf("TSA SD Pipeline-2021-01G II.B.1.b: Cybersecurity Coordinator '%s' does not state clearance_eligible as true or false, so the requirement cannot be decided%s", [coordinator_name(c), _ev_item(c, "clearance_eligible")])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

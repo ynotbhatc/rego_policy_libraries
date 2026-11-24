@@ -109,8 +109,9 @@ incident_id(i) := id if {
 # ── II.C.2 — Reportable incident categories ──────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["incident_reporting", "procedure_documented"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.C: No documented procedure for reporting cybersecurity incidents to CISA for systems the Owner/Operator has responsibility to operate and/or maintain"
+	not object.get(facts, ["incident_reporting", "procedure_documented"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.C: No documented procedure for reporting cybersecurity incidents to CISA for systems the Owner/Operator has responsibility to operate and/or maintain"
+	msg := concat("", [finding, _ev_input("incident_reporting.procedure_documented")])
 }
 
 violations contains msg if {
@@ -123,14 +124,15 @@ violations contains msg if {
 
 violations contains msg if {
 	some i in incidents
-	object.get(i, "reported_to_cisa", false) == false
-	msg := sprintf("TSA SD Pipeline-2021-01G II.C.3: Cybersecurity incident '%s' was never reported to CISA — reporting is mandatory for all incidents described in Section II.C.2", [incident_id(i)])
+	not object.get(i, "reported_to_cisa", null) == true
+	finding := sprintf("TSA SD Pipeline-2021-01G II.C.3: Cybersecurity incident '%s' was never reported to CISA — reporting is mandatory for all incidents described in Section II.C.2", [incident_id(i)])
+	msg := concat("", [finding, _ev_item(i, "reported_to_cisa")])
 }
 
 violations contains msg if {
 	some i in incidents
 	object.get(i, "reported_to_cisa", false) == true
-	hours := object.get(i, "hours_to_report", 0)
+	hours := object.get(i, "hours_to_report", null)
 	is_number(hours)
 	hours > 72
 	msg := sprintf("TSA SD Pipeline-2021-01G II.C.3: Cybersecurity incident '%s' was reported to CISA %v hours after identification — reports must be made as soon as practicable but no later than 72 hours", [incident_id(i), hours])
@@ -139,8 +141,9 @@ violations contains msg if {
 # ── II.C.4 — Reporting channel ───────────────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["incident_reporting", "reports_to_cisa_central"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.C.4: Reports are not made to CISA Central using CISA's Incident Reporting System (https://www.cisa.gov/report) or by calling (844) 729-2472"
+	not object.get(facts, ["incident_reporting", "reports_to_cisa_central"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.C.4: Reports are not made to CISA Central using CISA's Incident Reporting System (https://www.cisa.gov/report) or by calling (844) 729-2472"
+	msg := concat("", [finding, _ev_input("incident_reporting.reports_to_cisa_central")])
 }
 
 # ── II.C.5 — Required report content ─────────────────────────────────────────
@@ -154,21 +157,23 @@ violations contains msg if {
 violations contains msg if {
 	some i in incidents
 	object.get(i, "reported_to_cisa", false) == true
-	object.get(i, "sd_reporting_stated", false) == false
-	msg := sprintf("TSA SD Pipeline-2021-01G II.C.5.a: Report for incident '%s' does not explicitly specify that the information is being reported to satisfy the reporting requirements in this Security Directive", [incident_id(i)])
+	not object.get(i, "sd_reporting_stated", null) == true
+	finding := sprintf("TSA SD Pipeline-2021-01G II.C.5.a: Report for incident '%s' does not explicitly specify that the information is being reported to satisfy the reporting requirements in this Security Directive", [incident_id(i)])
+	msg := concat("", [finding, _ev_item(i, "sd_reporting_stated")])
 }
 
 # ── II.C.5.f — 24-hour supplemental reporting ────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["incident_reporting", "supplemental_within_24h_procedure"], false) == false
-	msg := "TSA SD Pipeline-2021-01G II.C.5.f: No procedure to submit an initial report within the required timeframe and provide supplemental information within 24 hours of it becoming available"
+	not object.get(facts, ["incident_reporting", "supplemental_within_24h_procedure"], null) == true
+	finding := "TSA SD Pipeline-2021-01G II.C.5.f: No procedure to submit an initial report within the required timeframe and provide supplemental information within 24 hours of it becoming available"
+	msg := concat("", [finding, _ev_input("incident_reporting.supplemental_within_24h_procedure")])
 }
 
 violations contains msg if {
 	some i in incidents
 	object.get(i, "initial_report_incomplete", false) == true
-	hours := object.get(i, "supplemental_hours_after_available", 0)
+	hours := object.get(i, "supplemental_hours_after_available", null)
 	is_number(hours)
 	hours > 24
 	msg := sprintf("TSA SD Pipeline-2021-01G II.C.5.f: Supplemental information for incident '%s' was provided %v hours after becoming available — it must be provided within 24 hours", [incident_id(i), hours])
@@ -188,3 +193,51 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# ---------------------------------------------------------------------------
+# Stated facts. A fact that decides whether a requirement applies must be the
+# boolean true or false, and a measured value must be a number: an absent fact,
+# null or a string is an evidence problem and a finding, never a silent pass.
+# Rows: [path under input, directive paragraph].
+# ---------------------------------------------------------------------------
+
+# II.C.3: a reported incident with no hour count cannot be shown reported within 72 hours.
+violations contains msg if {
+	some i in incidents
+	object.get(i, "reported_to_cisa", null) == true
+	value := object.get(i, "hours_to_report", null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-01G II.C.3: evidence missing - incident '%s' is reported to CISA but has no numeric hours_to_report (got %s), so reporting within 72 hours of identification cannot be shown", [incident_id(i), type_name(value)])
+}
+
+violations contains msg if {
+	some i in incidents
+	not is_boolean(object.get(i, "initial_report_incomplete", null))
+	msg := sprintf("TSA SD Pipeline-2021-01G II.C.5.f: incident '%s' does not state initial_report_incomplete as true or false, so the requirement cannot be decided%s", [incident_id(i), _ev_item(i, "initial_report_incomplete")])
+}
+
+violations contains msg if {
+	some i in incidents
+	object.get(i, "initial_report_incomplete", null) == true
+	value := object.get(i, "supplemental_hours_after_available", null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-01G II.C.5.f: evidence missing - incident '%s' had an incomplete initial report but has no numeric supplemental_hours_after_available (got %s), so the 24-hour supplement cannot be shown", [incident_id(i), type_name(value)])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

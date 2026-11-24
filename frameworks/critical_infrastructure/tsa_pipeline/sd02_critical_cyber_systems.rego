@@ -117,8 +117,9 @@ none_declared if {
 
 violations contains msg if {
 	not none_declared
-	object.get(facts, ["critical_cyber_systems", "identified"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.A: Critical Cyber Systems have not been identified as defined in Section VII of the Security Directive"
+	not object.get(facts, ["critical_cyber_systems", "identified"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.A: Critical Cyber Systems have not been identified as defined in Section VII of the Security Directive"
+	msg := concat("", [finding, _ev_input("critical_cyber_systems.identified")])
 }
 
 violations contains msg if {
@@ -128,30 +129,34 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	object.get(facts, ["critical_cyber_systems", "identification_methodology_documented"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.A: The methodology and rationale used to identify Critical Cyber Systems are not documented — TSA may require this information if it disagrees with the Owner/Operator's determination"
+	not object.get(facts, ["critical_cyber_systems", "identification_methodology_documented"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.A: The methodology and rationale used to identify Critical Cyber Systems are not documented — TSA may require this information if it disagrees with the Owner/Operator's determination"
+	msg := concat("", [finding, _ev_input("critical_cyber_systems.identification_methodology_documented")])
 }
 
 # Per §VII.C, business services that could result in operational disruption are
 # themselves Critical Cyber Systems — a scope that is routinely missed.
 violations contains msg if {
 	not none_declared
-	object.get(facts, ["critical_cyber_systems", "business_services_evaluated"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.A (see VII.C): Business services were not evaluated for inclusion as Critical Cyber Systems — the definition includes business services that, if compromised or exploited, could result in operational disruption"
+	not object.get(facts, ["critical_cyber_systems", "business_services_evaluated"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.A (see VII.C): Business services were not evaluated for inclusion as Critical Cyber Systems — the definition includes business services that, if compromised or exploited, could result in operational disruption"
+	msg := concat("", [finding, _ev_input("critical_cyber_systems.business_services_evaluated")])
 }
 
 violations contains msg if {
 	some s in ccs_systems
-	object.get(s, "included_in_implementation_plan", false) == false
-	msg := sprintf("TSA SD Pipeline-2021-02G III.A: Critical Cyber System '%s' is identified but is not included in the Cybersecurity Implementation Plan", [object.get(s, "name", "unnamed")])
+	not object.get(s, "included_in_implementation_plan", null) == true
+	finding := sprintf("TSA SD Pipeline-2021-02G III.A: Critical Cyber System '%s' is identified but is not included in the Cybersecurity Implementation Plan", [object.get(s, "name", "unnamed")])
+	msg := concat("", [finding, _ev_item(s, "included_in_implementation_plan")])
 }
 
 # ── II.A.5 Note — "No Critical Cyber Systems" determination ──────────────────
 
 violations contains msg if {
 	none_declared
-	object.get(facts, ["critical_cyber_systems", "none_determination", "tsa_notified_in_writing"], false) == false
-	msg := "TSA SD Pipeline-2021-02G II.A.5: The Owner/Operator determined it has no Critical Cyber Systems but has not notified TSA in writing"
+	not object.get(facts, ["critical_cyber_systems", "none_determination", "tsa_notified_in_writing"], null) == true
+	finding := "TSA SD Pipeline-2021-02G II.A.5: The Owner/Operator determined it has no Critical Cyber Systems but has not notified TSA in writing"
+	msg := concat("", [finding, _ev_input("critical_cyber_systems.none_determination.tsa_notified_in_writing")])
 }
 
 violations contains msg if {
@@ -165,8 +170,9 @@ violations contains msg if {
 violations contains msg if {
 	none_declared
 	object.get(facts, ["critical_cyber_systems", "none_determination", "operations_changed"], false) == true
-	object.get(facts, ["critical_cyber_systems", "none_determination", "reevaluated_after_change"], false) == false
-	msg := "TSA SD Pipeline-2021-02G II.A.5: The Owner/Operator's method of operations changed but Critical Cyber Systems were not re-evaluated"
+	not object.get(facts, ["critical_cyber_systems", "none_determination", "reevaluated_after_change"], null) == true
+	finding := "TSA SD Pipeline-2021-02G II.A.5: The Owner/Operator's method of operations changed but Critical Cyber Systems were not re-evaluated"
+	msg := concat("", [finding, _ev_input("critical_cyber_systems.none_determination.reevaluated_after_change")])
 }
 
 violations contains msg if {
@@ -182,16 +188,18 @@ violations contains msg if {
 
 violations contains msg if {
 	some m in mssps
-	object.get(m, "responsibility_retained", false) == false
-	msg := sprintf("TSA SD Pipeline-2021-02G II.A.3: Security measures are delegated to or shared with Managed Security Service Provider '%s' without the Owner/Operator documenting that it retains sole responsibility for compliance with its TSA-approved Cybersecurity Implementation Plan", [object.get(m, "name", "unnamed")])
+	not object.get(m, "responsibility_retained", null) == true
+	finding := sprintf("TSA SD Pipeline-2021-02G II.A.3: Security measures are delegated to or shared with Managed Security Service Provider '%s' without the Owner/Operator documenting that it retains sole responsibility for compliance with its TSA-approved Cybersecurity Implementation Plan", [object.get(m, "name", "unnamed")])
+	msg := concat("", [finding, _ev_item(m, "responsibility_retained")])
 }
 
 # ── II.A.4 — Authorized Representatives ──────────────────────────────────────
 
 violations contains msg if {
 	some a in authorized_representatives
-	object.get(a, "liability_acknowledged", false) == false
-	msg := sprintf("TSA SD Pipeline-2021-02G II.A.4: Authorized Representative '%s' has no documented acknowledgement of liability — both the Owner/Operator and the Authorized Representative are liable for non-compliance", [object.get(a, "name", "unnamed")])
+	not object.get(a, "liability_acknowledged", null) == true
+	finding := sprintf("TSA SD Pipeline-2021-02G II.A.4: Authorized Representative '%s' has no documented acknowledgement of liability — both the Owner/Operator and the Authorized Representative are liable for non-compliance", [object.get(a, "name", "unnamed")])
+	msg := concat("", [finding, _ev_item(a, "liability_acknowledged")])
 }
 
 # ── Compliance report ────────────────────────────────────────────────────────
@@ -209,3 +217,60 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# ---------------------------------------------------------------------------
+# Stated facts. A fact that decides whether a requirement applies must be the
+# boolean true or false, and a measured value must be a number: an absent fact,
+# null or a string is an evidence problem and a finding, never a silent pass.
+# Rows: [path under input, directive paragraph].
+# ---------------------------------------------------------------------------
+
+_stated_booleans := [
+	[["critical_cyber_systems", "none_determination", "declared"], "II.A.5"],
+]
+
+violations contains msg if {
+	some [path, paragraph] in _stated_booleans
+	not is_boolean(object.get(facts, path, null))
+	msg := sprintf("TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s", [paragraph, concat(".", path), _ev_input(concat(".", path))])
+}
+
+# Read only under a "no Critical Cyber Systems" determination.
+violations contains msg if {
+	none_declared
+	value := object.get(facts, ["critical_cyber_systems", "none_determination", "days_since_effective_date"], null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-02G II.A.5: evidence missing - input.critical_cyber_systems.none_determination.days_since_effective_date is not a number (got %s), so the 60-day notification cannot be checked", [type_name(value)])
+}
+
+violations contains msg if {
+	none_declared
+	not is_boolean(object.get(facts, ["critical_cyber_systems", "none_determination", "operations_changed"], null))
+	msg := concat("", ["TSA SD Pipeline-2021-02G II.A.5: input.critical_cyber_systems.none_determination.operations_changed is not stated as true or false, so the re-evaluation requirement cannot be decided", _ev_input("critical_cyber_systems.none_determination.operations_changed")])
+}
+
+violations contains msg if {
+	none_declared
+	object.get(facts, ["critical_cyber_systems", "none_determination", "operations_changed"], null) == true
+	value := object.get(facts, ["critical_cyber_systems", "none_determination", "days_since_operations_change"], null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-02G II.A.5: evidence missing - input.critical_cyber_systems.none_determination.days_since_operations_change is not a number (got %s), so the 60-day notification cannot be checked", [type_name(value)])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

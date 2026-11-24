@@ -94,39 +94,45 @@ declared_document_types := {t | some t in object.get(facts, ["records", "retriev
 
 violations contains msg if {
 	object.get(facts, ["records", "previous_materials_relied_upon"], false) == true
-	object.get(facts, ["records", "index_maintained"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.A: Previously developed plans, assessments, tests, or evaluations are relied upon to meet this Security Directive's requirements, but no index of the records and their location is maintained"
+	not object.get(facts, ["records", "index_maintained"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.A: Previously developed plans, assessments, tests, or evaluations are relied upon to meet this Security Directive's requirements, but no index of the records and their location is maintained"
+	msg := concat("", [finding, _ev_input("records.index_maintained")])
 }
 
 violations contains msg if {
 	object.get(facts, ["records", "previous_materials_relied_upon"], false) == true
-	object.get(facts, ["records", "index_ordered_by_requirement"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.A: The index of previously developed materials is not organized in the same sequence as the requirements in this Security Directive"
+	not object.get(facts, ["records", "index_ordered_by_requirement"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.A: The index of previously developed materials is not organized in the same sequence as the requirements in this Security Directive"
+	msg := concat("", [finding, _ev_input("records.index_ordered_by_requirement")])
 }
 
 violations contains msg if {
 	object.get(facts, ["records", "previous_materials_relied_upon"], false) == true
-	object.get(facts, ["records", "incorporated_by_reference"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.A: Previously developed materials are not explicitly incorporated by reference into the Cybersecurity Implementation Plan"
+	not object.get(facts, ["records", "incorporated_by_reference"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.A: Previously developed materials are not explicitly incorporated by reference into the Cybersecurity Implementation Plan"
+	msg := concat("", [finding, _ev_input("records.incorporated_by_reference")])
 }
 
 # ── IV.B — Protection of Sensitive Security Information ──────────────────────
 
 violations contains msg if {
-	object.get(facts, ["records", "ssi_protection", "plans_and_reports"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.B.1: Plans and reports required by this Security Directive are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520"
+	not object.get(facts, ["records", "ssi_protection", "plans_and_reports"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.B.1: Plans and reports required by this Security Directive are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520"
+	msg := concat("", [finding, _ev_input("records.ssi_protection.plans_and_reports")])
 }
 
 violations contains msg if {
-	object.get(facts, ["records", "ssi_protection", "assessment_results"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.B.2: Audit, testing, or assessment results are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520"
+	not object.get(facts, ["records", "ssi_protection", "assessment_results"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.B.2: Audit, testing, or assessment results are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520"
+	msg := concat("", [finding, _ev_input("records.ssi_protection.assessment_results")])
 }
 
 # ── IV.C — Documentation to establish compliance ─────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["records", "available_to_tsa_on_request"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.C.1: Records necessary to establish compliance are not made available to TSA upon request for inspection and/or copying"
+	not object.get(facts, ["records", "available_to_tsa_on_request"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.C.1: Records necessary to establish compliance are not made available to TSA upon request for inspection and/or copying"
+	msg := concat("", [finding, _ev_input("records.available_to_tsa_on_request")])
 }
 
 violations contains msg if {
@@ -138,13 +144,15 @@ violations contains msg if {
 # ── IV.C.2.e — Activity snapshot data ────────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["records", "activity_snapshot", "log_files"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.C.2.e.i: Log files providing a snapshot of activity on and between Information and Operational Technology systems cannot be produced"
+	not object.get(facts, ["records", "activity_snapshot", "log_files"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.C.2.e.i: Log files providing a snapshot of activity on and between Information and Operational Technology systems cannot be produced"
+	msg := concat("", [finding, _ev_input("records.activity_snapshot.log_files")])
 }
 
 violations contains msg if {
-	object.get(facts, ["records", "activity_snapshot", "packet_capture_capable"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.C.2.e.ii: No capability to produce a capture of network traffic (packet capture) as identified and directed by TSA"
+	not object.get(facts, ["records", "activity_snapshot", "packet_capture_capable"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.C.2.e.ii: No capability to produce a capture of network traffic (packet capture) as identified and directed by TSA"
+	msg := concat("", [finding, _ev_input("records.activity_snapshot.packet_capture_capable")])
 }
 
 violations contains msg if {
@@ -155,30 +163,35 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	object.get(facts, ["records", "activity_snapshot", "east_west_traffic"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.C.2.e.iii: 'East-West Traffic' of Operational Technology systems, sites, and environments within the scope of this Security Directive cannot be produced"
+	not object.get(facts, ["records", "activity_snapshot", "east_west_traffic"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.C.2.e.iii: 'East-West Traffic' of Operational Technology systems, sites, and environments within the scope of this Security Directive cannot be produced"
+	msg := concat("", [finding, _ev_input("records.activity_snapshot.east_west_traffic")])
 }
 
 violations contains msg if {
-	object.get(facts, ["records", "activity_snapshot", "north_south_traffic"], false) == false
-	msg := "TSA SD Pipeline-2021-02G IV.C.2.e.iv: 'North-South Traffic' between Information and Operational Technology systems, and the perimeter boundaries between them, cannot be produced"
+	not object.get(facts, ["records", "activity_snapshot", "north_south_traffic"], null) == true
+	finding := "TSA SD Pipeline-2021-02G IV.C.2.e.iv: 'North-South Traffic' between Information and Operational Technology systems, and the perimeter boundaries between them, cannot be produced"
+	msg := concat("", [finding, _ev_input("records.activity_snapshot.north_south_traffic")])
 }
 
 # ── V.A — General procedures ─────────────────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["records", "directive_procedures", "receipt_confirmed"], false) == false
-	msg := "TSA SD Pipeline-2021-02G V.A.1: Written confirmation of receipt of this Security Directive was not immediately provided to TSA (SurfOps-SD@tsa.dhs.gov)"
+	not object.get(facts, ["records", "directive_procedures", "receipt_confirmed"], null) == true
+	finding := "TSA SD Pipeline-2021-02G V.A.1: Written confirmation of receipt of this Security Directive was not immediately provided to TSA (SurfOps-SD@tsa.dhs.gov)"
+	msg := concat("", [finding, _ev_input("records.directive_procedures.receipt_confirmed")])
 }
 
 violations contains msg if {
-	object.get(facts, ["records", "directive_procedures", "disseminated_to_senior_management"], false) == false
-	msg := "TSA SD Pipeline-2021-02G V.A.2: The information and measures in this Security Directive were not immediately disseminated to corporate senior management and security management representatives"
+	not object.get(facts, ["records", "directive_procedures", "disseminated_to_senior_management"], null) == true
+	finding := "TSA SD Pipeline-2021-02G V.A.2: The information and measures in this Security Directive were not immediately disseminated to corporate senior management and security management representatives"
+	msg := concat("", [finding, _ev_input("records.directive_procedures.disseminated_to_senior_management")])
 }
 
 violations contains msg if {
-	object.get(facts, ["records", "directive_procedures", "disseminated_to_implementers"], false) == false
-	msg := "TSA SD Pipeline-2021-02G V.A.2: The applicable security measures were not provided to the direct employees and authorized representatives responsible for implementing them"
+	not object.get(facts, ["records", "directive_procedures", "disseminated_to_implementers"], null) == true
+	finding := "TSA SD Pipeline-2021-02G V.A.2: The applicable security measures were not provided to the direct employees and authorized representatives responsible for implementing them"
+	msg := concat("", [finding, _ev_input("records.directive_procedures.disseminated_to_implementers")])
 }
 
 # ── Compliance report ────────────────────────────────────────────────────────
@@ -193,3 +206,49 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# ---------------------------------------------------------------------------
+# Stated facts. A fact that decides whether a requirement applies must be the
+# boolean true or false, and a measured value must be a number: an absent fact,
+# null or a string is an evidence problem and a finding, never a silent pass.
+# Rows: [path under input, directive paragraph].
+# ---------------------------------------------------------------------------
+
+_stated_booleans := [
+	[["records", "previous_materials_relied_upon"], "IV.A"],
+]
+
+violations contains msg if {
+	some [path, paragraph] in _stated_booleans
+	not is_boolean(object.get(facts, path, null))
+	msg := sprintf("TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s", [paragraph, concat(".", path), _ev_input(concat(".", path))])
+}
+
+_required_numbers := [
+	[["records", "activity_snapshot", "packet_capture_max_hours"], "IV.C.2.e.ii"],
+]
+
+violations contains msg if {
+	some [path, paragraph] in _required_numbers
+	value := object.get(facts, path, null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked", [paragraph, concat(".", path), type_name(value)])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])
