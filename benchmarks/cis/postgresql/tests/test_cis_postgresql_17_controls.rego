@@ -88,11 +88,18 @@ green := {"postgresql": {
 	},
 	"settings": {"shared_preload_libraries": "pgaudit,pg_stat_statements"},
 	"pgaudit": {"log": "ddl, write"},
-	"security_definer_functions": [{
-		"schema": "public",
-		"name": "audit_fn",
-		"prosecdef": true,
-	}],
+	"security_definer_functions": [
+		{
+			"schema": "public",
+			"name": "audit_fn",
+			"prosecdef": true,
+		},
+		{
+			"schema": "public",
+			"name": "set_search_path_fn",
+			"prosecdef": false,
+		},
+	],
 	"policy": {
 		"authorized_security_definer_functions": ["public.audit_fn"],
 		"authorized_superusers": ["postgres"],
@@ -244,6 +251,18 @@ test_1_3_fail_1 if {
 	"1.3: systemd Service Files must be turned on — requirement not met" in vs
 }
 
+test_1_3_wrong_type_1 if {
+	every bad in ["true", "false", "yes", "no", "on", 0, 1, [true], {"value": true}] {
+		inp := json.patch(green, [{"op": "add", "path": "/postgresql/service/enabled", "value": bad}])
+		not "1.3" in b.passed with input as inp
+		vs := b.violations with input as inp
+		sprintf("1.3: postgresql.service.enabled is not a boolean (got %s)", [type_name(bad)]) in vs
+		not "1.3: systemd Service Files must be turned on — requirement not met" in vs
+		r := b.compliance_report with input as inp
+		r.compliant == false
+	}
+}
+
 test_1_3_evidence_missing_1 if {
 	inp := json.patch(green, [{"op": "remove", "path": "/postgresql/service/enabled"}])
 	not "1.3" in b.passed with input as inp
@@ -271,6 +290,30 @@ test_1_4_fail_2 if {
 	not "1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
+}
+
+test_1_4_wrong_type_1 if {
+	every bad in ["true", "false", "yes", "no", "on", 0, 1, [true], {"value": true}] {
+		inp := json.patch(green, [{"op": "add", "path": "/postgresql/cluster/initialized", "value": bad}])
+		not "1.4" in b.passed with input as inp
+		vs := b.violations with input as inp
+		sprintf("1.4: postgresql.cluster.initialized is not a boolean (got %s)", [type_name(bad)]) in vs
+		not "1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
+		r := b.compliance_report with input as inp
+		r.compliant == false
+	}
+}
+
+test_1_4_wrong_type_2 if {
+	every bad in ["0", "", "abc", true, false, [0], {"value": 0}] {
+		inp := json.patch(green, [{"op": "add", "path": "/postgresql/cluster/check_db_dir_rc", "value": bad}])
+		not "1.4" in b.passed with input as inp
+		vs := b.violations with input as inp
+		sprintf("1.4: postgresql.cluster.check_db_dir_rc is not a number (got %s)", [type_name(bad)]) in vs
+		not "1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
+		r := b.compliance_report with input as inp
+		r.compliant == false
+	}
 }
 
 test_1_4_evidence_missing_1 if {
@@ -1202,31 +1245,104 @@ test_4_5_pass if {
 }
 
 test_4_5_fail_1 if {
-	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "audit_fn", "prosecdef": true}, {"schema": "public", "name": "escalate", "prosecdef": "t"}]}])
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "audit_fn", "prosecdef": true}, {"schema": "public", "name": "escalate", "prosecdef": true}]}])
 	not "4.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"4.5: excessive function privileges must be revoked — requirement not met" in vs
 }
 
 test_4_5_fail_2 if {
-	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "escalate"}]}])
-	not "4.5" in b.passed with input as inp
-	vs := b.violations with input as inp
-	"4.5: excessive function privileges must be revoked — requirement not met" in vs
-}
-
-test_4_5_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"name": "audit_fn", "prosecdef": true}]}])
 	not "4.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"4.5: excessive function privileges must be revoked — requirement not met" in vs
 }
 
-test_4_5_fail_4 if {
+test_4_5_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "prosecdef": true}]}])
 	not "4.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"4.5: excessive function privileges must be revoked — requirement not met" in vs
+}
+
+test_4_5_bad_evidence_1 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "escalate"}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: evidence missing — postgresql.security_definer_functions[0].prosecdef not collected" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_2 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "audit_fn", "prosecdef": null}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: evidence missing — postgresql.security_definer_functions[0].prosecdef not collected" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_3 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "escalate", "prosecdef": "t"}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: postgresql.security_definer_functions[0].prosecdef is not a boolean (got string)" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_4 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "plain_fn", "prosecdef": "f"}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: postgresql.security_definer_functions[0].prosecdef is not a boolean (got string)" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_5 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "plain_fn", "prosecdef": "false"}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: postgresql.security_definer_functions[0].prosecdef is not a boolean (got string)" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_6 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "audit_fn", "prosecdef": true}, {"schema": "public", "name": "audit_fn", "prosecdef": "true"}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: postgresql.security_definer_functions[1].prosecdef is not a boolean (got string)" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_7 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "plain_fn", "prosecdef": 0}]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: postgresql.security_definer_functions[0].prosecdef is not a boolean (got number)" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_4_5_bad_evidence_8 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": ["public.audit_fn"]}])
+	not "4.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"4.5: postgresql.security_definer_functions[0] is not an object (got string)" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
 }
 
 test_4_5_evidence_missing_1 if {
@@ -1427,24 +1543,80 @@ test_5_5_fail_1 if {
 }
 
 test_5_5_fail_2 if {
-	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app"}]}])
-	not "5.5" in b.passed with input as inp
-	vs := b.violations with input as inp
-	"5.5: per-account connection limits must be used — requirement not met" in vs
-}
-
-test_5_5_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"connection_limit": -1}]}])
 	not "5.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"5.5: per-account connection limits must be used — requirement not met" in vs
 }
 
-test_5_5_fail_4 if {
+test_5_5_bad_evidence_1 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app"}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: evidence missing — postgresql.roles[0].connection_limit not collected" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_5_5_bad_evidence_2 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app", "connection_limit": null}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: evidence missing — postgresql.roles[0].connection_limit not collected" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_5_5_bad_evidence_3 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"connection_limit": null}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: evidence missing — postgresql.roles[0].connection_limit not collected" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_5_5_bad_evidence_4 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app", "connection_limit": "10"}]}])
 	not "5.5" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"5.5: per-account connection limits must be used — requirement not met" in vs
+	"5.5: postgresql.roles[0].connection_limit is not a number (got string)" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_5_5_bad_evidence_5 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app", "connection_limit": true}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: postgresql.roles[0].connection_limit is not a number (got boolean)" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_5_5_bad_evidence_6 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "postgres", "connection_limit": 10}, {"name": "pg_monitor", "connection_limit": "-1"}]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: postgresql.roles[1].connection_limit is not a number (got string)" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
+}
+
+test_5_5_bad_evidence_7 if {
+	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": ["postgres"]}])
+	not "5.5" in b.passed with input as inp
+	vs := b.violations with input as inp
+	"5.5: postgresql.roles[0] is not an object (got string)" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
+	r := b.compliance_report with input as inp
+	r.compliant == false
 }
 
 test_5_5_evidence_missing_1 if {
@@ -1612,6 +1784,30 @@ test_6_7_fail_2 if {
 	not "6.7" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
+}
+
+test_6_7_wrong_type_1 if {
+	every bad in ["true", "false", "yes", "no", "on", 0, 1, [true], {"value": true}] {
+		inp := json.patch(green, [{"op": "add", "path": "/postgresql/cryptography/fips_140_2_enabled", "value": bad}])
+		not "6.7" in b.passed with input as inp
+		vs := b.violations with input as inp
+		sprintf("6.7: postgresql.cryptography.fips_140_2_enabled is not a boolean (got %s)", [type_name(bad)]) in vs
+		not "6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
+		r := b.compliance_report with input as inp
+		r.compliant == false
+	}
+}
+
+test_6_7_wrong_type_2 if {
+	every bad in ["true", "false", "yes", "no", "on", 0, 1, [true], {"value": true}] {
+		inp := json.patch(green, [{"op": "add", "path": "/postgresql/cryptography/openssl_fips_mode", "value": bad}])
+		not "6.7" in b.passed with input as inp
+		vs := b.violations with input as inp
+		sprintf("6.7: postgresql.cryptography.openssl_fips_mode is not a boolean (got %s)", [type_name(bad)]) in vs
+		not "6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
+		r := b.compliance_report with input as inp
+		r.compliant == false
+	}
 }
 
 test_6_7_evidence_missing_1 if {
