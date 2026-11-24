@@ -61,7 +61,21 @@ def emit_control(c, wb, setname, applies=None):
     out += [f"default e_{uu} := false", "", f"e_{uu} if {{", body(c["ev"]), "}", ""]
     miss = f"{cid}: evidence missing — {c['label']} not collected"
     out += [f"{setname} contains {rego_str(miss)} if {{"] + ["\t" + a for a in app] + [f"\tnot e_{uu}", "}", ""]
-    out += [f"{setname} contains {rego_str(f'{cid}: {t}')} if {{"] + ["\t" + a for a in app] + [f"\te_{uu}", f"\tnot r_{uu}", "}", ""]
+    # optional: c["typed"] = Rego set expressions of wrong-typed facts ("<path> must be <type>, got <value>"); any one fails
+    # the control with an "evidence invalid" finding in place of the plain one. c["empty"] = (list expr, wording): the
+    # list was collected and holds nothing, which is a failed control with its own wording, not missing evidence.
+    gate = []
+    if c.get("typed"):
+        out += [f"x_{uu} := " + " | ".join(c["typed"]), ""]
+        out += [f"{setname} contains msg if {{"] + ["\t" + a for a in app] + [
+            f"\te_{uu}", f"\tsome m in x_{uu}", f'\tmsg := sprintf("%s: evidence invalid — %s", ["{cid}", m])', "}", ""]
+        gate.append(f"\tcount(x_{uu}) == 0")
+    if c.get("empty"):
+        expr, wording = c["empty"]
+        out += [f"{setname} contains {rego_str(f'{cid}: {t} ({wording})')} if {{"] + ["\t" + a for a in app] + [
+            f"\te_{uu}", f"\tnot r_{uu}"] + gate + [f"\tcount({expr}) == 0", "}", ""]
+        gate.append(f"\tcount({expr}) > 0")
+    out += [f"{setname} contains {rego_str(f'{cid}: {t}')} if {{"] + ["\t" + a for a in app] + [f"\te_{uu}", f"\tnot r_{uu}"] + gate + ["}", ""]
     return "\n".join(out)
 
 
