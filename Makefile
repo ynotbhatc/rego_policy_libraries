@@ -11,10 +11,10 @@ help:
 	@echo "  make lint          Check syntax of all .rego files"
 	@echo "  make metadata      Verify every package carries a conforming METADATA block"
 	@echo "  make check         lint + test + metadata"
-	@echo "  make check-standards  Verify standards.yaml covers every framework key and matches the module text (offline)"
+	@echo "  make check-standards  Verify standards.yaml covers every framework key and matches the module text, the registry and docs/FRAMEWORKS.md (offline)"
 	@echo "  make standards-releases  Check upstream sources for releases newer than standards.yaml (network)"
 	@echo "  make mutation MODULE=<dir> [ARGS=...]  Mutation-test one module directory (slow; not run in CI)"
-	@echo "  make check-bad-input  Empty / null / string-typed input and mutated fixtures never pass (known failures listed)"
+	@echo "  make check-bad-input  Empty / null / string-typed input, string and null facts, and mutated fixtures never pass (known failures listed)"
 	@echo "  make schemas       Regenerate the input schemas (schemas/input/<key>/schema.json); check-generated fails when stale"
 	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
@@ -97,9 +97,12 @@ coverage:
 check-no-data:
 	@python3 scripts/check_no_data_fails.py --check-test
 
-# bad input never passes (#301): empty / missing / null / string-typed input and mutated all-pass fixtures,
-# for every entrypoint; fails only on a failure not in scripts/bad_input_known_failures.txt
+# bad input never passes (#301): empty / missing / null / string-typed input, every input path the module's
+# sources read set to "false" / "true" / "no" / null (no fixture needed), and mutated all-pass fixtures, for every
+# entrypoint; fails only on a failure not in scripts/bad_input_known_failures.txt. The unit tests of the check
+# scripts (scripts/tests/) run first.
 check-bad-input:
+	@OPA=$(OPA) python3 -m unittest discover -s scripts/tests -q
 	@OPA=$(OPA) python3 scripts/check_bad_input_fails.py --check
 
 check-coverage:
