@@ -87,8 +87,12 @@ num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+
 
 # a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
 # only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
-# numeric field is not evidence, so "365" or "900" there never passes.
-fnum(v) := v if is_number(v)
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
 
 # ── packages / services ──
 services_collected if {
@@ -108,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -1207,8 +1215,8 @@ violations contains "2.3.1: not met — time synchronization must be in use" if 
 default e_2_3_2 := false
 
 e_2_3_2 if {
-	is_number(input.chronyd.servers_configured)
-	is_number(input.chronyd.pools_configured)
+	fnum(input.chronyd.servers_configured) >= 0
+	fnum(input.chronyd.pools_configured) >= 0
 }
 
 default p_2_3_2 := false

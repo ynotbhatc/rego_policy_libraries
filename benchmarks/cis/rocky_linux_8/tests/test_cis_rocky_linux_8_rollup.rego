@@ -15,7 +15,8 @@ test_empty_input_fails_closed if {
 	count(object.keys(r)) == 20
 	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage", "control_results", "control_result_counts", "violation_count"] { k in object.keys(r) }
 	r.compliant == false
-	r.total_controls == 257
+	r.profile == "unrecognised"
+	r.total_controls == 322
 	r.failed_controls == r.total_controls
 	r.passed_controls == 0
 	some v in r.violations
@@ -63,10 +64,36 @@ test_legacy_profile_values_map_to_server_profiles if {
 	r2.total_controls == 322
 }
 
-test_unknown_profile_defaults_to_level1_server if {
-	r := data.cis_rocky_linux_8.main.compliance_report with input as {"profile": "bogus"}
-	r.profile == "level1_server"
-	r.total_controls == 257
+# No default profile: absent, null, not a string or an unknown name puts every recommendation in scope,
+# says so in one PROFILE NOT SELECTED violation, and is never compliant.
+test_unrecognised_profile_is_a_finding_and_scopes_every_recommendation if {
+	every bad in [{}, {"profile": null}, {"profile": "bogus"}, {"profile": "Level2_Server"}, {"profile": ""}, {"profile": 2}, {"profile": true}, {"profile": ["level1_server"]}] {
+		r := data.cis_rocky_linux_8.main.compliance_report with input as object.union({"attest": {"gpg_keys_reviewed": true}}, bad)
+		r.profile == "unrecognised"
+		r.total_controls == 322
+		r.compliant == false
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		count([c | some c in r.control_results; c.status == "not_applicable"]) == 0
+	}
+}
+
+test_profile_finding_names_the_problem if {
+	ra := data.cis_rocky_linux_8.main.compliance_report with input as {"attest": {}}
+	some a in ra.violations
+	startswith(a, "PROFILE NOT SELECTED: evidence missing — profile not collected")
+	rb := data.cis_rocky_linux_8.main.compliance_report with input as {"profile": 2}
+	some b in rb.violations
+	startswith(b, "PROFILE NOT SELECTED: profile is not a string (got number)")
+	rc := data.cis_rocky_linux_8.main.compliance_report with input as {"profile": "bogus"}
+	some c in rc.violations
+	startswith(c, "PROFILE NOT SELECTED: profile \"bogus\" is not a recognised profile")
+}
+
+test_recognised_profile_has_no_profile_finding if {
+	every p in ["level1_server", "level2_server", "level1_workstation", "level2_workstation", "level1", "level2"] {
+		r := data.cis_rocky_linux_8.main.compliance_report with input as {"profile": p}
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED")]) == 0
+	}
 }
 
 test_one_attested_control_passes if {

@@ -87,8 +87,12 @@ num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+
 
 # a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
 # only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
-# numeric field is not evidence, so "365" or "900" there never passes.
-fnum(v) := v if is_number(v)
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
 
 # ── packages / services ──
 services_collected if {
@@ -108,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -206,13 +214,9 @@ sudo_defaults_has(re) if {
 	regex.match(re, l)
 }
 
-sudo_logfile if sudo_defaults_has(`(^|[\s,])logfile\s*=`)
-
-# sudo.logfile_exists is optional (the Defaults logfile line is the audited setting): absent or null it is not
-# read; when the collector sends it, it must be a boolean, so "false" or 0 is never taken for "the file exists"
-sudo_logfile_flag_collected if object.get(input, ["sudo", "logfile_exists"], null) == null
-
-sudo_logfile_flag_collected if is_boolean(input.sudo.logfile_exists)
+# a Defaults line that sets logfile to a non-empty path (the audit procedure's own test; `logfile=` with no
+# value sets nothing)
+sudo_logfile if sudo_defaults_has(`(^|[\s,])logfile\s*=\s*["']?[^\s"',]`)
 
 sudo_timeouts := [num(m[1]) |
 	some l in active_lines(input.sudo.sudoers_content)
@@ -269,17 +273,15 @@ default e_5_2_3 := false
 
 e_5_2_3 if {
 	text_collected(input.sudo.sudoers_content)
-	sudo_logfile_flag_collected
 }
 
 default p_5_2_3 := false
 
 p_5_2_3 if {
 	sudo_logfile
-	not input.sudo.logfile_exists == false
 }
 
-violations contains "5.2.3: evidence missing — sudo.sudoers_content/logfile_exists not collected" if not e_5_2_3
+violations contains "5.2.3: evidence missing — sudo.sudoers_content not collected" if not e_5_2_3
 
 violations contains "5.2.3: not met — a log file for sudo must exist" if {
 	e_5_2_3

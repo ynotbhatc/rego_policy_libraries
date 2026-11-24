@@ -33,7 +33,9 @@ package cis_rocky_linux_9.main
 # FAIL-CLOSED GATE: with no facts at all every control counts as failed and an explicit FAIL-CLOSED
 # violation is reported. PARTIAL INPUT: a section that received none of its input keys is NOT ASSESSED
 # (cis_rocky_linux_9.section_inputs): it is listed, it adds an explicit violation, and its controls fail on their own
-# evidence-missing violations, never as passed.
+# evidence-missing violations, never as passed. NO PROFILE: input.profile absent or not a recognised name puts
+# every recommendation in scope, reports "profile": "unrecognised" with a PROFILE NOT SELECTED violation, and is
+# never compliant (cis_rocky_linux_9.profile_violations).
 
 import data.cis_rocky_linux_9 as bench
 import rego.v1
@@ -77,9 +79,13 @@ default _coverage := 0
 
 _coverage := bench.assessment_coverage_percentage
 
-default _profile := "level1_server"
+default _profile := "unrecognised"
 
 _profile := bench.profile
+
+default _profile_msgs := []
+
+_profile_msgs := bench.profile_violations
 
 default _total_controls := 0
 
@@ -89,9 +95,9 @@ default _failing := 0
 
 _failing := count(bench.failing_ids)
 
-_violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
+_violations := array.concat(_bench_violations, array.concat([_no_facts_msg], _profile_msgs)) if not _facts_supplied
 
-_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
+_violations := array.concat(_bench_violations, array.concat(_not_assessed_msgs, _profile_msgs)) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
