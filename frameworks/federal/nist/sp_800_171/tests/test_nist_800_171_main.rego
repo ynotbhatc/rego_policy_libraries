@@ -816,3 +816,106 @@ test_failed_controls_equals_total_on_empty_input if {
 	r.failed_controls == r.total_controls
 	r.violation_count > r.failed_controls
 }
+
+# ── Evidence rule (data-driven, audit 2026-11-24): only the boolean true passes a yes/no fact ────────
+# Every boolean in the green facts is replaced by a wrong-typed value, by null, and removed. Each time at
+# least one fact rule that was true must stop being true: no boolean is read loosely. (Evaluated on the
+# fact packages, not the whole report, to stay cheap. A flipped scored rule fails its requirement through
+# main._failed_facts, covered by the existing fact-check tests; a flipped retired Rev 2 rule is reported only.)
+
+_fact_bool_paths := [p | walk(_facts, [p, v]); is_boolean(v)]
+
+_fact_pkgs := {c.pkg | some _, checks in main.fact_checks; some c in checks}
+
+_rules_true(inp) := {[pkg, rule] |
+	some pkg in _fact_pkgs
+	rules := data.nist.sp800_171[pkg] with input as inp
+	some rule, v in rules
+	v == true
+}
+
+_green_true := _rules_true(_green)
+
+_flipped(inp) := _green_true - _rules_true(inp)
+
+_fact_rule_reads_strictly(inp) if count(_flipped(inp)) > 0
+
+test_every_fact_boolean_wrong_type_null_or_removed_flips_a_rule if {
+	count(_fact_bool_paths) > 300
+	every p in _fact_bool_paths {
+		every bad in ["true", null] {
+			_fact_rule_reads_strictly(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+		_fact_rule_reads_strictly(json.remove(_green, [p]))
+	}
+}
+
+# Bulk form: every id is given the bad value in ONE input, and every id must have its own finding. Findings
+# are per id, so this proves each id separately without one full evaluation per id and value.
+_bulk(ids, value) := object.union(_green, {"nist_sp_800_171": {"requirements": object.union(_green.nist_sp_800_171.requirements, {id: value | some id in ids})}})
+
+_att_ids := {id | some id, _ in _attest_only}
+
+_fact_att_ids := {id | some id, _ in main.fact_checks}
+
+test_every_attested_id_rejects_non_boolean if {
+	count(_att_ids) > 0
+	every bad in ["true", null] {
+		r := main.compliance_report with input as _bulk(_att_ids, bad)
+		r.compliant == false
+		every id in _att_ids {
+			some v in r.violations
+			contains(v, sprintf("%v ", [id]))
+			contains(v, "[evidence invalid — attestation is not a boolean")
+		}
+	}
+}
+
+test_every_attested_id_missing_is_named if {
+	r := main.compliance_report with input as json.remove(_green, [["nist_sp_800_171", "requirements", id] | some id in _att_ids])
+	r.compliant == false
+	every id in _att_ids {
+		some v in r.violations
+		contains(v, sprintf("%v ", [id]))
+		contains(v, "[evidence missing — attestation not collected]")
+	}
+}
+
+test_every_attested_id_false_is_a_plain_finding if {
+	r := main.compliance_report with input as _bulk(_att_ids, false)
+	r.compliant == false
+	count([v | some v in r.violations; contains(v, "[evidence")]) == 0
+	every id in _att_ids {
+		some v in r.violations
+		contains(v, sprintf("%v ", [id]))
+	}
+}
+
+test_one_non_boolean_attestation_alone_fails if {
+	some id in _att_ids
+	r := main.compliance_report with input as _bulk({id}, "true")
+	r.compliant == false
+	r.violation_count == 1
+}
+
+test_non_boolean_attestation_on_a_fact_id_is_reported if {
+	count(_fact_att_ids) > 0
+	every bad in ["true", null] {
+		r := main.compliance_report with input as _bulk(_fact_att_ids, bad)
+		r.compliant == false
+		every id in _fact_att_ids {
+			some v in r.violations
+			contains(v, sprintf("attestation for fact-evaluated requirement %v is not a boolean", [id]))
+		}
+	}
+	ok := main.compliance_report with input as _bulk(_fact_att_ids, false)
+	ok.compliant == true
+}
+
+test_report_with_every_fact_as_a_string_fails_every_fact_requirement if {
+	r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": "true"} | some p in _fact_bool_paths])
+	r.compliant == false
+	every id, _ in main.fact_checks {
+		r.requirements[id].satisfied == false
+	}
+}

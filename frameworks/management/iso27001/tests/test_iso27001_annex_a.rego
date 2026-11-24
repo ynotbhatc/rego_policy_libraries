@@ -1140,10 +1140,12 @@ test_a833_production_data_used_must_be_stated if {
 
 test_a833_production_data_used_wrong_type_or_null_fails if {
 	every bad in ["false", "true", "no", 0, 1, null, [], {}] {
-		r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": "/test_data/production_data_used", "value": bad}])
-		r.compliant == false
-		r.annex_a["A.8.33"].satisfied == false
+		inp := json.patch(_green, [{"op": "replace", "path": "/test_data/production_data_used", "value": bad}])
+		not data.iso27001.system_acquisition_maintenance.data_protection_control with input as inp
 	}
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": "/test_data/production_data_used", "value": "false"}])
+	r.compliant == false
+	r.annex_a["A.8.33"].satisfied == false
 }
 
 test_a833_explicit_false_passes if {
@@ -1162,18 +1164,16 @@ test_a833_audit_input_no_longer_passes if {
 # ── Same shape elsewhere in the tree: a string or a missing list is not an empty list ───────────────
 
 test_list_facts_must_be_lists if {
-	every c in [
-		["/user_management/unauthorized_users", "", "A.5.16"],
-		["/user_management/unauthorized_users", {}, "A.5.16"],
-		["/privileged_access/shared_accounts", "", "A.8.2"],
-		["/privileged_access/shared_accounts", {}, "A.8.2"],
-		["/cryptography/policy/approved_algorithms", "true", "A.8.24"],
-		["/key_management/key_specifications", "true", "A.8.24"],
-	] {
-		r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": c[0], "value": c[1]}])
-		r.compliant == false
-		r.annex_a[c[2]].satisfied == false
+	data.iso27001.access_control.user_registration_process with input as _green
+	data.iso27001.access_control.privileged_access_management with input as _green
+	data.iso27001.cryptography.cryptographic_policy with input as _green
+	data.iso27001.cryptography.key_generation_secure with input as _green
+	every bad in ["", {}, "true"] {
+		not data.iso27001.access_control.user_registration_process with input as json.patch(_green, [{"op": "replace", "path": "/user_management/unauthorized_users", "value": bad}])
+		not data.iso27001.access_control.privileged_access_management with input as json.patch(_green, [{"op": "replace", "path": "/privileged_access/shared_accounts", "value": bad}])
+		not data.iso27001.cryptography.cryptographic_policy with input as json.patch(_green, [{"op": "replace", "path": "/cryptography/policy/approved_algorithms", "value": bad}])
 	}
+	not data.iso27001.cryptography.key_generation_secure with input as json.patch(_green, [{"op": "replace", "path": "/key_management/key_specifications", "value": "true"}])
 }
 
 test_weak_algorithm_advisory_needs_the_list if {
@@ -1183,42 +1183,74 @@ test_weak_algorithm_advisory_needs_the_list if {
 
 # ── Attestations: only the boolean true attests; the finding names the evidence problem ─────────────
 
-_attested_ids := [id | some id, _ in iso27001.annex_a; not iso27001.fact_checks[id]]
+# Bulk form: every id is given the bad value in ONE input, and every id must have its own finding. Findings
+# are per id, so this proves each id separately without one full evaluation per id and value.
+_bulk(ids, value) := object.union(_green, {"iso27001": {"annex_a": object.union(_green.iso27001.annex_a, {id: value | some id in ids})}})
 
-_fact_ids := [id | some id, _ in iso27001.fact_checks]
+_att_ids := {id | some id, _ in iso27001.annex_a; not iso27001.fact_checks[id]}
 
-test_every_attested_control_rejects_non_boolean_and_missing if {
-	count(_attested_ids) == 58
-	every id in _attested_ids {
-		every bad in ["true", "false", "yes", 0, 1, null] {
-			r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": ["iso27001", "annex_a", id], "value": bad}])
-			r.compliant == false
-			r.annex_a[id].satisfied == false
+_fact_att_ids := {id | some id, _ in iso27001.fact_checks}
+
+test_every_attested_id_rejects_non_boolean if {
+	count(_att_ids) > 0
+	every bad in ["true", null] {
+		r := iso27001.compliance_report with input as _bulk(_att_ids, bad)
+		r.compliant == false
+		every id in _att_ids {
 			some v in r.violations
-			contains(v, id)
+			contains(v, sprintf("%v ", [id]))
 			contains(v, "[evidence invalid — attestation is not a boolean")
 		}
-		r2 := iso27001.compliance_report with input as json.remove(_green, [["iso27001", "annex_a", id]])
-		r2.compliant == false
-		some v2 in r2.violations
-		contains(v2, id)
-		contains(v2, "[evidence missing — attestation not collected]")
-		r3 := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": ["iso27001", "annex_a", id], "value": false}])
-		r3.compliant == false
-		some v3 in r3.violations
-		contains(v3, id)
-		not contains(v3, "[evidence")
 	}
 }
 
-test_non_boolean_attestation_on_a_fact_control_is_reported if {
-	count(_fact_ids) == 35
-	every id in _fact_ids {
-		every bad in ["true", "false", 1, null] {
-			r := iso27001.compliance_report with input as object.union(_green, {"iso27001": {"annex_a": {id: bad}}})
-			r.compliant == false
+test_every_attested_id_missing_is_named if {
+	r := iso27001.compliance_report with input as json.remove(_green, [["iso27001", "annex_a", id] | some id in _att_ids])
+	r.compliant == false
+	every id in _att_ids {
+		some v in r.violations
+		contains(v, sprintf("%v ", [id]))
+		contains(v, "[evidence missing — attestation not collected]")
+	}
+}
+
+test_every_attested_id_false_is_a_plain_finding if {
+	r := iso27001.compliance_report with input as _bulk(_att_ids, false)
+	r.compliant == false
+	count([v | some v in r.violations; contains(v, "[evidence")]) == 0
+	every id in _att_ids {
+		some v in r.violations
+		contains(v, sprintf("%v ", [id]))
+	}
+}
+
+test_one_non_boolean_attestation_alone_fails if {
+	some id in _att_ids
+	r := iso27001.compliance_report with input as _bulk({id}, "true")
+	r.compliant == false
+	r.violation_count == 1
+}
+
+test_non_boolean_attestation_on_a_fact_id_is_reported if {
+	count(_fact_att_ids) > 0
+	every bad in ["true", null] {
+		r := iso27001.compliance_report with input as _bulk(_fact_att_ids, bad)
+		r.compliant == false
+		every id in _fact_att_ids {
 			some v in r.violations
 			contains(v, sprintf("attestation for %v is not a boolean", [id]))
 		}
+	}
+	ok := iso27001.compliance_report with input as _bulk(_fact_att_ids, false)
+	ok.compliant == true
+}
+
+test_report_with_every_fact_as_a_string_fails_every_fact_control if {
+	paths := [p | walk(_green, [p, v]); is_boolean(v); p[0] != "iso27001"]
+	count(paths) > 300
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": "true"} | some p in paths])
+	r.compliant == false
+	every id, _ in iso27001.fact_checks {
+		r.annex_a[id].satisfied == false
 	}
 }

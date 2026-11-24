@@ -1822,7 +1822,34 @@ violations contains msg if {
 	some id, r in requirements
 	not _fact_evaluated(id)
 	not _attested(id)
-	msg := sprintf("NIST SP 800-171 %v %v (%v): not attested — input.nist_sp_800_171.requirements[\"%v\"] must be true", [id, r.title, families[r.family], id])
+	msg := sprintf("NIST SP 800-171 %v %v (%v): not attested — input.nist_sp_800_171.requirements[\"%v\"] must be true%v", [id, r.title, families[r.family], id, _attestation_problem(id)])
+}
+
+# Why a non-true attestation did not count: only the boolean true attests. A boolean false is a plain
+# "not attested"; a missing id and a wrong-typed value are evidence problems and are named.
+_attestation_problem(id) := "" if _attestations[id] == false
+
+_attestation_problem(id) := " [evidence missing — attestation not collected]" if {
+	not _has_attestation(id)
+}
+
+_attestation_problem(id) := sprintf(" [evidence invalid — attestation is not a boolean (got %v)]", [type_name(_attestations[id])]) if {
+	_has_attestation(id)
+	not is_boolean(_attestations[id])
+}
+
+_has_attestation(id) if {
+	some k, _ in _attestations
+	k == id
+}
+
+# An attestation for a fact-evaluated requirement does not decide it, but it is still evidence in the
+# record: a value that is not a boolean is a collection error and is reported.
+violations contains msg if {
+	some id, value in _attestations
+	_fact_evaluated(id)
+	not is_boolean(value)
+	msg := sprintf("NIST SP 800-171 Input Contract: attestation for fact-evaluated requirement %v is not a boolean (got %v) — input.nist_sp_800_171.requirements[\"%v\"] must be true or false", [id, type_name(value), id])
 }
 
 violations contains msg if {
