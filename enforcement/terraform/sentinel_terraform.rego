@@ -28,6 +28,77 @@ import rego.v1
 #   input.resource_changes[].change.actions — ["create"] | ["update"] | ["delete"]
 #   input.resource_changes[].change.after   — proposed new state (tags, config)
 
+#
+# A document that is not a readable plan is denied, never waved through (SENTINEL-TF-000): the gate
+# judges resource_changes, so that list must be there and every entry must have the plan's shape.
+# A plan with no changes omits the list; it is accepted only as a plan document (format_version set).
+
+# =============================================================================
+# PLAN SHAPE (SENTINEL-TF-000)
+# =============================================================================
+
+_changes := object.get(input, "resource_changes", null)
+
+violations contains "SENTINEL-TF-000: Malformed plan: input.resource_changes is missing and the document is not a Terraform plan (no format_version); nothing was evaluated" if {
+	not _changes_stated
+	not is_string(object.get(input, "format_version", null))
+}
+
+violations contains "SENTINEL-TF-000: Malformed plan: input.resource_changes is null; a plan lists its changes or omits the key" if {
+	_changes_stated
+	_changes == null
+}
+
+_changes_stated if "resource_changes" in object.keys(input)
+
+violations contains msg if {
+	_changes != null
+	not is_array(_changes)
+	msg := sprintf("SENTINEL-TF-000: Malformed plan: input.resource_changes must be a list, got %v", [type_name(_changes)])
+}
+
+violations contains msg if {
+	is_array(_changes)
+	some i, change in _changes
+	problem := _change_problem(change)
+	msg := sprintf("SENTINEL-TF-000: Malformed plan: resource_changes[%d] %v", [i, problem])
+}
+
+_change_problem(change) := "is not an object" if not is_object(change)
+
+_change_problem(change) := "has no address" if {
+	is_object(change)
+	not is_string(object.get(change, "address", null))
+}
+
+_change_problem(change) := "has no type" if {
+	is_object(change)
+	not is_string(object.get(change, "type", null))
+}
+
+_change_problem(change) := "has no change.actions list" if {
+	is_object(change)
+	not _actions_ok(change)
+}
+
+# every action other than a pure delete or no-op / read carries the proposed state in change.after
+_change_problem(change) := "has no change.after object" if {
+	is_object(change)
+	_actions_ok(change)
+	some action in change.change.actions
+	action in {"create", "update"}
+	not is_object(object.get(change.change, "after", null))
+}
+
+_actions_ok(change) if {
+	actions := object.get(change, ["change", "actions"], null)
+	is_array(actions)
+	count(actions) > 0
+	every a in actions {
+		is_string(a)
+	}
+}
+
 # =============================================================================
 # REQUIRED TAGS
 # =============================================================================
@@ -62,8 +133,19 @@ open_to_world(rule) if rule.cidr_blocks[_] == "0.0.0.0/0"
 
 open_to_world(rule) if rule.ipv6_cidr_blocks[_] == "::/0"
 
+# A CIDR field that is set but is not a list cannot be read: the rule is treated as open.
+open_to_world(rule) if {
+	some field in ["cidr_blocks", "ipv6_cidr_blocks"]
+	value := object.get(rule, field, null)
+	value != null
+	not is_array(value)
+}
+
 # Which world-open CIDR(s) the rule exposes, for the finding message.
-world_cidrs(rule) := concat(" and ", [c | some c in ["0.0.0.0/0", "::/0"]; world_cidr_present(rule, c)])
+world_cidrs(rule) := concat(" and ", [c | some c in ["0.0.0.0/0", "::/0"]; world_cidr_present(rule, c)]) if {
+	some c in ["0.0.0.0/0", "::/0"]
+	world_cidr_present(rule, c)
+} else := "an unreadable CIDR list"
 
 world_cidr_present(rule, "0.0.0.0/0") if rule.cidr_blocks[_] == "0.0.0.0/0"
 
@@ -76,8 +158,21 @@ covers_port(rule, _) if lower(sprintf("%v", [object.get(rule, "protocol", "")]))
 
 covers_port(rule, port) if {
 	lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"", "tcp", "6", "udp", "17"}
+	is_number(rule.from_port)
+	is_number(rule.to_port)
 	rule.from_port <= port
 	rule.to_port >= port
+}
+
+# A tcp/udp rule whose range is missing or not numeric cannot be bounded: it is read as covering the port.
+covers_port(rule, _) if {
+	lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"", "tcp", "6", "udp", "17"}
+	not _range_numeric(rule)
+}
+
+_range_numeric(rule) if {
+	is_number(rule.from_port)
+	is_number(rule.to_port)
 }
 
 # aws_security_group inline ingress rules
@@ -94,6 +189,26 @@ violations contains msg if {
 		[change.address, port, world_cidrs(rule)],
 	)
 }
+
+# A port bound in a plan is a number. One sent as a string is a malformed plan wherever the rule points.
+violations contains msg if {
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	some rule in _ingress_rules(change)
+	some field in ["from_port", "to_port"]
+	value := object.get(rule, field, null)
+	value != null
+	not is_number(value)
+	msg := sprintf("SENTINEL-TF-000: Malformed plan: '%v' ingress %v must be a number, got %v", [change.address, field, type_name(value)])
+}
+
+_ingress_rules(change) := rules if {
+	change.type == "aws_security_group"
+	rules := object.get(change.change.after, "ingress", [])
+	is_array(rules)
+}
+
+_ingress_rules(change) := [change.change.after] if change.type == "aws_security_group_rule"
 
 # aws_security_group_rule resources
 violations contains msg if {
