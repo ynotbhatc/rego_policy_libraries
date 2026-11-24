@@ -1601,33 +1601,38 @@ pw_reuse_ok if {
 }
 
 # ── typed facts ───────────────────────────────────────────────────────────────────────
-# Facts the AWS APIs return as JSON booleans or numbers, by inventory, each with the recommendation it is
-# reported under. A value of another type (the string "true", "14") is a collection error: the checks above
+# Facts the AWS APIs return as JSON booleans or numbers: [type, inventory, property, the recommendation it is
+# reported under]. A value of another type (the string "true", "14") is a collection error: the checks above
 # do not read it as the setting, and it is named here so the recommendation fails on the evidence.
-typed_facts := {
-	"boolean": {
-		"rds_instances": {"StorageEncrypted": "3.2.1", "AutoMinorVersionUpgrade": "3.2.2", "PubliclyAccessible": "3.2.3"},
-		"efs_file_systems": {"Encrypted": "3.3.1"},
-		"cloudtrail_trails": {"LogFileValidationEnabled": "4.2", "IsMultiRegionTrail": "4.8", "IsLogging": "7.4.1"},
-		"kms_keys": {"KeyRotationEnabled": "4.6"},
-		"ebs_encryption_by_default": {"EbsEncryptionByDefault": "6.1.1"},
-		"network_acls": {"Egress": "6.2"},
-		"bedrock_invocation_logging": {
-			"textDataDeliveryEnabled": "7.4.2", "imageDataDeliveryEnabled": "7.4.2",
-			"embeddingDataDeliveryEnabled": "7.4.2", "videoDataDeliveryEnabled": "7.4.2",
-		},
-		"vpc_endpoints": {"PrivateDnsEnabled": "7.5.1"},
-		"route_tables": {"Main": "7.5.2"},
-		"opensearch_serverless_network_policies": {"AllowFromPublic": "7.5.3"},
-		"bedrock_marketplace_endpoints": {"EnableNetworkIsolation": "7.5.4"},
-	},
-	"number": {
-		"account_summary": {"AccountAccessKeysPresent": "2.4", "AccountMFAEnabled": "2.5", "AccountPasswordPresent": "2.5"},
-		"password_policy": {"MinimumPasswordLength": "2.8", "PasswordReusePrevention": "2.9"},
-		"iam_policies": {"AttachmentCount": "2.14"},
-		"network_acls": {"From": "6.2", "To": "6.2", "RuleNumber": "6.2"},
-	},
-}
+typed_facts := [
+	["boolean", "rds_instances", "StorageEncrypted", "3.2.1"],
+	["boolean", "rds_instances", "AutoMinorVersionUpgrade", "3.2.2"],
+	["boolean", "rds_instances", "PubliclyAccessible", "3.2.3"],
+	["boolean", "efs_file_systems", "Encrypted", "3.3.1"],
+	["boolean", "cloudtrail_trails", "LogFileValidationEnabled", "4.2"],
+	["boolean", "cloudtrail_trails", "IsMultiRegionTrail", "4.8"],
+	["boolean", "cloudtrail_trails", "IsLogging", "7.4.1"],
+	["boolean", "kms_keys", "KeyRotationEnabled", "4.6"],
+	["boolean", "ebs_encryption_by_default", "EbsEncryptionByDefault", "6.1.1"],
+	["boolean", "network_acls", "Egress", "6.2"],
+	["boolean", "bedrock_invocation_logging", "textDataDeliveryEnabled", "7.4.2"],
+	["boolean", "bedrock_invocation_logging", "imageDataDeliveryEnabled", "7.4.2"],
+	["boolean", "bedrock_invocation_logging", "embeddingDataDeliveryEnabled", "7.4.2"],
+	["boolean", "bedrock_invocation_logging", "videoDataDeliveryEnabled", "7.4.2"],
+	["boolean", "vpc_endpoints", "PrivateDnsEnabled", "7.5.1"],
+	["boolean", "route_tables", "Main", "7.5.2"],
+	["boolean", "opensearch_serverless_network_policies", "AllowFromPublic", "7.5.3"],
+	["boolean", "bedrock_marketplace_endpoints", "EnableNetworkIsolation", "7.5.4"],
+	["number", "account_summary", "AccountAccessKeysPresent", "2.4"],
+	["number", "account_summary", "AccountMFAEnabled", "2.5"],
+	["number", "account_summary", "AccountPasswordPresent", "2.5"],
+	["number", "password_policy", "MinimumPasswordLength", "2.8"],
+	["number", "password_policy", "PasswordReusePrevention", "2.9"],
+	["number", "iam_policies", "AttachmentCount", "2.14"],
+	["number", "network_acls", "From", "6.2"],
+	["number", "network_acls", "To", "6.2"],
+	["number", "network_acls", "RuleNumber", "6.2"],
+]
 
 fact_path(path) := concat("", [seg |
 	some x in path
@@ -1639,12 +1644,11 @@ _fact_segment(x) := sprintf("[%d]", [x]) if is_number(x)
 _fact_segment(x) := sprintf(".%s", [x]) if is_string(x)
 
 _messages contains sprintf("%s: %s — evidence invalid — input.%s%s must be a %s, got %s", [id, recommendations[id].title, inventory, fact_path(path), type, type_name(value)]) if {
-	some type, inventories in typed_facts
-	some inventory, facts in inventories
+	some [type, inventory, property, id] in typed_facts
+	_in_scope(id)
 	walk(input[inventory], [path, value])
 	count(path) > 0
-	id := facts[path[count(path) - 1]]
-	_in_scope(id)
+	path[count(path) - 1] == property
 	not is_null(value)
 	type_name(value) != type
 }

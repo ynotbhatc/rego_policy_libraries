@@ -59,14 +59,14 @@
 #   source: cis
 #   domains: [kubernetes, cloud, aws]
 #   coverage:
-#     checks: 69
+#     checks: 70
 #     cited: 63
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_eks.main
 
 import rego.v1
@@ -252,23 +252,25 @@ violations contains msg if {
 	msg := sprintf("CIS EKS %s: evidence missing — %s not collected", [id, concat(", ", m)])
 }
 
-# Booleans the Automated controls read, by inventory, with the controls that read each. Kubernetes and AWS
+# Booleans the Automated controls read: [inventory, property, a control that reads it]. Kubernetes and AWS
 # return them as JSON booleans; a string or a number in their place (the strings "true" and "false" included)
 # is a collection error, so the control reports invalid evidence and its logic does not run on the value.
-boolean_facts := {
-	"cluster": {"enabled": {"2.1.1"}},
-	"nodes": {"exists": {"3.1.1", "3.1.2", "3.1.3", "3.1.4"}},
-	"workloads": {
-		"automountServiceAccountToken": {"4.1.6"},
-		"privileged": {"4.2.1"},
-		"hostPID": {"4.2.2"},
-		"hostIPC": {"4.2.3"},
-		"hostNetwork": {"4.2.4"},
-		"allowPrivilegeEscalation": {"4.2.5"},
-	},
-	"service_accounts": {"automountServiceAccountToken": {"4.1.6", "5.2.1"}},
-	"ecr": {"scanOnPush": {"5.1.1"}},
-}
+boolean_facts := [
+	["cluster", "enabled", "2.1.1"],
+	["nodes", "exists", "3.1.1"],
+	["nodes", "exists", "3.1.2"],
+	["nodes", "exists", "3.1.3"],
+	["nodes", "exists", "3.1.4"],
+	["workloads", "automountServiceAccountToken", "4.1.6"],
+	["workloads", "privileged", "4.2.1"],
+	["workloads", "hostPID", "4.2.2"],
+	["workloads", "hostIPC", "4.2.3"],
+	["workloads", "hostNetwork", "4.2.4"],
+	["workloads", "allowPrivilegeEscalation", "4.2.5"],
+	["service_accounts", "automountServiceAccountToken", "4.1.6"],
+	["service_accounts", "automountServiceAccountToken", "5.2.1"],
+	["ecr", "scanOnPush", "5.1.1"],
+]
 
 _fact_path(path) := concat("", [seg |
 	some x in path
@@ -280,10 +282,10 @@ _fact_segment(x) := sprintf("[%d]", [x]) if is_number(x)
 _fact_segment(x) := sprintf(".%s", [x]) if is_string(x)
 
 _invalid_facts contains [id, msg] if {
-	some inventory, facts in boolean_facts
+	some [inventory, property, id] in boolean_facts
 	walk(eks[inventory], [path, value])
 	count(path) > 0
-	some id in facts[path[count(path) - 1]]
+	path[count(path) - 1] == property
 	not is_null(value)
 	not is_boolean(value)
 	msg := sprintf("%s%s is not a boolean (got %s)", [inventory, _fact_path(path), type_name(value)])

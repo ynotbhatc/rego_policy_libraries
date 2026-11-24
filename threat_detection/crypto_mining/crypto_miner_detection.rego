@@ -10,14 +10,14 @@
 #   source: aac
 #   domains: [threat, cryptomining]
 #   coverage:
-#     checks: 17
+#     checks: 21
 #     cited: 1
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package security.crypto_miner_detection
 
 import rego.v1
@@ -215,36 +215,46 @@ violations contains msg if {
 # one of the six must be sent: a detection whose list was not collected did not run. The fields
 # the detections read, with their types: a fact or a field of another type cannot be searched, so it is
 # reported and the host is not clean.
-fact_fields := {
-	"running_processes": {"name": "string", "cmdline": "string", "pid": "number", "cpu_percent": "number", "running_time_minutes": "number"},
-	"installed_packages": {"name": "string"},
-	"network_connections": {"remote_host": "string", "remote_port": "number"},
-	"systemd_services": {"name": "string", "exec_start": "string"},
-	"cron_jobs": {"command": "string"},
-	"suspicious_files": {"path": "string", "content": "string"},
-}
+fact_names := {"running_processes", "installed_packages", "network_connections", "systemd_services", "cron_jobs", "suspicious_files"}
+
+# [fact, field, type]
+fact_fields := [
+	["running_processes", "name", "string"],
+	["running_processes", "cmdline", "string"],
+	["running_processes", "pid", "number"],
+	["running_processes", "cpu_percent", "number"],
+	["running_processes", "running_time_minutes", "number"],
+	["installed_packages", "name", "string"],
+	["network_connections", "remote_host", "string"],
+	["network_connections", "remote_port", "number"],
+	["systemd_services", "name", "string"],
+	["systemd_services", "exec_start", "string"],
+	["cron_jobs", "command", "string"],
+	["suspicious_files", "path", "string"],
+	["suspicious_files", "content", "string"],
+]
 
 _facts_present if {
-	some fact, _ in fact_fields
+	some fact in fact_names
 	is_array(input[fact])
 }
 
 violations contains msg if {
 	_facts_present
-	some fact, _ in fact_fields
+	some fact in fact_names
 	not fact in object.keys(input)
 	msg := sprintf("EVIDENCE MISSING - %s not collected (a list; empty when there are none); the host was NOT evaluated on it", [fact])
 }
 
 violations contains msg if {
-	some fact, _ in fact_fields
+	some fact in fact_names
 	fact in object.keys(input)
 	not is_array(input[fact])
 	msg := sprintf("EVIDENCE INVALID - %s must be a list, got %s; the host was NOT evaluated on it", [fact, type_name(input[fact])])
 }
 
 violations contains msg if {
-	some fact, _ in fact_fields
+	some fact in fact_names
 	is_array(input[fact])
 	some i, item in input[fact]
 	not is_object(item)
@@ -252,10 +262,9 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	some fact, fields in fact_fields
+	some [fact, field, type] in fact_fields
 	is_array(input[fact])
 	some i, item in input[fact]
-	some field, type in fields
 	value := item[field]
 	not is_null(value)
 	type_name(value) != type

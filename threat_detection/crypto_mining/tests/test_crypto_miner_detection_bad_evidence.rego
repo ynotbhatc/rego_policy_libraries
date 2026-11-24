@@ -37,7 +37,7 @@ test_clean_host_is_clean if _clean(clean_host)
 test_empty_input_is_not_clean if _not_clean({})
 
 test_fact_of_the_wrong_type_is_not_clean if {
-	every fact, _ in detect.fact_fields {
+	every fact in detect.fact_names {
 		every bad in [null, "true", "1", 1, true, {"a": 1}] {
 			inp := object.union(clean_host, {fact: bad})
 			_not_clean(inp)
@@ -48,12 +48,12 @@ test_fact_of_the_wrong_type_is_not_clean if {
 
 test_all_facts_null_or_strings_is_not_clean if {
 	every bad in [null, "true", "1"] {
-		_not_clean({fact: bad | some fact, _ in detect.fact_fields})
+		_not_clean({fact: bad | some fact in detect.fact_names})
 	}
 }
 
 test_item_that_is_not_an_object_is_not_clean if {
-	every fact, _ in detect.fact_fields {
+	every fact in detect.fact_names {
 		every bad in ["xmrig", null, 1] {
 			inp := object.union(clean_host, {fact: [bad]})
 			_not_clean(inp)
@@ -63,13 +63,12 @@ test_item_that_is_not_an_object_is_not_clean if {
 }
 
 test_field_of_the_wrong_type_is_not_clean if {
-	every fact, fields in detect.fact_fields {
-		every field, _ in fields {
-			every bad in [true, ["x"], {"a": 1}] {
-				inp := object.union(clean_host, {fact: [{field: bad}]})
-				_not_clean(inp)
-				_invalid(inp)
-			}
+	every row in detect.fact_fields {
+		[fact, field, _] := row
+		every bad in [true, ["x"], {"a": 1}] {
+			inp := object.union(clean_host, {fact: [{field: bad}]})
+			_not_clean(inp)
+			_invalid(inp)
 		}
 	}
 }
@@ -83,11 +82,11 @@ test_string_port_is_reported if {
 
 # Every one of the six lists must be sent: a detection whose list was not collected did not run.
 test_missing_fact_list_is_not_clean if {
-	every fact, _ in detect.fact_fields {
+	every fact in detect.fact_names {
 		inp := object.remove(clean_host, [fact])
 		_not_clean(inp)
 		sprintf("EVIDENCE MISSING - %s not collected (a list; empty when there are none); the host was NOT evaluated on it", [fact]) in detect.violations with input as inp
 	}
 }
 
-test_all_six_lists_empty_is_clean if _clean({fact: [] | some fact, _ in detect.fact_fields})
+test_all_six_lists_empty_is_clean if _clean({fact: [] | some fact in detect.fact_names})

@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [cloud, oracle]
 #   coverage:
-#     checks: 55
+#     checks: 62
 #     cited: 54
 #     expected: 54
 #     found: 54
@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_oci.main
 
 # CIS Oracle Cloud Infrastructure Foundations Benchmark v3.1 (CIS lists 3.1.1 as current)

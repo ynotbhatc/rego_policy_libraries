@@ -443,16 +443,16 @@ _scc_collected if {
 
 # The SCC allow* fields are booleans in the API object. A string or a number in their place is a collection
 # error: it is not read as a refusal, and it is reported under the recommendation that reads the field.
-_scc_boolean_fields := {
-	"allowPrivilegedContainer": "5.2.1",
-	"allowHostPID": "5.2.2",
-	"allowHostIPC": "5.2.3",
-	"allowHostNetwork": "5.2.4",
-	"allowPrivilegeEscalation": "5.2.5",
-}
+_scc_boolean_fields := [
+	["allowPrivilegedContainer", "5.2.1"],
+	["allowHostPID", "5.2.2"],
+	["allowHostIPC", "5.2.3"],
+	["allowHostNetwork", "5.2.4"],
+	["allowPrivilegeEscalation", "5.2.5"],
+]
 
 _v_policies contains sprintf("%s: evidence invalid — SCC %v: %s must be true or false, got %s", [id, object.get(s, ["metadata", "name"], "<unnamed>"), field, type_name(s[field])]) if {
-	some field, id in _scc_boolean_fields
+	some [field, id] in _scc_boolean_fields
 	_applies(id)
 	_scc_collected
 	some s in input.scc.items

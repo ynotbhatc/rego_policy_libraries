@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [ansible]
 #   coverage:
-#     checks: 5
-#     cited: 4
+#     checks: 7
+#     cited: 5
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package sentinel.ansible
 
 import rego.v1

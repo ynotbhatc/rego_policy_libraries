@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [iac, terraform]
 #   coverage:
-#     checks: 4
-#     cited: 3
+#     checks: 9
+#     cited: 4
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package sentinel.terraform
 
 import rego.v1

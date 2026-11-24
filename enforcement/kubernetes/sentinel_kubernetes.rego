@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [kubernetes]
 #   coverage:
-#     checks: 21
-#     cited: 14
+#     checks: 27
+#     cited: 15
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package sentinel.kubernetes
 
 import rego.v1
