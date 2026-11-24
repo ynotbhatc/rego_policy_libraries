@@ -226,3 +226,36 @@ test_gate_inferred_from_missing_fact_fails if {
 		not passes(r2)
 	}
 }
+
+# 1.3.2 is an either-or (cron job or systemd timer): one true answers it, the other may be left out,
+# but a fact that is sent must be a boolean and "neither" needs both collected
+aide(cron, timer) := json.patch(fx, [{"op": "replace", "path": ["aide"], "value": object.union({"installed": true, "database_exists": true}, object.union(cron, timer))}])
+
+test_aide_schedule_is_either_or if {
+	ok1 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({"cron_configured": true}, {})
+	ok1.compliant == true
+	ok2 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({}, {"systemd_timer_configured": true})
+	ok2.compliant == true
+	ok3 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({"cron_configured": false}, {"systemd_timer_configured": true})
+	ok3.compliant == true
+	bad1 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({"cron_configured": true}, {"systemd_timer_configured": "true"})
+	"CIS 1.3.2: evidence missing — aide.systemd_timer_configured is not a boolean (got string)" in bad1.violations
+	bad2 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({"cron_configured": false}, {"systemd_timer_configured": false})
+	"CIS 1.3.2: AIDE is not scheduled to run regularly (no cron job or systemd timer)" in bad2.violations
+	bad3 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({"cron_configured": false}, {})
+	"CIS 1.3.2: evidence missing — aide.systemd_timer_configured not collected" in bad3.violations
+	bad4 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({}, {})
+	count({v | some v in bad4.violations; startswith(v, "CIS 1.3.2: evidence missing")}) == 2
+	bad5 := data.cis_ubuntu_20_04.main.compliance_report with input as aide({"cron_configured": "true"}, {})
+	not passes(bad5)
+}
+
+# the audit package is reported as auditd or audit: one boolean true answers it; garbage under the other name fails
+test_audit_package_alias if {
+	ok := data.cis_ubuntu_20_04.main.compliance_report with input as json.patch(fx, [{"op": "replace", "path": ["packages"], "value": {"audit": true}}])
+	ok.compliant == true
+	bad := data.cis_ubuntu_20_04.main.compliance_report with input as json.patch(fx, [{"op": "replace", "path": ["packages"], "value": {"auditd": true, "audit": "true"}}])
+	"CIS 4.1.1.1: evidence missing — packages.audit is not a boolean (got string)" in bad.violations
+	none := data.cis_ubuntu_20_04.main.compliance_report with input as json.patch(fx, [{"op": "replace", "path": ["packages"], "value": {}}])
+	"CIS 4.1.1.1: evidence missing — packages.auditd not collected" in none.violations
+}

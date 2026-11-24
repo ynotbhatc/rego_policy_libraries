@@ -16,7 +16,7 @@ fixture_compliant := {
 		"unloaded_profiles": 0, "complain_profiles": 0,
 		"profiles": [{"name": "usr.sbin.sshd", "mode": "enforce"}],
 	},
-	"aide": {"installed": true, "cron_configured": true, "systemd_timer_configured": false, "database_exists": true},
+	"aide": {"installed": true, "cron_configured": true, "database_exists": true},
 	"grub": {"password_configured": true, "config_mode": "0600", "config_owner": "root", "sulogin_configured": true},
 	"process_hardening": {
 		"core_dumps_enabled": false, "fs_suid_dumpable": "0", "aslr_enabled": true,
@@ -24,7 +24,7 @@ fixture_compliant := {
 	},
 	"packages": {"auditd": true},
 	"services": {"auditd.service": {"status": "enabled", "state": "running"}},
-	"bootloader": {"grub_config": "GRUB_CMDLINE_LINUX=\"apparmor=1 security=apparmor audit=1 audit_backlog_limit=8192\""},
+	"bootloader": {"grub_config": "BOOT_IMAGE=/vmlinuz root=/dev/sda1 ro apparmor=1 security=apparmor audit=1 audit_backlog_limit=8192"},
 	"auditd": {
 		"config": "max_log_file = 8\nmax_log_file_action = keep_logs\nspace_left_action = email\nadmin_space_left_action = halt\n",
 		"log_permissions": {"mode": "0640", "pw_name": "root", "gr_name": "adm"},

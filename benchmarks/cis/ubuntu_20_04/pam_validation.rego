@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 30
+#     checks: 39
 #     cited: 13
 #     density: sized
 #     basis: size
@@ -251,6 +251,14 @@ account_violations contains msg if {
 account_violations contains msg if {
 	not input.pam.default_umask
 	msg := "CIS 5.5.x: evidence missing — pam.default_umask not collected"
+}
+
+# a umask that is not an octal mode is not an answer (octal() is undefined on it, which would skip the rule below)
+account_violations contains msg if {
+	v := input.pam.default_umask
+	not is_null(v)
+	not octal(v)
+	msg := sprintf("CIS 5.5.x: Default umask is %v, should be 027 or more restrictive", [v])
 }
 
 account_violations contains msg if {

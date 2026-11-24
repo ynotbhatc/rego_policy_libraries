@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 18
+#     checks: 24
 #     cited: 10
 #     density: sized
 #     basis: size
@@ -52,8 +52,9 @@ aide_violations contains msg if {
 # CIS 1.3.2: AIDE scheduled
 aide_violations contains msg if {
 	input.aide.installed == true
-	input.aide.cron_configured == false
-	input.aide.systemd_timer_configured == false
+	not aide_scheduled
+	some key in aide_schedule_facts
+	input.aide[key] == false
 	msg := "CIS 1.3.2: AIDE is not scheduled to run regularly (no cron job or systemd timer)"
 }
 
@@ -199,11 +200,34 @@ apparmor_boot_violations contains msg if {
 }
 
 # AIDE schedule and database are judged only on a host where AIDE is installed (aide.installed is the boolean true)
-gated_flags := [
-	["CIS 1.3.2", ["aide", "cron_configured"], [["aide", "installed"]]],
-	["CIS 1.3.2", ["aide", "systemd_timer_configured"], [["aide", "installed"]]],
-	["CIS 1.3.1", ["aide", "database_exists"], [["aide", "installed"]]],
-]
+gated_flags := [["CIS 1.3.1", ["aide", "database_exists"], [["aide", "installed"]]]]
+
+# 1.3.2 is met by a cron job or by a systemd timer: one boolean true is the answer, and the other fact
+# may then be left out. A fact that is sent must still be a boolean, and with neither true each fact
+# that was not collected is named.
+aide_schedule_facts := ["cron_configured", "systemd_timer_configured"]
+
+aide_scheduled if {
+	some key in aide_schedule_facts
+	input.aide[key] == true
+}
+
+aide_violations contains msg if {
+	input.aide.installed == true
+	some key in aide_schedule_facts
+	v := object.get(input, ["aide", key], null)
+	not is_null(v)
+	not is_boolean(v)
+	msg := flag_evidence("CIS 1.3.2", ["aide", key])
+}
+
+aide_violations contains msg if {
+	input.aide.installed == true
+	not aide_scheduled
+	some key in aide_schedule_facts
+	is_null(object.get(input, ["aide", key], null))
+	msg := flag_evidence("CIS 1.3.2", ["aide", key])
+}
 
 # yes/no facts read only when every gate fact is the boolean true: [finding prefix, input path, gate paths]
 aide_violations contains msg if {

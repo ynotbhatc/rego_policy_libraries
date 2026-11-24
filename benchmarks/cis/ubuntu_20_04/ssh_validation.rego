@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 34
+#     checks: 35
 #     cited: 23
 #     density: sized
 #     basis: size

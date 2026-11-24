@@ -6,10 +6,10 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 8
+#     checks: 12
 #     cited: 4
-#     density: section
-#     basis: role
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

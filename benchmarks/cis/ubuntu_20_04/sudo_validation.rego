@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 13
+#     checks: 15
 #     cited: 8
 #     density: sized
 #     basis: size
@@ -131,9 +131,6 @@ flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
 
 flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
 
-# a number that must be collected: missing and null are "not collected" (a wrong type is reported by the rule that reads it)
-number_missing(path) if is_null(object.get(input, path, null))
-
 # yes/no facts read unconditionally: [finding prefix, input path]
 required_flags := [
 	["CIS 5.3.1", ["sudo", "installed"]],
@@ -146,11 +143,6 @@ required_flags := [
 violations contains msg if {
 	some [prefix, path] in required_flags
 	msg := flag_evidence(prefix, path)
-}
-
-violations contains msg if {
-	number_missing(["sudo", "timestamp_timeout"])
-	msg := "CIS 5.3.6: evidence missing — sudo.timestamp_timeout not collected"
 }
 
 # offender lists: an empty list is an answer ("none found"), a missing list is not
