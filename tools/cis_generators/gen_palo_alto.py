@@ -18,7 +18,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cis_genlib import load_workbook_json, emit_control, emit_tests, table  # noqa: E402
+from cis_genlib import LEVEL_HELPERS, LEVEL_VIOLATIONS, load_workbook_json, emit_control, emit_tests, table  # noqa: E402
 
 WB = load_workbook_json(sys.argv[1])  # JSON from dump_workbook.py
 OUT = sys.argv[2]
@@ -656,44 +656,8 @@ GREEN = {"panos_config": {
 
 # ── Rego helpers ───────────────────────────────────────────────────────────────────────
 HELPERS = r'''# ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level is the number 1 or 2 (Level 2 includes Level 1); absent => 2. Anything
-# else ("2", 3, null, a cis_profile that is not an object) is invalid evidence: the report is scoped at Level 2, the
-# stricter, and every Level 2 recommendation carries the finding, because the profile that decides them was not readable.
-default _level := 2
-
-_level := 1 if input.cis_profile.level == 1
-
-_applies(id) if recommendations[id].level <= _level
-
-default _level_invalid := false
-
-_level_invalid if {
-	cp := input.cis_profile
-	not is_object(cp)
-}
-
-_level_invalid if {
-	lv := input.cis_profile.level
-	not lv in {1, 2}
-}
-
-_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
-
-_level_got := json.marshal(cp) if {
-	cp := input.cis_profile
-	not is_object(cp)
-}
-
-_level_finding := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_level_got])
-
-_v_profile contains sprintf("cis_profile.level: %s; the report is scoped at Level 2", [_level_finding]) if _level_invalid
-
-_v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be scoped", [id, _level_finding]) if {
-	_level_invalid
-	some id, r in recommendations
-	r.level == 2
-}
-
+'''
+HELPERS += LEVEL_HELPERS + r'''
 # PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean; absent is the PAN-OS default ("no").
 # Any other value is not read as either: the recommendation that reads it reports "evidence invalid" (_bad).
 _yes(o, k) if object.get(o, k, "no") == true
@@ -1196,7 +1160,7 @@ violations := [v |
 '''
 
 parts = [HEADER]
-parts.append("# cis_profile.level that is not the number 1 or 2 (see _level_invalid)\nprofile_violations := sort([m | some m in _v_profile])\n")
+parts.append(LEVEL_VIOLATIONS)
 for s in SECTIONS:
     parts.append(f"# {STITLE[s]}\n{s}_violations := sort([m | some m in _v_{s}])\n")
 parts.append(HELPERS)
