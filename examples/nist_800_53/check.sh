@@ -41,11 +41,11 @@ def expect(label, got, want):
         problems.append(f"{label}: got {got!r}, expected {want!r}")
 expect("compliant", r.get("compliant"), False)
 expect("assessed_at", r.get("assessed_at"), "2026-11-20")
-expect("total_controls", r.get("total_controls"), 542)
-expect("failed_controls", r.get("failed_controls"), 487)
-expect("violation_count", r.get("violation_count"), 487)
+expect("total_controls", r.get("total_controls"), 544)
+expect("failed_controls", r.get("failed_controls"), 489)
+expect("violation_count", r.get("violation_count"), 489)
 expect("control_result_counts", r.get("control_result_counts"),
-       {"pass": 55, "fail": 5, "evidence_missing": 416, "not_attested": 66})
+       {"pass": 55, "fail": 5, "evidence_missing": 418, "not_attested": 66})
 expect("AC family summary", r.get("family_summary", {}).get("AC"), {"compliant": False, "violations": 5})
 fails = sorted(c["id"] for c in r.get("control_results", []) if c.get("status") == "fail")
 expect("ids with status fail", fails, sorted(["AC-2(3)", "AC-6(7)", "AC-7", "AC-11", "AC-17(3)"]))
@@ -53,7 +53,7 @@ passes = {c["id"].split("(")[0].split("-")[0] for c in r.get("control_results", 
 expect("families with a passing control", passes, {"AC"})
 if problems:
     sys.exit("FAIL (nist_800_53 key): examples/nist_800_53/facts.json no longer gives the documented result\n  " + "\n  ".join(problems))
-print("ok: nist_800_53: 55 pass, 5 fail, 416 evidence missing, 66 not attested of 542")
+print("ok: nist_800_53: 55 pass, 5 fail, 418 evidence missing, 66 not attested of 544")
 '
 
 # 3. The same facts plus benchmark results (benchmark_findings.json), with the crosswalk spine loaded: the
@@ -81,7 +81,7 @@ expect("benchmark satisfied", b.get("satisfied"), ["AC-7"])
 expect("benchmark gap", b.get("gap"), ["AC-8"])
 expect("unmapped_rules", b.get("unmapped_rules"), ["EXAMPLE-00-000001"])
 expect("control_result_counts", r.get("control_result_counts"),
-       {"pass": 54, "fail": 6, "evidence_missing": 416, "not_attested": 66})
+       {"pass": 54, "fail": 6, "evidence_missing": 418, "not_attested": 66})
 expect("AC-8 status", rows.get("AC-8", {}).get("status"), "fail")
 expect("AC-8 open rules", rows.get("AC-8", {}).get("benchmark", {}).get("open_rules"), ["RHEL-09-211020"])
 expect("AC-7 status", rows.get("AC-7", {}).get("status"), "fail")

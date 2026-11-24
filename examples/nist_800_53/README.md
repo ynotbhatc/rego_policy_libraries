@@ -35,8 +35,8 @@ fact is present.
 
 **The framework key** (`nist_800_53`):
 
-- `total_controls` is 542, `failed_controls` is 487, `compliant` is `false`.
-- `control_result_counts`: 55 pass, 5 fail, 416 evidence missing, 66 not attested. The 60 AC controls are the
+- `total_controls` is 544, `failed_controls` is 489, `compliant` is `false`.
+- `control_result_counts`: 55 pass, 5 fail, 418 evidence missing, 66 not attested. The 60 AC controls are the
   55 passes and the 5 fails. Every other family reports evidence missing (no facts were collected) or not attested
   (organizational controls that need a signed attestation under `<family>_controls.<topic>.attestation`).
 - `family_summary.AC` is `{"compliant": false, "violations": 5}`; every other family is non-compliant too.

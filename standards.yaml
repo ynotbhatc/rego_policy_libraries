@@ -307,7 +307,7 @@ frameworks:
   # ---------------------------------------------------------------- NIST and US federal
   nist_sp_800_53:
     standards:
-      - {standard: NIST SP 800-53 Rev 5 (OSCAL catalog), version: 5.2.0, publisher: NIST, literal: "SP 800-53 Rev 5 release 5.2.0", check: {method: oscal_catalog, url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"}}
+      - {standard: NIST SP 800-53 Rev 5 (OSCAL catalog), version: 5.2.0, publisher: NIST, literal: "SP 800-53 Rev 5 release 5.2.0", check: {method: oscal_catalog, url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json", note: "Release 5.2.0 of 2025-08-27. Module ids and checks reviewed 2026-11-24 against usnistgov/oscal-content v1.6.0 (commit f0de6d8d8c059d374f15e0ae07508d82e370fc1d, catalog sha256 64ca6b4161de51ab6af098a7d101d326f14c95e1abf721396cd8a049e8115eeb) and the CPRT export of 5.2.0; the catalog metadata.version stays 5.2.0 across oscal-content v1.4.0 to v1.6.0 while the content was corrected, so a newer oscal-content tag needs a look even when this check reports no new version"}}
   nist_sp_800_171:
     standards:
       - {standard: NIST SP 800-171, version: Rev 3, publisher: NIST, literal: "NIST SP 800-171 Rev 3", check: {method: oscal_catalog, implemented: "1.1.0", url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-171/rev3/json/NIST_SP800-171_rev3_catalog.json", note: "implemented = catalog file version reviewed, not the SP revision"}}
