@@ -15,7 +15,8 @@
 # Query: POST /v1/data/cis_gke/main/compliance_report
 #
 # Fail-closed: every fact is a boolean that must be affirmatively true.
-# Empty input yields all 40 violations.
+# Empty input yields all 40 violations. A fact that is absent, null or of another type (the strings
+# "true" and "false", 0, 1) fires its control and is listed in evidence_findings.
 #
 # Input contract — input.cis_gke.*  (all fields bool)
 #
@@ -110,22 +111,22 @@ compliant if {
 # ── 3.1 Worker node configuration files ──────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.node_files.kubeconfig_perms_restricted
+	not input.cis_gke.node_files.kubeconfig_perms_restricted == true
 	msg := "CIS GKE 3.1.1: kubeconfig file permissions are more permissive than 644"
 }
 
 violations contains msg if {
-	not input.cis_gke.node_files.kubeconfig_owner_root
+	not input.cis_gke.node_files.kubeconfig_owner_root == true
 	msg := "CIS GKE 3.1.2: kubelet kubeconfig file is not owned by root:root"
 }
 
 violations contains msg if {
-	not input.cis_gke.node_files.kubelet_config_perms_restricted
+	not input.cis_gke.node_files.kubelet_config_perms_restricted == true
 	msg := "CIS GKE 3.1.3: kubelet configuration file permissions are more permissive than 644"
 }
 
 violations contains msg if {
-	not input.cis_gke.node_files.kubelet_config_owner_root
+	not input.cis_gke.node_files.kubelet_config_owner_root == true
 	msg := "CIS GKE 3.1.4: kubelet configuration file is not owned by root:root"
 }
 
@@ -133,129 +134,129 @@ violations contains msg if {
 # (4.1.9 intentionally absent — numbering gap in the mapping.)
 
 violations contains msg if {
-	not input.cis_gke.rbac.cluster_admin_usage_minimized
+	not input.cis_gke.rbac.cluster_admin_usage_minimized == true
 	msg := "CIS GKE 4.1.1: cluster-admin role is bound beyond where it is required"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.secrets_access_minimized
+	not input.cis_gke.rbac.secrets_access_minimized == true
 	msg := "CIS GKE 4.1.2: Access to secrets is not minimized"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.wildcard_use_minimized
+	not input.cis_gke.rbac.wildcard_use_minimized == true
 	msg := "CIS GKE 4.1.3: Wildcards are used in Roles or ClusterRoles"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.default_service_accounts_inactive
+	not input.cis_gke.rbac.default_service_accounts_inactive == true
 	msg := "CIS GKE 4.1.4: Default service accounts are actively used"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.sa_token_mounts_minimized
+	not input.cis_gke.rbac.sa_token_mounts_minimized == true
 	msg := "CIS GKE 4.1.5: Service account tokens are mounted in pods that do not need them"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.system_masters_group_not_used
+	not input.cis_gke.rbac.system_masters_group_not_used == true
 	msg := "CIS GKE 4.1.6: The system:masters group is in use"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.bind_impersonate_escalate_limited
+	not input.cis_gke.rbac.bind_impersonate_escalate_limited == true
 	msg := "CIS GKE 4.1.7: bind, impersonate, or escalate permissions are granted beyond what is required"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.no_system_anonymous_bindings
+	not input.cis_gke.rbac.no_system_anonymous_bindings == true
 	msg := "CIS GKE 4.1.8: Role or ClusterRole bindings to system:anonymous exist"
 }
 
 violations contains msg if {
-	not input.cis_gke.rbac.no_nondefault_system_authenticated_bindings
+	not input.cis_gke.rbac.no_nondefault_system_authenticated_bindings == true
 	msg := "CIS GKE 4.1.10: Non-default bindings to system:authenticated exist"
 }
 
 # ── 4.2 Pod Security Standards ───────────────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.pod_security.pss_baseline_enforced
+	not input.cis_gke.pod_security.pss_baseline_enforced == true
 	msg := "CIS GKE 4.2.1: Pod Security Standard Baseline profile (or stricter) is not enforced for all namespaces"
 }
 
 # ── 4.3 Network policies and CNI ─────────────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.network.cni_supports_network_policies
+	not input.cis_gke.network.cni_supports_network_policies == true
 	msg := "CIS GKE 4.3.1: The CNI plugin in use does not support network policies"
 }
 
 violations contains msg if {
-	not input.cis_gke.network.all_namespaces_have_network_policies
+	not input.cis_gke.network.all_namespaces_have_network_policies == true
 	msg := "CIS GKE 4.3.2: One or more namespaces have no NetworkPolicy defined"
 }
 
 # ── 4.4 Secrets management ───────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.secrets.secrets_as_files_preferred
+	not input.cis_gke.secrets.secrets_as_files_preferred == true
 	msg := "CIS GKE 4.4.1: Secrets are exposed as environment variables rather than mounted as files"
 }
 
 violations contains msg if {
-	not input.cis_gke.secrets.external_secret_storage_considered
+	not input.cis_gke.secrets.external_secret_storage_considered == true
 	msg := "CIS GKE 4.4.2: External secret storage has not been evaluated or adopted"
 }
 
 # ── 4.5 Extensible admission control ─────────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.admission.image_provenance_configured
+	not input.cis_gke.admission.image_provenance_configured == true
 	msg := "CIS GKE 4.5.1: Image provenance is not configured via ImagePolicyWebhook admission control"
 }
 
 # ── 4.6 General policies ─────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.general.namespace_boundaries_used
+	not input.cis_gke.general.namespace_boundaries_used == true
 	msg := "CIS GKE 4.6.1: Namespaces are not used to create administrative boundaries between resources"
 }
 
 violations contains msg if {
-	not input.cis_gke.general.seccomp_runtime_default
+	not input.cis_gke.general.seccomp_runtime_default == true
 	msg := "CIS GKE 4.6.2: Seccomp profile RuntimeDefault is not set in pod definitions"
 }
 
 violations contains msg if {
-	not input.cis_gke.general.security_context_applied
+	not input.cis_gke.general.security_context_applied == true
 	msg := "CIS GKE 4.6.3: Security Context is not applied to pods and containers"
 }
 
 violations contains msg if {
-	not input.cis_gke.general.default_namespace_not_used
+	not input.cis_gke.general.default_namespace_not_used == true
 	msg := "CIS GKE 4.6.4: Workloads are deployed in the default namespace"
 }
 
 # ── 5.1 Image registry and scanning ──────────────────────────────────────────
 
 violations contains msg if {
-	not input.cis_gke.images.vulnerability_scanning_enabled
+	not input.cis_gke.images.vulnerability_scanning_enabled == true
 	msg := "CIS GKE 5.1.1: Image vulnerability scanning is not enabled"
 }
 
 violations contains msg if {
-	not input.cis_gke.images.registry_user_access_minimized
+	not input.cis_gke.images.registry_user_access_minimized == true
 	msg := "CIS GKE 5.1.2: User access to container image repositories is not minimized"
 }
 
 violations contains msg if {
-	not input.cis_gke.images.registry_cluster_access_readonly
+	not input.cis_gke.images.registry_cluster_access_readonly == true
 	msg := "CIS GKE 5.1.3: Cluster access to container image repositories is not limited to read-only"
 }
 
 violations contains msg if {
-	not input.cis_gke.images.trusted_images_only
+	not input.cis_gke.images.trusted_images_only == true
 	msg := "CIS GKE 5.1.4: Container images are not limited to trusted/approved sources"
 }
 
@@ -263,68 +264,106 @@ violations contains msg if {
 # (5.2.1, 5.6.1, 5.6.2, 5.6.6, 5.10.2 intentionally absent — mapping gaps.)
 
 violations contains msg if {
-	not input.cis_gke.managed.dedicated_gcp_service_accounts
+	not input.cis_gke.managed.dedicated_gcp_service_accounts == true
 	msg := "CIS GKE 5.2.2: Dedicated GCP service accounts with Workload Identity are not in use"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.secrets_kms_encrypted
+	not input.cis_gke.managed.secrets_kms_encrypted == true
 	msg := "CIS GKE 5.3.1: Kubernetes secrets are not encrypted with Cloud KMS keys (application-layer encryption)"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.cos_node_images
+	not input.cis_gke.managed.cos_node_images == true
 	msg := "CIS GKE 5.5.1: Node images are not Container-Optimized OS (cos_containerd)"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.authorized_networks_enabled
+	not input.cis_gke.managed.authorized_networks_enabled == true
 	msg := "CIS GKE 5.6.3: Control Plane Authorized Networks is not enabled"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.private_endpoint_only
+	not input.cis_gke.managed.private_endpoint_only == true
 	msg := "CIS GKE 5.6.4: Private endpoint is not enabled with public access disabled"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.private_nodes
+	not input.cis_gke.managed.private_nodes == true
 	msg := "CIS GKE 5.6.5: Cluster nodes are not private (nodes have public reachability)"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.managed_ssl_certificates
+	not input.cis_gke.managed.managed_ssl_certificates == true
 	msg := "CIS GKE 5.6.7: Google-managed SSL certificates are not in use for HTTPS load balancing"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.logging_monitoring_enabled
+	not input.cis_gke.managed.logging_monitoring_enabled == true
 	msg := "CIS GKE 5.7.1: Cloud Logging and Cloud Monitoring are not enabled for the cluster"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.client_cert_auth_disabled
+	not input.cis_gke.managed.client_cert_auth_disabled == true
 	msg := "CIS GKE 5.8.1: Client-certificate authentication is not disabled"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.google_groups_rbac_managed
+	not input.cis_gke.managed.google_groups_rbac_managed == true
 	msg := "CIS GKE 5.8.2: Kubernetes RBAC users are not managed with Google Groups for Workspace"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.legacy_abac_disabled
+	not input.cis_gke.managed.legacy_abac_disabled == true
 	msg := "CIS GKE 5.8.3: Legacy Authorization (ABAC) is not disabled"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.web_ui_disabled
+	not input.cis_gke.managed.web_ui_disabled == true
 	msg := "CIS GKE 5.10.1: The Kubernetes Web UI (Dashboard) is not disabled"
 }
 
 violations contains msg if {
-	not input.cis_gke.managed.gke_sandbox_considered
+	not input.cis_gke.managed.gke_sandbox_considered == true
 	msg := "CIS GKE 5.10.3: GKE Sandbox has not been evaluated or adopted for untrusted workloads"
+}
+
+# ── Evidence ─────────────────────────────────────────────────────────────────
+# Only the boolean true meets a control. A fact that is missing, null or of another type (the strings
+# "true" and "false", 0, 1) fails its control like the boolean false does, and is named here so the
+# report says whether the control failed on the fact or on the evidence for it.
+
+_facts := {
+	"node_files": {"kubeconfig_perms_restricted", "kubeconfig_owner_root", "kubelet_config_perms_restricted", "kubelet_config_owner_root"},
+	"rbac": {"cluster_admin_usage_minimized", "secrets_access_minimized", "wildcard_use_minimized", "default_service_accounts_inactive", "sa_token_mounts_minimized", "system_masters_group_not_used", "bind_impersonate_escalate_limited", "no_system_anonymous_bindings", "no_nondefault_system_authenticated_bindings"},
+	"pod_security": {"pss_baseline_enforced"},
+	"network": {"cni_supports_network_policies", "all_namespaces_have_network_policies"},
+	"secrets": {"secrets_as_files_preferred", "external_secret_storage_considered"},
+	"admission": {"image_provenance_configured"},
+	"general": {"namespace_boundaries_used", "seccomp_runtime_default", "security_context_applied", "default_namespace_not_used"},
+	"images": {"vulnerability_scanning_enabled", "registry_user_access_minimized", "registry_cluster_access_readonly", "trusted_images_only"},
+	"managed": {"dedicated_gcp_service_accounts", "secrets_kms_encrypted", "cos_node_images", "authorized_networks_enabled", "private_endpoint_only", "private_nodes", "managed_ssl_certificates", "logging_monitoring_enabled", "client_cert_auth_disabled", "google_groups_rbac_managed", "legacy_abac_disabled", "web_ui_disabled", "gke_sandbox_considered"},
+}
+
+_section(name) := value if {
+	value := object.get(object.get(input, "cis_gke", null), name, null)
+	is_object(value)
+} else := {}
+
+evidence_findings contains msg if {
+	some section, fields in _facts
+	some field in fields
+	object.get(_section(section), field, null) == null
+	msg := sprintf("evidence missing: cis_gke.%s.%s not collected", [section, field])
+}
+
+evidence_findings contains msg if {
+	some section, fields in _facts
+	some field in fields
+	value := object.get(_section(section), field, null)
+	value != null
+	not is_boolean(value)
+	msg := sprintf("cis_gke.%s.%s is not a boolean (got %s)", [section, field, type_name(value)])
 }
 
 # ── Section rollup ───────────────────────────────────────────────────────────
@@ -346,6 +385,7 @@ compliance_report := {
 	"total_controls": 40,
 	"violations": violations,
 	"violation_count": count(violations),
+	"evidence_findings": evidence_findings,
 	"failed_controls": min([40, count(violations)]),
 	"section_summary": section_summary,
 }
