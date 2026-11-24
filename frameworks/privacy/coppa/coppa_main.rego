@@ -69,118 +69,180 @@ compliant if {
 	count(violations) == 0
 }
 
+# ── Evidence rule (bad input never passes, issue #301) ───────────────────────
+# A yes/no fact passes only as the boolean true. A fact that is missing, null,
+# a string such as "true" / "false" / "no", or a number is an evidence problem:
+# the control fails and the finding says which ("evidence missing: <field> not
+# collected" / "evidence invalid: <field> is not a boolean (got string)").
+# Where a control accepts alternatives, any one alternative that is true
+# satisfies it, but an alternative of the wrong type fails it: the verdict
+# never rests on mistyped evidence.
+
+_absent := "__absent__"
+
+_value(path) := object.get(input, path, _absent)
+
+_yes(path) if _value(path) == true
+
+_collected(path) if _value(path) != _absent
+
+_mistyped(path) if {
+	_collected(path)
+	not is_boolean(_value(path))
+}
+
+_unmet(facts) if {
+	every path in facts {
+		not _yes(path)
+	}
+}
+
+_unmet(facts) if {
+	some path in facts
+	_mistyped(path)
+}
+
+_problem(path) := sprintf("evidence missing: input.%s not collected", [concat(".", path)]) if not _collected(path)
+
+_problem(path) := sprintf("evidence invalid: input.%s is not a boolean (got %s)", [concat(".", path), type_name(_value(path))]) if _mistyped(path)
+
+_evidence(facts) := sprintf(" [%s]", [concat("; ", problems)]) if {
+	problems := [_problem(path) | some path in facts]
+	count(problems) > 0
+} else := ""
+
 # ── §312.4 — Notice ──────────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.coppa.notice.online_notice_posted
-	msg := "COPPA §312.4(d): Clear and prominent online notice of information practices regarding children not posted"
+	facts := [["coppa", "notice", "online_notice_posted"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.4(d): Clear and prominent online notice of information practices regarding children not posted", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.notice.direct_notice_to_parents
-	msg := "COPPA §312.4(b)-(c): Direct notice to parents not provided before collecting personal information from a child"
+	facts := [["coppa", "notice", "direct_notice_to_parents"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.4(b)-(c): Direct notice to parents not provided before collecting personal information from a child", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.notice.notice_content_complete
-	msg := "COPPA §312.4: Notice content incomplete — must state what is collected, how it is used, and disclosure practices, including the identities/categories of third-party recipients"
+	facts := [["coppa", "notice", "notice_content_complete"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.4: Notice content incomplete — must state what is collected, how it is used, and disclosure practices, including the identities/categories of third-party recipients", _evidence(facts)])
 }
 
 # ── §312.5 — Verifiable parental consent ─────────────────────────────────────
 
 violations contains msg if {
-	not input.coppa.consent.verifiable_consent_before_collection
-	msg := "COPPA §312.5(a)(1): Verifiable parental consent not obtained before collection, use, or disclosure of children's personal information"
+	facts := [["coppa", "consent", "verifiable_consent_before_collection"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.5(a)(1): Verifiable parental consent not obtained before collection, use, or disclosure of children's personal information", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.consent.approved_method_used
-	msg := "COPPA §312.5(b): Consent method is not among the approved verifiable-consent methods"
+	facts := [["coppa", "consent", "approved_method_used"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.5(b): Consent method is not among the approved verifiable-consent methods", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.consent.separate_consent_third_party_disclosure
-	msg := "COPPA §312.5 [2025]: No separate verifiable parental consent for disclosures of children's personal information to third parties, including for targeted advertising"
+	facts := [["coppa", "consent", "separate_consent_third_party_disclosure"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.5 [2025]: No separate verifiable parental consent for disclosures of children's personal information to third parties, including for targeted advertising", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.consent.consent_records_retained
-	msg := "COPPA §312.5: Records of verifiable parental consent not retained as evidence"
+	facts := [["coppa", "consent", "consent_records_retained"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.5: Records of verifiable parental consent not retained as evidence", _evidence(facts)])
 }
 
 # ── §312.6 — Parental right to review and delete ─────────────────────────────
 
 violations contains msg if {
-	not input.coppa.parental_rights.review_mechanism
-	msg := "COPPA §312.6(a)(2): No mechanism for a parent to review the personal information collected from their child"
+	facts := [["coppa", "parental_rights", "review_mechanism"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.6(a)(2): No mechanism for a parent to review the personal information collected from their child", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.parental_rights.deletion_mechanism
-	msg := "COPPA §312.6(a)(2): No mechanism for a parent to direct deletion of their child's personal information"
+	facts := [["coppa", "parental_rights", "deletion_mechanism"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.6(a)(2): No mechanism for a parent to direct deletion of their child's personal information", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.parental_rights.refusal_mechanism
-	msg := "COPPA §312.6(a)(1): No mechanism for a parent to refuse further collection or use of their child's personal information"
+	facts := [["coppa", "parental_rights", "refusal_mechanism"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.6(a)(1): No mechanism for a parent to refuse further collection or use of their child's personal information", _evidence(facts)])
 }
 
 # ── §312.7 — Conditioning participation ──────────────────────────────────────
 
 violations contains msg if {
-	not input.coppa.collection.not_conditioned_on_excess_data
-	msg := "COPPA §312.7: Participation in a game, prize offering, or activity is conditioned on disclosing more personal information than reasonably necessary"
+	facts := [["coppa", "collection", "not_conditioned_on_excess_data"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.7: Participation in a game, prize offering, or activity is conditioned on disclosing more personal information than reasonably necessary", _evidence(facts)])
 }
 
 # ── §312.8 — Confidentiality, security, and integrity ────────────────────────
 
 violations contains msg if {
-	not input.coppa.security.written_program
-	msg := "COPPA §312.8 [2025]: No written comprehensive information security program for children's personal information"
+	facts := [["coppa", "security", "written_program"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.8 [2025]: No written comprehensive information security program for children's personal information", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.security.safeguards_risk_based
-	msg := "COPPA §312.8: Safeguards not appropriate to the sensitivity of children's personal information and the risks of its handling"
+	facts := [["coppa", "security", "safeguards_risk_based"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.8: Safeguards not appropriate to the sensitivity of children's personal information and the risks of its handling", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.security.third_party_capability_assurances
-	msg := "COPPA §312.8: Personal information released to third parties without assurances of their capability to maintain its confidentiality, security, and integrity"
+	facts := [["coppa", "security", "third_party_capability_assurances"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.8: Personal information released to third parties without assurances of their capability to maintain its confidentiality, security, and integrity", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.security.program_reviewed
-	msg := "COPPA §312.8 [2025]: Information security program not periodically reviewed and updated"
+	facts := [["coppa", "security", "program_reviewed"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.8 [2025]: Information security program not periodically reviewed and updated", _evidence(facts)])
 }
 
 # ── §312.10 — Data retention and deletion ────────────────────────────────────
 
 violations contains msg if {
-	not input.coppa.retention.limited_to_necessary
-	msg := "COPPA §312.10 [2025]: Children's personal information retained longer than reasonably necessary for the purpose for which it was collected"
+	facts := [["coppa", "retention", "limited_to_necessary"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.10 [2025]: Children's personal information retained longer than reasonably necessary for the purpose for which it was collected", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.retention.written_policy_public
-	msg := "COPPA §312.10 [2025]: No written, publicly available children's data retention policy"
+	facts := [["coppa", "retention", "written_policy_public"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.10 [2025]: No written, publicly available children's data retention policy", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.retention.no_indefinite_retention
-	msg := "COPPA §312.10 [2025]: Retention practices permit indefinite retention of children's personal information"
+	facts := [["coppa", "retention", "no_indefinite_retention"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.10 [2025]: Retention practices permit indefinite retention of children's personal information", _evidence(facts)])
 }
 
 # ── §312.2 — Definition scope (2025 expansions) ──────────────────────────────
 
 violations contains msg if {
-	not input.coppa.scope.pi_inventory_includes_new_categories
-	msg := "COPPA §312.2 [2025]: Personal-information inventory does not cover the expanded definition — biometric identifiers and government-issued identifiers"
+	facts := [["coppa", "scope", "pi_inventory_includes_new_categories"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.2 [2025]: Personal-information inventory does not cover the expanded definition — biometric identifiers and government-issued identifiers", _evidence(facts)])
 }
 
 violations contains msg if {
-	not input.coppa.scope.audience_determination_documented
-	msg := "COPPA §312.2 [2025]: No documented audience determination (child-directed / mixed audience / general audience) supporting the compliance posture"
+	facts := [["coppa", "scope", "audience_determination_documented"]]
+	_unmet(facts)
+	msg := concat("", ["COPPA §312.2 [2025]: No documented audience determination (child-directed / mixed audience / general audience) supporting the compliance posture", _evidence(facts)])
 }
 
 # ── §312.11 — Safe harbor (conditional: participants only) ───────────────────
@@ -196,9 +258,27 @@ safe_harbor_ok if {
 	input.coppa.safe_harbor.program_requirements_met == true
 }
 
+_safe_harbor_participates := ["coppa", "safe_harbor", "participates"]
+
+_safe_harbor_met := ["coppa", "safe_harbor", "program_requirements_met"]
+
+_safe_harbor_unmet if not safe_harbor_ok
+
+_safe_harbor_unmet if {
+	some path in [_safe_harbor_participates, _safe_harbor_met]
+	_mistyped(path)
+}
+
+# The program-requirements fact is named when it was sent with the wrong type, or when a participant left it out.
+_safe_harbor_facts := [_safe_harbor_participates, _safe_harbor_met] if {
+	_yes(_safe_harbor_participates)
+} else := [_safe_harbor_participates, _safe_harbor_met] if {
+	_mistyped(_safe_harbor_met)
+} else := [_safe_harbor_participates]
+
 violations contains msg if {
-	not safe_harbor_ok
-	msg := "COPPA §312.11: Safe-harbor participation status undetermined, or program requirements not met by a participating operator"
+	_safe_harbor_unmet
+	msg := concat("", ["COPPA §312.11: Safe-harbor participation status undetermined, or program requirements not met by a participating operator", _evidence(_safe_harbor_facts)])
 }
 
 # ── Per-area rollup ──────────────────────────────────────────────────────────
