@@ -68,353 +68,316 @@ compliant if {
 
 # ── Category 00 — Information Security Management Program ───────────────────
 
-violations contains msg if {
-	not input.security_program.isms.established
-	msg := "HITRUST CSF 00.a: Information Security Management System (ISMS) not formally established"
+_base := []
+
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is missing or null was not
+# collected, and any other type (the strings "true" and "false", numbers) is a collection error. Both fail
+# the check, and the finding names the problem. Boolean false keeps the plain finding text.
+_fact(path) := object.get(_doc, array.concat(_base, path), null)
+
+# No input document, or one that is not an object, reads as empty: every fact is then missing.
+_doc := input if {
+	is_object(input)
+} else := {}
+
+_field(path) := concat(".", array.concat(["input"], array.concat(_base, path)))
+
+_finding(text, path) := text if _fact(path) == false
+
+_finding(text, path) := sprintf("%s — evidence missing: %s not collected", [text, _field(path)]) if {
+	_fact(path) == null
+}
+
+_finding(text, path) := sprintf("%s — evidence invalid: %s is not a boolean (got %s)", [text, _field(path), type_name(value)]) if {
+	value := _fact(path)
+	value != null
+	not is_boolean(value)
 }
 
 violations contains msg if {
-	not input.security_program.policies.approved_by_management
-	msg := "HITRUST CSF 00.b: Information security policies not approved by senior management"
+	msg := _finding("HITRUST CSF 00.a: Information Security Management System (ISMS) not formally established", ["security_program", "isms", "established"])
 }
 
 violations contains msg if {
-	not input.security_program.policies.annual_review
-	msg := "HITRUST CSF 00.c: Information security policies not reviewed at least annually"
+	msg := _finding("HITRUST CSF 00.b: Information security policies not approved by senior management", ["security_program", "policies", "approved_by_management"])
+}
+
+violations contains msg if {
+	msg := _finding("HITRUST CSF 00.c: Information security policies not reviewed at least annually", ["security_program", "policies", "annual_review"])
 }
 
 # ── Category 01 — Access Control ────────────────────────────────────────────
 
 violations contains msg if {
-	not input.access_control.policy.documented
-	msg := "HITRUST CSF 01.a: Access control policy not established, documented, and implemented"
+	msg := _finding("HITRUST CSF 01.a: Access control policy not established, documented, and implemented", ["access_control", "policy", "documented"])
 }
 
 violations contains msg if {
-	not input.access_control.user_access.formal_registration
-	msg := "HITRUST CSF 01.b: Formal user access registration and de-registration process not established"
+	msg := _finding("HITRUST CSF 01.b: Formal user access registration and de-registration process not established", ["access_control", "user_access", "formal_registration"])
 }
 
 violations contains msg if {
-	not input.access_control.privileged_access.controlled
-	msg := "HITRUST CSF 01.c: Privileged access rights not managed through formal authorization process"
+	msg := _finding("HITRUST CSF 01.c: Privileged access rights not managed through formal authorization process", ["access_control", "privileged_access", "controlled"])
 }
 
 violations contains msg if {
-	not input.access_control.password_policy.strong
-	msg := "HITRUST CSF 01.d: Strong password/authentication policy not enforced"
+	msg := _finding("HITRUST CSF 01.d: Strong password/authentication policy not enforced", ["access_control", "password_policy", "strong"])
 }
 
 violations contains msg if {
-	not input.access_control.mfa.critical_systems
-	msg := "HITRUST CSF 01.e: Multi-factor authentication not enforced for critical system access"
+	msg := _finding("HITRUST CSF 01.e: Multi-factor authentication not enforced for critical system access", ["access_control", "mfa", "critical_systems"])
 }
 
 violations contains msg if {
-	not input.access_control.access_review.periodic
-	msg := "HITRUST CSF 01.f: Periodic review of user access rights not conducted (at minimum annually)"
+	msg := _finding("HITRUST CSF 01.f: Periodic review of user access rights not conducted (at minimum annually)", ["access_control", "access_review", "periodic"])
 }
 
 violations contains msg if {
-	not input.access_control.termination.prompt_revocation
-	msg := "HITRUST CSF 01.g: Access rights not promptly revoked upon termination or role change"
+	msg := _finding("HITRUST CSF 01.g: Access rights not promptly revoked upon termination or role change", ["access_control", "termination", "prompt_revocation"])
 }
 
 # ── Category 02 — Human Resources Security ──────────────────────────────────
 
 violations contains msg if {
-	not input.hr_security.background_checks.performed
-	msg := "HITRUST CSF 02.a: Pre-employment background checks not performed for personnel with PHI access"
+	msg := _finding("HITRUST CSF 02.a: Pre-employment background checks not performed for personnel with PHI access", ["hr_security", "background_checks", "performed"])
 }
 
 violations contains msg if {
-	not input.hr_security.confidentiality.agreements_signed
-	msg := "HITRUST CSF 02.b: Confidentiality/non-disclosure agreements not signed by employees with PHI access"
+	msg := _finding("HITRUST CSF 02.b: Confidentiality/non-disclosure agreements not signed by employees with PHI access", ["hr_security", "confidentiality", "agreements_signed"])
 }
 
 violations contains msg if {
-	not input.hr_security.sanctions.policy_documented
-	msg := "HITRUST CSF 02.c: Sanction policy for workforce members who fail to comply with security policies not documented"
+	msg := _finding("HITRUST CSF 02.c: Sanction policy for workforce members who fail to comply with security policies not documented", ["hr_security", "sanctions", "policy_documented"])
 }
 
 # ── Category 03 — Risk Management ────────────────────────────────────────────
 
 violations contains msg if {
-	not input.risk_management.assessment.conducted
-	msg := "HITRUST CSF 03.a: Formal risk assessment not conducted"
+	msg := _finding("HITRUST CSF 03.a: Formal risk assessment not conducted", ["risk_management", "assessment", "conducted"])
 }
 
 violations contains msg if {
-	not input.risk_management.assessment.phi_scope
-	msg := "HITRUST CSF 03.b: Risk assessment does not include PHI confidentiality, integrity, and availability"
+	msg := _finding("HITRUST CSF 03.b: Risk assessment does not include PHI confidentiality, integrity, and availability", ["risk_management", "assessment", "phi_scope"])
 }
 
 violations contains msg if {
-	not input.risk_management.treatment.plan_documented
-	msg := "HITRUST CSF 03.c: Risk treatment plan not documented with accepted residual risks"
+	msg := _finding("HITRUST CSF 03.c: Risk treatment plan not documented with accepted residual risks", ["risk_management", "treatment", "plan_documented"])
 }
 
 violations contains msg if {
-	not input.risk_management.assessment.periodic_review
-	msg := "HITRUST CSF 03.d: Risk assessment not reviewed and updated periodically or after significant changes"
+	msg := _finding("HITRUST CSF 03.d: Risk assessment not reviewed and updated periodically or after significant changes", ["risk_management", "assessment", "periodic_review"])
 }
 
 # ── Category 04 — Security Policy ────────────────────────────────────────────
 
 violations contains msg if {
-	not input.security_policy.phi_specific.documented
-	msg := "HITRUST CSF 04.a: PHI-specific security policies and procedures not documented"
+	msg := _finding("HITRUST CSF 04.a: PHI-specific security policies and procedures not documented", ["security_policy", "phi_specific", "documented"])
 }
 
 violations contains msg if {
-	not input.security_policy.dissemination.to_workforce
-	msg := "HITRUST CSF 04.b: Security policies not disseminated to all relevant workforce members"
+	msg := _finding("HITRUST CSF 04.b: Security policies not disseminated to all relevant workforce members", ["security_policy", "dissemination", "to_workforce"])
 }
 
 # ── Category 06 — Compliance ─────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.compliance.hipaa.privacy_rule.policies
-	msg := "HITRUST CSF 06.a: HIPAA Privacy Rule compliance policies not implemented"
+	msg := _finding("HITRUST CSF 06.a: HIPAA Privacy Rule compliance policies not implemented", ["compliance", "hipaa", "privacy_rule", "policies"])
 }
 
 violations contains msg if {
-	not input.compliance.hipaa.security_rule.policies
-	msg := "HITRUST CSF 06.b: HIPAA Security Rule compliance policies not implemented"
+	msg := _finding("HITRUST CSF 06.b: HIPAA Security Rule compliance policies not implemented", ["compliance", "hipaa", "security_rule", "policies"])
 }
 
 violations contains msg if {
-	not input.compliance.hipaa.breach_notification.plan
-	msg := "HITRUST CSF 06.c: HIPAA Breach Notification Rule compliance plan not established"
+	msg := _finding("HITRUST CSF 06.c: HIPAA Breach Notification Rule compliance plan not established", ["compliance", "hipaa", "breach_notification", "plan"])
 }
 
 violations contains msg if {
-	not input.compliance.legal.periodic_review
-	msg := "HITRUST CSF 06.d: Periodic compliance review not conducted to identify legal/regulatory changes"
+	msg := _finding("HITRUST CSF 06.d: Periodic compliance review not conducted to identify legal/regulatory changes", ["compliance", "legal", "periodic_review"])
 }
 
 # ── Category 07 — Asset Management ────────────────────────────────────────────
 
 violations contains msg if {
-	not input.asset_management.inventory.maintained
-	msg := "HITRUST CSF 07.a: Asset inventory not maintained for systems and media containing PHI"
+	msg := _finding("HITRUST CSF 07.a: Asset inventory not maintained for systems and media containing PHI", ["asset_management", "inventory", "maintained"])
 }
 
 violations contains msg if {
-	not input.asset_management.classification.phi_labeled
-	msg := "HITRUST CSF 07.b: PHI assets not classified and labeled according to sensitivity"
+	msg := _finding("HITRUST CSF 07.b: PHI assets not classified and labeled according to sensitivity", ["asset_management", "classification", "phi_labeled"])
 }
 
 violations contains msg if {
-	not input.asset_management.disposal.secure_media_sanitization
-	msg := "HITRUST CSF 07.c: Secure media sanitization procedures not established for PHI disposal"
+	msg := _finding("HITRUST CSF 07.c: Secure media sanitization procedures not established for PHI disposal", ["asset_management", "disposal", "secure_media_sanitization"])
 }
 
 # ── Category 08 — Physical and Environmental Security ───────────────────────
 
 violations contains msg if {
-	not input.physical_security.perimeter.controlled_access
-	msg := "HITRUST CSF 08.a: Physical access to facilities containing PHI systems not controlled"
+	msg := _finding("HITRUST CSF 08.a: Physical access to facilities containing PHI systems not controlled", ["physical_security", "perimeter", "controlled_access"])
 }
 
 violations contains msg if {
-	not input.physical_security.equipment.secured
-	msg := "HITRUST CSF 08.b: Equipment containing PHI not secured against physical threats"
+	msg := _finding("HITRUST CSF 08.b: Equipment containing PHI not secured against physical threats", ["physical_security", "equipment", "secured"])
 }
 
 violations contains msg if {
-	not input.physical_security.visitor_access.logged
-	msg := "HITRUST CSF 08.c: Visitor access to secure areas not logged and controlled"
+	msg := _finding("HITRUST CSF 08.c: Visitor access to secure areas not logged and controlled", ["physical_security", "visitor_access", "logged"])
 }
 
 # ── Category 09 — Communications and Operations Management ──────────────────
 
 violations contains msg if {
-	not input.operations.change_management.formal_process
-	msg := "HITRUST CSF 09.a: Formal change management process not established for PHI systems"
+	msg := _finding("HITRUST CSF 09.a: Formal change management process not established for PHI systems", ["operations", "change_management", "formal_process"])
 }
 
 violations contains msg if {
-	not input.operations.malware.protection_deployed
-	msg := "HITRUST CSF 09.b: Malware protection not deployed on all systems processing PHI"
+	msg := _finding("HITRUST CSF 09.b: Malware protection not deployed on all systems processing PHI", ["operations", "malware", "protection_deployed"])
 }
 
 violations contains msg if {
-	not input.operations.backup.phi_backed_up
-	msg := "HITRUST CSF 09.c: PHI not backed up with tested recovery procedures"
+	msg := _finding("HITRUST CSF 09.c: PHI not backed up with tested recovery procedures", ["operations", "backup", "phi_backed_up"])
 }
 
 violations contains msg if {
-	not input.operations.vulnerability_management.scanning
-	msg := "HITRUST CSF 09.d: Regular vulnerability scanning not performed on systems processing PHI"
+	msg := _finding("HITRUST CSF 09.d: Regular vulnerability scanning not performed on systems processing PHI", ["operations", "vulnerability_management", "scanning"])
 }
 
 violations contains msg if {
-	not input.operations.patch_management.timely
-	msg := "HITRUST CSF 09.e: Timely patch management process not established for PHI systems"
+	msg := _finding("HITRUST CSF 09.e: Timely patch management process not established for PHI systems", ["operations", "patch_management", "timely"])
 }
 
 violations contains msg if {
-	not input.operations.network_monitoring.enabled
-	msg := "HITRUST CSF 09.f: Network monitoring not implemented to detect anomalous activity involving PHI"
+	msg := _finding("HITRUST CSF 09.f: Network monitoring not implemented to detect anomalous activity involving PHI", ["operations", "network_monitoring", "enabled"])
 }
 
 # ── Category 10 — Information Systems Acquisition, Development ──────────────
 
 violations contains msg if {
-	not input.secure_development.requirements.security_included
-	msg := "HITRUST CSF 10.a: Security requirements not included in information system development/acquisition"
+	msg := _finding("HITRUST CSF 10.a: Security requirements not included in information system development/acquisition", ["secure_development", "requirements", "security_included"])
 }
 
 violations contains msg if {
-	not input.secure_development.testing.security_testing
-	msg := "HITRUST CSF 10.b: Security testing not performed before PHI systems are placed into production"
+	msg := _finding("HITRUST CSF 10.b: Security testing not performed before PHI systems are placed into production", ["secure_development", "testing", "security_testing"])
 }
 
 violations contains msg if {
-	not input.secure_development.phi.no_phi_in_test
-	msg := "HITRUST CSF 10.c: PHI used in development or test environments — must use de-identified data"
+	msg := _finding("HITRUST CSF 10.c: PHI used in development or test environments — must use de-identified data", ["secure_development", "phi", "no_phi_in_test"])
 }
 
 # ── Category 11 — Information Access Management ──────────────────────────────
 
 violations contains msg if {
-	not input.access_management.phi.minimum_necessary
-	msg := "HITRUST CSF 11.a: Access to PHI not restricted to minimum necessary for job function"
+	msg := _finding("HITRUST CSF 11.a: Access to PHI not restricted to minimum necessary for job function", ["access_management", "phi", "minimum_necessary"])
 }
 
 violations contains msg if {
-	not input.access_management.remote_access.controlled
-	msg := "HITRUST CSF 11.b: Remote access to PHI systems not controlled and monitored"
+	msg := _finding("HITRUST CSF 11.b: Remote access to PHI systems not controlled and monitored", ["access_management", "remote_access", "controlled"])
 }
 
 violations contains msg if {
-	not input.access_management.wireless.secured
-	msg := "HITRUST CSF 11.c: Wireless access transmitting PHI not properly secured and encrypted"
+	msg := _finding("HITRUST CSF 11.c: Wireless access transmitting PHI not properly secured and encrypted", ["access_management", "wireless", "secured"])
 }
 
 # ── Category 12 — Audit Logging and Monitoring ──────────────────────────────
 
 violations contains msg if {
-	not input.audit.phi_access.logged
-	msg := "HITRUST CSF 12.a: All access to PHI (create, read, update, delete) not logged"
+	msg := _finding("HITRUST CSF 12.a: All access to PHI (create, read, update, delete) not logged", ["audit", "phi_access", "logged"])
 }
 
 violations contains msg if {
-	not input.audit.logs.protected_from_tampering
-	msg := "HITRUST CSF 12.b: Audit logs not protected from unauthorized modification or deletion"
+	msg := _finding("HITRUST CSF 12.b: Audit logs not protected from unauthorized modification or deletion", ["audit", "logs", "protected_from_tampering"])
 }
 
 violations contains msg if {
-	not input.audit.logs.retention_6_years
-	msg := "HITRUST CSF 12.c: Audit logs for PHI not retained for minimum 6 years (HIPAA requirement)"
+	msg := _finding("HITRUST CSF 12.c: Audit logs for PHI not retained for minimum 6 years (HIPAA requirement)", ["audit", "logs", "retention_6_years"])
 }
 
 violations contains msg if {
-	not input.audit.review.regular
-	msg := "HITRUST CSF 12.d: Audit logs not reviewed regularly for suspicious activity"
+	msg := _finding("HITRUST CSF 12.d: Audit logs not reviewed regularly for suspicious activity", ["audit", "review", "regular"])
 }
 
 # ── Category 13 — Education, Training and Awareness ─────────────────────────
 
 violations contains msg if {
-	not input.training.hipaa.all_workforce_annual
-	msg := "HITRUST CSF 13.a: Annual HIPAA security and privacy training not provided to all workforce members"
+	msg := _finding("HITRUST CSF 13.a: Annual HIPAA security and privacy training not provided to all workforce members", ["training", "hipaa", "all_workforce_annual"])
 }
 
 violations contains msg if {
-	not input.training.phi_handling.included
-	msg := "HITRUST CSF 13.b: PHI handling procedures not included in security awareness training"
+	msg := _finding("HITRUST CSF 13.b: PHI handling procedures not included in security awareness training", ["training", "phi_handling", "included"])
 }
 
 violations contains msg if {
-	not input.training.completion.tracked
-	msg := "HITRUST CSF 13.c: Security training completion not tracked for all workforce members"
+	msg := _finding("HITRUST CSF 13.c: Security training completion not tracked for all workforce members", ["training", "completion", "tracked"])
 }
 
 # ── Category 14 — Third Party Assurance ─────────────────────────────────────
 
 violations contains msg if {
-	not input.third_party.baa.executed
-	msg := "HITRUST CSF 14.a: Business Associate Agreements (BAA) not executed with all vendors accessing PHI"
+	msg := _finding("HITRUST CSF 14.a: Business Associate Agreements (BAA) not executed with all vendors accessing PHI", ["third_party", "baa", "executed"])
 }
 
 violations contains msg if {
-	not input.third_party.assessment.security_evaluation
-	msg := "HITRUST CSF 14.b: Security evaluation of third parties with PHI access not performed"
+	msg := _finding("HITRUST CSF 14.b: Security evaluation of third parties with PHI access not performed", ["third_party", "assessment", "security_evaluation"])
 }
 
 violations contains msg if {
-	not input.third_party.contracts.security_requirements
-	msg := "HITRUST CSF 14.c: Contracts with PHI-handling vendors do not include security requirements"
+	msg := _finding("HITRUST CSF 14.c: Contracts with PHI-handling vendors do not include security requirements", ["third_party", "contracts", "security_requirements"])
 }
 
 # ── Category 15 — Incident Management ────────────────────────────────────────
 
 violations contains msg if {
-	not input.incident_response.plan.documented
-	msg := "HITRUST CSF 15.a: Security incident response plan not documented"
+	msg := _finding("HITRUST CSF 15.a: Security incident response plan not documented", ["incident_response", "plan", "documented"])
 }
 
 violations contains msg if {
-	not input.incident_response.phi_breach.procedures
-	msg := "HITRUST CSF 15.b: PHI breach response procedures not established (including HIPAA notification timelines)"
+	msg := _finding("HITRUST CSF 15.b: PHI breach response procedures not established (including HIPAA notification timelines)", ["incident_response", "phi_breach", "procedures"])
 }
 
 violations contains msg if {
-	not input.incident_response.plan.tested_annually
-	msg := "HITRUST CSF 15.c: Incident response plan not tested at least annually"
+	msg := _finding("HITRUST CSF 15.c: Incident response plan not tested at least annually", ["incident_response", "plan", "tested_annually"])
 }
 
 violations contains msg if {
-	not input.incident_response.reporting.hhs_60_days
-	msg := "HITRUST CSF 15.d: Process not established to report breaches affecting 500+ individuals to HHS within 60 days"
+	msg := _finding("HITRUST CSF 15.d: Process not established to report breaches affecting 500+ individuals to HHS within 60 days", ["incident_response", "reporting", "hhs_60_days"])
 }
 
 # ── Category 16 — Business Continuity Management ─────────────────────────────
 
 violations contains msg if {
-	not input.business_continuity.bcp.documented
-	msg := "HITRUST CSF 16.a: Business continuity plan not documented for critical PHI systems"
+	msg := _finding("HITRUST CSF 16.a: Business continuity plan not documented for critical PHI systems", ["business_continuity", "bcp", "documented"])
 }
 
 violations contains msg if {
-	not input.business_continuity.drp.phi_systems
-	msg := "HITRUST CSF 16.b: Disaster recovery plan not established for PHI system restoration"
+	msg := _finding("HITRUST CSF 16.b: Disaster recovery plan not established for PHI system restoration", ["business_continuity", "drp", "phi_systems"])
 }
 
 violations contains msg if {
-	not input.business_continuity.bcp.tested
-	msg := "HITRUST CSF 16.c: Business continuity/disaster recovery plan not tested periodically"
+	msg := _finding("HITRUST CSF 16.c: Business continuity/disaster recovery plan not tested periodically", ["business_continuity", "bcp", "tested"])
 }
 
 # ── Category 17 — Risk Management Specific ────────────────────────────────────
 
 violations contains msg if {
-	not input.risk_management.encryption.phi_at_rest
-	msg := "HITRUST CSF 17.a: PHI not encrypted at rest on storage systems"
+	msg := _finding("HITRUST CSF 17.a: PHI not encrypted at rest on storage systems", ["risk_management", "encryption", "phi_at_rest"])
 }
 
 violations contains msg if {
-	not input.risk_management.encryption.phi_in_transit
-	msg := "HITRUST CSF 17.b: PHI not encrypted in transit over networks (TLS 1.2+ required)"
+	msg := _finding("HITRUST CSF 17.b: PHI not encrypted in transit over networks (TLS 1.2+ required)", ["risk_management", "encryption", "phi_in_transit"])
 }
 
 # ── Category 18 — Privacy Practices ──────────────────────────────────────────
 
 violations contains msg if {
-	not input.privacy.notice.provided_to_patients
-	msg := "HITRUST CSF 18.a: Notice of Privacy Practices not provided to patients"
+	msg := _finding("HITRUST CSF 18.a: Notice of Privacy Practices not provided to patients", ["privacy", "notice", "provided_to_patients"])
 }
 
 violations contains msg if {
-	not input.privacy.minimum_necessary.enforced
-	msg := "HITRUST CSF 18.b: Minimum necessary standard not enforced for PHI access and disclosure"
+	msg := _finding("HITRUST CSF 18.b: Minimum necessary standard not enforced for PHI access and disclosure", ["privacy", "minimum_necessary", "enforced"])
 }
 
 violations contains msg if {
-	not input.privacy.patient_rights.process_exists
-	msg := "HITRUST CSF 18.c: Process not established to honor patient rights (access, amendment, accounting of disclosures)"
+	msg := _finding("HITRUST CSF 18.c: Process not established to honor patient rights (access, amendment, accounting of disclosures)", ["privacy", "patient_rights", "process_exists"])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────
@@ -445,6 +408,10 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 	"failed_controls": min([59, count(violations)]),
+	# The module runs 63 checks against a declared total of 59 controls, so findings can outnumber
+	# total_controls. total_checks and failed_checks state the check-level count.
+	"total_checks": 63,
+	"failed_checks": count(violations),
 	"category_summary": {
 		"security_mgmt_program": [v | some v in violations; contains(v, "CSF 00.")],
 		"access_control": [v | some v in violations; contains(v, "CSF 01.")],
