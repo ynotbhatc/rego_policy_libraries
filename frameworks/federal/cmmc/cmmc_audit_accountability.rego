@@ -113,7 +113,7 @@ violation_3_3_2 contains msg if {
 }
 
 violation_3_3_2 contains msg if {
-	count(input.audit.privileged_command_rules) == 0
+	count(_audit_list("privileged_command_rules")) == 0
 	msg := "3.3.2: No audit rules configured for privileged command execution"
 }
 
@@ -242,7 +242,7 @@ violation_3_3_7 contains msg if {
 }
 
 violation_3_3_7 contains msg if {
-	count(input.audit.ntp_servers) == 0
+	count(_audit_list("ntp_servers")) == 0
 	msg := "3.3.7: No authoritative NTP time sources configured"
 }
 
@@ -325,7 +325,7 @@ violation_3_3_9 contains msg if {
 }
 
 violation_3_3_9 contains msg if {
-	count(input.audit.audit_admins) == 0
+	count(_audit_list("audit_admins")) == 0
 	msg := "3.3.9: No designated privileged users for audit management"
 }
 
@@ -466,6 +466,13 @@ _evidence_note(value, name) := "" if {
 } else := sprintf(" (evidence missing: %s not collected)", [name]) if {
 	value == null
 } else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+# A list fact that is missing (or not a list) counts as empty: `count(input.audit.x) == 0` is undefined when x is
+# missing, so the finding used to vanish.
+_audit_list(key) := v if {
+	v := object.get(input, ["audit", key], [])
+	is_array(v)
+} else := []
 
 _ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
 
