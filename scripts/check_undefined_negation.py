@@ -291,14 +291,40 @@ class Package:
         v = cl[0]["head"].get("value")
         return v if v is not None and v.get("type") in ("ref", "var") else None
 
+    def _keys_of(self, term, depth=0):
+        """the string keys every value of this term has: an object literal, a call of a function whose clauses all
+        return object literals, or a rule that is one of those (None when it cannot be told)"""
+        if term is None or depth > 4:
+            return None
+        t = term.get("type")
+        if t == "object":
+            return {k["value"] for k, _ in term["value"] if k.get("type") == "string"}
+        if t == "call":
+            fn = _opname(term["value"][0])
+            if fn in self.rules and self.is_function(fn):
+                return self._rule_keys(fn, depth)
+        if t in ("ref", "var") and len(term["value"] if t == "ref" else [0]) == 1:
+            n = _head(term) if t == "ref" else term["value"]
+            if n in self.rules and not self.is_function(n):
+                return self._rule_keys(n, depth)
+        return None
+
+    def _rule_keys(self, name, depth):
+        keys = None
+        for c in self.rules.get(name, ()):
+            if c.get("default"):
+                continue
+            k = self._keys_of(c["head"].get("value"), depth + 1)
+            if k is None:
+                return None
+            keys = k if keys is None else keys & k
+        return keys
+
     def field_defined(self, name, key):
-        """`name.key` is always defined: the rule is, and its value is an object literal that has the key"""
+        """`name.key` is always defined: the rule is, and every value it can take is an object that has the key"""
         if not self.always_defined(name):
             return False
-        vals = [c["head"].get("value") for c in self.rules.get(name, ()) if not c.get("default")]
-        return bool(vals) and all(v is not None and v.get("type") == "object"
-                                  and any(k.get("type") == "string" and k.get("value") == key for k, _ in v["value"])
-                                  for v in vals)
+        return key in (self._rule_keys(name, 0) or ())
 
     def _total_value(self, term):
         t = term.get("type")
@@ -951,6 +977,8 @@ class Scanner:
                     o = _pyval(other)
                 except ValueError:
                     continue
+                if op == "neq" and type(o) is type(d[0]) and o == d[0]:
+                    return          # v != <the default>: a presence test ("is it there?"), the opposite case is another rule's
                 holds = self._holds(op, d[0], o) if i == 0 else self._holds(op, o, d[0])
                 break
         if holds is None:
