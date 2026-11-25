@@ -1020,6 +1020,15 @@ truthy(v) if {
 	lower(trim_space(v)) == "true"
 }
 
+# The credential report flags (password_enabled, mfa_active) are TRUE / FALSE, and password_enabled is
+# not_supported for the root account (AWS IAM credential report documentation). Any other word is evidence invalid.
+credential_flag_valid(v) if {
+	is_string(v)
+	lower(trim_space(v)) in {"true", "false", "not_supported"}
+}
+
+credential_flag_valid(v) if is_boolean(v)
+
 falsy(v) if v == false
 
 falsy(v) if {
@@ -1377,10 +1386,26 @@ bucket_denies_http(b) if {
 
 account_bpa_ok if all_four_blocked(object.get(input, "s3_account_public_access_block", null))
 
-# Protocols that carry no port range (ESP, GRE, ...) are collected without one.
+# EC2 IpProtocol vocabulary: tcp, udp, icmp, icmpv6, -1 (all) or a protocol number 0-255 as text. A word outside
+# it ("ssh", "false") is not a protocol: it must not be read as a portless one that clears the port rules.
+ec2_protocol_known(p) if {
+	is_string(p)
+	n := proto_norm(p)
+	n in {"icmp", "icmpv6", "-1"}
+}
+
+ec2_protocol_known(p) if {
+	is_string(p)
+	n := proto_norm(p)
+	regex.match(`^[0-9]{1,3}$`, n)
+	to_number(n) <= 255
+}
+
+# Protocols that carry no port range (ICMP, ESP, GRE, ...) are collected without one.
 perm_collected(perm) if {
 	has_str(perm, "IpProtocol")
-	not proto_norm(perm.IpProtocol) in {"6", "17", "-1", "1", "58", "icmp", "icmpv6"}
+	ec2_protocol_known(perm.IpProtocol)
+	not proto_norm(perm.IpProtocol) in {"6", "17", "-1"}
 }
 
 # ── AWS Config, Security Hub, EBS, flow logs ──────────────────────────────────────────
@@ -2083,6 +2108,22 @@ _messages contains sprintf("2.10: Console users have MFA — user %s: password_e
 	not has_str(x, "password_enabled")
 }
 
+_messages contains sprintf("2.10: Console users have MFA — user %s: password_enabled %q is not a recognised value, expected true, false or not_supported (evidence invalid, got string)", [nm(x, "user"), x.password_enabled]) if {
+	_in_scope("2.10")
+	_ev_2_10
+	some x in input.credential_report
+	has_str(x, "password_enabled")
+	not credential_flag_valid(x.password_enabled)
+}
+
+_messages contains sprintf("2.10: Console users have MFA — user %s: mfa_active %q is not a recognised value, expected true or false (evidence invalid, got string)", [nm(x, "user"), x.mfa_active]) if {
+	_in_scope("2.10")
+	_ev_2_10
+	some x in input.credential_report
+	has_str(x, "mfa_active")
+	not credential_flag_valid(x.mfa_active)
+}
+
 # 2.11 (Automated, Level 1)
 default _ev_2_11 := false
 
@@ -2111,6 +2152,15 @@ _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — 
 	not x.user == "<root_account>"
 	truthy(x.password_enabled)
 	not pw_idle_days(x)
+}
+
+_messages contains sprintf("2.11: Credentials idle for 45 days are disabled — user %s: password_enabled %q is not a recognised value, expected true, false or not_supported (evidence invalid, got string)", [nm(x, "user"), x.password_enabled]) if {
+	_in_scope("2.11")
+	_ev_2_11
+	some x in input.credential_report
+	not x.user == "<root_account>"
+	has_str(x, "password_enabled")
+	not credential_flag_valid(x.password_enabled)
 }
 
 _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — user %s has active access key %s unused for %d days (limit 45)", [nm(x, "user"), n, key_idle_days(x, n)]) if {
@@ -2851,6 +2901,15 @@ _messages contains sprintf("6.3: No security group opens administration ports to
 	some x in input.security_groups
 	some perm in x.IpPermissions
 	not perm_collected(perm)
+}
+
+_messages contains sprintf("6.3: No security group opens administration ports to IPv4 internet — security group %s: IpProtocol %q is not a recognised EC2 protocol (evidence invalid, got string)", [nm(x, "GroupId"), perm.IpProtocol]) if {
+	_in_scope("6.3")
+	_ev_6_3
+	some x in input.security_groups
+	some perm in x.IpPermissions
+	has_str(perm, "IpProtocol")
+	not ec2_protocol_known(perm.IpProtocol)
 }
 
 _messages contains sprintf("6.3: No security group opens administration ports to IPv4 internet — security group %s: IpPermissions not collected", [nm(x, "GroupId")]) if {
