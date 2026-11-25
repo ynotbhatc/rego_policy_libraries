@@ -135,9 +135,9 @@ all_ok if {
 
     def test_has_call_with_the_row_key_marks_the_entry_present(self):
         self.assertEqual(self.kinds("""
-_has(id) if input.given[id]
+_has_given(id) if input.given[id]
 problem(id) := "bad" if {
-	_has(id)
+	_has_given(id)
 	not is_boolean(input.given[id])
 }"""), [("neg-call", "guarded")])
 
