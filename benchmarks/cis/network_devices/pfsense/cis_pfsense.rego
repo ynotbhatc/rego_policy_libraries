@@ -117,10 +117,32 @@ as_strings(x) := [s | some s in x; is_string(s)] if {
 
 # A config.xml checkbox flag is set when the key is present (an unchecked box is removed from
 # config.xml) and not an explicit "off" value. An empty element may arrive as "" or null; both mean set.
+# Explicit "off" spellings a normalising collector may send for an unchecked box. Text is compared without
+# case, and the string "false" is off like the boolean: left out of this set it read as a present flag, so
+# "false" passed every control that wants a box checked.
+flag_off(v) if v in {false, 0}
+
+flag_off(v) if {
+	is_string(v)
+	lower(trim_space(v)) in {"0", "no", "off", "disabled", "false"}
+}
+
 flag(obj, key) if {
 	is_object(obj)
 	key in object.keys(obj)
-	not obj[key] in {"0", false, "no", "off", "disabled"}
+	not flag_off(obj[key])
+}
+
+# An IPv4 or IPv6 address: what the GUI accepts for a DNS server or a sync peer. A word such as "true" or
+# "no" in its place is not a configured address.
+ip_address(x) if {
+	is_string(x)
+	regex.match(`^[0-9]{1,3}(\.[0-9]{1,3}){3}$`, trim_space(x))
+}
+
+ip_address(x) if {
+	is_string(x)
+	regex.match(`^[0-9A-Fa-f:.]*:[0-9A-Fa-f:.]*(%[0-9A-Za-z_.-]+)?$`, trim_space(x))
 }
 
 nonblank(x) if {
@@ -215,7 +237,7 @@ ok_1_4 if {
 # 1.5: at least one DNS server configured.
 default ok_1_5 := false
 
-ok_1_5 if count([s | some s in as_strings(input.system.dnsserver); trim_space(s) != ""]) > 0
+ok_1_5 if count([s | some s in as_strings(input.system.dnsserver); ip_address(s)]) > 0
 
 # 1.6: "Allow IPv6" is off, or the organization attests IPv6 is in use.
 default ok_1_6 := false
@@ -246,7 +268,7 @@ ok_1_8 if lower(input.system.webgui.protocol) == "https"
 # 1.9: config sync to an HA peer is configured.
 default ok_1_9 := false
 
-ok_1_9 if nonblank(input.hasync.synchronizetoip)
+ok_1_9 if ip_address(input.hasync.synchronizetoip)
 
 s1_evidence contains "1.1: evidence missing — input.sshd_config not collected" if not sshd_config_collected
 

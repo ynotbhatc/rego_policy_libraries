@@ -292,7 +292,7 @@ test_2_3_7_5_fails_when_its_facts_do_not_comply if {
 }
 
 test_2_3_7_6_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2019.lib.results["2.3.7.6"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"CachedLogonsCount": 5}}})
+	data.cis_windows_server_2019.lib.results["2.3.7.6"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"CachedLogonsCount": "5"}}})
 }
 
 test_2_3_7_7_fails_when_its_facts_do_not_comply if {

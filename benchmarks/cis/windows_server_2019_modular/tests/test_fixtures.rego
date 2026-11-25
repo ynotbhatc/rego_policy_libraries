@@ -58,7 +58,7 @@ fixture_ms := {
 		"HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 1},
 		"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {
 			"AutoAdminLogon": "0",
-			"CachedLogonsCount": 4,
+			"CachedLogonsCount": "4",
 			"ForceUnlockLogon": 1,
 			"PasswordExpiryWarning": 5,
 			"ScRemoveOption": "3",

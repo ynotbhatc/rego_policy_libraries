@@ -22,8 +22,19 @@ package cis_windows_server_2022_legacy
 
 import rego.v1
 
-# A numeric fact counts only when it is present and numeric; anything else fails the control.
-number_at_least(v, n) if to_number(v) >= n
+# A numeric fact counts only when it is present and a JSON number; anything else fails the control
+# (to_number read "24" as 24 and true as 1).
+number_at_least(v, n) if {
+	is_number(v)
+	v >= n
+}
+
+# "No One": the right was collected as a list and the list is empty. count() of null or a number is undefined,
+# which used to drop the finding.
+_nobody_holds(v) if {
+	is_array(v)
+	count(v) == 0
+}
 
 # Main compliance rule - all controls must pass
 compliant if {
@@ -94,7 +105,7 @@ audit_policy_violations := [
 # 2.2 User Rights Assignment Violations
 user_rights_violations := [
 "2.2.3: required value of 'Access Credential Manager as a trusted caller' is 'No One'" |
-	count(object.get(input, ["user_rights", "access_credential_manager_as_trusted_caller"], ["evidence missing"])) > 0
+	not _nobody_holds(object.get(input, ["user_rights", "access_credential_manager_as_trusted_caller"], null))
 ]
 
 authenticated_users_network_access if {

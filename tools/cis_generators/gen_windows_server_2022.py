@@ -332,9 +332,25 @@ def vtype(types):
     return "any"
 
 
+# Registry types for values whose audit text in some workbooks states none. Without a type the row was "any"
+# and read a number or its digits in a string alike. Sources (2026-11-24):
+#   CachedLogonsCount: REG_SZ. Microsoft, "Cached domain logon information" (KB 172931: data type REG_SZ, values
+#     0 - 50); the Windows 10 and 11 workbooks state REG_SZ for the same value.
+#   DisableSpotlightCollectionOnDesktop: REG_DWORD. The Windows 10 and 11 workbooks state REG_DWORD for the same
+#     value; Microsoft's Policy CSP (Experience/AllowSpotlightCollection) maps it as an integer ADMX policy.
+#   AllowBuildPreview: REG_DWORD. Microsoft, "Manage connections from Windows operating system components to
+#     Microsoft services" (create a REG_DWORD named AllowBuildPreview).
+# A type the audit text does state always wins; this table only fills a gap.
+DOCUMENTED_TYPES = {
+    "CachedLogonsCount": {"REG_SZ"},
+    "DisableSpotlightCollectionOnDesktop": {"REG_DWORD"},
+    "AllowBuildPreview": {"REG_DWORD"},
+}
+
+
 def typed(check, types):
     """Stamp a reg / ureg row with its "vtype" when it compares a number that is not a REG_DWORD."""
-    vt = vtype(types)
+    vt = vtype(types or DOCUMENTED_TYPES.get(check.get("name"), ()))
     if vt and _numeric(check["op"], check["value"]):
         check["vtype"] = vt
     return check

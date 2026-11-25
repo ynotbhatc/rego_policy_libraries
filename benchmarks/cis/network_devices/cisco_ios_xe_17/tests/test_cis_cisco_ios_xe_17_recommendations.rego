@@ -181,6 +181,35 @@ test_level_1_profile_scopes_the_report if {
 	e.failed_controls == 75
 }
 
+# cis_profile.level must be the number 1 or 2: anything else is reported, the report is scoped at Level 2 and
+# the Level 2 recommendations fail, so a mistyped level can never shrink the assessment into a pass
+test_level_must_be_the_number_1_or_2 if {
+	every lv in ["1", "2", "high", 0, 3, 1.5, true, false, null, [1], {"level": 1}] {
+		r := b.compliance_report with input as json.patch(green, [{"op": "add", "path": "/cis_profile", "value": {"level": lv}}])
+		r.compliant == false
+		r.level == 2
+		r.total_controls == 84
+		r.failed_controls == 9
+		r.passed_controls + r.failed_controls == r.total_controls
+		some v in r.violations
+		startswith(v, "cis_profile.level: evidence invalid — cis_profile.level must be the number 1 or 2, got ")
+	}
+	every cp in ["1", 1, null, [1], true] {
+		r := b.compliance_report with input as json.patch(green, [{"op": "add", "path": "/cis_profile", "value": cp}])
+		r.compliant == false
+		r.failed_controls == 9
+	}
+}
+
+test_level_numbers_and_absent_level_are_valid if {
+	l2 := b.compliance_report with input as json.patch(green, [{"op": "add", "path": "/cis_profile", "value": {"level": 2}}])
+	l2.compliant == true
+	l2.total_controls == 84
+	none := b.compliance_report with input as json.patch(green, [{"op": "add", "path": "/cis_profile", "value": {}}])
+	none.compliant == true
+	none.total_controls == 84
+}
+
 test_level_2_only_recommendation_skipped_at_level_1 if {
 	inp := json.patch(green, [
 		{"op": "add", "path": "/cis_profile", "value": {"level": 1}},

@@ -120,14 +120,37 @@ as_strings(x) := [s | some s in x; is_string(s)] if {
 } else := []
 
 # Legacy checkbox: set when the key is present and not an explicit "off" value.
+# Explicit "off" spellings a normalising collector may send for an unchecked box. Text is compared without
+# case, and the string "false" is off like the boolean: left out of this set it read as a present flag, so
+# "false" passed every control that wants a box checked.
+flag_off(v) if v in {false, 0}
+
+flag_off(v) if {
+	is_string(v)
+	lower(trim_space(v)) in {"0", "no", "off", "disabled", "false"}
+}
+
 flag(obj, key) if {
 	is_object(obj)
 	key in object.keys(obj)
-	not obj[key] in {"0", 0, false, "no", "off", "disabled"}
+	not flag_off(obj[key])
 }
 
-# MVC BooleanField: on only when it is "1".
-mvc_on(x) if sprintf("%v", [x]) in {"1", "true"}
+# An IPv4 or IPv6 address: what the GUI accepts for a DNS server or a sync peer. A word such as "true" or
+# "no" in its place is not a configured address.
+ip_address(x) if {
+	is_string(x)
+	regex.match(`^[0-9]{1,3}(\.[0-9]{1,3}){3}$`, trim_space(x))
+}
+
+ip_address(x) if {
+	is_string(x)
+	regex.match(`^[0-9A-Fa-f:.]*:[0-9A-Fa-f:.]*(%[0-9A-Za-z_.-]+)?$`, trim_space(x))
+}
+
+# MVC BooleanField: on only when it is "1" (the number 1 or the boolean true from a normalising collector read
+# the same). The string "true" is not a BooleanField value and is not "on".
+mvc_on(x) if x in {"1", 1, true}
 
 str(x) := trim_space(sprintf("%v", [x])) if x != null
 
@@ -375,7 +398,7 @@ ok_1_4 if {
 # 1.5: at least one DNS server configured.
 default ok_1_5 := false
 
-ok_1_5 if count([s | some s in as_strings(input.system.dnsserver); trim_space(s) != ""]) > 0
+ok_1_5 if count([s | some s in as_strings(input.system.dnsserver); ip_address(s)]) > 0
 
 # 1.6: IPv6 is off, or the organization attests IPv6 is in use.
 # 26.1+ keeps it in MVC Interfaces.settings.disableipv6; earlier releases in system.ipv6allow.

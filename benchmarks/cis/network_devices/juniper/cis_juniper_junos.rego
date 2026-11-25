@@ -28,6 +28,40 @@ package cis_juniper_junos
 
 import rego.v1
 
+# Evidence rule: a setting counts as configured only when it holds configuration. A boolean, null, an empty
+# value or one of the words a collector writes for a yes/no ("true", "false", "yes", "no") in place of a key,
+# a password or a filter name is not configuration, and the control fails.
+_text(v) if {
+	is_string(v)
+	not lower(trim_space(v)) in {"", "true", "false", "yes", "no", "null", "none"}
+}
+
+_configured(v) if _text(v)
+
+_configured(v) if is_number(v)
+
+_configured(v) if {
+	is_object(v)
+	count(v) > 0
+}
+
+_configured(v) if {
+	is_array(v)
+	count(v) > 0
+	every x in v {
+		_item(x)
+	}
+}
+
+_item(x) if _text(x)
+
+_item(x) if is_number(x)
+
+_item(x) if {
+	is_object(x)
+	count(x) > 0
+}
+
 # Main compliance rule - all controls must pass
 default compliant := false
 
@@ -64,7 +98,7 @@ management_plane_violations := array.concat(
 root_authentication_configured if {
 	user := input.junos_config.system.login.user[_]
 	user.name == "root"
-	user.authentication
+	_configured(user.authentication)
 }
 
 default ssh_configured_securely := false
@@ -88,16 +122,18 @@ default ntp_authentication_configured := false
 
 ntp_authentication_configured if {
 	ntp := input.junos_config.system.ntp
-	ntp.authentication_key
-	ntp.trusted_key
+	_configured(ntp.authentication_key)
+	_configured(ntp.trusted_key)
 }
 
 radius_configured if {
-	count(input.junos_config.system.radius_server) > 0
+	_configured(input.junos_config.system.radius_server)
+	not is_string(input.junos_config.system.radius_server)
 }
 
 tacplus_configured if {
-	count(input.junos_config.system.tacplus_server) > 0
+	_configured(input.junos_config.system.tacplus_server)
+	not is_string(input.junos_config.system.tacplus_server)
 }
 
 # Section 2: Control Plane Security
@@ -106,12 +142,24 @@ control_plane_violations := array.concat(
 	"2.1.1: control plane traffic must be protected with a filter" |
 		not control_plane_filter_configured
 	],
-	[
-	"2.2.1: routing protocol (OSPF/BGP) authentication must be explicitly configured" |
-		routing_protocol_in_use
-		not routing_protocol_auth_configured
-	],
+	array.concat(
+		[
+		"2.2.1: routing protocol (OSPF/BGP) authentication must be explicitly configured" |
+			routing_protocol_in_use
+			not routing_protocol_auth_configured
+		],
+		# "no routing protocol runs" is a statement the collected protocols section makes; without the
+		# section it cannot be told from "not collected"
+		[
+		"2.2.1: evidence missing — junos_config.protocols not collected" |
+			not _protocols_collected
+		],
+	),
 )
+
+default _protocols_collected := false
+
+_protocols_collected if is_object(input.junos_config.protocols)
 
 control_plane_filter_configured if {
 	filter := input.junos_config.firewall.family.inet.filter[_]
@@ -128,21 +176,23 @@ remote_aaa_configured if radius_configured
 remote_aaa_configured if tacplus_configured
 
 # Routing-protocol authentication applies only where OSPF or BGP is running.
-routing_protocol_in_use if input.junos_config.protocols.ospf
-
-routing_protocol_in_use if input.junos_config.protocols.bgp
+# a protocol node present in any form but an explicit false is in use (a string in its place fails closed)
+routing_protocol_in_use if {
+	some proto in ["ospf", "bgp"]
+	object.get(input.junos_config.protocols, proto, false) != false
+}
 
 default routing_protocol_auth_configured := false
 
 routing_protocol_auth_configured if {
 	ospf := input.junos_config.protocols.ospf
-	ospf.area["0.0.0.0"].authentication.simple_password
+	_configured(ospf.area["0.0.0.0"].authentication.simple_password)
 }
 
 routing_protocol_auth_configured if {
 	bgp := input.junos_config.protocols.bgp
 	group := bgp.group[_]
-	group.authentication_key
+	_configured(group.authentication_key)
 }
 
 # Section 3: Data Plane Security
@@ -152,16 +202,27 @@ data_plane_checks := [
 ]
 
 data_plane_violations := array.concat(
-	[
-	"3.1.1: ingress filtering must be applied on all external interfaces" |
-		interface := input.external_interfaces[_]
-		not ingress_filter_applied(interface)
-	],
+	array.concat(
+		[
+		"3.1.1: ingress filtering must be applied on all external interfaces" |
+			interface := input.external_interfaces[_]
+			not ingress_filter_applied(interface)
+		],
+		# the list of external interfaces is the evidence; an empty list states there are none
+		[
+		"3.1.1: evidence missing — external_interfaces not collected" |
+			not is_array(object.get(input, "external_interfaces", null))
+		],
+	),
 	[c.msg | some c in data_plane_checks; not c.ok],
 )
 
 # An interface with no unit 0 (or no input filter on it) is unfiltered.
-ingress_filter_applied(interface) if interface.unit["0"].family.inet.filter.input
+ingress_filter_applied(interface) if {
+	name := interface.unit["0"].family.inet.filter.input
+	is_string(name)
+	_configured(name)
+}
 
 default anti_spoofing_configured := false
 
