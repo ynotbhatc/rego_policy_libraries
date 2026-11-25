@@ -39,6 +39,9 @@ Every hit gets an effect from the rule it sits in:
 
     fail-open     a violation / deny / finding rule, or a collection named like one: missing -> no finding
     fail-closed   a pass / compliant rule, or a collection named like one: missing -> not passed (harmless)
+    guarded       a comparison / count / to_number after a type check of the same fact (is_number(x); x > 90) where the
+                  package also reads that fact in a way that is defined when it is missing (a `not is_number(object.get(
+                  ...))` evidence finding): the evidence rule's shape. Reported, never gated; --json shows the guard line.
     review        neither could be told from the rule's name or from how the package uses it; needs reading
 
 Rule classes come from the rule name (violations, deny, *_missing, non_compliant ... / compliant, *_ok, valid_* ...)
@@ -85,6 +88,7 @@ NEGATED_KINDS = ("neg-call", "neg-in", "neg-cmp", "neg-var", "neg-partial-fn")
 def is_gated(hit):
     """negated shapes are gated unless the rule is a pass rule; sibling shapes only where the rule is a violation rule"""
     return hit["effect"] == "fail-open" or (hit["effect"] == "review" and hit["kind"] in NEGATED_KINDS)
+SIBLING_KINDS = ("cmp", "count-zero", "to-number")
 KINDS = ("neg-call", "neg-in", "neg-cmp", "neg-var", "neg-partial-fn", "cmp", "count-zero", "to-number", "get-default")
 
 CMP_OPS = {"neq": "!=", "lt": "<", "lte": "<=", "gt": ">", "gte": ">="}
@@ -419,6 +423,12 @@ class Scanner:
         for h in self.hits:                       # guard hint: the same path is read elsewhere in a way that
             probed = self.pkgs[h["pkg"]].probed   # is defined when it is missing (to be confirmed by reading)
             h["guard"] = next((probed[x] for x in h["paths"] if x in probed), "")
+            # a comparison after a type check of the same fact, with the missing case reported by a rule of the
+            # package (object.get / not elsewhere): the evidence rule's own shape, not a dropped row
+            if h["present"] and h["effect"] in ("fail-open", "review"):
+                h["effect"] = "guarded"      # `_has_key(obj, "k")` earlier in the rule: an optional field, checked if present
+            if h["typed"] and h["guard"] and h["kind"] in SIBLING_KINDS and h["effect"] == "fail-open":
+                h["effect"] = "guarded"
         return self.hits
 
     def _rule(self, f, p, name, rule, imports):
@@ -428,7 +438,7 @@ class Scanner:
             for v in self._vars(a):
                 env[v] = ("param", None)
         ctx = {"f": f, "p": p, "rule": name or "?", "cls": p.cls.get(name, "other"), "imports": imports, "coll": None,
-               "env": env, "pkg": _pkg(self.asts[f])}
+               "env": env, "pkg": _pkg(self.asts[f]), "typed": set(), "present": set()}
         self._body(rule.get("body") or [], env, ctx)
         for part in ("key", "value"):
             if part in h and h[part] is not None:
@@ -681,6 +691,16 @@ class Scanner:
         """record the paths this line reads in a way that is defined when the path is missing"""
         where = f"{ctx['f']}:{_row(e)}"
         probed = ctx["p"].probed
+        if not e.get("negated"):                       # a type or value check earlier in the rule: the author
+            if op and op.startswith("is_") and args and args[0].get("type") == "ref":   # chose to need this fact
+                ctx["typed"].add(self._norm(args[0], env))
+            elif op and op.split(".")[-1].lstrip("_") in ("has_key", "has_field") and len(args) == 2 \
+                    and args[1].get("type") == "string":      # f(obj, "key"): the key is tested for before it is read
+                ctx["present"].add(self._norm(args[0], env) + "." + args[1]["value"])
+            elif op == "equal" and len(args) == 2:
+                for a, b in (args, args[::-1]):
+                    if a.get("type") == "ref" and b.get("type") in SCALARS:
+                        ctx["typed"].add(self._norm(a, env))
         if e.get("negated"):
             if op is None and args and args[0].get("type") == "ref":
                 probed.setdefault(self._norm(args[0], env), where)
@@ -717,7 +737,10 @@ class Scanner:
         self.hits.append(Hit(file=ctx["f"], line=_row(expr), rule=ctx["rule"], kind=kind,
                              text=_text(expr)[:240], refs=sorted({_text(r) or "?" for r in refs}),
                              effect=effect or self._effect(ctx), where=ctx["coll"] or ctx["rule"], note=note,
-                             paths=sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"]))
+                             paths=sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"],
+                             present=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["present"]
+                                        for r in refs),
+                             typed=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["typed"] for r in refs)))
 
     def _body(self, body, env, ctx):
         env = dict(env)
@@ -1000,7 +1023,7 @@ def main(argv=None):
     rc = 0
     effects = collections.Counter(h["effect"] for h in hits)
     print(f"undefined negation: {len(hits)} hits ({effects['fail-open']} fail-open, {effects['review']} to review, "
-          f"{effects['fail-closed']} fail-closed and harmless)")
+          f"{effects['fail-closed']} fail-closed and harmless, {effects['guarded']} guarded by a type check and an evidence rule)")
     for tree in sorted(by_tree):
         gated = [h for h in by_tree[tree] if is_gated(h)]
         path = bdir / f"{tree}.txt"

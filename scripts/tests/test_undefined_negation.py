@@ -84,6 +84,28 @@ violations contains msg if {
 }""")
         self.assertEqual(sorted(ks), [("cmp", "fail-open"), ("count-zero", "fail-open"), ("to-number", "fail-open")])
 
+    def test_typed_comparison_with_an_evidence_rule_is_guarded(self):
+        body = """
+violations contains msg if {
+	is_number(input.d.days)
+	input.d.days > 90
+	msg := "late"
+}
+violations contains msg if {
+	not is_number(object.get(input, ["d", "days"], null))
+	msg := "evidence missing: d.days not collected"
+}"""
+        self.assertEqual(self.kinds(body), [("cmp", "guarded")])
+        self.assertEqual(self.kinds(body.split("violations contains msg if {\n\tnot")[0]), [("cmp", "fail-open")])
+
+    def test_has_key_guard_makes_an_optional_field(self):
+        self.assertEqual(self.kinds("""
+has_key(obj, k) if k in object.keys(obj)
+violations contains "m.name: must be a string" if {
+	has_key(input.m, "name")
+	not is_string(input.m.name)
+}"""), [("neg-call", "guarded")])
+
     def test_not_equal_null_is_a_presence_test(self):
         self.assertEqual(self.kinds("""
 violations contains msg if {
