@@ -468,7 +468,21 @@ test_rhel_09_215105_fail_6 if {
 test_rhel_09_215105_fail_7 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_215105 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-215105: check failed")
+	contains(f.detail, "RHEL-09-215105: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)")
+}
+
+test_rhel_09_215105_fail_8 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_215105 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "3072"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215105: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)")
+}
+
+test_rhel_09_215105_number_as_text_1 if {
+	every text in ["2048", " 2048 "] {
+		f := data.stig.rhel_9.configuration_management.finding_rhel_09_215105 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-215105: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)"
+	}
 }
 
 test_rhel_09_215105_evidence_missing_1 if {
@@ -490,7 +504,7 @@ test_rhel_09_215105_evidence_missing_3 if {
 }
 
 test_rhel_09_215105_pass_2 if {
-	data.stig.rhel_9.configuration_management.status_rhel_09_215105 == "Not_a_Finding" with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "3072"}})
+	data.stig.rhel_9.configuration_management.status_rhel_09_215105 == "Not_a_Finding" with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": 3072}})
 }
 
 test_rhel_09_271105_pass if {
@@ -3161,6 +3175,18 @@ test_rhel_09_271065_fail_4 if {
 	contains(f.detail, "RHEL-09-271065: check failed")
 }
 
+test_rhel_09_271065_fail_5 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "600"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: evidence invalid — gnome.session_idle_delay is not a number (got string)")
+}
+
+test_rhel_09_271065_fail_6 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as object.union(green_fixture, {"gnome": {"session_idle_delay": " 1 "}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271065: evidence invalid — gnome.session_idle_delay is not a number (got string)")
+}
+
 test_rhel_09_271065_evidence_missing_1 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271065 with input as json.remove(green_fixture, [["gnome", "session_idle_delay"]])
 	f.status == "Open"
@@ -3177,11 +3203,11 @@ test_rhel_09_271065_pass_2 if {
 }
 
 test_rhel_09_271065_pass_3 if {
-	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": 600}})
+	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": " uint32  600 "}})
 }
 
 test_rhel_09_271065_pass_4 if {
-	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": "600"}})
+	data.stig.rhel_9.configuration_management.status_rhel_09_271065 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"session_idle_delay": 600}})
 }
 
 test_rhel_09_271075_pass if {
@@ -3206,6 +3232,18 @@ test_rhel_09_271075_fail_3 if {
 	contains(f.detail, "RHEL-09-271075: check failed")
 }
 
+test_rhel_09_271075_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "5"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271075: evidence invalid — gnome.screensaver_lock_delay is not a number (got string)")
+}
+
+test_rhel_09_271075_fail_5 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": " 0 "}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271075: evidence invalid — gnome.screensaver_lock_delay is not a number (got string)")
+}
+
 test_rhel_09_271075_evidence_missing_1 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_271075 with input as json.remove(green_fixture, [["gnome", "screensaver_lock_delay"]])
 	f.status == "Open"
@@ -3222,11 +3260,11 @@ test_rhel_09_271075_pass_2 if {
 }
 
 test_rhel_09_271075_pass_3 if {
-	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": 5}})
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": " uint32  5 "}})
 }
 
 test_rhel_09_271075_pass_4 if {
-	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": "5"}})
+	data.stig.rhel_9.configuration_management.status_rhel_09_271075 == "Not_a_Finding" with input as object.union(green_fixture, {"gnome": {"screensaver_lock_delay": 5}})
 }
 
 test_rhel_09_271075_pass_5 if {

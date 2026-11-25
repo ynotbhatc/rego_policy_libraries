@@ -48,20 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
 # (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
+	_whole_number(v)
+}
+
+_whole_number(v) if {
 	is_number(v)
 	v == floor(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -85,6 +94,8 @@ _attested(key) if input.attest[key] == true
 # deny as configured in /etc/security/faillock.conf
 missing_ol09_00_003020 := [concat(".", p) | some p in [["faillock_conf", "deny"]]; not _collected(p)]
 
+invalid_ol09_00_003020 := [m | some p in [["faillock_conf", "deny"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default account_lockout_enabled := false
 
 account_lockout_enabled if {
@@ -101,6 +112,8 @@ else := "Open"
 detail_ol09_00_003020 := "OL09-00-003020: Not_a_Finding" if account_lockout_enabled
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-003020", concat(", ", missing_ol09_00_003020)]) if count(missing_ol09_00_003020) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-003020", concat(", ", invalid_ol09_00_003020)]) if count(invalid_ol09_00_003020) > 0
 
 else := "OL09-00-003020: check failed — deny in /etc/security/faillock.conf must be 1 to 3 (not 0)"
 
@@ -119,6 +132,8 @@ finding_ol09_00_003020 := {
 # effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_ol09_00_001105 := [concat(".", p) | some p in [["password_policy", "minlen"]]; not _collected(p)]
 
+invalid_ol09_00_001105 := [m | some p in [["password_policy", "minlen"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_minlen := false
 
 password_minlen if {
@@ -134,6 +149,8 @@ else := "Open"
 detail_ol09_00_001105 := "OL09-00-001105: Not_a_Finding" if password_minlen
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001105", concat(", ", missing_ol09_00_001105)]) if count(missing_ol09_00_001105) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001105", concat(", ", invalid_ol09_00_001105)]) if count(invalid_ol09_00_001105) > 0
 
 else := "OL09-00-001105: check failed — minlen in /etc/security/pwquality.conf(.d) must be 15 or greater"
 
@@ -152,6 +169,8 @@ finding_ol09_00_001105 := {
 # effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_ol09_00_001015 := [concat(".", p) | some p in [["password_policy", "lcredit"]]; not _collected(p)]
 
+invalid_ol09_00_001015 := [m | some p in [["password_policy", "lcredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_lowercase := false
 
 password_lowercase if {
@@ -167,6 +186,8 @@ else := "Open"
 detail_ol09_00_001015 := "OL09-00-001015: Not_a_Finding" if password_lowercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001015", concat(", ", missing_ol09_00_001015)]) if count(missing_ol09_00_001015) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001015", concat(", ", invalid_ol09_00_001015)]) if count(invalid_ol09_00_001015) > 0
 
 else := "OL09-00-001015: check failed — lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character)"
 
@@ -185,6 +206,8 @@ finding_ol09_00_001015 := {
 # effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_ol09_00_001020 := [concat(".", p) | some p in [["password_policy", "dcredit"]]; not _collected(p)]
 
+invalid_ol09_00_001020 := [m | some p in [["password_policy", "dcredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_numeric := false
 
 password_numeric if {
@@ -200,6 +223,8 @@ else := "Open"
 detail_ol09_00_001020 := "OL09-00-001020: Not_a_Finding" if password_numeric
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001020", concat(", ", missing_ol09_00_001020)]) if count(missing_ol09_00_001020) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001020", concat(", ", invalid_ol09_00_001020)]) if count(invalid_ol09_00_001020) > 0
 
 else := "OL09-00-001020: check failed — dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character)"
 
@@ -218,6 +243,8 @@ finding_ol09_00_001020 := {
 # effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_ol09_00_001120 := [concat(".", p) | some p in [["password_policy", "ocredit"]]; not _collected(p)]
 
+invalid_ol09_00_001120 := [m | some p in [["password_policy", "ocredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_special := false
 
 password_special if {
@@ -233,6 +260,8 @@ else := "Open"
 detail_ol09_00_001120 := "OL09-00-001120: Not_a_Finding" if password_special
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001120", concat(", ", missing_ol09_00_001120)]) if count(missing_ol09_00_001120) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001120", concat(", ", invalid_ol09_00_001120)]) if count(invalid_ol09_00_001120) > 0
 
 else := "OL09-00-001120: check failed — ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character)"
 
@@ -251,6 +280,8 @@ finding_ol09_00_001120 := {
 # PASS_MAX_DAYS as configured in /etc/login.defs
 missing_ol09_00_001095 := [concat(".", p) | some p in [["password_policy", "maxdays"]]; not _collected(p)]
 
+invalid_ol09_00_001095 := [m | some p in [["password_policy", "maxdays"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_maxage := false
 
 password_maxage if {
@@ -267,6 +298,8 @@ else := "Open"
 detail_ol09_00_001095 := "OL09-00-001095: Not_a_Finding" if password_maxage
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001095", concat(", ", missing_ol09_00_001095)]) if count(missing_ol09_00_001095) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001095", concat(", ", invalid_ol09_00_001095)]) if count(invalid_ol09_00_001095) > 0
 
 else := "OL09-00-001095: check failed — PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit)"
 
@@ -285,6 +318,8 @@ finding_ol09_00_001095 := {
 # INACTIVE as configured in /etc/default/useradd
 missing_ol09_00_003065 := [concat(".", p) | some p in [["password_policy", "inactive_days"]]; not _collected(p)]
 
+invalid_ol09_00_003065 := [m | some p in [["password_policy", "inactive_days"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default inactive_lock_ok := false
 
 inactive_lock_ok if {
@@ -301,6 +336,8 @@ else := "Open"
 detail_ol09_00_003065 := "OL09-00-003065: Not_a_Finding" if inactive_lock_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-003065", concat(", ", missing_ol09_00_003065)]) if count(missing_ol09_00_003065) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-003065", concat(", ", invalid_ol09_00_003065)]) if count(invalid_ol09_00_003065) > 0
 
 else := "OL09-00-003065: check failed — INACTIVE in /etc/default/useradd must be 0 to 35 (not -1)"
 
@@ -419,6 +456,8 @@ finding_ol09_00_001055 := {
 # effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_ol09_00_001005 := [concat(".", p) | some p in [["password_policy", "ucredit"]]; not _collected(p)]
 
+invalid_ol09_00_001005 := [m | some p in [["password_policy", "ucredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_uppercase := false
 
 password_uppercase if {
@@ -434,6 +473,8 @@ else := "Open"
 detail_ol09_00_001005 := "OL09-00-001005: Not_a_Finding" if password_uppercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001005", concat(", ", missing_ol09_00_001005)]) if count(missing_ol09_00_001005) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001005", concat(", ", invalid_ol09_00_001005)]) if count(invalid_ol09_00_001005) > 0
 
 else := "OL09-00-001005: check failed — ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character)"
 
@@ -452,6 +493,8 @@ finding_ol09_00_001005 := {
 # PASS_MIN_DAYS as configured in /etc/login.defs
 missing_ol09_00_001085 := [concat(".", p) | some p in [["password_policy", "mindays"]]; not _collected(p)]
 
+invalid_ol09_00_001085 := [m | some p in [["password_policy", "mindays"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_minage := false
 
 password_minage if {
@@ -467,6 +510,8 @@ else := "Open"
 detail_ol09_00_001085 := "OL09-00-001085: Not_a_Finding" if password_minage
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001085", concat(", ", missing_ol09_00_001085)]) if count(missing_ol09_00_001085) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-001085", concat(", ", invalid_ol09_00_001085)]) if count(invalid_ol09_00_001085) > 0
 
 else := "OL09-00-001085: check failed — PASS_MIN_DAYS in /etc/login.defs must be 1 or greater"
 
@@ -519,6 +564,8 @@ finding_ol09_00_001130 := {
 # fail_interval as configured in /etc/security/faillock.conf
 missing_ol09_00_002416 := [concat(".", p) | some p in [["faillock_conf", "fail_interval"]]; not _collected(p)]
 
+invalid_ol09_00_002416 := [m | some p in [["faillock_conf", "fail_interval"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default lockout_duration_ok := false
 
 lockout_duration_ok if {
@@ -535,6 +582,8 @@ else := "Open"
 detail_ol09_00_002416 := "OL09-00-002416: Not_a_Finding" if lockout_duration_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-002416", concat(", ", missing_ol09_00_002416)]) if count(missing_ol09_00_002416) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-002416", concat(", ", invalid_ol09_00_002416)]) if count(invalid_ol09_00_002416) > 0
 
 else := "OL09-00-002416: check failed — fail_interval in /etc/security/faillock.conf must be 900 or less (not 0)"
 

@@ -28,7 +28,8 @@ Principles (each finding carries `check_type`, `detail` and `fix_text`):
     (the clause's own fact, or an attestation `input.attest.<key> == true`);
   - "ask the SA" / "documented with the ISSO" clauses are attestations that can turn a failed machine
     check into Not_a_Finding; they stay Open until attested;
-  - numeric comparisons are type-guarded (`_num` only yields a number for a number or a numeric string).
+  - numeric facts are JSON whole numbers only (`_num`); a number sent as text makes the finding Open with detail
+    "<STIG-ID>: evidence invalid — <fact> is not a number (got string)" (owner ruling 2026-11-24).
 
 The section files keep the block layout: block header `# <STIG-ID> | <V-ID> | <CAT>`, `finding_rhel_09_<n>` / `status_rhel_09_<n>`, a
 one-line "rule_title", the COMPLIANCE AGGREGATION tail. Each file's METADATA (including the coverage
@@ -82,20 +83,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
 # (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
+	_whole_number(v)
+}
+
+_whole_number(v) if {
 	is_number(v)
 	v == floor(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -142,6 +152,75 @@ def deep_merge(a, b, where):
             a[k] = json.loads(json.dumps(v))
 
 
+RE_NUM = re.compile(r'\b_num\(\[((?:"[^"]*"(?:,\s*)?)+)\]\)')
+
+
+def numeric_paths(spec):
+    """the evidence paths a rule's pass and Not Applicable clauses read through _num, in first-use order (JSON whole numbers only)"""
+    out = []
+    for alt in list(spec["alts"]) + list(spec.get("na", [])):
+        for m in RE_NUM.finditer("\n".join(alt)):
+            p = tuple(json.loads("[" + m.group(1) + "]"))
+            if p not in out:
+                out.append(p)
+    return out
+
+
+def has_invalid(spec):
+    return bool(numeric_paths(spec) or spec.get("num_items"))
+
+
+def invalid_expr(spec):
+    """rego: the "<fact> is not a number (got <type>)" entries of a rule (its _num paths, then the table's num_items:
+    array expressions over numeric record fields, each built with _not_a_number)"""
+    parts = []
+    nums = numeric_paths(spec)
+    if nums:
+        parts.append(f'[m | some p in {rego_list(nums)}; m := _not_a_number(concat(".", p), object.get(input, p, null))]')
+    parts += list(spec.get("num_items", []))
+    expr = parts[0]
+    for more in parts[1:]:
+        expr = f"array.concat({expr}, {more})"
+    return expr
+
+
+def py_union(a, b):
+    """object.union as the generated tests apply it: objects merge key by key, anything else is replaced"""
+    if isinstance(a, dict) and isinstance(b, dict):
+        out = dict(a)
+        for k, v in b.items():
+            out[k] = py_union(a[k], v) if k in a else v
+        return out
+    return b
+
+
+def py_got(v):
+    if isinstance(v, bool):
+        return "boolean"
+    if isinstance(v, (int, float)):
+        return None if v == int(v) else "a fraction"
+    return {str: "string", list: "array", dict: "object"}.get(type(v), "null")
+
+
+def bad_detail(sid, spec, bad):
+    """the detail a fail mutation must produce: "evidence invalid" when it leaves a numeric fact collected but not a
+    whole JSON number, else "check failed". A mutation given as ("invalid", patch, "<fact> is not a number (got
+    <type>)") names the entry of a numeric record field (num_items), which this function cannot evaluate."""
+    if isinstance(bad, tuple):
+        return bad[1], f"{sid}: evidence invalid — {bad[2]}"
+    merged = py_union(spec["green"], bad)
+    msgs = []
+    for p in numeric_paths(spec):
+        v = merged
+        for k in p:
+            v = v.get(k) if isinstance(v, dict) else None
+        if v is not None and py_got(v):
+            msgs.append(f'{".".join(p)} is not a number (got {py_got(v)})')
+    if msgs:
+        return bad, f"{sid}: evidence invalid — " + ", ".join(msgs)
+    return bad, f"{sid}: check failed"
+
+
 def block(sid, r, spec):
     i, sev = ident(sid), SEV[r["severity"]]
     title = esc(" ".join(r["title"].split()))
@@ -154,6 +233,8 @@ def block(sid, r, spec):
         o.append(f'missing_{i} := [concat(".", p) | some p in {rego_list(spec["ev"])}; not _collected(p)]')
     else:
         o.append(f"missing_{i} := []")
+    if has_invalid(spec):
+        o += ["", f"invalid_{i} := {invalid_expr(spec)}"]
     o += ["", f"default {name} := false", ""]
     for alt in spec["alts"]:
         o += [name + " if {", f"\tcount(missing_{i}) == 0"] + indent(alt) + ["}", ""]
@@ -171,6 +252,8 @@ def block(sid, r, spec):
         o += [f'else := "{sid}: Not_Applicable — {esc(spec["na_expect"])}" if na_{i}', ""]
     o += [f'else := sprintf("%s: evidence missing — %s not collected", ["{sid}", concat(", ", missing_{i})]) if count(missing_{i}) > 0',
           ""]
+    if has_invalid(spec):
+        o += [f'else := sprintf("%s: evidence invalid — %s", ["{sid}", concat(", ", invalid_{i})]) if count(invalid_{i}) > 0', ""]
     if spec.get("manual"):
         # a documentation / organizational review the facts cannot decide: Not_Reviewed until attested
         o += [f'else := "{sid}: Not_Reviewed — {esc(spec["expect"])}"', ""]
@@ -191,9 +274,24 @@ def tests_for(plat, sec, sid, spec, green_name):
         green_name = f"object.union({green_name}, {json.dumps(spec['green'])})"
     t = [f"test_{i}_pass if {{", f'\t{m}.status_{i} == "Not_a_Finding" with input as {green_name}', "}", ""]
     for n, bad in enumerate(spec["bad"], 1):
+        bad, detail = bad_detail(sid, spec, bad)
         t += [f"test_{i}_fail_{n} if {{",
               f"\tf := {m}.finding_{i} with input as object.union({green_name}, {json.dumps(bad)})",
-              '\tf.status == "Open"', f'\tcontains(f.detail, "{sid}: check failed")', "}", ""]
+              '\tf.status == "Open"', f'\tcontains(f.detail, "{esc(detail)}")', "}", ""]
+    # a numeric fact sent as text (the decimal string of its passing value, bare and padded) is an evidence finding
+    for n, p in enumerate(numeric_paths(spec), 1):
+        g = spec["green"]
+        for k in p:
+            g = g.get(k) if isinstance(g, dict) else None
+        if isinstance(g, bool) or not isinstance(g, int):
+            continue
+        fact = ".".join(p)
+        t += [f"test_{i}_number_as_text_{n} if {{",
+              f'\tevery text in ["{g}", " {g} "] {{',
+              f"\t\tf := {m}.finding_{i} with input as object.union({green_name}, "
+              + "".join(f"{{{json.dumps(k)}: " for k in p) + "text" + "}" * len(p) + ")",
+              '\t\tf.status == "Open"',
+              f'\t\tf.detail == "{sid}: evidence invalid — {esc(fact)} is not a number (got string)"', "\t}", "}", ""]
     for n, p in enumerate(spec["ev"], 1):
         t += [f"test_{i}_evidence_missing_{n} if {{",
               f"\tf := {m}.finding_{i} with input as json.remove({green_name}, [{json.dumps(list(p))}])",

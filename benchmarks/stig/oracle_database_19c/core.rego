@@ -23,22 +23,18 @@ package stig.oracle_database_19c.core
 # SRG-STIG library XCCDF on 2026-10-13 (tools/stig_generators/gen_oracle_db.py).
 # Organizational rules are explicit attestation booleans — named for what
 # a human verified, never silently passed. Input contract:
-#   input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase)
-#   input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector
+#   input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase); max_idle_time a JSON number
+#   input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector; numeric limits JSON numbers, a word (UNLIMITED) text
 #   input.oracle.<query result>                : rows the STIG query must not return (lists), counts, flags
 #   input.oracle.attest.*                      : attestation booleans (documented reviews)
 
 import rego.v1
 
-# a numeric value as Oracle reports it: a number, or a string holding a decimal number ("3", "0.0034").
-# Undefined for anything else (UNLIMITED, DEFAULT, null, a boolean): to_number(null) is 0 and to_number(true)
-# is 1, so raw input is never passed to to_number.
+# a numeric value as a JSON number (3, 0.0034; a limit that is a word stays the word: UNLIMITED, DEFAULT).
+# A number sent as text ("3", " 3 ") is not read: the collector converts what Oracle reports. Undefined for
+# anything else (UNLIMITED, DEFAULT, null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
+# never passed to to_number.
 _num(v) := v if is_number(v)
-
-_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+(\.[0-9]+)?\s*$`, v)
-}
 
 # a query result that lists names (policies, files): an array whose every member is a non-empty string.
 # count() of a string is its length, so a list is never counted before it is known to be one.

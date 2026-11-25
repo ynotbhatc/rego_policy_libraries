@@ -48,20 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
 # (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
+	_whole_number(v)
+}
+
+_whole_number(v) if {
 	is_number(v)
 	v == floor(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -604,6 +613,8 @@ finding_rhel_09_255155 := {
 # effective sshd ClientAliveInterval (sshd -T)
 missing_rhel_09_255100 := [concat(".", p) | some p in [["ssh_config", "ClientAliveInterval"]]; not _collected(p)]
 
+invalid_rhel_09_255100 := [m | some p in [["ssh_config", "ClientAliveInterval"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default ssh_client_alive_interval_ok := false
 
 ssh_client_alive_interval_ok if {
@@ -620,6 +631,8 @@ else := "Open"
 detail_rhel_09_255100 := "RHEL-09-255100: Not_a_Finding" if ssh_client_alive_interval_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255100", concat(", ", missing_rhel_09_255100)]) if count(missing_rhel_09_255100) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-255100", concat(", ", invalid_rhel_09_255100)]) if count(invalid_rhel_09_255100) > 0
 
 else := "RHEL-09-255100: check failed — sshd ClientAliveInterval must be set to 600 or less"
 
@@ -638,6 +651,8 @@ finding_rhel_09_255100 := {
 # effective sshd ClientAliveCountMax (sshd -T)
 missing_rhel_09_255095 := [concat(".", p) | some p in [["ssh_config", "ClientAliveCountMax"]]; not _collected(p)]
 
+invalid_rhel_09_255095 := [m | some p in [["ssh_config", "ClientAliveCountMax"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default ssh_client_alive_count_ok := false
 
 ssh_client_alive_count_ok if {
@@ -654,6 +669,8 @@ else := "Open"
 detail_rhel_09_255095 := "RHEL-09-255095: Not_a_Finding" if ssh_client_alive_count_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255095", concat(", ", missing_rhel_09_255095)]) if count(missing_rhel_09_255095) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-255095", concat(", ", invalid_rhel_09_255095)]) if count(invalid_rhel_09_255095) > 0
 
 else := "RHEL-09-255095: check failed — sshd ClientAliveCountMax must be 1"
 

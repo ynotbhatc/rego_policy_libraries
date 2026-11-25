@@ -23,7 +23,7 @@ package stig.oracle_mysql_8.core
 # SRG-STIG library XCCDF on 2026-10-13 (tools/stig_generators/gen_oracle_db.py).
 # Organizational rules are explicit attestation booleans — named for what
 # a human verified, never silently passed. Input contract:
-#   input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase)
+#   input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase); max_user_connections, validate_password.length, audit_log_rotate_on_size JSON numbers
 #   input.mysql.plugins[<name>]    : INFORMATION_SCHEMA.PLUGINS status
 #   input.mysql.audit.*            : audit_log filters and startup mode
 #   input.mysql.users[]            : mysql.user rows {user, host, plugin}
@@ -32,15 +32,11 @@ package stig.oracle_mysql_8.core
 
 import rego.v1
 
-# a numeric value as MySQL reports it: a number, or a string holding a decimal number ("50"; SHOW VARIABLES returns text).
-# Undefined for anything else ("", ON, null, a boolean): to_number(null) is 0 and to_number(true)
-# is 1, so raw input is never passed to to_number.
+# a numeric value as a JSON number (50; SHOW VARIABLES returns every value as text, so the collector converts it).
+# A number sent as text ("3", " 3 ") is not read: the collector converts what MySQL reports. Undefined for
+# anything else ("", ON, null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
+# never passed to to_number.
 _num(v) := v if is_number(v)
-
-_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+(\.[0-9]+)?\s*$`, v)
-}
 
 # a query result that lists names (policies, files): an array whose every member is a non-empty string.
 # count() of a string is its length, so a list is never counted before it is known to be one.

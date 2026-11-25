@@ -48,20 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
 # (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
+	_whole_number(v)
+}
+
+_whole_number(v) if {
 	is_number(v)
 	v == floor(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -432,6 +441,8 @@ finding_ol09_00_002357 := {
 # effective sshd ClientAliveCountMax (sshd -T)
 missing_ol09_00_002346 := [concat(".", p) | some p in [["ssh_config", "ClientAliveCountMax"]]; not _collected(p)]
 
+invalid_ol09_00_002346 := [m | some p in [["ssh_config", "ClientAliveCountMax"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default ssh_client_alive_count_ok := false
 
 ssh_client_alive_count_ok if {
@@ -448,6 +459,8 @@ else := "Open"
 detail_ol09_00_002346 := "OL09-00-002346: Not_a_Finding" if ssh_client_alive_count_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-002346", concat(", ", missing_ol09_00_002346)]) if count(missing_ol09_00_002346) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-002346", concat(", ", invalid_ol09_00_002346)]) if count(invalid_ol09_00_002346) > 0
 
 else := "OL09-00-002346: check failed — sshd ClientAliveCountMax must be 1"
 
@@ -466,6 +479,8 @@ finding_ol09_00_002346 := {
 # effective sshd ClientAliveInterval (sshd -T)
 missing_ol09_00_002347 := [concat(".", p) | some p in [["ssh_config", "ClientAliveInterval"]]; not _collected(p)]
 
+invalid_ol09_00_002347 := [m | some p in [["ssh_config", "ClientAliveInterval"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default ssh_client_alive_interval_ok := false
 
 ssh_client_alive_interval_ok if {
@@ -482,6 +497,8 @@ else := "Open"
 detail_ol09_00_002347 := "OL09-00-002347: Not_a_Finding" if ssh_client_alive_interval_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-002347", concat(", ", missing_ol09_00_002347)]) if count(missing_ol09_00_002347) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL09-00-002347", concat(", ", invalid_ol09_00_002347)]) if count(invalid_ol09_00_002347) > 0
 
 else := "OL09-00-002347: check failed — sshd ClientAliveInterval must be set to 600 or less"
 

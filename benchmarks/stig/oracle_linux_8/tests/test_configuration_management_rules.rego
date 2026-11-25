@@ -566,6 +566,14 @@ test_ol08_00_010182_fail_4 if {
 	contains(f.detail, "OL08-00-010182: check failed")
 }
 
+test_ol08_00_010182_number_as_text_1 if {
+	every text in ["2048", " 2048 "] {
+		f := data.stig.oracle_linux_8.configuration_management.finding_ol08_00_010182 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": text}})
+		f.status == "Open"
+		f.detail == "OL08-00-010182: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)"
+	}
+}
+
 test_ol08_00_010182_evidence_missing_1 if {
 	f := data.stig.oracle_linux_8.configuration_management.finding_ol08_00_010182 with input as json.remove(green_fixture, [["crypto_policy"]])
 	f.status == "Open"

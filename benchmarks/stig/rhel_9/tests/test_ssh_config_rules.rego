@@ -309,7 +309,27 @@ test_rhel_09_255100_fail_2 if {
 test_rhel_09_255100_fail_3 if {
 	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255100 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "10m"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-255100: check failed")
+	contains(f.detail, "RHEL-09-255100: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)")
+}
+
+test_rhel_09_255100_fail_4 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255100 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "600"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255100: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)")
+}
+
+test_rhel_09_255100_fail_5 if {
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255100 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-255100: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)")
+}
+
+test_rhel_09_255100_number_as_text_1 if {
+	every text in ["600", " 600 "] {
+		f := data.stig.rhel_9.ssh_config.finding_rhel_09_255100 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-255100: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)"
+	}
 }
 
 test_rhel_09_255100_evidence_missing_1 if {
@@ -319,11 +339,11 @@ test_rhel_09_255100_evidence_missing_1 if {
 }
 
 test_rhel_09_255100_pass_2 if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "600"}})
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": 300}})
 }
 
 test_rhel_09_255100_pass_3 if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "0"}})
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": 0}})
 }
 
 test_rhel_09_255095_pass if {
@@ -342,14 +362,18 @@ test_rhel_09_255095_fail_2 if {
 	contains(f.detail, "RHEL-09-255095: check failed")
 }
 
+test_rhel_09_255095_number_as_text_1 if {
+	every text in ["1", " 1 "] {
+		f := data.stig.rhel_9.ssh_config.finding_rhel_09_255095 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveCountMax": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-255095: evidence invalid — ssh_config.ClientAliveCountMax is not a number (got string)"
+	}
+}
+
 test_rhel_09_255095_evidence_missing_1 if {
 	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255095 with input as json.remove(green_fixture, [["ssh_config", "ClientAliveCountMax"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-255095: evidence missing — ssh_config.ClientAliveCountMax")
-}
-
-test_rhel_09_255095_pass_2 if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255095 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveCountMax": "1"}})
 }
 
 test_rhel_09_252070_pass if {

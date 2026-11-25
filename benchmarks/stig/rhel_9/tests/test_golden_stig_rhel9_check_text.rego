@@ -2,7 +2,8 @@
 # Every case gives the rule the evidence the check text shows: the expected command output is Not_a_Finding,
 # the condition after "If ... this is a finding" is Open, and where the check text names one, the Not
 # Applicable case or the SA / ISSO evidence that clears the finding. Each block cites the rule and vulnerability
-# id and quotes one short phrase of the check text. Values are the strings the commands print.
+# id and quotes one short phrase of the check text. Values are what the commands print; a numeric setting
+# is a JSON number (the collector converts the printed text), see LINUX_COLLECTOR_CONTRACT.md.
 #
 # Issue #305. Hand-written: tools/stig_generators/gen_rhel9.py writes test_<section>_rules.rego and
 # test_rhel9_green.rego, never this file.
@@ -57,122 +58,122 @@ test_golden_rhel_09_255050_no_is_a_finding if {
 
 # RHEL-09-255100 (V-257996): "a value of "600" or less"
 test_golden_rhel_09_255100_600_passes if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": "600"}}
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": 600}}
 }
 
 test_golden_rhel_09_255100_300_passes if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": "300"}}
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": 300}}
 }
 
 test_golden_rhel_09_255100_1_passes if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": "1"}}
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": 1}}
 }
 
 test_golden_rhel_09_255100_601_is_a_finding if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Open" with input as {"ssh_config": {"ClientAliveInterval": "601"}}
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Open" with input as {"ssh_config": {"ClientAliveInterval": 601}}
 }
 
 # The finding clause names only a missing, commented-out or larger value: 0 is "600" or less (aligned 2026-11-21)
 test_golden_rhel_09_255100_0_passes if {
-	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": "0"}}
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": 0}}
 }
 
 # RHEL-09-411075 (V-258054): ""3" or less (but not "0")"
 test_golden_rhel_09_411075_deny_3_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Not_a_Finding" with input as {"faillock_conf": {"deny": "3"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Not_a_Finding" with input as {"faillock_conf": {"deny": 3}}
 }
 
 test_golden_rhel_09_411075_deny_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Not_a_Finding" with input as {"faillock_conf": {"deny": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Not_a_Finding" with input as {"faillock_conf": {"deny": 1}}
 }
 
 test_golden_rhel_09_411075_deny_4_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Open" with input as {"faillock_conf": {"deny": "4"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Open" with input as {"faillock_conf": {"deny": 4}}
 }
 
 test_golden_rhel_09_411075_deny_0_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Open" with input as {"faillock_conf": {"deny": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Open" with input as {"faillock_conf": {"deny": 0}}
 }
 
 # RHEL-09-411085 (V-258056): ""900" or less (but not "0")"
 test_golden_rhel_09_411085_900_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Not_a_Finding" with input as {"faillock_conf": {"fail_interval": "900"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Not_a_Finding" with input as {"faillock_conf": {"fail_interval": 900}}
 }
 
 test_golden_rhel_09_411085_901_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Open" with input as {"faillock_conf": {"fail_interval": "901"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Open" with input as {"faillock_conf": {"fail_interval": 901}}
 }
 
 test_golden_rhel_09_411085_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Not_a_Finding" with input as {"faillock_conf": {"fail_interval": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Not_a_Finding" with input as {"faillock_conf": {"fail_interval": 1}}
 }
 
 test_golden_rhel_09_411085_0_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Open" with input as {"faillock_conf": {"fail_interval": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Open" with input as {"faillock_conf": {"fail_interval": 0}}
 }
 
 # RHEL-09-611090 (V-258107): ""15" or greater"
 test_golden_rhel_09_611090_15_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Not_a_Finding" with input as {"password_policy": {"minlen": "15"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Not_a_Finding" with input as {"password_policy": {"minlen": 15}}
 }
 
 test_golden_rhel_09_611090_20_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Not_a_Finding" with input as {"password_policy": {"minlen": "20"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Not_a_Finding" with input as {"password_policy": {"minlen": 20}}
 }
 
 test_golden_rhel_09_611090_14_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Open" with input as {"password_policy": {"minlen": "14"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Open" with input as {"password_policy": {"minlen": 14}}
 }
 
 # RHEL-09-611110 (V-258111): "a positive number"
 test_golden_rhel_09_611110_minus_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as {"password_policy": {"ucredit": "-1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as {"password_policy": {"ucredit": -1}}
 }
 
 test_golden_rhel_09_611110_plus_1_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Open" with input as {"password_policy": {"ucredit": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Open" with input as {"password_policy": {"ucredit": 1}}
 }
 
 test_golden_rhel_09_611110_0_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as {"password_policy": {"ucredit": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as {"password_policy": {"ucredit": 0}}
 }
 
 test_golden_rhel_09_611110_minus_2_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as {"password_policy": {"ucredit": "-2"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as {"password_policy": {"ucredit": -2}}
 }
 
 # RHEL-09-611065 (V-258102): "a positive number"
 test_golden_rhel_09_611065_minus_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as {"password_policy": {"lcredit": "-1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as {"password_policy": {"lcredit": -1}}
 }
 
 test_golden_rhel_09_611065_plus_1_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Open" with input as {"password_policy": {"lcredit": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Open" with input as {"password_policy": {"lcredit": 1}}
 }
 
 test_golden_rhel_09_611065_0_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as {"password_policy": {"lcredit": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as {"password_policy": {"lcredit": 0}}
 }
 
 test_golden_rhel_09_611065_minus_2_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as {"password_policy": {"lcredit": "-2"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as {"password_policy": {"lcredit": -2}}
 }
 
 # RHEL-09-611070 (V-258103): "a positive number"
 test_golden_rhel_09_611070_minus_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as {"password_policy": {"dcredit": "-1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as {"password_policy": {"dcredit": -1}}
 }
 
 test_golden_rhel_09_611070_plus_1_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Open" with input as {"password_policy": {"dcredit": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Open" with input as {"password_policy": {"dcredit": 1}}
 }
 
 test_golden_rhel_09_611070_0_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as {"password_policy": {"dcredit": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as {"password_policy": {"dcredit": 0}}
 }
 
 test_golden_rhel_09_611070_minus_2_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as {"password_policy": {"dcredit": "-2"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as {"password_policy": {"dcredit": -2}}
 }
 
 test_golden_rhel_09_611070_commented_out_is_a_finding if {
@@ -181,19 +182,19 @@ test_golden_rhel_09_611070_commented_out_is_a_finding if {
 
 # RHEL-09-611100 (V-258109): "a positive number"
 test_golden_rhel_09_611100_minus_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as {"password_policy": {"ocredit": "-1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as {"password_policy": {"ocredit": -1}}
 }
 
 test_golden_rhel_09_611100_plus_1_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Open" with input as {"password_policy": {"ocredit": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Open" with input as {"password_policy": {"ocredit": 1}}
 }
 
 test_golden_rhel_09_611100_0_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as {"password_policy": {"ocredit": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as {"password_policy": {"ocredit": 0}}
 }
 
 test_golden_rhel_09_611100_minus_2_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as {"password_policy": {"ocredit": "-2"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as {"password_policy": {"ocredit": -2}}
 }
 
 test_golden_rhel_09_611100_commented_out_is_a_finding if {
@@ -202,41 +203,41 @@ test_golden_rhel_09_611100_commented_out_is_a_finding if {
 
 # RHEL-09-411010 (V-258041): "greater than "180""
 test_golden_rhel_09_411010_180_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as {"password_policy": {"maxdays": "180"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as {"password_policy": {"maxdays": 180}}
 }
 
 test_golden_rhel_09_411010_181_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Open" with input as {"password_policy": {"maxdays": "181"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Open" with input as {"password_policy": {"maxdays": 181}}
 }
 
 test_golden_rhel_09_411010_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as {"password_policy": {"maxdays": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as {"password_policy": {"maxdays": 1}}
 }
 
 # RHEL-09-611075 (V-258104): ""1" or greater"
 test_golden_rhel_09_611075_1_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611075 == "Not_a_Finding" with input as {"password_policy": {"mindays": "1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611075 == "Not_a_Finding" with input as {"password_policy": {"mindays": 1}}
 }
 
 test_golden_rhel_09_611075_0_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611075 == "Open" with input as {"password_policy": {"mindays": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_611075 == "Open" with input as {"password_policy": {"mindays": 0}}
 }
 
 # RHEL-09-411050 (V-258049): "set to "-1", a value greater than "35""
 test_golden_rhel_09_411050_35_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as {"password_policy": {"inactive_days": "35"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as {"password_policy": {"inactive_days": 35}}
 }
 
 test_golden_rhel_09_411050_0_passes if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as {"password_policy": {"inactive_days": "0"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as {"password_policy": {"inactive_days": 0}}
 }
 
 test_golden_rhel_09_411050_minus_1_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Open" with input as {"password_policy": {"inactive_days": "-1"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Open" with input as {"password_policy": {"inactive_days": -1}}
 }
 
 test_golden_rhel_09_411050_36_is_a_finding if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Open" with input as {"password_policy": {"inactive_days": "36"}}
+	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Open" with input as {"password_policy": {"inactive_days": 36}}
 }
 
 # RHEL-09-611140 (V-258117): "a value of "SHA512""

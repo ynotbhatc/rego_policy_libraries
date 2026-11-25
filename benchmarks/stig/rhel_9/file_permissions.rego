@@ -48,20 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
 # (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
+	_whole_number(v)
+}
+
+_whole_number(v) if {
 	is_number(v)
 	v == floor(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -89,16 +98,11 @@ octal(s) := n if {
 # true when mode grants nothing beyond max (both octal strings)
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
-# an entry {path, group, gid} whose group is a system account group (GID below 1000, type-guarded)
+# an entry {path, group, gid} whose group is a system account group (GID below 1000; gid is stat's %g as a
+# JSON whole number, never its text)
 _system_group(e) if {
-	is_number(e.gid)
+	_whole_number(e.gid)
 	e.gid < 1000
-}
-
-_system_group(e) if {
-	is_string(e.gid)
-	regex.match(`^\s*[0-9]+\s*$`, e.gid)
-	to_number(trim_space(e.gid)) < 1000
 }
 
 # device_t device files: none, only the hypervisor device the check text names, or attested as virtual machine devices
@@ -120,13 +124,8 @@ _rpm_verify_line_ok(l) if {
 	regex.match(`^.\..\.\.\.\..\.`, f[0])
 }
 
-# a numeric id (uid / gid) given as a number or a decimal string; undefined otherwise
-_id_num(v) := v if is_number(v)
-
-_id_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*[0-9]+\s*$`, v)
-}
+# a numeric id (uid / gid): a JSON whole number only (getent's field 4, stat's %g; never the text); undefined otherwise
+_id_num(v) := v if _whole_number(v)
 
 # a login shell the home-directory group check leaves out: awk's $7 !~ /(nologin|false)$/
 _no_login_shell(u) if {
@@ -1861,6 +1860,8 @@ finding_rhel_09_232235 := {
 # find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -group root -exec stat -L -c "%G %g %n": input.file_permissions.system_commands_not_group_owned_by_root[{path, group, gid}]
 missing_rhel_09_232195 := [concat(".", p) | some p in [["file_permissions", "system_commands_not_group_owned_by_root"]]; not _collected(p)]
 
+invalid_rhel_09_232195 := [m | some i, e in input.file_permissions.system_commands_not_group_owned_by_root; m := _not_a_number(sprintf("file_permissions.system_commands_not_group_owned_by_root[%d].gid", [i]), e.gid)]
+
 default sys_commands_group_root := false
 
 sys_commands_group_root if {
@@ -1880,6 +1881,8 @@ detail_rhel_09_232195 := "RHEL-09-232195: Not_a_Finding" if sys_commands_group_r
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232195", concat(", ", missing_rhel_09_232195)]) if count(missing_rhel_09_232195) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-232195", concat(", ", invalid_rhel_09_232195)]) if count(invalid_rhel_09_232195) > 0
+
 else := "RHEL-09-232195: check failed — every system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin must be group-owned by root or a system account group (GID below 1000)"
 
 finding_rhel_09_232195 := {
@@ -1896,6 +1899,8 @@ finding_rhel_09_232195 := {
 # RHEL-09-232215 | V-257923 | CAT II
 # find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%G %g %n": input.file_permissions.library_dirs_not_group_owned_by_root[{path, group, gid}]
 missing_rhel_09_232215 := [concat(".", p) | some p in [["file_permissions", "library_dirs_not_group_owned_by_root"]]; not _collected(p)]
+
+invalid_rhel_09_232215 := [m | some i, e in input.file_permissions.library_dirs_not_group_owned_by_root; m := _not_a_number(sprintf("file_permissions.library_dirs_not_group_owned_by_root[%d].gid", [i]), e.gid)]
 
 default library_dirs_group_root := false
 
@@ -1915,6 +1920,8 @@ else := "Open"
 detail_rhel_09_232215 := "RHEL-09-232215: Not_a_Finding" if library_dirs_group_root
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232215", concat(", ", missing_rhel_09_232215)]) if count(missing_rhel_09_232215) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-232215", concat(", ", invalid_rhel_09_232215)]) if count(invalid_rhel_09_232215) > 0
 
 else := "RHEL-09-232215: check failed — every directory under /lib, /lib64, /usr/lib, /usr/lib64 must be group-owned by root or a system account group (GID below 1000)"
 
@@ -2186,6 +2193,8 @@ finding_rhel_09_255125 := {
 # primary_gid (getent passwd field 4) against home_gid (stat -c %g <home>) for each entry of input.interactive_users
 missing_rhel_09_411070 := [concat(".", p) | some p in [["interactive_users"]]; not _collected(p)]
 
+invalid_rhel_09_411070 := [m | some i, u in input.interactive_users; not _no_login_shell(u); some k in ["home_gid", "primary_gid"]; m := _not_a_number(sprintf("interactive_users[%d].%s", [i, k]), object.get(u, k, null))]
+
 default home_dirs_group_owned_by_primary_group := false
 
 home_dirs_group_owned_by_primary_group if {
@@ -2204,6 +2213,8 @@ else := "Open"
 detail_rhel_09_411070 := "RHEL-09-411070: Not_a_Finding" if home_dirs_group_owned_by_primary_group
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411070", concat(", ", missing_rhel_09_411070)]) if count(missing_rhel_09_411070) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-411070", concat(", ", invalid_rhel_09_411070)]) if count(invalid_rhel_09_411070) > 0
 
 else := "RHEL-09-411070: check failed — the home directory of every local interactive user (UID >= 1000, shell not nologin or false) must be group-owned by the user's primary GID"
 

@@ -1,8 +1,9 @@
 package stig.oracle_mysql_8.bad_input_types_test
 
 # Wrong-typed facts never pass (audit 2026-11-24, round 2). MySQL returns every system variable as text
-# (SHOW VARIABLES, performance_schema.global_variables.VARIABLE_VALUE), so a numeric variable is read from a
-# decimal string or a number; null, booleans, lists and other text are not numbers. to_number(null) is 0 and
+# (SHOW VARIABLES, performance_schema.global_variables.VARIABLE_VALUE); the collector converts the numeric
+# variables to JSON numbers, and a number sent as text ("50", " 50 ") is not read (owner ruling 2026-11-24), nor
+# are null, booleans, lists or other text. to_number(null) is 0 and
 # to_number(true) is 1, which used to satisfy "> 0". count() of a string is its length and count("") is 0,
 # which used to satisfy "an audit filter is defined" and "no rows returned".
 
@@ -48,22 +49,22 @@ numeric_variables := {
 
 test_numeric_variable_of_the_wrong_type_opens_its_rule if {
 	every p, id in numeric_variables {
-		every bad in [null, true, false, "", " ", "abc", "ON", "1e3", "0x20", ["50"], {"value": 50}] {
+		every bad in [null, true, false, "", " ", "abc", "ON", "1e3", "0x20", "50", " 50 ", ["50"], {"value": 50}] {
 			id in open_ids(set(p, bad))
 		}
 		id in open_ids(drop(p))
 	}
 }
 
-# both shapes of a number stay accepted, and the comparison is still made
-test_number_and_decimal_string_pass if {
+# a JSON number is read and the comparison is still made; the same value as text is not a number
+test_number_passes_and_the_comparison_is_made if {
 	compliant(set("/mysql/variables/max_user_connections", 50)) == true
-	compliant(set("/mysql/variables/max_user_connections", " 50 ")) == true
 	compliant(set("/mysql/variables/validate_password.length", 15)) == true
-	"MYS8-00-000200" in open_ids(set("/mysql/variables/max_user_connections", "0"))
 	"MYS8-00-000200" in open_ids(set("/mysql/variables/max_user_connections", 0))
-	"MYS8-00-005000" in open_ids(set("/mysql/variables/validate_password.length", "14"))
-	"MYS8-00-009600" in open_ids(set("/mysql/variables/audit_log_rotate_on_size", "0"))
+	"MYS8-00-005000" in open_ids(set("/mysql/variables/validate_password.length", 14))
+	"MYS8-00-009600" in open_ids(set("/mysql/variables/audit_log_rotate_on_size", 0))
+	"MYS8-00-000200" in open_ids(set("/mysql/variables/max_user_connections", "50"))
+	"MYS8-00-005000" in open_ids(set("/mysql/variables/validate_password.length", " 15 "))
 }
 
 # "the query returns no rows" is an empty array; "", {}, null, 0 and false are not that evidence

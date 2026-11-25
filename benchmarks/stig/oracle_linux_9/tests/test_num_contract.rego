@@ -1,10 +1,11 @@
 package stig.oracle_linux_9.num_contract_test
 
-# The documented numeric contract of the Linux STIG modules (benchmarks/stig/LINUX_COLLECTOR_CONTRACT.md,
-# "How the rules read a fact", `_num`): a whole number, or a string holding a decimal integer with optional
-# surrounding whitespace. Everything else is not a pass. Hand-written (audit 2026-11-24, round 2): each fact of
-# the green fixture that a rule reads through `_num` is replaced in turn, and the status of every rule the
-# contract lists for that fact is read.
+# The numeric contract of the Linux STIG modules (benchmarks/stig/LINUX_COLLECTOR_CONTRACT.md, "How the rules
+# read a fact", `_num`): a whole JSON number, and nothing else. A number sent as text ("900", " 900 "), a fraction,
+# null, a boolean, a list and a non-numeric string are not a pass; a fact that is collected but is not a number is
+# an "evidence invalid" finding naming the fact and the type received (owner ruling 2026-11-24). Hand-written:
+# each fact of the green fixture that a rule reads through `_num` is replaced in turn, and the status and detail
+# of every rule the contract lists for that fact are read.
 
 import rego.v1
 
@@ -40,6 +41,19 @@ status("ssh_config", name, inp) := s if {
 	s := data.stig.oracle_linux_9.ssh_config[name] with input as inp
 }
 
+detail_of(r, inp) := d if {
+	d := status(r[0], replace(r[1], "status_", "detail_"), inp)
+}
+
+fact_name(f) := replace(trim_prefix(f[0], "/"), "/", ".")
+
+# every rule that reads the fact reports it as invalid, with the type that was received
+invalid_as(f, inp, got) if {
+	every r in f[2] {
+		contains(detail_of(r, inp), sprintf("evidence invalid — %s is not a number (got %s)", [fact_name(f), got]))
+	}
+}
+
 passes(f, inp) if {
 	every r in f[2] {
 		status(r[0], r[1], inp) == "Not_a_Finding"
@@ -52,10 +66,12 @@ test_fixture_passes if {
 	every f in num_facts { passes(f, fx) }
 }
 
-test_decimal_string_passes_as_documented if {
+test_decimal_string_is_evidence_invalid if {
 	every f in num_facts {
-		passes(f, with_value(f, sprintf("%d", [f[1]])))
-		passes(f, with_value(f, sprintf(" %d ", [f[1]])))
+		every text in [sprintf("%d", [f[1]]), sprintf(" %d ", [f[1]]), sprintf("%d\n", [f[1]])] {
+			not passes(f, with_value(f, text))
+			invalid_as(f, with_value(f, text), "string")
+		}
 	}
 }
 
@@ -70,6 +86,8 @@ test_booleans_do_not_pass if {
 	every f in num_facts {
 		not passes(f, with_value(f, true))
 		not passes(f, with_value(f, false))
+		invalid_as(f, with_value(f, true), "boolean")
+		invalid_as(f, with_value(f, false), "boolean")
 	}
 }
 
@@ -84,10 +102,15 @@ test_garbage_and_empty_strings_do_not_pass if {
 test_fraction_does_not_pass if {
 	every f in num_facts {
 		not passes(f, with_value(f, f[1] + 0.5))
+		invalid_as(f, with_value(f, f[1] + 0.5), "a fraction")
 		not passes(f, with_value(f, sprintf("%d.5", [f[1]])))
+		invalid_as(f, with_value(f, sprintf("%d.5", [f[1]])), "string")
 	}
 }
 
 test_list_does_not_pass if {
-	every f in num_facts { not passes(f, with_value(f, [f[1]])) }
+	every f in num_facts {
+		not passes(f, with_value(f, [f[1]]))
+		invalid_as(f, with_value(f, [f[1]]), "array")
+	}
 }

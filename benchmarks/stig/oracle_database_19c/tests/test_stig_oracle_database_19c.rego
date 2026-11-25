@@ -11,13 +11,13 @@ test_report_wellformed_on_empty_input if {
 
 green_fixture := {"oracle": {
 	"profiles": {"ORA_STIG_PROFILE": {
-		"SESSIONS_PER_USER": "10",
+		"SESSIONS_PER_USER": 10,
 		"PASSWORD_LOCK_TIME": "UNLIMITED",
-		"FAILED_LOGIN_ATTEMPTS": "3",
-		"INACTIVE_ACCOUNT_TIME": "35",
+		"FAILED_LOGIN_ATTEMPTS": 3,
+		"INACTIVE_ACCOUNT_TIME": 35,
 		"PASSWORD_VERIFY_FUNCTION": "ORA12C_STIG_VERIFY_FUNCTION",
-		"PASSWORD_LIFE_TIME": "60",
-		"PASSWORD_GRACE_TIME": "5",
+		"PASSWORD_LIFE_TIME": 60,
+		"PASSWORD_GRACE_TIME": 5,
 	}},
 	"listener": {
 		"rate_limit_configured": true,
@@ -25,7 +25,7 @@ green_fixture := {"oracle": {
 		"extproc_configured": false,
 	},
 	"parameters": {
-		"max_idle_time": "15",
+		"max_idle_time": 15,
 		"audit_trail": "DB",
 		"remote_os_roles": "FALSE",
 		"sql92_security": "TRUE",

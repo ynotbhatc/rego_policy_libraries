@@ -30,7 +30,7 @@ SHORT = {"rhel_9": "R9", "oracle_linux_9": "OL9", "oracle_linux_8": "OL8", "rhel
 ACCESSORS = {
     "_str": "string, or integer (read as its decimal text); trimmed",
     "_kw": "string, or integer; trimmed and compared case-insensitively",
-    "_num": "number, or string holding a decimal integer",
+    "_num": "whole JSON number",
     "_collected": "any non-null value (presence)",
 }
 
@@ -216,10 +216,20 @@ is not read by any rule: RHEL-09-671010 reports `evidence missing — fips.fips_
   (read only in a branch, e.g. a service's config when its package is installed).
 - **Accepted** (from the helper the rule reads it through):
   `_str` string or integer (decimal text), trimmed; `_kw` the same, compared case-insensitively;
-  `_num` a whole number, or a string holding a decimal integer with optional surrounding whitespace (`3`, `"3"`,
-  `" 3 "`); null, a boolean, a fraction (`3.5`), an empty or non-numeric string and a list are not a pass;
-  a uid or gid inside a record (`interactive_users[].primary_gid`, `.home_gid`) is read the same way: a number or
-  its decimal text, as `getent` and `stat` print it;
+  `_num` a whole JSON number (`3`, `900`, `-1`) and nothing else. **A number is never read from text:** `"3"`,
+  `" 3 "`, `"3s"`, a fraction (`3.5`), a boolean, a list and an object are not numbers; null or absent is "evidence
+  missing". A fact that is collected but is not a whole JSON number makes the finding `Open` with detail
+  `<STIG-ID>: evidence invalid — <fact> is not a number (got <string|boolean|array|object|a fraction>)`. The
+  collector converts the configured text (`PASS_MAX_DAYS 180`, `minlen = 15`, `sshd -T` output) to a number before
+  it sends it. The same holds for a uid, a gid, a `maxpoll`, a TMOUT or `maxlogins` value and the other numeric
+  fields inside a record (`interactive_users[].primary_gid`, `.home_gid`, `chrony_conf.sources[].maxpoll`,
+  `file_permissions.*[].gid`, `profile_tmout[].value`, `limits_maxlogins[].value`), and for the values of
+  `pwquality_values.<option>[]` (Oracle Linux 8). A gsettings unsigned value (`gnome.session_idle_delay`,
+  `gnome.screensaver_lock_delay`) is a whole JSON number or the text `gsettings get` prints (`"uint32 600"`),
+  never a bare decimal string. Facts that are text stay text: user names, file modes (`"0644"`), unit names,
+  sshd keyword values (`"no"`, `"yes"`, `"prohibit-password"`), sshd lines as written in a file
+  (`sshd_config_files.*[].value`, `sshd_config_lines.*[]`, `sshd_runtime.*`), dnf options (`"1"`, `"yes"`),
+  sysctl and kernel values compared as text with `_str`;
   `_collected` presence only. A path read directly (`input.x`) takes the fixture type; a boolean passes only
   on `true` (or the literal the rule compares with).
 - **Collect the observed value, not a verdict**: the policy holds the expected value (`"1"`, `"masked"`, a

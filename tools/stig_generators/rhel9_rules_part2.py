@@ -227,16 +227,11 @@ for sid, attr, fmt, cmd in (("RHEL-09-232230", "owner", "%U", "chown"), ("RHEL-0
 # group ownership "by root or a required system account": the find lists what is not group root; a listed entry
 # passes only when its group is a system group (GID below 1000)
 helpers(FP, r'''
-# an entry {path, group, gid} whose group is a system account group (GID below 1000, type-guarded)
+# an entry {path, group, gid} whose group is a system account group (GID below 1000; gid is stat's %g as a
+# JSON whole number, never its text)
 _system_group(e) if {
-	is_number(e.gid)
+	_whole_number(e.gid)
 	e.gid < 1000
-}
-
-_system_group(e) if {
-	is_string(e.gid)
-	regex.match(`^\s*[0-9]+\s*$`, e.gid)
-	to_number(trim_space(e.gid)) < 1000
 }''')
 for sid, name, key, what, find in (
         ("RHEL-09-232195", "sys_commands_group_root", "system_commands_not_group_owned_by_root",
@@ -249,12 +244,18 @@ for sid, name, key, what, find in (
       [[f"xs := input.file_permissions.{key}", "is_array(xs)", "every e in xs {\n\t_system_group(e)\n}"]],
       {FP: {key: []}},
       [{FP: {key: [{"path": "/usr/local/x", "group": "staff", "gid": 1001}]}},
-       {FP: {key: [{"path": "/usr/local/x", "group": "staff", "gid": "users"}]}},
+       ("invalid", {FP: {key: [{"path": "/usr/local/x", "group": "staff", "gid": "users"}]}},
+        f"file_permissions.{key}[0].gid is not a number (got string)"),
+       ("invalid", {FP: {key: [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": "22"}]}},
+        f"file_permissions.{key}[1].gid is not a number (got string)"),
+       ("invalid", {FP: {key: [{"path": "/usr/x", "group": "utmp", "gid": 22.5}]}},
+        f"file_permissions.{key}[0].gid is not a number (got a fraction)"),
        {FP: {key: [{"path": "/usr/local/x", "group": "tty"}]}}],
       f"every {what} must be group-owned by root or a system account group (GID below 1000)",
       "chgrp root each listed entry whose group is not a required system account",
       comment=f"{find}: input.file_permissions.{key}[{{path, group, gid}}]",
-      pass_cases=[{FP: {key: [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": "22"}]}}])
+      pass_cases=[{FP: {key: [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": 22}]}}],
+      num_items=[f'[m | some i, e in input.file_permissions.{key}; m := _not_a_number(sprintf("file_permissions.{key}[%d].gid", [i]), e.gid)]'])
 
 R(FP, "RHEL-09-232240", "world_writable_dirs_owner_ok", [(FP, "world_writable_dirs_owned_by_uid_1000_plus")],
   [[f"xs := input.file_permissions.world_writable_dirs_owned_by_uid_1000_plus", "is_array(xs)", "count(xs) == 0"]],
@@ -347,7 +348,7 @@ R("services", "RHEL-09-252015", "chronyd_active", [("services", "chronyd")], [['
   "chronyd must be active (systemctl is-active chronyd)", "Enable the service: systemctl enable --now chronyd",
   comment="systemctl is-active chronyd")
 
-_SRC = [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": "16"}]
+_SRC = [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": 16}]
 R("services", "RHEL-09-252020", "chrony_maxpoll_and_source", [("chrony_conf", "sources")],
   [["srcs := input.chrony_conf.sources", "is_array(srcs)",
     'count([s | some s in srcs; s.directive == "server"]) > 0',
@@ -356,7 +357,10 @@ R("services", "RHEL-09-252020", "chrony_maxpoll_and_source", [("chrony_conf", "s
     '_attested("rhel_09_252020_authoritative_time_source")']],
   {"chrony_conf": {"sources": _SRC}, "attest": {"rhel_09_252020_authoritative_time_source": True}},
   [{"chrony_conf": {"sources": [dict(_SRC[0], maxpoll=17)]}},
-   {"chrony_conf": {"sources": [dict(_SRC[0], maxpoll="sixteen")]}},
+   ("invalid", {"chrony_conf": {"sources": [dict(_SRC[0], maxpoll="sixteen")]}}, "chrony_conf.sources[0].maxpoll is not a number (got string)"),
+   ("invalid", {"chrony_conf": {"sources": [dict(_SRC[0], maxpoll="16")]}}, "chrony_conf.sources[0].maxpoll is not a number (got string)"),
+   ("invalid", {"chrony_conf": {"sources": [_SRC[0], dict(_SRC[0], maxpoll=" 10 ")]}}, "chrony_conf.sources[1].maxpoll is not a number (got string)"),
+   ("invalid", {"chrony_conf": {"sources": [dict(_SRC[0], maxpoll=10.5)]}}, "chrony_conf.sources[0].maxpoll is not a number (got a fraction)"),
    {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil"}]}},
    {"chrony_conf": {"sources": [{"directive": "pool", "address": "2.rhel.pool.ntp.org", "maxpoll": 10}]}},
    {"chrony_conf": {"sources": []}},
@@ -367,18 +371,13 @@ R("services", "RHEL-09-252020", "chrony_maxpoll_and_source", [("chrony_conf", "s
   comment="uncommented server / pool / peer lines of /etc/chrony.conf: input.chrony_conf.sources[{directive, address, maxpoll}] "
           "(maxpoll null when the line has none); whether the server is an authoritative DoW source is an attestation",
   kind="machine+attestation",
-  pass_cases=[{"chrony_conf": {"sources": [dict(_SRC[0], maxpoll=10), {"directive": "server", "address": "1.us.pool.ntp.mil"}]}}])
+  pass_cases=[{"chrony_conf": {"sources": [dict(_SRC[0], maxpoll=10), {"directive": "server", "address": "1.us.pool.ntp.mil"}]}}],
+  num_items=['[m | some i, s in input.chrony_conf.sources; m := _not_a_number(sprintf("chrony_conf.sources[%d].maxpoll", [i]), object.get(s, "maxpoll", null))]'])
 helpers("services", r'''
-# a maxpoll value the check accepts: a number (or decimal string) not greater than 16
+# a maxpoll value the check accepts: a JSON whole number not greater than 16 (never its text)
 _maxpoll_ok(p) if {
-	is_number(p)
+	_whole_number(p)
 	p <= 16
-}
-
-_maxpoll_ok(p) if {
-	is_string(p)
-	regex.match(`^\s*-?[0-9]+\s*$`, p)
-	to_number(trim_space(p)) <= 16
 }''')
 
 for sid, key, name, what in (("RHEL-09-252025", "port", "chrony_server_disabled", "disable the chrony daemon from acting as a server"),
