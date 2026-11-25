@@ -155,17 +155,57 @@ absent_is_not_a_finding := {
 	"WN19-UC-000010",
 }
 
-# the rule(s) that read a value: those Open once it is replaced by something that is no registry value at all
-readers := {l: ids |
-	some l in leaves
+# The sweeps below run in 4 shards of `leaves` (leaf index modulo 4), so that no test runs long enough to meet
+# the suite's per-test timeout on the oldest supported OPA. Every leaf is in exactly one shard; the shards are
+# checked to cover `leaves` in test_the_shards_cover_every_registry_value.
+shards := 4
+
+shard(i) := [l | some j, l in leaves; j % shards == i]
+
+test_the_shards_cover_every_registry_value if {
+	count(leaves) >= 100
+	every j, l in leaves {
+		l in shard(j % shards)
+	}
+	sum([count(shard(i)) | some i in numbers.range(0, shards - 1)]) == count(leaves)
+}
+
+# the rule(s) that read a value (of the leaves given): those Open once it is replaced by something that is no
+# registry value at all
+readers_of(ls) := {l: ids |
+	some l in ls
 	ids := open_ids(json.patch(base, [{"op": "replace", "path": ["registry", l[0], l[1]], "value": {"r3": "not a registry value"}}]))
 }
 
 # Requirement: the sweep is not vacuous - every value of the fixture is read by at least one rule.
-test_every_registry_value_is_read_by_a_rule if {
+test_every_registry_value_is_read_by_a_rule_shard_0 if {
 	count(leaves) >= 100
-	rd := readers
-	every l in leaves {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
+		count(rd[l]) >= 1
+	}
+}
+
+test_every_registry_value_is_read_by_a_rule_shard_1 if {
+	count(leaves) >= 100
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		count(rd[l]) >= 1
+	}
+}
+
+test_every_registry_value_is_read_by_a_rule_shard_2 if {
+	count(leaves) >= 100
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		count(rd[l]) >= 1
+	}
+}
+
+test_every_registry_value_is_read_by_a_rule_shard_3 if {
+	count(leaves) >= 100
+	rd := readers_of(shard(3))
+	every l in shard(3) {
 		count(rd[l]) >= 1
 	}
 }
@@ -173,31 +213,100 @@ test_every_registry_value_is_read_by_a_rule if {
 # Requirement: a registry value that a rule reads being ABSENT opens that rule and the report is not
 # compliant, except for the rules on the allow-list above. Source: check text "If the following registry value
 # does not exist or is not configured as specified, this is a finding"; task list item 2(c).
-test_absent_registry_value_opens_the_reading_rule if {
-	rd := readers
-	every l in leaves {
+test_absent_registry_value_opens_the_reading_rule_shard_0 if {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
 		inp := json.remove(base, [["registry", l[0], l[1]]])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
 		must := rd[l] - absent_is_not_a_finding
-		must - open_ids(inp) == set()
-		absent_verdict(must, inp)
+		must - {f.stig_id | some f in r.open_findings} == set()
+		absent_verdict(must, r.compliant)
 	}
 }
 
-absent_verdict(must, inp) if {
+test_absent_registry_value_opens_the_reading_rule_shard_1 if {
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		inp := json.remove(base, [["registry", l[0], l[1]]])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
+		must := rd[l] - absent_is_not_a_finding
+		must - {f.stig_id | some f in r.open_findings} == set()
+		absent_verdict(must, r.compliant)
+	}
+}
+
+test_absent_registry_value_opens_the_reading_rule_shard_2 if {
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		inp := json.remove(base, [["registry", l[0], l[1]]])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
+		must := rd[l] - absent_is_not_a_finding
+		must - {f.stig_id | some f in r.open_findings} == set()
+		absent_verdict(must, r.compliant)
+	}
+}
+
+test_absent_registry_value_opens_the_reading_rule_shard_3 if {
+	rd := readers_of(shard(3))
+	every l in shard(3) {
+		inp := json.remove(base, [["registry", l[0], l[1]]])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
+		must := rd[l] - absent_is_not_a_finding
+		must - {f.stig_id | some f in r.open_findings} == set()
+		absent_verdict(must, r.compliant)
+	}
+}
+
+# `c` is the report's `compliant`, read once by the caller
+absent_verdict(must, c) if {
 	count(must) >= 1
-	compliant(inp) == false
+	c == false
 }
 
 absent_verdict(must, _) if count(must) == 0
 
 # Requirement: a registry value sent as null ("not collected") opens the rule that reads it; no exceptions.
 # Source: evidence rule (AGENT_BRIEF.md) - missing or null evidence fails the control.
-test_null_registry_value_opens_the_reading_rule if {
-	rd := readers
-	every l in leaves {
+test_null_registry_value_opens_the_reading_rule_shard_0 if {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
 		inp := json.patch(base, [{"op": "replace", "path": ["registry", l[0], l[1]], "value": null}])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
 		count(rd[l]) >= 1
-		rd[l] - open_ids(inp) == set()
-		compliant(inp) == false
+		rd[l] - {f.stig_id | some f in r.open_findings} == set()
+		r.compliant == false
+	}
+}
+
+test_null_registry_value_opens_the_reading_rule_shard_1 if {
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		inp := json.patch(base, [{"op": "replace", "path": ["registry", l[0], l[1]], "value": null}])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
+		count(rd[l]) >= 1
+		rd[l] - {f.stig_id | some f in r.open_findings} == set()
+		r.compliant == false
+	}
+}
+
+test_null_registry_value_opens_the_reading_rule_shard_2 if {
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		inp := json.patch(base, [{"op": "replace", "path": ["registry", l[0], l[1]], "value": null}])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
+		count(rd[l]) >= 1
+		rd[l] - {f.stig_id | some f in r.open_findings} == set()
+		r.compliant == false
+	}
+}
+
+test_null_registry_value_opens_the_reading_rule_shard_3 if {
+	rd := readers_of(shard(3))
+	every l in shard(3) {
+		inp := json.patch(base, [{"op": "replace", "path": ["registry", l[0], l[1]], "value": null}])
+		r := data.stig.windows_server_2019.main.compliance_report with input as inp
+		count(rd[l]) >= 1
+		rd[l] - {f.stig_id | some f in r.open_findings} == set()
+		r.compliant == false
 	}
 }
