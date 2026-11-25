@@ -40,7 +40,7 @@ Every hit gets an effect from the rule it sits in:
     fail-open     a violation / deny / finding rule, or a collection named like one: missing -> no finding
     fail-closed   a pass / compliant rule, or a collection named like one: missing -> not passed (harmless)
     guarded       a hit on a field of an iterated row that an earlier positive line of the same rule already reads
-                  (`contains(i.value, "x"); not contains(i.value, "y")`: the row is already filtered on the field), or a `_has_key(obj, "k")` test before it
+                  (`contains(i.value, "x"); not contains(i.value, "y")`: the row is already filtered on the field), or a bare `x.y` line / `_has_key(obj, "k")` test before it
                   (an optional field), or a comparison / count / to_number after a type check of the same fact (is_number(x); x > 90) where the
                   package also reads that fact in a way that is defined when it is missing (a `not is_number(object.get(
                   ...))` evidence finding): the evidence rule's shape. Reported, never gated; --json shows the guard line.
@@ -285,10 +285,21 @@ class Package:
                 return False
         return True
 
+    @staticmethod
+    def _type_checks_only(body):
+        """nothing, or only is_object(input) / is_object(x) style lines: they do not change which value the rule has"""
+        for e in body or []:
+            t = e.get("terms")
+            if isinstance(t, dict) and t.get("type") == "boolean":
+                continue
+            if e.get("negated") or not isinstance(t, list) or not (_opname(t[0]) or "").startswith("is_"):
+                return False
+        return True
+
     def alias(self, name):
         """the term a rule is an alias of (`_facts := input`, `_in := input.tisax`), else None"""
         cl = [c for c in self.rules.get(name, ()) if not c.get("default")]
-        if len(cl) != 1 or "key" in cl[0]["head"] or cl[0]["head"].get("args") or not _trivial(cl[0].get("body")):
+        if len(cl) != 1 or "key" in cl[0]["head"] or cl[0]["head"].get("args") or not self._type_checks_only(cl[0].get("body")):
             return None
         v = cl[0]["head"].get("value")
         return v if v is not None and v.get("type") in ("ref", "var") else None
@@ -740,6 +751,8 @@ class Scanner:
         if not e.get("negated"):                       # a type or value check earlier in the rule: the author
             if op and op.startswith("is_") and args and args[0].get("type") == "ref":   # chose to need this fact
                 ctx["typed"].add(self._norm(args[0], env))
+            elif op is None and args and args[0].get("type") == "ref":   # a bare `x.y` line: "if it is there ..."
+                ctx["present"].add(self._norm(args[0], env))
             elif op and op.split(".")[-1].lstrip("_") in ("has_key", "has_field") and len(args) == 2 \
                     and args[1].get("type") == "string":      # f(obj, "key"): the key is tested for before it is read
                 ctx["present"].add(self._norm(args[0], env) + "." + args[1]["value"])

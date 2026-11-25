@@ -120,6 +120,13 @@ violations contains "apt" if {
 	not contains(i.value, "=")
 }"""), [("neg-call", "fail-open")])
 
+    def test_bare_reference_line_is_an_if_present_test(self):
+        self.assertEqual(self.kinds("""
+violations contains "m" if {
+	input.obl
+	not is_object(input.obl)
+}"""), [("neg-call", "guarded")])
+
     def test_not_equal_null_is_a_presence_test(self):
         self.assertEqual(self.kinds("""
 violations contains msg if {
