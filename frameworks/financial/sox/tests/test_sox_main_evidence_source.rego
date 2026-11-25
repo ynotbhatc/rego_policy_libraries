@@ -50,7 +50,11 @@ _set(path, value) := json.patch(_with_advisories(all_pass_input), [{"op": "repla
 
 _unset(path) := json.patch(_with_advisories(all_pass_input), [{"op": "remove", "path": concat("/", array.concat([""], path))}])
 
-_boolean_paths := [path | walk(_with_advisories(all_pass_input), [path, value]); is_boolean(value)]
+_boolean_paths := [path |
+	inp := _with_advisories(all_pass_input)
+	walk(inp, [path, value])
+	is_boolean(value)
+]
 
 _advisory_paths := {
 	["sox", "section_409", "disclosure_process", "automated"],
