@@ -106,23 +106,60 @@ test_fixtures_pass_at_their_own_profile if {
 }
 
 # the same facts with the profile removed or misspelt are not a pass, although every recommendation holds
-test_compliant_fixture_without_a_recognised_profile_is_not_compliant if {
-	every op in [{"op": "remove", "path": "/profile"}, {"op": "replace", "path": "/profile", "value": null}, {"op": "replace", "path": "/profile", "value": "level_2_server"}] {
-		r := data.cis_rocky_linux_8.main.compliance_report with input as json.patch(fixture_compliant, [op])
-		r.compliant == false
-		count(r.violations) == 1
-		startswith(r.violations[0], "PROFILE NOT SELECTED: ")
+# One test per way of losing the profile (so that no test runs long enough to meet the suite's per-test timeout on the
+# oldest supported OPA); together they are the three operations of the original loop.
+test_compliant_fixture_without_a_recognised_profile_is_not_compliant_0 if {
+	op := {"op": "remove", "path": "/profile"}
+	r := data.cis_rocky_linux_8.main.compliance_report with input as json.patch(fixture_compliant, [op])
+	r.compliant == false
+	count(r.violations) == 1
+	startswith(r.violations[0], "PROFILE NOT SELECTED: ")
 
-		# no recommendation failed and passed + failed == total, so the percentage is withheld (null) with a
-		# reason: 100 means compliant and is never shown beside compliant == false
-		r.failed_controls == 0
-		r.passed_controls == r.total_controls
-		r.passed_controls + r.failed_controls == r.total_controls
-		r.compliance_percentage == null
-		r.section_compliance_percentage == null
-		startswith(r.compliance_percentage_reason, "no profile selected")
-		startswith(r.section_compliance_percentage_reason, "no profile selected")
-	}
+	# no recommendation failed and passed + failed == total, so the percentage is withheld (null) with a
+	# reason: 100 means compliant and is never shown beside compliant == false
+	r.failed_controls == 0
+	r.passed_controls == r.total_controls
+	r.passed_controls + r.failed_controls == r.total_controls
+	r.compliance_percentage == null
+	r.section_compliance_percentage == null
+	startswith(r.compliance_percentage_reason, "no profile selected")
+	startswith(r.section_compliance_percentage_reason, "no profile selected")
+}
+
+test_compliant_fixture_without_a_recognised_profile_is_not_compliant_1 if {
+	op := {"op": "replace", "path": "/profile", "value": null}
+	r := data.cis_rocky_linux_8.main.compliance_report with input as json.patch(fixture_compliant, [op])
+	r.compliant == false
+	count(r.violations) == 1
+	startswith(r.violations[0], "PROFILE NOT SELECTED: ")
+
+	# no recommendation failed and passed + failed == total, so the percentage is withheld (null) with a
+	# reason: 100 means compliant and is never shown beside compliant == false
+	r.failed_controls == 0
+	r.passed_controls == r.total_controls
+	r.passed_controls + r.failed_controls == r.total_controls
+	r.compliance_percentage == null
+	r.section_compliance_percentage == null
+	startswith(r.compliance_percentage_reason, "no profile selected")
+	startswith(r.section_compliance_percentage_reason, "no profile selected")
+}
+
+test_compliant_fixture_without_a_recognised_profile_is_not_compliant_2 if {
+	op := {"op": "replace", "path": "/profile", "value": "level_2_server"}
+	r := data.cis_rocky_linux_8.main.compliance_report with input as json.patch(fixture_compliant, [op])
+	r.compliant == false
+	count(r.violations) == 1
+	startswith(r.violations[0], "PROFILE NOT SELECTED: ")
+
+	# no recommendation failed and passed + failed == total, so the percentage is withheld (null) with a
+	# reason: 100 means compliant and is never shown beside compliant == false
+	r.failed_controls == 0
+	r.passed_controls == r.total_controls
+	r.passed_controls + r.failed_controls == r.total_controls
+	r.compliance_percentage == null
+	r.section_compliance_percentage == null
+	startswith(r.compliance_percentage_reason, "no profile selected")
+	startswith(r.section_compliance_percentage_reason, "no profile selected")
 }
 
 # a Level 1 host whose profile is lost is evaluated against every recommendation, not passed at Level 1
