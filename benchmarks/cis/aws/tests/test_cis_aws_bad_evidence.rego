@@ -38,6 +38,18 @@ _numbers := [p | walk(_green, [p, v]); is_number(v); not _key(p) in _unread]
 
 _passes(inp) if _report.compliant == true with input as inp
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_booleans_4 if {
+	sum([count(_slice(_booleans, i, 4)) | some i in numbers.range(0, 3)]) == count(_booleans)
+	every j, x in _booleans {
+		x in _slice(_booleans, j % 4, 4)
+	}
+}
+
 test_fixture_passes_and_has_leaves if {
 	_passes(_green)
 	count(_booleans) + count(_numbers) > 0
@@ -48,8 +60,32 @@ test_empty_and_null_input_fail if {
 	not _passes(null)
 }
 
-test_boolean_of_the_wrong_type_never_passes if {
-	every p in _booleans {
+test_boolean_of_the_wrong_type_never_passes_slice_0 if {
+	every p in _slice(_booleans, 0, 4) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_1 if {
+	every p in _slice(_booleans, 1, 4) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_2 if {
+	every p in _slice(_booleans, 2, 4) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_3 if {
+	every p in _slice(_booleans, 3, 4) {
 		every bad in ["true", "false", "no", "yes", 0, 1] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
 		}

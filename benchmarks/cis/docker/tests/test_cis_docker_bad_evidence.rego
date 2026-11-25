@@ -54,6 +54,18 @@ _numbers := [p | walk(_green, [p, v]); is_number(v); _judged(p)]
 
 _passes(inp) if _report.compliant == true with input as inp
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_booleans_8 if {
+	sum([count(_slice(_booleans, i, 8)) | some i in numbers.range(0, 7)]) == count(_booleans)
+	every j, x in _booleans {
+		x in _slice(_booleans, j % 8, 8)
+	}
+}
+
 test_fixture_passes_and_has_leaves if {
 	_passes(_green)
 	count(_booleans) > 10
@@ -65,8 +77,71 @@ test_empty_and_null_input_fail if {
 	not _passes(null)
 }
 
-test_boolean_of_the_wrong_type_never_passes if {
-	every p in _booleans {
+test_boolean_of_the_wrong_type_never_passes_slice_0 if {
+	every p in _slice(_booleans, 0, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_1 if {
+	every p in _slice(_booleans, 1, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_2 if {
+	every p in _slice(_booleans, 2, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_3 if {
+	every p in _slice(_booleans, 3, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_4 if {
+	every p in _slice(_booleans, 4, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_5 if {
+	every p in _slice(_booleans, 5, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_6 if {
+	every p in _slice(_booleans, 6, 8) {
+		v := object.get(_green, p, null)
+		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_7 if {
+	every p in _slice(_booleans, 7, 8) {
 		v := object.get(_green, p, null)
 		every bad in [sprintf("%v", [v]), sprintf("%v", [v == false]), "no", "yes", 0, 1, null] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
