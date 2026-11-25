@@ -56,7 +56,7 @@ test_recognised_kinds_are_still_judged if {
 
 # 2026-11-24: standard built-in kinds the gate does not judge are recognised, so ordinary deployments are not blocked.
 test_builtin_non_workload_kind_passes_with_nothing_judged if {
-	every k in ["ReplicaSet", "HorizontalPodAutoscaler", "PodDisruptionBudget", "StorageClass", "Lease", "EndpointSlice", "CustomResourceDefinition", "ValidatingWebhookConfiguration", "PriorityClass", "ResourceQuota", "Node"] {
+	every k in ["HorizontalPodAutoscaler", "PodDisruptionBudget", "StorageClass", "Lease", "EndpointSlice", "CustomResourceDefinition", "ValidatingWebhookConfiguration", "PriorityClass", "ResourceQuota", "Node"] {
 		inp := {"kind": k, "manifest": {"metadata": {"name": "x"}}}
 		m._allowed(inp)
 		count(gate.all_violations) == 0 with input as inp
@@ -104,4 +104,20 @@ test_additional_kinds_does_not_relax_a_judged_workload if {
 		{"op": "replace", "path": "/manifest/spec/template/spec/containers/0/securityContext/privileged", "value": true},
 	])
 	m._denied(inp)
+}
+
+# 2026-11-24: ReplicaSet and ReplicationController are judged like a Deployment (owner decision), as
+# kubernetes.admission already does. The same pod template gets the same findings under either kind.
+test_replicaset_and_replicationcontroller_are_judged_like_a_deployment if {
+	m._allowed(m.good_deployment)
+	every k in ["ReplicaSet", "ReplicationController"] {
+		m._allowed(object.union(m.good_deployment, {"kind": k}))
+	}
+	bad := json.patch(m.good_deployment, [{"op": "add", "path": "/manifest/spec/template/spec/hostNetwork", "value": true}])
+	as_deployment := gate.all_violations with input as bad
+	count(as_deployment) > 0
+	every k in ["ReplicaSet", "ReplicationController"] {
+		v := gate.all_violations with input as object.union(bad, {"kind": k})
+		count(v) == count(as_deployment)
+	}
 }

@@ -47,7 +47,9 @@ import rego.v1
 #   input.policy.additional_kinds - optional list of strings: extra kinds (custom resources) recognised but not judged
 # =============================================================================
 
-workload_kinds := {"Deployment", "StatefulSet", "DaemonSet", "Job", "CronJob", "Pod"}
+# ReplicaSet and ReplicationController carry a pod template and are judged like the controllers that normally
+# create them (2026-11-24, in line with kubernetes.admission).
+workload_kinds := {"Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController", "Job", "CronJob", "Pod"}
 
 # Pod spec location differs by kind:
 #   Pod      -> spec
@@ -124,14 +126,13 @@ judged_kinds := workload_kinds | {"Namespace", "ClusterRole", "ClusterRoleBindin
 # batch, networking.k8s.io, rbac.authorization.k8s.io, policy, autoscaling, storage.k8s.io, scheduling.k8s.io,
 # coordination.k8s.io, discovery.k8s.io, admissionregistration.k8s.io, apiextensions.k8s.io, node.k8s.io,
 # certificates.k8s.io, flowcontrol.apiserver.k8s.io, plus events.k8s.io. Alpha and beta kinds are left out: allow
-# one with input.policy.additional_kinds. ReplicaSet and ReplicationController carry a pod template but this gate
-# does not judge it (kubernetes.admission does); the controllers that create them are judged.
+# one with input.policy.additional_kinds.
 builtin_kinds := {
 	# core
 	"ComponentStatus", "Endpoints", "Event", "LimitRange", "Node", "PersistentVolume", "PodTemplate",
-	"ReplicationController", "ResourceQuota",
+	"ResourceQuota",
 	# apps
-	"ControllerRevision", "ReplicaSet",
+	"ControllerRevision",
 	# autoscaling, policy, node.k8s.io, scheduling.k8s.io
 	"HorizontalPodAutoscaler", "PodDisruptionBudget", "RuntimeClass", "PriorityClass",
 	# networking.k8s.io
@@ -391,7 +392,7 @@ violation_k8s_007 contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_k8s_008 contains msg if {
-	input.kind in {"Deployment", "StatefulSet", "DaemonSet"}
+	input.kind in {"Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController"}
 	some container in containers
 	not is_object(object.get(container, "livenessProbe", null))
 	msg := sprintf(
@@ -401,7 +402,7 @@ violation_k8s_008 contains msg if {
 }
 
 violation_k8s_008 contains msg if {
-	input.kind in {"Deployment", "StatefulSet"}
+	input.kind in {"Deployment", "StatefulSet", "ReplicaSet", "ReplicationController"}
 	some container in containers
 	not is_object(object.get(container, "readinessProbe", null))
 	msg := sprintf(
@@ -494,7 +495,7 @@ violation_k8s_013 contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_k8s_014 contains msg if {
-	input.kind in {"Deployment", "StatefulSet", "DaemonSet"}
+	input.kind in {"Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController"}
 	not pod_spec.automountServiceAccountToken == false
 	msg := sprintf(
 		"SENTINEL-K8S-014: %v '%v' does not set automountServiceAccountToken: false. Disable auto-mounting of service account tokens unless required.",
