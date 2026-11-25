@@ -43,11 +43,11 @@ _passes(inp) if _report.compliant == true with input as inp
 # test_the_slices_cover_* tests check it.
 _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
-test_the_slices_cover_booleans_4 if {
-	sum([count(_slice(_booleans, i, 4)) | some i in numbers.range(0, 3)]) == count(_booleans)
-	every i in numbers.range(0, 3) {
-		every k, x in _slice(_booleans, i, 4) {
-			x == _booleans[i + (k * 4)]
+test_the_slices_cover_booleans_8 if {
+	sum([count(_slice(_booleans, i, 8)) | some i in numbers.range(0, 7)]) == count(_booleans)
+	every i in numbers.range(0, 7) {
+		every k, x in _slice(_booleans, i, 8) {
+			x == _booleans[i + (k * 8)]
 		}
 	}
 }
@@ -72,7 +72,7 @@ test_empty_and_null_input_fail if {
 }
 
 test_boolean_of_the_wrong_type_never_passes_slice_0 if {
-	every p in _slice(_booleans, 0, 4) {
+	every p in _slice(_booleans, 0, 8) {
 		every bad in ["true", "false", "no", "yes", 0, 1] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
 		}
@@ -80,7 +80,7 @@ test_boolean_of_the_wrong_type_never_passes_slice_0 if {
 }
 
 test_boolean_of_the_wrong_type_never_passes_slice_1 if {
-	every p in _slice(_booleans, 1, 4) {
+	every p in _slice(_booleans, 1, 8) {
 		every bad in ["true", "false", "no", "yes", 0, 1] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
 		}
@@ -88,7 +88,7 @@ test_boolean_of_the_wrong_type_never_passes_slice_1 if {
 }
 
 test_boolean_of_the_wrong_type_never_passes_slice_2 if {
-	every p in _slice(_booleans, 2, 4) {
+	every p in _slice(_booleans, 2, 8) {
 		every bad in ["true", "false", "no", "yes", 0, 1] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
 		}
@@ -96,7 +96,39 @@ test_boolean_of_the_wrong_type_never_passes_slice_2 if {
 }
 
 test_boolean_of_the_wrong_type_never_passes_slice_3 if {
-	every p in _slice(_booleans, 3, 4) {
+	every p in _slice(_booleans, 3, 8) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_4 if {
+	every p in _slice(_booleans, 4, 8) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_5 if {
+	every p in _slice(_booleans, 5, 8) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_6 if {
+	every p in _slice(_booleans, 6, 8) {
+		every bad in ["true", "false", "no", "yes", 0, 1] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
+		}
+	}
+}
+
+test_boolean_of_the_wrong_type_never_passes_slice_7 if {
+	every p in _slice(_booleans, 7, 8) {
 		every bad in ["true", "false", "no", "yes", 0, 1] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": bad}]))
 		}

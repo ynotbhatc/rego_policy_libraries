@@ -633,19 +633,19 @@ _green := object.union(_facts, {"nist_sp_800_171": {"requirements": _attest_only
 _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_fact_bool_paths_4 if {
-	sum([count(_slice(_fact_bool_paths, i, 4)) | some i in numbers.range(0, 3)]) == count(_fact_bool_paths)
-	every i in numbers.range(0, 3) {
+	sum([count(_slice(_fact_bool_paths, i, 4)) | some i in numbers.range(0, 7)]) == count(_fact_bool_paths)
+	every i in numbers.range(0, 7) {
 		every k, x in _slice(_fact_bool_paths, i, 4) {
 			x == _fact_bool_paths[i + (k * 4)]
 		}
 	}
 }
 
-test_the_slices_cover_retired_facts_4 if {
-	sum([count(_slice(_retired_facts, i, 4)) | some i in numbers.range(0, 3)]) == count(_retired_facts)
-	every i in numbers.range(0, 3) {
-		every k, x in _slice(_retired_facts, i, 4) {
-			x == _retired_facts[i + (k * 4)]
+test_the_slices_cover_retired_facts_8 if {
+	sum([count(_slice(_retired_facts, i, 8)) | some i in numbers.range(0, 7)]) == count(_retired_facts)
+	every i in numbers.range(0, 7) {
+		every k, x in _slice(_retired_facts, i, 8) {
+			x == _retired_facts[i + (k * 8)]
 		}
 	}
 }
@@ -1024,7 +1024,7 @@ test_retired_fact_false_or_absent_gates_nothing_and_is_not_a_finding if {
 }
 
 test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_0 if {
-	every x in _slice(_retired_facts, 0, 4) {
+	every x in _slice(_retired_facts, 0, 8) {
 		every bad in _bad_for(x[1].type) {
 			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
 			r.compliant == true
@@ -1038,7 +1038,7 @@ test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_sli
 }
 
 test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_1 if {
-	every x in _slice(_retired_facts, 1, 4) {
+	every x in _slice(_retired_facts, 1, 8) {
 		every bad in _bad_for(x[1].type) {
 			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
 			r.compliant == true
@@ -1052,7 +1052,7 @@ test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_sli
 }
 
 test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_2 if {
-	every x in _slice(_retired_facts, 2, 4) {
+	every x in _slice(_retired_facts, 2, 8) {
 		every bad in _bad_for(x[1].type) {
 			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
 			r.compliant == true
@@ -1066,7 +1066,63 @@ test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_sli
 }
 
 test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_3 if {
-	every x in _slice(_retired_facts, 3, 4) {
+	every x in _slice(_retired_facts, 3, 8) {
+		every bad in _bad_for(x[1].type) {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
+			r.compliant == true
+			r.violation_count == 0
+			r.requirements_satisfied == 97
+			count(r.retired_rev2_input_findings) == 1
+			contains(r.retired_rev2_input_findings[0], sprintf("input.%s is not a %s (got %s)", [concat(".", x[1].path), x[1].type, type_name(bad)]))
+			contains(r.retired_rev2_input_findings[0], sprintf("retired Rev 2 check %s ", [x[0]]))
+		}
+	}
+}
+
+test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_4 if {
+	every x in _slice(_retired_facts, 4, 8) {
+		every bad in _bad_for(x[1].type) {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
+			r.compliant == true
+			r.violation_count == 0
+			r.requirements_satisfied == 97
+			count(r.retired_rev2_input_findings) == 1
+			contains(r.retired_rev2_input_findings[0], sprintf("input.%s is not a %s (got %s)", [concat(".", x[1].path), x[1].type, type_name(bad)]))
+			contains(r.retired_rev2_input_findings[0], sprintf("retired Rev 2 check %s ", [x[0]]))
+		}
+	}
+}
+
+test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_5 if {
+	every x in _slice(_retired_facts, 5, 8) {
+		every bad in _bad_for(x[1].type) {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
+			r.compliant == true
+			r.violation_count == 0
+			r.requirements_satisfied == 97
+			count(r.retired_rev2_input_findings) == 1
+			contains(r.retired_rev2_input_findings[0], sprintf("input.%s is not a %s (got %s)", [concat(".", x[1].path), x[1].type, type_name(bad)]))
+			contains(r.retired_rev2_input_findings[0], sprintf("retired Rev 2 check %s ", [x[0]]))
+		}
+	}
+}
+
+test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_6 if {
+	every x in _slice(_retired_facts, 6, 8) {
+		every bad in _bad_for(x[1].type) {
+			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
+			r.compliant == true
+			r.violation_count == 0
+			r.requirements_satisfied == 97
+			count(r.retired_rev2_input_findings) == 1
+			contains(r.retired_rev2_input_findings[0], sprintf("input.%s is not a %s (got %s)", [concat(".", x[1].path), x[1].type, type_name(bad)]))
+			contains(r.retired_rev2_input_findings[0], sprintf("retired Rev 2 check %s ", [x[0]]))
+		}
+	}
+}
+
+test_retired_fact_of_the_wrong_type_is_reported_without_changing_the_verdict_slice_7 if {
+	every x in _slice(_retired_facts, 7, 8) {
 		every bad in _bad_for(x[1].type) {
 			r := main.compliance_report with input as json.patch(_green, [{"op": "replace", "path": x[1].path, "value": bad}])
 			r.compliant == true
