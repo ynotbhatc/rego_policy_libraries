@@ -283,6 +283,14 @@ class Package:
                 return False
         return True
 
+    def alias(self, name):
+        """the term a rule is an alias of (`_facts := input`, `_in := input.tisax`), else None"""
+        cl = [c for c in self.rules.get(name, ()) if not c.get("default")]
+        if len(cl) != 1 or "key" in cl[0]["head"] or cl[0]["head"].get("args") or not _trivial(cl[0].get("body")):
+            return None
+        v = cl[0]["head"].get("value")
+        return v if v is not None and v.get("type") in ("ref", "var") else None
+
     def field_defined(self, name, key):
         """`name.key` is always defined: the rule is, and its value is an object literal that has the key"""
         if not self.always_defined(name):
@@ -363,6 +371,7 @@ class Scanner:
         for p in self.pkgs.values():
             self._classify(p)
         self.hits = []
+        self._cur = None
 
     # ---- rule classes
     def _classify(self, p):
@@ -439,6 +448,7 @@ class Scanner:
                 env[v] = ("param", None)
         ctx = {"f": f, "p": p, "rule": name or "?", "cls": p.cls.get(name, "other"), "imports": imports, "coll": None,
                "env": env, "pkg": _pkg(self.asts[f]), "typed": set(), "present": set()}
+        self._cur = p
         self._body(rule.get("body") or [], env, ctx)
         for part in ("key", "value"):
             if part in h and h[part] is not None:
@@ -666,6 +676,8 @@ class Scanner:
             return "?"
         if t == "var":
             o = env.get(term["value"])
+            if o is None and self._cur and self._cur.alias(term["value"]) is not None and depth < 6:
+                return self._norm(self._cur.alias(term["value"]), {}, depth + 1)
             if o and o[0] in ("iter", "const") and o[1] is not None:
                 return self._norm(o[1], env, depth + 1) + "[]"
             if o and o[0] == "assign" and o[1] is not None and o[1].get("type") in ("ref", "call"):
@@ -684,7 +696,11 @@ class Scanner:
         if t != "ref":
             return "?"
         head = term["value"][0]
-        base = self._norm(head, env, depth + 1) if head.get("type") == "var" and head["value"] in env else str(head.get("value"))
+        if head.get("type") == "var" and head["value"] in env:
+            base = self._norm(head, env, depth + 1)
+        else:
+            al = self._cur.alias(head["value"]) if head.get("type") == "var" and self._cur else None
+            base = self._norm(al, {}, depth + 1) if al is not None else str(head.get("value"))
         return base + "".join("." + x["value"] if x.get("type") == "string" else "[]" for x in term["value"][1:])
 
     def _probe(self, e, op, args, env, ctx):
