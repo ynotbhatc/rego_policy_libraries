@@ -4601,12 +4601,35 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := _capped_unless_compliant((compliant_sections * 100) / count(section_compliance)) if count(section_compliance) > 0
+compliance_percentage := (compliant_sections * 100) / count(section_compliance) if {
+	count(section_compliance) > 0
+	not _percentage_withheld
+}
 
-# 100 means compliant: a result that is not compliant never reads 100
-_capped_unless_compliant(p) := p if {
-	compliant
-} else := min([p, 99.999])
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {
+	count(section_compliance) > 0
+	_percentage_withheld
+}
+
+_percentage_withheld if {
+	not compliant
+	compliant_sections == count(section_compliance)
+}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {
+	_percentage_withheld
+	not profile_selected
+}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {
+	_percentage_withheld
+	profile_selected
+}
 
 default compliant := false
 

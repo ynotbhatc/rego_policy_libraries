@@ -30,10 +30,11 @@ package cis_rocky_linux_8.main
 #    when real facts (or an attestation) satisfy it, so failed_controls counts distinct failing
 #    recommendation ids, including those whose evidence is missing.
 #
-# 3. compliance_percentage is passed_controls / total_controls, and 100 means compliant: when the report is not
-#    compliant the figure never reads 100 (it is capped at 99.999). The cap can only bite when no recommendation
-#    failed and a finding that cites no recommendation stands (PROFILE NOT SELECTED), so "100 and not
-#    compliant" cannot occur.
+# 3. compliance_percentage is passed_controls / total_controls, and 100 means compliant. When every recommendation
+#    in scope passed but a finding that cites no recommendation stands (PROFILE NOT SELECTED) the report is not
+#    compliant, passed + failed == total_controls still holds, and compliance_percentage (and
+#    section_compliance_percentage) is null with compliance_percentage_reason (section_compliance_percentage_reason)
+#    stating why. 100 never appears beside compliant == false.
 #
 # FAIL-CLOSED GATE: with no facts at all every control counts as failed and an explicit FAIL-CLOSED
 # violation is reported. PARTIAL INPUT: a section that received none of its input keys is NOT ASSESSED
@@ -116,12 +117,44 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := _capped_unless_compliant(round((_passed * 100000) / _total_controls) / 1000) if _total_controls > 0
+_percentage := round((_passed * 100000) / _total_controls) / 1000 if {
+	_total_controls > 0
+	not _percentage_withheld
+}
 
-# 100 means compliant: a report that is not compliant never reads 100
-_capped_unless_compliant(p) := p if {
-	_compliant
-} else := min([p, 99.999])
+# 100 means compliant. Every recommendation in scope passed but the report is not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED): passed + failed == total stays true, and the percentage is null
+# with a stated reason instead of 100 beside compliant == false.
+_percentage := null if {
+	_total_controls > 0
+	_percentage_withheld
+}
+
+_percentage_withheld if {
+	_total_controls > 0
+	not _compliant
+	_passed == _total_controls
+}
+
+# The reasons are fields of the report only when a percentage is withheld, so a normal report keeps its shape.
+default _reason_fields := {}
+
+_reason_fields := {"compliance_percentage_reason": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"} if {
+	_percentage_withheld
+	_profile == "unrecognised"
+}
+
+_reason_fields := {"compliance_percentage_reason": "a finding that cites no recommendation stands although no recommendation failed (see violations)"} if {
+	_percentage_withheld
+	_profile != "unrecognised"
+}
+
+default _section_reason_fields := {}
+
+_section_reason_fields := {"section_compliance_percentage_reason": bench.compliance_percentage_reason} if {
+	_section_percentage == null
+	bench.compliance_percentage_reason != null
+}
 
 default _control_results := []
 
@@ -131,7 +164,7 @@ default _control_result_counts := {}
 
 _control_result_counts := bench.control_result_counts
 
-compliance_report := {
+_report := {
 	"framework": "cis_rocky_linux_8",
 	"benchmark": "CIS Rocky Linux 8 Benchmark v3.0.0",
 	"version": "v3.0.0",
@@ -153,3 +186,5 @@ compliance_report := {
 	"control_result_counts": _control_result_counts,
 	"violation_count": count(_violations),
 }
+
+compliance_report := object.union(_report, object.union(_reason_fields, _section_reason_fields))

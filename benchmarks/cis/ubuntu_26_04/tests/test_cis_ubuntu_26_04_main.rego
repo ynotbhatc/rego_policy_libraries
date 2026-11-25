@@ -111,3 +111,22 @@ test_not_assessed_message_kept_for_applicable_section if {
 	some v in r.violations
 	startswith(v, "NOT ASSESSED: ")
 }
+
+# Round 4 (2026-11-24): with every recommendation passing but no profile selected the report is not compliant,
+# passed + failed == total, and the percentage is null with a reason, never 100 beside compliant == false.
+test_unselected_profile_with_nothing_failed_withholds_the_percentage if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"attest": {"x": true}} with data.cis_ubuntu_26_04.failing_ids as set()
+	r.compliant == false
+	r.failed_controls == 0
+	r.passed_controls == r.total_controls
+	r.passed_controls + r.failed_controls == r.total_controls
+	r.compliance_percentage == null
+	startswith(r.compliance_percentage_reason, "no profile selected")
+}
+
+test_percentage_is_a_number_when_a_control_failed if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"attest": {"x": true}}
+	r.failed_controls > 0
+	is_number(r.compliance_percentage)
+	not "compliance_percentage_reason" in object.keys(r)
+}

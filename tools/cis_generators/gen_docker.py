@@ -737,12 +737,29 @@ _failed := bench.compliance_report.failed_controls
 
 default _pct := 0
 
-_pct := _capped_unless_compliant(round(((_total - _failed) * 100000) / _total) / 1000) if _total > 0
+_pct := round(((_total - _failed) * 100000) / _total) / 1000 if {{
+	_total > 0
+	not _pct_withheld
+}}
 
-# 100 means compliant: a report that is not compliant never reads 100
-_capped_unless_compliant(p) := p if {{
-	bench.compliant
-}} else := min([p, 99.999])
+# 100 means compliant. Every recommendation passed but the report is not compliant (PROFILE NOT SELECTED: the
+# profile level is absent or invalid): passed + failed == total stays true, and the percentage is null with a
+# stated reason instead of 100 beside compliant == false.
+_pct := null if {{
+	_total > 0
+	_pct_withheld
+}}
+
+_pct_withheld if {{
+	_total > 0
+	_failed == 0
+	not bench.compliant
+}}
+
+# the reason is a field of the report only when the percentage is withheld, so a normal report keeps its shape
+default _pct_reason_fields := {{}}
+
+_pct_reason_fields := {{"compliance_percentage_reason": "no profile level selected (input.cis_profile.level absent or invalid): every recommendation was evaluated and none failed, but the report is not compliant until a level is selected"}} if _pct_withheld
 
 _no_facts_msg := sprintf(
 	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
@@ -753,7 +770,7 @@ _report_violations := array.concat(bench.compliance_report.violations, [_no_fact
 
 _report_violations := bench.compliance_report.violations if _facts_supplied
 
-compliance_report := object.union(bench.compliance_report, {{
+compliance_report := object.union(object.union(bench.compliance_report, _pct_reason_fields), {{
 	"framework": "cis_docker",
 	"facts_supplied": _facts_supplied,
 	"controls_basis": "recommendations of the benchmark that apply to the selected profile",
