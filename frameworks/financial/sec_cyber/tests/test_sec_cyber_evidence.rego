@@ -157,3 +157,24 @@ test_section_of_the_wrong_type_fails_its_checks if {
 		}
 	}
 }
+
+# Counts (audit 2026-11-24, round 3): total is the 23 checks on every input, failed is counted
+# (it was capped at a declared 22), and passed + failed + not applicable = total.
+_count_inputs := [{}, all_pass, "true", null, object.union(all_pass, {"governance": "yes"}), object.union(all_pass, {"governance": {"board": {"informed_of_risks_frequency": "quarterly"}}})]
+
+test_counts_add_up_on_every_input if {
+	every doc in _count_inputs {
+		r := report with input as doc
+		r.total_controls == 23
+		r.failed_controls == r.violation_count
+		(r.passed_controls + r.failed_controls) + r.not_applicable_controls == 23
+		r.passed_controls >= 0
+		r.compliant == (r.failed_controls == 0)
+	}
+}
+
+test_empty_input_fails_23_of_23 if {
+	r := report with input as {}
+	r.failed_controls == 23
+	r.passed_controls == 0
+}

@@ -8,7 +8,7 @@
 #   coverage:
 #     checks: 46
 #     cited: 33
-#     expected: 44
+#     expected: 45
 #     found: 46
 #     scope: directory
 #     density: over
@@ -403,11 +403,25 @@ compliance_report := {
 	"dfs_license": dfs_license_number,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
-	"total_controls": 44,
+	"total_controls": total_controls,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([44, count(violations)]),
+	"failed_controls": count(violations),
+	"passed_controls": total_controls - count(violations),
+	"not_applicable_controls": 0,
 }
+
+# ── Counting ─────────────────────────────────────────────────────────────────
+# 45 controls, one finding each. By section of 23 NYCRR 500:
+#   .2: 2 · .3: 3 · .4: 3 · .5: 3 · .6: 3 · .7: 4 · .9: 3 · .10: 2 · .11: 4 · .12: 4 · .13: 3
+#   .14: 3 · .15: 2 · .16: 4 · .17: 2  = 45
+# The module has 46 check rules: the two 500.13(a) rules are one control (the asset inventory is
+# maintained and tracks the required fields). The field rule fires only when the inventory is stated as
+# maintained and the other fires only when it is not, so they never report together and a failed
+# control is one finding. The total was declared as 44, from before the 2025-11-01 tranche added the
+# 500.12 all-individuals check: 45 findings sat beside 44 and failed_controls was capped (audit
+# 2026-11-24). No check is ever out of scope, so not_applicable_controls is 0.
+total_controls := 45
 
 # ── Evidence helpers ─────────────────────────────────────────────────────────
 # Evidence rule: only the boolean true passes a yes/no fact. _unmet is defined when the fact is not the
