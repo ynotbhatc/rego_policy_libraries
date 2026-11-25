@@ -163,7 +163,7 @@ sovereign_data_not_centralised_for_training if {
 	violations := [v |
 		input.ml_training.training_data_classification in ["sovereign", "restricted"]
 		not input.ml_training.federated_learning_used == true
-		not input.ml_training.training_infrastructure_country in input.approved_jurisdictions
+		not object.get(input, ["ml_training", "training_infrastructure_country"], "") in approved
 		v := true
 	]
 	count(violations) == 0
