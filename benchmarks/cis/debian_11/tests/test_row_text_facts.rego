@@ -3,7 +3,10 @@
 # or section without it used to drop out of the check. Every text leaf of the all-pass host, removed or sent as
 # null, must now leave the host non-compliant. The names listed are labels a message prints; no rule selects on
 # them.
-package cis_debian_11.row_text_facts_test
+# This package sits beside the module's namespace, not under it (it was cis_debian_11.row_text_facts_test): the generated
+# smoke test `data.cis_debian_11 with input as {}` evaluates every package below `data.cis_debian_11`, which made it re-run
+# these two sweeps in full and take as long as they do.
+package cis_debian_11_row_text_facts_test
 
 import rego.v1
 
@@ -30,18 +33,54 @@ _without(path) := json.patch(_fx, [{"op": "remove", "path": concat("/", array.co
 
 _nulled(path) := json.patch(_fx, [{"op": "replace", "path": concat("/", array.concat([""], [sprintf("%v", [s]) | some s in path])), "value": null}])
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_leaves_null_3 if {
+	sum([count(_slice(_leaves, i, 3)) | some i in numbers.range(0, 2)]) == count(_leaves)
+	every j, x in _leaves {
+		x in _slice(_leaves, j % 3, 3)
+	}
+}
+
 test_the_fixture_still_passes if _compliant(_fx) == true
 
 test_the_walk_covers_the_row_text_facts if count(_leaves) > 5
 
-test_a_row_text_fact_removed_is_not_compliant if {
-	every path in _leaves {
+test_a_row_text_fact_removed_is_not_compliant_slice_0 if {
+	every path in _slice(_leaves, 0, 3) {
 		_compliant(_without(path)) == false
 	}
 }
 
-test_a_row_text_fact_sent_as_null_is_not_compliant if {
-	every path in _leaves {
+test_a_row_text_fact_removed_is_not_compliant_slice_1 if {
+	every path in _slice(_leaves, 1, 3) {
+		_compliant(_without(path)) == false
+	}
+}
+
+test_a_row_text_fact_removed_is_not_compliant_slice_2 if {
+	every path in _slice(_leaves, 2, 3) {
+		_compliant(_without(path)) == false
+	}
+}
+
+test_a_row_text_fact_sent_as_null_is_not_compliant_slice_0 if {
+	every path in _slice(_leaves, 0, 3) {
+		_compliant(_nulled(path)) == false
+	}
+}
+
+test_a_row_text_fact_sent_as_null_is_not_compliant_slice_1 if {
+	every path in _slice(_leaves, 1, 3) {
+		_compliant(_nulled(path)) == false
+	}
+}
+
+test_a_row_text_fact_sent_as_null_is_not_compliant_slice_2 if {
+	every path in _slice(_leaves, 2, 3) {
 		_compliant(_nulled(path)) == false
 	}
 }
