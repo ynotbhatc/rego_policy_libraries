@@ -142,7 +142,18 @@ leaves := [[k, n] | some k, vs in fx.registry; some n, _ in vs]
 # id here ONLY with the check-text sentence quoted in their report, and as a comment on the entry; the
 # integrator reviews every addition. Nothing else in this file may change. The list excuses the absent value
 # only: null is "not collected" and is always a finding.
-absent_is_not_a_finding := set()
+# Entries added by the integrator 2026-11-24 after extracting them from the DISA Manual XCCDF (Server 2019 V3R9):
+# each rule's check-content says "(or if the Value Name does not exist)" and/or
+# "If the registry value name below does not exist, this is not a finding."
+absent_is_not_a_finding := {
+	"WN19-CC-000130",
+	"WN19-CC-000310",
+	"WN19-CC-000320",
+	"WN19-CC-000330",
+	"WN19-CC-000400",
+	"WN19-CC-000440",
+	"WN19-UC-000010",
+}
 
 # the rule(s) that read a value: those Open once it is replaced by something that is no registry value at all
 readers := {l: ids |

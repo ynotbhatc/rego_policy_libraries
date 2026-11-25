@@ -41,9 +41,12 @@ test_all_pass_fixture_is_compliant if {
 
 # Requirement: the fixture carries the three maps with keys that are 45 CFR citations (the sweep is not vacuous).
 test_fixture_carries_the_three_attestation_maps if {
-	count(fx.hipaa.specifications) >= 68
-	count(fx.hipaa.subpart_d) >= 17
-	count(fx.hipaa.subpart_e) >= 100
+	# Integrator, 2026-11-24: the fixture now carries only the attestations that decide a row (20 / 8 / 73).
+	# The 48 / 9 / 37 fact-decided rows take no attestation (module header), so the original thresholds
+	# (68 / 17 / 100), which counted them, were the test's error, as its own report said.
+	count(fx.hipaa.specifications) >= 20
+	count(fx.hipaa.subpart_d) >= 8
+	count(fx.hipaa.subpart_e) >= 73
 	every m in maps {
 		every id, v in fx.hipaa[m] {
 			v == true
