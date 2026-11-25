@@ -146,11 +146,11 @@ _all(value) := object.union_n(array.concat(
 # test_the_slices_cover_* tests check it.
 _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
-test_the_slices_cover_fact_paths_7 if {
-	sum([count(_slice(fact_paths, i, 7)) | some i in numbers.range(0, 6)]) == count(fact_paths)
-	every i in numbers.range(0, 6) {
-		every k, x in _slice(fact_paths, i, 7) {
-			x == fact_paths[i + (k * 7)]
+test_the_slices_cover_fact_paths_12 if {
+	sum([count(_slice(fact_paths, i, 12)) | some i in numbers.range(0, 11)]) == count(fact_paths)
+	every i in numbers.range(0, 11) {
+		every k, x in _slice(fact_paths, i, 12) {
+			x == fact_paths[i + (k * 12)]
 		}
 	}
 }
@@ -186,7 +186,7 @@ test_boolean_false_keeps_the_plain_finding if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_0 if {
-	every p in _slice(fact_paths, 0, 7) {
+	every p in _slice(fact_paths, 0, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -197,7 +197,7 @@ test_each_fact_of_the_wrong_type_fails_and_is_named_slice_0 if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_1 if {
-	every p in _slice(fact_paths, 1, 7) {
+	every p in _slice(fact_paths, 1, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -208,7 +208,7 @@ test_each_fact_of_the_wrong_type_fails_and_is_named_slice_1 if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_2 if {
-	every p in _slice(fact_paths, 2, 7) {
+	every p in _slice(fact_paths, 2, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -219,7 +219,7 @@ test_each_fact_of_the_wrong_type_fails_and_is_named_slice_2 if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_3 if {
-	every p in _slice(fact_paths, 3, 7) {
+	every p in _slice(fact_paths, 3, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -230,7 +230,7 @@ test_each_fact_of_the_wrong_type_fails_and_is_named_slice_3 if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_4 if {
-	every p in _slice(fact_paths, 4, 7) {
+	every p in _slice(fact_paths, 4, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -241,7 +241,7 @@ test_each_fact_of_the_wrong_type_fails_and_is_named_slice_4 if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_5 if {
-	every p in _slice(fact_paths, 5, 7) {
+	every p in _slice(fact_paths, 5, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -252,7 +252,62 @@ test_each_fact_of_the_wrong_type_fails_and_is_named_slice_5 if {
 }
 
 test_each_fact_of_the_wrong_type_fails_and_is_named_slice_6 if {
-	every p in _slice(fact_paths, 6, 7) {
+	every p in _slice(fact_paths, 6, 12) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_7 if {
+	every p in _slice(fact_paths, 7, 12) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_8 if {
+	every p in _slice(fact_paths, 8, 12) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_9 if {
+	every p in _slice(fact_paths, 9, 12) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_10 if {
+	every p in _slice(fact_paths, 10, 12) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_11 if {
+	every p in _slice(fact_paths, 11, 12) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false
@@ -274,20 +329,76 @@ test_each_fact_null_or_removed_fails_as_missing if {
 	}
 }
 
-test_every_fact_bad_fails_every_check if {
-	every bad in array.concat(bad_values, [null, false]) {
+_all_bad_values := array.concat(bad_values, [null, false])
+
+test_every_fact_bad_fails_every_check_slice_0 if {
+	every bad in _slice(_all_bad_values, 0, 3) {
 		r := report with input as _all(bad)
 		r.compliant == false
 		r.violation_count == 35
 	}
 }
 
-test_section_of_the_wrong_type_fails_its_checks if {
-	every section in {p[0] | some p in fact_paths} {
+test_every_fact_bad_fails_every_check_slice_1 if {
+	every bad in _slice(_all_bad_values, 1, 3) {
+		r := report with input as _all(bad)
+		r.compliant == false
+		r.violation_count == 35
+	}
+}
+
+test_every_fact_bad_fails_every_check_slice_2 if {
+	every bad in _slice(_all_bad_values, 2, 3) {
+		r := report with input as _all(bad)
+		r.compliant == false
+		r.violation_count == 35
+	}
+}
+
+_fact_sections := sort([s | some s in {p[0] | some p in fact_paths}])
+
+test_section_of_the_wrong_type_fails_its_checks_slice_0 if {
+	every section in _slice(_fact_sections, 0, 4) {
 		every bad in ["true", null, 1, []] {
 			r := report with input as object.union(all_pass, {section: bad})
 			r.compliant == false
 			r.violation_count == count([p | some p in fact_paths; p[0] == section])
 		}
 	}
+}
+
+test_section_of_the_wrong_type_fails_its_checks_slice_1 if {
+	every section in _slice(_fact_sections, 1, 4) {
+		every bad in ["true", null, 1, []] {
+			r := report with input as object.union(all_pass, {section: bad})
+			r.compliant == false
+			r.violation_count == count([p | some p in fact_paths; p[0] == section])
+		}
+	}
+}
+
+test_section_of_the_wrong_type_fails_its_checks_slice_2 if {
+	every section in _slice(_fact_sections, 2, 4) {
+		every bad in ["true", null, 1, []] {
+			r := report with input as object.union(all_pass, {section: bad})
+			r.compliant == false
+			r.violation_count == count([p | some p in fact_paths; p[0] == section])
+		}
+	}
+}
+
+test_section_of_the_wrong_type_fails_its_checks_slice_3 if {
+	every section in _slice(_fact_sections, 3, 4) {
+		every bad in ["true", null, 1, []] {
+			r := report with input as object.union(all_pass, {section: bad})
+			r.compliant == false
+			r.violation_count == count([p | some p in fact_paths; p[0] == section])
+		}
+	}
+}
+
+# the section and bad-value sweeps above are sliced the same way (index modulo 4 and 3)
+test_the_section_and_value_slices_cover_everything if {
+	sum([count(_slice(_fact_sections, i, 4)) | some i in numbers.range(0, 3)]) == count(_fact_sections)
+	sum([count(_slice(_all_bad_values, i, 3)) | some i in numbers.range(0, 2)]) == count(_all_bad_values)
 }
