@@ -156,7 +156,9 @@ def tested_packages():
         if re.search(r"(^|/)(test_|.*_test\.rego$)", rel) or "/tests/" in rel:
             m = re.search(r"^package\s+([\w.]+)", f.read_text(errors="ignore"), re.M)
             if m:
-                p = m.group(1)
+                # a test tree kept out of the policy namespace (`pci_dss_tests.x_test` tests `pci_dss.x`), so that
+                # evaluating `data.pci_dss` does not also run the tests
+                p = re.sub(r"^(\w+)_tests\.", r"\1.", m.group(1))
                 out.add(p); out.add(re.sub(r"(_test|\.test|\.tests?)$", "", p)); out.add(p.rsplit(".", 1)[0])
     return out
 
