@@ -72,10 +72,10 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 51
-#     cited: 47
+#     checks: 52
+#     cited: 48
 #     expected: 97
-#     found: 123
+#     found: 124
 #     scope: directory
 #     density: over
 #     basis: declared-total
@@ -1779,6 +1779,43 @@ retired_rev2_checks := {
 	},
 }
 
+# The facts each retired Rev 2 check reads. The checks gate nothing (their Rev 2 slot is withdrawn in Rev 3),
+# so a missing fact is not a finding. A fact that IS sent with the wrong type (the string "true", a number
+# as a string, null) is still a collection error in the record: it is listed in the report as
+# retired_rev2_input_findings. Those findings are not violations and do not change `compliant`, because no
+# Rev 3 requirement reads the fact. Keep in step with the family modules' rules of the same names.
+retired_rev2_facts := {
+	"3.1.13": [{"path": ["cui_access", "remote_encryption", "cryptographic_protection"], "type": "boolean"}, {"path": ["cui_access", "remote_encryption", "approved_algorithms"], "type": "boolean"}, {"path": ["cui_access", "remote_encryption", "end_to_end_encryption"], "type": "boolean"}],
+	"3.4.9": [{"path": ["nist_800_171", "configuration_management", "user_software", "installation_restricted"], "type": "boolean"}, {"path": ["nist_800_171", "configuration_management", "user_software", "monitoring_implemented"], "type": "boolean"}, {"path": ["nist_800_171", "configuration_management", "user_software", "policy_documented"], "type": "boolean"}],
+	"3.5.6": [{"path": ["nist_800_171", "identification_authentication", "inactivity_disable", "policy_defined"], "type": "boolean"}, {"path": ["nist_800_171", "identification_authentication", "inactivity_disable", "automated_enforcement"], "type": "boolean"}, {"path": ["nist_800_171", "identification_authentication", "inactivity_disable", "period_documented"], "type": "boolean"}],
+	"3.5.8": [{"path": ["nist_800_171", "identification_authentication", "password_reuse", "generations_remembered"], "type": "number"}, {"path": ["nist_800_171", "identification_authentication", "password_reuse", "enforcement_automated"], "type": "boolean"}],
+	"3.5.9": [{"path": ["nist_800_171", "identification_authentication", "temp_password", "immediate_change_required"], "type": "boolean"}, {"path": ["nist_800_171", "identification_authentication", "temp_password", "secure_delivery"], "type": "boolean"}, {"path": ["nist_800_171", "identification_authentication", "temp_password", "expiry_enforced"], "type": "boolean"}],
+	"3.7.1": [{"path": ["nist_800_171", "maintenance", "maintenance_schedule", "schedule_documented"], "type": "boolean"}, {"path": ["nist_800_171", "maintenance", "maintenance_schedule", "performed_regularly"], "type": "boolean"}, {"path": ["nist_800_171", "maintenance", "maintenance_schedule", "records_maintained"], "type": "boolean"}],
+	"3.13.2": [{"path": ["nist_800_171", "system_communications", "engineering", "security_by_design"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "engineering", "secure_sdlc"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "engineering", "principles_documented"], "type": "boolean"}],
+	"3.13.3": [{"path": ["nist_800_171", "system_communications", "separation", "user_mgmt_separated"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "separation", "technical_controls_implemented"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "separation", "admin_interfaces_distinct"], "type": "boolean"}],
+	"3.13.7": [{"path": ["nist_800_171", "system_communications", "split_tunneling", "prevention_implemented"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "split_tunneling", "vpn_configured_correctly"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "split_tunneling", "policy_enforced"], "type": "boolean"}],
+	"3.13.14": [{"path": ["nist_800_171", "system_communications", "voip", "usage_policy_defined"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "voip", "technical_controls"], "type": "boolean"}, {"path": ["nist_800_171", "system_communications", "voip", "monitoring_implemented"], "type": "boolean"}],
+	"3.14.5": [{"path": ["nist_800_171", "system_information", "scanning", "periodic_scans_performed"], "type": "boolean"}, {"path": ["nist_800_171", "system_information", "scanning", "real_time_scanning"], "type": "boolean"}, {"path": ["nist_800_171", "system_information", "scanning", "external_source_files_scanned"], "type": "boolean"}, {"path": ["nist_800_171", "system_information", "scanning", "scan_schedule_defined"], "type": "boolean"}],
+}
+
+retired_rev2_input_findings contains msg if {
+	some rev2, facts in retired_rev2_facts
+	some fact in facts
+	_fact_present(fact.path)
+	value := object.get(input, fact.path, null)
+	type_name(value) != fact.type
+	msg := sprintf(
+		"NIST SP 800-171 Input Contract (unscored): evidence invalid — input.%v is not a %v (got %v); it feeds retired Rev 2 check %v %v, which gates no Rev 3 requirement",
+		[concat(".", fact.path), fact.type, type_name(value), rev2, retired_rev2_checks[rev2].rule],
+	)
+}
+
+# present, whatever its value (null included): object.get with two distinct defaults
+_fact_present(path) if {
+	is_object(input)
+	object.get(input, path, 0) == object.get(input, path, 1)
+}
+
 default compliant := false
 
 compliant if count(violations) == 0
@@ -1932,6 +1969,7 @@ compliance_report := {
 	"requirements": requirement_status,
 	"withdrawn": withdrawn,
 	"retired_rev2_checks": retired_rev2_checks,
+	"retired_rev2_input_findings": sort(retired_rev2_input_findings),
 	"violation_count": count(violations),
 	"failed_controls": count({id | some id, _ in requirements; not _satisfied(id)}),
 	"violations": violations,

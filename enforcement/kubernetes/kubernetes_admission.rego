@@ -129,8 +129,11 @@ is_delete if input.request.operation == "DELETE"
 
 request_evaluable if is_delete
 
+# kind.kind is the resource kind's name: a string, and not a blank one (a blank kind matches no rule, so the
+# request used to be admitted with nothing judged).
 request_evaluable if {
 	is_string(input.request.kind.kind)
+	trim_space(input.request.kind.kind) != ""
 	is_object(input.request.object)
 	count(input.request.object) > 0
 }
@@ -412,6 +415,12 @@ violations_by_category := {
 	"ingress": [v | some v in violations; contains(v, "Ingress:")],
 }
 
+# is_production_namespace(ns) is undefined, not false, for a dev / test / sandbox / staging namespace, and an
+# undefined value inside the report object made the whole report undefined for every such request.
+default _is_production := false
+
+_is_production if is_production_namespace(namespace)
+
 compliance_report := {
 	"framework": "Kubernetes Admission Control",
 	"standard": "kubernetes.admission",
@@ -420,7 +429,7 @@ compliance_report := {
 	"resource_kind": resource_kind,
 	"resource_name": resource_name,
 	"namespace": namespace,
-	"is_production": is_production_namespace(namespace),
+	"is_production": _is_production,
 	"violation_count": count(violations),
 	"violations": [v | some v in violations],
 	"violations_by_category": violations_by_category,

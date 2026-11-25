@@ -204,6 +204,13 @@ advisories contains msg if {
 	msg := "Advisory (library practice, not a 45 CFR requirement): VPN split tunneling is enabled. ePHI traffic must route entirely through the encrypted VPN tunnel."
 }
 
+# An absent split-tunnelling answer is not "disabled": the advisory above fires only on true, so an
+# uncollected fact left no trace in the report. It is stated as not collected (still advisory only).
+advisories contains msg if {
+	object.get(input, ["vpn", "split_tunneling_enabled"], null) == null
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — vpn.split_tunneling_enabled not collected; VPN split tunneling was not reviewed."
+}
+
 # ---------------------------------------------------------------------------
 # 164.312(e)(2)(i) — Integrity Controls for Transmission (Addressable)
 # Ensure ePHI is not improperly modified during transmission

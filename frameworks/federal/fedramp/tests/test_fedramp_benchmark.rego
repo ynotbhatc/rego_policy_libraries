@@ -380,7 +380,7 @@ test_gap_on_a_control_the_baseline_does_not_select_is_listed_and_is_not_a_findin
 
 test_check_outside_the_baseline_keeps_its_row if {
 	# SA-9(5) is not in the Low baseline; this module checks it at Low when the agency requires U.S. locations
-	inp := object.union(_bench_input, {"data_residency": {"us_only_required": true, "storage_locations": [{"region": "eu-west-1"}], "processing_locations": []}})
+	inp := object.union(_bench_input, {"data_residency": {"us_only_required": true, "storage_locations": [{"region": "eu-west-1"}], "processing_locations": [{"region": "us-east-1", "us_territory": true}]}})
 	r := main.compliance_report with input as inp
 		with data.crosswalk.correlation.spine_loaded as true
 		with data.crosswalk.correlation.summary as _summary(1, 0)
