@@ -74,7 +74,7 @@ all_users_have_roles if {
 	users_without_roles := [user |
 		user = input.users[_]
 		user.status == "active"
-		count(user.roles) == 0
+		count(object.get(user, "roles", [])) == 0
 	]
 	count(users_without_roles) == 0
 }
@@ -96,7 +96,7 @@ excessive_permissions(user) if {
 	user_job_function := object.get(user, "job_function", "")
 	inappropriate_roles := [role |
 		role = user.roles[_]
-		not role_appropriate_for_job_function(role.name, user_job_function)
+		not role_appropriate_for_job_function(object.get(role, "name", ""), user_job_function)
 	]
 	count(inappropriate_roles) > 0
 }
@@ -513,7 +513,7 @@ account_is_orphaned(user) if {
 
 account_is_orphaned(user) if {
 	manager := input.users[user.manager_id]
-	manager.status != "active"
+	object.get(manager, "status", "") != "active"
 }
 
 # A manager_id that names no known user is an orphan too.

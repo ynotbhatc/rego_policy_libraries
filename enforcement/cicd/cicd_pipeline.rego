@@ -224,6 +224,19 @@ environment_name(job) := job.environment if is_string(job.environment)
 
 environment_name(job) := job.environment.name if is_object(job.environment)
 
+# An environment that names nothing (an object without a name, or a value that is neither string nor object) has
+# no reviewers on record. environment_name would be undefined for it, and `not has_required_reviewers(...)` then
+# drops the job from the finding. "" matches no environment, so the job is reported.
+environment_name(job) := "" if {
+	is_object(object.get(job, "environment", null))
+	object.get(job, ["environment", "name"], null) == null
+}
+
+environment_name(job) := "" if {
+	not is_string(object.get(job, "environment", null))
+	not is_object(object.get(job, "environment", null))
+}
+
 is_production_deployment(job) if {
 	env_name := lower(object.get(job, ["environment", "name"], object.get(job, "environment", "")))
 	env_name in {"production", "prod", "prd"}

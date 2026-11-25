@@ -65,12 +65,12 @@ common_controls_identified if {
 	count(input.fisma.prepare.common_controls) > 0
 	violations := [control |
 		control := input.fisma.prepare.common_controls[_]
-		not control.provider_organization != ""
+		object.get(control, "provider_organization", "") == ""
 	]
 	count(violations) == 0
 	violations2 := [control |
 		control := input.fisma.prepare.common_controls[_]
-		not control.authorization_status in ["authorized", "not_authorized", "under_assessment"]
+		not object.get(control, "authorization_status", "") in ["authorized", "not_authorized", "under_assessment"]
 	]
 	count(violations2) == 0
 	violations3 := [control |
@@ -115,27 +115,27 @@ information_types_identified if {
 	count(input.fisma.categorize.information_types) > 0
 	violations := [info_type |
 		info_type := input.fisma.categorize.information_types[_]
-		not info_type.type_name != ""
+		object.get(info_type, "type_name", "") == ""
 	]
 	count(violations) == 0
 	violations2 := [info_type |
 		info_type := input.fisma.categorize.information_types[_]
-		not info_type.confidentiality_impact != ""
+		object.get(info_type, "confidentiality_impact", "") == ""
 	]
 	count(violations2) == 0
 	violations3 := [info_type |
 		info_type := input.fisma.categorize.information_types[_]
-		not info_type.integrity_impact != ""
+		object.get(info_type, "integrity_impact", "") == ""
 	]
 	count(violations3) == 0
 	violations4 := [info_type |
 		info_type := input.fisma.categorize.information_types[_]
-		not info_type.availability_impact != ""
+		object.get(info_type, "availability_impact", "") == ""
 	]
 	count(violations4) == 0
 	violations5 := [info_type |
 		info_type := input.fisma.categorize.information_types[_]
-		not info_type.rationale != ""
+		object.get(info_type, "rationale", "") == ""
 	]
 	count(violations5) == 0
 }

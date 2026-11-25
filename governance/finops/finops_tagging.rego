@@ -114,18 +114,18 @@ naming_patterns := {
 	"google_storage_bucket": `^[a-z][a-z0-9\-_\.]{1,61}[a-z0-9]$`,
 }
 
-violations contains sprintf("Naming: Resource '%s' of type '%s' does not match naming convention pattern '%s'", [resource.name, resource.type, naming_patterns[resource.type]]) if {
+violations contains sprintf("Naming: Resource '%s' of type '%s' does not match naming convention pattern '%s'", [object.get(resource, "name", "(no name)"), resource.type, naming_patterns[resource.type]]) if {
 	some resource in input.resources
 	some resource_type, pattern in naming_patterns
 	resource.type == resource_type
-	not regex.match(pattern, resource.name)
+	not regex.match(pattern, object.get(resource, "name", ""))
 }
 
-violations contains sprintf("Naming: Resource '%s' name does not include environment prefix/suffix for type '%s' — include env in name for disambiguation", [resource.name, resource.type]) if {
+violations contains sprintf("Naming: Resource '%s' name does not include environment prefix/suffix for type '%s' — include env in name for disambiguation", [object.get(resource, "name", "(no name)"), resource.type]) if {
 	input.policy.require_env_in_name
 	some resource in input.resources
 	resource.tags.environment
-	not name_contains_env(resource.name, resource.tags.environment)
+	not name_contains_env(object.get(resource, "name", ""), resource.tags.environment)
 }
 
 name_contains_env(name, env) if contains(name, env)
@@ -262,7 +262,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 	some cost_center, budget in input.budget_registry
 	is_number(budget)
 	budget > 0
-	actual := object.get(input.current_spend, cost_center, 0)
+	actual := object.get(input, ["current_spend", cost_center], 0)
 	actual > budget * 1.1
 }
 
@@ -270,7 +270,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 # neither rule above or below would fire).
 violations contains sprintf("Budget: Cost center '%s' budget %v or current spend %v is not a number", [cost_center, budget, actual]) if {
 	some cost_center, budget in input.budget_registry
-	actual := object.get(input.current_spend, cost_center, 0)
+	actual := object.get(input, ["current_spend", cost_center], 0)
 	not _both_numbers(budget, actual)
 }
 
@@ -284,7 +284,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 	some cost_center, budget in input.budget_registry
 	is_number(budget)
 	budget <= 0
-	actual := object.get(input.current_spend, cost_center, 0)
+	actual := object.get(input, ["current_spend", cost_center], 0)
 	actual > budget * 1.1
 }
 

@@ -47,3 +47,10 @@ test_result_compliant_when_clean if {
 	]}
 	r.compliant == true
 }
+
+# A FROM line with no value used to drop out of DF-001 and DF-011 (`from_instr.value` is undefined).
+test_from_without_value_is_not_an_approved_base_image if {
+	inp := {"approved_base_images": ["ubi9"], "instructions": [{"cmd": "FROM"}]}
+	has(df.violation_df_001, "SENTINEL-DF-001") with input as inp
+	has(df.violation_df_011, "SENTINEL-DF-011") with input as inp
+}

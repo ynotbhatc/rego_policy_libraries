@@ -185,8 +185,20 @@ _plan_recognised if is_string(object.get(input, "format_version", null))
 _rule_covers_port(rule, _) if rule.protocol in {"-1", -1}
 
 _rule_covers_port(rule, port) if {
+	is_number(rule.from_port)
+	is_number(rule.to_port)
 	rule.from_port <= port
 	rule.to_port >= port
+}
+
+# A range that is missing or not numeric cannot be bounded: the rule is read as covering the port
+# (`rule.from_port <= port` is undefined on a missing field and used to drop the rule from AAC-TF-006).
+_rule_covers_port(rule, _) if {
+	not is_number(object.get(rule, "from_port", null))
+}
+
+_rule_covers_port(rule, _) if {
+	not is_number(object.get(rule, "to_port", null))
 }
 
 # ── helper rules ──────────────────────────────────────────────────────────────

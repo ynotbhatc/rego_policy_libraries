@@ -189,8 +189,7 @@ no_foreign_key_escrow if {
 only_approved_algorithms_in_use if {
 	violations := [r |
 		r := input.encrypted_resources[_]
-		r.algorithm
-		not r.algorithm in input.encryption_standards.algorithms_approved
+		not object.get(r, "algorithm", "") in object.get(input, ["encryption_standards", "algorithms_approved"], [])
 	]
 	count(violations) == 0
 }

@@ -55,3 +55,17 @@ test_tcp_https_only_not_flagged if {
 }
 
 _fids(findings) := {f.control_id | some f in findings}
+
+# A rule with no port range cannot be bounded: it is read as covering the sensitive port (the comparison
+# `rule.from_port <= port` is undefined on a missing field and used to drop the rule from AAC-TF-006).
+test_world_open_rule_without_port_range_is_a_finding if {
+	f := plan.findings with input as _sg([{"cidr_blocks": ["0.0.0.0/0"], "protocol": "tcp"}])
+	some x in f
+	x.control_id == "AAC-TF-006"
+}
+
+test_world_open_rule_with_string_port_range_is_a_finding if {
+	f := plan.findings with input as _sg([{"cidr_blocks": ["0.0.0.0/0"], "protocol": "tcp", "from_port": "22", "to_port": "22"}])
+	some x in f
+	x.control_id == "AAC-TF-006"
+}

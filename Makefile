@@ -116,6 +116,7 @@ check-coverage:
 	@$(MAKE) --no-print-directory check-no-library-tests
 	@OPA=$(OPA) python3 scripts/coverage_stamp.py --check
 	@python3 scripts/check_numeric_guards.py --check
+	@OPA=$(OPA) python3 scripts/check_undefined_negation.py --check
 	@python3 scripts/coverage_report.py --check
 	@$(MAKE) --no-print-directory check-generated
 	@$(MAKE) --no-print-directory check-bad-input

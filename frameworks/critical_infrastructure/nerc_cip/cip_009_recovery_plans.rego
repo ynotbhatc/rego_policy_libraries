@@ -190,7 +190,7 @@ recovery_plans_current if {
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
-		not recovery_plan_current(input.recovery_plans[system.system_id])
+		not recovery_plan_current(object.get(object.get(input, "recovery_plans", {}), object.get(system, "system_id", ""), null))
 	]
 	count(violations) == 0
 }

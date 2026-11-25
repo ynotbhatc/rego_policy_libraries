@@ -253,9 +253,9 @@ violation_3_13_8 contains msg if {
 }
 
 violation_3_13_8 contains msg if {
-	input.scp.tls_min_version != "1.2"
-	input.scp.tls_min_version != "1.3"
-	msg := sprintf("3.13.8: TLS minimum version is %v (must be TLS 1.2 or higher)", [input.scp.tls_min_version])
+	object.get(input, ["scp", "tls_min_version"], "") != "1.2"
+	object.get(input, ["scp", "tls_min_version"], "") != "1.3"
+	msg := sprintf("3.13.8: TLS minimum version is %v (must be TLS 1.2 or higher)", [object.get(input, ["scp", "tls_min_version"], "not collected")])
 }
 
 # 3.13.9 — Terminate network connections after a defined period of inactivity. (L2)
