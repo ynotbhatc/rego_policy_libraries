@@ -25,7 +25,7 @@ bool_leaves := [p | walk(fx, [p, v]); is_boolean(v)]
 
 number_leaves := [p | walk(fx, [p, v]); is_number(v)]
 
-shards := 2
+shards := 4
 
 passes(r) if r.compliant == true
 
@@ -147,13 +147,33 @@ test_bool_null_or_missing_fails_cis_ubuntu_20_04_shard_0 if bool_absent_fails("c
 
 test_bool_own_string_fails_cis_ubuntu_20_04_shard_1 if bool_wrong_type_fails("cis_ubuntu_20_04", 1, "own string")
 
+test_bool_own_string_fails_cis_ubuntu_20_04_shard_2 if bool_wrong_type_fails("cis_ubuntu_20_04", 2, "own string")
+
+test_bool_own_string_fails_cis_ubuntu_20_04_shard_3 if bool_wrong_type_fails("cis_ubuntu_20_04", 3, "own string")
+
 test_bool_opposite_string_fails_cis_ubuntu_20_04_shard_1 if bool_wrong_type_fails("cis_ubuntu_20_04", 1, "opposite string")
+
+test_bool_opposite_string_fails_cis_ubuntu_20_04_shard_2 if bool_wrong_type_fails("cis_ubuntu_20_04", 2, "opposite string")
+
+test_bool_opposite_string_fails_cis_ubuntu_20_04_shard_3 if bool_wrong_type_fails("cis_ubuntu_20_04", 3, "opposite string")
 
 test_bool_no_fails_cis_ubuntu_20_04_shard_1 if bool_wrong_type_fails("cis_ubuntu_20_04", 1, "no")
 
+test_bool_no_fails_cis_ubuntu_20_04_shard_2 if bool_wrong_type_fails("cis_ubuntu_20_04", 2, "no")
+
+test_bool_no_fails_cis_ubuntu_20_04_shard_3 if bool_wrong_type_fails("cis_ubuntu_20_04", 3, "no")
+
 test_bool_number_fails_cis_ubuntu_20_04_shard_1 if bool_wrong_type_fails("cis_ubuntu_20_04", 1, "number")
 
+test_bool_number_fails_cis_ubuntu_20_04_shard_2 if bool_wrong_type_fails("cis_ubuntu_20_04", 2, "number")
+
+test_bool_number_fails_cis_ubuntu_20_04_shard_3 if bool_wrong_type_fails("cis_ubuntu_20_04", 3, "number")
+
 test_bool_null_or_missing_fails_cis_ubuntu_20_04_shard_1 if bool_absent_fails("cis_ubuntu_20_04", 1)
+
+test_bool_null_or_missing_fails_cis_ubuntu_20_04_shard_2 if bool_absent_fails("cis_ubuntu_20_04", 2)
+
+test_bool_null_or_missing_fails_cis_ubuntu_20_04_shard_3 if bool_absent_fails("cis_ubuntu_20_04", 3)
 
 test_numbers_wrong_type_fail_cis_ubuntu_2004 if number_wrong_type_fails("cis_ubuntu_2004")
 
@@ -169,13 +189,33 @@ test_bool_null_or_missing_fails_cis_ubuntu_2004_shard_0 if bool_absent_fails("ci
 
 test_bool_own_string_fails_cis_ubuntu_2004_shard_1 if bool_wrong_type_fails("cis_ubuntu_2004", 1, "own string")
 
+test_bool_own_string_fails_cis_ubuntu_2004_shard_2 if bool_wrong_type_fails("cis_ubuntu_2004", 2, "own string")
+
+test_bool_own_string_fails_cis_ubuntu_2004_shard_3 if bool_wrong_type_fails("cis_ubuntu_2004", 3, "own string")
+
 test_bool_opposite_string_fails_cis_ubuntu_2004_shard_1 if bool_wrong_type_fails("cis_ubuntu_2004", 1, "opposite string")
+
+test_bool_opposite_string_fails_cis_ubuntu_2004_shard_2 if bool_wrong_type_fails("cis_ubuntu_2004", 2, "opposite string")
+
+test_bool_opposite_string_fails_cis_ubuntu_2004_shard_3 if bool_wrong_type_fails("cis_ubuntu_2004", 3, "opposite string")
 
 test_bool_no_fails_cis_ubuntu_2004_shard_1 if bool_wrong_type_fails("cis_ubuntu_2004", 1, "no")
 
+test_bool_no_fails_cis_ubuntu_2004_shard_2 if bool_wrong_type_fails("cis_ubuntu_2004", 2, "no")
+
+test_bool_no_fails_cis_ubuntu_2004_shard_3 if bool_wrong_type_fails("cis_ubuntu_2004", 3, "no")
+
 test_bool_number_fails_cis_ubuntu_2004_shard_1 if bool_wrong_type_fails("cis_ubuntu_2004", 1, "number")
 
+test_bool_number_fails_cis_ubuntu_2004_shard_2 if bool_wrong_type_fails("cis_ubuntu_2004", 2, "number")
+
+test_bool_number_fails_cis_ubuntu_2004_shard_3 if bool_wrong_type_fails("cis_ubuntu_2004", 3, "number")
+
 test_bool_null_or_missing_fails_cis_ubuntu_2004_shard_1 if bool_absent_fails("cis_ubuntu_2004", 1)
+
+test_bool_null_or_missing_fails_cis_ubuntu_2004_shard_2 if bool_absent_fails("cis_ubuntu_2004", 2)
+
+test_bool_null_or_missing_fails_cis_ubuntu_2004_shard_3 if bool_absent_fails("cis_ubuntu_2004", 3)
 
 # sections reported per module stay consistent with the roll-up on a mixed input (some facts wrong, most right)
 mixed := json.patch(fx, [

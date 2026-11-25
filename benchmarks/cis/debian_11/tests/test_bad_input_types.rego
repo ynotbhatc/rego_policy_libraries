@@ -25,7 +25,7 @@ bool_leaves := [p | walk(fx, [p, v]); is_boolean(v)]
 
 number_leaves := [p | walk(fx, [p, v]); is_number(v)]
 
-shards := 2
+shards := 4
 
 passes(r) if r.compliant == true
 
@@ -147,13 +147,33 @@ test_bool_null_or_missing_fails_cis_debian_11_shard_0 if bool_absent_fails("cis_
 
 test_bool_own_string_fails_cis_debian_11_shard_1 if bool_wrong_type_fails("cis_debian_11", 1, "own string")
 
+test_bool_own_string_fails_cis_debian_11_shard_2 if bool_wrong_type_fails("cis_debian_11", 2, "own string")
+
+test_bool_own_string_fails_cis_debian_11_shard_3 if bool_wrong_type_fails("cis_debian_11", 3, "own string")
+
 test_bool_opposite_string_fails_cis_debian_11_shard_1 if bool_wrong_type_fails("cis_debian_11", 1, "opposite string")
+
+test_bool_opposite_string_fails_cis_debian_11_shard_2 if bool_wrong_type_fails("cis_debian_11", 2, "opposite string")
+
+test_bool_opposite_string_fails_cis_debian_11_shard_3 if bool_wrong_type_fails("cis_debian_11", 3, "opposite string")
 
 test_bool_no_fails_cis_debian_11_shard_1 if bool_wrong_type_fails("cis_debian_11", 1, "no")
 
+test_bool_no_fails_cis_debian_11_shard_2 if bool_wrong_type_fails("cis_debian_11", 2, "no")
+
+test_bool_no_fails_cis_debian_11_shard_3 if bool_wrong_type_fails("cis_debian_11", 3, "no")
+
 test_bool_number_fails_cis_debian_11_shard_1 if bool_wrong_type_fails("cis_debian_11", 1, "number")
 
+test_bool_number_fails_cis_debian_11_shard_2 if bool_wrong_type_fails("cis_debian_11", 2, "number")
+
+test_bool_number_fails_cis_debian_11_shard_3 if bool_wrong_type_fails("cis_debian_11", 3, "number")
+
 test_bool_null_or_missing_fails_cis_debian_11_shard_1 if bool_absent_fails("cis_debian_11", 1)
+
+test_bool_null_or_missing_fails_cis_debian_11_shard_2 if bool_absent_fails("cis_debian_11", 2)
+
+test_bool_null_or_missing_fails_cis_debian_11_shard_3 if bool_absent_fails("cis_debian_11", 3)
 
 # sections reported per module stay consistent with the roll-up on a mixed input (some facts wrong, most right)
 mixed := json.patch(fx, [

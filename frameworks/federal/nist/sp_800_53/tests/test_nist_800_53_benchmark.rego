@@ -39,6 +39,10 @@ test_no_benchmark_input_report_is_unchanged if {
 	every x in r.control_results {
 		not x.benchmark
 	}
+}
+
+# the second half of the test above, as its own test so that each runs one report evaluation
+test_no_benchmark_input_report_is_unchanged_on_empty_input if {
 	empty := main.compliance_report with input as {}
 	not empty.benchmark_evidence
 	empty.violation_count == 544
@@ -81,11 +85,13 @@ test_benchmark_satisfied_never_passes_a_control_by_itself if {
 	not r.compliant
 }
 
-test_benchmark_gap_overrides_an_attested_pass if {
+test_benchmark_gap_overrides_an_attested_pass_clean_row_is_an_attested_pass if {
 	clean := main.compliance_report with input as fully_compliant_input
 	_row(clean, "AU-14").status == "pass"
 	_row(clean, "AU-14").basis == "attestation"
+}
 
+test_benchmark_gap_overrides_an_attested_pass if {
 	r := main.compliance_report with input as _bench_input
 		with data.crosswalk.correlation.spine_loaded as true
 		with data.crosswalk.correlation.summary as _summary(2, 0)
@@ -216,6 +222,10 @@ test_spine_not_loaded_is_a_fail_closed_finding if {
 	every x in r.control_results {
 		x.benchmark.status == "not_evaluated"
 	}
+}
+
+# the second half of the test above, as its own test so that each runs one report evaluation
+test_spine_not_loaded_is_a_fail_closed_finding_module_report_not_compliant if {
 	k := data.nist_800_53.main.compliance_report with input as _bench_input
 		with data.crosswalk.correlation.spine_loaded as false
 	not k.compliant
