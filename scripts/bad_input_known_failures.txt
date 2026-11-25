@@ -4,56 +4,6 @@
 # This is the list TO FIX. Behaviour that was reviewed and is right is in bad_input_accepted.txt
 # (written by hand, one reason per line) and is never written here.
 # Format: <package> <case> <kind>: <detail>. Kinds: pass, fewer-findings, score-rise, undefined, error.
-# 195 entrypoints, 147 with an all-pass fixture (164 fixtures), 26158 cases, 50 failures in 15 packages; 394 more accepted.
+# 195 entrypoints, 147 with an all-pass fixture (173 fixtures), 25638 cases, 0 failures in 0 packages; 361 more accepted.
 # Entrypoints without an all-pass fixture (base and reference cases only): 48; entrypoints with reference cases: 195
 
-cis_palo_alto_panos.main boolno:panos_config.deviceconfig.high_availability.election_option.preemptive@_as_booleans pass: compliant=true score=100
-cis_palo_alto_panos.main boolno:panos_config.licenses[0].expired@_as_booleans pass: compliant=true score=100
-cis_palo_alto_panos.main boolno:panos_config.user_id.setting.enable_probing@_as_booleans pass: compliant=true score=100
-cis_palo_alto_panos.main drop:panos_config.deviceconfig.high_availability.election_option.preemptive@_as_booleans pass: compliant=true score=100
-cis_palo_alto_panos.main drop:panos_config.licenses[0].expired@_as_booleans pass: compliant=true score=100
-cis_palo_alto_panos.main drop:panos_config.user_id.setting.enable_probing@_as_booleans pass: compliant=true score=100
-cis_rhel8.main drop:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rhel8.main null:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rhel9.main drop:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rhel9.main null:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rocky_linux_8.main drop:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rocky_linux_8.main null:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rocky_linux_9.main drop:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-cis_rocky_linux_9.main null:auditd@fixture_compliant_level1_server pass: compliant=false score=100
-fedramp.main drop:data_residency@all_pass_moderate pass: compliant=true score=null
-fedramp.main null:data_residency@all_pass_moderate pass: compliant=true score=null
-hipaa.main drop:hipaa.specifications.164.308(a)(5)(i) pass: compliant=true score=null
-hipaa.main drop:hipaa.specifications.164.310(d)(2)(ii) pass: compliant=true score=null
-hipaa.main drop:hipaa.specifications.164.310(d)(2)(iv) pass: compliant=true score=null
-hipaa.main drop:hipaa.subpart_d.164.406(b) pass: compliant=true score=null
-hipaa.main drop:hipaa.subpart_d.164.408(b) pass: compliant=true score=null
-hipaa.main drop:hipaa.subpart_e.164.514(d)(2) pass: compliant=true score=null
-stig.windows_11.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_11.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2016.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2016.main drop:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2016.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2016.main null:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2019.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2019.main drop:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2019.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2019.main null:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2022.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2022.main drop:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2022.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2022.main null:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2025.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2025.main drop:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig.windows_server_2025.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig.windows_server_2025.main null:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig_windows_11.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig_windows_11.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig_windows_server_2022.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig_windows_server_2022.main drop:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig_windows_server_2022.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig_windows_server_2022.main null:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig_windows_server_2025.main drop:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig_windows_server_2025.main drop:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
-stig_windows_server_2025.main null:registry.HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments pass: compliant=true score=100
-stig_windows_server_2025.main null:registry.HKLM\SYSTEM\CurrentControlSet\Policies\EarlyLaunch pass: compliant=true score=100
