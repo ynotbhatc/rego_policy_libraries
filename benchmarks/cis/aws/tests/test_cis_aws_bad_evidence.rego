@@ -109,3 +109,64 @@ test_credential_report_strings_still_pass if {
 	inp := json.patch(_green, [{"op": "replace", "path": "/credential_report/0/mfa_active", "value": "true"}])
 	_passes(inp)
 }
+
+# input.cis_profile.level is the number 1 or 2. A string (the strings "1" and "level1" included), null or another
+# number never selects a profile: the report is scoped at Level 2 and every Level 2 recommendation says so.
+test_level_of_another_type_is_invalid_evidence if {
+	every bad in ["1", "2", "level1", "Level 1", null, 3, true] {
+		r := _report with input as object.union(_green, {"cis_profile": {"level": bad}})
+		full := _report with input as object.union(_green, {"cis_profile": {"level": 2}})
+		r.compliant == false
+		r.total_controls == full.total_controls
+		every id in {i | some i, rec in data.cis_aws.recommendations; rec.level == 2} {
+			some v in r.violations
+			startswith(v, sprintf("%s: ", [id]))
+			endswith(v, sprintf("evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [json.marshal(bad)]))
+		}
+	}
+	every bad in ["1", null, []] {
+		r := _report with input as object.union(_green, {"cis_profile": bad})
+		r.compliant == false
+	}
+}
+
+test_level_number_selects_the_profile if {
+	l1 := _report with input as object.union(_green, {"cis_profile": {"level": 1}})
+	l2 := _report with input as object.union(_green, {"cis_profile": {"level": 2}})
+	none := _report with input as object.remove(_green, ["cis_profile"])
+	l1.compliant == true
+	l2.compliant == true
+	none.compliant == true
+	l1.total_controls < l2.total_controls
+	none.total_controls == l2.total_controls
+}
+
+# 7.1.6: a key status is Active, Inactive or Expired. Another word ("false", "true", "no") is not read as "not
+# active": it used to take the key out of the rotation check.
+test_unknown_api_key_status_fails_7_1_6 if {
+	every bad in ["false", "true", "no", "enabled"] {
+		inp := json.patch(_green, [{"op": "add", "path": "/bedrock_api_keys/0/Status", "value": bad}])
+		r := _report with input as inp
+		r.compliant == false
+		some v in r.violations
+		startswith(v, "7.1.6: ")
+		contains(v, "is not Active, Inactive or Expired")
+	}
+	every ok in ["Inactive", "Expired"] {
+		_passes(json.patch(_green, [{"op": "add", "path": "/bedrock_api_keys/0/Status", "value": ok}]))
+	}
+}
+
+# 2.14: only AttachmentCount == 0 takes a policy out of scope. A null count used to (null > 0 is false in Rego),
+# so an administrative policy collected without its count was cleared.
+test_admin_policy_without_a_numeric_attachment_count_fails_2_14 if {
+	admin := {"op": "add", "path": "/iam_policies/0/DefaultVersionDocument/Statement/-", "value": {"Effect": "Allow", "Action": "*", "Resource": "*"}}
+	every count_patch in [{"op": "add", "path": "/iam_policies/0/AttachmentCount", "value": null}, {"op": "add", "path": "/iam_policies/0/AttachmentCount", "value": "0"}, {"op": "add", "path": "/iam_policies/0/AttachmentCount", "value": 3}] {
+		r := _report with input as json.patch(_green, [admin, count_patch])
+		some v in r.violations
+		startswith(v, "2.14: ")
+		contains(v, "has an Allow statement with Action * on Resource *")
+	}
+	unattached := _report with input as json.patch(_green, [admin, {"op": "add", "path": "/iam_policies/0/AttachmentCount", "value": 0}])
+	count([v | some v in unattached.violations; startswith(v, "2.14: ")]) == 0
+}

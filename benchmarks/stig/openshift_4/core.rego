@@ -169,6 +169,13 @@ unsuccessful_access_rules := {
 	"-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=unset -k perm_mod",
 }
 
+# What `systemctl is-enabled` and `systemctl is-active` print (systemctl(1)). CNTR-OS-001010 reads the two
+# words; anything else ("false", "no", "true", an empty string) is not an answer from systemctl, so the node
+# is not cleared on it.
+systemctl_enabled_states := {"enabled", "enabled-runtime", "linked", "linked-runtime", "alias", "masked", "masked-runtime", "static", "indirect", "disabled", "generated", "transient", "bad", "not-found"}
+
+systemctl_active_states := {"active", "reloading", "refreshing", "inactive", "failed", "activating", "deactivating", "maintenance", "unknown"}
+
 # SCC subjects the CNTR-OS-000660 check permits on a host-access / privileged / non-MustRunAsRange SCC
 scc_permitted_subjects := {"system:cluster-admins", "system:nodes", "system:masters", "system:admin", "system:serviceaccount:openshift-infra:build-controller", "system:serviceaccount:openshift-infra:pv-recycler-controller", "system:serviceaccount:openshift-machine-api:machine-api-termination-handler"}
 
@@ -186,13 +193,12 @@ _scc_privileged(s) if s.allowPrivilegedContainer == true
 
 _scc_privileged(s) if object.get(s, ["runAsUser", "type"], "") != "MustRunAsRange"
 
-# The allow* fields are booleans in the API object. A string or a number in their place can be read neither as
-# a refusal nor as a grant, so the SCC counts as an offender until the fact is collected with its real type.
+# The allow* fields are required booleans of the SecurityContextConstraints API object: `oc get scc -ojson`
+# always carries all six. One that is missing, null, a string or a number can be read neither as a refusal
+# nor as a grant, so the SCC counts as an offender until the fact is collected whole and with its real type.
 _scc_offender(s) if {
 	some field in ["allowHostIPC", "allowHostPID", "allowHostPorts", "allowHostNetwork", "allowHostDirVolumePlugin", "allowPrivilegedContainer"]
-	value := s[field]
-	not is_null(value)
-	not is_boolean(value)
+	not is_boolean(object.get(s, field, null))
 }
 
 _scc_subjects(s) := {x | some k in ["users", "groups"]; xs := object.get(s, k, []); some x in xs}
@@ -743,8 +749,8 @@ sshd_disabled if {
 	every n in ns {
 		_s(n.sshd_enabled) != "enabled"
 		_s(n.sshd_active) != "active"
-		is_string(n.sshd_enabled)
-		is_string(n.sshd_active)
+		_s(n.sshd_enabled) in systemctl_enabled_states
+		_s(n.sshd_active) in systemctl_active_states
 	}
 }
 

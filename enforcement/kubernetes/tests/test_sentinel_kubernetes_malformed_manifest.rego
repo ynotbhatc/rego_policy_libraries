@@ -153,3 +153,27 @@ test_string_run_as_user_is_denied if {
 	some msg in gate.all_violations with input as inp
 	startswith(msg, "SENTINEL-K8S-002: Container 'web' sets runAsUser to a string")
 }
+
+# A required label or a resource quantity that is null, false or empty is not set (`not x` is false for
+# null, so a null label and a null limit used to count as present).
+test_null_or_empty_label_is_a_missing_label if {
+	every label in gate.required_labels {
+		every bad in [null, false, "", 1] {
+			inp := json.patch(good_deployment, [{"op": "replace", "path": concat("/", ["/manifest/metadata/labels", label]), "value": bad}])
+			_denied(inp)
+			some msg in gate.violation_k8s_011 with input as inp
+			contains(msg, sprintf("'%v'", [label]))
+		}
+	}
+}
+
+test_null_or_empty_quantity_is_no_limit if {
+	every path in ["/resources/limits/cpu", "/resources/limits/memory", "/resources/requests/cpu"] {
+		every bad in [null, false, "", true] {
+			inp := json.patch(good_deployment, [{"op": "replace", "path": concat("", [_c, path]), "value": bad}])
+			_denied(inp)
+			count(gate.violation_k8s_004) == 1 with input as inp
+		}
+	}
+	_allowed(json.patch(good_deployment, [{"op": "replace", "path": concat("", [_c, "/resources/limits/cpu"]), "value": 2}]))
+}

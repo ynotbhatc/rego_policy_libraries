@@ -110,7 +110,36 @@ compliant if count(violations) == 0
 # ── profile ──────────────────────────────────────────────────────────────────────────
 default level := 2
 
-level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
 
 in_scope contains id if {
 	some id, r in recommendations
@@ -2207,7 +2236,7 @@ _messages contains sprintf("2.14: No attached policy grants full administrative 
 	_in_scope("2.14")
 	_ev_2_14
 	some x in input.iam_policies
-	object.get(x, "AttachmentCount", 1) > 0
+	not object.get(x, "AttachmentCount", null) == 0
 	admin_policy(x)
 }
 
@@ -3023,6 +3052,14 @@ _messages contains sprintf("7.1.6: Bedrock long-term API keys expire and are rot
 	some x in input.bedrock_api_keys
 	lower(object.get(x, "Status", "")) == "active"
 	not age_days(object.get(x, "CreateDate", null))
+}
+
+_messages contains sprintf("7.1.6: Bedrock long-term API keys expire and are rotated — Bedrock API key of %s: status %s is not Active, Inactive or Expired", [nm(x, "UserName"), x.Status]) if {
+	_in_scope("7.1.6")
+	_ev_7_1_6
+	some x in input.bedrock_api_keys
+	has_str(x, "Status")
+	not lower(x.Status) in {"active", "inactive", "expired"}
 }
 
 # 7.2.4 (Automated, Level 1)

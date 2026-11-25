@@ -105,10 +105,9 @@ p_base := {"cis_eks": {
 			"spec": {"template": {"spec": {
 				"serviceAccountName": "web",
 				"automountServiceAccountToken": false,
-				"containers": [{
-					"name": "web",
-					"securityContext": {"allowPrivilegeEscalation": false},
-				}],
+				# 4.2.1 to 4.2.5 judge running Pods and the namespace's PSA level, not workload templates,
+				# so the templates carry no securityContext: the module would not read it
+				"containers": [{"name": "web"}],
 			}}},
 		},
 		{
@@ -134,10 +133,7 @@ p_base := {"cis_eks": {
 			},
 			"spec": {"jobTemplate": {"spec": {"template": {"spec": {
 				"serviceAccountName": "reporter",
-				"containers": [{
-					"name": "r",
-					"securityContext": {"allowPrivilegeEscalation": false},
-				}],
+				"containers": [{"name": "r"}],
 			}}}}},
 		},
 		{

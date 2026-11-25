@@ -76,7 +76,7 @@ collected counts as possibly active: they apply and report evidence missing. On 
 | `docker.host.data_root_is_mountpoint` | `mountpoint` on the Docker data root |
 | `docker.docker_group.members[]`, `.approved_members[]` | `getent group docker` and the operator's approved list |
 | `docker.exec_audit.privileged_events[]`, `.root_user_events[]` | `ausearch -k docker` hits for `docker exec` |
-| `docker.swarm.listeners[]`, `docker.swarm.data_path_addr` | listeners on 2377 / 7946 (`{port, address}`), the data path address |
+| `docker.swarm.listeners[]`, `docker.swarm.data_path_addr` | the address of each listener on 2377 / 7946 (`{address}`), the data path address |
 | `docker.policy.*` | optional allowances: `allowed_added_capabilities`, `allowed_sensitive_mounts`, `allowed_privileged_ports`, `allowed_host_devices`, `max_node_cert_expiry_days` |
 | `docker.attest.*` | attestation booleans |
 

@@ -1,11 +1,41 @@
 # ── profile and applicability ────────────────────────────────────────────────
+# input.cis_profile.level is the number 1 or 2 (Level 2 includes Level 1); absent => 2. Anything else ("1", "2",
+# 3, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is scoped at
+# Level 2, the stricter, and every Level 2 recommendation in scope carries the finding, because the profile that
+# decides whether it applies was not readable.
 default _level := 2
 
-_level := 1 if input.cis_profile.level in {1, "1"}
+_level := 1 if input.cis_profile.level == 1
 
 default _level_defaulted := true
 
-_level_defaulted := false if input.cis_profile.level in {1, 2, "1", "2"}
+_level_defaulted := false if input.cis_profile.level in {1, 2}
+
+default _level_invalid := false
+
+_level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_all_violations contains sprintf("%s: evidence invalid — cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, _level_got]) if {
+	_level_invalid
+	some id, r in recommendations
+	r.level == 2
+	_applies(id)
+}
 
 # swarm state as collected: "inactive", "active", "pending", "locked", "error"; "unknown" when not collected
 default _swarm_state := "unknown"

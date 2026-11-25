@@ -137,3 +137,19 @@ test_tags_of_the_wrong_type_are_missing_tags if {
 		_denied(json.patch(good_plan, [{"op": "replace", "path": "/resource_changes/0/change/after/tags", "value": bad}]))
 	}
 }
+
+# A change with several problems at once (no address, no type, no actions) used to make the shape function
+# return conflicting values: the whole report was an evaluation error, which the product drops. It is one
+# SENTINEL-TF-000 finding, and the report stays defined and denying.
+test_change_with_several_problems_is_denied_not_an_error if {
+	every bad in [{}, {"address": null, "type": null, "change": {"actions": [null]}}, {"change": {"after": {}}}] {
+		inp := {"format_version": "1.2", "resource_changes": [bad]}
+		_denied(inp)
+		"SENTINEL-TF-000: Malformed plan: resource_changes[0] has no address" in gate.violations with input as inp
+	}
+}
+
+test_every_leaf_null_is_denied_not_an_error if {
+	inp := {"format_version": null, "resource_changes": [{"address": null, "type": null, "change": {"actions": [null], "after": {"tags": {"Owner": null}, "ingress": [{"cidr_blocks": [null], "from_port": null, "to_port": null}]}}}]}
+	_denied(inp)
+}

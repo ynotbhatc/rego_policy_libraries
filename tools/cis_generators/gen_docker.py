@@ -173,7 +173,7 @@ C = [
          ["_daemon_collected", f"is_object({D}.info.RegistryConfig)"], "docker.daemon / docker.info.RegistryConfig",
          ['count(_as_list(_d("insecure-registries", []))) == 0',
           f'every r in _as_list(object.get({D}.info.RegistryConfig, "InsecureRegistryCIDRs", [])) {{ r in _loopback_cidrs }}',
-          f'every _, x in object.get({D}.info.RegistryConfig, "IndexConfigs", {{}}) {{ object.get(x, "Secure", true) == true }}'],
+          f'every _, x in object.get({D}.info.RegistryConfig, "IndexConfigs", {{}}) {{ object.get(x, "Secure", null) == true }}'],
          rep("/docker/info/RegistryConfig/InsecureRegistryCIDRs/-", "10.0.0.0/8"), rm("/docker/info/RegistryConfig")),
     info("2.6", "aufs", "the storage driver must not be aufs", "Driver", "string",
          [f'lower({D}.info.Driver) != "aufs"'], rep("/docker/info/Driver", "aufs")),
@@ -501,7 +501,7 @@ GREEN = {
         "platform": {},
         "host": {"data_root_is_mountpoint": True},
         "docker_group": {"members": ["deploy"], "approved_members": ["deploy", "ops"]},
-        "daemon_process": {"user": "dockeruser", "rootless": True},
+        "daemon_process": {"user": "dockeruser"},  # 2.1 reads the user; no recommendation reads a rootless flag
         "daemon": {"icc": False, "log-level": "info", "iptables": True, "hosts": ["unix:///var/run/docker.sock"],
                    "default-ulimits": {"nofile": {"Name": "nofile", "Soft": 1024, "Hard": 4096}}, "no-new-privileges": True,
                    "live-restore": True, "userland-proxy": False, "userns-remap": "default",
@@ -529,7 +529,7 @@ GREEN = {
                                 "/bin/sh -c #(nop) COPY file:77aa in /usr/bin/app ", "/bin/sh -c #(nop)  USER app"],
                     "setuid_files": []}],
         "exec_audit": {"privileged_events": [], "root_user_events": []},
-        "swarm": {"listeners": [{"port": 2377, "address": "10.0.0.5"}, {"port": 7946, "address": "10.0.0.5"}],
+        "swarm": {"listeners": [{"address": "10.0.0.5"}, {"address": "10.0.0.5"}],  # 7.2 reads each listener's address only
                   "data_path_addr": "10.0.1.5"},
         "attest": {"swarm_mode_required": True},
     },
@@ -583,7 +583,9 @@ HEADER = meta(BENCH, "sized", "compliance_report") + f'''package cis_docker
 #   6.2 stopped_containers_reviewed.
 #
 # Profile (input.cis_profile):
-#   level  : 1 or 2 (Level 2 includes Level 1). Absent or invalid => 2, the stricter selection (level_defaulted: true).
+#   level  : the number 1 or 2 (Level 2 includes Level 1). Absent => 2 (level_defaulted: true). Any other value
+#            (the strings "1" and "2" included) is invalid evidence: the report is scoped at Level 2 and every
+#            Level 2 recommendation in scope reports it.
 #   swarm  : true forces the Swarm profile in, false leaves it out; absent => decided by the collected fact:
 #            the {SW} Swarm recommendations apply unless input.docker.info.Swarm.LocalNodeState is "inactive".
 #            A state that was not collected counts as possibly active, so they apply and report evidence missing.
@@ -619,7 +621,8 @@ HEADER = meta(BENCH, "sized", "compliance_report") + f'''package cis_docker
 #   docker.host.data_root_is_mountpoint : `mountpoint` on the Docker data root
 #   docker.docker_group.{{members,approved_members}}[] : `getent group docker` and the operator's approved list
 #   docker.exec_audit.{{privileged_events,root_user_events}}[] : `ausearch -k docker` hits for docker exec
-#   docker.swarm.listeners[].{{port,address}} : listeners on 2377 and 7946; docker.swarm.data_path_addr
+#   docker.swarm.listeners[].address        : the address of each listener on 2377 and 7946 (7.2 reads the address only);
+#                                            docker.swarm.data_path_addr
 #   docker.policy.{{allowed_added_capabilities,allowed_sensitive_mounts,allowed_privileged_ports,allowed_host_devices}}[],
 #   docker.policy.max_node_cert_expiry_days : optional operator allowances (default: none, 90 days)
 #   docker.attest.*                 : attestation booleans
@@ -836,13 +839,37 @@ test_level_1_profile_leaves_level_2_out if {{
 	_has_id(r.violations, "5.5")
 }}
 
-test_level_accepts_string_and_defaults_to_2 if {{
-	r1 := b.compliance_report with input as {{"cis_profile": {{"level": "1"}}}}
-	r1.profile.level == 1
-	r2 := b.compliance_report with input as {{"cis_profile": {{"level": "one"}}}}
-	r2.profile.level == 2
-	r2.profile.level_defaulted == true
+# the level is the number 1 or 2: a string (the strings "1" and "2" included), null or another number never
+# selects a profile; the report is scoped at Level 2 and every Level 2 recommendation in scope says so
+test_level_of_another_type_is_invalid_evidence if {{
+	every bad in ["1", "2", "one", null, 3, true] {{
+		r := b.compliance_report with input as object.union(green, {{"cis_profile": {{"level": bad}}}})
+		r.profile.level == 2
+		r.profile.level_defaulted == true
+		r.compliant == false
+		r.level_2.total > 0
+		r.level_2.failed == r.level_2.total
+		r.failed_controls == r.level_2.total
+		r.passed_controls + r.failed_controls == r.total_controls
+		every id in {{i | some i, rec in b.recommendations; rec.level == 2; not rec.swarm; not rec.mac}} {{
+			_has(r.violations, sprintf("%s: evidence invalid — cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, json.marshal(bad)]))
+		}}
+	}}
+	every bad in ["1", null, []] {{
+		r := b.compliance_report with input as object.union(green, {{"cis_profile": bad}})
+		r.compliant == false
+		r.level_2.failed == r.level_2.total
+	}}
 }}
+
+test_level_absent_defaults_to_2_without_a_finding if {{
+	r := b.compliance_report with input as json.remove(green, ["/cis_profile/level"])
+	r.profile.level == 2
+	r.profile.level_defaulted == true
+	r.compliant == true
+}}
+
+_has(vs, msg) if msg in vs
 
 # swarm applicability is decided by the collected state and stated in the report
 test_swarm_inactive_excludes_swarm_profile_explicitly if {{
@@ -1223,7 +1250,7 @@ collected counts as possibly active: they apply and report evidence missing. On 
 | `docker.host.data_root_is_mountpoint` | `mountpoint` on the Docker data root |
 | `docker.docker_group.members[]`, `.approved_members[]` | `getent group docker` and the operator's approved list |
 | `docker.exec_audit.privileged_events[]`, `.root_user_events[]` | `ausearch -k docker` hits for `docker exec` |
-| `docker.swarm.listeners[]`, `docker.swarm.data_path_addr` | listeners on 2377 / 7946 (`{{port, address}}`), the data path address |
+| `docker.swarm.listeners[]`, `docker.swarm.data_path_addr` | the address of each listener on 2377 / 7946 (`{{address}}`), the data path address |
 | `docker.policy.*` | optional allowances: `allowed_added_capabilities`, `allowed_sensitive_mounts`, `allowed_privileged_ports`, `allowed_host_devices`, `max_node_cert_expiry_days` |
 | `docker.attest.*` | attestation booleans |
 

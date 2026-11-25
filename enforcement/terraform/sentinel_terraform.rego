@@ -64,27 +64,18 @@ violations contains msg if {
 	msg := sprintf("SENTINEL-TF-000: Malformed plan: resource_changes[%d] %v", [i, problem])
 }
 
-_change_problem(change) := "is not an object" if not is_object(change)
-
-_change_problem(change) := "has no address" if {
-	is_object(change)
+# One problem per change, the first that applies (a function has one value: independent clauses conflicted
+# on a change with more than one problem, and the whole report went to an evaluation error).
+_change_problem(change) := "is not an object" if {
+	not is_object(change)
+} else := "has no address" if {
 	not is_string(object.get(change, "address", null))
-}
-
-_change_problem(change) := "has no type" if {
-	is_object(change)
+} else := "has no type" if {
 	not is_string(object.get(change, "type", null))
-}
-
-_change_problem(change) := "has no change.actions list" if {
-	is_object(change)
+} else := "has no change.actions list" if {
 	not _actions_ok(change)
-}
-
-# every action other than a pure delete or no-op / read carries the proposed state in change.after
-_change_problem(change) := "has no change.after object" if {
-	is_object(change)
-	_actions_ok(change)
+} else := "has no change.after object" if {
+	# every action other than a pure delete or no-op / read carries the proposed state in change.after
 	some action in change.change.actions
 	action in {"create", "update"}
 	not is_object(object.get(change.change, "after", null))
