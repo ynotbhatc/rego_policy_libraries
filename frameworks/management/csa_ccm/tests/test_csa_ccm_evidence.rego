@@ -1017,6 +1017,25 @@ _report(domain, inp) := r if {
 	r := data.csa_ccm[domain].compliance_report with input as inp
 }
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_leaves_wrong_type_6 if {
+	sum([count(_slice(_leaves, i, 6)) | some i in numbers.range(0, 5)]) == count(_leaves)
+	every j, x in _leaves {
+		x in _slice(_leaves, j % 6, 6)
+	}
+}
+
+test_the_slices_cover_leaves_null_or_removed_4 if {
+	sum([count(_slice(_leaves, i, 4)) | some i in numbers.range(0, 3)]) == count(_leaves)
+	every j, x in _leaves {
+		x in _slice(_leaves, j % 4, 4)
+	}
+}
+
 test_fixture_has_549_facts if {
 	count(_leaves) == 549
 	every domain, spec in _domains {
@@ -1090,8 +1109,8 @@ test_null_everywhere_fails_every_domain if {
 }
 
 # One fact at a time, all 549: the wrong type fails the fact's own check and the finding names the field.
-test_each_fact_with_wrong_type_fails_and_is_named if {
-	every path in _leaves {
+test_each_fact_with_wrong_type_fails_and_is_named_slice_0 if {
+	every path in _slice(_leaves, 0, 6) {
 		every value in ["false", "true", 1] {
 			r := _report(path[1], _set(path, value))
 			r.compliant == false
@@ -1102,8 +1121,107 @@ test_each_fact_with_wrong_type_fails_and_is_named if {
 	}
 }
 
-test_each_fact_null_or_removed_fails_and_is_named if {
-	every path in _leaves {
+test_each_fact_with_wrong_type_fails_and_is_named_slice_1 if {
+	every path in _slice(_leaves, 1, 6) {
+		every value in ["false", "true", 1] {
+			r := _report(path[1], _set(path, value))
+			r.compliant == false
+			r.violation_count >= 1
+			r.failed_controls == 1
+			_named(r.violations, path, "evidence invalid")
+		}
+	}
+}
+
+test_each_fact_with_wrong_type_fails_and_is_named_slice_2 if {
+	every path in _slice(_leaves, 2, 6) {
+		every value in ["false", "true", 1] {
+			r := _report(path[1], _set(path, value))
+			r.compliant == false
+			r.violation_count >= 1
+			r.failed_controls == 1
+			_named(r.violations, path, "evidence invalid")
+		}
+	}
+}
+
+test_each_fact_with_wrong_type_fails_and_is_named_slice_3 if {
+	every path in _slice(_leaves, 3, 6) {
+		every value in ["false", "true", 1] {
+			r := _report(path[1], _set(path, value))
+			r.compliant == false
+			r.violation_count >= 1
+			r.failed_controls == 1
+			_named(r.violations, path, "evidence invalid")
+		}
+	}
+}
+
+test_each_fact_with_wrong_type_fails_and_is_named_slice_4 if {
+	every path in _slice(_leaves, 4, 6) {
+		every value in ["false", "true", 1] {
+			r := _report(path[1], _set(path, value))
+			r.compliant == false
+			r.violation_count >= 1
+			r.failed_controls == 1
+			_named(r.violations, path, "evidence invalid")
+		}
+	}
+}
+
+test_each_fact_with_wrong_type_fails_and_is_named_slice_5 if {
+	every path in _slice(_leaves, 5, 6) {
+		every value in ["false", "true", 1] {
+			r := _report(path[1], _set(path, value))
+			r.compliant == false
+			r.violation_count >= 1
+			r.failed_controls == 1
+			_named(r.violations, path, "evidence invalid")
+		}
+	}
+}
+
+test_each_fact_null_or_removed_fails_and_is_named_slice_0 if {
+	every path in _slice(_leaves, 0, 4) {
+		r1 := _report(path[1], _set(path, null))
+		r1.compliant == false
+		r1.failed_controls == 1
+		_named(r1.violations, path, "evidence missing")
+		r2 := _report(path[1], _drop(path))
+		r2.compliant == false
+		r2.failed_controls == 1
+		_named(r2.violations, path, "evidence missing")
+	}
+}
+
+test_each_fact_null_or_removed_fails_and_is_named_slice_1 if {
+	every path in _slice(_leaves, 1, 4) {
+		r1 := _report(path[1], _set(path, null))
+		r1.compliant == false
+		r1.failed_controls == 1
+		_named(r1.violations, path, "evidence missing")
+		r2 := _report(path[1], _drop(path))
+		r2.compliant == false
+		r2.failed_controls == 1
+		_named(r2.violations, path, "evidence missing")
+	}
+}
+
+test_each_fact_null_or_removed_fails_and_is_named_slice_2 if {
+	every path in _slice(_leaves, 2, 4) {
+		r1 := _report(path[1], _set(path, null))
+		r1.compliant == false
+		r1.failed_controls == 1
+		_named(r1.violations, path, "evidence missing")
+		r2 := _report(path[1], _drop(path))
+		r2.compliant == false
+		r2.failed_controls == 1
+		_named(r2.violations, path, "evidence missing")
+	}
+}
+
+test_each_fact_null_or_removed_fails_and_is_named_slice_3 if {
+	every path in _slice(_leaves, 3, 4) {
 		r1 := _report(path[1], _set(path, null))
 		r1.compliant == false
 		r1.failed_controls == 1
