@@ -418,6 +418,13 @@ class Scanner:
     def _classify(self, p):
         for n in p.rules:
             p.cls[n] = classify_name(n)
+            # `default r := false` makes r a pass-style flag whatever its name says (_b4d_critical_patches_current):
+            # when the body is undefined the flag is false = not passed
+            for c in p.rules[n]:
+                v = c["head"].get("value")
+                if c.get("default") and v is not None and v.get("type") == "boolean" and v.get("value") is False \
+                        and "args" not in c["head"]:
+                    p.cls[n] = "pass"
         for _ in range(6):
             changed = False
             for n, clauses in p.rules.items():
@@ -768,7 +775,7 @@ class Scanner:
                 ctx["typed"].add(self._norm(args[0], env))
             elif op is None and args and args[0].get("type") == "ref":   # a bare `x.y` line: "if it is there ..."
                 ctx["present"].add(self._norm(args[0], env))
-            elif op and op.split(".")[-1].lstrip("_") in ("has_key", "has_field") and len(args) == 2:
+            elif op and (op.split(".")[-1].lstrip("_") in ("has_key", "has_field") or op.split(".")[-1].lstrip("_").startswith("has_")) and len(args) == 2:
                 # f(obj, "key") / f(obj, k): the key is tested for before it is read
                 ctx["present"].add(self._norm(args[0], env) + ("." + args[1]["value"] if args[1].get("type") == "string" else "[]"))
             elif op in MEMBER and len(args) == 2 and args[1].get("type") == "call" \
