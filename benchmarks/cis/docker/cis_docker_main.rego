@@ -33,16 +33,21 @@ _failed := bench.compliance_report.failed_controls
 
 default _pct := 0
 
-_pct := round(((_total - _failed) * 100000) / _total) / 1000 if _total > 0
+_pct := _capped_unless_compliant(round(((_total - _failed) * 100000) / _total) / 1000) if _total > 0
+
+# 100 means compliant: a report that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {
+	bench.compliant
+} else := min([p, 99.999])
 
 _no_facts_msg := sprintf(
 	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
 	["cis_docker"],
 )
 
-_report_violations := array.concat(bench.violations, [_no_facts_msg]) if not _facts_supplied
+_report_violations := array.concat(bench.compliance_report.violations, [_no_facts_msg]) if not _facts_supplied
 
-_report_violations := bench.violations if _facts_supplied
+_report_violations := bench.compliance_report.violations if _facts_supplied
 
 compliance_report := object.union(bench.compliance_report, {
 	"framework": "cis_docker",

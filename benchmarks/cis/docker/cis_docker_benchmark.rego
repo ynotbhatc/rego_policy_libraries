@@ -36,7 +36,8 @@ package cis_docker
 #   6.2 stopped_containers_reviewed.
 #
 # Profile (input.cis_profile):
-#   level  : the number 1 or 2 (Level 2 includes Level 1). Absent => 2 (level_defaulted: true). Any other value
+#   level  : the number 1 or 2 (Level 2 includes Level 1). Absent => 2 (level_defaulted: true) with a PROFILE NOT
+#            SELECTED finding, and the result is never compliant. Any other value
 #            (the strings "1" and "2" included) is invalid evidence: the report is scoped at Level 2 and every
 #            Level 2 recommendation in scope reports it.
 #   swarm  : true forces the Swarm profile in, false leaves it out; absent => decided by the collected fact:
@@ -88,6 +89,7 @@ compliant if {
 	# fail-closed: no facts, no compliance
 	input.docker
 	count(violations) == 0
+	count(profile_violations) == 0
 }
 
 violations := sort([m | some m in _all_violations])
@@ -151,6 +153,17 @@ _level_invalid if {
 	lv := input.cis_profile.level
 	not lv in {1, 2}
 }
+
+# An absent or unrecognised level is not a selection: the scope is the whole benchmark (Level 2), a PROFILE NOT
+# SELECTED finding is reported next to the control violations (it cites no recommendation id) and the result is
+# never compliant (audit 2026-11-24, round 3; before it, an absent level selected 2 with no finding).
+default _level_problem := "evidence missing — cis_profile.level not collected"
+
+_level_problem := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_level_got]) if _level_invalid
+
+profile_violations := [] if {
+	not _level_defaulted
+} else := [sprintf("PROFILE NOT SELECTED: %s (send 1 or 2). Every recommendation of the benchmark was evaluated at Level 2, and the result is not a pass for any profile.", [_level_problem])]
 
 _level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
 
@@ -4997,6 +5010,6 @@ compliance_report := {
 	"section_results": section_results,
 	"offenders": offenders,
 	"compliant": compliant,
-	"violation_count": count(violations),
-	"violations": violations,
+	"violation_count": count(violations) + count(profile_violations),
+	"violations": array.concat(violations, profile_violations),
 }

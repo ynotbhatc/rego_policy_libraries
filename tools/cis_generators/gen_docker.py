@@ -583,7 +583,8 @@ HEADER = meta(BENCH, "sized", "compliance_report") + f'''package cis_docker
 #   6.2 stopped_containers_reviewed.
 #
 # Profile (input.cis_profile):
-#   level  : the number 1 or 2 (Level 2 includes Level 1). Absent => 2 (level_defaulted: true). Any other value
+#   level  : the number 1 or 2 (Level 2 includes Level 1). Absent => 2 (level_defaulted: true) with a PROFILE NOT
+#            SELECTED finding, and the result is never compliant. Any other value
 #            (the strings "1" and "2" included) is invalid evidence: the report is scoped at Level 2 and every
 #            Level 2 recommendation in scope reports it.
 #   swarm  : true forces the Swarm profile in, false leaves it out; absent => decided by the collected fact:
@@ -635,6 +636,7 @@ compliant if {{
 	# fail-closed: no facts, no compliance
 	input.docker
 	count(violations) == 0
+	count(profile_violations) == 0
 }}
 
 violations := sort([m | some m in _all_violations])
@@ -708,8 +710,8 @@ compliance_report := {{
 	"section_results": section_results,
 	"offenders": offenders,
 	"compliant": compliant,
-	"violation_count": count(violations),
-	"violations": violations,
+	"violation_count": count(violations) + count(profile_violations),
+	"violations": array.concat(violations, profile_violations),
 }}
 ''')
 OWNED = ["cis_docker_benchmark.rego", "cis_docker_main.rego", "tests/test_cis_docker_controls.rego", "README.md"]
@@ -735,16 +737,21 @@ _failed := bench.compliance_report.failed_controls
 
 default _pct := 0
 
-_pct := round(((_total - _failed) * 100000) / _total) / 1000 if _total > 0
+_pct := _capped_unless_compliant(round(((_total - _failed) * 100000) / _total) / 1000) if _total > 0
+
+# 100 means compliant: a report that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {{
+	bench.compliant
+}} else := min([p, 99.999])
 
 _no_facts_msg := sprintf(
 	"FAIL-CLOSED: no facts supplied for %s — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input.",
 	["cis_docker"],
 )
 
-_report_violations := array.concat(bench.violations, [_no_facts_msg]) if not _facts_supplied
+_report_violations := array.concat(bench.compliance_report.violations, [_no_facts_msg]) if not _facts_supplied
 
-_report_violations := bench.violations if _facts_supplied
+_report_violations := bench.compliance_report.violations if _facts_supplied
 
 compliance_report := object.union(bench.compliance_report, {{
 	"framework": "cis_docker",
@@ -862,12 +869,31 @@ test_level_of_another_type_is_invalid_evidence if {{
 	}}
 }}
 
-test_level_absent_defaults_to_2_without_a_finding if {{
-	r := b.compliance_report with input as json.remove(green, ["/cis_profile/level"])
-	r.profile.level == 2
-	r.profile.level_defaulted == true
-	r.compliant == true
+# an absent level is not a selection: the whole benchmark is evaluated at Level 2, the report says so in one
+# PROFILE NOT SELECTED finding, and it is never compliant, however green the facts are
+test_level_absent_is_not_selected_and_never_compliant if {{
+	every inp in [json.remove(green, ["/cis_profile/level"])] {{
+		r := b.compliance_report with input as inp
+		r.profile.level == 2
+		r.profile.level_defaulted == true
+		r.compliant == false
+		r.failed_controls == 0
+		data.cis_docker.main.compliance_report.compliance_percentage < 100 with input as inp
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		not main_compliant(inp)
+	}}
+	every inp in [object.union(green, {{"cis_profile": {{"level": 1}}}}), green] {{
+		r := b.compliance_report with input as inp
+		r.compliant == true
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED")]) == 0
+	}}
+	# an unusable level is reported the same way, next to the per-recommendation findings
+	r := b.compliance_report with input as object.union(green, {{"cis_profile": {{"level": "2"}}}})
+	count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: evidence invalid")]) == 1
 }}
+
+main_compliant(inp) if data.cis_docker.main.compliance_report.compliant with input as inp
+main_compliant(inp) if data.cis_docker.main.compliance_report.compliance_percentage == 100 with input as inp
 
 _has(vs, msg) if msg in vs
 
@@ -1217,7 +1243,7 @@ opa fmt -w benchmarks/cis/docker
 
 | Field | Values | When absent |
 |---|---|---|
-| `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
+| `level` | `1`, `2` (Level 2 includes Level 1) | evaluated at `2`, the stricter selection, with a `PROFILE NOT SELECTED` finding (`level_defaulted: true`); never compliant |
 | `swarm` | `true` forces the Swarm profile in, `false` leaves it out | decided by the collected swarm state (below) |
 
 | Selection | `total_controls` |
