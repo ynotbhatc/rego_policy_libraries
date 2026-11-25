@@ -1,6 +1,6 @@
-# Text facts inside rows (a file's mode, a sysctl parameter's value, a service's state ...) are read with
+# Text facts (a file's mode or owner, a sysctl parameter's value, a service's state ...) are read with
 # `row.field == "x"` / `!= "x"` or inside `not f(row.field)`: all undefined when the field is missing, so a row
-# without it used to drop out of the check. Every text leaf of every row of the all-pass host, removed or sent as
+# or section without it used to drop out of the check. Every text leaf of the all-pass host, removed or sent as
 # null, must now leave the host non-compliant. The names listed are labels a message prints; no rule selects on
 # them.
 package cis_debian_11.row_text_facts_test
@@ -9,16 +9,15 @@ import rego.v1
 
 _fx := data.cis_debian_11.all_pass_fixture_test.fixture_compliant
 
-_labels := {"name", "path", "file", "package", "module", "cis_id", "mount_point"}
+# su_allowed_group: `su` need not be restricted to a named group where pam_wheel is not used (CIS 5.3.7 only checks a group when one is set)
+_labels := {"name", "path", "file", "package", "module", "cis_id", "mount_point", "su_allowed_group"}
 
-# string leaves that sit inside a list of rows: [path, key]
+# every string leaf that is a keyed field (not a list member), in a row or in a section: [path]
 _leaves := [path |
 	walk(_fx, [path, v])
 	is_string(v)
-	count(path) >= 3
-	some i, seg in path
-	is_number(seg)
-	i < count(path) - 1
+	count(path) >= 2
+	not is_number(path[count(path) - 1])
 	not path[count(path) - 1] in _labels
 ]
 

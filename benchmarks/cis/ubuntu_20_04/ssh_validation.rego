@@ -95,6 +95,12 @@ config_violations contains msg if {
 	msg := "CIS 5.2.x: evidence missing — ssh.sshd_config_raw not collected"
 }
 
+# `not input.x` is true for a missing or false value, not for null: a null is a value
+config_violations contains msg if {
+	is_null(object.get(input, ["ssh", "sshd_config_raw"], null))
+	msg := "CIS 5.2.x: evidence missing — ssh.sshd_config_raw not collected"
+}
+
 # CIS 5.2.1: owner, group, and mode of /etc/ssh/sshd_config must be tightened
 permission_violations contains msg if {
 	not mode_within(input.ssh.sshd_config_mode, "0600")

@@ -69,6 +69,12 @@ pwquality_violations contains msg if {
 	msg := "CIS 5.4.1: evidence missing — pam.pwquality_conf_raw not collected"
 }
 
+# `not input.x` is true for a missing or false value, not for null: a null is a value
+pwquality_violations contains msg if {
+	is_null(object.get(input, ["pam", "pwquality_conf_raw"], null))
+	msg := "CIS 5.4.1: evidence missing — pam.pwquality_conf_raw not collected"
+}
+
 # CIS 5.4.1.1: Minimum password length >= 14
 pwquality_violations contains msg if {
 	v := pwq_value("minlen")
@@ -250,6 +256,11 @@ account_violations contains msg if {
 # Default umask
 account_violations contains msg if {
 	not input.pam.default_umask
+	msg := "CIS 5.5.x: evidence missing — pam.default_umask not collected"
+}
+
+account_violations contains msg if {
+	is_null(object.get(input, ["pam", "default_umask"], null))
 	msg := "CIS 5.5.x: evidence missing — pam.default_umask not collected"
 }
 

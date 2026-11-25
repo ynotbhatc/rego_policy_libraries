@@ -42,7 +42,7 @@ required_facts := [
 
 violations contains msg if {
 	some k in required_facts
-	not has_key(object.get(input, "user_group", {}), k)
+	is_null(object.get(object.get(input, "user_group", {}), k, null))
 	msg := sprintf("CIS 6.2: evidence missing — user_group.%s not collected", [k])
 }
 
