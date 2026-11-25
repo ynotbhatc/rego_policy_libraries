@@ -51,11 +51,11 @@ test_the_slices_cover_booleans_7 if {
 	}
 }
 
-test_the_slices_cover_booleans_for_null_or_removed_2 if {
-	sum([count(_slice(_booleans, i, 2)) | some i in numbers.range(0, 1)]) == count(_booleans)
-	every i in numbers.range(0, 1) {
-		every k, x in _slice(_booleans, i, 2) {
-			x == _booleans[i + (k * 2)]
+test_the_slices_cover_booleans_for_null_or_removed_4 if {
+	sum([count(_slice(_booleans, i, 4)) | some i in numbers.range(0, 3)]) == count(_booleans)
+	every i in numbers.range(0, 3) {
+		every k, x in _slice(_booleans, i, 4) {
+			x == _booleans[i + (k * 4)]
 		}
 	}
 }
@@ -127,14 +127,28 @@ test_boolean_of_the_wrong_type_never_passes_slice_6 if {
 }
 
 test_boolean_null_or_removed_never_passes_slice_0 if {
-	every p in [q | some q in _slice(_booleans, 0, 2); not _key(q) in _optional] {
+	every p in [q | some q in _slice(_booleans, 0, 4); not _key(q) in _optional] {
 		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": null}]))
 		not _passes(json.patch(_green, [{"op": "remove", "path": p}]))
 	}
 }
 
 test_boolean_null_or_removed_never_passes_slice_1 if {
-	every p in [q | some q in _slice(_booleans, 1, 2); not _key(q) in _optional] {
+	every p in [q | some q in _slice(_booleans, 1, 4); not _key(q) in _optional] {
+		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": null}]))
+		not _passes(json.patch(_green, [{"op": "remove", "path": p}]))
+	}
+}
+
+test_boolean_null_or_removed_never_passes_slice_2 if {
+	every p in [q | some q in _slice(_booleans, 2, 4); not _key(q) in _optional] {
+		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": null}]))
+		not _passes(json.patch(_green, [{"op": "remove", "path": p}]))
+	}
+}
+
+test_boolean_null_or_removed_never_passes_slice_3 if {
+	every p in [q | some q in _slice(_booleans, 3, 4); not _key(q) in _optional] {
 		not _passes(json.patch(_green, [{"op": "replace", "path": p, "value": null}]))
 		not _passes(json.patch(_green, [{"op": "remove", "path": p}]))
 	}
