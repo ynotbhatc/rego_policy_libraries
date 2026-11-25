@@ -37,23 +37,26 @@ open_of(inp) := fs if {
 	fs := r.open_findings
 }
 
-not_compliant(inp) if {
-	r := data.stig.oracle_linux_8.main.compliance_report with input as inp
-	r.compliant == false
-	r.failed_controls >= 1
-}
+# The sweeps run in `shards` (4) slices of num_leaves (leaf index modulo `shards`), so that no test runs long enough
+# to meet the suite's per-test timeout on the oldest supported OPA. Every leaf is in exactly one slice; the
+# slices are checked to cover num_leaves in test_the_shards_cover_every_numeric_fact.
+shards := 4
 
-# the rule(s) that read each leaf: those Open once the leaf is removed
-readers := {l[0]: ids |
-	some l in num_leaves
+shard(i) := [l | some j, l in num_leaves; j % shards == i]
+
+# the rule(s) that read each leaf: those Open once the leaf is removed (for the leaves given)
+readers_of(leaves) := {l[0]: ids |
+	some l in leaves
 	ids := {f.stig_id | some f in open_of(json.patch(fx, [{"op": "remove", "path": l[0]}]))}
 }
 
-# `rd` is `readers`, bound once per test (it is expensive). The mutated input fails every reader rule; `named` additionally requires a finding of a reader rule to name
+# `rd` is `readers_of` the shard, bound once per test (it is expensive). The mutated input fails every reader rule; `named` additionally requires a finding of a reader rule to name
 # the fact (evidence rule: the finding names the field that is the problem)
 rejected(l, rd, inp, named) if {
-	not_compliant(inp)
-	fs := open_of(inp)
+	r := data.stig.oracle_linux_8.main.compliance_report with input as inp
+	r.compliant == false
+	r.failed_controls >= 1
+	fs := r.open_findings
 	every id in rd[l[0]] {
 		some f in fs
 		f.stig_id == id
@@ -80,38 +83,130 @@ test_green_fixture_passes if {
 	count(r.open_findings) == 0
 }
 
+# The shards partition num_leaves: each leaf is in exactly one, and together they are all of it.
+test_the_shards_cover_every_numeric_fact if {
+	count(num_leaves) >= 5
+	every j, l in num_leaves {
+		l in shard(j % shards)
+	}
+	sum([count(shard(i)) | some i in numbers.range(0, shards - 1)]) == count(num_leaves)
+}
+
 # Requirement: the sweep is not vacuous - the fixture has numeric facts and each is read by at least one rule
 # (removing it opens a finding). Source: evidence rule, "a missing number must not default to a passing value".
-test_every_numeric_fact_is_read_by_a_rule if {
-	count(num_leaves) >= 5
-	rd := readers
-	every l in num_leaves {
+test_every_numeric_fact_is_read_by_a_rule_shard_0 if {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_1 if {
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_2 if {
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_3 if {
+	rd := readers_of(shard(3))
+	every l in shard(3) {
 		count(rd[l[0]]) >= 1
 	}
 }
 
 # Requirement: a decimal string is not a number (owner ruling "numbers are JSON numbers only"); the finding of
 # the reading rule names the fact.
-test_decimal_string_fails_the_reading_rule if {
-	rd := readers
-	every l in num_leaves {
+test_decimal_string_fails_the_reading_rule_shard_0 if {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_1 if {
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_2 if {
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_3 if {
+	rd := readers_of(shard(3))
+	every l in shard(3) {
 		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
 	}
 }
 
 # Requirement: a whitespace-padded decimal string is not a number (same ruling).
-test_padded_decimal_string_fails_the_reading_rule if {
-	rd := readers
-	every l in num_leaves {
+test_padded_decimal_string_fails_the_reading_rule_shard_0 if {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_1 if {
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_2 if {
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_3 if {
+	rd := readers_of(shard(3))
+	every l in shard(3) {
 		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
 	}
 }
 
 # Requirement: a fraction is not a valid value of a whole-number setting (every numeric fact of this STIG is a
 # count, a size, a number of days/seconds or an id). Source: LINUX_COLLECTOR_CONTRACT.md `_num` "a whole number".
-test_fraction_fails_the_reading_rule if {
-	rd := readers
-	every l in num_leaves {
+test_fraction_fails_the_reading_rule_shard_0 if {
+	rd := readers_of(shard(0))
+	every l in shard(0) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_1 if {
+	rd := readers_of(shard(1))
+	every l in shard(1) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_2 if {
+	rd := readers_of(shard(2))
+	every l in shard(2) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_3 if {
+	rd := readers_of(shard(3))
+	every l in shard(3) {
 		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
 	}
 }
