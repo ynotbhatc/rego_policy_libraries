@@ -32,10 +32,10 @@ def empty_list(path, sample=None):      # a query that must return no rows; the 
     return ([f"is_array(input.{path})", f"count(input.{path}) == 0"], [("BOOL", path, [])])
 
 def num_ge(path, n, fx):               # _num is a NUM_HELPERS function, emitted for both platforms
-    return ([f"_num(input.{path}) >= {n}"], [("BOOL", path, fx)])
+    return ([f"_whole(input.{path}) >= {n}"], [("BOOL", path, fx)])
 
 def num_gt(path, n, fx):
-    return ([f"_num(input.{path}) > {n}"], [("BOOL", path, fx)])
+    return ([f"_whole(input.{path}) > {n}"], [("BOOL", path, fx)])
 
 def ora_param(name, val, fx=None):      # V$PARAMETER value, compared case-insensitively
     return ([f'lower(input.oracle.parameters["{name}"]) == "{val.lower()}"'], [("MAP2", "oracle.parameters", name, fx or val)])
@@ -47,8 +47,9 @@ def ora_param_in(name, vals, fx):
 def ora_param_absent_or(name, val):     # parameter may be unset; if set it must equal val
     return ([f'lower(object.get(input.oracle.parameters, "{name}", "{val.lower()}")) == "{val.lower()}"'], [])
 
-def profile_le(resource, n, fx):
-    return ([f'profiles_every_le("{resource}", {n})'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
+def profile_le(resource, n, fx, whole=False):   # whole: a count (not days), a fraction is invalid
+    fn = "profiles_every_le_whole" if whole else "profiles_every_le"
+    return ([f'{fn}("{resource}", {n})'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
 
 def profile_eq(resource, val):
     return ([f'profiles_every_eq("{resource}", "{val}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", val)])
@@ -56,8 +57,8 @@ def profile_eq(resource, val):
 def profile_set(resource, fx):
     return ([f'profiles_every_set("{resource}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
 
-def profile_bounded(resource, fx):      # numeric, not UNLIMITED
-    return ([f'profiles_every_numeric("{resource}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
+def profile_bounded(resource, fx):      # a whole number (a count), not UNLIMITED
+    return ([f'profiles_every_whole("{resource}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
 
 def my_var(name, val, fx=None):
     return ([f'upper(input.mysql.variables["{name}"]) == "{val.upper()}"'], [("MAP2", "mysql.variables", name, fx or val)])
@@ -67,10 +68,10 @@ def my_var_in(name, vals, fx):
     return ([f'upper(input.mysql.variables["{name}"]) in {{{s}}}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_var_num_ge(name, n, fx):
-    return ([f'_num(input.mysql.variables["{name}"]) >= {n}'], [("MAP2", "mysql.variables", name, fx)])
+    return ([f'_whole(input.mysql.variables["{name}"]) >= {n}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_var_num_gt(name, n, fx):
-    return ([f'_num(input.mysql.variables["{name}"]) > {n}'], [("MAP2", "mysql.variables", name, fx)])
+    return ([f'_whole(input.mysql.variables["{name}"]) > {n}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_plugin_active(name):
     return ([f'upper(input.mysql.plugins["{name}"]) == "ACTIVE"'], [("BOOL", f"mysql.plugins.{name}", "ACTIVE")])
@@ -89,6 +90,14 @@ NUM_HELPERS = """
 # anything else (@NOT@null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
 # never passed to to_number.
 _num(v) := v if is_number(v)
+
+# a numeric value that is a count, length, size or number of minutes: a JSON number with no fractional part.
+# 2.5 sessions or 2.5 failed logins is not a limit the DBMS can hold, so a fraction is evidence invalid and the
+# rule stays Open. Limits expressed in days (PASSWORD_LIFE_TIME and friends) use _num: Oracle accepts fractions of a day.
+_whole(v) := v if {
+	is_number(v)
+	round(v) == v
+}
 
 # a query result that lists names (policies, files): an array whose every member is a non-empty string.
 # count() of a string is its length, so a list is never counted before it is known to be one.
@@ -118,6 +127,14 @@ profiles_every_le(resource, max) if {
 	}
 }
 
+# the same for a limit that is a count (FAILED_LOGIN_ATTEMPTS): a fraction does not pass
+profiles_every_le_whole(resource, max) if {
+	count(input.oracle.profiles) > 0
+	every _, p in input.oracle.profiles {
+		_whole(p[resource]) <= max
+	}
+}
+
 profiles_every_eq(resource, val) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
@@ -132,10 +149,10 @@ profiles_every_set(resource) if {
 	}
 }
 
-profiles_every_numeric(resource) if {
+profiles_every_whole(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		_num(p[resource]) >= 0
+		_whole(p[resource]) >= 0
 	}
 }
 
@@ -267,7 +284,7 @@ PLATFORMS = {
             "O19C-00-012100": attest("oracle.attest.temporary_accounts_expire_within_72h"),
             "O19C-00-012200": attest("oracle.attest.developers_no_elevated_privileges_on_shared_hosts"),
             "O19C-00-012300": profile_eq("PASSWORD_LOCK_TIME", "UNLIMITED"),
-            "O19C-00-012400": profile_le("FAILED_LOGIN_ATTEMPTS", 3, 3),
+            "O19C-00-012400": profile_le("FAILED_LOGIN_ATTEMPTS", 3, 3, whole=True),
             "O19C-00-012500": profile_le("INACTIVE_ACCOUNT_TIME", 35, 35),
             "O19C-00-012900": empty_list("oracle.sample_schemas_present"),
             "O19C-00-013000": empty_list("oracle.unused_components_installed"),
