@@ -141,6 +141,18 @@ _all(value) := object.union_n(array.concat(
 	),
 ))
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_fact_paths_7 if {
+	sum([count(_slice(fact_paths, i, 7)) | some i in numbers.range(0, 6)]) == count(fact_paths)
+	every j, x in fact_paths {
+		x in _slice(fact_paths, j % 7, 7)
+	}
+}
+
 test_all_pass_fixture_passes if {
 	r := report with input as all_pass
 	r.compliant == true
@@ -171,8 +183,74 @@ test_boolean_false_keeps_the_plain_finding if {
 	}
 }
 
-test_each_fact_of_the_wrong_type_fails_and_is_named if {
-	every p in fact_paths {
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_0 if {
+	every p in _slice(fact_paths, 0, 7) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_1 if {
+	every p in _slice(fact_paths, 1, 7) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_2 if {
+	every p in _slice(fact_paths, 2, 7) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_3 if {
+	every p in _slice(fact_paths, 3, 7) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_4 if {
+	every p in _slice(fact_paths, 4, 7) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_5 if {
+	every p in _slice(fact_paths, 5, 7) {
+		every bad in bad_values {
+			r := report with input as _set(p, bad)
+			r.compliant == false
+			r.violations == {m | some m in r.violations; endswith(m, sprintf("[evidence invalid: input.%s is not a boolean (got %s)]", [concat(".", p), type_name(bad)]))}
+			r.violation_count == 1
+		}
+	}
+}
+
+test_each_fact_of_the_wrong_type_fails_and_is_named_slice_6 if {
+	every p in _slice(fact_paths, 6, 7) {
 		every bad in bad_values {
 			r := report with input as _set(p, bad)
 			r.compliant == false

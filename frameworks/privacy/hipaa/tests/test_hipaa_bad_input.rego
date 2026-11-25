@@ -157,13 +157,67 @@ test_single_mistyped_attestation_on_a_fact_row_fails if {
 
 # Audit 2026-11-24, round 3. The all-pass fixture carries an attestation only for the rows that read one.
 # Each such attestation removed, false, null or of another type fails the module that owns it.
-test_every_attestation_the_fixture_carries_is_required if {
-	every key, module in _maps {
-		every id, _ in fx.full_input.hipaa[key] {
-			not _compliant(module, json.remove(fx.full_input, [sprintf("hipaa/%s/%s", [key, id])]))
-			every value in [false, null, "true", "false", 1] {
-				not _compliant(module, _replaced(["hipaa", key, id], value))
-			}
+# The attestations are swept in 4 slices (index modulo 4 in the order of map, then id), so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every attestation is in exactly one slice.
+_attestations := [[key, id] |
+	some key in sort([k | some k, _ in _maps])
+	some id in sort([i | some i, _ in fx.full_input.hipaa[key]])
+]
+
+_attestation_slice(i) := [a | some j, a in _attestations; j % 4 == i]
+
+test_the_attestation_slices_cover_every_attestation if {
+	sum([count(_attestation_slice(i)) | some i in numbers.range(0, 3)]) == count(_attestations)
+	count(_attestations) == sum([count(fx.full_input.hipaa[key]) | some key, _ in _maps])
+	every j, a in _attestations {
+		a in _attestation_slice(j % 4)
+	}
+}
+
+test_every_attestation_the_fixture_carries_is_required_slice_0 if {
+	every a in _attestation_slice(0) {
+		key := a[0]
+		id := a[1]
+		module := _maps[key]
+		not _compliant(module, json.remove(fx.full_input, [sprintf("hipaa/%s/%s", [key, id])]))
+		every value in [false, null, "true", "false", 1] {
+			not _compliant(module, _replaced(["hipaa", key, id], value))
+		}
+	}
+}
+
+test_every_attestation_the_fixture_carries_is_required_slice_1 if {
+	every a in _attestation_slice(1) {
+		key := a[0]
+		id := a[1]
+		module := _maps[key]
+		not _compliant(module, json.remove(fx.full_input, [sprintf("hipaa/%s/%s", [key, id])]))
+		every value in [false, null, "true", "false", 1] {
+			not _compliant(module, _replaced(["hipaa", key, id], value))
+		}
+	}
+}
+
+test_every_attestation_the_fixture_carries_is_required_slice_2 if {
+	every a in _attestation_slice(2) {
+		key := a[0]
+		id := a[1]
+		module := _maps[key]
+		not _compliant(module, json.remove(fx.full_input, [sprintf("hipaa/%s/%s", [key, id])]))
+		every value in [false, null, "true", "false", 1] {
+			not _compliant(module, _replaced(["hipaa", key, id], value))
+		}
+	}
+}
+
+test_every_attestation_the_fixture_carries_is_required_slice_3 if {
+	every a in _attestation_slice(3) {
+		key := a[0]
+		id := a[1]
+		module := _maps[key]
+		not _compliant(module, json.remove(fx.full_input, [sprintf("hipaa/%s/%s", [key, id])]))
+		every value in [false, null, "true", "false", 1] {
+			not _compliant(module, _replaced(["hipaa", key, id], value))
 		}
 	}
 }
