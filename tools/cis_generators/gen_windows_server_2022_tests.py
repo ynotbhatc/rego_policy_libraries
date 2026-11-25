@@ -211,9 +211,21 @@ test_level_1_excludes_level_2_recommendations if {{
 }}
 
 test_next_generation_is_opt_in if {{
-	fx := json.remove({fx}.fixture_ms, ["cis_profile/next_generation"])
+	fx := json.patch({fx}.fixture_ms, [{{"op": "replace", "path": "/cis_profile/next_generation", "value": false}}])
 	r := data.{pkg}.{sec(ng_only)}.compliance_report with input as fx
 	r.results["{ng_only}"] == "not_applicable"
+}}
+
+# a selector the profile does not state is not an explicit false: the row stays in scope, not assessed, and the
+# report says the selector was not stated (as a missing level is level_defaulted)
+test_a_missing_next_generation_selector_is_not_assessed if {{
+	fx := json.remove({fx}.fixture_ms, ["cis_profile/next_generation"])
+	r := data.{pkg}.{sec(ng_only)}.compliance_report with input as fx
+	r.results["{ng_only}"] == "not_assessed"
+	m := data.{pkg}.main.compliance_report with input as fx
+	m.profile.next_generation_defaulted == true
+	m.profile.selectors_not_stated == ["next_generation"]
+	m.compliant == false
 }}
 
 test_missing_audit_policy_is_reported_not_assessed if {{

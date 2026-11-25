@@ -320,7 +320,10 @@ profile := {
 	"level": level,
 	"level_defaulted": level_defaulted,
 	"bitlocker": bitlocker,
+	"bitlocker_defaulted": "bitlocker" in _selectors_not_stated,
 	"next_generation": next_generation,
+	"next_generation_defaulted": "next_generation" in _selectors_not_stated,
+	"selectors_not_stated": _selectors_not_stated,
 }
 
 _tier_decided(tier) if tier == "L1"
@@ -624,6 +627,7 @@ test_{t}_evidence_missing_is_not_a_pass if {{
 
     total = len(recs)
     l1, l2, l2_bl = _scope(recs, 1, False, False), _scope(recs, 2, False, False), _scope(recs, 2, True, False)
+    l2_all = _scope(recs, 2, True, True)
     l2_only, bl_only, ng_only = _first(order, recs, checks, "L2"), _first(order, recs, checks, "BL"), _first(order, recs, checks, "NG")
     if not l2_only or not bl_only:
         sys.exit("no Level 2 or BitLocker recommendation to test profile selection with")
@@ -660,7 +664,7 @@ test_coverage_accounting_partitions_the_benchmark if {{
 }}
 
 test_level_1_scope_matches_the_workbook if {{
-	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 1}}}}])
+	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 1, "bitlocker": false, "next_generation": false}}}}])
 	r := data.{PKG}.main.compliance_report with input as fx
 	r.total_controls == {l1}
 	r.compliant == true
@@ -669,24 +673,28 @@ test_level_1_scope_matches_the_workbook if {{
 }}
 
 test_level_2_scope_matches_the_workbook if {{
-	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 2}}}}])
+	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 2, "bitlocker": false, "next_generation": false}}}}])
 	r := data.{PKG}.main.compliance_report with input as fx
 	r.total_controls == {l2}
 	r.compliant == true
 }}
 
 test_level_2_with_bitlocker_scope_matches_the_workbook if {{
-	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 2, "bitlocker": true}}}}])
+	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 2, "bitlocker": true, "next_generation": false}}}}])
 	r := data.{PKG}.main.compliance_report with input as fx
 	r.total_controls == {l2_bl}
 	r.compliant == true
 }}
 
-test_missing_profile_defaults_to_level_2_without_the_opt_in_profiles if {{
+test_missing_profile_defaults_to_level_2_and_leaves_the_opt_in_profiles_not_assessed if {{
 	fx := json.remove({fx}, ["cis_profile"])
 	r := data.{PKG}.main.compliance_report with input as fx
-	r.total_controls == {l2}
+	r.total_controls == {l2_all}
 	r.profile.level_defaulted == true
+	r.profile.bitlocker_defaulted == true
+	r.profile.next_generation_defaulted == true
+	r.profile.selectors_not_stated == ["bitlocker", "next_generation"]
+	r.compliant == false
 }}
 
 test_level_1_excludes_level_2_recommendations if {{
@@ -696,10 +704,23 @@ test_level_1_excludes_level_2_recommendations if {{
 }}
 
 test_bitlocker_is_opt_in if {{
-	fx := json.remove({fx}, ["cis_profile/bitlocker"])
+	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile/bitlocker", "value": false}}])
 	r := data.{PKG}.{sec(bl_only)}.compliance_report with input as fx
 	r.results["{bl_only}"] == "not_applicable"
 	data.{PKG}.lib.results["{bl_only}"] == "pass" with input as {fx}
+}}
+
+# a selector the profile does not state is not an explicit false: the row stays in scope, not assessed, and the
+# report says the selector was not stated (as a missing level is level_defaulted)
+test_a_missing_bitlocker_selector_is_not_assessed if {{
+	fx := json.remove({fx}, ["cis_profile/bitlocker"])
+	r := data.{PKG}.{sec(bl_only)}.compliance_report with input as fx
+	r.results["{bl_only}"] == "not_assessed"
+	m := data.{PKG}.main.compliance_report with input as fx
+	m.profile.bitlocker_defaulted == true
+	m.profile.bitlocker == false
+	"bitlocker" in m.profile.selectors_not_stated
+	m.compliant == false
 }}
 
 test_missing_audit_policy_is_reported_not_assessed if {{
@@ -721,10 +742,20 @@ test_a_failed_recommendation_is_counted_and_named if {{
 """]
     if ng_only:
         body.append(f"""test_next_generation_is_opt_in if {{
-	fx := json.remove({fx}, ["cis_profile/next_generation"])
+	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile/next_generation", "value": false}}])
 	r := data.{PKG}.{sec(ng_only)}.compliance_report with input as fx
 	r.results["{ng_only}"] == "not_applicable"
 	data.{PKG}.lib.results["{ng_only}"] == "pass" with input as {fx}
+}}
+
+test_a_missing_next_generation_selector_is_not_assessed if {{
+	fx := json.remove({fx}, ["cis_profile/next_generation"])
+	r := data.{PKG}.{sec(ng_only)}.compliance_report with input as fx
+	r.results["{ng_only}"] == "not_assessed"
+	m := data.{PKG}.main.compliance_report with input as fx
+	m.profile.next_generation_defaulted == true
+	m.profile.selectors_not_stated == ["next_generation"]
+	m.compliant == false
 }}
 """)
     files["test_main.rego"] = "\n".join(body)
@@ -743,7 +774,7 @@ test_full_scope_matches_the_workbook if {{
 }}
 
 test_level_1_scope_matches_the_workbook if {{
-	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 1}}}}])
+	fx := json.patch({fx}, [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 1, "bitlocker": false, "next_generation": false}}}}])
 	count(data.{PKG}.applicable_ids) == {l1} with input as fx
 }}
 """
@@ -761,7 +792,7 @@ test_unattested_manual_recommendation_is_a_violation if {{
 }}
 
 test_manual_recommendations_are_level_1 if {{
-	fx := json.patch(json.remove({fx}, ["attestations"]), [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 1}}}}])
+	fx := json.patch(json.remove({fx}, ["attestations"]), [{{"op": "replace", "path": "/cis_profile", "value": {{"level": 1, "bitlocker": false, "next_generation": false}}}}])
 	r := data.{PKG}.main.compliance_report with input as fx
 	r.unattested_controls == {manual_in_l1}
 }}
@@ -810,7 +841,8 @@ test_{t}_unattested_is_a_violation if {{
 
 
 LIB_TEST_CHANGES = [
-    ('ms := {"role": "member_server", "level": 2}', 'ms := {"level": 2}'),
+    ('ms := {"role": "member_server", "level": 2, "next_generation": false}', 'ms := {"level": 2, "bitlocker": false, "next_generation": false}'),
+    ('ms_unstated := {"role": "member_server", "level": 2}', 'ms_unstated := {"level": 2}'),
     ('"profiles": ["L1_DC", "L1_MS"]', '"profiles": ["L1"]'),
     ('"profiles": ["L1_MS"]', '"profiles": ["L1"]'),
     ('"profiles": ["L2_MS"]', '"profiles": ["L2"]'),
@@ -848,6 +880,8 @@ test_a_mistyped_bitlocker_selector_is_not_assessed if {
 		status(row) == "not_assessed" with input as {"cis_profile": {"level": 2, "bitlocker": bad}, "registry": {"HKLM\\\\X": {"V": 1}}}
 	}
 	status(row) == "not_applicable" with input as {"cis_profile": {"level": 2, "bitlocker": false}, "registry": {"HKLM\\\\X": {"V": 1}}}
+	status(row) == "not_assessed" with input as {"cis_profile": {"level": 2}, "registry": {"HKLM\\\\X": {"V": 1}}}
+	status(row) == "not_assessed" with input as {"registry": {"HKLM\\\\X": {"V": 1}}}
 	status(row) == "not_assessed" with input as {"cis_profile": "level 2", "registry": {"HKLM\\\\X": {"V": 1}}}
 }
 
@@ -891,7 +925,7 @@ def readme(recs, checks, section_names):
         n = sum(1 for r in recs.values() if r["section"] == s)
         m = sum(1 for rid in MANUAL if recs[rid]["section"] == s)
         rows.append(f"| {s} {section_names[s].split(' (')[0]} | `{name}_validation.rego` | {n}{f' ({m} Manual)' if m else ''} |")
-    ng = (f"| `next_generation` | `true` to add the Next Generation Windows Security profile ({tiers['NG']} recommendations) | off |\n"
+    ng = (f"| `next_generation` | `true` to add the Next Generation Windows Security profile ({tiers['NG']} recommendations) | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `next_generation_defaulted: true` |\n"
           if tiers["NG"] else
           "| `next_generation` | accepted for parity with the Windows 10 module; this benchmark publishes no Next Generation profile | off |\n")
     manual = ", ".join(sorted(MANUAL, key=lambda i: [int(p) for p in i.split(".")]))
@@ -922,7 +956,7 @@ Each section module is a `controls` table, one row per recommendation; `lib.rego
 | Field | Values | When absent |
 |---|---|---|
 | `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
-| `bitlocker` | `true` to add the BitLocker profile ({tiers['BL']} recommendations) | off: CIS publishes it as a separate profile |
+| `bitlocker` | `true` to add the BitLocker profile ({tiers['BL']} recommendations) | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `bitlocker_defaulted: true` |
 {ng}
 `total_controls` is the number in scope: {tiers['L1']} at Level 1, {tiers['L1'] + tiers['L2']} at Level 2, every opt-in adds its own, out of
 `benchmark_total_controls` {len(recs)}.

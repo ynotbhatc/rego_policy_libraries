@@ -60,9 +60,21 @@ test_level_1_excludes_level_2_recommendations if {
 }
 
 test_next_generation_is_opt_in if {
-	fx := json.remove(data.cis_windows_server_2025_tests.fixtures_test.fixture_ms, ["cis_profile/next_generation"])
+	fx := json.patch(data.cis_windows_server_2025_tests.fixtures_test.fixture_ms, [{"op": "replace", "path": "/cis_profile/next_generation", "value": false}])
 	r := data.cis_windows_server_2025.admin_templates_computer.compliance_report with input as fx
 	r.results["18.9.5.1"] == "not_applicable"
+}
+
+# a selector the profile does not state is not an explicit false: the row stays in scope, not assessed, and the
+# report says the selector was not stated (as a missing level is level_defaulted)
+test_a_missing_next_generation_selector_is_not_assessed if {
+	fx := json.remove(data.cis_windows_server_2025_tests.fixtures_test.fixture_ms, ["cis_profile/next_generation"])
+	r := data.cis_windows_server_2025.admin_templates_computer.compliance_report with input as fx
+	r.results["18.9.5.1"] == "not_assessed"
+	m := data.cis_windows_server_2025.main.compliance_report with input as fx
+	m.profile.next_generation_defaulted == true
+	m.profile.selectors_not_stated == ["next_generation"]
+	m.compliant == false
 }
 
 test_missing_audit_policy_is_reported_not_assessed if {

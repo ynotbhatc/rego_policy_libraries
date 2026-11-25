@@ -31,8 +31,8 @@ Each section module is a `controls` table, one row per recommendation; `lib.rego
 | Field | Values | When absent |
 |---|---|---|
 | `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
-| `bitlocker` | `true` to add the BitLocker profile (49 recommendations) | off: CIS publishes it as a separate profile |
-| `next_generation` | `true` to add the Next Generation Windows Security profile (13 recommendations) | off |
+| `bitlocker` | `true` to add the BitLocker profile (49 recommendations) | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `bitlocker_defaulted: true` |
+| `next_generation` | `true` to add the Next Generation Windows Security profile (13 recommendations) | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `next_generation_defaulted: true` |
 
 `total_controls` is the number in scope: 337 at Level 1, 439 at Level 2, every opt-in adds its own, out of
 `benchmark_total_controls` 501.
