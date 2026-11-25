@@ -195,7 +195,9 @@ RULE_T = T("rulebase.security", dict({"disabled": YN, "action": STR, "group": LS
                                      **{k: LST for k in ["from", "to", "source", "destination", "application", "service"]},
                                      **{k: LST for k in KIND_LABEL}))
 ZONE_T = T("zone", {"enable_user_identification": YN})
-LIC_T = T("licenses", {"expired": YN, "feature": STR})
+# `request license info` returns <feature> and <expired> on every entry: an entry without either is not a valid
+# licence statement (wrong types and incomplete entries are both "evidence invalid")
+LIC_T = T("licenses", {"expired": YN, "feature": STR}) + " | _lic_incomplete"
 US = f"{SYS}.update_schedule"
 OWN.update({
     "2.1": "traffic from trusted zones must carry a mapped user name",
@@ -622,6 +624,7 @@ GREEN = {"panos_config": {
                            "mica_engine_vulnerability_enabled": [{"name": "SQL Injection", "inline_policy_action": "alert"}]}],
         "url_filtering": [{"name": "url-strict", "block": ["malware", "phishing"], "override": ["command-and-control"],
                            "alert": ["news", "business-and-economy"],
+                           "log_container_page_only": "no",
                            "log_http_hdr_user_agent": "yes", "log_http_hdr_referer": "yes", "log_http_hdr_xff": "yes",
                            "local_inline_cat": "yes", "cloud_inline_cat": "yes",
                            "credential_enforcement": {"mode": "ip-user", "log_severity": "medium",
@@ -658,7 +661,10 @@ GREEN = {"panos_config": {
 HELPERS = r'''# ── helpers ──────────────────────────────────────────────────────────────────
 '''
 HELPERS += LEVEL_HELPERS + r'''
-# PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean; absent is the PAN-OS default ("no").
+# PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean. The running configuration leaves out a
+# setting that is at its default, so an absent key in a collected section is the device default. _yes reads absent as
+# "no", which is right only where the PAN-OS default is "no" (every fact read with _yes: see the README table).
+# Where the default is "yes" (URL filtering "log container page only") the check uses _no, which absent does not meet.
 # Any other value is not read as either: the recommendation that reads it reports "evidence invalid" (_bad).
 _yes(o, k) if object.get(o, k, "no") == true
 
@@ -666,6 +672,15 @@ _yes(o, k) if {
 	v := object.get(o, k, "no")
 	is_string(v)
 	lower(v) == "yes"
+}
+
+# stated as "no" (or false): an absent key is not "no"
+_no(o, k) if object.get(o, k, null) == false
+
+_no(o, k) if {
+	v := object.get(o, k, null)
+	is_string(v)
+	lower(v) == "no"
 }
 
 # a number fact: only a JSON number counts ("14" is a string); absent or any other type is undefined
@@ -830,6 +845,23 @@ _licensed(names) if {
 	not _yes(l, "expired")
 }
 
+# a licence entry that is not an object, or lacks feature or expired: it states nothing about the licence
+_lic_incomplete contains msg if {
+	some i, l in input.panos_config.licenses
+	not is_object(l)
+	msg := sprintf("panos_config.licenses.%d must be a licence entry {feature, expired}, got %s", [i, json.marshal(l)])
+}
+
+_lic_incomplete contains msg if {
+	some i, l in input.panos_config.licenses
+	is_object(l)
+	some k in ["feature", "expired"]
+	not k in object.keys(l)
+	msg := sprintf("panos_config.licenses.%d.%s must be %s, got nothing (the entry does not state it)", [i, k, _type_want[_lic_keys[k]]])
+}
+
+_lic_keys := {"feature": "string", "expired": "yes/no"}
+
 _uid_zones := [z | some z in input.panos_config.zone; _yes(z, "enable_user_identification")]
 
 '''
@@ -984,7 +1016,7 @@ _vuln_ok(p) if {
 }
 
 _url_header_logging(p) if {
-	not _yes(p, "log_container_page_only")
+	_no(p, "log_container_page_only")
 	_yes(p, "log_http_hdr_user_agent")
 	_yes(p, "log_http_hdr_referer")
 	_yes(p, "log_http_hdr_xff")

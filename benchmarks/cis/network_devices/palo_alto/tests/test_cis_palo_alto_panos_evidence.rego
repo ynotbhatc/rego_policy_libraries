@@ -193,3 +193,107 @@ test_report_counts_hold_on_bad_input if {
 		r.failed_controls > 0
 	}
 }
+
+# ── yes/no facts whose passing state is "no" ──────────────────────────────────────────────────────────────────────
+# The running configuration leaves out a setting that is at its default, so an absent key in a collected section is
+# the device default. That passes only where the PAN-OS default is the state the recommendation asks for.
+
+_set(path, v) := json.patch(green, [{"op": "add", "path": path, "value": v}])
+
+_rm(path) := json.patch(green, [{"op": "remove", "path": path}])
+
+# 2.2 (probing off) and 3.3 (preemption off): PAN-OS default is off, CIS lists the default as "not configured"
+_default_no := {
+	"2.2": {"leaf": "/panos_config/user_id/setting/enable_probing", "section": "/panos_config/user_id/setting"},
+	"3.3": {
+		"leaf": "/panos_config/deviceconfig/high_availability/election_option/preemptive",
+		"section": "/panos_config/deviceconfig/high_availability",
+	},
+}
+
+test_default_no_facts_pass_on_no_false_and_the_device_default if {
+	every id, f in _default_no {
+		every v in ["no", "No", false] { not has(id, _set(f.leaf, v)) }
+		not has(id, _rm(f.leaf))
+		_r(_rm(f.leaf)).compliant == true
+	}
+	# 3.3 with the whole election_option element at its defaults
+	not has("3.3", _rm("/panos_config/deviceconfig/high_availability/election_option"))
+}
+
+test_default_no_facts_fail_on_yes_and_true if {
+	every id, f in _default_no {
+		every v in ["yes", "YES", true] { has(id, _set(f.leaf, v)) }
+	}
+}
+
+test_default_no_facts_of_another_type_are_evidence_invalid if {
+	every id, f in _default_no {
+		every v in [null, "false", "disabled", 0, ""] {
+			vs := _vs(_set(f.leaf, v))
+			some m in vs
+			startswith(m, sprintf("%s: evidence invalid — ", [id]))
+		}
+	}
+}
+
+test_default_no_facts_are_missing_evidence_without_their_section if {
+	every id, f in _default_no {
+		vs := _vs(_rm(f.section))
+		some m in vs
+		startswith(m, sprintf("%s: evidence missing — ", [id]))
+	}
+}
+
+# 6.11: "log container page only" is ON by default (PAN-OS web interface help, URL Filtering Settings), so a URL
+# filtering profile that does not state it is logging container pages only and fails
+test_log_container_page_only_absent_is_the_unsafe_default if {
+	p := "/panos_config/profiles/url_filtering/0/log_container_page_only"
+	every v in ["no", false] { not has("6.11", _set(p, v)) }
+	"6.11: URL filtering profiles must log User-Agent, Referer and X-Forwarded-For on every page" in _vs(_rm(p))
+	_r(_rm(p)).compliant == false
+	every v in ["yes", true] { has("6.11", _set(p, v)) }
+	some m in _vs(_set(p, null))
+	startswith(m, "6.11: evidence invalid — ")
+}
+
+# a licence entry states feature and expired (`request license info` returns both); without `expired` it used to
+# read as a valid licence and passed 6.8
+test_licence_entry_without_expired_or_feature_is_evidence_invalid if {
+	vs := _vs(_rm("/panos_config/licenses/0/expired"))
+	"6.8: evidence invalid — panos_config.licenses.0.expired must be \"yes\" or \"no\", got nothing (the entry does not state it)" in vs
+	_r(_rm("/panos_config/licenses/0/expired")).compliant == false
+	every i in [0, 1, 2] {
+		every k in ["expired", "feature"] {
+			r := _r(_rm(sprintf("/panos_config/licenses/%d/%s", [i, k])))
+			r.compliant == false
+			every id in ["6.8", "6.22", "6.23", "6.24", "6.25"] {
+				some m in r.violations
+				startswith(m, sprintf("%s: evidence invalid — panos_config.licenses.%d.%s must be ", [id, i, k]))
+			}
+		}
+	}
+	some m in _vs(_set("/panos_config/licenses/0", "PAN-DB URL Filtering"))
+	startswith(m, "6.8: evidence invalid — panos_config.licenses.0 must be a licence entry")
+}
+
+test_licence_expired_no_and_false_are_valid_and_yes_fails if {
+	every v in ["no", false] { _r(_set("/panos_config/licenses/0/expired", v)).compliant == true }
+	every v in ["yes", true] { has("6.8", _set("/panos_config/licenses/0/expired", v)) }
+}
+
+# every "no" / false leaf of the green fixture, removed: only the facts whose PAN-OS default is "no" may pass
+_default_no_leaves := {
+	["panos_config", "user_id", "setting", "enable_probing"],
+	["panos_config", "deviceconfig", "high_availability", "election_option", "preemptive"],
+	["panos_config", "deviceconfig", "setting", "wildfire", "session_info_select", "exclude_src_ip"],
+}
+
+test_only_default_no_leaves_pass_when_removed if {
+	nos := {path | some [path, v] in _leaves; v == "no"}
+	count(nos) >= 7
+	survivors := {path | some path in nos; _passes(json.patch(green, [{"op": "remove", "path": path}]))}
+	survivors == _default_no_leaves
+	b := {path | some path in nos; _passes(json.patch(_as_booleans, [{"op": "remove", "path": path}]))}
+	b == _default_no_leaves
+}

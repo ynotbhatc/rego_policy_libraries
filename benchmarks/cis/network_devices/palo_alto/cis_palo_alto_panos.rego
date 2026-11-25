@@ -161,7 +161,10 @@ _v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be
 	r.level == 2
 }
 
-# PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean; absent is the PAN-OS default ("no").
+# PAN-OS yes/no facts: the string "yes" / "no" (any case) or a JSON boolean. The running configuration leaves out a
+# setting that is at its default, so an absent key in a collected section is the device default. _yes reads absent as
+# "no", which is right only where the PAN-OS default is "no" (every fact read with _yes: see the README table).
+# Where the default is "yes" (URL filtering "log container page only") the check uses _no, which absent does not meet.
 # Any other value is not read as either: the recommendation that reads it reports "evidence invalid" (_bad).
 _yes(o, k) if object.get(o, k, "no") == true
 
@@ -169,6 +172,15 @@ _yes(o, k) if {
 	v := object.get(o, k, "no")
 	is_string(v)
 	lower(v) == "yes"
+}
+
+# stated as "no" (or false): an absent key is not "no"
+_no(o, k) if object.get(o, k, null) == false
+
+_no(o, k) if {
+	v := object.get(o, k, null)
+	is_string(v)
+	lower(v) == "no"
 }
 
 # a number fact: only a JSON number counts ("14" is a string); absent or any other type is undefined
@@ -333,6 +345,23 @@ _licensed(names) if {
 	not _yes(l, "expired")
 }
 
+# a licence entry that is not an object, or lacks feature or expired: it states nothing about the licence
+_lic_incomplete contains msg if {
+	some i, l in input.panos_config.licenses
+	not is_object(l)
+	msg := sprintf("panos_config.licenses.%d must be a licence entry {feature, expired}, got %s", [i, json.marshal(l)])
+}
+
+_lic_incomplete contains msg if {
+	some i, l in input.panos_config.licenses
+	is_object(l)
+	some k in ["feature", "expired"]
+	not k in object.keys(l)
+	msg := sprintf("panos_config.licenses.%d.%s must be %s, got nothing (the entry does not state it)", [i, k, _type_want[_lic_keys[k]]])
+}
+
+_lic_keys := {"feature": "string", "expired": "yes/no"}
+
 _uid_zones := [z | some z in input.panos_config.zone; _yes(z, "enable_user_identification")]
 
 # ── device setup ──
@@ -486,7 +515,7 @@ _vuln_ok(p) if {
 }
 
 _url_header_logging(p) if {
-	not _yes(p, "log_container_page_only")
+	_no(p, "log_container_page_only")
 	_yes(p, "log_http_hdr_user_agent")
 	_yes(p, "log_http_hdr_referer")
 	_yes(p, "log_http_hdr_xff")
@@ -2196,7 +2225,7 @@ _v_security_profiles contains "6.8: evidence missing — panos_config.licenses n
 	not e_6_8
 }
 
-x_6_8 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"})
+x_6_8 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _lic_incomplete
 
 _v_security_profiles contains msg if {
 	_applies("6.8")
@@ -2740,7 +2769,7 @@ _v_security_profiles contains "6.22: evidence missing — panos_config.{licenses
 	not e_6_22
 }
 
-x_6_22 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _bad(["profiles", "vulnerability"], set(), {"cloud_inline_analysis": "yes/no"})
+x_6_22 := (_bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _lic_incomplete) | _bad(["profiles", "vulnerability"], set(), {"cloud_inline_analysis": "yes/no"})
 
 _v_security_profiles contains msg if {
 	_applies("6.22")
@@ -2789,7 +2818,7 @@ _v_security_profiles contains "6.23: evidence missing — panos_config.{licenses
 	not e_6_23
 }
 
-x_6_23 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _bad(["profiles", "url_filtering"], set(), {"local_inline_cat": "yes/no", "cloud_inline_cat": "yes/no"})
+x_6_23 := (_bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _lic_incomplete) | _bad(["profiles", "url_filtering"], set(), {"local_inline_cat": "yes/no", "cloud_inline_cat": "yes/no"})
 
 _v_security_profiles contains msg if {
 	_applies("6.23")
@@ -2838,7 +2867,7 @@ _v_security_profiles contains "6.24: evidence missing — panos_config.{licenses
 	not e_6_24
 }
 
-x_6_24 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _bad(["profiles", "spyware"], set(), {"cloud_inline_analysis": "yes/no"})
+x_6_24 := (_bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _lic_incomplete) | _bad(["profiles", "spyware"], set(), {"cloud_inline_analysis": "yes/no"})
 
 _v_security_profiles contains msg if {
 	_applies("6.24")
@@ -2887,7 +2916,7 @@ _v_security_profiles contains "6.25: evidence missing — panos_config.{licenses
 	not e_6_25
 }
 
-x_6_25 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"})
+x_6_25 := _bad(["licenses"], set(), {"expired": "yes/no", "feature": "string"}) | _lic_incomplete
 
 _v_security_profiles contains msg if {
 	_applies("6.25")

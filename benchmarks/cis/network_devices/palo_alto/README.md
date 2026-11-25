@@ -71,7 +71,24 @@ A value of the wrong type never passes and is never read as a default. The recom
 | list | a JSON array | security-rule `from`, `to`, `source`, `destination`, `application`, `service`, profile lists and `group`; decryption-rule `to`; URL-filtering `allow`, `alert`, `block`, `continue` |
 | string | a JSON string | security-rule `action`, licence `feature` |
 
-An absent yes/no keeps its PAN-OS meaning (`no`); an absent number fails the recommendation that needs it. `null` is a
+An absent yes/no in a collected section is the device default (see "Absent yes/no settings" below); an absent number fails the recommendation that needs it. `null` is a
 wrong type.
 
 Regenerate: see `tools/cis_generators/README.md`.
+
+### Absent yes/no settings
+
+The running configuration leaves out a setting that is at its default, and the collector does not invent values. So a
+yes/no key that is absent from a collected section is read as the PAN-OS default, and it passes only where that default
+is the state the recommendation asks for. When the section itself is absent the recommendation reports evidence missing.
+
+| Fact | Recommendation | Passing state | PAN-OS default | Absent in a collected section |
+|---|---|---|---|---|
+| `user_id.setting.enable_probing` | 2.2 | no | no (CIS lists the default as not configured) | passes |
+| `deviceconfig.high_availability.election_option.preemptive` | 3.3 | no | no ([preemption is disabled by default](https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/high-availability/ha-concepts/device-priority-and-preemption)) | passes |
+| `network.profiles.interface_management[].{http,telnet}` | 1.2.4 | no | no | passes |
+| `deviceconfig.setting.wildfire.session_info_select.exclude_*` | 5.4 | no | no | passes |
+| `profiles.url_filtering[].log_container_page_only` | 6.11 | no | **yes** ([Default: Enabled](https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-web-interface-help/objects/objects-security-profiles-url-filtering/url-filtering-settings)) | **fails**: the profile must state `no` |
+| `licenses[].expired` | 6.8, 6.22-6.25 | no | none: `request license info` states it on every entry | evidence invalid (so is an entry without `feature`) |
+| `rulebase.security[].disabled`, `rulebase.decryption[].disabled` | scope | - | no (the rule is active) | the rule is assessed |
+| every setting whose passing state is yes | - | yes | - | fails |
