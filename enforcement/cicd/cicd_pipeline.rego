@@ -228,13 +228,13 @@ environment_name(job) := job.environment.name if is_object(job.environment)
 # no reviewers on record. environment_name would be undefined for it, and `not has_required_reviewers(...)` then
 # drops the job from the finding. "" matches no environment, so the job is reported.
 environment_name(job) := "" if {
-	is_object(job.environment)
-	object.get(job.environment, "name", null) == null
+	is_object(object.get(job, "environment", null))
+	object.get(job, ["environment", "name"], null) == null
 }
 
 environment_name(job) := "" if {
-	not is_string(job.environment)
-	not is_object(job.environment)
+	not is_string(object.get(job, "environment", null))
+	not is_object(object.get(job, "environment", null))
 }
 
 is_production_deployment(job) if {
