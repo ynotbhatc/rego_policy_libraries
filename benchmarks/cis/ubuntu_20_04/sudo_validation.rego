@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 13
+#     checks: 15
 #     cited: 8
 #     density: sized
 #     basis: size
@@ -40,19 +40,19 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # CIS 5.3.1: sudo must be present
 violations contains msg if {
-	not input.sudo.installed == true
+	input.sudo.installed == false
 	msg := "CIS 5.3.1: sudo is not installed"
 }
 
 # CIS 5.3.2: sudo commands must allocate a pseudo-terminal
 violations contains msg if {
-	not input.sudo.use_pty == true
+	input.sudo.use_pty == false
 	msg := "CIS 5.3.2: sudo is not configured to use pty (Defaults use_pty not found)"
 }
 
 # CIS 5.3.3: a log file for sudo must exist
 violations contains msg if {
-	not input.sudo.logfile_configured == true
+	input.sudo.logfile_configured == false
 	msg := "CIS 5.3.3: sudo log file is not configured (Defaults logfile not found)"
 }
 
@@ -90,7 +90,7 @@ violations contains msg if {
 
 # CIS 5.3.7: access to the su command must be restricted
 violations contains msg if {
-	not input.sudo.su_restricted == true
+	input.sudo.su_restricted == false
 	msg := "CIS 5.3.7: su command is not restricted (pam_wheel.so not configured)"
 }
 
@@ -103,7 +103,7 @@ violations contains msg if {
 
 # CIS 5.3.8: sudo must be not executable by all users
 violations contains msg if {
-	input.sudo.sudoers_world_readable
+	input.sudo.sudoers_world_readable == true
 	msg := "CIS 5.3.8: /etc/sudoers is world-readable"
 }
 
@@ -115,6 +115,46 @@ violations contains msg if {
 violations contains msg if {
 	not input.sudo.sudoers_mode
 	msg := "CIS 5.3.8: evidence missing — sudo.sudoers_mode not collected"
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: a yes/no fact is answered only by a JSON boolean. A missing fact, null, a string
+# ("true", "false", "no") or a number is an evidence problem: the control fails and the finding names it.
+# ---------------------------------------------------------------------------
+flag_problem(path) := "not collected" if is_null(object.get(input, path, null))
+
+flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(input, path, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags := [
+	["CIS 5.3.1", ["sudo", "installed"]],
+	["CIS 5.3.2", ["sudo", "use_pty"]],
+	["CIS 5.3.3", ["sudo", "logfile_configured"]],
+	["CIS 5.3.7", ["sudo", "su_restricted"]],
+	["CIS 5.3.8", ["sudo", "sudoers_world_readable"]],
+]
+
+violations contains msg if {
+	some [prefix, path] in required_flags
+	msg := flag_evidence(prefix, path)
+}
+
+# offender lists: an empty list is an answer ("none found"), a missing list is not
+required_lists := {
+	"nopasswd_entries": "5.3.4",
+	"noauthenticate_entries": "5.3.5",
+}
+
+violations contains msg if {
+	some key, ctl in required_lists
+	not is_array(object.get(input, ["sudo", key], null))
+	msg := sprintf("CIS %s: evidence missing — sudo.%s not collected", [ctl, key])
 }
 
 report := {

@@ -43,23 +43,23 @@ test_5_2_2_hollow_evidence_not_a_pass if {
 }
 
 test_5_2_3_pass if {
-	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\"", "logfile_exists": true}}
+	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
 	count([v | some v in vs; startswith(v, "5.2.3: ")]) == 0
 }
 
 test_5_2_3_fail if {
 	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"sudoers_content": "# Defaults logfile=/var/log/sudo.log"}}
 	count([v | some v in vs; startswith(v, "5.2.3: ")]) > 0
-	not "5.2.3: evidence missing — sudo.sudoers_content/logfile_exists not collected" in vs
+	not "5.2.3: evidence missing — sudo.sudoers_content not collected" in vs
 }
 
 test_5_2_3_evidence_missing if {
 	vs := data.cis_rhel8.sudo.violations with input as {}
-	"5.2.3: evidence missing — sudo.sudoers_content/logfile_exists not collected" in vs
+	"5.2.3: evidence missing — sudo.sudoers_content not collected" in vs
 }
 
 test_5_2_3_hollow_evidence_not_a_pass if {
-	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"sudoers_content": "", "logfile_exists": true}}
+	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"sudoers_content": ""}}
 	count([v | some v in vs; startswith(v, "5.2.3: ")]) > 0
 }
 
@@ -144,7 +144,7 @@ test_5_2_7_evidence_missing if {
 
 # every recommendation of the section satisfied at once (the inputs above merged)
 test_sudo_section_compliant_on_merged_good_input if {
-	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"installed": true, "sudoers_content": "Defaults use_pty\nroot ALL=(ALL) ALL\nDefaults logfile=\"/var/log/sudo.log\"\n%wheel ALL=(ALL) ALL\nDefaults use_pty\nDefaults timestamp_timeout=15", "logfile_exists": true, "su_restricted": true}}
+	vs := data.cis_rhel8.sudo.violations with input as {"sudo": {"installed": true, "sudoers_content": "Defaults use_pty\nroot ALL=(ALL) ALL\nDefaults logfile=\"/var/log/sudo.log\"\n%wheel ALL=(ALL) ALL\nDefaults use_pty\nDefaults timestamp_timeout=15", "su_restricted": true}}
 	count(vs) == 0
 }
 

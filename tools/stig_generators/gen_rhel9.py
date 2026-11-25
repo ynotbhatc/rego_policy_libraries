@@ -82,11 +82,13 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
 	is_number(v)
+	v == floor(v)
 }
 
 _num(path) := n if {

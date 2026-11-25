@@ -52,11 +52,13 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
 	is_number(v)
+	v == floor(v)
 }
 
 _num(path) := n if {
@@ -194,6 +196,10 @@ _mount_has_option(m, opt) if {
 	is_array(m.options)
 	opt in m.options
 }
+
+# /boot and /boot/efi are the two file systems the check leaves out. A helper on the whole entry, because
+# `not f.mount in {...}` is undefined for an entry without a mount and would drop it from the checked list.
+_boot_fs(f) if f.mount in {"/boot", "/boot/efi"}
 
 # the file system has a crypt parent block device whose cryptsetup type is LUKS (LUKS1 / LUKS2)
 _luks_parent(f) if {
@@ -521,7 +527,7 @@ persistent_filesystems_encrypted if {
 	count(missing_rhel_09_231190) == 0
 	fss := input.disk_encryption.filesystems
 	is_array(fss)
-	checked := [f | some f in fss; not f.mount in {"/boot", "/boot/efi"}]
+	checked := [f | some f in fss; not _boot_fs(f)]
 	count(checked) > 0
 	every f in checked {
 		_luks_parent(f)

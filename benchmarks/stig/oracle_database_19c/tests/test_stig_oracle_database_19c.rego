@@ -123,21 +123,18 @@ green_fixture := {"oracle": {
 	],
 	"redo_log_groups": [
 		{
-			"group": 1,
 			"members": [
 				"/u01/redo01a.log",
 				"/u02/redo01b.log",
 			],
 		},
 		{
-			"group": 2,
 			"members": [
 				"/u01/redo02a.log",
 				"/u02/redo02b.log",
 			],
 		},
 		{
-			"group": 3,
 			"members": [
 				"/u01/redo03a.log",
 				"/u02/redo03b.log",

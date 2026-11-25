@@ -50,9 +50,8 @@ _named_list(v) if {
 	}
 }
 
-# a profile limit that is set: a number, or a string other than NULL / DEFAULT / empty
-_limit_set(v) if is_number(v)
-
+# a profile limit that names something (PASSWORD_VERIFY_FUNCTION): a string other than NULL / DEFAULT / empty.
+# DBA_PROFILES.LIMIT is text; a number, a boolean or null is not a function name.
 _limit_set(v) if {
 	is_string(v)
 	not upper(trim_space(v)) in {"NULL", "DEFAULT", ""}
@@ -582,7 +581,12 @@ status_r_o19c_00_008400 := "Open" if not r_o19c_00_008400
 default r_o19c_00_008600 := false
 
 r_o19c_00_008600 if {
-	not contains(input.oracle.instance_name, split(input.oracle.version, ".")[0])
+	is_string(input.oracle.instance_name)
+	trim_space(input.oracle.instance_name) != ""
+	is_string(input.oracle.version)
+	major := split(trim_space(input.oracle.version), ".")[0]
+	regex.match(`^[0-9]+$`, major)
+	not contains(input.oracle.instance_name, major)
 }
 
 finding_r_o19c_00_008600 := {
@@ -1382,6 +1386,7 @@ status_r_o19c_00_014700 := "Open" if not r_o19c_00_014700
 default r_o19c_00_014800 := false
 
 r_o19c_00_014800 if {
+	is_array(input.oracle.users_with_10g_password_verifier)
 	count(input.oracle.users_with_10g_password_verifier) == 0
 }
 

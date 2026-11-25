@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 29
+#     checks: 41
 #     cited: 11
 #     density: sized
 #     basis: size
@@ -68,8 +68,8 @@ suid_sgid_violations contains msg if {
 # CIS 6.1.x: Critical system file permissions
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
-	not file.fully_compliant
-	file.exists
+	file.fully_compliant == false
+	file.exists == true
 	msg := sprintf("CIS 6.1.x: Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
 		file.file,
 		file.actual_mode, file.expected_mode,
@@ -81,40 +81,40 @@ critical_file_violations contains msg if {
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/shadow"
-	not file.mode_compliant
+	file.mode_compliant == false
 	msg := sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode])
 }
 
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/gshadow"
-	not file.mode_compliant
+	file.mode_compliant == false
 	msg := sprintf("CIS 6.1.8: /etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode])
 }
 
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/passwd"
-	not file.mode_compliant
+	file.mode_compliant == false
 	msg := sprintf("CIS 6.1.2: /etc/passwd has incorrect permissions (mode: %s, expected: 0644)", [file.actual_mode])
 }
 
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/group"
-	not file.mode_compliant
+	file.mode_compliant == false
 	msg := sprintf("CIS 6.1.4: /etc/group has incorrect permissions (mode: %s, expected: 0644)", [file.actual_mode])
 }
 
 # SSH private keys
 critical_file_violations contains msg if {
 	some key in input.ssh_private_keys.analysis
-	not key.fully_compliant
+	key.fully_compliant == false
 	msg := sprintf("SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)", [key.path, key.mode, key.owner])
 }
 
 critical_file_violations contains msg if {
-	not input.ssh_private_keys.all_compliant == true
+	input.ssh_private_keys.all_compliant == false
 	msg := "SSH Private Keys: One or more SSH host keys have insecure permissions"
 }
 
@@ -178,7 +178,7 @@ ownership_violations contains msg if {
 # CIS 6.1.13: SUID executables
 suid_sgid_violations contains msg if {
 	some file in input.suid_files.unknown_binaries
-	file.review_required
+	file.review_required == true
 	msg := sprintf("CIS 6.1.13: Unknown SUID binary requires review: %s (mode: %s, owner: %s)", [file.path, file.mode, file.owner])
 }
 
@@ -212,6 +212,84 @@ suid_sgid_violations contains msg if {
 	msg := "CIS 6.1.14: evidence missing — sgid_files.count is not a number"
 }
 
+# yes/no fields of collected rows: every row must answer with a boolean
+critical_file_violations contains msg if {
+	some i, row in input.critical_files.analysis
+	some key in ["fully_compliant", "exists"]
+	msg := sprintf("CIS 6.1.x: evidence missing — critical_files.analysis[%d].%s %s", [i, key, row_flag_problem(row, key)])
+}
+
+# mode_compliant is read for the four account database files
+mode_checked_files := {"/etc/passwd": "6.1.2", "/etc/group": "6.1.4", "/etc/shadow": "6.1.6", "/etc/gshadow": "6.1.8"}
+
+critical_file_violations contains msg if {
+	some i, row in input.critical_files.analysis
+	ctl := mode_checked_files[row.file]
+	msg := sprintf("CIS %s: evidence missing — critical_files.analysis[%d].mode_compliant %s", [ctl, i, row_flag_problem(row, "mode_compliant")])
+}
+
+# yes/no fields of collected rows: every row must answer with a boolean
+critical_file_violations contains msg if {
+	some i, row in input.ssh_private_keys.analysis
+	some key in ["fully_compliant"]
+	msg := sprintf("SSH Private Key: evidence missing — ssh_private_keys.analysis[%d].%s %s", [i, key, row_flag_problem(row, key)])
+}
+
+# yes/no fields of collected rows: every row must answer with a boolean
+suid_sgid_violations contains msg if {
+	some i, row in input.suid_files.unknown_binaries
+	some key in ["review_required"]
+	msg := sprintf("CIS 6.1.13: evidence missing — suid_files.unknown_binaries[%d].%s %s", [i, key, row_flag_problem(row, key)])
+}
+
+# <section>.compliant is the collector's own summary: optional, but a boolean when sent
+sweep_sections := {"world_writable": "6.1.10", "unowned_files": "6.1.11", "ungrouped_files": "6.1.12"}
+
+sweep_violations contains msg if {
+	some section, ctl in sweep_sections
+	v := object.get(input, [section, "compliant"], null)
+	not is_null(v)
+	not is_boolean(v)
+	msg := sprintf("CIS %s: evidence missing — %s.compliant is not a boolean (got %s)", [ctl, section, type_name(v)])
+}
+
+# the sweep result is its count or its file list; with neither there is nothing to judge
+sweep_violations contains msg if {
+	some section, ctl in sweep_sections
+	section_present(section)
+	number_missing([section, "count"])
+	not is_array(object.get(input, [section, "files"], null))
+	msg := sprintf("CIS %s: evidence missing — %s.count (or %s.files) not collected", [ctl, section, section])
+}
+
+world_writable_violations contains msg if {
+	some msg in sweep_violations
+	startswith(msg, "CIS 6.1.10:")
+}
+
+ownership_violations contains msg if {
+	some msg in sweep_violations
+	not startswith(msg, "CIS 6.1.10:")
+}
+
+suid_sgid_violations contains msg if {
+	section_present("suid_files")
+	number_missing(["suid_files", "unknown_count"])
+	msg := "CIS 6.1.13: evidence missing — suid_files.unknown_count not collected"
+}
+
+suid_sgid_violations contains msg if {
+	section_present("suid_files")
+	number_missing(["suid_files", "total_count"])
+	msg := "CIS 6.1.13: evidence missing — suid_files.total_count not collected"
+}
+
+suid_sgid_violations contains msg if {
+	section_present("sgid_files")
+	number_missing(["sgid_files", "count"])
+	msg := "CIS 6.1.14: evidence missing — sgid_files.count not collected"
+}
+
 risk_level := "critical" if {
 	is_number(input.world_writable.count)
 	input.world_writable.count > 0
@@ -225,6 +303,42 @@ risk_level := "critical" if {
 	is_number(input.unowned_files.count)
 	input.unowned_files.count > 0
 } else := "low"
+
+# ---------------------------------------------------------------------------
+# Evidence rule: a yes/no fact is answered only by a JSON boolean. A missing fact, null, a string
+# ("true", "false", "no") or a number is an evidence problem: the control fails and the finding names it.
+# ---------------------------------------------------------------------------
+flag_problem(path) := "not collected" if is_null(object.get(input, path, null))
+
+flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(input, path, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
+
+# the same for a yes/no field of one collected row
+row_flag_problem(row, key) := "not collected" if is_null(object.get(row, key, null))
+
+row_flag_problem(row, key) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(row, key, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+# a number that must be collected: missing and null are "not collected" (a wrong type is reported by the rule that reads it)
+number_missing(path) if is_null(object.get(input, path, null))
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags := [
+	["SSH Private Keys", ["ssh_private_keys", "all_compliant"]],
+]
+
+critical_file_violations contains msg if {
+	some [prefix, path] in required_flags
+	msg := flag_evidence(prefix, path)
+}
 
 report := {
 	"compliant": compliant,

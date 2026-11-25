@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 20
+#     checks: 25
 #     cited: 14
 #     density: sized
 #     basis: size
@@ -67,20 +67,20 @@ log_file_violations contains msg if {
 
 # CIS 4.2.1.1: rsyslog installed
 rsyslog_violations contains msg if {
-	not input.rsyslog.installed == true
+	input.rsyslog.installed == false
 	msg := "CIS 4.2.1.1: rsyslog is not installed"
 }
 
 # CIS 4.2.1.2: rsyslog service enabled and active
 rsyslog_violations contains msg if {
-	input.rsyslog.installed
-	not input.rsyslog.service_active == true
+	input.rsyslog.installed == true
+	input.rsyslog.service_active == false
 	msg := "CIS 4.2.1.2: rsyslog service is not active"
 }
 
 rsyslog_violations contains msg if {
-	input.rsyslog.installed
-	not input.rsyslog.service_enabled == true
+	input.rsyslog.installed == true
+	input.rsyslog.service_enabled == false
 	msg := "CIS 4.2.1.2: rsyslog service is not enabled"
 }
 
@@ -116,7 +116,7 @@ rsyslog_violations contains msg if {
 
 # CIS 4.2.1.6: Remote logging (conditional)
 rsyslog_violations contains msg if {
-	not input.rsyslog.remote_logging_configured == true
+	input.rsyslog.remote_logging_configured == false
 	input.require_remote_logging == true
 	msg := "CIS 4.2.1.6: rsyslog not configured to send logs to remote host"
 }
@@ -135,15 +135,15 @@ journald_violations contains msg if {
 
 # CIS 4.2.2.3: systemd-journald active
 journald_violations contains msg if {
-	not input.journald.service_active == true
+	input.journald.service_active == false
 	msg := "CIS 4.2.2.3: systemd-journald service is not active"
 }
 
 # CIS 4.2.3: Log file permissions
 log_file_violations contains msg if {
 	some file in input.log_file_permissions.analysis
-	not file.fully_compliant
-	file.exists
+	file.fully_compliant == false
+	file.exists == true
 	msg := sprintf("CIS 4.2.3: Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
 		file.file,
 		file.actual_mode, file.expected_mode,
@@ -160,8 +160,80 @@ log_file_violations contains msg if {
 
 # logrotate installed
 rsyslog_violations contains msg if {
-	not input.logrotate.installed == true
+	input.logrotate.installed == false
 	msg := "CIS 4.2.x: logrotate is not installed (logs may fill disk)"
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: a yes/no fact is answered only by a JSON boolean. A missing fact, null, a string
+# ("true", "false", "no") or a number is an evidence problem: the control fails and the finding names it.
+# ---------------------------------------------------------------------------
+flag_problem(path) := "not collected" if is_null(object.get(input, path, null))
+
+flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(input, path, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
+
+# the same for a yes/no field of one collected row
+row_flag_problem(row, key) := "not collected" if is_null(object.get(row, key, null))
+
+row_flag_problem(row, key) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(row, key, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags_rsyslog_violations := [
+	["CIS 4.2.1.1", ["rsyslog", "installed"]],
+	["CIS 4.2.x", ["logrotate", "installed"]],
+]
+
+rsyslog_violations contains msg if {
+	some [prefix, path] in required_flags_rsyslog_violations
+	msg := flag_evidence(prefix, path)
+}
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags_journald_violations := [
+	["CIS 4.2.2.3", ["journald", "service_active"]],
+]
+
+journald_violations contains msg if {
+	some [prefix, path] in required_flags_journald_violations
+	msg := flag_evidence(prefix, path)
+}
+
+# Service state is judged only when rsyslog is installed. Remote logging (4.2.1.6) is judged only when the
+# site requires it: require_remote_logging must say so either way (true or false), a missing switch is not "no".
+gated_flags := [
+	["CIS 4.2.1.2", ["rsyslog", "service_active"], [["rsyslog", "installed"]]],
+	["CIS 4.2.1.2", ["rsyslog", "service_enabled"], [["rsyslog", "installed"]]],
+	["CIS 4.2.1.6", ["rsyslog", "remote_logging_configured"], [["require_remote_logging"]]],
+]
+
+# yes/no facts read only when every gate fact is the boolean true: [finding prefix, input path, gate paths]
+rsyslog_violations contains msg if {
+	some [prefix, path, gates] in gated_flags
+	every gate in gates {
+		object.get(input, gate, null) == true
+	}
+	msg := flag_evidence(prefix, path)
+}
+
+rsyslog_violations contains msg if {
+	msg := flag_evidence("CIS 4.2.1.6", ["require_remote_logging"])
+}
+
+# yes/no fields of collected rows: every row must answer with a boolean
+log_file_violations contains msg if {
+	some i, row in input.log_file_permissions.analysis
+	some key in ["fully_compliant", "exists"]
+	msg := sprintf("CIS 4.2.3: evidence missing — log_file_permissions.analysis[%d].%s %s", [i, key, row_flag_problem(row, key)])
 }
 
 report := {

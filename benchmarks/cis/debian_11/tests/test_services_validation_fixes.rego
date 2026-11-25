@@ -4,7 +4,8 @@ import rego.v1
 
 good := {
 	"autofs": {"installed": false},
-	"time_synchronization": {"has_active_service": true, "compliant": true},
+	"time_synchronization": {"has_active_service": true, "compliant": true, "active_service": "systemd-timesyncd"},
+	"timesyncd": {"service_active": true},
 	"unnecessary_services": {"non_compliant": [], "analysis": []},
 	"webserver": {"any_installed": false, "packages": []},
 	"client_packages": {"any_installed": false, "installed_packages": [], "analysis": []},

@@ -87,8 +87,12 @@ num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+
 
 # a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
 # only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
-# numeric field is not evidence, so "365" or "900" there never passes.
-fnum(v) := v if is_number(v)
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
 
 # ── packages / services ──
 services_collected if {
@@ -108,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -242,12 +250,18 @@ banner_flag_collected if is_boolean(input.ssh.banner_contains_sensitive_info)
 
 banner_text_collected if banner_flag_collected
 
+# the initial_setup flag stands in only when the ssh flag was not sent at all (absent or null). A flag that was
+# sent with the wrong type ("false", 0) is unreadable evidence about the banner, not a reason to look elsewhere.
+banner_flag_absent if object.get(input, ["ssh", "banner_contains_sensitive_info"], null) == null
+
 banner_text_collected if {
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue.net"
 	is_boolean(input.initial_setup.issue_net_contains_sensitive_info)
 }
 
 banner_text_collected if {
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue"
 	is_boolean(input.initial_setup.issue_contains_sensitive_info)
 }
@@ -255,13 +269,13 @@ banner_text_collected if {
 banner_text_ok if input.ssh.banner_contains_sensitive_info == false
 
 banner_text_ok if {
-	not banner_flag_collected
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue.net"
 	input.initial_setup.issue_net_contains_sensitive_info == false
 }
 
 banner_text_ok if {
-	not banner_flag_collected
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue"
 	input.initial_setup.issue_contains_sensitive_info == false
 }

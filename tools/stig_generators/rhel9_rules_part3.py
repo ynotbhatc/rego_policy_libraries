@@ -576,7 +576,8 @@ R("file_permissions", "RHEL-09-411070", "home_dirs_group_owned_by_primary_group"
   "the user's primary GID",
   "Set the group of each listed home directory: chgrp <primary group> <home>",
   comment="primary_gid (getent passwd field 4) against home_gid (stat -c %g <home>) for each entry of input.interactive_users",
-  pass_cases=[{"interactive_users": []}, _users(home_gid="1002"), _users(shell="/bin/false", home_gid=100)])
+  pass_cases=[{"interactive_users": []}, _users(home_gid="1002"), _users(shell="/bin/false", home_gid=100),
+              _users(primary_gid="1002")])
 helpers("file_permissions", r'''
 _home_group_ok(u) if _no_login_shell(u)
 

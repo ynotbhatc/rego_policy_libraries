@@ -85,11 +85,12 @@ violations contains msg if {
 	)
 }
 
-# An unparsable mode is unverifiable evidence: fail closed
+# An unparsable or missing mode is unverifiable evidence: fail closed. (`not f(entry.mode)` is undefined, not
+# true, when the field is missing, so the field is read with object.get here and in the rules below.)
 violations contains msg if {
 	some entry in input.authorized_keys.files
-	not octal(entry.mode)
-	msg := sprintf("STIG RHEL-09-255045: %v has unparsable mode %v — cannot verify it is not group/world writable", [entry.path, entry.mode])
+	not octal(object.get(entry, "mode", null))
+	msg := sprintf("STIG RHEL-09-255045: %v has unparsable mode %v — cannot verify it is not group/world writable", [entry.path, object.get(entry, "mode", "<not collected>")])
 }
 
 # authorized_keys must be owned by the corresponding user
@@ -105,10 +106,10 @@ violations contains msg if {
 # .ssh directory must be 700 (only owner can access)
 violations contains msg if {
 	some dir in input.authorized_keys.ssh_dirs
-	not mode_within(dir.mode, "0700")
+	not mode_within(object.get(dir, "mode", null), "0700")
 	msg := sprintf(
 		"CIS 5.2: .ssh directory %v has mode %v — must be 700 (owner read/write/execute only)",
-		[dir.path, dir.mode],
+		[dir.path, object.get(dir, "mode", "<not collected>")],
 	)
 }
 
@@ -166,10 +167,10 @@ violations contains msg if {
 	count(input.authorized_keys.approved_fingerprints) > 0
 	some entry in input.authorized_keys.files
 	some key in entry.keys
-	not approved_fingerprint(key.fingerprint)
+	not approved_fingerprint(object.get(key, "fingerprint", null))
 	msg := sprintf(
 		"STIG RHEL-09-255060: Key %v in %v (user: %v) is not in the approved fingerprint list",
-		[key.fingerprint, entry.path, entry.user],
+		[object.get(key, "fingerprint", "<not collected>"), entry.path, entry.user],
 	)
 }
 
@@ -193,10 +194,10 @@ violations contains msg if {
 	some entry in input.authorized_keys.files
 	some key in entry.keys
 	key.age_minutes < threshold
-	not approved_fingerprint(key.fingerprint)
+	not approved_fingerprint(object.get(key, "fingerprint", null))
 	msg := sprintf(
 		"NIST IA-3: Key %v added to %v within last %v minutes and is not in the approved list (user: %v) — INVESTIGATE IMMEDIATELY",
-		[key.fingerprint, entry.path, threshold, entry.user],
+		[object.get(key, "fingerprint", "<not collected>"), entry.path, threshold, entry.user],
 	)
 }
 
@@ -233,6 +234,6 @@ compliance_report := {
 		count(object.get(input, ["authorized_keys", "approved_fingerprints"], [])) > 0
 		some e in object.get(input, ["authorized_keys", "files"], [])
 		some k in e.keys
-		not approved_fingerprint(k.fingerprint)
+		not approved_fingerprint(object.get(k, "fingerprint", null))
 	]),
 }

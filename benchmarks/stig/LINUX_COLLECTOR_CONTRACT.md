@@ -17,7 +17,10 @@ is not read by any rule: RHEL-09-671010 reports `evidence missing — fips.fips_
   (read only in a branch, e.g. a service's config when its package is installed).
 - **Accepted** (from the helper the rule reads it through):
   `_str` string or integer (decimal text), trimmed; `_kw` the same, compared case-insensitively;
-  `_num` a number or a string holding a decimal integer (anything else is not a pass);
+  `_num` a whole number, or a string holding a decimal integer with optional surrounding whitespace (`3`, `"3"`,
+  `" 3 "`); null, a boolean, a fraction (`3.5`), an empty or non-numeric string and a list are not a pass;
+  a uid or gid inside a record (`interactive_users[].primary_gid`, `.home_gid`) is read the same way: a number or
+  its decimal text, as `getent` and `stat` print it;
   `_collected` presence only. A path read directly (`input.x`) takes the fixture type; a boolean passes only
   on `true` (or the literal the rule compares with).
 - **Collect the observed value, not a verdict**: the policy holds the expected value (`"1"`, `"masked"`, a
@@ -266,7 +269,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `interactive_users[].home_exists` | boolean |  |  | `true` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].home_gid` | number/string |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].name` | string |  |  | `"disauser"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
-| `interactive_users[].primary_gid` | number |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].primary_gid` | number/string |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].shell` | string |  |  | `"/bin/bash"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].uid` | number |  |  | `1000` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `ipsec.conn_lines` | array of string |  |  | `[]` |  | R9: RHEL-09-252045 |

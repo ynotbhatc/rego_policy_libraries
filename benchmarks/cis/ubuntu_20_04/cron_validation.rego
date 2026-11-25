@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 36
+#     checks: 38
 #     cited: 9
 #     density: sized
 #     basis: size
@@ -28,13 +28,13 @@ compliant if {
 
 # CIS 5.1.1: cron daemon must be turned on and running
 violations contains msg if {
-	not input.cron.crond_enabled == true
+	input.cron.crond_enabled == false
 	msg := "CIS 5.1.1: cron daemon (cron) is not enabled"
 }
 
 violations contains msg if {
-	input.cron.crond_enabled
-	not input.cron.crond_running == true
+	input.cron.crond_enabled == true
+	input.cron.crond_running == false
 	msg := "CIS 5.1.1: cron daemon (cron) is not running"
 }
 
@@ -203,48 +203,88 @@ violations contains msg if {
 
 # CIS 5.1.8: cron must be restricted to authorized users
 violations contains msg if {
-	input.cron.cron_deny_exists
+	input.cron.cron_deny_exists == true
 	msg := "CIS 5.1.8: /etc/cron.deny exists - should be removed"
 }
 
 violations contains msg if {
-	not input.cron.cron_allow_exists == true
+	input.cron.cron_allow_exists == false
 	msg := "CIS 5.1.8: /etc/cron.allow does not exist - should be created"
 }
 
 violations contains msg if {
-	input.cron.cron_allow_exists
+	input.cron.cron_allow_exists == true
 	not mode_within(input.cron.cron_allow_mode, "0600")
 	msg := sprintf("CIS 5.1.8: /etc/cron.allow has mode %s, should be 0600", [input.cron.cron_allow_mode])
 }
 
 violations contains msg if {
-	input.cron.cron_allow_exists
+	input.cron.cron_allow_exists == true
 	not input.cron.cron_allow_mode
 	msg := "CIS 5.1.8: evidence missing — cron.cron_allow_mode not collected"
 }
 
 # CIS 5.1.9: at must be restricted to authorized users
 violations contains msg if {
-	input.cron.at_deny_exists
+	input.cron.at_deny_exists == true
 	msg := "CIS 5.1.9: /etc/at.deny exists - should be removed"
 }
 
 violations contains msg if {
-	not input.cron.at_allow_exists == true
+	input.cron.at_allow_exists == false
 	msg := "CIS 5.1.9: /etc/at.allow does not exist - should be created"
 }
 
 violations contains msg if {
-	input.cron.at_allow_exists
+	input.cron.at_allow_exists == true
 	not mode_within(input.cron.at_allow_mode, "0600")
 	msg := sprintf("CIS 5.1.9: /etc/at.allow has mode %s, should be 0600", [input.cron.at_allow_mode])
 }
 
 violations contains msg if {
-	input.cron.at_allow_exists
+	input.cron.at_allow_exists == true
 	not input.cron.at_allow_mode
 	msg := "CIS 5.1.9: evidence missing — cron.at_allow_mode not collected"
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: a yes/no fact is answered only by a JSON boolean. A missing fact, null, a string
+# ("true", "false", "no") or a number is an evidence problem: the control fails and the finding names it.
+# ---------------------------------------------------------------------------
+flag_problem(path) := "not collected" if is_null(object.get(input, path, null))
+
+flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(input, path, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags := [
+	["CIS 5.1.1", ["cron", "crond_enabled"]],
+	["CIS 5.1.8", ["cron", "cron_deny_exists"]],
+	["CIS 5.1.8", ["cron", "cron_allow_exists"]],
+	["CIS 5.1.9", ["cron", "at_deny_exists"]],
+	["CIS 5.1.9", ["cron", "at_allow_exists"]],
+]
+
+violations contains msg if {
+	some [prefix, path] in required_flags
+	msg := flag_evidence(prefix, path)
+}
+
+# the running state is judged only when the daemon is enabled
+gated_flags := [["CIS 5.1.1", ["cron", "crond_running"], [["cron", "crond_enabled"]]]]
+
+# yes/no facts read only when every gate fact is the boolean true: [finding prefix, input path, gate paths]
+violations contains msg if {
+	some [prefix, path, gates] in gated_flags
+	every gate in gates {
+		object.get(input, gate, null) == true
+	}
+	msg := flag_evidence(prefix, path)
 }
 
 report := {
