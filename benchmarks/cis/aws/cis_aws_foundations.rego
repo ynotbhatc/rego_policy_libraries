@@ -2099,7 +2099,7 @@ _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — 
 	_in_scope("2.11")
 	_ev_2_11
 	some x in input.credential_report
-	x.user != "<root_account>"
+	not x.user == "<root_account>"
 	truthy(x.password_enabled)
 	pw_idle_days(x) >= 45
 }
@@ -2108,7 +2108,7 @@ _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — 
 	_in_scope("2.11")
 	_ev_2_11
 	some x in input.credential_report
-	x.user != "<root_account>"
+	not x.user == "<root_account>"
 	truthy(x.password_enabled)
 	not pw_idle_days(x)
 }
@@ -2117,7 +2117,7 @@ _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — 
 	_in_scope("2.11")
 	_ev_2_11
 	some x in input.credential_report
-	x.user != "<root_account>"
+	not x.user == "<root_account>"
 	some n in ["1", "2"]
 	key_active(x, n)
 	key_idle_days(x, n) >= 45
@@ -2127,7 +2127,7 @@ _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — 
 	_in_scope("2.11")
 	_ev_2_11
 	some x in input.credential_report
-	x.user != "<root_account>"
+	not x.user == "<root_account>"
 	some n in ["1", "2"]
 	key_active(x, n)
 	not key_idle_days(x, n)
@@ -2137,7 +2137,7 @@ _messages contains sprintf("2.11: Credentials idle for 45 days are disabled — 
 	_in_scope("2.11")
 	_ev_2_11
 	some x in input.credential_report
-	x.user != "<root_account>"
+	not x.user == "<root_account>"
 	some n in ["1", "2"]
 	not has_str(x, sprintf("access_key_%s_active", [n]))
 }
@@ -3079,6 +3079,14 @@ _messages contains sprintf("7.2.4: Guardrails apply content and prompt-attack fi
 	_ev_7_2_4
 	some x in input.bedrock_guardrails
 	not has_filters(x)
+}
+
+_messages contains sprintf("7.2.4: Guardrails apply content and prompt-attack filtering — guardrail %s: a content filter has no type, so the harmful categories cannot be matched", [nm(x, "name")]) if {
+	_in_scope("7.2.4")
+	_ev_7_2_4
+	some x in input.bedrock_guardrails
+	some f in x.contentPolicy.filters
+	not has_str(f, "type")
 }
 
 _messages contains sprintf("7.2.4: Guardrails apply content and prompt-attack filtering — guardrail %s leaves %s unfiltered on input or output", [nm(x, "name"), f.type]) if {
