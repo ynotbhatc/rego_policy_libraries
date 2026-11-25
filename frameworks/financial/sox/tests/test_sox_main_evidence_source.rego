@@ -64,6 +64,18 @@ _scored_paths := [path | some path in _boolean_paths; not path in _advisory_path
 # Values that are not the boolean true. None of them is evidence that a control is in place.
 bad_values := ["false", "true", "no", null, 0, 1, false]
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_scored_paths_3 if {
+	sum([count(_slice(_scored_paths, i, 3)) | some i in numbers.range(0, 2)]) == count(_scored_paths)
+	every j, x in _scored_paths {
+		x in _slice(_scored_paths, j % 3, 3)
+	}
+}
+
 test_fixture_has_31_scored_facts_and_4_advisory_facts if {
 	count(_scored_paths) == 31
 	count(_boolean_paths) == 35
@@ -186,9 +198,29 @@ test_data_sox_ignored_is_false_without_loaded_data if {
 
 # ── The evidence rule on the input document ─────────────────────────────────
 
-test_no_scored_fact_passes_on_a_value_that_is_not_true if {
+test_no_scored_fact_passes_on_a_value_that_is_not_true_slice_0 if {
 	failures := [[path, value] |
-		some path in _scored_paths
+		some path in _slice(_scored_paths, 0, 3)
+		some value in bad_values
+		r := _input_report(_set(path, value))
+		not _one_check_fails(r)
+	]
+	count(failures) == 0
+}
+
+test_no_scored_fact_passes_on_a_value_that_is_not_true_slice_1 if {
+	failures := [[path, value] |
+		some path in _slice(_scored_paths, 1, 3)
+		some value in bad_values
+		r := _input_report(_set(path, value))
+		not _one_check_fails(r)
+	]
+	count(failures) == 0
+}
+
+test_no_scored_fact_passes_on_a_value_that_is_not_true_slice_2 if {
+	failures := [[path, value] |
+		some path in _slice(_scored_paths, 2, 3)
 		some value in bad_values
 		r := _input_report(_set(path, value))
 		not _one_check_fails(r)
