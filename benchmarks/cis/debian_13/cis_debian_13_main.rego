@@ -70,9 +70,13 @@ default _coverage := 0
 
 _coverage := bench.assessment_coverage_percentage
 
-default _profile := "level1_server"
+default _profile := "unrecognised"
 
 _profile := bench.profile
+
+default _profile_msgs := []
+
+_profile_msgs := bench.profile_violations
 
 default _total_controls := 0
 
@@ -82,9 +86,9 @@ default _failing := 0
 
 _failing := count(bench.failing_ids)
 
-_violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
+_violations := array.concat(_bench_violations, array.concat([_no_facts_msg], _profile_msgs)) if not _facts_supplied
 
-_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
+_violations := array.concat(_bench_violations, array.concat(_not_assessed_msgs, _profile_msgs)) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
@@ -95,9 +99,46 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
+_percentage := round((_passed * 100000) / _total_controls) / 1000 if {
+	_total_controls > 0
+	not _percentage_withheld
+}
 
-compliance_report := {
+# 100 means compliant. Every recommendation in scope passed but the report is not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED): passed + failed == total stays true, and the percentage is null
+# with a stated reason instead of 100 beside compliant == false.
+_percentage := null if {
+	_total_controls > 0
+	_percentage_withheld
+}
+
+_percentage_withheld if {
+	_total_controls > 0
+	not _compliant
+	_passed == _total_controls
+}
+
+# The reasons are fields of the report only when a percentage is withheld, so a normal report keeps its shape.
+default _reason_fields := {}
+
+_reason_fields := {"compliance_percentage_reason": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"} if {
+	_percentage_withheld
+	_profile == "unrecognised"
+}
+
+_reason_fields := {"compliance_percentage_reason": "a finding that cites no recommendation stands although no recommendation failed (see violations)"} if {
+	_percentage_withheld
+	_profile != "unrecognised"
+}
+
+default _section_reason_fields := {}
+
+_section_reason_fields := {"section_compliance_percentage_reason": bench.compliance_percentage_reason} if {
+	_section_percentage == null
+	bench.compliance_percentage_reason != null
+}
+
+_report := {
 	"framework": "cis_debian_13",
 	"benchmark": "CIS Debian Linux 13 Benchmark v1.1.1",
 	"version": "v1.1.1",
@@ -117,3 +158,5 @@ compliance_report := {
 	"missing_inputs": _missing_inputs,
 	"assessment_coverage_percentage": _coverage,
 }
+
+compliance_report := object.union(_report, object.union(_reason_fields, _section_reason_fields))
