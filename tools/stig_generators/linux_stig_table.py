@@ -65,14 +65,14 @@ class Table:
         self.extra[sec] = (self.extra.get(sec, "").strip() + "\n\n" + text.strip()).strip()
 
     def R(self, sec, sid, name, ev, alts, green, bad, expect, fix, comment="", kind="machine", attest_alts=(), na=(),
-          na_expect="", na_cases=(), pass_cases=(), green_na=None):
+          na_expect="", na_cases=(), pass_cases=(), green_na=None, num_items=()):
         assert sid not in self.RULES, f"{sid} defined twice"
         if attest_alts and kind == "machine":
             kind = "machine+attestation"
         self.RULES[sid] = dict(sec=sec, name=name, ev=[tuple(e) for e in ev], alts=alts, green=green, bad=list(bad),
                                expect=expect, fix=fix, comment=comment, kind=kind,
                                attest_alts=list(attest_alts), na=list(na), na_expect=na_expect,
-                               na_cases=list(na_cases), pass_cases=list(pass_cases))
+                               na_cases=list(na_cases), pass_cases=list(pass_cases), num_items=list(num_items))
         if green_na:
             self.RULES[sid]["green_na"] = green_na
 

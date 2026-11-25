@@ -1,8 +1,10 @@
 package stig.oracle_database_19c.bad_input_types_test
 
 # Wrong-typed facts never pass (audit 2026-11-24). Oracle reports limits and parameters as text ("3",
-# "UNLIMITED"), so a decimal string and a number are both read as numbers; null, booleans, lists and other
-# text are not. to_number(null) is 0 and to_number(true) is 1, which used to satisfy "<= 3" and ">= 0".
+# "UNLIMITED"); the collector converts a number to a JSON number and leaves a word (UNLIMITED, DEFAULT) as the
+# word. Numeric limits are JSON numbers only (owner ruling 2026-11-24): "3" and " 3 " are not numbers, nor are
+# null, booleans, lists or other text. to_number(null) is 0 and to_number(true) is 1, which used to satisfy
+# "<= 3" and ">= 0".
 # count() of a string is its length, which used to satisfy "three control files" and "no rows returned".
 
 import rego.v1
@@ -29,7 +31,7 @@ numeric_text := [
 
 test_numeric_value_of_the_wrong_type_does_not_pass if {
 	every p in numeric_text {
-		every bad in [null, true, false, "UNLIMITED", "DEFAULT", "abc", "", ["3"], {"value": 3}] {
+		every bad in [null, true, false, "UNLIMITED", "DEFAULT", "abc", "", "3", " 3 ", "3\n", "0", ["3"], {"value": 3}] {
 			compliant(set(p, bad)) == false
 		}
 	}
@@ -41,12 +43,14 @@ test_numeric_value_removed_does_not_pass if {
 	}
 }
 
-# both shapes a collector can send for a number stay accepted
-test_number_and_decimal_string_pass if {
+# a JSON number is read, and the comparison is still made; the same value as text is not a number
+test_number_passes_and_the_comparison_is_made if {
 	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", 3)) == true
-	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", " 3 ")) == true
+	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", 2)) == true
 	compliant(set("/oracle/parameters/max_idle_time", 15)) == true
-	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", "4")) == false
+	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", 4)) == false
+	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", "3")) == false
+	compliant(set("/oracle/profiles/ORA_STIG_PROFILE/FAILED_LOGIN_ATTEMPTS", "UNLIMITED")) == false
 }
 
 test_profile_limit_null_is_not_set if {

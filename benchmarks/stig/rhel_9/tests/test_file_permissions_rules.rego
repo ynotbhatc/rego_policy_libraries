@@ -1381,10 +1381,22 @@ test_rhel_09_232195_fail_1 if {
 test_rhel_09_232195_fail_2 if {
 	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232195 with input as object.union(green_fixture, {"file_permissions": {"system_commands_not_group_owned_by_root": [{"path": "/usr/local/x", "group": "staff", "gid": "users"}]}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-232195: check failed")
+	contains(f.detail, "RHEL-09-232195: evidence invalid — file_permissions.system_commands_not_group_owned_by_root[0].gid is not a number (got string)")
 }
 
 test_rhel_09_232195_fail_3 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232195 with input as object.union(green_fixture, {"file_permissions": {"system_commands_not_group_owned_by_root": [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": "22"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-232195: evidence invalid — file_permissions.system_commands_not_group_owned_by_root[1].gid is not a number (got string)")
+}
+
+test_rhel_09_232195_fail_4 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232195 with input as object.union(green_fixture, {"file_permissions": {"system_commands_not_group_owned_by_root": [{"path": "/usr/x", "group": "utmp", "gid": 22.5}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-232195: evidence invalid — file_permissions.system_commands_not_group_owned_by_root[0].gid is not a number (got a fraction)")
+}
+
+test_rhel_09_232195_fail_5 if {
 	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232195 with input as object.union(green_fixture, {"file_permissions": {"system_commands_not_group_owned_by_root": [{"path": "/usr/local/x", "group": "tty"}]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-232195: check failed")
@@ -1397,7 +1409,7 @@ test_rhel_09_232195_evidence_missing_1 if {
 }
 
 test_rhel_09_232195_pass_2 if {
-	data.stig.rhel_9.file_permissions.status_rhel_09_232195 == "Not_a_Finding" with input as object.union(green_fixture, {"file_permissions": {"system_commands_not_group_owned_by_root": [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": "22"}]}})
+	data.stig.rhel_9.file_permissions.status_rhel_09_232195 == "Not_a_Finding" with input as object.union(green_fixture, {"file_permissions": {"system_commands_not_group_owned_by_root": [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": 22}]}})
 }
 
 test_rhel_09_232215_pass if {
@@ -1413,10 +1425,22 @@ test_rhel_09_232215_fail_1 if {
 test_rhel_09_232215_fail_2 if {
 	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232215 with input as object.union(green_fixture, {"file_permissions": {"library_dirs_not_group_owned_by_root": [{"path": "/usr/local/x", "group": "staff", "gid": "users"}]}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-232215: check failed")
+	contains(f.detail, "RHEL-09-232215: evidence invalid — file_permissions.library_dirs_not_group_owned_by_root[0].gid is not a number (got string)")
 }
 
 test_rhel_09_232215_fail_3 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232215 with input as object.union(green_fixture, {"file_permissions": {"library_dirs_not_group_owned_by_root": [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": "22"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-232215: evidence invalid — file_permissions.library_dirs_not_group_owned_by_root[1].gid is not a number (got string)")
+}
+
+test_rhel_09_232215_fail_4 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232215 with input as object.union(green_fixture, {"file_permissions": {"library_dirs_not_group_owned_by_root": [{"path": "/usr/x", "group": "utmp", "gid": 22.5}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-232215: evidence invalid — file_permissions.library_dirs_not_group_owned_by_root[0].gid is not a number (got a fraction)")
+}
+
+test_rhel_09_232215_fail_5 if {
 	f := data.stig.rhel_9.file_permissions.finding_rhel_09_232215 with input as object.union(green_fixture, {"file_permissions": {"library_dirs_not_group_owned_by_root": [{"path": "/usr/local/x", "group": "tty"}]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-232215: check failed")
@@ -1429,7 +1453,7 @@ test_rhel_09_232215_evidence_missing_1 if {
 }
 
 test_rhel_09_232215_pass_2 if {
-	data.stig.rhel_9.file_permissions.status_rhel_09_232215 == "Not_a_Finding" with input as object.union(green_fixture, {"file_permissions": {"library_dirs_not_group_owned_by_root": [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": "22"}]}})
+	data.stig.rhel_9.file_permissions.status_rhel_09_232215 == "Not_a_Finding" with input as object.union(green_fixture, {"file_permissions": {"library_dirs_not_group_owned_by_root": [{"path": "/usr/bin/write", "group": "tty", "gid": 5}, {"path": "/usr/x", "group": "utmp", "gid": 22}]}})
 }
 
 test_rhel_09_232240_pass if {
@@ -1661,7 +1685,25 @@ test_rhel_09_411070_fail_2 if {
 test_rhel_09_411070_fail_3 if {
 	f := data.stig.rhel_9.file_permissions.finding_rhel_09_411070 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": "users"}]})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-411070: check failed")
+	contains(f.detail, "RHEL-09-411070: evidence invalid — interactive_users[0].home_gid is not a number (got string)")
+}
+
+test_rhel_09_411070_fail_4 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_411070 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": "1002"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411070: evidence invalid — interactive_users[0].home_gid is not a number (got string)")
+}
+
+test_rhel_09_411070_fail_5 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_411070 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": " 1002 ", "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": 1002}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411070: evidence invalid — interactive_users[0].primary_gid is not a number (got string)")
+}
+
+test_rhel_09_411070_fail_6 if {
+	f := data.stig.rhel_9.file_permissions.finding_rhel_09_411070 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002.5, "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": 1002.5}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411070: evidence invalid — interactive_users[0].home_gid is not a number (got a fraction)")
 }
 
 test_rhel_09_411070_evidence_missing_1 if {
@@ -1675,15 +1717,11 @@ test_rhel_09_411070_pass_2 if {
 }
 
 test_rhel_09_411070_pass_3 if {
-	data.stig.rhel_9.file_permissions.status_rhel_09_411070 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": "1002"}]})
-}
-
-test_rhel_09_411070_pass_4 if {
 	data.stig.rhel_9.file_permissions.status_rhel_09_411070 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/false", "home": "/home/disauser", "home_exists": true, "home_gid": 100}]})
 }
 
-test_rhel_09_411070_pass_5 if {
-	data.stig.rhel_9.file_permissions.status_rhel_09_411070 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": "1002", "shell": "/bin/bash", "home": "/home/disauser", "home_exists": true, "home_gid": 1002}]})
+test_rhel_09_411070_pass_4 if {
+	data.stig.rhel_9.file_permissions.status_rhel_09_411070 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/sbin/nologin", "home": "/home/disauser", "home_exists": true, "home_gid": 100}]})
 }
 
 test_rhel_09_653080_pass if {

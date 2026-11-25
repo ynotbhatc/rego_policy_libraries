@@ -952,7 +952,21 @@ test_rhel_09_653095_fail_2 if {
 test_rhel_09_653095_fail_3 if {
 	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as object.union(green_fixture, {"auditd_config": {"freq": "fifty"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-653095: check failed")
+	contains(f.detail, "RHEL-09-653095: evidence invalid — auditd_config.freq is not a number (got string)")
+}
+
+test_rhel_09_653095_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as object.union(green_fixture, {"auditd_config": {"freq": "50"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653095: evidence invalid — auditd_config.freq is not a number (got string)")
+}
+
+test_rhel_09_653095_number_as_text_1 if {
+	every text in ["100", " 100 "] {
+		f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as object.union(green_fixture, {"auditd_config": {"freq": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-653095: evidence invalid — auditd_config.freq is not a number (got string)"
+	}
 }
 
 test_rhel_09_653095_evidence_missing_1 if {
@@ -962,7 +976,7 @@ test_rhel_09_653095_evidence_missing_1 if {
 }
 
 test_rhel_09_653095_pass_2 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653095 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"freq": "50"}})
+	data.stig.rhel_9.audit_logging.status_rhel_09_653095 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"freq": 50}})
 }
 
 test_rhel_09_653095_pass_3 if {

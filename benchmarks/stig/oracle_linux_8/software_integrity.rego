@@ -48,20 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a whole number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
 # (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
+	_whole_number(v)
+}
+
+_whole_number(v) if {
 	is_number(v)
 	v == floor(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -207,6 +216,8 @@ finding_ol08_00_030670 := {
 # kernel.kexec_load_disabled must be 1; UEK R6+ with Secure Boot is Not Applicable (input.kernel_info.uek_release, input.secureboot_enabled)
 missing_ol08_00_010372 := [concat(".", p) | some p in [["kernel_params", "kernel.kexec_load_disabled"]]; not _collected(p)]
 
+invalid_ol08_00_010372 := [m | some p in [["kernel_info", "uek_release"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default kexec_disabled := false
 
 kexec_disabled if {
@@ -232,6 +243,8 @@ detail_ol08_00_010372 := "OL08-00-010372: Not_a_Finding" if kexec_disabled
 else := "OL08-00-010372: Not_Applicable — the Unbreakable Enterprise Kernel release 6 or above runs with Secure Boot enabled" if na_ol08_00_010372
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-010372", concat(", ", missing_ol08_00_010372)]) if count(missing_ol08_00_010372) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-010372", concat(", ", invalid_ol08_00_010372)]) if count(invalid_ol08_00_010372) > 0
 
 else := "OL08-00-010372: check failed — kernel.kexec_load_disabled must be 1"
 

@@ -269,7 +269,21 @@ test_rhel_10_300010_fail_6 if {
 test_rhel_10_300010_fail_7 if {
 	f := data.stig.rhel_10.configuration_management.finding_rhel_10_300010 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-10-300010: check failed")
+	contains(f.detail, "RHEL-10-300010: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)")
+}
+
+test_rhel_10_300010_fail_8 if {
+	f := data.stig.rhel_10.configuration_management.finding_rhel_10_300010 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "3072"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-10-300010: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)")
+}
+
+test_rhel_10_300010_number_as_text_1 if {
+	every text in ["2048", " 2048 "] {
+		f := data.stig.rhel_10.configuration_management.finding_rhel_10_300010 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": text}})
+		f.status == "Open"
+		f.detail == "RHEL-10-300010: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)"
+	}
 }
 
 test_rhel_10_300010_evidence_missing_1 if {
@@ -291,7 +305,7 @@ test_rhel_10_300010_evidence_missing_3 if {
 }
 
 test_rhel_10_300010_pass_2 if {
-	data.stig.rhel_10.configuration_management.status_rhel_10_300010 == "Not_a_Finding" with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "3072"}})
+	data.stig.rhel_10.configuration_management.status_rhel_10_300010 == "Not_a_Finding" with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": 3072}})
 }
 
 test_rhel_10_700040_pass if {

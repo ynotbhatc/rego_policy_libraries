@@ -44,11 +44,11 @@ R("audit_logging", "RHEL-09-653070", "audit_action_mail_acct_root", [("auditd_co
   attest_alts=[['_attested("rhel_09_653070_failure_notification")']],
   pass_cases=[{"auditd_config": {"action_mail_acct": "isso@example.mil"}, "attest": {"rhel_09_653070_failure_notification": True}}])
 
-num_rule("audit_logging", "RHEL-09-653095", "audit_freq_ok", ["auditd_config", "freq"], 1, 100, 100, [0, 101, "fifty"],
+num_rule("audit_logging", "RHEL-09-653095", "audit_freq_ok", ["auditd_config", "freq"], 1, 100, 100, [0, 101, "fifty", "50"],
          "freq in /etc/audit/auditd.conf must be between 1 and 100",
          "Set freq = 100 in /etc/audit/auditd.conf and restart auditd",
          "freq as configured in /etc/audit/auditd.conf (null when missing or commented out)",
-         pass_cases=[{"auditd_config": {"freq": "50"}}, {"auditd_config": {"freq": 1}}])
+         pass_cases=[{"auditd_config": {"freq": 50}}, {"auditd_config": {"freq": 1}}])
 
 R("audit_logging", "RHEL-09-653130", "audispd_plugins_installed", [("packages", "audispd-plugins")],
   [['input.packages["audispd-plugins"] == true']],

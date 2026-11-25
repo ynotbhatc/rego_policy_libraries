@@ -84,15 +84,11 @@ def either(name, *parts):               # OR: emitted as extra rule clauses; fix
 
 # Helpers emitted once per platform (shared by rules)
 NUM_HELPERS = """
-# a numeric value as @DB@ reports it: a number, or a string holding a decimal number (@EX@).
-# Undefined for anything else (@NOT@null, a boolean): to_number(null) is 0 and to_number(true)
-# is 1, so raw input is never passed to to_number.
+# a numeric value as a JSON number (@EX@).
+# A number sent as text ("3", " 3 ") is not read: the collector converts what @DB@ reports. Undefined for
+# anything else (@NOT@null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
+# never passed to to_number.
 _num(v) := v if is_number(v)
-
-_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\\s*-?[0-9]+(\\.[0-9]+)?\\s*$`, v)
-}
 
 # a query result that lists names (policies, files): an array whose every member is a non-empty string.
 # count() of a string is its length, so a list is never counted before it is known to be one.
@@ -105,7 +101,7 @@ _named_list(v) if {
 }
 """
 
-ORA_HELPERS = NUM_HELPERS.replace("@DB@", "Oracle").replace("@EX@", '"3", "0.0034"').replace("@NOT@", "UNLIMITED, DEFAULT, ") + """
+ORA_HELPERS = NUM_HELPERS.replace("@DB@", "Oracle").replace("@EX@", "3, 0.0034; a limit that is a word stays the word: UNLIMITED, DEFAULT").replace("@NOT@", "UNLIMITED, DEFAULT, ") + """
 # a profile limit that names something (PASSWORD_VERIFY_FUNCTION): a string other than NULL / DEFAULT / empty.
 # DBA_PROFILES.LIMIT is text; a number, a boolean or null is not a function name.
 _limit_set(v) if {
@@ -164,8 +160,9 @@ audit_enabled if {
 """
 
 # MySQL: SHOW VARIABLES and performance_schema.global_variables return every value as text (VARIABLE_VALUE is
-# a varchar column), so a decimal string is the collected form of a numeric variable.
-MY_HELPERS = NUM_HELPERS.replace("@DB@", "MySQL").replace("@EX@", '"50"; SHOW VARIABLES returns text').replace("@NOT@", '"", ON, ') + """
+# a varchar column); the collector converts the numeric variables (max_user_connections, validate_password.length,
+# audit_log_rotate_on_size) to JSON numbers. A variable sent as text is not a number to the policy.
+MY_HELPERS = NUM_HELPERS.replace("@DB@", "MySQL").replace("@EX@", "50; SHOW VARIABLES returns every value as text, so the collector converts it").replace("@NOT@", '"", ON, ') + """
 # ── audit helpers: the audit_log plugin must be active and at least one audit filter defined ──
 audit_log_active if {
 	upper(input.mysql.plugins.audit_log) == "ACTIVE"
@@ -202,16 +199,16 @@ PLATFORMS = {
     "oracle_database_19c": {
         "pkg": "oracle_database_19c", "platform": "Oracle Database 19c", "domains": "[database, oracle]",
         "contract": [
-            "input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase)",
-            "input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector",
+            "input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase); max_idle_time a JSON number",
+            "input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector; numeric limits JSON numbers, a word (UNLIMITED) text",
             "input.oracle.<query result>                : rows the STIG query must not return (lists), counts, flags",
             "input.oracle.attest.*                      : attestation booleans (documented reviews)",
         ],
         "helpers": ORA_HELPERS,
         "rules": {
-            "O19C-00-000100": profile_bounded("SESSIONS_PER_USER", "10"),
+            "O19C-00-000100": profile_bounded("SESSIONS_PER_USER", 10),
             "O19C-00-000200": boolfact("oracle.listener.rate_limit_configured"),
-            "O19C-00-000300": num_gt("oracle.parameters.max_idle_time", 0, "15"),
+            "O19C-00-000300": num_gt("oracle.parameters.max_idle_time", 0, 15),
             "O19C-00-000500": attest("oracle.attest.security_labeling_implemented_or_not_required"),
             "O19C-00-000800": attest("oracle.attest.org_level_auth_integrated"),
             "O19C-00-001000": attest("oracle.attest.authorizations_enforced"),
@@ -270,8 +267,8 @@ PLATFORMS = {
             "O19C-00-012100": attest("oracle.attest.temporary_accounts_expire_within_72h"),
             "O19C-00-012200": attest("oracle.attest.developers_no_elevated_privileges_on_shared_hosts"),
             "O19C-00-012300": profile_eq("PASSWORD_LOCK_TIME", "UNLIMITED"),
-            "O19C-00-012400": profile_le("FAILED_LOGIN_ATTEMPTS", 3, "3"),
-            "O19C-00-012500": profile_le("INACTIVE_ACCOUNT_TIME", 35, "35"),
+            "O19C-00-012400": profile_le("FAILED_LOGIN_ATTEMPTS", 3, 3),
+            "O19C-00-012500": profile_le("INACTIVE_ACCOUNT_TIME", 35, 35),
             "O19C-00-012900": empty_list("oracle.sample_schemas_present"),
             "O19C-00-013000": empty_list("oracle.unused_components_installed"),
             "O19C-00-013100": empty_list("oracle.unused_integrated_options_enabled"),
@@ -285,8 +282,8 @@ PLATFORMS = {
             "O19C-00-013900": profile_set("PASSWORD_VERIFY_FUNCTION", "ORA12C_STIG_VERIFY_FUNCTION"),
             "O19C-00-014600": attest("oracle.attest.temporary_password_procedures_documented"),
             "O19C-00-014700": (["profiles_every_effective_life_le(180)"],
-                               [("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_LIFE_TIME", "60"),
-                                ("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_GRACE_TIME", "5")]),
+                               [("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_LIFE_TIME", 60),
+                                ("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_GRACE_TIME", 5)]),
             "O19C-00-014800": empty_list("oracle.users_with_10g_password_verifier"),
             "O19C-00-014900": ORA_TLS,
             "O19C-00-015200": attest("oracle.attest.pki_private_key_access_restricted"),
@@ -321,7 +318,7 @@ PLATFORMS = {
     "oracle_mysql_8": {
         "pkg": "oracle_mysql_8", "platform": "Oracle MySQL 8.0", "domains": "[database, mysql]",
         "contract": [
-            "input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase)",
+            "input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase); max_user_connections, validate_password.length, audit_log_rotate_on_size JSON numbers",
             "input.mysql.plugins[<name>]    : INFORMATION_SCHEMA.PLUGINS status",
             "input.mysql.audit.*            : audit_log filters and startup mode",
             "input.mysql.users[]            : mysql.user rows {user, host, plugin}",
@@ -332,7 +329,7 @@ PLATFORMS = {
         "rules": {
             "MYS8-00-000100": either("org_auth", (["external_auth_plugin_active"], [("BOOL", "mysql.plugins.authentication_ldap_simple", "ACTIVE")]),
                                      attest("mysql.attest.org_level_auth_integrated")),
-            "MYS8-00-000200": my_var_num_gt("max_user_connections", 0, "50"),
+            "MYS8-00-000200": my_var_num_gt("max_user_connections", 0, 50),
             "MYS8-00-000300": MY_AUDIT, "MYS8-00-000800": MY_AUDIT,
             "MYS8-00-001200": boolfact("mysql.filesystem.audit_log_permissions_restricted"),
             "MYS8-00-001300": boolfact("mysql.filesystem.audit_log_permissions_restricted"),
@@ -346,7 +343,7 @@ PLATFORMS = {
             "MYS8-00-004700": attest("mysql.attest.pki_certificate_path_and_revocation_validated"),
             "MYS8-00-004800": boolfact("mysql.filesystem.ssl_key_permissions_restricted"),
             "MYS8-00-004900": attest("mysql.attest.pki_identity_mapped_to_accounts"),
-            "MYS8-00-005000": both(my_plugin_active("validate_password"), my_var_num_ge("validate_password.length", 15, "15"),
+            "MYS8-00-005000": both(my_plugin_active("validate_password"), my_var_num_ge("validate_password.length", 15, 15),
                                    my_var_in("validate_password.policy", ["MEDIUM", "STRONG"], "STRONG")),
             "MYS8-00-005100": (['is_array(input.mysql.users)', 'count(input.mysql.users) > 0', 'every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
                                [("BOOL", "mysql.users", [{"user": "app", "host": "%", "plugin": "caching_sha2_password"}])]),
@@ -380,7 +377,7 @@ PLATFORMS = {
             "MYS8-00-009100": empty_list("mysql.unauthorized_create_routine_grantees"),
             "MYS8-00-009200": attest("mysql.attest.configuration_change_access_restricted"),
             "MYS8-00-009300": MY_AUDIT,
-            "MYS8-00-009600": both(my_var_num_gt("audit_log_rotate_on_size", 0, "1073741824"), attest("mysql.attest.audit_storage_capacity_allocated")),
+            "MYS8-00-009600": both(my_var_num_gt("audit_log_rotate_on_size", 0, 1073741824), attest("mysql.attest.audit_storage_capacity_allocated")),
             "MYS8-00-009700": attest("mysql.attest.audit_offloaded_continuously"),
             "MYS8-00-009800": attest("mysql.attest.audit_storage_warning_at_75_percent"),
             "MYS8-00-009900": attest("mysql.attest.audit_failure_realtime_alert"),
