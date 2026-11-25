@@ -80,9 +80,108 @@ test_removing_an_attestation_that_decides_a_row_fails_subpart_d if {
 	}
 }
 
-test_removing_an_attestation_that_decides_a_row_fails_subpart_e if {
-	ids := decided_by_attestation("subpart_e")
-	count(ids) >= 1
+# subpart_e has 73 attestations, two report evaluations each, so its sweep runs in 12 slices of the sorted ids (index
+# modulo 12) so that no test runs long enough to meet the suite's per-test timeout on the oldest supported OPA. Every id
+# is in exactly one slice (test_the_subpart_e_slices_cover_every_id); `count(ids) >= 1` is the guard test after them.
+subpart_e_slice(i) := [id | some j, id in sort([k | some k, _ in fx.hipaa.subpart_e]); j % 12 == i]
+
+decided_in_subpart_e_slice(i) := {id |
+	some id in subpart_e_slice(i)
+	rep(json.patch(fx, [{"op": "replace", "path": ["hipaa", "subpart_e", id], "value": false}])).compliant == false
+}
+
+test_the_subpart_e_slices_cover_every_id if {
+	sum([count(subpart_e_slice(i)) | some i in numbers.range(0, 11)]) == count(fx.hipaa.subpart_e)
+	every j, id in sort([k | some k, _ in fx.hipaa.subpart_e]) {
+		id in subpart_e_slice(j % 12)
+	}
+}
+
+# the guard of the sweep below: at least one id is decided by its attestation
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_has_a_decided_id if {
+	some id, _ in fx.hipaa.subpart_e
+	rep(json.patch(fx, [{"op": "replace", "path": ["hipaa", "subpart_e", id], "value": false}])).compliant == false
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_0 if {
+	ids := decided_in_subpart_e_slice(0)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_1 if {
+	ids := decided_in_subpart_e_slice(1)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_2 if {
+	ids := decided_in_subpart_e_slice(2)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_3 if {
+	ids := decided_in_subpart_e_slice(3)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_4 if {
+	ids := decided_in_subpart_e_slice(4)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_5 if {
+	ids := decided_in_subpart_e_slice(5)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_6 if {
+	ids := decided_in_subpart_e_slice(6)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_7 if {
+	ids := decided_in_subpart_e_slice(7)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_8 if {
+	ids := decided_in_subpart_e_slice(8)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_9 if {
+	ids := decided_in_subpart_e_slice(9)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_10 if {
+	ids := decided_in_subpart_e_slice(10)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_subpart_e_slice_11 if {
+	ids := decided_in_subpart_e_slice(11)
 	every id in ids {
 		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
 	}
@@ -106,8 +205,75 @@ test_removing_any_key_fails_subpart_d if {
 	}
 }
 
-test_removing_any_key_fails_subpart_e if {
-	every id, _ in fx.hipaa.subpart_e {
+# the same 12 slices of the sorted ids as above (see test_the_subpart_e_slices_cover_every_id)
+test_removing_any_key_fails_subpart_e_slice_0 if {
+	every id in subpart_e_slice(0) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_1 if {
+	every id in subpart_e_slice(1) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_2 if {
+	every id in subpart_e_slice(2) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_3 if {
+	every id in subpart_e_slice(3) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_4 if {
+	every id in subpart_e_slice(4) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_5 if {
+	every id in subpart_e_slice(5) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_6 if {
+	every id in subpart_e_slice(6) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_7 if {
+	every id in subpart_e_slice(7) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_8 if {
+	every id in subpart_e_slice(8) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_9 if {
+	every id in subpart_e_slice(9) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_10 if {
+	every id in subpart_e_slice(10) {
+		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
+	}
+}
+
+test_removing_any_key_fails_subpart_e_slice_11 if {
+	every id in subpart_e_slice(11) {
 		fails_naming(json.remove(fx, [["hipaa", "subpart_e", id]]), id)
 	}
 }
