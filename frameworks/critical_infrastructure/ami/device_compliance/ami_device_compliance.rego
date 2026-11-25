@@ -116,17 +116,23 @@ comms_encrypted(device) if {
 	device.communications.encryption_mode in {"AES-128-CCM", "AES-256-CCM", "AES-128-GCM", "AES-256-GCM"}
 }
 
-# tamper_status is a status word from the meter ("ok", "tamper_detected", ...), so it is a string. Null, a
-# boolean, a number or an empty string is not a reported status: `not device.security.tamper_status` was
-# true only for a missing field or boolean false, so null read as "reported, no tamper".
-tamper_status_reported(device) if {
+# tamper_status is a status word from the meter with a closed vocabulary: "ok" (no tamper) and
+# "tamper_detected" (the two words this module's fixtures and findings use; no collector contract names
+# others). The comparison ignores letter case and surrounding spaces. Only a recognised word counts as reported:
+# an unknown word ("tampered", "alarm", "false", "no") must not read as "no tamper", so it is an evidence
+# invalid finding. Null, a boolean, a number or an empty string is likewise not a reported status.
+tamper_status_words := {"ok", "tamper_detected"}
+
+tamper_status_word(device) := lower(trim_space(device.security.tamper_status)) if {
 	is_string(device.security.tamper_status)
-	trim_space(device.security.tamper_status) != ""
+}
+
+tamper_status_reported(device) if {
+	tamper_status_word(device) in tamper_status_words
 }
 
 no_tamper_detected(device) if {
-	tamper_status_reported(device)
-	device.security.tamper_status != "tamper_detected"
+	tamper_status_word(device) == "ok"
 }
 
 tamper_detection_operational(device) if {
@@ -229,7 +235,7 @@ tamper_violation_msgs(device) := msgs if {
 		"Device %v: CRITICAL — Physical tamper detected! Immediate investigation required",
 		[device.device_id],
 	) |
-		device.security.tamper_status == "tamper_detected"
+		tamper_status_word(device) == "tamper_detected"
 	]
 	status_missing_msgs := [sprintf("Device %v: Tamper status not reported%s", [device.device_id, _tamper_status_problem(device)]) |
 		not tamper_status_reported(device)
@@ -251,6 +257,8 @@ _tamper_status_problem(device) := "" if {
 	object.get(device, ["security", "tamper_status"], false) == false
 } else := " (evidence missing: security.tamper_status is null)" if {
 	device.security.tamper_status == null
+} else := sprintf(" (evidence invalid: security.tamper_status %q is not a recognised status, expected ok or tamper_detected (got string))", [device.security.tamper_status]) if {
+	is_string(device.security.tamper_status)
 } else := sprintf(" (evidence invalid: security.tamper_status is not a non-empty string (got %s))", [type_name(device.security.tamper_status)])
 
 device_all_violations(device) := msgs if {
