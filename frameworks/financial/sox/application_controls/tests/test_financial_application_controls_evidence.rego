@@ -8,6 +8,11 @@ import rego.v1
 
 _paths := {path | some paths in data.sox.application_controls._facts; some path in paths}
 
+# The two sweeps over every fact run in slices of the sorted fact paths (index modulo the slice count: 10 for the
+# value sweep, 6 for the naming sweep), so that no test runs long enough to meet the suite's per-test timeout on the
+# oldest supported OPA. Every path is in exactly one slice; test_the_slices_cover_every_path checks it.
+_slice(i, n) := [path | some j, path in sort([p | some p in _paths]); j % n == i]
+
 _leaf([a, b, c]) := {a: {b: {c: true}}}
 
 _leaf([a, b, c, d]) := {a: {b: {c: {d: true}}}}
@@ -63,9 +68,99 @@ test_all_pass_input_passes_every_check if {
 	_problems(all_pass_input) == []
 }
 
-test_no_fact_passes_on_a_value_that_is_not_true if {
+test_the_slices_cover_every_path if {
+	every n in [10, 6] {
+		sum([count(_slice(i, n)) | some i in numbers.range(0, n - 1)]) == count(_paths)
+		every path in _paths {
+			count([i | some i in numbers.range(0, n - 1); path in _slice(i, n)]) == 1
+		}
+	}
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_0 if {
 	failures := [[path, value] |
-		some path in _paths
+		some path in _slice(0, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_1 if {
+	failures := [[path, value] |
+		some path in _slice(1, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_2 if {
+	failures := [[path, value] |
+		some path in _slice(2, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_3 if {
+	failures := [[path, value] |
+		some path in _slice(3, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_4 if {
+	failures := [[path, value] |
+		some path in _slice(4, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_5 if {
+	failures := [[path, value] |
+		some path in _slice(5, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_6 if {
+	failures := [[path, value] |
+		some path in _slice(6, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_7 if {
+	failures := [[path, value] |
+		some path in _slice(7, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_8 if {
+	failures := [[path, value] |
+		some path in _slice(8, 10)
+		some value in ["false", "true", "no", null, 0, 1, false]
+		not _fails(_set(path, value))
+	]
+	count(failures) == 0
+}
+
+test_no_fact_passes_on_a_value_that_is_not_true_slice_9 if {
+	failures := [[path, value] |
+		some path in _slice(9, 10)
 		some value in ["false", "true", "no", null, 0, 1, false]
 		not _fails(_set(path, value))
 	]
@@ -80,8 +175,68 @@ test_no_fact_passes_when_removed if {
 	count(failures) == 0
 }
 
-test_every_bad_fact_is_named if {
-	every path in _paths {
+test_every_bad_fact_is_named_slice_0 if {
+	every path in _slice(0, 6) {
+		_problems(_set(path, "true")) == [sprintf("input.sox.%s is not a boolean (got string)", [path])]
+		_problems(_set(path, 1)) == [sprintf("input.sox.%s is not a boolean (got number)", [path])]
+		_problems(_set(path, null)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+		_problems(_unset(path)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+
+		# a boolean false is evidence: the check fails with its own message and no evidence problem
+		_problems(_set(path, false)) == []
+	}
+}
+
+test_every_bad_fact_is_named_slice_1 if {
+	every path in _slice(1, 6) {
+		_problems(_set(path, "true")) == [sprintf("input.sox.%s is not a boolean (got string)", [path])]
+		_problems(_set(path, 1)) == [sprintf("input.sox.%s is not a boolean (got number)", [path])]
+		_problems(_set(path, null)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+		_problems(_unset(path)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+
+		# a boolean false is evidence: the check fails with its own message and no evidence problem
+		_problems(_set(path, false)) == []
+	}
+}
+
+test_every_bad_fact_is_named_slice_2 if {
+	every path in _slice(2, 6) {
+		_problems(_set(path, "true")) == [sprintf("input.sox.%s is not a boolean (got string)", [path])]
+		_problems(_set(path, 1)) == [sprintf("input.sox.%s is not a boolean (got number)", [path])]
+		_problems(_set(path, null)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+		_problems(_unset(path)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+
+		# a boolean false is evidence: the check fails with its own message and no evidence problem
+		_problems(_set(path, false)) == []
+	}
+}
+
+test_every_bad_fact_is_named_slice_3 if {
+	every path in _slice(3, 6) {
+		_problems(_set(path, "true")) == [sprintf("input.sox.%s is not a boolean (got string)", [path])]
+		_problems(_set(path, 1)) == [sprintf("input.sox.%s is not a boolean (got number)", [path])]
+		_problems(_set(path, null)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+		_problems(_unset(path)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+
+		# a boolean false is evidence: the check fails with its own message and no evidence problem
+		_problems(_set(path, false)) == []
+	}
+}
+
+test_every_bad_fact_is_named_slice_4 if {
+	every path in _slice(4, 6) {
+		_problems(_set(path, "true")) == [sprintf("input.sox.%s is not a boolean (got string)", [path])]
+		_problems(_set(path, 1)) == [sprintf("input.sox.%s is not a boolean (got number)", [path])]
+		_problems(_set(path, null)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+		_problems(_unset(path)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
+
+		# a boolean false is evidence: the check fails with its own message and no evidence problem
+		_problems(_set(path, false)) == []
+	}
+}
+
+test_every_bad_fact_is_named_slice_5 if {
+	every path in _slice(5, 6) {
 		_problems(_set(path, "true")) == [sprintf("input.sox.%s is not a boolean (got string)", [path])]
 		_problems(_set(path, 1)) == [sprintf("input.sox.%s is not a boolean (got number)", [path])]
 		_problems(_set(path, null)) == [sprintf("evidence missing: input.sox.%s not collected", [path])]
