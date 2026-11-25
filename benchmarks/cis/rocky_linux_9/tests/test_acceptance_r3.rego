@@ -97,18 +97,74 @@ test_report_is_consistent_on_the_fixtures_and_on_empty_input if {
 	e.compliant == false
 }
 
+# The section sweeps run in four slices of the sorted top-level sections (section index modulo 4), so that no test
+# runs long enough to meet the suite's per-test timeout on the oldest supported OPA. Every section is in exactly one slice.
+section_shard(l, i) := [s | some j, s in sort([k | some k, _ in l]); j % 4 == i]
+
+test_the_section_shards_cover_every_section if {
+	every l in [l1, l2] {
+		sum([count(section_shard(l, i)) | some i in numbers.range(0, 3)]) == count(l)
+		every s, _ in l {
+			some i in numbers.range(0, 3)
+			s in section_shard(l, i)
+		}
+	}
+}
+
 # Requirement: the report stays self-consistent with any one top-level section of the Level 1 fixture removed.
-test_report_is_consistent_with_any_section_removed_level_1 if {
+test_report_is_consistent_with_any_section_removed_level_1_shard_0 if {
 	count(l1) >= 25
-	every s, _ in l1 {
+	every s in section_shard(l1, 0) {
+		consistent(rep(json.remove(l1, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_1_shard_1 if {
+	count(l1) >= 25
+	every s in section_shard(l1, 1) {
+		consistent(rep(json.remove(l1, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_1_shard_2 if {
+	count(l1) >= 25
+	every s in section_shard(l1, 2) {
+		consistent(rep(json.remove(l1, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_1_shard_3 if {
+	count(l1) >= 25
+	every s in section_shard(l1, 3) {
 		consistent(rep(json.remove(l1, [[s]])))
 	}
 }
 
 # Requirement: the same on the Level 2 fixture.
-test_report_is_consistent_with_any_section_removed_level_2 if {
+test_report_is_consistent_with_any_section_removed_level_2_shard_0 if {
 	count(l2) >= 25
-	every s, _ in l2 {
+	every s in section_shard(l2, 0) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_1 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 1) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_2 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 2) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_3 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 3) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
