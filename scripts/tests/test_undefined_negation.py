@@ -133,6 +133,14 @@ all_ok if {
 	count([s | some s in input.systems; not s.level in {"a", "b"}]) == 0
 }"""), [("neg-in", "fail-open")])
 
+    def test_has_call_with_the_row_key_marks_the_entry_present(self):
+        self.assertEqual(self.kinds("""
+_has(id) if input.given[id]
+problem(id) := "bad" if {
+	_has(id)
+	not is_boolean(input.given[id])
+}"""), [("neg-call", "guarded")])
+
     def test_not_equal_null_is_a_presence_test(self):
         self.assertEqual(self.kinds("""
 violations contains msg if {

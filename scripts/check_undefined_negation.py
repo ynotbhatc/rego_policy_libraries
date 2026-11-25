@@ -102,7 +102,7 @@ COMPREHENSIONS = {"arraycomprehension", "setcomprehension", "objectcomprehension
 V_NAME = re.compile(r"(violation|deny|denied|denial|finding|fail|non_?compl|noncompl|missing|invalid|issue|gap|"
                     r"error|warn|alert|risk|drift|unauthor|unapprov|exceed|expired|stale|overdue|detect|blocked|"
                     r"reason|problem|defect|bad_|_bad|insecure|weak|not_|^no_|without|lacks?_|unencrypted|"
-                    r"unpatched|unsigned|untagged|unprotected|suspicious|malicious|anomal|deviation|breach|"
+                    r"undeclared|unpatched|unsigned|untagged|unprotected|suspicious|malicious|anomal|deviation|breach|"
                     r"prohibited|forbidden|disallowed|noncurrent|unmet|unsatisf|outdated|orphan|flagged|"
                     r"foreign|offending|rejected|incident|threat|exposed|vulnerab|critical_|advisor|excessive|"
                     r"inappropriate|malformed|unreadable|unlocked|outside)", re.I)
@@ -504,7 +504,7 @@ class Scanner:
             for v in self._vars(a):
                 env[v] = ("param", None)
         ctx = {"f": f, "p": p, "rule": name or "?", "cls": p.cls.get(name, "other"), "imports": imports, "coll": None,
-               "env": env, "pkg": _pkg(self.asts[f]), "typed": set(), "present": set(), "used": set()}
+               "env": env, "pkg": _pkg(self.asts[f]), "typed": set(), "present": set(), "used": set(), "present_vars": set()}
         self._cur = p
         self._body(rule.get("body") or [], env, ctx)
         for part in ("key", "value"):
@@ -778,6 +778,8 @@ class Scanner:
             elif op and (op.split(".")[-1].lstrip("_") in ("has_key", "has_field") or op.split(".")[-1].lstrip("_").startswith("has_")) and len(args) == 2:
                 # f(obj, "key") / f(obj, k): the key is tested for before it is read
                 ctx["present"].add(self._norm(args[0], env) + ("." + args[1]["value"] if args[1].get("type") == "string" else "[]"))
+            elif op and op.split(".")[-1].lstrip("_").startswith("has_") and len(args) == 1 and args[0].get("type") == "var":
+                ctx["present_vars"].add(args[0]["value"])      # _has_attestation(id): the entry named by id is there
             elif op in MEMBER and len(args) == 2 and args[1].get("type") == "call" \
                     and _opname(args[1]["value"][0]) == "object.keys" and len(args[1]["value"]) == 2:
                 ctx["present"].add(self._norm(args[1]["value"][1], env) + ("." + args[0]["value"] if args[0].get("type") == "string" else "[]"))
@@ -827,7 +829,8 @@ class Scanner:
                              text=_text(expr)[:240], refs=sorted({_text(r) or "?" for r in refs}),
                              effect=effect or self._effect(ctx), where=ctx["coll"] or ctx["rule"], note=note,
                              paths=paths or sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"],
-                             present=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["present"]
+                             present=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["present"] or any(
+                                 x.get("type") == "var" and x["value"] in ctx["present_vars"] for x in r["value"][1:])
                                         for r in refs),
                              used=bool(refs) and all(self._used(self._norm(r, ctx["env"]), ctx["used"]) for r in refs),
                              typed=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["typed"] for r in refs)))
