@@ -96,8 +96,9 @@ _quantity(v) if is_number(v)
 
 # ---------------------------------------------------------------------------
 # SENTINEL-K8S-000 — The manifest must be readable
-# A document that is not a manifest is denied, never waved through. (A readable manifest of a kind
-# outside workload_kinds is still not judged on the workload rules: decision 2026-10-19, below.)
+# A document that is not a manifest is denied, never waved through. So is a manifest whose kind is missing,
+# empty, not a string, or not one the gate knows how to judge (judged_kinds, below): 2026-11-24, see the note
+# at the end of this file.
 # ---------------------------------------------------------------------------
 
 violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.manifest is missing or is not an object; nothing was evaluated." if {
@@ -108,6 +109,31 @@ violation_k8s_000 contains msg if {
 	"kind" in object.keys(input)
 	not is_string(input.kind)
 	msg := sprintf("SENTINEL-K8S-000: Malformed input: input.kind must be a string, got %v.", [type_name(input.kind)])
+}
+
+# The kinds the gate knows how to judge: the workloads (pod rules, K8S-001 to 009 and 012 to 014) and the
+# resources named by the namespace and label rules (K8S-010, 011). Any other kind is denied until it is added here.
+judged_kinds := workload_kinds | {"Namespace", "ClusterRole", "ClusterRoleBinding", "ConfigMap", "Secret", "Service", "ServiceAccount", "NetworkPolicy", "Ingress", "Role", "RoleBinding", "PersistentVolumeClaim"}
+
+_kind_judged if {
+	is_string(input.kind)
+	input.kind in judged_kinds
+}
+
+violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.kind is missing; the gate cannot tell what kind of resource this is, so nothing was judged." if {
+	not "kind" in object.keys(input)
+}
+
+violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.kind is empty; the gate cannot tell what kind of resource this is, so nothing was judged." if {
+	is_string(input.kind)
+	trim_space(input.kind) == ""
+}
+
+violation_k8s_000 contains msg if {
+	is_string(input.kind)
+	trim_space(input.kind) != ""
+	not _kind_judged
+	msg := sprintf("SENTINEL-K8S-000: Unrecognised kind: input.kind %q is not a kind this gate judges (got a string), so nothing was judged.", [input.kind])
 }
 
 violation_k8s_000 contains msg if {
@@ -330,11 +356,13 @@ violation_k8s_009 contains msg if {
 # SENTINEL-K8S-010 — Namespace must be set
 # ---------------------------------------------------------------------------
 
+# kinds that live outside a namespace
+_not_namespaced if input.kind in {"Namespace", "ClusterRole", "ClusterRoleBinding"}
+
 violation_k8s_010 contains msg if {
 	not _nonempty_string(object.get(input, ["manifest", "metadata", "namespace"], null))
-	input.kind != "Namespace"
-	input.kind != "ClusterRole"
-	input.kind != "ClusterRoleBinding"
+	is_string(input.kind)
+	not _not_namespaced
 	msg := sprintf(
 		"SENTINEL-K8S-010: %v '%v' does not specify a namespace. All namespaced resources must explicitly set metadata.namespace.",
 		[input.kind, _manifest_name],
@@ -447,11 +475,11 @@ all_violations := array.concat(
 	),
 )
 
-# Gate exception (b), kept by decision 2026-10-19: a manifest with no `kind` (or a kind outside
-# workload_kinds) is not judged and passes; the gate judges only what is present. Callers that
-# must reject unidentifiable manifests need to check input.kind themselves.
-# That exception covers readable manifests only. SENTINEL-K8S-000 (2026-11-24) denies input whose
-# manifest is not an object, whose kind is not a string, or whose workload has no readable containers.
+# Gate exception (b) is withdrawn (2026-11-24). It was kept by the decision of 2026-10-19: a manifest with no
+# `kind`, or a kind outside workload_kinds, was not judged and passed. The owner has superseded it ("do the
+# correct one"), in line with kubernetes.admission, which already rejects a blank kind: SENTINEL-K8S-000 now denies
+# a manifest whose kind is missing, empty, not a string, or not in judged_kinds. SENTINEL-K8S-000 also denies input
+# whose manifest is not an object or whose workload has no readable containers.
 # Gate semantics: judges only what is present in the manifest, so a manifest with no
 # workload containers has nothing to violate. A failing manifest still yields a result.
 default compliant := false

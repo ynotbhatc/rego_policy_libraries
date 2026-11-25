@@ -33,10 +33,6 @@ enforcement/dockerfile/sentinel_dockerfile.rego	violation_df_001	neg-in	not imag
 # reason: evaluated only when the section it reads is present (a _present(...) / is_object(...) gate in the same clause family); an absent section is reported by the module's attestation / evidence rule
 enforcement/kubernetes/sentinel_kubernetes.rego	pod_spec	neg-in	not input.kind in {"Pod", "CronJob"}
 
-# reason: owner decision of 2026-10-19 recorded in the module ('Gate exception (b)'): a manifest with no kind is not judged and passes; callers that must reject unidentifiable manifests check input.kind themselves (also scripts/bad_input_accepted.txt, sentinel_kubernetes.main drop:kind)
-enforcement/kubernetes/sentinel_kubernetes.rego	violation_k8s_010	cmp	input.kind != "ClusterRole"
-enforcement/kubernetes/sentinel_kubernetes.rego	violation_k8s_010	cmp	input.kind != "ClusterRoleBinding"
-enforcement/kubernetes/sentinel_kubernetes.rego	violation_k8s_010	cmp	input.kind != "Namespace"
 
 # reason: left for the next pass: not read individually in round 3 (the classifier could not tell a guard from a hole); listed in r3-notf-frameworks.md under 'baselined, not individually proven'
 enforcement/aap/owner_scope.rego	_cs_violations	neg-call	not _cred_exempt(cred.name)
