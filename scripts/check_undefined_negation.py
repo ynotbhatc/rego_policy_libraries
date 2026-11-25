@@ -236,6 +236,8 @@ class Package:
         self.cls = {}                                # name -> violation | pass | other
         self.probed = {}                             # normalized path -> "file:line" of a line that is defined when
         #                                              the path is missing (not x.y, object.get(x, "y", d) ...)
+        self.probed_neg = {}                         # the same, from negated lines only (`not f(object.get(x, k, null))`):
+        #                                              a line that reports the missing case
         self._memo = {}
 
     def add(self, ast):
@@ -478,6 +480,10 @@ class Scanner:
                 h["effect"] = "guarded"      # the same fact is read by a positive line earlier in the rule: that line is the filter
             if h["present"] and h["effect"] in ("fail-open", "review"):
                 h["effect"] = "guarded"      # `_has_key(obj, "k")` earlier in the rule: an optional field, checked if present
+            neg_guard = next((w for x in h["paths"] for w in self.pkgs[h["pkg"]].probed_neg.get(x, ()) if w != own), "")
+            if neg_guard and h["kind"] in NEGATED_KINDS and h["effect"] in ("fail-open", "review"):
+                h["guard"] = h["guard"] or neg_guard
+                h["effect"] = "guarded"      # another negated line of the package reports the missing case (`not f(object.get(..))`)
             if h["kind"] == "get-default" and h["guard"] and h["effect"] == "fail-open":
                 h["effect"] = "guarded"      # the same object.get(..) is also read by a line that reports the missing case
             if h["typed"] and h["guard"] and h["kind"] in SIBLING_KINDS and h["effect"] == "fail-open":
@@ -510,6 +516,12 @@ class Scanner:
             return [v for _, x in term["value"] for v in Scanner._vars(x)]
         return []
 
+    @staticmethod
+    def _literal_rows(term):
+        """[[a, b], [c, d]]: each row is a literal, so its positions are defined (the values in them may not be)"""
+        return term.get("type") in ("array", "set") and bool(term["value"]) \
+            and all(x.get("type") in ("array", "object") for x in term["value"])
+
     def _const(self, term, env, p):
         t = term.get("type")
         if _literal_only(term):
@@ -541,7 +553,7 @@ class Scanner:
             for s in t["symbols"]:
                 if s.get("type") == "call" and _opname(s["value"][0]) in MEMBER:
                     *names, dom = s["value"][1:]
-                    kind = "const" if self._const(dom, env, p) else "iter"
+                    kind = "const" if self._const(dom, env, p) or self._literal_rows(dom) else "iter"
                     for n in names:
                         for v in self._vars(n):
                             env[v] = (kind, dom)
@@ -763,19 +775,24 @@ class Scanner:
                 for a, b in (args, args[::-1]):
                     if a.get("type") == "ref" and b.get("type") in SCALARS:
                         ctx["typed"].add(self._norm(a, env))
+        pn = ctx["p"].probed_neg
         if e.get("negated"):
             if op is None and args and args[0].get("type") == "ref":
                 probed.setdefault(self._norm(args[0], env), []).append(where)
+                pn.setdefault(self._norm(args[0], env), []).append(where)
             elif op == "equal":
                 for a in args:
                     if a.get("type") == "ref":
                         probed.setdefault(self._norm(a, env), []).append(where)
+                        pn.setdefault(self._norm(a, env), []).append(where)
 
         def walk(term):
             t = term.get("type")
             if t == "call":
                 if _opname(term["value"][0]) == "object.get" and len(term["value"]) == 4:
                     probed.setdefault(self._norm(term, env), []).append(where)
+                    if e.get("negated"):
+                        pn.setdefault(self._norm(term, env), []).append(where)
                 for a in term["value"][1:]:
                     walk(a)
             elif t in ("array", "set"):
