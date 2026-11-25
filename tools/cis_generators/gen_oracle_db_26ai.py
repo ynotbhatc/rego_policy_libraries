@@ -229,7 +229,15 @@ _oracle_maintained(g) if upper(g.oracle_maintained) == "Y"
 
 _unauthorized(g) if {
 	not _oracle_maintained(g)
-	not g.grantee in input.oracle.authorized_grantees
+	not _grantee_authorized(g)
+}
+
+# `not g.grantee in input.oracle.authorized_grantees` is undefined, not true, when the list or the grantee is
+# missing, and the grant would drop out of the check. Without a list nobody is authorized; a grant row
+# without a grantee is not authorized.
+_grantee_authorized(g) if {
+	is_array(input.oracle.authorized_grantees)
+	g.grantee in input.oracle.authorized_grantees
 }
 
 # ADMIN_OPTION arrives as the view's 'YES'/'NO' (or Y/N) or as a boolean.

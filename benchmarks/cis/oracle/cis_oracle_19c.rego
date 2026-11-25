@@ -783,7 +783,7 @@ unneeded_default_accounts_locked if {
 	unneeded_accounts := [acc |
 		acc := default_accounts[_]
 		acc.needed == false
-		acc.status != "LOCKED"
+		not acc.status == "LOCKED"
 	]
 	count(unneeded_accounts) == 0
 }
