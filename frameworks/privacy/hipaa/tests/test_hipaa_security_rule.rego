@@ -240,7 +240,10 @@ test_failed_fact_is_named_under_its_citation if {
 }
 
 test_attestation_does_not_decide_a_fact_row if {
-	inp := object.union(_fx.full_input, {"hipaa": {"physical": {"workstation_security": {"ephi_access": {"restricted": false}}}}})
+	inp := object.union(_fx.full_input, {"hipaa": {
+		"physical": {"workstation_security": {"ephi_access": {"restricted": false}}},
+		"specifications": {"164.310(c)": true},
+	}})
 	r := sr.report with input as inp
 	r.specifications["164.310(c)"].attested == true
 	r.specifications["164.310(c)"].satisfied == false

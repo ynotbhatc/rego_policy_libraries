@@ -27,6 +27,10 @@ _compliant("hitech", inp) if data.hipaa.hitech.compliant with input as inp
 
 _compliant("security_rule", inp) if data.hipaa.security_rule.compliant with input as inp
 
+_compliant("part160", inp) if data.hipaa.part160.compliant with input as inp
+
+_compliant("part162", inp) if data.hipaa.part162.compliant with input as inp
+
 _compliant("technical", inp) if {
 	data.hipaa.access_control.compliant with input as inp
 	data.hipaa.audit_controls.compliant with input as inp
@@ -93,7 +97,7 @@ test_number_as_string_never_passes if {
 # pins the exact set, so a new fact that can be removed without failing has to be listed here.
 test_removed_fact_fails_unless_advisory if {
 	passing := {_ptr(p) |
-		some p in _bool_paths | _num_paths
+		some p in (_bool_paths | _num_paths)
 		_compliant(_owner(p), json.patch(fx.full_input, [{"op": "remove", "path": p}]))
 	}
 	passing == _advisory_facts
@@ -144,11 +148,77 @@ test_numeric_attestations_all_reported if _all_named(1)
 test_single_mistyped_attestation_on_a_fact_row_fails if {
 	every key, module in {"specifications": "security_rule", "subpart_d": "hitech", "subpart_e": "privacy_rule"} {
 		some id, _ in data.hipaa[module].fact_basis
-		inp := _replaced(["hipaa", key, id], "true")
+		inp := json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": "true"}])
 		some v in _violations(module, inp)
 		contains(v, "evidence invalid")
 		contains(v, id)
 	}
+}
+
+# Audit 2026-11-24, round 3. The all-pass fixture carries an attestation only for the rows that read one.
+# Each such attestation removed, false, null or of another type fails the module that owns it.
+test_every_attestation_the_fixture_carries_is_required if {
+	every key, module in _maps {
+		every id, _ in fx.full_input.hipaa[key] {
+			not _compliant(module, json.remove(fx.full_input, [sprintf("hipaa/%s/%s", [key, id])]))
+			every value in [false, null, "true", "false", 1] {
+				not _compliant(module, _replaced(["hipaa", key, id], value))
+			}
+		}
+	}
+}
+
+test_fixture_carries_no_attestation_for_a_fact_row if {
+	every key, module in {"specifications": "security_rule", "subpart_d": "hitech", "subpart_e": "privacy_rule"} {
+		every id, _ in data.hipaa[module].fact_basis {
+			not id in object.keys(fx.full_input.hipaa[key])
+		}
+	}
+}
+
+# A fact-decided row does not read its attestation: true is accepted, a mistyped value is invalid evidence
+# (above), and false contradicts the passing facts and is reported. None of them passes except true.
+test_attestation_on_a_fact_row if {
+	every key, module in {"specifications": "security_rule", "subpart_d": "hitech", "subpart_e": "privacy_rule"} {
+		every id, _ in data.hipaa[module].fact_basis {
+			_compliant(module, json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": true}]))
+			inp := json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": false}])
+			not _compliant(module, inp)
+			some v in _violations(module, inp)
+			contains(v, "evidence contradictory")
+			contains(v, id)
+		}
+	}
+}
+
+# false on a fact row whose facts already fail adds nothing: the row is reported once, as a failed fact check.
+test_false_attestation_on_a_failed_fact_row_is_not_double_counted if {
+	base := object.union(fx.full_input, {"hipaa": {"physical": {"workstation_security": {"ephi_access": {"restricted": false}}}}})
+	with_false := json.patch(base, [{"op": "add", "path": ["hipaa", "specifications", "164.310(c)"], "value": false}])
+	count(data.hipaa.security_rule.violations) == 1 with input as base
+	count(data.hipaa.security_rule.violations) == 1 with input as with_false
+}
+
+# An addressable row not implemented (its fact is false) and met by a documented 164.306(d)(3) alternative
+# may truthfully attest false.
+test_false_attestation_with_documented_alternative_passes if {
+	id := "164.308(a)(5)(ii)(B)"
+	data.hipaa.security_rule.fact_basis[id]
+	data.hipaa.security_rule.specifications[id].status == "addressable"
+	inp := json.patch(fx.full_input, [
+		{"op": "add", "path": ["hipaa", "specifications", id], "value": false},
+		{"op": "replace", "path": ["hipaa", "administrative", "training", "malicious_software", "covered"], "value": false},
+		{"op": "add", "path": ["hipaa", "addressable_decisions"], "value": {id: {
+			"not_reasonable_and_appropriate_documented": true,
+			"equivalent_alternative_implemented": true,
+		}}},
+	])
+	not _contradiction(inp)
+}
+
+_contradiction(inp) if {
+	some v in data.hipaa.security_rule.violations with input as inp
+	contains(v, "evidence contradictory")
 }
 
 test_scope_roles_must_be_booleans if {
