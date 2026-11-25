@@ -257,14 +257,18 @@ test_ol09_00_002346_fail_2 if {
 	contains(f.detail, "OL09-00-002346: check failed")
 }
 
+test_ol09_00_002346_number_as_text_1 if {
+	every text in ["1", " 1 "] {
+		f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002346 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveCountMax": text}})
+		f.status == "Open"
+		f.detail == "OL09-00-002346: evidence invalid — ssh_config.ClientAliveCountMax is not a number (got string)"
+	}
+}
+
 test_ol09_00_002346_evidence_missing_1 if {
 	f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002346 with input as json.remove(green_fixture, [["ssh_config", "ClientAliveCountMax"]])
 	f.status == "Open"
 	contains(f.detail, "OL09-00-002346: evidence missing — ssh_config.ClientAliveCountMax")
-}
-
-test_ol09_00_002346_pass_2 if {
-	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002346 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveCountMax": "1"}})
 }
 
 test_ol09_00_002347_pass if {
@@ -286,7 +290,27 @@ test_ol09_00_002347_fail_2 if {
 test_ol09_00_002347_fail_3 if {
 	f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002347 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "10m"}})
 	f.status == "Open"
-	contains(f.detail, "OL09-00-002347: check failed")
+	contains(f.detail, "OL09-00-002347: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)")
+}
+
+test_ol09_00_002347_fail_4 if {
+	f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002347 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "600"}})
+	f.status == "Open"
+	contains(f.detail, "OL09-00-002347: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)")
+}
+
+test_ol09_00_002347_fail_5 if {
+	f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002347 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "0"}})
+	f.status == "Open"
+	contains(f.detail, "OL09-00-002347: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)")
+}
+
+test_ol09_00_002347_number_as_text_1 if {
+	every text in ["600", " 600 "] {
+		f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002347 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": text}})
+		f.status == "Open"
+		f.detail == "OL09-00-002347: evidence invalid — ssh_config.ClientAliveInterval is not a number (got string)"
+	}
 }
 
 test_ol09_00_002347_evidence_missing_1 if {
@@ -296,11 +320,11 @@ test_ol09_00_002347_evidence_missing_1 if {
 }
 
 test_ol09_00_002347_pass_2 if {
-	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002347 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "600"}})
+	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002347 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": 300}})
 }
 
 test_ol09_00_002347_pass_3 if {
-	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002347 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "0"}})
+	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002347 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": 0}})
 }
 
 test_ol09_00_002345_pass if {

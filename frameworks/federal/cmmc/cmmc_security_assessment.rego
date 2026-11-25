@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -60,8 +60,9 @@ compliant_3_12_1 if {
 }
 
 violation_3_12_1 contains msg if {
-	not input.assessment.security_controls_assessed
-	msg := "3.12.1: Security controls in CUI systems have not been periodically assessed"
+	not input.assessment.security_controls_assessed == true
+	finding := "3.12.1: Security controls in CUI systems have not been periodically assessed"
+	msg := concat("", [finding, _ev_input("assessment.security_controls_assessed")])
 }
 
 violation_3_12_1 contains "3.12.1: evidence missing - input.org_defined.control_assessment_interval_days (organisation-defined value, NIST SP 800-171A 3.12.1[a]) not supplied or not a number" if {
@@ -83,8 +84,9 @@ violation_3_12_1 contains msg if {
 }
 
 violation_3_12_1 contains msg if {
-	not input.assessment.assessment_results_documented
-	msg := "3.12.1: Security control assessment results are not documented"
+	not input.assessment.assessment_results_documented == true
+	finding := "3.12.1: Security control assessment results are not documented"
+	msg := concat("", [finding, _ev_input("assessment.assessment_results_documented")])
 }
 
 # 3.12.2 — Develop and implement plans of action designed to correct deficiencies
@@ -98,18 +100,21 @@ compliant_3_12_2 if {
 }
 
 violation_3_12_2 contains msg if {
-	not input.assessment.plan_of_action_exists
-	msg := "3.12.2: No Plan of Action and Milestones (POA&M) exists to address security deficiencies"
+	not input.assessment.plan_of_action_exists == true
+	finding := "3.12.2: No Plan of Action and Milestones (POA&M) exists to address security deficiencies"
+	msg := concat("", [finding, _ev_input("assessment.plan_of_action_exists")])
 }
 
 violation_3_12_2 contains msg if {
-	not input.assessment.poam_tracks_deficiencies
-	msg := "3.12.2: POA&M does not track all identified security deficiencies and vulnerabilities"
+	not input.assessment.poam_tracks_deficiencies == true
+	finding := "3.12.2: POA&M does not track all identified security deficiencies and vulnerabilities"
+	msg := concat("", [finding, _ev_input("assessment.poam_tracks_deficiencies")])
 }
 
 violation_3_12_2 contains msg if {
-	not input.assessment.poam_reviewed_regularly
-	msg := "3.12.2: POA&M is not reviewed and updated on a regular basis"
+	not input.assessment.poam_reviewed_regularly == true
+	finding := "3.12.2: POA&M is not reviewed and updated on a regular basis"
+	msg := concat("", [finding, _ev_input("assessment.poam_reviewed_regularly")])
 }
 
 # 3.12.3 — Monitor security controls on an ongoing basis to ensure the continued
@@ -123,18 +128,21 @@ compliant_3_12_3 if {
 }
 
 violation_3_12_3 contains msg if {
-	not input.assessment.continuous_monitoring_program
-	msg := "3.12.3: No continuous monitoring program for CUI system security controls"
+	not input.assessment.continuous_monitoring_program == true
+	finding := "3.12.3: No continuous monitoring program for CUI system security controls"
+	msg := concat("", [finding, _ev_input("assessment.continuous_monitoring_program")])
 }
 
 violation_3_12_3 contains msg if {
-	not input.assessment.security_metrics_collected
-	msg := "3.12.3: Security metrics are not collected to assess ongoing control effectiveness"
+	not input.assessment.security_metrics_collected == true
+	finding := "3.12.3: Security metrics are not collected to assess ongoing control effectiveness"
+	msg := concat("", [finding, _ev_input("assessment.security_metrics_collected")])
 }
 
 violation_3_12_3 contains msg if {
-	not input.assessment.control_effectiveness_reviewed
-	msg := "3.12.3: Security control effectiveness is not reviewed on an ongoing basis"
+	not input.assessment.control_effectiveness_reviewed == true
+	finding := "3.12.3: Security control effectiveness is not reviewed on an ongoing basis"
+	msg := concat("", [finding, _ev_input("assessment.control_effectiveness_reviewed")])
 }
 
 # 3.12.4 — Develop, document, and periodically update system security plans
@@ -151,23 +159,27 @@ compliant_3_12_4 if {
 }
 
 violation_3_12_4 contains msg if {
-	not input.assessment.system_security_plan_exists
-	msg := "3.12.4: No System Security Plan (SSP) exists for CUI systems"
+	not input.assessment.system_security_plan_exists == true
+	finding := "3.12.4: No System Security Plan (SSP) exists for CUI systems"
+	msg := concat("", [finding, _ev_input("assessment.system_security_plan_exists")])
 }
 
 violation_3_12_4 contains msg if {
-	not input.assessment.ssp_documents_boundaries
-	msg := "3.12.4: SSP does not document system boundaries and connections to other systems"
+	not input.assessment.ssp_documents_boundaries == true
+	finding := "3.12.4: SSP does not document system boundaries and connections to other systems"
+	msg := concat("", [finding, _ev_input("assessment.ssp_documents_boundaries")])
 }
 
 violation_3_12_4 contains msg if {
-	not input.assessment.ssp_documents_cui_environment
-	msg := "3.12.4: SSP does not describe CUI operating environment and security requirement implementation"
+	not input.assessment.ssp_documents_cui_environment == true
+	finding := "3.12.4: SSP does not describe CUI operating environment and security requirement implementation"
+	msg := concat("", [finding, _ev_input("assessment.ssp_documents_cui_environment")])
 }
 
 violation_3_12_4 contains msg if {
-	not input.assessment.ssp_updated_annually
-	msg := "3.12.4: System Security Plan is not reviewed and updated at least annually"
+	not input.assessment.ssp_updated_annually == true
+	finding := "3.12.4: System Security Plan is not reviewed and updated at least annually"
+	msg := concat("", [finding, _ev_input("assessment.ssp_updated_annually")])
 }
 
 # ---------------------------------------------------------------------------
@@ -241,3 +253,25 @@ compliance_report := {
 	"violations": all_violations,
 	"practices": practices,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

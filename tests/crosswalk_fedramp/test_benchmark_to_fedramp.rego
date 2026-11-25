@@ -57,7 +57,7 @@ test_rhel9_stig_report_reaches_each_baseline_and_passes_nothing_by_itself if {
 	stig.compliant
 	reach := {"low": [156, 27, 20], "moderate": [323, 41, 6], "high": [410, 45, 2]}
 	every level, want in reach {
-		r := main.compliance_report with input as {"impact_level": level, "reports": [stig]}
+		r := main.compliance_report with input as object.union(data.fedramp_test._stated, {"impact_level": level, "reports": [stig]})
 		b := r.benchmark_evidence
 		b.rules_supplied == 445
 		b.rules_unmapped == 0
@@ -75,7 +75,7 @@ test_rhel9_stig_report_reaches_each_baseline_and_passes_nothing_by_itself if {
 		"RHEL-09-411075" in _row(r, "AC-7").benchmark.rules
 		_row(r, "CA-2").status == "fail"
 	}
-	hi := main.compliance_report with input as {"impact_level": "high", "reports": [stig]}
+	hi := main.compliance_report with input as object.union(data.fedramp_test._stated, {"impact_level": "high", "reports": [stig]})
 	hi.benchmark_evidence.controls_not_in_baseline == ["AU-14", "SC-11"]
 	_row(hi, "AC-2(1)").benchmark.status == "not_evaluated"
 }

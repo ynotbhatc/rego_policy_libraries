@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-bad-input check-generated check-bundle check-coverage check-per-file-load schemas oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
+.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-no-library-tests check-bad-input check-generated check-bundle check-coverage check-per-file-load schemas oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -11,10 +11,11 @@ help:
 	@echo "  make lint          Check syntax of all .rego files"
 	@echo "  make metadata      Verify every package carries a conforming METADATA block"
 	@echo "  make check         lint + test + metadata"
-	@echo "  make check-standards  Verify standards.yaml covers every framework key and matches the module text (offline)"
+	@echo "  make check-standards  Verify standards.yaml covers every framework key and matches the module text, the registry and docs/FRAMEWORKS.md (offline)"
 	@echo "  make standards-releases  Check upstream sources for releases newer than standards.yaml (network)"
 	@echo "  make mutation MODULE=<dir> [ARGS=...]  Mutation-test one module directory (slow; not run in CI)"
-	@echo "  make check-bad-input  Empty / null / string-typed input and mutated fixtures never pass (known failures listed)"
+	@echo "  make check-bad-input  Empty / null / string-typed input, string and null facts, and mutated fixtures never pass (known failures listed, accepted cases carry a reason)"
+	@echo "  make check-no-library-tests  No policy file defines a test_* rule (opa test would run it)"
 	@echo "  make schemas       Regenerate the input schemas (schemas/input/<key>/schema.json); check-generated fails when stale"
 	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
@@ -91,15 +92,24 @@ check-converters:
 
 coverage:
 	@echo "=== Stamping custom.coverage into every module's METADATA + docs/COVERAGE_SCAN.md ==="
-	@python3 scripts/coverage_stamp.py --report docs/COVERAGE_SCAN.md
+	@OPA=$(OPA) python3 scripts/coverage_stamp.py --report docs/COVERAGE_SCAN.md
 
 # no data never passes: the generated test must list every compliance_report entrypoint
 check-no-data:
 	@python3 scripts/check_no_data_fails.py --check-test
 
-# bad input never passes (#301): empty / missing / null / string-typed input and mutated all-pass fixtures,
-# for every entrypoint; fails only on a failure not in scripts/bad_input_known_failures.txt
+# no policy (non-test) file defines a rule named test_*: `opa test` executes it and the library publishes it.
+# Run by check-coverage, so by `make check` and by CI.
+check-no-library-tests:
+	@python3 scripts/check_no_library_test_rules.py
+
+# bad input never passes (#301): empty / missing / null / string-typed input, every input path the module's
+# sources read set to "false" / "true" / "no" / null (no fixture needed), and mutated all-pass fixtures, for every
+# entrypoint; fails only on a failure not in scripts/bad_input_known_failures.txt (to fix) and not accepted with
+# a reason in scripts/bad_input_accepted.txt (reviewed and right; an entry that no longer fails is an error).
+# CONTRIBUTING.md, "Bad input never passes". The unit tests of the check scripts (scripts/tests/) run first.
 check-bad-input:
+	@OPA=$(OPA) python3 -m unittest discover -s scripts/tests -q
 	@OPA=$(OPA) python3 scripts/check_bad_input_fails.py --check
 
 # Build the bundle exactly as the publish workflow does (scripts/build_bundle.sh) and check what is in it:
@@ -111,8 +121,10 @@ check-bundle:
 
 check-coverage:
 	@$(MAKE) --no-print-directory check-bundle
-	@python3 scripts/coverage_stamp.py --check
+	@$(MAKE) --no-print-directory check-no-library-tests
+	@OPA=$(OPA) python3 scripts/coverage_stamp.py --check
 	@python3 scripts/check_numeric_guards.py --check
+	@OPA=$(OPA) python3 scripts/check_undefined_negation.py --check
 	@python3 scripts/coverage_report.py --check
 	@$(MAKE) --no-print-directory check-generated
 	@$(MAKE) --no-print-directory check-bad-input
@@ -121,14 +133,17 @@ check-coverage:
 # matches the module and the OSCAL baseline profiles; the PCI DSS evidence_spec blocks match their rule bodies;
 # the Linux STIG collector contract matches the rule tables; standards.yaml matches the module versions;
 # the input schemas (schemas/input/) match their sources and pass their self-tests; the site catalog's sections
-# hold every policy file once and add up to the README policy count
+# hold every policy file once and add up to the README policy count; the crosswalk framework maps match the
+# FedRAMP profiles and, for the NIST-published maps, their recorded map hash and pinned sources (no network)
 check-generated: check-no-data check-standards
-	@python3 scripts/gen_nist_800_53_index.py --check
+	@OPA=$(OPA) python3 scripts/gen_nist_800_53_index.py --check
 	@echo "NIST 800-53 index current; the evaluated-id count stated in the module header and docs matches"
 	@python3 scripts/gen_pci_dss_evidence_spec.py --check
 	@python3 tools/stig_generators/gen_collector_contract.py --check
 	@OPA=$(OPA) python3 scripts/gen_input_schemas.py --check
 	@python3 scripts/gen_pages_catalog.py --check
+	@python3 scripts/gen_fedramp_framework_maps.py --check
+	@python3 scripts/gen_nist_framework_maps.py --check
 
 # one JSON Schema per framework key for the facts its module reads, generated from the rule tables, the collector
 # manifests and the sources (docs/INPUT_SCHEMAS.md); validate a document with scripts/validate_input.py

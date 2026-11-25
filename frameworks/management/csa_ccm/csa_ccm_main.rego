@@ -156,13 +156,35 @@ _violations := sort({v |
 	some v in d
 })
 
+# Controls and findings are counted separately. A control can carry several checks, so `violations` holds
+# one finding per failed check (up to checks_total) while failed_controls counts the distinct control ids
+# those findings belong to. The domain modules carry checks for controls_checked of the 197 declared
+# controls; the rest have no check here and are reported as controls_not_checked, never as passed:
+#   passed_controls + failed_controls + controls_not_checked == total_controls
+_total_controls := 197
+
+_failed_control_ids := sort({id |
+	some msg in _violations
+	id := split(msg, ":")[0]
+})
+
+_controls_checked := sum([report.details.controls_checked | some report in domain_reports])
+
+_checks_total := sum([report.details.checks_total | some report in domain_reports])
+
 compliance_report := {
 	"framework": "Cloud Security Alliance Cloud Controls Matrix (CSA CCM)",
 	"compliant": overall_compliant,
-	"total_controls": 197,
+	"total_controls": _total_controls,
+	"controls_checked": _controls_checked,
+	"controls_not_checked": _total_controls - _controls_checked,
+	"failed_controls": count(_failed_control_ids),
+	"passed_controls": _controls_checked - count(_failed_control_ids),
+	"failed_control_ids": _failed_control_ids,
+	"checks_total": _checks_total,
 	"violations": _violations,
 	"violation_count": count(_violations),
-	"failed_controls": min([197, count(_violations)]),
+	"counting": "violations lists one finding per failed check (checks_total checks); failed_controls counts the distinct controls those findings belong to; controls_not_checked have no check in this module",
 	"standard": "CSA Cloud Controls Matrix (CCM) v4.0",
 	"overall_compliant": overall_compliant,
 	"domains_passing": domains_passing,

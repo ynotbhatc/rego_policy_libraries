@@ -137,6 +137,16 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.b_stmt",
         "name": "statement",
         "prose": "Neither the Cybersecurity Coordinator nor any alternate is a U.S. citizen eligible for a security clearance"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.b_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity Coordinator '%s' does not state us_citizen as true or false, so the requirement cannot be decided%s"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.b_obj.2",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity Coordinator '%s' does not state clearance_eligible as true or false, so the requirement cannot be decided%s"
        }
       ],
       "class": "ot"
@@ -449,6 +459,39 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.d_stmt",
         "name": "statement",
         "prose": "Cybersecurity Coordinator has no established working relationship with appropriate law enforcement and emergency response agencies"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd01_coordinator-1",
+      "title": "TSA SD Pipeline-2021-01G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd01_coordinator#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd01_coordinator#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4040b3d1-f631-5015-80ea-92fe9335fb52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd01_coordinator-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-01G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked"
        }
       ],
       "class": "ot"
@@ -775,6 +818,11 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.3_obj.1",
         "name": "assessment-objective",
         "prose": "Cybersecurity incident '%s' was reported to CISA %v hours after identification — reports must be made as soon as practicable but no later than 72 hours"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - incident '%s' is reported to CISA but has no numeric hours_to_report (got %s), so reporting within 72 hours of identification cannot be shown"
        }
       ],
       "class": "ot"
@@ -912,6 +960,16 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f_obj.1",
         "name": "assessment-objective",
         "prose": "Supplemental information for incident '%s' was provided %v hours after becoming available — it must be provided within 24 hours"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f_obj.2",
+        "name": "assessment-objective",
+        "prose": "incident '%s' does not state initial_report_incomplete as true or false, so the requirement cannot be decided%s"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - incident '%s' had an incomplete initial report but has no numeric supplemental_hours_after_available (got %s), so the 24-hour supplement cannot be shown"
        }
       ],
       "class": "ot"
@@ -1536,6 +1594,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_access_control-1",
+      "title": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_access_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_access_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12dbe7ba-6718-5a5d-9fe0-2dfab06ab722",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_access_control-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -1930,6 +2021,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_assessment_plan-1",
+      "title": "TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_assessment_plan#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_assessment_plan#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#795868b8-5ed1-5319-b315-77e357d9cfdd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_assessment_plan-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -2307,6 +2431,16 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_obj.3",
         "name": "assessment-objective",
         "prose": "TSA must be notified within 60 days of a change in method of operations to determine the compliance schedule — %d days have elapsed"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.critical_cyber_systems.none_determination.days_since_effective_date is not a number (got %s), so the 60-day notification cannot be checked"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.critical_cyber_systems.none_determination.days_since_operations_change is not a number (got %s), so the 60-day notification cannot be checked"
        }
       ],
       "class": "ot"
@@ -2373,6 +2507,72 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.4_stmt",
         "name": "statement",
         "prose": "Authorized Representative '%s' has no documented acknowledgement of liability — both the Owner/Operator and the Authorized Representative are liable for non-compliance"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_critical_cyber_systems-1",
+      "title": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2085c989-193f-5f77-9355-6331eb654587",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_critical_cyber_systems-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_critical_cyber_systems-2",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/tsa_pipeline/sd02_critical_cyber_systems.rego (package tsa_pipeline.sd02_critical_cyber_systems); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2085c989-193f-5f77-9355-6331eb654587",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_critical_cyber_systems-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/tsa_pipeline/sd02_critical_cyber_systems.rego (package tsa_pipeline.sd02_critical_cyber_systems); see the rule body."
        }
       ],
       "class": "ot"
@@ -2625,6 +2825,11 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.C_stmt",
         "name": "statement",
         "prose": "Change '%s' is intended to be in effect for %v days, making it a permanent change requiring a Cybersecurity Implementation Plan amendment — none has been filed"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.C_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - change '%s' has no numeric duration_days (got %s), so the limit cannot be checked"
        }
       ],
       "class": "ot"
@@ -2658,6 +2863,11 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.D_stmt",
         "name": "statement",
         "prose": "The amendment request for permanent change '%s' is %v days past the change taking effect — it must be filed with TSA no later than 50 calendar days"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.D_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - permanent change '%s' has no numeric days_since_effective (got %s), so the limit cannot be checked"
        }
       ],
       "class": "ot"
@@ -2691,6 +2901,54 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.F_stmt",
         "name": "statement",
         "prose": "A petition for reconsideration of the denied amendment '%s' was not filed within 30 calendar days of receiving the denial (%v days elapsed) — see 49 CFR 1570.119"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.F_obj.1",
+        "name": "assessment-objective",
+        "prose": "denied amendment '%s' does not state reconsideration_intended as true or false, so the requirement cannot be decided%s"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.F_obj.2",
+        "name": "assessment-objective",
+        "prose": "denied amendment '%s' does not state petition_filed as true or false, so the requirement cannot be decided%s"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.F_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - denied amendment '%s' has no numeric days_since_denial (got %s), so the limit cannot be checked"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_implementation_plan-1",
+      "title": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_implementation_plan#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_implementation_plan#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#93927571-d15d-53ed-9a79-bc5828efaafe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_implementation_plan-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s"
        }
       ],
       "class": "ot"
@@ -3144,6 +3402,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_incident_response_plan-1",
+      "title": "TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_incident_response_plan#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_incident_response_plan#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ff43e849-0169-5fab-965a-95621f11f55c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_incident_response_plan-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -3411,6 +3702,39 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2.b_stmt",
         "name": "statement",
         "prose": "Operational Technology system services traverse the Information Technology system without the Operational Technology system content being encrypted while in transit"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_network_segmentation-1",
+      "title": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_network_segmentation#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_network_segmentation#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7377cbb5-31d9-5242-8be5-6f8f7de3db7b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_network_segmentation-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s"
        }
       ],
       "class": "ot"
@@ -4032,6 +4356,72 @@
         "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-V.A.2_obj.1",
         "name": "assessment-objective",
         "prose": "The applicable security measures were not provided to the direct employees and authorized representatives responsible for implementing them"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_records-2",
+      "title": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_records#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_records#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5aca8978-7129-5345-9050-b9ee6be5dd5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_records-2_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: input.%s is not stated as true or false, so the requirement cannot be decided%s"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_records-3",
+      "title": "TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_records#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_records#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5aca8978-7129-5345-9050-b9ee6be5dd5c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_records-3_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked"
        }
       ],
       "class": "ot"

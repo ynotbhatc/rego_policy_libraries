@@ -8,11 +8,8 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     expected: 23
-#     found: 22
-#     scope: directory
-#     density: partial
-#     basis: declared-total
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -95,6 +92,10 @@ all_co_achievements := {
 	"D1.b": d1_response_recovery.co_d1b_achievement,
 	"D1.c": d1_response_recovery.co_d1c_achievement,
 }
+
+# The control universe is the contributing-outcome table above (23). _violations has one finding per CO that is
+# not achieved, so failed_controls is counted and cannot exceed it; no CO is ever out of scope.
+total_controls := count(all_co_achievements)
 
 # ---------------------------------------------------------------------------
 # Aggregate counts across all 23 COs
@@ -193,10 +194,12 @@ _violations := sort([msg |
 ])
 
 compliance_report := {
-	"total_controls": 23,
+	"total_controls": total_controls,
 	"violations": _violations,
 	"violation_count": count(_violations),
-	"failed_controls": min([23, count(_violations)]),
+	"failed_controls": count(_violations),
+	"passed_controls": total_controls - count(_violations),
+	"not_applicable_controls": 0,
 	"framework": "NCSC Cyber Assessment Framework 4.0",
 	"version": "4.0",
 	"phase": "Phase 1 + Phase 2",

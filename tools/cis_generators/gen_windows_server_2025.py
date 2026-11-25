@@ -249,7 +249,7 @@ test_{mod}_fails_closed_without_input if {{
 	count(r.violations) == count(r.in_scope)
 }}
 """
-    any_role = sum(1 for r in recs.values() if not all(p.startswith("NG") for p in r["profiles"]))
+    any_role = len(recs)  # no role and no next_generation selector stated: every recommendation is in scope, not assessed
 
     def one(rid):
         c = checks[rid]
@@ -403,7 +403,7 @@ Each section module is a `controls` table, one row per recommendation; `lib.rego
 |---|---|---|
 | `role` | `member_server`, `domain_controller` | Recommendations for one role only are **not assessed** and counted as failed; those for both roles are evaluated |
 | `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
-| `next_generation` | `true` to add the Next Generation Windows Security profile ({len(ng_ids)} recommendations: {", ".join(ng_ids)}) | off: CIS publishes it as a separate profile |
+| `next_generation` | `true` to add the Next Generation Windows Security profile ({len(ng_ids)} recommendations: {", ".join(ng_ids)}) | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `next_generation_defaulted: true` |
 
 `total_controls` is the number in scope, out of `benchmark_total_controls` {len(recs)}:
 

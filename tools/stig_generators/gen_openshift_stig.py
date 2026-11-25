@@ -67,20 +67,41 @@ execpriv_rules := ''' + json.dumps(sorted({norm_rule(l) for l in EXECPRIV})).rep
 
 unsuccessful_access_rules := ''' + json.dumps(sorted({norm_rule(l) for l in AUDIT930})).replace('", "', '",\n\t"').replace("[", "{\n\t", 1)[:-1] + "\n}" + r'''
 
+# What `systemctl is-enabled` and `systemctl is-active` print (systemctl(1), tables "is-enabled output" and the
+# is-active states). CNTR-OS-001010 is a finding when the service is "either active or enabled"; each node must
+# print a word that is a plain statement of "not enabled" and of "not running". "enabled" and "enabled-runtime"
+# (the same row: enabled through symlinks, permanently or only until reboot), "alias", "generated" and "transient"
+# (exit code 0: enabled in effect or enabled implicitly), "bad" and a word systemctl never prints ("false", "no",
+# "true", an empty string) do not clear the node. Neither do the states that mean running or about to run.
+systemctl_not_enabled_states := {"disabled", "masked", "masked-runtime", "linked", "linked-runtime", "static", "indirect", "not-found"}
+
+systemctl_not_active_states := {"inactive", "failed", "unknown"}
+
 # SCC subjects the CNTR-OS-000660 check permits on a host-access / privileged / non-MustRunAsRange SCC
 scc_permitted_subjects := ''' + "{" + ", ".join(json.dumps(x) for x in SCC_ALLOWED) + "}" + r'''
 
-_scc_privileged(s) if s.allowHostIPC == true
+# The check selects an SCC with `jq select(.allowHostIPC or .allowHostPID or .allowHostPorts or .allowHostNetwork
+# or .allowHostDirVolumePlugin or .allowPrivilegedContainer or .runAsUser.type != "MustRunAsRange")`. jq reads
+# only null and false as false, so a field the SCC does not carry is not set, and anything else (true, but also
+# the string "false" or a number) selects the SCC. A missing runAsUser.type is null, which differs from
+# "MustRunAsRange", so it selects too (the last clause below).
+_scc_flag(s, field) if {
+	v := object.get(s, field, null)
+	v != null
+	v != false
+}
 
-_scc_privileged(s) if s.allowHostPID == true
+_scc_privileged(s) if _scc_flag(s, "allowHostIPC")
 
-_scc_privileged(s) if s.allowHostPorts == true
+_scc_privileged(s) if _scc_flag(s, "allowHostPID")
 
-_scc_privileged(s) if s.allowHostNetwork == true
+_scc_privileged(s) if _scc_flag(s, "allowHostPorts")
 
-_scc_privileged(s) if s.allowHostDirVolumePlugin == true
+_scc_privileged(s) if _scc_flag(s, "allowHostNetwork")
 
-_scc_privileged(s) if s.allowPrivilegedContainer == true
+_scc_privileged(s) if _scc_flag(s, "allowHostDirVolumePlugin")
+
+_scc_privileged(s) if _scc_flag(s, "allowPrivilegedContainer")
 
 _scc_privileged(s) if object.get(s, ["runAsUser", "type"], "") != "MustRunAsRange"
 
@@ -108,6 +129,11 @@ _pre_418 if {
 }'''
 
 
+SCC_FIELDS = ["allowHostDirVolumePlugin", "allowHostIPC", "allowHostNetwork", "allowHostPID", "allowHostPorts", "allowPrivilegedContainer"]
+SCC_OFF = {k: False for k in SCC_FIELDS}
+SCC_ON = {k: True for k in SCC_FIELDS}
+
+
 def node(**kv):
     n = {"name": "worker-0", "audit_rules": EXECPRIV + AUDIT930 + ["--loginuid-immutable"],
          "boot_entries_options": ["options root=UUID=1 rw audit=1 audit_backlog_limit=8192 page_poison=1 fips=1"],
@@ -132,7 +158,7 @@ def nodes_rule(sid, name, conds, bad_nodes, expect, fix, comment, extra_ev=(), e
 # ── cluster configuration ─────────────────────────────────────────────────────────────────────────────────────
 T.R("core", "CNTR-OS-000010", "registries_secure", [("openshift", "image_config")],
     [["ic := input.openshift.image_config", 'allowed := object.get(ic, ["spec", "allowedRegistriesForImport"], [])', "is_array(allowed)",
-      "count([r | some r in allowed; r.insecure == true]) == 0",
+      'count([r | some r in allowed; object.get(r, "insecure", false) != false]) == 0',
       'insecure := object.get(ic, ["spec", "registrySources", "insecureRegistries"], [])', "is_array(insecure)", "count(insecure) == 0"]],
     {"openshift": {"image_config": {"spec": {"allowedRegistriesForImport": [{"domainName": "registry.redhat.io", "insecure": False}]}}}},
     [{"openshift": {"image_config": {"spec": {"allowedRegistriesForImport": [{"domainName": "r.example", "insecure": True}]}}}},
@@ -155,10 +181,10 @@ for sid, name in [("CNTR-OS-000030", "central_user_management"), ("CNTR-OS-00046
 T.R("core", "CNTR-OS-000660", "scc_least_privilege", [("scc", "items")],
     [["items := input.scc.items", "is_array(items)", "count(items) > 0", "count([s | some s in items; _scc_offender(s)]) == 0",
       '_attested("cntr_os_000660_role_review")']],
-    {"scc": {"items": [{"metadata": {"name": "restricted-v2"}, "allowPrivilegedContainer": False, "runAsUser": {"type": "MustRunAsRange"},
-                        "groups": ["system:authenticated"], "users": []},
-                       {"metadata": {"name": "privileged"}, "allowPrivilegedContainer": True, "runAsUser": {"type": "RunAsAny"},
-                        "groups": ["system:cluster-admins", "system:nodes", "system:masters"], "users": ["system:admin"]}]},
+    {"scc": {"items": [dict(SCC_OFF, **{"metadata": {"name": "restricted-v2"}, "runAsUser": {"type": "MustRunAsRange"},
+                                         "groups": ["system:authenticated"], "users": []}),
+                       dict(SCC_ON, **{"metadata": {"name": "privileged"}, "runAsUser": {"type": "RunAsAny"},
+                                        "groups": ["system:cluster-admins", "system:nodes", "system:masters"], "users": ["system:admin"]})]},
      "attest": {"cntr_os_000660_role_review": True}},
     [{"scc": {"items": [{"metadata": {"name": "privileged"}, "allowPrivilegedContainer": True, "groups": ["devs"], "users": []}]}},
      {"scc": {"items": [{"metadata": {"name": "anyuid"}, "runAsUser": {"type": "MustRunAsRange"}, "groups": ["system:authenticated"]}]}},
@@ -231,8 +257,9 @@ nodes_rule("CNTR-OS-000860", "nx_protection", ['_nx(n)'], [{"dmesg_nx": "", "cpu
 nodes_rule("CNTR-OS-000930", "access_attempts_audited", ["every r in unsuccessful_access_rules {\n\t\tr in _node_rules(n)\n\t}"],
            [{"audit_rules": EXECPRIV + AUDIT930[:-1]}], "every node must carry all 70 audit rules the check lists",
            "Add the rules to /etc/audit/rules.d with a MachineConfig", "uncommented /etc/audit/audit.rules lines per node")
-nodes_rule("CNTR-OS-001010", "sshd_disabled", ['_s(n.sshd_enabled) != "enabled"', '_s(n.sshd_active) != "active"', "is_string(n.sshd_enabled)",
-                                                "is_string(n.sshd_active)"],
+nodes_rule("CNTR-OS-001010", "sshd_disabled", ['_s(n.sshd_enabled) != "enabled"', '_s(n.sshd_active) != "active"',
+                                                "_s(n.sshd_enabled) in systemctl_not_enabled_states",
+                                                "_s(n.sshd_active) in systemctl_not_active_states"],
            [{"sshd_enabled": "enabled"}, {"sshd_active": "active"}],
            "sshd.service must be neither enabled nor active on any node", "systemctl disable --now sshd.service with a MachineConfig",
            "systemctl is-enabled / is-active sshd.service per node")

@@ -336,6 +336,11 @@ test_log_retention_is_a_defined_period_not_one_year if {
 	startswith(v, "NIS2 Art.21(2)(b):")
 	not contains(v, "1 year")
 	contains(v, "library criterion")
+
+	# the sentence names both texts: the Directive is silent, the Implementing Regulation asks for a predefined period
+	contains(v, "Directive (EU) 2022/2555 itself does not mention logs")
+	contains(v, "Implementing Regulation (EU) 2024/2690 Annex 3.2.5")
+	contains(v, "predefined period")
 }
 
 test_legacy_one_year_field_still_counts_as_a_defined_period if {

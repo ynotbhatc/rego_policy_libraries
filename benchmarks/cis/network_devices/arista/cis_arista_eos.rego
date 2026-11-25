@@ -99,7 +99,7 @@ veto contains {"id": "1.2", "why": "secrets are not stored with reversible aes-2
 }
 
 veto contains {"id": "1.1.3", "why": "no control-plane service-policy is applied"} if {
-	is_object(input.eos_config.control_plane)
+	_fact(["control_plane"]) != "__absent__" # collected in any form: a non-object is not an applied policy
 	not copp_applied
 }
 
@@ -147,6 +147,47 @@ veto contains {"id": "2.6.2", "why": sprintf("SSH idle timeout is %v minutes (0 
 
 veto contains {"id": "2.8", "why": "telnet management is not shut down"} if {
 	input.eos_config.management.telnet.shutdown == false
+}
+
+# A collected fact of the wrong type cannot confirm the attestation it stands beside: it vetoes, and says so.
+# (A fact that is absent still does not veto: the attested manual review is the evidence.)
+_boolean_facts := {
+	"2.1.1": ["aaa", "allow_nopassword_remote_login"],
+	"2.1.4": ["aaa", "root_enabled"],
+	"2.8": ["management", "telnet", "shutdown"],
+}
+
+_number_facts := {
+	"2.4.1": ["management", "console", "idle_timeout"],
+	"2.6.2": ["management", "ssh", "idle_timeout"],
+}
+
+_list_facts := {
+	"1.1.7": ["logging", "hosts"],
+	"2.5.3": ["aaa", "authentication", "default"],
+}
+
+_fact(path) := object.get(input.eos_config, path, "__absent__") if is_object(input.eos_config)
+
+veto contains {"id": id, "why": sprintf("evidence invalid — eos_config.%s must be true or false, got %s", [concat(".", path), type_name(v)])} if {
+	some id, path in _boolean_facts
+	v := _fact(path)
+	v != "__absent__"
+	not is_boolean(v)
+}
+
+veto contains {"id": id, "why": sprintf("evidence invalid — eos_config.%s must be a number, got %s", [concat(".", path), type_name(v)])} if {
+	some id, path in _number_facts
+	v := _fact(path)
+	v != "__absent__"
+	not is_number(v)
+}
+
+veto contains {"id": id, "why": sprintf("evidence invalid — eos_config.%s must be a list, got %s", [concat(".", path), type_name(v)])} if {
+	some id, path in _list_facts
+	v := _fact(path)
+	v != "__absent__"
+	not is_array(v)
 }
 
 timeout_ok(t) if {

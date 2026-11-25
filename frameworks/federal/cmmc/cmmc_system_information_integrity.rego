@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -59,13 +59,15 @@ compliant_3_14_1 if {
 }
 
 violation_3_14_1 contains msg if {
-	not input.integrity.flaw_remediation_policy
-	msg := "3.14.1: No policy for identifying and correcting system flaws in a timely manner"
+	not input.integrity.flaw_remediation_policy == true
+	finding := "3.14.1: No policy for identifying and correcting system flaws in a timely manner"
+	msg := concat("", [finding, _ev_input("integrity.flaw_remediation_policy")])
 }
 
 violation_3_14_1 contains msg if {
-	not input.integrity.patch_management_program
-	msg := "3.14.1: No patch management program to identify and remediate system vulnerabilities"
+	not input.integrity.patch_management_program == true
+	finding := "3.14.1: No patch management program to identify and remediate system vulnerabilities"
+	msg := concat("", [finding, _ev_input("integrity.patch_management_program")])
 }
 
 violation_3_14_1 contains "3.14.1: evidence missing - input.org_defined.flaw_correction_days (organisation-defined value, NIST SP 800-171A 3.14.1[e]) not supplied or not a number" if {
@@ -92,18 +94,21 @@ compliant_3_14_2 if {
 }
 
 violation_3_14_2 contains msg if {
-	not input.integrity.antimalware_installed
-	msg := "3.14.2: Anti-malware protection is not installed on CUI systems"
+	not input.integrity.antimalware_installed == true
+	finding := "3.14.2: Anti-malware protection is not installed on CUI systems"
+	msg := concat("", [finding, _ev_input("integrity.antimalware_installed")])
 }
 
 violation_3_14_2 contains msg if {
-	not input.integrity.antimalware_realtime_enabled
-	msg := "3.14.2: Real-time anti-malware scanning is not enabled"
+	not input.integrity.antimalware_realtime_enabled == true
+	finding := "3.14.2: Real-time anti-malware scanning is not enabled"
+	msg := concat("", [finding, _ev_input("integrity.antimalware_realtime_enabled")])
 }
 
 violation_3_14_2 contains msg if {
-	not input.integrity.antimalware_covers_entry_exit_points
-	msg := "3.14.2: Anti-malware protection does not cover all entry and exit points (email, web, removable media)"
+	not input.integrity.antimalware_covers_entry_exit_points == true
+	finding := "3.14.2: Anti-malware protection does not cover all entry and exit points (email, web, removable media)"
+	msg := concat("", [finding, _ev_input("integrity.antimalware_covers_entry_exit_points")])
 }
 
 # 3.14.3 — Monitor system security alerts and advisories and take action in
@@ -117,18 +122,21 @@ compliant_3_14_3 if {
 }
 
 violation_3_14_3 contains msg if {
-	not input.integrity.security_alerts_monitored
-	msg := "3.14.3: System security alerts and advisories are not monitored"
+	not input.integrity.security_alerts_monitored == true
+	finding := "3.14.3: System security alerts and advisories are not monitored"
+	msg := concat("", [finding, _ev_input("integrity.security_alerts_monitored")])
 }
 
 violation_3_14_3 contains msg if {
-	not input.integrity.threat_intel_feeds_subscribed
-	msg := "3.14.3: Not subscribed to threat intelligence or security advisory feeds (CISA, US-CERT, etc.)"
+	not input.integrity.threat_intel_feeds_subscribed == true
+	finding := "3.14.3: Not subscribed to threat intelligence or security advisory feeds (CISA, US-CERT, etc.)"
+	msg := concat("", [finding, _ev_input("integrity.threat_intel_feeds_subscribed")])
 }
 
 violation_3_14_3 contains msg if {
-	not input.integrity.alerts_actioned
-	msg := "3.14.3: Security alerts and advisories are received but not acted upon"
+	not input.integrity.alerts_actioned == true
+	finding := "3.14.3: Security alerts and advisories are received but not acted upon"
+	msg := concat("", [finding, _ev_input("integrity.alerts_actioned")])
 }
 
 # 3.14.4 — Update malicious code protection mechanisms when new releases are
@@ -142,8 +150,9 @@ compliant_3_14_4 if {
 }
 
 violation_3_14_4 contains msg if {
-	not input.integrity.antimalware_auto_update
-	msg := "3.14.4: Anti-malware signatures are not automatically updated when new releases are available"
+	not input.integrity.antimalware_auto_update == true
+	finding := "3.14.4: Anti-malware signatures are not automatically updated when new releases are available"
+	msg := concat("", [finding, _ev_input("integrity.antimalware_auto_update")])
 }
 
 # 3.14.5 — Perform periodic scans of organizational systems and real-time scans
@@ -160,8 +169,9 @@ compliant_3_14_5 if {
 }
 
 violation_3_14_5 contains msg if {
-	not input.integrity.periodic_system_scans
-	msg := "3.14.5: Periodic anti-malware scans of CUI systems are not performed"
+	not input.integrity.periodic_system_scans == true
+	finding := "3.14.5: Periodic anti-malware scans of CUI systems are not performed"
+	msg := concat("", [finding, _ev_input("integrity.periodic_system_scans")])
 }
 
 violation_3_14_5 contains "3.14.5: evidence missing - input.org_defined.malware_scan_interval_days (organisation-defined value, NIST SP 800-171A 3.14.5[a]) not supplied or not a number" if {
@@ -183,13 +193,15 @@ violation_3_14_5 contains msg if {
 }
 
 violation_3_14_5 contains msg if {
-	not input.integrity.realtime_file_scanning
-	msg := "3.14.5: Real-time scanning of files is not performed when files are opened or executed"
+	not input.integrity.realtime_file_scanning == true
+	finding := "3.14.5: Real-time scanning of files is not performed when files are opened or executed"
+	msg := concat("", [finding, _ev_input("integrity.realtime_file_scanning")])
 }
 
 violation_3_14_5 contains msg if {
-	not input.integrity.download_scanning_enabled
-	msg := "3.14.5: Files downloaded from external sources are not scanned before use"
+	not input.integrity.download_scanning_enabled == true
+	finding := "3.14.5: Files downloaded from external sources are not scanned before use"
+	msg := concat("", [finding, _ev_input("integrity.download_scanning_enabled")])
 }
 
 # 3.14.6 — Monitor organizational systems, including inbound and outbound
@@ -205,23 +217,27 @@ compliant_3_14_6 if {
 }
 
 violation_3_14_6 contains msg if {
-	not input.integrity.ids_ips_deployed
-	msg := "3.14.6: Intrusion detection/prevention system (IDS/IPS) is not deployed for CUI systems"
+	not input.integrity.ids_ips_deployed == true
+	finding := "3.14.6: Intrusion detection/prevention system (IDS/IPS) is not deployed for CUI systems"
+	msg := concat("", [finding, _ev_input("integrity.ids_ips_deployed")])
 }
 
 violation_3_14_6 contains msg if {
-	not input.integrity.inbound_traffic_monitored
-	msg := "3.14.6: Inbound network traffic to CUI systems is not monitored for attacks"
+	not input.integrity.inbound_traffic_monitored == true
+	finding := "3.14.6: Inbound network traffic to CUI systems is not monitored for attacks"
+	msg := concat("", [finding, _ev_input("integrity.inbound_traffic_monitored")])
 }
 
 violation_3_14_6 contains msg if {
-	not input.integrity.outbound_traffic_monitored
-	msg := "3.14.6: Outbound network traffic from CUI systems is not monitored for exfiltration indicators"
+	not input.integrity.outbound_traffic_monitored == true
+	finding := "3.14.6: Outbound network traffic from CUI systems is not monitored for exfiltration indicators"
+	msg := concat("", [finding, _ev_input("integrity.outbound_traffic_monitored")])
 }
 
 violation_3_14_6 contains msg if {
-	not input.integrity.attack_indicators_detected
-	msg := "3.14.6: System monitoring does not detect indicators of attack or compromise"
+	not input.integrity.attack_indicators_detected == true
+	finding := "3.14.6: System monitoring does not detect indicators of attack or compromise"
+	msg := concat("", [finding, _ev_input("integrity.attack_indicators_detected")])
 }
 
 # 3.14.7 — Identify unauthorized use of organizational systems. (L2)
@@ -235,23 +251,27 @@ compliant_3_14_7 if {
 }
 
 violation_3_14_7 contains msg if {
-	not input.integrity.unauthorized_use_detection
-	msg := "3.14.7: Unauthorized use of CUI systems is not identified or detected"
+	not input.integrity.unauthorized_use_detection == true
+	finding := "3.14.7: Unauthorized use of CUI systems is not identified or detected"
+	msg := concat("", [finding, _ev_input("integrity.unauthorized_use_detection")])
 }
 
 violation_3_14_7 contains msg if {
-	not input.integrity.baseline_behavior_established
-	msg := "3.14.7: No baseline of normal system behavior established for anomaly comparison"
+	not input.integrity.baseline_behavior_established == true
+	finding := "3.14.7: No baseline of normal system behavior established for anomaly comparison"
+	msg := concat("", [finding, _ev_input("integrity.baseline_behavior_established")])
 }
 
 violation_3_14_7 contains msg if {
-	not input.integrity.anomaly_detection_enabled
-	msg := "3.14.7: Anomaly detection is not enabled to identify unusual system activity"
+	not input.integrity.anomaly_detection_enabled == true
+	finding := "3.14.7: Anomaly detection is not enabled to identify unusual system activity"
+	msg := concat("", [finding, _ev_input("integrity.anomaly_detection_enabled")])
 }
 
 violation_3_14_7 contains msg if {
-	not input.integrity.unauthorized_access_alerted
-	msg := "3.14.7: Alerts are not generated when unauthorized system use is detected"
+	not input.integrity.unauthorized_access_alerted == true
+	finding := "3.14.7: Alerts are not generated when unauthorized system use is detected"
+	msg := concat("", [finding, _ev_input("integrity.unauthorized_access_alerted")])
 }
 
 # ---------------------------------------------------------------------------
@@ -369,3 +389,25 @@ compliance_report := {
 	"practices": practices,
 	"level_1_passing": level_1_passing,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

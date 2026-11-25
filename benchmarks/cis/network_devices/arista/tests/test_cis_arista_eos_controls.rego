@@ -632,3 +632,54 @@ test_2_8_config_absent_no_veto if {
 	f := data.cis_arista_eos.failed_controls with input as drop_cfg("/eos_config/management/telnet/shutdown")
 	not "2.8" in f
 }
+
+# ── Evidence rule (audit 2026-11-24): a collected fact of the wrong type vetoes its control ──
+
+_arista_ids(inp) := ids if {
+	ids := {id | some id in data.cis_arista_eos.compliance_report.failed_controls} with input as inp
+}
+
+_typed_facts := [
+	["2.1.1", "/eos_config/aaa/allow_nopassword_remote_login"],
+	["2.1.4", "/eos_config/aaa/root_enabled"],
+	["2.8", "/eos_config/management/telnet/shutdown"],
+	["2.4.1", "/eos_config/management/console/idle_timeout"],
+	["2.6.2", "/eos_config/management/ssh/idle_timeout"],
+	["1.1.7", "/eos_config/logging/hosts"],
+	["2.5.3", "/eos_config/aaa/authentication/default"],
+	["1.2", "/eos_config/management/security/password_encryption_reversible"],
+	["1.1.3", "/eos_config/control_plane"],
+]
+
+# the CoPP policy-map name is text (any name is a name), so only a non-string or empty value fails it
+test_copp_policy_name_must_be_text if {
+	every bad in [null, true, false, 1, ""] {
+		"1.1.3" in _arista_ids(json.patch(good, [{"op": "replace", "path": "/eos_config/control_plane/service_policy/input", "value": bad}]))
+	}
+}
+
+test_wrong_typed_fact_vetoes_its_control if {
+	every f in _typed_facts {
+		every bad in ["true", "false", "no", null] {
+			inp := json.patch(good, [{"op": "replace", "path": f[1], "value": bad}])
+			f[0] in _arista_ids(inp)
+			not data.cis_arista_eos.compliant with input as inp
+		}
+	}
+}
+
+test_wrong_type_is_named if {
+	inp := json.patch(good, [{"op": "replace", "path": "/eos_config/aaa/root_enabled", "value": "false"}])
+	v := data.cis_arista_eos.violations with input as inp
+	"2.1.4: running config contradicts the control — evidence invalid — eos_config.aaa.root_enabled must be true or false, got string" in v
+}
+
+test_every_attestation_of_a_wrong_type_fails if {
+	every key, _ in attest {
+		every bad in ["true", "false", 1, null] {
+			inp := json.patch(good, [{"op": "replace", "path": sprintf("/eos_config/attest/%s", [key]), "value": bad}])
+			not data.cis_arista_eos.compliant with input as inp
+		}
+		not data.cis_arista_eos.compliant with input as json.remove(good, [sprintf("/eos_config/attest/%s", [key])])
+	}
+}

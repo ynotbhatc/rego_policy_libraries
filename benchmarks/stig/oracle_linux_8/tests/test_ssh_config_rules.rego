@@ -313,7 +313,7 @@ test_ol08_00_010201_fail_1 if {
 test_ol08_00_010201_fail_2 if {
 	f := data.stig.oracle_linux_8.ssh_config.finding_ol08_00_010201 with input as object.union(green_fixture, {"sshd_config_lines": {"ClientAliveInterval": ["-1"]}})
 	f.status == "Open"
-	contains(f.detail, "OL08-00-010201: check failed")
+	contains(f.detail, "OL08-00-010201: evidence invalid")
 }
 
 test_ol08_00_010201_fail_3 if {
@@ -331,7 +331,7 @@ test_ol08_00_010201_fail_4 if {
 test_ol08_00_010201_fail_5 if {
 	f := data.stig.oracle_linux_8.ssh_config.finding_ol08_00_010201 with input as object.union(green_fixture, {"sshd_config_lines": {"ClientAliveInterval": ["10m"]}})
 	f.status == "Open"
-	contains(f.detail, "OL08-00-010201: check failed")
+	contains(f.detail, "OL08-00-010201: evidence invalid")
 }
 
 test_ol08_00_010201_evidence_missing_1 if {

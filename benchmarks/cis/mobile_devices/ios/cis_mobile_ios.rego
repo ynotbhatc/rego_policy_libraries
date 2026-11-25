@@ -24,7 +24,7 @@ package cis.mobile.ios
 # input.device_config) in place. Messages use our own wording, not CIS text.
 # 105 recommendations (70 Automated, 35 Manual) over four profiles: Level 1 / Level 2 for
 # end-user owned and institutionally owned devices. input.cis_profile.ownership (end_user | institutional, default
-# institutional) and input.cis_profile.level (1 | 2, default 2, includes Level 1) select the recommendations in scope:
+# institutional) and input.cis_profile.level (the number 1 | 2, default 2, includes Level 1) select the recommendations in scope:
 # end_user 45 / 53, institutional 56 / 69 at Level 1 / Level 2.
 # 80 are decided from configuration-profile keys and fail closed ('<id>: evidence missing — <path> not collected');
 # 25 are attestation booleans under input.ios_profile.attest (false or absent => violation): on-device settings and judgement
@@ -67,6 +67,61 @@ _applies(id) if {
 	p.level <= level
 }
 
+# A profile selector that is present and not one of its values is invalid evidence, never a default. A bad level is
+# scoped at Level 2 and fails every Level 2 recommendation of the ownership; a bad ownership is scoped as institutional
+# and fails every recommendation, because the set that applies could not be chosen.
+default _level_invalid := false
+
+_level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+default _ownership_invalid := false
+
+_ownership_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_ownership_invalid if {
+	o := input.cis_profile.ownership
+	not o in {"end_user", "institutional"}
+}
+
+_selector_got(k) := json.marshal(input.cis_profile[k]) if is_object(input.cis_profile)
+
+_selector_got(_) := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_finding := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_selector_got("level")])
+
+_ownership_finding := sprintf("evidence invalid — cis_profile.ownership must be \"end_user\" or \"institutional\", got %s", [_selector_got("ownership")])
+
+_v_profile contains sprintf("cis_profile.level: %s; the report is scoped at Level 2", [_level_finding]) if _level_invalid
+
+_v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be scoped", [id, _level_finding]) if {
+	_level_invalid
+	some id, r in recommendations
+	some p in r.profiles
+	p.ownership == _ownership
+	p.level == 2
+}
+
+_v_profile contains sprintf("cis_profile.ownership: %s; the report is scoped as institutional", [_ownership_finding]) if _ownership_invalid
+
+_v_profile contains sprintf("%s: %s, so this recommendation could not be scoped", [id, _ownership_finding]) if {
+	_ownership_invalid
+	some id in in_scope
+}
+
 default compliant := false
 
 compliant if {
@@ -74,7 +129,7 @@ compliant if {
 	count(violations) == 0
 }
 
-violations := (_v_2 | _v_3) | _v_4
+violations := ((_v_2 | _v_3) | _v_4) | _v_profile
 
 # section 2
 # 2.1.1 (Automated, Level 1 - End-User Owned Devices)

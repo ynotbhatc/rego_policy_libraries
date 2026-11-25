@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 163
+#     found: 400
+#     scope: directory
+#     density: over
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.main
 
 # Bridge: expose cis_ubuntu_20_04 under the /v1/data/<framework>/main/compliance_report

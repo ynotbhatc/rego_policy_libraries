@@ -117,3 +117,17 @@ test_violation_count_roughly_matches_rule_failures if {
 	not exchange.compliant with input as inp
 	exchange.compliance_report.violation_count >= 3 with input as inp
 }
+
+# A secure-score row that lacks implementation_status is not an implemented control
+# (`row.status != "Implemented"` is undefined when the field is missing, so the row used to pass).
+test_4_8_1_violation_when_status_missing if {
+	inp := json.patch(base_input, [{"op": "remove", "path": "/secure_score_controls/0/implementation_status"}])
+	some msg in exchange.violation_4_8_1 with input as inp
+	contains(msg, "External sender tagging")
+}
+
+test_4_11_1_violation_when_status_missing if {
+	inp := json.patch(base_input, [{"op": "remove", "path": "/secure_score_controls/1/implementation_status"}])
+	some msg in exchange.violation_4_11_1 with input as inp
+	contains(msg, "SMTP AUTH")
+}

@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -58,13 +58,15 @@ compliant_3_5_1 if {
 }
 
 violation_3_5_1 contains msg if {
-	not input.identity.unique_user_accounts
-	msg := "3.5.1: System users do not have unique identifiers"
+	not input.identity.unique_user_accounts == true
+	finding := "3.5.1: System users do not have unique identifiers"
+	msg := concat("", [finding, _ev_input("identity.unique_user_accounts")])
 }
 
 violation_3_5_1 contains msg if {
-	not input.identity.service_accounts_identified
-	msg := "3.5.1: System processes and service accounts are not identified"
+	not input.identity.service_accounts_identified == true
+	finding := "3.5.1: System processes and service accounts are not identified"
+	msg := concat("", [finding, _ev_input("identity.service_accounts_identified")])
 }
 
 # 3.5.2 — Authenticate the identities of users, processes, or devices before
@@ -76,8 +78,9 @@ compliant_3_5_2 if {
 }
 
 violation_3_5_2 contains msg if {
-	not input.identity.authentication_required
-	msg := "3.5.2: Authentication is not required before granting system access"
+	not input.identity.authentication_required == true
+	finding := "3.5.2: Authentication is not required before granting system access"
+	msg := concat("", [finding, _ev_input("identity.authentication_required")])
 }
 
 # 3.5.3 — Use multifactor authentication for local and network access to
@@ -90,13 +93,15 @@ compliant_3_5_3 if {
 }
 
 violation_3_5_3 contains msg if {
-	not input.identity.mfa_privileged_accounts
-	msg := "3.5.3: MFA is not enforced for privileged account access"
+	not input.identity.mfa_privileged_accounts == true
+	finding := "3.5.3: MFA is not enforced for privileged account access"
+	msg := concat("", [finding, _ev_input("identity.mfa_privileged_accounts")])
 }
 
 violation_3_5_3 contains msg if {
-	not input.identity.mfa_network_access
-	msg := "3.5.3: MFA is not enforced for network access to privileged accounts"
+	not input.identity.mfa_network_access == true
+	finding := "3.5.3: MFA is not enforced for network access to privileged accounts"
+	msg := concat("", [finding, _ev_input("identity.mfa_network_access")])
 }
 
 # 3.5.4 — Employ replay-resistant authentication mechanisms for network access
@@ -109,8 +114,9 @@ compliant_3_5_4 if {
 }
 
 violation_3_5_4 contains msg if {
-	not input.identity.replay_resistant_auth
-	msg := "3.5.4: Replay-resistant authentication is not implemented for network access"
+	not input.identity.replay_resistant_auth == true
+	finding := "3.5.4: Replay-resistant authentication is not implemented for network access"
+	msg := concat("", [finding, _ev_input("identity.replay_resistant_auth")])
 }
 
 # 3.5.5 — Prevent reuse of identifiers for a defined period. (L2)
@@ -124,8 +130,9 @@ compliant_3_5_5 if {
 }
 
 violation_3_5_5 contains msg if {
-	not input.identity.automated_account_management
-	msg := "3.5.5: No automated tool enforcing account management policies"
+	not input.identity.automated_account_management == true
+	finding := "3.5.5: No automated tool enforcing account management policies"
+	msg := concat("", [finding, _ev_input("identity.automated_account_management")])
 }
 
 violation_3_5_5 contains "3.5.5: evidence missing - input.org_defined.identifier_reuse_period_days (organisation-defined value, NIST SP 800-171A 3.5.5[a]) not supplied or not a number" if {
@@ -152,13 +159,15 @@ compliant_3_5_6 if {
 }
 
 violation_3_5_6 contains msg if {
-	not input.identity.identifier_management_policy
-	msg := "3.5.6: No policy for managing and disabling inactive system identifiers"
+	not input.identity.identifier_management_policy == true
+	finding := "3.5.6: No policy for managing and disabling inactive system identifiers"
+	msg := concat("", [finding, _ev_input("identity.identifier_management_policy")])
 }
 
 violation_3_5_6 contains msg if {
-	not input.identity.terminated_accounts_disabled_immediately
-	msg := "3.5.6: Terminated user accounts are not disabled immediately upon separation"
+	not input.identity.terminated_accounts_disabled_immediately == true
+	finding := "3.5.6: Terminated user accounts are not disabled immediately upon separation"
+	msg := concat("", [finding, _ev_input("identity.terminated_accounts_disabled_immediately")])
 }
 
 violation_3_5_6 contains "3.5.6: evidence missing - input.org_defined.identifier_inactivity_days (organisation-defined value, NIST SP 800-171A 3.5.6[a]) not supplied or not a number" if {
@@ -200,18 +209,21 @@ violation_3_5_7 contains msg if {
 }
 
 violation_3_5_7 contains msg if {
-	not input.identity.password_complexity_uppercase
-	msg := "3.5.7: Password policy does not require uppercase characters"
+	not input.identity.password_complexity_uppercase == true
+	finding := "3.5.7: Password policy does not require uppercase characters"
+	msg := concat("", [finding, _ev_input("identity.password_complexity_uppercase")])
 }
 
 violation_3_5_7 contains msg if {
-	not input.identity.password_complexity_numbers
-	msg := "3.5.7: Password policy does not require numeric characters"
+	not input.identity.password_complexity_numbers == true
+	finding := "3.5.7: Password policy does not require numeric characters"
+	msg := concat("", [finding, _ev_input("identity.password_complexity_numbers")])
 }
 
 violation_3_5_7 contains msg if {
-	not input.identity.password_complexity_special
-	msg := "3.5.7: Password policy does not require special characters"
+	not input.identity.password_complexity_special == true
+	finding := "3.5.7: Password policy does not require special characters"
+	msg := concat("", [finding, _ev_input("identity.password_complexity_special")])
 }
 
 # 3.5.8 — Prohibit password reuse for a specified number of generations. (L2)
@@ -244,8 +256,9 @@ compliant_3_5_9 if {
 }
 
 violation_3_5_9 contains msg if {
-	not input.identity.temp_password_change_on_first_login
-	msg := "3.5.9: Temporary passwords do not require immediate change on first use"
+	not input.identity.temp_password_change_on_first_login == true
+	finding := "3.5.9: Temporary passwords do not require immediate change on first use"
+	msg := concat("", [finding, _ev_input("identity.temp_password_change_on_first_login")])
 }
 
 # 3.5.10 — Store and transmit only cryptographically protected passwords. (L2)
@@ -259,8 +272,9 @@ compliant_3_5_10 if {
 }
 
 violation_3_5_10 contains msg if {
-	not input.identity.passwords_hashed
-	msg := "3.5.10: Passwords are not stored using cryptographic hashing"
+	not input.identity.passwords_hashed == true
+	finding := "3.5.10: Passwords are not stored using cryptographic hashing"
+	msg := concat("", [finding, _ev_input("identity.passwords_hashed")])
 }
 
 violation_3_5_10 contains msg if {
@@ -274,8 +288,9 @@ violation_3_5_10 contains msg if {
 }
 
 violation_3_5_10 contains msg if {
-	not input.identity.passwords_transmitted_encrypted
-	msg := "3.5.10: Passwords are transmitted without encryption"
+	not input.identity.passwords_transmitted_encrypted == true
+	finding := "3.5.10: Passwords are transmitted without encryption"
+	msg := concat("", [finding, _ev_input("identity.passwords_transmitted_encrypted")])
 }
 
 # 3.5.11 — Obscure feedback of authentication information during the
@@ -288,13 +303,15 @@ compliant_3_5_11 if {
 }
 
 violation_3_5_11 contains msg if {
-	not input.identity.password_masking_enabled
-	msg := "3.5.11: Authentication feedback (password echo) is not obscured"
+	not input.identity.password_masking_enabled == true
+	finding := "3.5.11: Authentication feedback (password echo) is not obscured"
+	msg := concat("", [finding, _ev_input("identity.password_masking_enabled")])
 }
 
 violation_3_5_11 contains msg if {
-	not input.identity.failed_login_no_detail
-	msg := "3.5.11: Failed authentication attempts reveal excessive detail about credentials"
+	not input.identity.failed_login_no_detail == true
+	finding := "3.5.11: Failed authentication attempts reveal excessive detail about credentials"
+	msg := concat("", [finding, _ev_input("identity.failed_login_no_detail")])
 }
 
 # ---------------------------------------------------------------------------
@@ -451,3 +468,25 @@ compliance_report := {
 	"practices": practices,
 	"level_1_passing": level_1_passing,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

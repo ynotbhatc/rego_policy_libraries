@@ -23,8 +23,10 @@ package cis_suse16
 # Level 1 Server but Level 2 Workstation), so each control carries its own server/workstation level, and five
 # recommendations (1.3.1.7, 2.1.11, 2.1.20, 3.1.2, 4.1.4) have no Workstation profile at all.
 #
-# PROFILE: input.profile selects one of level1_server (default), level2_server, level1_workstation,
-# level2_workstation. A Level 2 profile includes the Level 1 recommendations of the same platform.
+# PROFILE: input.profile selects one of level1_server, level2_server, level1_workstation,
+# level2_workstation. A Level 2 profile includes the Level 1 recommendations of the same platform. There is no
+# default: an absent or unrecognised profile evaluates every recommendation, reports a PROFILE NOT SELECTED
+# violation and is never compliant.
 #
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
 # not collected, and every Manual one fails until attested, so a control is counted as passed only when
@@ -4400,11 +4402,43 @@ controls := {
 
 profiles := {"level1_server": {"platform": "server", "level": 1}, "level2_server": {"platform": "server", "level": 2}, "level1_workstation": {"platform": "workstation", "level": 1}, "level2_workstation": {"platform": "workstation", "level": 2}}
 
-default profile := "level1_server"
+default profile := "unrecognised"
 
 profile := input.profile if input.profile in object.keys(profiles)
 
-applies(c) if c.levels[profiles[profile].platform] <= profiles[profile].level
+default profile_selected := false
+
+profile_selected if profile in object.keys(profiles)
+
+# What is in scope. Without a recognised profile nothing may be declared not applicable, so the scope is the
+# one that holds every recommendation of the benchmark (Level 2 - Server; the generator checks that it does).
+default scope := {"platform": "server", "level": 2}
+
+scope := profiles[profile] if profile_selected
+
+_profile_names := concat(", ", sort(object.keys(profiles)))
+
+_profile_problem := "evidence missing — profile not collected" if object.get(input, "profile", null) == null
+
+_profile_problem := sprintf("profile is not a string (got %s)", [type_name(input.profile)]) if {
+	object.get(input, "profile", null) != null
+	not is_string(input.profile)
+}
+
+_profile_problem := sprintf("profile %s is not a recognised profile", [json.marshal(input.profile)]) if {
+	is_string(input.profile)
+	not profile_selected
+}
+
+# reported next to the control violations (never one of them: it cites no recommendation id)
+profile_violations := [] if {
+	profile_selected
+} else := [sprintf(
+	"PROFILE NOT SELECTED: %s (send one of %s). No recommendation was declared out of scope: every one of the benchmark was evaluated, and the result is not a pass for any profile.",
+	[_profile_problem, _profile_names],
+)]
+
+applies(c) if c.levels[scope.platform] <= scope.level
 
 applicable_ids := {id | some id, c in controls; applies(c)}
 
@@ -4567,7 +4601,35 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / count(section_compliance) if count(section_compliance) > 0
+compliance_percentage := (compliant_sections * 100) / count(section_compliance) if {
+	count(section_compliance) > 0
+	not _percentage_withheld
+}
+
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {
+	count(section_compliance) > 0
+	_percentage_withheld
+}
+
+_percentage_withheld if {
+	not compliant
+	compliant_sections == count(section_compliance)
+}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {
+	_percentage_withheld
+	not profile_selected
+}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {
+	_percentage_withheld
+	profile_selected
+}
 
 default compliant := false
 
@@ -4575,4 +4637,5 @@ compliant if {
 	count(object.keys(input)) > 0
 	count(applicable_ids) > 0
 	count(failing_ids) == 0
+	profile_selected
 }

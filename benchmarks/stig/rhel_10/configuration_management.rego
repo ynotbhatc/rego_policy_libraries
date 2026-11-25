@@ -48,18 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -219,6 +230,8 @@ finding_rhel_10_000500 := {
 # systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size
 missing_rhel_10_300010 := [concat(".", p) | some p in [["crypto_policy"], ["crypto_policy_state", "hash"], ["crypto_policy_state", "min_rsa_size"]]; not _collected(p)]
 
+invalid_rhel_10_300010 := [m | some p in [["crypto_policy_state", "min_rsa_size"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default crypto_policy_fips := false
 
 crypto_policy_fips if {
@@ -240,6 +253,8 @@ else := "Open"
 detail_rhel_10_300010 := "RHEL-10-300010: Not_a_Finding" if crypto_policy_fips
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-10-300010", concat(", ", missing_rhel_10_300010)]) if count(missing_rhel_10_300010) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-10-300010", concat(", ", invalid_rhel_10_300010)]) if count(invalid_rhel_10_300010) > 0
 
 else := "RHEL-10-300010: check failed — update-crypto-policies --show must be FIPS; CURRENT.pol hash must include SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256, nothing with SHA1 or below 224 bits; min_rsa_size must be at least 2048"
 

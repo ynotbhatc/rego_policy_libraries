@@ -53,14 +53,8 @@ green := {
 		}},
 		"kube_controller_manager_pod": {"spec": {"containers": [{
 			"name": "kube-controller-manager",
-			"livenessProbe": {"httpGet": {
-				"path": "healthz",
-				"port": 10257,
-			}},
-			"readinessProbe": {"httpGet": {
-				"path": "healthz",
-				"port": 10257,
-			}},
+			"livenessProbe": {"httpGet": {"path": "healthz"}},
+			"readinessProbe": {"httpGet": {"path": "healthz"}},
 		}]}},
 		"kube_scheduler_pod": {"spec": {"containers": [{
 			"name": "kube-scheduler",
@@ -72,14 +66,8 @@ green := {
 				"--config=/etc/kubernetes/static-pod-resources/configmaps/config/config.yaml",
 				"--v=2",
 			],
-			"livenessProbe": {"httpGet": {
-				"path": "healthz",
-				"port": 10259,
-			}},
-			"readinessProbe": {"httpGet": {
-				"path": "healthz",
-				"port": 10259,
-			}},
+			"livenessProbe": {"httpGet": {"path": "healthz"}},
+			"readinessProbe": {"httpGet": {"path": "healthz"}},
 		}]}},
 		"kubeapiserver": {"spec": {"observedConfig": {
 			"apiServerArguments": {"feature-gates": [
@@ -239,13 +227,11 @@ green := {
 				"authentication": {
 					"anonymous": {"enabled": false},
 					"x509": {"clientCAFile": "/etc/kubernetes/kubelet-ca.crt"},
-					"webhook": {"enabled": true},
 				},
 				"authorization": {"mode": "Webhook"},
 				"streamingConnectionIdleTimeout": "4h0m0s",
 				"makeIPTablesUtilChains": true,
 				"rotateCertificates": true,
-				"kubeAPIQPS": 50,
 				"featureGates": {"RotateKubeletServerCertificate": true},
 			},
 		},
@@ -255,13 +241,11 @@ green := {
 				"authentication": {
 					"anonymous": {"enabled": false},
 					"x509": {"clientCAFile": "/etc/kubernetes/kubelet-ca.crt"},
-					"webhook": {"enabled": true},
 				},
 				"authorization": {"mode": "Webhook"},
 				"streamingConnectionIdleTimeout": "4h0m0s",
 				"makeIPTablesUtilChains": true,
 				"rotateCertificates": true,
-				"kubeAPIQPS": 50,
 				"featureGates": {"RotateKubeletServerCertificate": true},
 			},
 		},

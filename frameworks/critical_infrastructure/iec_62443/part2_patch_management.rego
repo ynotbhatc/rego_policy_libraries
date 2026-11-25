@@ -60,27 +60,31 @@ default compliant := false
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.patch_management.process_documented
-	msg := "IEC 62443-2-3: No patch management process documented for IACS. A formal process for identifying, evaluating, testing, and applying security patches is required."
+	not input.patch_management.process_documented == true
+	finding := "IEC 62443-2-3: No patch management process documented for IACS. A formal process for identifying, evaluating, testing, and applying security patches is required."
+	msg := concat("", [finding, _ev_input("patch_management.process_documented")])
 }
 
 violations contains msg if {
-	not input.patch_management.vendor_notification_subscriptions
-	msg := "IEC 62443-2-3: No vendor security notification subscriptions. Subscribe to ICS-CERT, vendor security advisories, and sector-specific vulnerability feeds to receive timely patch notifications."
+	not input.patch_management.vendor_notification_subscriptions == true
+	finding := "IEC 62443-2-3: No vendor security notification subscriptions. Subscribe to ICS-CERT, vendor security advisories, and sector-specific vulnerability feeds to receive timely patch notifications."
+	msg := concat("", [finding, _ev_input("patch_management.vendor_notification_subscriptions")])
 }
 
 violations contains msg if {
-	not input.patch_management.patch_inventory_tracked
-	msg := "IEC 62443-2-3: Patch status is not tracked for IACS components. Maintain a current patch inventory for all IACS hardware and software components."
+	not input.patch_management.patch_inventory_tracked == true
+	finding := "IEC 62443-2-3: Patch status is not tracked for IACS components. Maintain a current patch inventory for all IACS hardware and software components."
+	msg := concat("", [finding, _ev_input("patch_management.patch_inventory_tracked")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.patch_status_documented
-	msg := sprintf(
+	not system.patch_status_documented == true
+	finding := sprintf(
 		"IEC 62443-2-3: Patch status for ICS system '%v' is not documented. Every IACS component must have a documented patch status, including exceptions and compensating controls for unpatched vulnerabilities.",
 		[object.get(system, "name", "<unnamed>")],
 	)
+	msg := concat("", [finding, _ev_item(system, "patch_status_documented")])
 }
 
 # ---------------------------------------------------------------------------
@@ -88,13 +92,15 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.patch_management.tested_before_deployment
-	msg := "IEC 62443-2-3: IACS patches are not tested before production deployment. Patches must be evaluated in an isolated test environment that mirrors the production IACS before deployment — untested patches can cause operational failures."
+	not input.patch_management.tested_before_deployment == true
+	finding := "IEC 62443-2-3: IACS patches are not tested before production deployment. Patches must be evaluated in an isolated test environment that mirrors the production IACS before deployment — untested patches can cause operational failures."
+	msg := concat("", [finding, _ev_input("patch_management.tested_before_deployment")])
 }
 
 violations contains msg if {
-	not input.patch_management.patch_testing_environment
-	msg := "IEC 62443-2-3: No dedicated patch testing environment for IACS. A test environment replicating the production IACS is required for safe patch qualification."
+	not input.patch_management.patch_testing_environment == true
+	finding := "IEC 62443-2-3: No dedicated patch testing environment for IACS. A test environment replicating the production IACS is required for safe patch qualification."
+	msg := concat("", [finding, _ev_input("patch_management.patch_testing_environment")])
 }
 
 # ---------------------------------------------------------------------------
@@ -115,18 +121,21 @@ violations contains "IEC 62443-2-3: evidence missing - input.patch_management.ma
 }
 
 violations contains msg if {
-	not input.patch_management.patch_deployment_schedule_documented
-	msg := "IEC 62443-2-3: No documented patch deployment schedule. A maintenance window schedule for IACS patches must be established that balances security and operational continuity."
+	not input.patch_management.patch_deployment_schedule_documented == true
+	finding := "IEC 62443-2-3: No documented patch deployment schedule. A maintenance window schedule for IACS patches must be established that balances security and operational continuity."
+	msg := concat("", [finding, _ev_input("patch_management.patch_deployment_schedule_documented")])
 }
 
 violations contains msg if {
-	not input.patch_management.change_management_integrated
-	msg := "IEC 62443-2-3: Patch management is not integrated with change management. All IACS patches must go through the formal change management process to maintain configuration control."
+	not input.patch_management.change_management_integrated == true
+	finding := "IEC 62443-2-3: Patch management is not integrated with change management. All IACS patches must go through the formal change management process to maintain configuration control."
+	msg := concat("", [finding, _ev_input("patch_management.change_management_integrated")])
 }
 
 violations contains msg if {
-	not input.patch_management.emergency_patch_procedure
-	msg := "IEC 62443-2-3: No emergency patch procedure defined. A documented emergency patch procedure for critical/zero-day vulnerabilities is required for timely response."
+	not input.patch_management.emergency_patch_procedure == true
+	finding := "IEC 62443-2-3: No emergency patch procedure defined. A documented emergency patch procedure for critical/zero-day vulnerabilities is required for timely response."
+	msg := concat("", [finding, _ev_input("patch_management.emergency_patch_procedure")])
 }
 
 # ---------------------------------------------------------------------------
@@ -134,8 +143,9 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.patch_management.rollback_capability
-	msg := "IEC 62443-2-3: No rollback capability for IACS patches. The ability to revert to a pre-patch state is required in case a patch causes operational issues."
+	not input.patch_management.rollback_capability == true
+	finding := "IEC 62443-2-3: No rollback capability for IACS patches. The ability to revert to a pre-patch state is required in case a patch causes operational issues."
+	msg := concat("", [finding, _ev_input("patch_management.rollback_capability")])
 }
 
 # ---------------------------------------------------------------------------
@@ -143,27 +153,30 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-	not input.patch_management.compensating_controls_for_unpatched
-	msg := "IEC 62443-2-3: No compensating controls defined for unpatched IACS vulnerabilities. When patching is not immediately feasible, compensating controls (network isolation, additional monitoring, vendor mitigations) must be documented and implemented."
+	not input.patch_management.compensating_controls_for_unpatched == true
+	finding := "IEC 62443-2-3: No compensating controls defined for unpatched IACS vulnerabilities. When patching is not immediately feasible, compensating controls (network isolation, additional monitoring, vendor mitigations) must be documented and implemented."
+	msg := concat("", [finding, _ev_input("patch_management.compensating_controls_for_unpatched")])
 }
 
 # System-level checks
 violations contains msg if {
 	some system in input.ics_systems
-	not system.os_version_current
-	msg := sprintf(
+	not system.os_version_current == true
+	finding := sprintf(
 		"IEC 62443-2-3: ICS system '%v' is running an outdated OS version. Unsupported or unpatched operating systems represent unacceptable risk in an IACS environment.",
 		[object.get(system, "name", "<unnamed>")],
 	)
+	msg := concat("", [finding, _ev_item(system, "os_version_current")])
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	not system.firmware_version_current
-	msg := sprintf(
+	not system.firmware_version_current == true
+	finding := sprintf(
 		"IEC 62443-2-3: ICS system '%v' firmware is not current. Outdated firmware may contain unmitigated vulnerabilities — apply vendor-recommended firmware updates following the patch testing process.",
 		[object.get(system, "name", "<unnamed>")],
 	)
+	msg := concat("", [finding, _ev_item(system, "firmware_version_current")])
 }
 
 # ---------------------------------------------------------------------------
@@ -179,3 +192,25 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

@@ -239,7 +239,7 @@ compliance_report := {
 # together.
 CONTROL_EVIDENCE := {
 	"6.1.1": ["exchange.organization_config.AuditDisabled"],
-	"6.1.2": ["exchange.mailbox_audit.audit_disabled"],
+	"6.1.2": ["exchange.mailbox_audit.audit_disabled", "exchange.mailbox_audit.sample_limit", "exchange.mailbox_audit.sampled"],
 	"6.1.3": ["exchange.audit_bypass_associations"],
 	"6.2.1": ["exchange.outbound_spam_policies[].AutoForwardingMode", "exchange.transport_rules[].RedirectMessageTo", "exchange.transport_rules[].State"],
 	"6.2.2": ["exchange.transport_rules[].SenderDomainIs", "exchange.transport_rules[].SetSCL", "exchange.transport_rules[].State"],
@@ -273,7 +273,13 @@ decidable contains "6.5.4" if is_boolean(_object("transport_config").SmtpClientA
 
 decidable contains "6.1.3" if is_array(_list("audit_bypass_associations"))
 
-decidable contains "6.1.2" if is_array(_audit_disabled)
+# 6.1.2 is a sampled control: how many mailboxes were inspected, and the limit, are part of the evidence (the
+# report states them as its strength), so both must be numbers
+decidable contains "6.1.2" if {
+	is_array(_audit_disabled)
+	is_number(_object("mailbox_audit").sampled)
+	is_number(_object("mailbox_audit").sample_limit)
+}
 
 # a transport rule field that is not set is null or absent; anything else must be a list
 _rule_field_readable(r, field) if object.get(r, field, null) == null

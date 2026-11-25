@@ -6,14 +6,14 @@
 #   source: tsa
 #   domains: [ot, pipeline]
 #   coverage:
-#     checks: 18
+#     checks: 19
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package tsa_pipeline.sd02_assessment_plan
 
 import rego.v1
@@ -108,27 +108,31 @@ cap_number(path, fallback) := fallback if {
 # ── III.G.1 — Plan exists ────────────────────────────────────────────────────
 
 violations contains msg if {
-	cap_flag(["exists"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.1: No Cybersecurity Assessment Plan developed for proactively assessing and auditing cybersecurity measures"
+	not cap_flag(["exists"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.1: No Cybersecurity Assessment Plan developed for proactively assessing and auditing cybersecurity measures"
+	msg := concat("", [finding, _ev_input("assessment_plan.exists")])
 }
 
 violations contains msg if {
-	cap_flag(["assesses_critical_cyber_systems"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.1: The Cybersecurity Assessment Plan does not proactively assess Critical Cyber Systems to ascertain the effectiveness of cybersecurity measures and to identify and resolve device, network, and/or system vulnerabilities"
+	not cap_flag(["assesses_critical_cyber_systems"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.1: The Cybersecurity Assessment Plan does not proactively assess Critical Cyber Systems to ascertain the effectiveness of cybersecurity measures and to identify and resolve device, network, and/or system vulnerabilities"
+	msg := concat("", [finding, _ev_input("assessment_plan.assesses_critical_cyber_systems")])
 }
 
 # ── III.G.2.a — Effectiveness of the Implementation Plan ─────────────────────
 
 violations contains msg if {
-	cap_flag(["implementation_plan_effectiveness_assessed"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.a: The Cybersecurity Assessment Plan does not assess the effectiveness of the Owner/Operator's TSA-approved Cybersecurity Implementation Plan"
+	not cap_flag(["implementation_plan_effectiveness_assessed"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.a: The Cybersecurity Assessment Plan does not assess the effectiveness of the Owner/Operator's TSA-approved Cybersecurity Implementation Plan"
+	msg := concat("", [finding, _ev_input("assessment_plan.implementation_plan_effectiveness_assessed")])
 }
 
 # ── III.G.2.b — Architecture design review (every 2 years) ───────────────────
 
 violations contains msg if {
-	cap_flag(["architecture_design_review", "conducted"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.b: No cybersecurity architecture design review — one is required at least once every two years"
+	not cap_flag(["architecture_design_review", "conducted"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.b: No cybersecurity architecture design review — one is required at least once every two years"
+	msg := concat("", [finding, _ev_input("assessment_plan.architecture_design_review.conducted")])
 }
 
 violations contains msg if {
@@ -138,32 +142,37 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	cap_flag(["architecture_design_review", "network_traffic_verified"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.b: The cybersecurity architecture design review does not include verification and validation of network traffic"
+	not cap_flag(["architecture_design_review", "network_traffic_verified"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.b: The cybersecurity architecture design review does not include verification and validation of network traffic"
+	msg := concat("", [finding, _ev_input("assessment_plan.architecture_design_review.network_traffic_verified")])
 }
 
 violations contains msg if {
-	cap_flag(["architecture_design_review", "system_log_review_conducted"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.b: The cybersecurity architecture design review does not include system log review and analysis to identify vulnerabilities related to network design, configuration, and inter-connectivity to internal and external systems"
+	not cap_flag(["architecture_design_review", "system_log_review_conducted"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.b: The cybersecurity architecture design review does not include system log review and analysis to identify vulnerabilities related to network design, configuration, and inter-connectivity to internal and external systems"
+	msg := concat("", [finding, _ev_input("assessment_plan.architecture_design_review.system_log_review_conducted")])
 }
 
 # ── III.G.2.c — Other assessment capabilities ────────────────────────────────
 
 violations contains msg if {
-	cap_flag(["other_assessment_capabilities", "penetration_testing"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.c: The Cybersecurity Assessment Plan does not incorporate penetration testing of Information Technology systems"
+	not cap_flag(["other_assessment_capabilities", "penetration_testing"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.c: The Cybersecurity Assessment Plan does not incorporate penetration testing of Information Technology systems"
+	msg := concat("", [finding, _ev_input("assessment_plan.other_assessment_capabilities.penetration_testing")])
 }
 
 violations contains msg if {
-	cap_flag(["other_assessment_capabilities", "red_or_purple_team"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.c: The Cybersecurity Assessment Plan does not incorporate 'red' or 'purple' team (adversarial perspective) testing"
+	not cap_flag(["other_assessment_capabilities", "red_or_purple_team"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.c: The Cybersecurity Assessment Plan does not incorporate 'red' or 'purple' team (adversarial perspective) testing"
+	msg := concat("", [finding, _ev_input("assessment_plan.other_assessment_capabilities.red_or_purple_team")])
 }
 
 # ── III.G.2.d — Assessment schedule and coverage ─────────────────────────────
 
 violations contains msg if {
-	cap_flag(["schedule", "defined"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.d: No schedule for assessing and auditing the specific cybersecurity measures and actions required by III.G.2.a through III.G.2.c"
+	not cap_flag(["schedule", "defined"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.d: No schedule for assessing and auditing the specific cybersecurity measures and actions required by III.G.2.a through III.G.2.c"
+	msg := concat("", [finding, _ev_input("assessment_plan.schedule.defined")])
 }
 
 violations contains msg if {
@@ -181,18 +190,21 @@ violations contains msg if {
 # ── III.G.2.e / III.G.4 — Annual report ──────────────────────────────────────
 
 violations contains msg if {
-	cap_flag(["annual_report", "submitted"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.e: The Cybersecurity Assessment Plan annual report of assessment results has not been submitted to TSA"
+	not cap_flag(["annual_report", "submitted"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.e: The Cybersecurity Assessment Plan annual report of assessment results has not been submitted to TSA"
+	msg := concat("", [finding, _ev_input("assessment_plan.annual_report.submitted")])
 }
 
 violations contains msg if {
-	cap_flag(["annual_report", "methods_documented"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.e.i: The annual report does not indicate which assessment method(s) were used in the previous 12 months to determine whether the policies, procedures, and capabilities described in the Cybersecurity Implementation Plan are effective"
+	not cap_flag(["annual_report", "methods_documented"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.e.i: The annual report does not indicate which assessment method(s) were used in the previous 12 months to determine whether the policies, procedures, and capabilities described in the Cybersecurity Implementation Plan are effective"
+	msg := concat("", [finding, _ev_input("assessment_plan.annual_report.methods_documented")])
 }
 
 violations contains msg if {
-	cap_flag(["annual_report", "results_documented"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.2.e.ii: The annual report does not include the results of the individual assessments conducted in the previous 12 months"
+	not cap_flag(["annual_report", "results_documented"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.2.e.ii: The annual report does not include the results of the individual assessments conducted in the previous 12 months"
+	msg := concat("", [finding, _ev_input("assessment_plan.annual_report.results_documented")])
 }
 
 violations contains msg if {
@@ -204,8 +216,9 @@ violations contains msg if {
 # ── III.G.3 — Annual plan submission ─────────────────────────────────────────
 
 violations contains msg if {
-	cap_flag(["submission", "submitted_to_tsa"]) == false
-	msg := "TSA SD Pipeline-2021-02G III.G.3: The Cybersecurity Assessment Plan has not been submitted to TSA for approval — submission is required on an annual basis"
+	not cap_flag(["submission", "submitted_to_tsa"]) == true
+	finding := "TSA SD Pipeline-2021-02G III.G.3: The Cybersecurity Assessment Plan has not been submitted to TSA for approval — submission is required on an annual basis"
+	msg := concat("", [finding, _ev_input("assessment_plan.submission.submitted_to_tsa")])
 }
 
 violations contains msg if {
@@ -229,3 +242,41 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# ---------------------------------------------------------------------------
+# Stated facts. A fact that decides whether a requirement applies must be the
+# boolean true or false, and a measured value must be a number: an absent fact,
+# null or a string is an evidence problem and a finding, never a silent pass.
+# Rows: [path under input, directive paragraph].
+# ---------------------------------------------------------------------------
+
+_required_numbers := [
+	[["assessment_plan", "architecture_design_review", "months_since_last_review"], "III.G.2.b"],
+	[["assessment_plan", "annual_report", "months_since_plan_approval"], "III.G.4"],
+	[["assessment_plan", "submission", "months_since_previous_approval"], "III.G.3"],
+]
+
+violations contains msg if {
+	some [path, paragraph] in _required_numbers
+	value := object.get(facts, path, null)
+	not is_number(value)
+	msg := sprintf("TSA SD Pipeline-2021-02G %s: evidence missing - input.%s is not a number (got %s), so the limit cannot be checked", [paragraph, concat(".", path), type_name(value)])
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

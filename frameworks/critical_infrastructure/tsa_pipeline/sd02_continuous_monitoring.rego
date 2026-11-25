@@ -92,8 +92,9 @@ declared_procedures := {p | some p in object.get(facts, ["continuous_monitoring"
 # ── III.D — Policy exists ────────────────────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["continuous_monitoring", "policy_documented"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.D: No continuous monitoring and detection policies and procedures designed to prevent, detect, and respond to cybersecurity threats and anomalies affecting Critical Cyber Systems"
+	not object.get(facts, ["continuous_monitoring", "policy_documented"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.D: No continuous monitoring and detection policies and procedures designed to prevent, detect, and respond to cybersecurity threats and anomalies affecting Critical Cyber Systems"
+	msg := concat("", [finding, _ev_input("continuous_monitoring.policy_documented")])
 }
 
 violations contains msg if {
@@ -111,25 +112,29 @@ violations contains msg if {
 # ── III.D.3 — Logging policies ───────────────────────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["continuous_monitoring", "logging", "continuous_collection_and_analysis"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.D.3.a: Logging policies do not require continuous collection and analyzing of data for potential intrusions and anomalous behavior"
+	not object.get(facts, ["continuous_monitoring", "logging", "continuous_collection_and_analysis"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.D.3.a: Logging policies do not require continuous collection and analyzing of data for potential intrusions and anomalous behavior"
+	msg := concat("", [finding, _ev_input("continuous_monitoring.logging.continuous_collection_and_analysis")])
 }
 
 violations contains msg if {
-	object.get(facts, ["continuous_monitoring", "logging", "retention_sufficient_for_investigation"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.D.3.b: Logging policies do not ensure data is maintained for sufficient periods to allow for effective investigation of cybersecurity incidents"
+	not object.get(facts, ["continuous_monitoring", "logging", "retention_sufficient_for_investigation"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.D.3.b: Logging policies do not ensure data is maintained for sufficient periods to allow for effective investigation of cybersecurity incidents"
+	msg := concat("", [finding, _ev_input("continuous_monitoring.logging.retention_sufficient_for_investigation")])
 }
 
 # ── III.D.4 — Industrial control system isolation ────────────────────────────
 
 violations contains msg if {
-	object.get(facts, ["continuous_monitoring", "ics_isolation", "capability_exists"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.D.4: No mitigation measures or manual controls to ensure industrial control systems can be isolated when a cybersecurity incident in the Information Technology system creates risk to the safety and reliability of the Operational Technology system"
+	not object.get(facts, ["continuous_monitoring", "ics_isolation", "capability_exists"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.D.4: No mitigation measures or manual controls to ensure industrial control systems can be isolated when a cybersecurity incident in the Information Technology system creates risk to the safety and reliability of the Operational Technology system"
+	msg := concat("", [finding, _ev_input("continuous_monitoring.ics_isolation.capability_exists")])
 }
 
 violations contains msg if {
-	object.get(facts, ["continuous_monitoring", "ics_isolation", "manual_controls_documented"], false) == false
-	msg := "TSA SD Pipeline-2021-02G III.D.4: Manual controls for isolating industrial control systems are not documented"
+	not object.get(facts, ["continuous_monitoring", "ics_isolation", "manual_controls_documented"], null) == true
+	finding := "TSA SD Pipeline-2021-02G III.D.4: Manual controls for isolating industrial control systems are not documented"
+	msg := concat("", [finding, _ev_input("continuous_monitoring.ics_isolation.manual_controls_documented")])
 }
 
 # ── Compliance report ────────────────────────────────────────────────────────
@@ -147,3 +152,21 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

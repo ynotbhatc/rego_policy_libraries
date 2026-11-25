@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 14
+#     checks: 15
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cra.oss_steward
 
 import rego.v1
@@ -79,12 +79,12 @@ threshold_elements := [
 
 undeclared_elements := {e |
 	some e in threshold_elements
-	not is_boolean(object.get(object.get(input, "oss_steward", {}), e, null))
+	not is_boolean(object.get(object.get(_root, "oss_steward", {}), e, null))
 }
 
 declared_false if {
 	some e in threshold_elements
-	object.get(object.get(input, "oss_steward", {}), e, null) == false
+	object.get(object.get(_root, "oss_steward", {}), e, null) == false
 }
 
 violation contains msg if {
@@ -94,65 +94,73 @@ violation contains msg if {
 }
 
 applies_to_entity if {
-	input.oss_steward.is_legal_person
-	input.oss_steward.not_manufacturer_of_product
-	input.oss_steward.provides_systematic_sustained_support
-	input.oss_steward.ensures_product_viability
-	input.oss_steward.oss_product_intended_for_commercial_activities
+	input.oss_steward.is_legal_person == true
+	input.oss_steward.not_manufacturer_of_product == true
+	input.oss_steward.provides_systematic_sustained_support == true
+	input.oss_steward.ensures_product_viability == true
+	input.oss_steward.oss_product_intended_for_commercial_activities == true
 }
 
 # ── Art. 24(1) — cybersecurity policy ───────────────────────────────────────
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cybersecurity_policy.documented_verifiably
-	msg := "CRA Art.24(1): OSS steward has not put in place and documented, in a verifiable manner, a cybersecurity policy (publication is the typical fulfilment; the obligation is verifiable documentation)"
+	note := _unmet(_root, ["oss_steward", "cybersecurity_policy", "documented_verifiably"])
+	text := "CRA Art.24(1): OSS steward has not put in place and documented, in a verifiable manner, a cybersecurity policy (publication is the typical fulfilment; the obligation is verifiable documentation)"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cybersecurity_policy.covers_vulnerability_handling
-	msg := "CRA Art.24(1): OSS steward's cybersecurity policy does not cover effective handling of vulnerabilities"
+	note := _unmet(_root, ["oss_steward", "cybersecurity_policy", "covers_vulnerability_handling"])
+	text := "CRA Art.24(1): OSS steward's cybersecurity policy does not cover effective handling of vulnerabilities"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cybersecurity_policy.covers_secure_development_practices
-	msg := "CRA Art.24(1): OSS steward's cybersecurity policy does not foster secure development of the supported products"
+	note := _unmet(_root, ["oss_steward", "cybersecurity_policy", "covers_secure_development_practices"])
+	text := "CRA Art.24(1): OSS steward's cybersecurity policy does not foster secure development of the supported products"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cybersecurity_policy.fosters_voluntary_reporting_and_sharing
-	msg := "CRA Art.24(1): OSS steward's cybersecurity policy does not foster voluntary vulnerability reporting (Art.15) and the sharing of information on discovered vulnerabilities with the open-source community"
+	note := _unmet(_root, ["oss_steward", "cybersecurity_policy", "fosters_voluntary_reporting_and_sharing"])
+	text := "CRA Art.24(1): OSS steward's cybersecurity policy does not foster voluntary vulnerability reporting (Art.15) and the sharing of information on discovered vulnerabilities with the open-source community"
+	msg := concat("", [text, note])
 }
 
 # Policy components — a CVD policy and a documented reporting channel
 # are how the Art. 24(1) vulnerability-handling element is fulfilled.
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cvd_policy.in_place
-	msg := "CRA Art.24(1): OSS steward's policy lacks a coordinated vulnerability disclosure (CVD) component"
+	note := _unmet(_root, ["oss_steward", "cvd_policy", "in_place"])
+	text := "CRA Art.24(1): OSS steward's policy lacks a coordinated vulnerability disclosure (CVD) component"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.vulnerability_reporting_channel.exists
-	msg := "CRA Art.24(1): OSS steward has no documented channel for receiving vulnerability reports from manufacturers and the community"
+	note := _unmet(_root, ["oss_steward", "vulnerability_reporting_channel", "exists"])
+	text := "CRA Art.24(1): OSS steward has no documented channel for receiving vulnerability reports from manufacturers and the community"
+	msg := concat("", [text, note])
 }
 
 # ── Art. 24(2) — cooperation with market surveillance authorities ───────────
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cooperation.with_market_surveillance
-	msg := "CRA Art.24(2): OSS steward has not committed to cooperate with market surveillance authorities, at their request, to mitigate cybersecurity risks"
+	note := _unmet(_root, ["oss_steward", "cooperation", "with_market_surveillance"])
+	text := "CRA Art.24(2): OSS steward has not committed to cooperate with market surveillance authorities, at their request, to mitigate cybersecurity risks"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.cooperation.policy_providable_on_reasoned_request
-	msg := "CRA Art.24(2): OSS steward cannot provide its cybersecurity policy on a reasoned request, in a language easily understood by the requesting authority"
+	note := _unmet(_root, ["oss_steward", "cooperation", "policy_providable_on_reasoned_request"])
+	text := "CRA Art.24(2): OSS steward cannot provide its cybersecurity policy on a reasoned request, in a language easily understood by the requesting authority"
+	msg := concat("", [text, note])
 }
 
 # ── Art. 24(3) — reporting, CONDITIONAL on the steward's role ───────────────
@@ -165,24 +173,27 @@ violation contains msg if {
 	applies_to_entity
 	input.oss_steward.involved_in_development == true
 	input.oss_steward.actively_exploited_vuln_known == true
-	not input.oss_steward.vulnerability_notified
-	msg := "CRA Art.24(3)/Art.14(1): OSS steward involved in development is aware of an actively exploited vulnerability but has not notified it, without undue delay, simultaneously to the CSIRT designated as coordinator and to ENISA via the single reporting platform (Art.16)"
+	note := _unmet(_root, ["oss_steward", "vulnerability_notified"])
+	text := "CRA Art.24(3)/Art.14(1): OSS steward involved in development is aware of an actively exploited vulnerability but has not notified it, without undue delay, simultaneously to the CSIRT designated as coordinator and to ENISA via the single reporting platform (Art.16)"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
 	input.oss_steward.provides_development_infrastructure == true
 	input.oss_steward.severe_incident_affecting_provided_infrastructure == true
-	not input.oss_steward.incident_notified
-	msg := "CRA Art.24(3)/Art.14(3): a severe incident affects network and information systems the OSS steward provides for development, and it has not been notified, without undue delay, to the CSIRT designated as coordinator and to ENISA"
+	note := _unmet(_root, ["oss_steward", "incident_notified"])
+	text := "CRA Art.24(3)/Art.14(3): a severe incident affects network and information systems the OSS steward provides for development, and it has not been notified, without undue delay, to the CSIRT designated as coordinator and to ENISA"
+	msg := concat("", [text, note])
 }
 
 violation contains msg if {
 	applies_to_entity
 	input.oss_steward.provides_development_infrastructure == true
 	input.oss_steward.severe_incident_affecting_provided_infrastructure == true
-	not input.oss_steward.affected_users_informed
-	msg := "CRA Art.24(3)/Art.14(8): users of the steward-provided systems affected by the severe incident have not been informed (where appropriate, including mitigations)"
+	note := _unmet(_root, ["oss_steward", "affected_users_informed"])
+	text := "CRA Art.24(3)/Art.14(8): users of the steward-provided systems affected by the severe incident have not been informed (where appropriate, including mitigations)"
+	msg := concat("", [text, note])
 }
 
 # Reporting readiness — knowing the destination before the clock starts.
@@ -191,16 +202,40 @@ violation contains msg if {
 # (ORC WG practice: name it in SECURITY.md).
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.csirt_coordinator_identified
-	msg := "CRA Art.14(1)/(7) readiness: OSS steward has not identified the CSIRT designated as coordinator that would receive its notifications"
+	note := _unmet(_root, ["oss_steward", "csirt_coordinator_identified"])
+	text := "CRA Art.14(1)/(7) readiness: OSS steward has not identified the CSIRT designated as coordinator that would receive its notifications"
+	msg := concat("", [text, note])
 }
 
 # ── Art. 52(3) — corrective action ──────────────────────────────────────────
 
 violation contains msg if {
 	applies_to_entity
-	not input.oss_steward.can_ensure_corrective_action
-	msg := "CRA Art.52(3): OSS steward has no established means to ensure that appropriate corrective action is taken for the products it supports"
+	note := _unmet(_root, ["oss_steward", "can_ensure_corrective_action"])
+	text := "CRA Art.52(3): OSS steward has no established means to ensure that appropriate corrective action is taken for the products it supports"
+	msg := concat("", [text, note])
+}
+
+# ── Facts that switch an obligation on or off ───────────────────────────
+# Each must be stated as true or false wherever its own condition holds. A missing, null or
+# non-boolean value is an evidence problem and is reported; it is never read as "does not apply".
+_conditions contains ["CRA Art.24(3)/Art.14(1)", ["oss_steward", "involved_in_development"]] if applies_to_entity
+
+_conditions contains ["CRA Art.24(3)/Art.14(3)", ["oss_steward", "provides_development_infrastructure"]] if applies_to_entity
+
+_conditions contains ["CRA Art.24(3)/Art.14(1)", ["oss_steward", "actively_exploited_vuln_known"]] if {
+	applies_to_entity
+	input.oss_steward.involved_in_development == true
+}
+
+_conditions contains ["CRA Art.24(3)/Art.14(3)", ["oss_steward", "severe_incident_affecting_provided_infrastructure"]] if {
+	applies_to_entity
+	input.oss_steward.provides_development_infrastructure == true
+}
+
+violation contains msg if {
+	some [cite, path] in _conditions
+	msg := sprintf("%s: applicability not determined — %s", [cite, _problem(_root, path)])
 }
 
 compliant if {
@@ -216,3 +251,30 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Evidence helpers ─────────────────────────────────────────────────────────
+# Evidence rule: only the boolean true passes a yes/no fact. _unmet is defined when the fact is not the
+# boolean true; its value is appended to the finding and names the evidence problem (missing, null, or a
+# value that is not a boolean, such as the strings "true" and "false"). A collected false adds nothing.
+# _problem names the same evidence problem for a fact that switches an obligation on or off: such a fact
+# must be stated as true or false and is never inferred from a missing field.
+# The input document itself may be absent or not an object: every fact then reads as not collected.
+default _root := {}
+
+_root := input if is_object(input)
+
+_fact(root, path) := value if {
+	is_object(root)
+	value := object.get(root, path, null)
+} else := null
+
+_problem(root, path) := sprintf("evidence missing: %s not collected", [concat(".", path)]) if _fact(root, path) == null
+
+_problem(root, path) := sprintf("evidence invalid: %s is not a boolean (got %s)", [concat(".", path), type_name(_fact(root, path))]) if {
+	_fact(root, path) != null
+	not is_boolean(_fact(root, path))
+}
+
+_unmet(root, path) := "" if _fact(root, path) == false
+
+_unmet(root, path) := concat("", [" — ", _problem(root, path)]) if not is_boolean(_fact(root, path))

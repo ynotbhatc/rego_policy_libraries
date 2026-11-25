@@ -519,3 +519,10 @@ test_5_3_3_4_4_hollow_evidence_not_a_pass if {
 	vs := data.cis_debian_12.pam.violations with input as {"pam": {"common_password": ""}}
 	count([v | some v in vs; startswith(v, "5.3.3.4.4: ")]) > 0
 }
+
+# pam_faillock given `deny` with no number is not a lockout threshold: the line must not pass (it used to, because
+# `not in_range(pam_arg_num(...))` is undefined when the argument has no number).
+test_5_3_3_1_1_bare_deny_argument_fails if {
+	vs := data.cis_debian_12.pam.violations with input as {"pam": {"faillock_conf_raw": "deny = 5", "common_auth": "auth requisite pam_faillock.so preauth deny\nauth [default=die] pam_faillock.so authfail"}}
+	"5.3.3.1.1: not met — password failed attempts lockout must be explicitly configured" in vs
+}

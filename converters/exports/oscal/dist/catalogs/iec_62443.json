@@ -870,6 +870,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-9",
+      "title": "IEC 62443 %s (IAC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8e222290-3abc-52c8-b9ed-71db6f493436",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-9_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 %s (IAC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -1723,6 +1756,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-11",
+      "title": "IEC 62443 %s (UC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f8b9817-1257-5c07-b077-61b5b59ed465",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-11_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 %s (UC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -2368,6 +2434,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-8",
+      "title": "IEC 62443 %s (SI): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#880b5dcf-8c14-5bc3-87cd-21d4fcd5e2e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-8_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 %s (SI): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -2696,6 +2795,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr4-6",
+      "title": "IEC 62443 %s (DC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr4#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr4#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0940c08-c050-5ff1-a007-065dfebb0cb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr4-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 %s (DC): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -2846,6 +2978,11 @@
         "id": "iec_62443-IEC-62443-SR-5.2-RDF_obj.3",
         "name": "assessment-objective",
         "prose": "No DMZ is implemented between corporate IT and OT networks. A DMZ with controlled ingress/egress is required to isolate IACS from external networks."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.2-RDF_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.conduits not collected (absent, not an array or empty), so zone boundary protection cannot be verified"
        }
       ],
       "class": "ot"
@@ -2955,6 +3092,11 @@
         "id": "iec_62443-IEC-62443-SR-5.3-RDF_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing — input.network not collected, so this requirement cannot be verified"
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.3-RDF_obj.3",
+        "name": "assessment-objective",
+        "prose": "zone '%v' does not state general_purpose_comms_unrestricted as true or false, so the requirement cannot be decided.%s"
        }
       ],
       "class": "ot"
@@ -3125,6 +3267,72 @@
         "id": "iec_62443-IEC-62443-FR-5-RDF_stmt",
         "name": "statement",
         "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-7",
+      "title": "IEC 62443 %s (RDF): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ff356c50-17b3-5cf5-a64c-5384fe04c6a9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-7_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 %s (RDF): ICS system '%v' does not state %s as true or false, so the requirement cannot be decided.%s"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-8",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/fr5_restricted_data_flow.rego (package iec_62443.fr5); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ff356c50-17b3-5cf5-a64c-5384fe04c6a9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/fr5_restricted_data_flow.rego (package iec_62443.fr5); see the rule body."
        }
       ],
       "class": "ot"
@@ -5406,7 +5614,7 @@
        {
         "id": "iec_62443-IEC-62443-3-2-ZCR-3_obj.3",
         "name": "assessment-objective",
-        "prose": "evidence missing - high-criticality zone '%v' has no numeric security_level, so its SL-T cannot be verified."
+        "prose": "evidence missing - zone '%v' has no numeric security_level (got %s), so its SL-T cannot be verified."
        }
       ],
       "class": "ot"

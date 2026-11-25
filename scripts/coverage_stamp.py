@@ -10,7 +10,9 @@ What is stamped (custom.coverage):
   checks     control-level checks the module holds (the same rule as `make count`: scripts/rego_ast.py)
   cited      how many of those carry a citable control id (CIS 1.3.1, §7122(a)(1), RHEL-09-611010, ...)
   expected   the standard's own count when the module declares it (`standard_total`, cited to the standard's text),
-             else the total the module declares for its own table (`total_controls: 172`)
+             else the total the module declares for its own table: a literal (`total_controls: 172`), a name the
+             module assigns an integer (`_declared_controls := 175`), or the floor of
+             `max([_declared_controls, count(findings)])` (rego_ast.declared_number)
   found      what is compared with expected, counted so that nothing is counted twice: distinct control ids
              (control_ids(): a bare snake_case word among numbered ids is a section or report key; "CSF DE.AE-02" beside
              "DE.AE-02" is one control), or, for a module whose own total counts checks rather than ids, distinct
@@ -46,11 +48,11 @@ What is stamped (custom.coverage):
 Nothing here is an opinion about quality; it is what the parser sees, and --check keeps it true.
 """
 from __future__ import annotations
-import argparse, collections, json, pathlib, re, sys
+import argparse, collections, json, os, pathlib, re, sys
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from rego_ast import parse_tree, checks, items, tables, package, rule_name  # noqa: E402
+from rego_ast import parse_tree, checks, items, tables, package, rule_name, constants, declared_number  # noqa: E402
 
 ORCH = re.compile(r"(_main|_complete|_simplified)\.rego$")
 TOTAL_KEYS = ("standard_total", "total_controls", "controls_total", "total_recommendations", "total_checks")  # first match wins
@@ -66,10 +68,10 @@ KNOWN_GAPS = {
     "benchmarks/cis/windows_server_2019_modular/cis_windows_2019_main.rego": _WIN_MANUAL,
     "benchmarks/cis/windows_server_2022_modular/cis_windows_2022_main.rego": _WIN_MANUAL,
     "benchmarks/cis/windows_server_2025_modular/cis_windows_2025_main.rego": _WIN_MANUAL,
-    "frameworks/compliance/ncsc_caf/caf_main.rego":
-        "different units: the section modules cite no Contributing Outcome ids, so 22 uncited violation rules are "
-        "set against the 23 outcomes the orchestrator declares, and caf_a3_asset_management.rego is in a shape the "
-        "counter does not read. Open work: cite the outcome id in each finding",
+    "benchmarks/cis/rhel_10/cis_rhel10_main.rego":
+        "the bridge declares 312 controls (`_total_controls := 312`, the size of the draft benchmark) and its "
+        "directory holds 25 checks (cis_rhel_10.rego). Not seen before 2026-11-24 because the total is a named "
+        "constant, which the stamp did not read. Open: implement the benchmark, or declare what is evaluated",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design
@@ -113,7 +115,7 @@ def empty_input_state(root=ROOT):
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
         f.write("{}"); empty = f.name
     trees = [d for d in ("benchmarks", "frameworks", "governance", "enforcement", "threat_detection", "crosswalk") if (root / d).is_dir()]
-    cmd = ["opa", "eval", "-f", "json", "--ignore", ".github", "--ignore", "converters", "--ignore", "tests", "-i", empty, "data"]
+    cmd = [os.environ.get("OPA", "opa"), "eval", "-f", "json", "--ignore", ".github", "--ignore", "converters", "--ignore", "tests", "-i", empty, "data"]
     for d in trees:
         cmd += ["-d", str(root / d)]
     out = subprocess.run(cmd, capture_output=True, text=True)
@@ -154,7 +156,9 @@ def tested_packages():
         if re.search(r"(^|/)(test_|.*_test\.rego$)", rel) or "/tests/" in rel:
             m = re.search(r"^package\s+([\w.]+)", f.read_text(errors="ignore"), re.M)
             if m:
-                p = m.group(1)
+                # a test tree kept out of the policy namespace (`pci_dss_tests.x_test` tests `pci_dss.x`), so that
+                # evaluating `data.pci_dss` does not also run the tests
+                p = re.sub(r"^(\w+)_tests\.", r"\1.", m.group(1))
                 out.add(p); out.add(re.sub(r"(_test|\.test|\.tests?)$", "", p)); out.add(p.rsplit(".", 1)[0])
     return out
 
@@ -170,12 +174,14 @@ def scan(root=ROOT):
         names = {rule_name(r) for r in ast.get("rules", [])}
         entry = "compliance_report" if "compliance_report" in names else ("report" if "report" in names else "none")
         expected = None; expected_key = None
+        consts = constants(ast)
         for name, trows in tables(ast):
             if name in ("compliance_report", "report"):
-                found_keys = {k: v for k, v in trows if k in TOTAL_KEYS and v["type"] == "number"}
+                # a literal, a named constant, or max([named constant, count(findings)]) (rego_ast.declared_number)
+                found_keys = {k: declared_number(v, consts) for k, v in trows if k in TOTAL_KEYS}
                 for k in TOTAL_KEYS:
-                    if k in found_keys:
-                        expected = int(found_keys[k]["value"]); expected_key = k; break
+                    if found_keys.get(k) is not None:
+                        expected = found_keys[k]; expected_key = k; break
         pkg = package(ast)
         record(pkg)
         its = items(ast)

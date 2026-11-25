@@ -16,12 +16,12 @@ green_fixture := {"mysql": {
 		"validate_password": "ACTIVE",
 	},
 	"variables": {
-		"max_user_connections": "50",
-		"validate_password.length": "15",
+		"max_user_connections": 50,
+		"validate_password.length": 15,
 		"validate_password.policy": "STRONG",
 		"require_secure_transport": "ON",
 		"ssl_fips_mode": "ON",
-		"audit_log_rotate_on_size": "1073741824",
+		"audit_log_rotate_on_size": 1073741824,
 	},
 	"audit": {
 		"filters": ["log_all"],

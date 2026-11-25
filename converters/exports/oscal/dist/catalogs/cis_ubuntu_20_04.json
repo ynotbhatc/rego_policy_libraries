@@ -155,12 +155,22 @@
        {
         "id": "cis_ubuntu_20_04-CIS-1.6.1.2_obj.4",
         "name": "assessment-objective",
-        "prose": "AppArmor is not enabled in bootloader configuration"
+        "prose": "evidence missing — apparmor.grub_cmdline not collected"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-1.6.1.2_obj.5",
         "name": "assessment-objective",
+        "prose": "AppArmor is not enabled in bootloader configuration"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.6.1.2_obj.6",
+        "name": "assessment-objective",
         "prose": "AppArmor security= parameter not set in bootloader"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.6.1.2_obj.7",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.grub_cmdline not collected"
        }
       ],
       "class": "security"
@@ -209,6 +219,16 @@
         "id": "cis_ubuntu_20_04-CIS-1.6.1.3_obj.3",
         "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is not loaded"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.6.1.3_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.profiles[%d].mode %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.6.1.3_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.profiles[%d] is not an object (got %s)"
        }
       ],
       "class": "security"
@@ -257,6 +277,72 @@
         "id": "cis_ubuntu_20_04-CIS-1.6.1.4_obj.3",
         "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is in complain mode, should be enforce"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.apparmor-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/apparmor_validation.rego (package cis_ubuntu_20_04.apparmor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.apparmor#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.apparmor#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.apparmor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5230bde4-9789-539b-b5ce-16b67c993959",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.apparmor-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/apparmor_validation.rego (package cis_ubuntu_20_04.apparmor); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.apparmor-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/apparmor_validation.rego (package cis_ubuntu_20_04.apparmor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.apparmor#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.apparmor#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.apparmor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5230bde4-9789-539b-b5ce-16b67c993959",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.apparmor-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/apparmor_validation.rego (package cis_ubuntu_20_04.apparmor); see the rule body."
        }
       ],
       "class": "security"
@@ -324,6 +410,11 @@
         "id": "cis_ubuntu_20_04-CIS-4.1.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "auditd service not running"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — services.auditd.service.%s not collected"
        }
       ],
       "class": "security"
@@ -471,6 +562,16 @@
         "id": "cis_ubuntu_20_04-CIS-4.1.1.1_stmt",
         "name": "statement",
         "prose": "auditd package not installed"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — packages.auditd not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — packages.%s is not a boolean (got %s)"
        }
       ],
       "class": "security"
@@ -684,6 +785,138 @@
         "id": "cis_ubuntu_20_04-CIS-4.1.4.2_obj.1",
         "name": "assessment-objective",
         "prose": "Audit log group not root or adm (group: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-gr_name",
+      "title": "4.1.4.2",
+      "props": [
+       {
+        "name": "label",
+        "value": "gr_name"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "gr_name"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#21eda8ff-b910-5e28-ae4f-c70b477d7b45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-gr_name_stmt",
+        "name": "statement",
+        "prose": "4.1.4.2"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-mode",
+      "title": "4.1.4.1",
+      "props": [
+       {
+        "name": "label",
+        "value": "mode"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "mode"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#21eda8ff-b910-5e28-ae4f-c70b477d7b45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-mode_stmt",
+        "name": "statement",
+        "prose": "4.1.4.1"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-pw_name",
+      "title": "4.1.4.2",
+      "props": [
+       {
+        "name": "label",
+        "value": "pw_name"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pw_name"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#21eda8ff-b910-5e28-ae4f-c70b477d7b45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-pw_name_stmt",
+        "name": "statement",
+        "prose": "4.1.4.2"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.auditd-1",
+      "title": "CIS %s: evidence missing — auditd.log_permissions.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.auditd#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.auditd#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#21eda8ff-b910-5e28-ae4f-c70b477d7b45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.auditd-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — auditd.log_permissions.%s not collected"
        }
       ],
       "class": "security"
@@ -940,7 +1173,7 @@
      },
      {
       "id": "cis_ubuntu_20_04-CIS-1.5.1",
-      "title": "evidence missing — process_hardening.core_dumps_enabled not collected",
+      "title": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)",
       "props": [
        {
         "name": "label",
@@ -970,20 +1203,15 @@
        {
         "id": "cis_ubuntu_20_04-CIS-1.5.1_stmt",
         "name": "statement",
-        "prose": "evidence missing — process_hardening.core_dumps_enabled not collected"
+        "prose": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-1.5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-1.5.1_obj.2",
-        "name": "assessment-objective",
         "prose": "fs.suid_dumpable is %v, should be 0 (or was not collected)"
        },
        {
-        "id": "cis_ubuntu_20_04-CIS-1.5.1_obj.3",
+        "id": "cis_ubuntu_20_04-CIS-1.5.1_obj.2",
         "name": "assessment-objective",
         "prose": "Core dumps are not restricted (hard limit should be 0)"
        }
@@ -1034,7 +1262,7 @@
      },
      {
       "id": "cis_ubuntu_20_04-CIS-1.5.3",
-      "title": "evidence missing — process_hardening.prelink_installed not collected",
+      "title": "prelink is installed - remove it as it can reduce ASLR effectiveness",
       "props": [
        {
         "name": "label",
@@ -1064,15 +1292,10 @@
        {
         "id": "cis_ubuntu_20_04-CIS-1.5.3_stmt",
         "name": "statement",
-        "prose": "evidence missing — process_hardening.prelink_installed not collected"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-1.5.3_obj.1",
-        "name": "assessment-objective",
         "prose": "prelink is installed - remove it as it can reduce ASLR effectiveness"
        },
        {
-        "id": "cis_ubuntu_20_04-CIS-1.5.3_obj.2",
+        "id": "cis_ubuntu_20_04-CIS-1.5.3_obj.1",
         "name": "assessment-objective",
         "prose": "prelink is installed (disables ASLR effectiveness)"
        }
@@ -1117,6 +1340,237 @@
         "id": "cis_ubuntu_20_04-CIS-1.5.4_obj.1",
         "name": "assessment-objective",
         "prose": "ptrace scope is not restricted (kernel.yama.ptrace_scope should be >= 1)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.boot_security#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.boot_security#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f59e80-4f05-59ca-ac0d-ee18182977ff",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.boot_security-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/boot_security_validation.rego (package cis_ubuntu_20_04.boot_security); see the rule body."
        }
       ],
       "class": "security"
@@ -1666,6 +2120,72 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.cron-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/cron_validation.rego (package cis_ubuntu_20_04.cron); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.cron#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.cron#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1ca6e16-10b6-5121-af02-9b1ac29446f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.cron-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/cron_validation.rego (package cis_ubuntu_20_04.cron); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.cron-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/cron_validation.rego (package cis_ubuntu_20_04.cron); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.cron#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.cron#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e1ca6e16-10b6-5121-af02-9b1ac29446f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.cron-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/cron_validation.rego (package cis_ubuntu_20_04.cron); see the rule body."
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -1725,6 +2245,16 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.x_obj.1",
         "name": "assessment-objective",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — critical_files.analysis[%d].%s %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — critical_files.analysis[%d].file %s"
        }
       ],
       "class": "security"
@@ -1922,6 +2452,21 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.4",
         "name": "assessment-objective",
         "prose": "evidence missing — suid_files.total_count is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.unknown_binaries[%d].%s %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.6",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.unknown_count not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.7",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.total_count not collected"
        }
       ],
       "class": "security"
@@ -1965,6 +2510,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.14_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing — sgid_files.count is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.14_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sgid_files.count not collected"
        }
       ],
       "class": "security"
@@ -2168,6 +2718,237 @@
       "class": "security"
      },
      {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-3",
+      "title": "CIS %s: evidence missing — critical_files.analysis[%d].mode_compliant %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-3_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — critical_files.analysis[%d].mode_compliant %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-4",
+      "title": "SSH Private Key: evidence missing — ssh_private_keys.analysis[%d].%s %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-4_stmt",
+        "name": "statement",
+        "prose": "SSH Private Key: evidence missing — ssh_private_keys.analysis[%d].%s %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-5",
+      "title": "CIS %s: evidence missing — %s.compliant is not a boolean (got %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-5_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — %s.compliant is not a boolean (got %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-6",
+      "title": "CIS %s: evidence missing — %s.count (or %s.files) not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-6_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — %s.count (or %s.files) not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-8",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-9",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.file_permissions#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.file_permissions#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#31682fa6-83f8-5831-a7a4-1d80cabec7fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.file_permissions-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_20_04-security_risks",
       "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body.",
       "props": [
@@ -2258,6 +3039,11 @@
         "id": "cis_ubuntu_20_04-CIS-1.1.1.x_obj.1",
         "name": "assessment-objective",
         "prose": "evidence missing — disabled_filesystem_modules.modules not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.1.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — disabled_filesystem_modules.modules[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2362,6 +3148,11 @@
         "id": "cis_ubuntu_20_04-CIS-1.1.22_obj.1",
         "name": "assessment-objective",
         "prose": "evidence missing — sticky_bit_check.world_writable_dirs not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.22_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sticky_bit_check.world_writable_dirs[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2395,6 +3186,11 @@
         "id": "cis_ubuntu_20_04-CIS-1.1.2_stmt",
         "name": "statement",
         "prose": "evidence missing — required_partitions.partitions not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — required_partitions.partitions[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2428,6 +3224,11 @@
         "id": "cis_ubuntu_20_04-CIS-1.1.x_stmt",
         "name": "statement",
         "prose": "evidence missing — mount_options.mounts not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mount_options.mounts[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2949,6 +3750,110 @@
         "id": "cis_ubuntu_20_04-CIS-1.8.4_obj.1",
         "name": "assessment-objective",
         "prose": "evidence missing — initial_setup.gdm_idle_delay is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.8.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — initial_setup.gdm_idle_delay not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/initial_setup_validation.rego (package cis_ubuntu_20_04.initial_setup); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.initial_setup#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.initial_setup#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d814014e-0f2a-5933-95f0-812e2f31f106",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/initial_setup_validation.rego (package cis_ubuntu_20_04.initial_setup); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/initial_setup_validation.rego (package cis_ubuntu_20_04.initial_setup); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.initial_setup#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.initial_setup#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d814014e-0f2a-5933-95f0-812e2f31f106",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/initial_setup_validation.rego (package cis_ubuntu_20_04.initial_setup); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/initial_setup_validation.rego (package cis_ubuntu_20_04.initial_setup); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.initial_setup#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.initial_setup#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d814014e-0f2a-5933-95f0-812e2f31f106",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/initial_setup_validation.rego (package cis_ubuntu_20_04.initial_setup); see the rule body."
        }
       ],
       "class": "security"
@@ -3082,6 +3987,11 @@
         "id": "cis_ubuntu_20_04-CIS-4.2.3_obj.2",
         "name": "assessment-objective",
         "prose": "Log file '%s' has excessive permissions (mode: %s, issue: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.2.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — log_file_permissions.analysis[%d].%s %s"
        }
       ],
       "class": "security"
@@ -3432,6 +4342,138 @@
       "class": "security"
      },
      {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.logging#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.logging#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d8b3e85-7ef1-537a-822e-eca2421873cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.logging#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.logging#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d8b3e85-7ef1-537a-822e-eca2421873cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.logging#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.logging#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d8b3e85-7ef1-537a-822e-eca2421873cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.logging#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.logging#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d8b3e85-7ef1-537a-822e-eca2421873cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_20_04-journald",
       "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/logging_validation.rego (package cis_ubuntu_20_04.logging); see the rule body.",
       "props": [
@@ -3555,6 +4597,16 @@
         "id": "cis_ubuntu_20_04-CIS-3.x_obj.1",
         "name": "assessment-objective",
         "prose": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sysctl_parameters.analysis[%d].%s %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sysctl_parameters.analysis[%d] is not an object (got %s)"
        }
       ],
       "class": "security"
@@ -3598,6 +4650,21 @@
         "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ip_forwarding.%s is not a number (got %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ip_forwarding.%s is not a boolean (got %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ip_forwarding.ipv6_forwarding not collected"
        }
       ],
       "class": "security"
@@ -3684,6 +4751,11 @@
         "id": "cis_ubuntu_20_04-CIS-3.5.x_obj.2",
         "name": "assessment-objective",
         "prose": "Using legacy iptables instead of ufw or nftables"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.5.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — firewall.type %s"
        }
       ],
       "class": "security"
@@ -3991,6 +5063,11 @@
         "id": "cis_ubuntu_20_04-CIS-3.3.1_obj.1",
         "name": "assessment-objective",
         "prose": "evidence missing — ipv6.address_count is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ipv6.address_count not collected"
        }
       ],
       "class": "security"
@@ -4057,6 +5134,77 @@
         "id": "cis_ubuntu_20_04-CIS-3.5.1.1_stmt",
         "name": "statement",
         "prose": "UFW default incoming policy is '%s', should be deny or reject"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.5.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — firewall.default_incoming %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.network-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/network_validation.rego (package cis_ubuntu_20_04.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9def3f1e-72f4-54b3-8670-81cdfa258332",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.network-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/network_validation.rego (package cis_ubuntu_20_04.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.network-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/network_validation.rego (package cis_ubuntu_20_04.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.network#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.network#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9def3f1e-72f4-54b3-8670-81cdfa258332",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.network-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/network_validation.rego (package cis_ubuntu_20_04.network); see the rule body."
        }
       ],
       "class": "security"
@@ -4146,6 +5294,11 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.4.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — pam.pwquality_conf_raw not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.1_obj.1",
+        "name": "assessment-objective",
         "prose": "evidence missing — pam.pwquality_conf_raw not collected"
        }
       ],
@@ -4514,6 +5667,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.5.4_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing — pam.inactive_days is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.inactive_days not collected"
        }
       ],
       "class": "security"
@@ -4632,7 +5790,248 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.4",
         "name": "assessment-objective",
+        "prose": "evidence missing — pam.default_umask not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.5",
+        "name": "assessment-objective",
+        "prose": "Default umask is %v, should be 027 or more restrictive"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.6",
+        "name": "assessment-objective",
         "prose": "Default umask is %s, should be 027 or more restrictive"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-3",
+      "title": "CIS %s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-3_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — pam.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-4",
+      "title": "%s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-4_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — pam.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/pam_validation.rego (package cis_ubuntu_20_04.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-7",
+      "title": "CIS %s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.pam#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.pam#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc7e75b4-18f3-59a6-b74d-3e92e40e195a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.pam-7_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — pam.%s not collected"
        }
       ],
       "class": "security"
@@ -4748,6 +6147,11 @@
         "id": "cis_ubuntu_20_04-CIS-2.1.1_obj.4",
         "name": "assessment-objective",
         "prose": "chronyd has no time sources configured"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.1.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — time_synchronization.active_service not collected"
        }
       ],
       "class": "security"
@@ -4791,6 +6195,26 @@
         "id": "cis_ubuntu_20_04-CIS-2.2.x_obj.2",
         "name": "assessment-objective",
         "prose": "inetd is active (legacy super-server should be removed)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.2.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.non_compliant[%d].%s %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.2.x_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.analysis[%d].%s %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.2.x_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.%s not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.2.x_obj.6",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.analysis[%d].service %s"
        }
       ],
       "class": "security"
@@ -4928,6 +6352,11 @@
         "id": "cis_ubuntu_20_04-CIS-2.2.12_stmt",
         "name": "statement",
         "prose": "Web server package installed: %s (%s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — webserver.packages[%d].%s %s"
        }
       ],
       "class": "security"
@@ -4961,6 +6390,11 @@
         "id": "cis_ubuntu_20_04-CIS-2.3.x_stmt",
         "name": "statement",
         "prose": "Unnecessary client package installed: %s (%s, severity: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.3.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — client_packages.analysis[%d].%s %s"
        }
       ],
       "class": "security"
@@ -5060,6 +6494,176 @@
         "id": "cis_ubuntu_20_04-CIS-2.2.1_stmt",
         "name": "statement",
         "prose": "X Window System package installed on server: %s (%s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-2.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — x11.packages[%d].%s %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.services#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.services#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#79d299f0-6403-5940-ba5b-0efaf76ad8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.services#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.services#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#79d299f0-6403-5940-ba5b-0efaf76ad8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.services#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.services#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#79d299f0-6403-5940-ba5b-0efaf76ad8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.services#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.services#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#79d299f0-6403-5940-ba5b-0efaf76ad8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.services#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.services#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#79d299f0-6403-5940-ba5b-0efaf76ad8cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.services-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/services_validation.rego (package cis_ubuntu_20_04.services); see the rule body."
        }
       ],
       "class": "security"
@@ -5116,6 +6720,11 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — ssh.sshd_config_raw not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.x_obj.1",
+        "name": "assessment-objective",
         "prose": "evidence missing — ssh.sshd_config_raw not collected"
        }
       ],
@@ -5944,6 +7553,39 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.ssh-2",
+      "title": "CIS %s: evidence missing — ssh.%s[%d].mode not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.ssh#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.ssh#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f3608cd3-ecbd-5270-9f28-9f0cc12b6227",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.ssh-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — ssh.%s[%d].mode not collected"
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -6254,6 +7896,72 @@
         "id": "cis_ubuntu_20_04-CIS-5.3.8_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing — sudo.sudoers_mode not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.sudo-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/sudo_validation.rego (package cis_ubuntu_20_04.sudo); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.sudo#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.sudo#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b972e6dc-5233-557a-bebb-6e24659000d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.sudo-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/sudo_validation.rego (package cis_ubuntu_20_04.sudo); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.sudo-2",
+      "title": "CIS %s: evidence missing — sudo.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.sudo#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.sudo#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b972e6dc-5233-557a-bebb-6e24659000d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.sudo-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — sudo.%s not collected"
        }
       ],
       "class": "security"

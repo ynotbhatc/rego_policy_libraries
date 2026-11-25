@@ -122,7 +122,7 @@ violation contains msg if {
 # If the substantial_modification module declared an SBOM change, the SLSA
 # module must show the SBOM was refreshed afterwards.
 violation contains msg if {
-	input.substantial_modification.changes.sbom_changed
+	input.substantial_modification.changes.sbom_changed == true
 	slsa_finding("SBOM:")
 	msg := "CRA Art.22 (via SLSA): A substantial-modification SBOM change was declared, but SLSA still reports SBOM defects — refresh did not produce a clean inventory"
 }

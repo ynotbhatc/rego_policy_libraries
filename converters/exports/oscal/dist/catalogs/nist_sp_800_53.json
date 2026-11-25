@@ -19973,6 +19973,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-2-7",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-2(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-2(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d33be0ba-10f0-5646-b574-ae08e56ce3ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-2-7_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -20949,6 +20982,39 @@
       "parts": [
        {
         "id": "nist_sp_800_53-NIST-SA-8-33_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SA-15-13",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SA-15(13)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SA-15(13)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_services_acquisition"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ec48e72-c515-5a11-9c09-8839764a6e94",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SA-15-13_stmt",
         "name": "statement",
         "prose": "%s"
        }

@@ -44,9 +44,11 @@ test_5_3_3_logfile_not_configured if {
 	"5.2.5: not met — a log file for sudo must exist" in sudo.violations with input as test_input
 }
 
-test_5_3_3_logfile_missing_on_disk if {
+# The audit procedure of 5.2.5 is the Defaults logfile line only: an existence flag is not read (sudo creates
+# the file at first use), so logfile_exists false is no finding while the line is set.
+test_5_3_3_logfile_flag_not_read if {
 	test_input := {"sudo": object.union(compliant_sudo, {"logfile_exists": false})}
-	"5.2.5: not met — a log file for sudo must exist" in sudo.violations with input as test_input
+	count([v | some v in sudo.violations with input as test_input; startswith(v, "5.2.5")]) == 0
 }
 
 test_5_3_4_nopasswd_present if {

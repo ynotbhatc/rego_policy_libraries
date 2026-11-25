@@ -7,7 +7,7 @@ import rego.v1
 test_empty_input_report_contract if {
 	r := data.cis_windows_server_2025.main.compliance_report with input as {}
 	r.compliant == false
-	r.total_controls == 420
+	r.total_controls == 428
 	r.failed_controls == r.total_controls
 	r.passed_controls == 0
 	is_array(r.violations)

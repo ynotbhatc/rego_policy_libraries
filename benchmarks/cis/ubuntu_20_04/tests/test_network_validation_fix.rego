@@ -9,6 +9,8 @@ good := {
 	"ip_forwarding": {"ipv4_forwarding": 0, "ipv6_forwarding": 0},
 	"wireless_interfaces": {"has_wireless": false, "compliant": true, "count": 0, "interfaces": []},
 	"firewall": {"active": true, "type": "ufw", "default_incoming": "deny"},
+	"require_ipv6_disabled": false,
+	"ipv6": {"disabled": false},
 }
 
 test_good_input_compliant if {
@@ -18,7 +20,7 @@ test_good_input_compliant if {
 test_empty_input_not_compliant if {
 	not data.cis_ubuntu_20_04.network.compliant with input as {}
 	r := data.cis_ubuntu_20_04.network.report with input as {}
-	r.total_violations == 5
+	r.total_violations == 7
 }
 
 test_inactive_firewall_without_type_flagged if {

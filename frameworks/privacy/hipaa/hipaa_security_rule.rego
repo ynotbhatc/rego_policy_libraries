@@ -41,7 +41,8 @@
 #                integrity, authentication, transmission_security), each finding attributed to the paragraph its
 #                message cites (a finding citing a paragraph that is not a row, such as 164.312(a) or 164.514(d),
 #                is attributed to the module's standard), and every technical row requires input.phi_systems to be
-#                non-empty. An attestation for a fact row is accepted but does not decide it.
+#                non-empty. An attestation for a fact row is not needed and does not decide it; one sent
+#                as false while the facts pass is reported as contradictory evidence.
 #   attestation  20 controls with no fact check: input.hipaa.specifications["<id>"] == true. For an addressable
 #                specification, true attests the § 164.306(d)(3) decision was made and implemented (the
 #                specification, or a documented equivalent alternative).
@@ -81,7 +82,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 76
+#     checks: 80
 #     cited: 68
 #     expected: 68
 #     found: 68
@@ -435,6 +436,38 @@ advisories contains msg if {
 	msg := sprintf("%vworkstation %v %v is not evidenced (physical.workstation_use.%v.%v)", [_adv, k, f, k, f])
 }
 
+# Evidence typing (bad input never passes, issue #301): an advisory fact never decides `compliant` by its
+# value, but a value of the wrong type (the string "true", "12", null) is a collection error and is reported
+# as an input-contract finding. An advisory fact that is simply absent stays an advisory.
+_advisory_bool_paths := {
+	"administrative": {
+		["incident_response", "forensic_capability", "available"],
+		["business_associates", "inventory", "maintained"],
+		["business_associates", "compliance", "monitored"],
+	},
+	"physical": {
+		["workstation_use", "physical_access", "restricted"],
+		["workstation_use", "screen_lock", "configured"],
+	},
+}
+
+violations contains msg if {
+	some part, paths in _advisory_bool_paths
+	some path in paths
+	v := object.get(input, array.concat(["hipaa", part], path), "__absent__")
+	v != "__absent__"
+	not is_boolean(v)
+	msg := sprintf("HIPAA Security Rule Input Contract: evidence invalid — input.hipaa.%v.%v is not a boolean (got %v)", [part, concat(".", path), type_name(v)])
+}
+
+violations contains msg if {
+	some _, path in _annual_paths
+	v := object.get(input, array.concat(["hipaa", "administrative"], path), "__absent__")
+	v != "__absent__"
+	not is_number(v)
+	msg := sprintf("HIPAA Security Rule Input Contract: evidence invalid — input.hipaa.administrative.%v is not a number (got %v)", [concat(".", path), type_name(v)])
+}
+
 _fact_pass contains "164.310(c)" if {
 	_phy.workstation_security.physical_safeguards.implemented == true
 	_phy.workstation_security.ephi_access.restricted == true
@@ -701,6 +734,34 @@ violations contains msg if {
 	some id, r in applicable
 	not _satisfied(id)
 	msg := sprintf("HIPAA %v %v (%v): %v", [id, r.title, r.status, _unmet(id)])
+}
+
+# An attestation is the boolean true or false. Any other value (the string "true", null, 1) is a collection
+# error. A row that needs the attestation already fails as "not attested"; this finding covers the rows that
+# would otherwise pass over it (decided by facts, satisfied by a documented alternative, or not applicable),
+# so mistyped evidence is never silently accepted (bad input never passes, issue #301).
+_row_fails(id) if {
+	applicable[id]
+	not _satisfied(id)
+}
+
+violations contains msg if {
+	some id, v in _attestations
+	not is_boolean(v)
+	not _row_fails(id)
+	msg := sprintf("HIPAA Security Rule Input Contract: evidence invalid — attestation input.hipaa.specifications[\"%v\"] is not a boolean (got %v)", [id, type_name(v)])
+}
+
+# A row decided by facts does not read its attestation, so the attestation may be left out. One that is sent
+# as false states the requirement is not met while the facts say it is: the two cannot both be right, and a
+# report that passed over the statement would hide it (audit 2026-11-24, round 3).
+violations contains msg if {
+	some id, v in _attestations
+	v == false
+	applicable[id]
+	fact_basis[id]
+	_fact_pass[id]
+	msg := sprintf("HIPAA Security Rule Input Contract: evidence contradictory — attestation input.hipaa.specifications[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts", [id, id])
 }
 
 violations contains msg if {

@@ -52,3 +52,25 @@ test_authorized_keys_loose_ssh_dir_flagged if {
 	i := json.patch(good, [{"op": "replace", "path": "/authorized_keys/ssh_dirs/0/mode", "value": "0755"}])
 	not data.cis_rhel9.authorized_keys.compliant with input as i
 }
+
+# Audit 2026-11-24, round 2: `not f(row.field)` is undefined when the field is missing, so a file or directory
+# record without a mode, and a key without a fingerprint, raised no finding at all.
+test_authorized_keys_file_without_mode_flagged if {
+	i := json.patch(good, [{"op": "remove", "path": "/authorized_keys/files/0/mode"}])
+	not data.cis_rhel9.authorized_keys.compliant with input as i
+	some v in data.cis_rhel9.authorized_keys.violations with input as i
+	contains(v, "unparsable mode")
+}
+
+test_authorized_keys_ssh_dir_without_mode_flagged if {
+	i := json.patch(good, [{"op": "remove", "path": "/authorized_keys/ssh_dirs/0/mode"}])
+	not data.cis_rhel9.authorized_keys.compliant with input as i
+}
+
+test_authorized_keys_key_without_fingerprint_is_not_approved if {
+	base := json.patch(good, [{"op": "add", "path": "/authorized_keys/approved_fingerprints", "value": ["SHA256:x"]}])
+	data.cis_rhel9.authorized_keys.compliant with input as base
+	i := json.patch(base, [{"op": "remove", "path": "/authorized_keys/files/0/keys/0/fingerprint"}])
+	some v in data.cis_rhel9.authorized_keys.violations with input as i
+	contains(v, "not in the approved fingerprint list")
+}

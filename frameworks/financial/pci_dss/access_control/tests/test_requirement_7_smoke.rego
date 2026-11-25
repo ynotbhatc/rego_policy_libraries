@@ -1,5 +1,4 @@
-package pci_dss.access_control.requirement_7_test
-
+package pci_dss_tests.access_control.requirement_7_test
 import rego.v1
 
 # Generated smoke test for frameworks/financial/pci_dss/access_control/requirement_7.rego (scripts/gen_tests.py). Each rule states one thing the module was proven

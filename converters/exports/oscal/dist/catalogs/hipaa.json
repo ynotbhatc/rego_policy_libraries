@@ -99,6 +99,16 @@
         "id": "hipaa-HIPAA-164.312-a-2-i_obj.1",
         "name": "assessment-objective",
         "prose": "User account found with no username — unique identification required."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-i_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.users not collected (or empty). Unique user identification cannot be verified without the account list."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-i_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.users[%d].shared_account not collected for account '%v'."
        }
       ],
       "class": "compliance"
@@ -439,8 +449,209 @@
       "class": "compliance"
      },
      {
+      "id": "hipaa-access_controls",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "access_controls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "access_controls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7c863315-359d-551a-b4b1-abb443dc0972",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-access_controls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-encryption",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "encryption"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "encryption"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7c863315-359d-551a-b4b1-abb443dc0972",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-encryption_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-session",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "session"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "session"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7c863315-359d-551a-b4b1-abb443dc0972",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-session_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-phi_systems",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "phi_systems"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "phi_systems"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7c863315-359d-551a-b4b1-abb443dc0972",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c6629ff9-af5c-58ec-b5a6-20c2fd9bc7e9",
+        "rel": "implementation"
+       },
+       {
+        "href": "#3253e193-0343-56c5-aa06-29dd732d008a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#4eb70cb6-46e0-5a25-96d4-0bfa3b1b7ac2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-phi_systems_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body."
+       },
+       {
+        "id": "hipaa-phi_systems_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body."
+       },
+       {
+        "id": "hipaa-phi_systems_obj.2",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body."
+       },
+       {
+        "id": "hipaa-phi_systems_obj.3",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-users",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "users"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "users"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7c863315-359d-551a-b4b1-abb443dc0972",
+        "rel": "implementation"
+       },
+       {
+        "href": "#17e05414-64bb-5c4e-a055-fa7753c52a95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-users_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body."
+       },
+       {
+        "id": "hipaa-users_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "hipaa-hipaa.access_control-6",
-      "title": "automatic logoff",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -466,14 +677,14 @@
        {
         "id": "hipaa-hipaa.access_control-6_stmt",
         "name": "statement",
-        "prose": "automatic logoff"
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_access_control.rego (package hipaa.access_control); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.access_control-7",
-      "title": "emergency access",
+      "title": "automatic logoff",
       "props": [
        {
         "name": "label",
@@ -499,14 +710,14 @@
        {
         "id": "hipaa-hipaa.access_control-7_stmt",
         "name": "statement",
-        "prose": "emergency access"
+        "prose": "automatic logoff"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.access_control-8",
-      "title": "encryption decryption",
+      "title": "emergency access",
       "props": [
        {
         "name": "label",
@@ -532,14 +743,14 @@
        {
         "id": "hipaa-hipaa.access_control-8_stmt",
         "name": "statement",
-        "prose": "encryption decryption"
+        "prose": "emergency access"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.access_control-9",
-      "title": "unique user id",
+      "title": "encryption decryption",
       "props": [
        {
         "name": "label",
@@ -564,6 +775,39 @@
       "parts": [
        {
         "id": "hipaa-hipaa.access_control-9_stmt",
+        "name": "statement",
+        "prose": "encryption decryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.access_control-10",
+      "title": "unique user id",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.access_control#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.access_control#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7c863315-359d-551a-b4b1-abb443dc0972",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.access_control-10_stmt",
         "name": "statement",
         "prose": "unique user id"
        }
@@ -702,6 +946,105 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "hipaa-audit_logging",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "audit_logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "audit_logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.audit_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6629ff9-af5c-58ec-b5a6-20c2fd9bc7e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-audit_logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-monitoring",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "monitoring"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "monitoring"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.audit_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6629ff9-af5c-58ec-b5a6-20c2fd9bc7e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-monitoring_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.audit_controls-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.audit_controls#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.audit_controls#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.audit_controls"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6629ff9-af5c-58ec-b5a6-20c2fd9bc7e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.audit_controls-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_audit_controls.rego (package hipaa.audit_controls); see the rule body."
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -825,6 +1168,171 @@
       "parts": [
        {
         "id": "hipaa-hipaa.authentication-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-authentication",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "authentication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "authentication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17e05414-64bb-5c4e-a055-fa7753c52a95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-authentication_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-mfa",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "mfa"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "mfa"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17e05414-64bb-5c4e-a055-fa7753c52a95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-mfa_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-password_policy",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "password_policy"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "password_policy"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17e05414-64bb-5c4e-a055-fa7753c52a95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-password_policy_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-privileged_accounts",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "privileged_accounts"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "privileged_accounts"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17e05414-64bb-5c4e-a055-fa7753c52a95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-privileged_accounts_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.authentication-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.authentication#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.authentication#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17e05414-64bb-5c4e-a055-fa7753c52a95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.authentication-3_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_authentication.rego (package hipaa.authentication); see the rule body."
        }
@@ -1494,7 +2002,7 @@
      },
      {
       "id": "hipaa-hipaa.hitech-1",
-      "title": "HIPAA Breach Notification Rule Input Contract: %v (input.hipaa.scope.%v undeclared)",
+      "title": "HIPAA Breach Notification Rule Input Contract: evidence invalid — input.hitech.%v is not a boolean (got %v)",
       "props": [
        {
         "name": "label",
@@ -1520,14 +2028,14 @@
        {
         "id": "hipaa-hipaa.hitech-1_stmt",
         "name": "statement",
-        "prose": "HIPAA Breach Notification Rule Input Contract: %v (input.hipaa.scope.%v undeclared)"
+        "prose": "HIPAA Breach Notification Rule Input Contract: evidence invalid — input.hitech.%v is not a boolean (got %v)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.hitech-2",
-      "title": "HIPAA Breach Notification Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); app",
+      "title": "HIPAA Breach Notification Rule Input Contract: %v (input.hipaa.scope.%v undeclared)",
       "props": [
        {
         "name": "label",
@@ -1553,14 +2061,14 @@
        {
         "id": "hipaa-hipaa.hitech-2_stmt",
         "name": "statement",
-        "prose": "HIPAA Breach Notification Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability under 45 CFR 160.102 cannot be established"
+        "prose": "HIPAA Breach Notification Rule Input Contract: %v (input.hipaa.scope.%v undeclared)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.hitech-3",
-      "title": "HIPAA Breach Notification Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_d' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "title": "HIPAA Breach Notification Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); app",
       "props": [
        {
         "name": "label",
@@ -1586,14 +2094,14 @@
        {
         "id": "hipaa-hipaa.hitech-3_stmt",
         "name": "statement",
-        "prose": "HIPAA Breach Notification Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_d' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+        "prose": "HIPAA Breach Notification Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability under 45 CFR 160.102 cannot be established"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.hitech-4",
-      "title": "HIPAA %v %v (%v): %v",
+      "title": "HIPAA Breach Notification Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_d' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
       "props": [
        {
         "name": "label",
@@ -1619,14 +2127,14 @@
        {
         "id": "hipaa-hipaa.hitech-4_stmt",
         "name": "statement",
-        "prose": "HIPAA %v %v (%v): %v"
+        "prose": "HIPAA Breach Notification Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_d' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.hitech-5",
-      "title": "HIPAA Breach Notification Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.404(b)",
+      "title": "HIPAA %v %v (%v): %v",
       "props": [
        {
         "name": "label",
@@ -1651,6 +2159,105 @@
       "parts": [
        {
         "id": "hipaa-hipaa.hitech-5_stmt",
+        "name": "statement",
+        "prose": "HIPAA %v %v (%v): %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-6",
+      "title": "HIPAA Breach Notification Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_d[\"%v\"] is not a boolean (got %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#707f03cc-9b93-5276-856d-77175789e6ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-6_stmt",
+        "name": "statement",
+        "prose": "HIPAA Breach Notification Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_d[\"%v\"] is not a boolean (got %v)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-7",
+      "title": "HIPAA Breach Notification Rule Input Contract: evidence contradictory — attestation input.hipaa.subpart_d[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#707f03cc-9b93-5276-856d-77175789e6ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-7_stmt",
+        "name": "statement",
+        "prose": "HIPAA Breach Notification Rule Input Contract: evidence contradictory — attestation input.hipaa.subpart_d[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.hitech-8",
+      "title": "HIPAA Breach Notification Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.404(b)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.hitech#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.hitech#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.hitech"
+       }
+      ],
+      "links": [
+       {
+        "href": "#707f03cc-9b93-5276-856d-77175789e6ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.hitech-8_stmt",
         "name": "statement",
         "prose": "HIPAA Breach Notification Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.404(b)"
        }
@@ -1842,6 +2449,105 @@
         "id": "hipaa-HIPAA-164.312-c_stmt",
         "name": "statement",
         "prose": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Integrity. Declare the ePHI systems to be evaluated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-backup",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "backup"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "backup"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3253e193-0343-56c5-aa06-29dd732d008a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-backup_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-integrity",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "integrity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "integrity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3253e193-0343-56c5-aa06-29dd732d008a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-integrity_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.integrity-3",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.integrity#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.integrity#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3253e193-0343-56c5-aa06-29dd732d008a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.integrity-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_integrity.rego (package hipaa.integrity); see the rule body."
        }
       ],
       "class": "compliance"
@@ -2228,6 +2934,11 @@
        },
        {
         "id": "hipaa-HIPAA-Part-160-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — attestation input.hipaa.part_160[\"%v\"] is not a boolean (got %v)"
+       },
+       {
+        "id": "hipaa-HIPAA-Part-160-Input-Contract_obj.3",
         "name": "assessment-objective",
         "prose": "attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 160.310(b)"
        }
@@ -3780,6 +4491,11 @@
        },
        {
         "id": "hipaa-HIPAA-Part-162-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — attestation input.hipaa.part_162[\"%v\"] is not a boolean (got %v)"
+       },
+       {
+        "id": "hipaa-HIPAA-Part-162-Input-Contract_obj.3",
         "name": "assessment-objective",
         "prose": "attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 162.923(a)"
        }
@@ -7508,7 +8224,7 @@
      },
      {
       "id": "hipaa-hipaa.privacy_rule-1",
-      "title": "HIPAA Privacy Rule Input Contract: %v (input.hipaa.scope.%v undeclared)",
+      "title": "HIPAA Privacy Rule Input Contract: evidence invalid — input.hipaa.privacy.workforce.training.frequency.annual is not a boolean (got %v)",
       "props": [
        {
         "name": "label",
@@ -7534,14 +8250,14 @@
        {
         "id": "hipaa-hipaa.privacy_rule-1_stmt",
         "name": "statement",
-        "prose": "HIPAA Privacy Rule Input Contract: %v (input.hipaa.scope.%v undeclared)"
+        "prose": "HIPAA Privacy Rule Input Contract: evidence invalid — input.hipaa.privacy.workforce.training.frequency.annual is not a boolean (got %v)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.privacy_rule-2",
-      "title": "HIPAA Privacy Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability u",
+      "title": "HIPAA Privacy Rule Input Contract: %v (input.hipaa.scope.%v undeclared)",
       "props": [
        {
         "name": "label",
@@ -7567,14 +8283,14 @@
        {
         "id": "hipaa-hipaa.privacy_rule-2_stmt",
         "name": "statement",
-        "prose": "HIPAA Privacy Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability under 45 CFR 160.102 cannot be established"
+        "prose": "HIPAA Privacy Rule Input Contract: %v (input.hipaa.scope.%v undeclared)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.privacy_rule-3",
-      "title": "HIPAA Privacy Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_e' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "title": "HIPAA Privacy Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability u",
       "props": [
        {
         "name": "label",
@@ -7600,14 +8316,14 @@
        {
         "id": "hipaa-hipaa.privacy_rule-3_stmt",
         "name": "statement",
-        "prose": "HIPAA Privacy Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_e' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+        "prose": "HIPAA Privacy Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability under 45 CFR 160.102 cannot be established"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.privacy_rule-4",
-      "title": "HIPAA %v %v (%v): %v",
+      "title": "HIPAA Privacy Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_e' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
       "props": [
        {
         "name": "label",
@@ -7633,14 +8349,14 @@
        {
         "id": "hipaa-hipaa.privacy_rule-4_stmt",
         "name": "statement",
-        "prose": "HIPAA %v %v (%v): %v"
+        "prose": "HIPAA Privacy Rule: FAIL-CLOSED - attestations 'input.hipaa.subpart_e' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.privacy_rule-5",
-      "title": "HIPAA Privacy Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.502(b)",
+      "title": "HIPAA %v %v (%v): %v",
       "props": [
        {
         "name": "label",
@@ -7665,6 +8381,105 @@
       "parts": [
        {
         "id": "hipaa-hipaa.privacy_rule-5_stmt",
+        "name": "statement",
+        "prose": "HIPAA %v %v (%v): %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-6",
+      "title": "HIPAA Privacy Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_e[\"%v\"] is not a boolean (got %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a6f2afb-a789-5315-aaee-f09f2a3376a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-6_stmt",
+        "name": "statement",
+        "prose": "HIPAA Privacy Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_e[\"%v\"] is not a boolean (got %v)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-7",
+      "title": "HIPAA Privacy Rule Input Contract: evidence contradictory — attestation input.hipaa.subpart_e[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a6f2afb-a789-5315-aaee-f09f2a3376a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-7_stmt",
+        "name": "statement",
+        "prose": "HIPAA Privacy Rule Input Contract: evidence contradictory — attestation input.hipaa.subpart_e[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.privacy_rule-8",
+      "title": "HIPAA Privacy Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.502(b)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.privacy_rule#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.privacy_rule#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.privacy_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a6f2afb-a789-5315-aaee-f09f2a3376a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.privacy_rule-8_stmt",
         "name": "statement",
         "prose": "HIPAA Privacy Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.502(b)"
        }
@@ -9941,7 +10756,7 @@
      },
      {
       "id": "hipaa-hipaa.security_rule-1",
-      "title": "HIPAA Security Rule Input Contract: %v (input.hipaa.scope.%v undeclared)",
+      "title": "HIPAA Security Rule Input Contract: evidence invalid — input.hipaa.%v.%v is not a boolean (got %v)",
       "props": [
        {
         "name": "label",
@@ -9967,14 +10782,14 @@
        {
         "id": "hipaa-hipaa.security_rule-1_stmt",
         "name": "statement",
-        "prose": "HIPAA Security Rule Input Contract: %v (input.hipaa.scope.%v undeclared)"
+        "prose": "HIPAA Security Rule Input Contract: evidence invalid — input.hipaa.%v.%v is not a boolean (got %v)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-2",
-      "title": "HIPAA Security Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability ",
+      "title": "HIPAA Security Rule Input Contract: evidence invalid — input.hipaa.administrative.%v is not a number (got %v)",
       "props": [
        {
         "name": "label",
@@ -10000,14 +10815,14 @@
        {
         "id": "hipaa-hipaa.security_rule-2_stmt",
         "name": "statement",
-        "prose": "HIPAA Security Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability under 45 CFR 160.102 cannot be established"
+        "prose": "HIPAA Security Rule Input Contract: evidence invalid — input.hipaa.administrative.%v is not a number (got %v)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-3",
-      "title": "HIPAA Security Rule: FAIL-CLOSED - attestations 'input.hipaa.specifications' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "title": "HIPAA Security Rule Input Contract: %v (input.hipaa.scope.%v undeclared)",
       "props": [
        {
         "name": "label",
@@ -10033,14 +10848,14 @@
        {
         "id": "hipaa-hipaa.security_rule-3_stmt",
         "name": "statement",
-        "prose": "HIPAA Security Rule: FAIL-CLOSED - attestations 'input.hipaa.specifications' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+        "prose": "HIPAA Security Rule Input Contract: %v (input.hipaa.scope.%v undeclared)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-4",
-      "title": "HIPAA Security Rule Input Contract: addressable decision for unknown id %v - ids are the 45 CFR citations this module carries",
+      "title": "HIPAA Security Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability ",
       "props": [
        {
         "name": "label",
@@ -10066,14 +10881,14 @@
        {
         "id": "hipaa-hipaa.security_rule-4_stmt",
         "name": "statement",
-        "prose": "HIPAA Security Rule Input Contract: addressable decision for unknown id %v - ids are the 45 CFR citations this module carries"
+        "prose": "HIPAA Security Rule Input Contract: FAIL-CLOSED - input.hipaa.scope declares no regulated role (health_plan, health_care_provider, health_care_clearinghouse or business_associate true); applicability under 45 CFR 160.102 cannot be established"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-5",
-      "title": "HIPAA Security Rule Input Contract: addressable decision supplied for %v, which is %v, not addressable; 45 CFR 164.306(d)(2) requires it to be implemented",
+      "title": "HIPAA Security Rule: FAIL-CLOSED - attestations 'input.hipaa.specifications' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
       "props": [
        {
         "name": "label",
@@ -10099,14 +10914,14 @@
        {
         "id": "hipaa-hipaa.security_rule-5_stmt",
         "name": "statement",
-        "prose": "HIPAA Security Rule Input Contract: addressable decision supplied for %v, which is %v, not addressable; 45 CFR 164.306(d)(2) requires it to be implemented"
+        "prose": "HIPAA Security Rule: FAIL-CLOSED - attestations 'input.hipaa.specifications' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-6",
-      "title": "HIPAA Security Rule Input Contract: input.hipaa.addressable_decisions is not an object",
+      "title": "HIPAA Security Rule Input Contract: addressable decision for unknown id %v - ids are the 45 CFR citations this module carries",
       "props": [
        {
         "name": "label",
@@ -10132,14 +10947,14 @@
        {
         "id": "hipaa-hipaa.security_rule-6_stmt",
         "name": "statement",
-        "prose": "HIPAA Security Rule Input Contract: input.hipaa.addressable_decisions is not an object"
+        "prose": "HIPAA Security Rule Input Contract: addressable decision for unknown id %v - ids are the 45 CFR citations this module carries"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-7",
-      "title": "HIPAA %v %v (%v): %v",
+      "title": "HIPAA Security Rule Input Contract: addressable decision supplied for %v, which is %v, not addressable; 45 CFR 164.306(d)(2) requires it to be implemented",
       "props": [
        {
         "name": "label",
@@ -10165,14 +10980,14 @@
        {
         "id": "hipaa-hipaa.security_rule-7_stmt",
         "name": "statement",
-        "prose": "HIPAA %v %v (%v): %v"
+        "prose": "HIPAA Security Rule Input Contract: addressable decision supplied for %v, which is %v, not addressable; 45 CFR 164.306(d)(2) requires it to be implemented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "hipaa-hipaa.security_rule-8",
-      "title": "HIPAA Security Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.308(a)(1)(ii)(A)",
+      "title": "HIPAA Security Rule Input Contract: input.hipaa.addressable_decisions is not an object",
       "props": [
        {
         "name": "label",
@@ -10197,6 +11012,138 @@
       "parts": [
        {
         "id": "hipaa-hipaa.security_rule-8_stmt",
+        "name": "statement",
+        "prose": "HIPAA Security Rule Input Contract: input.hipaa.addressable_decisions is not an object"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-9",
+      "title": "HIPAA %v %v (%v): %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a0c35f5c-5236-5191-bac8-8dc7b17e65e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-9_stmt",
+        "name": "statement",
+        "prose": "HIPAA %v %v (%v): %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-10",
+      "title": "HIPAA Security Rule Input Contract: evidence invalid — attestation input.hipaa.specifications[\"%v\"] is not a boolean (got %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a0c35f5c-5236-5191-bac8-8dc7b17e65e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-10_stmt",
+        "name": "statement",
+        "prose": "HIPAA Security Rule Input Contract: evidence invalid — attestation input.hipaa.specifications[\"%v\"] is not a boolean (got %v)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-11",
+      "title": "HIPAA Security Rule Input Contract: evidence contradictory — attestation input.hipaa.specifications[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a0c35f5c-5236-5191-bac8-8dc7b17e65e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-11_stmt",
+        "name": "statement",
+        "prose": "HIPAA Security Rule Input Contract: evidence contradictory — attestation input.hipaa.specifications[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.security_rule-12",
+      "title": "HIPAA Security Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.308(a)(1)(ii)(A)",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.security_rule#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.security_rule#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.security_rule"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a0c35f5c-5236-5191-bac8-8dc7b17e65e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.security_rule-12_stmt",
         "name": "statement",
         "prose": "HIPAA Security Rule Input Contract: attestation for unknown id %v - ids are the 45 CFR citations this module carries, for example 164.308(a)(1)(ii)(A)"
        }
@@ -10266,6 +11213,11 @@
         "id": "hipaa-HIPAA-164.312-e-2-ii_obj.2",
         "name": "assessment-objective",
         "prose": "ePHI is sent via email without encryption enforcement."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — email.phi_sent_via_email not collected. Whether ePHI is sent by email must be stated (true or false) before email encryption can be judged."
        }
       ],
       "class": "compliance"
@@ -10431,6 +11383,171 @@
         "id": "hipaa-HIPAA-164.312-e_stmt",
         "name": "statement",
         "prose": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Transmission Security. Declare the ePHI systems to be evaluated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-email",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "email"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "email"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4eb70cb6-46e0-5a25-96d4-0bfa3b1b7ac2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-email_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-network",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "network"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "network"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4eb70cb6-46e0-5a25-96d4-0bfa3b1b7ac2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-network_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-tls",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "tls"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tls"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4eb70cb6-46e0-5a25-96d4-0bfa3b1b7ac2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-tls_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-vpn",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "vpn"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "vpn"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4eb70cb6-46e0-5a25-96d4-0bfa3b1b7ac2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-vpn_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hipaa-hipaa.transmission_security-4",
+      "title": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "hipaa.transmission_security#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "hipaa.transmission_security#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.transmission_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4eb70cb6-46e0-5a25-96d4-0bfa3b1b7ac2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-hipaa.transmission_security-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/privacy/hipaa/hipaa_transmission_security.rego (package hipaa.transmission_security); see the rule body."
        }
       ],
       "class": "compliance"

@@ -13,6 +13,9 @@
 #     collected" (never a pass).
 #   - Manual: each control passes only on an explicit attestation
 #     (input.cis_eks.attest.<key> == true).
+#   - A boolean fact sent as another type (the strings "true" and "false" included) is
+#     "CIS EKS <id>: evidence invalid — <path> is not a boolean (got <type>)" for each
+#     control that reads it (see boolean_facts), never a pass.
 #   Each control emits at most one message, so empty input yields exactly 47.
 #
 # Input contract — input.cis_eks.*
@@ -56,14 +59,14 @@
 #   source: cis
 #   domains: [kubernetes, cloud, aws]
 #   coverage:
-#     checks: 69
+#     checks: 70
 #     cited: 63
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_eks.main
 
 import rego.v1
@@ -249,11 +252,111 @@ violations contains msg if {
 	msg := sprintf("CIS EKS %s: evidence missing — %s not collected", [id, concat(", ", m)])
 }
 
-# A control's logic runs only when all its evidence is present, so the
-# evidence-missing message and the finding are mutually exclusive.
+# Booleans the Automated controls read: [inventory, property, a control that reads it]. Kubernetes and AWS
+# return them as JSON booleans; a string or a number in their place (the strings "true" and "false" included)
+# is a collection error, so the control reports invalid evidence and its logic does not run on the value.
+boolean_facts := [
+	["cluster", "enabled", "2.1.1"],
+	["nodes", "exists", "3.1.1"],
+	["nodes", "exists", "3.1.2"],
+	["nodes", "exists", "3.1.3"],
+	["nodes", "exists", "3.1.4"],
+	["workloads", "automountServiceAccountToken", "4.1.6"],
+	["workloads", "privileged", "4.2.1"],
+	["workloads", "hostPID", "4.2.2"],
+	["workloads", "hostIPC", "4.2.3"],
+	["workloads", "hostNetwork", "4.2.4"],
+	["workloads", "allowPrivilegeEscalation", "4.2.5"],
+	["service_accounts", "automountServiceAccountToken", "4.1.6"],
+	["service_accounts", "automountServiceAccountToken", "5.2.1"],
+	["ecr", "scanOnPush", "5.1.1"],
+]
+
+_fact_path(path) := concat("", [seg |
+	some x in path
+	seg := _fact_segment(x)
+])
+
+_fact_segment(x) := sprintf("[%d]", [x]) if is_number(x)
+
+_fact_segment(x) := sprintf(".%s", [x]) if is_string(x)
+
+_invalid_facts contains [id, msg] if {
+	some [inventory, property, id] in boolean_facts
+	walk(eks[inventory], [path, value])
+	count(path) > 0
+	path[count(path) - 1] == property
+	not is_null(value)
+	not is_boolean(value)
+	msg := sprintf("%s%s is not a boolean (got %s)", [inventory, _fact_path(path), type_name(value)])
+}
+
+# Records the controls identify by name and read a pod spec from. A record without them cannot be scoped,
+# matched or named in a finding (in Rego `not f(w.metadata.name) in S` is undefined, not true, when the
+# field is absent, so the record would silently leave the check). Every control that reads the inventory
+# reports such a record as invalid evidence instead.
+_meta(obj) := m if {
+	m := obj.metadata
+	is_object(m)
+} else := {}
+
+_named(obj) if {
+	n := object.get(_meta(obj), "name", null)
+	is_string(n)
+	trim_space(n) != ""
+}
+
+_record_problems contains ["workloads", sprintf("workloads[%d].metadata.name is missing or not a string", [i])] if {
+	some i, w in workloads
+	not _named(w)
+}
+
+_record_problems contains ["workloads", sprintf("workloads[%d] has no pod spec (spec, spec.template.spec or spec.jobTemplate.spec.template.spec)", [i])] if {
+	some i, w in workloads
+	not _has_pod_spec(w)
+}
+
+_record_problems contains ["namespaces", sprintf("namespaces[%d].metadata.name is missing or not a string", [i])] if {
+	some i, ns in eks.namespaces
+	not _named(ns)
+}
+
+_record_problems contains ["service_accounts", sprintf("service_accounts[%d].metadata.name is missing or not a string", [i])] if {
+	some i, sa in eks.service_accounts
+	not _named(sa)
+}
+
+_record_problems contains ["role_bindings", sprintf("role_bindings[%d].subjects[%d].%s is missing or not a string", [i, j, key])] if {
+	some i, b in eks.role_bindings
+	some j, subject in object.get(b, "subjects", [])
+	some key in ["kind", "name"]
+	not is_string(object.get(subject, key, null))
+}
+
+_has_pod_spec(w) if is_object(pod_spec(w))
+
+_invalid_facts contains [id, msg] if {
+	some [inventory, msg] in _record_problems
+	some id, fields in requires
+	inventory in fields
+}
+
+invalid_evidence(id) := sort([msg | some [i, msg] in _invalid_facts; i == id])
+
+violations contains msg if {
+	some id, _ in requires
+	count(missing_evidence(id)) == 0
+	bad := invalid_evidence(id)
+	count(bad) > 0
+	msg := sprintf("CIS EKS %s: evidence invalid — %s", [id, concat(", ", bad)])
+}
+
+# A control's logic runs only when all its evidence is present and well typed, so the evidence-missing
+# message, the evidence-invalid message and the finding are mutually exclusive.
 evaluated(id) if {
 	requires[id]
 	count(missing_evidence(id)) == 0
+	count(invalid_evidence(id)) == 0
 }
 
 # ── Manual controls: attestation ─────────────────────────────────────────────
@@ -405,11 +508,11 @@ violations contains msg if {
 
 exempt_namespaces := {"kube-system", "kube-public", "kube-node-lease"} | {ns | some ns in object.get(eks, "exempt_namespaces", [])}
 
-ns_of(obj) := object.get(obj.metadata, "namespace", "default")
+ns_of(obj) := object.get(_meta(obj), "namespace", "default")
 
 kind_of(w) := object.get(w, "kind", "")
 
-wid(w) := sprintf("%s/%s/%s", [ns_of(w), kind_of(w), object.get(w.metadata, "name", "<unnamed>")])
+wid(w) := sprintf("%s/%s/%s", [ns_of(w), kind_of(w), object.get(_meta(w), "name", "<unnamed>")])
 
 pod_spec(w) := s if {
 	kind_of(w) == "CronJob"
@@ -436,7 +539,7 @@ default_sa_users := [wid(w) | some w in scoped_workloads; sa_name(w) == "default
 
 # ── 4.1 RBAC and service accounts ────────────────────────────────────────────
 
-default_sa_bindings contains sprintf("%s/%s", [kind_of(b), object.get(b.metadata, "name", "<unnamed>")]) if {
+default_sa_bindings contains sprintf("%s/%s", [kind_of(b), object.get(_meta(b), "name", "<unnamed>")]) if {
 	some b in eks.role_bindings
 	some s in object.get(b, "subjects", [])
 	s.kind == "ServiceAccount"
@@ -462,7 +565,7 @@ sa_automount_false(ns, name) if {
 token_mounted(w) if pod_spec(w).automountServiceAccountToken == true
 
 token_mounted(w) if {
-	not "automountServiceAccountToken" in object.keys(pod_spec(w))
+	object.get(pod_spec(w), "automountServiceAccountToken", null) == null
 	not sa_automount_false(ns_of(w), sa_name(w))
 }
 
@@ -504,11 +607,13 @@ violations contains msg if {
 
 # ── 4.2 Pod Security Standards ───────────────────────────────────────────────
 
-psa_enforce(ns) := object.get(object.get(ns.metadata, "labels", {}), "pod-security.kubernetes.io/enforce", "")
+psa_enforce(ns) := object.get(object.get(_meta(ns), "labels", {}), "pod-security.kubernetes.io/enforce", "")
 
-scoped_namespaces := [ns | some ns in eks.namespaces; not ns.metadata.name in exempt_namespaces]
+ns_name(ns) := object.get(_meta(ns), "name", "<unnamed>")
 
-weak_psa(levels) := [sprintf("namespace %s", [ns.metadata.name]) | some ns in scoped_namespaces; not psa_enforce(ns) in levels]
+scoped_namespaces := [ns | some ns in eks.namespaces; not ns_name(ns) in exempt_namespaces]
+
+weak_psa(levels) := [sprintf("namespace %v", [ns_name(ns)]) | some ns in scoped_namespaces; not psa_enforce(ns) in levels]
 
 baseline_levels := {"baseline", "restricted"}
 

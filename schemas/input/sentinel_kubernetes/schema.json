@@ -10,43 +10,101 @@
   "enforcement/kubernetes/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.sentinel.kubernetes_test.bad_container",
+ "x-fixture": "data.sentinel.kubernetes_malformed_test.good_deployment",
  "type": "object",
  "properties": {
   "existing_policies": {
-   "description": "Read in sentinel_kubernetes.rego."
+   "description": "Read in sentinel_kubernetes.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "default-deny"
+      ]
+     },
+     "namespace": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "shop"
+      ]
+     }
+    }
+   }
   },
-  "image": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+  "kind": {
+   "description": "Read in sentinel_kubernetes.rego.",
    "type": "string",
    "x-type-source": "fixture",
    "examples": [
-    "quay.io/x/y:1"
+    "Deployment"
    ]
-  },
-  "kind": {
-   "description": "Read in sentinel_kubernetes.rego."
   },
   "manifest": {
    "description": "Read in sentinel_kubernetes.rego.",
    "type": "object",
    "properties": {
     "metadata": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in sentinel_kubernetes.rego.",
      "type": "object",
      "properties": {
       "labels": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "app": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "web"
+         ]
+        },
+        "team": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "shop"
+         ]
+        },
+        "version": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "1.4.2"
+         ]
+        }
+       },
        "additionalProperties": {
         "description": "Read in sentinel_kubernetes.rego."
        },
        "x-variable-key": "<label>"
       },
       "name": {
-       "description": "Read in sentinel_kubernetes.rego."
+       "description": "Read in sentinel_kubernetes.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "web"
+       ]
       },
       "namespace": {
-       "description": "Read in sentinel_kubernetes.rego."
+       "description": "Read in sentinel_kubernetes.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "shop"
+       ]
       }
      }
     },
@@ -80,7 +138,205 @@
        "type": "object",
        "properties": {
         "spec": {
-         "description": "Read in sentinel_kubernetes.rego."
+         "description": "Read in sentinel_kubernetes.rego.",
+         "type": "object",
+         "properties": {
+          "automountServiceAccountToken": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            false
+           ]
+          },
+          "containers": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "array",
+           "x-type-source": "fixture",
+           "items": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "object",
+            "properties": {
+             "image": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "registry.example.com/shop/web:1.4.2"
+              ]
+             },
+             "livenessProbe": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "httpGet": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "object",
+                "properties": {
+                 "path": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "string",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   "/healthz"
+                  ]
+                 },
+                 "port": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "number",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   8080
+                  ]
+                 }
+                }
+               }
+              }
+             },
+             "name": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "web"
+              ]
+             },
+             "readinessProbe": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "httpGet": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "object",
+                "properties": {
+                 "path": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "string",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   "/ready"
+                  ]
+                 },
+                 "port": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "number",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   8080
+                  ]
+                 }
+                }
+               }
+              }
+             },
+             "resources": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "limits": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "object",
+                "properties": {
+                 "cpu": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "string",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   "500m"
+                  ]
+                 },
+                 "memory": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "string",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   "256Mi"
+                  ]
+                 }
+                }
+               },
+               "requests": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "object",
+                "properties": {
+                 "cpu": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "string",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   "100m"
+                  ]
+                 },
+                 "memory": {
+                  "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                  "type": "string",
+                  "x-type-source": "fixture",
+                  "examples": [
+                   "128Mi"
+                  ]
+                 }
+                }
+               }
+              }
+             },
+             "securityContext": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "object",
+              "properties": {
+               "allowPrivilegeEscalation": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "boolean",
+                "x-type-source": "fixture",
+                "examples": [
+                 false
+                ]
+               },
+               "privileged": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "boolean",
+                "x-type-source": "fixture",
+                "examples": [
+                 false
+                ]
+               },
+               "readOnlyRootFilesystem": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "boolean",
+                "x-type-source": "fixture",
+                "examples": [
+                 true
+                ]
+               },
+               "runAsNonRoot": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "boolean",
+                "x-type-source": "fixture",
+                "examples": [
+                 true
+                ]
+               },
+               "runAsUser": {
+                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                "type": "number",
+                "x-type-source": "fixture",
+                "examples": [
+                 10001
+                ]
+               }
+              }
+             }
+            }
+           }
+          },
+          "hostNetwork": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "boolean",
+           "x-type-source": "fixture",
+           "examples": [
+            false
+           ]
+          }
+         }
         }
        }
       }
@@ -88,26 +344,12 @@
     }
    }
   },
-  "name": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "string",
-   "x-type-source": "fixture",
-   "examples": [
-    "c"
-   ]
-  },
   "policy": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "description": "Read in sentinel_kubernetes.rego.",
    "type": "object",
    "properties": {
-    "approved_registries": {
-     "description": "Read in kubernetes_admission.rego."
-    },
-    "production_namespaces": {
-     "description": "Read in kubernetes_admission.rego."
-    },
-    "require_image_digest": {
-     "description": "Read in kubernetes_admission.rego."
+    "additional_kinds": {
+     "description": "Read in sentinel_kubernetes.rego."
     }
    }
   },
@@ -124,9 +366,6 @@
       }
      }
     },
-    "namespace": {
-     "description": "Read in kubernetes_admission.rego."
-    },
     "object": {
      "description": "Read in kubernetes_admission.rego."
     },
@@ -134,38 +373,20 @@
      "description": "Read in kubernetes_admission.rego."
     }
    }
-  },
-  "securityContext": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "object",
-   "properties": {
-    "privileged": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "boolean",
-     "x-type-source": "fixture",
-     "examples": [
-      true
-     ]
-    },
-    "runAsUser": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "number",
-     "x-type-source": "fixture",
-     "examples": [
-      0
-     ]
-    }
-   }
   }
  },
  "additionalProperties": true,
  "x-known-paths": [
   "existing_policies",
-  "image",
+  "existing_policies[].name",
+  "existing_policies[].namespace",
   "kind",
   "manifest",
   "manifest.metadata",
   "manifest.metadata.labels",
+  "manifest.metadata.labels.app",
+  "manifest.metadata.labels.team",
+  "manifest.metadata.labels.version",
   "manifest.metadata.name",
   "manifest.metadata.namespace",
   "manifest.spec",
@@ -175,19 +396,38 @@
   "manifest.spec.jobTemplate.spec.template.spec",
   "manifest.spec.template",
   "manifest.spec.template.spec",
-  "name",
+  "manifest.spec.template.spec.automountServiceAccountToken",
+  "manifest.spec.template.spec.containers",
+  "manifest.spec.template.spec.containers[].image",
+  "manifest.spec.template.spec.containers[].livenessProbe",
+  "manifest.spec.template.spec.containers[].livenessProbe.httpGet",
+  "manifest.spec.template.spec.containers[].livenessProbe.httpGet.path",
+  "manifest.spec.template.spec.containers[].livenessProbe.httpGet.port",
+  "manifest.spec.template.spec.containers[].name",
+  "manifest.spec.template.spec.containers[].readinessProbe",
+  "manifest.spec.template.spec.containers[].readinessProbe.httpGet",
+  "manifest.spec.template.spec.containers[].readinessProbe.httpGet.path",
+  "manifest.spec.template.spec.containers[].readinessProbe.httpGet.port",
+  "manifest.spec.template.spec.containers[].resources",
+  "manifest.spec.template.spec.containers[].resources.limits",
+  "manifest.spec.template.spec.containers[].resources.limits.cpu",
+  "manifest.spec.template.spec.containers[].resources.limits.memory",
+  "manifest.spec.template.spec.containers[].resources.requests",
+  "manifest.spec.template.spec.containers[].resources.requests.cpu",
+  "manifest.spec.template.spec.containers[].resources.requests.memory",
+  "manifest.spec.template.spec.containers[].securityContext",
+  "manifest.spec.template.spec.containers[].securityContext.allowPrivilegeEscalation",
+  "manifest.spec.template.spec.containers[].securityContext.privileged",
+  "manifest.spec.template.spec.containers[].securityContext.readOnlyRootFilesystem",
+  "manifest.spec.template.spec.containers[].securityContext.runAsNonRoot",
+  "manifest.spec.template.spec.containers[].securityContext.runAsUser",
+  "manifest.spec.template.spec.hostNetwork",
   "policy",
-  "policy.approved_registries",
-  "policy.production_namespaces",
-  "policy.require_image_digest",
+  "policy.additional_kinds",
   "request",
   "request.kind",
   "request.kind.kind",
-  "request.namespace",
   "request.object",
-  "request.operation",
-  "securityContext",
-  "securityContext.privileged",
-  "securityContext.runAsUser"
+  "request.operation"
  ]
 }

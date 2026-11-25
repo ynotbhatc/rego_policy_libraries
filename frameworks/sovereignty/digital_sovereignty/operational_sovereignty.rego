@@ -18,6 +18,11 @@ package digital_sovereignty.operational_sovereignty
 
 import rego.v1
 
+# `not x.field in list` is undefined when x.field is absent (the reference is hoisted outside the negation), so a
+# row without the field used to drop out of the check. Fields are read with object.get() (absent -> "", never an
+# approved value) and the list defaults to [] when missing, so absence counts against the row (fail closed).
+approved := object.get(input, "approved_jurisdictions", [])
+
 # Digital Sovereignty — Operational Sovereignty
 # Ensures that people operating the environment are trusted, that vendor access
 # is controlled, and that sensitive operations cannot be compelled by foreign actors.
@@ -84,7 +89,7 @@ privileged_personnel_in_jurisdiction if {
 	violations := [p |
 		p := input.personnel[_]
 		p.access_level in ["admin", "privileged"]
-		not p.location_country in input.approved_jurisdictions
+		not object.get(p, "location_country", "") in approved
 	]
 	count(violations) == 0
 }
@@ -146,7 +151,7 @@ foreign_vendor_sovereign_access_controlled if {
 	violations := [va |
 		va := input.vendor_access[_]
 		va.data_classification_accessed in ["sovereign", "restricted"]
-		not va.vendor_hq_country in input.approved_jurisdictions
+		not object.get(va, "vendor_hq_country", "") in approved
 		not va.access_requires_approval == true
 	]
 	count(violations) == 0
@@ -160,7 +165,7 @@ foreign_vendor_sovereign_access_controlled if {
 support_personnel_in_jurisdiction if {
 	violations := [sc |
 		sc := input.support_contracts[_]
-		not sc.support_personnel_location in input.approved_jurisdictions
+		not object.get(sc, "support_personnel_location", "") in approved
 		not sc.data_handling_agreement == true
 	]
 	count(violations) == 0
@@ -253,7 +258,7 @@ violations contains v if {
 	not privileged_personnel_in_jurisdiction
 	p := input.personnel[_]
 	p.access_level in ["admin", "privileged"]
-	not p.location_country in input.approved_jurisdictions
+	not object.get(p, "location_country", "") in approved
 	v := {
 		"domain": "operational_sovereignty",
 		"control": "OS-002",
@@ -400,7 +405,7 @@ violations contains v if {
 	not foreign_vendor_sovereign_access_controlled
 	va := input.vendor_access[_]
 	va.data_classification_accessed in ["sovereign", "restricted"]
-	not va.vendor_hq_country in input.approved_jurisdictions
+	not object.get(va, "vendor_hq_country", "") in approved
 	not va.access_requires_approval == true
 	v := {
 		"domain": "operational_sovereignty",
@@ -415,7 +420,7 @@ violations contains v if {
 violations contains v if {
 	not support_personnel_in_jurisdiction
 	sc := input.support_contracts[_]
-	not sc.support_personnel_location in input.approved_jurisdictions
+	not object.get(sc, "support_personnel_location", "") in approved
 	not sc.data_handling_agreement == true
 	v := {
 		"domain": "operational_sovereignty",

@@ -522,7 +522,7 @@ _input_notes contains sprintf("ISO 27701 input: attestation key %q is not a cont
 }
 
 _input_notes contains "ISO 27701 input: input.iso27701 is missing or not an object; no control can be evaluated" if {
-	not is_object(input.iso27701)
+	not is_object(object.get(input, "iso27701", null))
 }
 
 violations := sort([v | some v in (_control_messages | _input_notes)])

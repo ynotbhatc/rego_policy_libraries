@@ -14,6 +14,7 @@ good := {"cron": {
 	"cron_d_mode": "0700", "cron_d_owner": "root",
 	"cron_allow_exists": true, "cron_allow_mode": "0600",
 	"at_allow_exists": true, "at_allow_mode": "0600",
+	"cron_deny_exists": false, "at_deny_exists": false,
 }}
 
 test_good_input_compliant if {

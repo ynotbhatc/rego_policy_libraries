@@ -8,6 +8,7 @@ good := {
 	"ipv6": {"disabled": true, "address_count": 0, "status": "disabled"},
 	"wireless_interfaces": {"has_wireless": false, "interfaces": [], "compliant": true, "count": 0},
 	"firewall": {"type": "ufw", "active": true, "default_incoming": "deny"},
+	"require_ipv6_disabled": false,
 }
 
 test_good_compliant if {

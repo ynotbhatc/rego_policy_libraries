@@ -11,13 +11,16 @@ ids, status and profiles and the same audit procedures, so only the key, package
 (VARIANTS below). Each logic entry carries a keyword that must occur in the workbook title of its id; the run
 aborts on any count, id, status, profile or keyword mismatch. Titles are replaced by our own wording (OWN)
 before anything is written. Writes only the files it owns (roll-up, .main bridge, generated tests, README).
+
+Typed facts (2026-11-24): fact(typed=[...]) names wrong-typed facts a check reads; they are "evidence invalid"
+findings. Numeric host advanced settings and sshd counters must be JSON numbers; VM settings stay text.
 """
 import json
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from cis_genlib import load_workbook_json, emit_control, emit_tests, table  # noqa: E402
+from cis_genlib import LEVEL_HELPERS, LEVEL_VIOLATIONS, load_workbook_json, emit_control, emit_tests, table  # noqa: E402
 from neutralize import neutralize_title  # noqa: E402
 
 VARIANT = sys.argv[1]
@@ -45,10 +48,14 @@ def rm(path):
     return [{"op": "remove", "path": "/esxi" + path}]
 
 
-def fact(cid, kw, ev, label, ok, fail, miss, ok2=None):
+def fact(cid, kw, ev, label, ok, fail, miss, ok2=None, typed=None):
+    """typed: Rego set expressions naming wrong-typed facts the check reads; any one is an "evidence invalid" finding."""
     KW[cid] = kw
-    C.append({"id": cid, "kind": "fact", "ev": ev, "label": "esxi." + label, "ok": [ok] + ([ok2] if ok2 else []),
-              "fail": fail, "miss": miss})
+    c = {"id": cid, "kind": "fact", "ev": ev, "label": "esxi." + label, "ok": [ok] + ([ok2] if ok2 else []),
+         "fail": fail, "miss": miss}
+    if typed:
+        c["typed"] = typed
+    C.append(c)
 
 
 def att(cid, kw, key):
@@ -56,14 +63,16 @@ def att(cid, kw, key):
     C.append({"id": cid, "kind": "attest", "attest": key, "attest_root": P})
 
 
-def adv(cid, kw, name, ok, bad):
+def adv(cid, kw, name, ok, bad, typed=None):
     """Host advanced setting `name` (input.esxi.advanced_settings[name]); ok lines may use the value `v`."""
     fact(cid, kw, [f'_has_adv("{name}")'], f"advanced_settings.{name}", [f'v := _adv("{name}")'] + ok,
-         add(f"/advanced_settings/{name}", bad), rm(f"/advanced_settings/{name}"))
+         add(f"/advanced_settings/{name}", bad), rm(f"/advanced_settings/{name}"), typed=typed)
 
 
 def advn(cid, kw, name, cond, bad):
-    adv(cid, kw, name, ["n := _num(v)"] + cond, bad)
+    """a numeric host advanced setting: a JSON number ("600" is a string, reported as invalid evidence, not parsed)"""
+    adv(cid, kw, name, ["n := v", "is_number(n)"] + cond, bad,
+        typed=[f'_not_number("advanced_settings.{name}", _adv("{name}"))'])
 
 
 VMEV = ["_vm_adv_ev"]
@@ -279,14 +288,15 @@ fact("2.8", "tpm-based", [f"is_string({P}.encryption.mode)"], "encryption.mode",
 advn("2.9", "hyperthreading", "UserVars.SuppressHyperthreadWarning", ["n == 0"], 1)
 advn("2.10", "transparent page sharing", "Mem.ShareForceSalting", ["n == 2"], 1)
 fact("2.11", "entropy", [f"is_object({P}.kernel_settings)"], "kernel_settings", [f"not _istrue({P}.kernel_settings.disableHwrng)"],
-     add("/kernel_settings/disableHwrng", "TRUE"), rm("/kernel_settings"))
+     add("/kernel_settings/disableHwrng", "TRUE"), rm("/kernel_settings"),
+     typed=[f'_not_tf("kernel_settings.disableHwrng", {P}.kernel_settings, "disableHwrng")'])
 advn("2.12", "volatile key", "Mem.MemEagerZero", ["n == 1"], 0)
 
 # ── section 3: access and shell ──────────────────────────────────────────────────
 svc_off("3.1", "ssh", "TSM-SSH")
 svc_off("3.2", "esxi shell", "TSM")
 adv("3.3", "managed object browser", "Config.HostAgent.plugins.solo.enableMob", ["_isfalse(v)"], "true")
-fact("3.4", "slp", [f"is_object({P}.services)"], "services", [f'not {P}.services["slpd"]'], add("/services/slpd/running", True),
+fact("3.4", "slp", [f"is_object({P}.services)"], "services", [f'not "slpd" in object.keys({P}.services)'], add("/services/slpd/running", True),
      rm("/services"), ok2=[f'{P}.services["slpd"].running == false'])
 fact("3.5", "cim", [f"is_boolean({P}.wbem.enabled)"], "wbem.enabled", [f"{P}.wbem.enabled == false"], add("/wbem/enabled", True), rm("/wbem"))
 fact("3.6", "snmp", [f"is_boolean({P}.snmp.enabled)"], "snmp.enabled", [f"{P}.snmp.enabled == false"], add("/snmp/enabled", True), rm("/snmp"))
@@ -343,7 +353,7 @@ fact("4.11", "strict x509", [f"is_boolean({SL}.strict_x509_compliance)"], "syslo
 # ── section 5: host networking ───────────────────────────────────────────────────
 FW = f"{P}.firewall"
 fact("5.1", "authorized networks", [f"is_array({FW}.rulesets)"], "firewall.rulesets", [f"count([1 | some r in {FW}.rulesets; _ruleset_open(r)]) == 0"],
-     add("/firewall/rulesets/1/allowed_ip_all", True), rm("/firewall"))
+     add("/firewall/rulesets/1/allowed_ip_all", True), rm("/firewall"), typed=["_bad_rulesets"])
 fact("5.2", "block network traffic by default", [f"is_boolean({FW}.enabled)", f"is_string({FW}.default_action)"],
      "firewall.{enabled,default_action}", [f"{FW}.enabled == true", f'lower({FW}.default_action) == "drop"'],
      add("/firewall/default_action", "PASS"), rm("/firewall"))
@@ -355,7 +365,7 @@ for cid, kw, key in [("5.6", "forged transmits", "forged_transmits"), ("5.7", "m
                      ("5.8", "promiscuous mode", "promiscuous_mode")]:
     fact(cid, kw, [f"is_array({VS})", f"every sw in {VS} {{ is_boolean(sw.security.{key}) }}"], "vswitches[].security",
          [f"every sw in {VS} {{ sw.security.{key} == false; count([1 | some pg in object.get(sw, \"portgroups\", []); pg.security.{key} == true]) == 0 }}"],
-         add(f"/vswitches/0/security/{key}", True), rm("/vswitches"))
+         add(f"/vswitches/0/security/{key}", True), rm("/vswitches"), typed=[f'_bad_pg_security("{key}")'])
 PGEV = [f"is_array({VS})", f"every sw in {VS} {{ every pg in sw.portgroups {{ is_number(pg.vlan_id) }} }}"]
 fact("5.9", "native vlan", PGEV, "vswitches[].portgroups[].vlan_id",
      [f"count([1 | some sw in {VS}; some pg in sw.portgroups; pg.vlan_id == _native_vlan]) == 0"],
@@ -380,8 +390,8 @@ att("6.5.2", "validated cryptographic modules", "sshd_crypto_modules_fips")
 sshd("6.5.3", "gateway ports", "gatewayports", "no")
 sshd("6.5.4", "host-based", "hostbasedauthentication", "no")
 for cid, kw, key in [("6.5.5", "timeout count", "clientalivecountmax"), ("6.5.6", "timeout interval", "clientaliveinterval")]:
-    fact(cid, kw, [f'_has_sshd("{key}")'], f"sshd_config.{key}", [f'{P}.sshd_config["{key}"] != null', f'_num({P}.sshd_config["{key}"]) > 0'],
-         add(f"/sshd_config/{key}", 0), rm("/sshd_config"))
+    fact(cid, kw, [f'_has_sshd("{key}")'], f"sshd_config.{key}", [f'n := {P}.sshd_config["{key}"]', "is_number(n)", "n > 0"],
+         add(f"/sshd_config/{key}", 0), rm("/sshd_config"), typed=[f'_not_number("sshd_config.{key}", {P}.sshd_config["{key}"])'])
 fact("6.5.7", "login banner", ['_has_sshd("banner")'], "sshd_config.banner", ['_sshd("banner") != "none"', '_sshd("banner") != ""'],
      add("/sshd_config/banner", "none"), rm("/sshd_config"))
 sshd("6.5.8", ".rhosts", "ignorerhosts", "yes")
@@ -551,13 +561,8 @@ GREEN = {"esxi": {
 
 # ── Rego helpers ──────────────────────────────────────────────────────────────────
 HELPERS = r'''# ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent or other => 2, the stricter
-default _level := 2
-
-_level := 1 if input.cis_profile.level == 1
-
-_applies(id) if recommendations[id].level <= _level
-
+'''
+HELPERS += LEVEL_HELPERS + r'''
 _nonempty(v) if {
 	is_string(v)
 	trim_space(v) != ""
@@ -570,7 +575,8 @@ _istrue(v) if _str(v) == "true"
 
 _isfalse(v) if _str(v) == "false"
 
-# advanced settings come back as strings or numbers depending on the collector
+# VM advanced settings and Tools settings are text in the .vmx / tools.conf, so a VM number may arrive as "4".
+# Host advanced settings and sshd counters are JSON numbers: a string there is invalid evidence (_not_number).
 _num(v) := v if is_number(v)
 
 _num(v) := to_number(trim_space(v)) if {
@@ -609,6 +615,48 @@ _sshd(k) := _str(input.esxi.sshd_config[k]) if input.esxi.sshd_config[k] != null
 _ruleset_open(r) if {
 	r.enabled == true
 	not r.allowed_ip_all == false
+}
+
+# a host number fact that is not a JSON number
+_not_number(label, v) := {sprintf("esxi.%s must be a number, got %s", [label, json.marshal(v)]) | not is_number(v)}
+
+# a TRUE / FALSE setting that is present with any other value (absent has its own meaning per check)
+_not_tf(label, o, k) := {msg |
+	v := o[k]
+	not _istrue(v)
+	not _isfalse(v)
+	msg := sprintf("esxi.%s must be true or false, got %s", [label, json.marshal(v)])
+}
+
+# every firewall ruleset states enabled and allowed_ip_all as booleans; "true" would read as a ruleset that is off
+_bad_rulesets contains msg if {
+	some i, r in input.esxi.firewall.rulesets
+	not is_object(r)
+	msg := sprintf("esxi.firewall.rulesets[%d] must be an object, got %s", [i, json.marshal(r)])
+}
+
+_bad_rulesets contains msg if {
+	some i, r in input.esxi.firewall.rulesets
+	is_object(r)
+	some k in ["enabled", "allowed_ip_all"]
+	v := object.get(r, k, null)
+	not is_boolean(v)
+	msg := sprintf("esxi.firewall.rulesets[%d].%s must be true or false, got %s", [i, k, json.marshal(v)])
+}
+
+# a port group may leave a security setting out (it inherits the switch); one it states must be a boolean
+_bad_pg_security(key) := {msg |
+	some i, sw in input.esxi.vswitches
+	some j, pg in object.get(sw, "portgroups", [])
+	sec := pg.security
+	not is_object(sec)
+	msg := sprintf("esxi.vswitches[%d].portgroups[%d].security must be an object, got %s", [i, j, json.marshal(sec)])
+} | {msg |
+	some i, sw in input.esxi.vswitches
+	some j, pg in object.get(sw, "portgroups", [])
+	v := pg.security[key]
+	not is_boolean(v)
+	msg := sprintf("esxi.vswitches[%d].portgroups[%d].security.%s must be true or false, got %s", [i, j, key, json.marshal(v)])
 }
 
 # VLAN the operator treats as native (default 1)
@@ -678,9 +726,12 @@ HEADER = META.format(title=BENCH, checks=N_TOTAL, density="sized", basis="size",
 # Generated from the CIS workbook by tools/cis_generators/gen_esxi.py (one logic table for ESXi 8.0 and 9.0).
 # {N_TOTAL} recommendations ({N_AUTO} Automated, {N_TOTAL - N_AUTO} Manual; {N_L1} Level 1, {N_L2} Level 2), every one in the
 # benchmark; ids, levels and assessment status read from the workbook. Messages use our own wording, not CIS text.
-# Profile: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent => 2. total_controls counts the
-# recommendations in the selected profile.
-# Facts missing => "<id>: evidence missing — <field> not collected". Manual recommendations whose audit names an
+# Profile: input.cis_profile.level, the number 1 or 2 (Level 2 includes Level 1); absent => 2; any other value (the
+# string "2" included) => "evidence invalid", scoped at Level 2. total_controls counts the recommendations in the
+# selected profile.
+# Facts missing => "<id>: evidence missing — <field> not collected". Facts of the wrong type => "<id>: evidence
+# invalid — <field> must be <type>, got <value>": host advanced settings and sshd counters that are numbers must be
+# JSON numbers, firewall ruleset and port-group security flags must be booleans. Manual recommendations whose audit names an
 # exact value are checked like Automated ones: {", ".join(manual_fact)}.
 # Attestation booleans under input.esxi.attest (false or absent => violation): {ATTLIST}.
 #
@@ -722,6 +773,7 @@ compliant if {{
 violations := [v |
 	arrays := [
 {chr(10).join(f"		{s}_violations," for s in SECTIONS)}
+		profile_violations,
 	]
 	some a in arrays
 	some v in a
@@ -732,6 +784,7 @@ violations := [v |
 parts = [HEADER]
 for s in SECTIONS:
     parts.append(f"# {STITLE[s]}\n{s}_violations := sort([m | some m in _v_{s}])\n")
+parts.append(LEVEL_VIOLATIONS)
 parts.append(HELPERS)
 for c in C:
     parts.append(emit_control(c, WB, f"_v_{section(c['id'])}", applies=True))
@@ -927,7 +980,7 @@ for s in SECTIONS:
     sec_rows.append(f"| {STITLE[s]} | {len(ids_s)} | {len(at)} |")
 README = f'''# {BENCH}
 
-**Version:** v1.0 · generated by `tools/cis_generators/gen_esxi.py` from the CIS workbook
+**Version:** v1.1 · generated by `tools/cis_generators/gen_esxi.py` from the CIS workbook
 
 All {N_TOTAL} recommendations ({N_AUTO} Automated, {N_TOTAL - N_AUTO} Manual; {N_L1} Level 1, {N_L2} Level 2). {N_TOTAL - len(attest_ids)} are decided
 from collected facts and fail closed with an "evidence missing" message when the fact was not collected;
@@ -939,8 +992,10 @@ Query: `POST /v1/data/{PKG}/main/compliance_report` (roll-up package `{PKG}`).
 
 ## Profile
 
-`input.cis_profile.level` is `1` or `2` (Level 2 includes Level 1). Absent, it is `2`. `total_controls` is the number in
-scope: {N_L1} at Level 1, {N_TOTAL} at Level 2. On empty input every one of them fails.
+`input.cis_profile.level` is the number `1` or `2` (Level 2 includes Level 1). Absent, it is `2`. `total_controls` is the
+number in scope: {N_L1} at Level 1, {N_TOTAL} at Level 2. On empty input every one of them fails. Any other level (the
+string `"2"`, `3`, `null`) is not read as a default: the report is scoped at Level 2, carries `cis_profile.level: evidence
+invalid — …`, and the {N_L2} Level 2 recommendations fail with the same finding.
 
 ## Sections
 
@@ -958,7 +1013,127 @@ audit says may be absent on a VM ("TRUE or absent", "FALSE or absent", device-pr
 other VM check reads an absent key as not configured. Values that the benchmark leaves to the organisation (password
 maximum age, API session timeout, SSH idle count, size limits) are checked only for being finite and positive, or attested.
 
+A fact of the wrong type never passes: the recommendation fails with `<id>: evidence invalid — esxi.<path> must be <type>,
+got <value>`. Numeric host advanced settings and the sshd `clientalivecountmax` / `clientaliveinterval` are JSON numbers
+(`"600"` is a string). Firewall rulesets state `enabled` and `allowed_ip_all` as booleans, and a port-group security
+override, when present, is a boolean. VM advanced settings and Tools settings stay text, as in the `.vmx` and `tools.conf`.
+
 Regenerate: see `tools/cis_generators/README.md`.
 '''
+
+# ── emission: evidence tests (wrong-typed, null and removed facts never pass) ────────────────────────────────────
+EVIDENCE = f'''package {PKG}_test
+
+import rego.v1
+
+import data.{PKG} as b
+
+# Generated by tools/cis_generators/gen_esxi.py: wrong-typed, null and removed facts never pass. Data-driven over
+# every boolean and number leaf of the green fixture, so a fact added to the fixture is covered without a new test.
+
+_ev_report(inp) := r if r := data.{PKG}.main.compliance_report with input as inp
+
+_ev_passes(inp) if {{
+	r := _ev_report(inp)
+	_ev_report_passes(r)
+}}
+
+_ev_report_passes(r) if r.compliant == true
+
+_ev_report_passes(r) if r.failed_controls == 0
+
+_ev_report_passes(r) if r.compliance_percentage >= 100
+
+_ev_leaves := [[path, v] | walk(green, [path, v]); not is_object(v); not is_array(v); not is_string(v)]
+
+# two values that are not evidence for a fact of this leaf's type (the string form and null; two keeps the test short)
+_ev_wrong(v) := [sprintf("%v", [v]), null] if is_number(v)
+
+_ev_wrong(v) := [sprintf("%v", [v]), null] if is_boolean(v)
+
+_ev_survivors := {{[path, json.marshal(nv)] |
+	some [path, v] in _ev_leaves
+	some nv in _ev_wrong(v)
+	_ev_passes(json.patch(green, [{{"op": "replace", "path": path, "value": nv}}]))
+}}
+
+# a port group that leaves a security setting out inherits the switch, so that one leaf may be absent
+_ev_optional := {{["esxi", "vswitches", 0, "portgroups", 0, "security", "forged_transmits"]}}
+
+_ev_removal_survivors := {{path |
+	some [path, _] in _ev_leaves
+	not path in _ev_optional
+	_ev_passes(json.patch(green, [{{"op": "remove", "path": path}}]))
+}}
+
+test_no_wrong_typed_leaf_passes if {{
+	count(_ev_leaves) > 60
+	count(_ev_survivors) == 0
+}}
+
+test_no_removed_leaf_passes if count(_ev_removal_survivors) == 0
+
+test_host_number_as_string_is_evidence_invalid if {{
+	vs := b.violations with input as json.patch(green, {json.dumps(add("/advanced_settings/UserVars.DcuiTimeOut", "600"))})
+	"3.7: evidence invalid — esxi.advanced_settings.UserVars.DcuiTimeOut must be a number, got \\"600\\"" in vs
+	every v in vs {{ startswith(v, "3.7: evidence invalid") }}
+	ss := b.violations with input as json.patch(green, {json.dumps(add("/sshd_config/clientaliveinterval", "200"))})
+	"6.5.6: evidence invalid — esxi.sshd_config.clientaliveinterval must be a number, got \\"200\\"" in ss
+}}
+
+test_ruleset_flag_as_string_is_evidence_invalid if {{
+	# "true" used to read as a ruleset that is off, which hid an open ruleset
+	vs := b.violations with input as json.patch(green, [
+		{{"op": "replace", "path": "/esxi/firewall/rulesets/0/enabled", "value": "true"}},
+	])
+	"5.1: evidence invalid — esxi.firewall.rulesets[0].enabled must be true or false, got \\"true\\"" in vs
+}}
+
+test_port_group_override_as_string_is_evidence_invalid if {{
+	vs := b.violations with input as json.patch(green, [
+		{{"op": "replace", "path": "/esxi/vswitches/0/portgroups/0/security/forged_transmits", "value": "true"}},
+	])
+	"5.6: evidence invalid — esxi.vswitches[0].portgroups[0].security.forged_transmits must be true or false, got \\"true\\"" in vs
+}}
+
+test_vm_numbers_stay_text if {{
+	# .vmx and tools.conf values are text: "4" is how the fail patch writes a number, and 1 as a number reads the same
+	inp := json.patch(green, [{{"op": "replace", "path": "/esxi/vms/0/advanced_settings/RemoteDisplay.maxConnections", "value": 1}}])
+	_ev_passes(inp)
+}}
+
+_ev_level(lv) := json.patch(green, [{{"op": "add", "path": "/cis_profile", "value": {{"level": lv}}}}])
+
+test_level_must_be_the_number_1_or_2 if {{
+	every lv in ["2", "1", 3, 0, null, true] {{
+		r := _ev_report(_ev_level(lv))
+		r.compliant == false
+		r.level == 2
+		r.total_controls == {N_TOTAL}
+		r.failed_controls == {N_L2}
+		r.compliance_percentage < 100
+		some v in r.violations
+		startswith(v, "cis_profile.level: evidence invalid — cis_profile.level must be the number 1 or 2, got ")
+	}}
+}}
+
+test_level_numbers_and_absent_level_are_valid if {{
+	_ev_report(_ev_level(2)).failed_controls == 0
+	_ev_report(_ev_level(2)).total_controls == {N_TOTAL}
+	_ev_report(_ev_level(1)).failed_controls == 0
+	_ev_report(_ev_level(1)).total_controls == {N_L1}
+	_ev_report(green).compliant == true
+}}
+
+test_report_counts_hold_on_bad_input if {{
+	every inp in [{{}}, {{"esxi": null}}, {{"esxi": "true"}}, {{"esxi": {{}}}}, _ev_level("2"), {{"cis_profile": {{"level": "1"}}}}] {{
+		r := _ev_report(inp)
+		r.compliant == false
+		r.passed_controls + r.failed_controls == r.total_controls
+		r.failed_controls > 0
+	}}
+}}
+'''
+open(f"{OUT}/tests/test_{PKG}_evidence.rego", "w").write(EVIDENCE)
 open(f"{OUT}/README.md", "w").write(README)
 print("ok", VARIANT, len(C), sec_tot, "attested", len(attest_ids), "manual-as-fact", len(manual_fact))

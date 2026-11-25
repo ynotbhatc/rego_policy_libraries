@@ -547,6 +547,11 @@
         "id": "nist_ssdf-PS.1.1_stmt",
         "name": "statement",
         "prose": "Code is not protected from unauthorized access/tampering (require least-privilege repo access AND protected branches)"
+       },
+       {
+        "id": "nist_ssdf-PS.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Code protection cannot be attested — %s"
        }
       ],
       "class": "compliance"
@@ -580,6 +585,11 @@
         "id": "nist_ssdf-PS.2.1_stmt",
         "name": "statement",
         "prose": "No mechanism (hashes/signatures) is provided for consumers to verify release integrity"
+       },
+       {
+        "id": "nist_ssdf-PS.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Release integrity verification cannot be attested — %s"
        }
       ],
       "class": "compliance"
@@ -646,6 +656,11 @@
         "id": "nist_ssdf-PS.3.2_stmt",
         "name": "statement",
         "prose": "An SBOM (provenance data) is not generated and retained for each release"
+       },
+       {
+        "id": "nist_ssdf-PS.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Release provenance data cannot be attested — %s"
        }
       ],
       "class": "compliance"

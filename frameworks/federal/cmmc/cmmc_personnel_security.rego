@@ -34,18 +34,21 @@ compliant_3_9_1 if {
 }
 
 violation_3_9_1 contains msg if {
-	not input.personnel.pre_employment_screening
-	msg := "3.9.1: Pre-employment screening is not performed before granting CUI access"
+	not input.personnel.pre_employment_screening == true
+	finding := "3.9.1: Pre-employment screening is not performed before granting CUI access"
+	msg := concat("", [finding, _ev_input("personnel.pre_employment_screening")])
 }
 
 violation_3_9_1 contains msg if {
-	not input.personnel.background_check_required
-	msg := "3.9.1: Background checks are not required for personnel accessing CUI systems"
+	not input.personnel.background_check_required == true
+	finding := "3.9.1: Background checks are not required for personnel accessing CUI systems"
+	msg := concat("", [finding, _ev_input("personnel.background_check_required")])
 }
 
 violation_3_9_1 contains msg if {
-	not input.personnel.screening_records_maintained
-	msg := "3.9.1: Personnel screening records are not maintained"
+	not input.personnel.screening_records_maintained == true
+	finding := "3.9.1: Personnel screening records are not maintained"
+	msg := concat("", [finding, _ev_input("personnel.screening_records_maintained")])
 }
 
 # 3.9.2 — Ensure that CUI is protected during and after personnel actions
@@ -60,23 +63,27 @@ compliant_3_9_2 if {
 }
 
 violation_3_9_2 contains msg if {
-	not input.personnel.termination_procedure_exists
-	msg := "3.9.2: No documented procedure for revoking CUI access upon termination"
+	not input.personnel.termination_procedure_exists == true
+	finding := "3.9.2: No documented procedure for revoking CUI access upon termination"
+	msg := concat("", [finding, _ev_input("personnel.termination_procedure_exists")])
 }
 
 violation_3_9_2 contains msg if {
-	not input.personnel.access_revoked_on_termination
-	msg := "3.9.2: CUI system access is not revoked immediately upon personnel termination"
+	not input.personnel.access_revoked_on_termination == true
+	finding := "3.9.2: CUI system access is not revoked immediately upon personnel termination"
+	msg := concat("", [finding, _ev_input("personnel.access_revoked_on_termination")])
 }
 
 violation_3_9_2 contains msg if {
-	not input.personnel.equipment_returned_on_termination
-	msg := "3.9.2: Equipment and credentials are not retrieved upon personnel termination"
+	not input.personnel.equipment_returned_on_termination == true
+	finding := "3.9.2: Equipment and credentials are not retrieved upon personnel termination"
+	msg := concat("", [finding, _ev_input("personnel.equipment_returned_on_termination")])
 }
 
 violation_3_9_2 contains msg if {
-	not input.personnel.transfer_access_reviewed
-	msg := "3.9.2: CUI access privileges are not reviewed when personnel transfer roles"
+	not input.personnel.transfer_access_reviewed == true
+	finding := "3.9.2: CUI access privileges are not reviewed when personnel transfer roles"
+	msg := concat("", [finding, _ev_input("personnel.transfer_access_reviewed")])
 }
 
 # ---------------------------------------------------------------------------
@@ -125,3 +132,25 @@ compliance_report := {
 	"violations": all_violations,
 	"practices": practices,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

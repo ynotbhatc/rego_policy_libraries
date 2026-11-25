@@ -85,6 +85,15 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -103,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -195,8 +208,21 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 	e.current_value != null
 ]
 
+# mta.has_mta is optional beside the listener list (the audit procedure reads the listening sockets), but once
+# sent it is a boolean: "false" or 0 is unreadable evidence, not a statement that an MTA is or is not installed
+mta_flag_readable if object.get(input, ["mta", "has_mta"], null) == null
+
+mta_flag_readable if is_boolean(input.mta.has_mta)
+
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
+
+# sent but not a string (a number, a boolean, a list): unreadable, so not proof of loopback-only
+mta_interfaces_open if {
+	v := object.get(input, ["mta", "inet_interfaces"], null)
+	v != null
+	not is_string(v)
+}
 
 # Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
 # 0.0.0.0 is the wildcard address (all interfaces), not loopback.
@@ -887,6 +913,7 @@ e_2_1_19 if {
 }
 
 e_2_1_19 if {
+	mta_flag_readable
 	is_array(input.mta.non_loopback_listeners)
 }
 
@@ -1195,18 +1222,18 @@ violations contains "2.3.1: not met — time synchronization must be in use" if 
 default e_2_3_2 := false
 
 e_2_3_2 if {
-	input.chronyd.servers_configured != null
-	input.chronyd.pools_configured != null
+	fnum(input.chronyd.servers_configured) >= 0
+	fnum(input.chronyd.pools_configured) >= 0
 }
 
 default p_2_3_2 := false
 
 p_2_3_2 if {
-	num(input.chronyd.servers_configured) > 0
+	fnum(input.chronyd.servers_configured) > 0
 }
 
 p_2_3_2 if {
-	num(input.chronyd.pools_configured) > 0
+	fnum(input.chronyd.pools_configured) > 0
 }
 
 violations contains "2.3.2: evidence missing — chronyd.servers_configured/pools_configured not collected" if not e_2_3_2

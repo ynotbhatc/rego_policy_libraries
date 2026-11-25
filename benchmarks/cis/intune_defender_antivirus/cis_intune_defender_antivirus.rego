@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [endpoint, windows, intune, antivirus]
 #   coverage:
-#     checks: 111
+#     checks: 141
 #     cited: 55
 #     expected: 55
 #     found: 55
@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.intune_defender_antivirus
 
 # CIS Microsoft Intune for Microsoft Defender Antivirus Benchmark v1.0.0.
@@ -29,7 +29,7 @@ package cis.intune_defender_antivirus
 # Input contract: the EFFECTIVE Intune policy value of each setting for the assessed device group, keyed by CSP
 # node name (the last segment of its OMA-URI; `recommendations[id].oma_uri` gives the full path):
 #   input.intune_defender.settings[<CSP node name>] = value     (names match case-insensitively)
-#     Policy/Config/Defender/* and Defender/Configuration/* integers : number or numeric string
+#     Policy/Config/Defender/* and Defender/Configuration/* integers : JSON number (a numeric string is not evidence)
 #     ADMX_MicrosoftDefenderAntivirus/* (section 1)                   : policy state "enabled" | "disabled" (or <enabled/> / <disabled/>)
 #     AttackSurfaceReductionRules                                     : CSP string "<rule guid>=<0|1|2|6>|..."
 #     ThreatSeverityDefaultAction                                     : CSP string "<1|2|4|5>=<2|3|6>|..."
@@ -75,13 +75,19 @@ _vals(name) := [v | some k, v in _settings; lower(k) == lower(name)]
 
 _set(name) if count(_vals(name)) > 0
 
-# CSP integers arrive as numbers or as numeric strings
+# A CSP integer (REG_DWORD in the benchmark's audit procedure) arrives as a JSON number. The same digits as a
+# string, a boolean or null are a collector fault, not a setting: the recommendation fails and its finding names
+# the type.
 _num(v) := v if is_number(v)
 
-_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
+# the types supplied where a number belongs, for the finding; undefined when every value is a number
+_not_number(name) := concat(", ", sort(ts)) if {
+	ts := {type_name(v) | some v in _vals(name); not is_number(v)}
+	count(ts) > 0
 }
+
+# the number inside a "k=v|k=v" CSP string, which is text by definition
+_pair_num(v) := to_number(trim_space(v)) if regex.match(`^\s*-?[0-9]+\s*$`, v)
 
 _int_in(name, allowed) if {
 	_set(name)
@@ -138,14 +144,14 @@ _pairs(name) := {[lower(trim_space(p[0])), trim_space(p[1])] |
 _pair_ok(name, k, allowed) if {
 	some p in _pairs(name)
 	p[0] == k
-	_num(p[1]) in allowed
+	_pair_num(p[1]) in allowed
 	not _pair_conflict(name, k, allowed)
 }
 
 _pair_conflict(name, k, allowed) if {
 	some p in _pairs(name)
 	p[0] == k
-	not _num(p[1]) in allowed
+	not _pair_num(p[1]) in allowed
 }
 
 # ASR rule GUID (lowercase) -> 1 = Block, 2 = Audit, 6 = Warn, 0 = Off
@@ -296,6 +302,15 @@ violations contains "2.1: required value of 'Allow Archive Scanning' is 'Allowed
 	"2.1" in in_scope
 	e_2_1
 	not r_2_1
+	not _not_number("AllowArchiveScanning")
+}
+
+violations contains msg if {
+	"2.1" in in_scope
+	e_2_1
+	not r_2_1
+	got := _not_number("AllowArchiveScanning")
+	msg := sprintf("2.1: intune_defender.settings.AllowArchiveScanning is not a number (got %s)", [got])
 }
 
 # 2.2 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowBehaviorMonitoring
@@ -320,6 +335,15 @@ violations contains "2.2: required value of 'Allow Behavior Monitoring' is 'Allo
 	"2.2" in in_scope
 	e_2_2
 	not r_2_2
+	not _not_number("AllowBehaviorMonitoring")
+}
+
+violations contains msg if {
+	"2.2" in in_scope
+	e_2_2
+	not r_2_2
+	got := _not_number("AllowBehaviorMonitoring")
+	msg := sprintf("2.2: intune_defender.settings.AllowBehaviorMonitoring is not a number (got %s)", [got])
 }
 
 # 2.3 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowCloudProtection
@@ -344,6 +368,15 @@ violations contains "2.3: required value of 'Allow Cloud Protection' is 'Allowed
 	"2.3" in in_scope
 	e_2_3
 	not r_2_3
+	not _not_number("AllowCloudProtection")
+}
+
+violations contains msg if {
+	"2.3" in in_scope
+	e_2_3
+	not r_2_3
+	got := _not_number("AllowCloudProtection")
+	msg := sprintf("2.3: intune_defender.settings.AllowCloudProtection is not a number (got %s)", [got])
 }
 
 # 2.4 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowEmailScanning
@@ -368,6 +401,15 @@ violations contains "2.4: required value of 'Allow Email Scanning' is 'Allowed'"
 	"2.4" in in_scope
 	e_2_4
 	not r_2_4
+	not _not_number("AllowEmailScanning")
+}
+
+violations contains msg if {
+	"2.4" in in_scope
+	e_2_4
+	not r_2_4
+	got := _not_number("AllowEmailScanning")
+	msg := sprintf("2.4: intune_defender.settings.AllowEmailScanning is not a number (got %s)", [got])
 }
 
 # 2.5 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowFullScanRemovableDriveScanning
@@ -392,6 +434,15 @@ violations contains "2.5: required value of 'Allow Full Scan Removable Drive Sca
 	"2.5" in in_scope
 	e_2_5
 	not r_2_5
+	not _not_number("AllowFullScanRemovableDriveScanning")
+}
+
+violations contains msg if {
+	"2.5" in in_scope
+	e_2_5
+	not r_2_5
+	got := _not_number("AllowFullScanRemovableDriveScanning")
+	msg := sprintf("2.5: intune_defender.settings.AllowFullScanRemovableDriveScanning is not a number (got %s)", [got])
 }
 
 # 2.6 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowOnAccessProtection
@@ -416,6 +467,15 @@ violations contains "2.6: required value of 'Allow On Access Protection' is 'All
 	"2.6" in in_scope
 	e_2_6
 	not r_2_6
+	not _not_number("AllowOnAccessProtection")
+}
+
+violations contains msg if {
+	"2.6" in in_scope
+	e_2_6
+	not r_2_6
+	got := _not_number("AllowOnAccessProtection")
+	msg := sprintf("2.6: intune_defender.settings.AllowOnAccessProtection is not a number (got %s)", [got])
 }
 
 # 2.7 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowRealtimeMonitoring
@@ -440,6 +500,15 @@ violations contains "2.7: required value of 'Allow Realtime Monitoring' is 'Allo
 	"2.7" in in_scope
 	e_2_7
 	not r_2_7
+	not _not_number("AllowRealtimeMonitoring")
+}
+
+violations contains msg if {
+	"2.7" in in_scope
+	e_2_7
+	not r_2_7
+	got := _not_number("AllowRealtimeMonitoring")
+	msg := sprintf("2.7: intune_defender.settings.AllowRealtimeMonitoring is not a number (got %s)", [got])
 }
 
 # 2.8 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowIOAVProtection
@@ -464,6 +533,15 @@ violations contains "2.8: required value of 'Allow scanning of all downloaded fi
 	"2.8" in in_scope
 	e_2_8
 	not r_2_8
+	not _not_number("AllowIOAVProtection")
+}
+
+violations contains msg if {
+	"2.8" in in_scope
+	e_2_8
+	not r_2_8
+	got := _not_number("AllowIOAVProtection")
+	msg := sprintf("2.8: intune_defender.settings.AllowIOAVProtection is not a number (got %s)", [got])
 }
 
 # 2.9 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowScriptScanning
@@ -488,6 +566,15 @@ violations contains "2.9: required value of 'Allow Script Scanning' is 'Allowed'
 	"2.9" in in_scope
 	e_2_9
 	not r_2_9
+	not _not_number("AllowScriptScanning")
+}
+
+violations contains msg if {
+	"2.9" in in_scope
+	e_2_9
+	not r_2_9
+	got := _not_number("AllowScriptScanning")
+	msg := sprintf("2.9: intune_defender.settings.AllowScriptScanning is not a number (got %s)", [got])
 }
 
 # 2.10 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
@@ -920,6 +1007,15 @@ violations contains "2.27: required value of 'Check For Signatures Before Runnin
 	"2.27" in in_scope
 	e_2_27
 	not r_2_27
+	not _not_number("CheckForSignaturesBeforeRunningScan")
+}
+
+violations contains msg if {
+	"2.27" in in_scope
+	e_2_27
+	not r_2_27
+	got := _not_number("CheckForSignaturesBeforeRunningScan")
+	msg := sprintf("2.27: intune_defender.settings.CheckForSignaturesBeforeRunningScan is not a number (got %s)", [got])
 }
 
 # 2.28 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/CloudBlockLevel
@@ -944,6 +1040,15 @@ violations contains "2.28: required value of 'Cloud Block Level' is Enabled: Hig
 	"2.28" in in_scope
 	e_2_28
 	not r_2_28
+	not _not_number("CloudBlockLevel")
+}
+
+violations contains msg if {
+	"2.28" in in_scope
+	e_2_28
+	not r_2_28
+	got := _not_number("CloudBlockLevel")
+	msg := sprintf("2.28: intune_defender.settings.CloudBlockLevel is not a number (got %s)", [got])
 }
 
 # 2.29 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/CloudExtendedTimeout
@@ -968,6 +1073,15 @@ violations contains "2.29: required value of 'Cloud Extended Timeout' is '1 or h
 	"2.29" in in_scope
 	e_2_29
 	not r_2_29
+	not _not_number("CloudExtendedTimeout")
+}
+
+violations contains msg if {
+	"2.29" in in_scope
+	e_2_29
+	not r_2_29
+	got := _not_number("CloudExtendedTimeout")
+	msg := sprintf("2.29: intune_defender.settings.CloudExtendedTimeout is not a number (got %s)", [got])
 }
 
 # 2.30 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/DaysUntilAggressiveCatchupQuickScan
@@ -992,6 +1106,15 @@ violations contains "2.30: required value of 'Days Until Aggressive Catchup Quic
 	"2.30" in in_scope
 	e_2_30
 	not r_2_30
+	not _not_number("DaysUntilAggressiveCatchupQuickScan")
+}
+
+violations contains msg if {
+	"2.30" in in_scope
+	e_2_30
+	not r_2_30
+	got := _not_number("DaysUntilAggressiveCatchupQuickScan")
+	msg := sprintf("2.30: intune_defender.settings.DaysUntilAggressiveCatchupQuickScan is not a number (got %s)", [got])
 }
 
 # 2.31 (Automated, Level 2 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/EnableConvertWarnToBlock
@@ -1016,6 +1139,15 @@ violations contains "2.31: required value of 'Enable Convert Warn To Block' is '
 	"2.31" in in_scope
 	e_2_31
 	not r_2_31
+	not _not_number("EnableConvertWarnToBlock")
+}
+
+violations contains msg if {
+	"2.31" in in_scope
+	e_2_31
+	not r_2_31
+	got := _not_number("EnableConvertWarnToBlock")
+	msg := sprintf("2.31: intune_defender.settings.EnableConvertWarnToBlock is not a number (got %s)", [got])
 }
 
 # 2.32 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/Reporting/EnableDynamicSignatureDroppedEventReporting
@@ -1040,6 +1172,15 @@ violations contains "2.32: required value of 'Enable Dynamic Signature Dropped E
 	"2.32" in in_scope
 	e_2_32
 	not r_2_32
+	not _not_number("EnableDynamicSignatureDroppedEventReporting")
+}
+
+violations contains msg if {
+	"2.32" in in_scope
+	e_2_32
+	not r_2_32
+	got := _not_number("EnableDynamicSignatureDroppedEventReporting")
+	msg := sprintf("2.32: intune_defender.settings.EnableDynamicSignatureDroppedEventReporting is not a number (got %s)", [got])
 }
 
 # 2.33 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/EnableFileHashComputation
@@ -1064,6 +1205,15 @@ violations contains "2.33: required value of 'Enable File Hash Computation' is '
 	"2.33" in in_scope
 	e_2_33
 	not r_2_33
+	not _not_number("EnableFileHashComputation")
+}
+
+violations contains msg if {
+	"2.33" in in_scope
+	e_2_33
+	not r_2_33
+	got := _not_number("EnableFileHashComputation")
+	msg := sprintf("2.33: intune_defender.settings.EnableFileHashComputation is not a number (got %s)", [got])
 }
 
 # 2.34 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/EnableNetworkProtection
@@ -1088,6 +1238,15 @@ violations contains "2.34: required value of 'Enable Network Protection' is 'Ena
 	"2.34" in in_scope
 	e_2_34
 	not r_2_34
+	not _not_number("EnableNetworkProtection")
+}
+
+violations contains msg if {
+	"2.34" in in_scope
+	e_2_34
+	not r_2_34
+	got := _not_number("EnableNetworkProtection")
+	msg := sprintf("2.34: intune_defender.settings.EnableNetworkProtection is not a number (got %s)", [got])
 }
 
 # 2.35 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/HideExclusionsFromLocalUsers
@@ -1112,6 +1271,15 @@ violations contains "2.35: required value of 'Hide Exclusions From Local Users' 
 	"2.35" in in_scope
 	e_2_35
 	not r_2_35
+	not _not_number("HideExclusionsFromLocalUsers")
+}
+
+violations contains msg if {
+	"2.35" in in_scope
+	e_2_35
+	not r_2_35
+	got := _not_number("HideExclusionsFromLocalUsers")
+	msg := sprintf("2.35: intune_defender.settings.HideExclusionsFromLocalUsers is not a number (got %s)", [got])
 }
 
 # 2.36 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/OobeEnableRtpAndSigUpdate
@@ -1136,6 +1304,15 @@ violations contains "2.36: required value of 'Oobe Enable Rtp And Sig Update' is
 	"2.36" in in_scope
 	e_2_36
 	not r_2_36
+	not _not_number("OobeEnableRtpAndSigUpdate")
+}
+
+violations contains msg if {
+	"2.36" in in_scope
+	e_2_36
+	not r_2_36
+	got := _not_number("OobeEnableRtpAndSigUpdate")
+	msg := sprintf("2.36: intune_defender.settings.OobeEnableRtpAndSigUpdate is not a number (got %s)", [got])
 }
 
 # 2.37 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/PUAProtection
@@ -1160,6 +1337,15 @@ violations contains "2.37: required value of 'PUA Protection' is 'PUA Protection
 	"2.37" in in_scope
 	e_2_37
 	not r_2_37
+	not _not_number("PUAProtection")
+}
+
+violations contains msg if {
+	"2.37" in in_scope
+	e_2_37
+	not r_2_37
+	got := _not_number("PUAProtection")
+	msg := sprintf("2.37: intune_defender.settings.PUAProtection is not a number (got %s)", [got])
 }
 
 # 2.38 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/QuickScanIncludeExclusions
@@ -1184,6 +1370,15 @@ violations contains "2.38: required value of 'Quick Scan Include Exclusions' is 
 	"2.38" in in_scope
 	e_2_38
 	not r_2_38
+	not _not_number("QuickScanIncludeExclusions")
+}
+
+violations contains msg if {
+	"2.38" in in_scope
+	e_2_38
+	not r_2_38
+	got := _not_number("QuickScanIncludeExclusions")
+	msg := sprintf("2.38: intune_defender.settings.QuickScanIncludeExclusions is not a number (got %s)", [got])
 }
 
 # 2.39 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/RealTimeScanDirection
@@ -1208,6 +1403,15 @@ violations contains "2.39: required value of 'Real Time Scan Direction' is 'Moni
 	"2.39" in in_scope
 	e_2_39
 	not r_2_39
+	not _not_number("RealTimeScanDirection")
+}
+
+violations contains msg if {
+	"2.39" in in_scope
+	e_2_39
+	not r_2_39
+	got := _not_number("RealTimeScanDirection")
+	msg := sprintf("2.39: intune_defender.settings.RealTimeScanDirection is not a number (got %s)", [got])
 }
 
 # 2.40 (Automated, Level 2 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionAggressiveness
@@ -1232,6 +1436,15 @@ violations contains "2.40: required value of 'Remote Encryption Protection Aggre
 	"2.40" in in_scope
 	e_2_40
 	not r_2_40
+	not _not_number("RemoteEncryptionProtectionAggressiveness")
+}
+
+violations contains msg if {
+	"2.40" in in_scope
+	e_2_40
+	not r_2_40
+	got := _not_number("RemoteEncryptionProtectionAggressiveness")
+	msg := sprintf("2.40: intune_defender.settings.RemoteEncryptionProtectionAggressiveness is not a number (got %s)", [got])
 }
 
 # 2.41 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionConfiguredState
@@ -1256,6 +1469,15 @@ violations contains "2.41: required value of 'Remote Encryption Protection Confi
 	"2.41" in in_scope
 	e_2_41
 	not r_2_41
+	not _not_number("RemoteEncryptionProtectionConfiguredState")
+}
+
+violations contains msg if {
+	"2.41" in in_scope
+	e_2_41
+	not r_2_41
+	got := _not_number("RemoteEncryptionProtectionConfiguredState")
+	msg := sprintf("2.41: intune_defender.settings.RemoteEncryptionProtectionConfiguredState is not a number (got %s)", [got])
 }
 
 # 2.42 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScanParameter
@@ -1280,6 +1502,15 @@ violations contains "2.42: required value of 'Scan Parameter' is 'Quick Scan' or
 	"2.42" in in_scope
 	e_2_42
 	not r_2_42
+	not _not_number("ScanParameter")
+}
+
+violations contains msg if {
+	"2.42" in in_scope
+	e_2_42
+	not r_2_42
+	got := _not_number("ScanParameter")
+	msg := sprintf("2.42: intune_defender.settings.ScanParameter is not a number (got %s)", [got])
 }
 
 # 2.43 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleQuickScanTime
@@ -1304,6 +1535,15 @@ violations contains "2.43: required value of 'Schedule Quick Scan Time' is '1' o
 	"2.43" in in_scope
 	e_2_43
 	not r_2_43
+	not _not_number("ScheduleQuickScanTime")
+}
+
+violations contains msg if {
+	"2.43" in in_scope
+	e_2_43
+	not r_2_43
+	got := _not_number("ScheduleQuickScanTime")
+	msg := sprintf("2.43: intune_defender.settings.ScheduleQuickScanTime is not a number (got %s)", [got])
 }
 
 # 2.44 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanTime
@@ -1328,6 +1568,15 @@ violations contains "2.44: required value of 'Schedule Scan Time' is '1' or high
 	"2.44" in in_scope
 	e_2_44
 	not r_2_44
+	not _not_number("ScheduleScanTime")
+}
+
+violations contains msg if {
+	"2.44" in in_scope
+	e_2_44
+	not r_2_44
+	got := _not_number("ScheduleScanTime")
+	msg := sprintf("2.44: intune_defender.settings.ScheduleScanTime is not a number (got %s)", [got])
 }
 
 # 2.45 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanDay
@@ -1352,6 +1601,15 @@ violations contains "2.45: required value of 'Schedule Scan Day' is 'Enabled: 0'
 	"2.45" in in_scope
 	e_2_45
 	not r_2_45
+	not _not_number("ScheduleScanDay")
+}
+
+violations contains msg if {
+	"2.45" in in_scope
+	e_2_45
+	not r_2_45
+	got := _not_number("ScheduleScanDay")
+	msg := sprintf("2.45: intune_defender.settings.ScheduleScanDay is not a number (got %s)", [got])
 }
 
 # 2.46 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/SignatureUpdateInterval
@@ -1376,6 +1634,15 @@ violations contains "2.46: required value of 'Signature Update Interval' is '4' 
 	"2.46" in in_scope
 	e_2_46
 	not r_2_46
+	not _not_number("SignatureUpdateInterval")
+}
+
+violations contains msg if {
+	"2.46" in in_scope
+	e_2_46
+	not r_2_46
+	got := _not_number("SignatureUpdateInterval")
+	msg := sprintf("2.46: intune_defender.settings.SignatureUpdateInterval is not a number (got %s)", [got])
 }
 
 # 2.47 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/SubmitSamplesConsent
@@ -1400,6 +1667,15 @@ violations contains "2.47: required value of 'Submit Samples Consent' is 'Enable
 	"2.47" in in_scope
 	e_2_47
 	not r_2_47
+	not _not_number("SubmitSamplesConsent")
+}
+
+violations contains msg if {
+	"2.47" in in_scope
+	e_2_47
+	not r_2_47
+	got := _not_number("SubmitSamplesConsent")
+	msg := sprintf("2.47: intune_defender.settings.SubmitSamplesConsent is not a number (got %s)", [got])
 }
 
 # 2.48 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction

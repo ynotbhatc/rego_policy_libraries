@@ -3,6 +3,9 @@ package fedramp.main_test
 import data.fedramp.main
 import rego.v1
 
+# The two agency selectors, stated: "does not apply" is an explicit false.
+_stated := {"data_residency": {"us_only_required": false}, "personnel_requirements": {"us_persons_required_for_admin": false}}
+
 test_compliance_report_defined_on_empty_input if {
 	r := main.compliance_report with input as {}
 	r.framework == "FedRAMP"
@@ -19,7 +22,7 @@ test_violations_emitted_on_empty_input if {
 }
 
 test_unknown_impact_level_reports_no_baseline_size if {
-	r := main.compliance_report with input as {}
+	r := main.compliance_report with input as _stated
 	r.impact_level == "unknown"
 	r.baseline_size == null
 	r.total_controls == 12 # every check, Moderate/High ones included, until the level is declared
@@ -28,20 +31,20 @@ test_unknown_impact_level_reports_no_baseline_size if {
 # Rev 5 baseline sizes (FedRAMP OSCAL profiles): 156 / 323 / 410 — reported as baseline_size, never as
 # total_controls, which is the number of checks this module evaluates.
 test_low_reports_rev5_baseline_size_and_evaluated_count if {
-	r := main.compliance_report with input as {"impact_level": "low"}
+	r := main.compliance_report with input as object.union(_stated, {"impact_level": "low"})
 	r.impact_level == "low"
 	r.baseline_size == 156
 	r.total_controls == 10
 }
 
 test_moderate_reports_rev5_baseline_size_and_evaluated_count if {
-	r := main.compliance_report with input as {"impact_level": "moderate"}
+	r := main.compliance_report with input as object.union(_stated, {"impact_level": "moderate"})
 	r.baseline_size == 323
 	r.total_controls == 11
 }
 
 test_high_reports_rev5_baseline_size_and_evaluated_count if {
-	r := main.compliance_report with input as {"impact_level": "high"}
+	r := main.compliance_report with input as object.union(_stated, {"impact_level": "high"})
 	r.baseline_size == 410
 	r.total_controls == 12
 }
@@ -69,6 +72,8 @@ test_failed_controls_counts_ids_not_findings if {
 }
 
 low_good_input := {
+	"data_residency": {"us_only_required": false},
+	"personnel_requirements": {"us_persons_required_for_admin": false},
 	"authorization": {"fedramp_authorized": true, "authorization_type": "ATO", "ato_expiry_days": 300, "assessed_by_3pao": true, "last_3pao_assessment_days": 100},
 	"cryptography": {"fips_140_validated": true, "algorithms_in_use": ["AES-256"]},
 	"continuous_monitoring": {
@@ -112,4 +117,19 @@ test_high_only_failures_reflected_in_area_summary if {
 	not r.compliant
 	r.area_summary.data_residency.compliant == false
 	r.failed_control_ids == ["SA-9(5)"]
+}
+
+# An agency selector that was not sent is missing evidence, and the check it selects is applied.
+test_unstated_selectors_apply_their_checks_and_are_reported if {
+	r := main.compliance_report with input as {"impact_level": "moderate"}
+	r.total_controls == 13
+	"SA-9(5)" in r.failed_control_ids
+	"PS-3(3)" in r.failed_control_ids
+	some v in r.violations
+	contains(v, "input.data_residency.us_only_required not stated")
+	some w in r.violations
+	contains(w, "input.personnel_requirements.us_persons_required_for_admin not stated")
+	low := main.compliance_report with input as {"impact_level": "low"}
+	low.total_controls == 11
+	not "PS-3(3)" in low.failed_control_ids
 }

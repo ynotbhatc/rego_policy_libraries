@@ -1,5 +1,4 @@
-package pci_dss.physical_security.requirement_9_test
-
+package pci_dss_tests.physical_security.requirement_9_test
 import rego.v1
 
 # Roll-up behaviour (validation 2026-10-17). Controls are mocked with `with ... as` so these tests

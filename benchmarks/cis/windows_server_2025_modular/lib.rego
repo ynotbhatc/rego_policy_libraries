@@ -62,6 +62,9 @@ default next_generation := false
 
 next_generation if _cis_profile.next_generation == true
 
+# The opt-in tiers and the selector that turns each on.
+TIER_SELECTOR := {"NG": "next_generation"}
+
 default level_defaulted := true
 
 level_defaulted := false if _cis_profile.level in {1, 2}
@@ -76,20 +79,86 @@ profile := {
 	"level": level,
 	"level_defaulted": level_defaulted,
 	"next_generation": next_generation,
+	"next_generation_defaulted": "next_generation" in _selectors_not_stated,
+	"selectors_not_stated": _selectors_not_stated,
 }
 
-_tier_selected(tier) if tier == "L1"
+_tier_decided(tier) if tier == "L1"
 
-_tier_selected(tier) if {
+_tier_decided(tier) if {
 	tier == "L2"
 	is_number(level)
 	level >= 2
 }
 
-_tier_selected(tier) if {
+_tier_decided(tier) if {
 	tier == "NG"
 	next_generation
 }
+
+# A selector that is supplied but is not a boolean ("true", 1, null), or a cis_profile that is not an object,
+# decides nothing: only `true` opts a tier in and only an explicit `false` leaves it out. A selector that is not
+# stated at all decides nothing either (reported as <selector>_defaulted in the profile). Its tier's
+# rows are then in scope and not assessed (counted as failed), as a role-specific row is when no role is given,
+# so a mistyped or missing selector can never shrink the assessment into a pass.
+_profile_malformed if {
+	p := input.cis_profile
+	not is_object(p)
+}
+
+_selectors := {key | some _, key in TIER_SELECTOR}
+
+_selector_problem(key) := sprintf("input.cis_profile is not an object (got %s)", [type_name(input.cis_profile)]) if {
+	key in _selectors
+	_profile_malformed
+}
+
+_selector_problem(key) := sprintf("input.cis_profile.%s is not a boolean (got %s)", [key, type_name(v)]) if {
+	key in _selectors
+	not _profile_malformed
+	v := _cis_profile[key]
+	not is_boolean(v)
+}
+
+# A selector the profile does not state at all is not an explicit false: a missing selector must not narrow the
+# assessment (and silently move rows to not applicable), as a missing level is reported level_defaulted. The
+# tier's rows stay in scope and are not assessed until the selector is stated, true or false.
+_selector_problem(key) := sprintf("input.cis_profile.%s was not stated (state true or false)", [key]) if {
+	key in _selectors
+	not _profile_malformed
+	not key in object.keys(_cis_profile)
+}
+
+# The selectors the profile left out, reported in the profile block so the report says so.
+_selectors_not_stated := sort({key |
+	some key in _selectors
+	not key in object.keys(_cis_profile)
+})
+
+_tier_undecided(tier) if _selector_problem(TIER_SELECTOR[tier])
+
+_tier_selected(tier) if _tier_decided(tier)
+
+_tier_selected(tier) if _tier_undecided(tier)
+
+_tier(p) := split(p, "_")[0]
+
+_any_tier_decided(profiles) if {
+	some p in profiles
+	_tier_decided(_tier(p))
+}
+
+# in scope only through a tier whose selector decides nothing
+_selector_undecided(profiles) if {
+	some p in profiles
+	_tier_undecided(_tier(p))
+	not _any_tier_decided(profiles)
+}
+
+_selector_problems(profiles) := sort({_selector_problem(TIER_SELECTOR[_tier(p)]) |
+	some p in profiles
+	_tier_undecided(_tier(p))
+})
 
 # the roles a row applies to at the selected tiers
 _roles(profiles) := {parts[1] |
@@ -157,15 +226,44 @@ _collected(kind) if {
 
 _assessable(c) if {
 	not _role_undecided(c.profiles)
+	not _selector_undecided(c.profiles)
 	_collected(c.kind)
 }
 
+# A number is a JSON number. A REG_DWORD, an auditpol setting value and a numeric secedit key arrive as numbers,
+# so a string in their place ("1" for 1) is a collector fault, not a setting: the row fails and its finding says
+# the value is not a number.
 _num(v) := v if is_number(v)
 
-_num(v) := to_number(trim_space(v)) if {
+_digits(v) if {
 	is_string(v)
 	regex.match(`^\s*-?[0-9]+\s*$`, v)
 }
+
+# How a row's value arrives, by the registry type its audit procedure states (the row's "vtype"; a fifth element
+# on a reg_all item). No vtype: REG_DWORD, compared as collected. "sz": a REG_SZ holding a number
+# (CachedLogonsCount, ScRemoveOption), so the string is read as its number and a JSON number, which is not what
+# the registry holds, is left undefined and fails the row. "any": the audit procedure states no type, or both,
+# and either representation is accepted.
+_vtype(c) := object.get(c, "vtype", "dword")
+
+_item_vtype(i) := "dword" if count(i) < 5
+
+_item_vtype(i) := i[4] if count(i) >= 5
+
+_as(v, "dword") := v
+
+_as(v, vtype) := to_number(trim_space(v)) if {
+	vtype in {"sz", "any"}
+	_digits(v)
+}
+
+_as(v, "sz") := v if {
+	not _digits(v)
+	not is_number(v)
+}
+
+_as(v, "any") := v if not _digits(v)
 
 _cmp(v, "eq", want) if _num(v) == _num(want)
 
@@ -234,7 +332,20 @@ _cmp(v, "has_all", flags) if {
 	}
 }
 
-_value(hive, path, name) := object.get(object.get(hive, path, {}), name, null)
+# A registry key is an object of its values. A key (or a user hive) that holds anything else -- a string, a
+# list, null -- is a collector fault: no value under it is defined, so every row that reads it fails, an "absent"
+# row included, and the finding names the key (see _key_problems).
+_key_ok(hive, path) if {
+	is_object(hive)
+	is_object(object.get(hive, path, {}))
+}
+
+_value(hive, path, name) := object.get(object.get(hive, path, {}), name, null) if _key_ok(hive, path)
+
+# the value as a finding shows it: null under a key that is not an object, where _value is undefined
+_shown(hive, path, name) := _value(hive, path, name) if _key_ok(hive, path)
+
+_shown(hive, path, _) := null if not _key_ok(hive, path)
 
 _empty(null) := true
 
@@ -244,13 +355,13 @@ _empty([]) := true
 
 _passes(c) if {
 	c.kind == "reg"
-	_cmp(_value(input.registry, c.path, c.name), c.op, c.value)
+	_cmp(_as(_value(input.registry, c.path, c.name), _vtype(c)), c.op, c.value)
 }
 
 _passes(c) if {
 	c.kind == "reg_all"
 	every i in c.items {
-		_cmp(_value(input.registry, i[0], i[1]), i[2], i[3])
+		_cmp(_as(_value(input.registry, i[0], i[1]), _item_vtype(i)), i[2], i[3])
 	}
 }
 
@@ -263,7 +374,7 @@ _passes(c) if {
 _passes(c) if {
 	c.kind == "ureg"
 	every _, hive in _user_hives {
-		_cmp(_value(hive, c.path, c.name), c.op, c.value)
+		_cmp(_as(_value(hive, c.path, c.name), _vtype(c)), c.op, c.value)
 	}
 }
 
@@ -276,9 +387,20 @@ _holders(privilege) := {upper(trim_left(s, "*")) |
 	some s in object.get(object.get(input.secedit, "privilege_rights", {}), privilege, [])
 }
 
+# secedit omits a right nobody holds, so an absent right is an empty list. A right that is present must be a
+# list of SID strings: a string or null in its place would read as "nobody holds it" and pass every "No One" row.
+_holders_typed(privilege) if {
+	v := object.get(object.get(input.secedit, "privilege_rights", {}), privilege, [])
+	is_array(v)
+	every s in v {
+		is_string(s)
+	}
+}
+
 _passes(c) if {
 	c.kind == "rights"
 	c.mode == "none"
+	_holders_typed(c.privilege)
 	count(_holders(c.privilege)) == 0
 }
 
@@ -287,6 +409,7 @@ _passes(c) if {
 _passes(c) if {
 	c.kind == "rights"
 	c.mode == "only"
+	_holders_typed(c.privilege)
 	count(_holders(c.privilege) - {upper(s) | some s in c.sids}) == 0
 }
 
@@ -294,6 +417,7 @@ _passes(c) if {
 _passes(c) if {
 	c.kind == "rights"
 	c.mode == "include"
+	_holders_typed(c.privilege)
 	count({upper(s) | some s in c.sids} - _holders(c.privilege)) == 0
 }
 
@@ -327,11 +451,11 @@ status(c) := "fail" if {
 	not _passes(c)
 }
 
-_found(c) := sprintf("%v", [_value(input.registry, c.path, c.name)]) if c.kind in {"reg", "reg_absent"}
+_found(c) := sprintf("%v", [_shown(input.registry, c.path, c.name)]) if c.kind in {"reg", "reg_absent"}
 
-_found(c) := sprintf("%v", [[_value(input.registry, i[0], i[1]) | some i in c.items]]) if c.kind == "reg_all"
+_found(c) := sprintf("%v", [[_shown(input.registry, i[0], i[1]) | some i in c.items]]) if c.kind == "reg_all"
 
-_found(c) := sprintf("%v", [{sid: _value(hive, c.path, c.name) | some sid, hive in _user_hives}]) if c.kind == "ureg"
+_found(c) := sprintf("%v", [{sid: _shown(hive, c.path, c.name) | some sid, hive in _user_hives}]) if c.kind == "ureg"
 
 _found(c) := sprintf("%v", [object.get(object.get(input.secedit, "system_access", {}), c.key, null)]) if c.kind == "secedit"
 
@@ -339,8 +463,102 @@ _found(c) := sprintf("%v", [sort(_holders(c.privilege))]) if c.kind == "rights"
 
 _found(c) := sprintf("%v", [object.get(input.audit_policy, c.guid, null)]) if c.kind == "auditpol"
 
+# Every value a row compares, as [input path, value as collected, vtype, comparison, required value]: what the
+# finding names when a value is of the wrong type for its setting.
+_reads(c) := [[sprintf("registry.%s.%s", [c.path, c.name]), _shown(input.registry, c.path, c.name), _vtype(c), c.op, c.value]] if c.kind == "reg"
+
+_reads(c) := [[sprintf("registry.%s.%s", [i[0], i[1]]), _shown(input.registry, i[0], i[1]), _item_vtype(i), i[2], i[3]] | some i in c.items] if c.kind == "reg_all"
+
+_reads(c) := [[sprintf("registry_users.%s.%s.%s", [sid, c.path, c.name]), _shown(hive, c.path, c.name), _vtype(c), c.op, c.value] | some sid, hive in _user_hives] if c.kind == "ureg"
+
+_reads(c) := [[sprintf("secedit.system_access.%s", [c.key]), object.get(object.get(input.secedit, "system_access", {}), c.key, null), "dword", c.op, c.value]] if c.kind == "secedit"
+
+_reads(c) := [[sprintf("audit_policy.%s", [c.guid]), object.get(input.audit_policy, c.guid, null), "dword", "bits", c.bits]] if c.kind == "auditpol"
+
+_reads(c) := [] if not c.kind in {"reg", "reg_all", "ureg", "secedit", "auditpol"}
+
+_wants_number(op, _) if op in {"ge", "ge_or_forever", "le", "le_not0", "range", "in", "bits"}
+
+_wants_number(op, want) if {
+	op in {"eq", "eq_or_absent", "ne"}
+	is_number(want)
+}
+
+_wants_string(op, _) if op in {"nonempty", "has_all"}
+
+_wants_string(op, want) if {
+	op in {"eq", "ne"}
+	is_string(want)
+}
+
+# a missing value is reported as missing evidence (see _missing), not as a type problem
+_type_problem(r) := sprintf("%s is not a number (got %s)", [r[0], type_name(r[1])]) if {
+	_wants_number(r[3], r[4])
+	r[2] in {"dword", "any"}
+	not _empty(r[1])
+	not is_number(_as(r[1], r[2]))
+}
+
+_type_problem(r) := sprintf("%s is not a string holding a number (got %s)", [r[0], type_name(r[1])]) if {
+	_wants_number(r[3], r[4])
+	r[2] == "sz"
+	not _empty(r[1])
+	not _digits(r[1])
+}
+
+_type_problem(r) := sprintf("%s is not a string (got %s)", [r[0], type_name(r[1])]) if {
+	_wants_string(r[3], r[4])
+	r[1] != null
+	not is_string(r[1])
+}
+
+_type_problem(r) := sprintf("%s is not a list (got %s)", [r[0], type_name(r[1])]) if {
+	r[3] == "set"
+	r[1] != null
+	not is_array(r[1])
+}
+
+_rights_problems(c) := [sprintf("secedit.privilege_rights.%s is not a list of SID strings (got %s)", [c.privilege, type_name(input.secedit.privilege_rights[c.privilege])])] if {
+	c.kind == "rights"
+	not _holders_typed(c.privilege)
+}
+
+_rights_problems(c) := [] if {
+	c.kind == "rights"
+	_holders_typed(c.privilege)
+}
+
+_rights_problems(c) := [] if c.kind != "rights"
+
+# Every registry key a row reads, as [input path of the key, hive, key, input path of the hive].
+_keys(c) := [[sprintf("registry.%s", [c.path]), input.registry, c.path, "registry"]] if c.kind in {"reg", "reg_absent"}
+
+_keys(c) := [[sprintf("registry.%s", [i[0]]), input.registry, i[0], "registry"] | some i in c.items] if c.kind == "reg_all"
+
+_keys(c) := [[sprintf("registry_users.%s.%s", [sid, c.path]), hive, c.path, sprintf("registry_users.%s", [sid])] | some sid, hive in _user_hives] if c.kind == "ureg"
+
+_keys(c) := [] if not c.kind in {"reg", "reg_absent", "reg_all", "ureg"}
+
+_key_problem(k) := sprintf("%s is not an object (got %s)", [k[3], type_name(k[1])]) if not is_object(k[1])
+
+_key_problem(k) := sprintf("%s is not an object (got %s)", [k[0], type_name(k[1][k[2]])]) if {
+	is_object(k[1])
+	not _key_ok(k[1], k[2])
+}
+
+# a key that is not an object, once per key however many values the row reads under it
+_key_problems(c) := sort({_key_problem(k) | some k in _keys(c)})
+
+_type_problems(c) := array.concat(array.concat([_type_problem(r) | some r in _reads(c)], _rights_problems(c)), _key_problems(c))
+
+# appended to a failing row's finding: empty unless a value is of the wrong type for its setting
+_type_note(c) := "" if count(_type_problems(c)) == 0
+
+_type_note(c) := sprintf(" -- evidence: %s", [concat("; ", _type_problems(c))]) if count(_type_problems(c)) > 0
+
 # A value absent from a collected input fails (the benchmark's state is a configured value), and the message
-# says the evidence was missing rather than reporting "found: null".
+# says the evidence was missing rather than reporting "found: null". A value under a key that is not an object
+# is not "absent": that row keeps the "found:" form and its evidence note names the key.
 _missing(c) if {
 	c.kind == "reg"
 	_value(input.registry, c.path, c.name) == null
@@ -380,11 +598,19 @@ _field(c) := sprintf("audit_policy %s", [c.guid]) if c.kind == "auditpol"
 
 _fail_msg(c) := sprintf("%s -- evidence missing — %s not collected (counted as failed)", [c.msg, _field(c)]) if _missing(c)
 
-_fail_msg(c) := sprintf("%s -- found: %s", [c.msg, _found(c)]) if not _missing(c)
+_fail_msg(c) := sprintf("%s -- found: %s%s", [c.msg, _found(c), _type_note(c)]) if not _missing(c)
 
 _why_not_assessed(c) := "the server role (input.cis_profile.role) was not supplied and this recommendation applies to one role only" if _role_undecided(c.profiles)
 
-_why_not_assessed(c) := sprintf("input.%s was not collected (for registry_users: no S-1-5-21 user hive)", [INPUT_KEY[c.kind]]) if not _role_undecided(c.profiles)
+_why_not_assessed(c) := sprintf("input.%s was not collected (for registry_users: no S-1-5-21 user hive)", [INPUT_KEY[c.kind]]) if {
+	not _role_undecided(c.profiles)
+	not _selector_undecided(c.profiles)
+}
+
+_why_not_assessed(c) := sprintf("%s, so the profile cannot place this recommendation", [concat("; ", _selector_problems(c.profiles))]) if {
+	not _role_undecided(c.profiles)
+	_selector_undecided(c.profiles)
+}
 
 _section_report(section, controls) := r if {
 	results := {cid: status(c) | some cid, c in controls}
@@ -403,6 +629,7 @@ _section_report(section, controls) := r if {
 			c := controls[cid]
 			results[cid] == "not_assessed"
 			not _role_undecided(c.profiles)
+			not _selector_undecided(c.profiles)
 		}),
 		"violations": array.concat(
 			[_fail_msg(c) | some cid; c := controls[cid]; results[cid] == "fail"],

@@ -134,16 +134,18 @@ violation_l1_ac_1_22 contains msg if {
 violation_l2_ac_1_3 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.cui_flow_controls
-	msg := "CMMC AC.L2-3.1.3: No CUI information flow controls implemented. Data flow enforcement is required at Level 2."
+	not input.access_controls.cui_flow_controls == true
+	finding := "CMMC AC.L2-3.1.3: No CUI information flow controls implemented. Data flow enforcement is required at Level 2."
+	msg := concat("", [finding, _ev_input("access_controls.cui_flow_controls")])
 }
 
 # AC.L2-3.1.4 — Separate duties of individuals to reduce risk of malevolent activity
 violation_l2_ac_1_4 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.separation_of_duties
-	msg := "CMMC AC.L2-3.1.4: Separation of duties is not implemented. No single user should be able to complete a high-risk action alone."
+	not input.access_controls.separation_of_duties == true
+	finding := "CMMC AC.L2-3.1.4: Separation of duties is not implemented. No single user should be able to complete a high-risk action alone."
+	msg := concat("", [finding, _ev_input("access_controls.separation_of_duties")])
 }
 
 # AC.L2-3.1.5 / 3.1.6 iterate the user inventory
@@ -167,11 +169,12 @@ violation_l2_ac_1_5 contains msg if {
 	input.cmmc_level >= 2
 	some user in _users
 	user.privileged == true
-	not user.privilege_justified
-	msg := sprintf(
+	not user.privilege_justified == true
+	finding := sprintf(
 		"CMMC AC.L2-3.1.5: Privileged user '%v' has no documented justification. Least privilege must be enforced with documented need.",
 		[user.username],
 	)
+	msg := concat("", [finding, _ev_item(user, "privilege_justified")])
 }
 
 violation_l2_ac_1_6 contains "CMMC AC.L2-3.1.6: evidence missing - input.users not collected (absent, not an array or empty); use of non-privileged accounts cannot be shown" if {
@@ -194,19 +197,21 @@ violation_l2_ac_1_6 contains msg if {
 	input.cmmc_level >= 2
 	some user in _users
 	user.privileged == true
-	not user.non_privileged_account_for_regular_use
-	msg := sprintf(
+	not user.non_privileged_account_for_regular_use == true
+	finding := sprintf(
 		"CMMC AC.L2-3.1.6: Privileged user '%v' does not have a separate non-privileged account for routine tasks.",
 		[user.username],
 	)
+	msg := concat("", [finding, _ev_item(user, "non_privileged_account_for_regular_use")])
 }
 
 # AC.L2-3.1.7 — Prevent non-privileged users from executing privileged functions
 violation_l2_ac_1_7 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.privileged_function_auditing
-	msg := "CMMC AC.L2-3.1.7: Privileged function execution is not audited. All privileged function use must be logged."
+	not input.access_controls.privileged_function_auditing == true
+	finding := "CMMC AC.L2-3.1.7: Privileged function execution is not audited. All privileged function use must be logged."
+	msg := concat("", [finding, _ev_input("access_controls.privileged_function_auditing")])
 }
 
 # AC.L2-3.1.8 — Limit unsuccessful logon attempts
@@ -232,14 +237,14 @@ violation_l2_ac_1_9 contains msg if {
 violation_l2_ac_1_10 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not is_number(object.get(input, ["session", "lock_timeout_minutes"], null))
+	not is_number(object.get(_facts, ["session", "lock_timeout_minutes"], null))
 	msg := "CMMC AC.L2-3.1.10: evidence missing - input.session.lock_timeout_minutes not collected (not a number); session lock cannot be shown."
 }
 
 violation_l2_ac_1_10 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not is_number(object.get(input, ["org_defined", "session_lock_minutes"], null))
+	not is_number(object.get(_facts, ["org_defined", "session_lock_minutes"], null))
 	msg := "CMMC AC.L2-3.1.10: evidence missing - input.org_defined.session_lock_minutes (organisation-defined period of inactivity, NIST SP 800-171A 3.1.10[a]) not supplied or not a number."
 }
 
@@ -259,40 +264,45 @@ violation_l2_ac_1_10 contains msg if {
 violation_l2_ac_1_11 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.session.automatic_termination
-	msg := "CMMC AC.L2-3.1.11: Sessions are not automatically terminated after inactivity. Implement session termination for CUI access."
+	not input.session.automatic_termination == true
+	finding := "CMMC AC.L2-3.1.11: Sessions are not automatically terminated after inactivity. Implement session termination for CUI access."
+	msg := concat("", [finding, _ev_input("session.automatic_termination")])
 }
 
 # AC.L2-3.1.12 — Monitor and control remote access sessions
 violation_l2_ac_1_12 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.remote_access_monitored
-	msg := "CMMC AC.L2-3.1.12: Remote access sessions are not monitored. All remote access to CUI systems must be monitored."
+	not input.access_controls.remote_access_monitored == true
+	finding := "CMMC AC.L2-3.1.12: Remote access sessions are not monitored. All remote access to CUI systems must be monitored."
+	msg := concat("", [finding, _ev_input("access_controls.remote_access_monitored")])
 }
 
 # AC.L2-3.1.13 — Use cryptographic mechanisms for remote access
 violation_l2_ac_1_13 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.remote_access_encrypted
-	msg := "CMMC AC.L2-3.1.13: Remote access does not use cryptographic mechanisms. VPN or equivalent encryption is required."
+	not input.access_controls.remote_access_encrypted == true
+	finding := "CMMC AC.L2-3.1.13: Remote access does not use cryptographic mechanisms. VPN or equivalent encryption is required."
+	msg := concat("", [finding, _ev_input("access_controls.remote_access_encrypted")])
 }
 
 # AC.L2-3.1.14 — Route remote access via managed access control points
 violation_l2_ac_1_14 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.remote_access_via_managed_points
-	msg := "CMMC AC.L2-3.1.14: Remote access is not routed through managed access control points (e.g., jump servers, VPN gateways)."
+	not input.access_controls.remote_access_via_managed_points == true
+	finding := "CMMC AC.L2-3.1.14: Remote access is not routed through managed access control points (e.g., jump servers, VPN gateways)."
+	msg := concat("", [finding, _ev_input("access_controls.remote_access_via_managed_points")])
 }
 
 # AC.L2-3.1.15 — Authorize remote execution of privileged commands
 violation_l2_ac_1_15 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.remote_privileged_commands_controlled
-	msg := "CMMC AC.L2-3.1.15: Remote execution of privileged commands is not controlled. Explicit authorization is required."
+	not input.access_controls.remote_privileged_commands_controlled == true
+	finding := "CMMC AC.L2-3.1.15: Remote execution of privileged commands is not controlled. Explicit authorization is required."
+	msg := concat("", [finding, _ev_input("access_controls.remote_privileged_commands_controlled")])
 }
 
 # Wireless and mobile practices apply only when the capability exists; whether
@@ -300,7 +310,7 @@ violation_l2_ac_1_15 contains msg if {
 violation_l2_ac_1_16 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not is_boolean(object.get(input, ["access_controls", "wireless_access_enabled"], null))
+	not is_boolean(object.get(_facts, ["access_controls", "wireless_access_enabled"], null))
 	msg := "CMMC AC.L2-3.1.16: evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless authorization cannot be decided."
 }
 
@@ -316,7 +326,7 @@ violation_l2_ac_1_16 contains msg if {
 violation_l2_ac_1_17 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not is_boolean(object.get(input, ["access_controls", "wireless_access_enabled"], null))
+	not is_boolean(object.get(_facts, ["access_controls", "wireless_access_enabled"], null))
 	msg := "CMMC AC.L2-3.1.17: evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless protection cannot be decided."
 }
 
@@ -325,22 +335,24 @@ violation_l2_ac_1_17 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.access_controls.wireless_access_enabled == true
-	not input.access_controls.wireless_access_encrypted
-	msg := "CMMC AC.L2-3.1.17: Wireless access to CUI systems is not encrypted. WPA3 or equivalent is required."
+	not input.access_controls.wireless_access_encrypted == true
+	finding := "CMMC AC.L2-3.1.17: Wireless access to CUI systems is not encrypted. WPA3 or equivalent is required."
+	msg := concat("", [finding, _ev_input("access_controls.wireless_access_encrypted")])
 }
 
 # AC.L2-3.1.18 — Control connection of mobile devices
 violation_l2_ac_1_18 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not input.access_controls.mobile_device_policy
-	msg := "CMMC AC.L2-3.1.18: No mobile device policy for CUI access. Mobile devices connecting to CUI systems must be managed."
+	not input.access_controls.mobile_device_policy == true
+	finding := "CMMC AC.L2-3.1.18: No mobile device policy for CUI access. Mobile devices connecting to CUI systems must be managed."
+	msg := concat("", [finding, _ev_input("access_controls.mobile_device_policy")])
 }
 
 violation_l2_ac_1_19 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
-	not is_boolean(object.get(input, ["access_controls", "mobile_device_cui_access"], null))
+	not is_boolean(object.get(_facts, ["access_controls", "mobile_device_cui_access"], null))
 	msg := "CMMC AC.L2-3.1.19: evidence missing - input.access_controls.mobile_device_cui_access not collected (not a boolean); mobile-device encryption cannot be decided."
 }
 
@@ -349,8 +361,9 @@ violation_l2_ac_1_19 contains msg if {
 	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.access_controls.mobile_device_cui_access == true
-	not input.access_controls.mobile_device_encryption
-	msg := "CMMC AC.L2-3.1.19: Mobile devices accessing CUI do not enforce encryption. Full-device encryption is required."
+	not input.access_controls.mobile_device_encryption == true
+	finding := "CMMC AC.L2-3.1.19: Mobile devices accessing CUI do not enforce encryption. Full-device encryption is required."
+	msg := concat("", [finding, _ev_input("access_controls.mobile_device_encryption")])
 }
 
 # AC.L2-3.1.21 — Limit use of portable storage devices on external systems
@@ -401,7 +414,7 @@ violations contains msg if {
 # missing level would silently evaluate the Level 1 safeguards only. This
 # finding names no practice (data.cmmc reports the missing level itself).
 violations contains "CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the Level 2 access-control practices were not evaluated and the domain is reported non-compliant" if {
-	not is_number(object.get(input, "cmmc_level", null))
+	not is_number(object.get(_facts, "cmmc_level", null))
 }
 
 default compliant := false
@@ -438,7 +451,7 @@ failing_practices := {p.id | some p in practices; p.compliant == false}
 
 compliance_report := {
 	"domain": "Access Control (AC)",
-	"cmmc_level": object.get(input, "cmmc_level", 0),
+	"cmmc_level": object.get(_facts, "cmmc_level", 0),
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
@@ -448,3 +461,25 @@ compliance_report := {
 	"level_2_passing": count(level_2_violations) == 0,
 	"passing": count(practices) - count(failing_practices),
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

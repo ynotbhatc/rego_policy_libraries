@@ -116,7 +116,15 @@ attestations := {
 # Item 4 and 4a–4c share one mapping row in the form's Appendix.
 _ssdf_4 := ["PO.4.1", "PO.4.2", "PS.1.1", "PW.2.1", "PW.4.4", "PW.5.1", "PW.6.1", "PW.6.2", "PW.7.1", "PW.7.2", "PW.8.2", "PW.9.1", "PW.9.2", "RV.1.1", "RV.1.2", "RV.1.3", "RV.2.1", "RV.2.2", "RV.3.3"]
 
-_in := object.get(input, "cisa_ssdaf", {})
+# The module's facts. Anything other than an object here (no input at all, null, a string, a number) reads
+# as no facts: every check then reports its finding and the report stays defined and non-compliant.
+# (object.get on a null or string container is an error, which made the whole report undefined.)
+default _in := {}
+
+_in := v if {
+	v := input.cisa_ssdaf
+	is_object(v)
+}
 
 _supplied if is_object(input.cisa_ssdaf)
 

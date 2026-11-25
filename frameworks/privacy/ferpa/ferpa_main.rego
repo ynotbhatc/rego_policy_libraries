@@ -78,182 +78,256 @@ compliant if {
 	count(violations) == 0
 }
 
+# ── Evidence rule (bad input never passes, issue #301) ───────────────────────
+# A yes/no fact passes only as the boolean true. A fact that is missing, null,
+# a string such as "true" / "false" / "no", or a number is an evidence problem:
+# the control fails and the finding says which ("evidence missing: <field> not
+# collected" / "evidence invalid: <field> is not a boolean (got string)").
+# Where a control accepts alternatives, any one alternative that is true
+# satisfies it, but an alternative of the wrong type fails it: the verdict
+# never rests on mistyped evidence.
+
+_absent := "__absent__"
+
+_value(path) := object.get(input, path, _absent)
+
+_yes(path) if _value(path) == true
+
+_collected(path) if _value(path) != _absent
+
+_mistyped(path) if {
+	_collected(path)
+	not is_boolean(_value(path))
+}
+
+_unmet(facts) if {
+	every path in facts {
+		not _yes(path)
+	}
+}
+
+_unmet(facts) if {
+	some path in facts
+	_mistyped(path)
+}
+
+_problem(path) := sprintf("evidence missing: input.%s not collected", [concat(".", path)]) if not _collected(path)
+
+_problem(path) := sprintf("evidence invalid: input.%s is not a boolean (got %s)", [concat(".", path), type_name(_value(path))]) if _mistyped(path)
+
+_evidence(facts) := sprintf(" [%s]", [concat("; ", problems)]) if {
+	problems := [_problem(path) | some path in facts]
+	count(problems) > 0
+} else := ""
+
 # ── §99.7 — Annual notification of rights ────────────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.notification.published
-	msg := "FERPA §99.7: Annual notification of FERPA rights not provided to parents / eligible students"
+	facts := [["ferpa", "notification", "published"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.7: Annual notification of FERPA rights not provided to parents / eligible students%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.notification.includes_right_to_inspect
-	msg := "FERPA §99.7(a)(2)(i): Annual notification does not state the right to inspect and review education records"
+	facts := [["ferpa", "notification", "includes_right_to_inspect"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.7(a)(2)(i): Annual notification does not state the right to inspect and review education records%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.notification.includes_right_to_amend
-	msg := "FERPA §99.7(a)(2)(ii): Annual notification does not state the right to seek amendment of records believed inaccurate or misleading"
+	facts := [["ferpa", "notification", "includes_right_to_amend"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.7(a)(2)(ii): Annual notification does not state the right to seek amendment of records believed inaccurate or misleading%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.notification.includes_disclosure_conditions
-	msg := "FERPA §99.7(a)(2)(iii): Annual notification does not state the conditions under which records are disclosed with and without consent"
+	facts := [["ferpa", "notification", "includes_disclosure_conditions"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.7(a)(2)(iii): Annual notification does not state the conditions under which records are disclosed with and without consent%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.notification.includes_complaint_right
-	msg := "FERPA §99.7(a)(2)(iv): Annual notification does not state the right to file a complaint with the U.S. Department of Education"
+	facts := [["ferpa", "notification", "includes_complaint_right"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.7(a)(2)(iv): Annual notification does not state the right to file a complaint with the U.S. Department of Education%s", [_evidence(facts)])
 }
 
 # ── §99.10–99.22 — Access, amendment, and hearing ────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.access.process_documented
-	msg := "FERPA §99.10: No documented process for parents / eligible students to inspect and review education records"
+	facts := [["ferpa", "access", "process_documented"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.10: No documented process for parents / eligible students to inspect and review education records%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.access.response_deadline_enforced
-	msg := "FERPA §99.10(b): Access requests not fulfilled within the required 45 days of the request"
+	facts := [["ferpa", "access", "response_deadline_enforced"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.10(b): Access requests not fulfilled within the required 45 days of the request%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.access.amendment_procedure_documented
-	msg := "FERPA §99.20: No documented procedure to request amendment of inaccurate or misleading records"
+	facts := [["ferpa", "access", "amendment_procedure_documented"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.20: No documented procedure to request amendment of inaccurate or misleading records%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.access.hearing_available
-	msg := "FERPA §99.21–99.22: Hearing opportunity on amendment denial not provided or does not meet minimum requirements"
+	facts := [["ferpa", "access", "hearing_available"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.21–99.22: Hearing opportunity on amendment denial not provided or does not meet minimum requirements%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.access.statement_right_provided
-	msg := "FERPA §99.21(b)(2): Right to place a statement of disagreement in the record after an unsuccessful amendment hearing not provided"
+	facts := [["ferpa", "access", "statement_right_provided"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.21(b)(2): Right to place a statement of disagreement in the record after an unsuccessful amendment hearing not provided%s", [_evidence(facts)])
 }
 
 # ── §99.30 — Prior written consent ───────────────────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.consent.written_before_disclosure
-	msg := "FERPA §99.30(a): Signed and dated written consent not obtained before disclosing personally identifiable information from education records (outside §99.31 exceptions)"
+	facts := [["ferpa", "consent", "written_before_disclosure"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.30(a): Signed and dated written consent not obtained before disclosing personally identifiable information from education records (outside §99.31 exceptions)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.consent.specifies_scope
-	msg := "FERPA §99.30(b): Consent instrument does not specify the records disclosed, the purpose, and the party or class of parties receiving them"
+	facts := [["ferpa", "consent", "specifies_scope"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.30(b): Consent instrument does not specify the records disclosed, the purpose, and the party or class of parties receiving them%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.consent.records_retained
-	msg := "FERPA §99.30: Executed consent records not retained as evidence of authorized disclosure"
+	facts := [["ferpa", "consent", "records_retained"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.30: Executed consent records not retained as evidence of authorized disclosure%s", [_evidence(facts)])
 }
 
 # ── §99.31(a)(1) — School-official exception conditions ──────────────────────
 
 violations contains msg if {
-	not input.ferpa.school_officials.criteria_in_notification
-	msg := "FERPA §99.31(a)(1) / §99.7(a)(3)(iii): Criteria for who is a school official with legitimate educational interest not specified in the annual notification"
+	facts := [["ferpa", "school_officials", "criteria_in_notification"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.31(a)(1) / §99.7(a)(3)(iii): Criteria for who is a school official with legitimate educational interest not specified in the annual notification%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.school_officials.access_controls_enforced
-	msg := "FERPA §99.31(a)(1)(ii): Reasonable methods (physical, technological, or administrative access controls) not used to limit school-official access to records in which they have a legitimate educational interest"
+	facts := [["ferpa", "school_officials", "access_controls_enforced"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.31(a)(1)(ii): Reasonable methods (physical, technological, or administrative access controls) not used to limit school-official access to records in which they have a legitimate educational interest%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.school_officials.contractors_under_direct_control
-	msg := "FERPA §99.31(a)(1)(i)(B): Contractors / consultants / volunteers acting as school officials not under the institution's direct control with respect to use and maintenance of education records"
+	facts := [["ferpa", "school_officials", "contractors_under_direct_control"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.31(a)(1)(i)(B): Contractors / consultants / volunteers acting as school officials not under the institution's direct control with respect to use and maintenance of education records%s", [_evidence(facts)])
 }
 
 # ── §99.31/99.33/99.35/99.36 — Other exception conditions ────────────────────
 
 violations contains msg if {
-	not input.ferpa.exceptions.transfer_conditions_met
-	msg := "FERPA §99.31(a)(2) / §99.34: Disclosures to schools of intended enrollment made without the required annual-notice statement or reasonable attempt to notify"
+	facts := [["ferpa", "exceptions", "transfer_conditions_met"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.31(a)(2) / §99.34: Disclosures to schools of intended enrollment made without the required annual-notice statement or reasonable attempt to notify%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.exceptions.audit_written_agreements
-	msg := "FERPA §99.35(a)(3): Audit/evaluation disclosures to authorized representatives not governed by the required written agreement (designation, purpose, PII scope, destruction terms)"
+	facts := [["ferpa", "exceptions", "audit_written_agreements"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.35(a)(3): Audit/evaluation disclosures to authorized representatives not governed by the required written agreement (designation, purpose, PII scope, destruction terms)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.exceptions.audit_data_destroyed
-	msg := "FERPA §99.35(b)(2): PII disclosed for audit/evaluation not destroyed when no longer needed for the stated purpose"
+	facts := [["ferpa", "exceptions", "audit_data_destroyed"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.35(b)(2): PII disclosed for audit/evaluation not destroyed when no longer needed for the stated purpose%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.exceptions.studies_written_agreement
-	msg := "FERPA §99.31(a)(6)(iii)(C): Disclosures for studies not governed by the required written agreement (purpose/scope/duration, use limits, destruction)"
+	facts := [["ferpa", "exceptions", "studies_written_agreement"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.31(a)(6)(iii)(C): Disclosures for studies not governed by the required written agreement (purpose/scope/duration, use limits, destruction)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.exceptions.subpoena_notify_effort
-	msg := "FERPA §99.31(a)(9)(ii): No reasonable effort to notify the parent / eligible student before complying with a subpoena or judicial order (where notification is not prohibited)"
+	facts := [["ferpa", "exceptions", "subpoena_notify_effort"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.31(a)(9)(ii): No reasonable effort to notify the parent / eligible student before complying with a subpoena or judicial order (where notification is not prohibited)%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.exceptions.health_safety_threat_recorded
-	msg := "FERPA §99.36 / §99.32(a)(5): Health-or-safety-emergency disclosures made without recording the articulable and significant threat and the parties who received the information"
+	facts := [["ferpa", "exceptions", "health_safety_threat_recorded"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.36 / §99.32(a)(5): Health-or-safety-emergency disclosures made without recording the articulable and significant threat and the parties who received the information%s", [_evidence(facts)])
 }
 
 # ── §99.37 — Directory information ───────────────────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.directory.public_notice
-	msg := "FERPA §99.37(a)(1): Public notice of the types of PII designated as directory information not given"
+	facts := [["ferpa", "directory", "public_notice"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.37(a)(1): Public notice of the types of PII designated as directory information not given%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.directory.opt_out_offered
-	msg := "FERPA §99.37(a)(2)-(3): Parents / eligible students not given the right and a reasonable period to refuse directory-information designation"
+	facts := [["ferpa", "directory", "opt_out_offered"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.37(a)(2)-(3): Parents / eligible students not given the right and a reasonable period to refuse directory-information designation%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.directory.opt_out_honored
-	msg := "FERPA §99.37: Directory-information opt-outs not honored in actual disclosures"
+	facts := [["ferpa", "directory", "opt_out_honored"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.37: Directory-information opt-outs not honored in actual disclosures%s", [_evidence(facts)])
 }
 
 # ── §99.32 — Recordkeeping of disclosures ────────────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.records_of_disclosure.log_maintained
-	msg := "FERPA §99.32(a)(1): Record of each request for and disclosure of PII from education records (parties and legitimate interests) not maintained"
+	facts := [["ferpa", "records_of_disclosure", "log_maintained"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.32(a)(1): Record of each request for and disclosure of PII from education records (parties and legitimate interests) not maintained%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.records_of_disclosure.log_retained_with_records
-	msg := "FERPA §99.32(a)(2): Disclosure record not retained as long as the education record it documents"
+	facts := [["ferpa", "records_of_disclosure", "log_retained_with_records"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.32(a)(2): Disclosure record not retained as long as the education record it documents%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.records_of_disclosure.redisclosure_recorded
-	msg := "FERPA §99.32(b): Authorized redisclosures (parties and legitimate interests) not recorded"
+	facts := [["ferpa", "records_of_disclosure", "redisclosure_recorded"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.32(b): Authorized redisclosures (parties and legitimate interests) not recorded%s", [_evidence(facts)])
 }
 
 # ── §99.33 — Redisclosure limits ─────────────────────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.redisclosure.limits_communicated
-	msg := "FERPA §99.33(d): Recipients not informed that PII may be used only for the disclosed purpose and not redisclosed except as permitted"
+	facts := [["ferpa", "redisclosure", "limits_communicated"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.33(d): Recipients not informed that PII may be used only for the disclosed purpose and not redisclosed except as permitted%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.redisclosure.violation_process
-	msg := "FERPA §99.33(e): No process to address improper redisclosure by a third party (including the five-year access bar the Department may impose)"
+	facts := [["ferpa", "redisclosure", "violation_process"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.33(e): No process to address improper redisclosure by a third party (including the five-year access bar the Department may impose)%s", [_evidence(facts)])
 }
 
 # ── §99.5 / §99.8 — Program controls ─────────────────────────────────────────
 
 violations contains msg if {
-	not input.ferpa.program.eligible_student_rights_transfer
-	msg := "FERPA §99.5: Transfer of FERPA rights to the student at age 18 or postsecondary enrollment not recognized in procedures and notices"
+	facts := [["ferpa", "program", "eligible_student_rights_transfer"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.5: Transfer of FERPA rights to the student at age 18 or postsecondary enrollment not recognized in procedures and notices%s", [_evidence(facts)])
 }
 
 violations contains msg if {
-	not input.ferpa.program.leu_records_separated
-	msg := "FERPA §99.8: Law-enforcement-unit records not maintained separately from education records (commingling brings them under FERPA and defeats the exemption)"
+	facts := [["ferpa", "program", "leu_records_separated"]]
+	_unmet(facts)
+	msg := sprintf("FERPA §99.8: Law-enforcement-unit records not maintained separately from education records (commingling brings them under FERPA and defeats the exemption)%s", [_evidence(facts)])
 }
 
 # ── Per-area rollup ──────────────────────────────────────────────────────────

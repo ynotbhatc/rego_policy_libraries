@@ -53,17 +53,28 @@ def _bad(op, value):
     raise ValueError(op)
 
 
+def _as_collected(v, vtype):
+    """The value as the collector sends it: a number held in a REG_SZ (vtype "sz") arrives as a string."""
+    if vtype == "sz" and isinstance(v, int) and not isinstance(v, bool):
+        return str(v)
+    return v
+
+
 def _facts(c, good):
     """The facts one check reads, as a partial input document."""
     k = c["kind"]
-    pick = _good if good else _bad
+
+    def pick(op, value):
+        return _as_collected((_good if good else _bad)(op, value), c.get("vtype"))
+
     if k == "reg":
         return {"registry": {c["path"]: {c["name"]: pick(c["op"], c["value"])}}}
     if k == "reg_all":
         out = {}
-        for n, (path, name, op, value) in enumerate(c["items"]):
+        for n, item in enumerate(c["items"]):
+            path, name, op, value = item[:4]
             v = _good(op, value) if (good or n > 0) else _bad(op, value)
-            out.setdefault(path, {})[name] = v
+            out.setdefault(path, {})[name] = _as_collected(v, item[4] if len(item) > 4 else None)
         return {"registry": out}
     if k == "reg_absent":
         return {} if good else {"registry": {c["path"]: {c["name"]: 1}}}
@@ -200,9 +211,21 @@ test_level_1_excludes_level_2_recommendations if {{
 }}
 
 test_next_generation_is_opt_in if {{
-	fx := json.remove({fx}.fixture_ms, ["cis_profile/next_generation"])
+	fx := json.patch({fx}.fixture_ms, [{{"op": "replace", "path": "/cis_profile/next_generation", "value": false}}])
 	r := data.{pkg}.{sec(ng_only)}.compliance_report with input as fx
 	r.results["{ng_only}"] == "not_applicable"
+}}
+
+# a selector the profile does not state is not an explicit false: the row stays in scope, not assessed, and the
+# report says the selector was not stated (as a missing level is level_defaulted)
+test_a_missing_next_generation_selector_is_not_assessed if {{
+	fx := json.remove({fx}.fixture_ms, ["cis_profile/next_generation"])
+	r := data.{pkg}.{sec(ng_only)}.compliance_report with input as fx
+	r.results["{ng_only}"] == "not_assessed"
+	m := data.{pkg}.main.compliance_report with input as fx
+	m.profile.next_generation_defaulted == true
+	m.profile.selectors_not_stated == ["next_generation"]
+	m.compliant == false
 }}
 
 test_missing_audit_policy_is_reported_not_assessed if {{
@@ -331,13 +354,16 @@ def control_results_tests(pkg, recs, head, mixed, compliant, scopes):
     ids = natural(recs)
     out = [head + f"package {pkg}.control_results_test\n\nimport rego.v1\n",
            "# control_results: one result per recommendation; statuses agree with total_controls, failed_controls and",
-           "# the violation messages. Message kinds: '-- found:' fail, '-- NOT ASSESSED:' evidence missing, the Manual",
-           "# attestation messages not attested. Section-level NOT ASSESSED and FAIL-CLOSED lines cite no id.\n",
+           "# the violation messages. Message kinds: '-- found:' and '-- evidence missing — <value> not collected",
+           "# (counted as failed)' are a fail (the input was collected, the value is wrong or absent); '(NOT ASSESSED,",
+           "# counted as failed)' is evidence missing (the input itself was not collected, or the profile cannot place the",
+           "# row); the Manual attestation messages are not attested. Section-level NOT ASSESSED and FAIL-CLOSED lines",
+           "# cite no id.\n",
            'FAILING := {"fail", "evidence_missing", "not_attested"}\n',
-           "# both wordings of the not-assessed suffix the Windows generators emit\n_missing(m) if contains(m, \" -- NOT ASSESSED: \")\n",
-           "_missing(m) if contains(m, \" -- evidence missing — \")\n",
+           "_missing(m) if contains(m, \"(NOT ASSESSED, counted as failed)\")\n",
            "_kind(m) := \"evidence_missing\" if _missing(m)\n",
            "_kind(m) := \"fail\" if {\n\tcontains(m, \" -- found: \")\n\tnot _missing(m)\n}\n",
+           "_kind(m) := \"fail\" if {\n\tcontains(m, \" not collected (counted as failed)\")\n\tnot contains(m, \" -- found: \")\n\tnot _missing(m)\n}\n",
            "_kind(m) := \"not_attested\" if {\n\tcontains(m, \"(this is not a pass)\")\n\tnot contains(m, \" -- found: \")\n"
            "\tnot _missing(m)\n}\n",
            "# [id, kind] for every violation that cites a recommendation id",

@@ -85,6 +85,15 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -103,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -457,7 +470,7 @@ default e_7_1_11 := false
 e_7_1_11 if {
 	is_array(input.world_writable.files)
 	is_array(input.sticky_bit.world_writable_without_sticky)
-	not input.world_writable.truncated == true
+	object.get(input.world_writable, "truncated", false) == false
 }
 
 e_7_1_11 if {
@@ -501,8 +514,8 @@ default e_7_1_12 := false
 e_7_1_12 if {
 	is_array(input.unowned_files.files)
 	is_array(input.ungrouped_files.files)
-	not input.unowned_files.truncated == true
-	not input.ungrouped_files.truncated == true
+	object.get(input.unowned_files, "truncated", false) == false
+	object.get(input.ungrouped_files, "truncated", false) == false
 }
 
 e_7_1_12 if {

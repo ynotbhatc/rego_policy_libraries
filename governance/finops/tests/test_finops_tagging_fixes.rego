@@ -93,3 +93,26 @@ test_budget_message_is_not_garbled_for_integers if {
 	inp := {"resources": [res("web-1", {})], "budget_registry": {"CC-1234": 100}, "current_spend": {"CC-1234": 150}}
 	has_prefix_msg(ft.violations, "spend $150 exceeds budget $100 (50% over)") with input as inp
 }
+
+# A resource without a name used to drop out of both naming rules (`regex.match(p, resource.name)` is undefined).
+test_resource_without_name_violates_naming if {
+	r := object.remove(res("web-1", {}), ["name"])
+	has_prefix_msg(ft.violations, "Naming: Resource '(no name)' of type 'aws_instance'") with input as {"resources": [r]}
+}
+
+test_resource_without_name_violates_env_in_name if {
+	r := object.remove(res("web-1", {}), ["name"])
+	has_prefix_msg(ft.violations, "does not include environment prefix/suffix") with input as {"policy": {"require_env_in_name": true}, "resources": [r]}
+}
+
+# input.current_spend missing: `object.get(input.current_spend, cc, 0)` was undefined and the budget rules vanished.
+test_budget_not_a_number_is_reported_without_current_spend if {
+	vs := ft.violations with input as {"budget_registry": {"CC-1": "lots"}}
+	some v in vs
+	startswith(v, "Budget: Cost center 'CC-1' budget lots")
+}
+
+test_budget_exceeded_is_reported_without_current_spend_key_for_other_centers if {
+	vs := ft.violations with input as {"budget_registry": {"CC-1": 100}, "current_spend": {"CC-2": 1}}
+	not has_prefix_msg(vs, "exceeds budget")
+}

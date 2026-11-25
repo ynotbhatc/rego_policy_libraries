@@ -1,5 +1,4 @@
-package pci_dss.governance.requirement_12_test
-
+package pci_dss_tests.governance.requirement_12_test
 import rego.v1
 
 # Generated smoke test for frameworks/financial/pci_dss/governance/requirement_12.rego (scripts/gen_tests.py). Each rule states one thing the module was proven

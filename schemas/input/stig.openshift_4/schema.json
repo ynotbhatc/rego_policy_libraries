@@ -10,7 +10,7 @@
   "benchmarks/stig/openshift_4/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.stig.openshift_4.core_rules_test.green_fixture",
+ "x-fixture": "data.stig.openshift_4.bad_evidence_test._green",
  "type": "object",
  "properties": {
   "attest": {
@@ -308,6 +308,46 @@
       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
       "type": "object",
       "properties": {
+       "allowHostDirVolumePlugin": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "allowHostIPC": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "allowHostNetwork": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "allowHostPID": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "allowHostPorts": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
        "allowPrivilegedContainer": {
         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
         "type": "boolean",
@@ -432,6 +472,11 @@
   "rhcos.nodes[].sshd_enabled",
   "scc",
   "scc.items",
+  "scc.items[].allowHostDirVolumePlugin",
+  "scc.items[].allowHostIPC",
+  "scc.items[].allowHostNetwork",
+  "scc.items[].allowHostPID",
+  "scc.items[].allowHostPorts",
   "scc.items[].allowPrivilegedContainer",
   "scc.items[].groups",
   "scc.items[].metadata",

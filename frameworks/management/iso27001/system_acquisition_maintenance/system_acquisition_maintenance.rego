@@ -38,6 +38,8 @@ _at_most(path, name) if _actual(path) <= _odp(name)
 _at_least(path, name) if _actual(path) >= _odp(name)
 
 # Defaults so report/details never collapse to {} on empty input
+default production_test_data_controls_adequate := false
+
 default security_requirements_defined := false
 
 default public_network_services_secure := false
@@ -272,13 +274,18 @@ data_protection_control if {
 
 	# If production data is unavoidably used
 	# (if input.test_data.production_data_used is true, additional controls required)
-	test_data_controls_adequate
+	production_test_data_controls_adequate
 }
 
-test_data_controls_adequate if {
-	not input.test_data.production_data_used
+# (Named production_test_data_controls_adequate, not test_data_controls_adequate: `opa test` runs every
+# rule whose name starts with test_, so the old name was executed as a test case on empty input.)
+# Whether production data is used for testing must be stated: only the boolean false selects the
+# "not used" branch and only the boolean true selects the "used, with controls" branch. A missing,
+# null or wrong-typed production_data_used is not evidence that production data was kept out.
+production_test_data_controls_adequate if {
+	input.test_data.production_data_used == false
 } else if {
-	input.test_data.production_data_used
+	input.test_data.production_data_used == true
 	input.test_data.anonymization.applied == true
 	input.test_data.anonymization.pii_masked == true
 	input.test_data.anonymization.cardholder_data_masked == true

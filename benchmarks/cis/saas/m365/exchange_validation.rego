@@ -147,7 +147,7 @@ violation_4_8_1 contains msg if {
 
 violation_4_8_1 contains msg if {
 	external_tag_control
-	external_tag_control.implementation_status != "Implemented"
+	not external_tag_control.implementation_status == "Implemented"
 	msg := "CIS 4.8.1: External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail"
 }
 
@@ -165,7 +165,7 @@ violation_4_11_1 contains msg if {
 
 violation_4_11_1 contains msg if {
 	smtp_auth_control
-	smtp_auth_control.implementation_status != "Implemented"
+	not smtp_auth_control.implementation_status == "Implemented"
 	msg := "CIS 4.11.1: SMTP AUTH is enabled at the tenant level; legacy basic auth on SMTP submission permits credential-stuffing attacks"
 }
 

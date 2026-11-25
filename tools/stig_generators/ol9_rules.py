@@ -158,12 +158,13 @@ T.R("configuration_management", "OL09-00-000241", "crypto_policy_fips",
      {"crypto_policy_state": {"hash": FIPS_HASHES + ["SHA1"]}},
      {"crypto_policy_state": {"hash": FIPS_HASHES[:-1]}},
      {"crypto_policy_state": {"hash": FIPS_HASHES + ["SHA3-224"]}},
-     {"crypto_policy_state": {"min_rsa_size": 1024}}, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}}],
+     {"crypto_policy_state": {"min_rsa_size": 1024}}, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}},
+     {"crypto_policy_state": {"min_rsa_size": "3072"}}],
     "update-crypto-policies --show must be FIPS (or FIPS:<subpolicy>...); CURRENT.pol hash must include "
     + " ".join(FIPS_HASHES) + ", nothing with SHA1 or another hash below 256 bits; min_rsa_size must be at least 2048",
     "Set the FIPS policy: update-crypto-policies --set FIPS, then reboot",
     comment="systemwide crypto policy FIPS (subpolicies allowed, as OL 9's note says); CURRENT.pol hash list and min_rsa_size",
-    pass_cases=[{"crypto_policy": "FIPS:OSPP"}, {"crypto_policy_state": {"min_rsa_size": "3072"}}])
+    pass_cases=[{"crypto_policy": "FIPS:OSPP"}, {"crypto_policy_state": {"min_rsa_size": 3072}}])
 
 T.R("configuration_management", "OL09-00-000070", "fips_mode_enabled", [("fips", "mode_setup_check")],
     [['out := _str(["fips", "mode_setup_check"])',

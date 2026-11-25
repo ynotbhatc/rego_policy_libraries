@@ -12,6 +12,6 @@ test_full_scope_matches_the_workbook if {
 }
 
 test_level_1_scope_matches_the_workbook if {
-	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 1}}])
+	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 1, "bitlocker": false, "next_generation": false}}])
 	count(data.cis_windows_10.applicable_ids) == 337 with input as fx
 }

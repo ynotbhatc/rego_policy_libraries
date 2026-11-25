@@ -10,7 +10,7 @@
   "benchmarks/stig/oracle_database_19c/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.stig.oracle_database_19c_test.green_fixture",
+ "x-fixture": "data.stig.oracle_database_19c.acceptance_r3.base",
  "type": "object",
  "properties": {
   "oracle": {
@@ -620,10 +620,10 @@
       },
       "max_idle_time": {
        "description": "Read in core.rego.",
-       "type": "string",
+       "type": "number",
        "x-type-source": "fixture",
        "examples": [
-        "15"
+        15
        ]
       },
       "remote_login_passwordfile": {
@@ -676,34 +676,34 @@
        "properties": {
         "FAILED_LOGIN_ATTEMPTS": {
          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-         "type": "string",
+         "type": "number",
          "x-type-source": "fixture",
          "examples": [
-          "3"
+          3
          ]
         },
         "INACTIVE_ACCOUNT_TIME": {
          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-         "type": "string",
+         "type": "number",
          "x-type-source": "fixture",
          "examples": [
-          "35"
+          35
          ]
         },
         "PASSWORD_GRACE_TIME": {
          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-         "type": "string",
+         "type": "number",
          "x-type-source": "fixture",
          "examples": [
-          "5"
+          5
          ]
         },
         "PASSWORD_LIFE_TIME": {
          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-         "type": "string",
+         "type": "number",
          "x-type-source": "fixture",
          "examples": [
-          "60"
+          60
          ]
         },
         "PASSWORD_LOCK_TIME": {
@@ -724,10 +724,10 @@
         },
         "SESSIONS_PER_USER": {
          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-         "type": "string",
+         "type": "number",
          "x-type-source": "fixture",
          "examples": [
-          "10"
+          10
          ]
         }
        }
@@ -764,14 +764,6 @@
       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
       "type": "object",
       "properties": {
-       "group": {
-        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-        "type": "number",
-        "x-type-source": "fixture",
-        "examples": [
-         1
-        ]
-       },
        "members": {
         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
         "type": "array",
@@ -1083,7 +1075,6 @@
   "oracle.public_granted_roles",
   "oracle.public_system_privileges",
   "oracle.redo_log_groups",
-  "oracle.redo_log_groups[].group",
   "oracle.redo_log_groups[].members",
   "oracle.sample_schemas_present",
   "oracle.sqlnet",

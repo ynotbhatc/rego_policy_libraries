@@ -91,7 +91,36 @@ compliant if count(violations) == 0
 # ── profile ──────────────────────────────────────────────────────────────────────────
 default level := 2
 
-level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
 
 in_scope contains id if {
 	some id, r in recommendations
@@ -1188,7 +1217,12 @@ has_obj(x, k) if is_object(object.get(x, k, null))
 
 has_str(x, k) if is_string(object.get(x, k, null))
 
-sku_collected(x) if is_string(p(x, "sku").name)
+# a string that says something: "" and whitespace are not a role name, a scope or a SKU name
+has_text(x, k) if nonempty(object.get(x, k, null))
+
+# the SKU names Azure returns for Bastion hosts (Developer, Basic, Standard, Premium) and Key Vaults (Standard, Premium);
+# any other string (""; "false") was not collected as a SKU
+sku_collected(x) if lower(trim_space(p(x, "sku").name)) in {"developer", "basic", "standard", "premium"}
 
 p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
 
@@ -1204,11 +1238,18 @@ truthy(v) if {
 	lower(trim_space(v)) == "true"
 }
 
-p_true(x, k) if truthy(p(x, k))
+# Azure returns these properties as JSON booleans, so only the booleans are read: the strings "true" and
+# "false" are a collection error (reported through not_boolean), never a met or an unmet setting. truthy is
+# for the two properties the API itself returns as the strings "True" / "False" (Defender plan extensions,
+# the DDoS protection status of a public IP).
+p_true(x, k) if p(x, k) == true
 
 p_false(x, k) if p(x, k) == false
 
-p_false(x, k) if lower(trim_space(p(x, k))) == "false"
+not_boolean(x, k) if {
+	v := p(x, k)
+	not is_boolean(v)
+}
 
 nonempty(s) if {
 	is_string(s)
@@ -1265,8 +1306,9 @@ assignee(a) := n if {
 } else := "a principal"
 
 assignment_collected(a) if {
-	is_string(a.roleDefinitionName)
+	nonempty(a.roleDefinitionName)
 	is_string(a.scope)
+	startswith(trim_space(a.scope), "/")
 }
 
 # ── scopes and role assignments ───────────────────────────────────────────────────────
@@ -1303,7 +1345,12 @@ _principal(a) := a.principalName if {
 	is_string(a.principalName)
 }
 
-conditioned(a) if nonempty(a.condition)
+# A role assignment condition is an expression over attributes (@Request[...], @Resource[...], @Principal[...],
+# @Environment[...]); a string with no attribute reference ("false", "none") is not a condition.
+conditioned(a) if {
+	nonempty(a.condition)
+	regex.match(`@(request|resource|principal|environment)\[`, lower(a.condition))
+}
 
 custom_role(r) if not p_ieq(r, "roleType", "BuiltInRole")
 
@@ -1574,6 +1621,8 @@ allow_priorities(n, direction) := [pr |
 	is_number(pr)
 ]
 
+rule_priority_collected(r) if is_number(p(r, "priority"))
+
 # A deny-all rule in this direction that is evaluated after every custom allow rule and before
 # the platform default rules (priority number above the highest custom allow).
 deny_all_after_allows(n, direction) if {
@@ -1838,6 +1887,13 @@ kv_premium(v) if lower(p(v, "sku").name) == "premium"
 # Keys, secrets and certificates are checked unless explicitly disabled.
 item_in_scope(k) if object.get(object.get(k, "attributes", {}), "enabled", true) != false
 
+# attributes.enabled, when the item carries it, is a boolean; any other value leaves the item in scope and is reported.
+item_enabled_invalid(k) if {
+	v := k.attributes.enabled
+	not is_null(v)
+	not is_boolean(v)
+}
+
 has_expiry(k) if {
 	some f in ["expires", "exp"]
 	_set(k.attributes[f])
@@ -1915,7 +1971,8 @@ has_private_endpoint(v) if count(p(v, "privateEndpointConnections")) > 0
 
 shareable_link_capable(b) if lower(p(b, "sku").name) in {"standard", "premium"}
 
-nat_gateway_ip(ip) if nonempty(p(ip, "natGateway").id)
+# the NAT gateway is named by its resource id; any other string does not exempt the address
+nat_gateway_ip(ip) if regex.match(`^/subscriptions/[^/]+/resourcegroups/[^/]+/providers/microsoft\.network/natgateways/[^/]+$`, lower(trim_space(p(ip, "natGateway").id)))
 
 ddos_protected(ip) if lower(p(ip, "ddosSettings").protectionMode) == "enabled"
 
@@ -1961,6 +2018,12 @@ _messages contains "5.1.1: 'security defaults' must be turned on in Microsoft En
 	_in_scope("5.1.1")
 	_ev_5_1_1
 	not p_true(input.security_defaults, "isEnabled")
+}
+
+_messages contains sprintf("5.1.1: 'security defaults' must be turned on in Microsoft Entra ID — evidence invalid — isEnabled must be true or false, got %v", [type_name(p(input.security_defaults, "isEnabled"))]) if {
+	_in_scope("5.1.1")
+	_ev_5_1_1
+	not_boolean(input.security_defaults, "isEnabled")
 }
 
 # 5.1.2 (Manual, Level 1)
@@ -2030,7 +2093,7 @@ _messages contains "5.3.3: no principal holds 'User Access Administrator' at the
 	_in_scope("5.3.3")
 	_ev_5_3_3
 	some x in input.root_role_assignments
-	not has_str(x, "roleDefinitionName")
+	not has_text(x, "roleDefinitionName")
 }
 
 # 5.3.4 (Manual, Level 1)
@@ -2160,6 +2223,12 @@ _messages contains "5.9: checked condition — creating management groups requir
 	not p_true(input.management_group_hierarchy_settings, "requireAuthorizationForGroupCreation")
 }
 
+_messages contains sprintf("5.9: checked condition — creating management groups requires write permission on the root management group — evidence invalid — requireAuthorizationForGroupCreation must be true or false, got %v", [type_name(p(input.management_group_hierarchy_settings, "requireAuthorizationForGroupCreation"))]) if {
+	_in_scope("5.9")
+	_ev_5_9
+	not_boolean(input.management_group_hierarchy_settings, "requireAuthorizationForGroupCreation")
+}
+
 # 5.10 (Manual, Level 1)
 _messages contains "5.10: checked condition — Emergency Access Accounts Can Regain Azure Resource Access (manual review not attested: set input.attest.emergency_access_accounts_can_regain_access to true)" if {
 	_in_scope("5.10")
@@ -2262,6 +2331,14 @@ _messages contains "6.1.1.1: checked condition — a 'Diagnostic Setting' Exists
 	count([s | some s in input.subscription_diagnostic_settings; exporting_setting(s)]) == 0
 }
 
+_messages contains sprintf("6.1.1.1: checked condition — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("6.1.1.1")
+	_ev_6_1_1_1
+	some s in input.subscription_diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
+}
+
 # 6.1.1.2 (Automated, Level 1)
 default _ev_6_1_1_2 := false
 
@@ -2279,6 +2356,14 @@ _messages contains sprintf("6.1.1.2: checked condition — Diagnostic Setting Ca
 	_ev_6_1_1_2
 	some cat in ["Administrative", "Alert", "Policy", "Security"]
 	not subscription_category_logged(cat)
+}
+
+_messages contains sprintf("6.1.1.2: checked condition — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("6.1.1.2")
+	_ev_6_1_1_2
+	some s in input.subscription_diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
 }
 
 # 6.1.1.3 (Manual, Level 2)
@@ -2312,6 +2397,16 @@ _messages contains sprintf("6.1.1.4: required value of Logging for Azure Key Vau
 	_ev_6_1_1_4
 	some x in input.key_vaults
 	not has_list(x, "diagnostic_settings")
+}
+
+_messages contains sprintf("6.1.1.4: required value of Logging for Azure Key Vault is 'Enabled' — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("6.1.1.4")
+	_ev_6_1_1_4
+	some x in input.key_vaults
+	is_array(x.diagnostic_settings)
+	some s in x.diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
 }
 
 # 6.1.1.5 (Manual, Level 2)
@@ -2362,6 +2457,15 @@ _messages contains "6.1.2.1: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Authorization/policyAssignments/write", false)
 }
 
+_messages contains sprintf("6.1.2.1: checked condition — Activity Log Alert Exists for Create Policy Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.1")
+	_ev_6_1_2_1
+	not operation_alerted("Microsoft.Authorization/policyAssignments/write", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/policyAssignments/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.2 (Automated, Level 1)
 default _ev_6_1_2_2 := false
 
@@ -2378,6 +2482,15 @@ _messages contains "6.1.2.2: checked condition — Activity Log Alert exists for
 	_in_scope("6.1.2.2")
 	_ev_6_1_2_2
 	not operation_alerted("Microsoft.Authorization/policyAssignments/delete", false)
+}
+
+_messages contains sprintf("6.1.2.2: checked condition — Activity Log Alert exists for Delete Policy Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.2")
+	_ev_6_1_2_2
+	not operation_alerted("Microsoft.Authorization/policyAssignments/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/policyAssignments/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.3 (Automated, Level 1)
@@ -2398,6 +2511,15 @@ _messages contains "6.1.2.3: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Network/networkSecurityGroups/write", true)
 }
 
+_messages contains sprintf("6.1.2.3: checked condition — Activity Log Alert Exists for Create or Update Network Security Group — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.3")
+	_ev_6_1_2_3
+	not operation_alerted("Microsoft.Network/networkSecurityGroups/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/networkSecurityGroups/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.4 (Automated, Level 1)
 default _ev_6_1_2_4 := false
 
@@ -2414,6 +2536,15 @@ _messages contains "6.1.2.4: checked condition — Activity Log Alert Exists for
 	_in_scope("6.1.2.4")
 	_ev_6_1_2_4
 	not operation_alerted("Microsoft.Network/networkSecurityGroups/delete", true)
+}
+
+_messages contains sprintf("6.1.2.4: checked condition — Activity Log Alert Exists for Delete Network Security Group — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.4")
+	_ev_6_1_2_4
+	not operation_alerted("Microsoft.Network/networkSecurityGroups/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/networkSecurityGroups/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.5 (Automated, Level 1)
@@ -2434,6 +2565,15 @@ _messages contains "6.1.2.5: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Security/securitySolutions/write", true)
 }
 
+_messages contains sprintf("6.1.2.5: checked condition — Activity Log Alert Exists for Create or Update Security Solution — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.5")
+	_ev_6_1_2_5
+	not operation_alerted("Microsoft.Security/securitySolutions/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Security/securitySolutions/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.6 (Automated, Level 1)
 default _ev_6_1_2_6 := false
 
@@ -2450,6 +2590,15 @@ _messages contains "6.1.2.6: checked condition — Activity Log Alert Exists for
 	_in_scope("6.1.2.6")
 	_ev_6_1_2_6
 	not operation_alerted("Microsoft.Security/securitySolutions/delete", true)
+}
+
+_messages contains sprintf("6.1.2.6: checked condition — Activity Log Alert Exists for Delete Security Solution — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.6")
+	_ev_6_1_2_6
+	not operation_alerted("Microsoft.Security/securitySolutions/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Security/securitySolutions/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.7 (Automated, Level 1)
@@ -2470,6 +2619,15 @@ _messages contains "6.1.2.7: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Sql/servers/firewallRules/write", true)
 }
 
+_messages contains sprintf("6.1.2.7: checked condition — Activity Log Alert Exists for Create or Update SQL Server Firewall Rule — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.7")
+	_ev_6_1_2_7
+	not operation_alerted("Microsoft.Sql/servers/firewallRules/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Sql/servers/firewallRules/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.8 (Automated, Level 1)
 default _ev_6_1_2_8 := false
 
@@ -2486,6 +2644,15 @@ _messages contains "6.1.2.8: checked condition — Activity Log Alert Exists for
 	_in_scope("6.1.2.8")
 	_ev_6_1_2_8
 	not operation_alerted("Microsoft.Sql/servers/firewallRules/delete", true)
+}
+
+_messages contains sprintf("6.1.2.8: checked condition — Activity Log Alert Exists for Delete SQL Server Firewall Rule — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.8")
+	_ev_6_1_2_8
+	not operation_alerted("Microsoft.Sql/servers/firewallRules/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Sql/servers/firewallRules/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.9 (Automated, Level 1)
@@ -2506,6 +2673,15 @@ _messages contains "6.1.2.9: checked condition — Activity Log Alert Exists for
 	not operation_alerted("Microsoft.Network/publicIPAddresses/write", true)
 }
 
+_messages contains sprintf("6.1.2.9: checked condition — Activity Log Alert Exists for Create or Update Public IP Address — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.9")
+	_ev_6_1_2_9
+	not operation_alerted("Microsoft.Network/publicIPAddresses/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/publicIPAddresses/write")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.10 (Automated, Level 1)
 default _ev_6_1_2_10 := false
 
@@ -2522,6 +2698,15 @@ _messages contains "6.1.2.10: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.10")
 	_ev_6_1_2_10
 	not operation_alerted("Microsoft.Network/publicIPAddresses/delete", true)
+}
+
+_messages contains sprintf("6.1.2.10: checked condition — Activity Log Alert Exists for Delete Public IP Address — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.10")
+	_ev_6_1_2_10
+	not operation_alerted("Microsoft.Network/publicIPAddresses/delete", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Network/publicIPAddresses/delete")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.11 (Automated, Level 1)
@@ -2542,6 +2727,17 @@ _messages contains "6.1.2.11: checked condition — an Activity Log Alert Exists
 	not service_health_alerted
 }
 
+_messages contains sprintf("6.1.2.11: checked condition — an Activity Log Alert Exists for Service Health — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.11")
+	_ev_6_1_2_11
+	not service_health_alerted
+	some a in input.activity_log_alerts
+	some c in alert_conditions(a)
+	_cond_field(c) == "category"
+	lower(c.equals) == "servicehealth"
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.12 (Automated, Level 1)
 default _ev_6_1_2_12 := false
 
@@ -2558,6 +2754,15 @@ _messages contains "6.1.2.12: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.12")
 	_ev_6_1_2_12
 	not operation_alerted("Microsoft.Authorization/roleAssignments/write", false)
+}
+
+_messages contains sprintf("6.1.2.12: checked condition — Activity Log Alert Exists for Create Role Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.12")
+	_ev_6_1_2_12
+	not operation_alerted("Microsoft.Authorization/roleAssignments/write", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/roleAssignments/write")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.13 (Automated, Level 1)
@@ -2578,6 +2783,15 @@ _messages contains "6.1.2.13: checked condition — Activity Log Alert Exists fo
 	not operation_alerted("Microsoft.Authorization/roleAssignments/delete", false)
 }
 
+_messages contains sprintf("6.1.2.13: checked condition — Activity Log Alert Exists for Delete Role Assignment — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.13")
+	_ev_6_1_2_13
+	not operation_alerted("Microsoft.Authorization/roleAssignments/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/roleAssignments/delete")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.14 (Automated, Level 1)
 default _ev_6_1_2_14 := false
 
@@ -2594,6 +2808,15 @@ _messages contains "6.1.2.14: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.14")
 	_ev_6_1_2_14
 	not operation_alerted("Microsoft.Authorization/policyExemptions/write", false)
+}
+
+_messages contains sprintf("6.1.2.14: checked condition — Activity Log Alert Exists for Create or Update Policy Exemption — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.14")
+	_ev_6_1_2_14
+	not operation_alerted("Microsoft.Authorization/policyExemptions/write", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/policyExemptions/write")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.2.15 (Automated, Level 1)
@@ -2614,6 +2837,15 @@ _messages contains "6.1.2.15: checked condition — Activity Log Alert Exists fo
 	not operation_alerted("Microsoft.Insights/diagnosticSettings/delete", false)
 }
 
+_messages contains sprintf("6.1.2.15: checked condition — Activity Log Alert Exists for Delete Diagnostic Setting — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.15")
+	_ev_6_1_2_15
+	not operation_alerted("Microsoft.Insights/diagnosticSettings/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Insights/diagnosticSettings/delete")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.16 (Automated, Level 1)
 default _ev_6_1_2_16 := false
 
@@ -2632,6 +2864,15 @@ _messages contains "6.1.2.16: checked condition — Activity Log Alert Exists fo
 	not operation_alerted("Microsoft.Authorization/locks/delete", false)
 }
 
+_messages contains sprintf("6.1.2.16: checked condition — Activity Log Alert Exists for Delete Resource Lock — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.16")
+	_ev_6_1_2_16
+	not operation_alerted("Microsoft.Authorization/locks/delete", false)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.Authorization/locks/delete")
+	not_boolean(a, "enabled")
+}
+
 # 6.1.2.17 (Automated, Level 1)
 default _ev_6_1_2_17 := false
 
@@ -2648,6 +2889,15 @@ _messages contains "6.1.2.17: checked condition — Activity Log Alert Exists fo
 	_in_scope("6.1.2.17")
 	_ev_6_1_2_17
 	not operation_alerted("Microsoft.KeyVault/vaults/accessPolicies/write", true)
+}
+
+_messages contains sprintf("6.1.2.17: checked condition — Activity Log Alert Exists for Update Key Vault Access Policy — evidence invalid — activity log alert %v: enabled must be true or false, got %v", [nm(a), type_name(p(a, "enabled"))]) if {
+	_in_scope("6.1.2.17")
+	_ev_6_1_2_17
+	not operation_alerted("Microsoft.KeyVault/vaults/accessPolicies/write", true)
+	some a in input.activity_log_alerts
+	admin_alert(a, "Microsoft.KeyVault/vaults/accessPolicies/write")
+	not_boolean(a, "enabled")
 }
 
 # 6.1.3.1 (Automated, Level 2)
@@ -2935,6 +3185,13 @@ _messages contains sprintf("7.2.1: required value of 'HTTP2' is 'Enabled' on Azu
 	not p_true(x, "enableHttp2")
 }
 
+_messages contains sprintf("7.2.1: required value of 'HTTP2' is 'Enabled' on Azure Application Gateway — evidence invalid — enableHttp2 must be true or false, got %v on (%v)", [type_name(p(x, "enableHttp2")), nm(x)]) if {
+	_in_scope("7.2.1")
+	_ev_7_2_1
+	some x in input.application_gateways
+	not_boolean(x, "enableHttp2")
+}
+
 # 7.2.2 (Automated, Level 1)
 default _ev_7_2_2 := false
 
@@ -3139,6 +3396,14 @@ _messages contains sprintf("7.6: required value of Virtual Network Flow Log Rete
 	not retention_ok(x)
 }
 
+_messages contains sprintf("7.6: required value of Virtual Network Flow Log Retention Days is Greater than or Equal to 90 — evidence invalid — enabled must be true or false, got %v on (%v)", [type_name(p(x, "enabled")), nm(x)]) if {
+	_in_scope("7.6")
+	_ev_7_6
+	some x in input.flow_logs
+	not nsg_flow_log(x)
+	not_boolean(x, "enabled")
+}
+
 _messages contains sprintf("7.6: required value of Virtual Network Flow Log Retention Days is Greater than or Equal to 90 — flow log %v: targetResourceId not collected", [nm(x)]) if {
 	_in_scope("7.6")
 	_ev_7_6
@@ -3192,6 +3457,14 @@ _messages contains sprintf("7.8: checked condition — Network Security Groups o
 	is_array(nsg_rules(x))
 	some d in ["inbound", "outbound"]
 	not deny_all_after_allows(x, d)
+}
+
+_messages contains sprintf("7.8: checked condition — Network Security Groups override the default 'VirtualNetwork' allow rules — evidence invalid — network security group %v: rule %v has no numeric priority", [nm(x), nm(r)]) if {
+	_in_scope("7.8")
+	_ev_7_8
+	some x in input.network_security_groups
+	some r in nsg_rules(x)
+	not rule_priority_collected(r)
 }
 
 _messages contains sprintf("7.8: checked condition — Network Security Groups override the default 'VirtualNetwork' allow rules — network security group %v: securityRules not collected", [nm(x)]) if {
@@ -3263,6 +3536,14 @@ _messages contains sprintf("7.11: required value of 'Default outbound access' is
 	not vnet_subnets(x)
 }
 
+_messages contains sprintf("7.11: required value of 'Default outbound access' is 'Disabled' for Virtual Network Subnets — evidence invalid — defaultOutboundAccess must be true or false, got %v on (%v) (%v)", [type_name(p(s, "defaultOutboundAccess")), nm(s), nm(x)]) if {
+	_in_scope("7.11")
+	_ev_7_11
+	some x in input.virtual_networks
+	some s in outbound_subnets(x)
+	not_boolean(s, "defaultOutboundAccess")
+}
+
 # 7.12 (Automated, Level 2)
 default _ev_7_12 := false
 
@@ -3289,6 +3570,14 @@ _messages contains sprintf("7.12: required value of Network Security Group Flow 
 	_ev_7_12
 	some x in input.flow_logs
 	not flow_log_target_collected(x)
+}
+
+_messages contains sprintf("7.12: required value of Network Security Group Flow Log Retention Days is Greater than or equal to 90 (LEGACY) — evidence invalid — enabled must be true or false, got %v on (%v)", [type_name(p(x, "enabled")), nm(x)]) if {
+	_in_scope("7.12")
+	_ev_7_12
+	some x in input.flow_logs
+	nsg_flow_log(x)
+	not_boolean(x, "enabled")
 }
 
 # 8.1.1.1 (Automated, Level 2)
@@ -3367,6 +3656,15 @@ _messages contains "8.1.3.3: required value of 'Endpoint protection' Component S
 	_in_scope("8.1.3.3")
 	_ev_8_1_3_3
 	not defender_setting_on("WDATP")
+}
+
+_messages contains sprintf("8.1.3.3: required value of 'Endpoint protection' Component Status is 'On' — evidence invalid — Defender setting %v: enabled must be true or false, got %v", [nm(s), type_name(p(s, "enabled"))]) if {
+	_in_scope("8.1.3.3")
+	_ev_8_1_3_3
+	not defender_setting_on("WDATP")
+	some s in input.defender_settings
+	lower(s.name) == "wdatp"
+	not_boolean(s, "enabled")
 }
 
 # 8.1.3.4 (Automated, Level 2)
@@ -3686,6 +3984,13 @@ _messages contains "8.1.14: checked condition — Microsoft Defender for Cloud S
 	count(default_contacts) == 0
 }
 
+_messages contains sprintf("8.1.14: checked condition — Microsoft Defender for Cloud Sends Security Alert Emails to Users with the 'Owner' Role — evidence invalid — the default security contact's isEnabled must be true or false, got %v", [type_name(p(c, "isEnabled"))]) if {
+	_in_scope("8.1.14")
+	_ev_8_1_14
+	some c in default_contacts
+	not_boolean(c, "isEnabled")
+}
+
 # 8.1.15 (Automated, Level 1)
 default _ev_8_1_15 := false
 
@@ -3806,6 +4111,16 @@ _messages contains sprintf("8.3.1.2: required value of Logging for Azure Key Vau
 	not has_list(x, "diagnostic_settings")
 }
 
+_messages contains sprintf("8.3.1.2: required value of Logging for Azure Key Vault Managed HSM is 'Enabled' — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("8.3.1.2")
+	_ev_8_3_1_2
+	some x in input.managed_hsms
+	is_array(x.diagnostic_settings)
+	some s in x.diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
+}
+
 # 8.3.1.3 (Automated, Level 2)
 default _ev_8_3_1_3 := false
 
@@ -3836,7 +4151,7 @@ _messages contains sprintf("8.3.1.3: Keys in Azure Key Vault Premium must be HSM
 	not has_list(x, "keys")
 }
 
-_messages contains sprintf("8.3.1.3: Keys in Azure Key Vault Premium must be HSM-Protected — key vault %v: sku not collected", [nm(x)]) if {
+_messages contains sprintf("8.3.1.3: Keys in Azure Key Vault Premium must be HSM-Protected — key vault %v: sku not collected or not a recognised SKU name", [nm(x)]) if {
 	_in_scope("8.3.1.3")
 	_ev_8_3_1_3
 	some x in input.key_vaults
@@ -3860,6 +4175,13 @@ _messages contains sprintf("8.3.1.4: required value of 'Purge protection' is 'En
 	_ev_8_3_1_4
 	some x in input.managed_hsms
 	not p_true(x, "enablePurgeProtection")
+}
+
+_messages contains sprintf("8.3.1.4: required value of 'Purge protection' is 'Enabled' for Azure Key Vault Managed HSM — evidence invalid — enablePurgeProtection must be true or false, got %v on (%v)", [type_name(p(x, "enablePurgeProtection")), nm(x)]) if {
+	_in_scope("8.3.1.4")
+	_ev_8_3_1_4
+	some x in input.managed_hsms
+	not_boolean(x, "enablePurgeProtection")
 }
 
 # 8.3.1.5 (Automated, Level 2)
@@ -3922,6 +4244,15 @@ _messages contains sprintf("8.3.2: the Expiration Date must be set for all Keys 
 	not has_expiry(k)
 }
 
+_messages contains sprintf("8.3.2: the Expiration Date must be set for all Keys in Key Vaults using RBAC — evidence invalid — key vault %v: key %v attributes.enabled must be true or false, got %v", [nm(x), nm(k), type_name(k.attributes.enabled)]) if {
+	_in_scope("8.3.2")
+	_ev_8_3_2
+	some x in input.key_vaults
+	kv_rbac(x)
+	some k in x.keys
+	item_enabled_invalid(k)
+}
+
 _messages contains sprintf("8.3.2: the Expiration Date must be set for all Keys in Key Vaults using RBAC — key vault %v: keys not collected", [nm(x)]) if {
 	_in_scope("8.3.2")
 	_ev_8_3_2
@@ -3957,6 +4288,15 @@ _messages contains sprintf("8.3.3: the Expiration Date must be set for All Keys 
 	some k in x.keys
 	item_in_scope(k)
 	not has_expiry(k)
+}
+
+_messages contains sprintf("8.3.3: the Expiration Date must be set for All Keys in Key Vaults using access policies (legacy) — evidence invalid — key vault %v: key %v attributes.enabled must be true or false, got %v", [nm(x), nm(k), type_name(k.attributes.enabled)]) if {
+	_in_scope("8.3.3")
+	_ev_8_3_3
+	some x in input.key_vaults
+	kv_access_policy(x)
+	some k in x.keys
+	item_enabled_invalid(k)
 }
 
 _messages contains sprintf("8.3.3: the Expiration Date must be set for All Keys in Key Vaults using access policies (legacy) — key vault %v: keys not collected", [nm(x)]) if {
@@ -3996,6 +4336,15 @@ _messages contains sprintf("8.3.4: the Expiration Date must be set for All Secre
 	not has_expiry(k)
 }
 
+_messages contains sprintf("8.3.4: the Expiration Date must be set for All Secrets in Key Vaults using RBAC — evidence invalid — key vault %v: secret %v attributes.enabled must be true or false, got %v", [nm(x), nm(k), type_name(k.attributes.enabled)]) if {
+	_in_scope("8.3.4")
+	_ev_8_3_4
+	some x in input.key_vaults
+	kv_rbac(x)
+	some k in x.secrets
+	item_enabled_invalid(k)
+}
+
 _messages contains sprintf("8.3.4: the Expiration Date must be set for All Secrets in Key Vaults using RBAC — key vault %v: secrets not collected", [nm(x)]) if {
 	_in_scope("8.3.4")
 	_ev_8_3_4
@@ -4031,6 +4380,15 @@ _messages contains sprintf("8.3.5: the Expiration Date must be set for All Secre
 	some k in x.secrets
 	item_in_scope(k)
 	not has_expiry(k)
+}
+
+_messages contains sprintf("8.3.5: the Expiration Date must be set for All Secrets in Key Vaults using access policies (legacy) — evidence invalid — key vault %v: secret %v attributes.enabled must be true or false, got %v", [nm(x), nm(k), type_name(k.attributes.enabled)]) if {
+	_in_scope("8.3.5")
+	_ev_8_3_5
+	some x in input.key_vaults
+	kv_access_policy(x)
+	some k in x.secrets
+	item_enabled_invalid(k)
 }
 
 _messages contains sprintf("8.3.5: the Expiration Date must be set for All Secrets in Key Vaults using access policies (legacy) — key vault %v: secrets not collected", [nm(x)]) if {
@@ -4122,6 +4480,13 @@ _messages contains sprintf("8.3.8: required value of 'Purge protection' is 'Enab
 	not p_true(x, "enablePurgeProtection")
 }
 
+_messages contains sprintf("8.3.8: required value of 'Purge protection' is 'Enabled' — evidence invalid — enablePurgeProtection must be true or false, got %v on (%v)", [type_name(p(x, "enablePurgeProtection")), nm(x)]) if {
+	_in_scope("8.3.8")
+	_ev_8_3_8
+	some x in input.key_vaults
+	not_boolean(x, "enablePurgeProtection")
+}
+
 # 8.3.9 (Automated, Level 2)
 default _ev_8_3_9 := false
 
@@ -4139,6 +4504,13 @@ _messages contains sprintf("8.3.9: Role Based Access Control for Azure Key Vault
 	_ev_8_3_9
 	some x in input.key_vaults
 	not p_true(x, "enableRbacAuthorization")
+}
+
+_messages contains sprintf("8.3.9: Role Based Access Control for Azure Key Vault must be turned on — evidence invalid — enableRbacAuthorization must be true or false, got %v on (%v)", [type_name(p(x, "enableRbacAuthorization")), nm(x)]) if {
+	_in_scope("8.3.9")
+	_ev_8_3_9
+	some x in input.key_vaults
+	not_boolean(x, "enableRbacAuthorization")
 }
 
 # 8.3.10 (Automated, Level 1)
@@ -4228,19 +4600,27 @@ _messages contains "8.4.2: evidence missing — input.bastion_hosts not collecte
 	not _ev_8_4_2
 }
 
-_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — Bastion host %v (Standard or Premium) has shareable links enabled", [nm(x)]) if {
+_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — Bastion host %v (Standard or Premium) does not have shareable links turned off", [nm(x)]) if {
 	_in_scope("8.4.2")
 	_ev_8_4_2
 	some x in input.bastion_hosts
 	shareable_link_capable(x)
-	p_true(x, "enableShareableLink")
+	not p_false(x, "enableShareableLink")
 }
 
-_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — Bastion host %v: sku not collected", [nm(x)]) if {
+_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — Bastion host %v: sku not collected or not a recognised SKU name", [nm(x)]) if {
 	_in_scope("8.4.2")
 	_ev_8_4_2
 	some x in input.bastion_hosts
 	not sku_collected(x)
+}
+
+_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — evidence invalid — enableShareableLink must be true or false, got %v on (%v)", [type_name(p(x, "enableShareableLink")), nm(x)]) if {
+	_in_scope("8.4.2")
+	_ev_8_4_2
+	some x in input.bastion_hosts
+	shareable_link_capable(x)
+	not_boolean(x, "enableShareableLink")
 }
 
 # 8.5 (Automated, Level 1)
@@ -4280,6 +4660,13 @@ _messages contains sprintf("8.6: Azure DDoS Network Protection must be turned on
 	_ev_8_6
 	some x in input.virtual_networks
 	not p_true(x, "enableDdosProtection")
+}
+
+_messages contains sprintf("8.6: Azure DDoS Network Protection must be turned on for Virtual Networks — evidence invalid — enableDdosProtection must be true or false, got %v on (%v)", [type_name(p(x, "enableDdosProtection")), nm(x)]) if {
+	_in_scope("8.6")
+	_ev_8_6
+	some x in input.virtual_networks
+	not_boolean(x, "enableDdosProtection")
 }
 
 # 9.1.1 (Automated, Level 1)
@@ -4368,6 +4755,13 @@ _messages contains sprintf("9.2.2.1: required value of 'Default to Microsoft Ent
 	not p_true(x, "defaultToOAuthAuthentication")
 }
 
+_messages contains sprintf("9.2.2.1: required value of 'Default to Microsoft Entra authorization in the Azure portal' is 'Enabled' — evidence invalid — defaultToOAuthAuthentication must be true or false, got %v on (%v)", [type_name(p(x, "defaultToOAuthAuthentication")), nm(x)]) if {
+	_in_scope("9.2.2.1")
+	_ev_9_2_2_1
+	some x in input.storage_accounts
+	not_boolean(x, "defaultToOAuthAuthentication")
+}
+
 # 9.2.3 (Automated, Level 1)
 default _ev_9_2_3 := false
 
@@ -4385,6 +4779,14 @@ _messages contains sprintf("9.2.3: required value of 'Secure transfer required' 
 	_ev_9_2_3
 	some x in input.storage_accounts
 	not https_only(x)
+}
+
+_messages contains sprintf("9.2.3: required value of 'Secure transfer required' is 'Enabled' — evidence invalid — %v must be true or false, got %v on (%v)", [k, type_name(p(x, k)), nm(x)]) if {
+	_in_scope("9.2.3")
+	_ev_9_2_3
+	some x in input.storage_accounts
+	some k in ["enableHttpsTrafficOnly", "supportsHttpsTrafficOnly"]
+	not_boolean(x, k)
 }
 
 # 9.2.4 (Automated, Level 1)
@@ -4425,6 +4827,13 @@ _messages contains sprintf("9.2.5: required value of 'Allow Blob anonymous acces
 	not p_false(x, "allowBlobPublicAccess")
 }
 
+_messages contains sprintf("9.2.5: required value of 'Allow Blob anonymous access' is 'Disabled' — evidence invalid — allowBlobPublicAccess must be true or false, got %v on (%v)", [type_name(p(x, "allowBlobPublicAccess")), nm(x)]) if {
+	_in_scope("9.2.5")
+	_ev_9_2_5
+	some x in input.storage_accounts
+	not_boolean(x, "allowBlobPublicAccess")
+}
+
 # ── aggregate ─────────────────────────────────────────────────────────────────────────
 violations := sort([v | some v in _messages])
 
@@ -4435,6 +4844,9 @@ failing_controls := {control_id(v) | some v in violations}
 total_controls := count(in_scope)
 
 evidence_violations := [v | some v in violations; contains(v, ": evidence missing — ")]
+
+# A property that was collected with the wrong type (a string or a number where Azure returns a boolean).
+evidence_invalid := [v | some v in violations; contains(v, " — evidence invalid — ")]
 
 section_names := {"5": "identity_access", "6": "logging_monitoring", "7": "networking", "8": "security_services", "9": "storage"}
 

@@ -1,14 +1,35 @@
 # Logic table for CIS PostgreSQL 17 Benchmark v1.1.0 (ids/titles/status/profile come from the workbook).
-# Automated: fields = [(dotted path under input.postgresql, kind)], kind: val (non-null), arr (array), obj (non-empty object)
+# Automated: fields = [(dotted path under input.postgresql, kind)], kind: val (non-null), arr (array), obj (non-empty
+#            object), bool / num (non-null, and a JSON boolean / number: any other type is reported as
+#            "<field> is not a boolean (got string)")
 #            body = rego body lines (pg := input.postgresql is bound), fx = green fixture [(path, value)],
 #            fails = list of mutation sets [(path, value)] each of which must fail the control.
+#            bad   = optional [(mutation set, message)]: evidence problems inside a row list; the control fails with
+#                    that message instead of "requirement not met".
+#            extra = optional rego rules (missing / mistyped per row) emitted before the control's logic.
 # Manual:    attest key under input.postgresql.attest.
 
 L = "logging."
 
 
-def A(fields, body, fx, fails):
-    return {"kind": "auto", "fields": fields, "body": body, "fx": fx, "fails": fails}
+def A(fields, body, fx, fails, bad=(), extra=()):
+    return {"kind": "auto", "fields": fields, "body": body, "fx": fx, "fails": fails, "bad": list(bad),
+            "extra": list(extra)}
+
+
+def row_rules(rid, fact, field, want, test, absent_ok=None):
+    """Per-row evidence rules for one field of a row list: the row must be an object; the field, when sent,
+    must have the type; a field that is absent or null is missing evidence (unless absent_ok(row) holds)."""
+    p = '["postgresql", "%s"]' % fact
+    skip = f"\n\tnot {absent_ok}(r)" if absent_ok else ""
+    return [
+        f'mistyped contains {{"id": "{rid}", "field": sprintf("postgresql.{fact}[%d]", [i]), "want": "an object", "got": type_name(r)}} if {{\n'
+        f"\tsome i, r in _rows({p})\n\tnot is_object(r)\n}}",
+        f'mistyped contains {{"id": "{rid}", "field": sprintf("postgresql.{fact}[%d].{field}", [i]), "want": "{want}", "got": type_name(v)}} if {{\n'
+        f'\tsome i, r in _rows({p})\n\tv := object.get(r, "{field}", null)\n\tv != null\n\tnot {test}(v)\n}}',
+        f'missing contains {{"id": "{rid}", "field": sprintf("postgresql.{fact}[%d].{field}", [i])}} if {{\n'
+        f'\tsome i, r in _rows({p})\n\tobject.get(r, "{field}", null) == null{skip}\n}}',
+    ]
 
 
 def M(key):
@@ -28,9 +49,9 @@ def off(name, sec=L):
 SPEC = {
     "1.1": M("authorized_package_repositories"),
     "1.2": M("only_required_packages_installed"),
-    "1.3": A([("service.enabled", "val")], ["pg.service.enabled == true"], [("service.enabled", True)],
+    "1.3": A([("service.enabled", "bool")], ["pg.service.enabled == true"], [("service.enabled", True)],
              [[("service.enabled", False)]]),
-    "1.4": A([("cluster.initialized", "val"), ("cluster.check_db_dir_rc", "val")],
+    "1.4": A([("cluster.initialized", "bool"), ("cluster.check_db_dir_rc", "num")],
              ["pg.cluster.initialized == true", "pg.cluster.check_db_dir_rc == 0"],
              [("cluster.initialized", True), ("cluster.check_db_dir_rc", 0)],
              [[("cluster.check_db_dir_rc", 1)], [("cluster.initialized", False)]]),
@@ -124,10 +145,32 @@ SPEC = {
     "4.4": M("unused_accounts_locked"),
     "4.5": A([("security_definer_functions", "arr")],
              ["is_array(pg.security_definer_functions)", "count([f | some f in pg.security_definer_functions; _unauthorized_secdef(f)]) == 0"],
-             [("security_definer_functions", [{"schema": "public", "name": "audit_fn", "prosecdef": True}]),
+             # the audit query also returns functions that only carry a configuration (prosecdef false): the second row
+             [("security_definer_functions", [{"schema": "public", "name": "audit_fn", "prosecdef": True},
+                                              {"schema": "public", "name": "set_search_path_fn", "prosecdef": False}]),
               ("policy", {"authorized_security_definer_functions": ["public.audit_fn"], "authorized_superusers": ["postgres"]})],
              [[("security_definer_functions", [{"schema": "public", "name": "audit_fn", "prosecdef": True},
-                                               {"schema": "public", "name": "escalate", "prosecdef": "t"}])]]),
+                                               {"schema": "public", "name": "escalate", "prosecdef": True}])],
+              [("security_definer_functions", [{"name": "audit_fn", "prosecdef": True}])],
+              [("security_definer_functions", [{"schema": "public", "prosecdef": True}])]],
+             bad=[([("security_definer_functions", [{"schema": "public", "name": "escalate"}])],
+                   "evidence missing — postgresql.security_definer_functions[0].prosecdef not collected"),
+                  ([("security_definer_functions", [{"schema": "public", "name": "audit_fn", "prosecdef": None}])],
+                   "evidence missing — postgresql.security_definer_functions[0].prosecdef not collected"),
+                  ([("security_definer_functions", [{"schema": "public", "name": "escalate", "prosecdef": "t"}])],
+                   "postgresql.security_definer_functions[0].prosecdef is not a boolean (got string)"),
+                  ([("security_definer_functions", [{"schema": "public", "name": "plain_fn", "prosecdef": "f"}])],
+                   "postgresql.security_definer_functions[0].prosecdef is not a boolean (got string)"),
+                  ([("security_definer_functions", [{"schema": "public", "name": "plain_fn", "prosecdef": "false"}])],
+                   "postgresql.security_definer_functions[0].prosecdef is not a boolean (got string)"),
+                  ([("security_definer_functions", [{"schema": "public", "name": "audit_fn", "prosecdef": True},
+                                                    {"schema": "public", "name": "audit_fn", "prosecdef": "true"}])],
+                   "postgresql.security_definer_functions[1].prosecdef is not a boolean (got string)"),
+                  ([("security_definer_functions", [{"schema": "public", "name": "plain_fn", "prosecdef": 0}])],
+                   "postgresql.security_definer_functions[0].prosecdef is not a boolean (got number)"),
+                  ([("security_definer_functions", ["public.audit_fn"])],
+                   "postgresql.security_definer_functions[0] is not an object (got string)")],
+             extra=row_rules("4.5", "security_definer_functions", "prosecdef", "a boolean", "is_boolean")),
     "4.6": M("excessive_dml_privileges_revoked"),
     "4.7": M("row_level_security_configured"),
     "4.8": A([("available_extensions", "arr"), ("superuser_login_roles", "arr")],
@@ -142,10 +185,22 @@ SPEC = {
     "5.3": M("local_socket_login_configured"),
     "5.4": M("host_tcp_login_configured"),
     "5.5": A([("roles", "arr")],
-             ["is_array(pg.roles)", 'every r in [r | some r in pg.roles; not startswith(r.name, "pg_")] {',
-              "\tis_number(r.connection_limit)", "\tr.connection_limit != -1", "}"],
+             ["is_array(pg.roles)", "every r in pg.roles { _role_limit_ok(r) }"],
              [("roles", [{"name": "postgres", "connection_limit": 10}, {"name": "pg_monitor", "connection_limit": -1}])],
-             [[("roles", [{"name": "app", "connection_limit": -1}])], [("roles", [{"name": "app"}])]]),
+             [[("roles", [{"name": "app", "connection_limit": -1}])], [("roles", [{"connection_limit": -1}])]],
+             bad=[([("roles", [{"name": "app"}])], "evidence missing — postgresql.roles[0].connection_limit not collected"),
+                  ([("roles", [{"name": "app", "connection_limit": None}])],
+                   "evidence missing — postgresql.roles[0].connection_limit not collected"),
+                  ([("roles", [{"connection_limit": None}])],
+                   "evidence missing — postgresql.roles[0].connection_limit not collected"),
+                  ([("roles", [{"name": "app", "connection_limit": "10"}])],
+                   "postgresql.roles[0].connection_limit is not a number (got string)"),
+                  ([("roles", [{"name": "app", "connection_limit": True}])],
+                   "postgresql.roles[0].connection_limit is not a number (got boolean)"),
+                  ([("roles", [{"name": "postgres", "connection_limit": 10}, {"name": "pg_monitor", "connection_limit": "-1"}])],
+                   "postgresql.roles[1].connection_limit is not a number (got string)"),
+                  ([("roles", ["postgres"])], "postgresql.roles[0] is not an object (got string)")],
+             extra=row_rules("5.5", "roles", "connection_limit", "a number", "is_number", absent_ok="_predefined_role")),
     "5.6": M("password_complexity_configured"),
     "6.1": M("runtime_parameter_attack_vectors_reviewed"),
     "6.2": A([("backend_settings", "obj")],
@@ -161,12 +216,13 @@ SPEC = {
     "6.4": M("sighup_parameters_configured"),
     "6.5": M("superuser_parameters_configured"),
     "6.6": M("user_parameters_configured"),
-    "6.7": A([("cryptography.fips_140_2_enabled", "val"), ("cryptography.openssl_fips_mode", "val")],
+    "6.7": A([("cryptography.fips_140_2_enabled", "bool"), ("cryptography.openssl_fips_mode", "bool")],
              ["pg.cryptography.fips_140_2_enabled == true", "pg.cryptography.openssl_fips_mode == true"],
              [("cryptography.fips_140_2_enabled", True), ("cryptography.openssl_fips_mode", True)],
              [[("cryptography.fips_140_2_enabled", False)], [("cryptography.openssl_fips_mode", False)]]),
     "6.8": A([("ssl.enabled", "val"), ("authentication.pg_hba_entries", "arr"), ("ssl.non_ssl_client_connections", "arr")],
              ["_on(pg.ssl.enabled)", "is_array(pg.authentication.pg_hba_entries)",
+              "every e in pg.authentication.pg_hba_entries { is_string(e.connection_type) }",
               'count([e | some e in pg.authentication.pg_hba_entries; lower(e.connection_type) in {"host", "hostnossl"}]) == 0',
               'count(pg.ssl.non_ssl_client_connections) == 0'],
              [("ssl.enabled", True), ("ssl.non_ssl_client_connections", []), ("authentication.pg_hba_entries",
@@ -174,6 +230,7 @@ SPEC = {
                                         {"connection_type": "hostssl", "auth_method": "scram-sha-256"}])],
              [[("ssl.enabled", False)],
               [("authentication.pg_hba_entries", [{"connection_type": "host", "auth_method": "scram-sha-256"}])],
+              [("authentication.pg_hba_entries", [{"auth_method": "trust"}])],
               [("ssl.non_ssl_client_connections", [{"pid": 7, "usename": "app"}])]]),
     "6.9": A([("ssl.ssl_min_protocol_version", "val")], ['pg.ssl.ssl_min_protocol_version in {"TLSv1.2", "TLSv1.3"}'],
              [("ssl.ssl_min_protocol_version", "TLSv1.3")], [[("ssl.ssl_min_protocol_version", "TLSv1")]]),

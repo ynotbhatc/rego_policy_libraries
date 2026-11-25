@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 312
+#     found: 25
+#     scope: directory
+#     density: sparse
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.rhel_10.main
 
 # Bridge: expose cis.rhel_10 under the /v1/data/<framework>/main/compliance_report

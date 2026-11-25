@@ -18,7 +18,7 @@ test_all_pass_fixture_is_compliant if {
 
 test_empty_input_one_finding_per_control if {
 	r := data.nist.sp800_53.system_information_integrity.compliance_report with input as {}
-	r.controls_evaluated == 49
+	r.controls_evaluated == 50
 	count(r.violations) == count(data.nist.sp800_53.system_information_integrity.evaluated_controls)
 	every id in data.nist.sp800_53.system_information_integrity.evaluated_controls {
 		count(_flagged(r.violations, id)) == 1
@@ -29,7 +29,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.system_information_integrity.evaluated_controls == {"SI-1", "SI-2", "SI-2(2)", "SI-2(3)", "SI-3", "SI-4", "SI-4(1)", "SI-4(2)", "SI-4(4)", "SI-4(5)", "SI-4(10)", "SI-4(11)", "SI-4(12)", "SI-4(14)", "SI-4(16)", "SI-4(18)", "SI-4(19)", "SI-4(20)", "SI-4(22)", "SI-4(23)", "SI-5", "SI-5(1)", "SI-6", "SI-7", "SI-7(1)", "SI-7(2)", "SI-7(5)", "SI-7(7)", "SI-7(15)", "SI-8", "SI-8(2)", "SI-10", "SI-11", "SI-12", "SI-13", "SI-14", "SI-15", "SI-16", "SI-17", "SI-18", "SI-19", "SI-20", "SI-21", "SI-22", "SI-23", "SI-12(1)", "SI-12(2)", "SI-12(3)", "SI-18(4)"}
+	data.nist.sp800_53.system_information_integrity.evaluated_controls == {"SI-1", "SI-2", "SI-2(2)", "SI-2(3)", "SI-3", "SI-4", "SI-4(1)", "SI-4(2)", "SI-4(4)", "SI-4(5)", "SI-4(10)", "SI-4(11)", "SI-4(12)", "SI-4(14)", "SI-4(16)", "SI-4(18)", "SI-4(19)", "SI-4(20)", "SI-4(22)", "SI-4(23)", "SI-5", "SI-5(1)", "SI-6", "SI-7", "SI-7(1)", "SI-7(2)", "SI-7(5)", "SI-7(7)", "SI-7(15)", "SI-8", "SI-8(2)", "SI-10", "SI-11", "SI-12", "SI-13", "SI-14", "SI-15", "SI-16", "SI-17", "SI-18", "SI-19", "SI-20", "SI-21", "SI-22", "SI-23", "SI-12(1)", "SI-12(2)", "SI-12(3)", "SI-18(4)", "SI-2(7)"}
 }
 
 test_enhancement_missing_does_not_fail_base if {
@@ -933,7 +933,7 @@ test_high_enhancements_missing_do_not_fail_base if {
 }
 
 # The all-pass fixture with the facts of the Privacy-baseline enhancements.
-_pass := object.union(_pass_base, {"si_controls": {"information_management_retention": {"pii_elements": {"odp": {"permitted_elements": ["name", "email"]}, "elements_processed": ["name"]}, "pii_minimization": {"odp": {"techniques": ["masking"]}, "techniques_applied": ["masking", "synthetic data"], "unminimized_datasets": 0}, "disposal": {"odp": {"techniques": ["crypto-erase"]}, "techniques_applied": ["crypto-erase"], "records_past_retention": 0}}, "pii_quality": {"individual_requests": {"process_implemented": true, "requests_not_actioned": 0}}}})
+_pass := object.union(_pass_base, {"si_controls": {"information_management_retention": {"pii_elements": {"odp": {"permitted_elements": ["name", "email"]}, "elements_processed": ["name"]}, "pii_minimization": {"odp": {"techniques": ["masking"]}, "techniques_applied": ["masking", "synthetic data"], "unminimized_datasets": 0}, "disposal": {"odp": {"techniques": ["crypto-erase"]}, "techniques_applied": ["crypto-erase"], "records_past_retention": 0}}, "pii_quality": {"individual_requests": {"process_implemented": true, "requests_not_actioned": 0}}, "flaw_remediation": {"root_cause_analysis": {"conducted": true, "actions_developed": true, "effectiveness_monitored": true, "issues_without_analysis": 0, "actions_not_implemented": 0}}}})
 
 # --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
 
@@ -991,4 +991,101 @@ test_privacy_si18_4_evidence_missing_2 if {
 	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-18(4)"}
 	some x in v
 	contains(x, "evidence missing")
+}
+
+# --- SI-2(7) (added by SP 800-53 Release 5.2.0) ------------------------------------------------------------
+# Data-driven: every fact of the all-pass fixture is replaced in turn by each bad value, and removed.
+
+_si2_7_bools := ["conducted", "actions_developed", "effectiveness_monitored"]
+
+_si2_7_counts := ["issues_without_analysis", "actions_not_implemented"]
+
+_si2_7_sec := _pass.si_controls.flaw_remediation.root_cause_analysis
+
+_si2_7_with(k, val) := object.union(_pass, {"si_controls": {"flaw_remediation": {"root_cause_analysis": {k: val}}}})
+
+_si2_7_without(k) := json.remove(_pass, [concat("/", ["", "si_controls", "flaw_remediation", "root_cause_analysis", k])])
+
+_si2_7_path(k) := concat(".", ["input", "si_controls", "flaw_remediation", "root_cause_analysis", k])
+
+test_si2_7_satisfied_passes if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as _pass
+	count(_flagged(v, "SI-2(7)")) == 0
+	every k in _si2_7_bools {
+		_si2_7_sec[k] == true
+	}
+	every k in _si2_7_counts {
+		_si2_7_sec[k] == 0
+	}
+}
+
+test_si2_7_empty_input_fails_as_evidence_missing if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as {}
+	f := _flagged(v, "SI-2(7)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+	every k in array.concat(_si2_7_bools, _si2_7_counts) {
+		contains(f[0], _si2_7_path(k))
+	}
+}
+
+test_si2_7_section_null_fails_only_this_id if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"flaw_remediation": {"root_cause_analysis": null}}})
+	count(v) == 1
+	count(_flagged(v, "SI-2(7)")) == 1
+}
+
+test_si2_7_boolean_false_fails_as_unmet if {
+	every k in _si2_7_bools {
+		v := data.nist.sp800_53.system_information_integrity.violation with input as _si2_7_with(k, false)
+		count(v) == 1
+		f := _flagged(v, "SI-2(7)")
+		count(f) == 1
+		not contains(f[0], "evidence missing")
+	}
+}
+
+test_si2_7_bad_typed_boolean_is_evidence_missing if {
+	every k in _si2_7_bools {
+		every bad in ["false", "true", "no", "yes", null, 0, 1, [], {}] {
+			v := data.nist.sp800_53.system_information_integrity.violation with input as _si2_7_with(k, bad)
+			count(v) == 1
+			f := _flagged(v, "SI-2(7)")
+			count(f) == 1
+			contains(f[0], sprintf("evidence missing — %s not collected", [_si2_7_path(k)]))
+		}
+	}
+}
+
+test_si2_7_removed_fact_is_evidence_missing if {
+	every k in array.concat(_si2_7_bools, _si2_7_counts) {
+		v := data.nist.sp800_53.system_information_integrity.violation with input as _si2_7_without(k)
+		count(v) == 1
+		f := _flagged(v, "SI-2(7)")
+		count(f) == 1
+		contains(f[0], sprintf("evidence missing — %s not collected", [_si2_7_path(k)]))
+	}
+}
+
+test_si2_7_count_above_zero_fails if {
+	every k in _si2_7_counts {
+		v := data.nist.sp800_53.system_information_integrity.violation with input as _si2_7_with(k, 2)
+		count(v) == 1
+		f := _flagged(v, "SI-2(7)")
+		count(f) == 1
+		not contains(f[0], "evidence missing")
+		contains(f[0], ": 2 ")
+	}
+}
+
+test_si2_7_bad_typed_count_is_evidence_missing if {
+	every k in _si2_7_counts {
+		every bad in ["0", "1", null, true, false, -1, 0.5, []] {
+			v := data.nist.sp800_53.system_information_integrity.violation with input as _si2_7_with(k, bad)
+			count(v) == 1
+			f := _flagged(v, "SI-2(7)")
+			count(f) == 1
+			contains(f[0], sprintf("evidence missing — %s not collected", [_si2_7_path(k)]))
+		}
+	}
 }

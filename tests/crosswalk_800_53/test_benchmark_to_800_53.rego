@@ -38,7 +38,7 @@ test_rhel9_stig_report_reaches_the_spine_and_passes_nothing_by_itself if {
 	_row(r, "AC-2(1)").benchmark.status == "not_evaluated"
 
 	# benchmark evidence alone passes nothing: the family facts and attestations were not supplied
-	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 476, "not_attested": 66}
+	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 478, "not_attested": 66}
 	_row(r, "AC-7").status == "evidence_missing"
 	_row(r, "AU-14").status == "not_attested"
 	_row(r, "AU-14").benchmark.status == "satisfied"
@@ -58,7 +58,7 @@ test_one_open_stig_rule_fails_its_control_over_declared_evidence if {
 	_row(r, "CM-6").benchmark.open_rules == ["RHEL-09-211010"]
 	_row(r, "CM-6").findings == ["NIST CM-6: benchmark results show a gap: 1 mapped STIG rule(s) Open (RHEL-09-211010); the control fails regardless of its declared evidence or attestation"]
 	r.family_summary.CM == {"violations": 1, "compliant": false}
-	r.control_result_counts == {"pass": 541, "fail": 1, "evidence_missing": 0, "not_attested": 0}
+	r.control_result_counts == {"pass": 543, "fail": 1, "evidence_missing": 0, "not_attested": 0}
 
 	# every other control the benchmark reached is satisfied there and passes on its own declared evidence
 	_row(r, "AC-7").status == "pass"

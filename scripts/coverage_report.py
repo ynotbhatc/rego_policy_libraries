@@ -110,7 +110,9 @@ def main() -> int:
     policies = [p for p in regos if not is_test(p)]
     tests = [p for p in regos if is_test(p)]
 
-    tested = {package_of(p).replace("_test", "") for p in tests}
+    # `pci_dss_tests.x_test` tests `pci_dss.x`: a test tree kept out of the policy namespace so that evaluating
+    # `data.pci_dss` does not also run the tests
+    tested = {re.sub(r"^(\w+)_tests\.", r"\1.", package_of(p)).replace("_test", "") for p in tests}
     untested = sorted(p for p in policies if package_of(p) not in tested)
 
     total = len(policies)

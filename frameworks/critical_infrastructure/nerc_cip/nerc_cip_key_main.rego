@@ -59,19 +59,25 @@ default _upstream := {}
 
 _upstream := _t.report
 
-# Control universe for the product's passed = total - failed arithmetic: the 48 violation rules across the CIP standards in
-# nerc_cip_main (one rule = one control; a per-item rule can yield several findings).
-# Never below the finding count, so a fail-closed run cannot report more failures than controls.
-_declared_controls := 48
+# Control universe for the product's passed = total - failed arithmetic (round 3): the 14 CIP standards
+# CIP-002 to CIP-015 that nerc_cip_main evaluates (standards_total). A standard is one control and fails when it
+# is not compliant; failed_controls counts standards. violation_count stays the finding count: a per-item rule
+# yields one finding per person, system or link ("CIP-004: Person p1 has not completed CIP training"), so findings
+# are not controls and are never used as the failed count. The "no facts supplied" finding is not a control; with
+# no facts every standard fails on its own evidence-missing findings. (Until round 3 the total was 48, the number
+# of rules, raised to the finding count, which is not a fixed property.)
+total_controls := _t.report.standards_total
 
-total_controls := max([_declared_controls, count(_violations)])
+_failed_controls := _t.report.standards_total - _t.report.standards_passing
 
 compliance_report := object.union(_upstream, {
 	"framework_key": "nerc_cip",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
-	"failed_controls": min([total_controls, count(_violations)]),
+	"failed_controls": _failed_controls,
+	"passed_controls": total_controls - _failed_controls,
+	"not_applicable_controls": 0,
 	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })

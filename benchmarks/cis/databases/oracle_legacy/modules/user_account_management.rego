@@ -55,16 +55,16 @@ violations := array.concat(
 default_account_violations contains violation if {
 	some account in input.default_accounts
 	account.status == "OPEN"
-	account.account_name != "SYS"
-	account.account_name != "SYSTEM"
-	violation := sprintf("CIS 3.1: Default account '%s' is OPEN (should be LOCKED or DROPPED)", [account.account_name])
+	not account.account_name == "SYS"
+	not account.account_name == "SYSTEM"
+	violation := sprintf("CIS 3.1: Default account '%s' is OPEN (should be LOCKED or DROPPED)", [object.get(account, "account_name", "not collected")])
 }
 
 default_account_violations contains violation if {
 	some account in input.default_accounts
 	account.status == "OPEN"
 	not account.password_changed
-	violation := sprintf("CIS 3.1: Default account '%s' has never changed password (CRITICAL: using default password)", [account.account_name])
+	violation := sprintf("CIS 3.1: Default account '%s' has never changed password (CRITICAL: using default password)", [object.get(account, "account_name", "not collected")])
 }
 
 # Common default accounts that should be locked/dropped
@@ -114,7 +114,7 @@ password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	profile.PASSWORD_REUSE_TIME == "UNLIMITED"
 	profile.PASSWORD_REUSE_MAX == "UNLIMITED"
-	violation := sprintf("CIS 3.2: Profile '%s' allows unlimited password reuse", [profile.profile_name])
+	violation := sprintf("CIS 3.2: Profile '%s' allows unlimited password reuse", [object.get(profile, "profile_name", "not collected")])
 }
 
 default_unlimited_life(profile) if {
@@ -133,9 +133,9 @@ password_policy_violations contains violation if {
 	profile.PASSWORD_LIFE_TIME
 	exceeds(profile.PASSWORD_LIFE_TIME, 90)
 	not default_unlimited_life(profile) # reported by the DEFAULT-profile rule above
-	profile.profile_name != "DEFAULT" # DEFAULT + UNLIMITED has its own message above
+	not profile.profile_name == "DEFAULT" # DEFAULT + UNLIMITED has its own message above
 	violation := sprintf("CIS 3.2: Profile '%s' has PASSWORD_LIFE_TIME=%s days (should be 90 or less)", [
-		profile.profile_name,
+		object.get(profile, "profile_name", "not collected"),
 		profile.PASSWORD_LIFE_TIME,
 	])
 }
@@ -145,7 +145,7 @@ password_policy_violations contains violation if {
 	profile.PASSWORD_GRACE_TIME
 	exceeds(profile.PASSWORD_GRACE_TIME, 5)
 	violation := sprintf("CIS 3.2: Profile '%s' has PASSWORD_GRACE_TIME=%s days (should be 5 or less)", [
-		profile.profile_name,
+		object.get(profile, "profile_name", "not collected"),
 		profile.PASSWORD_GRACE_TIME,
 	])
 }
@@ -155,7 +155,7 @@ password_policy_violations contains violation if {
 	profile.FAILED_LOGIN_ATTEMPTS
 	exceeds(profile.FAILED_LOGIN_ATTEMPTS, 5)
 	violation := sprintf("CIS 3.2: Profile '%s' has FAILED_LOGIN_ATTEMPTS=%s (should be 5 or less)", [
-		profile.profile_name,
+		object.get(profile, "profile_name", "not collected"),
 		profile.FAILED_LOGIN_ATTEMPTS,
 	])
 }
@@ -166,7 +166,7 @@ password_policy_violations contains violation if {
 	to_number(profile.PASSWORD_LOCK_TIME) < 1
 	profile.PASSWORD_LOCK_TIME != "UNLIMITED"
 	violation := sprintf("CIS 3.2: Profile '%s' has PASSWORD_LOCK_TIME=%s (should be 1 day or UNLIMITED)", [
-		profile.profile_name,
+		object.get(profile, "profile_name", "not collected"),
 		profile.PASSWORD_LOCK_TIME,
 	])
 }
@@ -180,7 +180,7 @@ verify_function_set(profile) if {
 password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	not verify_function_set(profile)
-	violation := sprintf("CIS 3.2: Profile '%s' has no password complexity function (PASSWORD_VERIFY_FUNCTION=NULL)", [profile.profile_name])
+	violation := sprintf("CIS 3.2: Profile '%s' has no password complexity function (PASSWORD_VERIFY_FUNCTION=NULL)", [object.get(profile, "profile_name", "not collected")])
 }
 
 # =============================================================================
@@ -193,23 +193,23 @@ privilege_violations contains violation if {
 	account.authentication_type == "PASSWORD"
 	not account.password_recently_changed
 	violation := sprintf("CIS 3.3: Privileged account '%s' has old password (last changed: %s)", [
-		account.account_name,
+		object.get(account, "account_name", "not collected"),
 		account.password_last_changed,
 	])
 }
 
 privilege_violations contains violation if {
 	some account in input.dba_users
-	not account.account_name in ["SYS", "SYSTEM"]
+	not object.get(account, "account_name", null) in ["SYS", "SYSTEM"]
 	account.granted_role == "DBA"
-	violation := sprintf("CIS 3.3: Account '%s' has DBA role granted directly (should use custom roles)", [account.account_name])
+	violation := sprintf("CIS 3.3: Account '%s' has DBA role granted directly (should use custom roles)", [object.get(account, "account_name", "not collected")])
 }
 
 privilege_violations contains violation if {
 	some account in input.all_accounts
 	account.sysdba_privilege
 	account.authentication_type == "PASSWORD"
-	violation := sprintf("CIS 3.3: Account '%s' has SYSDBA using password authentication (should use OS or certificate auth)", [account.account_name])
+	violation := sprintf("CIS 3.3: Account '%s' has SYSDBA using password authentication (should use OS or certificate auth)", [object.get(account, "account_name", "not collected")])
 }
 
 # =============================================================================
@@ -222,7 +222,7 @@ account_lockout_violations contains violation if {
 	is_number(account.locked_days)
 	account.locked_days > 30
 	violation := sprintf("CIS 3.4: Account '%s' has been locked for %d days (should be reviewed/dropped)", [
-		account.account_name,
+		object.get(account, "account_name", "not collected"),
 		account.locked_days,
 	])
 }
@@ -231,7 +231,7 @@ account_lockout_violations contains violation if {
 	some account in input.locked_accounts
 	account.lock_reason == "FAILED_LOGIN_ATTEMPTS"
 	not is_number(object.get(account, "locked_days", 0))
-	violation := sprintf("CIS 3.4: evidence missing — locked_days for account '%s' is not a number", [account.account_name])
+	violation := sprintf("CIS 3.4: evidence missing — locked_days for account '%s' is not a number", [object.get(account, "account_name", "not collected")])
 }
 
 account_lockout_violations contains violation if {
@@ -240,7 +240,7 @@ account_lockout_violations contains violation if {
 	account.last_login_days > 90
 	account.status == "OPEN"
 	violation := sprintf("CIS 3.4: Account '%s' has not logged in for %d days (should be locked)", [
-		account.account_name,
+		object.get(account, "account_name", "not collected"),
 		account.last_login_days,
 	])
 }
@@ -249,7 +249,7 @@ account_lockout_violations contains violation if {
 	some account in input.inactive_accounts
 	account.status == "OPEN"
 	not is_number(object.get(account, "last_login_days", 0))
-	violation := sprintf("CIS 3.4: evidence missing — last_login_days for account '%s' is not a number", [account.account_name])
+	violation := sprintf("CIS 3.4: evidence missing — last_login_days for account '%s' is not a number", [object.get(account, "account_name", "not collected")])
 }
 
 # =============================================================================

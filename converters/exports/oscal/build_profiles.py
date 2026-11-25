@@ -30,7 +30,7 @@ from build import NS, REPO, OSCAL_VERSION, u5, version_and_date  # noqa: E402
 
 CACHE = HERE / "profiles" / "cache"
 
-NIST_COMMIT = "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+NIST_COMMIT = "f0de6d8d8c059d374f15e0ae07508d82e370fc1d"
 NIST_BASE = f"https://raw.githubusercontent.com/usnistgov/oscal-content/{NIST_COMMIT}/nist.gov/SP800-53/rev5/json"
 FEDRAMP_COMMIT = "76d0473eafe60676d4acbd6cd76362092c389c46"
 # GSA/fedramp-automation no longer exists; the OSCAL Compass project mirrors it
@@ -38,7 +38,7 @@ FEDRAMP_BASE = f"https://raw.githubusercontent.com/oscal-compass-lab/fedramp-aut
 
 CATALOG = {"key": "nist_800_53_rev5_catalog", "title": "NIST SP 800-53 Rev 5 catalog", "kind": "nist",
            "url": f"{NIST_BASE}/NIST_SP-800-53_rev5_catalog.json", "commit": NIST_COMMIT,
-           "sha256": "01f37cf90ea99d92242c936cbfbdebcc338eef1f71454e2acac36cc56e9bc062", "source_oscal_version": "1.2.2"}
+           "sha256": "64ca6b4161de51ab6af098a7d101d326f14c95e1abf721396cd8a049e8115eeb", "source_oscal_version": "1.2.3"}
 
 
 def _src(key, title, kind, fname, sha, ver):
@@ -49,13 +49,13 @@ def _src(key, title, kind, fname, sha, ver):
 
 SOURCES = [
     _src("nist_800_53_rev5_low", "NIST SP 800-53 Rev 5 Low", "nist", "NIST_SP-800-53_rev5_LOW-baseline_profile.json",
-         "8fd206017c8d718b44bdef612c2ff321a9fd84d97a515c8ec33c4619accbef6e", "1.2.2"),
+         "cfd4f5d9a192eb42dc04b745d82f95a85926a2a85a45418034a380a42bda9424", "1.2.3"),
     _src("nist_800_53_rev5_moderate", "NIST SP 800-53 Rev 5 Moderate", "nist", "NIST_SP-800-53_rev5_MODERATE-baseline_profile.json",
-         "9030dbf1f13169947eb97eb101b4bd2f00d3c151b100455a923ac75803f00ea1", "1.2.2"),
+         "e3a0f11237cfaac24dfcf1586e07683f17423757fd84208deb33196b12e8f590", "1.2.3"),
     _src("nist_800_53_rev5_high", "NIST SP 800-53 Rev 5 High", "nist", "NIST_SP-800-53_rev5_HIGH-baseline_profile.json",
-         "60576970caef91b2cba56d46e5948b72e3b879434fc2a4840bc4179e5e75cfd7", "1.2.2"),
+         "d2ef340986b9f1ee820ad866a0f964d9a9d1088b24080c74b795ddb0148b9f83", "1.2.3"),
     _src("nist_800_53_rev5_privacy", "NIST SP 800-53 Rev 5 Privacy", "nist", "NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json",
-         "7e650c4397ad633eadeaf510baa523372849b1fa3e18207b6c6b70ed456224f9", "1.2.2"),
+         "c0e3d54d9f474bc6c33338a8e524bc52ad070f94f9274db7ec48242242fecacc", "1.2.3"),
     _src("fedramp_rev5_low", "FedRAMP Rev 5 Low", "fedramp", "FedRAMP_rev5_LOW-baseline_profile.json",
          "b13459be3665380b559f10c500310668ce12c2ef71b3c8be997509659988265e", "1.0.4"),
     _src("fedramp_rev5_moderate", "FedRAMP Rev 5 Moderate", "fedramp", "FedRAMP_rev5_MODERATE-baseline_profile.json",

@@ -213,7 +213,8 @@ _ol8_before_8_2 if {
 }
 
 # every value of an option in /etc/security/pwquality.conf and pwquality.conf.d/*.conf (input.pwquality_values[<opt>],
-# one entry per uncommented line), as numbers; undefined unless every entry is a decimal integer
+# one entry per uncommented line), as numbers; undefined unless every entry is a whole JSON number (a value sent as
+# text, "15", is not read: the collector converts the configured text; the finding says "evidence invalid")
 _pwq(opt) := ns if {
 	vs := input.pwquality_values[opt]
 	is_array(vs)
@@ -221,12 +222,7 @@ _pwq(opt) := ns if {
 	count(ns) == count(vs)
 }
 
-_num_val(v) := v if is_number(v)
-
-_num_val(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-}''')
+_num_val(v) := v if _whole_number(v)''')
 NA82 = dict(na=[["_ol8_before_8_2"]], na_expect="the system is OL 8.0 or 8.1 (this check applies to 8.2 and above)")
 T.reuse("OL08-00-020011", "RHEL-09-411075", na_cases=[{"faillock_conf": {"deny": None}, "os_release": {"version_id": "8.1"}}], **NA82)
 s = T.src["RHEL-09-411085"]
@@ -250,15 +246,19 @@ for sid, opt, name, op, want, limit, bad in [
 ]:
     T.R("account_auth", sid, name, [("pwquality_values", opt)],
         [[f'ns := _pwq("{opt}")', "count(ns) > 0", f"every n in ns {{\n\tis_number(n)\n\tn {op} {limit}\n}}", "count({n | some n in ns}) == 1"]],
-        {"pwquality_values": {opt: [str(want)]}},
-        [{"pwquality_values": {opt: [str(bad)]}}, {"pwquality_values": {opt: []}},
-         {"pwquality_values": {opt: [str(want), str(want - 1 if op == ">=" else want - 1)]}} if op == "<=" else
-         {"pwquality_values": {opt: [str(want), str(want + 1)]}},
-         {"pwquality_values": {opt: ["x"]}}],
+        {"pwquality_values": {opt: [want]}},
+        [{"pwquality_values": {opt: [bad]}}, {"pwquality_values": {opt: []}},
+         {"pwquality_values": {opt: [want, want - 1 if op == ">=" else want - 1]}} if op == "<=" else
+         {"pwquality_values": {opt: [want, want + 1]}},
+         ("invalid", {"pwquality_values": {opt: ["x"]}}, f"pwquality_values.{opt}[0] is not a number (got string)"),
+         ("invalid", {"pwquality_values": {opt: [str(want)]}}, f"pwquality_values.{opt}[0] is not a number (got string)"),
+         ("invalid", {"pwquality_values": {opt: [want, f" {want} "]}}, f"pwquality_values.{opt}[1] is not a number (got string)"),
+         ("invalid", {"pwquality_values": {opt: [want + 0.5]}}, f"pwquality_values.{opt}[0] is not a number (got a fraction)")],
         f"{opt} must be {op} {limit} on every uncommented {opt} line of /etc/security/pwquality.conf*, with no conflicting values",
         f"Set {opt} = {want} in /etc/security/pwquality.conf and remove other {opt} lines",
         comment=f"every {opt} = value line found by grep -r {opt} /etc/security/pwquality.conf* (conflicting results are a finding)",
-        **({"pass_cases": [{"pwquality_values": {opt: ["0"]}}]} if op == "<=" else {}))
+        num_items=[f'[m | some i, v in input.pwquality_values["{opt}"]; m := _not_a_number(sprintf("pwquality_values.{opt}[%d]", [i]), v)]'],
+        **({"pass_cases": [{"pwquality_values": {opt: [0]}}]} if op == "<=" else {}))
 
 # ── sshd settings: every uncommented line in the files sshd reads; conflicting results are a finding ──────────
 T.helpers("ssh_config", r'''

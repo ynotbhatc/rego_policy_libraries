@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [database, mysql]
 #   coverage:
-#     checks: 156
+#     checks: 165
 #     cited: 156
 #     expected: 156
 #     found: 156
@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.mysql_8
 
 import rego.v1
@@ -44,6 +44,7 @@ violations := [v |
 		authentication_violations,
 		network_violations,
 		replication_violations,
+		mysql_row_evidence_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -1232,4 +1233,107 @@ gtid_mode_enabled if {
 
 enforce_gtid_consistency_enabled if {
 	input.mysql.config.enforce_gtid_consistency == "ON"
+}
+
+# ---------------------------------------------------------------------------
+# Row evidence. The checks above select rows by a field of the row (`u.privileges.file_priv == "Y"`,
+# `u.sql_mode`, `count(u.roles) == 0` ...). A row that lacks the field is undefined in that expression, so it
+# used to drop out of the list of offending rows and the control passed. Each field a check reads is now
+# required on every row, and a row without it is a finding under the recommendation that reads it.
+# ---------------------------------------------------------------------------
+
+# [field, type, recommendation]; a field of type "any" must be present (null is a value MySQL reports)
+_user_fields := [
+	["host", "string", "2.21"],
+	["user", "string", "2.22"],
+	["privileges", "object", "5.1"],
+	["sql_mode", "string", "5.12"],
+	["password_strength", "string", "5.13"],
+	["password", "string", "5.14"],
+	["roles", "array", "5.17"],
+	["user_type", "string", "5.18"],
+	["default_roles", "array", "7.10"],
+	["password_lifetime", "any", "7.11"],
+	["ssl_type", "string", "8.6"],
+]
+
+_priv_flags := [
+	["all_privileges", "5.1"], ["file_priv", "5.2"], ["process_priv", "5.3"], ["super_priv", "5.4"],
+	["shutdown_priv", "5.5"], ["create_user_priv", "5.6"], ["grant_priv", "5.7"], ["repl_slave_priv", "5.8"],
+]
+
+_rows(path) := rows if {
+	rows := object.get(input, path, null)
+	is_array(rows)
+} else := []
+
+_row_problem(v, type) := "not collected" if {
+	type != "any"
+	v == null
+}
+
+_row_problem(v, type) := sprintf("is not a %s (got %s)", [type, type_name(v)]) if {
+	type != "any"
+	v != null
+	type_name(v) != type
+}
+
+mysql_row_evidence_violations contains sprintf("%s: evidence missing — mysql.users[%d].%s %s", [id, i, field, _row_problem(object.get(u, field, null), type)]) if {
+	some i, u in _rows(["mysql", "users"])
+	is_object(u)
+	some [field, type, id] in _user_fields
+	type != "any"
+	_row_problem(object.get(u, field, null), type)
+}
+
+mysql_row_evidence_violations contains sprintf("%s: evidence missing — mysql.users[%d].%s not collected", [id, i, field]) if {
+	some i, u in _rows(["mysql", "users"])
+	is_object(u)
+	some [field, type, id] in _user_fields
+	type == "any"
+	not field in object.keys(u)
+}
+
+mysql_row_evidence_violations contains sprintf("%s: evidence missing — mysql.users[%d] is not an object (got %s)", ["2.22", i, type_name(u)]) if {
+	some i, u in _rows(["mysql", "users"])
+	not is_object(u)
+}
+
+mysql_row_evidence_violations contains sprintf("%s: evidence missing — mysql.users[%d].privileges.%s %s", [id, i, flag, _row_problem(object.get(object.get(u, "privileges", {}), flag, null), "string")]) if {
+	some i, u in _rows(["mysql", "users"])
+	is_object(u)
+	is_object(object.get(u, "privileges", null))
+	some [flag, id] in _priv_flags
+	_row_problem(object.get(u.privileges, flag, null), "string")
+}
+
+mysql_row_evidence_violations contains sprintf("1.7: evidence missing — mysql.database_privileges.mysql_db[%d].user %s", [i, _row_problem(object.get(r, "user", null), "string")]) if {
+	some i, r in _rows(["mysql", "database_privileges", "mysql_db"])
+	is_object(r)
+	_row_problem(object.get(r, "user", null), "string")
+}
+
+mysql_row_evidence_violations contains sprintf("5.9: evidence missing — mysql.database_grants[%d].db %s", [i, _row_problem(object.get(r, "db", null), "string")]) if {
+	some i, r in _rows(["mysql", "database_grants"])
+	is_object(r)
+	_row_problem(object.get(r, "db", null), "string")
+}
+
+mysql_row_evidence_violations contains sprintf("4.2: evidence missing — mysql.databases[%d].name %s", [i, _row_problem(object.get(r, "name", null), "string")]) if {
+	some i, r in _rows(["mysql", "databases"])
+	is_object(r)
+	_row_problem(object.get(r, "name", null), "string")
+}
+
+mysql_row_evidence_violations contains sprintf("9.10: evidence missing — mysql.replication.users[%d].privileges.%s %s", [i, flag, _row_problem(object.get(object.get(r, "privileges", {}), flag, null), "string")]) if {
+	some i, r in _rows(["mysql", "replication", "users"])
+	is_object(r)
+	some flag in ["super_priv", "file_priv", "process_priv"]
+	_row_problem(object.get(object.get(r, "privileges", {}), flag, null), "string")
+}
+
+mysql_row_evidence_violations contains sprintf("1.6: evidence missing — mysql.user_profiles[%d].content %s", [i, _row_problem(object.get(r, "content", null), "string")]) if {
+	some i, r in _rows(["mysql", "user_profiles"])
+	is_object(r)
+	_row_problem(object.get(r, "content", null), "string")
 }

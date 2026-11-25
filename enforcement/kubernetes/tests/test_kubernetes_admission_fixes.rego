@@ -79,3 +79,60 @@ test_annotation_true_opts_out if {
 	w := object.union(template({"containers": [container({"readinessProbe": {}, "livenessProbe": {}, "securityContext": {"allowPrivilegeEscalation": false, "readOnlyRootFilesystem": false, "runAsNonRoot": true, "capabilities": {"drop": ["ALL"]}}})]}), {"metadata": {"annotations": {"admission.kubernetes.io/skip-readonly-check": "true"}}})
 	not has_violation(review("Deployment", w), "readOnlyRootFilesystem")
 }
+
+# ── Audit 2026-11-24: the report is defined and failing on no input and on malformed reviews ────────
+
+_report_fails(r) if {
+	is_object(r)
+	r.compliant == false
+	r.allow == false
+	r.violation_count >= 1
+	some v in r.violations
+	contains(v, "request cannot be evaluated")
+}
+
+test_report_defined_and_failing_on_non_object_input if {
+	every bad in [null, "true", 1, true, [], {}] {
+		_report_fails(data.kubernetes.admission.compliance_report) with input as bad
+	}
+}
+
+test_report_defined_and_failing_on_malformed_request if {
+	every bad in [null, "true", 1, [], {}] {
+		_report_fails(data.kubernetes.admission.compliance_report) with input as {"request": bad}
+		_report_fails(data.kubernetes.admission.compliance_report) with input as {"request": {"kind": {"kind": "Pod"}, "object": bad}}
+		_report_fails(data.kubernetes.admission.compliance_report) with input as {"request": {"kind": bad, "object": {"metadata": {"name": "x"}}}}
+	}
+}
+
+# Audit 2026-11-24 round 2: a blank kind matches no rule, so the review was admitted with nothing judged.
+test_blank_kind_is_not_evaluable if {
+	every kind in ["", "   "] {
+		r := data.kubernetes.admission.compliance_report with input as {"request": {"kind": {"kind": kind}, "object": {"metadata": {"name": "x"}}}}
+		r.compliant == false
+		r.allow == false
+		r.violation_count == 1
+	}
+}
+
+# A kind this policy has no rule for (ConfigMap here) is admitted: the policy judges workloads, Services and
+# Ingresses, and the API server has already type-checked the object against its schema.
+test_kind_without_rules_is_admitted if {
+	r := data.kubernetes.admission.compliance_report with input as {"request": {"kind": {"kind": "ConfigMap"}, "namespace": "dev-a", "object": {"metadata": {"name": "x"}, "data": {"k": "v"}}}}
+	r.compliant == true
+	r.allow == true
+	r.is_production == false
+}
+
+# The report was undefined for every request in a dev-, test-, sandbox- or staging namespace: the
+# is_production field called a function that is undefined (not false) for those namespaces.
+test_report_defined_in_non_production_namespaces if {
+	every ns in ["dev-a", "test-a", "sandbox-a", "staging"] {
+		r := data.kubernetes.admission.compliance_report with input as {"request": {"kind": {"kind": "Pod"}, "namespace": ns, "object": {"metadata": {"name": "x"}, "spec": {"containers": [{"name": "c", "image": "registry.access.redhat.com/ubi9/ubi:9.4", "securityContext": {"privileged": true}}]}}}}
+		r.is_production == false
+		r.compliant == false
+		r.violation_count > 0
+	}
+	r := data.kubernetes.admission.compliance_report with input as {"request": {"kind": {"kind": "ConfigMap"}, "namespace": "payments", "object": {"metadata": {"name": "x"}}}}
+	r.is_production == true
+}

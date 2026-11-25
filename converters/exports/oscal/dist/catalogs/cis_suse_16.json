@@ -3246,6 +3246,68 @@
     ]
    },
    {
+    "id": "cis_suse_16-cis_suse16_main",
+    "class": "rego-module",
+    "title": "Bridge: expose cis_suse16 under the /v1/data/<framework>/main/compliance_report",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_suse16.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/suse_16/cis_suse16_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_suse_16-compliance_percentage_reason",
+      "title": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected",
+      "props": [
+       {
+        "name": "label",
+        "value": "compliance_percentage_reason"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "compliance_percentage_reason"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_suse16.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f67dd43-abba-5635-a2f3-357dd78ccc52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_suse_16-compliance_percentage_reason_stmt",
+        "name": "statement",
+        "prose": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"
+       },
+       {
+        "id": "cis_suse_16-compliance_percentage_reason_obj.1",
+        "name": "assessment-objective",
+        "prose": "a finding that cites no recommendation stands although no recommendation failed (see violations)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
     "id": "cis_suse_16-cis_suse_16",
     "class": "rego-module",
     "title": "CIS SUSE Linux Enterprise 16 Benchmark v1.0.0 — roll-up",
@@ -13490,6 +13552,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/suse_16/bootloader.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5f67dd43-abba-5635-a2f3-357dd78ccc52",
+     "title": "Bridge: expose cis_suse16 under the /v1/data/<framework>/main/compliance_report",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_suse16.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/suse_16/cis_suse16_main.rego",
        "media-type": "text/plain"
       }
      ]

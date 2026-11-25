@@ -2,22 +2,496 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cert_in/schema.json",
  "title": "Input facts for cert_in",
- "description": "Input paths referenced in the sources of frameworks/regional/cert_in/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/regional/cert_in/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "cert_in",
  "x-entrypoint": "data.cert_in.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/regional/cert_in/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cert_in.main_test._evidence_full",
  "type": "object",
  "properties": {
   "cert_in": {
-   "description": "Read in cert_in_main.rego."
+   "description": "Read in cert_in_main.rego.",
+   "type": "object",
+   "properties": {
+    "coordination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "acts_on_certin_orders_within_specified_timeframe": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "poc_designated": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "poc_kept_updated": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "poc_registered_in_annexure_ii_format": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "incident_reporting": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "procedure_uses_certin_published_format": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "reportable_types": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "i_targeted_scanning_probing": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ii_compromise_of_critical_systems": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "iii_unauthorised_access": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "iv_website_defacement_or_intrusion": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "ix_critical_infrastructure_scada_ot_wireless": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "v_malicious_code": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "vi_attacks_on_servers_and_network_devices": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "vii_identity_theft_spoofing_phishing": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "viii_dos_ddos": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "x_attacks_on_applications": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xi_data_breach": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xii_data_leak": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xiii_iot": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xiv_digital_payment_systems": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xix_big_data_blockchain_virtual_assets_robotics_drones": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xv_malicious_mobile_apps": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xvi_fake_mobile_apps": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xvii_social_media_accounts": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xviii_cloud_systems": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "xx_ai_ml_systems": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "reported_within_6_hours_of_noticing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "reporting_channels_configured": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "is_virtual_asset_service_provider": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "logging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "logs_enabled_on_all_ict_systems": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logs_provided_with_incident_reports_or_on_order": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logs_retained_180_days_rolling": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "logs_stored_within_indian_jurisdiction": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "provides_datacentre_vps_cloud_or_vpn": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "subscriber_registration": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "fields": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "a_validated_subscriber_names": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "b_period_of_hire_with_dates": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "c_ips_allotted_or_used": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "d_registration_email_ip_timestamp": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "e_purpose_for_hiring": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "f_validated_address_and_contact": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "g_ownership_pattern": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "retained_5_years_after_cancellation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "time_sync": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "all_ict_clocks_synchronised": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "source_is_nic_npl_or_traceable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "virtual_assets": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "kyc_and_transaction_records_retained_5_years": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "kyc_per_annexure_iii_maintained": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "transactions_reconstructable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
   }
  },
  "additionalProperties": true,
  "x-known-paths": [
-  "cert_in"
+  "cert_in",
+  "cert_in.coordination",
+  "cert_in.coordination.acts_on_certin_orders_within_specified_timeframe",
+  "cert_in.coordination.poc_designated",
+  "cert_in.coordination.poc_kept_updated",
+  "cert_in.coordination.poc_registered_in_annexure_ii_format",
+  "cert_in.incident_reporting",
+  "cert_in.incident_reporting.procedure_uses_certin_published_format",
+  "cert_in.incident_reporting.reportable_types",
+  "cert_in.incident_reporting.reportable_types.i_targeted_scanning_probing",
+  "cert_in.incident_reporting.reportable_types.ii_compromise_of_critical_systems",
+  "cert_in.incident_reporting.reportable_types.iii_unauthorised_access",
+  "cert_in.incident_reporting.reportable_types.iv_website_defacement_or_intrusion",
+  "cert_in.incident_reporting.reportable_types.ix_critical_infrastructure_scada_ot_wireless",
+  "cert_in.incident_reporting.reportable_types.v_malicious_code",
+  "cert_in.incident_reporting.reportable_types.vi_attacks_on_servers_and_network_devices",
+  "cert_in.incident_reporting.reportable_types.vii_identity_theft_spoofing_phishing",
+  "cert_in.incident_reporting.reportable_types.viii_dos_ddos",
+  "cert_in.incident_reporting.reportable_types.x_attacks_on_applications",
+  "cert_in.incident_reporting.reportable_types.xi_data_breach",
+  "cert_in.incident_reporting.reportable_types.xii_data_leak",
+  "cert_in.incident_reporting.reportable_types.xiii_iot",
+  "cert_in.incident_reporting.reportable_types.xiv_digital_payment_systems",
+  "cert_in.incident_reporting.reportable_types.xix_big_data_blockchain_virtual_assets_robotics_drones",
+  "cert_in.incident_reporting.reportable_types.xv_malicious_mobile_apps",
+  "cert_in.incident_reporting.reportable_types.xvi_fake_mobile_apps",
+  "cert_in.incident_reporting.reportable_types.xvii_social_media_accounts",
+  "cert_in.incident_reporting.reportable_types.xviii_cloud_systems",
+  "cert_in.incident_reporting.reportable_types.xx_ai_ml_systems",
+  "cert_in.incident_reporting.reported_within_6_hours_of_noticing",
+  "cert_in.incident_reporting.reporting_channels_configured",
+  "cert_in.is_virtual_asset_service_provider",
+  "cert_in.logging",
+  "cert_in.logging.logs_enabled_on_all_ict_systems",
+  "cert_in.logging.logs_provided_with_incident_reports_or_on_order",
+  "cert_in.logging.logs_retained_180_days_rolling",
+  "cert_in.logging.logs_stored_within_indian_jurisdiction",
+  "cert_in.provides_datacentre_vps_cloud_or_vpn",
+  "cert_in.subscriber_registration",
+  "cert_in.subscriber_registration.fields",
+  "cert_in.subscriber_registration.fields.a_validated_subscriber_names",
+  "cert_in.subscriber_registration.fields.b_period_of_hire_with_dates",
+  "cert_in.subscriber_registration.fields.c_ips_allotted_or_used",
+  "cert_in.subscriber_registration.fields.d_registration_email_ip_timestamp",
+  "cert_in.subscriber_registration.fields.e_purpose_for_hiring",
+  "cert_in.subscriber_registration.fields.f_validated_address_and_contact",
+  "cert_in.subscriber_registration.fields.g_ownership_pattern",
+  "cert_in.subscriber_registration.retained_5_years_after_cancellation",
+  "cert_in.time_sync",
+  "cert_in.time_sync.all_ict_clocks_synchronised",
+  "cert_in.time_sync.source_is_nic_npl_or_traceable",
+  "cert_in.virtual_assets",
+  "cert_in.virtual_assets.kyc_and_transaction_records_retained_5_years",
+  "cert_in.virtual_assets.kyc_per_annexure_iii_maintained",
+  "cert_in.virtual_assets.transactions_reconstructable"
  ]
 }

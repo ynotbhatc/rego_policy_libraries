@@ -6,7 +6,7 @@
 #   source: us-state
 #   domains: [privacy, us-state]
 #   coverage:
-#     checks: 53
+#     checks: 54
 #     cited: 46
 #     density: sized
 #     basis: size
@@ -60,7 +60,8 @@ compliant if {
 # Absent section evaluates as {} so every required fact is a violation (fail-closed).
 default _in := {}
 
-_in := input.ccpa.cybersecurity_audits
+# A section sent as null or as a non-object reads as empty (object.get on null made the whole report undefined).
+_in := input.ccpa.cybersecurity_audits if is_object(input.ccpa.cybersecurity_audits)
 
 default _applicable := true
 
@@ -108,19 +109,24 @@ first_report_deadline := {
 
 violations contains msg if {
 	_applicable
-	not _in.audit.completed == true
-	msg := "CCPA §7120(a): no cybersecurity audit completed — a business whose processing presents significant risk to consumers' security must complete one"
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "audit", "completed"])
+	text := "CCPA §7120(a): no cybersecurity audit completed — a business whose processing presents significant risk to consumers' security must complete one"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
 	_applicable
-	not _in.audit.covers_required_period == true
-	msg := "CCPA §7121: cybersecurity audit does not cover the required 12-month period (Jan 1 through Jan 1 of the following year for the business's tier)"
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "audit", "covers_required_period"])
+	text := "CCPA §7121: cybersecurity audit does not cover the required 12-month period (Jan 1 through Jan 1 of the following year for the business's tier)"
+	msg := concat("", [text, note])
 }
+
+# `not _in.revenue_tier in {...}` was undefined when revenue_tier was missing, so a missing tier raised nothing.
+_revenue_tier_valid if _in.revenue_tier in {"over_100m", "50m_to_100m", "under_50m"}
 
 violations contains msg if {
 	_applicable
-	not _in.revenue_tier in {"over_100m", "50m_to_100m", "under_50m"}
+	not _revenue_tier_valid
 	msg := "CCPA §7121(a): revenue_tier must be one of over_100m, 50m_to_100m, under_50m — the first-report deadline (2028/2029/2030-04-01) depends on it"
 }
 
@@ -128,8 +134,9 @@ violations contains msg if {
 	_applicable
 	deadline := first_report_deadline[_in.revenue_tier]
 	time.now_ns() > time.parse_rfc3339_ns(deadline)
-	not _in.audit.completed == true
-	msg := sprintf("CCPA §7121(a): first cybersecurity audit report was due %v for tier %v and none is recorded", [substring(deadline, 0, 10), _in.revenue_tier])
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "audit", "completed"])
+	text := sprintf("CCPA §7121(a): first cybersecurity audit report was due %v for tier %v and none is recorded", [substring(deadline, 0, 10), _in.revenue_tier])
+	msg := concat("", [text, note])
 }
 
 # ── §7122 — thoroughness and independence ─────────────────────────────────
@@ -148,16 +155,18 @@ _auditor_checks := {
 
 violations contains msg if {
 	_applicable
-	some key, msg in _auditor_checks
-	not _in.auditor[key] == true
+	some key, text in _auditor_checks
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "auditor", key])
+	msg := concat("", [text, note])
 }
 
 # Internal auditor independence (§7122(a)(3)) — only when the auditor is internal.
 violations contains msg if {
 	_applicable
 	_in.auditor.internal == true
-	not _in.auditor.reports_to_executive_without_cyber_responsibility == true
-	msg := "CCPA §7122(a)(3): internal highest-ranking auditor does not report to an executive who lacks direct responsibility for the cybersecurity program (and whose evaluation/compensation that executive sets)"
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "auditor", "reports_to_executive_without_cyber_responsibility"])
+	text := "CCPA §7122(a)(3): internal highest-ranking auditor does not report to an executive who lacks direct responsibility for the cybersecurity program (and whose evaluation/compensation that executive sets)"
+	msg := concat("", [text, note])
 }
 
 # ── §7123(c) — the eighteen components the audit must assess ──────────────
@@ -202,14 +211,16 @@ violations contains msg if {
 
 violations contains msg if {
 	_applicable
-	not _in.components.program_documentation_assessed == true
-	msg := "CCPA §7123(b)(1): audit did not assess the establishment, implementation and maintenance of the cybersecurity program and its written policies and procedures"
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "components", "program_documentation_assessed"])
+	text := "CCPA §7123(b)(1): audit did not assess the establishment, implementation and maintenance of the cybersecurity program and its written policies and procedures"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
 	_applicable
-	not _in.components.implementation_and_enforcement_assessed == true
-	msg := "CCPA §7123(b)(3): audit did not assess how the business implements and enforces compliance with its cybersecurity program and the applicable components"
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "components", "implementation_and_enforcement_assessed"])
+	text := "CCPA §7123(b)(3): audit did not assess how the business implements and enforces compliance with its cybersecurity program and the applicable components"
+	msg := concat("", [text, note])
 }
 
 # ── §7123(e) — the audit report ───────────────────────────────────────────
@@ -228,8 +239,9 @@ _report_checks := {
 
 violations contains msg if {
 	_applicable
-	some key, msg in _report_checks
-	not _in.report[key] == true
+	some key, text in _report_checks
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "report", key])
+	msg := concat("", [text, note])
 }
 
 # ── §7124 — certification of completion to the Agency ─────────────────────
@@ -243,11 +255,22 @@ _certification_checks := {
 
 violations contains msg if {
 	_applicable
-	some key, msg in _certification_checks
-	not _in.certification[key] == true
+	some key, text in _certification_checks
+	note := _unmet(_root, ["ccpa", "cybersecurity_audits", "certification", key])
+	msg := concat("", [text, note])
 }
 
 # ── Report ────────────────────────────────────────────────────────────────
+
+# ── Facts that switch an obligation on or off ───────────────────────────
+# Each must be stated as true or false wherever its own condition holds. A missing, null or
+# non-boolean value is an evidence problem and is reported; it is never read as "does not apply".
+_conditions contains ["CCPA §7122(a)(3)", ["auditor", "internal"]] if _applicable
+
+violations contains msg if {
+	some [cite, path] in _conditions
+	msg := sprintf("%s: applicability not determined — %s", [cite, _problem(_root, array.concat(["ccpa", "cybersecurity_audits"], path))])
+}
 
 compliance_report := {
 	"standard": "CCPA Regulations — Article 9 Cybersecurity Audits (11 CCR §§7120–7124, effective 2026-01-01)",
@@ -262,3 +285,30 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
+
+# ── Evidence helpers ─────────────────────────────────────────────────────────
+# Evidence rule: only the boolean true passes a yes/no fact. _unmet is defined when the fact is not the
+# boolean true; its value is appended to the finding and names the evidence problem (missing, null, or a
+# value that is not a boolean, such as the strings "true" and "false"). A collected false adds nothing.
+# _problem names the same evidence problem for a fact that switches an obligation on or off: such a fact
+# must be stated as true or false and is never inferred from a missing field.
+# The input document itself may be absent or not an object: every fact then reads as not collected.
+default _root := {}
+
+_root := input if is_object(input)
+
+_fact(root, path) := value if {
+	is_object(root)
+	value := object.get(root, path, null)
+} else := null
+
+_problem(root, path) := sprintf("evidence missing: %s not collected", [concat(".", path)]) if _fact(root, path) == null
+
+_problem(root, path) := sprintf("evidence invalid: %s is not a boolean (got %s)", [concat(".", path), type_name(_fact(root, path))]) if {
+	_fact(root, path) != null
+	not is_boolean(_fact(root, path))
+}
+
+_unmet(root, path) := "" if _fact(root, path) == false
+
+_unmet(root, path) := concat("", [" — ", _problem(root, path)]) if not is_boolean(_fact(root, path))

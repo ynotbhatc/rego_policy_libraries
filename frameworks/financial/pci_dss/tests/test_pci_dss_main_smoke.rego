@@ -1,5 +1,4 @@
-package pci_dss.main_test
-
+package pci_dss_tests.main_test
 import rego.v1
 
 # Generated smoke test for frameworks/financial/pci_dss/pci_dss_main.rego (scripts/gen_tests.py). Each rule states one thing the module was proven

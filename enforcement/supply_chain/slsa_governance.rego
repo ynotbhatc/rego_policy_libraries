@@ -162,12 +162,12 @@ violations contains "SBOM: No SBOM attached to artifact (SPDX or CycloneDX requi
 
 violations contains "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)" if {
 	input.sbom.present
-	not input.sbom.format in {"SPDX-2.2", "SPDX-2.3", "CycloneDX-1.4", "CycloneDX-1.5", "CycloneDX-1.6"}
+	not object.get(input, ["sbom", "format"], "") in {"SPDX-2.2", "SPDX-2.3", "CycloneDX-1.4", "CycloneDX-1.5", "CycloneDX-1.6"}
 }
 
 violations contains "SBOM: SBOM contains no components (empty bill of materials)" if {
 	input.sbom.present
-	count(input.sbom.components) == 0
+	count(object.get(input, ["sbom", "components"], [])) == 0
 }
 
 violations contains "SBOM: SBOM missing required field 'document_namespace'" if {
@@ -299,7 +299,7 @@ violations contains "Provenance: Build triggered from unprotected ref (branch bu
 
 violations contains "Provenance: Provenance predicate type not SLSA v1.0" if {
 	input.provenance.exists
-	input.provenance.predicate_type != "https://slsa.dev/provenance/v1"
+	object.get(input, ["provenance", "predicate_type"], "") != "https://slsa.dev/provenance/v1"
 }
 
 violations contains "Provenance: Builder identity not in approved builder registry" if {

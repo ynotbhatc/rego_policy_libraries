@@ -524,7 +524,7 @@ deployment_violations := [violation |
 
 monitoring_violations := [violation |
 	env := ["development", "qa", "production"][_]
-	env_config := input.environments[env]
+	env_config := object.get(object.get(input, "environments", {}), env, {})
 	not monitoring_adequate_for_environment(env_config, env)
 	violation := {
 		"type": "monitoring_inadequate",

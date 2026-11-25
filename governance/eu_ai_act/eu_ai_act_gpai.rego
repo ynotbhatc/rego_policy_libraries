@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 27
+#     checks: 28
 #     cited: 15
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package eu_ai_act.gpai
 
 import rego.v1
@@ -22,6 +22,53 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# =============================================================================
+# Evidence typing (bad input never passes, issue #301)
+# =============================================================================
+# Every fact this module reads is a yes/no. Only the booleans true and false are evidence: a string such
+# as "true", "false" or "no", a number or null is a collection error and is reported as a finding, whether
+# the fact states an obligation or says that one does not apply. (A fact that is absent is handled by the
+# rule that reads it.)
+
+_boolean_facts := {
+	["article_53", "copyright_compliance_policy_established"],
+	["article_53", "copyright_compliance_policy_published"],
+	["article_53", "downstream_documentation_adequate"],
+	["article_53", "information_provided_to_downstream_providers"],
+	["article_53", "model_cards_or_equivalent"],
+	["article_53", "technical_documentation_drawn_up"],
+	["article_53", "technical_documentation_kept_current"],
+	["article_53", "training_data_summary_adequate"],
+	["article_53", "training_data_summary_published"],
+	["article_54", "authorized_representative_designated"],
+	["article_54", "provider_established_outside_eu"],
+	["article_54", "representative_has_full_mandate"],
+	["article_54", "representative_registered_with_national_authority"],
+	["article_55", "adversarial_testing_performed"],
+	["article_55", "commission_designated"],
+	["article_55", "cybersecurity_measures_proportionate"],
+	["article_55", "energy_efficiency_reporting_provided"],
+	["article_55", "model_evaluation_conducted"],
+	["article_55", "notification_timely"],
+	["article_55", "notified_to_ai_office"],
+	["article_55", "physical_cybersecurity_protections"],
+	["article_55", "serious_incident_reporting_established"],
+	["article_55", "systemic_risk_mitigation_measures_documented"],
+	["article_55", "systemic_risk_model"],
+	["article_55", "training_flops_exceeds_threshold"],
+	["article_56", "code_of_practice_adhered_to"],
+	["article_56", "equivalent_compliance_demonstrated"],
+	["article_56", "equivalent_compliance_documented"],
+}
+
+violations contains msg if {
+	some path in _boolean_facts
+	value := object.get(input, array.concat(["eu_ai_act", "gpai"], path), "__absent__")
+	value != "__absent__"
+	not is_boolean(value)
+	msg := sprintf("%s: evidence invalid — eu_ai_act.gpai.%s is not a boolean (got %s)", ["Title VIII (Articles 51-56) input contract", concat(".", path), type_name(value)])
 }
 
 # =============================================================================

@@ -1294,7 +1294,7 @@
      ]
     },
     "freq": {
-     "description": "RHEL-09-653095: freq as configured in /etc/audit/auditd.conf (null when missing or commented out). Read by RHEL-09-653095. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-653095: freq as configured in /etc/audit/auditd.conf (null when missing or commented out). Read by RHEL-09-653095. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1558,12 +1558,9 @@
        },
        "maxpoll": {
         "description": "Read by RHEL-09-252020.",
-        "type": [
-         "number",
-         "string"
-        ],
+        "type": "number",
         "examples": [
-         "16"
+         16
         ],
         "x-read-by": [
          "RHEL-09-252020"
@@ -1760,7 +1757,7 @@
      ]
     },
     "min_rsa_size": {
-     "description": "RHEL-09-215105: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by RHEL-09-215105. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-215105: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by RHEL-09-215105. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -2117,7 +2114,7 @@
      ]
     },
     "deny": {
-     "description": "RHEL-09-411075: deny as configured in /etc/security/faillock.conf. Read by RHEL-09-411075. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-411075: deny as configured in /etc/security/faillock.conf. Read by RHEL-09-411075. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -2162,7 +2159,7 @@
      ]
     },
     "fail_interval": {
-     "description": "RHEL-09-411085: fail_interval as configured in /etc/security/faillock.conf. Read by RHEL-09-411085. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-411085: fail_interval as configured in /etc/security/faillock.conf. Read by RHEL-09-411085. Accepted: whole JSON number.",
      "type": [
       "null",
       "number",
@@ -2179,7 +2176,7 @@
      ]
     },
     "unlock_time": {
-     "description": "RHEL-09-411090: unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out). Read by RHEL-09-411090. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-411090: unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out). Read by RHEL-09-411090. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -3122,10 +3119,7 @@
       "properties": {
        "gid": {
         "description": "Read by RHEL-09-232215.",
-        "type": [
-         "number",
-         "string"
-        ],
+        "type": "number",
         "examples": [
          5
         ],
@@ -3358,10 +3352,7 @@
       "properties": {
        "gid": {
         "description": "Read by RHEL-09-232195.",
-        "type": [
-         "number",
-         "string"
-        ],
+        "type": "number",
         "examples": [
          5
         ],
@@ -4609,10 +4600,7 @@
      },
      "home_gid": {
       "description": "Read by RHEL-09-411060, RHEL-09-411065, RHEL-09-411070.",
-      "type": [
-       "number",
-       "string"
-      ],
+      "type": "number",
       "examples": [
        1002
       ],
@@ -5394,7 +5382,7 @@
    }
   },
   "limits_maxlogins": {
-   "description": "RHEL-09-412040: uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}]. Read by RHEL-09-412040.",
+   "description": "RHEL-09-412040: uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}] (value: a JSON number; a value that is not a decimal integer as the text written). Read by RHEL-09-412040.",
    "type": "array",
    "items": {
     "type": "object",
@@ -5431,12 +5419,9 @@
      },
      "value": {
       "description": "Read by RHEL-09-412040.",
-      "type": [
-       "number",
-       "string"
-      ],
+      "type": "number",
       "examples": [
-       "10"
+       10
       ],
       "x-read-by": [
        "RHEL-09-412040"
@@ -5537,7 +5522,7 @@
      ]
     },
     "FAIL_DELAY": {
-     "description": "RHEL-09-412050: FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out). Read by RHEL-09-412050. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-412050: FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out). Read by RHEL-09-412050. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6796,7 +6781,7 @@
    "type": "object",
    "properties": {
     "dcredit": {
-     "description": "RHEL-09-611070: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611070. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611070: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611070. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6812,7 +6797,7 @@
      ]
     },
     "dictcheck": {
-     "description": "RHEL-09-611105: effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out). Read by RHEL-09-611105. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611105: effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out). Read by RHEL-09-611105. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6828,7 +6813,7 @@
      ]
     },
     "difok": {
-     "description": "RHEL-09-611115: effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611115. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611115: effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611115. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6857,7 +6842,7 @@
      ]
     },
     "inactive_days": {
-     "description": "RHEL-09-411050: INACTIVE as configured in /etc/default/useradd. Read by RHEL-09-411050. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-411050: INACTIVE as configured in /etc/default/useradd. Read by RHEL-09-411050. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6873,7 +6858,7 @@
      ]
     },
     "lcredit": {
-     "description": "RHEL-09-611065: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611065. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611065: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611065. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6889,7 +6874,7 @@
      ]
     },
     "maxclassrepeat": {
-     "description": "RHEL-09-611120: effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611120. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611120: effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611120. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6905,7 +6890,7 @@
      ]
     },
     "maxdays": {
-     "description": "RHEL-09-411010: PASS_MAX_DAYS as configured in /etc/login.defs. Read by RHEL-09-411010. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-411010: PASS_MAX_DAYS as configured in /etc/login.defs. Read by RHEL-09-411010. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6921,7 +6906,7 @@
      ]
     },
     "maxrepeat": {
-     "description": "RHEL-09-611125: effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611125. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611125: effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611125. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6937,7 +6922,7 @@
      ]
     },
     "minclass": {
-     "description": "RHEL-09-611130: effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611130. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611130: effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611130. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6953,7 +6938,7 @@
      ]
     },
     "mindays": {
-     "description": "RHEL-09-611075: PASS_MIN_DAYS as configured in /etc/login.defs. Read by RHEL-09-611075. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611075: PASS_MIN_DAYS as configured in /etc/login.defs. Read by RHEL-09-611075. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6969,7 +6954,7 @@
      ]
     },
     "minlen": {
-     "description": "RHEL-09-611090: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611090. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611090: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611090. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -6985,7 +6970,7 @@
      ]
     },
     "ocredit": {
-     "description": "RHEL-09-611100: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611100. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611100: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611100. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -7001,7 +6986,7 @@
      ]
     },
     "retry": {
-     "description": "RHEL-09-611010: effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out). Read by RHEL-09-611010. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611010: effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out). Read by RHEL-09-611010. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -7017,7 +7002,7 @@
      ]
     },
     "ucredit": {
-     "description": "RHEL-09-611110: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611110. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-611110: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-09-611110. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -7089,7 +7074,7 @@
    ]
   },
   "profile_tmout": {
-   "description": "RHEL-09-412035: uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value as written). Read by RHEL-09-412035.",
+   "description": "RHEL-09-412035: uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value: the seconds as a JSON number; an assignment that is not a decimal integer, e.g. $IDLE, as the text written). Read by RHEL-09-412035.",
    "type": "array",
    "items": {
     "type": "object",
@@ -7111,7 +7096,7 @@
        "string"
       ],
       "examples": [
-       "600"
+       600
       ],
       "x-read-by": [
        "RHEL-09-412035"
@@ -7898,7 +7883,7 @@
      ]
     },
     "ClientAliveCountMax": {
-     "description": "RHEL-09-255095: effective sshd ClientAliveCountMax (sshd -T). Read by RHEL-09-255095. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-255095: effective sshd ClientAliveCountMax (sshd -T). Read by RHEL-09-255095. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -7914,7 +7899,7 @@
      ]
     },
     "ClientAliveInterval": {
-     "description": "RHEL-09-255100: effective sshd ClientAliveInterval (sshd -T). Read by RHEL-09-255100, RHEL-09-412080. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-09-255100: effective sshd ClientAliveInterval (sshd -T). Read by RHEL-09-255100, RHEL-09-412080. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"

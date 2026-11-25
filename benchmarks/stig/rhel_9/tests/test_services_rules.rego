@@ -6,23 +6,17 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"attest": {
-		"rhel_09_252020_authoritative_time_source": true,
-	},
+	"attest": {"rhel_09_252020_authoritative_time_source": true},
 	"chrony_conf": {
 		"cmdport": "0",
 		"port": "0",
-		"sources": [
-			{
-				"address": "0.us.pool.ntp.mil",
-				"directive": "server",
-				"maxpoll": "16",
-			},
-		],
+		"sources": [{
+			"address": "0.us.pool.ntp.mil",
+			"directive": "server",
+			"maxpoll": 16,
+		}],
 	},
-	"mail_aliases": {
-		"postmaster": "root",
-	},
+	"mail_aliases": {"postmaster": "root"},
 	"packages": {
 		"chrony": true,
 		"gssproxy": false,
@@ -36,25 +30,15 @@ green_fixture := {
 		"vsftpd": false,
 		"xorg-x11-server-common": false,
 	},
-	"postfix": {
-		"smtpd_client_restrictions": "permit_mynetworks,reject",
-	},
+	"postfix": {"smtpd_client_restrictions": "permit_mynetworks,reject"},
 	"services": {
 		"chronyd": "active",
 		"kdump": "inactive",
 		"rngd": "active",
 	},
-	"systemd_units": {
-		"kdump.service": {
-			"load_state": "masked",
-		},
-	},
-	"tftp": {
-		"execstart": "/usr/sbin/in.tftpd -s /var/lib/tftpboot",
-	},
-	"unit_enabled": {
-		"autofs": "masked",
-	},
+	"systemd_units": {"kdump.service": {"load_state": "masked"}},
+	"tftp": {"execstart": "/usr/sbin/in.tftpd -s /var/lib/tftpboot"},
+	"unit_enabled": {"autofs": "masked"},
 }
 
 test_every_finding_open_on_empty_input if {
@@ -392,28 +376,46 @@ test_rhel_09_252020_fail_1 if {
 test_rhel_09_252020_fail_2 if {
 	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": "sixteen"}]}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-252020: check failed")
+	contains(f.detail, "RHEL-09-252020: evidence invalid — chrony_conf.sources[0].maxpoll is not a number (got string)")
 }
 
 test_rhel_09_252020_fail_3 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": "16"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: evidence invalid — chrony_conf.sources[0].maxpoll is not a number (got string)")
+}
+
+test_rhel_09_252020_fail_4 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": 16}, {"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": " 10 "}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: evidence invalid — chrony_conf.sources[1].maxpoll is not a number (got string)")
+}
+
+test_rhel_09_252020_fail_5 if {
+	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil", "maxpoll": 10.5}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-252020: evidence invalid — chrony_conf.sources[0].maxpoll is not a number (got a fraction)")
+}
+
+test_rhel_09_252020_fail_6 if {
 	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "server", "address": "0.us.pool.ntp.mil"}]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-252020: check failed")
 }
 
-test_rhel_09_252020_fail_4 if {
+test_rhel_09_252020_fail_7 if {
 	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": [{"directive": "pool", "address": "2.rhel.pool.ntp.org", "maxpoll": 10}]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-252020: check failed")
 }
 
-test_rhel_09_252020_fail_5 if {
+test_rhel_09_252020_fail_8 if {
 	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"chrony_conf": {"sources": []}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-252020: check failed")
 }
 
-test_rhel_09_252020_fail_6 if {
+test_rhel_09_252020_fail_9 if {
 	f := data.stig.rhel_9.services.finding_rhel_09_252020 with input as object.union(green_fixture, {"attest": {"rhel_09_252020_authoritative_time_source": false}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-252020: check failed")

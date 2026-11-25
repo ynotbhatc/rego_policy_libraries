@@ -156,14 +156,14 @@ def configure():
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# lib.rego: the 2022 evaluator, renamed, with two 2019 changes
+# lib.rego: the 2022 evaluator, renamed, with one 2019 change
 # ---------------------------------------------------------------------------------------------------------------
 
 # 1. audit_policy counts as collected only when it holds at least one subcategory GUID key. The 2019 playbook
 #    today sends {"audit_policy": <auditpol text>}; without this every section 17 row would read "found: null"
 #    and look like a misconfigured host instead of a collector gap.
-# 2. Missing evidence is named as such: a row whose input was not collected, or whose value is absent from a
-#    collected input, says "evidence missing -- <field> not collected" (both still count as failed).
+#    (Naming missing evidence as such -- "evidence missing -- <field> not collected" -- began here as a second
+#    2019 change; since the 2026-11-24 audit it is in the shared template, so all six modules word it alike.)
 LIB_CHANGES = [
     ("""_collected(kind) if {
 	kind != "ureg"
@@ -180,59 +180,12 @@ _auditpol_collected if {
 _collected(kind) if {
 	not kind in {"ureg", "auditpol"}
 """),
-    ("""[sprintf("%s -- found: %s", [c.msg, _found(c)]) | some cid; c := controls[cid]; results[cid] == "fail"],""",
-     """[_fail_msg(c) | some cid; c := controls[cid]; results[cid] == "fail"],"""),
-    ("""[sprintf("%s -- NOT ASSESSED: %s (counted as failed)", [c.msg, _why_not_assessed(c)]) |""",
-     """[sprintf("%s -- evidence missing — %s (NOT ASSESSED, counted as failed)", [c.msg, _why_not_assessed(c)]) |"""),
-    ("""_why_not_assessed(c) := "the server role""", """# A value absent from a collected input fails (the benchmark's state is a configured value), and the message
-# says the evidence was missing rather than reporting "found: null".
-_missing(c) if {
-	c.kind == "reg"
-	_value(input.registry, c.path, c.name) == null
-}
-
-_missing(c) if {
-	c.kind == "reg_all"
-	some i in c.items
-	_value(input.registry, i[0], i[1]) == null
-}
-
-_missing(c) if {
-	c.kind == "ureg"
-	some _, hive in _user_hives
-	_value(hive, c.path, c.name) == null
-}
-
-_missing(c) if {
-	c.kind == "secedit"
-	object.get(object.get(input.secedit, "system_access", {}), c.key, null) == null
-}
-
-_missing(c) if {
-	c.kind == "auditpol"
-	object.get(input.audit_policy, c.guid, null) == null
-}
-
-_field(c) := sprintf("registry %s\\\\%s", [c.path, c.name]) if c.kind == "reg"
-
-_field(c) := sprintf("registry %v", [[sprintf("%s\\\\%s", [i[0], i[1]]) | some i in c.items]]) if c.kind == "reg_all"
-
-_field(c) := sprintf("registry_users <SID>\\\\%s\\\\%s", [c.path, c.name]) if c.kind == "ureg"
-
-_field(c) := sprintf("secedit.system_access.%s", [c.key]) if c.kind == "secedit"
-
-_field(c) := sprintf("audit_policy %s", [c.guid]) if c.kind == "auditpol"
-
-_fail_msg(c) := sprintf("%s -- evidence missing — %s not collected (counted as failed)", [c.msg, _field(c)]) if _missing(c)
-
-_fail_msg(c) := sprintf("%s -- found: %s", [c.msg, _found(c)]) if not _missing(c)
-
-_why_not_assessed(c) := "the server role"""),
 ]
 
 
 def lib_text():
     lib = (HERE / "windows_lib.rego.tmpl").read_text()
+    lib = lib.replace("{{SELECTOR_BLOCK}}\n", base.selector_block())
     lib = _sub(lib, LIB_CHANGES, "windows_lib.rego.tmpl")
     lib = _rename(lib)
     lib = lib.replace("{{SECTIONS}}", "\n".join(f'\t"{p}": data.{PKG}.{p}.SECTION,' for p in base.SECTIONS.values()))

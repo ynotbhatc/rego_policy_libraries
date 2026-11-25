@@ -247,6 +247,19 @@ _gaps["10.2.2"] contains r if {
 	r := sprintf("corrective action %v does not reference a nonconformity (nonconformity_id must be a non-blank string)", [_label(c)])
 }
 
+# status has a closed vocabulary (open, closed). Whether a record is closed decides whether it owes an
+# effectiveness review, so an unknown word ("Closed", "done", "false") cannot be read as "not closed": the row
+# fails on the record's own status, not only through 10.2.1.
+_gaps["10.2.2"] contains r if {
+	some c in _cas
+	not object.get(c, "status", null) in {"open", "closed"}
+	r := sprintf("corrective action %v: evidence invalid: status %v is not open or closed (got %s)", [_label(c), _shown(c, "status"), _status_type(c)])
+}
+
+_status_type(c) := "missing" if not "status" in object.keys(c)
+
+_status_type(c) := type_name(c.status) if "status" in object.keys(c)
+
 _gaps["10.2.2"] contains r if {
 	some c in _cas
 	c.status == "closed"

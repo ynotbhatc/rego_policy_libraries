@@ -2,85 +2,232 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_vyos/schema.json",
  "title": "Input facts for cis_vyos",
- "description": "Input paths referenced in the sources of benchmarks/cis/network_devices/vyos/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in benchmarks/cis/network_devices/vyos/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "cis_vyos",
  "x-entrypoint": "data.cis_vyos.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "benchmarks/cis/network_devices/vyos/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_vyos_test.good_input",
  "type": "object",
  "properties": {
   "firewall": {
-   "description": "Read in cis_vyos.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "name": {
-     "description": "Read in cis_vyos.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "WAN-IN": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "default-action": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "drop"
+         ]
+        },
+        "rule": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "10": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "accept"
+             ]
+            },
+            "state": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "established": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object",
+               "properties": {
+                "action": {
+                 "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                 "type": "string",
+                 "x-type-source": "fixture",
+                 "examples": [
+                  "accept"
+                 ]
+                }
+               }
+              },
+              "related": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "object",
+               "properties": {
+                "action": {
+                 "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+                 "type": "string",
+                 "x-type-source": "fixture",
+                 "examples": [
+                  "accept"
+                 ]
+                }
+               }
+              }
+             }
+            }
+           }
+          },
+          "20": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "action": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "drop"
+             ]
+            },
+            "log": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
     }
    }
   },
   "interfaces": {
-   "description": "Read in cis_vyos.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "ethernet": {
-     "description": "Read in cis_vyos.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "eth0": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "address": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "dhcp"
+         ]
+        },
+        "description": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "WAN"
+         ]
+        },
+        "firewall": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "in": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "name": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "WAN-IN"
+             ]
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
     }
    }
   },
   "service": {
    "description": "Read in cis_vyos.rego.",
+   "type": "object",
    "properties": {
-    "http": {
-     "description": "Read in cis_vyos.rego."
-    },
-    "snmp": {
-     "description": "Read in cis_vyos.rego.",
-     "properties": {
-      "community": {
-       "description": "Read in cis_vyos.rego."
-      },
-      "v3": {
-       "description": "Read in cis_vyos.rego."
-      }
-     }
-    },
     "ssh": {
-     "description": "Read in cis_vyos.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
-      "allow-root": {
-       "description": "Read in cis_vyos.rego."
-      },
       "client-keepalive-interval": {
-       "description": "Read in cis_vyos.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "60"
+       ]
       },
       "disable-password-authentication": {
-       "description": "Read in cis_vyos.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object"
       },
-      "v1-enabled": {
-       "description": "Read in cis_vyos.rego."
+      "port": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "22"
+       ]
       }
      }
-    },
-    "telnet": {
-     "description": "Read in cis_vyos.rego."
     }
    }
   },
   "system": {
    "description": "Read in cis_vyos.rego.",
+   "type": "object",
    "properties": {
     "console": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "device": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "ttyS0": {
          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
          "properties": {
+          "speed": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "115200"
+           ]
+          },
           "timeout-login": {
-           "description": "Read in cis_vyos.rego."
+           "description": "Read in cis_vyos.rego.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "300"
+           ]
           }
          }
         }
@@ -89,89 +236,234 @@
      }
     },
     "domain-name": {
-     "description": "Read in cis_vyos.rego."
+     "description": "Read in cis_vyos.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "example.com"
+     ]
     },
     "host-name": {
-     "description": "Read in cis_vyos.rego."
+     "description": "Read in cis_vyos.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "edge-router-01"
+     ]
     },
     "ip": {
-     "description": "Read in cis_vyos.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "disable-source-route": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object"
+      }
+     }
     },
     "login": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "banner": {
-       "description": "Read in cis_vyos.rego."
+       "description": "Read in cis_vyos.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "Authorized use only. Activity is monitored."
+       ]
       },
       "user": {
        "description": "Read in cis_vyos.rego.",
+       "type": "object",
        "properties": {
-        "vyos": {
-         "description": "Read in cis_vyos.rego."
+        "netadmin": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "authentication": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "encrypted-password": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "$6$rounds=656000$examplesalt$examplehash"
+             ]
+            },
+            "plaintext-password": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              ""
+             ]
+            }
+           }
+          },
+          "level": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "string",
+           "x-type-source": "fixture",
+           "examples": [
+            "admin"
+           ]
+          }
+         }
         }
        }
       }
      }
     },
     "name-server": {
-     "description": "Read in cis_vyos.rego."
+     "description": "Read in cis_vyos.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "192.0.2.53"
+      ]
+     },
+     "examples": [
+      [
+       "192.0.2.53",
+       "198.51.100.53"
+      ]
+     ]
     },
     "ntp": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "server": {
-       "description": "Read in cis_vyos.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "time.example.com": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object"
+        }
+       }
       }
      }
     },
     "syslog": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "host": {
-       "description": "Read in cis_vyos.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "192.0.2.20": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "facility": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "all": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "object",
+             "properties": {
+              "level": {
+               "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+               "type": "string",
+               "x-type-source": "fixture",
+               "examples": [
+                "info"
+               ]
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
       }
      }
     },
     "time-zone": {
-     "description": "Read in cis_vyos.rego."
+     "description": "Read in cis_vyos.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "Etc/UTC"
+     ]
     }
    }
   },
   "version": {
-   "description": "Read in cis_vyos.rego."
+   "description": "Read in cis_vyos.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "VyOS 1.4.0"
+   ]
   }
  },
  "additionalProperties": true,
  "x-known-paths": [
   "firewall",
   "firewall.name",
+  "firewall.name[\"WAN-IN\"]",
+  "firewall.name[\"WAN-IN\"].rule",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"]",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"].action",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"].state",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"].state.established",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"].state.established.action",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"].state.related",
+  "firewall.name[\"WAN-IN\"].rule[\"10\"].state.related.action",
+  "firewall.name[\"WAN-IN\"].rule[\"20\"]",
+  "firewall.name[\"WAN-IN\"].rule[\"20\"].action",
+  "firewall.name[\"WAN-IN\"].rule[\"20\"].log",
+  "firewall.name[\"WAN-IN\"][\"default-action\"]",
   "interfaces",
   "interfaces.ethernet",
+  "interfaces.ethernet.eth0",
+  "interfaces.ethernet.eth0.address",
+  "interfaces.ethernet.eth0.description",
+  "interfaces.ethernet.eth0.firewall",
+  "interfaces.ethernet.eth0.firewall.in",
+  "interfaces.ethernet.eth0.firewall.in.name",
   "service",
-  "service.http",
-  "service.snmp",
-  "service.snmp.community",
-  "service.snmp.v3",
   "service.ssh",
-  "service.ssh[\"allow-root\"]",
+  "service.ssh.port",
   "service.ssh[\"client-keepalive-interval\"]",
   "service.ssh[\"disable-password-authentication\"]",
-  "service.ssh[\"v1-enabled\"]",
-  "service.telnet",
   "system",
   "system.console",
   "system.console.device",
   "system.console.device.ttyS0",
+  "system.console.device.ttyS0.speed",
   "system.console.device.ttyS0[\"timeout-login\"]",
   "system.ip",
+  "system.ip[\"disable-source-route\"]",
   "system.login",
   "system.login.banner",
   "system.login.user",
-  "system.login.user.vyos",
+  "system.login.user.netadmin",
+  "system.login.user.netadmin.authentication",
+  "system.login.user.netadmin.authentication[\"encrypted-password\"]",
+  "system.login.user.netadmin.authentication[\"plaintext-password\"]",
+  "system.login.user.netadmin.level",
   "system.ntp",
   "system.ntp.server",
+  "system.ntp.server[\"time.example.com\"]",
   "system.syslog",
   "system.syslog.host",
+  "system.syslog.host[\"192.0.2.20\"]",
+  "system.syslog.host[\"192.0.2.20\"].facility",
+  "system.syslog.host[\"192.0.2.20\"].facility.all",
+  "system.syslog.host[\"192.0.2.20\"].facility.all.level",
   "system[\"domain-name\"]",
   "system[\"host-name\"]",
   "system[\"name-server\"]",

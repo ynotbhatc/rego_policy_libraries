@@ -82,7 +82,7 @@ test_no_benchmark_input_reports_are_unchanged if {
 	p.compliant
 	empty := main.compliance_report with input as {}
 	object.keys(empty) == _adapter_keys
-	empty.violation_count == 23
+	empty.violation_count == 25 # 23 plus the two unstated agency selectors
 }
 
 test_benchmark_satisfied_is_recorded_and_changes_no_status if {
@@ -120,7 +120,7 @@ test_benchmark_satisfied_is_recorded_and_changes_no_status if {
 test_benchmark_satisfied_never_passes_a_control_by_itself if {
 	# no FedRAMP facts at all: CA-2 has no evidence, whatever the benchmark says, and AC-7 has no check here
 	spine_ev := {"AC-7": _ev("satisfied", ["R-1"], []), "CA-2": _ev("satisfied", ["R-1"], [])}
-	r := main.compliance_report with input as {"impact_level": "low", "findings": [{"stig_id": "R-1", "status": "Not_a_Finding"}]}
+	r := main.compliance_report with input as object.union(data.fedramp_test._stated, {"impact_level": "low", "findings": [{"stig_id": "R-1", "status": "Not_a_Finding"}]})
 		with data.crosswalk.correlation.spine_loaded as true
 		with data.crosswalk.correlation.summary as _summary(1, 0)
 		with data.crosswalk.correlation.unmapped_rules as set()
@@ -380,7 +380,7 @@ test_gap_on_a_control_the_baseline_does_not_select_is_listed_and_is_not_a_findin
 
 test_check_outside_the_baseline_keeps_its_row if {
 	# SA-9(5) is not in the Low baseline; this module checks it at Low when the agency requires U.S. locations
-	inp := object.union(_bench_input, {"data_residency": {"us_only_required": true, "storage_locations": [{"region": "eu-west-1"}], "processing_locations": []}})
+	inp := object.union(_bench_input, {"data_residency": {"us_only_required": true, "storage_locations": [{"region": "eu-west-1"}], "processing_locations": [{"region": "us-east-1", "us_territory": true}]}})
 	r := main.compliance_report with input as inp
 		with data.crosswalk.correlation.spine_loaded as true
 		with data.crosswalk.correlation.summary as _summary(1, 0)

@@ -1,0 +1,20 @@
+# Undefined-negation baseline for governance/ (scripts/check_undefined_negation.py).
+# Hits that were read and left as they are. Every entry needs a reason: a `# reason:` line applies to the entries
+# below it until the next one. Entry = file<TAB>rule<TAB>kind<TAB>expression. Fix a hit rather than adding it here;
+# the check fails on an entry that no longer matches (delete it) and on an entry with no reason.
+
+# reason: input-contract validator: it reports a present-but-invalid value (a line earlier in the rule reads the same field, or the module documents the default); an absent value takes the documented default, or is reported by the module's own evidence-missing rule
+governance/estate_continuity/estate_continuity_main.rego	config_problem	neg-var	not is_boolean(v)
+governance/estate_continuity/estate_continuity_main.rego	config_problem	neg-var	not positive_number(v)
+
+# reason: a companion rule in the same package reports the missing value (evidence-missing finding on the same fact via object.get); this line is the value check for a present value
+governance/geisa/geisa_api.rego	violations	cmp	_discovery.status_code != 1
+governance/geisa/geisa_api.rego	violations	neg-call	not is_number(object.get(_discovery.geisa_version, "major", null))
+governance/geisa/geisa_manifest_validation.rego	violations	count-zero	count(_manifest.artifacts) < 1
+
+# reason: documented design: non-emergency roles pass trivially, the emergency role is usable only inside its granted window (comment above the rule)
+governance/ai/authorization.rego	emergency_ok	get-default	object.get(input, ["ai_system", "role"], "") != "ai_emergency"
+
+# reason: a companion rule reports the missing list: `hosts_supplied` is false then, and 'input.hosts must be an array of host records' is a finding (same file, line ~355); this line is the empty-list check for a supplied list
+governance/estate_continuity/estate_continuity_main.rego	violation	count-zero	count(input.hosts) == 0
+

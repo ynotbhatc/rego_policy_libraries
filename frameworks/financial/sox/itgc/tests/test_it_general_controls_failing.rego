@@ -74,7 +74,7 @@ test_every_family_reports_each_failed_check if {
 
 # Before: the area flag gated the verdict but was neither scored nor reported.
 test_area_attestation_is_scored_and_reported if {
-	message := "Access controls are not attested as in place (data.sox.itgc.access_controls.implemented)"
+	message := "Access controls are not attested as in place (sox.itgc.access_controls.implemented)"
 	message in data.sox.itgc.itgc_control_effectiveness.access_controls.key_findings
 	s := data.sox.itgc.access_controls_score with data.sox.itgc.access_controls as {"implemented": true}
 	s == 0.2

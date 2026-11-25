@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 34
+#     checks: 35
 #     cited: 23
 #     density: sized
 #     basis: size
@@ -95,6 +95,12 @@ config_violations contains msg if {
 	msg := "CIS 5.2.x: evidence missing — ssh.sshd_config_raw not collected"
 }
 
+# `not input.x` is true for a missing or false value, not for null: a null is a value
+config_violations contains msg if {
+	is_null(object.get(input, ["ssh", "sshd_config_raw"], null))
+	msg := "CIS 5.2.x: evidence missing — ssh.sshd_config_raw not collected"
+}
+
 # CIS 5.2.1: owner, group, and mode of /etc/ssh/sshd_config must be tightened
 permission_violations contains msg if {
 	not mode_within(input.ssh.sshd_config_mode, "0600")
@@ -121,7 +127,7 @@ permission_violations contains msg if {
 permission_violations contains msg if {
 	some key in input.ssh.private_key_files
 	not mode_within(key.mode, "0600")
-	msg := sprintf("CIS 5.2.2: SSH private host key %s has mode %s, should be 0600 or more restrictive", [key.path, key.mode])
+	msg := sprintf("CIS 5.2.2: SSH private host key %s has mode %s, should be 0600 or more restrictive", [object.get(key, "path", "not collected"), object.get(key, "mode", "not collected")])
 }
 
 permission_violations contains msg if {
@@ -133,7 +139,7 @@ permission_violations contains msg if {
 permission_violations contains msg if {
 	some key in input.ssh.public_key_files
 	not mode_within(key.mode, "0644")
-	msg := sprintf("CIS 5.2.3: SSH public host key %s has mode %s, should be 0644 or more restrictive", [key.path, key.mode])
+	msg := sprintf("CIS 5.2.3: SSH public host key %s has mode %s, should be 0644 or more restrictive", [object.get(key, "path", "not collected"), object.get(key, "mode", "not collected")])
 }
 
 permission_violations contains msg if {
@@ -291,6 +297,16 @@ crypto_violations contains msg if {
 	some weak_kex_algo in weak_kex
 	weak_kex_algo in alg_tokens("KexAlgorithms")
 	msg := sprintf("CIS 5.2.22: SSH configuration contains weak key exchange algorithm: %s", [weak_kex_algo])
+}
+
+# every collected host key row must carry its mode
+key_lists := {"private_key_files": "5.2.2", "public_key_files": "5.2.3"}
+
+permission_violations contains msg if {
+	some lst, ctl in key_lists
+	some i, key in input.ssh[lst]
+	is_null(object.get(key, "mode", null))
+	msg := sprintf("CIS %s: evidence missing — ssh.%s[%d].mode not collected", [ctl, lst, i])
 }
 
 report := {

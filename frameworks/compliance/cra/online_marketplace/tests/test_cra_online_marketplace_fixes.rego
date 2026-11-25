@@ -15,6 +15,8 @@ compliant_marketplace := {"online_marketplace": {
 	"random_checks": {"performed": true, "sample_size_pct": 5},
 	"reporting_channel": {"exists_for_consumers": true},
 	"process_documentation": {"cra_process_documented": true},
+	"authority_takedown_order_received": false,
+	"non_compliant_listing_identified": false,
 }}
 
 test_marketplace_declared_non_provider_is_compliant if {
@@ -31,7 +33,8 @@ test_marketplace_critical_listing_must_be_removed if {
 		{"op": "add", "path": "/online_marketplace/manufacturer_notified", "value": true},
 		{"op": "add", "path": "/online_marketplace/severity", "value": "critical"},
 	])
-	"Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing" in m.violation with input as i
+	some v in m.violation with input as i
+	startswith(v, "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing")
 }
 
 test_marketplace_identified_listing_without_severity_is_violation if {

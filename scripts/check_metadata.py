@@ -30,6 +30,19 @@ from pathlib import Path
 DEFAULT_DIRS = ["benchmarks", "frameworks", "governance", "enforcement", "threat_detection", "crosswalk"]
 SLUG = re.compile(r"^[a-z0-9_]+$")
 
+# Directories whose policies are not library content and carry no METADATA block, each with its reason.
+# enforcement/git holds this repository's own change-governance gates (the approval-trailer policy and the
+# playbook-documentation policy). They are not compliance content, are not listed in the public catalog, and
+# sit on a protected path, so they are exempt here rather than annotated (owner decision, 2026-11-24).
+EXEMPT_DIRS = {
+    ("enforcement", "git"): "repository change-governance gates, not library content (owner decision 2026-11-24)",
+}
+
+
+def is_exempt(path: Path) -> bool:
+    parts = path.parts
+    return any(parts[i:i + len(d)] == d for d in EXEMPT_DIRS for i in range(len(parts)))
+
 
 def is_test(path: Path) -> bool:
     return path.name.startswith("test_") or path.name.endswith("_test.rego") or "tests" in path.parts
@@ -39,7 +52,7 @@ def policy_files(dirs: list[str]) -> list[Path]:
     out: list[Path] = []
     for d in dirs:
         for p in Path(d).rglob("*.rego"):
-            if ".github" in p.parts or is_test(p):
+            if ".github" in p.parts or is_test(p) or is_exempt(p):
                 continue
             out.append(p)
     return sorted(out)

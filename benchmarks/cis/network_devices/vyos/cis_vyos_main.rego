@@ -83,7 +83,13 @@ default _sections := {}
 
 _sections := bench.compliance_assessment
 
-_total_controls := 20
+# The controls the policy evaluates (decision 2026-10-19: roll-up totals come from the controls actually
+# evaluated). It was a literal 20 while the policy can raise 23 distinct ids, so a badly configured router
+# could report more failures than controls.
+_total_controls := bench.total_controls
+
+# distinct failing control ids: the id is the first word of each message
+_failed_ids := {split(v, " ")[0] | some v in _bench_violations}
 
 _violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
 
@@ -92,7 +98,7 @@ _violations := _bench_violations if _facts_supplied
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
 
-_failed := count(_bench_violations) if _facts_supplied
+_failed := count(_failed_ids) if _facts_supplied
 
 # Clamp: more violations than known controls must not yield a negative count.
 _passed := max([0, _total_controls - _failed])

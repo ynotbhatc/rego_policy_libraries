@@ -132,6 +132,43 @@ comparisons and booleans, drops a `not` or a rule-body line, and lists every cha
 standard's text may be reused (NIST SP 800-53, DISA STIG check text), add golden cases built from that text. Both
 are described in [docs/testing/MUTATION_AND_GOLDEN.md](docs/testing/MUTATION_AND_GOLDEN.md).
 
+Tests go in a test file (`tests/`, `test_*.rego` or `*_test.rego`) in a package of their own. A rule named
+`test_*` in a policy file is run by `opa test` and published with the library; `make check-no-library-tests`
+(part of `make check-coverage`) rejects it.
+
+#### Bad input never passes (`make check-bad-input`)
+
+`scripts/check_bad_input_fails.py` evaluates every `compliance_report` entrypoint on input that is empty, null
+or wrongly typed, and on mutated copies of the module's own all-pass test fixtures (a boolean as `"true"`,
+`"false"`, `"no"`, null or missing; a number as a string; a field dropped). A report that still passes is a
+failure. The script's docstring is the full description; what a contributor needs:
+
+- **Give the module an all-pass fixture.** Any object-valued rule in the module's tests on which the entrypoint
+  reports a pass is found by evaluation. When a module has levels or profiles (CIS Level 1 and 2, FedRAMP
+  Low / Moderate / High), write one all-pass object per level: up to four distinct fixtures are used. The
+  largest is the primary; each further one gets cases for the facts it holds with a value the earlier ones do
+  not, named `<case>@<rule name>`. Do not name an all-pass object `bad_*`, `missing_*`, `invalid_*` and the
+  like; such names are read as failing cases.
+- **A fixture should hold only facts its level reads.** When a mutated fact still passes, the check tries the
+  same fact at an honestly bad value (the opposite boolean; a number at 0 and at plus or minus 10^9). If that
+  passes too, the fixture does not depend on the fact. The case is then not counted when the module's own
+  report shows the fact feeds advisory output only (`unscored`), or when another all-pass fixture depends on
+  the fact and fails the mutation (`scoped`). Otherwise, on the primary fixture, it stays a failure and its
+  detail says `inert`: add the fixture that reads the fact, or take the unread field out of the fixture. (On a
+  further fixture the same finding is printed as `unread` and is not a failure.)
+- **Two lists, never the same case in both.**
+  [`scripts/bad_input_known_failures.txt`](scripts/bad_input_known_failures.txt) is generated
+  (`--write-known`) and is the list to fix. [`scripts/bad_input_accepted.txt`](scripts/bad_input_accepted.txt)
+  is written by hand and holds behaviour that was reviewed and is right, one
+  `<package> <case>: <reason>` per line. The reason is mandatory and must say why: the rule id, audit
+  procedure or collector contract that makes a string, a missing fact or an unscored fact correct ("by design"
+  is refused). A family may be accepted with `*` in the case, and then the reason must cite a document (a URL
+  or a file in this repository). An accepted entry whose case no longer fails, or no longer exists, fails the
+  check, so the list cannot outlive what it describes. Check the file's form without running OPA with
+  `python3 scripts/check_bad_input_fails.py --lint-accepted`.
+- `--only <package> --verbose` prints, for one module, the fixtures used, every known entry that still fails,
+  and every accepted and excused case with its reason.
+
 ---
 
 ## Pull request checklist
@@ -143,6 +180,7 @@ are described in [docs/testing/MUTATION_AND_GOLDEN.md](docs/testing/MUTATION_AND
 - [ ] Violation messages include a control identifier and original wording (no verbatim CIS benchmark text)
 - [ ] Tests added for new controls (or existing tests still pass)
 - [ ] `make check-per-file-load` passes (every module uploads on its own into an empty OPA server)
+- [ ] `make check-bad-input` reports no new failure for the module (`--only <package> --verbose`); nothing was added to `scripts/bad_input_accepted.txt` without a reason that cites the rule or contract
 - [ ] PR title follows the pattern: `feat(<framework>): add <description>` or `fix(<framework>): <description>`
 - [ ] `make check-converters` passes (the OSCAL, SARIF and crosswalk exports rebuild and validate; commit the regenerated `dist/` files)
 

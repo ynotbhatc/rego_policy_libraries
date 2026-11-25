@@ -36,18 +36,22 @@ _str(path) := trim_space(v) if {
 	is_string(v)
 }
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("3072") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid"
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
 }
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
 
 # text with every run of whitespace collapsed to one space and the ends trimmed
 _squash(s) := regex.replace(trim_space(s), `\s+`, " ")
@@ -89,6 +93,12 @@ missing_rhel_08_010020 := [concat(".", p) |
 	not _collected(p)
 ]
 
+invalid_rhel_08_010020 := [sprintf("crypto_policy_state.min_rsa_size is not a number (got %s)", [_got(v)]) |
+	v := object.get(input, ["crypto_policy_state", "min_rsa_size"], null)
+	v != null
+	not _whole_number(v)
+]
+
 default crypto_policy_fips := false
 
 crypto_policy_fips if {
@@ -110,6 +120,8 @@ else := "Open"
 detail_rhel_08_010020 := "RHEL-08-010020: Not_a_Finding" if crypto_policy_fips
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-08-010020", concat(", ", missing_rhel_08_010020)]) if count(missing_rhel_08_010020) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-08-010020", concat(", ", invalid_rhel_08_010020)]) if count(invalid_rhel_08_010020) > 0
 
 else := "RHEL-08-010020: check failed — crypto policy must be FIPS (no subpolicy), CURRENT.pol hash must include SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 with nothing SHA1 or below 224 bits, min_rsa_size at least 2048"
 

@@ -116,6 +116,7 @@ user_registration_process if {
 	input.user_management.registration.formal_process == true
 	input.user_management.registration.authorization_required == true
 	input.user_management.registration.documented == true
+	is_array(input.user_management.unauthorized_users) # a string or other type is not an empty list
 	count(input.user_management.unauthorized_users) == 0
 }
 
@@ -133,6 +134,7 @@ privileged_access_management if {
 	input.privileged_access.regular_review == true
 	input.privileged_access.monitoring_enabled == true
 	input.privileged_access.multi_factor_auth == true
+	is_array(input.privileged_access.shared_accounts) # a string or other type is not an empty list
 	count(input.privileged_access.shared_accounts) == 0
 }
 

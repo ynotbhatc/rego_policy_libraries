@@ -1749,3 +1749,18 @@ test_6_1_2_fail_role_priv_admin_option if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "APP", "granted_role": "CONNECT", "oracle_maintained": "N", "admin_option": "YES"}]}])
 	"6.1.2: Admin Privileges must be removed from unauthorized 'GRANTEE'" in b.violations with input as bad
 }
+
+# A grant to a grantee outside the authorized list is a finding, also when the list was not sent at all
+# (`not g.grantee in input.oracle.authorized_grantees` is undefined when the list is missing: the grant used to pass).
+test_grant_without_an_authorized_list_is_a_finding if {
+	bad := json.patch(green, [
+		{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "DBA_TEAM", "granted_role": "DBA", "oracle_maintained": false}]},
+		{"op": "remove", "path": "/oracle/authorized_grantees"},
+	])
+	"6.2.1: 'DBA' must be removed from unauthorized 'GRANTEE'" in b.violations with input as bad
+}
+
+test_grant_row_without_a_grantee_is_a_finding if {
+	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"granted_role": "DBA", "oracle_maintained": false}]}])
+	"6.2.1: 'DBA' must be removed from unauthorized 'GRANTEE'" in b.violations with input as bad
+}
