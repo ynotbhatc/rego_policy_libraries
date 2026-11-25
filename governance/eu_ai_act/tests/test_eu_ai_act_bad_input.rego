@@ -123,10 +123,20 @@ _applicability := {
 	["provider_obligations", "ce_marking_required"],
 }
 
-_high_risk_all(value) := json.patch({"eu_ai_act": {"high_risk": {}}}, array.concat(
+# OPA 1.10.0 (the oldest supported version) cannot type a patch list built from a function argument, so the
+# sections are added first and the argument is passed through _any.
+_high_risk_sections := json.patch(
+	{"eu_ai_act": {"high_risk": {}}},
 	[{"op": "add", "path": ["eu_ai_act", "high_risk", section], "value": {}} | some section in {p[0] | some p in _modules.high_risk}],
-	[{"op": "add", "path": array.concat(["eu_ai_act", "high_risk"], path), "value": value} | some path in _modules.high_risk],
-))
+)
+
+_high_risk_all(value) := json.patch(
+	_high_risk_sections,
+	[{"op": "add", "path": array.concat(["eu_ai_act", "high_risk"], path), "value": _any(value)} | some path in _modules.high_risk],
+)
+
+# The argument's type is unknown to the checker; object.get returns `any`, which json.patch accepts.
+_any(value) := object.get({"v": value}, "v", null)
 
 test_high_risk_all_true_is_compliant if {
 	data.eu_ai_act.high_risk.compliant with input as _high_risk_all(true)
