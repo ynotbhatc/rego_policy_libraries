@@ -30,12 +30,19 @@ package cis_rhel8.main
 #    when real facts (or an attestation) satisfy it, so failed_controls counts distinct failing
 #    recommendation ids, including those whose evidence is missing.
 #
+# 3. compliance_percentage is passed_controls / total_controls, and 100 means compliant: when the report is not
+#    compliant the figure never reads 100 (it is capped at 99.999). The cap can only bite when no recommendation
+#    failed and a finding that cites no recommendation stands (PROFILE NOT SELECTED), so "100 and not
+#    compliant" cannot occur.
+#
 # FAIL-CLOSED GATE: with no facts at all every control counts as failed and an explicit FAIL-CLOSED
 # violation is reported. PARTIAL INPUT: a section that received none of its input keys is NOT ASSESSED
-# (cis_rhel8.section_inputs): it is listed, it adds an explicit violation, and its controls fail on their own
-# evidence-missing violations, never as passed. NO PROFILE: input.profile absent or not a recognised name puts
-# every recommendation in scope, reports "profile": "unrecognised" with a PROFILE NOT SELECTED violation, and is
-# never compliant (cis_rhel8.profile_violations).
+# (cis_rhel8.section_inputs) when a recommendation of the selected profile reads it (cis_rhel8.section_required_from):
+# it is listed, it adds an explicit violation, and its controls fail on their own evidence-missing
+# violations, never as passed. A section no recommendation of the profile reads (auditd at Level 1) is not
+# required: absent or null it is no finding, and its content is not judged. NO PROFILE: input.profile absent
+# or not a recognised name puts every recommendation in scope, reports "profile": "unrecognised" with a
+# PROFILE NOT SELECTED violation, and is never compliant (cis_rhel8.profile_violations).
 
 import data.cis_rhel8 as bench
 import rego.v1
@@ -109,7 +116,12 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
+_percentage := _capped_unless_compliant(round((_passed * 100000) / _total_controls) / 1000) if _total_controls > 0
+
+# 100 means compliant: a report that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {
+	_compliant
+} else := min([p, 99.999])
 
 default _control_results := []
 

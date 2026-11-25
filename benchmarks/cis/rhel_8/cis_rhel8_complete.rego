@@ -32,8 +32,15 @@ package cis_rhel8
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
 # not collected, and every Manual one fails until attested, so a control is counted as passed only when
 # real facts satisfy it. A section none of whose input keys is present is also NOT ASSESSED (listed in
-# not_assessed_sections, never compliant). The section keys are the earlier module's; each holds the v4.0.0
-# sections listed in the package title of its module.
+# not_assessed_sections, never compliant), but only where the section is REQUIRED: where a recommendation in
+# the selected scope reads one of its input keys (section_required_from, worked out by the generator from what
+# each recommendation reads). A section no recommendation in scope reads is not a gap when it is absent, and
+# its content is not judged. The section keys are the earlier module's; each holds the v4.0.0 sections listed
+# in the package title of its module.
+#
+# 100 MEANS COMPLIANT: compliance_percentage is the share of the required sections that are compliant; when
+# the result is not compliant it never reads 100 (it is capped at 99.999). That can only bite when no
+# recommendation failed and a finding outside the recommendations stands (PROFILE NOT SELECTED).
 
 import rego.v1
 
@@ -4671,15 +4678,92 @@ section_assessed(name) if {
 	input_collected(k)
 }
 
-missing_inputs := {name: [k | some k in section_inputs[name]; not input_collected(k)] | some name, _ in section_inputs}
+# The lowest level, per platform, at which a recommendation reads one of the section's input keys (generated
+# from what each recommendation reads, whichever module it is in). A section is required when the selected
+# scope reaches that level; without a recognised profile the scope is the whole benchmark, so every section is.
+section_required_from := {
+	"section_1_1_filesystem": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_1_initial_setup": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_1_4_1_5_6_1_boot_security": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_1_6_selinux": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_2_services": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_3_network": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_4_1_auditd": {
+		"server": 2,
+		"workstation": 2,
+	},
+	"section_4_logging": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_1_cron": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_2_ssh": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_3_sudo": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_pam": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_6_1_file_permissions": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_6_2_user_group": {
+		"server": 1,
+		"workstation": 1,
+	},
+}
 
-not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+section_required(name) if scope.level >= section_required_from[name][scope.platform]
 
-assessed_sections := count(section_inputs) - count(not_assessed_sections)
+required_sections := sort([name | some name, _ in section_inputs; section_required(name)])
 
-assessment_coverage_percentage := round((assessed_sections * 100) / count(section_inputs))
+# the input keys a required section did not receive (nothing is missing from a section that is not required)
+missing_inputs := {name: _missing_keys(name) | some name, _ in section_inputs}
 
-section_assessment := {name: {"assessed": section_assessed(name) == true, "missing_inputs": missing_inputs[name]} |
+_missing_keys(name) := [k | some k in section_inputs[name]; not input_collected(k)] if {
+	section_required(name)
+} else := []
+
+not_assessed_sections := sort([name | some name in required_sections; not section_assessed(name)])
+
+assessed_sections := count(required_sections) - count(not_assessed_sections)
+
+default assessment_coverage_percentage := 0
+
+assessment_coverage_percentage := round((assessed_sections * 100) / count(required_sections)) if count(required_sections) > 0
+
+section_assessment := {name: {
+	"required": section_required(name) == true,
+	"assessed": section_assessed(name) == true,
+	"missing_inputs": missing_inputs[name],
+} |
 	some name, _ in section_inputs
 }
 
@@ -4705,7 +4789,12 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / total_sections if total_sections > 0
+compliance_percentage := _capped_unless_compliant((compliant_sections * 100) / total_sections) if total_sections > 0
+
+# 100 means compliant: a result that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {
+	compliant
+} else := min([p, 99.999])
 
 total_controls_covered := count(applicable_ids)
 
