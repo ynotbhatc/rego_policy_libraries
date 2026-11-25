@@ -47,7 +47,7 @@ violations contains "LEE: container input missing or not an object" if {
 
 violations contains "LEE: container.runtime must be set" if {
 	is_object(_container)
-	not is_string(_container.runtime)
+	not is_string(object.get(_container, "runtime", null))
 }
 
 violations contains "LEE: container.runtime must be non-empty" if {

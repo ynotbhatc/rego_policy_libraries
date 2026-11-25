@@ -93,3 +93,14 @@ test_budget_message_is_not_garbled_for_integers if {
 	inp := {"resources": [res("web-1", {})], "budget_registry": {"CC-1234": 100}, "current_spend": {"CC-1234": 150}}
 	has_prefix_msg(ft.violations, "spend $150 exceeds budget $100 (50% over)") with input as inp
 }
+
+# A resource without a name used to drop out of both naming rules (`regex.match(p, resource.name)` is undefined).
+test_resource_without_name_violates_naming if {
+	r := object.remove(res("web-1", {}), ["name"])
+	has_prefix_msg(ft.violations, "Naming: Resource '(no name)' of type 'aws_instance'") with input as {"resources": [r]}
+}
+
+test_resource_without_name_violates_env_in_name if {
+	r := object.remove(res("web-1", {}), ["name"])
+	has_prefix_msg(ft.violations, "does not include environment prefix/suffix") with input as {"policy": {"require_env_in_name": true}, "resources": [r]}
+}

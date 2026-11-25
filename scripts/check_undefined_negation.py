@@ -768,9 +768,12 @@ class Scanner:
                 ctx["typed"].add(self._norm(args[0], env))
             elif op is None and args and args[0].get("type") == "ref":   # a bare `x.y` line: "if it is there ..."
                 ctx["present"].add(self._norm(args[0], env))
-            elif op and op.split(".")[-1].lstrip("_") in ("has_key", "has_field") and len(args) == 2 \
-                    and args[1].get("type") == "string":      # f(obj, "key"): the key is tested for before it is read
-                ctx["present"].add(self._norm(args[0], env) + "." + args[1]["value"])
+            elif op and op.split(".")[-1].lstrip("_") in ("has_key", "has_field") and len(args) == 2:
+                # f(obj, "key") / f(obj, k): the key is tested for before it is read
+                ctx["present"].add(self._norm(args[0], env) + ("." + args[1]["value"] if args[1].get("type") == "string" else "[]"))
+            elif op in MEMBER and len(args) == 2 and args[1].get("type") == "call" \
+                    and _opname(args[1]["value"][0]) == "object.keys" and len(args[1]["value"]) == 2:
+                ctx["present"].add(self._norm(args[1]["value"][1], env) + ("." + args[0]["value"] if args[0].get("type") == "string" else "[]"))
             elif op == "equal" and len(args) == 2:
                 for a, b in (args, args[::-1]):
                     if a.get("type") == "ref" and b.get("type") in SCALARS:
