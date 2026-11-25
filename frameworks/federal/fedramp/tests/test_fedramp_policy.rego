@@ -17,11 +17,16 @@ good := {
 	"cloud_service": {"penetration_test_annual": true, "incident_response_plan_approved": true, "redundant_processing": true},
 	"supply_chain": {"risk_management_plan": true},
 	"personnel": [{"name": "ops1", "admin_access": true, "background_check_completed": true}],
+	# The agency selectors are stated: "does not apply" is an explicit false, never an absent field.
+	"personnel_requirements": {"us_persons_required_for_admin": false},
 	"data_residency": {
+		"us_only_required": false,
 		"storage_locations": [{"region": "us-gov-west-1", "us_territory": true}],
 		"processing_locations": [{"region": "us-gov-east-1", "us_territory": true}],
 	},
 }
+
+_stated := {"data_residency": {"us_only_required": false}, "personnel_requirements": {"us_persons_required_for_admin": false}}
 
 _at(level) := object.union(good, {"impact_level": level})
 
@@ -53,10 +58,10 @@ test_baseline_sizes_are_rev5 if {
 }
 
 test_applicable_checks_per_level if {
-	count(fedramp.applicable_checks) == 10 with input as {"impact_level": "low"}
-	count(fedramp.applicable_checks) == 11 with input as {"impact_level": "moderate"}
-	count(fedramp.applicable_checks) == 12 with input as {"impact_level": "high"}
-	count(fedramp.applicable_checks) == 12 with input as {}
+	count(fedramp.applicable_checks) == 10 with input as object.union(_stated, {"impact_level": "low"})
+	count(fedramp.applicable_checks) == 11 with input as object.union(_stated, {"impact_level": "moderate"})
+	count(fedramp.applicable_checks) == 12 with input as object.union(_stated, {"impact_level": "high"})
+	count(fedramp.applicable_checks) == 12 with input as _stated
 }
 
 test_cp7_not_applied_at_low_applied_at_moderate if {
@@ -163,7 +168,7 @@ test_missing_personnel_is_finding if {
 
 test_missing_locations_at_high_is_finding if {
 	inp := json.remove(_at("high"), ["data_residency"])
-	count(_findings(inp, "SA-9(5)")) == 2
+	count(_findings(inp, "SA-9(5)")) == 3 # two location lists and the unstated agency selector
 }
 
 test_missing_3pao_age_is_finding if {
@@ -172,7 +177,7 @@ test_missing_3pao_age_is_finding if {
 }
 
 test_report_counts_consistent if {
-	r := fedramp.fedramp_compliance_report with input as {"impact_level": "high"}
+	r := fedramp.fedramp_compliance_report with input as object.union(_stated, {"impact_level": "high"})
 	r.checks_evaluated == 12
 	r.checks_failed <= r.checks_evaluated
 	r.baseline_size == 410
@@ -327,12 +332,16 @@ test_us_only_selector_wrong_type_applies_the_check if {
 	}
 }
 
-test_us_only_selector_false_null_or_absent_leaves_it_off_below_high if {
+test_us_only_selector_false_leaves_it_off_below_high_and_null_or_absent_does_not if {
 	eu := {"storage_locations": [{"region": "eu-west-1", "us_territory": false}], "processing_locations": []}
-	every sel in [{"us_only_required": false}, {"us_only_required": null}, {}] {
-		inp := object.union(good, {"impact_level": "low", "data_residency": object.union(eu, sel)})
-		not "SA-9(5)" in _ids(inp)
-		not "SA-9(5)" in fedramp.applicable_checks with input as inp
+	inp := object.union(good, {"impact_level": "low", "data_residency": object.union(eu, {"us_only_required": false})})
+	not "SA-9(5)" in _ids(inp)
+	not "SA-9(5)" in fedramp.applicable_checks with input as inp
+	# "does not apply" must be stated: null or an absent selector is missing evidence and the check is applied
+	base := object.union(good, {"impact_level": "low", "data_residency": eu})
+	every i in [object.union(base, {"data_residency": {"us_only_required": null}}), json.remove(base, ["data_residency/us_only_required"])] {
+		"SA-9(5)" in _ids(i)
+		"SA-9(5)" in fedramp.applicable_checks with input as i
 	}
 }
 

@@ -23,6 +23,8 @@ all_pass_low := {
 	"cloud_service": {"penetration_test_annual": true, "incident_response_plan_approved": true},
 	"supply_chain": {"risk_management_plan": true},
 	"personnel": [{"name": "ops1", "admin_access": true, "background_check_completed": true}],
+	# stated, not left out: "does not apply" is an explicit false (round 3)
+	"data_residency": {"us_only_required": false},
 }
 
 all_pass_moderate := object.union(all_pass_low, {
@@ -220,19 +222,32 @@ test_location_list_of_the_wrong_type_is_missing_evidence if {
 	}
 }
 
-# Selector semantics, pinned: absent or null states no agency requirement (SA-9(5) stays on at High, where
-# FedRAMP fixes the location itself); false is the explicit statement; anything else is invalid evidence.
-test_selector_absent_null_or_false_states_no_agency_requirement if {
+# Selector semantics, pinned (owner ruling, round 3): "does not apply" must be an explicit statement. Only
+# the boolean false states it. An absent or null selector is missing evidence and the check it selects is
+# applied (so the report fails), anything else is invalid evidence.
+test_selector_must_be_stated if {
 	every path in selectors {
 		every fx in [all_pass_moderate, all_pass_high] {
-			_passes(_drop(fx, path))
-			_passes(_set(fx, path, null))
 			_passes(_set(fx, path, false))
+			_passes(_set(fx, path, true))
+			not _passes(_drop(fx, path))
+			not _passes(_set(fx, path, null))
 		}
 	}
-	"SA-9(5)" in fedramp.applicable_checks with input as _drop(all_pass_high, ["data_residency", "us_only_required"])
-	not "SA-9(5)" in fedramp.applicable_checks with input as _drop(all_pass_moderate, ["data_residency", "us_only_required"])
-	not "PS-3(3)" in fedramp.applicable_checks with input as _drop(all_pass_high, ["personnel_requirements", "us_persons_required_for_admin"])
+	not _passes(_drop(all_pass_moderate, ["data_residency"]))
+	not _passes(_set(all_pass_moderate, ["data_residency"], null))
+	not _passes(_drop(all_pass_moderate, ["personnel_requirements"]))
+	not _passes(_set(all_pass_moderate, ["personnel_requirements"], null))
+	not _passes(_drop(all_pass_low, ["data_residency"]))
+	some v in _violations(_drop(all_pass_moderate, ["data_residency", "us_only_required"]))
+	contains(v, "input.data_residency.us_only_required not stated")
+	some w in _violations(_drop(all_pass_moderate, ["personnel_requirements", "us_persons_required_for_admin"]))
+	contains(w, "input.personnel_requirements.us_persons_required_for_admin not stated")
+	"SA-9(5)" in fedramp.applicable_checks with input as _drop(all_pass_moderate, ["data_residency", "us_only_required"])
+	"PS-3(3)" in fedramp.applicable_checks with input as _drop(all_pass_high, ["personnel_requirements", "us_persons_required_for_admin"])
+	not "SA-9(5)" in fedramp.applicable_checks with input as _set(all_pass_moderate, ["data_residency", "us_only_required"], false)
+	# PS-3(3) is not in the Low baseline, so its selector is not asked for there
+	_passes(all_pass_low)
 }
 
 test_ato_expiry_days_typed_when_sent if {

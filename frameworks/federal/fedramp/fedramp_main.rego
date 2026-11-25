@@ -59,12 +59,15 @@ import data.crosswalk.framework_overlay as overlay
 #   input.cloud_service           - penetration_test_annual, incident_response_plan_approved, redundant_processing
 #   input.supply_chain            - risk_management_plan
 #   input.personnel[]             - admin personnel (admin_access, background_check_completed, us_person)
-#   input.personnel_requirements  - us_persons_required_for_admin (agency PS-3(3) criterion, optional)
-#   input.data_residency          - storage_locations[] / processing_locations[], us_only_required (optional)
+#   input.personnel_requirements  - us_persons_required_for_admin (agency PS-3(3) criterion; a stated boolean at Moderate, High
+#                                   and when the level is unknown)
+#   input.data_residency          - storage_locations[] / processing_locations[], us_only_required (agency
+#                                   SA-9(5) selector; a stated boolean at every level)
 #   The two selectors add a requirement FedRAMP leaves to the agency (SA-9(5) location for data below High
-#   impact; PS-3(3) "personnel screening criteria - as required by specific information"). Absent or null
-#   states no agency requirement, false states it explicitly, any other value is invalid evidence and the
-#   check is applied. At High the SA-9(5) location is fixed by FedRAMP and does not depend on the selector.
+#   impact; PS-3(3) "personnel screening criteria - as required by specific information"). "Does not apply"
+#   is an explicit statement: false says the agency has no such requirement; a selector that is absent or
+#   null is reported as missing evidence and any other value as invalid evidence, and the check is applied
+#   in both cases. (Before 2026-11-24 an absent selector meant false; collectors must now send both.) At High the SA-9(5) location is fixed by FedRAMP and does not depend on the selector.
 #   Lists (algorithms_in_use, personnel, the location lists) must be non-empty lists of well-formed entries.
 #
 # Benchmark results (optional): the same input may carry STIG results in the two shapes
@@ -148,9 +151,20 @@ _us_only_required if _selector_value(["data_residency", "us_only_required"]) == 
 
 _us_only_required if _selector_invalid(["data_residency", "us_only_required"])
 
+# "Does not apply" must be stated. A selector that was not sent is a collection gap, not an answer of
+# false: the check it selects is applied and the gap is reported (audit 2026-11-24, round 3).
+_selector_missing(path) if {
+	_selector_value(path) == null
+	not _selector_invalid(path)
+}
+
+_us_only_required if _selector_missing(["data_residency", "us_only_required"])
+
 _us_persons_required if _selector_value(["personnel_requirements", "us_persons_required_for_admin"]) == true
 
 _us_persons_required if _selector_invalid(["personnel_requirements", "us_persons_required_for_admin"])
+
+_us_persons_required if _selector_missing(["personnel_requirements", "us_persons_required_for_admin"])
 
 _applies_sa_9_5 if applies_high
 
@@ -353,6 +367,11 @@ violation_data_residency contains msg if {
 }
 
 violation_data_residency contains msg if {
+	_selector_missing(["data_residency", "us_only_required"])
+	msg := "FedRAMP SA-9(5): evidence missing — input.data_residency.us_only_required not stated; send true when the agency requires U.S.-only locations and false when it does not; the location check is applied until it is stated"
+}
+
+violation_data_residency contains msg if {
 	_selector_invalid(["data_residency", "us_only_required"])
 	msg := sprintf("FedRAMP SA-9(5): evidence invalid — input.data_residency.us_only_required must be true or false, got %v; the location check is applied until it is", [_selector_shown(["data_residency", "us_only_required"])])
 }
@@ -445,6 +464,12 @@ violation_personnel contains msg if {
 		"FedRAMP PS-3: Personnel '%v' has administrative access without a completed background check. Individuals must be screened before access is authorized.",
 		[object.get(person, "name", "unknown")],
 	)
+}
+
+violation_personnel contains msg if {
+	applies_moderate_high
+	_selector_missing(["personnel_requirements", "us_persons_required_for_admin"])
+	msg := "FedRAMP PS-3(3): evidence missing — input.personnel_requirements.us_persons_required_for_admin not stated; send true when the agency requires US persons for administrative access and false when it does not; the US-person check is applied until it is stated"
 }
 
 violation_personnel contains msg if {
