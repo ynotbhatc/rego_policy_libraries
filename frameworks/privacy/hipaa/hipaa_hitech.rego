@@ -37,7 +37,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 28
+#     checks: 29
 #     cited: 19
 #     expected: 17
 #     found: 19
@@ -410,6 +410,18 @@ violations contains msg if {
 	not is_boolean(v)
 	not _row_fails(id)
 	msg := sprintf("HIPAA Breach Notification Rule Input Contract: evidence invalid — attestation input.hipaa.subpart_d[\"%v\"] is not a boolean (got %v)", [id, type_name(v)])
+}
+
+# A row decided by facts does not read its attestation, so the attestation may be left out. One that is sent
+# as false states the requirement is not met while the facts say it is: the two cannot both be right, and a
+# report that passed over the statement would hide it (audit 2026-11-24, round 3).
+violations contains msg if {
+	some id, v in _attestations
+	v == false
+	applicable[id]
+	fact_basis[id]
+	_fact_pass[id]
+	msg := sprintf("HIPAA Breach Notification Rule Input Contract: evidence contradictory — attestation input.hipaa.subpart_d[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts", [id, id])
 }
 
 violations contains msg if {

@@ -461,12 +461,31 @@ test_level_of_another_type_is_invalid_evidence if {
 	}
 }
 
-test_level_absent_defaults_to_2_without_a_finding if {
-	r := b.compliance_report with input as json.remove(green, ["/cis_profile/level"])
-	r.profile.level == 2
-	r.profile.level_defaulted == true
-	r.compliant == true
+# an absent level is not a selection: the whole benchmark is evaluated at Level 2, the report says so in one
+# PROFILE NOT SELECTED finding, and it is never compliant, however green the facts are
+test_level_absent_is_not_selected_and_never_compliant if {
+	every inp in [json.remove(green, ["/cis_profile/level"])] {
+		r := b.compliance_report with input as inp
+		r.profile.level == 2
+		r.profile.level_defaulted == true
+		r.compliant == false
+		r.failed_controls == 0
+		data.cis_docker.main.compliance_report.compliance_percentage < 100 with input as inp
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		not main_compliant(inp)
+	}
+	every inp in [object.union(green, {"cis_profile": {"level": 1}}), green] {
+		r := b.compliance_report with input as inp
+		r.compliant == true
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED")]) == 0
+	}
+	# an unusable level is reported the same way, next to the per-recommendation findings
+	r := b.compliance_report with input as object.union(green, {"cis_profile": {"level": "2"}})
+	count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: evidence invalid")]) == 1
 }
+
+main_compliant(inp) if data.cis_docker.main.compliance_report.compliant with input as inp
+main_compliant(inp) if data.cis_docker.main.compliance_report.compliance_percentage == 100 with input as inp
 
 _has(vs, msg) if msg in vs
 

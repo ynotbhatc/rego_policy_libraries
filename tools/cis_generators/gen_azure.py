@@ -328,7 +328,7 @@ F("5.3.3", "user access administrator", ["root_role_assignments"],
   [("%v holds User Access Administrator at the root scope", ['object.get(x, "principalName", object.get(x, "principalId", "a principal"))'],
     [each("root_role_assignments"), 'role_is(x, "User Access Administrator")', 'object.get(x, "scope", "/") == "/"']),
    ("a root-scope role assignment was collected without its role name", [],
-    [each("root_role_assignments"), 'not has_str(x, "roleDefinitionName")'])],
+    [each("root_role_assignments"), 'not has_text(x, "roleDefinitionName")'])],
   add("/root_role_assignments/-", {"roleDefinitionName": "User Access Administrator", "scope": "/", "principalName": "admin@example.com"}))
 A("5.3.4", "privileged", "privileged_role_assignments_reviewed")
 A("5.3.5", "disabled user accounts", "disabled_users_hold_no_roles")
@@ -380,20 +380,30 @@ F("5.12", "role based access control administrator", ["role_assignments"],
    add("/role_assignments/-", {"roleDefinitionName": "User Access Administrator", "scope": SUB, "principalId": "p-9"})])
 
 # Section 6: logging and monitoring
+DIAG_L = 'some l in p(s, "logs")'
+DIAG_NB = 'not is_boolean(object.get(l, "enabled", null))'
+DIAG_INVALID_SUB = ["some s in input.subscription_diagnostic_settings", DIAG_L, DIAG_NB]
 F("6.1.1.1", "diagnostic setting", ["subscription_diagnostic_settings"],
   [("no subscription diagnostic setting sends an enabled activity log category to a destination", [],
-    ["count([s | some s in input.subscription_diagnostic_settings; exporting_setting(s)]) == 0"])],
+    ["count([s | some s in input.subscription_diagnostic_settings; exporting_setting(s)]) == 0"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'], DIAG_INVALID_SUB)],
   add("/subscription_diagnostic_settings", []))
 F("6.1.1.2", "appropriate categories", ["subscription_diagnostic_settings"],
   [("activity log category %s is not exported by any subscription diagnostic setting with a destination", ["cat"],
-    ['some cat in ["Administrative", "Alert", "Policy", "Security"]', "not subscription_category_logged(cat)"])],
+    ['some cat in ["Administrative", "Alert", "Policy", "Security"]', "not subscription_category_logged(cat)"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'], DIAG_INVALID_SUB)],
   add("/subscription_diagnostic_settings/0/logs/3/enabled", False))
 A("6.1.1.3", "customer-managed key", "activity_log_storage_cmk_encrypted")
 F("6.1.1.4", "logging for azure key vault", ["key_vaults"],
   [("key vault %s has no diagnostic setting that sends audit logs to a destination", ["nm(x)"],
     [each("key_vaults"), "is_array(x.diagnostic_settings)", "not audit_logging_on(x)"]),
    ("key vault %s: diagnostic_settings not collected", ["nm(x)"],
-    [each("key_vaults"), "not has_list(x, \"diagnostic_settings\")"])],
+    [each("key_vaults"), "not has_list(x, \"diagnostic_settings\")"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'],
+    [each("key_vaults"), "is_array(x.diagnostic_settings)", "some s in x.diagnostic_settings", DIAG_L, DIAG_NB])],
   [add("/key_vaults/0/diagnostic_settings/0/logs/0/enabled", False), rm("/key_vaults/0/diagnostic_settings")])
 A("6.1.1.5", "network security group flow logs", "nsg_flow_logs_sent_to_log_analytics")
 A("6.1.1.6", "virtual network flow logs", "vnet_flow_logs_sent_to_log_analytics")
@@ -628,13 +638,16 @@ A("8.3.1.1", "used when required", "managed_hsm_used_where_required")
 F("8.3.1.2", "logging for azure key vault managed hsm", [HSM],
   [("Managed HSM %v has no diagnostic setting that sends audit logs to a destination", ["nm(x)"],
     [each(HSM), "is_array(x.diagnostic_settings)", "not audit_logging_on(x)"]),
-   ("Managed HSM %v: diagnostic_settings not collected", ["nm(x)"], [each(HSM), "not has_list(x, \"diagnostic_settings\")"])],
+   ("Managed HSM %v: diagnostic_settings not collected", ["nm(x)"], [each(HSM), "not has_list(x, \"diagnostic_settings\")"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'],
+    [each(HSM), "is_array(x.diagnostic_settings)", "some s in x.diagnostic_settings", DIAG_L, DIAG_NB])],
   add(f"/{HSM}/0/diagnostic_settings/0/workspaceId", ""))
 F("8.3.1.3", "hsm-protected", [KV],
   [("premium key vault %v: key %v is not HSM-protected", ["nm(x)", "nm(k)"],
     [each(KV), "kv_premium(x)", "some k in x.keys", "item_in_scope(k)", "not hsm_backed(k)"]),
    ("premium key vault %v: keys not collected", ["nm(x)"], [each(KV), "kv_premium(x)", "not has_list(x, \"keys\")"]),
-   ("key vault %v: sku not collected", ["nm(x)"], [each(KV), "not sku_collected(x)"])],
+   ("key vault %v: sku not collected or not a recognised SKU name", ["nm(x)"], [each(KV), "not sku_collected(x)"])],
   add(f"/{KV}/0/keys/0/kty", "RSA"))
 F("8.3.1.4", "purge protection' is set to 'enabled' for azure key vault managed hsm", [HSM],
   [("Managed HSM %v does not have purge protection enabled", ["nm(x)"], [each(HSM), 'not p_true(x, "enablePurgeProtection")'])],
@@ -688,7 +701,7 @@ F("8.4.1", "bastion host exists", [BH],
 F("8.4.2", "shareable link", [BH],
   [("Bastion host %v (Standard or Premium) does not have shareable links turned off", ["nm(x)"],
     [each(BH), "shareable_link_capable(x)", 'not p_false(x, "enableShareableLink")']),
-   ("Bastion host %v: sku not collected", ["nm(x)"], [each(BH), "not sku_collected(x)"])],
+   ("Bastion host %v: sku not collected or not a recognised SKU name", ["nm(x)"], [each(BH), "not sku_collected(x)"])],
   add(f"/{BH}/0/enableShareableLink", True))
 PIP = "public_ip_addresses"
 F("8.5", "ddos protection is enabled on public ip", [PIP],

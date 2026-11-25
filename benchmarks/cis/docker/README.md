@@ -43,7 +43,7 @@ opa fmt -w benchmarks/cis/docker
 
 | Field | Values | When absent |
 |---|---|---|
-| `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
+| `level` | `1`, `2` (Level 2 includes Level 1) | evaluated at `2`, the stricter selection, with a `PROFILE NOT SELECTED` finding (`level_defaulted: true`); never compliant |
 | `swarm` | `true` forces the Swarm profile in, `false` leaves it out | decided by the collected swarm state (below) |
 
 | Selection | `total_controls` |

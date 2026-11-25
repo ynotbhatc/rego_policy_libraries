@@ -22,7 +22,12 @@ has_obj(x, k) if is_object(object.get(x, k, null))
 
 has_str(x, k) if is_string(object.get(x, k, null))
 
-sku_collected(x) if is_string(p(x, "sku").name)
+# a string that says something: "" and whitespace are not a role name, a scope or a SKU name
+has_text(x, k) if nonempty(object.get(x, k, null))
+
+# the SKU names Azure returns for Bastion hosts (Developer, Basic, Standard, Premium) and Key Vaults (Standard, Premium);
+# any other string (""; "false") was not collected as a SKU
+sku_collected(x) if lower(trim_space(p(x, "sku").name)) in {"developer", "basic", "standard", "premium"}
 
 p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
 
@@ -106,8 +111,9 @@ assignee(a) := n if {
 } else := "a principal"
 
 assignment_collected(a) if {
-	is_string(a.roleDefinitionName)
+	nonempty(a.roleDefinitionName)
 	is_string(a.scope)
+	startswith(trim_space(a.scope), "/")
 }
 
 # ── scopes and role assignments ───────────────────────────────────────────────────────
@@ -144,7 +150,12 @@ _principal(a) := a.principalName if {
 	is_string(a.principalName)
 }
 
-conditioned(a) if nonempty(a.condition)
+# A role assignment condition is an expression over attributes (@Request[...], @Resource[...], @Principal[...],
+# @Environment[...]); a string with no attribute reference ("false", "none") is not a condition.
+conditioned(a) if {
+	nonempty(a.condition)
+	regex.match(`@(request|resource|principal|environment)\[`, lower(a.condition))
+}
 
 custom_role(r) if not p_ieq(r, "roleType", "BuiltInRole")
 
@@ -765,7 +776,8 @@ has_private_endpoint(v) if count(p(v, "privateEndpointConnections")) > 0
 
 shareable_link_capable(b) if lower(p(b, "sku").name) in {"standard", "premium"}
 
-nat_gateway_ip(ip) if nonempty(p(ip, "natGateway").id)
+# the NAT gateway is named by its resource id; any other string does not exempt the address
+nat_gateway_ip(ip) if regex.match(`^/subscriptions/[^/]+/resourcegroups/[^/]+/providers/microsoft\.network/natgateways/[^/]+$`, lower(trim_space(p(ip, "natGateway").id)))
 
 ddos_protected(ip) if lower(p(ip, "ddosSettings").protectionMode) == "enabled"
 

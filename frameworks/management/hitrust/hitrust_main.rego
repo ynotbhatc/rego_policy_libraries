@@ -8,10 +8,10 @@
 #   coverage:
 #     checks: 63
 #     cited: 63
-#     expected: 59
+#     expected: 63
 #     found: 63
 #     scope: directory
-#     density: over
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
@@ -404,13 +404,15 @@ compliance_report := {
 	"entity_type": entity_type,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
-	"total_controls": 59,
+	"total_controls": total_controls,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([59, count(violations)]),
-	# The module runs 63 checks against a declared total of 59 controls, so findings can outnumber
-	# total_controls. total_checks and failed_checks state the check-level count.
-	"total_checks": 63,
+	"failed_controls": count(violations),
+	"passed_controls": total_controls - count(violations),
+	"not_applicable_controls": 0,
+	# total_checks and failed_checks date from when the declared total (59) was below the check count;
+	# they now equal total_controls and failed_controls and are kept for report consumers.
+	"total_checks": total_controls,
 	"failed_checks": count(violations),
 	"category_summary": {
 		"security_mgmt_program": [v | some v in violations; contains(v, "CSF 00.")],
@@ -432,3 +434,14 @@ compliance_report := {
 		"privacy": [v | some v in violations; contains(v, "CSF 18.")],
 	},
 }
+
+# ── Counting ─────────────────────────────────────────────────────────────────
+# One control per check rule, one finding per control, each under its own id in the module's numbering
+# (see the header: these are not CSF control references). By group:
+#   00: 3 · 01: 7 · 02: 3 · 03: 4 · 04: 2 · 06: 4 · 07: 3 · 08: 3 · 09: 6 · 10: 3 · 11: 3 · 12: 4
+#   13: 3 · 14: 3 · 15: 4 · 16: 3 · 17: 2 · 18: 3  = 63
+# The total was declared as 59 while 63 ids reported, so 63 findings sat beside a total of 59 and
+# failed_controls was capped. No id is repeated and no two rules read the same fact, so the rule set
+# is the catalogue and the declared figure was four short (audit 2026-11-24). No check is ever out of
+# scope, so not_applicable_controls is 0 and passed + failed = 63 on every input.
+total_controls := 63

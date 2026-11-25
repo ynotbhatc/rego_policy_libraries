@@ -41,7 +41,8 @@
 #                integrity, authentication, transmission_security), each finding attributed to the paragraph its
 #                message cites (a finding citing a paragraph that is not a row, such as 164.312(a) or 164.514(d),
 #                is attributed to the module's standard), and every technical row requires input.phi_systems to be
-#                non-empty. An attestation for a fact row is accepted but does not decide it.
+#                non-empty. An attestation for a fact row is not needed and does not decide it; one sent
+#                as false while the facts pass is reported as contradictory evidence.
 #   attestation  20 controls with no fact check: input.hipaa.specifications["<id>"] == true. For an addressable
 #                specification, true attests the § 164.306(d)(3) decision was made and implemented (the
 #                specification, or a documented equivalent alternative).
@@ -81,7 +82,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 79
+#     checks: 80
 #     cited: 68
 #     expected: 68
 #     found: 68
@@ -749,6 +750,18 @@ violations contains msg if {
 	not is_boolean(v)
 	not _row_fails(id)
 	msg := sprintf("HIPAA Security Rule Input Contract: evidence invalid — attestation input.hipaa.specifications[\"%v\"] is not a boolean (got %v)", [id, type_name(v)])
+}
+
+# A row decided by facts does not read its attestation, so the attestation may be left out. One that is sent
+# as false states the requirement is not met while the facts say it is: the two cannot both be right, and a
+# report that passed over the statement would hide it (audit 2026-11-24, round 3).
+violations contains msg if {
+	some id, v in _attestations
+	v == false
+	applicable[id]
+	fact_basis[id]
+	_fact_pass[id]
+	msg := sprintf("HIPAA Security Rule Input Contract: evidence contradictory — attestation input.hipaa.specifications[\"%v\"] is false but the facts that decide %v pass; correct the attestation or the facts", [id, id])
 }
 
 violations contains msg if {

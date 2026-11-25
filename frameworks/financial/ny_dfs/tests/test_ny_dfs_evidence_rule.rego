@@ -224,3 +224,47 @@ test_finding_names_the_evidence_problem if {
 	collected_false := data.ny_dfs.main.violations with input as json.patch(all_pass_input, [{"op": "replace", "path": path, "value": false}])
 	collected_false == {"23 NYCRR 500.4(a): Qualified CISO not designated to oversee cybersecurity program"}
 }
+
+# Counts (audit 2026-11-24, round 3): the total is 45 on every input, failed is counted (it was capped
+# at a declared 44), and passed + failed + not applicable = total.
+_all_false := json.patch(all_pass_input, [{"op": "replace", "path": path, "value": false} |
+	some [path, value] in _leaves(all_pass_input)
+	is_boolean(value)
+])
+
+_all_string := json.patch(all_pass_input, [{"op": "replace", "path": path, "value": "false"} |
+	some [path, value] in _leaves(all_pass_input)
+	is_boolean(value)
+])
+
+# The inventory is maintained and nothing else holds: the 500.13(a) field finding stands in for the
+# "not maintained" one, so the count is still 45.
+_all_false_inventory_kept := json.patch(_all_false, [{"op": "replace", "path": ["asset_inventory", "maintained"], "value": true}])
+
+_count_inputs := [{}, all_pass_input, _all_false, _all_string, _all_false_inventory_kept, "true", object.union(all_pass_input, {"mfa": "yes"})]
+
+test_counts_add_up_on_every_input if {
+	every doc in _count_inputs {
+		r := data.ny_dfs.main.compliance_report with input as doc
+		r.total_controls == 45
+		r.failed_controls == r.violation_count
+		r.failed_controls <= 45
+		(r.passed_controls + r.failed_controls) + r.not_applicable_controls == 45
+		r.compliant == (r.failed_controls == 0)
+	}
+}
+
+test_every_control_can_fail_and_no_more if {
+	every doc in [{}, _all_false, _all_string, _all_false_inventory_kept] {
+		r := data.ny_dfs.main.compliance_report with input as doc
+		r.failed_controls == 45
+		r.passed_controls == 0
+	}
+}
+
+test_the_two_inventory_rules_never_report_together if {
+	every doc in array.concat(_count_inputs, [bad.input | some bad in _bad_inputs(all_pass_input); startswith(bad.case, "asset_inventory")]) {
+		v := data.ny_dfs.main.violations with input as doc
+		count([m | some m in v; contains(m, "500.13(a)")]) <= 1
+	}
+}

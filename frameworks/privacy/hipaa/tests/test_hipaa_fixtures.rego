@@ -296,6 +296,11 @@ hitech := {
 
 all_true(ids) := {id: true | some id, _ in ids}
 
+# The attestations a module reads: the rows it does not decide from facts. An attestation for a fact-decided
+# row is accepted but decides nothing, so the all-pass input does not carry one (a fixture key that nothing
+# reads cannot fail when it is removed).
+attested_only(rows, facts) := {id: true | some id, _ in rows; not facts[id]}
+
 # Everything green across all HIPAA modules.
 full_input := object.union(technical, {
 	"hipaa": {
@@ -303,9 +308,9 @@ full_input := object.union(technical, {
 		"administrative": administrative,
 		"physical": physical,
 		"privacy": privacy,
-		"specifications": all_true(data.hipaa.security_rule.specifications),
-		"subpart_d": all_true(data.hipaa.hitech.breach_notification_rule),
-		"subpart_e": all_true(data.hipaa.privacy_rule.requirements),
+		"specifications": attested_only(data.hipaa.security_rule.specifications, data.hipaa.security_rule.fact_basis),
+		"subpart_d": attested_only(data.hipaa.hitech.breach_notification_rule, data.hipaa.hitech.fact_basis),
+		"subpart_e": attested_only(data.hipaa.privacy_rule.requirements, data.hipaa.privacy_rule.fact_basis),
 		"part_160": all_true(data.hipaa.part160.obligations),
 		"part_162": all_true(data.hipaa.part162.obligations),
 	},

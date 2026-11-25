@@ -253,7 +253,10 @@ pipeline_type := input.pipeline_type
 #                 (01G: II.B 12, II.C 16, II.D 6 = 34; 02G: 7 + 8 + 5 + 8 + 12 + 4 + 13 + 10 + 11 = 78).
 #   checks        the violation rules that decide them, 175 across the twelve modules. One subparagraph
 #                 can take several checks (a yes/no fact, a deadline, the evidence for each).
-# total_controls is the check count and never drops below the finding count (145 fire with no facts).
+# total_controls is the 12 sections (round 3): a section is one control, it fails when it has any finding, and
+# failed_controls counts failing sections, so it is counted, never clamped. A section can carry several findings
+# (violation_count and failed_checks-style figures count those), and a check rule is not a control here because
+# one rule can yield one finding per item. total_checks keeps the 175 check rules.
 _declared_controls := 175
 
 _section_reports := [
@@ -287,9 +290,11 @@ compliance_report := {
 	"section_compliance_score": section_compliance_score,
 	"total_requirements_evaluated": total_requirements_evaluated,
 	"total_checks": _declared_controls,
-	"total_controls": max([_declared_controls, count(all_violations)]),
+	"total_controls": total_sections,
 	"violation_count": count(all_violations),
-	"failed_controls": min([max([_declared_controls, count(all_violations)]), count(all_violations)]),
+	"failed_controls": total_sections - passing_sections,
+	"passed_controls": passing_sections,
+	"not_applicable_controls": 0,
 	"violations": all_violations,
 	"sections": {
 		"SD01_II_B_cybersecurity_coordinator": {

@@ -8,10 +8,10 @@
 #   coverage:
 #     checks: 23
 #     cited: 8
-#     expected: 22
+#     expected: 23
 #     found: 23
 #     scope: directory
-#     density: over
+#     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
@@ -242,10 +242,12 @@ compliance_report := {
 	"assessed_at": assessment_date,
 	"fiscal_year_end": fiscal_year_end,
 	"compliant": compliant,
-	"total_controls": 22,
+	"total_controls": total_controls,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([22, count(violations)]),
+	"failed_controls": count(violations),
+	"passed_controls": total_controls - count(violations),
+	"not_applicable_controls": 0,
 	"section_summary": {
 		"item_105_8k_disclosure": [v | some v in violations; contains(v, "Item 1.05")],
 		"annual_10k_disclosure": [v | some v in violations; contains(v, "§229.106(b)")],
@@ -254,3 +256,14 @@ compliance_report := {
 		"risk_management_program": [v | some v in violations; contains(v, "§229.106(b)(1)")],
 	},
 }
+
+# ── Counting ─────────────────────────────────────────────────────────────────
+# One control per check rule above, one finding per control, each reading its own fact. By section:
+#   incident disclosure (Form 8-K Item 1.05 and the materiality process behind it) 7
+#   annual disclosure, Regulation S-K Item 106(b) 5 · board oversight, 106(c)(1) 3
+#   management's role, 106(c)(2) 4 · risk management program, 106(b)(1) 4  = 23
+# The total was declared as 22 while 23 rules reported: on empty input 23 findings sat beside a total
+# of 22 and failed_controls was capped. No two rules read the same fact, so the rule set stands and
+# the declared total was one short (audit 2026-11-24). No check is ever out of scope, so
+# not_applicable_controls is 0 and passed + failed = 23 on every input.
+total_controls := 23

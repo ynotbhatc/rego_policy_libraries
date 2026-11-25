@@ -33,6 +33,7 @@ Rules of the generated code:
     every Automated one.
 """
 import json
+import os
 import pathlib
 import re
 import sys
@@ -2877,11 +2878,48 @@ EXT_IMPORTS = "# Extended hardening modules (STIG / NIST / EDA drift detection)"
 EXT_RULES = "# " + "=" * 77 + "\n# EXTENDED HARDENING"
 
 
+def section_required_from(recs):
+    """Per section, the lowest level of each platform at which a recommendation reads one of its input keys.
+
+    A section's input is required only where a recommendation in scope reads it: at a profile below that level
+    (or on a platform no reader applies to) its absence is not a gap in the assessment. Readers are found from
+    each recommendation's declared reads and from the top-level keys of its passing test input, whichever module
+    the recommendation lives in. Returned as {section key: {"server": level, "workstation": level}}; a platform
+    with no reader is left out."""
+    out = {}
+    for n, *_ in SECTIONS:
+        keys = set(SECTION_INPUTS.get(n) or [])
+        lv = {}
+        for rid, r in recs.items():
+            spec = L[rid]
+            tp = getattr(spec, "tp", None)
+            read = {p[0] for p in spec.reads} | (set(tp) if isinstance(tp, dict) else set())
+            if not keys & read:
+                continue
+            for kind in ("Server", "Workstation"):
+                x = level(r["profiles"], kind)
+                if x is not None:
+                    lv[kind.lower()] = min(x, lv.get(kind.lower(), 99))
+        out[SEC[n][1]] = lv
+        if os.environ.get("CIS_GEN_SECTION_TABLE"):
+            mod = {}
+            for rid, r in recs.items():
+                if section_of(rid) != n:
+                    continue
+                for kind in ("Server", "Workstation"):
+                    x = level(r["profiles"], kind)
+                    if x is not None:
+                        mod[kind.lower()] = min(x, mod.get(kind.lower(), 99))
+            print(f"section {n}: read from {lv}; module recommendations from {mod}", file=sys.stderr)
+    return out
+
+
 def emit_rollup(recs, by_mod):
     controls = controls_table(recs)
     imports = "\n".join(f"import data.{PKG}.{n}" for n, *_ in SECTIONS)
     modv = ",\n".join(f'\t"{n}": {n}.violations' for n, *_ in SECTIONS)
     sec_inputs = {SEC[n][1]: SECTION_INPUTS[n] for n, *_ in SECTIONS}
+    sec_required = section_required_from(recs)
     a = sum(1 for r in recs.values() if r["assessment"] == "Automated")
     prio = {SEC[n][1]: p for n, (p, _, _) in RECOMMEND.items()}
     recs_rules = []
@@ -2917,8 +2955,15 @@ def emit_rollup(recs, by_mod):
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
 # not collected, and every Manual one fails until attested, so a control is counted as passed only when
 # real facts satisfy it. A section none of whose input keys is present is also NOT ASSESSED (listed in
-# not_assessed_sections, never compliant). The section keys are the v2.0.0 ones; each now holds the v3.0.0
-# sections listed in the package title of its module.
+# not_assessed_sections, never compliant), but only where the section is REQUIRED: where a recommendation in
+# the selected scope reads one of its input keys (section_required_from, worked out by the generator from what
+# each recommendation reads). A section no recommendation in scope reads is not a gap when it is absent, and
+# its content is not judged. The section keys are the v2.0.0 ones; each now holds the v3.0.0 sections listed
+# in the package title of its module.
+#
+# 100 MEANS COMPLIANT: compliance_percentage is the share of the required sections that are compliant; when
+# the result is not compliant it never reads 100 (it is capped at 99.999). That can only bite when no
+# recommendation failed and a finding outside the recommendations stands (PROFILE NOT SELECTED).
 
 import rego.v1
 
@@ -3011,15 +3056,35 @@ section_assessed(name) if {{
 	input_collected(k)
 }}
 
-missing_inputs := {{name: [k | some k in section_inputs[name]; not input_collected(k)] | some name, _ in section_inputs}}
+# The lowest level, per platform, at which a recommendation reads one of the section's input keys (generated
+# from what each recommendation reads, whichever module it is in). A section is required when the selected
+# scope reaches that level; without a recognised profile the scope is the whole benchmark, so every section is.
+section_required_from := {json.dumps(sec_required, indent=1)}
 
-not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+section_required(name) if scope.level >= section_required_from[name][scope.platform]
 
-assessed_sections := count(section_inputs) - count(not_assessed_sections)
+required_sections := sort([name | some name, _ in section_inputs; section_required(name)])
 
-assessment_coverage_percentage := round((assessed_sections * 100) / count(section_inputs))
+# the input keys a required section did not receive (nothing is missing from a section that is not required)
+missing_inputs := {{name: _missing_keys(name) | some name, _ in section_inputs}}
 
-section_assessment := {{name: {{"assessed": section_assessed(name) == true, "missing_inputs": missing_inputs[name]}} |
+_missing_keys(name) := [k | some k in section_inputs[name]; not input_collected(k)] if {{
+	section_required(name)
+}} else := []
+
+not_assessed_sections := sort([name | some name in required_sections; not section_assessed(name)])
+
+assessed_sections := count(required_sections) - count(not_assessed_sections)
+
+default assessment_coverage_percentage := 0
+
+assessment_coverage_percentage := round((assessed_sections * 100) / count(required_sections)) if count(required_sections) > 0
+
+section_assessment := {{name: {{
+	"required": section_required(name) == true,
+	"assessed": section_assessed(name) == true,
+	"missing_inputs": missing_inputs[name],
+}} |
 	some name, _ in section_inputs
 }}
 
@@ -3045,7 +3110,12 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / total_sections if total_sections > 0
+compliance_percentage := _capped_unless_compliant((compliant_sections * 100) / total_sections) if total_sections > 0
+
+# 100 means compliant: a result that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {{
+	compliant
+}} else := min([p, 99.999])
 
 total_controls_covered := count(applicable_ids)
 
@@ -3233,12 +3303,19 @@ def emit_main(recs):
 #    when real facts (or an attestation) satisfy it, so failed_controls counts distinct failing
 #    recommendation ids, including those whose evidence is missing.
 #
+# 3. compliance_percentage is passed_controls / total_controls, and 100 means compliant: when the report is not
+#    compliant the figure never reads 100 (it is capped at 99.999). The cap can only bite when no recommendation
+#    failed and a finding that cites no recommendation stands (PROFILE NOT SELECTED), so "100 and not
+#    compliant" cannot occur.
+#
 # FAIL-CLOSED GATE: with no facts at all every control counts as failed and an explicit FAIL-CLOSED
 # violation is reported. PARTIAL INPUT: a section that received none of its input keys is NOT ASSESSED
-# ({PKG}.section_inputs): it is listed, it adds an explicit violation, and its controls fail on their own
-# evidence-missing violations, never as passed. NO PROFILE: input.profile absent or not a recognised name puts
-# every recommendation in scope, reports "profile": "unrecognised" with a PROFILE NOT SELECTED violation, and is
-# never compliant ({PKG}.profile_violations).
+# ({PKG}.section_inputs) when a recommendation of the selected profile reads it ({PKG}.section_required_from):
+# it is listed, it adds an explicit violation, and its controls fail on their own evidence-missing
+# violations, never as passed. A section no recommendation of the profile reads (auditd at Level 1) is not
+# required: absent or null it is no finding, and its content is not judged. NO PROFILE: input.profile absent
+# or not a recognised name puts every recommendation in scope, reports "profile": "unrecognised" with a
+# PROFILE NOT SELECTED violation, and is never compliant ({PKG}.profile_violations).
 
 import data.{PKG} as bench
 import rego.v1
@@ -3312,7 +3389,12 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
+_percentage := _capped_unless_compliant(round((_passed * 100000) / _total_controls) / 1000) if _total_controls > 0
+
+# 100 means compliant: a report that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {{
+	_compliant
+}} else := min([p, 99.999])
 
 default _control_results := []
 
@@ -3487,15 +3569,16 @@ def emit_control_results_tests(recs, by_mod):
     counts = {p: sum(1 for r in recs.values() if (level(r["profiles"], kind) or 99) <= lv)
               for p, (kind, lv) in PROFILES.items()}
     # the all-pass fixtures state their profile (there is no default). level2_server puts every recommendation
-    # in scope; the level1_server one holds only what the Level 1 - Server recommendations read, plus an empty
-    # object for a section none of whose recommendations is in scope (a section input has to be present for the
-    # section to count as assessed), so no leaf of it is a fact the profile never evaluates.
+    # in scope; the level1_server one holds only what the Level 1 - Server recommendations read. A section no
+    # Level 1 recommendation reads (auditd) is not in it: such a section is not required at that profile.
     good = merge_good(good_input(ids), {"profile": "level2_server"})
     l1_ids = [rid for rid in ids if (level(recs[rid]["profiles"], "Server") or 99) <= 1]
     good_l1 = merge_good(good_input(l1_ids), {"profile": "level1_server"})
-    for n, *_ in SECTIONS:
-        if SECTION_INPUTS.get(n) and not any(k in good_l1 for k in SECTION_INPUTS[n]):
-            good_l1[sorted(SECTION_INPUTS[n])[0]] = {}
+    req = section_required_from(recs)
+    l1_optional = sorted(n for n, *_ in SECTIONS if req[SEC[n][1]].get("server", 99) > 1)
+    l1_required = [n for n, *_ in SECTIONS if n not in l1_optional]
+    if any(k in good_l1 for n in l1_optional for k in SECTION_INPUTS[n]):
+        raise SystemExit("the level1_server fixture holds input of a section no Level 1 recommendation reads")
     # mixed: one section's input keys removed, one Manual recommendation unattested, one Automated one failing
     gone_sec = [n for n, *_ in SECTIONS if SECTION_INPUTS.get(n)][-1]
     gone = sorted(SECTION_INPUTS[gone_sec])
@@ -3555,12 +3638,16 @@ def emit_control_results_tests(recs, by_mod):
               "\tevery op in [{\"op\": \"remove\", \"path\": \"/profile\"}, {\"op\": \"replace\", \"path\": \"/profile\", \"value\": null}, "
               "{\"op\": \"replace\", \"path\": \"/profile\", \"value\": \"level_2_server\"}] {",
               f"\t\tr := {m} with input as json.patch(fixture_compliant, [op])", "\t\tr.compliant == false",
-              "\t\tcount(r.violations) == 1", "\t\tstartswith(r.violations[0], \"PROFILE NOT SELECTED: \")", "\t}", "}", "",
+              "\t\tcount(r.violations) == 1", "\t\tstartswith(r.violations[0], \"PROFILE NOT SELECTED: \")",
+              "\t\t# no recommendation failed, and still the figure is not 100: 100 means compliant",
+              "\t\tr.failed_controls == 0", "\t\tr.passed_controls == r.total_controls",
+              "\t\tr.compliance_percentage == 99.999", "\t\tr.section_compliance_percentage == 99.999", "\t}", "}", "",
               "# a Level 1 host whose profile is lost is evaluated against every recommendation, not passed at Level 1",
               "test_level1_fixture_without_profile_fails_the_level2_recommendations if {",
               f"\tr := {m} with input as json.remove(fixture_compliant_level1_server, [\"/profile\"])",
               "\tr.compliant == false", f"\tr.total_controls == {len(ids)}", "\tr.failed_controls > 0",
-              "\tr.compliance_percentage < 100", "}", "",
+              "\tr.compliance_percentage < 100",
+              f"\tr.sections_not_assessed == {J(sorted(SEC[n][1] for n in l1_optional))}", "}", "",
               "test_control_results_compliant_fixture_every_recommendation_passes if {",
               f'\tr := {m} with input as object.union(fixture_compliant, {{"profile": "level2_server"}})',
               f"\tr.total_controls == {len(ids)}"] + agree + [
@@ -3571,6 +3658,54 @@ def emit_control_results_tests(recs, by_mod):
               "\tr.control_result_counts.pass > 0", "\tr.control_result_counts.fail > 0",
               "\tr.control_result_counts.evidence_missing > 0", "\tr.control_result_counts.not_attested > 0",
               "\tr.control_result_counts.not_applicable > 0", "}", ""]
+    # REQUIRED SECTIONS. A section is required only where a recommendation of the selected scope reads it.
+    lines += ["# ── required sections: an input section is required only where a recommendation in scope reads it ──", "",
+              "_consistent(r) if {", "\tr.compliant == true", "\tr.compliance_percentage == 100", "}", "",
+              "_consistent(r) if {", "\tr.compliant == false", "\tr.compliance_percentage < 100",
+              "\tr.section_compliance_percentage < 100", "}", ""]
+    for n in l1_optional:
+        key, skeys = SEC[n][1], sorted(SECTION_INPUTS[n])
+        lines += [f"# no Level 1 recommendation reads {', '.join(skeys)}: absent or null it is no finding at a Level 1 profile, and its",
+                  "# content is not judged there (the fixture does not carry it)",
+                  f"test_section_{n}_is_not_required_at_level1 if {{",
+                  f"\tevery k in {J(skeys)} {{ not k in object.keys(fixture_compliant_level1_server) }}",
+                  f"\tevery prof in [\"level1_server\", \"level1_workstation\"] {{",
+                  f"\t\tnot {J(key)} in data.{PKG}.required_sections with input as {{\"profile\": prof}}", "\t}",
+                  f"\tevery v in [null, {{}}, \"not an object\", [1], false] {{",
+                  f"\t\tr := {m} with input as object.union(fixture_compliant_level1_server, {{k: v | some k in {J(skeys)}}})",
+                  "\t\tr.compliant == true", "\t\tr.compliance_percentage == 100", "\t\tcount(r.violations) == 0",
+                  "\t\tr.sections_not_assessed == []", f"\t\tr.missing_inputs[{J(key)}] == []", "\t}", "}", "",
+                  f"# at Level 2 the same section is evidence: absent or null it is NOT ASSESSED, its recommendations fail on",
+                  "# missing evidence and the percentage drops",
+                  f"test_section_{n}_null_is_evidence_missing_at_level2 if {{",
+                  f"\tr := {m} with input as object.union(fixture_compliant, {{k: null | some k in {J(skeys)}}})",
+                  "\tr.compliant == false", "\tr.failed_controls > 0", "\tr.compliance_percentage < 100",
+                  f"\tr.sections_not_assessed == [{J(key)}]",
+                  f"\tsome v in r.violations", f"\tstartswith(v, \"NOT ASSESSED: {key} \")",
+                  "\tcount([x | some x in r.violations; contains(x, \": evidence missing — \")]) == r.failed_controls",
+                  "\tevery c in r.control_results {", "\t\tc.status in {\"pass\", \"evidence_missing\"}", "\t}", "}", "",
+                  f"# without a recognised profile the scope is the whole benchmark, so the section is required",
+                  f"test_section_{n}_is_required_without_a_profile if {{",
+                  f"\tevery bad in [{{}}, {{\"profile\": null}}, {{\"profile\": \"bogus\"}}] {{",
+                  f"\t\t{J(key)} in data.{PKG}.required_sections with input as bad", "\t}",
+                  f"\tr := {m} with input as json.remove(fixture_compliant, {J(['/profile'] + ['/' + k for k in skeys])})",
+                  "\tr.compliant == false", "\tr.failed_controls > 0", "\tr.compliance_percentage < 100",
+                  f"\t{J(key)} in r.sections_not_assessed", "}", ""]
+    # every section removed from the Level 2 fixture, one test each (a full report is slow): NOT ASSESSED always
+    # comes with failed recommendations, so "100 and not compliant" cannot arise from a missing section
+    for n, *_ in SECTIONS:
+        if not SECTION_INPUTS.get(n):
+            continue
+        key, skeys = SEC[n][1], sorted(SECTION_INPUTS[n])
+        lines += [f"test_section_{n}_removed_at_level2_is_not_assessed_and_scored if {{",
+                  f"\tr := {m} with input as json.remove(fixture_compliant, {J(['/' + k for k in skeys])})",
+                  "\t_consistent(r)", "\tr.compliant == false", "\tr.failed_controls > 0",
+                  f"\tr.sections_not_assessed == [{J(key)}]", "}", ""]
+    lines += ["# the sections a Level 1 profile requires, removed from the Level 1 fixture",
+              "test_required_sections_removed_at_level1_are_not_assessed_and_scored if {",
+              f"\tevery keys in {J([sorted('/' + k for k in SECTION_INPUTS[n]) for n in l1_required if SECTION_INPUTS.get(n)])} {{",
+              f"\t\tr := {m} with input as json.remove(fixture_compliant_level1_server, keys)",
+              "\t\t_consistent(r)", "\t\tr.compliant == false", "\t\tcount(r.sections_not_assessed) == 1", "\t}", "}", ""]
     return "\n".join(lines).rstrip("\n") + "\n"
 
 

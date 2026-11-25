@@ -257,7 +257,7 @@ test_all_true_passes if {
 	r.violation_count == 0
 	r.failed_controls == 0
 	r.failed_checks == 0
-	r.total_controls == 59
+	r.total_controls == 63
 	r.total_checks == 63
 }
 
@@ -347,4 +347,28 @@ test_input_that_is_not_an_object_fails if {
 	r := data.hitrust.main.compliance_report with input as "true"
 	r.compliant == false
 	r.violation_count == 63
+}
+
+# Counts (audit 2026-11-24, round 3): the total is the module's 63 ids on every input, failed is
+# counted (not capped at a declared 59), and passed + failed + not applicable = total.
+_count_inputs := [{}, all_pass, _all_set(false), _all_set("false"), _all_set(null), _all_set(1), "true", object.union(all_pass, {"access_control": "yes"})]
+
+test_counts_add_up_on_every_input if {
+	every doc in _count_inputs {
+		r := data.hitrust.main.compliance_report with input as doc
+		r.total_controls == 63
+		r.total_checks == 63
+		r.failed_controls == r.violation_count
+		r.failed_checks == r.failed_controls
+		(r.passed_controls + r.failed_controls) + r.not_applicable_controls == r.total_controls
+		r.passed_controls >= 0
+		r.compliant == (r.failed_controls == 0)
+	}
+}
+
+test_every_finding_carries_its_own_id if {
+	r := data.hitrust.main.compliance_report with input as {}
+	ids := {substring(msg, 0, 17) | some msg in r.violations}
+	count(ids) == 63
+	r.failed_controls == 63
 }

@@ -22,7 +22,9 @@ package cis_amazon_linux_2023
 # Automated/Manual status and profiles are the workbook's. The benchmark has two profiles, Level 1 - Server
 # and Level 2 - Server; each control carries its level.
 #
-# PROFILE: input.profile selects level1_server (default) or level2_server ("level1" / "level2" are accepted).
+# PROFILE: input.profile selects level1_server or level2_server ("level1" / "level2" are accepted). There is no
+# default: an absent or unrecognised profile evaluates every recommendation, reports a PROFILE NOT SELECTED
+# violation and is never compliant.
 # Level 2 includes the Level 1 recommendations.
 #
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
@@ -2001,13 +2003,45 @@ profiles := {"level1_server": {"platform": "server", "level": 1}, "level2_server
 
 profile_aliases := {"level1": "level1_server", "level2": "level2_server"}
 
-default profile := "level1_server"
+default profile := "unrecognised"
 
 profile := input.profile if input.profile in object.keys(profiles)
 
 profile := profile_aliases[input.profile] if not input.profile in object.keys(profiles)
 
-applies(c) if c.level <= profiles[profile].level
+default profile_selected := false
+
+profile_selected if profile in object.keys(profiles)
+
+# What is in scope. Without a recognised profile nothing may be declared not applicable, so the scope is the
+# one that holds every recommendation of the benchmark (Level 2 - Server; the generator checks that it does).
+default scope := {"platform": "server", "level": 2}
+
+scope := profiles[profile] if profile_selected
+
+_profile_names := concat(", ", sort(object.keys(profiles)))
+
+_profile_problem := "evidence missing — profile not collected" if object.get(input, "profile", null) == null
+
+_profile_problem := sprintf("profile is not a string (got %s)", [type_name(input.profile)]) if {
+	object.get(input, "profile", null) != null
+	not is_string(input.profile)
+}
+
+_profile_problem := sprintf("profile %s is not a recognised profile", [json.marshal(input.profile)]) if {
+	is_string(input.profile)
+	not profile_selected
+}
+
+# reported next to the control violations (never one of them: it cites no recommendation id)
+profile_violations := [] if {
+	profile_selected
+} else := [sprintf(
+	"PROFILE NOT SELECTED: %s (send one of %s). No recommendation was declared out of scope: every one of the benchmark was evaluated, and the result is not a pass for any profile.",
+	[_profile_problem, _profile_names],
+)]
+
+applies(c) if c.level <= scope.level
 
 applicable_ids := {id | some id, c in controls; applies(c)}
 
@@ -2120,7 +2154,12 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / total_sections if total_sections > 0
+compliance_percentage := _capped_unless_compliant((compliant_sections * 100) / total_sections) if total_sections > 0
+
+# 100 means compliant: a result that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {
+	compliant
+} else := min([p, 99.999])
 
 total_controls_covered := count(applicable_ids)
 
@@ -2131,6 +2170,7 @@ compliant if {
 	count(applicable_ids) > 0
 	count(failing_ids) == 0
 	count(not_assessed_sections) == 0
+	profile_selected
 }
 
 # =============================================================================
@@ -2291,7 +2331,7 @@ overall_status := "compliant" if {
 level2_ids := {id | some id, c in controls; c.level == 2}
 
 l2_violations_active := [v | some v in all_violations; split(v, ":")[0] in level2_ids] if {
-	profiles[profile].level == 2
+	scope.level == 2
 } else := []
 
 executive_summary := {
