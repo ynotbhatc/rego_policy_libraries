@@ -37,10 +37,10 @@ open_of(inp) := fs if {
 	fs := r.open_findings
 }
 
-# The sweeps run in `shards` (14) slices of num_leaves (leaf index modulo `shards`), so that no test runs long enough
+# The sweeps run in `shards` ({N}) slices of num_leaves (leaf index modulo `shards`), so that no test runs long enough
 # to meet the suite's per-test timeout on the oldest supported OPA. Every leaf is in exactly one slice; the
 # slices are checked to cover num_leaves in test_the_shards_cover_every_numeric_fact.
-shards := 14
+shards := 27
 
 shard(i) := [l | some j, l in num_leaves; j % shards == i]
 
@@ -192,6 +192,97 @@ test_every_numeric_fact_is_read_by_a_rule_shard_13 if {
 	}
 }
 
+test_every_numeric_fact_is_read_by_a_rule_shard_14 if {
+	rd := readers_of(shard(14))
+	every l in shard(14) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_15 if {
+	rd := readers_of(shard(15))
+	every l in shard(15) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_16 if {
+	rd := readers_of(shard(16))
+	every l in shard(16) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_17 if {
+	rd := readers_of(shard(17))
+	every l in shard(17) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_18 if {
+	rd := readers_of(shard(18))
+	every l in shard(18) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_19 if {
+	rd := readers_of(shard(19))
+	every l in shard(19) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_20 if {
+	rd := readers_of(shard(20))
+	every l in shard(20) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_21 if {
+	rd := readers_of(shard(21))
+	every l in shard(21) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_22 if {
+	rd := readers_of(shard(22))
+	every l in shard(22) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_23 if {
+	rd := readers_of(shard(23))
+	every l in shard(23) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_24 if {
+	rd := readers_of(shard(24))
+	every l in shard(24) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_25 if {
+	rd := readers_of(shard(25))
+	every l in shard(25) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
+test_every_numeric_fact_is_read_by_a_rule_shard_26 if {
+	rd := readers_of(shard(26))
+	every l in shard(26) {
+		count(rd[l[0]]) >= 1
+	}
+}
+
 # Requirement: a decimal string is not a number (owner ruling "numbers are JSON numbers only"); the finding of
 # the reading rule names the fact.
 test_decimal_string_fails_the_reading_rule_shard_0 if {
@@ -288,6 +379,97 @@ test_decimal_string_fails_the_reading_rule_shard_12 if {
 test_decimal_string_fails_the_reading_rule_shard_13 if {
 	rd := readers_of(shard(13))
 	every l in shard(13) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_14 if {
+	rd := readers_of(shard(14))
+	every l in shard(14) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_15 if {
+	rd := readers_of(shard(15))
+	every l in shard(15) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_16 if {
+	rd := readers_of(shard(16))
+	every l in shard(16) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_17 if {
+	rd := readers_of(shard(17))
+	every l in shard(17) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_18 if {
+	rd := readers_of(shard(18))
+	every l in shard(18) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_19 if {
+	rd := readers_of(shard(19))
+	every l in shard(19) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_20 if {
+	rd := readers_of(shard(20))
+	every l in shard(20) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_21 if {
+	rd := readers_of(shard(21))
+	every l in shard(21) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_22 if {
+	rd := readers_of(shard(22))
+	every l in shard(22) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_23 if {
+	rd := readers_of(shard(23))
+	every l in shard(23) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_24 if {
+	rd := readers_of(shard(24))
+	every l in shard(24) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_25 if {
+	rd := readers_of(shard(25))
+	every l in shard(25) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
+	}
+}
+
+test_decimal_string_fails_the_reading_rule_shard_26 if {
+	rd := readers_of(shard(26))
+	every l in shard(26) {
 		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf("%d", [l[1]])}]), true)
 	}
 }
@@ -391,6 +573,97 @@ test_padded_decimal_string_fails_the_reading_rule_shard_13 if {
 	}
 }
 
+test_padded_decimal_string_fails_the_reading_rule_shard_14 if {
+	rd := readers_of(shard(14))
+	every l in shard(14) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_15 if {
+	rd := readers_of(shard(15))
+	every l in shard(15) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_16 if {
+	rd := readers_of(shard(16))
+	every l in shard(16) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_17 if {
+	rd := readers_of(shard(17))
+	every l in shard(17) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_18 if {
+	rd := readers_of(shard(18))
+	every l in shard(18) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_19 if {
+	rd := readers_of(shard(19))
+	every l in shard(19) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_20 if {
+	rd := readers_of(shard(20))
+	every l in shard(20) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_21 if {
+	rd := readers_of(shard(21))
+	every l in shard(21) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_22 if {
+	rd := readers_of(shard(22))
+	every l in shard(22) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_23 if {
+	rd := readers_of(shard(23))
+	every l in shard(23) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_24 if {
+	rd := readers_of(shard(24))
+	every l in shard(24) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_25 if {
+	rd := readers_of(shard(25))
+	every l in shard(25) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
+test_padded_decimal_string_fails_the_reading_rule_shard_26 if {
+	rd := readers_of(shard(26))
+	every l in shard(26) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": sprintf(" %d ", [l[1]])}]), true)
+	}
+}
+
 # Requirement: a fraction is not a valid value of a whole-number setting (every numeric fact of this STIG is a
 # count, a size, a number of days/seconds or an id). Source: LINUX_COLLECTOR_CONTRACT.md `_num` "a whole number".
 test_fraction_fails_the_reading_rule_shard_0 if {
@@ -487,6 +760,97 @@ test_fraction_fails_the_reading_rule_shard_12 if {
 test_fraction_fails_the_reading_rule_shard_13 if {
 	rd := readers_of(shard(13))
 	every l in shard(13) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_14 if {
+	rd := readers_of(shard(14))
+	every l in shard(14) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_15 if {
+	rd := readers_of(shard(15))
+	every l in shard(15) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_16 if {
+	rd := readers_of(shard(16))
+	every l in shard(16) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_17 if {
+	rd := readers_of(shard(17))
+	every l in shard(17) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_18 if {
+	rd := readers_of(shard(18))
+	every l in shard(18) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_19 if {
+	rd := readers_of(shard(19))
+	every l in shard(19) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_20 if {
+	rd := readers_of(shard(20))
+	every l in shard(20) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_21 if {
+	rd := readers_of(shard(21))
+	every l in shard(21) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_22 if {
+	rd := readers_of(shard(22))
+	every l in shard(22) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_23 if {
+	rd := readers_of(shard(23))
+	every l in shard(23) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_24 if {
+	rd := readers_of(shard(24))
+	every l in shard(24) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_25 if {
+	rd := readers_of(shard(25))
+	every l in shard(25) {
+		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
+	}
+}
+
+test_fraction_fails_the_reading_rule_shard_26 if {
+	rd := readers_of(shard(26))
+	every l in shard(26) {
 		rejected(l, rd, json.patch(fx, [{"op": "replace", "path": l[0], "value": l[1] + 0.5}]), false)
 	}
 }

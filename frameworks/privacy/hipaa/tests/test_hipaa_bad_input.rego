@@ -232,8 +232,35 @@ test_fixture_carries_no_attestation_for_a_fact_row if {
 
 # A fact-decided row does not read its attestation: true is accepted, a mistyped value is invalid evidence
 # (above), and false contradicts the passing facts and is reported. None of them passes except true.
-test_attestation_on_a_fact_row if {
-	every key, module in {"specifications": "security_rule", "subpart_d": "hitech", "subpart_e": "privacy_rule"} {
+# one test per attestation map (together they are the three entries of the original loop)
+test_attestation_on_a_fact_row_specifications if {
+	every key, module in {"specifications": "security_rule"} {
+		every id, _ in data.hipaa[module].fact_basis {
+			_compliant(module, json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": true}]))
+			inp := json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": false}])
+			not _compliant(module, inp)
+			some v in _violations(module, inp)
+			contains(v, "evidence contradictory")
+			contains(v, id)
+		}
+	}
+}
+
+test_attestation_on_a_fact_row_subpart_d if {
+	every key, module in {"subpart_d": "hitech"} {
+		every id, _ in data.hipaa[module].fact_basis {
+			_compliant(module, json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": true}]))
+			inp := json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": false}])
+			not _compliant(module, inp)
+			some v in _violations(module, inp)
+			contains(v, "evidence contradictory")
+			contains(v, id)
+		}
+	}
+}
+
+test_attestation_on_a_fact_row_subpart_e if {
+	every key, module in {"subpart_e": "privacy_rule"} {
 		every id, _ in data.hipaa[module].fact_basis {
 			_compliant(module, json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": true}]))
 			inp := json.patch(fx.full_input, [{"op": "add", "path": ["hipaa", key, id], "value": false}])

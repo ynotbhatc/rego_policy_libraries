@@ -98,20 +98,20 @@ test_report_is_consistent_on_the_fixtures_and_on_empty_input if {
 }
 
 # The section sweeps run in slices of the sorted top-level sections (section index modulo the slice count: 6 at Level 1,
-# 17 at Level 2, whose reports are much larger), so that no test runs long enough to meet the suite's per-test
+# 33 at Level 2 (one section each), whose reports are much larger), so that no test runs long enough to meet the suite's per-test
 # timeout on the oldest supported OPA. Every section is in exactly one slice.
 section_shard(l, i, n) := [s | some j, s in sort([k | some k, _ in l]); j % n == i]
 
 test_the_section_shards_cover_every_section if {
 	sum([count(section_shard(l1, i, 6)) | some i in numbers.range(0, 5)]) == count(l1)
-	sum([count(section_shard(l2, i, 17)) | some i in numbers.range(0, 16)]) == count(l2)
+	sum([count(section_shard(l2, i, 33)) | some i in numbers.range(0, 32)]) == count(l2)
 	every s, _ in l1 {
 		some i in numbers.range(0, 5)
 		s in section_shard(l1, i, 6)
 	}
 	every s, _ in l2 {
-		some i in numbers.range(0, 16)
-		s in section_shard(l2, i, 17)
+		some i in numbers.range(0, 32)
+		s in section_shard(l2, i, 33)
 	}
 }
 
@@ -161,119 +161,231 @@ test_report_is_consistent_with_any_section_removed_level_1_shard_5 if {
 # Requirement: the same on the Level 2 fixture.
 test_report_is_consistent_with_any_section_removed_level_2_shard_0 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 0, 17) {
+	every s in section_shard(l2, 0, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_1 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 1, 17) {
+	every s in section_shard(l2, 1, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_2 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 2, 17) {
+	every s in section_shard(l2, 2, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_3 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 3, 17) {
+	every s in section_shard(l2, 3, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_4 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 4, 17) {
+	every s in section_shard(l2, 4, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_5 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 5, 17) {
+	every s in section_shard(l2, 5, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_6 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 6, 17) {
+	every s in section_shard(l2, 6, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_7 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 7, 17) {
+	every s in section_shard(l2, 7, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_8 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 8, 17) {
+	every s in section_shard(l2, 8, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_9 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 9, 17) {
+	every s in section_shard(l2, 9, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_10 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 10, 17) {
+	every s in section_shard(l2, 10, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_11 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 11, 17) {
+	every s in section_shard(l2, 11, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_12 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 12, 17) {
+	every s in section_shard(l2, 12, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_13 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 13, 17) {
+	every s in section_shard(l2, 13, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_14 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 14, 17) {
+	every s in section_shard(l2, 14, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_15 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 15, 17) {
+	every s in section_shard(l2, 15, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }
 
 test_report_is_consistent_with_any_section_removed_level_2_shard_16 if {
 	count(l2) >= 25
-	every s in section_shard(l2, 16, 17) {
+	every s in section_shard(l2, 16, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_17 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 17, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_18 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 18, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_19 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 19, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_20 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 20, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_21 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 21, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_22 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 22, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_23 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 23, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_24 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 24, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_25 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 25, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_26 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 26, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_27 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 27, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_28 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 28, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_29 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 29, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_30 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 30, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_31 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 31, 33) {
+		consistent(rep(json.remove(l2, [[s]])))
+	}
+}
+
+test_report_is_consistent_with_any_section_removed_level_2_shard_32 if {
+	count(l2) >= 25
+	every s in section_shard(l2, 32, 33) {
 		consistent(rep(json.remove(l2, [[s]])))
 	}
 }

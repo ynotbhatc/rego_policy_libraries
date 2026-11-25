@@ -64,9 +64,79 @@ decided_by_attestation(m) := {id |
 # Requirement (certain): for every id the report decides by attestation, a REMOVED attestation fails exactly
 # as a false one does, and the violation names the id. Source: evidence rule; module headers ("a non-true
 # attestation ... is a violation").
-test_removing_an_attestation_that_decides_a_row_fails_specifications if {
-	ids := decided_by_attestation("specifications")
-	count(ids) >= 20
+# specifications is swept in 8 slices of the sorted ids (index modulo 8), for the same reason as subpart E below; the
+# guard `count(ids) >= 20` is kept as its own test over all of them.
+specifications_slice(i) := [id | some j, id in sort([k | some k, _ in fx.hipaa.specifications]); j % 8 == i]
+
+decided_in_specifications_slice(i) := {id |
+	some id in specifications_slice(i)
+	rep(json.patch(fx, [{"op": "replace", "path": ["hipaa", "specifications", id], "value": false}])).compliant == false
+}
+
+test_the_specifications_slices_cover_every_id if {
+	sum([count(specifications_slice(i)) | some i in numbers.range(0, 7)]) == count(fx.hipaa.specifications)
+	every i in numbers.range(0, 7) {
+		every k, id in specifications_slice(i) {
+			id == sort([x | some x, _ in fx.hipaa.specifications])[i + (k * 8)]
+		}
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_has_twenty_decided_ids if {
+	count(decided_by_attestation("specifications")) >= 20
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_0 if {
+	ids := decided_in_specifications_slice(0)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_1 if {
+	ids := decided_in_specifications_slice(1)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_2 if {
+	ids := decided_in_specifications_slice(2)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_3 if {
+	ids := decided_in_specifications_slice(3)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_4 if {
+	ids := decided_in_specifications_slice(4)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_5 if {
+	ids := decided_in_specifications_slice(5)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_6 if {
+	ids := decided_in_specifications_slice(6)
+	every id in ids {
+		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
+	}
+}
+
+test_removing_an_attestation_that_decides_a_row_fails_specifications_slice_7 if {
+	ids := decided_in_specifications_slice(7)
 	every id in ids {
 		fails_naming(json.remove(fx, [["hipaa", "specifications", id]]), id)
 	}
