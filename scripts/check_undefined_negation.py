@@ -228,6 +228,9 @@ class Package:
     def __init__(self):
         self.rules = collections.defaultdict(list)   # name -> [rule clause, ...] (else branches included)
         self.cls = {}                                # name -> violation | pass | other
+        self.probed = {}                             # normalized path -> "file:line" of a line that is defined when
+        #                                              the path is missing (not x.y, object.get(x, "y", d) ...)
+        self._memo = {}
 
     def add(self, ast):
         for r in ast.get("rules") or []:
@@ -248,6 +251,12 @@ class Package:
 
     def always_defined(self, name):
         """a rule that has a value whatever the input is (a bare reference to it is never undefined)"""
+        if ("ad", name) not in self._memo:
+            self._memo[("ad", name)] = False     # a cycle cannot happen in Rego; this only stops a runaway
+            self._memo[("ad", name)] = self._always_defined(name)
+        return self._memo[("ad", name)]
+
+    def _always_defined(self, name):
         cl = self.rules.get(name)
         if not cl:
             return True          # unknown name (import, builtin): not ours to judge
@@ -256,8 +265,28 @@ class Package:
         h = cl[0]["head"]
         if "key" in h or len(h.get("ref") or []) > 1:
             return True          # partial set / object: empty when nothing matches
-        # a clause with no body whose value cannot be undefined
-        return any(_trivial(c.get("body")) and "value" in c["head"] and self._total_value(c["head"]["value"]) for c in cl)
+        # a clause whose body cannot fail and whose value cannot be undefined
+        return any(self._total_body(c.get("body")) and "value" in c["head"] and self._total_value(c["head"]["value"]) for c in cl)
+
+    def _total_body(self, body):
+        """a body that holds on every input: nothing, or only `v := <value that is always defined>` lines"""
+        for e in body or []:
+            t = e.get("terms")
+            if isinstance(t, dict) and t.get("type") == "boolean" and t.get("value") is True:
+                continue
+            if e.get("negated") or not isinstance(t, list) or len(t) != 3 or _opname(t[0]) != "assign" \
+                    or t[1].get("type") != "var" or not self._total_value(t[2]):
+                return False
+        return True
+
+    def field_defined(self, name, key):
+        """`name.key` is always defined: the rule is, and its value is an object literal that has the key"""
+        if not self.always_defined(name):
+            return False
+        vals = [c["head"].get("value") for c in self.rules.get(name, ()) if not c.get("default")]
+        return bool(vals) and all(v is not None and v.get("type") == "object"
+                                  and any(k.get("type") == "string" and k.get("value") == key for k, _ in v["value"])
+                                  for v in vals)
 
     def _total_value(self, term):
         t = term.get("type")
@@ -291,16 +320,20 @@ class Package:
         return False
 
     def total_function(self, name, _seen=None):
-        """a function defined for every argument: a default, or a clause with no body and a total value"""
-        seen = _seen or set()
-        if name in seen:
-            return False
-        seen.add(name)
+        """a function defined for every argument: a default, or a clause whose body cannot fail (nothing, or
+        only assignments of values that are always defined) and whose value is always defined. "Always defined"
+        is about missing facts, not about types: count("x") is undefined, and that is the numeric-guard lint's job."""
+        if ("tf", name) not in self._memo:
+            self._memo[("tf", name)] = False
+            self._memo[("tf", name)] = self._total_function(name)
+        return self._memo[("tf", name)]
+
+    def _total_function(self, name):
         cl = self.rules.get(name) or []
         if any(c.get("default") for c in cl):
             return True
         for c in cl:
-            if not _trivial(c.get("body")):
+            if not self._total_body(c.get("body")):
                 continue
             if any(a.get("type") != "var" for a in c["head"].get("args") or []):
                 continue         # f("x") := ... only matches one argument
@@ -383,6 +416,9 @@ class Scanner:
                 while r is not None:
                     self._rule(f, p, n, r, imports)
                     r = r.get("else")
+        for h in self.hits:                       # guard hint: the same path is read elsewhere in a way that
+            probed = self.pkgs[h["pkg"]].probed   # is defined when it is missing (to be confirmed by reading)
+            h["guard"] = next((probed[x] for x in h["paths"] if x in probed), "")
         return self.hits
 
     def _rule(self, f, p, name, rule, imports):
@@ -391,7 +427,8 @@ class Scanner:
         for a in h.get("args") or []:
             for v in self._vars(a):
                 env[v] = ("param", None)
-        ctx = {"f": f, "p": p, "rule": name or "?", "cls": p.cls.get(name, "other"), "imports": imports, "coll": None}
+        ctx = {"f": f, "p": p, "rule": name or "?", "cls": p.cls.get(name, "other"), "imports": imports, "coll": None,
+               "env": env, "pkg": _pkg(self.asts[f])}
         self._body(rule.get("body") or [], env, ctx)
         for part in ("key", "value"):
             if part in h and h[part] is not None:
@@ -518,6 +555,8 @@ class Scanner:
                 return False
             if not path:
                 return not p.always_defined(head)
+            if len(path) == 1 and path[0].get("type") == "string" and p.field_defined(head, path[0]["value"]):
+                return False
             return True
         return False
 
@@ -609,6 +648,64 @@ class Scanner:
                 walk(term)
         return out
 
+    # ---- where a missing value is noticed (guard hints)
+    def _norm(self, term, env, depth=0):
+        """a reference as an input-rooted path where the body shows it: row.name -> input.rows[].name"""
+        t = term.get("type")
+        if depth > 6:
+            return "?"
+        if t == "var":
+            o = env.get(term["value"])
+            if o and o[0] in ("iter", "const") and o[1] is not None:
+                return self._norm(o[1], env, depth + 1) + "[]"
+            if o and o[0] == "assign" and o[1] is not None and o[1].get("type") in ("ref", "call"):
+                return self._norm(o[1], env, depth + 1)
+            return "<arg>" if o and o[0] == "param" else term["value"]
+        if t == "call":
+            a = term["value"][1:]
+            if _opname(term["value"][0]) == "object.get" and len(a) == 3:
+                k = a[1]
+                if k.get("type") == "string":
+                    return self._norm(a[0], env, depth + 1) + "." + k["value"]
+                if k.get("type") == "array" and all(x.get("type") == "string" for x in k["value"]):
+                    return self._norm(a[0], env, depth + 1) + "".join("." + x["value"] for x in k["value"])
+                return self._norm(a[0], env, depth + 1) + "[]"
+            return "?"
+        if t != "ref":
+            return "?"
+        head = term["value"][0]
+        base = self._norm(head, env, depth + 1) if head.get("type") == "var" and head["value"] in env else str(head.get("value"))
+        return base + "".join("." + x["value"] if x.get("type") == "string" else "[]" for x in term["value"][1:])
+
+    def _probe(self, e, op, args, env, ctx):
+        """record the paths this line reads in a way that is defined when the path is missing"""
+        where = f"{ctx['f']}:{_row(e)}"
+        probed = ctx["p"].probed
+        if e.get("negated"):
+            if op is None and args and args[0].get("type") == "ref":
+                probed.setdefault(self._norm(args[0], env), where)
+            elif op == "equal":
+                for a in args:
+                    if a.get("type") == "ref":
+                        probed.setdefault(self._norm(a, env), where)
+
+        def walk(term):
+            t = term.get("type")
+            if t == "call":
+                if _opname(term["value"][0]) == "object.get" and len(term["value"]) == 4:
+                    probed.setdefault(self._norm(term, env), where)
+                for a in term["value"][1:]:
+                    walk(a)
+            elif t in ("array", "set"):
+                for x in term["value"]:
+                    walk(x)
+            elif t == "object":
+                for k, v in term["value"]:
+                    walk(v)
+        for a in args:
+            if isinstance(a, dict):
+                walk(a)
+
     # ---- bodies
     def _effect(self, ctx):
         cls = classify_name(ctx["coll"]) if ctx["coll"] is not None else ctx["cls"]
@@ -619,7 +716,8 @@ class Scanner:
     def _hit(self, kind, expr, refs, ctx, effect=None, note=""):
         self.hits.append(Hit(file=ctx["f"], line=_row(expr), rule=ctx["rule"], kind=kind,
                              text=_text(expr)[:240], refs=sorted({_text(r) or "?" for r in refs}),
-                             effect=effect or self._effect(ctx), where=ctx["coll"] or ctx["rule"], note=note))
+                             effect=effect or self._effect(ctx), where=ctx["coll"] or ctx["rule"], note=note,
+                             paths=sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"]))
 
     def _body(self, body, env, ctx):
         env = dict(env)
@@ -672,6 +770,8 @@ class Scanner:
         for a in args:
             self._comprehensions(a, env, dict(ctx, coll=coll) if coll != ctx["coll"] else ctx)
 
+        ctx = dict(ctx, env=env)
+        self._probe(e, op, args, env, ctx)
         if neg:
             self._negated(e, op, args, env, ctx)
         else:
