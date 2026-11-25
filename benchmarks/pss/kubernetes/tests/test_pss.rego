@@ -193,3 +193,14 @@ test_added_capability_beyond_netbind_fails_restricted if {
 	r.baseline_compliant == true
 	r.restricted_compliant == false
 }
+
+# A sysctl entry without a name cannot be shown to be in the safe set.
+test_sysctl_without_a_name_fails_baseline if {
+	bad := json.patch(restricted_pod, [{
+		"op": "add",
+		"path": "/pod/spec/securityContext/sysctls",
+		"value": [{"value": "1"}],
+	}])
+	r := main.compliance_report with input as bad
+	r.baseline_compliant == false
+}

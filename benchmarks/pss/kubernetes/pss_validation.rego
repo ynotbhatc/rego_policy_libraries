@@ -399,8 +399,8 @@ SAFE_SYSCTLS := {
 
 baseline_violations contains msg if {
 	some s in object.get(pod_sc, "sysctls", [])
-	not s.name in SAFE_SYSCTLS
-	msg := sprintf("PSS baseline (sysctls): sysctl %q is outside the safe set", [s.name])
+	not object.get(s, "name", null) in SAFE_SYSCTLS
+	msg := sprintf("PSS baseline (sysctls): sysctl %q is outside the safe set", [object.get(s, "name", "<name not collected>")])
 }
 
 # ════════════════════════════════ RESTRICTED ════════════════════════════════
