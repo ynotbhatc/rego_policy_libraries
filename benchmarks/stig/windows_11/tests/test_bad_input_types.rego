@@ -36,6 +36,18 @@ swapped(v) := to_number(v) if {
 	regex.match(`^-?[0-9]+$`, v)
 }
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_leaves_3 if {
+	sum([count(_slice(leaves, i, 3)) | some i in numbers.range(0, 2)]) == count(leaves)
+	every j, x in leaves {
+		x in _slice(leaves, j % 3, 3)
+	}
+}
+
 test_the_fixture_opens_no_generated_rule if {
 	count(open_rules(green_fixture)) == 0
 	count(leaves) > 50
@@ -49,8 +61,24 @@ test_a_number_held_as_the_wrong_type_opens_a_rule if {
 	}
 }
 
-test_null_and_booleans_open_a_rule if {
-	every l in leaves {
+test_null_and_booleans_open_a_rule_slice_0 if {
+	every l in _slice(leaves, 0, 3) {
+		every bad in [null, true, false] {
+			count(open_rules(with_leaf(l[0], l[1], bad))) > 0
+		}
+	}
+}
+
+test_null_and_booleans_open_a_rule_slice_1 if {
+	every l in _slice(leaves, 1, 3) {
+		every bad in [null, true, false] {
+			count(open_rules(with_leaf(l[0], l[1], bad))) > 0
+		}
+	}
+}
+
+test_null_and_booleans_open_a_rule_slice_2 if {
+	every l in _slice(leaves, 2, 3) {
 		every bad in [null, true, false] {
 			count(open_rules(with_leaf(l[0], l[1], bad))) > 0
 		}
