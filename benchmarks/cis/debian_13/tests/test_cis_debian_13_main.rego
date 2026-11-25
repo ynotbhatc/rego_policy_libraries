@@ -62,14 +62,59 @@ test_unknown_profile_is_not_selected_and_evaluates_everything if {
 	count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
 }
 
-test_absent_or_mistyped_profile_is_not_selected_and_never_compliant if {
-	every p in [null, 1, true, [], {}, "", "Level1_Server", "level_1_server"] {
+# The mistyped profile values are checked in 4 slices (index modulo 4) and the absent profile on its own, one test each,
+# so that no test runs long enough to meet the suite's per-test timeout on the oldest supported OPA. Every value is
+# in exactly one slice.
+_mistyped_profiles := [null, 1, true, [], {}, "", "Level1_Server", "level_1_server"]
+
+_mistyped_profile_slice(i) := [p | some j, p in _mistyped_profiles; j % 4 == i]
+
+test_the_mistyped_profile_slices_cover_every_value if {
+	sum([count(_mistyped_profile_slice(i)) | some i in numbers.range(0, 3)]) == count(_mistyped_profiles)
+	count(_mistyped_profiles) == 8
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_0 if {
+	every p in _mistyped_profile_slice(0) {
 		r := data.cis_debian_13.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
 		r.profile == "unrecognised"
 		r.compliant == false
 		r.total_controls == 350
 		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
 	}
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_1 if {
+	every p in _mistyped_profile_slice(1) {
+		r := data.cis_debian_13.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_2 if {
+	every p in _mistyped_profile_slice(2) {
+		r := data.cis_debian_13.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_3 if {
+	every p in _mistyped_profile_slice(3) {
+		r := data.cis_debian_13.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_profile_is_not_selected_and_never_compliant if {
 	r0 := data.cis_debian_13.main.compliance_report with input as {"attest": {"x": true}}
 	r0.profile == "unrecognised"
 	r0.compliant == false
