@@ -42,6 +42,18 @@ _advisory_only := [
 	[["email", "dlp_enabled"], 0],
 ]
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_advisory_only_8 if {
+	sum([count(_slice(_advisory_only, i, 8)) | some i in numbers.range(0, 7)]) == count(_advisory_only)
+	every j, x in _advisory_only {
+		x in _slice(_advisory_only, j % 8, 8)
+	}
+}
+
 test_fixture_passes_without_advisories if {
 	r := _report(fx.full_input)
 	r.compliant == true
@@ -56,8 +68,78 @@ test_advisory_only_fact_removed_stays_compliant_and_is_visible if {
 	}
 }
 
-test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding if {
-	every c in _advisory_only {
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_0 if {
+	every c in _slice(_advisory_only, 0, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_1 if {
+	every c in _slice(_advisory_only, 1, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_2 if {
+	every c in _slice(_advisory_only, 2, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_3 if {
+	every c in _slice(_advisory_only, 3, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_4 if {
+	every c in _slice(_advisory_only, 4, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_5 if {
+	every c in _slice(_advisory_only, 5, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_6 if {
+	every c in _slice(_advisory_only, 6, 8) {
+		every bad in ["true", null, 1] {
+			r := _report(_replaced(c[0], bad))
+			r.compliant == false
+			r.violation_count > 0
+		}
+	}
+}
+
+test_advisory_only_fact_of_the_wrong_type_is_an_input_contract_finding_slice_7 if {
+	every c in _slice(_advisory_only, 7, 8) {
 		every bad in ["true", null, 1] {
 			r := _report(_replaced(c[0], bad))
 			r.compliant == false
