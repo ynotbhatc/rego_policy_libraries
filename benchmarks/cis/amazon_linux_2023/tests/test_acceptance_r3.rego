@@ -53,8 +53,22 @@ has_profile_finding(r, known) if {
 
 # Requirement: every valid profile still selects itself and scopes the report (regression guard): the report
 # names the profile, Level 2 has more recommendations in scope than Level 1, and no profile finding appears.
-test_each_valid_profile_still_selects_itself if {
-	every facts in fact_sets {
+test_each_valid_profile_still_selects_itself_set_0 if {
+	every facts in fact_set_shard(0) {
+		every p in valid_profiles {
+			r := rep(object.union(facts, {"profile": p}))
+			r.profile == p
+			r.total_controls > 0
+			every t in texts(r) {
+				not contains(lower(t), "input.profile")
+			}
+		}
+		rep(object.union(facts, {"profile": "level1_server"})).total_controls < rep(object.union(facts, {"profile": "level2_server"})).total_controls
+	}
+}
+
+test_each_valid_profile_still_selects_itself_set_1 if {
+	every facts in fact_set_shard(1) {
 		every p in valid_profiles {
 			r := rep(object.union(facts, {"profile": p}))
 			r.profile == p
@@ -76,8 +90,16 @@ test_documented_aliases_still_select if {
 }
 
 # Requirement: an ABSENT profile is not compliant and carries a finding that the profile was not selected.
-test_absent_profile_is_not_compliant_and_says_so if {
-	every facts in fact_sets {
+test_absent_profile_is_not_compliant_and_says_so_set_0 if {
+	every facts in fact_set_shard(0) {
+		r := rep(facts)
+		r.compliant == false
+		has_profile_finding(r, known_texts(facts))
+	}
+}
+
+test_absent_profile_is_not_compliant_and_says_so_set_1 if {
+	every facts in fact_set_shard(1) {
 		r := rep(facts)
 		r.compliant == false
 		has_profile_finding(r, known_texts(facts))

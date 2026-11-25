@@ -53,8 +53,22 @@ has_profile_finding(r, known) if {
 
 # Requirement: every valid profile still selects itself and scopes the report (regression guard): the report
 # names the profile, Level 2 has more recommendations in scope than Level 1, and no profile finding appears.
-test_each_valid_profile_still_selects_itself if {
-	every facts in fact_sets {
+test_each_valid_profile_still_selects_itself_set_0 if {
+	every facts in fact_set_shard(0) {
+		every p in valid_profiles {
+			r := rep(object.union(facts, {"profile": p}))
+			r.profile == p
+			r.total_controls > 0
+			every t in texts(r) {
+				not contains(lower(t), "input.profile")
+			}
+		}
+		rep(object.union(facts, {"profile": "level1_server"})).total_controls < rep(object.union(facts, {"profile": "level2_server"})).total_controls
+	}
+}
+
+test_each_valid_profile_still_selects_itself_set_1 if {
+	every facts in fact_set_shard(1) {
 		every p in valid_profiles {
 			r := rep(object.union(facts, {"profile": p}))
 			r.profile == p
@@ -68,8 +82,16 @@ test_each_valid_profile_still_selects_itself if {
 }
 
 # Requirement: an ABSENT profile is not compliant and carries a finding that the profile was not selected.
-test_absent_profile_is_not_compliant_and_says_so if {
-	every facts in fact_sets {
+test_absent_profile_is_not_compliant_and_says_so_set_0 if {
+	every facts in fact_set_shard(0) {
+		r := rep(facts)
+		r.compliant == false
+		has_profile_finding(r, known_texts(facts))
+	}
+}
+
+test_absent_profile_is_not_compliant_and_says_so_set_1 if {
+	every facts in fact_set_shard(1) {
 		r := rep(facts)
 		r.compliant == false
 		has_profile_finding(r, known_texts(facts))
@@ -77,18 +99,18 @@ test_absent_profile_is_not_compliant_and_says_so if {
 }
 
 # Requirement: null, a value of the wrong type and an unknown name are not compliant and carry the finding.
-# The sweep below runs one fact set and one of 4 parts of the values at a time (value index modulo 4, in sorted key
+# The sweep below runs one fact set and one of 8 parts of the values at a time (value index modulo 8, in sorted key
 # order), so that no test runs long enough to meet the suite's per-test timeout on the oldest supported OPA;
 # known_texts is computed once per test. Every (fact set, value) pair is in exactly one test.
 fact_set_shard(i) := [f | some j, f in fact_sets; j == i]
 
-bad_part(q) := {k: not_a_selection[k] | some j, k in sort([x | some x, _ in not_a_selection]); j % 4 == q}
+bad_part(q) := {k: not_a_selection[k] | some j, k in sort([x | some x, _ in not_a_selection]); j % 8 == q}
 
 test_the_selection_shards_cover_every_fact_set_and_value if {
 	count(fact_sets) == 2
-	sum([count(bad_part(q)) | some q in numbers.range(0, 3)]) == count(not_a_selection)
+	sum([count(bad_part(q)) | some q in numbers.range(0, 7)]) == count(not_a_selection)
 	every k, _ in not_a_selection {
-		count([q | some q in numbers.range(0, 3); k in object.keys(bad_part(q))]) == 1
+		count([q | some q in numbers.range(0, 7); k in object.keys(bad_part(q))]) == 1
 	}
 	every facts in fact_sets {
 		count([i | some i in [0, 1]; facts in fact_set_shard(i)]) == 1
@@ -139,6 +161,50 @@ test_value_that_selects_nothing_is_not_compliant_and_says_so_set_0_part_3 if {
 	}
 }
 
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_0_part_4 if {
+	every facts in fact_set_shard(0) {
+		known := known_texts(facts)
+		every _, bad in bad_part(4) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_0_part_5 if {
+	every facts in fact_set_shard(0) {
+		known := known_texts(facts)
+		every _, bad in bad_part(5) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_0_part_6 if {
+	every facts in fact_set_shard(0) {
+		known := known_texts(facts)
+		every _, bad in bad_part(6) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_0_part_7 if {
+	every facts in fact_set_shard(0) {
+		known := known_texts(facts)
+		every _, bad in bad_part(7) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
 test_value_that_selects_nothing_is_not_compliant_and_says_so_set_1_part_0 if {
 	every facts in fact_set_shard(1) {
 		known := known_texts(facts)
@@ -176,6 +242,50 @@ test_value_that_selects_nothing_is_not_compliant_and_says_so_set_1_part_3 if {
 	every facts in fact_set_shard(1) {
 		known := known_texts(facts)
 		every _, bad in bad_part(3) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_1_part_4 if {
+	every facts in fact_set_shard(1) {
+		known := known_texts(facts)
+		every _, bad in bad_part(4) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_1_part_5 if {
+	every facts in fact_set_shard(1) {
+		known := known_texts(facts)
+		every _, bad in bad_part(5) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_1_part_6 if {
+	every facts in fact_set_shard(1) {
+		known := known_texts(facts)
+		every _, bad in bad_part(6) {
+			r := rep(object.union(facts, {"profile": bad}))
+			r.compliant == false
+			has_profile_finding(r, known)
+		}
+	}
+}
+
+test_value_that_selects_nothing_is_not_compliant_and_says_so_set_1_part_7 if {
+	every facts in fact_set_shard(1) {
+		known := known_texts(facts)
+		every _, bad in bad_part(7) {
 			r := rep(object.union(facts, {"profile": bad}))
 			r.compliant == false
 			has_profile_finding(r, known)

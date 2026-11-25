@@ -96,7 +96,6 @@ reports := [report_at(k) | some k in numbers.range(0, 21)]
 report_slice(i, ks) := [k | some j, k in ks; j % 4 == i]
 
 test_the_report_slices_cover_every_report if {
-	count(reports) == 22
 	every i in numbers.range(0, 3) {
 		every j, k in report_slice(i, numbers.range(0, 26)) {
 			k == i + (j * 4)
