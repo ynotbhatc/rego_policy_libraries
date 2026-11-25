@@ -1217,7 +1217,12 @@ has_obj(x, k) if is_object(object.get(x, k, null))
 
 has_str(x, k) if is_string(object.get(x, k, null))
 
-sku_collected(x) if is_string(p(x, "sku").name)
+# a string that says something: "" and whitespace are not a role name, a scope or a SKU name
+has_text(x, k) if nonempty(object.get(x, k, null))
+
+# the SKU names Azure returns for Bastion hosts (Developer, Basic, Standard, Premium) and Key Vaults (Standard, Premium);
+# any other string (""; "false") was not collected as a SKU
+sku_collected(x) if lower(trim_space(p(x, "sku").name)) in {"developer", "basic", "standard", "premium"}
 
 p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
 
@@ -1301,8 +1306,9 @@ assignee(a) := n if {
 } else := "a principal"
 
 assignment_collected(a) if {
-	is_string(a.roleDefinitionName)
+	nonempty(a.roleDefinitionName)
 	is_string(a.scope)
+	startswith(trim_space(a.scope), "/")
 }
 
 # ── scopes and role assignments ───────────────────────────────────────────────────────
@@ -1339,7 +1345,12 @@ _principal(a) := a.principalName if {
 	is_string(a.principalName)
 }
 
-conditioned(a) if nonempty(a.condition)
+# A role assignment condition is an expression over attributes (@Request[...], @Resource[...], @Principal[...],
+# @Environment[...]); a string with no attribute reference ("false", "none") is not a condition.
+conditioned(a) if {
+	nonempty(a.condition)
+	regex.match(`@(request|resource|principal|environment)\[`, lower(a.condition))
+}
 
 custom_role(r) if not p_ieq(r, "roleType", "BuiltInRole")
 
@@ -1960,7 +1971,8 @@ has_private_endpoint(v) if count(p(v, "privateEndpointConnections")) > 0
 
 shareable_link_capable(b) if lower(p(b, "sku").name) in {"standard", "premium"}
 
-nat_gateway_ip(ip) if nonempty(p(ip, "natGateway").id)
+# the NAT gateway is named by its resource id; any other string does not exempt the address
+nat_gateway_ip(ip) if regex.match(`^/subscriptions/[^/]+/resourcegroups/[^/]+/providers/microsoft\.network/natgateways/[^/]+$`, lower(trim_space(p(ip, "natGateway").id)))
 
 ddos_protected(ip) if lower(p(ip, "ddosSettings").protectionMode) == "enabled"
 
@@ -2081,7 +2093,7 @@ _messages contains "5.3.3: no principal holds 'User Access Administrator' at the
 	_in_scope("5.3.3")
 	_ev_5_3_3
 	some x in input.root_role_assignments
-	not has_str(x, "roleDefinitionName")
+	not has_text(x, "roleDefinitionName")
 }
 
 # 5.3.4 (Manual, Level 1)
@@ -2319,6 +2331,14 @@ _messages contains "6.1.1.1: checked condition — a 'Diagnostic Setting' Exists
 	count([s | some s in input.subscription_diagnostic_settings; exporting_setting(s)]) == 0
 }
 
+_messages contains sprintf("6.1.1.1: checked condition — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("6.1.1.1")
+	_ev_6_1_1_1
+	some s in input.subscription_diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
+}
+
 # 6.1.1.2 (Automated, Level 1)
 default _ev_6_1_1_2 := false
 
@@ -2336,6 +2356,14 @@ _messages contains sprintf("6.1.1.2: checked condition — Diagnostic Setting Ca
 	_ev_6_1_1_2
 	some cat in ["Administrative", "Alert", "Policy", "Security"]
 	not subscription_category_logged(cat)
+}
+
+_messages contains sprintf("6.1.1.2: checked condition — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("6.1.1.2")
+	_ev_6_1_1_2
+	some s in input.subscription_diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
 }
 
 # 6.1.1.3 (Manual, Level 2)
@@ -2369,6 +2397,16 @@ _messages contains sprintf("6.1.1.4: required value of Logging for Azure Key Vau
 	_ev_6_1_1_4
 	some x in input.key_vaults
 	not has_list(x, "diagnostic_settings")
+}
+
+_messages contains sprintf("6.1.1.4: required value of Logging for Azure Key Vault is 'Enabled' — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("6.1.1.4")
+	_ev_6_1_1_4
+	some x in input.key_vaults
+	is_array(x.diagnostic_settings)
+	some s in x.diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
 }
 
 # 6.1.1.5 (Manual, Level 2)
@@ -4073,6 +4111,16 @@ _messages contains sprintf("8.3.1.2: required value of Logging for Azure Key Vau
 	not has_list(x, "diagnostic_settings")
 }
 
+_messages contains sprintf("8.3.1.2: required value of Logging for Azure Key Vault Managed HSM is 'Enabled' — diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category", [nm(s), type_name(object.get(l, "enabled", null))]) if {
+	_in_scope("8.3.1.2")
+	_ev_8_3_1_2
+	some x in input.managed_hsms
+	is_array(x.diagnostic_settings)
+	some s in x.diagnostic_settings
+	some l in p(s, "logs")
+	not is_boolean(object.get(l, "enabled", null))
+}
+
 # 8.3.1.3 (Automated, Level 2)
 default _ev_8_3_1_3 := false
 
@@ -4103,7 +4151,7 @@ _messages contains sprintf("8.3.1.3: Keys in Azure Key Vault Premium must be HSM
 	not has_list(x, "keys")
 }
 
-_messages contains sprintf("8.3.1.3: Keys in Azure Key Vault Premium must be HSM-Protected — key vault %v: sku not collected", [nm(x)]) if {
+_messages contains sprintf("8.3.1.3: Keys in Azure Key Vault Premium must be HSM-Protected — key vault %v: sku not collected or not a recognised SKU name", [nm(x)]) if {
 	_in_scope("8.3.1.3")
 	_ev_8_3_1_3
 	some x in input.key_vaults
@@ -4560,7 +4608,7 @@ _messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure 
 	not p_false(x, "enableShareableLink")
 }
 
-_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — Bastion host %v: sku not collected", [nm(x)]) if {
+_messages contains sprintf("8.4.2: 'Shareable Link' must be turned off on Azure Bastion Hosts — Bastion host %v: sku not collected or not a recognised SKU name", [nm(x)]) if {
 	_in_scope("8.4.2")
 	_ev_8_4_2
 	some x in input.bastion_hosts
