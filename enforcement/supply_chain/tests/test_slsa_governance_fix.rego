@@ -117,3 +117,24 @@ test_missing_builder_id_is_a_violation if {
 	v := data.supply_chain.slsa.violations with input as {"provenance": {"exists": true}}
 	has_prefix(v, "Provenance: Builder identity not in app")
 }
+
+# not x.f in S / count(x.f) / x.f != v are undefined when x.f is missing: the finding used to vanish.
+test_sbom_without_format_is_not_recognized if {
+	v := data.supply_chain.slsa.violations with input as {"sbom": {"present": true, "components": [{"name": "a"}]}}
+	"SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)" in v
+}
+
+test_sbom_without_components_list_is_empty if {
+	v := data.supply_chain.slsa.violations with input as {"sbom": {"present": true, "format": "SPDX-2.3"}}
+	"SBOM: SBOM contains no components (empty bill of materials)" in v
+}
+
+test_provenance_without_predicate_type_is_flagged if {
+	v := data.supply_chain.slsa.violations with input as {"provenance": {"exists": true}}
+	"Provenance: Provenance predicate type not SLSA v1.0" in v
+}
+
+test_provenance_with_slsa_v1_predicate_is_not_flagged if {
+	v := data.supply_chain.slsa.violations with input as {"provenance": {"exists": true, "predicate_type": "https://slsa.dev/provenance/v1"}}
+	not "Provenance: Provenance predicate type not SLSA v1.0" in v
+}

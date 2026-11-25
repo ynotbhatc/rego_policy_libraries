@@ -123,3 +123,19 @@ test_cicd_env_wrapping_other_secret_does_not_exempt if {
 	i := with_job("b2", {"runs-on": "ubuntu-latest", "steps": [{"env": {"A": "${{ secrets.OTHER }}"}, "run": "echo ${{ env.A }} ${{ secrets.TOKEN }}"}]})
 	has_prefix(i, "Secrets:")
 }
+
+# A production job whose environment object has no name (or is not a string / object) still gets the
+# "no required reviewers" finding: `not has_required_reviewers(environment_name(job))` is undefined when the name is.
+prod_nameless(env) := with_job("deploy", {
+	"runs-on": "ubuntu-latest",
+	"environment": env,
+	"steps": [{"uses": concat("@", ["actions/checkout", sha])}, {"uses": "x/y@v1", "with": {"environment": "production"}}],
+})
+
+test_cicd_production_environment_object_without_name_is_reported if {
+	has_prefix(prod_nameless({"x": 1}), "Deployment: Job 'deploy' targets production environment but no required reviewers")
+}
+
+test_cicd_production_environment_number_is_reported if {
+	has_prefix(prod_nameless(7), "Deployment: Job 'deploy' targets production environment but no required reviewers")
+}
