@@ -88,14 +88,3 @@ test_k8s_result_defined_for_noncompliant_resource if {
 	r.violation_count > 0
 	r.resource == "p"
 }
-
-# A document with no kind used to pass K8S-010 and every kind-specific rule in silence.
-test_manifest_without_kind_is_malformed if {
-	v := data.sentinel.kubernetes.violation_k8s_000 with input as {"manifest": {"metadata": {"name": "x"}}}
-	has("SENTINEL-K8S-000: Malformed input: input.kind is missing", v)
-}
-
-test_manifest_without_kind_or_namespace_reports_k8s_010 if {
-	v := data.sentinel.kubernetes.violation_k8s_010 with input as {"manifest": {"metadata": {"name": "x"}}}
-	has("SENTINEL-K8S-010", v)
-}

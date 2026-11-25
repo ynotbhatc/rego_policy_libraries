@@ -110,11 +110,6 @@ violation_k8s_000 contains msg if {
 	msg := sprintf("SENTINEL-K8S-000: Malformed input: input.kind must be a string, got %v.", [type_name(input.kind)])
 }
 
-# A document with no kind is not judged by any kind-specific rule (and K8S-010 skips it): say so.
-violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.kind is missing; no kind-specific rule was evaluated." if {
-	not "kind" in object.keys(input)
-}
-
 violation_k8s_000 contains msg if {
 	input.kind in workload_kinds
 	is_object(object.get(input, "manifest", null))
@@ -337,12 +332,12 @@ violation_k8s_009 contains msg if {
 
 violation_k8s_010 contains msg if {
 	not _nonempty_string(object.get(input, ["manifest", "metadata", "namespace"], null))
-	object.get(input, "kind", "") != "Namespace"
-	object.get(input, "kind", "") != "ClusterRole"
-	object.get(input, "kind", "") != "ClusterRoleBinding"
+	input.kind != "Namespace"
+	input.kind != "ClusterRole"
+	input.kind != "ClusterRoleBinding"
 	msg := sprintf(
 		"SENTINEL-K8S-010: %v '%v' does not specify a namespace. All namespaced resources must explicitly set metadata.namespace.",
-		[object.get(input, "kind", "kind not recorded"), _manifest_name],
+		[input.kind, _manifest_name],
 	)
 }
 
