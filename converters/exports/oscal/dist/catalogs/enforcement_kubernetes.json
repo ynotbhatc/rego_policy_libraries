@@ -1117,20 +1117,25 @@
        {
         "id": "enforcement_kubernetes-SENTINEL-K8S-000_obj.2",
         "name": "assessment-objective",
-        "prose": "Malformed input: input.kind is missing; the gate cannot tell what kind of resource this is, so nothing was judged."
+        "prose": "Malformed input: input.policy.additional_kinds must be a list of non-empty strings, got %v; it was ignored."
        },
        {
         "id": "enforcement_kubernetes-SENTINEL-K8S-000_obj.3",
         "name": "assessment-objective",
-        "prose": "Malformed input: input.kind is empty; the gate cannot tell what kind of resource this is, so nothing was judged."
+        "prose": "Malformed input: input.kind is missing; the gate cannot tell what kind of resource this is, so nothing was judged."
        },
        {
         "id": "enforcement_kubernetes-SENTINEL-K8S-000_obj.4",
         "name": "assessment-objective",
-        "prose": "Unrecognised kind: input.kind %q is not a kind this gate judges (got a string), so nothing was judged."
+        "prose": "Malformed input: input.kind is empty; the gate cannot tell what kind of resource this is, so nothing was judged."
        },
        {
         "id": "enforcement_kubernetes-SENTINEL-K8S-000_obj.5",
+        "name": "assessment-objective",
+        "prose": "Unrecognised kind: input.kind %q is not a standard built-in Kubernetes kind or a kind this gate judges, so nothing was judged. If it is a custom resource you accept, list it in input.policy.additional_kinds (a list of strings)."
+       },
+       {
+        "id": "enforcement_kubernetes-SENTINEL-K8S-000_obj.6",
         "name": "assessment-objective",
         "prose": "Malformed manifest: %v '%v' has no pod spec with a non-empty containers list of objects."
        }

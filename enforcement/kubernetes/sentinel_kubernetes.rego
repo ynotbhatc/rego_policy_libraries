@@ -6,7 +6,7 @@
 #   source: aac
 #   domains: [kubernetes]
 #   coverage:
-#     checks: 30
+#     checks: 31
 #     cited: 15
 #     density: gate
 #     basis: role

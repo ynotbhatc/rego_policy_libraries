@@ -80,6 +80,15 @@
     }
    }
   },
+  "policy": {
+   "description": "Read in sentinel_kubernetes.rego.",
+   "type": "object",
+   "properties": {
+    "additional_kinds": {
+     "description": "Read in sentinel_kubernetes.rego."
+    }
+   }
+  },
   "request": {
    "description": "Read in kubernetes_admission.rego.",
    "type": "object",
@@ -424,6 +433,8 @@
   "manifest.spec.jobTemplate.spec.template.spec",
   "manifest.spec.template",
   "manifest.spec.template.spec",
+  "policy",
+  "policy.additional_kinds",
   "request",
   "request.kind",
   "request.kind.kind",
