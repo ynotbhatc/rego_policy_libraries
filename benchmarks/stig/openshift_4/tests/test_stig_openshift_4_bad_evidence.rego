@@ -11,12 +11,13 @@ _green := data.stig.openshift_4.core_rules_test.green_fixture
 _report := data.stig.openshift_4.main.compliance_report
 
 # leaves the module does not read (path pattern: reason): no value of theirs can change the result
-_unread := {}
+_unread := {"scc/items/1/allow(HostDirVolumePlugin|HostIPC|HostNetwork|HostPID|HostPorts|PrivilegedContainer)": "the fixture's privileged SCC is selected by each of these six fields and by its runAsUser.type; CNTR-OS-000660 reads any value but null and false as set (jq), so a string or number in one leaves the SCC selected and its subjects permitted"}
 
 # leaves that may be left out or null (the module then takes the stricter reading, or the check does not
 # depend on them); a value of the wrong type is still a finding. Path pattern: reason.
 _optional := {
 	"openshift/image_config/spec/allowedRegistriesForImport/[0-9]+/insecure": "the API omits insecure when it is false",
+	"scc/items/[0-9]+/allow(HostDirVolumePlugin|HostIPC|HostNetwork|HostPID|HostPorts|PrivilegedContainer)": "CNTR-OS-000660 selects an SCC with a jq select over these fields, and jq reads a field the SCC does not carry (null) as false",
 }
 
 _key(p) := concat("/", [sprintf("%v", [x]) | some x in p])
@@ -81,23 +82,31 @@ test_exception_lists_name_real_leaves if {
 	}
 }
 
-# CNTR-OS-000660: the six allow* fields are required fields of the SCC API object. An SCC collected without
-# one of them (or with null) is not cleared, whatever its other fields say.
-test_scc_without_a_required_allow_field_never_passes if {
-	every i in [0, 1] {
-		every field in ["allowHostDirVolumePlugin", "allowHostIPC", "allowHostNetwork", "allowHostPID", "allowHostPorts", "allowPrivilegedContainer"] {
-			path := sprintf("/scc/items/%d/%s", [i, field])
-			not _passes(json.patch(_green, [{"op": "remove", "path": path}]))
-			not _passes(json.patch(_green, [{"op": "replace", "path": path, "value": null}]))
+# CNTR-OS-000660 (V2R7 check text): the SCCs to review are those selected by
+# `jq select(.allowHostIPC or .allowHostPID or .allowHostPorts or .allowHostNetwork or .allowHostDirVolumePlugin or
+# .allowPrivilegedContainer or .runAsUser.type != "MustRunAsRange")`. jq reads only null and false as false: a field
+# the SCC lacks does not select it, and a string or a number (truthy in jq) does.
+test_scc_allow_field_is_read_as_jq_reads_it if {
+	every field in ["allowHostDirVolumePlugin", "allowHostIPC", "allowHostNetwork", "allowHostPID", "allowHostPorts", "allowPrivilegedContainer"] {
+		path := sprintf("/scc/items/0/%s", [field])
+		_passes(json.patch(_green, [{"op": "remove", "path": path}]))
+		_passes(json.patch(_green, [{"op": "replace", "path": path, "value": null}]))
+		every bad in ["false", "no", 0, 1, "true"] {
+			not _passes(json.patch(_green, [{"op": "replace", "path": path, "value": bad}]))
 		}
 	}
+}
+
+# a missing runAsUser.type is null in jq, which is not "MustRunAsRange": the SCC is selected
+test_scc_without_run_as_user_type_is_selected if {
+	not _passes(json.patch(_green, [{"op": "remove", "path": "/scc/items/0/runAsUser"}]))
 }
 
 # CNTR-OS-001010 reads what `systemctl is-enabled` / `is-active` print. A word systemctl never prints is not
 # an answer: "false", "no", "true" and "" used to pass as "not enabled".
 test_sshd_state_that_systemctl_never_prints_never_passes if {
 	every field in ["sshd_enabled", "sshd_active"] {
-		every bad in ["false", "true", "no", "", "0", null, false, 0] {
+		every bad in ["false", "true", "no", "", "0", null, false, 0, "enabled-runtime", "alias", "generated", "transient", "bad", "activating", "reloading", "refreshing", "deactivating", "maintenance"] {
 			not _passes(json.patch(_green, [{"op": "replace", "path": sprintf("/rhcos/nodes/0/%s", [field]), "value": bad}]))
 		}
 	}

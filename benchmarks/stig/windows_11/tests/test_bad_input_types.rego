@@ -8,6 +8,7 @@
 package stig.windows_11_bad_input_test
 
 import data.stig.windows_11
+import data.stig.windows_11_test.device_guard_rule_ids
 import data.stig.windows_11_test.green_fixture
 import data.stig.windows_11_test.registry_rule_ids
 import rego.v1
@@ -57,12 +58,17 @@ test_null_and_booleans_open_a_rule if {
 }
 
 # A value DISA's check text accepts as absent ("does not exist, or is 0") may be removed without a finding, so
-# removal is not tested leaf by leaf; a registry that was not collected at all opens every generated rule.
-test_an_uncollected_registry_opens_every_generated_rule if {
-	open_rules(json.remove(green_fixture, ["registry"])) == {id | registry_rule_ids[id]}
+# removal is not tested leaf by leaf (tests/test_stig_*_check_text.rego holds those rules); a registry that was
+# not collected at all opens every generated rule that reads it. The Win32_DeviceGuard rules read
+# input.device_guard instead, as their check text states.
+registry_reading_rule_ids := {id | registry_rule_ids[id]} - device_guard_rule_ids
+
+test_an_uncollected_registry_opens_every_rule_that_reads_it if {
+	count(registry_reading_rule_ids) > 50
+	open_rules(json.remove(green_fixture, ["registry"])) == registry_reading_rule_ids
 	every bad in [{}, null, "collected", []] {
 		facts := json.patch(green_fixture, [{"op": "replace", "path": "/registry", "value": bad}])
-		open_rules(facts) == {id | registry_rule_ids[id]}
+		open_rules(facts) == registry_reading_rule_ids
 	}
 }
 

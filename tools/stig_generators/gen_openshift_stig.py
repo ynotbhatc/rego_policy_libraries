@@ -67,37 +67,43 @@ execpriv_rules := ''' + json.dumps(sorted({norm_rule(l) for l in EXECPRIV})).rep
 
 unsuccessful_access_rules := ''' + json.dumps(sorted({norm_rule(l) for l in AUDIT930})).replace('", "', '",\n\t"').replace("[", "{\n\t", 1)[:-1] + "\n}" + r'''
 
-# What `systemctl is-enabled` and `systemctl is-active` print (systemctl(1)). CNTR-OS-001010 reads the two
-# words; anything else ("false", "no", "true", an empty string) is not an answer from systemctl, so the node
-# is not cleared on it.
-systemctl_enabled_states := {"enabled", "enabled-runtime", "linked", "linked-runtime", "alias", "masked", "masked-runtime", "static", "indirect", "disabled", "generated", "transient", "bad", "not-found"}
+# What `systemctl is-enabled` and `systemctl is-active` print (systemctl(1), tables "is-enabled output" and the
+# is-active states). CNTR-OS-001010 is a finding when the service is "either active or enabled"; each node must
+# print a word that is a plain statement of "not enabled" and of "not running". "enabled" and "enabled-runtime"
+# (the same row: enabled through symlinks, permanently or only until reboot), "alias", "generated" and "transient"
+# (exit code 0: enabled in effect or enabled implicitly), "bad" and a word systemctl never prints ("false", "no",
+# "true", an empty string) do not clear the node. Neither do the states that mean running or about to run.
+systemctl_not_enabled_states := {"disabled", "masked", "masked-runtime", "linked", "linked-runtime", "static", "indirect", "not-found"}
 
-systemctl_active_states := {"active", "reloading", "refreshing", "inactive", "failed", "activating", "deactivating", "maintenance", "unknown"}
+systemctl_not_active_states := {"inactive", "failed", "unknown"}
 
 # SCC subjects the CNTR-OS-000660 check permits on a host-access / privileged / non-MustRunAsRange SCC
 scc_permitted_subjects := ''' + "{" + ", ".join(json.dumps(x) for x in SCC_ALLOWED) + "}" + r'''
 
-_scc_privileged(s) if s.allowHostIPC == true
+# The check selects an SCC with `jq select(.allowHostIPC or .allowHostPID or .allowHostPorts or .allowHostNetwork
+# or .allowHostDirVolumePlugin or .allowPrivilegedContainer or .runAsUser.type != "MustRunAsRange")`. jq reads
+# only null and false as false, so a field the SCC does not carry is not set, and anything else (true, but also
+# the string "false" or a number) selects the SCC. A missing runAsUser.type is null, which differs from
+# "MustRunAsRange", so it selects too (the last clause below).
+_scc_flag(s, field) if {
+	v := object.get(s, field, null)
+	v != null
+	v != false
+}
 
-_scc_privileged(s) if s.allowHostPID == true
+_scc_privileged(s) if _scc_flag(s, "allowHostIPC")
 
-_scc_privileged(s) if s.allowHostPorts == true
+_scc_privileged(s) if _scc_flag(s, "allowHostPID")
 
-_scc_privileged(s) if s.allowHostNetwork == true
+_scc_privileged(s) if _scc_flag(s, "allowHostPorts")
 
-_scc_privileged(s) if s.allowHostDirVolumePlugin == true
+_scc_privileged(s) if _scc_flag(s, "allowHostNetwork")
 
-_scc_privileged(s) if s.allowPrivilegedContainer == true
+_scc_privileged(s) if _scc_flag(s, "allowHostDirVolumePlugin")
+
+_scc_privileged(s) if _scc_flag(s, "allowPrivilegedContainer")
 
 _scc_privileged(s) if object.get(s, ["runAsUser", "type"], "") != "MustRunAsRange"
-
-# The allow* fields are required booleans of the SecurityContextConstraints API object: `oc get scc -ojson`
-# always carries all six. One that is missing, null, a string or a number can be read neither as a refusal
-# nor as a grant, so the SCC counts as an offender until the fact is collected whole and with its real type.
-_scc_offender(s) if {
-	some field in ["allowHostIPC", "allowHostPID", "allowHostPorts", "allowHostNetwork", "allowHostDirVolumePlugin", "allowPrivilegedContainer"]
-	not is_boolean(object.get(s, field, null))
-}
 
 _scc_subjects(s) := {x | some k in ["users", "groups"]; xs := object.get(s, k, []); some x in xs}
 
@@ -252,8 +258,8 @@ nodes_rule("CNTR-OS-000930", "access_attempts_audited", ["every r in unsuccessfu
            [{"audit_rules": EXECPRIV + AUDIT930[:-1]}], "every node must carry all 70 audit rules the check lists",
            "Add the rules to /etc/audit/rules.d with a MachineConfig", "uncommented /etc/audit/audit.rules lines per node")
 nodes_rule("CNTR-OS-001010", "sshd_disabled", ['_s(n.sshd_enabled) != "enabled"', '_s(n.sshd_active) != "active"',
-                                                "_s(n.sshd_enabled) in systemctl_enabled_states",
-                                                "_s(n.sshd_active) in systemctl_active_states"],
+                                                "_s(n.sshd_enabled) in systemctl_not_enabled_states",
+                                                "_s(n.sshd_active) in systemctl_not_active_states"],
            [{"sshd_enabled": "enabled"}, {"sshd_active": "active"}],
            "sshd.service must be neither enabled nor active on any node", "systemctl disable --now sshd.service with a MachineConfig",
            "systemctl is-enabled / is-active sshd.service per node")
