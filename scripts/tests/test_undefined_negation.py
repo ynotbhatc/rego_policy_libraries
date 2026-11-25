@@ -106,6 +106,20 @@ violations contains "m.name: must be a string" if {
 	not is_string(input.m.name)
 }"""), [("neg-call", "guarded")])
 
+    def test_negation_of_a_field_the_row_is_already_filtered_on(self):
+        self.assertEqual(self.kinds("""
+violations contains "apt" if {
+	some i in input.instructions
+	contains(i.value, "apt-get install")
+	not contains(i.value, "=")
+}"""), [("neg-call", "guarded")])
+        self.assertEqual(self.kinds("""
+violations contains "apt" if {
+	some i in input.instructions
+	i.cmd == "RUN"
+	not contains(i.value, "=")
+}"""), [("neg-call", "fail-open")])
+
     def test_not_equal_null_is_a_presence_test(self):
         self.assertEqual(self.kinds("""
 violations contains msg if {

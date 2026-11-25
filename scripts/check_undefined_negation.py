@@ -39,7 +39,9 @@ Every hit gets an effect from the rule it sits in:
 
     fail-open     a violation / deny / finding rule, or a collection named like one: missing -> no finding
     fail-closed   a pass / compliant rule, or a collection named like one: missing -> not passed (harmless)
-    guarded       a comparison / count / to_number after a type check of the same fact (is_number(x); x > 90) where the
+    guarded       a hit on a field of an iterated row that an earlier positive line of the same rule already reads
+                  (`contains(i.value, "x"); not contains(i.value, "y")`: the row is already filtered on the field), or a `_has_key(obj, "k")` test before it
+                  (an optional field), or a comparison / count / to_number after a type check of the same fact (is_number(x); x > 90) where the
                   package also reads that fact in a way that is defined when it is missing (a `not is_number(object.get(
                   ...))` evidence finding): the evidence rule's shape. Reported, never gated; --json shows the guard line.
     review        neither could be told from the rule's name or from how the package uses it; needs reading
@@ -460,6 +462,8 @@ class Scanner:
             h["guard"] = next((probed[x] for x in h["paths"] if x in probed), "")
             # a comparison after a type check of the same fact, with the missing case reported by a rule of the
             # package (object.get / not elsewhere): the evidence rule's own shape, not a dropped row
+            if h["used"] and h["effect"] in ("fail-open", "review"):
+                h["effect"] = "guarded"      # the same fact is read by a positive line earlier in the rule: that line is the filter
             if h["present"] and h["effect"] in ("fail-open", "review"):
                 h["effect"] = "guarded"      # `_has_key(obj, "k")` earlier in the rule: an optional field, checked if present
             if h["typed"] and h["guard"] and h["kind"] in SIBLING_KINDS and h["effect"] == "fail-open":
@@ -473,7 +477,7 @@ class Scanner:
             for v in self._vars(a):
                 env[v] = ("param", None)
         ctx = {"f": f, "p": p, "rule": name or "?", "cls": p.cls.get(name, "other"), "imports": imports, "coll": None,
-               "env": env, "pkg": _pkg(self.asts[f]), "typed": set(), "present": set()}
+               "env": env, "pkg": _pkg(self.asts[f]), "typed": set(), "present": set(), "used": set()}
         self._cur = p
         self._body(rule.get("body") or [], env, ctx)
         for part in ("key", "value"):
@@ -782,6 +786,7 @@ class Scanner:
                              paths=sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"],
                              present=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["present"]
                                         for r in refs),
+                             used=bool(refs) and all("[]" in self._norm(r, ctx["env"]) and self._norm(r, ctx["env"]) in ctx["used"] for r in refs),
                              typed=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["typed"] for r in refs)))
 
     def _body(self, body, env, ctx):
@@ -841,6 +846,28 @@ class Scanner:
             self._negated(e, op, args, env, ctx)
         else:
             self._positive(e, op, args, env, ctx)
+            if op not in ("assign", "eq"):
+                self._mark_used(args, env, ctx)
+
+    def _mark_used(self, args, env, ctx):
+        """a fact a positive line reads stops the body when it is missing: a later negation of it adds no new drop"""
+        def walk(t):
+            if not isinstance(t, dict):
+                return
+            ty = t.get("type")
+            if ty == "ref":
+                ctx["used"].add(self._norm(t, env))
+                for x in t["value"][1:]:
+                    walk(x)
+            elif ty in ("call", "array", "set"):
+                for x in (t["value"][1:] if ty == "call" else t["value"]):
+                    walk(x)
+            elif ty == "object":
+                for k, v in t["value"]:
+                    walk(k)
+                    walk(v)
+        for a in args:
+            walk(a)
 
     def _negated(self, e, op, args, env, ctx):
         if op is None:                                               # not x.y / not v
