@@ -677,8 +677,10 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_main_bad_inputs_9 if {
 	sum([count(_slice(_main_bad_inputs, i, 9)) | some i in numbers.range(0, 8)]) == count(_main_bad_inputs)
-	every j, x in _main_bad_inputs {
-		x in _slice(_main_bad_inputs, j % 9, 9)
+	every i in numbers.range(0, 8) {
+		every k, x in _slice(_main_bad_inputs, i, 9) {
+			x == _main_bad_inputs[i + (k * 9)]
+		}
 	}
 }
 

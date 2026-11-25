@@ -52,8 +52,10 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_integer_settings_5 if {
 	sum([count(_slice(_integer_setting_list, i, 5)) | some i in numbers.range(0, 4)]) == count(_integer_setting_list)
-	every j, x in _integer_setting_list {
-		x in _slice(_integer_setting_list, j % 5, 5)
+	every i in numbers.range(0, 4) {
+		every k, x in _slice(_integer_setting_list, i, 5) {
+			x == _integer_setting_list[i + (k * 5)]
+		}
 	}
 }
 

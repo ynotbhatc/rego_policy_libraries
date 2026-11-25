@@ -40,8 +40,10 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_leaves_null_3 if {
 	sum([count(_slice(_leaves, i, 3)) | some i in numbers.range(0, 2)]) == count(_leaves)
-	every j, x in _leaves {
-		x in _slice(_leaves, j % 3, 3)
+	every i in numbers.range(0, 2) {
+		every k, x in _slice(_leaves, i, 3) {
+			x == _leaves[i + (k * 3)]
+		}
 	}
 }
 

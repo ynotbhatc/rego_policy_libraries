@@ -1024,15 +1024,19 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_leaves_wrong_type_6 if {
 	sum([count(_slice(_leaves, i, 6)) | some i in numbers.range(0, 5)]) == count(_leaves)
-	every j, x in _leaves {
-		x in _slice(_leaves, j % 6, 6)
+	every i in numbers.range(0, 5) {
+		every k, x in _slice(_leaves, i, 6) {
+			x == _leaves[i + (k * 6)]
+		}
 	}
 }
 
 test_the_slices_cover_leaves_null_or_removed_4 if {
 	sum([count(_slice(_leaves, i, 4)) | some i in numbers.range(0, 3)]) == count(_leaves)
-	every j, x in _leaves {
-		x in _slice(_leaves, j % 4, 4)
+	every i in numbers.range(0, 3) {
+		every k, x in _slice(_leaves, i, 4) {
+			x == _leaves[i + (k * 4)]
+		}
 	}
 }
 

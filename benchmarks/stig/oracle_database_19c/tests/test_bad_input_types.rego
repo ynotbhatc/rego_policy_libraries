@@ -25,15 +25,19 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_numeric_text_3 if {
 	sum([count(_slice(numeric_text, i, 3)) | some i in numbers.range(0, 2)]) == count(numeric_text)
-	every j, x in numeric_text {
-		x in _slice(numeric_text, j % 3, 3)
+	every i in numbers.range(0, 2) {
+		every k, x in _slice(numeric_text, i, 3) {
+			x == numeric_text[i + (k * 3)]
+		}
 	}
 }
 
 test_the_slices_cover_empty_query_results_5 if {
 	sum([count(_slice(empty_query_results, i, 5)) | some i in numbers.range(0, 4)]) == count(empty_query_results)
-	every j, x in empty_query_results {
-		x in _slice(empty_query_results, j % 5, 5)
+	every i in numbers.range(0, 4) {
+		every k, x in _slice(empty_query_results, i, 5) {
+			x == empty_query_results[i + (k * 5)]
+		}
 	}
 }
 

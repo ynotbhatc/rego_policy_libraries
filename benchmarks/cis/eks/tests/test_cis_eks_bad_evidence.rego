@@ -43,15 +43,19 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_booleans_5 if {
 	sum([count(_slice(_booleans, i, 5)) | some i in numbers.range(0, 4)]) == count(_booleans)
-	every j, x in _booleans {
-		x in _slice(_booleans, j % 5, 5)
+	every i in numbers.range(0, 4) {
+		every k, x in _slice(_booleans, i, 5) {
+			x == _booleans[i + (k * 5)]
+		}
 	}
 }
 
 test_the_slices_cover_booleans_for_null_or_removed_2 if {
 	sum([count(_slice(_booleans, i, 2)) | some i in numbers.range(0, 1)]) == count(_booleans)
-	every j, x in _booleans {
-		x in _slice(_booleans, j % 2, 2)
+	every i in numbers.range(0, 1) {
+		every k, x in _slice(_booleans, i, 2) {
+			x == _booleans[i + (k * 2)]
+		}
 	}
 }
 

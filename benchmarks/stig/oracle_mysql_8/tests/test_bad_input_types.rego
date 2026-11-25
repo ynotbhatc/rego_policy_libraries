@@ -32,8 +32,10 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_bool_paths_4 if {
 	sum([count(_slice(bool_paths, i, 4)) | some i in numbers.range(0, 3)]) == count(bool_paths)
-	every j, x in bool_paths {
-		x in _slice(bool_paths, j % 4, 4)
+	every i in numbers.range(0, 3) {
+		every k, x in _slice(bool_paths, i, 4) {
+			x == bool_paths[i + (k * 4)]
+		}
 	}
 }
 

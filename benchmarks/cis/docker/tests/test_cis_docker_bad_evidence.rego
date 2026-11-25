@@ -61,8 +61,10 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_booleans_8 if {
 	sum([count(_slice(_booleans, i, 8)) | some i in numbers.range(0, 7)]) == count(_booleans)
-	every j, x in _booleans {
-		x in _slice(_booleans, j % 8, 8)
+	every i in numbers.range(0, 7) {
+		every k, x in _slice(_booleans, i, 8) {
+			x == _booleans[i + (k * 8)]
+		}
 	}
 }
 

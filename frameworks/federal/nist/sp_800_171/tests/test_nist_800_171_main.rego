@@ -634,15 +634,19 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_fact_bool_paths_4 if {
 	sum([count(_slice(_fact_bool_paths, i, 4)) | some i in numbers.range(0, 3)]) == count(_fact_bool_paths)
-	every j, x in _fact_bool_paths {
-		x in _slice(_fact_bool_paths, j % 4, 4)
+	every i in numbers.range(0, 3) {
+		every k, x in _slice(_fact_bool_paths, i, 4) {
+			x == _fact_bool_paths[i + (k * 4)]
+		}
 	}
 }
 
 test_the_slices_cover_retired_facts_4 if {
 	sum([count(_slice(_retired_facts, i, 4)) | some i in numbers.range(0, 3)]) == count(_retired_facts)
-	every j, x in _retired_facts {
-		x in _slice(_retired_facts, j % 4, 4)
+	every i in numbers.range(0, 3) {
+		every k, x in _slice(_retired_facts, i, 4) {
+			x == _retired_facts[i + (k * 4)]
+		}
 	}
 }
 

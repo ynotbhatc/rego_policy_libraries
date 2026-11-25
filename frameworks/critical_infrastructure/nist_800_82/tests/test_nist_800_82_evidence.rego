@@ -148,8 +148,10 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 test_the_slices_cover_fact_paths_7 if {
 	sum([count(_slice(fact_paths, i, 7)) | some i in numbers.range(0, 6)]) == count(fact_paths)
-	every j, x in fact_paths {
-		x in _slice(fact_paths, j % 7, 7)
+	every i in numbers.range(0, 6) {
+		every k, x in _slice(fact_paths, i, 7) {
+			x == fact_paths[i + (k * 7)]
+		}
 	}
 }
 
