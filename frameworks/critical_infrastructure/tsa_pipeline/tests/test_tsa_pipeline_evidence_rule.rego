@@ -408,10 +408,11 @@ _shards := ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d"
 # The mutated inputs of one shard that still pass (empty when the evidence rule holds). Only the shard asked
 # for is evaluated, and each mutated input is built when its case is reached.
 escapes_in(shard) := {c.case |
-	some c in _cases
 
-	# inline, not a rule lookup: a rule referenced after `with` is evaluated again for every case
-	substring(crypto.md5(c.case), 0, 1) == shard
+	# The shard is selected first and as its own list: written as a filter on `_cases` next to the `with`
+	# below, OPA 1.10 evaluates the report for every case before it applies the filter (16 times the work).
+	some c in [x | some x in _cases; substring(crypto.md5(x.case), 0, 1) == shard]
+
 	inp := json.patch(all_pass, c.patch)
 	data.tsa_pipeline.main.compliance_report.compliant == true with input as inp
 }
