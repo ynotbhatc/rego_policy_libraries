@@ -1,0 +1,25 @@
+# Accepted bad-input cases: behaviour that scripts/check_bad_input_fails.py reports as a failure, that a person
+# reviewed, and that is right. Written by hand. bad_input_known_failures.txt is the list TO FIX; this is the list
+# REVIEWED AND RIGHT. A case is in one list or the other, never both.
+#
+# One line per case:
+#     <package> <case>: <reason>
+#     <package> <case> <kind>: <reason>        (optional: accept the case only while it fails as this kind)
+#
+# Rules (checked by `python3 scripts/check_bad_input_fails.py --lint-accepted`, and by `--check`):
+#   - The reason is mandatory and says WHY the behaviour is right: the rule id, audit procedure or collector
+#     contract that makes a string, a missing fact or an unscored fact correct. At least 25 characters.
+#     "by design", "n/a", "expected" and "the harness cannot tell" are not reasons.
+#   - <case> is the case id the harness prints, in full, including any `@<fixture>` suffix.
+#   - A family may be accepted with `*` in the case (the only wildcard), e.g. `stig.rhel_9.main numstr:*`.
+#     A pattern's reason must cite a document: a URL, or the path of a file in this repository that states the
+#     contract (docs/..., the generated collector contract, the module that documents it).
+#   - Only kinds pass, fewer-findings and score-rise can be accepted. An error or an undefined report is never right.
+#   - Under --check it is an error when an entry's case no longer exists, no longer fails (fixed, or the harness
+#     now shows the fixture does not depend on the fact), matches nothing (pattern), or is also in the known list.
+#     Remove the line: this list must not outlive what it describes.
+#
+# Before adding a line, check the case is not a defect (bad evidence passing on a fact a scored control reads:
+# fix the module) and not a fixture artefact (the detail says "inert": no all-pass fixture depends on the fact;
+# add a fixture at the level or profile that reads it, or drop the unread field from the fixture).
+
