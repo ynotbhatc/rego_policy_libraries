@@ -1,5 +1,4 @@
-package pci_dss.access_control.requirement_8_test
-
+package pci_dss_tests.access_control.requirement_8_test
 import rego.v1
 
 import data.pci_dss.access_control.requirement_8 as r8

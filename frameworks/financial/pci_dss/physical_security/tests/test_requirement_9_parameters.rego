@@ -1,5 +1,4 @@
-package pci_dss.physical_security.requirement_9_test
-
+package pci_dss_tests.physical_security.requirement_9_test
 import rego.v1
 
 import data.pci_dss.physical_security.requirement_9 as r9

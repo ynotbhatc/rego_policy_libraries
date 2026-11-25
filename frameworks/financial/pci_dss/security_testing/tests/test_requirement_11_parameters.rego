@@ -1,5 +1,4 @@
-package pci_dss.security_testing.requirement_11_test
-
+package pci_dss_tests.security_testing.requirement_11_test
 import rego.v1
 
 import data.pci_dss.security_testing.requirement_11 as r11

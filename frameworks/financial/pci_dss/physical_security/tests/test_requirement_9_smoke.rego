@@ -1,5 +1,4 @@
-package pci_dss.physical_security.requirement_9_test
-
+package pci_dss_tests.physical_security.requirement_9_test
 import rego.v1
 
 # Generated smoke test for frameworks/financial/pci_dss/physical_security/requirement_9.rego (scripts/gen_tests.py). Each rule states one thing the module was proven
