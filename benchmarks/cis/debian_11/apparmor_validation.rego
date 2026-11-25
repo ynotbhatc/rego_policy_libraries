@@ -56,6 +56,11 @@ service_violations contains msg if {
 }
 
 # CIS 1.6.1.3: all AppArmor Profiles must be in enforce or complain mode
+profile_violations contains "CIS 1.6.1.3: evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected" if {
+	object.get(input, ["apparmor", "unloaded_profiles"], null) == null
+	not is_array(object.get(input, ["apparmor", "profiles"], null))
+}
+
 profile_violations contains msg if {
 	is_number(input.apparmor.unloaded_profiles)
 	input.apparmor.unloaded_profiles > 0
@@ -70,10 +75,15 @@ profile_violations contains msg if {
 profile_violations contains msg if {
 	some profile in input.apparmor.profiles
 	profile.mode == "unloaded"
-	msg := sprintf("CIS 1.6.1.3: AppArmor profile '%s' is not loaded", [profile.name])
+	msg := sprintf("CIS 1.6.1.3: AppArmor profile '%s' is not loaded", [object.get(profile, "name", "not collected")])
 }
 
 # CIS 1.6.1.4: all AppArmor Profiles must be enforcing
+profile_violations contains "CIS 1.6.1.4: evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected" if {
+	object.get(input, ["apparmor", "complain_profiles"], null) == null
+	not is_array(object.get(input, ["apparmor", "profiles"], null))
+}
+
 profile_violations contains msg if {
 	is_number(input.apparmor.complain_profiles)
 	input.apparmor.complain_profiles > 0
@@ -88,7 +98,7 @@ profile_violations contains msg if {
 profile_violations contains msg if {
 	some profile in input.apparmor.profiles
 	profile.mode == "complain"
-	msg := sprintf("CIS 1.6.1.4: AppArmor profile '%s' is in complain mode, should be enforce", [profile.name])
+	msg := sprintf("CIS 1.6.1.4: AppArmor profile '%s' is in complain mode, should be enforce", [object.get(profile, "name", "not collected")])
 }
 
 # AppArmor service must be active
@@ -153,6 +163,32 @@ service_violations contains msg if {
 	input.apparmor.bootloader_enabled == true
 	not is_string(object.get(input, ["apparmor", "grub_cmdline"], null))
 	msg := "CIS 1.6.1.2: evidence missing — apparmor.grub_cmdline not collected"
+}
+
+# ---------------------------------------------------------------------------
+# Text facts a rule selects or compares on. A row (or section) that lacks one used to drop out of the check:
+# `row.x == "v"` and `row.x != "v"` are both undefined when x is missing. Each is now an evidence finding
+# under the control that reads it.
+# ---------------------------------------------------------------------------
+text_problem(obj, key) := "not collected" if is_null(object.get(obj, key, null))
+
+text_problem(obj, key) := sprintf("is not a string (got %s)", [type_name(v)]) if {
+	v := object.get(obj, key, null)
+	not is_null(v)
+	not is_string(v)
+}
+
+text_problem(obj, key) := "is empty" if trim_space(object.get(obj, key, null)) == ""
+
+profile_violations contains msg if {
+	some i, profile in input.apparmor.profiles
+	msg := sprintf("CIS 1.6.1.3: evidence missing — apparmor.profiles[%d].mode %s", [i, text_problem(profile, "mode")])
+}
+
+profile_violations contains msg if {
+	some i, profile in input.apparmor.profiles
+	not is_object(profile)
+	msg := sprintf("CIS 1.6.1.3: evidence missing — apparmor.profiles[%d] is not an object (got %s)", [i, type_name(profile)])
 }
 
 report := {

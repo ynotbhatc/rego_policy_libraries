@@ -65,7 +65,7 @@ network_interface_violations contains msg if {
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.non_compliant_params
-	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [param.parameter, param.current_value, param.expected_value, param.description])
+	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [object.get(param, "parameter", "not collected"), object.get(param, "current_value", "not collected"), object.get(param, "expected_value", "not collected"), object.get(param, "description", "not collected")])
 }
 
 sysctl_violations contains msg if {
@@ -132,7 +132,7 @@ sysctl_violations contains msg if {
 	startswith(param.parameter, "net.ipv4.conf.")
 	endswith(param.parameter, ".accept_source_route")
 	param.current_value != "0"
-	msg := sprintf("CIS 3.2.1: Source routed packets accepted on %s (firewall bypass risk)", [param.parameter])
+	msg := sprintf("CIS 3.2.1: Source routed packets accepted on %s (firewall bypass risk)", [object.get(param, "parameter", "not collected")])
 }
 
 # CIS 3.2.2: ICMP redirects not accepted
@@ -140,7 +140,7 @@ sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "accept_redirects")
 	param.current_value != "0"
-	msg := sprintf("CIS 3.2.2: ICMP redirects accepted on %s (man-in-the-middle risk)", [param.parameter])
+	msg := sprintf("CIS 3.2.2: ICMP redirects accepted on %s (man-in-the-middle risk)", [object.get(param, "parameter", "not collected")])
 }
 
 # CIS 3.2.3: Secure ICMP redirects not accepted
@@ -148,7 +148,7 @@ sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "secure_redirects")
 	param.current_value != "0"
-	msg := sprintf("CIS 3.2.3: Secure ICMP redirects accepted on %s", [param.parameter])
+	msg := sprintf("CIS 3.2.3: Secure ICMP redirects accepted on %s", [object.get(param, "parameter", "not collected")])
 }
 
 # CIS 3.3.1: IPv6 disabled if required
@@ -181,7 +181,7 @@ ipv6_violations contains msg if {
 	contains(param.parameter, "ipv6.conf.")
 	contains(param.parameter, ".accept_ra")
 	param.current_value != "0"
-	msg := sprintf("CIS 3.2.9: IPv6 router advertisements accepted on %s (rogue router risk)", [param.parameter])
+	msg := sprintf("CIS 3.2.9: IPv6 router advertisements accepted on %s (rogue router risk)", [object.get(param, "parameter", "not collected")])
 }
 
 # CIS 3.3.2: Wireless interfaces on servers
@@ -291,6 +291,44 @@ ip_forwarding_violations contains msg if {
 	not is_null(v)
 	not is_boolean(v)
 	msg := sprintf("CIS 3.1.1: evidence missing — ip_forwarding.%s is not a boolean (got %s)", [key, type_name(v)])
+}
+
+# ---------------------------------------------------------------------------
+# Text facts a rule selects or compares on. A row (or section) that lacks one used to drop out of the check:
+# `row.x == "v"` and `row.x != "v"` are both undefined when x is missing. Each is now an evidence finding
+# under the control that reads it.
+# ---------------------------------------------------------------------------
+text_problem(obj, key) := "not collected" if is_null(object.get(obj, key, null))
+
+text_problem(obj, key) := sprintf("is not a string (got %s)", [type_name(v)]) if {
+	v := object.get(obj, key, null)
+	not is_null(v)
+	not is_string(v)
+}
+
+text_problem(obj, key) := "is empty" if trim_space(object.get(obj, key, null)) == ""
+
+sysctl_violations contains msg if {
+	some i, param in input.sysctl_parameters.analysis
+	some key in ["parameter", "current_value"]
+	msg := sprintf("CIS 3.x: evidence missing — sysctl_parameters.analysis[%d].%s %s", [i, key, text_problem(param, key)])
+}
+
+sysctl_violations contains msg if {
+	some i, param in input.sysctl_parameters.analysis
+	not is_object(param)
+	msg := sprintf("CIS 3.x: evidence missing — sysctl_parameters.analysis[%d] is not an object (got %s)", [i, type_name(param)])
+}
+
+# the firewall type decides which firewall rules apply; with ufw the default incoming policy is read
+network_interface_violations contains msg if {
+	is_object(input.firewall)
+	msg := sprintf("CIS 3.5.x: evidence missing — firewall.type %s", [text_problem(input.firewall, "type")])
+}
+
+network_interface_violations contains msg if {
+	input.firewall.type == "ufw"
+	msg := sprintf("CIS 3.5.1.1: evidence missing — firewall.default_incoming %s", [text_problem(input.firewall, "default_incoming")])
 }
 
 report := {

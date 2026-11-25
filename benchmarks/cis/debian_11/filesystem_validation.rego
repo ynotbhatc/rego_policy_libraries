@@ -44,9 +44,9 @@ filesystem_module_violations contains violation if {
 	some module in input.disabled_filesystem_modules.modules
 	module.compliant == false
 	violation := sprintf("CIS 1.1.1.x: Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)", [
-		module.module,
-		module.loaded,
-		module.disabled,
+		object.get(module, "module", "not collected"),
+		object.get(module, "loaded", "not collected"),
+		object.get(module, "disabled", "not collected"),
 	])
 }
 
@@ -63,8 +63,8 @@ partition_violations contains violation if {
 	some partition in input.required_partitions.partitions
 	partition.exists == false
 	violation := sprintf("CIS 1.1.%s: Separate partition for %s does not exist", [
-		partition.cis_id,
-		partition.mount_point,
+		object.get(partition, "cis_id", "not collected"),
+		object.get(partition, "mount_point", "not collected"),
 	])
 }
 
@@ -82,8 +82,8 @@ mount_option_violations contains violation if {
 	mount.compliant == false
 	missing_opts := concat(", ", object.get(mount, "missing_options", []))
 	violation := sprintf("CIS %s: %s is missing mount options: %s", [
-		mount.cis_id,
-		mount.mount_point,
+		object.get(mount, "cis_id", "not collected"),
+		object.get(mount, "mount_point", "not collected"),
 		missing_opts,
 	])
 }
@@ -100,7 +100,7 @@ sticky_bit_violations contains violation if {
 sticky_bit_violations contains violation if {
 	some dir in input.sticky_bit_check.world_writable_dirs
 	dir.has_sticky_bit == false
-	violation := sprintf("CIS 1.1.22: World-writable directory %s does not have sticky bit set", [dir.path])
+	violation := sprintf("CIS 1.1.22: World-writable directory %s does not have sticky bit set", [object.get(dir, "path", "not collected")])
 }
 
 # =============================================================================
