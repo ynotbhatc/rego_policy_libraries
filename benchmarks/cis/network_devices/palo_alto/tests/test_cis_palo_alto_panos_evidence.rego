@@ -52,6 +52,16 @@ _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
 _slices := {"number": 8, "yes/no": 8, "boolean": 6}
 
+# the removal sweep runs over all leaves in 3 slices
+test_the_removal_slices_cover_every_leaf if {
+	sum([count(_slice(_leaves, i, 3)) | some i in numbers.range(0, 2)]) == count(_leaves)
+	every i in numbers.range(0, 2) {
+		every k, x in _slice(_leaves, i, 3) {
+			x == _leaves[i + (k * 3)]
+		}
+	}
+}
+
 test_the_slices_cover_every_leaf if {
 	every kind, n in _slices {
 		sum([count(_slice(_of_kind(kind), i, n)) | some i in numbers.range(0, n - 1)]) == count(_of_kind(kind))
@@ -75,8 +85,10 @@ _survivors_in(kind, i, n) := {[path, json.marshal(nv)] |
 # User-ID on a trusted zone is optional: without it 2.3 and 2.4 have nothing to check
 _optional := {["panos_config", "zone", 0, "enable_user_identification"]}
 
-_removal_survivors := {path |
-	some [path, v] in _leaves
+_removal_survivors := _removal_survivors_in(0, 1)
+
+_removal_survivors_in(i, n) := {path |
+	some [path, v] in _slice(_leaves, i, n)
 	not path in _unread
 	v in {"yes", true}
 	not path in _optional
@@ -193,7 +205,11 @@ test_no_attestation_of_another_type_passes_slice_5 if {
 	count(_survivors_in("boolean", 5, 6)) == 0
 }
 
-test_no_removed_required_leaf_passes if count(_removal_survivors) == 0
+test_no_removed_required_leaf_passes_slice_0 if count(_removal_survivors_in(0, 3)) == 0
+
+test_no_removed_required_leaf_passes_slice_1 if count(_removal_survivors_in(1, 3)) == 0
+
+test_no_removed_required_leaf_passes_slice_2 if count(_removal_survivors_in(2, 3)) == 0
 
 _vs(inp) := v if v := data.cis_palo_alto_panos.violations with input as inp
 
