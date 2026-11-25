@@ -34,13 +34,22 @@ _unread := {["admin_center", "user_owned_apps_and_services", "is_app_and_service
 
 _may_be_absent := {["exchange", "verified_domains", 0, "is_initial"]}
 
-_survivors(section) := {[path, json.marshal(nv)] |
-	some [path, v] in _leaves(section)
+# Each section's leaves are swept in slices (leaf index modulo the section's slice count), one test per slice, so that
+# no test runs long enough to meet the suite's per-test timeout on the oldest supported OPA. Every leaf is in exactly
+# one slice; test_the_slices_cover_every_leaf checks it.
+_slices := {"admin_center": 4, "defender": 8, "entra": 10, "exchange": 8, "fabric": 5, "intune": 1, "purview": 1, "purview_ps": 1, "sharepoint": 3, "teams": 7}
+
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+_survivors(section) := _survivors_in(section, 0, 1)
+
+_survivors_in(section, i, n) := {[path, json.marshal(nv)] |
+	some [path, v] in _slice(_leaves(section), i, n)
 	not path in _unread
 	some nv in _wrong(v)
 	_failed(json.patch(F, [{"op": "replace", "path": path, "value": nv}])) == 0
 } | {[path, "removed"] |
-	some [path, _] in _leaves(section)
+	some [path, _] in _slice(_leaves(section), i, n)
 	not path in _unread
 	not path in _may_be_absent
 	_failed(json.patch(F, [{"op": "remove", "path": path}])) == 0
@@ -53,15 +62,86 @@ test_fixture_is_compliant_and_sections_are_covered if {
 	count([1 | some s in covered; some _ in _leaves(s)]) > 100
 }
 
-test_admin_center_facts if count(_survivors("admin_center")) == 0
+# every section's slices are exactly its leaves
+test_the_slices_cover_every_leaf if {
+	every section, n in _slices {
+		sum([count(_slice(_leaves(section), i, n)) | some i in numbers.range(0, n - 1)]) == count(_leaves(section))
+		every j, leaf in _leaves(section) {
+			leaf in _slice(_leaves(section), j % n, n)
+		}
+	}
+	count(_slices) == 10
+}
 
-test_defender_facts if count(_survivors("defender")) == 0
+test_admin_center_facts_slice_0 if count(_survivors_in("admin_center", 0, 4)) == 0
 
-test_entra_facts if count(_survivors("entra")) == 0
+test_admin_center_facts_slice_1 if count(_survivors_in("admin_center", 1, 4)) == 0
 
-test_exchange_facts if count(_survivors("exchange")) == 0
+test_admin_center_facts_slice_2 if count(_survivors_in("admin_center", 2, 4)) == 0
 
-test_fabric_facts if count(_survivors("fabric")) == 0
+test_admin_center_facts_slice_3 if count(_survivors_in("admin_center", 3, 4)) == 0
+
+test_defender_facts_slice_0 if count(_survivors_in("defender", 0, 8)) == 0
+
+test_defender_facts_slice_1 if count(_survivors_in("defender", 1, 8)) == 0
+
+test_defender_facts_slice_2 if count(_survivors_in("defender", 2, 8)) == 0
+
+test_defender_facts_slice_3 if count(_survivors_in("defender", 3, 8)) == 0
+
+test_defender_facts_slice_4 if count(_survivors_in("defender", 4, 8)) == 0
+
+test_defender_facts_slice_5 if count(_survivors_in("defender", 5, 8)) == 0
+
+test_defender_facts_slice_6 if count(_survivors_in("defender", 6, 8)) == 0
+
+test_defender_facts_slice_7 if count(_survivors_in("defender", 7, 8)) == 0
+
+test_entra_facts_slice_0 if count(_survivors_in("entra", 0, 10)) == 0
+
+test_entra_facts_slice_1 if count(_survivors_in("entra", 1, 10)) == 0
+
+test_entra_facts_slice_2 if count(_survivors_in("entra", 2, 10)) == 0
+
+test_entra_facts_slice_3 if count(_survivors_in("entra", 3, 10)) == 0
+
+test_entra_facts_slice_4 if count(_survivors_in("entra", 4, 10)) == 0
+
+test_entra_facts_slice_5 if count(_survivors_in("entra", 5, 10)) == 0
+
+test_entra_facts_slice_6 if count(_survivors_in("entra", 6, 10)) == 0
+
+test_entra_facts_slice_7 if count(_survivors_in("entra", 7, 10)) == 0
+
+test_entra_facts_slice_8 if count(_survivors_in("entra", 8, 10)) == 0
+
+test_entra_facts_slice_9 if count(_survivors_in("entra", 9, 10)) == 0
+
+test_exchange_facts_slice_0 if count(_survivors_in("exchange", 0, 8)) == 0
+
+test_exchange_facts_slice_1 if count(_survivors_in("exchange", 1, 8)) == 0
+
+test_exchange_facts_slice_2 if count(_survivors_in("exchange", 2, 8)) == 0
+
+test_exchange_facts_slice_3 if count(_survivors_in("exchange", 3, 8)) == 0
+
+test_exchange_facts_slice_4 if count(_survivors_in("exchange", 4, 8)) == 0
+
+test_exchange_facts_slice_5 if count(_survivors_in("exchange", 5, 8)) == 0
+
+test_exchange_facts_slice_6 if count(_survivors_in("exchange", 6, 8)) == 0
+
+test_exchange_facts_slice_7 if count(_survivors_in("exchange", 7, 8)) == 0
+
+test_fabric_facts_slice_0 if count(_survivors_in("fabric", 0, 5)) == 0
+
+test_fabric_facts_slice_1 if count(_survivors_in("fabric", 1, 5)) == 0
+
+test_fabric_facts_slice_2 if count(_survivors_in("fabric", 2, 5)) == 0
+
+test_fabric_facts_slice_3 if count(_survivors_in("fabric", 3, 5)) == 0
+
+test_fabric_facts_slice_4 if count(_survivors_in("fabric", 4, 5)) == 0
 
 test_intune_facts if count(_survivors("intune")) == 0
 
@@ -69,13 +149,79 @@ test_purview_facts if count(_survivors("purview")) == 0
 
 test_purview_ps_facts if count(_survivors("purview_ps")) == 0
 
-test_sharepoint_facts if count(_survivors("sharepoint")) == 0
+test_sharepoint_facts_slice_0 if count(_survivors_in("sharepoint", 0, 3)) == 0
 
-test_teams_facts if count(_survivors("teams")) == 0
+test_sharepoint_facts_slice_1 if count(_survivors_in("sharepoint", 1, 3)) == 0
+
+test_sharepoint_facts_slice_2 if count(_survivors_in("sharepoint", 2, 3)) == 0
+
+test_teams_facts_slice_0 if count(_survivors_in("teams", 0, 7)) == 0
+
+test_teams_facts_slice_1 if count(_survivors_in("teams", 1, 7)) == 0
+
+test_teams_facts_slice_2 if count(_survivors_in("teams", 2, 7)) == 0
+
+test_teams_facts_slice_3 if count(_survivors_in("teams", 3, 7)) == 0
+
+test_teams_facts_slice_4 if count(_survivors_in("teams", 4, 7)) == 0
+
+test_teams_facts_slice_5 if count(_survivors_in("teams", 5, 7)) == 0
+
+test_teams_facts_slice_6 if count(_survivors_in("teams", 6, 7)) == 0
 
 # attestations: an observation that is not the boolean true is not an attestation
-test_attestation_observed_must_be_boolean_true if {
+# the attestations are checked in 6 slices (index modulo 6): three evaluations per attestation
+_attestation_slice(k) := [i | some i, _ in F.attestations; i % 6 == k]
+
+test_the_attestation_slices_cover_every_attestation if {
+	sum([count(_attestation_slice(k)) | some k in numbers.range(0, 5)]) == count(F.attestations)
 	every i, _ in F.attestations {
+		i in _attestation_slice(i % 6)
+	}
+}
+
+test_attestation_observed_must_be_boolean_true_slice_0 if {
+	every i in _attestation_slice(0) {
+		every nv in ["true", 1, null] {
+			_failed(json.patch(F, [{"op": "replace", "path": ["attestations", i, "observed"], "value": nv}])) > 0
+		}
+	}
+}
+
+test_attestation_observed_must_be_boolean_true_slice_1 if {
+	every i in _attestation_slice(1) {
+		every nv in ["true", 1, null] {
+			_failed(json.patch(F, [{"op": "replace", "path": ["attestations", i, "observed"], "value": nv}])) > 0
+		}
+	}
+}
+
+test_attestation_observed_must_be_boolean_true_slice_2 if {
+	every i in _attestation_slice(2) {
+		every nv in ["true", 1, null] {
+			_failed(json.patch(F, [{"op": "replace", "path": ["attestations", i, "observed"], "value": nv}])) > 0
+		}
+	}
+}
+
+test_attestation_observed_must_be_boolean_true_slice_3 if {
+	every i in _attestation_slice(3) {
+		every nv in ["true", 1, null] {
+			_failed(json.patch(F, [{"op": "replace", "path": ["attestations", i, "observed"], "value": nv}])) > 0
+		}
+	}
+}
+
+test_attestation_observed_must_be_boolean_true_slice_4 if {
+	every i in _attestation_slice(4) {
+		every nv in ["true", 1, null] {
+			_failed(json.patch(F, [{"op": "replace", "path": ["attestations", i, "observed"], "value": nv}])) > 0
+		}
+	}
+}
+
+test_attestation_observed_must_be_boolean_true_slice_5 if {
+	every i in _attestation_slice(5) {
 		every nv in ["true", 1, null] {
 			_failed(json.patch(F, [{"op": "replace", "path": ["attestations", i, "observed"], "value": nv}])) > 0
 		}
