@@ -43,8 +43,29 @@ _kind(v) := "boolean" if is_boolean(v)
 
 _kind(v) := "yes/no" if _yn(v)
 
-_survivors(kind) := {[path, json.marshal(nv)] |
-	some [path, v] in _leaves
+# The wrong-type sweeps run in slices of the leaves of one kind (index of the leaf among that kind's leaves, modulo the
+# slice count), one test per slice, so that no test runs long enough to meet the suite's per-test timeout on the
+# oldest supported OPA. Every leaf is in exactly one slice; test_the_slices_cover_every_leaf checks it.
+_of_kind(kind) := [l | some l in _leaves; _kind(l[1]) == kind]
+
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+_slices := {"number": 8, "yes/no": 8, "boolean": 6}
+
+test_the_slices_cover_every_leaf if {
+	every kind, n in _slices {
+		sum([count(_slice(_of_kind(kind), i, n)) | some i in numbers.range(0, n - 1)]) == count(_of_kind(kind))
+		every j, l in _of_kind(kind) {
+			l in _slice(_of_kind(kind), j % n, n)
+		}
+	}
+	count(_slices) == 3
+}
+
+_survivors(kind) := _survivors_in(kind, 0, 1)
+
+_survivors_in(kind, i, n) := {[path, json.marshal(nv)] |
+	some [path, v] in _slice(_of_kind(kind), i, n)
 	_kind(v) == kind
 	not path in _unread
 	some nv in _wrong(v)
@@ -62,19 +83,114 @@ _removal_survivors := {path |
 	_passes(json.patch(green, [{"op": "remove", "path": path}]))
 }
 
-test_no_number_of_another_type_passes if {
+test_no_number_of_another_type_passes_slice_0 if {
 	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
-	count(_survivors("number")) == 0
+	count(_survivors_in("number", 0, 8)) == 0
 }
 
-test_no_yes_no_of_another_type_passes if {
+test_no_number_of_another_type_passes_slice_1 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 1, 8)) == 0
+}
+
+test_no_number_of_another_type_passes_slice_2 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 2, 8)) == 0
+}
+
+test_no_number_of_another_type_passes_slice_3 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 3, 8)) == 0
+}
+
+test_no_number_of_another_type_passes_slice_4 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 4, 8)) == 0
+}
+
+test_no_number_of_another_type_passes_slice_5 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 5, 8)) == 0
+}
+
+test_no_number_of_another_type_passes_slice_6 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 6, 8)) == 0
+}
+
+test_no_number_of_another_type_passes_slice_7 if {
+	count([1 | some [_, v] in _leaves; is_number(v)]) > 30
+	count(_survivors_in("number", 7, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_0 if {
 	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
-	count(_survivors("yes/no")) == 0
+	count(_survivors_in("yes/no", 0, 8)) == 0
 }
 
-test_no_attestation_of_another_type_passes if {
+test_no_yes_no_of_another_type_passes_slice_1 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 1, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_2 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 2, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_3 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 3, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_4 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 4, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_5 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 5, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_6 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 6, 8)) == 0
+}
+
+test_no_yes_no_of_another_type_passes_slice_7 if {
+	count([1 | some [_, v] in _leaves; _yn(v)]) > 40
+	count(_survivors_in("yes/no", 7, 8)) == 0
+}
+
+test_no_attestation_of_another_type_passes_slice_0 if {
 	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
-	count(_survivors("boolean")) == 0
+	count(_survivors_in("boolean", 0, 6)) == 0
+}
+
+test_no_attestation_of_another_type_passes_slice_1 if {
+	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
+	count(_survivors_in("boolean", 1, 6)) == 0
+}
+
+test_no_attestation_of_another_type_passes_slice_2 if {
+	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
+	count(_survivors_in("boolean", 2, 6)) == 0
+}
+
+test_no_attestation_of_another_type_passes_slice_3 if {
+	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
+	count(_survivors_in("boolean", 3, 6)) == 0
+}
+
+test_no_attestation_of_another_type_passes_slice_4 if {
+	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
+	count(_survivors_in("boolean", 4, 6)) == 0
+}
+
+test_no_attestation_of_another_type_passes_slice_5 if {
+	count([1 | some [_, v] in _leaves; is_boolean(v)]) == 13
+	count(_survivors_in("boolean", 5, 6)) == 0
 }
 
 test_no_removed_required_leaf_passes if count(_removal_survivors) == 0
