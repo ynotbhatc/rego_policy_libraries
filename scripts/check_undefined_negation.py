@@ -470,13 +470,16 @@ class Scanner:
                     r = r.get("else")
         for h in self.hits:                       # guard hint: the same path is read elsewhere in a way that
             probed = self.pkgs[h["pkg"]].probed   # is defined when it is missing (to be confirmed by reading)
-            h["guard"] = next((probed[x] for x in h["paths"] if x in probed), "")
+            own = f"{h['file']}:{h['line']}"
+            h["guard"] = next((w for x in h["paths"] for w in probed.get(x, ()) if w != own), "")
             # a comparison after a type check of the same fact, with the missing case reported by a rule of the
             # package (object.get / not elsewhere): the evidence rule's own shape, not a dropped row
             if h["used"] and h["effect"] in ("fail-open", "review"):
                 h["effect"] = "guarded"      # the same fact is read by a positive line earlier in the rule: that line is the filter
             if h["present"] and h["effect"] in ("fail-open", "review"):
                 h["effect"] = "guarded"      # `_has_key(obj, "k")` earlier in the rule: an optional field, checked if present
+            if h["kind"] == "get-default" and h["guard"] and h["effect"] == "fail-open":
+                h["effect"] = "guarded"      # the same object.get(..) is also read by a line that reports the missing case
             if h["typed"] and h["guard"] and h["kind"] in SIBLING_KINDS and h["effect"] == "fail-open":
                 h["effect"] = "guarded"
         return self.hits
@@ -733,7 +736,7 @@ class Scanner:
                 if k.get("type") == "array" and all(x.get("type") == "string" for x in k["value"]):
                     return self._norm(a[0], env, depth + 1) + "".join("." + x["value"] for x in k["value"])
                 return self._norm(a[0], env, depth + 1) + "[]"
-            return "?"
+            return "(" + _text(term) + ")"
         if t != "ref":
             return "?"
         head = term["value"][0]
@@ -762,17 +765,17 @@ class Scanner:
                         ctx["typed"].add(self._norm(a, env))
         if e.get("negated"):
             if op is None and args and args[0].get("type") == "ref":
-                probed.setdefault(self._norm(args[0], env), where)
+                probed.setdefault(self._norm(args[0], env), []).append(where)
             elif op == "equal":
                 for a in args:
                     if a.get("type") == "ref":
-                        probed.setdefault(self._norm(a, env), where)
+                        probed.setdefault(self._norm(a, env), []).append(where)
 
         def walk(term):
             t = term.get("type")
             if t == "call":
                 if _opname(term["value"][0]) == "object.get" and len(term["value"]) == 4:
-                    probed.setdefault(self._norm(term, env), where)
+                    probed.setdefault(self._norm(term, env), []).append(where)
                 for a in term["value"][1:]:
                     walk(a)
             elif t in ("array", "set"):
@@ -792,11 +795,11 @@ class Scanner:
             cls = ctx["p"].cls.get(ctx["coll"], "other")
         return {"violation": "fail-open", "pass": "fail-closed"}.get(cls, "review")
 
-    def _hit(self, kind, expr, refs, ctx, effect=None, note=""):
+    def _hit(self, kind, expr, refs, ctx, effect=None, note="", paths=None):
         self.hits.append(Hit(file=ctx["f"], line=_row(expr), rule=ctx["rule"], kind=kind,
                              text=_text(expr)[:240], refs=sorted({_text(r) or "?" for r in refs}),
                              effect=effect or self._effect(ctx), where=ctx["coll"] or ctx["rule"], note=note,
-                             paths=sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"],
+                             paths=paths or sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"],
                              present=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["present"]
                                         for r in refs),
                              used=bool(refs) and all("[]" in self._norm(r, ctx["env"]) and self._norm(r, ctx["env"]) in ctx["used"] for r in refs),
@@ -1027,7 +1030,15 @@ class Scanner:
             holds = not holds
         # violation body: the line is false with the default -> no finding; pass body: true with the default -> pass
         if (cls == "violation" and not holds) or (cls == "pass" and holds):
-            self._hit("get-default", e, [], ctx, effect="fail-open",
+            src = args[0] if op is None else next((a for a in args if self._default_of(a, env) is not None), None)
+            if src is not None and src.get("type") == "var" and env.get(src["value"], ("",))[0] == "assign":
+                src = env[src["value"]][1]
+            tgt = []
+            if src is not None and src.get("type") == "call" and _opname(src["value"][0]) == "count":
+                src = src["value"][1]
+            if src is not None and src.get("type") == "call":
+                tgt = [self._norm(src, env)]
+            self._hit("get-default", e, [], ctx, effect="fail-open", paths=tgt,
                       note="the default passes" + (" (pass rule)" if cls == "pass" else ""))
 
 
