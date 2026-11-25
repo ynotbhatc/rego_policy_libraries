@@ -2,42 +2,199 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/crypto_miner_detection/schema.json",
  "title": "Input facts for crypto_miner_detection",
- "description": "Input paths referenced in the sources of threat_detection/crypto_mining/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in threat_detection/crypto_mining/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "crypto_miner_detection",
  "x-entrypoint": "data.crypto_miner_detection.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "threat_detection/crypto_mining/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.security.crypto_miner_detection_bad_evidence_test.clean_host",
  "type": "object",
  "properties": {
   "cron_jobs": {
-   "description": "Read in crypto_miner_detection.rego."
+   "description": "Read in crypto_miner_detection.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "command": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/usr/bin/dnf -y makecache"
+      ]
+     }
+    }
+   }
   },
   "installed_packages": {
-   "description": "Read in crypto_miner_detection.rego."
+   "description": "Read in crypto_miner_detection.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "openssh-server"
+      ]
+     }
+    }
+   }
   },
   "network_connections": {
-   "description": "Read in crypto_miner_detection.rego."
+   "description": "Read in crypto_miner_detection.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "remote_host": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "repo.example.com"
+      ]
+     },
+     "remote_port": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       443
+      ]
+     },
+     "state": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "ESTABLISHED"
+      ]
+     }
+    }
+   }
   },
   "running_processes": {
-   "description": "Read in crypto_miner_detection.rego."
+   "description": "Read in crypto_miner_detection.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "cmdline": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/usr/sbin/sshd -D"
+      ]
+     },
+     "cpu_percent": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       0.3
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "sshd"
+      ]
+     },
+     "pid": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       812
+      ]
+     },
+     "running_time_minutes": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       4000
+      ]
+     }
+    }
+   }
   },
   "suspicious_files": {
-   "description": "Read in crypto_miner_detection.rego."
+   "description": "Read in crypto_miner_detection.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+   },
+   "examples": [
+    []
+   ]
   },
   "systemd_services": {
-   "description": "Read in crypto_miner_detection.rego."
+   "description": "Read in crypto_miner_detection.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "exec_start": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/usr/sbin/sshd -D"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "sshd.service"
+      ]
+     }
+    }
+   }
   }
  },
  "additionalProperties": true,
  "x-known-paths": [
   "cron_jobs",
+  "cron_jobs[].command",
   "installed_packages",
+  "installed_packages[].name",
   "network_connections",
+  "network_connections[].remote_host",
+  "network_connections[].remote_port",
+  "network_connections[].state",
   "running_processes",
+  "running_processes[].cmdline",
+  "running_processes[].cpu_percent",
+  "running_processes[].name",
+  "running_processes[].pid",
+  "running_processes[].running_time_minutes",
   "suspicious_files",
-  "systemd_services"
+  "systemd_services",
+  "systemd_services[].exec_start",
+  "systemd_services[].name"
  ]
 }

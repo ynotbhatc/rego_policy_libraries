@@ -57,7 +57,7 @@
    }
   },
   "audit_policy": {
-   "description": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value: 0 none, 1 success, 2 failure, 3 both>}",
+   "description": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value as a JSON number: 0 none, 1 success, 2 failure, 3 both>}",
    "type": "object",
    "properties": {
     "{0cce9210-69ae-11d9-bed3-505054503030}": {
@@ -365,7 +365,7 @@
    }
   },
   "registry": {
-   "description": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD int | REG_SZ string | REG_MULTI_SZ list>}}; omit a value that does not exist",
+   "description": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD / REG_QWORD: JSON number | REG_SZ / REG_EXPAND_SZ: string, also when it holds a number | REG_MULTI_SZ: list of strings>}}; omit a value that does not exist. The type is evidence: a number sent as a string (or a REG_SZ number sent as a number) fails the recommendation",
    "type": "object",
    "properties": {
     "HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {
@@ -388,18 +388,18 @@
      "properties": {
       "AutoAdminLogon": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       },
       "CachedLogonsCount": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        4
+        "4"
        ]
       },
       "ForceUnlockLogon": {
@@ -420,10 +420,10 @@
       },
       "ScRemoveOption": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        3
+        "3"
        ]
       }
      }
@@ -1963,10 +1963,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -1985,10 +1985,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -2007,10 +2007,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -2029,10 +2029,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -3763,7 +3763,7 @@
    "x-variable-key": "<user SID>"
   },
   "secedit": {
-   "description": "{system_access: {<key>: <int|string>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export",
+   "description": "{system_access: {<key>: <JSON number for a numeric key, string for NewAdministratorName / NewGuestName>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export; omit a right nobody holds",
    "type": "object",
    "properties": {
     "privilege_rights": {

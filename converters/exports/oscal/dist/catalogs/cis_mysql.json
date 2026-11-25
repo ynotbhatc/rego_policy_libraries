@@ -259,6 +259,11 @@
         "id": "cis_mysql-1.6_stmt",
         "name": "statement",
         "prose": "Verify That 'MYSQL_PWD' Is Not Set In Users' Profiles"
+       },
+       {
+        "id": "cis_mysql-1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mysql.user_profiles[%d].content %s"
        }
       ],
       "class": "security"
@@ -292,6 +297,11 @@
         "id": "cis_mysql-1.7_stmt",
         "name": "statement",
         "prose": "Verify That the 'mysql' Database Is Not Accessible by Unauthorized Users"
+       },
+       {
+        "id": "cis_mysql-1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mysql.database_privileges.mysql_db[%d].user %s"
        }
       ],
       "class": "security"
@@ -1513,6 +1523,11 @@
         "id": "cis_mysql-4.2_stmt",
         "name": "statement",
         "prose": "the 'test' Database must not be present"
+       },
+       {
+        "id": "cis_mysql-4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mysql.databases[%d].name %s"
        }
       ],
       "class": "security"
@@ -2668,6 +2683,11 @@
         "id": "cis_mysql-5.9_stmt",
         "name": "statement",
         "prose": "DML/DDL Grants must be Limited to Specific Databases and Users"
+       },
+       {
+        "id": "cis_mysql-5.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mysql.database_grants[%d].db %s"
        }
       ],
       "class": "security"
@@ -5077,6 +5097,11 @@
         "id": "cis_mysql-9.10_stmt",
         "name": "statement",
         "prose": "Replication User must have Limited Privileges"
+       },
+       {
+        "id": "cis_mysql-9.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mysql.replication.users[%d].privileges.%s %s"
        }
       ],
       "class": "security"
@@ -5209,6 +5234,138 @@
         "id": "cis_mysql-9.14_stmt",
         "name": "statement",
         "prose": "'enforce_gtid_consistency' must be turned on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-cis.mysql_8-1",
+      "title": "%s: evidence missing — mysql.users[%d].%s %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mysql_8#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mysql_8#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e954d79f-23c0-54cb-a178-efe3c13c9aa4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-cis.mysql_8-1_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — mysql.users[%d].%s %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-cis.mysql_8-2",
+      "title": "%s: evidence missing — mysql.users[%d].%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mysql_8#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mysql_8#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e954d79f-23c0-54cb-a178-efe3c13c9aa4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-cis.mysql_8-2_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — mysql.users[%d].%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-cis.mysql_8-3",
+      "title": "%s: evidence missing — mysql.users[%d] is not an object (got %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mysql_8#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mysql_8#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e954d79f-23c0-54cb-a178-efe3c13c9aa4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-cis.mysql_8-3_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — mysql.users[%d] is not an object (got %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mysql-cis.mysql_8-4",
+      "title": "%s: evidence missing — mysql.users[%d].privileges.%s %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.mysql_8#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.mysql_8#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e954d79f-23c0-54cb-a178-efe3c13c9aa4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mysql-cis.mysql_8-4_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — mysql.users[%d].privileges.%s %s"
        }
       ],
       "class": "security"

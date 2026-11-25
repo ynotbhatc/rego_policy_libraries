@@ -468,7 +468,7 @@
      ]
     },
     "min_rsa_size": {
-     "description": "RHEL-10-300010: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by RHEL-10-300010. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-300010: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by RHEL-10-300010. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -575,7 +575,7 @@
    "type": "object",
    "properties": {
     "deny": {
-     "description": "RHEL-10-600410: deny as configured in /etc/security/faillock.conf. Read by RHEL-10-600410. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600410: deny as configured in /etc/security/faillock.conf. Read by RHEL-10-600410. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -591,7 +591,7 @@
      ]
     },
     "fail_interval": {
-     "description": "RHEL-10-600420: fail_interval as configured in /etc/security/faillock.conf. Read by RHEL-10-600420. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600420: fail_interval as configured in /etc/security/faillock.conf. Read by RHEL-10-600420. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1517,7 +1517,7 @@
    "type": "object",
    "properties": {
     "dcredit": {
-     "description": "RHEL-10-600310: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600310. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600310: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600310. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1533,7 +1533,7 @@
      ]
     },
     "inactive_days": {
-     "description": "RHEL-10-600160: INACTIVE as configured in /etc/default/useradd. Read by RHEL-10-600160. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600160: INACTIVE as configured in /etc/default/useradd. Read by RHEL-10-600160. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1549,7 +1549,7 @@
      ]
     },
     "lcredit": {
-     "description": "RHEL-10-600240: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600240. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600240: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600240. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1565,7 +1565,7 @@
      ]
     },
     "maxdays": {
-     "description": "RHEL-10-600100: PASS_MAX_DAYS as configured in /etc/login.defs. Read by RHEL-10-600100. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600100: PASS_MAX_DAYS as configured in /etc/login.defs. Read by RHEL-10-600100. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1581,7 +1581,7 @@
      ]
     },
     "mindays": {
-     "description": "RHEL-10-600210: PASS_MIN_DAYS as configured in /etc/login.defs. Read by RHEL-10-600210. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600210: PASS_MIN_DAYS as configured in /etc/login.defs. Read by RHEL-10-600210. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1597,7 +1597,7 @@
      ]
     },
     "minlen": {
-     "description": "RHEL-10-600220: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600220. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600220: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600220. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1613,7 +1613,7 @@
      ]
     },
     "ocredit": {
-     "description": "RHEL-10-600230: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600230. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600230: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600230. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1629,7 +1629,7 @@
      ]
     },
     "ucredit": {
-     "description": "RHEL-10-600250: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600250. Accepted: number, or string holding a decimal integer.",
+     "description": "RHEL-10-600250: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by RHEL-10-600250. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"

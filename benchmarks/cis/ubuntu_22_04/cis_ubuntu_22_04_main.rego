@@ -6,13 +6,10 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 0
-#     cited: 0
-#     expected: 306
-#     found: 310
-#     scope: directory
-#     density: over
-#     basis: declared-total
+#     checks: 2
+#     cited: 1
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

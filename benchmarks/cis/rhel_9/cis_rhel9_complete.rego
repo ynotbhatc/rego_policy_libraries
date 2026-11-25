@@ -6,8 +6,8 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 8
+#     checks: 22
+#     cited: 22
 #     density: orchestrator
 #     basis: role
 #     tested: true

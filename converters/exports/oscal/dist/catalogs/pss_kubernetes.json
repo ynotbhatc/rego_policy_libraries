@@ -100,7 +100,7 @@
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-2",
-      "title": "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true",
+      "title": "PSS baseline (fail-closed): input.pod.spec.containers is not a non-empty list of container objects (or initContainers / ephemeralContainers is not a list of objects) — the containers were not evaluate",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-2_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true"
+        "prose": "PSS baseline (fail-closed): input.pod.spec.containers is not a non-empty list of container objects (or initContainers / ephemeralContainers is not a list of objects) — the containers were not evaluated"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-3",
-      "title": "PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true",
+      "title": "PSS baseline (fail-closed): %s securityContext is not an object — its settings were not evaluated",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-3_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true"
+        "prose": "PSS baseline (fail-closed): %s securityContext is not an object — its settings were not evaluated"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-4",
-      "title": "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace",
+      "title": "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-4_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace"
+        "prose": "PSS baseline (host-process): pod securityContext sets windowsOptions.hostProcess=true"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-5",
-      "title": "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace",
+      "title": "PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-5_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace"
+        "prose": "PSS baseline (host-process): container %q sets windowsOptions.hostProcess=true"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-6",
-      "title": "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace",
+      "title": "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-6_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace"
+        "prose": "PSS baseline (host-namespaces): spec.hostNetwork=true shares the host network namespace"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-7",
-      "title": "PSS baseline (privileged): container %q runs privileged",
+      "title": "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-7_stmt",
         "name": "statement",
-        "prose": "PSS baseline (privileged): container %q runs privileged"
+        "prose": "PSS baseline (host-namespaces): spec.hostPID=true shares the host PID namespace"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-8",
-      "title": "PSS baseline (capabilities): container %q adds capability %q beyond the baseline allow-list",
+      "title": "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-8_stmt",
         "name": "statement",
-        "prose": "PSS baseline (capabilities): container %q adds capability %q beyond the baseline allow-list"
+        "prose": "PSS baseline (host-namespaces): spec.hostIPC=true shares the host IPC namespace"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-9",
-      "title": "PSS baseline (hostpath): volume %q mounts a hostPath",
+      "title": "PSS baseline (privileged): container %q runs privileged",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-9_stmt",
         "name": "statement",
-        "prose": "PSS baseline (hostpath): volume %q mounts a hostPath"
+        "prose": "PSS baseline (privileged): container %q runs privileged"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-10",
-      "title": "PSS baseline (host-ports): container %q binds hostPort %v",
+      "title": "PSS baseline (capabilities): container %q adds capability %q beyond the baseline allow-list",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-10_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-ports): container %q binds hostPort %v"
+        "prose": "PSS baseline (capabilities): container %q adds capability %q beyond the baseline allow-list"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-11",
-      "title": "PSS baseline (host-probes): container %q %s targets host %q",
+      "title": "PSS baseline (hostpath): volume %q mounts a hostPath",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-11_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-probes): container %q %s targets host %q"
+        "prose": "PSS baseline (hostpath): volume %q mounts a hostPath"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-12",
-      "title": "PSS baseline (host-probes): container %q %s tcpSocket targets host %q",
+      "title": "PSS baseline (host-ports): container %q binds hostPort %v",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-12_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-probes): container %q %s tcpSocket targets host %q"
+        "prose": "PSS baseline (host-ports): container %q binds hostPort %v"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-13",
-      "title": "PSS baseline (host-probes): container %q lifecycle %s targets host %q",
+      "title": "PSS baseline (host-probes): container %q %s targets host %q",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-13_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-probes): container %q lifecycle %s targets host %q"
+        "prose": "PSS baseline (host-probes): container %q %s targets host %q"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-14",
-      "title": "PSS baseline (host-probes): container %q lifecycle %s tcpSocket targets host %q",
+      "title": "PSS baseline (host-probes): container %q %s tcpSocket targets host %q",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-14_stmt",
         "name": "statement",
-        "prose": "PSS baseline (host-probes): container %q lifecycle %s tcpSocket targets host %q"
+        "prose": "PSS baseline (host-probes): container %q %s tcpSocket targets host %q"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-15",
-      "title": "PSS baseline (apparmor): pod appArmorProfile.type %q is not RuntimeDefault or Localhost",
+      "title": "PSS baseline (host-probes): container %q lifecycle %s targets host %q",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-15_stmt",
         "name": "statement",
-        "prose": "PSS baseline (apparmor): pod appArmorProfile.type %q is not RuntimeDefault or Localhost"
+        "prose": "PSS baseline (host-probes): container %q lifecycle %s targets host %q"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-16",
-      "title": "PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost",
+      "title": "PSS baseline (host-probes): container %q lifecycle %s tcpSocket targets host %q",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-16_stmt",
         "name": "statement",
-        "prose": "PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost"
+        "prose": "PSS baseline (host-probes): container %q lifecycle %s tcpSocket targets host %q"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-17",
-      "title": "PSS baseline (selinux): pod seLinuxOptions.type %q is outside the allowed set",
+      "title": "PSS baseline (apparmor): pod appArmorProfile.type %q is not RuntimeDefault or Localhost",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-17_stmt",
         "name": "statement",
-        "prose": "PSS baseline (selinux): pod seLinuxOptions.type %q is outside the allowed set"
+        "prose": "PSS baseline (apparmor): pod appArmorProfile.type %q is not RuntimeDefault or Localhost"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-18",
-      "title": "PSS baseline (selinux): container %q seLinuxOptions.type %q is outside the allowed set",
+      "title": "PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-18_stmt",
         "name": "statement",
-        "prose": "PSS baseline (selinux): container %q seLinuxOptions.type %q is outside the allowed set"
+        "prose": "PSS baseline (apparmor): container %q appArmorProfile.type %q is not RuntimeDefault or Localhost"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-19",
-      "title": "PSS baseline (selinux): pod seLinuxOptions.%s must be unset",
+      "title": "PSS baseline (apparmor): annotation %s is %v, not runtime/default or localhost/*",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-19_stmt",
         "name": "statement",
-        "prose": "PSS baseline (selinux): pod seLinuxOptions.%s must be unset"
+        "prose": "PSS baseline (apparmor): annotation %s is %v, not runtime/default or localhost/*"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-20",
-      "title": "PSS baseline (selinux): container %q seLinuxOptions.%s must be unset",
+      "title": "PSS baseline (apparmor): input.pod.metadata or its annotations is not an object — the AppArmor annotations cannot be evaluated",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-20_stmt",
         "name": "statement",
-        "prose": "PSS baseline (selinux): container %q seLinuxOptions.%s must be unset"
+        "prose": "PSS baseline (apparmor): input.pod.metadata or its annotations is not an object — the AppArmor annotations cannot be evaluated"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-21",
-      "title": "PSS baseline (proc-mount): container %q sets procMount=%q (only Default is allowed)",
+      "title": "PSS baseline (selinux): pod seLinuxOptions.type %q is outside the allowed set",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-21_stmt",
         "name": "statement",
-        "prose": "PSS baseline (proc-mount): container %q sets procMount=%q (only Default is allowed)"
+        "prose": "PSS baseline (selinux): pod seLinuxOptions.type %q is outside the allowed set"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-22",
-      "title": "PSS baseline (seccomp): pod seccompProfile.type=Unconfined is not allowed",
+      "title": "PSS baseline (selinux): container %q seLinuxOptions.type %q is outside the allowed set",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-22_stmt",
         "name": "statement",
-        "prose": "PSS baseline (seccomp): pod seccompProfile.type=Unconfined is not allowed"
+        "prose": "PSS baseline (selinux): container %q seLinuxOptions.type %q is outside the allowed set"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-23",
-      "title": "PSS baseline (seccomp): container %q sets seccompProfile.type=Unconfined",
+      "title": "PSS baseline (selinux): pod seLinuxOptions.%s must be unset",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-23_stmt",
         "name": "statement",
-        "prose": "PSS baseline (seccomp): container %q sets seccompProfile.type=Unconfined"
+        "prose": "PSS baseline (selinux): pod seLinuxOptions.%s must be unset"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-24",
-      "title": "PSS baseline (sysctls): sysctl %q is outside the safe set",
+      "title": "PSS baseline (selinux): container %q seLinuxOptions.%s must be unset",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-24_stmt",
         "name": "statement",
-        "prose": "PSS baseline (sysctls): sysctl %q is outside the safe set"
+        "prose": "PSS baseline (selinux): container %q seLinuxOptions.%s must be unset"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-25",
-      "title": "PSS restricted (volume-types): volume %q uses disallowed type %q",
+      "title": "PSS baseline (proc-mount): container %q sets procMount=%q (only Default is allowed)",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-25_stmt",
         "name": "statement",
-        "prose": "PSS restricted (volume-types): volume %q uses disallowed type %q"
+        "prose": "PSS baseline (proc-mount): container %q sets procMount=%q (only Default is allowed)"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-26",
-      "title": "PSS restricted (privilege-escalation): container %q must explicitly set allowPrivilegeEscalation=false",
+      "title": "PSS baseline (seccomp): pod seccompProfile.type=Unconfined is not allowed",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-26_stmt",
         "name": "statement",
-        "prose": "PSS restricted (privilege-escalation): container %q must explicitly set allowPrivilegeEscalation=false"
+        "prose": "PSS baseline (seccomp): pod seccompProfile.type=Unconfined is not allowed"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-27",
-      "title": "PSS restricted (run-as-nonroot): container %q does not run as non-root (set runAsNonRoot=true at pod or container level)",
+      "title": "PSS baseline (seccomp): container %q sets seccompProfile.type=Unconfined",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-27_stmt",
         "name": "statement",
-        "prose": "PSS restricted (run-as-nonroot): container %q does not run as non-root (set runAsNonRoot=true at pod or container level)"
+        "prose": "PSS baseline (seccomp): container %q sets seccompProfile.type=Unconfined"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-28",
-      "title": "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed",
+      "title": "PSS baseline (sysctls): sysctl %q is outside the safe set",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-28_stmt",
         "name": "statement",
-        "prose": "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed"
+        "prose": "PSS baseline (sysctls): sysctl %q is outside the safe set"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-29",
-      "title": "PSS restricted (run-as-user): container %q sets runAsUser=0 (root)",
+      "title": "PSS restricted (volume-types): volume %q uses disallowed type %q",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-29_stmt",
         "name": "statement",
-        "prose": "PSS restricted (run-as-user): container %q sets runAsUser=0 (root)"
+        "prose": "PSS restricted (volume-types): volume %q uses disallowed type %q"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-30",
-      "title": "PSS restricted (seccomp): container %q has no explicit RuntimeDefault/Localhost seccomp profile",
+      "title": "PSS restricted (privilege-escalation): container %q must explicitly set allowPrivilegeEscalation=false",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-30_stmt",
         "name": "statement",
-        "prose": "PSS restricted (seccomp): container %q has no explicit RuntimeDefault/Localhost seccomp profile"
+        "prose": "PSS restricted (privilege-escalation): container %q must explicitly set allowPrivilegeEscalation=false"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-31",
-      "title": "PSS restricted (capabilities): container %q must drop ALL capabilities",
+      "title": "PSS restricted (run-as-nonroot): container %q does not run as non-root (set runAsNonRoot=true at pod or container level)",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "pss_kubernetes-k8s_pss.main-31_stmt",
         "name": "statement",
-        "prose": "PSS restricted (capabilities): container %q must drop ALL capabilities"
+        "prose": "PSS restricted (run-as-nonroot): container %q does not run as non-root (set runAsNonRoot=true at pod or container level)"
        }
       ],
       "class": "security"
      },
      {
       "id": "pss_kubernetes-k8s_pss.main-32",
-      "title": "PSS restricted (capabilities): container %q adds capability %q (only NET_BIND_SERVICE may be added back)",
+      "title": "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed",
       "props": [
        {
         "name": "label",
@@ -1115,6 +1115,138 @@
       "parts": [
        {
         "id": "pss_kubernetes-k8s_pss.main-32_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (run-as-user): pod securityContext.runAsUser=0 (root) is not allowed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-33",
+      "title": "PSS restricted (run-as-user): container %q sets runAsUser=0 (root)",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c669d0e8-2264-5aea-b29b-8042e4894732",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-33_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (run-as-user): container %q sets runAsUser=0 (root)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-34",
+      "title": "PSS restricted (seccomp): container %q has no explicit RuntimeDefault/Localhost seccomp profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c669d0e8-2264-5aea-b29b-8042e4894732",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-34_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (seccomp): container %q has no explicit RuntimeDefault/Localhost seccomp profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-35",
+      "title": "PSS restricted (capabilities): container %q must drop ALL capabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c669d0e8-2264-5aea-b29b-8042e4894732",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-35_stmt",
+        "name": "statement",
+        "prose": "PSS restricted (capabilities): container %q must drop ALL capabilities"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "pss_kubernetes-k8s_pss.main-36",
+      "title": "PSS restricted (capabilities): container %q adds capability %q (only NET_BIND_SERVICE may be added back)",
+      "props": [
+       {
+        "name": "label",
+        "value": "k8s_pss.main#36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k8s_pss.main#36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "k8s_pss.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c669d0e8-2264-5aea-b29b-8042e4894732",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pss_kubernetes-k8s_pss.main-36_stmt",
         "name": "statement",
         "prose": "PSS restricted (capabilities): container %q adds capability %q (only NET_BIND_SERVICE may be added back)"
        }

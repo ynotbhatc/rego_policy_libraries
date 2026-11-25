@@ -10,170 +10,179 @@
   "enforcement/terraform/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.sentinel.terraform_test.pkg",
+ "x-fixture": "data.sentinel.terraform_malformed_test.good_plan",
  "type": "object",
  "properties": {
-  "allow": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "boolean",
-   "x-type-source": "fixture",
-   "examples": [
-    true
-   ]
-  },
-  "approved_regions": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "array",
-   "x-type-source": "fixture",
-   "items": {
-    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-    "type": "string",
-    "x-type-source": "fixture",
-    "examples": [
-     "eu-west-1"
-    ]
-   },
-   "examples": [
-    [
-     "eu-west-1",
-     "us-east-1",
-     "us-east-2"
-    ]
-   ]
-  },
   "format_version": {
-   "description": "Read in terraform_plan_validation.rego."
-  },
-  "required_tags": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "array",
-   "x-type-source": "fixture",
-   "items": {
-    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-    "type": "string",
-    "x-type-source": "fixture",
-    "examples": [
-     "CostCenter"
-    ]
-   },
-   "examples": [
-    [
-     "CostCenter",
-     "Environment",
-     "Owner"
-    ]
-   ]
-  },
-  "resource_changes": {
    "description": "Read in sentinel_terraform.rego, terraform_plan_validation.rego."
   },
-  "result": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "object",
-   "properties": {
-    "allow": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "boolean",
-     "x-type-source": "fixture",
-     "examples": [
-      true
-     ]
-    },
-    "policy": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "string",
-     "x-type-source": "fixture",
-     "examples": [
-      "Sentinel — Terraform Plan"
-     ]
-    },
-    "required_tags": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "array",
-     "x-type-source": "fixture",
-     "items": {
+  "resource_changes": {
+   "description": "Read in sentinel_terraform.rego, terraform_plan_validation.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "address": {
       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
       "type": "string",
       "x-type-source": "fixture",
       "examples": [
-       "CostCenter"
+       "aws_instance.web"
       ]
      },
-     "examples": [
-      [
-       "CostCenter",
-       "Environment",
-       "Owner"
-      ]
-     ]
-    },
-    "violation_count": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "number",
-     "x-type-source": "fixture",
-     "examples": [
-      0
-     ]
-    },
-    "violations": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "array",
-     "x-type-source": "fixture",
-     "items": {
-      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     "change": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "actions": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "create"
+         ]
+        },
+        "examples": [
+         [
+          "create"
+         ]
+        ]
+       },
+       "after": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "ingress": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "array",
+          "x-type-source": "fixture",
+          "items": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "object",
+           "properties": {
+            "cidr_blocks": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "array",
+             "x-type-source": "fixture",
+             "items": {
+              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+              "type": "string",
+              "x-type-source": "fixture",
+              "examples": [
+               "10.0.0.0/8"
+              ]
+             },
+             "examples": [
+              [
+               "10.0.0.0/8"
+              ]
+             ]
+            },
+            "from_port": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              22
+             ]
+            },
+            "protocol": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "string",
+             "x-type-source": "fixture",
+             "examples": [
+              "tcp"
+             ]
+            },
+            "to_port": {
+             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+             "type": "number",
+             "x-type-source": "fixture",
+             "examples": [
+              22
+             ]
+            }
+           }
+          }
+         },
+         "region": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "us-east-1"
+          ]
+         },
+         "tags": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "object",
+          "properties": {
+           "CostCenter": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "cc-1"
+            ]
+           },
+           "Environment": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "prod"
+            ]
+           },
+           "Owner": {
+            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+            "type": "string",
+            "x-type-source": "fixture",
+            "examples": [
+             "platform"
+            ]
+           }
+          }
+         }
+        }
+       }
+      }
      },
-     "examples": [
-      []
-     ]
+     "type": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "aws_instance"
+      ]
+     }
     }
    }
-  },
-  "sensitive_ports": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "array",
-   "x-type-source": "fixture",
-   "items": {
-    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-    "type": "number",
-    "x-type-source": "fixture",
-    "examples": [
-     22
-    ]
-   },
-   "examples": [
-    [
-     22,
-     1433,
-     3306
-    ]
-   ]
-  },
-  "violations": {
-   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-   "type": "array",
-   "x-type-source": "fixture",
-   "items": {
-    "description": "From the all-pass test fixture; no direct input reference found by the static scan."
-   },
-   "examples": [
-    []
-   ]
   }
  },
  "additionalProperties": true,
  "x-known-paths": [
-  "allow",
-  "approved_regions",
   "format_version",
-  "required_tags",
   "resource_changes",
-  "result",
-  "result.allow",
-  "result.policy",
-  "result.required_tags",
-  "result.violation_count",
-  "result.violations",
-  "sensitive_ports",
-  "violations"
+  "resource_changes[].address",
+  "resource_changes[].change",
+  "resource_changes[].change.actions",
+  "resource_changes[].change.after",
+  "resource_changes[].change.after.ingress",
+  "resource_changes[].change.after.ingress[].cidr_blocks",
+  "resource_changes[].change.after.ingress[].from_port",
+  "resource_changes[].change.after.ingress[].protocol",
+  "resource_changes[].change.after.ingress[].to_port",
+  "resource_changes[].change.after.region",
+  "resource_changes[].change.after.tags",
+  "resource_changes[].change.after.tags.CostCenter",
+  "resource_changes[].change.after.tags.Environment",
+  "resource_changes[].change.after.tags.Owner",
+  "resource_changes[].type"
  ]
 }

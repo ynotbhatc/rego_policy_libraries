@@ -2,43 +2,68 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/swift_csp/schema.json",
  "title": "Input facts for swift_csp",
- "description": "Input paths referenced in the sources of frameworks/financial/swift_csp/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/financial/swift_csp/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "swift_csp",
  "x-entrypoint": "data.swift_csp.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/financial/swift_csp/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.swift_csp.evidence_rule_test.mandatory_facts",
  "type": "object",
  "properties": {
   "access_control": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "access_reviews": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "periodic": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "privileged_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "mfa": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "least_privilege": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "role_based": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -48,50 +73,82 @@
    "description": "Read in swift_csp_main.rego."
   },
   "authentication": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "passwords": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "change_on_compromise": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "strong_policy": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "back_office": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "data_flows": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "encrypted": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "credential_storage": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "encrypted": {
-     "description": "Read in swift_csp_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "data_security": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "internal_flows": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "encrypted": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -101,77 +158,118 @@
    "description": "Read in swift_csp_main.rego."
   },
   "environment": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "data_flow": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "secure_zone": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "defined": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "network_segmentation": {
-       "description": "Read in swift_csp_main.rego."
-      }
-     }
-    },
-    "transaction_business_controls": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "implemented": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "hardening": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "swift_systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "baseline_applied": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "unnecessary_services": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "disabled": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "incident_response": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "plan": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "swift_notification_included": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "swift_specific": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_notification": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "process_exists": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -179,95 +277,153 @@
   },
   "infrastructure": {
    "description": "Read in swift_csp_main.rego.",
+   "type": "object",
    "properties": {
     "virtualisation": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "host_hardened": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "swift_vms_isolated": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "virtualised": {
-     "description": "Read in swift_csp_main.rego."
+     "description": "Read in swift_csp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "logging": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "retention": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "minimum_2_5_years_archived": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "minimum_3_months_online": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "all_events_captured": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_transactions": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "logged": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "malware_protection": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "swift_systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "antimalware_deployed": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "signatures_current": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "network": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "internet_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "restricted_from_swift_zone": {
-       "description": "Read in swift_csp_main.rego."
-      }
-     }
-    },
-    "jump_server": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "deployed": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "outbound_filtering": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enabled": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -277,21 +433,34 @@
    "description": "Read in swift_csp_main.rego."
   },
   "os_security": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "admin_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "not_used_for_daily_tasks": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "privileged_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "restricted": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -299,62 +468,81 @@
   },
   "outsourcing": {
    "description": "Read in swift_csp_main.rego.",
+   "type": "object",
    "properties": {
     "service_provider": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "cscf_compliant": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_activities": {
-     "description": "Read in swift_csp_main.rego."
+     "description": "Read in swift_csp_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "patch_management": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "os": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "critical_patches_within_3_months": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_components": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "current": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "sessions": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "operator": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "encrypted": {
-       "description": "Read in swift_csp_main.rego."
-      }
-     }
-    }
-   }
-  },
-  "software_integrity": {
-   "description": "Read in swift_csp_main.rego.",
-   "properties": {
-    "swift_components": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "properties": {
-      "verified": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -364,55 +552,88 @@
    "description": "Read in swift_csp_main.rego."
   },
   "token_management": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "hardware_tokens": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "used_for_swift": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "tokens": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "secure_storage": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "training": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "social_engineering": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "included": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_staff": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "annual": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "transmission": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "swift_messages": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "integrity_protected": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -422,21 +643,34 @@
    "description": "Read in swift_csp_main.rego."
   },
   "vulnerability_scanning": {
-   "description": "Read in swift_csp_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "findings": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "remediated_timely": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "swift_zone": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "quarterly": {
-       "description": "Read in swift_csp_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -473,8 +707,6 @@
   "environment.secure_zone",
   "environment.secure_zone.defined",
   "environment.secure_zone.network_segmentation",
-  "environment.transaction_business_controls",
-  "environment.transaction_business_controls.implemented",
   "hardening",
   "hardening.swift_systems",
   "hardening.swift_systems.baseline_applied",
@@ -506,8 +738,6 @@
   "network",
   "network.internet_access",
   "network.internet_access.restricted_from_swift_zone",
-  "network.jump_server",
-  "network.jump_server.deployed",
   "network.outbound_filtering",
   "network.outbound_filtering.enabled",
   "next_attestation_due",
@@ -528,9 +758,6 @@
   "sessions",
   "sessions.operator",
   "sessions.operator.encrypted",
-  "software_integrity",
-  "software_integrity.swift_components",
-  "software_integrity.swift_components.verified",
   "swift_bic",
   "token_management",
   "token_management.hardware_tokens",

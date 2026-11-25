@@ -1549,6 +1549,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.admt-6",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.admt#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.admt#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.admt"
+       }
+      ],
+      "links": [
+       {
+        "href": "#880bcf96-342e-5e27-8d37-b6b064ee696d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.admt-6_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -1828,6 +1861,39 @@
         "id": "ccpa-CPRA-1798.99.80_stmt",
         "name": "statement",
         "prose": "Business qualifies as data broker but is not registered with the California Privacy Protection Agency"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.business_obligations-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.business_obligations#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.business_obligations#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.business_obligations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b033be4-79d9-53d9-be7b-2ac3d2deed97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.business_obligations-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
        }
       ],
       "class": "compliance"
@@ -3901,6 +3967,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.cybersecurity_audits-5",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.cybersecurity_audits#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.cybersecurity_audits#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.cybersecurity_audits"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4b9cfd83-1436-577b-81ed-3e8373951315",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.cybersecurity_audits-5_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -4076,6 +4175,261 @@
         "id": "ccpa-CPRA-1798.185-a-15_obj.2",
         "name": "assessment-objective",
         "prose": "Data Protection Assessments not reviewed annually"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "ccpa-ccpa_main",
+    "class": "rego-module",
+    "title": "Ccpa Main",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ccpa.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/ccpa/ccpa_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ccpa-admt",
+      "title": "Automated Decisionmaking Technology (11 CCR §§7200–7222)",
+      "props": [
+       {
+        "name": "label",
+        "value": "admt"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "admt"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-admt_stmt",
+        "name": "statement",
+        "prose": "Automated Decisionmaking Technology (11 CCR §§7200–7222)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-business_obligations",
+      "title": "Business Obligations",
+      "props": [
+       {
+        "name": "label",
+        "value": "business_obligations"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "business_obligations"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-business_obligations_stmt",
+        "name": "statement",
+        "prose": "Business Obligations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-consumer_rights",
+      "title": "Consumer Rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "consumer_rights"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "consumer_rights"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-consumer_rights_stmt",
+        "name": "statement",
+        "prose": "Consumer Rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-cybersecurity_audits",
+      "title": "Cybersecurity Audits (11 CCR §§7120–7124)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cybersecurity_audits"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cybersecurity_audits"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-cybersecurity_audits_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Audits (11 CCR §§7120–7124)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-data_practices",
+      "title": "Data Practices",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_practices"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_practices"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-data_practices_stmt",
+        "name": "statement",
+        "prose": "Data Practices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-risk_assessments",
+      "title": "Risk Assessments (11 CCR §§7150–7157)",
+      "props": [
+       {
+        "name": "label",
+        "value": "risk_assessments"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "risk_assessments"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-risk_assessments_stmt",
+        "name": "statement",
+        "prose": "Risk Assessments (11 CCR §§7150–7157)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-sensitive_data",
+      "title": "Sensitive Personal Information",
+      "props": [
+       {
+        "name": "label",
+        "value": "sensitive_data"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sensitive_data"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50783813-e8e8-5e1a-a12c-41b2120b73d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-sensitive_data_stmt",
+        "name": "statement",
+        "prose": "Sensitive Personal Information"
        }
       ],
       "class": "compliance"
@@ -4963,6 +5317,11 @@
         "id": "ccpa-CCPA-7155-b_obj.1",
         "name": "assessment-objective",
         "prose": "pre-existing processing continues without a risk assessment and none is scheduled before the 2027-12-31 deadline"
+       },
+       {
+        "id": "ccpa-CCPA-7155-b_obj.2",
+        "name": "assessment-objective",
+        "prose": "%s"
        }
       ],
       "class": "compliance"
@@ -5128,6 +5487,39 @@
         "id": "ccpa-ccpa.risk_assessments-5_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/privacy/ccpa/ccpa_risk_assessments.rego (package ccpa.risk_assessments); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ccpa-ccpa.risk_assessments-6",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "ccpa.risk_assessments#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ccpa.risk_assessments#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ccpa.risk_assessments"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac5ed0c8-e07e-59ce-a62c-984e21828175",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ccpa-ccpa.risk_assessments-6_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
        }
       ],
       "class": "compliance"
@@ -5373,6 +5765,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/ccpa/ccpa_data_practices.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "50783813-e8e8-5e1a-a12c-41b2120b73d3",
+     "title": "Ccpa Main",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ccpa.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/ccpa/ccpa_main.rego",
        "media-type": "text/plain"
       }
      ]

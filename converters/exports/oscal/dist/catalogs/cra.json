@@ -386,6 +386,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cra-cra.authorised_representative-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.authorised_representative#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.authorised_representative#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.authorised_representative"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0813cd8e-07b4-58ed-9447-66201778cb87",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.authorised_representative-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -745,6 +778,72 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cra-cra.conformity_assessment-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.conformity_assessment#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.conformity_assessment#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.conformity_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e4715ec-f899-59d4-a39c-dd31650e9578",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.conformity_assessment-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.conformity_assessment-2",
+      "title": "%s: applicability not determined — evidence missing: %s not collected as text",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.conformity_assessment#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.conformity_assessment#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.conformity_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e4715ec-f899-59d4-a39c-dd31650e9578",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.conformity_assessment-2_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — evidence missing: %s not collected as text"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -1101,6 +1200,39 @@
         "id": "cra-CRA-Art.13-1-via-ISO-27001-A.10.1.2_stmt",
         "name": "statement",
         "prose": "Manufacturer cannot attest to ensuring essential requirements compliance — key management foundation is incomplete"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.crypto_evidence-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.crypto_evidence#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.crypto_evidence#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.crypto_evidence"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a1295e4-1456-5624-9274-1ce092f48137",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.crypto_evidence-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
        }
       ],
       "class": "compliance"
@@ -1536,6 +1668,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cra-cra.declaration_of_conformity-2",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.declaration_of_conformity#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.declaration_of_conformity#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.declaration_of_conformity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92fc6480-8d51-5139-af4c-4006a7847c77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.declaration_of_conformity-2_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -1921,6 +2086,72 @@
         "id": "cra-CRA-Art.21_obj.2",
         "name": "assessment-objective",
         "prose": "Importer placing the product under its own name/trademark has not assumed manufacturer obligations under Article 13"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.distributor_obligations-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.distributor_obligations#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.distributor_obligations#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.distributor_obligations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3abf4d34-c2b4-53b8-89e8-dcc5e3a02486",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.distributor_obligations-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.distributor_obligations-2",
+      "title": "%s: applicability not determined — evidence missing: %s not collected as text",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.distributor_obligations#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.distributor_obligations#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.distributor_obligations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3abf4d34-c2b4-53b8-89e8-dcc5e3a02486",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.distributor_obligations-2_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — evidence missing: %s not collected as text"
        }
       ],
       "class": "compliance"
@@ -2596,6 +2827,11 @@
         "id": "cra-CRA-Art.3-22_stmt",
         "name": "statement",
         "prose": "applicability not determined — foss.claimed_exemption not declared"
+       },
+       {
+        "id": "cra-CRA-Art.3-22_obj.1",
+        "name": "assessment-objective",
+        "prose": "exclusion claimed — %s"
        }
       ],
       "class": "compliance"
@@ -3176,6 +3412,72 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cra-cra.importer_obligations-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.importer_obligations#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.importer_obligations#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.importer_obligations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9403b269-7708-5362-9571-d8489dcc847b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.importer_obligations-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.importer_obligations-2",
+      "title": "%s: applicability not determined — evidence missing: %s not collected as text",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.importer_obligations#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.importer_obligations#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.importer_obligations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9403b269-7708-5362-9571-d8489dcc847b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.importer_obligations-2_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — evidence missing: %s not collected as text"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -3579,6 +3881,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cra-cra.incident_reporting-2",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.incident_reporting#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.incident_reporting#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.incident_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5239910a-4e2a-5d3b-b493-d57687ab8b7e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.incident_reporting-2_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -3863,6 +4198,11 @@
        },
        {
         "id": "cra-CRA-Art.13-8_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence invalid: vulnerability_handling.expected_use_years is not a number (got %s)"
+       },
+       {
+        "id": "cra-CRA-Art.13-8_obj.6",
         "name": "assessment-objective",
         "prose": "declared support period (%d years) is shorter than the product's expected use time (%d years)"
        }
@@ -4651,6 +4991,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cra-cra.online_marketplace-19",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.online_marketplace#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.online_marketplace#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.online_marketplace"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4858a57f-e9aa-521a-877d-dbb81a4d3bdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.online_marketplace-19_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -4933,6 +5306,39 @@
         "id": "cra-CRA-Art.52-3_stmt",
         "name": "statement",
         "prose": "OSS steward has no established means to ensure that appropriate corrective action is taken for the products it supports"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.oss_steward-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.oss_steward#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.oss_steward#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.oss_steward"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0347abc-23eb-5dfb-8738-92f339a2a39d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.oss_steward-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
        }
       ],
       "class": "compliance"
@@ -5330,6 +5736,39 @@
         "id": "cra-CRA-Art.22_stmt",
         "name": "statement",
         "prose": "Substantial-modification assessment criteria not reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.substantial_modification-1",
+      "title": "%s: applicability not determined — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.substantial_modification#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.substantial_modification#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.substantial_modification"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c88fed48-8042-5bee-9957-d61030b748f0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.substantial_modification-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — %s"
        }
       ],
       "class": "compliance"
@@ -6139,6 +6578,39 @@
         "id": "cra-CRA-Art.31-5_stmt",
         "name": "statement",
         "prose": "Technical documentation not available to market surveillance authorities on request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.technical_documentation-1",
+      "title": "%s: applicability not determined — evidence missing: %s not collected as text",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.technical_documentation#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.technical_documentation#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.technical_documentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1eb43b3-8510-5c93-b9d8-8ca77179b6bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.technical_documentation-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — evidence missing: %s not collected as text"
        }
       ],
       "class": "compliance"

@@ -3383,6 +3383,68 @@
     ]
    },
    {
+    "id": "cis_debian_12-cis_debian_12_main",
+    "class": "rego-module",
+    "title": "Bridge: expose cis_debian_12 under the /v1/data/<framework>/main/compliance_report",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_debian_12.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/debian_12/cis_debian_12_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_debian_12-compliance_percentage_reason",
+      "title": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected",
+      "props": [
+       {
+        "name": "label",
+        "value": "compliance_percentage_reason"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "compliance_percentage_reason"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_12.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd1ae077-f738-5c06-b584-4f478b2e16a4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_12-compliance_percentage_reason_stmt",
+        "name": "statement",
+        "prose": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"
+       },
+       {
+        "id": "cis_debian_12-compliance_percentage_reason_obj.1",
+        "name": "assessment-objective",
+        "prose": "a finding that cites no recommendation stands although no recommendation failed (see violations)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
     "id": "cis_debian_12-file_permissions",
     "class": "rego-module",
     "title": "CIS Debian Linux 12 Benchmark v2.0.1 — Section 7.1: System File and Directory Access",
@@ -13340,6 +13402,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/debian_12/cis_debian_12.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "dd1ae077-f738-5c06-b584-4f478b2e16a4",
+     "title": "Bridge: expose cis_debian_12 under the /v1/data/<framework>/main/compliance_report",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_debian_12.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/debian_12/cis_debian_12_main.rego",
        "media-type": "text/plain"
       }
      ]

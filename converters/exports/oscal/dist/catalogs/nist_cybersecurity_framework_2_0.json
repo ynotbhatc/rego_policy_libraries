@@ -4165,7 +4165,7 @@
      },
      {
       "id": "nist_cybersecurity_framework_2_0-nist.csf.main-1",
-      "title": "NIST CSF 2.0 %v (%v %v): not attested satisfied — %v",
+      "title": "NIST CSF 2.0 %v (%v %v): not attested satisfied — %v%v",
       "props": [
        {
         "name": "label",
@@ -4191,7 +4191,50 @@
        {
         "id": "nist_cybersecurity_framework_2_0-nist.csf.main-1_stmt",
         "name": "statement",
-        "prose": "NIST CSF 2.0 %v (%v %v): not attested satisfied — %v"
+        "prose": "NIST CSF 2.0 %v (%v %v): not attested satisfied — %v%v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract",
+      "title": "attestation for facts-basis subcategory %v is not a boolean (got %v) — input.nist_csf.subcategories[\"%v\"] must be true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CSF 2.0 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CSF 2.0 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01899b17-5a9a-5e0d-a9e0-bcb72281df75",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for facts-basis subcategory %v is not a boolean (got %v) — input.nist_csf.subcategories[\"%v\"] must be true or false"
+       },
+       {
+        "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "unknown subcategory id %v — ids are CPRT element identifiers such as GV.OC-01"
+       },
+       {
+        "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "subcategory %v is withdrawn in CSF 2.0 (%v) and cannot be attested"
        }
       ],
       "class": "compliance"
@@ -4258,44 +4301,6 @@
         "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Module-Contract_stmt",
         "name": "statement",
         "prose": "fact violation not attributed to a facts-basis subcategory — %v"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract",
-      "title": "unknown subcategory id %v — ids are CPRT element identifiers such as GV.OC-01",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST CSF 2.0 Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST CSF 2.0 Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.csf.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#01899b17-5a9a-5e0d-a9e0-bcb72281df75",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "unknown subcategory id %v — ids are CPRT element identifiers such as GV.OC-01"
-       },
-       {
-        "id": "nist_cybersecurity_framework_2_0-NIST-CSF-2.0-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "subcategory %v is withdrawn in CSF 2.0 (%v) and cannot be attested"
        }
       ],
       "class": "compliance"

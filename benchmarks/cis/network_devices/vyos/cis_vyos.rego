@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [network]
 #   coverage:
-#     checks: 26
+#     checks: 35
 #     cited: 26
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_vyos
 
 # CIS VyOS Router Hardening Benchmark v1.0.0

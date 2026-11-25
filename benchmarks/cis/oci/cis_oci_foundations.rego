@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [cloud, oracle]
 #   coverage:
-#     checks: 62
+#     checks: 63
 #     cited: 54
 #     expected: 54
 #     found: 54

@@ -10,7 +10,7 @@
   "benchmarks/stig/oracle_mysql_8/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.stig.oracle_mysql_8_test.green_fixture",
+ "x-fixture": "data.stig.oracle_mysql_8.acceptance_r3.base",
  "type": "object",
  "properties": {
   "mysql": {
@@ -525,18 +525,18 @@
      "properties": {
       "audit_log_rotate_on_size": {
        "description": "Read in core.rego.",
-       "type": "string",
+       "type": "number",
        "x-type-source": "fixture",
        "examples": [
-        "1073741824"
+        1073741824
        ]
       },
       "max_user_connections": {
        "description": "Read in core.rego.",
-       "type": "string",
+       "type": "number",
        "x-type-source": "fixture",
        "examples": [
-        "50"
+        50
        ]
       },
       "require_secure_transport": {
@@ -557,10 +557,10 @@
       },
       "validate_password.length": {
        "description": "Read in core.rego.",
-       "type": "string",
+       "type": "number",
        "x-type-source": "fixture",
        "examples": [
-        "15"
+        15
        ]
       },
       "validate_password.policy": {

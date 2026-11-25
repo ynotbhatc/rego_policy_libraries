@@ -5122,7 +5122,7 @@
      },
      {
       "id": "iso27001-iso27001-7",
-      "title": "ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true",
+      "title": "ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true%v",
       "props": [
        {
         "name": "label",
@@ -5148,7 +5148,50 @@
        {
         "id": "iso27001-iso27001-7_stmt",
         "name": "statement",
-        "prose": "ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true"
+        "prose": "ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true%v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-ISO-IEC-27001-Input-Contract",
+      "title": "attestation for %v is not a boolean (got %v) — input.iso27001.annex_a[\"%v\"] must be true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO/IEC 27001 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO/IEC 27001 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2f28885f-02c2-5b82-b6de-99517095f1ab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-ISO-IEC-27001-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for %v is not a boolean (got %v) — input.iso27001.annex_a[\"%v\"] must be true or false"
+       },
+       {
+        "id": "iso27001-ISO-IEC-27001-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "%v is an ISO/IEC 27001:2013 Annex A id — the 2022 edition renumbered Annex A (A.5.1 … A.8.34); attest the 2022 control"
+       },
+       {
+        "id": "iso27001-ISO-IEC-27001-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown Annex A control id %v — ids are ISO/IEC 27001:2022 Annex A numbers such as A.5.1 (the ISO/IEC 27002:2022 number with an \"A.\" prefix)"
        }
       ],
       "class": "compliance"
@@ -5187,16 +5230,16 @@
       "class": "compliance"
      },
      {
-      "id": "iso27001-ISO-IEC-27001-Input-Contract",
-      "title": "%v is an ISO/IEC 27001:2013 Annex A id — the 2022 edition renumbered Annex A (A.5.1 … A.8.34); attest the 2022 control",
+      "id": "iso27001-iso27001-9",
+      "title": "ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules",
       "props": [
        {
         "name": "label",
-        "value": "ISO/IEC 27001 Input Contract"
+        "value": "iso27001#9"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO/IEC 27001 Input Contract"
+        "value": "iso27001#9"
        },
        {
         "name": "rego-package",
@@ -5212,14 +5255,42 @@
       ],
       "parts": [
        {
-        "id": "iso27001-ISO-IEC-27001-Input-Contract_stmt",
+        "id": "iso27001-iso27001-9_stmt",
         "name": "statement",
-        "prose": "%v is an ISO/IEC 27001:2013 Annex A id — the 2022 edition renumbered Annex A (A.5.1 … A.8.34); attest the 2022 control"
+        "prose": "ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001-10",
+      "title": "ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not an object (got %v) — the facts under it feed only checks listed in unmapped_fact_rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001#10"
        },
        {
-        "id": "iso27001-ISO-IEC-27001-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "attestation for unknown Annex A control id %v — ids are ISO/IEC 27001:2022 Annex A numbers such as A.5.1 (the ISO/IEC 27002:2022 number with an \"A.\" prefix)"
+        "name": "alt-identifier",
+        "value": "iso27001#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2f28885f-02c2-5b82-b6de-99517095f1ab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001-10_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not an object (got %v) — the facts under it feed only checks listed in unmapped_fact_rules"
        }
       ],
       "class": "compliance"

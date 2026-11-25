@@ -8,8 +8,11 @@
 #   coverage:
 #     checks: 37
 #     cited: 15
-#     density: sized
-#     basis: size
+#     expected: 37
+#     found: 37
+#     scope: directory
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

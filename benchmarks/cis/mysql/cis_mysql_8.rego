@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [database, mysql]
 #   coverage:
-#     checks: 156
+#     checks: 165
 #     cited: 156
 #     expected: 156
 #     found: 156
@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.mysql_8
 
 import rego.v1

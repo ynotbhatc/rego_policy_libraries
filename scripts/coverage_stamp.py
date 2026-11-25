@@ -72,10 +72,6 @@ KNOWN_GAPS = {
         "the bridge declares 312 controls (`_total_controls := 312`, the size of the draft benchmark) and its "
         "directory holds 25 checks (cis_rhel_10.rego). Not seen before 2026-11-24 because the total is a named "
         "constant, which the stamp did not read. Open: implement the benchmark, or declare what is evaluated",
-    "frameworks/compliance/ncsc_caf/caf_main.rego":
-        "different units: the section modules cite no Contributing Outcome ids, so 22 uncited violation rules are "
-        "set against the 23 outcomes the orchestrator declares, and caf_a3_asset_management.rego is in a shape the "
-        "counter does not read. Open work: cite the outcome id in each finding",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design

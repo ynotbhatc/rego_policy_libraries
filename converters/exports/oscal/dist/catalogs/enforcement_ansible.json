@@ -265,6 +265,44 @@
     ],
     "controls": [
      {
+      "id": "enforcement_ansible-SENTINEL-ANS-000",
+      "title": "Malformed playbook: input.plays must be a list of plays, got %v; nothing was evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-ANS-000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-ANS-000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.ansible"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18b4f8be-54a6-55d9-88cb-4ded8e4e7d5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-000_stmt",
+        "name": "statement",
+        "prose": "Malformed playbook: input.plays must be a list of plays, got %v; nothing was evaluated"
+       },
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-000_obj.1",
+        "name": "assessment-objective",
+        "prose": "Malformed playbook: play [%v] %v"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
       "id": "enforcement_ansible-SENTINEL-ANS-001",
       "title": "Play [%v] has no 'name' field — all plays must be named for auditability",
       "props": [

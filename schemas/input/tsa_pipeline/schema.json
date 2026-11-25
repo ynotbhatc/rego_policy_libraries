@@ -2,30 +2,2182 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/tsa_pipeline/schema.json",
  "title": "Input facts for tsa_pipeline",
- "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/tsa_pipeline/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/critical_infrastructure/tsa_pipeline/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "tsa_pipeline",
  "x-entrypoint": "data.tsa_pipeline.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/critical_infrastructure/tsa_pipeline/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.tsa_pipeline_acceptance_r3.fx",
  "type": "object",
  "properties": {
+  "access_control": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "covers_local_and_remote": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "domain_trusts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "management_policy_defined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "review_schedule_defined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "identification_authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "components_exempt_from_reset": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "mitigation_timeframe_defined": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "mitigations_documented": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "rtu-7"
+          ]
+         }
+        }
+       }
+      },
+      "password_reset_schedule_defined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "policy_documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "least_privilege": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "implemented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "not_technically_feasible": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "separation_of_duties": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "multi_factor_authentication": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "compensating_controls_specified": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "control_room_workstations_exempt": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "implemented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "policy_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "shared_accounts": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "accounts": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "credential_rotated_on_departure": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "least_privilege_managed": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "hmi-operator"
+          ]
+         },
+         "operations_critical": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      },
+      "policy_documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
   "assessment_date": {
    "description": "Read in tsa_pipeline_main.rego."
+  },
+  "assessment_plan": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "annual_report": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "methods_documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "months_since_plan_approval": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        6
+       ]
+      },
+      "results_documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "submitted": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "architecture_design_review": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "conducted": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "months_since_last_review": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        10
+       ]
+      },
+      "network_traffic_verified": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "system_log_review_conducted": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "assesses_critical_cyber_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "exists": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "implementation_plan_effectiveness_assessed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "other_assessment_capabilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "penetration_testing": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "red_or_purple_team": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "schedule": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "annual_coverage_percent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        40
+       ]
+      },
+      "defined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "three_year_coverage_percent": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        100
+       ]
+      }
+     }
+    },
+    "submission": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "months_since_previous_approval": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        6
+       ]
+      },
+      "submitted_to_tsa": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "continuous_monitoring": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "capabilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "command_and_control_monitoring"
+      ]
+     },
+     "examples": [
+      [
+       "command_and_control_monitoring",
+       "malicious_domain_control",
+       "malicious_email_prevention"
+      ]
+     ]
+    },
+    "ics_isolation": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "capability_exists": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "manual_controls_documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "logging": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "continuous_collection_and_analysis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "retention_sufficient_for_investigation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "policy_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "procedures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "baseline_deviation_auditing"
+      ]
+     },
+     "examples": [
+      [
+       "baseline_deviation_auditing",
+       "domain_access_auditing",
+       "soar_capability"
+      ]
+     ]
+    }
+   }
+  },
+  "critical_cyber_systems": {
+   "description": "Read in sd02_critical_cyber_systems.rego.",
+   "type": "object",
+   "properties": {
+    "authorized_representatives": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "liability_acknowledged": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "rep-1"
+        ]
+       }
+      }
+     }
+    },
+    "business_services_evaluated": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "identification_methodology_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "identified": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "managed_security_service_providers": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "mssp-1"
+        ]
+       },
+       "responsibility_retained": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    },
+    "none_determination": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "days_since_effective_date": {
+       "description": "Read in sd02_critical_cyber_systems.rego."
+      },
+      "days_since_operations_change": {
+       "description": "Read in sd02_critical_cyber_systems.rego."
+      },
+      "declared": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        false
+       ]
+      },
+      "operations_changed": {
+       "description": "Read in sd02_critical_cyber_systems.rego."
+      }
+     }
+    },
+    "systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "included_in_implementation_plan": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "scada-1"
+        ]
+       },
+       "type": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "operational_technology"
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  "cybersecurity_coordinator": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "alternates": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "clearance_eligible": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "corporate_level": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "email": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "a@example.com"
+        ]
+       },
+       "known_traveler_number": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "123"
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "B"
+        ]
+       },
+       "phone": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "555"
+        ]
+       },
+       "title": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "CISO"
+        ]
+       },
+       "trusted_traveler_program": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "NEXUS"
+        ]
+       },
+       "us_citizen": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       }
+      }
+     }
+    },
+    "available_24x7": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "days_since_information_change": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      2
+     ]
+    },
+    "information_current": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "internal_coordination_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "law_enforcement_liaison_established": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "primary": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "clearance_eligible": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "corporate_level": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "email": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "a@example.com"
+       ]
+      },
+      "known_traveler_number": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "123"
+       ]
+      },
+      "name": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "A"
+       ]
+      },
+      "phone": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "555"
+       ]
+      },
+      "title": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "CISO"
+       ]
+      },
+      "trusted_traveler_program": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "NEXUS"
+       ]
+      },
+      "us_citizen": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "primary_contact_for_tsa_cisa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "submitted_to_tsa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "us_citizen_primary_intelligence_contact": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "us_person_restricted_info_procedures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
   },
   "entity_name": {
    "description": "Read in tsa_pipeline_main.rego."
   },
+  "implementation_plan": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "amendments": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "denials": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "days_since_denial": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           10
+          ]
+         },
+         "description": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "amendment 3"
+          ]
+         },
+         "petition_filed": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "reconsideration_intended": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      },
+      "ineffective_amendment_requested": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "measure_determined_ineffective": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "new_capabilities_obtained": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "new_capability_amendment_requested": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ownership_amendment_requested": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "ownership_or_control_changed": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "pending_permanent_changes": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "amendment_filed": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "days_since_effective": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           10
+          ]
+         },
+         "description": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "new firewall"
+          ]
+         },
+         "duration_days": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "number",
+          "x-type-source": "fixture",
+          "examples": [
+           60
+          ]
+         }
+        }
+       }
+      }
+     }
+    },
+    "covers_sections_iii_a_to_iii_e": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "defense_in_depth_described": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "exists": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "logical_controls_described": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "measures_implemented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "physical_controls_described": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "schedule_met": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "tsa_approved": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "incident_reporting": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "covered_incident_categories": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "denial_of_service"
+      ]
+     },
+     "examples": [
+      [
+       "denial_of_service",
+       "malicious_software",
+       "operational_disruption_potential"
+      ]
+     ]
+    },
+    "incidents": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "hours_to_report": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         10
+        ]
+       },
+       "id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "INC-1"
+        ]
+       },
+       "identified_at": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2026-06-01T00:00:00Z"
+        ]
+       },
+       "initial_report_incomplete": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "reported_to_cisa": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "sd_reporting_stated": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "supplemental_hours_after_available": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         5
+        ]
+       }
+      }
+     }
+    },
+    "procedure_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "reports_to_cisa_central": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "required_report_fields": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "additional_information"
+      ]
+     },
+     "examples": [
+      [
+       "additional_information",
+       "affected_assets",
+       "impact_assessment"
+      ]
+     ]
+    },
+    "supplemental_within_24h_procedure": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "incident_response_plan": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "covers_critical_cyber_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "exercises": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "conducted_within_last_12_months": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "months_since_last_exercise": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        6
+       ]
+      },
+      "objectives_tested": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        2
+       ]
+      },
+      "responsible_personnel_participated": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "exists": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "objectives": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "backup_integrity": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "backups_secured": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "malicious_code_free_verified": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "stored_separately": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "it_ot_isolation_governance": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "prompt_containment": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "segregation": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "infected_devices": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "isolation_and_labeling": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "shared_network_devices": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "volatile_memory_preserved": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "responsibilities": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "assigned_by_position": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "resources_identified": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "up_to_date": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "network_segmentation": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "external_connections": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "connections": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "described": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "vendor-vpn"
+          ]
+         }
+        }
+       }
+      },
+      "documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "it_ot_interdependencies_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ot_services_traversing_it": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "encrypted_in_transit": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "occurs": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "policy_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "zones": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "boundaries": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "object",
+        "properties": {
+         "controls_described": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         },
+         "name": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "it-ot"
+          ]
+         },
+         "unauthorized_comms_prevented": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "boolean",
+          "x-type-source": "fixture",
+          "examples": [
+           true
+          ]
+         }
+        }
+       }
+      },
+      "classification_basis": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "array",
+       "x-type-source": "fixture",
+       "items": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "criticality"
+        ]
+       },
+       "examples": [
+        [
+         "criticality",
+         "consequence",
+         "operational_necessity"
+        ]
+       ]
+      },
+      "documented": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "patch_management": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "cisa_kev_prioritized": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "critical_patches_current": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "risk_methodology": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "categorization_defined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "criticality_determined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "implementation_timeline_defined": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "scope": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "operating_systems"
+      ]
+     },
+     "examples": [
+      [
+       "operating_systems",
+       "applications",
+       "drivers"
+      ]
+     ]
+    },
+    "strategy_documented": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "unpatchable_systems": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "mitigation_timeline_defined": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "mitigations_described": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "plc-legacy"
+        ]
+       },
+       "severe_degradation_justified": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
   "pipeline_type": {
    "description": "Read in tsa_pipeline_main.rego."
+  },
+  "records": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "activity_snapshot": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "east_west_traffic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "log_files": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "north_south_traffic": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "packet_capture_capable": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "packet_capture_max_hours": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "number",
+       "x-type-source": "fixture",
+       "examples": [
+        24
+       ]
+      }
+     }
+    },
+    "available_to_tsa_on_request": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "directive_procedures": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "disseminated_to_implementers": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "disseminated_to_senior_management": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "receipt_confirmed": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "incorporated_by_reference": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "index_maintained": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "index_ordered_by_requirement": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "previous_materials_relied_upon": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "retrievable_document_types": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "activity_snapshot"
+      ]
+     },
+     "examples": [
+      [
+       "activity_snapshot",
+       "asset_inventory",
+       "firewall_rules"
+      ]
+     ]
+    },
+    "ssi_protection": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
+     "properties": {
+      "assessment_results": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "plans_and_reports": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    }
+   }
+  },
+  "vulnerability_assessment": {
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
+   "properties": {
+    "alignment_assessed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "gaps_identified": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "guidelines_section_7_reviewed": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remediation_measures_identified": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "remediation_timeline_defined": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "ssi_protected_transmission": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "submitted_to_tsa": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "tsa_form_1604_used": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
   }
  },
  "additionalProperties": true,
  "x-known-paths": [
+  "access_control",
+  "access_control.covers_local_and_remote",
+  "access_control.domain_trusts",
+  "access_control.domain_trusts.management_policy_defined",
+  "access_control.domain_trusts.review_schedule_defined",
+  "access_control.identification_authentication",
+  "access_control.identification_authentication.components_exempt_from_reset",
+  "access_control.identification_authentication.components_exempt_from_reset[].mitigation_timeframe_defined",
+  "access_control.identification_authentication.components_exempt_from_reset[].mitigations_documented",
+  "access_control.identification_authentication.components_exempt_from_reset[].name",
+  "access_control.identification_authentication.password_reset_schedule_defined",
+  "access_control.identification_authentication.policy_documented",
+  "access_control.least_privilege",
+  "access_control.least_privilege.implemented",
+  "access_control.least_privilege.not_technically_feasible",
+  "access_control.least_privilege.separation_of_duties",
+  "access_control.multi_factor_authentication",
+  "access_control.multi_factor_authentication.compensating_controls_specified",
+  "access_control.multi_factor_authentication.control_room_workstations_exempt",
+  "access_control.multi_factor_authentication.implemented",
+  "access_control.policy_documented",
+  "access_control.shared_accounts",
+  "access_control.shared_accounts.accounts",
+  "access_control.shared_accounts.accounts[].credential_rotated_on_departure",
+  "access_control.shared_accounts.accounts[].least_privilege_managed",
+  "access_control.shared_accounts.accounts[].name",
+  "access_control.shared_accounts.accounts[].operations_critical",
+  "access_control.shared_accounts.policy_documented",
   "assessment_date",
+  "assessment_plan",
+  "assessment_plan.annual_report",
+  "assessment_plan.annual_report.methods_documented",
+  "assessment_plan.annual_report.months_since_plan_approval",
+  "assessment_plan.annual_report.results_documented",
+  "assessment_plan.annual_report.submitted",
+  "assessment_plan.architecture_design_review",
+  "assessment_plan.architecture_design_review.conducted",
+  "assessment_plan.architecture_design_review.months_since_last_review",
+  "assessment_plan.architecture_design_review.network_traffic_verified",
+  "assessment_plan.architecture_design_review.system_log_review_conducted",
+  "assessment_plan.assesses_critical_cyber_systems",
+  "assessment_plan.exists",
+  "assessment_plan.implementation_plan_effectiveness_assessed",
+  "assessment_plan.other_assessment_capabilities",
+  "assessment_plan.other_assessment_capabilities.penetration_testing",
+  "assessment_plan.other_assessment_capabilities.red_or_purple_team",
+  "assessment_plan.schedule",
+  "assessment_plan.schedule.annual_coverage_percent",
+  "assessment_plan.schedule.defined",
+  "assessment_plan.schedule.three_year_coverage_percent",
+  "assessment_plan.submission",
+  "assessment_plan.submission.months_since_previous_approval",
+  "assessment_plan.submission.submitted_to_tsa",
+  "continuous_monitoring",
+  "continuous_monitoring.capabilities",
+  "continuous_monitoring.ics_isolation",
+  "continuous_monitoring.ics_isolation.capability_exists",
+  "continuous_monitoring.ics_isolation.manual_controls_documented",
+  "continuous_monitoring.logging",
+  "continuous_monitoring.logging.continuous_collection_and_analysis",
+  "continuous_monitoring.logging.retention_sufficient_for_investigation",
+  "continuous_monitoring.policy_documented",
+  "continuous_monitoring.procedures",
+  "critical_cyber_systems",
+  "critical_cyber_systems.authorized_representatives",
+  "critical_cyber_systems.authorized_representatives[].liability_acknowledged",
+  "critical_cyber_systems.authorized_representatives[].name",
+  "critical_cyber_systems.business_services_evaluated",
+  "critical_cyber_systems.identification_methodology_documented",
+  "critical_cyber_systems.identified",
+  "critical_cyber_systems.managed_security_service_providers",
+  "critical_cyber_systems.managed_security_service_providers[].name",
+  "critical_cyber_systems.managed_security_service_providers[].responsibility_retained",
+  "critical_cyber_systems.none_determination",
+  "critical_cyber_systems.none_determination.days_since_effective_date",
+  "critical_cyber_systems.none_determination.days_since_operations_change",
+  "critical_cyber_systems.none_determination.declared",
+  "critical_cyber_systems.none_determination.operations_changed",
+  "critical_cyber_systems.systems",
+  "critical_cyber_systems.systems[].included_in_implementation_plan",
+  "critical_cyber_systems.systems[].name",
+  "critical_cyber_systems.systems[].type",
+  "cybersecurity_coordinator",
+  "cybersecurity_coordinator.alternates",
+  "cybersecurity_coordinator.alternates[].clearance_eligible",
+  "cybersecurity_coordinator.alternates[].corporate_level",
+  "cybersecurity_coordinator.alternates[].email",
+  "cybersecurity_coordinator.alternates[].known_traveler_number",
+  "cybersecurity_coordinator.alternates[].name",
+  "cybersecurity_coordinator.alternates[].phone",
+  "cybersecurity_coordinator.alternates[].title",
+  "cybersecurity_coordinator.alternates[].trusted_traveler_program",
+  "cybersecurity_coordinator.alternates[].us_citizen",
+  "cybersecurity_coordinator.available_24x7",
+  "cybersecurity_coordinator.days_since_information_change",
+  "cybersecurity_coordinator.information_current",
+  "cybersecurity_coordinator.internal_coordination_documented",
+  "cybersecurity_coordinator.law_enforcement_liaison_established",
+  "cybersecurity_coordinator.primary",
+  "cybersecurity_coordinator.primary.clearance_eligible",
+  "cybersecurity_coordinator.primary.corporate_level",
+  "cybersecurity_coordinator.primary.email",
+  "cybersecurity_coordinator.primary.known_traveler_number",
+  "cybersecurity_coordinator.primary.name",
+  "cybersecurity_coordinator.primary.phone",
+  "cybersecurity_coordinator.primary.title",
+  "cybersecurity_coordinator.primary.trusted_traveler_program",
+  "cybersecurity_coordinator.primary.us_citizen",
+  "cybersecurity_coordinator.primary_contact_for_tsa_cisa",
+  "cybersecurity_coordinator.submitted_to_tsa",
+  "cybersecurity_coordinator.us_citizen_primary_intelligence_contact",
+  "cybersecurity_coordinator.us_person_restricted_info_procedures",
   "entity_name",
-  "pipeline_type"
+  "implementation_plan",
+  "implementation_plan.amendments",
+  "implementation_plan.amendments.denials",
+  "implementation_plan.amendments.denials[].days_since_denial",
+  "implementation_plan.amendments.denials[].description",
+  "implementation_plan.amendments.denials[].petition_filed",
+  "implementation_plan.amendments.denials[].reconsideration_intended",
+  "implementation_plan.amendments.ineffective_amendment_requested",
+  "implementation_plan.amendments.measure_determined_ineffective",
+  "implementation_plan.amendments.new_capabilities_obtained",
+  "implementation_plan.amendments.new_capability_amendment_requested",
+  "implementation_plan.amendments.ownership_amendment_requested",
+  "implementation_plan.amendments.ownership_or_control_changed",
+  "implementation_plan.amendments.pending_permanent_changes",
+  "implementation_plan.amendments.pending_permanent_changes[].amendment_filed",
+  "implementation_plan.amendments.pending_permanent_changes[].days_since_effective",
+  "implementation_plan.amendments.pending_permanent_changes[].description",
+  "implementation_plan.amendments.pending_permanent_changes[].duration_days",
+  "implementation_plan.covers_sections_iii_a_to_iii_e",
+  "implementation_plan.defense_in_depth_described",
+  "implementation_plan.exists",
+  "implementation_plan.logical_controls_described",
+  "implementation_plan.measures_implemented",
+  "implementation_plan.physical_controls_described",
+  "implementation_plan.schedule_met",
+  "implementation_plan.tsa_approved",
+  "incident_reporting",
+  "incident_reporting.covered_incident_categories",
+  "incident_reporting.incidents",
+  "incident_reporting.incidents[].hours_to_report",
+  "incident_reporting.incidents[].id",
+  "incident_reporting.incidents[].identified_at",
+  "incident_reporting.incidents[].initial_report_incomplete",
+  "incident_reporting.incidents[].reported_to_cisa",
+  "incident_reporting.incidents[].sd_reporting_stated",
+  "incident_reporting.incidents[].supplemental_hours_after_available",
+  "incident_reporting.procedure_documented",
+  "incident_reporting.reports_to_cisa_central",
+  "incident_reporting.required_report_fields",
+  "incident_reporting.supplemental_within_24h_procedure",
+  "incident_response_plan",
+  "incident_response_plan.covers_critical_cyber_systems",
+  "incident_response_plan.exercises",
+  "incident_response_plan.exercises.conducted_within_last_12_months",
+  "incident_response_plan.exercises.months_since_last_exercise",
+  "incident_response_plan.exercises.objectives_tested",
+  "incident_response_plan.exercises.responsible_personnel_participated",
+  "incident_response_plan.exists",
+  "incident_response_plan.objectives",
+  "incident_response_plan.objectives.backup_integrity",
+  "incident_response_plan.objectives.backup_integrity.backups_secured",
+  "incident_response_plan.objectives.backup_integrity.malicious_code_free_verified",
+  "incident_response_plan.objectives.backup_integrity.stored_separately",
+  "incident_response_plan.objectives.it_ot_isolation_governance",
+  "incident_response_plan.objectives.prompt_containment",
+  "incident_response_plan.objectives.segregation",
+  "incident_response_plan.objectives.segregation.infected_devices",
+  "incident_response_plan.objectives.segregation.isolation_and_labeling",
+  "incident_response_plan.objectives.segregation.shared_network_devices",
+  "incident_response_plan.objectives.segregation.volatile_memory_preserved",
+  "incident_response_plan.responsibilities",
+  "incident_response_plan.responsibilities.assigned_by_position",
+  "incident_response_plan.responsibilities.resources_identified",
+  "incident_response_plan.up_to_date",
+  "network_segmentation",
+  "network_segmentation.external_connections",
+  "network_segmentation.external_connections.connections",
+  "network_segmentation.external_connections.connections[].described",
+  "network_segmentation.external_connections.connections[].name",
+  "network_segmentation.external_connections.documented",
+  "network_segmentation.it_ot_interdependencies_documented",
+  "network_segmentation.ot_services_traversing_it",
+  "network_segmentation.ot_services_traversing_it.encrypted_in_transit",
+  "network_segmentation.ot_services_traversing_it.occurs",
+  "network_segmentation.policy_documented",
+  "network_segmentation.zones",
+  "network_segmentation.zones.boundaries",
+  "network_segmentation.zones.boundaries[].controls_described",
+  "network_segmentation.zones.boundaries[].name",
+  "network_segmentation.zones.boundaries[].unauthorized_comms_prevented",
+  "network_segmentation.zones.classification_basis",
+  "network_segmentation.zones.documented",
+  "patch_management",
+  "patch_management.cisa_kev_prioritized",
+  "patch_management.critical_patches_current",
+  "patch_management.risk_methodology",
+  "patch_management.risk_methodology.categorization_defined",
+  "patch_management.risk_methodology.criticality_determined",
+  "patch_management.risk_methodology.implementation_timeline_defined",
+  "patch_management.scope",
+  "patch_management.strategy_documented",
+  "patch_management.unpatchable_systems",
+  "patch_management.unpatchable_systems[].mitigation_timeline_defined",
+  "patch_management.unpatchable_systems[].mitigations_described",
+  "patch_management.unpatchable_systems[].name",
+  "patch_management.unpatchable_systems[].severe_degradation_justified",
+  "pipeline_type",
+  "records",
+  "records.activity_snapshot",
+  "records.activity_snapshot.east_west_traffic",
+  "records.activity_snapshot.log_files",
+  "records.activity_snapshot.north_south_traffic",
+  "records.activity_snapshot.packet_capture_capable",
+  "records.activity_snapshot.packet_capture_max_hours",
+  "records.available_to_tsa_on_request",
+  "records.directive_procedures",
+  "records.directive_procedures.disseminated_to_implementers",
+  "records.directive_procedures.disseminated_to_senior_management",
+  "records.directive_procedures.receipt_confirmed",
+  "records.incorporated_by_reference",
+  "records.index_maintained",
+  "records.index_ordered_by_requirement",
+  "records.previous_materials_relied_upon",
+  "records.retrievable_document_types",
+  "records.ssi_protection",
+  "records.ssi_protection.assessment_results",
+  "records.ssi_protection.plans_and_reports",
+  "vulnerability_assessment",
+  "vulnerability_assessment.alignment_assessed",
+  "vulnerability_assessment.gaps_identified",
+  "vulnerability_assessment.guidelines_section_7_reviewed",
+  "vulnerability_assessment.remediation_measures_identified",
+  "vulnerability_assessment.remediation_timeline_defined",
+  "vulnerability_assessment.ssi_protected_transmission",
+  "vulnerability_assessment.submitted_to_tsa",
+  "vulnerability_assessment.tsa_form_1604_used"
  ]
 }

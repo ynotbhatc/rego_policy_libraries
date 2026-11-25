@@ -7,13 +7,13 @@
 #   domains: [cloud]
 #   coverage:
 #     checks: 39
-#     cited: 12
+#     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package csa_ccm.endpoint_management
 
 import rego.v1

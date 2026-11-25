@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 12
+#     found: 181
+#     scope: directory
+#     density: over
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package tsa_pipeline.main
 
 import rego.v1

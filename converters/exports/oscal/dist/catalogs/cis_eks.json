@@ -1651,7 +1651,7 @@
      },
      {
       "id": "cis_eks-cis_eks.main-2",
-      "title": "CIS EKS %s: manual review not attested (set input.cis_eks.attest.%s after review)",
+      "title": "CIS EKS %s: evidence invalid — %s",
       "props": [
        {
         "name": "label",
@@ -1676,6 +1676,39 @@
       "parts": [
        {
         "id": "cis_eks-cis_eks.main-2_stmt",
+        "name": "statement",
+        "prose": "CIS EKS %s: evidence invalid — %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_eks-cis_eks.main-3",
+      "title": "CIS EKS %s: manual review not attested (set input.cis_eks.attest.%s after review)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_eks.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_eks.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_eks.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0c5225c9-66df-581d-acc3-242bb2b982bd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_eks-cis_eks.main-3_stmt",
         "name": "statement",
         "prose": "CIS EKS %s: manual review not attested (set input.cis_eks.attest.%s after review)"
        }
@@ -1848,16 +1881,16 @@
       "class": "security"
      },
      {
-      "id": "cis_eks-cis_eks.main-3",
+      "id": "cis_eks-cis_eks.main-4",
       "title": "CIS EKS %s: %s on nodes: %s",
       "props": [
        {
         "name": "label",
-        "value": "cis_eks.main#3"
+        "value": "cis_eks.main#4"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_eks.main#3"
+        "value": "cis_eks.main#4"
        },
        {
         "name": "rego-package",
@@ -1873,7 +1906,7 @@
       ],
       "parts": [
        {
-        "id": "cis_eks-cis_eks.main-3_stmt",
+        "id": "cis_eks-cis_eks.main-4_stmt",
         "name": "statement",
         "prose": "CIS EKS %s: %s on nodes: %s"
        }
@@ -1990,16 +2023,16 @@
       "class": "security"
      },
      {
-      "id": "cis_eks-cis_eks.main-4",
+      "id": "cis_eks-cis_eks.main-5",
       "title": "CIS EKS %s: admission of %s is not blocked (PSA enforce level too weak, or running pods use it): %s",
       "props": [
        {
         "name": "label",
-        "value": "cis_eks.main#4"
+        "value": "cis_eks.main#5"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_eks.main#4"
+        "value": "cis_eks.main#5"
        },
        {
         "name": "rego-package",
@@ -2015,7 +2048,7 @@
       ],
       "parts": [
        {
-        "id": "cis_eks-cis_eks.main-4_stmt",
+        "id": "cis_eks-cis_eks.main-5_stmt",
         "name": "statement",
         "prose": "CIS EKS %s: admission of %s is not blocked (PSA enforce level too weak, or running pods use it): %s"
        }

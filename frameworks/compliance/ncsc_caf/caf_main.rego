@@ -8,11 +8,8 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     expected: 23
-#     found: 22
-#     scope: directory
-#     density: partial
-#     basis: declared-total
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

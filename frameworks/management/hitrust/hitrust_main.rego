@@ -7,7 +7,7 @@
 #   domains: [healthcare]
 #   coverage:
 #     checks: 63
-#     cited: 63
+#     cited: 0
 #     expected: 63
 #     found: 63
 #     scope: directory

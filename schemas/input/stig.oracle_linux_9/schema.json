@@ -491,7 +491,7 @@
      ]
     },
     "min_rsa_size": {
-     "description": "OL09-00-000241: systemwide crypto policy FIPS (subpolicies allowed, as OL 9's note says); CURRENT.pol hash list and min_rsa_size. Read by OL09-00-000241. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-000241: systemwide crypto policy FIPS (subpolicies allowed, as OL 9's note says); CURRENT.pol hash list and min_rsa_size. Read by OL09-00-000241. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -644,7 +644,7 @@
    "type": "object",
    "properties": {
     "deny": {
-     "description": "OL09-00-003020: deny as configured in /etc/security/faillock.conf. Read by OL09-00-003020. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-003020: deny as configured in /etc/security/faillock.conf. Read by OL09-00-003020. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -660,7 +660,7 @@
      ]
     },
     "fail_interval": {
-     "description": "OL09-00-002416: fail_interval as configured in /etc/security/faillock.conf. Read by OL09-00-002416. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-002416: fail_interval as configured in /etc/security/faillock.conf. Read by OL09-00-002416. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1769,7 +1769,7 @@
    "type": "object",
    "properties": {
     "dcredit": {
-     "description": "OL09-00-001020: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001020. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001020: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001020. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1785,7 +1785,7 @@
      ]
     },
     "inactive_days": {
-     "description": "OL09-00-003065: INACTIVE as configured in /etc/default/useradd. Read by OL09-00-003065. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-003065: INACTIVE as configured in /etc/default/useradd. Read by OL09-00-003065. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1801,7 +1801,7 @@
      ]
     },
     "lcredit": {
-     "description": "OL09-00-001015: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001015. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001015: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001015. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1817,7 +1817,7 @@
      ]
     },
     "maxdays": {
-     "description": "OL09-00-001095: PASS_MAX_DAYS as configured in /etc/login.defs. Read by OL09-00-001095. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001095: PASS_MAX_DAYS as configured in /etc/login.defs. Read by OL09-00-001095. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1833,7 +1833,7 @@
      ]
     },
     "mindays": {
-     "description": "OL09-00-001085: PASS_MIN_DAYS as configured in /etc/login.defs. Read by OL09-00-001085. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001085: PASS_MIN_DAYS as configured in /etc/login.defs. Read by OL09-00-001085. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1849,7 +1849,7 @@
      ]
     },
     "minlen": {
-     "description": "OL09-00-001105: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001105. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001105: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001105. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1865,7 +1865,7 @@
      ]
     },
     "ocredit": {
-     "description": "OL09-00-001120: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001120. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001120: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001120. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1881,7 +1881,7 @@
      ]
     },
     "ucredit": {
-     "description": "OL09-00-001005: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001005. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-001005: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf. Read by OL09-00-001005. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -2117,7 +2117,7 @@
      ]
     },
     "ClientAliveCountMax": {
-     "description": "OL09-00-002346: effective sshd ClientAliveCountMax (sshd -T). Read by OL09-00-002346. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-002346: effective sshd ClientAliveCountMax (sshd -T). Read by OL09-00-002346. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -2133,7 +2133,7 @@
      ]
     },
     "ClientAliveInterval": {
-     "description": "OL09-00-002347: effective sshd ClientAliveInterval (sshd -T). Read by OL09-00-002347. Accepted: number, or string holding a decimal integer.",
+     "description": "OL09-00-002347: effective sshd ClientAliveInterval (sshd -T). Read by OL09-00-002347. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"

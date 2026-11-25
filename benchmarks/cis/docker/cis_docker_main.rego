@@ -6,8 +6,8 @@
 #   source: cis
 #   domains: [container]
 #   coverage:
-#     checks: 0
-#     cited: 0
+#     checks: 1
+#     cited: 1
 #     density: orchestrator
 #     basis: role
 #     tested: false
