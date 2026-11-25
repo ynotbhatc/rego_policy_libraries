@@ -17,8 +17,8 @@ must be <type>, got <value>` and fails the recommendation in place of the plain 
 `(list expression, wording)` pair for a list that was collected and holds nothing (a failed recommendation with
 its own wording, where an absent key stays "evidence missing"). `cis_genlib.LEVEL_HELPERS` is the shared
 Level 1 / Level 2 selection: `input.cis_profile.level` must be the number 1 or 2; any other value is an evidence
-finding, the report is scoped at Level 2 and every Level 2 recommendation fails with it. `gen_palo_alto.py` and
-`gen_esxi.py` use all three; `gen_ios_27.py` carries the same selector rule for level and ownership. The other
+finding, the report is scoped at Level 2 and every Level 2 recommendation fails with it. `gen_palo_alto.py`,
+`gen_esxi.py` and `gen_cisco_ios_xe_17.py` use it (the first two use all three keys); `gen_ios_27.py` carries the same selector rule for level and ownership. The other
 generators that select a level still default a bad value to Level 2 and should move to `LEVEL_HELPERS` when they
 are next run.
 
@@ -272,6 +272,14 @@ are next run.
   invariants as the Windows modules (ids and order, totals, failing iff cited with the matching message kind, empty
   input, a compliant fixture merged from every logic entry's passing input, a mixed input with every status).
   `emit_control` is unchanged, so `gen_amazon_linux_2023.py` output does not change.
+
+  Profile selection and number typing (rhel_9, rocky_linux_9, rhel_8, rocky_linux_8, 2026-11-24): there is no
+  default profile. `input.profile` that is absent, null, not a string or not a recognised name evaluates every
+  recommendation, reports `"profile": "unrecognised"` and one `PROFILE NOT SELECTED` violation, is never compliant,
+  and reports `compliance_percentage` as null with `compliance_percentage_reason` (no 99.999 cap). Numeric facts the
+  collector sends in their own field (`pam.pass_max_days`, `chronyd.servers_configured`, the shadow aging fields, ...)
+  are whole JSON numbers; a decimal string, a fraction, null or a boolean fails the recommendation with an evidence
+  finding. The generator's compliant fixture states `profile: level2_server` so that every recommendation is in scope.
 - `gen_rocky_linux_9.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 9 Benchmark v3.0.0, 352
   recommendations (329 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_9/`, package
   `cis_rocky_linux_9`. Holds no logic of its own: it configures `gen_rhel_9.py` (`configure()`: output

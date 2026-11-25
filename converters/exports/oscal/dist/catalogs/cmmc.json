@@ -3737,7 +3737,7 @@
        {
         "id": "cmmc-CMMC-IR.L2-3.6.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Incident response plan is %v days old. Plans must be reviewed and updated annually."
+        "prose": "Incident response plan is not shown reviewed within 365 days (input.incident_response.plan_age_days is %s). Plans must be reviewed and updated annually."
        }
       ],
       "class": "compliance"
@@ -5060,7 +5060,7 @@
      },
      {
       "id": "cmmc-cmmc-17",
-      "title": "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed",
+      "title": "CMMC %s: not decided - the assessed level is unknown (input.cmmc_level), so the practice is reported failed",
       "props": [
        {
         "name": "label",
@@ -5085,6 +5085,39 @@
       "parts": [
        {
         "id": "cmmc-cmmc-17_stmt",
+        "name": "statement",
+        "prose": "CMMC %s: not decided - the assessed level is unknown (input.cmmc_level), so the practice is reported failed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-18",
+      "title": "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-18_stmt",
         "name": "statement",
         "prose": "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed"
        }
@@ -5125,41 +5158,8 @@
       "class": "compliance"
      },
      {
-      "id": "cmmc-cmmc-18",
-      "title": "CMMC unscored finding (names no practice): %v",
-      "props": [
-       {
-        "name": "label",
-        "value": "cmmc#18"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cmmc#18"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cmmc"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cmmc-cmmc-18_stmt",
-        "name": "statement",
-        "prose": "CMMC unscored finding (names no practice): %v"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "cmmc-cmmc-19",
-      "title": "3.10 physical protection",
+      "title": "CMMC unscored finding (names no practice): %v",
       "props": [
        {
         "name": "label",
@@ -5185,14 +5185,14 @@
        {
         "id": "cmmc-cmmc-19_stmt",
         "name": "statement",
-        "prose": "3.10 physical protection"
+        "prose": "CMMC unscored finding (names no practice): %v"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-20",
-      "title": "3.11 risk assessment",
+      "title": "3.10 physical protection",
       "props": [
        {
         "name": "label",
@@ -5218,14 +5218,14 @@
        {
         "id": "cmmc-cmmc-20_stmt",
         "name": "statement",
-        "prose": "3.11 risk assessment"
+        "prose": "3.10 physical protection"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-21",
-      "title": "3.12 security assessment",
+      "title": "3.11 risk assessment",
       "props": [
        {
         "name": "label",
@@ -5251,14 +5251,14 @@
        {
         "id": "cmmc-cmmc-21_stmt",
         "name": "statement",
-        "prose": "3.12 security assessment"
+        "prose": "3.11 risk assessment"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-22",
-      "title": "3.13 system communications",
+      "title": "3.12 security assessment",
       "props": [
        {
         "name": "label",
@@ -5284,14 +5284,14 @@
        {
         "id": "cmmc-cmmc-22_stmt",
         "name": "statement",
-        "prose": "3.13 system communications"
+        "prose": "3.12 security assessment"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-23",
-      "title": "3.14 system information integrity",
+      "title": "3.13 system communications",
       "props": [
        {
         "name": "label",
@@ -5317,14 +5317,14 @@
        {
         "id": "cmmc-cmmc-23_stmt",
         "name": "statement",
-        "prose": "3.14 system information integrity"
+        "prose": "3.13 system communications"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-24",
-      "title": "3.1 access control",
+      "title": "3.14 system information integrity",
       "props": [
        {
         "name": "label",
@@ -5350,14 +5350,14 @@
        {
         "id": "cmmc-cmmc-24_stmt",
         "name": "statement",
-        "prose": "3.1 access control"
+        "prose": "3.14 system information integrity"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-25",
-      "title": "3.2 awareness training",
+      "title": "3.1 access control",
       "props": [
        {
         "name": "label",
@@ -5383,14 +5383,14 @@
        {
         "id": "cmmc-cmmc-25_stmt",
         "name": "statement",
-        "prose": "3.2 awareness training"
+        "prose": "3.1 access control"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-26",
-      "title": "3.3 audit accountability",
+      "title": "3.2 awareness training",
       "props": [
        {
         "name": "label",
@@ -5416,14 +5416,14 @@
        {
         "id": "cmmc-cmmc-26_stmt",
         "name": "statement",
-        "prose": "3.3 audit accountability"
+        "prose": "3.2 awareness training"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-27",
-      "title": "3.4 configuration management",
+      "title": "3.3 audit accountability",
       "props": [
        {
         "name": "label",
@@ -5449,14 +5449,14 @@
        {
         "id": "cmmc-cmmc-27_stmt",
         "name": "statement",
-        "prose": "3.4 configuration management"
+        "prose": "3.3 audit accountability"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-28",
-      "title": "3.5 identification authentication",
+      "title": "3.4 configuration management",
       "props": [
        {
         "name": "label",
@@ -5482,14 +5482,14 @@
        {
         "id": "cmmc-cmmc-28_stmt",
         "name": "statement",
-        "prose": "3.5 identification authentication"
+        "prose": "3.4 configuration management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-29",
-      "title": "3.6 incident response",
+      "title": "3.5 identification authentication",
       "props": [
        {
         "name": "label",
@@ -5515,14 +5515,14 @@
        {
         "id": "cmmc-cmmc-29_stmt",
         "name": "statement",
-        "prose": "3.6 incident response"
+        "prose": "3.5 identification authentication"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-30",
-      "title": "3.7 maintenance",
+      "title": "3.6 incident response",
       "props": [
        {
         "name": "label",
@@ -5548,14 +5548,14 @@
        {
         "id": "cmmc-cmmc-30_stmt",
         "name": "statement",
-        "prose": "3.7 maintenance"
+        "prose": "3.6 incident response"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-31",
-      "title": "3.8 media protection",
+      "title": "3.7 maintenance",
       "props": [
        {
         "name": "label",
@@ -5581,14 +5581,14 @@
        {
         "id": "cmmc-cmmc-31_stmt",
         "name": "statement",
-        "prose": "3.8 media protection"
+        "prose": "3.7 maintenance"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-32",
-      "title": "3.9 personnel security",
+      "title": "3.8 media protection",
       "props": [
        {
         "name": "label",
@@ -5613,6 +5613,39 @@
       "parts": [
        {
         "id": "cmmc-cmmc-32_stmt",
+        "name": "statement",
+        "prose": "3.8 media protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-33",
+      "title": "3.9 personnel security",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-33_stmt",
         "name": "statement",
         "prose": "3.9 personnel security"
        }

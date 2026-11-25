@@ -620,7 +620,9 @@ default ssh_client_alive_interval_ok := false
 ssh_client_alive_interval_ok if {
 	count(missing_rhel_09_255100) == 0
 	n := _num(["ssh_config", "ClientAliveInterval"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 600
 }
 
@@ -658,7 +660,9 @@ default ssh_client_alive_count_ok := false
 ssh_client_alive_count_ok if {
 	count(missing_rhel_09_255095) == 0
 	n := _num(["ssh_config", "ClientAliveCountMax"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 1
 }
 

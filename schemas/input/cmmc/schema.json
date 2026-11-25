@@ -10,7 +10,7 @@
   "frameworks/federal/cmmc/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.cmmc_level_2_pass_test.level_2_facts",
+ "x-fixture": "data.cmmc_acceptance_r3.fx",
  "type": "object",
  "properties": {
   "access_controls": {
@@ -492,7 +492,11 @@
       true
      ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in cmmc_audit_accountability.rego."
+   },
+   "x-variable-key": "<key>"
   },
   "cmmc_level": {
    "description": "Read in cmmc_access_control.rego, cmmc_configuration_management.rego, cmmc_incident_response.rego, cmmc_key_main.rego and 1 more.",

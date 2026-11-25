@@ -14,11 +14,11 @@
  "type": "object",
  "properties": {
   "access_control": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "authenticate_users": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -26,7 +26,7 @@
      ]
     },
     "least_privilege": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -34,7 +34,7 @@
      ]
     },
     "periodic_review": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -52,11 +52,11 @@
    ]
   },
   "board_report": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "annual_written": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -64,7 +64,7 @@
      ]
     },
     "covers_program_status": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -74,11 +74,11 @@
    }
   },
   "breach_notification": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "ftc_process_within_30_days": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -88,11 +88,11 @@
    }
   },
   "change_management": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "procedures_adopted": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -102,14 +102,11 @@
    }
   },
   "disposal": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
-    "retention_justified": {
-     "description": "Read in glba_main.rego."
-    },
     "retention_policy_reviewed": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -117,7 +114,7 @@
      ]
     },
     "within_two_years": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -127,18 +124,15 @@
    }
   },
   "encryption": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
-    "compensating_controls_approved": {
-     "description": "Read in glba_main.rego."
-    },
     "customer_info": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "object",
      "properties": {
       "at_rest": {
-       "description": "Read in glba_main.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -146,7 +140,7 @@
        ]
       },
       "in_transit": {
-       "description": "Read in glba_main.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -174,7 +168,7 @@
    ]
   },
   "incident_response": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "plan": {
@@ -182,7 +176,7 @@
      "type": "object",
      "properties": {
       "post_event_revision": {
-       "description": "Read in glba_main.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -190,7 +184,7 @@
        ]
       },
       "roles_defined": {
-       "description": "Read in glba_main.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -198,7 +192,7 @@
        ]
       },
       "written": {
-       "description": "Read in glba_main.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -210,11 +204,11 @@
    }
   },
   "inventory": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "data_identified": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -222,7 +216,7 @@
      ]
     },
     "systems_inventoried": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -232,28 +226,25 @@
    }
   },
   "mfa": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "all_information_systems": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
       true
      ]
-    },
-    "equivalent_approved_in_writing": {
-     "description": "Read in glba_main.rego."
     }
    }
   },
   "monitoring": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "authorized_user_activity": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -261,7 +252,7 @@
      ]
     },
     "unauthorized_access_detection": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -271,11 +262,11 @@
    }
   },
   "personnel": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "knowledge_current": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -283,7 +274,7 @@
      ]
     },
     "qualified_infosec_staff": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -293,11 +284,11 @@
    }
   },
   "program": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "adjusted_from_findings": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -307,11 +298,11 @@
    }
   },
   "qualified_individual": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "designated": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -321,11 +312,11 @@
    }
   },
   "risk_assessment": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "criteria_documented": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -333,7 +324,7 @@
      ]
     },
     "periodic_reassessment": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -341,7 +332,7 @@
      ]
     },
     "written": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -351,11 +342,11 @@
    }
   },
   "secure_development": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "external_apps_assessed": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -363,7 +354,7 @@
      ]
     },
     "inhouse_practices": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -373,11 +364,11 @@
    }
   },
   "service_providers": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "capability_assessed": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -385,7 +376,7 @@
      ]
     },
     "contracts_require_safeguards": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -393,7 +384,7 @@
      ]
     },
     "periodic_assessment": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -406,43 +397,25 @@
    "description": "Read in glba_main.rego."
   },
   "testing": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "continuous_monitoring": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
       true
      ]
-    },
-    "penetration_test": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "object",
-     "properties": {
-      "annual": {
-       "description": "Read in glba_main.rego."
-      }
-     }
-    },
-    "vulnerability_assessment": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "object",
-     "properties": {
-      "semi_annual": {
-       "description": "Read in glba_main.rego."
-      }
-     }
     }
    }
   },
   "training": {
-   "description": "Read in glba_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "security_awareness": {
-     "description": "Read in glba_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -467,11 +440,9 @@
   "change_management",
   "change_management.procedures_adopted",
   "disposal",
-  "disposal.retention_justified",
   "disposal.retention_policy_reviewed",
   "disposal.within_two_years",
   "encryption",
-  "encryption.compensating_controls_approved",
   "encryption.customer_info",
   "encryption.customer_info.at_rest",
   "encryption.customer_info.in_transit",
@@ -487,7 +458,6 @@
   "inventory.systems_inventoried",
   "mfa",
   "mfa.all_information_systems",
-  "mfa.equivalent_approved_in_writing",
   "monitoring",
   "monitoring.authorized_user_activity",
   "monitoring.unauthorized_access_detection",
@@ -512,10 +482,6 @@
   "small_institution_exemption",
   "testing",
   "testing.continuous_monitoring",
-  "testing.penetration_test",
-  "testing.penetration_test.annual",
-  "testing.vulnerability_assessment",
-  "testing.vulnerability_assessment.semi_annual",
   "training",
   "training.security_awareness"
  ]

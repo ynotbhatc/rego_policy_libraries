@@ -6,7 +6,7 @@
 #   source: aac
 #   domains: [kubernetes]
 #   coverage:
-#     checks: 27
+#     checks: 31
 #     cited: 15
 #     density: gate
 #     basis: role
@@ -44,6 +44,7 @@ import rego.v1
 #   input.kind                  - resource kind (Deployment, Pod, StatefulSet, etc.)
 #   input.namespace             - target namespace
 #   input.existing_policies[]   - existing NetworkPolicies in namespace
+#   input.policy.additional_kinds - optional list of strings: extra kinds (custom resources) recognised but not judged
 # =============================================================================
 
 workload_kinds := {"Deployment", "StatefulSet", "DaemonSet", "Job", "CronJob", "Pod"}
@@ -111,13 +112,83 @@ violation_k8s_000 contains msg if {
 	msg := sprintf("SENTINEL-K8S-000: Malformed input: input.kind must be a string, got %v.", [type_name(input.kind)])
 }
 
-# The kinds the gate knows how to judge: the workloads (pod rules, K8S-001 to 009 and 012 to 014) and the
-# resources named by the namespace and label rules (K8S-010, 011). Any other kind is denied until it is added here.
+# The kinds the gate judges: the workloads (pod rules, K8S-001 to 009 and 012 to 014) and the resources named by
+# the namespace and label rules (K8S-010, 011). Those two rules read only these kinds: a recognised built-in kind
+# the gate does not judge (builtin_kinds below), and a kind listed in additional_kinds, is admitted with nothing judged.
 judged_kinds := workload_kinds | {"Namespace", "ClusterRole", "ClusterRoleBinding", "ConfigMap", "Secret", "Service", "ServiceAccount", "NetworkPolicy", "Ingress", "Role", "RoleBinding", "PersistentVolumeClaim"}
+
+# Recognised but not judged: the other standard built-in Kubernetes API kinds. A manifest of one of these is
+# admitted with nothing judged (no gate rule reads it), so an ordinary deployment is not blocked. Source: the
+# Kubernetes API reference, https://kubernetes.io/docs/reference/kubernetes-api/ (read 2026-11-24; its version
+# menu lists v1.37 first, which the page does not label "stable"), stable (v1, v2) kinds of the groups core, apps,
+# batch, networking.k8s.io, rbac.authorization.k8s.io, policy, autoscaling, storage.k8s.io, scheduling.k8s.io,
+# coordination.k8s.io, discovery.k8s.io, admissionregistration.k8s.io, apiextensions.k8s.io, node.k8s.io,
+# certificates.k8s.io, flowcontrol.apiserver.k8s.io, plus events.k8s.io. Alpha and beta kinds are left out: allow
+# one with input.policy.additional_kinds. ReplicaSet and ReplicationController carry a pod template but this gate
+# does not judge it (kubernetes.admission does); the controllers that create them are judged.
+builtin_kinds := {
+	# core
+	"ComponentStatus", "Endpoints", "Event", "LimitRange", "Node", "PersistentVolume", "PodTemplate",
+	"ReplicationController", "ResourceQuota",
+	# apps
+	"ControllerRevision", "ReplicaSet",
+	# autoscaling, policy, node.k8s.io, scheduling.k8s.io
+	"HorizontalPodAutoscaler", "PodDisruptionBudget", "RuntimeClass", "PriorityClass",
+	# networking.k8s.io
+	"IPAddress", "IngressClass", "ServiceCIDR",
+	# storage.k8s.io
+	"CSIDriver", "CSINode", "CSIStorageCapacity", "StorageClass", "VolumeAttachment", "VolumeAttributesClass",
+	# coordination.k8s.io, discovery.k8s.io
+	"Lease", "EndpointSlice",
+	# admissionregistration.k8s.io, apiextensions.k8s.io
+	"MutatingAdmissionPolicy", "MutatingAdmissionPolicyBinding", "MutatingWebhookConfiguration",
+	"ValidatingAdmissionPolicy", "ValidatingAdmissionPolicyBinding", "ValidatingWebhookConfiguration",
+	"CustomResourceDefinition",
+	# certificates.k8s.io, flowcontrol.apiserver.k8s.io
+	"CertificateSigningRequest", "ClusterTrustBundle", "PodCertificateRequest", "FlowSchema", "PriorityLevelConfiguration",
+}
+
+# input.policy.additional_kinds: an operator's list of extra kinds (custom resources) the gate should recognise but not
+# judge. It must be a list of non-empty strings; anything else is an evidence finding and none of it is honoured.
+_additional_kinds_present if {
+	is_object(input.policy)
+	"additional_kinds" in object.keys(input.policy)
+}
+
+_additional_kinds_value := input.policy.additional_kinds
+
+_additional_kinds_valid if {
+	is_array(_additional_kinds_value)
+	every k in _additional_kinds_value {
+		is_string(k)
+		trim_space(k) != ""
+	}
+}
+
+additional_kinds := {k | some k in _additional_kinds_value; _additional_kinds_valid}
 
 _kind_judged if {
 	is_string(input.kind)
 	input.kind in judged_kinds
+}
+
+_kind_recognised if _kind_judged
+
+_kind_recognised if {
+	is_string(input.kind)
+	input.kind in builtin_kinds
+}
+
+_kind_recognised if {
+	is_string(input.kind)
+	input.kind in additional_kinds
+}
+
+violation_k8s_000 contains msg if {
+	is_object(object.get(input, "policy", null))
+	_additional_kinds_present
+	not _additional_kinds_valid
+	msg := sprintf("SENTINEL-K8S-000: Malformed input: input.policy.additional_kinds must be a list of non-empty strings, got %v; it was ignored.", [type_name(_additional_kinds_value)])
 }
 
 violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.kind is missing; the gate cannot tell what kind of resource this is, so nothing was judged." if {
@@ -132,8 +203,8 @@ violation_k8s_000 contains "SENTINEL-K8S-000: Malformed input: input.kind is emp
 violation_k8s_000 contains msg if {
 	is_string(input.kind)
 	trim_space(input.kind) != ""
-	not _kind_judged
-	msg := sprintf("SENTINEL-K8S-000: Unrecognised kind: input.kind %q is not a kind this gate judges (got a string), so nothing was judged.", [input.kind])
+	not _kind_recognised
+	msg := sprintf("SENTINEL-K8S-000: Unrecognised kind: input.kind %q is not a standard built-in Kubernetes kind or a kind this gate judges, so nothing was judged. If it is a custom resource you accept, list it in input.policy.additional_kinds (a list of strings).", [input.kind])
 }
 
 violation_k8s_000 contains msg if {
@@ -361,7 +432,7 @@ _not_namespaced if input.kind in {"Namespace", "ClusterRole", "ClusterRoleBindin
 
 violation_k8s_010 contains msg if {
 	not _nonempty_string(object.get(input, ["manifest", "metadata", "namespace"], null))
-	is_string(input.kind)
+	_kind_judged
 	not _not_namespaced
 	msg := sprintf(
 		"SENTINEL-K8S-010: %v '%v' does not specify a namespace. All namespaced resources must explicitly set metadata.namespace.",
@@ -376,6 +447,7 @@ violation_k8s_010 contains msg if {
 required_labels := {"app", "version", "team"}
 
 violation_k8s_011 contains msg if {
+	_kind_judged
 	some label in required_labels
 	not _nonempty_string(object.get(input, ["manifest", "metadata", "labels", label], null))
 	msg := sprintf(
@@ -478,7 +550,7 @@ all_violations := array.concat(
 # Gate exception (b) is withdrawn (2026-11-24). It was kept by the decision of 2026-10-19: a manifest with no
 # `kind`, or a kind outside workload_kinds, was not judged and passed. The owner has superseded it ("do the
 # correct one"), in line with kubernetes.admission, which already rejects a blank kind: SENTINEL-K8S-000 now denies
-# a manifest whose kind is missing, empty, not a string, or not in judged_kinds. SENTINEL-K8S-000 also denies input
+# a manifest whose kind is missing, empty, not a string, or not recognised (judged_kinds, builtin_kinds, input.policy.additional_kinds). SENTINEL-K8S-000 also denies input
 # whose manifest is not an object or whose workload has no readable containers.
 # Gate semantics: judges only what is present in the manifest, so a manifest with no
 # workload containers has nothing to violate. A failing manifest still yields a result.

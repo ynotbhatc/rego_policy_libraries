@@ -17,8 +17,10 @@ Mapping (library check -> 800-53 control id) uses exactly three sources and noth
   nist-800-53-module  our own nist_sp_800_53 module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (= sc-7 and sc-8).
                       The `nist.sp800_53.access_control#N` rows are topic rows, not attributable to a control: excluded,
                       counted in the summary as excluded_topic_rows.
-Out of scope: crosswalk/framework_maps has only the three 800-53B and four FedRAMP Rev 5 baseline maps authoritative
-(baseline membership, not library mappings); the five framework maps (800-171 R3, CSF 2.0, ISO 27001, PCI DSS v4, CIS v8) are pending with no rows.
+Out of scope: crosswalk/framework_maps carries the three 800-53B and four FedRAMP Rev 5 baseline maps (baseline membership,
+not library mappings) and three framework maps generated from NIST sources (800-171 R3, CSF 2.0, ISO 27001:2022). None
+of them is read here: this bridge counts only the three sources above. PCI DSS v4 and CIS Controls v8 are still pending
+with no rows (no source whose licence allows shipping them).
 
 Covered: a base control is covered when any check maps to that exact id; an enhancement only when a check maps to that exact
 enhancement id (source label-is-800-53 / nist-800-53-module with `(n)`). A base-control mapping never covers an enhancement.

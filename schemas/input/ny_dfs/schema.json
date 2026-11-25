@@ -2,48 +2,74 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/ny_dfs/schema.json",
  "title": "Input facts for ny_dfs",
- "description": "Input paths referenced in the sources of frameworks/financial/ny_dfs/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/financial/ny_dfs/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "ny_dfs",
  "x-entrypoint": "data.ny_dfs.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/financial/ny_dfs/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.ny_dfs.evidence_rule_test.all_pass_input",
  "type": "object",
  "properties": {
   "access_control": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "least_privilege": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "password_policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "strong": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "privileged_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "regular_review": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "terminated_users": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "prompt_revocation": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -54,117 +80,211 @@
   },
   "asset_inventory": {
    "description": "Read in ny_dfs_main.rego.",
+   "type": "object",
    "properties": {
     "maintained": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "Read in ny_dfs_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "tracks_required_fields": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "audit_trail": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "retention": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "minimum_3_years_financial": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "minimum_5_years_security": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "tamper_resistant": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "business_continuity": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "plan": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "ciso": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "annual_report": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "includes_material_issues": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "to_board": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "designated": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "cybersecurity_policy": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "annual_review": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "board_approved": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "documented": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "cybersecurity_program": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "exists": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "risk_based": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "design": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "data_retention": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "nonpublic_info": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "disposed_when_no_longer_needed": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -174,16 +294,28 @@
    "description": "Read in ny_dfs_main.rego."
   },
   "encryption": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "nonpublic_info": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "at_rest": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "in_transit": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -196,19 +328,36 @@
    "description": "Read in ny_dfs_main.rego."
   },
   "incident_response": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "plan": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "roles_defined": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "tested_annually": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -216,17 +365,25 @@
   },
   "mfa": {
    "description": "Read in ny_dfs_main.rego.",
+   "type": "object",
    "properties": {
     "all_individuals_all_systems": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "Read in ny_dfs_main.rego.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "ciso_approved_compensating_controls": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
        "description": "Read in ny_dfs_main.rego."
@@ -235,70 +392,115 @@
     },
     "privileged_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "remote_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "third_party_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "monitoring": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "anomalous_activity": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "systems_in_place": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "user_activity": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "privileged_users_monitored": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "personnel": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "qualified_staff": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "available": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "training": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "cybersecurity": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "annual": {
-         "description": "Read in ny_dfs_main.rego."
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       }
@@ -307,109 +509,188 @@
    }
   },
   "risk_assessment": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "conducted": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "covers_nonpublic_information": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "periodic_review": {
-     "description": "Read in ny_dfs_main.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "superintendent_notice": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "annual_certification": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "filed": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "process": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "within_72_hours": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "testing": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "findings": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "remediation_tracked": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "penetration_test": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "annual": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "vulnerability_assessment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "semi_annual": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "third_party": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "assessment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "periodic_due_diligence": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "contracts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "prompt_notification_required": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "security_controls_required": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "training": {
-   "description": "Read in ny_dfs_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "security_awareness": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "annual": {
-       "description": "Read in ny_dfs_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }

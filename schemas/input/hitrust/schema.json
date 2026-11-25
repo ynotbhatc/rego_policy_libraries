@@ -2,101 +2,164 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/hitrust/schema.json",
  "title": "Input facts for hitrust",
- "description": "Input paths referenced in the sources of frameworks/management/hitrust/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/management/hitrust/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "hitrust",
  "x-entrypoint": "data.hitrust.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/management/hitrust/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.hitrust.evidence_test.all_pass",
  "type": "object",
  "properties": {
   "access_control": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "access_review": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "periodic": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "mfa": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "critical_systems": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "password_policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "strong": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "policy": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "privileged_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "termination": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "prompt_revocation": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "user_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "formal_registration": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "access_management": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "phi": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "minimum_necessary": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "remote_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "wireless": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "secured": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -106,117 +169,198 @@
    "description": "Read in hitrust_main.rego."
   },
   "asset_management": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "classification": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "phi_labeled": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "disposal": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "secure_media_sanitization": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "inventory": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "maintained": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "audit": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "logs": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "protected_from_tampering": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "retention_6_years": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "phi_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "logged": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "review": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "regular": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "business_continuity": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "bcp": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "tested": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "drp": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "phi_systems": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "compliance": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "hipaa": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "breach_notification": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "plan": {
-         "description": "Read in hitrust_main.rego."
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       },
       "privacy_rule": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "policies": {
-         "description": "Read in hitrust_main.rego."
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       },
       "security_rule": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "policies": {
-         "description": "Read in hitrust_main.rego."
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       }
@@ -224,9 +368,15 @@
     },
     "legal": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "periodic_review": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -239,342 +389,582 @@
    "description": "Read in hitrust_main.rego."
   },
   "hr_security": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "background_checks": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "performed": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "confidentiality": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "agreements_signed": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "sanctions": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "policy_documented": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "incident_response": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "phi_breach": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "procedures": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "plan": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "tested_annually": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "reporting": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "hhs_60_days": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "operations": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "backup": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "phi_backed_up": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "change_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "formal_process": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "malware": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "protection_deployed": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "network_monitoring": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enabled": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "patch_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "timely": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "vulnerability_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "scanning": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "physical_security": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "equipment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "secured": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "perimeter": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled_access": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "visitor_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "logged": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "privacy": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "minimum_necessary": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "enforced": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "notice": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "provided_to_patients": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "patient_rights": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "process_exists": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "risk_management": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "assessment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "conducted": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "periodic_review": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "phi_scope": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "encryption": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "phi_at_rest": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "phi_in_transit": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "treatment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "plan_documented": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "secure_development": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "phi": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "no_phi_in_test": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "requirements": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "security_included": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "testing": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "security_testing": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "security_policy": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "dissemination": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "to_workforce": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "phi_specific": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "security_program": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "isms": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "established": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "policies": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "annual_review": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "approved_by_management": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "third_party": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "assessment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "security_evaluation": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "baa": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "executed": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "contracts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "security_requirements": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "training": {
-   "description": "Read in hitrust_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "completion": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "tracked": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "hipaa": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "all_workforce_annual": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "phi_handling": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "included": {
-       "description": "Read in hitrust_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }

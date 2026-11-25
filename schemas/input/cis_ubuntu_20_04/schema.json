@@ -2,88 +2,210 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/cis_ubuntu_20_04/schema.json",
  "title": "Input facts for cis_ubuntu_20_04",
- "description": "Input paths referenced in the sources of benchmarks/cis/ubuntu_20_04/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in benchmarks/cis/ubuntu_20_04/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "cis_ubuntu_20_04",
  "x-entrypoint": "data.cis_ubuntu_20_04.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "benchmarks/cis/ubuntu_20_04/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.cis_ubuntu_20_04.all_pass_fixture_test.fixture_compliant",
  "type": "object",
  "properties": {
   "aide": {
    "description": "Read in boot_security_validation.rego.",
+   "type": "object",
    "properties": {
     "cron_configured": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "database_exists": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "installed": {
-     "description": "Read in boot_security_validation.rego."
-    },
-    "systemd_timer_configured": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in boot_security_validation.rego."
+   },
+   "x-variable-key": "<key>"
   },
   "apparmor": {
    "description": "Read in apparmor_validation.rego, boot_security_validation.rego.",
+   "type": "object",
    "properties": {
     "bootloader_enabled": {
-     "description": "Read in apparmor_validation.rego, boot_security_validation.rego."
+     "description": "Read in apparmor_validation.rego, boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "complain_profiles": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     },
     "enforce_profiles": {
      "description": "Read in apparmor_validation.rego."
     },
     "grub_cmdline": {
-     "description": "Read in apparmor_validation.rego, boot_security_validation.rego."
+     "description": "Read in apparmor_validation.rego, boot_security_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "quiet apparmor=1 security=apparmor audit=1 audit_backlog_limit=8192"
+     ]
     },
     "installed": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "profiles": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "enforce"
+        ]
+       },
+       "name": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "usr.sbin.sshd"
+        ]
+       }
+      }
+     }
     },
     "service_active": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "service_enabled": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "unloaded_profiles": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     },
     "utils_installed": {
-     "description": "Read in apparmor_validation.rego."
+     "description": "Read in apparmor_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "auditd": {
    "description": "Read in auditd_validation.rego.",
+   "type": "object",
    "properties": {
     "active_rules": {
-     "description": "Read in auditd_validation.rego."
+     "description": "Read in auditd_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "-a always,exit -F arch=b64 -S adjtimex,settimeofday -k time-change"
+      ]
+     },
+     "examples": [
+      [
+       "-a always,exit -F arch=b64 -S adjtimex,settimeofday -k time-change",
+       "-a always,exit -F arch=b32 -S adjtimex,settimeofday -k time-change",
+       "-a always,exit -F arch=b64 -S clock_settime -F a0=0x0 -k time-change"
+      ]
+     ]
     },
     "config": {
-     "description": "Read in auditd_validation.rego."
+     "description": "Read in auditd_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "max_log_file = 8\nmax_log_file_action = keep_logs\nspace_left_action = email\nadmin_space_left_action = halt\n"
+     ]
     },
     "log_permissions": {
      "description": "Read in auditd_validation.rego.",
+     "type": "object",
      "properties": {
       "gr_name": {
-       "description": "Read in auditd_validation.rego."
+       "description": "Read in auditd_validation.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "adm"
+       ]
       },
       "mode": {
-       "description": "Read in auditd_validation.rego."
+       "description": "Read in auditd_validation.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "0640"
+       ]
       },
       "pw_name": {
-       "description": "Read in auditd_validation.rego."
+       "description": "Read in auditd_validation.rego.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "root"
+       ]
       }
      }
     }
@@ -91,56 +213,168 @@
   },
   "autofs": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "active": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "enabled": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "installed": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "bootloader": {
    "description": "Read in auditd_validation.rego.",
+   "type": "object",
    "properties": {
     "grub_config": {
-     "description": "Read in auditd_validation.rego."
+     "description": "Read in auditd_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "BOOT_IMAGE=/vmlinuz root=/dev/sda1 ro apparmor=1 security=apparmor audit=1 audit_backlog_limit=8192"
+     ]
     }
    }
   },
   "chronyd": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "has_time_sources": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "service_active": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "client_packages": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "analysis": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "installed": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "package": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "telnet"
+        ]
+       }
+      }
+     }
     },
     "any_installed": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "installed_packages": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    }
   },
   "critical_files": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "analysis": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "exists": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "file": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/passwd"
+        ]
+       },
+       "fully_compliant": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "mode_compliant": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
     },
     "non_compliant_count": {
      "description": "Read in file_permissions_validation.rego."
@@ -149,82 +383,214 @@
   },
   "cron": {
    "description": "Read in cron_validation.rego.",
+   "type": "object",
    "properties": {
     "at_allow_exists": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "at_allow_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0600"
+     ]
     },
     "at_deny_exists": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "cron_allow_exists": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "cron_allow_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0600"
+     ]
     },
     "cron_d_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0700"
+     ]
     },
     "cron_d_owner": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "cron_daily_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0700"
+     ]
     },
     "cron_daily_owner": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "cron_deny_exists": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "cron_hourly_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0700"
+     ]
     },
     "cron_hourly_owner": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "cron_monthly_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0700"
+     ]
     },
     "cron_monthly_owner": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "cron_weekly_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0700"
+     ]
     },
     "cron_weekly_owner": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "crond_enabled": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "crond_running": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "crontab_group": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "crontab_mode": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0600"
+     ]
     },
     "crontab_owner": {
-     "description": "Read in cron_validation.rego."
+     "description": "Read in cron_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     }
    }
   },
   "disabled_filesystem_modules": {
    "description": "Read in filesystem_validation.rego.",
+   "type": "object",
    "properties": {
     "modules": {
-     "description": "Read in filesystem_validation.rego."
+     "description": "Read in filesystem_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "compliant": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "module": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "cramfs"
+        ]
+       }
+      }
+     }
     }
    }
   },
   "excessive_permissions": {
    "description": "Read in logging_validation.rego.",
+   "type": "object",
    "properties": {
     "files": {
      "description": "Read in logging_validation.rego."
@@ -233,124 +599,327 @@
   },
   "firewall": {
    "description": "Read in network_validation.rego.",
+   "type": "object",
    "properties": {
     "active": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "default_incoming": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "deny"
+     ]
     },
     "type": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "ufw"
+     ]
     }
    }
   },
   "grub": {
    "description": "Read in boot_security_validation.rego.",
+   "type": "object",
    "properties": {
     "config_mode": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0600"
+     ]
     },
     "config_owner": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "password_configured": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "sulogin_configured": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "initial_setup": {
    "description": "Read in initial_setup_validation.rego.",
+   "type": "object",
    "properties": {
     "aide_cron_configured": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "aide_installed": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "aslr_enabled": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "core_dumps_enabled": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "enabled_repos": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "main"
+      ]
+     },
+     "examples": [
+      [
+       "main"
+      ]
+     ]
     },
     "gdm_banner_configured": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "gdm_idle_delay": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      600
+     ]
     },
     "gdm_installed": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "gdm_screen_lock_enabled": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "gpg_keys": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "archive-keyring"
+      ]
+     },
+     "examples": [
+      [
+       "archive-keyring"
+      ]
+     ]
     },
     "grub_config_mode": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0600"
+     ]
     },
     "grub_owner_root": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "grub_password_configured": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "gui_required": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "issue_contains_sensitive_info": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "issue_exists": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "issue_mode": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0644"
+     ]
     },
     "issue_net_contains_sensitive_info": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "issue_net_exists": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "issue_net_mode": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0644"
+     ]
     },
     "issue_net_owner": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "issue_owner": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "motd_contains_sensitive_info": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "motd_exists": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "motd_mode": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0644"
+     ]
     },
     "motd_owner": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "prelink_installed": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "ptrace_scope_restricted": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "server_environment": {
-     "description": "Read in initial_setup_validation.rego."
+     "description": "Read in initial_setup_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    },
    "additionalProperties": {
@@ -360,49 +929,88 @@
   },
   "ip_forwarding": {
    "description": "Read in network_validation.rego.",
+   "type": "object",
    "properties": {
     "ipv4_compliant": {
      "description": "Read in network_validation.rego."
     },
     "ipv4_forwarding": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     },
     "ipv6_compliant": {
      "description": "Read in network_validation.rego."
     },
     "ipv6_forwarding": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in network_validation.rego."
+   },
+   "x-variable-key": "<key>"
   },
   "ipv6": {
    "description": "Read in network_validation.rego.",
+   "type": "object",
    "properties": {
     "address_count": {
      "description": "Read in network_validation.rego."
     },
     "disabled": {
-     "description": "Read in network_validation.rego."
-    },
-    "status": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "journald": {
    "description": "Read in logging_validation.rego.",
+   "type": "object",
    "properties": {
     "compress_enabled": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "yes"
+     ]
     },
     "forward_to_syslog": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "yes"
+     ]
     },
     "service_active": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "storage_mode": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "persistent"
+     ]
     }
    },
    "additionalProperties": {
@@ -412,146 +1020,430 @@
   },
   "log_file_permissions": {
    "description": "Read in logging_validation.rego.",
+   "type": "object",
    "properties": {
     "analysis": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "exists": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "file": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/var/log/syslog"
+        ]
+       },
+       "fully_compliant": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       }
+      }
+     }
     }
    }
   },
   "logrotate": {
    "description": "Read in logging_validation.rego.",
+   "type": "object",
    "properties": {
     "installed": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "mount_options": {
    "description": "Read in filesystem_validation.rego.",
+   "type": "object",
    "properties": {
     "mounts": {
-     "description": "Read in filesystem_validation.rego."
+     "description": "Read in filesystem_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "cis_id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "1.1.3"
+        ]
+       },
+       "compliant": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "missing_options": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "array",
+        "x-type-source": "fixture",
+        "items": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+        },
+        "examples": [
+         []
+        ]
+       },
+       "mount_point": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/tmp"
+        ]
+       }
+      }
+     }
     }
    }
   },
   "packages": {
    "description": "Read in auditd_validation.rego.",
+   "type": "object",
    "properties": {
     "audit": {
      "description": "Read in auditd_validation.rego."
     },
     "auditd": {
-     "description": "Read in auditd_validation.rego."
+     "description": "Read in auditd_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in auditd_validation.rego."
+   },
+   "x-variable-key": "<name>"
   },
   "pam": {
    "description": "Read in pam_validation.rego.",
+   "type": "object",
    "properties": {
     "common_password_raw": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "password [success=1 default=ignore] pam_unix.so obscure use_authtok try_first_pass yescrypt remember=5\n"
+     ]
     },
     "default_umask": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "027"
+     ]
     },
     "faillock_configured": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "faillock_deny": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      5
+     ]
     },
     "faillock_unlock_time": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      900
+     ]
     },
     "inactive_days": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      30
+     ]
     },
     "pass_max_days": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      365
+     ]
     },
     "pass_min_days": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
     },
     "pass_warn_age": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      7
+     ]
     },
     "pwquality_conf_raw": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "minlen = 14\nminclass = 4\n"
+     ]
     },
     "remember_configured": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "remember_count": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      5
+     ]
     },
     "system_accounts_with_login_shell": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "tmout_configured": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "tmout_value": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      900
+     ]
     },
     "users_with_future_password_change": {
-     "description": "Read in pam_validation.rego."
+     "description": "Read in pam_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in pam_validation.rego."
+   },
+   "x-variable-key": "<gate>"
   },
   "process_hardening": {
    "description": "Read in boot_security_validation.rego.",
+   "type": "object",
    "properties": {
     "aslr_enabled": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "core_dumps_enabled": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "fs_suid_dumpable": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0"
+     ]
     },
     "prelink_installed": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "ptrace_scope_restricted": {
-     "description": "Read in boot_security_validation.rego."
+     "description": "Read in boot_security_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "require_ipv6_disabled": {
-   "description": "Read in network_validation.rego."
+   "description": "Read in network_validation.rego.",
+   "type": "boolean",
+   "x-type-source": "fixture",
+   "examples": [
+    true
+   ]
   },
   "require_remote_logging": {
-   "description": "Read in logging_validation.rego."
+   "description": "Read in logging_validation.rego.",
+   "type": "boolean",
+   "x-type-source": "fixture",
+   "examples": [
+    true
+   ]
   },
   "required_partitions": {
    "description": "Read in filesystem_validation.rego.",
+   "type": "object",
    "properties": {
     "partitions": {
-     "description": "Read in filesystem_validation.rego."
+     "description": "Read in filesystem_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "cis_id": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "2"
+        ]
+       },
+       "exists": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "mount_point": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/tmp"
+        ]
+       }
+      }
+     }
     }
    }
   },
   "rsyslog": {
    "description": "Read in logging_validation.rego.",
+   "type": "object",
    "properties": {
     "file_create_mode": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0640"
+     ]
     },
     "installed": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "logging_rules_count": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      6
+     ]
     },
     "remote_logging_configured": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "service_active": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "service_enabled": {
-     "description": "Read in logging_validation.rego."
+     "description": "Read in logging_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    },
    "additionalProperties": {
@@ -561,40 +1453,132 @@
   },
   "services": {
    "description": "Read in auditd_validation.rego.",
+   "type": "object",
    "properties": {
     "auditd.service": {
-     "description": "Read in auditd_validation.rego."
+     "description": "Read in auditd_validation.rego.",
+     "type": "object",
+     "properties": {
+      "state": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "running"
+       ]
+      },
+      "status": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "enabled"
+       ]
+      }
+     }
     }
    }
   },
   "sgid_files": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "count": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      8
+     ]
     }
    }
   },
   "ssh": {
    "description": "Read in ssh_validation.rego.",
+   "type": "object",
    "properties": {
     "private_key_files": {
-     "description": "Read in ssh_validation.rego."
+     "description": "Read in ssh_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0600"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/ssh/ssh_host_ed25519_key"
+        ]
+       }
+      }
+     }
     },
     "public_key_files": {
-     "description": "Read in ssh_validation.rego."
+     "description": "Read in ssh_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "mode": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "0644"
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/ssh/ssh_host_ed25519_key.pub"
+        ]
+       }
+      }
+     }
     },
     "sshd_config_group": {
-     "description": "Read in ssh_validation.rego."
+     "description": "Read in ssh_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "sshd_config_mode": {
-     "description": "Read in ssh_validation.rego."
+     "description": "Read in ssh_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0600"
+     ]
     },
     "sshd_config_owner": {
-     "description": "Read in ssh_validation.rego."
+     "description": "Read in ssh_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root"
+     ]
     },
     "sshd_config_raw": {
-     "description": "Read in ssh_validation.rego."
+     "description": "Read in ssh_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture"
     }
    },
    "additionalProperties": {
@@ -604,88 +1588,273 @@
   },
   "ssh_private_keys": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "all_compliant": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "analysis": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "fully_compliant": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/etc/ssh/ssh_host_ed25519_key"
+        ]
+       }
+      }
+     }
     }
    }
   },
   "sticky_bit_check": {
    "description": "Read in filesystem_validation.rego.",
+   "type": "object",
    "properties": {
     "world_writable_dirs": {
-     "description": "Read in filesystem_validation.rego."
+     "description": "Read in filesystem_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "has_sticky_bit": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         true
+        ]
+       },
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/tmp"
+        ]
+       }
+      }
+     }
     }
    }
   },
   "sudo": {
    "description": "Read in sudo_validation.rego.",
+   "type": "object",
    "properties": {
     "installed": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "logfile_configured": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "noauthenticate_entries": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "nopasswd_entries": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "su_allowed_group": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "sudo"
+     ]
     },
     "su_restricted": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "sudoers_mode": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "0440"
+     ]
     },
     "sudoers_world_readable": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "timestamp_timeout": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      15
+     ]
     },
     "use_pty": {
-     "description": "Read in sudo_validation.rego."
+     "description": "Read in sudo_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in sudo_validation.rego."
+   },
+   "x-variable-key": "<key>"
   },
   "suid_files": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "total_count": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      12
+     ]
     },
     "unknown_binaries": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "path": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "/usr/local/bin/tool"
+        ]
+       },
+       "review_required": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       }
+      }
+     }
     },
     "unknown_count": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      1
+     ]
     }
    }
   },
   "sysctl_parameters": {
    "description": "Read in network_validation.rego.",
+   "type": "object",
    "properties": {
     "analysis": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "current_value": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "1"
+        ]
+       },
+       "parameter": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "net.ipv4.tcp_syncookies"
+        ]
+       }
+      }
+     }
     },
     "non_compliant_count": {
      "description": "Read in network_validation.rego."
     },
     "non_compliant_params": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    }
   },
   "system_info": {
    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "architecture": {
      "description": "Read in cis_ubuntu_20_04_complete.rego."
@@ -706,20 +1875,37 @@
   },
   "time_synchronization": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "active_service": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "chronyd"
+     ]
     },
     "compliant": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "has_active_service": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   },
   "timesyncd": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "service_active": {
      "description": "Read in services_validation.rego."
@@ -728,119 +1914,344 @@
   },
   "ungrouped_files": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "compliant": {
      "description": "Read in file_permissions_validation.rego."
     },
     "count": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     },
     "files": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    }
   },
   "unnecessary_services": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "analysis": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "active": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "service": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "inetd"
+        ]
+       }
+      }
+     }
     },
     "non_compliant": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in services_validation.rego."
+   },
+   "x-variable-key": "<key>"
   },
   "unowned_files": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "compliant": {
      "description": "Read in file_permissions_validation.rego."
     },
     "count": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     },
     "files": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    }
   },
   "usb_storage_disabled": {
    "description": "Read in filesystem_validation.rego.",
+   "type": "object",
    "properties": {
     "disabled": {
-     "description": "Read in filesystem_validation.rego."
+     "description": "Read in filesystem_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "loaded": {
-     "description": "Read in filesystem_validation.rego."
+     "description": "Read in filesystem_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     }
-   }
+   },
+   "additionalProperties": {
+    "description": "Read in filesystem_validation.rego."
+   },
+   "x-variable-key": "<other>"
   },
   "user_group": {
    "description": "Read in user_group_validation.rego.",
+   "type": "object",
    "properties": {
     "dotfiles_group_or_world_writable": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "duplicate_gids": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "object"
     },
     "duplicate_groupnames": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "object"
     },
     "duplicate_uids": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "object"
     },
     "duplicate_usernames": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "object"
     },
     "group_content": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root:x:0:\n"
+     ]
     },
     "home_dirs_too_permissive": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "passwd_content": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root:x:0:0:root:/root:/bin/bash\n"
+     ]
     },
     "passwd_groups_not_in_group_file": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "root_path": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+     ]
     },
     "root_path_dirs": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "/usr/local/sbin"
+      ]
+     },
+     "examples": [
+      [
+       "/usr/local/sbin",
+       "/usr/local/bin",
+       "/usr/sbin"
+      ]
+     ]
     },
     "root_path_writable_dirs": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "shadow_content": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "root:*:19000:0:99999:7:::\n"
+     ]
     },
     "uid_zero_accounts": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "root"
+      ]
+     },
+     "examples": [
+      [
+       "root"
+      ]
+     ]
     },
     "users_not_owning_home": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "users_with_empty_password": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "users_with_forward": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "users_with_netrc": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "users_with_rhosts": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "users_without_home_directory": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     },
     "users_without_shadow": {
-     "description": "Read in user_group_validation.rego."
+     "description": "Read in user_group_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    },
    "additionalProperties": {
@@ -850,54 +2261,147 @@
   },
   "webserver": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "any_installed": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "packages": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "installed": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "package": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "apache2"
+        ]
+       }
+      }
+     }
     }
    }
   },
   "wireless_interfaces": {
    "description": "Read in network_validation.rego.",
+   "type": "object",
    "properties": {
     "compliant": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     },
     "count": {
      "description": "Read in network_validation.rego."
     },
     "has_wireless": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "interfaces": {
-     "description": "Read in network_validation.rego."
+     "description": "Read in network_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    }
   },
   "world_writable": {
    "description": "Read in file_permissions_validation.rego.",
+   "type": "object",
    "properties": {
     "compliant": {
      "description": "Read in file_permissions_validation.rego."
     },
     "count": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      0
+     ]
     },
     "files": {
-     "description": "Read in file_permissions_validation.rego."
+     "description": "Read in file_permissions_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan."
+     },
+     "examples": [
+      []
+     ]
     }
    }
   },
   "x11": {
    "description": "Read in services_validation.rego.",
+   "type": "object",
    "properties": {
     "any_installed": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      false
+     ]
     },
     "packages": {
-     "description": "Read in services_validation.rego."
+     "description": "Read in services_validation.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "installed": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "boolean",
+        "x-type-source": "fixture",
+        "examples": [
+         false
+        ]
+       },
+       "package": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "xserver-xorg"
+        ]
+       }
+      }
+     }
     }
    }
   }
@@ -908,7 +2412,6 @@
   "aide.cron_configured",
   "aide.database_exists",
   "aide.installed",
-  "aide.systemd_timer_configured",
   "apparmor",
   "apparmor.bootloader_enabled",
   "apparmor.complain_profiles",
@@ -916,6 +2419,8 @@
   "apparmor.grub_cmdline",
   "apparmor.installed",
   "apparmor.profiles",
+  "apparmor.profiles[].mode",
+  "apparmor.profiles[].name",
   "apparmor.service_active",
   "apparmor.service_enabled",
   "apparmor.unloaded_profiles",
@@ -938,10 +2443,16 @@
   "chronyd.service_active",
   "client_packages",
   "client_packages.analysis",
+  "client_packages.analysis[].installed",
+  "client_packages.analysis[].package",
   "client_packages.any_installed",
   "client_packages.installed_packages",
   "critical_files",
   "critical_files.analysis",
+  "critical_files.analysis[].exists",
+  "critical_files.analysis[].file",
+  "critical_files.analysis[].fully_compliant",
+  "critical_files.analysis[].mode_compliant",
   "critical_files.non_compliant_count",
   "cron",
   "cron.at_allow_exists",
@@ -967,6 +2478,8 @@
   "cron.crontab_owner",
   "disabled_filesystem_modules",
   "disabled_filesystem_modules.modules",
+  "disabled_filesystem_modules.modules[].compliant",
+  "disabled_filesystem_modules.modules[].module",
   "excessive_permissions",
   "excessive_permissions.files",
   "firewall",
@@ -1016,7 +2529,6 @@
   "ipv6",
   "ipv6.address_count",
   "ipv6.disabled",
-  "ipv6.status",
   "journald",
   "journald.compress_enabled",
   "journald.forward_to_syslog",
@@ -1024,10 +2536,17 @@
   "journald.storage_mode",
   "log_file_permissions",
   "log_file_permissions.analysis",
+  "log_file_permissions.analysis[].exists",
+  "log_file_permissions.analysis[].file",
+  "log_file_permissions.analysis[].fully_compliant",
   "logrotate",
   "logrotate.installed",
   "mount_options",
   "mount_options.mounts",
+  "mount_options.mounts[].cis_id",
+  "mount_options.mounts[].compliant",
+  "mount_options.mounts[].missing_options",
+  "mount_options.mounts[].mount_point",
   "packages",
   "packages.audit",
   "packages.auditd",
@@ -1058,6 +2577,9 @@
   "require_remote_logging",
   "required_partitions",
   "required_partitions.partitions",
+  "required_partitions.partitions[].cis_id",
+  "required_partitions.partitions[].exists",
+  "required_partitions.partitions[].mount_point",
   "rsyslog",
   "rsyslog.file_create_mode",
   "rsyslog.installed",
@@ -1067,11 +2589,17 @@
   "rsyslog.service_enabled",
   "services",
   "services[\"auditd.service\"]",
+  "services[\"auditd.service\"].state",
+  "services[\"auditd.service\"].status",
   "sgid_files",
   "sgid_files.count",
   "ssh",
   "ssh.private_key_files",
+  "ssh.private_key_files[].mode",
+  "ssh.private_key_files[].path",
   "ssh.public_key_files",
+  "ssh.public_key_files[].mode",
+  "ssh.public_key_files[].path",
   "ssh.sshd_config_group",
   "ssh.sshd_config_mode",
   "ssh.sshd_config_owner",
@@ -1079,8 +2607,12 @@
   "ssh_private_keys",
   "ssh_private_keys.all_compliant",
   "ssh_private_keys.analysis",
+  "ssh_private_keys.analysis[].fully_compliant",
+  "ssh_private_keys.analysis[].path",
   "sticky_bit_check",
   "sticky_bit_check.world_writable_dirs",
+  "sticky_bit_check.world_writable_dirs[].has_sticky_bit",
+  "sticky_bit_check.world_writable_dirs[].path",
   "sudo",
   "sudo.installed",
   "sudo.logfile_configured",
@@ -1095,9 +2627,13 @@
   "suid_files",
   "suid_files.total_count",
   "suid_files.unknown_binaries",
+  "suid_files.unknown_binaries[].path",
+  "suid_files.unknown_binaries[].review_required",
   "suid_files.unknown_count",
   "sysctl_parameters",
   "sysctl_parameters.analysis",
+  "sysctl_parameters.analysis[].current_value",
+  "sysctl_parameters.analysis[].parameter",
   "sysctl_parameters.non_compliant_count",
   "sysctl_parameters.non_compliant_params",
   "system_info",
@@ -1118,6 +2654,8 @@
   "ungrouped_files.files",
   "unnecessary_services",
   "unnecessary_services.analysis",
+  "unnecessary_services.analysis[].active",
+  "unnecessary_services.analysis[].service",
   "unnecessary_services.non_compliant",
   "unowned_files",
   "unowned_files.compliant",
@@ -1151,6 +2689,8 @@
   "webserver",
   "webserver.any_installed",
   "webserver.packages",
+  "webserver.packages[].installed",
+  "webserver.packages[].package",
   "wireless_interfaces",
   "wireless_interfaces.compliant",
   "wireless_interfaces.count",
@@ -1162,6 +2702,8 @@
   "world_writable.files",
   "x11",
   "x11.any_installed",
-  "x11.packages"
+  "x11.packages",
+  "x11.packages[].installed",
+  "x11.packages[].package"
  ]
 }

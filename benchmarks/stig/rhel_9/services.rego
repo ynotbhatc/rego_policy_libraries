@@ -89,6 +89,7 @@ _attested(key) if input.attest[key] == true
 # a maxpoll value the check accepts: a JSON whole number not greater than 16 (never its text)
 _maxpoll_ok(p) if {
 	_whole_number(p)
+	is_number(p)
 	p <= 16
 }
 

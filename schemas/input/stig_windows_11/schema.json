@@ -10,9 +10,74 @@
   "benchmarks/stig/windows_11/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.stig.windows_11_test.green_fixture",
+ "x-fixture": "data.stig.windows_11_acceptance_r3.base",
  "type": "object",
  "properties": {
+  "attest": {
+   "description": "Read in registry_cc.rego.",
+   "type": "object",
+   "properties": {
+    "wn11_cc_000327_transcript_directory_acl": {
+     "description": "Read in registry_cc.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  },
+  "device_guard": {
+   "description": "Read in registry_cc.rego.",
+   "type": "object",
+   "properties": {
+    "RequiredSecurityProperties": {
+     "description": "Read in registry_cc.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       2
+      ]
+     },
+     "examples": [
+      [
+       2
+      ]
+     ]
+    },
+    "SecurityServicesRunning": {
+     "description": "Read in registry_cc.rego.",
+     "type": "array",
+     "x-type-source": "fixture",
+     "items": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "number",
+      "x-type-source": "fixture",
+      "examples": [
+       1
+      ]
+     },
+     "examples": [
+      [
+       1,
+       2
+      ]
+     ]
+    },
+    "VirtualizationBasedSecurityStatus": {
+     "description": "Read in registry_cc.rego.",
+     "type": "number",
+     "x-type-source": "fixture",
+     "examples": [
+      2
+     ]
+    }
+   }
+  },
   "registry": {
    "description": "Read in registry_cc.rego, registry_other.rego, registry_so.rego.",
    "type": "object",
@@ -60,7 +125,7 @@
      }
     },
     "HKCU\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Attachments": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_other.rego.",
      "type": "object",
      "properties": {
       "SaveZoneInformation": {
@@ -259,10 +324,7 @@
       "LegalNoticeText": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "string",
-       "x-type-source": "fixture",
-       "examples": [
-        "<banner text as configured>"
-       ]
+       "x-type-source": "fixture"
       },
       "MSAOptional": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
@@ -577,44 +639,6 @@
        ]
       },
       "LimitEnhancedDiagnosticDataWindowsAnalytics": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "number",
-       "x-type-source": "fixture",
-       "examples": [
-        1
-       ]
-      }
-     }
-    },
-    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "object",
-     "properties": {
-      "EnableVirtualizationBasedSecurity": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "number",
-       "x-type-source": "fixture",
-       "examples": [
-        1
-       ]
-      },
-      "HypervisorEnforcedCodeIntegrity": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "number",
-       "x-type-source": "fixture",
-       "examples": [
-        1
-       ]
-      },
-      "LsaCfgFlags": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "number",
-       "x-type-source": "fixture",
-       "examples": [
-        1
-       ]
-      },
-      "RequirePlatformSecurityFeatures": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "number",
        "x-type-source": "fixture",
@@ -1422,7 +1446,7 @@
      }
     },
     "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\Explorer": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_cc.rego.",
      "type": "object",
      "properties": {
       "NoAutorun": {
@@ -1485,7 +1509,7 @@
      }
     },
     "HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\\Kerberos\\\\Parameters": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_cc.rego.",
      "type": "object",
      "properties": {
       "DevicePKInitEnabled": {
@@ -1515,7 +1539,7 @@
      }
     },
     "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Internet Explorer\\\\Feeds": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_cc.rego.",
      "type": "object",
      "properties": {
       "AllowBasicAuthInClear": {
@@ -1652,24 +1676,6 @@
       }
      }
     },
-    "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-     "type": "object",
-     "properties": {
-      "EnableVirtualizationBasedSecurity": {
-       "description": "Read in registry_cc.rego."
-      },
-      "HypervisorEnforcedCodeIntegrity": {
-       "description": "Read in registry_cc.rego."
-      },
-      "LsaCfgFlags": {
-       "description": "Read in registry_cc.rego."
-      },
-      "RequirePlatformSecurityFeatures": {
-       "description": "Read in registry_cc.rego."
-      }
-     }
-    },
     "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Application": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "object",
@@ -1698,7 +1704,7 @@
      }
     },
     "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Explorer": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_cc.rego.",
      "type": "object",
      "properties": {
       "NoAutoplayfornonVolume": {
@@ -1731,7 +1737,7 @@
      }
     },
     "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\Installer": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_cc.rego.",
      "type": "object",
      "properties": {
       "AlwaysInstallElevated": {
@@ -1824,7 +1830,7 @@
      }
     },
     "HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\WcmSvc\\\\GroupPolicy": {
-     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "description": "Read in registry_cc.rego.",
      "type": "object",
      "properties": {
       "fBlockNonDomain": {
@@ -2107,6 +2113,12 @@
  },
  "additionalProperties": true,
  "x-known-paths": [
+  "attest",
+  "attest.wn11_cc_000327_transcript_directory_acl",
+  "device_guard",
+  "device_guard.RequiredSecurityProperties",
+  "device_guard.SecurityServicesRunning",
+  "device_guard.VirtualizationBasedSecurityStatus",
   "registry",
   "registry[\"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\"]",
   "registry[\"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments\"].SaveZoneInformation",
@@ -2188,11 +2200,6 @@
   "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\"]",
   "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\"].AllowTelemetry",
   "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\"].LimitEnhancedDiagnosticDataWindowsAnalytics",
-  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"]",
-  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].EnableVirtualizationBasedSecurity",
-  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].HypervisorEnforcedCodeIntegrity",
-  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].LsaCfgFlags",
-  "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard\"].RequirePlatformSecurityFeatures",
   "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application\"]",
   "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application\"].MaxSize",
   "registry[\"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security\"]",
@@ -2365,11 +2372,6 @@
   "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DataCollection\"]",
   "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DataCollection\"].AllowTelemetry",
   "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DataCollection\"].LimitEnhancedDiagnosticDataWindowsAnalytics",
-  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"]",
-  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].EnableVirtualizationBasedSecurity",
-  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].HypervisorEnforcedCodeIntegrity",
-  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].LsaCfgFlags",
-  "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\DeviceGuard\"].RequirePlatformSecurityFeatures",
   "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Application\"]",
   "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Application\"].MaxSize",
   "registry[\"HKLM\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows\\\\EventLog\\\\Security\"]",

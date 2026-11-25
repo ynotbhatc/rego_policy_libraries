@@ -440,7 +440,7 @@
      ]
     },
     "min_rsa_size": {
-     "description": "OL08-00-010182: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by OL08-00-010182. Accepted: number, or string holding a decimal integer.",
+     "description": "OL08-00-010182: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size. Read by OL08-00-010182. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -586,7 +586,7 @@
    "type": "object",
    "properties": {
     "deny": {
-     "description": "OL08-00-020011: deny as configured in /etc/security/faillock.conf. Read by OL08-00-020011. Accepted: number, or string holding a decimal integer.",
+     "description": "OL08-00-020011: deny as configured in /etc/security/faillock.conf. Read by OL08-00-020011. Accepted: whole JSON number.",
      "type": [
       "null",
       "number",
@@ -603,7 +603,7 @@
      ]
     },
     "fail_interval": {
-     "description": "OL08-00-020013: fail_interval in /etc/security/faillock.conf; OL 8 requires 900 or MORE (RHEL 9: 900 or less); 8.0/8.1 N/A. Read by OL08-00-020013. Accepted: number, or string holding a decimal integer.",
+     "description": "OL08-00-020013: fail_interval in /etc/security/faillock.conf; OL 8 requires 900 or MORE (RHEL 9: 900 or less); 8.0/8.1 N/A. Read by OL08-00-020013. Accepted: whole JSON number.",
      "type": [
       "null",
       "number",
@@ -963,7 +963,7 @@
    "type": "object",
    "properties": {
     "uek_release": {
-     "description": "Read by OL08-00-010372. Accepted: number, or string holding a decimal integer.",
+     "description": "Read by OL08-00-010372. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1596,7 +1596,7 @@
    "type": "object",
    "properties": {
     "maxdays": {
-     "description": "OL08-00-020200: PASS_MAX_DAYS as configured in /etc/login.defs. Read by OL08-00-020200. Accepted: number, or string holding a decimal integer.",
+     "description": "OL08-00-020200: PASS_MAX_DAYS as configured in /etc/login.defs. Read by OL08-00-020200. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1612,7 +1612,7 @@
      ]
     },
     "mindays": {
-     "description": "OL08-00-020190: PASS_MIN_DAYS as configured in /etc/login.defs. Read by OL08-00-020190. Accepted: number, or string holding a decimal integer.",
+     "description": "OL08-00-020190: PASS_MIN_DAYS as configured in /etc/login.defs. Read by OL08-00-020190. Accepted: whole JSON number.",
      "type": [
       "number",
       "string"
@@ -1657,11 +1657,11 @@
      "description": "OL08-00-020130: every dcredit = value line found by grep -r dcredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020130.",
      "type": "array",
      "items": {
-      "type": "string"
+      "type": "number"
      },
      "examples": [
       [
-       "-1"
+       -1
       ]
      ],
      "x-read-by": [
@@ -1675,11 +1675,11 @@
      "description": "OL08-00-020120: every lcredit = value line found by grep -r lcredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020120.",
      "type": "array",
      "items": {
-      "type": "string"
+      "type": "number"
      },
      "examples": [
       [
-       "-1"
+       -1
       ]
      ],
      "x-read-by": [
@@ -1693,11 +1693,11 @@
      "description": "OL08-00-020230: every minlen = value line found by grep -r minlen /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020230.",
      "type": "array",
      "items": {
-      "type": "string"
+      "type": "number"
      },
      "examples": [
       [
-       "15"
+       15
       ]
      ],
      "x-read-by": [
@@ -1711,11 +1711,11 @@
      "description": "OL08-00-020280: every ocredit = value line found by grep -r ocredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020280.",
      "type": "array",
      "items": {
-      "type": "string"
+      "type": "number"
      },
      "examples": [
       [
-       "-1"
+       -1
       ]
      ],
      "x-read-by": [
@@ -1729,11 +1729,11 @@
      "description": "OL08-00-020110: every ucredit = value line found by grep -r ucredit /etc/security/pwquality.conf* (conflicting results are a finding). Read by OL08-00-020110.",
      "type": "array",
      "items": {
-      "type": "string"
+      "type": "number"
      },
      "examples": [
       [
-       "-1"
+       -1
       ]
      ],
      "x-read-by": [

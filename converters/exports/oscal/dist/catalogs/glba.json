@@ -66,8 +66,41 @@
     ],
     "controls": [
      {
+      "id": "glba-GLBA-input-contract-16-CFR-314.1-b",
+      "title": "the kind of financial institution assessed is not stated%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "GLBA input contract (16 CFR 314.1(b))"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GLBA input contract (16 CFR 314.1(b))"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e5eb2ad6-43ee-55b5-baec-7b925efd7fa7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-GLBA-input-contract-16-CFR-314.1-b_stmt",
+        "name": "statement",
+        "prose": "the kind of financial institution assessed is not stated%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "glba-16-CFR-314.4-a",
-      "title": "Qualified Individual not designated to oversee, implement, and enforce the information security program",
+      "title": "Qualified Individual not designated to oversee, implement, and enforce the information security program%s",
       "props": [
        {
         "name": "label",
@@ -93,14 +126,14 @@
        {
         "id": "glba-16-CFR-314.4-a_stmt",
         "name": "statement",
-        "prose": "Qualified Individual not designated to oversee, implement, and enforce the information security program"
+        "prose": "Qualified Individual not designated to oversee, implement, and enforce the information security program%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-b-1",
-      "title": "Written risk assessment not performed",
+      "title": "Written risk assessment not performed%s",
       "props": [
        {
         "name": "label",
@@ -126,19 +159,19 @@
        {
         "id": "glba-16-CFR-314.4-b-1_stmt",
         "name": "statement",
-        "prose": "Written risk assessment not performed"
+        "prose": "Written risk assessment not performed%s"
        },
        {
         "id": "glba-16-CFR-314.4-b-1_obj.1",
         "name": "assessment-objective",
-        "prose": "Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats"
+        "prose": "Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-b-2",
-      "title": "Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks",
+      "title": "Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks%s",
       "props": [
        {
         "name": "label",
@@ -164,14 +197,14 @@
        {
         "id": "glba-16-CFR-314.4-b-2_stmt",
         "name": "statement",
-        "prose": "Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks"
+        "prose": "Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-1",
-      "title": "Access controls do not authenticate users before permitting access to customer information",
+      "title": "Access controls do not authenticate users before permitting access to customer information%s",
       "props": [
        {
         "name": "label",
@@ -197,24 +230,24 @@
        {
         "id": "glba-16-CFR-314.4-c-1_stmt",
         "name": "statement",
-        "prose": "Access controls do not authenticate users before permitting access to customer information"
+        "prose": "Access controls do not authenticate users before permitting access to customer information%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-1_obj.1",
         "name": "assessment-objective",
-        "prose": "Access to customer information not limited to what is needed to perform duties and functions"
+        "prose": "Access to customer information not limited to what is needed to perform duties and functions%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-1_obj.2",
         "name": "assessment-objective",
-        "prose": "Access permissions to customer information not periodically reviewed"
+        "prose": "Access permissions to customer information not periodically reviewed%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-2",
-      "title": "Customer information not identified and its location not inventoried",
+      "title": "Customer information not identified and its location not inventoried%s",
       "props": [
        {
         "name": "label",
@@ -240,19 +273,19 @@
        {
         "id": "glba-16-CFR-314.4-c-2_stmt",
         "name": "statement",
-        "prose": "Customer information not identified and its location not inventoried"
+        "prose": "Customer information not identified and its location not inventoried%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-2_obj.1",
         "name": "assessment-objective",
-        "prose": "Systems, devices, platforms, and personnel handling customer information not inventoried"
+        "prose": "Systems, devices, platforms, and personnel handling customer information not inventoried%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-3",
-      "title": "Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented",
+      "title": "Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented%s",
       "props": [
        {
         "name": "label",
@@ -278,19 +311,19 @@
        {
         "id": "glba-16-CFR-314.4-c-3_stmt",
         "name": "statement",
-        "prose": "Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented"
+        "prose": "Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-3_obj.1",
         "name": "assessment-objective",
-        "prose": "Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented"
+        "prose": "Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-4",
-      "title": "Secure development practices not adopted for in-house applications handling customer information",
+      "title": "Secure development practices not adopted for in-house applications handling customer information%s",
       "props": [
        {
         "name": "label",
@@ -316,19 +349,19 @@
        {
         "id": "glba-16-CFR-314.4-c-4_stmt",
         "name": "statement",
-        "prose": "Secure development practices not adopted for in-house applications handling customer information"
+        "prose": "Secure development practices not adopted for in-house applications handling customer information%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-4_obj.1",
         "name": "assessment-objective",
-        "prose": "Security of externally developed applications handling customer information not assessed"
+        "prose": "Security of externally developed applications handling customer information not assessed%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-5",
-      "title": "MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual",
+      "title": "MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual%s",
       "props": [
        {
         "name": "label",
@@ -354,14 +387,14 @@
        {
         "id": "glba-16-CFR-314.4-c-5_stmt",
         "name": "statement",
-        "prose": "MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual"
+        "prose": "MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-6",
-      "title": "Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement",
+      "title": "Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement%s",
       "props": [
        {
         "name": "label",
@@ -387,19 +420,19 @@
        {
         "id": "glba-16-CFR-314.4-c-6_stmt",
         "name": "statement",
-        "prose": "Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement"
+        "prose": "Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-6_obj.1",
         "name": "assessment-objective",
-        "prose": "Data retention policy not periodically reviewed to minimize unnecessary retention of customer information"
+        "prose": "Data retention policy not periodically reviewed to minimize unnecessary retention of customer information%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-7",
-      "title": "Change management procedures not adopted for the information system",
+      "title": "Change management procedures not adopted for the information system%s",
       "props": [
        {
         "name": "label",
@@ -425,14 +458,14 @@
        {
         "id": "glba-16-CFR-314.4-c-7_stmt",
         "name": "statement",
-        "prose": "Change management procedures not adopted for the information system"
+        "prose": "Change management procedures not adopted for the information system%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-c-8",
-      "title": "Activity of authorized users not monitored and logged",
+      "title": "Activity of authorized users not monitored and logged%s",
       "props": [
        {
         "name": "label",
@@ -458,19 +491,19 @@
        {
         "id": "glba-16-CFR-314.4-c-8_stmt",
         "name": "statement",
-        "prose": "Activity of authorized users not monitored and logged"
+        "prose": "Activity of authorized users not monitored and logged%s"
        },
        {
         "id": "glba-16-CFR-314.4-c-8_obj.1",
         "name": "assessment-objective",
-        "prose": "Unauthorized access to, use of, or tampering with customer information not detected"
+        "prose": "Unauthorized access to, use of, or tampering with customer information not detected%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-d-2-i",
-      "title": "Neither continuous monitoring nor annual penetration testing is in place",
+      "title": "Neither continuous monitoring nor annual penetration testing is in place%s",
       "props": [
        {
         "name": "label",
@@ -496,14 +529,14 @@
        {
         "id": "glba-16-CFR-314.4-d-2-i_stmt",
         "name": "statement",
-        "prose": "Neither continuous monitoring nor annual penetration testing is in place"
+        "prose": "Neither continuous monitoring nor annual penetration testing is in place%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-d-2-ii",
-      "title": "Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place",
+      "title": "Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place%s",
       "props": [
        {
         "name": "label",
@@ -529,14 +562,14 @@
        {
         "id": "glba-16-CFR-314.4-d-2-ii_stmt",
         "name": "statement",
-        "prose": "Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place"
+        "prose": "Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-e-1",
-      "title": "Security awareness training not provided to personnel",
+      "title": "Security awareness training not provided to personnel%s",
       "props": [
        {
         "name": "label",
@@ -562,14 +595,14 @@
        {
         "id": "glba-16-CFR-314.4-e-1_stmt",
         "name": "statement",
-        "prose": "Security awareness training not provided to personnel"
+        "prose": "Security awareness training not provided to personnel%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-e-2",
-      "title": "Qualified information security personnel not employed or engaged",
+      "title": "Qualified information security personnel not employed or engaged%s",
       "props": [
        {
         "name": "label",
@@ -595,14 +628,14 @@
        {
         "id": "glba-16-CFR-314.4-e-2_stmt",
         "name": "statement",
-        "prose": "Qualified information security personnel not employed or engaged"
+        "prose": "Qualified information security personnel not employed or engaged%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-e-4",
-      "title": "Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures",
+      "title": "Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures%s",
       "props": [
        {
         "name": "label",
@@ -628,14 +661,14 @@
        {
         "id": "glba-16-CFR-314.4-e-4_stmt",
         "name": "statement",
-        "prose": "Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures"
+        "prose": "Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-f-1",
-      "title": "Service providers not selected based on ability to maintain appropriate safeguards",
+      "title": "Service providers not selected based on ability to maintain appropriate safeguards%s",
       "props": [
        {
         "name": "label",
@@ -661,14 +694,14 @@
        {
         "id": "glba-16-CFR-314.4-f-1_stmt",
         "name": "statement",
-        "prose": "Service providers not selected based on ability to maintain appropriate safeguards"
+        "prose": "Service providers not selected based on ability to maintain appropriate safeguards%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-f-2",
-      "title": "Service provider contracts do not require implementation and maintenance of safeguards",
+      "title": "Service provider contracts do not require implementation and maintenance of safeguards%s",
       "props": [
        {
         "name": "label",
@@ -694,14 +727,14 @@
        {
         "id": "glba-16-CFR-314.4-f-2_stmt",
         "name": "statement",
-        "prose": "Service provider contracts do not require implementation and maintenance of safeguards"
+        "prose": "Service provider contracts do not require implementation and maintenance of safeguards%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-f-3",
-      "title": "Service providers not periodically assessed based on the risk they present",
+      "title": "Service providers not periodically assessed based on the risk they present%s",
       "props": [
        {
         "name": "label",
@@ -727,14 +760,14 @@
        {
         "id": "glba-16-CFR-314.4-f-3_stmt",
         "name": "statement",
-        "prose": "Service providers not periodically assessed based on the risk they present"
+        "prose": "Service providers not periodically assessed based on the risk they present%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-g",
-      "title": "Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact",
+      "title": "Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact%s",
       "props": [
        {
         "name": "label",
@@ -760,14 +793,14 @@
        {
         "id": "glba-16-CFR-314.4-g_stmt",
         "name": "statement",
-        "prose": "Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact"
+        "prose": "Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-h",
-      "title": "Written incident response plan not established",
+      "title": "Written incident response plan not established%s",
       "props": [
        {
         "name": "label",
@@ -793,14 +826,14 @@
        {
         "id": "glba-16-CFR-314.4-h_stmt",
         "name": "statement",
-        "prose": "Written incident response plan not established"
+        "prose": "Written incident response plan not established%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-h-3",
-      "title": "Roles, responsibilities, and levels of decision-making authority not defined in incident response plan",
+      "title": "Roles, responsibilities, and levels of decision-making authority not defined in incident response plan%s",
       "props": [
        {
         "name": "label",
@@ -826,14 +859,14 @@
        {
         "id": "glba-16-CFR-314.4-h-3_stmt",
         "name": "statement",
-        "prose": "Roles, responsibilities, and levels of decision-making authority not defined in incident response plan"
+        "prose": "Roles, responsibilities, and levels of decision-making authority not defined in incident response plan%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-h-7",
-      "title": "Incident response plan lacks process for evaluation and revision following a security event",
+      "title": "Incident response plan lacks process for evaluation and revision following a security event%s",
       "props": [
        {
         "name": "label",
@@ -859,14 +892,14 @@
        {
         "id": "glba-16-CFR-314.4-h-7_stmt",
         "name": "statement",
-        "prose": "Incident response plan lacks process for evaluation and revision following a security event"
+        "prose": "Incident response plan lacks process for evaluation and revision following a security event%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-i",
-      "title": "Qualified Individual has not reported in writing to the board (or equivalent) at least annually",
+      "title": "Qualified Individual has not reported in writing to the board (or equivalent) at least annually%s",
       "props": [
        {
         "name": "label",
@@ -892,14 +925,14 @@
        {
         "id": "glba-16-CFR-314.4-i_stmt",
         "name": "statement",
-        "prose": "Qualified Individual has not reported in writing to the board (or equivalent) at least annually"
+        "prose": "Qualified Individual has not reported in writing to the board (or equivalent) at least annually%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.4-i-1-2",
-      "title": "Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses",
+      "title": "Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses%s",
       "props": [
        {
         "name": "label",
@@ -925,14 +958,14 @@
        {
         "id": "glba-16-CFR-314.4-i-1-2_stmt",
         "name": "statement",
-        "prose": "Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses"
+        "prose": "Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses%s"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "glba-16-CFR-314.5",
-      "title": "Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers",
+      "title": "Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers%s",
       "props": [
        {
         "name": "label",
@@ -958,7 +991,7 @@
        {
         "id": "glba-16-CFR-314.5_stmt",
         "name": "statement",
-        "prose": "Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers"
+        "prose": "Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers%s"
        }
       ],
       "class": "compliance"

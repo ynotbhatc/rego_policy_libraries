@@ -6,13 +6,10 @@
 #   source: cis
 #   domains: [linux, suse]
 #   coverage:
-#     checks: 0
-#     cited: 0
-#     expected: 336
-#     found: 340
-#     scope: directory
-#     density: over
-#     basis: declared-total
+#     checks: 2
+#     cited: 1
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -96,6 +93,7 @@ _passed := max([0, _total_controls - _failed])
 default _percentage := 0
 
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if {
+	is_number(_total_controls)
 	_total_controls > 0
 	not _percentage_withheld
 }
@@ -104,11 +102,13 @@ _percentage := round((_passed * 100000) / _total_controls) / 1000 if {
 # no recommendation stands: PROFILE NOT SELECTED): passed + failed == total stays true, and the percentage is null
 # with a stated reason instead of 100 beside compliant == false.
 _percentage := null if {
+	is_number(_total_controls)
 	_total_controls > 0
 	_percentage_withheld
 }
 
 _percentage_withheld if {
+	is_number(_total_controls)
 	_total_controls > 0
 	not _compliant
 	_passed == _total_controls

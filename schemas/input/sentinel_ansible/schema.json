@@ -2,14 +2,15 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/sentinel_ansible/schema.json",
  "title": "Input facts for sentinel_ansible",
- "description": "Input paths referenced in the sources of enforcement/ansible/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in enforcement/ansible/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "sentinel_ansible",
  "x-entrypoint": "data.sentinel_ansible.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "enforcement/ansible/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.sentinel.ansible_malformed_test.good_playbook",
  "type": "object",
  "properties": {
   "lab_addresses": {
@@ -19,7 +20,93 @@
    "description": "Read in repo_hygiene.rego."
   },
   "plays": {
-   "description": "Read in repo_hygiene.rego, sentinel_ansible.rego."
+   "description": "Read in repo_hygiene.rego, sentinel_ansible.rego.",
+   "type": "array",
+   "x-type-source": "fixture",
+   "items": {
+    "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+    "type": "object",
+    "properties": {
+     "hosts": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "webservers"
+      ]
+     },
+     "name": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "string",
+      "x-type-source": "fixture",
+      "examples": [
+       "Deploy the web tier"
+      ]
+     },
+     "tasks": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "array",
+      "x-type-source": "fixture",
+      "items": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "name": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "Install the package"
+         ]
+        },
+        "tags": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": [
+          "array",
+          "string"
+         ],
+         "x-type-source": "fixture",
+         "items": {
+          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+          "type": "string",
+          "x-type-source": "fixture",
+          "examples": [
+           "install"
+          ]
+         },
+         "examples": [
+          [
+           "install"
+          ]
+         ]
+        }
+       }
+      }
+     },
+     "vars": {
+      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+      "type": "object",
+      "properties": {
+       "app_port": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "number",
+        "x-type-source": "fixture",
+        "examples": [
+         8443
+        ]
+       },
+       "db_password": {
+        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+        "type": "string",
+        "x-type-source": "fixture",
+        "examples": [
+         "{{ vault_db_password }}"
+        ]
+       }
+      }
+     }
+    }
+   }
   },
   "sentinel_environment": {
    "description": "Read in sentinel_ansible.rego."
@@ -30,6 +117,14 @@
   "lab_addresses",
   "path",
   "plays",
+  "plays[].hosts",
+  "plays[].name",
+  "plays[].tasks",
+  "plays[].tasks[].name",
+  "plays[].tasks[].tags",
+  "plays[].vars",
+  "plays[].vars.app_port",
+  "plays[].vars.db_password",
   "sentinel_environment"
  ]
 }

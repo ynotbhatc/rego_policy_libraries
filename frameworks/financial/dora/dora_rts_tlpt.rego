@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 31
 #     cited: 30
-#     density: sized
-#     basis: size
+#     expected: 31
+#     found: 31
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package dora.rts_tlpt
 
 import rego.v1

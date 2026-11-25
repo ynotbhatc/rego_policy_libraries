@@ -3724,7 +3724,9 @@ default gui_idle_delay_ok := false
 gui_idle_delay_ok if {
 	count(missing_rhel_09_271065) == 0
 	n := _gs_uint(["gnome", "session_idle_delay"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 600
 }
 
@@ -3772,7 +3774,9 @@ default gui_lock_delay_ok := false
 gui_lock_delay_ok if {
 	count(missing_rhel_09_271075) == 0
 	n := _gs_uint(["gnome", "screensaver_lock_delay"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 5
 }
 

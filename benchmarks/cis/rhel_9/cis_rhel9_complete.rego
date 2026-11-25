@@ -6,8 +6,8 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 8
+#     checks: 22
+#     cited: 22
 #     density: orchestrator
 #     basis: role
 #     tested: true
@@ -5185,6 +5185,7 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 default compliance_percentage := 0
 
 compliance_percentage := (compliant_sections * 100) / total_sections if {
+	is_number(total_sections)
 	total_sections > 0
 	not _percentage_withheld
 }
@@ -5193,6 +5194,7 @@ compliance_percentage := (compliant_sections * 100) / total_sections if {
 # no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
 # compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
 compliance_percentage := null if {
+	is_number(total_sections)
 	total_sections > 0
 	_percentage_withheld
 }

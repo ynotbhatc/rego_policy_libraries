@@ -102,6 +102,7 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 # JSON whole number, never its text)
 _system_group(e) if {
 	_whole_number(e.gid)
+	is_number(e.gid)
 	e.gid < 1000
 }
 

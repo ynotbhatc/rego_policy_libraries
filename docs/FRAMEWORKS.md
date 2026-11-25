@@ -40,7 +40,7 @@ This page is written by hand and is not the full list: the [site catalog](https:
 | HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164 Subparts C/D/E, CFR-cited; 800-66 Rev 2 numbering) | `frameworks/privacy/hipaa/` | 246 CFR-cited requirements declared across five modules: Security Rule 68, Privacy Rule 110, Part 160 8, Part 162 43, Breach Notification Rule and HITECH 17; five topic modules (access control, audit controls, authentication, integrity, transmission security) beside them |
 | GDPR (Regulation (EU) 2016/679) | `frameworks/privacy/gdpr/` | Five modules: a general compliance module, controller and processor duties, international transfers, cookies and tracking, and an aggregator; a subset of the Regulation's articles, no declared total |
 | NERC-CIP (CIP-002 – CIP-015) | `frameworks/critical_infrastructure/nerc_cip/` | 14 standards |
-| IEC 62443 (all parts) | `frameworks/critical_infrastructure/iec_62443/` | 51 SRs, SL 1–4 |
+| IEC 62443 (all parts) | `frameworks/critical_infrastructure/iec_62443/` | 51 SRs, SL 1–4, plus the four process modules (Part 2-1, 2-3, 2-4, 3-2): 55 controls in the report |
 | NIST IR 7628 Rev 1 (AMI / Smart Grid) | `frameworks/critical_infrastructure/ami/` | 12 modules in three groups (NIST IR 7628 requirements, AMI device compliance, head-end); no declared total |
 | DORA (Regulation (EU) 2022/2554 with RTS 2024/1774 on the ICT risk management framework) / NIS2 (Directive (EU) 2022/2555) | `frameworks/financial/dora/`, `frameworks/compliance/nis2/` | DORA: the Regulation's ICT articles plus the RTS rows, with the simplified-framework gate; NIS2: Article 20, the Article 21(2) measures and the Article 23(4) reporting steps in one module. Each module reports the number it evaluates as `total_controls` |
 | NCSC CAF 4.0 | `frameworks/compliance/ncsc_caf/` | 23 contributing outcomes as the module lists them (16 technical, 7 organisational), in seven section modules; not checked against the outcome count of the published CAF 4.0 |
@@ -69,7 +69,7 @@ This page is written by hand and is not the full list: the [site catalog](https:
 | **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
 | **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
 | **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 112 directive subparagraphs (34 in 01G, 78 in 02G) decided by 175 checks |
-| **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled |
+| **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled; 34 checks |
 | **CISA CPG 2.0 (Oct 2025)** | `frameworks/federal/cisa_cpg/` | All 34 goals, six CSF-2.0 functions incl. GOVERN, per-function rollup |
 | **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
 | **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing explicitly scoped out |
@@ -147,7 +147,7 @@ Modules for IEC 62443 Industrial Automation and Control Systems (IACS) Security 
 | `part2_patch_management.rego` | 2-3 | Patch Management in IACS Environments | — |
 | `part2_service_provider.rego` | 2-4 | Security Program for IACS Service Providers (SP.01–SP.10) | — |
 | `part3_risk_assessment.rego` | 3-2 | Security Risk Assessment (ZCR 1–5) | — |
-| `iec_62443_main.rego` | All | Main orchestrator — aggregates all parts | 51 total |
+| `iec_62443_main.rego` | All | Main orchestrator — aggregates all parts | 51 SRs; `total_controls` 55 with the four process modules |
 
 **Security Level (SL) tiering:** All FR modules enforce SL-differentiated requirements — violations are tagged with the SL at which they apply (SL 1 baseline through SL 4 state-sponsored threat protection).
 

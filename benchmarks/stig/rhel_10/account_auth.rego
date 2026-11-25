@@ -137,7 +137,9 @@ default password_maxage := false
 password_maxage if {
 	count(missing_rhel_10_600100) == 0
 	n := _num(["password_policy", "maxdays"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 180
 }
 
@@ -175,6 +177,7 @@ default password_minage := false
 password_minage if {
 	count(missing_rhel_10_600210) == 0
 	n := _num(["password_policy", "mindays"])
+	is_number(n)
 	n >= 1
 }
 
@@ -322,7 +325,9 @@ default account_lockout_enabled := false
 account_lockout_enabled if {
 	count(missing_rhel_10_600410) == 0
 	n := _num(["faillock_conf", "deny"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -394,6 +399,7 @@ default password_minlen := false
 password_minlen if {
 	count(missing_rhel_10_600220) == 0
 	n := _num(["password_policy", "minlen"])
+	is_number(n)
 	n >= 15
 }
 
@@ -431,6 +437,7 @@ default password_uppercase := false
 password_uppercase if {
 	count(missing_rhel_10_600250) == 0
 	n := _num(["password_policy", "ucredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -468,6 +475,7 @@ default password_numeric := false
 password_numeric if {
 	count(missing_rhel_10_600310) == 0
 	n := _num(["password_policy", "dcredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -505,6 +513,7 @@ default password_special := false
 password_special if {
 	count(missing_rhel_10_600230) == 0
 	n := _num(["password_policy", "ocredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -542,6 +551,7 @@ default password_lowercase := false
 password_lowercase if {
 	count(missing_rhel_10_600240) == 0
 	n := _num(["password_policy", "lcredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -579,7 +589,9 @@ default inactive_lock_ok := false
 inactive_lock_ok if {
 	count(missing_rhel_10_600160) == 0
 	n := _num(["password_policy", "inactive_days"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 35
 }
 
@@ -617,7 +629,9 @@ default lockout_duration_ok := false
 lockout_duration_ok if {
 	count(missing_rhel_10_600420) == 0
 	n := _num(["faillock_conf", "fail_interval"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 900
 }
 

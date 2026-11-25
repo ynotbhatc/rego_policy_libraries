@@ -10,7 +10,7 @@
   "benchmarks/cis/openshift/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.cis_openshift_4_test.green",
+ "x-fixture": "data.cis_openshift.bad_evidence_test._green",
  "type": "object",
  "properties": {
   "api_server": {
@@ -996,20 +996,6 @@
              }
             }
            },
-           "webhook": {
-            "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-            "type": "object",
-            "properties": {
-             "enabled": {
-              "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-              "type": "boolean",
-              "x-type-source": "fixture",
-              "examples": [
-               true
-              ]
-             }
-            }
-           },
            "x509": {
             "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
             "type": "object",
@@ -1053,14 +1039,6 @@
             ]
            }
           }
-         },
-         "kubeAPIQPS": {
-          "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-          "type": "number",
-          "x-type-source": "fixture",
-          "examples": [
-           50
-          ]
          },
          "makeIPTablesUtilChains": {
           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
@@ -1849,14 +1827,6 @@
                 "examples": [
                  "healthz"
                 ]
-               },
-               "port": {
-                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-                "type": "number",
-                "x-type-source": "fixture",
-                "examples": [
-                 10257
-                ]
                }
               }
              }
@@ -1884,14 +1854,6 @@
                 "x-type-source": "fixture",
                 "examples": [
                  "healthz"
-                ]
-               },
-               "port": {
-                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-                "type": "number",
-                "x-type-source": "fixture",
-                "examples": [
-                 10257
                 ]
                }
               }
@@ -1974,14 +1936,6 @@
                 "examples": [
                  "healthz"
                 ]
-               },
-               "port": {
-                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-                "type": "number",
-                "x-type-source": "fixture",
-                "examples": [
-                 10259
-                ]
                }
               }
              }
@@ -2009,14 +1963,6 @@
                 "x-type-source": "fixture",
                 "examples": [
                  "healthz"
-                ]
-               },
-               "port": {
-                "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-                "type": "number",
-                "x-type-source": "fixture",
-                "examples": [
-                 10259
                 ]
                }
               }
@@ -2715,15 +2661,12 @@
   "kubelet.nodes[].config.authentication",
   "kubelet.nodes[].config.authentication.anonymous",
   "kubelet.nodes[].config.authentication.anonymous.enabled",
-  "kubelet.nodes[].config.authentication.webhook",
-  "kubelet.nodes[].config.authentication.webhook.enabled",
   "kubelet.nodes[].config.authentication.x509",
   "kubelet.nodes[].config.authentication.x509.clientCAFile",
   "kubelet.nodes[].config.authorization",
   "kubelet.nodes[].config.authorization.mode",
   "kubelet.nodes[].config.featureGates",
   "kubelet.nodes[].config.featureGates.RotateKubeletServerCertificate",
-  "kubelet.nodes[].config.kubeAPIQPS",
   "kubelet.nodes[].config.makeIPTablesUtilChains",
   "kubelet.nodes[].config.rotateCertificates",
   "kubelet.nodes[].config.streamingConnectionIdleTimeout",
@@ -2795,12 +2738,10 @@
   "openshift.kube_controller_manager_pod.spec.containers[].livenessProbe",
   "openshift.kube_controller_manager_pod.spec.containers[].livenessProbe.httpGet",
   "openshift.kube_controller_manager_pod.spec.containers[].livenessProbe.httpGet.path",
-  "openshift.kube_controller_manager_pod.spec.containers[].livenessProbe.httpGet.port",
   "openshift.kube_controller_manager_pod.spec.containers[].name",
   "openshift.kube_controller_manager_pod.spec.containers[].readinessProbe",
   "openshift.kube_controller_manager_pod.spec.containers[].readinessProbe.httpGet",
   "openshift.kube_controller_manager_pod.spec.containers[].readinessProbe.httpGet.path",
-  "openshift.kube_controller_manager_pod.spec.containers[].readinessProbe.httpGet.port",
   "openshift.kube_scheduler_pod",
   "openshift.kube_scheduler_pod.spec",
   "openshift.kube_scheduler_pod.spec.containers",
@@ -2809,12 +2750,10 @@
   "openshift.kube_scheduler_pod.spec.containers[].livenessProbe",
   "openshift.kube_scheduler_pod.spec.containers[].livenessProbe.httpGet",
   "openshift.kube_scheduler_pod.spec.containers[].livenessProbe.httpGet.path",
-  "openshift.kube_scheduler_pod.spec.containers[].livenessProbe.httpGet.port",
   "openshift.kube_scheduler_pod.spec.containers[].name",
   "openshift.kube_scheduler_pod.spec.containers[].readinessProbe",
   "openshift.kube_scheduler_pod.spec.containers[].readinessProbe.httpGet",
   "openshift.kube_scheduler_pod.spec.containers[].readinessProbe.httpGet.path",
-  "openshift.kube_scheduler_pod.spec.containers[].readinessProbe.httpGet.port",
   "openshift.kubeapiserver",
   "openshift.kubeapiserver.spec",
   "openshift.kubeapiserver.spec.observedConfig",

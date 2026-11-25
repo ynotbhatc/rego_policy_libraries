@@ -66,6 +66,59 @@
     ],
     "controls": [
      {
+      "id": "enforcement_terraform-SENTINEL-TF-000",
+      "title": "Malformed plan: input.resource_changes is missing and the document is not a Terraform plan (no format_version); nothing was evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-TF-000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-TF-000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.terraform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d5f9cff-351e-51b5-9340-918fb0a9a4fc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-000_stmt",
+        "name": "statement",
+        "prose": "Malformed plan: input.resource_changes is missing and the document is not a Terraform plan (no format_version); nothing was evaluated"
+       },
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-000_obj.1",
+        "name": "assessment-objective",
+        "prose": "Malformed plan: input.resource_changes is null; a plan lists its changes or omits the key"
+       },
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-000_obj.2",
+        "name": "assessment-objective",
+        "prose": "Malformed plan: input.resource_changes must be a list, got %v"
+       },
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-000_obj.3",
+        "name": "assessment-objective",
+        "prose": "Malformed plan: resource_changes[%d] %v"
+       },
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-000_obj.4",
+        "name": "assessment-objective",
+        "prose": "Malformed plan: '%v' ingress %v must be a number, got %v"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
       "id": "enforcement_terraform-SENTINEL-TF-001",
       "title": "Resource '%v' (%v) is missing required tag '%v'",
       "props": [

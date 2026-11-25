@@ -191,6 +191,7 @@ default password_minage := false
 password_minage if {
 	count(missing_ol08_00_020190) == 0
 	n := _num(["password_policy", "mindays"])
+	is_number(n)
 	n >= 1
 }
 
@@ -228,7 +229,9 @@ default password_maxage := false
 password_maxage if {
 	count(missing_ol08_00_020200) == 0
 	n := _num(["password_policy", "maxdays"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 180
 }
 
@@ -300,7 +303,9 @@ default account_lockout_enabled := false
 account_lockout_enabled if {
 	count(missing_ol08_00_020011) == 0
 	n := _num(["faillock_conf", "deny"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -348,6 +353,7 @@ default lockout_duration_ok := false
 lockout_duration_ok if {
 	count(missing_ol08_00_020013) == 0
 	n := _num(["faillock_conf", "fail_interval"])
+	is_number(n)
 	n >= 900
 }
 

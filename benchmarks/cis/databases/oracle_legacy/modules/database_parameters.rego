@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 25
+#     checks: 26
 #     cited: 16
 #     density: sized
 #     basis: size

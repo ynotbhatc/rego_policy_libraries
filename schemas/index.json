@@ -5,14 +5,14 @@
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 113,
-  "paths-only": 69
+  "static-scan+fixture": 134,
+  "paths-only": 48
  },
  "schemas": {
   "aca_155_260": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/aca_155_260/schema.json",
-   "known_paths": 3,
+   "known_paths": 38,
    "required_paths": 0,
    "source": [
     "frameworks/privacy/aca_155_260/"
@@ -55,9 +55,9 @@
    ]
   },
   "apra_cps234": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/apra_cps234/schema.json",
-   "known_paths": 2,
+   "known_paths": 27,
    "required_paths": 0,
    "source": [
     "frameworks/financial/apra_cps234/"
@@ -100,18 +100,18 @@
    ]
   },
   "ccpa": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/ccpa/schema.json",
-   "known_paths": 106,
+   "known_paths": 245,
    "required_paths": 0,
    "source": [
     "frameworks/privacy/ccpa/"
    ]
   },
   "cert_in": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/cert_in/schema.json",
-   "known_paths": 1,
+   "known_paths": 55,
    "required_paths": 0,
    "source": [
     "frameworks/regional/cert_in/"
@@ -244,9 +244,9 @@
    ]
   },
   "cis_debian_11": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_debian_11/schema.json",
-   "known_paths": 254,
+   "known_paths": 296,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/debian_11/"
@@ -273,7 +273,7 @@
   "cis_docker": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_docker/schema.json",
-   "known_paths": 240,
+   "known_paths": 238,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/docker/"
@@ -282,7 +282,7 @@
   "cis_eks": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_eks/schema.json",
-   "known_paths": 128,
+   "known_paths": 124,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/eks/"
@@ -345,7 +345,7 @@
   "cis_openshift": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_openshift/schema.json",
-   "known_paths": 282,
+   "known_paths": 275,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/openshift/"
@@ -363,7 +363,7 @@
   "cis_palo_alto_panos": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_palo_alto_panos/schema.json",
-   "known_paths": 344,
+   "known_paths": 345,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/network_devices/palo_alto/"
@@ -417,7 +417,7 @@
   "cis_rhel8": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_rhel8/schema.json",
-   "known_paths": 468,
+   "known_paths": 464,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/rhel_8/"
@@ -426,7 +426,7 @@
   "cis_rhel9": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_rhel9/schema.json",
-   "known_paths": 522,
+   "known_paths": 518,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/rhel_9/"
@@ -435,7 +435,7 @@
   "cis_rocky_linux_8": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_rocky_linux_8/schema.json",
-   "known_paths": 468,
+   "known_paths": 464,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/rocky_linux_8/"
@@ -444,7 +444,7 @@
   "cis_rocky_linux_9": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_rocky_linux_9/schema.json",
-   "known_paths": 499,
+   "known_paths": 495,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/rocky_linux_9/"
@@ -460,18 +460,18 @@
    ]
   },
   "cis_ubuntu_2004": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_ubuntu_2004/schema.json",
-   "known_paths": 259,
+   "known_paths": 297,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/ubuntu_20_04/"
    ]
   },
   "cis_ubuntu_20_04": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_ubuntu_20_04/schema.json",
-   "known_paths": 259,
+   "known_paths": 297,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/ubuntu_20_04/"
@@ -541,9 +541,9 @@
    ]
   },
   "cis_vyos": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/cis_vyos/schema.json",
-   "known_paths": 34,
+   "known_paths": 58,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/network_devices/vyos/"
@@ -561,7 +561,7 @@
   "cis_windows_11": {
    "derivation": "manifest",
    "schema": "schemas/input/cis_windows_11/schema.json",
-   "known_paths": 766,
+   "known_paths": 765,
    "required_paths": 0,
    "source": [
     "benchmarks/cis/windows_11_modular/data/collector_manifest.json"
@@ -696,23 +696,23 @@
   "cra": {
    "derivation": "paths-only",
    "schema": "schemas/input/cra/schema.json",
-   "known_paths": 395,
+   "known_paths": 115,
    "required_paths": 0,
    "source": [
     "frameworks/compliance/cra/"
    ]
   },
   "crypto_miner_detection": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/crypto_miner_detection/schema.json",
-   "known_paths": 6,
+   "known_paths": 18,
    "required_paths": 0,
    "source": [
     "threat_detection/crypto_mining/"
    ]
   },
   "csa_ccm": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/csa_ccm/schema.json",
    "known_paths": 717,
    "required_paths": 0,
@@ -766,9 +766,9 @@
    ]
   },
   "dpdp": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/dpdp/schema.json",
-   "known_paths": 1,
+   "known_paths": 79,
    "required_paths": 0,
    "source": [
     "frameworks/privacy/dpdp_india/"
@@ -822,7 +822,7 @@
   "fedramp": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/fedramp/schema.json",
-   "known_paths": 44,
+   "known_paths": 50,
    "required_paths": 0,
    "source": [
     "frameworks/federal/fedramp/"
@@ -876,7 +876,7 @@
   "glba": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/glba/schema.json",
-   "known_paths": 64,
+   "known_paths": 57,
    "required_paths": 0,
    "source": [
     "frameworks/financial/glba/"
@@ -885,14 +885,14 @@
   "hipaa": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/hipaa/schema.json",
-   "known_paths": 761,
+   "known_paths": 659,
    "required_paths": 0,
    "source": [
     "frameworks/privacy/hipaa/"
    ]
   },
   "hitrust": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/hitrust/schema.json",
    "known_paths": 140,
    "required_paths": 0,
@@ -910,9 +910,9 @@
    ]
   },
   "iec_62443": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/iec_62443/schema.json",
-   "known_paths": 111,
+   "known_paths": 208,
    "required_paths": 0,
    "source": [
     "frameworks/critical_infrastructure/iec_62443/"
@@ -966,7 +966,7 @@
   "itar": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/itar/schema.json",
-   "known_paths": 30,
+   "known_paths": 29,
    "required_paths": 0,
    "source": [
     "frameworks/regulatory/itar/"
@@ -975,16 +975,16 @@
   "k8s_pss": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/k8s_pss/schema.json",
-   "known_paths": 24,
+   "known_paths": 22,
    "required_paths": 0,
    "source": [
     "benchmarks/pss/kubernetes/"
    ]
   },
   "kubernetes": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/kubernetes/schema.json",
-   "known_paths": 24,
+   "known_paths": 60,
    "required_paths": 0,
    "source": [
     "enforcement/kubernetes/"
@@ -1074,7 +1074,7 @@
   "nist.csf": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist.csf/schema.json",
-   "known_paths": 359,
+   "known_paths": 330,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/cybersecurity_framework_2.0/"
@@ -1146,7 +1146,7 @@
   "nist.sp800_53": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist.sp800_53/schema.json",
-   "known_paths": 2315,
+   "known_paths": 2327,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/sp_800_53/"
@@ -1164,14 +1164,14 @@
   "nist_800_53": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist_800_53/schema.json",
-   "known_paths": 2315,
+   "known_paths": 2327,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/sp_800_53/"
    ]
   },
   "nist_800_82": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist_800_82/schema.json",
    "known_paths": 80,
    "required_paths": 0,
@@ -1191,7 +1191,7 @@
   "nist_csf": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist_csf/schema.json",
-   "known_paths": 359,
+   "known_paths": 330,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/cybersecurity_framework_2.0/"
@@ -1234,7 +1234,7 @@
    ]
   },
   "ny_dfs": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/ny_dfs/schema.json",
    "known_paths": 101,
    "required_paths": 0,
@@ -1306,7 +1306,7 @@
    ]
   },
   "sec_cyber": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/sec_cyber/schema.json",
    "known_paths": 45,
    "required_paths": 0,
@@ -1315,9 +1315,9 @@
    ]
   },
   "sentinel_ansible": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/sentinel_ansible/schema.json",
-   "known_paths": 4,
+   "known_paths": 12,
    "required_paths": 0,
    "source": [
     "enforcement/ansible/"
@@ -1335,7 +1335,7 @@
   "sentinel_kubernetes": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/sentinel_kubernetes/schema.json",
-   "known_paths": 29,
+   "known_paths": 52,
    "required_paths": 0,
    "source": [
     "enforcement/kubernetes/"
@@ -1344,7 +1344,7 @@
   "sentinel_terraform": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/sentinel_terraform/schema.json",
-   "known_paths": 13,
+   "known_paths": 17,
    "required_paths": 0,
    "source": [
     "enforcement/terraform/"
@@ -1360,9 +1360,9 @@
    ]
   },
   "sox": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/sox/schema.json",
-   "known_paths": 52,
+   "known_paths": 68,
    "required_paths": 0,
    "source": [
     "frameworks/financial/sox/"
@@ -1416,7 +1416,7 @@
   "stig.openshift_4": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.openshift_4/schema.json",
-   "known_paths": 46,
+   "known_paths": 51,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/openshift_4/"
@@ -1425,7 +1425,7 @@
   "stig.oracle_database_19c": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.oracle_database_19c/schema.json",
-   "known_paths": 119,
+   "known_paths": 118,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/oracle_database_19c/"
@@ -1546,7 +1546,7 @@
   "stig.windows_11": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.windows_11/schema.json",
-   "known_paths": 369,
+   "known_paths": 365,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_11/"
@@ -1555,7 +1555,7 @@
   "stig.windows_server_2016": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.windows_server_2016/schema.json",
-   "known_paths": 319,
+   "known_paths": 317,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_server_2016/"
@@ -1564,7 +1564,7 @@
   "stig.windows_server_2019": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.windows_server_2019/schema.json",
-   "known_paths": 321,
+   "known_paths": 319,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_server_2019/"
@@ -1573,7 +1573,7 @@
   "stig.windows_server_2022": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.windows_server_2022/schema.json",
-   "known_paths": 319,
+   "known_paths": 317,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_server_2022/"
@@ -1582,7 +1582,7 @@
   "stig.windows_server_2025": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig.windows_server_2025/schema.json",
-   "known_paths": 291,
+   "known_paths": 289,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_server_2025/"
@@ -1636,7 +1636,7 @@
   "stig_openshift_4": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig_openshift_4/schema.json",
-   "known_paths": 46,
+   "known_paths": 51,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/openshift_4/"
@@ -1700,7 +1700,7 @@
   "stig_windows_11": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig_windows_11/schema.json",
-   "known_paths": 369,
+   "known_paths": 365,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_11/"
@@ -1709,7 +1709,7 @@
   "stig_windows_server_2022": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig_windows_server_2022/schema.json",
-   "known_paths": 319,
+   "known_paths": 317,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_server_2022/"
@@ -1718,16 +1718,16 @@
   "stig_windows_server_2025": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/stig_windows_server_2025/schema.json",
-   "known_paths": 291,
+   "known_paths": 289,
    "required_paths": 0,
    "source": [
     "benchmarks/stig/windows_server_2025/"
    ]
   },
   "swift_csp": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/swift_csp/schema.json",
-   "known_paths": 106,
+   "known_paths": 99,
    "required_paths": 0,
    "source": [
     "frameworks/financial/swift_csp/"
@@ -1743,9 +1743,9 @@
    ]
   },
   "tsa_pipeline": {
-   "derivation": "paths-only",
+   "derivation": "static-scan+fixture",
    "schema": "schemas/input/tsa_pipeline/schema.json",
-   "known_paths": 3,
+   "known_paths": 239,
    "required_paths": 0,
    "source": [
     "frameworks/critical_infrastructure/tsa_pipeline/"
