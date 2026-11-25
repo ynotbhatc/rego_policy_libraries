@@ -8,7 +8,7 @@ import rego.v1
 
 green := data.stig.rhel_10.green_test.green_fixture
 
-drop(kw, v) := {"file": "/etc/ssh/sshd_config.d/10-stig.conf", "value": v}
+drop(_, v) := {"file": "/etc/ssh/sshd_config.d/10-stig.conf", "value": v}
 
 with_files(kw, v) := json.patch(green, [{"op": "replace", "path": sprintf("/sshd_config_files/%s", [kw]), "value": [drop(kw, v)]}])
 
