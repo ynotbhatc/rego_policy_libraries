@@ -44,3 +44,21 @@ test_verify_function_null_violates if {
 test_verify_function_absent_violates if {
 	count(viol(object.remove(good_profile, ["PASSWORD_VERIFY_FUNCTION"]))) == 1
 }
+
+# A row without its name still counts: `row.name != "X"` and a message built from `row.name` are undefined when the
+# name is missing, which dropped the row from the check.
+test_profile_without_a_name_still_violates if {
+	count(viol(object.union(object.remove(good_profile, ["profile_name"]), {"FAILED_LOGIN_ATTEMPTS": "UNLIMITED"}))) == 1
+}
+
+test_open_default_account_without_a_name_still_violates if {
+	v := data.cis_oracle.user_account_management.violations with input as {"default_accounts": [{"status": "OPEN"}]}
+	some m in v
+	startswith(m, "CIS 3.1:")
+}
+
+test_dba_account_without_a_name_still_violates if {
+	v := data.cis_oracle.user_account_management.violations with input as {"dba_users": [{"granted_role": "DBA"}]}
+	some m in v
+	startswith(m, "CIS 3.3:")
+}

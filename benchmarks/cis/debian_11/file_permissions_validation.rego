@@ -37,10 +37,10 @@ critical_file_violations contains msg if {
 	file.fully_compliant == false
 	file.exists == true
 	msg := sprintf("CIS 6.1.x: Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
-		file.file,
-		file.actual_mode, file.expected_mode,
-		file.actual_owner, file.expected_owner,
-		file.actual_group, file.expected_group,
+		object.get(file, "file", "not collected"),
+		object.get(file, "actual_mode", "not collected"), object.get(file, "expected_mode", "not collected"),
+		object.get(file, "actual_owner", "not collected"), object.get(file, "expected_owner", "not collected"),
+		object.get(file, "actual_group", "not collected"), object.get(file, "expected_group", "not collected"),
 	])
 }
 
@@ -48,35 +48,35 @@ critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/shadow"
 	file.mode_compliant == false
-	msg := sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode])
+	msg := sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [object.get(file, "actual_mode", "not collected")])
 }
 
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/gshadow"
 	file.mode_compliant == false
-	msg := sprintf("CIS 6.1.8: /etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode])
+	msg := sprintf("CIS 6.1.8: /etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [object.get(file, "actual_mode", "not collected")])
 }
 
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/passwd"
 	file.mode_compliant == false
-	msg := sprintf("CIS 6.1.2: /etc/passwd has incorrect permissions (mode: %s, expected: 0644)", [file.actual_mode])
+	msg := sprintf("CIS 6.1.2: /etc/passwd has incorrect permissions (mode: %s, expected: 0644)", [object.get(file, "actual_mode", "not collected")])
 }
 
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/group"
 	file.mode_compliant == false
-	msg := sprintf("CIS 6.1.4: /etc/group has incorrect permissions (mode: %s, expected: 0644)", [file.actual_mode])
+	msg := sprintf("CIS 6.1.4: /etc/group has incorrect permissions (mode: %s, expected: 0644)", [object.get(file, "actual_mode", "not collected")])
 }
 
 # SSH private keys
 critical_file_violations contains msg if {
 	some key in input.ssh_private_keys.analysis
 	key.fully_compliant == false
-	msg := sprintf("SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)", [key.path, key.mode, key.owner])
+	msg := sprintf("SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)", [object.get(key, "path", "not collected"), object.get(key, "mode", "not collected"), object.get(key, "owner", "not collected")])
 }
 
 critical_file_violations contains msg if {
@@ -88,7 +88,7 @@ critical_file_violations contains msg if {
 world_writable_violations contains msg if {
 	count(object.get(input, ["world_writable", "files"], [])) > 0
 	some file in input.world_writable.files
-	msg := sprintf("CIS 6.1.10: World-writable file found: %s (mode: %s, owner: %s)", [file.path, file.mode, file.owner])
+	msg := sprintf("CIS 6.1.10: World-writable file found: %s (mode: %s, owner: %s)", [object.get(file, "path", "not collected"), object.get(file, "mode", "not collected"), object.get(file, "owner", "not collected")])
 }
 
 world_writable_violations contains msg if {
@@ -107,7 +107,7 @@ world_writable_violations contains msg if {
 ownership_violations contains msg if {
 	count(object.get(input, ["unowned_files", "files"], [])) > 0
 	some file in input.unowned_files.files
-	msg := sprintf("CIS 6.1.11: Unowned file found: %s (UID: %d, mode: %s)", [file.path, file.uid, file.mode])
+	msg := sprintf("CIS 6.1.11: Unowned file found: %s (UID: %d, mode: %s)", [object.get(file, "path", "not collected"), object.get(file, "uid", "not collected"), object.get(file, "mode", "not collected")])
 }
 
 ownership_violations contains msg if {
@@ -126,7 +126,7 @@ ownership_violations contains msg if {
 ownership_violations contains msg if {
 	count(object.get(input, ["ungrouped_files", "files"], [])) > 0
 	some file in input.ungrouped_files.files
-	msg := sprintf("CIS 6.1.12: Ungrouped file found: %s (GID: %d, mode: %s)", [file.path, file.gid, file.mode])
+	msg := sprintf("CIS 6.1.12: Ungrouped file found: %s (GID: %d, mode: %s)", [object.get(file, "path", "not collected"), object.get(file, "gid", "not collected"), object.get(file, "mode", "not collected")])
 }
 
 ownership_violations contains msg if {
@@ -145,7 +145,7 @@ ownership_violations contains msg if {
 suid_sgid_violations contains msg if {
 	some file in input.suid_files.unknown_binaries
 	file.review_required == true
-	msg := sprintf("CIS 6.1.13: Unknown SUID binary requires review: %s (mode: %s, owner: %s)", [file.path, file.mode, file.owner])
+	msg := sprintf("CIS 6.1.13: Unknown SUID binary requires review: %s (mode: %s, owner: %s)", [object.get(file, "path", "not collected"), object.get(file, "mode", "not collected"), object.get(file, "owner", "not collected")])
 }
 
 suid_sgid_violations contains msg if {
@@ -306,6 +306,26 @@ critical_file_violations contains msg if {
 critical_file_violations contains msg if {
 	not is_array(object.get(input, ["critical_files", "analysis"], null))
 	msg := "CIS 6.1.x: evidence missing — critical_files.analysis not collected"
+}
+
+# ---------------------------------------------------------------------------
+# Text facts a rule selects or compares on. A row (or section) that lacks one used to drop out of the check:
+# `row.x == "v"` and `row.x != "v"` are both undefined when x is missing. Each is now an evidence finding
+# under the control that reads it.
+# ---------------------------------------------------------------------------
+text_problem(obj, key) := "not collected" if is_null(object.get(obj, key, null))
+
+text_problem(obj, key) := sprintf("is not a string (got %s)", [type_name(v)]) if {
+	v := object.get(obj, key, null)
+	not is_null(v)
+	not is_string(v)
+}
+
+text_problem(obj, key) := "is empty" if trim_space(object.get(obj, key, null)) == ""
+
+critical_file_violations contains msg if {
+	some i, row in input.critical_files.analysis
+	msg := sprintf("CIS 6.1.x: evidence missing — critical_files.analysis[%d].file %s", [i, text_problem(row, "file")])
 }
 
 report := {

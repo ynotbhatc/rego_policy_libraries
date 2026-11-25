@@ -155,17 +155,17 @@ log_file_violations contains msg if {
 	file.fully_compliant == false
 	file.exists == true
 	msg := sprintf("CIS 4.2.3: Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
-		file.file,
-		file.actual_mode, file.expected_mode,
-		file.actual_owner, file.expected_owner,
-		file.actual_group, file.expected_group,
+		object.get(file, "file", "not collected"),
+		object.get(file, "actual_mode", "not collected"), object.get(file, "expected_mode", "not collected"),
+		object.get(file, "actual_owner", "not collected"), object.get(file, "expected_owner", "not collected"),
+		object.get(file, "actual_group", "not collected"), object.get(file, "expected_group", "not collected"),
 	])
 }
 
 log_file_violations contains msg if {
 	count(object.get(input, ["excessive_permissions", "files"], [])) > 0
 	some file in input.excessive_permissions.files
-	msg := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [file.file, file.mode, file.issue])
+	msg := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [object.get(file, "file", "not collected"), object.get(file, "mode", "not collected"), object.get(file, "issue", "not collected")])
 }
 
 # logrotate installed

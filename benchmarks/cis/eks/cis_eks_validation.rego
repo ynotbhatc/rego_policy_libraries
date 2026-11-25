@@ -291,6 +291,56 @@ _invalid_facts contains [id, msg] if {
 	msg := sprintf("%s%s is not a boolean (got %s)", [inventory, _fact_path(path), type_name(value)])
 }
 
+# Records the controls identify by name and read a pod spec from. A record without them cannot be scoped,
+# matched or named in a finding (in Rego `not f(w.metadata.name) in S` is undefined, not true, when the
+# field is absent, so the record would silently leave the check). Every control that reads the inventory
+# reports such a record as invalid evidence instead.
+_meta(obj) := m if {
+	m := obj.metadata
+	is_object(m)
+} else := {}
+
+_named(obj) if {
+	n := object.get(_meta(obj), "name", null)
+	is_string(n)
+	trim_space(n) != ""
+}
+
+_record_problems contains ["workloads", sprintf("workloads[%d].metadata.name is missing or not a string", [i])] if {
+	some i, w in workloads
+	not _named(w)
+}
+
+_record_problems contains ["workloads", sprintf("workloads[%d] has no pod spec (spec, spec.template.spec or spec.jobTemplate.spec.template.spec)", [i])] if {
+	some i, w in workloads
+	not _has_pod_spec(w)
+}
+
+_record_problems contains ["namespaces", sprintf("namespaces[%d].metadata.name is missing or not a string", [i])] if {
+	some i, ns in eks.namespaces
+	not _named(ns)
+}
+
+_record_problems contains ["service_accounts", sprintf("service_accounts[%d].metadata.name is missing or not a string", [i])] if {
+	some i, sa in eks.service_accounts
+	not _named(sa)
+}
+
+_record_problems contains ["role_bindings", sprintf("role_bindings[%d].subjects[%d].%s is missing or not a string", [i, j, key])] if {
+	some i, b in eks.role_bindings
+	some j, subject in object.get(b, "subjects", [])
+	some key in ["kind", "name"]
+	not is_string(object.get(subject, key, null))
+}
+
+_has_pod_spec(w) if is_object(pod_spec(w))
+
+_invalid_facts contains [id, msg] if {
+	some [inventory, msg] in _record_problems
+	some id, fields in requires
+	inventory in fields
+}
+
 invalid_evidence(id) := sort([msg | some [i, msg] in _invalid_facts; i == id])
 
 violations contains msg if {
@@ -458,11 +508,11 @@ violations contains msg if {
 
 exempt_namespaces := {"kube-system", "kube-public", "kube-node-lease"} | {ns | some ns in object.get(eks, "exempt_namespaces", [])}
 
-ns_of(obj) := object.get(obj.metadata, "namespace", "default")
+ns_of(obj) := object.get(_meta(obj), "namespace", "default")
 
 kind_of(w) := object.get(w, "kind", "")
 
-wid(w) := sprintf("%s/%s/%s", [ns_of(w), kind_of(w), object.get(w.metadata, "name", "<unnamed>")])
+wid(w) := sprintf("%s/%s/%s", [ns_of(w), kind_of(w), object.get(_meta(w), "name", "<unnamed>")])
 
 pod_spec(w) := s if {
 	kind_of(w) == "CronJob"
@@ -489,7 +539,7 @@ default_sa_users := [wid(w) | some w in scoped_workloads; sa_name(w) == "default
 
 # ── 4.1 RBAC and service accounts ────────────────────────────────────────────
 
-default_sa_bindings contains sprintf("%s/%s", [kind_of(b), object.get(b.metadata, "name", "<unnamed>")]) if {
+default_sa_bindings contains sprintf("%s/%s", [kind_of(b), object.get(_meta(b), "name", "<unnamed>")]) if {
 	some b in eks.role_bindings
 	some s in object.get(b, "subjects", [])
 	s.kind == "ServiceAccount"
@@ -557,11 +607,13 @@ violations contains msg if {
 
 # ── 4.2 Pod Security Standards ───────────────────────────────────────────────
 
-psa_enforce(ns) := object.get(object.get(ns.metadata, "labels", {}), "pod-security.kubernetes.io/enforce", "")
+psa_enforce(ns) := object.get(object.get(_meta(ns), "labels", {}), "pod-security.kubernetes.io/enforce", "")
 
-scoped_namespaces := [ns | some ns in eks.namespaces; not ns.metadata.name in exempt_namespaces]
+ns_name(ns) := object.get(_meta(ns), "name", "<unnamed>")
 
-weak_psa(levels) := [sprintf("namespace %s", [ns.metadata.name]) | some ns in scoped_namespaces; not psa_enforce(ns) in levels]
+scoped_namespaces := [ns | some ns in eks.namespaces; not ns_name(ns) in exempt_namespaces]
+
+weak_psa(levels) := [sprintf("namespace %v", [ns_name(ns)]) | some ns in scoped_namespaces; not psa_enforce(ns) in levels]
 
 baseline_levels := {"baseline", "restricted"}
 

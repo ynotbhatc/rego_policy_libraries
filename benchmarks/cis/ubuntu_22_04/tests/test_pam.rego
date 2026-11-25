@@ -519,3 +519,10 @@ test_use_authtok_longer_token_not_a_match if {
 	vs := data.cis_ubuntu_22_04.pam.violations with input as {"pam": {"common_password": "password requisite pam_pwhistory.so remember=24 use_authtok_x"}}
 	count([v | some v in vs; startswith(v, "5.3.3.3.3: not met")]) > 0
 }
+
+# pam_faillock given `deny` with no number is not a lockout threshold: the line must not pass (it used to, because
+# `not in_range(pam_arg_num(...))` is undefined when the argument has no number).
+test_5_3_3_1_1_bare_deny_argument_fails if {
+	vs := data.cis_ubuntu_22_04.pam.violations with input as {"pam": {"faillock_conf_raw": "deny = 5", "common_auth": "auth requisite pam_faillock.so preauth deny\nauth [default=die] pam_faillock.so authfail"}}
+	"5.3.3.1.1: not met — password failed attempts lockout must be explicitly configured" in vs
+}

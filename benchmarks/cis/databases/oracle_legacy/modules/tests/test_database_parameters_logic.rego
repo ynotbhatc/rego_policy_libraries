@@ -44,3 +44,9 @@ test_missing_version_not_compliant if {
 test_good_input_compliant if {
 	data.cis_oracle.database_parameters.compliant with input as good_input
 }
+
+# Network encryption switched on without the checksumming value is evidence missing, not a pass.
+test_network_encryption_without_checksumming_is_a_finding if {
+	v := data.cis_oracle.database_parameters.violations with input as {"network_encryption": {"enabled": true}}
+	"CIS 2.2: evidence missing — network_encryption.crypto_checksumming not collected" in v
+}

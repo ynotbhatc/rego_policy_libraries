@@ -89,7 +89,7 @@ unnecessary_service_violations contains violation if {
 	some service in input.unnecessary_services.non_compliant
 	service.active == true
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is active (risk: %s)", [
-		service.service,
+		object.get(service, "service", "not collected"),
 		object.get(service, "risk_level", "unknown"),
 	])
 }
@@ -99,7 +99,7 @@ unnecessary_service_violations contains violation if {
 	service.enabled == true
 	service.active == false
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is enabled (risk: %s)", [
-		service.service,
+		object.get(service, "service", "not collected"),
 		object.get(service, "risk_level", "unknown"),
 	])
 }
@@ -295,6 +295,26 @@ unnecessary_service_violations contains msg if {
 time_sync_violations contains msg if {
 	not is_string(object.get(input, ["time_synchronization", "active_service"], null))
 	msg := "CIS 2.1.1: evidence missing — time_synchronization.active_service not collected"
+}
+
+# ---------------------------------------------------------------------------
+# Text facts a rule selects or compares on. A row (or section) that lacks one used to drop out of the check:
+# `row.x == "v"` and `row.x != "v"` are both undefined when x is missing. Each is now an evidence finding
+# under the control that reads it.
+# ---------------------------------------------------------------------------
+text_problem(obj, key) := "not collected" if is_null(object.get(obj, key, null))
+
+text_problem(obj, key) := sprintf("is not a string (got %s)", [type_name(v)]) if {
+	v := object.get(obj, key, null)
+	not is_null(v)
+	not is_string(v)
+}
+
+text_problem(obj, key) := "is empty" if trim_space(object.get(obj, key, null)) == ""
+
+unnecessary_service_violations contains msg if {
+	some i, row in input.unnecessary_services.analysis
+	msg := sprintf("CIS 2.2.x: evidence missing — unnecessary_services.analysis[%d].service %s", [i, text_problem(row, "service")])
 }
 
 report := {

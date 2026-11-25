@@ -131,7 +131,7 @@ permission_violations contains msg if {
 permission_violations contains msg if {
 	some key in input.ssh.private_key_files
 	not mode_within(key.mode, "0600")
-	msg := sprintf("CIS 5.2.2: SSH private host key %s has mode %s, should be 0600", [key.path, key.mode])
+	msg := sprintf("CIS 5.2.2: SSH private host key %s has mode %s, should be 0600", [object.get(key, "path", "not collected"), object.get(key, "mode", "not collected")])
 }
 
 # CIS 5.2.3: checked condition — permissions on SSH public host key files
@@ -143,7 +143,7 @@ permission_violations contains msg if {
 permission_violations contains msg if {
 	some key in input.ssh.public_key_files
 	not mode_within(key.mode, "0644")
-	msg := sprintf("CIS 5.2.3: SSH public host key %s has mode %s, should be 0644", [key.path, key.mode])
+	msg := sprintf("CIS 5.2.3: SSH public host key %s has mode %s, should be 0644", [object.get(key, "path", "not collected"), object.get(key, "mode", "not collected")])
 }
 
 # Missing evidence fails closed

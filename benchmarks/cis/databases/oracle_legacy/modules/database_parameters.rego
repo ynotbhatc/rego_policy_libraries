@@ -251,6 +251,12 @@ parameter_violations contains violation if {
 	violation := sprintf("CIS 2.2: Network crypto checksumming is '%s' (should be 'REQUIRED' or 'REQUESTED')", [input.network_encryption.crypto_checksumming])
 }
 
+parameter_violations contains violation if {
+	input.network_encryption.enabled
+	not is_string(object.get(input.network_encryption, "crypto_checksumming", null))
+	violation := "CIS 2.2: evidence missing — network_encryption.crypto_checksumming not collected"
+}
+
 # =============================================================================
 # REPORTING
 # =============================================================================

@@ -261,7 +261,7 @@ violations contains "2.4: checked condition — no network security groups allow
 	_opens(r, 3389)
 }
 
-violations contains sprintf("2.5: checked condition — the default security list of every VCN restricts all traffic except ICMP (%s)", [sl.vcn]) if {
+violations contains sprintf("2.5: checked condition — the default security list of every VCN restricts all traffic except ICMP (%s)", [object.get(sl, "vcn", "vcn not collected")]) if {
 	some sl in input.oci.network.security_lists
 	sl.is_default == true
 	some r in sl.ingress
@@ -463,6 +463,11 @@ violations contains sprintf("%s: oci.%s is not a list (got %s)", [id, path, type
 # fields read from each item of a list: [recommendation, list, field, type, must be present]
 _fields := [
 	["1.7", "iam.users", "console_password", "boolean", true],
+	["2.1", "network.security_lists", "ingress", "array", true],
+	["2.3", "network.security_groups", "ingress", "array", true],
+	["2.6", "integration_instances", "network_access", "string", true],
+	["2.7", "analytics_instances", "network_access", "string", true],
+	["2.8", "autonomous_databases", "network_access", "string", true],
 	["1.7", "iam.users", "mfa_enabled", "boolean", true],
 	["1.12", "iam.users", "is_tenancy_admin", "boolean", true],
 	["1.16", "iam.users", "active", "boolean", true],
@@ -486,6 +491,20 @@ violations contains sprintf("%s: evidence missing: oci.%s[%d].%s not collected",
 	is_array(_fact(path))
 	some i, item in _fact(path)
 	object.get(item, field, null) == null
+}
+
+# An ingress rule is judged by its source and protocol. A rule that lacks either, or carries it as something
+# other than text, cannot be read as "not open to the internet": it is a finding under the recommendation that
+# reads the list (2.1 for security lists, 2.3 for network security groups).
+_ingress_lists := {"network.security_lists": "2.1", "network.security_groups": "2.3"}
+
+violations contains sprintf("%s: evidence missing: oci.%s[%d].ingress[%d].%s not collected as text", [id, path, i, j, field]) if {
+	some path, id in _ingress_lists
+	is_array(_fact(path))
+	some i, item in _fact(path)
+	some j, rule in object.get(item, "ingress", [])
+	some field in ["source", "protocol"]
+	not is_string(object.get(rule, field, null))
 }
 
 violations contains sprintf("%s: oci.%s[%d].%s is not a %s (got %s)", [id, path, i, field, type, type_name(value)]) if {
