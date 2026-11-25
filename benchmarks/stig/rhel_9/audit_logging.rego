@@ -848,6 +848,7 @@ space_left_25_percent if {
 	count(missing_rhel_09_653035) == 0
 	n := _p4_percent(["auditd_config", "space_left"])
 	n >= 25
+	is_number(n)
 	n <= 100
 }
 
@@ -1151,7 +1152,9 @@ default audit_freq_ok := false
 audit_freq_ok if {
 	count(missing_rhel_09_653095) == 0
 	n := _num(["auditd_config", "freq"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 100
 }
 

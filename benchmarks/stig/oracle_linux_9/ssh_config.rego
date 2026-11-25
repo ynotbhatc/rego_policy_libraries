@@ -448,7 +448,9 @@ default ssh_client_alive_count_ok := false
 ssh_client_alive_count_ok if {
 	count(missing_ol09_00_002346) == 0
 	n := _num(["ssh_config", "ClientAliveCountMax"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 1
 }
 
@@ -486,7 +488,9 @@ default ssh_client_alive_interval_ok := false
 ssh_client_alive_interval_ok if {
 	count(missing_ol09_00_002347) == 0
 	n := _num(["ssh_config", "ClientAliveInterval"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 600
 }
 

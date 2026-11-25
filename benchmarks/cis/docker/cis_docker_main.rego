@@ -34,6 +34,7 @@ _failed := bench.compliance_report.failed_controls
 default _pct := 0
 
 _pct := round(((_total - _failed) * 100000) / _total) / 1000 if {
+	is_number(_total)
 	_total > 0
 	not _pct_withheld
 }
@@ -42,11 +43,13 @@ _pct := round(((_total - _failed) * 100000) / _total) / 1000 if {
 # profile level is absent or invalid): passed + failed == total stays true, and the percentage is null with a
 # stated reason instead of 100 beside compliant == false.
 _pct := null if {
+	is_number(_total)
 	_total > 0
 	_pct_withheld
 }
 
 _pct_withheld if {
+	is_number(_total)
 	_total > 0
 	_failed == 0
 	not bench.compliant

@@ -165,6 +165,7 @@ _p4_rounds_ok(file) if {
 # unlimited, arrives as that text and is not a number)
 _p4_int_at_most(v, max) if {
 	_whole_number(v)
+	is_number(v)
 	v >= 0
 	v <= max
 }
@@ -354,7 +355,9 @@ default account_lockout_enabled := false
 account_lockout_enabled if {
 	count(missing_rhel_09_411075) == 0
 	n := _num(["faillock_conf", "deny"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -426,6 +429,7 @@ default password_minlen := false
 password_minlen if {
 	count(missing_rhel_09_611090) == 0
 	n := _num(["password_policy", "minlen"])
+	is_number(n)
 	n >= 15
 }
 
@@ -463,6 +467,7 @@ default password_uppercase := false
 password_uppercase if {
 	count(missing_rhel_09_611110) == 0
 	n := _num(["password_policy", "ucredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -500,6 +505,7 @@ default password_lowercase := false
 password_lowercase if {
 	count(missing_rhel_09_611065) == 0
 	n := _num(["password_policy", "lcredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -537,6 +543,7 @@ default password_numeric := false
 password_numeric if {
 	count(missing_rhel_09_611070) == 0
 	n := _num(["password_policy", "dcredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -574,6 +581,7 @@ default password_special := false
 password_special if {
 	count(missing_rhel_09_611100) == 0
 	n := _num(["password_policy", "ocredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -611,7 +619,9 @@ default password_maxage := false
 password_maxage if {
 	count(missing_rhel_09_411010) == 0
 	n := _num(["password_policy", "maxdays"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 180
 }
 
@@ -649,6 +659,7 @@ default password_minage := false
 password_minage if {
 	count(missing_rhel_09_611075) == 0
 	n := _num(["password_policy", "mindays"])
+	is_number(n)
 	n >= 1
 }
 
@@ -686,7 +697,9 @@ default lockout_duration_ok := false
 lockout_duration_ok if {
 	count(missing_rhel_09_411085) == 0
 	n := _num(["faillock_conf", "fail_interval"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 900
 }
 
@@ -734,7 +747,9 @@ default inactive_lock_ok := false
 inactive_lock_ok if {
 	count(missing_rhel_09_411050) == 0
 	n := _num(["password_policy", "inactive_days"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 35
 }
 
@@ -1374,6 +1389,7 @@ default login_fail_delay := false
 login_fail_delay if {
 	count(missing_rhel_09_412050) == 0
 	n := _num(["login_defs", "FAIL_DELAY"])
+	is_number(n)
 	n >= 4
 }
 
@@ -1546,7 +1562,9 @@ default na_rhel_09_412080 := false
 na_rhel_09_412080 if {
 	_attested("rhel_09_412080_cloud_hosted")
 	n := _num(["ssh_config", "ClientAliveInterval"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 600
 }
 
@@ -2079,7 +2097,9 @@ default pwquality_retry := false
 pwquality_retry if {
 	count(missing_rhel_09_611010) == 0
 	n := _num(["password_policy", "retry"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -2220,6 +2240,7 @@ default pwquality_difok := false
 pwquality_difok if {
 	count(missing_rhel_09_611115) == 0
 	n := _num(["password_policy", "difok"])
+	is_number(n)
 	n >= 8
 }
 
@@ -2257,7 +2278,9 @@ default pwquality_maxclassrepeat := false
 pwquality_maxclassrepeat if {
 	count(missing_rhel_09_611120) == 0
 	n := _num(["password_policy", "maxclassrepeat"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 4
 }
 
@@ -2295,7 +2318,9 @@ default pwquality_maxrepeat := false
 pwquality_maxrepeat if {
 	count(missing_rhel_09_611125) == 0
 	n := _num(["password_policy", "maxrepeat"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 3
 }
 
@@ -2333,6 +2358,7 @@ default pwquality_minclass := false
 pwquality_minclass if {
 	count(missing_rhel_09_611130) == 0
 	n := _num(["password_policy", "minclass"])
+	is_number(n)
 	n >= 4
 }
 
