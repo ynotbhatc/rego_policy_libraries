@@ -108,10 +108,10 @@ test_cip_003_9_undeclared_vendor_remote_access_is_evidence_missing if {
 	startswith(msg, "CIP-003: evidence missing")
 }
 
-# The declared control universe is the number of violation rules in nerc_cip_main.
+# The control universe is the 14 CIP standards (round 3; it was 48, the rule count, raised to the finding count).
 test_declared_controls_cover_the_no_facts_findings if {
 	r := data.nerc_cip.main.compliance_report with input as {"bes_cyber_systems": []}
-	r.total_controls == 48
+	r.total_controls == 14
 	r.failed_controls <= r.total_controls
-	r.violation_count <= r.total_controls
+	(r.passed_controls + r.failed_controls) + r.not_applicable_controls == r.total_controls
 }

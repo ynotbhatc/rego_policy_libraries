@@ -319,7 +319,40 @@ test_requirements_are_the_112_subparagraphs_and_checks_are_counted_apart if {
 	r := data.tsa_pipeline.main.compliance_report with input as {}
 	r.total_requirements_evaluated == 112
 	r.total_checks == 175
-	r.total_controls == 175
-	r.failed_controls == r.violation_count
-	r.failed_controls <= r.total_controls
+	# round 3: a control is a section (12); the 175 checks are reported apart as total_checks
+	r.total_controls == 12
+	r.failed_controls == 12
+	r.violation_count > r.failed_controls
+	(r.passed_controls + r.failed_controls) + r.not_applicable_controls == r.total_controls
+}
+
+# many failing entities in one section: findings multiply, failed controls do not, and nothing is clamped
+test_many_findings_in_one_section_fail_one_control if {
+	base := data.tsa_pipeline.main.compliance_report with input as {}
+	r := data.tsa_pipeline.main.compliance_report with input as {}
+		with data.tsa_pipeline.main.all_violations as array.concat(base.violations, [sprintf("extra finding %d", [i]) | some i in numbers.range(1, 300)])
+	r.violation_count == base.violation_count + 300
+	r.total_controls == 12
+	r.failed_controls == 12
+	r.passed_controls == 0
+}
+
+test_counts_add_up_on_every_input if {
+	every doc in [{}, {"x": 1}, "true", null] {
+		r := data.tsa_pipeline.main.compliance_report with input as doc
+		r.total_controls == 12
+		(r.passed_controls + r.failed_controls) + r.not_applicable_controls == 12
+		r.failed_controls >= 0
+		r.compliant == (r.failed_controls == 0)
+	}
+}
+
+# the all-pass fixture: same total as on empty input, nothing failed, everything passed
+test_all_pass_fixture_counts if {
+	r := data.tsa_pipeline.main.compliance_report with input as data.tsa_pipeline_evidence_rule_test.all_pass
+	r.total_controls == 12
+	r.failed_controls == 0
+	r.passed_controls == 12
+	r.not_applicable_controls == 0
+	r.compliant == true
 }
