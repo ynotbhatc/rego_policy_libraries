@@ -525,11 +525,30 @@ test_empty_rule_list_misses_every_rule_control if {
 	every id in ["4.1.2", "4.1.3", "4.1.4", "4.1.8", "6.1", "6.2"] { missing(id, inp) }
 }
 
-# MVC-only rule base (26.x factory layout) counts as collected.
+# MVC-only rule base (26.x factory layout) counts as collected when the legacy section says it is empty.
 test_mvc_rules_alone_are_evidence if {
-	inp := json.remove(good_input, ["filter"])
+	inp := json.patch(good_input, [{"op": "replace", "path": "/filter", "value": {"rule": []}}])
 	not missing("4.1.3", inp)
 	not fails("4.1.3", inp)
+}
+
+# The legacy section absent, null or of another type was not collected: MVC rules do not stand in for it.
+test_legacy_filter_not_collected_is_evidence_missing if {
+	every inp in [
+		json.remove(good_input, ["filter"]),
+		json.patch(good_input, [{"op": "replace", "path": "/filter", "value": null}]),
+		json.patch(good_input, [{"op": "replace", "path": "/filter", "value": "true"}]),
+		json.patch(good_input, [{"op": "replace", "path": "/filter", "value": []}]),
+	] {
+		v := data.cis_opnsense.violations with input as inp
+		every id in ["4.1.2", "4.1.3", "4.1.4", "4.1.8", "6.1", "6.2"] {
+			sprintf("%s: evidence missing — input.filter not collected", [id]) in v
+		}
+		r := data.cis_opnsense.main.compliance_report with input as inp
+		r.compliant == false
+		r.failed_controls == 6
+		r.compliance_percentage < 100
+	}
 }
 
 # The factory "LAN net to any" rule is broad (4.1.2) but not literal any -> any (4.1.3).

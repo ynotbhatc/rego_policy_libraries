@@ -43,7 +43,7 @@ opa fmt -w benchmarks/cis/docker
 
 | Field | Values | When absent |
 |---|---|---|
-| `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
+| `level` | `1`, `2` (Level 2 includes Level 1) | evaluated at `2`, the stricter selection, with a `PROFILE NOT SELECTED` finding (`level_defaulted: true`); never compliant |
 | `swarm` | `true` forces the Swarm profile in, `false` leaves it out | decided by the collected swarm state (below) |
 
 | Selection | `total_controls` |
@@ -76,7 +76,7 @@ collected counts as possibly active: they apply and report evidence missing. On 
 | `docker.host.data_root_is_mountpoint` | `mountpoint` on the Docker data root |
 | `docker.docker_group.members[]`, `.approved_members[]` | `getent group docker` and the operator's approved list |
 | `docker.exec_audit.privileged_events[]`, `.root_user_events[]` | `ausearch -k docker` hits for `docker exec` |
-| `docker.swarm.listeners[]`, `docker.swarm.data_path_addr` | listeners on 2377 / 7946 (`{port, address}`), the data path address |
+| `docker.swarm.listeners[]`, `docker.swarm.data_path_addr` | the address of each listener on 2377 / 7946 (`{address}`), the data path address |
 | `docker.policy.*` | optional allowances: `allowed_added_capabilities`, `allowed_sensitive_mounts`, `allowed_privileged_ports`, `allowed_host_devices`, `max_node_cert_expiry_days` |
 | `docker.attest.*` | attestation booleans |
 

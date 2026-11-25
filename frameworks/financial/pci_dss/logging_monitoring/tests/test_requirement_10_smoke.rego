@@ -1,5 +1,4 @@
-package pci_dss.logging_monitoring.requirement_10_test
-
+package pci_dss_tests.logging_monitoring.requirement_10_test
 import rego.v1
 
 # Generated smoke test for frameworks/financial/pci_dss/logging_monitoring/requirement_10.rego (scripts/gen_tests.py). Each rule states one thing the module was proven

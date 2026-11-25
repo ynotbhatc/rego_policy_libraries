@@ -1517,10 +1517,10 @@
      "properties": {
       "duration_seconds": {
        "description": "Read in entra_validation.rego.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        60
+        "60"
        ]
       },
       "settings_present": {
@@ -1533,10 +1533,10 @@
       },
       "threshold": {
        "description": "Read in entra_validation.rego.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        10
+        "10"
        ]
       }
      },

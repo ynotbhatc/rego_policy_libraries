@@ -48,18 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -84,7 +95,8 @@ _ol8_before_8_2 if {
 }
 
 # every value of an option in /etc/security/pwquality.conf and pwquality.conf.d/*.conf (input.pwquality_values[<opt>],
-# one entry per uncommented line), as numbers; undefined unless every entry is a decimal integer
+# one entry per uncommented line), as numbers; undefined unless every entry is a whole JSON number (a value sent as
+# text, "15", is not read: the collector converts the configured text; the finding says "evidence invalid")
 _pwq(opt) := ns if {
 	vs := input.pwquality_values[opt]
 	is_array(vs)
@@ -92,12 +104,7 @@ _pwq(opt) := ns if {
 	count(ns) == count(vs)
 }
 
-_num_val(v) := v if is_number(v)
-
-_num_val(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-}
+_num_val(v) := v if _whole_number(v)
 
 # =============================================================================
 # CAT I - HIGH SEVERITY
@@ -177,11 +184,14 @@ finding_ol08_00_010110 := {
 # PASS_MIN_DAYS as configured in /etc/login.defs
 missing_ol08_00_020190 := [concat(".", p) | some p in [["password_policy", "mindays"]]; not _collected(p)]
 
+invalid_ol08_00_020190 := [m | some p in [["password_policy", "mindays"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_minage := false
 
 password_minage if {
 	count(missing_ol08_00_020190) == 0
 	n := _num(["password_policy", "mindays"])
+	is_number(n)
 	n >= 1
 }
 
@@ -192,6 +202,8 @@ else := "Open"
 detail_ol08_00_020190 := "OL08-00-020190: Not_a_Finding" if password_minage
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020190", concat(", ", missing_ol08_00_020190)]) if count(missing_ol08_00_020190) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020190", concat(", ", invalid_ol08_00_020190)]) if count(invalid_ol08_00_020190) > 0
 
 else := "OL08-00-020190: check failed — PASS_MIN_DAYS in /etc/login.defs must be 1 or greater"
 
@@ -210,12 +222,16 @@ finding_ol08_00_020190 := {
 # PASS_MAX_DAYS as configured in /etc/login.defs
 missing_ol08_00_020200 := [concat(".", p) | some p in [["password_policy", "maxdays"]]; not _collected(p)]
 
+invalid_ol08_00_020200 := [m | some p in [["password_policy", "maxdays"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_maxage := false
 
 password_maxage if {
 	count(missing_ol08_00_020200) == 0
 	n := _num(["password_policy", "maxdays"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 180
 }
 
@@ -226,6 +242,8 @@ else := "Open"
 detail_ol08_00_020200 := "OL08-00-020200: Not_a_Finding" if password_maxage
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020200", concat(", ", missing_ol08_00_020200)]) if count(missing_ol08_00_020200) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020200", concat(", ", invalid_ol08_00_020200)]) if count(invalid_ol08_00_020200) > 0
 
 else := "OL08-00-020200: check failed — PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit)"
 
@@ -278,12 +296,16 @@ finding_ol08_00_020240 := {
 # deny as configured in /etc/security/faillock.conf
 missing_ol08_00_020011 := [concat(".", p) | some p in [["faillock_conf", "deny"]]; not _collected(p)]
 
+invalid_ol08_00_020011 := [m | some p in [["faillock_conf", "deny"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default account_lockout_enabled := false
 
 account_lockout_enabled if {
 	count(missing_ol08_00_020011) == 0
 	n := _num(["faillock_conf", "deny"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -305,6 +327,8 @@ else := "OL08-00-020011: Not_Applicable — the system is OL 8.0 or 8.1 (this ch
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020011", concat(", ", missing_ol08_00_020011)]) if count(missing_ol08_00_020011) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020011", concat(", ", invalid_ol08_00_020011)]) if count(invalid_ol08_00_020011) > 0
+
 else := "OL08-00-020011: check failed — deny in /etc/security/faillock.conf must be 1 to 3 (not 0)"
 
 finding_ol08_00_020011 := {
@@ -322,11 +346,14 @@ finding_ol08_00_020011 := {
 # fail_interval in /etc/security/faillock.conf; OL 8 requires 900 or MORE (RHEL 9: 900 or less); 8.0/8.1 N/A
 missing_ol08_00_020013 := [concat(".", p) | some p in [["faillock_conf", "fail_interval"]]; not _collected(p)]
 
+invalid_ol08_00_020013 := [m | some p in [["faillock_conf", "fail_interval"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default lockout_duration_ok := false
 
 lockout_duration_ok if {
 	count(missing_ol08_00_020013) == 0
 	n := _num(["faillock_conf", "fail_interval"])
+	is_number(n)
 	n >= 900
 }
 
@@ -348,6 +375,8 @@ else := "OL08-00-020013: Not_Applicable — the system is OL 8.0 or 8.1 (this ch
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020013", concat(", ", missing_ol08_00_020013)]) if count(missing_ol08_00_020013) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020013", concat(", ", invalid_ol08_00_020013)]) if count(invalid_ol08_00_020013) > 0
+
 else := "OL08-00-020013: check failed — fail_interval in /etc/security/faillock.conf must be 900 or more (OL 8's finding: not set to 900 or more)"
 
 finding_ol08_00_020013 := {
@@ -364,6 +393,8 @@ finding_ol08_00_020013 := {
 # OL08-00-020230 | V-248699 | CAT II
 # every minlen = value line found by grep -r minlen /etc/security/pwquality.conf* (conflicting results are a finding)
 missing_ol08_00_020230 := [concat(".", p) | some p in [["pwquality_values", "minlen"]]; not _collected(p)]
+
+invalid_ol08_00_020230 := [m | some i, v in input.pwquality_values.minlen; m := _not_a_number(sprintf("pwquality_values.minlen[%d]", [i]), v)]
 
 default password_min_length := false
 
@@ -386,6 +417,8 @@ detail_ol08_00_020230 := "OL08-00-020230: Not_a_Finding" if password_min_length
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020230", concat(", ", missing_ol08_00_020230)]) if count(missing_ol08_00_020230) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020230", concat(", ", invalid_ol08_00_020230)]) if count(invalid_ol08_00_020230) > 0
+
 else := "OL08-00-020230: check failed — minlen must be >= 15 on every uncommented minlen line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020230 := {
@@ -406,6 +439,8 @@ finding_ol08_00_020230 := {
 # OL08-00-020110 | V-248687 | CAT III
 # every ucredit = value line found by grep -r ucredit /etc/security/pwquality.conf* (conflicting results are a finding)
 missing_ol08_00_020110 := [concat(".", p) | some p in [["pwquality_values", "ucredit"]]; not _collected(p)]
+
+invalid_ol08_00_020110 := [m | some i, v in input.pwquality_values.ucredit; m := _not_a_number(sprintf("pwquality_values.ucredit[%d]", [i]), v)]
 
 default password_ucredit := false
 
@@ -428,6 +463,8 @@ detail_ol08_00_020110 := "OL08-00-020110: Not_a_Finding" if password_ucredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020110", concat(", ", missing_ol08_00_020110)]) if count(missing_ol08_00_020110) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020110", concat(", ", invalid_ol08_00_020110)]) if count(invalid_ol08_00_020110) > 0
+
 else := "OL08-00-020110: check failed — ucredit must be <= 0 on every uncommented ucredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020110 := {
@@ -444,6 +481,8 @@ finding_ol08_00_020110 := {
 # OL08-00-020120 | V-248688 | CAT III
 # every lcredit = value line found by grep -r lcredit /etc/security/pwquality.conf* (conflicting results are a finding)
 missing_ol08_00_020120 := [concat(".", p) | some p in [["pwquality_values", "lcredit"]]; not _collected(p)]
+
+invalid_ol08_00_020120 := [m | some i, v in input.pwquality_values.lcredit; m := _not_a_number(sprintf("pwquality_values.lcredit[%d]", [i]), v)]
 
 default password_lcredit := false
 
@@ -466,6 +505,8 @@ detail_ol08_00_020120 := "OL08-00-020120: Not_a_Finding" if password_lcredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020120", concat(", ", missing_ol08_00_020120)]) if count(missing_ol08_00_020120) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020120", concat(", ", invalid_ol08_00_020120)]) if count(invalid_ol08_00_020120) > 0
+
 else := "OL08-00-020120: check failed — lcredit must be <= 0 on every uncommented lcredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020120 := {
@@ -482,6 +523,8 @@ finding_ol08_00_020120 := {
 # OL08-00-020130 | V-248689 | CAT III
 # every dcredit = value line found by grep -r dcredit /etc/security/pwquality.conf* (conflicting results are a finding)
 missing_ol08_00_020130 := [concat(".", p) | some p in [["pwquality_values", "dcredit"]]; not _collected(p)]
+
+invalid_ol08_00_020130 := [m | some i, v in input.pwquality_values.dcredit; m := _not_a_number(sprintf("pwquality_values.dcredit[%d]", [i]), v)]
 
 default password_dcredit := false
 
@@ -504,6 +547,8 @@ detail_ol08_00_020130 := "OL08-00-020130: Not_a_Finding" if password_dcredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020130", concat(", ", missing_ol08_00_020130)]) if count(missing_ol08_00_020130) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020130", concat(", ", invalid_ol08_00_020130)]) if count(invalid_ol08_00_020130) > 0
+
 else := "OL08-00-020130: check failed — dcredit must be <= 0 on every uncommented dcredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020130 := {
@@ -520,6 +565,8 @@ finding_ol08_00_020130 := {
 # OL08-00-020280 | V-248709 | CAT III
 # every ocredit = value line found by grep -r ocredit /etc/security/pwquality.conf* (conflicting results are a finding)
 missing_ol08_00_020280 := [concat(".", p) | some p in [["pwquality_values", "ocredit"]]; not _collected(p)]
+
+invalid_ol08_00_020280 := [m | some i, v in input.pwquality_values.ocredit; m := _not_a_number(sprintf("pwquality_values.ocredit[%d]", [i]), v)]
 
 default password_ocredit := false
 
@@ -541,6 +588,8 @@ else := "Open"
 detail_ol08_00_020280 := "OL08-00-020280: Not_a_Finding" if password_ocredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020280", concat(", ", missing_ol08_00_020280)]) if count(missing_ol08_00_020280) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["OL08-00-020280", concat(", ", invalid_ol08_00_020280)]) if count(invalid_ol08_00_020280) > 0
 
 else := "OL08-00-020280: check failed — ocredit must be <= 0 on every uncommented ocredit line of /etc/security/pwquality.conf*, with no conflicting values"
 

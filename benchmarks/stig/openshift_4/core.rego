@@ -169,20 +169,41 @@ unsuccessful_access_rules := {
 	"-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=unset -k perm_mod",
 }
 
+# What `systemctl is-enabled` and `systemctl is-active` print (systemctl(1), tables "is-enabled output" and the
+# is-active states). CNTR-OS-001010 is a finding when the service is "either active or enabled"; each node must
+# print a word that is a plain statement of "not enabled" and of "not running". "enabled" and "enabled-runtime"
+# (the same row: enabled through symlinks, permanently or only until reboot), "alias", "generated" and "transient"
+# (exit code 0: enabled in effect or enabled implicitly), "bad" and a word systemctl never prints ("false", "no",
+# "true", an empty string) do not clear the node. Neither do the states that mean running or about to run.
+systemctl_not_enabled_states := {"disabled", "masked", "masked-runtime", "linked", "linked-runtime", "static", "indirect", "not-found"}
+
+systemctl_not_active_states := {"inactive", "failed", "unknown"}
+
 # SCC subjects the CNTR-OS-000660 check permits on a host-access / privileged / non-MustRunAsRange SCC
 scc_permitted_subjects := {"system:cluster-admins", "system:nodes", "system:masters", "system:admin", "system:serviceaccount:openshift-infra:build-controller", "system:serviceaccount:openshift-infra:pv-recycler-controller", "system:serviceaccount:openshift-machine-api:machine-api-termination-handler"}
 
-_scc_privileged(s) if s.allowHostIPC == true
+# The check selects an SCC with `jq select(.allowHostIPC or .allowHostPID or .allowHostPorts or .allowHostNetwork
+# or .allowHostDirVolumePlugin or .allowPrivilegedContainer or .runAsUser.type != "MustRunAsRange")`. jq reads
+# only null and false as false, so a field the SCC does not carry is not set, and anything else (true, but also
+# the string "false" or a number) selects the SCC. A missing runAsUser.type is null, which differs from
+# "MustRunAsRange", so it selects too (the last clause below).
+_scc_flag(s, field) if {
+	v := object.get(s, field, null)
+	v != null
+	v != false
+}
 
-_scc_privileged(s) if s.allowHostPID == true
+_scc_privileged(s) if _scc_flag(s, "allowHostIPC")
 
-_scc_privileged(s) if s.allowHostPorts == true
+_scc_privileged(s) if _scc_flag(s, "allowHostPID")
 
-_scc_privileged(s) if s.allowHostNetwork == true
+_scc_privileged(s) if _scc_flag(s, "allowHostPorts")
 
-_scc_privileged(s) if s.allowHostDirVolumePlugin == true
+_scc_privileged(s) if _scc_flag(s, "allowHostNetwork")
 
-_scc_privileged(s) if s.allowPrivilegedContainer == true
+_scc_privileged(s) if _scc_flag(s, "allowHostDirVolumePlugin")
+
+_scc_privileged(s) if _scc_flag(s, "allowPrivilegedContainer")
 
 _scc_privileged(s) if object.get(s, ["runAsUser", "type"], "") != "MustRunAsRange"
 
@@ -262,7 +283,7 @@ registries_secure if {
 	ic := input.openshift.image_config
 	allowed := object.get(ic, ["spec", "allowedRegistriesForImport"], [])
 	is_array(allowed)
-	count([r | some r in allowed; r.insecure == true]) == 0
+	count([r | some r in allowed; object.get(r, "insecure", false) != false]) == 0
 	insecure := object.get(ic, ["spec", "registrySources", "insecureRegistries"], [])
 	is_array(insecure)
 	count(insecure) == 0
@@ -734,8 +755,8 @@ sshd_disabled if {
 	every n in ns {
 		_s(n.sshd_enabled) != "enabled"
 		_s(n.sshd_active) != "active"
-		is_string(n.sshd_enabled)
-		is_string(n.sshd_active)
+		_s(n.sshd_enabled) in systemctl_not_enabled_states
+		_s(n.sshd_active) in systemctl_not_active_states
 	}
 }
 

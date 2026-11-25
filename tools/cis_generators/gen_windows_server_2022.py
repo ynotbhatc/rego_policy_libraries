@@ -294,6 +294,68 @@ def stated_values(audit):
     return single, named
 
 
+def stated_types(audit):
+    """Every registry type the audit text states for a value ("`REG_DWORD` value of", "`REG_SZ` or `REG_DWORD`
+    value of", "`REG_DWORD` value between"; some rows write the type without backticks)."""
+    out = set()
+    for a, b in re.findall(r"`?(REG_[A-Z_]+)`?(?: or `?(REG_[A-Z_]+)`?)? value (?:of|that is|between) ", audit):
+        out.update(t for t in (a, b) if t)
+    return out
+
+
+def named_types(audit):
+    """{value name: stated types} for an audit text that states a value per name
+    ("`REG_DWORD` value of `1` (EnableSmartScreen) and `REG_SZ` value of `Block` (ShellSmartScreenLevel)")."""
+    out = {}
+    for a, b, name in re.findall(r"`?(REG_[A-Z_]+)`?(?: or `?(REG_[A-Z_]+)`?)? value of `[^`]+` \((\w+)\)", audit):
+        out.setdefault(name, set()).update(t for t in (a, b) if t)
+    return out
+
+
+NUMERIC_OPS = {"ge", "ge_or_forever", "le", "le_not0", "range", "in"}
+
+
+def _numeric(op, value):
+    return op in NUMERIC_OPS or (op in ("eq", "eq_or_absent") and isinstance(value, int) and not isinstance(value, bool))
+
+
+def vtype(types):
+    """How a number the row compares arrives from the collector, by the registry type the audit procedure states.
+    None: REG_DWORD / REG_QWORD, a JSON number (the row carries no "vtype"; a string there is not evidence).
+    "sz": REG_SZ / REG_EXPAND_SZ, a string holding the number (a JSON number there is not what the registry holds).
+    "any": the audit states both kinds or none, so either representation is accepted."""
+    types = set(types)
+    if types and types <= {"REG_DWORD", "REG_QWORD"}:
+        return None
+    if types and types <= {"REG_SZ", "REG_EXPAND_SZ"}:
+        return "sz"
+    return "any"
+
+
+# Registry types for values whose audit text in some workbooks states none. Without a type the row was "any"
+# and read a number or its digits in a string alike. Sources (2026-11-24):
+#   CachedLogonsCount: REG_SZ. Microsoft, "Cached domain logon information" (KB 172931: data type REG_SZ, values
+#     0 - 50); the Windows 10 and 11 workbooks state REG_SZ for the same value.
+#   DisableSpotlightCollectionOnDesktop: REG_DWORD. The Windows 10 and 11 workbooks state REG_DWORD for the same
+#     value; Microsoft's Policy CSP (Experience/AllowSpotlightCollection) maps it as an integer ADMX policy.
+#   AllowBuildPreview: REG_DWORD. Microsoft, "Manage connections from Windows operating system components to
+#     Microsoft services" (create a REG_DWORD named AllowBuildPreview).
+# A type the audit text does state always wins; this table only fills a gap.
+DOCUMENTED_TYPES = {
+    "CachedLogonsCount": {"REG_SZ"},
+    "DisableSpotlightCollectionOnDesktop": {"REG_DWORD"},
+    "AllowBuildPreview": {"REG_DWORD"},
+}
+
+
+def typed(check, types):
+    """Stamp a reg / ureg row with its "vtype" when it compares a number that is not a REG_DWORD."""
+    vt = vtype(types or DOCUMENTED_TYPES.get(check.get("name"), ()))
+    if vt and _numeric(check["op"], check["value"]):
+        check["vtype"] = vt
+    return check
+
+
 def literal(rtype, raw):
     if rtype == "REG_DWORD":
         return int(raw)
@@ -322,6 +384,7 @@ def derive_registry(rec):
     if not locs:
         return None
     single, named = stated_values(rec["audit"])
+    types = stated_types(rec["audit"])
     scope = {s for s, _, _ in locs}
     if len(scope) != 1:
         sys.exit(f"{rec['id']}: mixes machine and per-user locations")
@@ -335,7 +398,8 @@ def derive_registry(rec):
         _, path, name = locs[0]
         if kind == "reg_absent":
             return {"kind": "reg_absent", "path": path, "name": name}
-        return {"kind": "ureg" if user else "reg", "path": path, "name": name, "op": op, "value": value}
+        return typed({"kind": "ureg" if user else "reg", "path": path, "name": name, "op": op, "value": value},
+                     types)
 
     # one location, one stated value
     if len(locs) == 1 and len(single) == 1 and isinstance(single[0][1], list):
@@ -343,8 +407,8 @@ def derive_registry(rec):
         _, path, name = locs[0]
         if not all(re.fullmatch(r"\d+", r) for r in raws):
             sys.exit(f"{rec['id']}: non-numeric alternatives {raws}")
-        return {"kind": "ureg" if user else "reg", "path": path, "name": name, "op": "in",
-                "value": [int(r) for r in raws]}
+        return typed({"kind": "ureg" if user else "reg", "path": path, "name": name, "op": "in",
+                      "value": [int(r) for r in raws]}, types)
 
     if len(locs) == 1 and len(single) == 1:
         rtype, raw = single[0]
@@ -357,25 +421,30 @@ def derive_registry(rec):
             return {"kind": "reg", "path": path, "name": name, "op": "set", "value": literal(rtype, raw)}
         op, value = op_from_title(title, literal(rtype, raw))
         if rtype == "REG_SZ" and op == "eq" and re.fullmatch(r"\d+", raw):
-            value = int(raw)  # "0"/"1" held as REG_SZ: compared numerically, either representation passes
-        return {"kind": "ureg" if user else "reg", "path": path, "name": name, "op": op, "value": value}
+            value = int(raw)  # "0"/"1" held as REG_SZ: compared numerically; the row's vtype says it arrives as a string
+        return typed({"kind": "ureg" if user else "reg", "path": path, "name": name, "op": op, "value": value},
+                     types)
 
     # several locations: one shared value, or a value per name
     if len(locs) > 1 and not user:
         items = []
+        vt = vtype(types)  # a fifth element on an item whose number is not a REG_DWORD (see vtype)
         if named:
+            per_name = named_types(rec["audit"])
             for _, path, name in locs:
                 if name not in named:
                     sys.exit(f"{rec['id']}: no stated value for {name}")
                 raw = named[name]
-                items.append([path, name, "eq", int(raw) if re.fullmatch(r"\d+", raw) else raw])
+                value = int(raw) if re.fullmatch(r"\d+", raw) else raw
+                vt = vtype(per_name.get(name) or types)
+                items.append([path, name, "eq", value] + ([vt] if vt and isinstance(value, int) else []))
         elif len(single) >= 1 and all(isinstance(v, str) for _, v in single) and len({v for _, v in single}) == 1:
             rtype, raw = single[0]
             if rtype == "REG_SZ" and "=" in raw:  # hardened UNC paths: a flag list, compared flag by flag
                 flags = [p.strip() for p in raw.split(",")]
                 items = [[path, name, "has_all", flags] for _, path, name in locs]
             else:
-                items = [[path, name, "eq", int(raw)] for _, path, name in locs]
+                items = [[path, name, "eq", int(raw)] + ([vt] if vt else []) for _, path, name in locs]
         else:
             return None
         return {"kind": "reg_all", "items": items}
@@ -446,6 +515,12 @@ def derive(rec):
 def rego(value):
     """JSON is valid Rego for every term this module emits."""
     return json.dumps(value)
+
+
+def selector_block():
+    """The mistyped-selector rules every Windows evaluator carries (windows_lib_selector.rego.tmpl, less its header)."""
+    text = (pathlib.Path(__file__).parent / "windows_lib_selector.rego.tmpl").read_text()
+    return text[text.index("# A selector"):]
 
 
 HEADER = """# Generated by tools/cis_generators/gen_windows_server_2022.py from the CIS workbook -- do not edit.
@@ -901,10 +976,10 @@ def manifest(checks):
         "benchmark": f"{BENCHMARK} v{VERSION}",
         "contract": {
             "cis_profile": "{role: member_server|domain_controller, level: 1|2, next_generation: bool}",
-            "registry": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD int | REG_SZ string | REG_MULTI_SZ list>}}; omit a value that does not exist",
+            "registry": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD / REG_QWORD: JSON number | REG_SZ / REG_EXPAND_SZ: string, also when it holds a number | REG_MULTI_SZ: list of strings>}}; omit a value that does not exist. The type is evidence: a number sent as a string (or a REG_SZ number sent as a number) fails the recommendation",
             "registry_users": "{'<user SID, S-1-5-21-...>': {'<path below HKU\\\\<SID>\\\\ as listed>': {'<value name>': <value>}}} for every loaded user profile hive; other HKU keys are ignored",
-            "audit_policy": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value: 0 none, 1 success, 2 failure, 3 both>}",
-            "secedit": "{system_access: {<key>: <int|string>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export",
+            "audit_policy": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value as a JSON number: 0 none, 1 success, 2 failure, 3 both>}",
+            "secedit": "{system_access: {<key>: <JSON number for a numeric key, string for NewAdministratorName / NewGuestName>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export; omit a right nobody holds",
             "attestations": "[{control_id, attested_by, attested_on, evidence_ref}] for the Manual recommendations",
         },
         "registry": [list(x) for x in sorted(reg)],
@@ -957,6 +1032,7 @@ def main():
                     complete_module(section_names) + control_index(recs, checks), me)
     write_generated(OUT / "cis_windows_2022_main.rego", main_module(), me)
     lib = (pathlib.Path(__file__).parent / "windows_lib.rego.tmpl").read_text()
+    lib = lib.replace("{{SELECTOR_BLOCK}}\n", selector_block())
     lib = lib.replace("{{SECTIONS}}", "\n".join(f'\t"{p}": data.{PKG}.{p}.SECTION,' for p in SECTIONS.values()))
     lib = lib.replace("{{TABLES}}", "\n".join(f'\t"{p}": data.{PKG}.{p}.controls,' for p in SECTIONS.values()))
     write_generated(OUT / "lib.rego", lib, me)

@@ -1,5 +1,4 @@
-package pci_dss.main_numeric_guards_test
-
+package pci_dss_tests.main_numeric_guards_test
 import rego.v1
 
 # "7000000" sorts above every number; a non-numeric volume gives "Unknown", never a merchant level.

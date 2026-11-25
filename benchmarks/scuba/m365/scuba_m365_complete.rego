@@ -48,12 +48,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 109
+#     found: 134
+#     scope: directory
+#     density: over
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package scuba_m365.main
 
 import data.scuba_m365.aad

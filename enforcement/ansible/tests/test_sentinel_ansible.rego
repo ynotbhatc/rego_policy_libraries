@@ -110,14 +110,14 @@ test_allow_false_when_violation if {
 	not ansible.allow with input as {"plays": [{"hosts": "all"}]}
 }
 
-# ── Aggregate report — populated object on empty input {} ────────────────────
+# ── Aggregate report — populated object on empty input {}, which is not a playbook and is denied (2026-11-24) ────────────────────
 
 test_result_is_populated_object_on_empty_input if {
 	r := ansible.result with input as {}
 	r.policy == "Sentinel — Ansible Playbook"
-	r.allow == true
-	r.violation_count == 0
-	r.violations == []
+	r.allow == false
+	r.violation_count == 1
+	startswith(r.violations[0], "SENTINEL-ANS-000: Malformed playbook")
 	count(r) == 4
 }
 

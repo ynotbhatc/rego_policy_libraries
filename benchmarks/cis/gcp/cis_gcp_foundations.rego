@@ -688,13 +688,21 @@ _flow_logs_on(s) if s.enableFlowLogs == true
 
 _flow_logs_on(s) if s.logConfig.enable == true
 
+# Either flag, when sent, is a boolean: a string in its place is a collection error and the subnet does not pass.
+_flow_flag_invalid(s) if {
+	some v in [object.get(s, "enableFlowLogs", null), object.get(s, ["logConfig", "enable"], null)]
+	not is_null(v)
+	not is_boolean(v)
+}
+
 _flow_logs_filtered(s) if not object.get(object.get(s, "logConfig", {}), "filterExpr", "true") in {"", "true"}
 
 _flow_logs_ok(s) if {
 	_flow_logs_on(s)
 	lc := object.get(s, "logConfig", {})
 	object.get(lc, "aggregationInterval", "") == "INTERVAL_5_SEC"
-	to_number(object.get(lc, "flowSampling", 0)) == 1
+	object.get(lc, "flowSampling", 0) == 1
+	not _flow_flag_invalid(s)
 	object.get(lc, "metadata", "") == "INCLUDE_ALL_METADATA"
 	not _flow_logs_filtered(s)
 }
@@ -747,7 +755,9 @@ findings contains ["4.5", sprintf("instance %s allows serial port connections", 
 findings contains ["4.6", sprintf("instance %s has IP forwarding enabled", [nm(i, "name")])] if {
 	some i in input.compute_instances
 	not startswith(nm(i, "name"), "gke-")
-	i.canIpForward == true
+
+	# off is the boolean false or an unset field; "false", "true" and 1 are not off
+	not object.get(i, "canIpForward", null) in {false, null}
 }
 
 findings contains ["4.7", sprintf("disk %s is not encrypted with a customer-supplied key", [nm(d, "name")])] if {

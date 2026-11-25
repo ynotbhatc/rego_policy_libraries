@@ -100,7 +100,7 @@ all_bes_cyber_systems_identified if {
 all_bes_cyber_systems_categorized if {
 	violations := [system |
 		system := input.bes_cyber_systems[_]
-		not valid_impact_categorization(system.impact_categorization)
+		not valid_impact_categorization(object.get(system, "impact_categorization", null))
 	]
 	count(violations) == 0
 }

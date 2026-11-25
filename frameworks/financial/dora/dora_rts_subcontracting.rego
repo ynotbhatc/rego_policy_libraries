@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 30
 #     cited: 30
-#     density: sized
-#     basis: size
+#     expected: 30
+#     found: 30
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package dora.rts_subcontracting
 
 import rego.v1

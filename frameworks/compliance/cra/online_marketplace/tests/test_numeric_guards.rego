@@ -24,5 +24,6 @@ test_numeric_takedown_hours_still_late if {
 		"authority_takedown_order_received": true,
 		"authority_takedown_order_hours_pending": 50,
 	}}
-	"Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: 50h pending)" in msgs
+	some m in msgs
+	startswith(m, "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: 50h pending)")
 }

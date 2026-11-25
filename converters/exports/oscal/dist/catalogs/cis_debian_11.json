@@ -155,19 +155,29 @@
        {
         "id": "cis_debian_11-CIS-1.6.1.2_obj.4",
         "name": "assessment-objective",
-        "prose": "AppArmor is not enabled in bootloader configuration"
+        "prose": "evidence missing — apparmor.grub_cmdline not collected"
        },
        {
         "id": "cis_debian_11-CIS-1.6.1.2_obj.5",
         "name": "assessment-objective",
+        "prose": "AppArmor is not enabled in bootloader configuration"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.6.1.2_obj.6",
+        "name": "assessment-objective",
         "prose": "AppArmor security= parameter not set in bootloader"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.6.1.2_obj.7",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.grub_cmdline not collected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_debian_11-CIS-1.6.1.3",
-      "title": "%d AppArmor profiles are not loaded",
+      "title": "evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected",
       "props": [
        {
         "name": "label",
@@ -193,24 +203,39 @@
        {
         "id": "cis_debian_11-CIS-1.6.1.3_stmt",
         "name": "statement",
-        "prose": "%d AppArmor profiles are not loaded"
+        "prose": "evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected"
        },
        {
         "id": "cis_debian_11-CIS-1.6.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "evidence missing — apparmor.unloaded_profiles is not a number"
+        "prose": "%d AppArmor profiles are not loaded"
        },
        {
         "id": "cis_debian_11-CIS-1.6.1.3_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.unloaded_profiles is not a number"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.6.1.3_obj.3",
+        "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is not loaded"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.6.1.3_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.profiles[%d].mode %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.6.1.3_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.profiles[%d] is not an object (got %s)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_debian_11-CIS-1.6.1.4",
-      "title": "%d AppArmor profiles are in complain mode (should be enforce)",
+      "title": "evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected",
       "props": [
        {
         "name": "label",
@@ -236,17 +261,88 @@
        {
         "id": "cis_debian_11-CIS-1.6.1.4_stmt",
         "name": "statement",
-        "prose": "%d AppArmor profiles are in complain mode (should be enforce)"
+        "prose": "evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected"
        },
        {
         "id": "cis_debian_11-CIS-1.6.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "evidence missing — apparmor.complain_profiles is not a number"
+        "prose": "%d AppArmor profiles are in complain mode (should be enforce)"
        },
        {
         "id": "cis_debian_11-CIS-1.6.1.4_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.complain_profiles is not a number"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.6.1.4_obj.3",
+        "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is in complain mode, should be enforce"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.apparmor-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/apparmor_validation.rego (package cis_debian_11.apparmor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.apparmor#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.apparmor#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.apparmor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cd0cf48e-6462-5551-bafd-c0e89708d99c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.apparmor-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/apparmor_validation.rego (package cis_debian_11.apparmor); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.apparmor-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/apparmor_validation.rego (package cis_debian_11.apparmor); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.apparmor#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.apparmor#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.apparmor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cd0cf48e-6462-5551-bafd-c0e89708d99c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.apparmor-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/apparmor_validation.rego (package cis_debian_11.apparmor); see the rule body."
        }
       ],
       "class": "security"
@@ -304,6 +400,16 @@
         "id": "cis_debian_11-CIS-4.1.1.1_stmt",
         "name": "statement",
         "prose": "auditd package not installed"
+       },
+       {
+        "id": "cis_debian_11-CIS-4.1.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — packages.auditd not collected"
+       },
+       {
+        "id": "cis_debian_11-CIS-4.1.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — packages.%s is not a boolean (got %s)"
        }
       ],
       "class": "security"
@@ -347,6 +453,11 @@
         "id": "cis_debian_11-CIS-4.1.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "auditd service not running"
+       },
+       {
+        "id": "cis_debian_11-CIS-4.1.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — services.auditd.service.%s not collected"
        }
       ],
       "class": "security"
@@ -664,6 +775,138 @@
         "id": "cis_debian_11-CIS-4.1.4.2_obj.1",
         "name": "assessment-objective",
         "prose": "Audit log group not root or adm (group: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-gr_name",
+      "title": "4.1.4.2",
+      "props": [
+       {
+        "name": "label",
+        "value": "gr_name"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "gr_name"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e13978f-cff2-5e94-90c9-7cc258529174",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-gr_name_stmt",
+        "name": "statement",
+        "prose": "4.1.4.2"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-mode",
+      "title": "4.1.4.1",
+      "props": [
+       {
+        "name": "label",
+        "value": "mode"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "mode"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e13978f-cff2-5e94-90c9-7cc258529174",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-mode_stmt",
+        "name": "statement",
+        "prose": "4.1.4.1"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-pw_name",
+      "title": "4.1.4.2",
+      "props": [
+       {
+        "name": "label",
+        "value": "pw_name"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pw_name"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e13978f-cff2-5e94-90c9-7cc258529174",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-pw_name_stmt",
+        "name": "statement",
+        "prose": "4.1.4.2"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.auditd-1",
+      "title": "CIS %s: evidence missing — auditd.log_permissions.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.auditd#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.auditd#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e13978f-cff2-5e94-90c9-7cc258529174",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.auditd-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — auditd.log_permissions.%s not collected"
        }
       ],
       "class": "security"
@@ -1120,6 +1363,237 @@
         "id": "cis_debian_11-CIS-1.5.4_obj.1",
         "name": "assessment-objective",
         "prose": "ptrace scope is not restricted (kernel.yama.ptrace_scope should be >= 1)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.boot_security-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.boot_security#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.boot_security#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.boot_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c525bd68-5ce2-5faa-9ec1-01133c7551c4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.boot_security-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/boot_security_validation.rego (package cis_debian_11.boot_security); see the rule body."
        }
       ],
       "class": "security"
@@ -1669,6 +2143,72 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.cron-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/cron_validation.rego (package cis_debian_11.cron); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.cron#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.cron#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dca06368-5358-5a69-869b-d6c0f57873d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.cron-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/cron_validation.rego (package cis_debian_11.cron); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.cron-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/cron_validation.rego (package cis_debian_11.cron); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.cron#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.cron#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dca06368-5358-5a69-869b-d6c0f57873d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.cron-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/cron_validation.rego (package cis_debian_11.cron); see the rule body."
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -1723,6 +2263,21 @@
         "id": "cis_debian_11-CIS-6.1.x_stmt",
         "name": "statement",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — critical_files.analysis[%d].%s %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — critical_files.analysis not collected"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — critical_files.analysis[%d].file %s"
        }
       ],
       "class": "security"
@@ -2098,6 +2653,21 @@
         "id": "cis_debian_11-CIS-6.1.13_obj.3",
         "name": "assessment-objective",
         "prose": "evidence missing — suid_files.total_count is not a number"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.13_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.unknown_binaries[%d].%s %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.13_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.unknown_count not collected"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.13_obj.6",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.total_count not collected"
        }
       ],
       "class": "security"
@@ -2136,6 +2706,242 @@
         "id": "cis_debian_11-CIS-6.1.14_obj.1",
         "name": "assessment-objective",
         "prose": "evidence missing — sgid_files.count is not a number"
+       },
+       {
+        "id": "cis_debian_11-CIS-6.1.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sgid_files.count not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-3",
+      "title": "CIS %s: evidence missing — critical_files.analysis[%d].mode_compliant %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-3_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — critical_files.analysis[%d].mode_compliant %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-4",
+      "title": "SSH Private Key: evidence missing — ssh_private_keys.analysis[%d].%s %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-4_stmt",
+        "name": "statement",
+        "prose": "SSH Private Key: evidence missing — ssh_private_keys.analysis[%d].%s %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-5",
+      "title": "CIS %s: evidence missing — %s.compliant is not a boolean (got %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-5_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — %s.compliant is not a boolean (got %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-6",
+      "title": "CIS %s: evidence missing — %s.count (or %s.files) not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-6_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — %s.count (or %s.files) not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-7",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/file_permissions_validation.rego (package cis_debian_11.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/file_permissions_validation.rego (package cis_debian_11.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-8",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/file_permissions_validation.rego (package cis_debian_11.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/file_permissions_validation.rego (package cis_debian_11.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.file_permissions-9",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/file_permissions_validation.rego (package cis_debian_11.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.file_permissions#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.file_permissions#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2bf1725e-cf3b-534d-abba-3d713a6b55f8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.file_permissions-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/file_permissions_validation.rego (package cis_debian_11.file_permissions); see the rule body."
        }
       ],
       "class": "security"
@@ -2231,6 +3037,11 @@
         "id": "cis_debian_11-CIS-1.1.1.x_obj.1",
         "name": "assessment-objective",
         "prose": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.1.1.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — disabled_filesystem_modules.modules[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2264,6 +3075,11 @@
         "id": "cis_debian_11-CIS-1.1.2_stmt",
         "name": "statement",
         "prose": "evidence missing — required_partitions.partitions not collected"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — required_partitions.partitions[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2330,6 +3146,11 @@
         "id": "cis_debian_11-CIS-1.1.x_stmt",
         "name": "statement",
         "prose": "evidence missing — mount_options.mounts not collected"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.1.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mount_options.mounts[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2401,6 +3222,11 @@
         "id": "cis_debian_11-CIS-1.1.22_obj.1",
         "name": "assessment-objective",
         "prose": "World-writable directory %s does not have sticky bit set"
+       },
+       {
+        "id": "cis_debian_11-CIS-1.1.22_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sticky_bit_check.world_writable_dirs[%d].%s %s"
        }
       ],
       "class": "security"
@@ -2930,6 +3756,105 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.initial_setup-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/initial_setup_validation.rego (package cis_debian_11.initial_setup); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.initial_setup#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.initial_setup#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#094ebfce-2d41-5d0c-a0b8-8ed152efbb1c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.initial_setup-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/initial_setup_validation.rego (package cis_debian_11.initial_setup); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.initial_setup-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/initial_setup_validation.rego (package cis_debian_11.initial_setup); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.initial_setup#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.initial_setup#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#094ebfce-2d41-5d0c-a0b8-8ed152efbb1c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.initial_setup-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/initial_setup_validation.rego (package cis_debian_11.initial_setup); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.initial_setup-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/initial_setup_validation.rego (package cis_debian_11.initial_setup); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.initial_setup#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.initial_setup#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#094ebfce-2d41-5d0c-a0b8-8ed152efbb1c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.initial_setup-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/initial_setup_validation.rego (package cis_debian_11.initial_setup); see the rule body."
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -3065,6 +3990,11 @@
         "id": "cis_debian_11-CIS-4.2.3_obj.2",
         "name": "assessment-objective",
         "prose": "Log file '%s' has excessive permissions (mode: %s, issue: %s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-4.2.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — log_file_permissions.analysis[%d].%s %s"
        }
       ],
       "class": "security"
@@ -3382,6 +4312,138 @@
       "class": "security"
      },
      {
+      "id": "cis_debian_11-cis_debian_11.logging-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.logging#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.logging#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de82d70-9c8e-53b3-b23b-772801418b0b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.logging-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.logging-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.logging#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.logging#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de82d70-9c8e-53b3-b23b-772801418b0b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.logging-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.logging-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.logging#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.logging#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de82d70-9c8e-53b3-b23b-772801418b0b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.logging-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.logging-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.logging#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.logging#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de82d70-9c8e-53b3-b23b-772801418b0b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.logging-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_debian_11-journald",
       "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/logging_validation.rego (package cis_debian_11.logging); see the rule body.",
       "props": [
@@ -3505,6 +4567,16 @@
         "id": "cis_debian_11-CIS-3.x_obj.1",
         "name": "assessment-objective",
         "prose": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sysctl_parameters.analysis[%d].%s %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sysctl_parameters.analysis[%d] is not an object (got %s)"
        }
       ],
       "class": "security"
@@ -3548,6 +4620,16 @@
         "id": "cis_debian_11-CIS-3.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.1.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ip_forwarding.%s is not a number (got %s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.1.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ip_forwarding.%s is not a boolean (got %s)"
        }
       ],
       "class": "security"
@@ -3591,6 +4673,11 @@
         "id": "cis_debian_11-CIS-3.3.1_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing — ipv6.address_count is not a number"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.3.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ipv6.address_count not collected"
        }
       ],
       "class": "security"
@@ -3640,7 +4727,7 @@
      },
      {
       "id": "cis_debian_11-CIS-3.5.x",
-      "title": "evidence missing — firewall.active not collected",
+      "title": "evidence missing — firewall not collected",
       "props": [
        {
         "name": "label",
@@ -3666,7 +4753,7 @@
        {
         "id": "cis_debian_11-CIS-3.5.x_stmt",
         "name": "statement",
-        "prose": "evidence missing — firewall.active not collected"
+        "prose": "evidence missing — firewall not collected"
        },
        {
         "id": "cis_debian_11-CIS-3.5.x_obj.1",
@@ -3677,6 +4764,11 @@
         "id": "cis_debian_11-CIS-3.5.x_obj.2",
         "name": "assessment-objective",
         "prose": "Using legacy iptables instead of ufw or nftables"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.5.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — firewall.type %s"
        }
       ],
       "class": "security"
@@ -4012,6 +5104,77 @@
         "id": "cis_debian_11-CIS-3.5.1.1_stmt",
         "name": "statement",
         "prose": "UFW default incoming policy is '%s', should be deny or reject"
+       },
+       {
+        "id": "cis_debian_11-CIS-3.5.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — firewall.default_incoming %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.network-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/network_validation.rego (package cis_debian_11.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#165052ec-b27e-5e0a-acc0-277e3f9ae1ca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.network-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/network_validation.rego (package cis_debian_11.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.network-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/network_validation.rego (package cis_debian_11.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.network#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.network#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#165052ec-b27e-5e0a-acc0-277e3f9ae1ca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.network-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/network_validation.rego (package cis_debian_11.network); see the rule body."
        }
       ],
       "class": "security"
@@ -4101,11 +5264,6 @@
        {
         "id": "cis_debian_11-CIS-5.x_stmt",
         "name": "statement",
-        "prose": "evidence missing — pam.%s not collected"
-       },
-       {
-        "id": "cis_debian_11-CIS-5.x_obj.1",
-        "name": "assessment-objective",
         "prose": "evidence missing — pam.%s not collected"
        }
       ],
@@ -4464,6 +5622,11 @@
         "id": "cis_debian_11-CIS-5.5.4_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing — pam.inactive_days is not a number"
+       },
+       {
+        "id": "cis_debian_11-CIS-5.5.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.inactive_days not collected"
        }
       ],
       "class": "security"
@@ -4581,6 +5744,237 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-3",
+      "title": "CIS %s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-3_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — pam.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-4",
+      "title": "%s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-4_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — pam.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-6",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/pam_validation.rego (package cis_debian_11.pam); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.pam-7",
+      "title": "CIS %s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.pam#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.pam#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f86c4cb-c83c-5149-98e6-81ee63c0365a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.pam-7_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — pam.%s not collected"
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -4608,7 +6002,7 @@
     "controls": [
      {
       "id": "cis_debian_11-CIS-2.1.x",
-      "title": "evidence missing — autofs not collected",
+      "title": "autofs service is active (should be disabled)",
       "props": [
        {
         "name": "label",
@@ -4634,70 +6028,12 @@
        {
         "id": "cis_debian_11-CIS-2.1.x_stmt",
         "name": "statement",
-        "prose": "evidence missing — autofs not collected"
+        "prose": "autofs service is active (should be disabled)"
        },
        {
         "id": "cis_debian_11-CIS-2.1.x_obj.1",
         "name": "assessment-objective",
-        "prose": "autofs service is active (should be disabled)"
-       },
-       {
-        "id": "cis_debian_11-CIS-2.1.x_obj.2",
-        "name": "assessment-objective",
         "prose": "autofs service is enabled (should be disabled)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_debian_11-CIS-2.2.x",
-      "title": "evidence missing — unnecessary_services not collected",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 2.2.x"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 2.2.x"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_debian_11.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_debian_11-CIS-2.2.x_stmt",
-        "name": "statement",
-        "prose": "evidence missing — unnecessary_services not collected"
-       },
-       {
-        "id": "cis_debian_11-CIS-2.2.x_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing — %s not collected"
-       },
-       {
-        "id": "cis_debian_11-CIS-2.2.x_obj.2",
-        "name": "assessment-objective",
-        "prose": "Unnecessary service '%s' is active (risk: %s)"
-       },
-       {
-        "id": "cis_debian_11-CIS-2.2.x_obj.3",
-        "name": "assessment-objective",
-        "prose": "Unnecessary service '%s' is enabled (risk: %s)"
-       },
-       {
-        "id": "cis_debian_11-CIS-2.2.x_obj.4",
-        "name": "assessment-objective",
-        "prose": "inetd is active (legacy super-server should be removed)"
        }
       ],
       "class": "security"
@@ -4751,6 +6087,74 @@
         "id": "cis_debian_11-CIS-2.1.1_obj.4",
         "name": "assessment-objective",
         "prose": "chronyd has no time sources configured"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.1.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — time_synchronization.active_service not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-CIS-2.2.x",
+      "title": "Unnecessary service '%s' is active (risk: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-CIS-2.2.x_stmt",
+        "name": "statement",
+        "prose": "Unnecessary service '%s' is active (risk: %s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unnecessary service '%s' is enabled (risk: %s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "inetd is active (legacy super-server should be removed)"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.non_compliant[%d].%s %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.x_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.analysis[%d].%s %s"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.x_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.%s not collected"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.x_obj.6",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unnecessary_services.analysis[%d].service %s"
        }
       ],
       "class": "security"
@@ -4888,6 +6292,11 @@
         "id": "cis_debian_11-CIS-2.2.12_stmt",
         "name": "statement",
         "prose": "Web server package installed: %s (%s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — webserver.packages[%d].%s %s"
        }
       ],
       "class": "security"
@@ -4921,6 +6330,11 @@
         "id": "cis_debian_11-CIS-2.3.x_stmt",
         "name": "statement",
         "prose": "Unnecessary client package installed: %s (%s, severity: %s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.3.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — client_packages.analysis[%d].%s %s"
        }
       ],
       "class": "security"
@@ -5020,6 +6434,176 @@
         "id": "cis_debian_11-CIS-2.2.1_stmt",
         "name": "statement",
         "prose": "X Window System package installed on server: %s (%s)"
+       },
+       {
+        "id": "cis_debian_11-CIS-2.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — x11.packages[%d].%s %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.services-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.services#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.services#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.services-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.services-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.services#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.services#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.services-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.services-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.services#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.services#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.services-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.services-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.services#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.services#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.services-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.services-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.services#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.services#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#057a51d5-e610-5064-bfda-00d64b49e6ba",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.services-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/services_validation.rego (package cis_debian_11.services); see the rule body."
        }
       ],
       "class": "security"
@@ -5871,6 +7455,39 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.ssh-1",
+      "title": "CIS %s: evidence missing — ssh.%s[%d].mode not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.ssh#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.ssh#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7bc4597e-51af-5dd3-b098-92bd5c5b9d40",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.ssh-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — ssh.%s[%d].mode not collected"
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -6209,6 +7826,72 @@
         "id": "cis_debian_11-CIS-5.3.8_obj.1",
         "name": "assessment-objective",
         "prose": "/etc/sudoers has mode %s, should be 0440"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.sudo-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/debian_11/sudo_validation.rego (package cis_debian_11.sudo); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.sudo#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.sudo#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb7df8c6-a18d-5c78-af9c-3a5080c7d1e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.sudo-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/debian_11/sudo_validation.rego (package cis_debian_11.sudo); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_debian_11-cis_debian_11.sudo-2",
+      "title": "CIS %s: evidence missing — sudo.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_debian_11.sudo#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_debian_11.sudo#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_debian_11.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb7df8c6-a18d-5c78-af9c-3a5080c7d1e8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_debian_11-cis_debian_11.sudo-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — sudo.%s not collected"
        }
       ],
       "class": "security"

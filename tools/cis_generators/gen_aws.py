@@ -123,6 +123,41 @@ TITLE_OVERRIDE = {
     "7.5.4": "Marketplace model endpoints are isolated in a VPC",
 }
 
+# profile selection, emitted verbatim into the engine
+LEVEL_REGO = r'''default level := 2
+
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
+'''
+
 
 def load(path):
     if path.lower().endswith(".xlsx"):
@@ -352,19 +387,25 @@ F("2.10", "console password", ["credential_report"],
   [("user %s has a console password and no active MFA device", ['nm(x, "user")'],
     [each("credential_report"), "truthy(x.password_enabled)", "not truthy(object.get(x, \"mfa_active\", null))"]),
    ("user %s: password_enabled not collected", ['nm(x, "user")'],
-    [each("credential_report"), 'not has_str(x, "password_enabled")'])],
+    [each("credential_report"), 'not has_str(x, "password_enabled")']),
+   ("user %s: password_enabled %q is not a recognised value, expected true, false or not_supported (evidence invalid, got string)", ['nm(x, "user")', "x.password_enabled"],
+    [each("credential_report"), 'has_str(x, "password_enabled")', "not credential_flag_valid(x.password_enabled)"]),
+   ("user %s: mfa_active %q is not a recognised value, expected true or false (evidence invalid, got string)", ['nm(x, "user")', "x.mfa_active"],
+    [each("credential_report"), 'has_str(x, "mfa_active")', "not credential_flag_valid(x.mfa_active)"])],
   add("/credential_report/1/mfa_active", "false"))
 F("2.11", "unused for 45 days", ["credential_report"],
   [("user %s has a console password unused for %d days (limit 45)", ['nm(x, "user")', "pw_idle_days(x)"],
-    [each("credential_report"), 'x.user != "<root_account>"', "truthy(x.password_enabled)", "pw_idle_days(x) >= 45"]),
+    [each("credential_report"), 'not x.user == "<root_account>"', "truthy(x.password_enabled)", "pw_idle_days(x) >= 45"]),
    ("user %s: password usage timestamps not collected", ['nm(x, "user")'],
-    [each("credential_report"), 'x.user != "<root_account>"', "truthy(x.password_enabled)", "not pw_idle_days(x)"]),
+    [each("credential_report"), 'not x.user == "<root_account>"', "truthy(x.password_enabled)", "not pw_idle_days(x)"]),
+   ("user %s: password_enabled %q is not a recognised value, expected true, false or not_supported (evidence invalid, got string)", ['nm(x, "user")', "x.password_enabled"],
+    [each("credential_report"), 'not x.user == "<root_account>"', 'has_str(x, "password_enabled")', "not credential_flag_valid(x.password_enabled)"]),
    ("user %s has active access key %s unused for %d days (limit 45)", ['nm(x, "user")', "n", "key_idle_days(x, n)"],
-    [each("credential_report"), 'x.user != "<root_account>"', 'some n in ["1", "2"]', "key_active(x, n)", "key_idle_days(x, n) >= 45"]),
+    [each("credential_report"), 'not x.user == "<root_account>"', 'some n in ["1", "2"]', "key_active(x, n)", "key_idle_days(x, n) >= 45"]),
    ("user %s: access key %s usage timestamps not collected", ['nm(x, "user")', "n"],
-    [each("credential_report"), 'x.user != "<root_account>"', 'some n in ["1", "2"]', "key_active(x, n)", "not key_idle_days(x, n)"]),
+    [each("credential_report"), 'not x.user == "<root_account>"', 'some n in ["1", "2"]', "key_active(x, n)", "not key_idle_days(x, n)"]),
    ("user %s: access key %s state not collected", ['nm(x, "user")', "n"],
-    [each("credential_report"), 'x.user != "<root_account>"', 'some n in ["1", "2"]', 'not has_str(x, sprintf("access_key_%s_active", [n]))'])],
+    [each("credential_report"), 'not x.user == "<root_account>"', 'some n in ["1", "2"]', 'not has_str(x, sprintf("access_key_%s_active", [n]))'])],
   add("/credential_report/1/password_last_used", "2026-01-01T00:00:00+00:00"))
 F("2.12", "rotated every 90 days", ["credential_report"],
   [("user %s has active access key %s last rotated %d days ago (limit 90)", ['nm(x, "user")', "n", "key_rotation_days(x, n)"],
@@ -386,7 +427,9 @@ F("2.13", "groups", ["iam_users"],
   add("/iam_users/0/attached_policies/-", {"PolicyName": "Direct"}))
 F("2.14", "administrative privileges", ["iam_policies"],
   [("attached policy %s has an Allow statement with Action * on Resource *", ['nm(x, "PolicyName")'],
-    [each("iam_policies"), 'object.get(x, "AttachmentCount", 1) > 0', "admin_policy(x)"]),
+    # only the number 0 says the policy is attached nowhere: absent, null (null > 0 is false in Rego, so a null count
+    # used to clear an administrative policy) and any other type keep the policy in scope
+    [each("iam_policies"), 'not object.get(x, "AttachmentCount", null) == 0', "admin_policy(x)"]),
    ("policy %s: default version document not collected", ['nm(x, "PolicyName")'],
     [each("iam_policies"), "not policy_doc_ok(x)"])],
   add("/iam_policies/0/DefaultVersionDocument/Statement/-", {"Effect": "Allow", "Action": "*", "Resource": "*"}))
@@ -422,26 +465,26 @@ F("3.1.4", "block public access", ["s3_buckets"],
   add("/s3_buckets/0/public_access_block/BlockPublicAcls", False))
 F("3.2.1", "encryption-at-rest", ["rds_instances"],
   [("RDS instance %s: storage encryption is off or not reported", ['nm(x, "DBInstanceIdentifier")'],
-    [each("rds_instances"), "not truthy(object.get(x, \"StorageEncrypted\", null))"])],
+    [each("rds_instances"), "not is_true(object.get(x, \"StorageEncrypted\", null))"])],
   add("/rds_instances/0/StorageEncrypted", False))
 F("3.2.2", "auto minor version", ["rds_instances"],
   [("RDS instance %s: automatic minor version upgrade is off or not reported", ['nm(x, "DBInstanceIdentifier")'],
-    [each("rds_instances"), "not truthy(object.get(x, \"AutoMinorVersionUpgrade\", null))"])],
+    [each("rds_instances"), "not is_true(object.get(x, \"AutoMinorVersionUpgrade\", null))"])],
   add("/rds_instances/0/AutoMinorVersionUpgrade", False))
 F("3.2.3", "publicly accessible", ["rds_instances"],
   [("RDS instance %s is publicly accessible or its flag was not reported", ['nm(x, "DBInstanceIdentifier")'],
-    [each("rds_instances"), "not falsy(object.get(x, \"PubliclyAccessible\", null))"])],
+    [each("rds_instances"), "not is_false(object.get(x, \"PubliclyAccessible\", null))"])],
   add("/rds_instances/0/PubliclyAccessible", True))
 F("3.3.1", "efs", ["efs_file_systems"],
   [("EFS file system %s: encryption is off or not reported", ['nm(x, "FileSystemId")'],
-    [each("efs_file_systems"), "not truthy(object.get(x, \"Encrypted\", null))"])],
+    [each("efs_file_systems"), "not is_true(object.get(x, \"Encrypted\", null))"])],
   add("/efs_file_systems/0/Encrypted", False))
 
 # Section 4: logging
 F("4.2", "log file validation", ["cloudtrail_trails"],
   [("no trail was collected, so no log file is validated", [], ["count(input.cloudtrail_trails) == 0"]),
    ("trail %s has log file validation off or not reported", ['nm(x, "Name")'],
-    [each("cloudtrail_trails"), "not truthy(object.get(x, \"LogFileValidationEnabled\", null))"])],
+    [each("cloudtrail_trails"), "not is_true(object.get(x, \"LogFileValidationEnabled\", null))"])],
   add("/cloudtrail_trails/0/LogFileValidationEnabled", False))
 F("4.3", "aws config", ["regions", "config_recorders", "config_recorder_status"],
   [("no regions were collected, so Config coverage cannot be judged", [], ["count(input.regions) == 0"]),
@@ -458,7 +501,7 @@ F("4.5", "encrypted at rest", ["cloudtrail_trails"],
   add("/cloudtrail_trails/0/KmsKeyId", ""))
 F("4.6", "rotation", ["kms_keys"],
   [("customer symmetric key %s has rotation off or not reported", ['nm(x, "KeyId")'],
-    [each("kms_keys"), 'x.KeySpec == "SYMMETRIC_DEFAULT"', 'object.get(x, "KeyManager", "") != "AWS"', "not truthy(object.get(x, \"KeyRotationEnabled\", null))"]),
+    [each("kms_keys"), 'x.KeySpec == "SYMMETRIC_DEFAULT"', 'object.get(x, "KeyManager", "") != "AWS"', "not is_true(object.get(x, \"KeyRotationEnabled\", null))"]),
    ("key %s: key spec not collected", ['nm(x, "KeyId")'], [each("kms_keys"), 'not has_str(x, "KeySpec")'])],
   add("/kms_keys/0/KeyRotationEnabled", False))
 F("4.7", "flow logging", ["vpcs", "flow_logs"],
@@ -467,7 +510,7 @@ F("4.7", "flow logging", ["vpcs", "flow_logs"],
 for _cid, _kw, _dir in [("4.8", "write events", "write"), ("4.9", "read events", "read")]:
     F(_cid, _kw, ["cloudtrail_trails"],
       [("no trail was collected, so no S3 object-level events are recorded", [], ["count(input.cloudtrail_trails) == 0"]),
-       ("trail %s is not a multi-region trail", ['nm(x, "Name")'], [each("cloudtrail_trails"), "not truthy(object.get(x, \"IsMultiRegionTrail\", null))"]),
+       ("trail %s is not a multi-region trail", ['nm(x, "Name")'], [each("cloudtrail_trails"), "not is_true(object.get(x, \"IsMultiRegionTrail\", null))"]),
        (f"trail %s does not log every S3 object {_dir} event", ['nm(x, "Name")'],
         [each("cloudtrail_trails"), "trail_selectors_collected(x)", f'not trail_logs_s3(x, "{_dir}")']),
        ("trail %s: event selectors not collected", ['nm(x, "Name")'],
@@ -486,6 +529,8 @@ F("6.1.1", "ebs volume encryption", ["regions", "ebs_encryption_by_default"],
 _BAD = {"IpProtocol": "tcp", "FromPort": 1, "ToPort": 65535, "IpRanges": [{"CidrIp": "0.0.0.0/0"}], "Ipv6Ranges": [{"CidrIpv6": "::/0"}]}
 _SG_UNCOLLECTED = ("security group %s has a rule without a protocol or port range", ['nm(x, "GroupId")'],
                    [each("security_groups"), "some perm in x.IpPermissions", "not perm_collected(perm)"])
+_SG_BADPROTO = ("security group %s: IpProtocol %q is not a recognised EC2 protocol (evidence invalid, got string)", ['nm(x, "GroupId")', "perm.IpProtocol"],
+                [each("security_groups"), "some perm in x.IpPermissions", 'has_str(perm, "IpProtocol")', "not ec2_protocol_known(perm.IpProtocol)"])
 _SG_NOLIST = ("security group %s: IpPermissions not collected", ['nm(x, "GroupId")'],
               [each("security_groups"), 'not has_list(x, "IpPermissions")'])
 F("6.1.2", "cifs", ["security_groups"],
@@ -505,7 +550,7 @@ F("6.2", "network acls", ["network_acls"],
 F("6.3", "0.0.0.0/0 to remote", ["security_groups"],
   [("security group %s allows 0.0.0.0/0 to administration port %d", ['nm(x, "GroupId")', "port"],
     [each("security_groups"), "some perm in x.IpPermissions", "perm_collected(perm)", "perm_tcp_udp_all(perm)", "some port in admin_ports",
-     "perm_covers(perm, port)", "perm_open_v4(perm)"]), _SG_UNCOLLECTED, _SG_NOLIST],
+     "perm_covers(perm, port)", "perm_open_v4(perm)"]), _SG_UNCOLLECTED, _SG_BADPROTO, _SG_NOLIST],
   add("/security_groups/0/IpPermissions/-", _BAD))
 F("6.4", "::/0 to remote", ["security_groups"],
   [("security group %s allows ::/0 to administration port %d", ['nm(x, "GroupId")', "port"],
@@ -549,10 +594,15 @@ F("7.1.6", "long-term api keys", ["bedrock_api_keys"],
    ("Bedrock API key of %s: status or creation date not collected", ['nm(x, "UserName")'],
     [each("bedrock_api_keys"), 'not has_str(x, "Status")']),
    ("Bedrock API key of %s: status or creation date not collected", ['nm(x, "UserName")'],
-    [each("bedrock_api_keys"), 'lower(object.get(x, "Status", "")) == "active"', "not age_days(object.get(x, \"CreateDate\", null))"])],
+    [each("bedrock_api_keys"), 'lower(object.get(x, "Status", "")) == "active"', "not age_days(object.get(x, \"CreateDate\", null))"]),
+   # the status is one of the three values IAM returns for a service-specific credential; any other word is not an answer
+   ("Bedrock API key of %s: status %s is not Active, Inactive or Expired", ['nm(x, "UserName")', "x.Status"],
+    [each("bedrock_api_keys"), 'has_str(x, "Status")', 'not lower(x.Status) in {"active", "inactive", "expired"}'])],
   add("/bedrock_api_keys/0/CreateDate", "2026-01-01T00:00:00Z"))
 F("7.2.4", "content and prompt-attack filters", ["bedrock_guardrails"],
   [("guardrail %s has no content policy filters", ['nm(x, "name")'], [each("bedrock_guardrails"), "not has_filters(x)"]),
+   ("guardrail %s: a content filter has no type, so the harmful categories cannot be matched", ['nm(x, "name")'],
+    [each("bedrock_guardrails"), "some f in x.contentPolicy.filters", 'not has_str(f, "type")']),
    ("guardrail %s leaves %s unfiltered on input or output", ['nm(x, "name")', "f.type"],
     [each("bedrock_guardrails"), "some f in x.contentPolicy.filters", "upper(f.type) in harmful_types",
      "not strength_on(object.get(f, \"inputStrength\", null))"]),
@@ -589,7 +639,7 @@ F("7.5.1", "interface vpc endpoints", ["bedrock_endpoint_requirements", "vpc_end
    ("endpoint %s carries the default full-access policy, or its policy was not collected", ['nm(e, "VpcEndpointId")'],
     [each("bedrock_endpoint_requirements", "q"), "some e in req_endpoints(q)", "not endpoint_policy_restricted(e)"]),
    ("endpoint %s has private DNS off and callers are not recorded as using the endpoint-specific name", ['nm(e, "VpcEndpointId")'],
-    [each("bedrock_endpoint_requirements", "q"), "some e in req_endpoints(q)", "not truthy(object.get(e, \"PrivateDnsEnabled\", null))",
+    [each("bedrock_endpoint_requirements", "q"), "some e in req_endpoints(q)", "not is_true(object.get(e, \"PrivateDnsEnabled\", null))",
      'not attested("bedrock_endpoint_specific_dns_used")'])],
   add("/vpc_endpoints/0/PrivateDnsEnabled", False))
 F("7.5.2", "private vpc", ["bedrock_jobs", "subnets", "route_tables"],
@@ -608,7 +658,7 @@ F("7.5.3", "vector stores", ["bedrock_knowledge_bases", "opensearch_serverless_c
    ("knowledge base %s: backing collection could not be resolved", ['nm(x, "knowledgeBaseId")'],
     [each("bedrock_knowledge_bases"), 'x.storageConfiguration.type == "OPENSEARCH_SERVERLESS"', "not kb_collection_name(x)"]),
    ("collection %s has a network rule that allows public access", ["n"],
-    [each("bedrock_knowledge_bases"), "n := kb_collection_name(x)", "some rule in matching_rules(n)", "truthy(rule.AllowFromPublic)"]),
+    [each("bedrock_knowledge_bases"), "n := kb_collection_name(x)", "some rule in matching_rules(n)", "is_true(rule.AllowFromPublic)"]),
    ("collection %s has no network rule that is private and lists bedrock.amazonaws.com", ["n"],
     [each("bedrock_knowledge_bases"), "n := kb_collection_name(x)", "not private_bedrock_rule(n)"])],
   add("/opensearch_serverless_network_policies/0/policy/0/AllowFromPublic", True))
@@ -618,7 +668,7 @@ F("7.5.4", "marketplace", ["bedrock_marketplace_endpoints"],
    ("endpoint %s: no backing model was collected", ['nm(x, "endpointArn")'],
     [each("bedrock_marketplace_endpoints"), "count(x.models) == 0"]),
    ("endpoint %s: model %s does not enable network isolation", ['nm(x, "endpointArn")', 'nm(m, "ModelName")'],
-    [each("bedrock_marketplace_endpoints"), "some m in x.models", "not truthy(object.get(m, \"EnableNetworkIsolation\", null))"]),
+    [each("bedrock_marketplace_endpoints"), "some m in x.models", "not is_true(object.get(m, \"EnableNetworkIsolation\", null))"]),
    ("endpoint %s: model %s has no VPC configuration with subnets and security groups", ['nm(x, "endpointArn")', 'nm(m, "ModelName")'],
     [each("bedrock_marketplace_endpoints"), "some m in x.models", "not model_vpc_ok(m)"])],
   add("/bedrock_marketplace_endpoints/0/models/0/EnableNetworkIsolation", False))
@@ -806,7 +856,7 @@ def engine(wb):
              CONTRACT, "", "import rego.v1", "",
              "default compliant := false", "", "compliant if count(violations) == 0", "",
              "# ── profile ──────────────────────────────────────────────────────────────────────────",
-             "default level := 2", "", 'level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}', "",
+             *LEVEL_REGO.split("\n"),
              "in_scope contains id if {", "\tsome id, r in recommendations", "\tr.level <= level", "}", "",
              "_in_scope(id) if id in in_scope", ""]
     rec = {}
@@ -840,6 +890,9 @@ failing_controls := {{control_id(v) | some v in violations}}
 total_controls := count(in_scope)
 
 evidence_violations := [v | some v in violations; contains(v, ": evidence missing — ")]
+
+# A fact that was collected with the wrong type (a string where the AWS API returns a boolean or a number).
+evidence_invalid := [v | some v in violations; contains(v, " — evidence invalid — ")]
 
 section_names := {json.dumps(SECTION_NAMES)}
 
@@ -970,6 +1023,7 @@ compliance_report := {{
 	"violations": _violations,
 	"violation_count": count(_violations),
 	"evidence_missing_count": count(bench.evidence_violations),
+	"evidence_invalid_count": count(bench.evidence_invalid),
 	"section_results": {{
 		"identity_access": _section("2"),
 		"storage": _section("3"),

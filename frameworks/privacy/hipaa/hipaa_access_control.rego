@@ -6,8 +6,8 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 17
-#     cited: 6
+#     checks: 25
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
@@ -87,12 +87,39 @@ violation_unique_user_id contains msg if {
 
 violation_unique_user_id contains msg if {
 	some user in input.users
-	not user.username
+	not _nonempty_string(object.get(user, "username", null))
 	msg := "HIPAA 164.312(a)(2)(i): User account found with no username — unique identification required."
 }
 
+_nonempty_string(x) if {
+	is_string(x)
+	trim_space(x) != ""
+}
+
+# The account list is the evidence for unique user identification: without it the control cannot be shown.
+violation_unique_user_id contains msg if {
+	count(_users) == 0
+	msg := "HIPAA 164.312(a)(2)(i): evidence missing — input.users not collected (or empty). Unique user identification cannot be verified without the account list."
+}
+
+# Whether an account is shared is a yes/no the collector states for every account; an absent answer is not "no".
+violation_unique_user_id contains msg if {
+	some i, user in _users
+	is_object(user)
+	not "shared_account" in object.keys(user)
+	msg := sprintf(
+		"HIPAA 164.312(a)(2)(i): evidence missing — input.users[%d].shared_account not collected for account '%v'.",
+		[i, object.get(user, "username", "unknown")],
+	)
+}
+
+_users := us if {
+	us := object.get(input, "users", null)
+	is_array(us)
+} else := []
+
 advisories contains msg if {
-	generic_accounts := [u | some u in input.users; u.username in {"admin", "administrator", "root", "guest", "test", "demo", "shared"}; not u.phi_access_disabled]
+	generic_accounts := [u | some u in input.users; u.username in {"admin", "administrator", "root", "guest", "test", "demo", "shared"}; not u.phi_access_disabled == true]
 	count(generic_accounts) > 0
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Generic/shared accounts with potential ePHI access detected: %v. Disable or restrict these accounts.",
@@ -118,12 +145,12 @@ control_a2i_compliant if {
 # ---------------------------------------------------------------------------
 
 violation_emergency_access contains msg if {
-	not input.access_controls.emergency_access_procedure_documented
+	not input.access_controls.emergency_access_procedure_documented == true
 	msg := "HIPAA 164.312(a)(2)(ii): No documented emergency access procedure found. An emergency access procedure for ePHI must be documented and implemented."
 }
 
 advisories contains msg if {
-	not input.access_controls.emergency_access_tested
+	not input.access_controls.emergency_access_tested == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): Emergency access procedure has not been tested. Procedures must be regularly tested to ensure operability."
 }
 
@@ -151,14 +178,14 @@ control_a2ii_compliant if {
 # ---------------------------------------------------------------------------
 
 violation_automatic_logoff contains msg if {
-	not input.session.automatic_logoff_enabled
+	not input.session.automatic_logoff_enabled == true
 	msg := "HIPAA 164.312(a)(2)(iii): Automatic logoff is not enabled. Sessions must terminate after inactivity."
 }
 
 # The regulation requires a "predetermined time of inactivity" and sets no value: a positive number of
 # minutes is the evidence. Longer than 15 minutes is a library advisory only.
 advisories contains msg if {
-	input.session.automatic_logoff_enabled
+	input.session.automatic_logoff_enabled == true
 	is_number(input.session.inactivity_timeout_minutes)
 	input.session.inactivity_timeout_minutes > 15
 	msg := sprintf(
@@ -168,7 +195,7 @@ advisories contains msg if {
 }
 
 violation_automatic_logoff contains msg if {
-	input.session.automatic_logoff_enabled
+	input.session.automatic_logoff_enabled == true
 	not _positive_number(object.get(input, ["session", "inactivity_timeout_minutes"], null))
 	msg := "HIPAA 164.312(a)(2)(iii): evidence missing — session.inactivity_timeout_minutes not collected (or not a positive number). The predetermined inactivity time cannot be verified."
 }
@@ -196,7 +223,7 @@ control_a2iii_compliant if _alternative_documented("164.312(a)(2)(iii)")
 
 violation_encryption contains msg if {
 	some phi_system in input.phi_systems
-	not phi_system.data_at_rest_encrypted
+	not phi_system.data_at_rest_encrypted == true
 	msg := sprintf(
 		"HIPAA 164.312(a)(2)(iv): System '%v' stores ePHI but data-at-rest encryption is not enabled.",
 		[phi_system.name],
@@ -205,7 +232,7 @@ violation_encryption contains msg if {
 
 advisories contains msg if {
 	some phi_system in input.phi_systems
-	phi_system.data_at_rest_encrypted
+	phi_system.data_at_rest_encrypted == true
 	phi_system.encryption_algorithm in {"DES", "3DES", "RC4", "RC2", "MD5"}
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): System '%v' uses deprecated encryption algorithm '%v'. Use AES-256 or equivalent.",
@@ -214,7 +241,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	not input.encryption.key_management_policy_documented
+	not input.encryption.key_management_policy_documented == true
 	msg := "Advisory (library practice, not a 45 CFR requirement): No documented encryption key management policy. Key management procedures must be documented."
 }
 
@@ -258,7 +285,7 @@ violation_rbac contains msg if {
 advisories contains msg if {
 	some user in input.users
 	user.phi_access == true
-	not user.phi_access_justified
+	not user.phi_access_justified == true
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): User '%v' has ePHI access with no documented business justification.",
 		[user.username],
@@ -293,7 +320,7 @@ advisories contains msg if {
 advisories contains msg if {
 	some user in input.users
 	user.phi_access_level == "full"
-	not user.minimum_necessary_justified
+	not user.minimum_necessary_justified == true
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): User '%v' has full ePHI access. Minimum necessary access principle requires limiting access to only what is needed.",
 		[user.username],
@@ -337,6 +364,90 @@ violations contains msg if {
 	count(object.get(input, "phi_systems", [])) == 0
 	msg := "HIPAA 164.312(a): no ePHI systems in scope (input.phi_systems is empty) — cannot certify Access Control. Declare the ePHI systems to be evaluated."
 }
+
+# ---------------------------------------------------------------------------
+# Evidence typing (bad input never passes, issue #301)
+# Only the booleans true and false are yes/no evidence, and only a number is a count or a period. A section
+# sent as null, a string such as "true", "false" or "90", or a number where a yes/no belongs is a collection
+# error: it is a finding against this standard whether the fact decides a control or only feeds an
+# advisory, because the verdict cannot rest on evidence of the wrong type. A fact that is absent is handled
+# by the rule that reads it (a required fact fails its control; an advisory fact is reported as an advisory).
+# ---------------------------------------------------------------------------
+
+_std := "164.312(a)"
+
+# section -> the yes/no facts and the numeric facts this module reads from it
+_typed_sections := {
+	"access_controls": {"bool": {"emergency_access_procedure_documented", "emergency_access_tested", "role_based_access_implemented", "access_restricted_to_granted_rights"}, "num": {"emergency_accounts_reviewed_days"}},
+	"session": {"bool": {"automatic_logoff_enabled", "screen_lock_enabled"}, "num": {"inactivity_timeout_minutes"}},
+	"encryption": {"bool": {"key_management_policy_documented"}, "num": {"key_rotation_days"}},
+}
+
+# list -> the yes/no facts and the numeric facts this module reads from each entry
+_typed_items := {
+	"users": {"bool": {"shared_account", "phi_access_disabled", "phi_access", "phi_access_justified", "minimum_necessary_justified"}, "num": {"last_access_review_days"}},
+	"phi_systems": {"bool": {"data_at_rest_encrypted"}, "num": {}},
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_sections
+	v := input[s]
+	not is_object(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not an object (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	v := input[s]
+	not is_array(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s is not a list (got %s)", [_std, s, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.bool
+	v := input[s][f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a boolean (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_sections
+	some f in t.num
+	v := input[s][f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s.%s is not a number (got %s)", [_std, s, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, _ in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	not is_object(item)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d] is not an object (got %s)", [_std, s, i, type_name(item)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.bool
+	v := item[f]
+	not is_boolean(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a boolean (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+evidence_invalid contains msg if {
+	some s, t in _typed_items
+	is_array(input[s])
+	some i, item in input[s]
+	some f in t.num
+	v := item[f]
+	not is_number(v)
+	msg := sprintf("HIPAA %s: evidence invalid — input.%s[%d].%s is not a number (got %s)", [_std, s, i, f, type_name(v)])
+}
+
+violations contains msg if some msg in evidence_invalid
 
 # ---------------------------------------------------------------------------
 # Overall compliance

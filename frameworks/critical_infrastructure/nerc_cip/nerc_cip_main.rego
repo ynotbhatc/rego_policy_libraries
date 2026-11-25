@@ -37,7 +37,7 @@ import data.nerc_cip_cip015
 all_bes_cyber_systems_categorized if {
 	count([s |
 		s := input.bes_cyber_systems[_]
-		not s.impact_level in {"high", "medium", "low"}
+		not object.get(s, "impact_level", "") in {"high", "medium", "low"}
 	]) == 0
 	count(input.bes_cyber_systems) > 0
 }
@@ -49,7 +49,7 @@ cip_002_violations contains "CIP-002: evidence missing — bes_cyber_systems not
 
 cip_002_violations contains msg if {
 	some s in object.get(input, "bes_cyber_systems", [])
-	not s.impact_level in {"high", "medium", "low"}
+	not object.get(s, "impact_level", "") in {"high", "medium", "low"}
 	msg := sprintf("CIP-002: BES Cyber System %v has no valid impact categorization (high/medium/low)", [object.get(s, "system_id", "unknown")])
 }
 

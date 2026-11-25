@@ -41,3 +41,26 @@ test_numeric_fact_compliant_passes if {
 	v := data.cis_windows_server_2022_legacy.password_policy_violations with input as {"password_policy": {"enforce_password_history": 24}}
 	count(v) == 0
 }
+
+# Audit 2026-11-24: this legacy module is not an entrypoint (no compliance_report; the product reads
+# cis_windows_server_2022.main from windows_server_2022_modular). Its two checks that read a typed fact fail
+# closed all the same.
+test_numeric_fact_of_a_wrong_type_fails if {
+	every bad in ["24", "30", true, null, [24]] {
+		v := data.cis_windows_server_2022_legacy.password_policy_violations with input as {"password_policy": {"enforce_password_history": bad}}
+		count(v) == 1
+		w := data.cis_windows_server_2022_legacy.account_lockout_violations with input as {"account_lockout_policy": {"account_lockout_duration": bad}}
+		count(w) == 1
+	}
+}
+
+test_no_one_right_needs_a_collected_empty_list if {
+	ok := data.cis_windows_server_2022_legacy.user_rights_violations with input as {"user_rights": {"access_credential_manager_as_trusted_caller": []}}
+	count(ok) == 0
+	every bad in [null, "", "false", 0, false, {}, ["S-1-1-0"]] {
+		v := data.cis_windows_server_2022_legacy.user_rights_violations with input as {"user_rights": {"access_credential_manager_as_trusted_caller": bad}}
+		count(v) == 1
+	}
+	missing := data.cis_windows_server_2022_legacy.user_rights_violations with input as {"user_rights": {}}
+	count(missing) == 1
+}

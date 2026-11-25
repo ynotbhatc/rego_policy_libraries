@@ -32,11 +32,8 @@
       }
      }
     },
-    "foreign_person_authorization_documented": {
-     "description": "Read in itar_main.rego."
-    },
     "physical_controls": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -44,7 +41,7 @@
      ]
     },
     "system_access_controls": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -52,7 +49,7 @@
      ]
     },
     "us_persons_only_enforced": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -70,11 +67,11 @@
    ]
   },
   "encryption": {
-   "description": "Read in itar_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "end_to_end_fips_validated": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -82,7 +79,7 @@
      ]
     },
     "keys_withheld_from_foreign_persons": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -90,7 +87,7 @@
      ]
     },
     "no_storage_in_proscribed_or_russia": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -98,7 +95,7 @@
      ]
     },
     "not_sent_from_proscribed_or_russia": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -116,11 +113,11 @@
    ]
   },
   "jurisdiction": {
-   "description": "Read in itar_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "classification_reviewed_after_usml_revision": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -128,7 +125,7 @@
      ]
     },
     "technical_data_identified": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -138,11 +135,11 @@
    }
   },
   "program": {
-   "description": "Read in itar_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "empowered_official_designated": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -150,7 +147,7 @@
      ]
     },
     "subcontractor_flowdown": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -158,7 +155,7 @@
      ]
     },
     "training_provided": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -166,7 +163,7 @@
      ]
     },
     "violation_disclosure_process": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -174,7 +171,7 @@
      ]
     },
     "written_compliance_program": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -184,11 +181,11 @@
    }
   },
   "records": {
-   "description": "Read in itar_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "access_logging": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -196,7 +193,7 @@
      ]
     },
     "retention_5_years": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -206,11 +203,11 @@
    }
   },
   "registration": {
-   "description": "Read in itar_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
    "type": "object",
    "properties": {
     "ddtc_current": {
-     "description": "Read in itar_main.rego.",
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
      "type": "boolean",
      "x-type-source": "fixture",
      "examples": [
@@ -227,7 +224,6 @@
   "access.aukus.both_parties_on_authorized_user_list",
   "access.aukus.ddtc_registration_current",
   "access.aukus.item_not_on_excluded_technology_list",
-  "access.foreign_person_authorization_documented",
   "access.physical_controls",
   "access.system_access_controls",
   "access.us_persons_only_enforced",

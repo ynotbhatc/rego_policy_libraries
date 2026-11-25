@@ -59,18 +59,37 @@ default _upstream := {}
 
 _upstream := _t.iec_62443_compliance_report
 
-# Control universe for the product's passed = total - failed arithmetic: one finding per IEC 62443-2-1 / -3-3 requirement (58 on empty input).
-# Never below the finding count, so a fail-closed run cannot report more failures than controls.
-_declared_controls := 58
+# Control universe for the product's passed = total - failed arithmetic (round 3): the 51 system security
+# requirements of IEC 62443-3-3 (SR 1.1 to SR 7.8, counted by the orchestrator as total_srs / passing_srs) plus one
+# control for each of the four process modules that carry no per-requirement count (Part 2-1, 2-3, 2-4 and 3-2),
+# 55 in all. A control fails when it has a finding. violation_count stays the finding count: one requirement can
+# carry several findings (per system, per zone, per security level), so findings are not controls and are never
+# used as the failed count. The "no facts supplied" finding is not a control; with no facts every control fails
+# on its own evidence-missing findings. (Until round 3 the total was 58, a figure from before findings per
+# system existed, raised to the finding count, which was 108 on empty input.)
+_part_flags := [_t.part2_1_compliant, _t.part2_3_compliant, _t.part2_4_compliant, _t.part3_2_compliant]
 
-total_controls := max([_declared_controls, count(_violations)])
+total_controls := _t.total_srs + count(_part_flags)
+
+_failed_parts := count([f | some f in _part_flags; f != true])
+
+# with no input document at all the per-FR reports are undefined, so no requirement is counted as passing
+default _passing_srs := 0
+
+_passing_srs := _t.passing_srs
+
+_failed_srs := _t.total_srs - _passing_srs
+
+_failed_controls := _failed_srs + _failed_parts
 
 compliance_report := object.union(_upstream, {
 	"framework_key": "iec_62443",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
-	"failed_controls": min([total_controls, count(_violations)]),
+	"failed_controls": _failed_controls,
+	"passed_controls": total_controls - _failed_controls,
+	"not_applicable_controls": 0,
 	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })

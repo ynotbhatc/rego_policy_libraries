@@ -144,7 +144,7 @@ default update_sources_in_jurisdiction := false
 update_sources_in_jurisdiction if {
 	violations := [u |
 		u := input.update_mechanisms[_]
-		u.update_type != "airgapped"
+		object.get(u, "update_type", "") != "airgapped"
 		not u.update_source_in_jurisdiction == true
 	]
 	count(violations) == 0

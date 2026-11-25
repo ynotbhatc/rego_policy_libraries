@@ -123,6 +123,14 @@ _cluster_has(k) if k in object.keys(_cluster)
 # a cluster value, null when absent
 _cv(path) := object.get(_cluster, path, null)
 
+# A boolean cluster setting sent as a string or a number is a collection error: the recommendation that reads it
+# is not met, whatever else holds. An unset (null or absent) setting is not this error.
+_cv_not_boolean(path) if {
+	v := _cv(path)
+	not is_null(v)
+	not is_boolean(v)
+}
+
 # an unset (null) apiServerAccessProfile is a public cluster with no restriction
 _api_profile := p if {
 	p := object.get(_cluster, "apiServerAccessProfile", null)
@@ -1134,6 +1142,7 @@ default r_5_3_1 := false
 
 r_5_3_1 if {
 	_cv(["securityProfile", "kubernetesResourceObjectEncryptionProfile", "infrastructureEncryption"]) == "Enabled"
+	not _cv_not_boolean(["securityProfile", "azureKeyVaultKms", "enabled"])
 }
 
 r_5_3_1 if {
@@ -1216,7 +1225,7 @@ _v_managed_service contains "5.4.2: the API server must be a private cluster wit
 default r_5_4_3 := false
 
 r_5_4_3 if {
-	every p in _cluster.agentPoolProfiles { is_object(p); object.get(p, "enableNodePublicIP", false) != true}
+	every p in _cluster.agentPoolProfiles { is_object(p); object.get(p, "enableNodePublicIP", null) in {false, null}}
 }
 
 default e_5_4_3 := false

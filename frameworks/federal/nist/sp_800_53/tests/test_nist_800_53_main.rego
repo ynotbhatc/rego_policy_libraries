@@ -173,7 +173,7 @@ test_family_summary_present if {
 
 test_total_controls_equals_evaluated_ids if {
 	main.total_controls == count(main.evaluated_controls)
-	main.total_controls == 542
+	main.total_controls == 544
 }
 
 test_empty_input_every_evaluated_id_fails_once if {
@@ -185,7 +185,7 @@ test_empty_input_every_evaluated_id_fails_once if {
 
 test_failed_never_exceeds_total_on_partial_input if {
 	r := main.compliance_report with input as {"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}
-	r.failed_controls == 541
+	r.failed_controls == 543
 	r.failed_controls <= r.total_controls
 }
 
@@ -206,17 +206,17 @@ test_compliant_input_has_zero_failed if {
 test_coverage_states_scope if {
 	r := main.compliance_report with input as {}
 	r.coverage.baseline_assessment == false
-	r.coverage.controls_evaluated == 542
+	r.coverage.controls_evaluated == 544
 	r.coverage.base_controls_evaluated == 300
-	r.coverage.enhancements_evaluated == 242
+	r.coverage.enhancements_evaluated == 244
 	r.coverage.catalog_families == 20
 	count(r.coverage.families_evaluated) == 20
 }
 
 test_bridge_failed_controls_bounded if {
 	r := data.nist_800_53.main.compliance_report with input as {}
-	r.total_controls == 542
-	r.failed_controls == 542
+	r.total_controls == 544
+	r.failed_controls == 544
 	r.compliant == false
 }
 

@@ -31,7 +31,7 @@ _odp(name) := v if {
 }
 
 _actual(path) := v if {
-	v := object.get(input, path, null)
+	v := object.get(_facts, path, null)
 	is_number(v)
 }
 
@@ -61,8 +61,9 @@ compliant_3_11_1 if {
 }
 
 violation_3_11_1 contains msg if {
-	not input.risk.risk_assessment_conducted
-	msg := "3.11.1: No periodic risk assessment has been conducted for CUI systems"
+	not input.risk.risk_assessment_conducted == true
+	finding := "3.11.1: No periodic risk assessment has been conducted for CUI systems"
+	msg := concat("", [finding, _ev_input("risk.risk_assessment_conducted")])
 }
 
 violation_3_11_1 contains "3.11.1: evidence missing - input.org_defined.risk_assessment_interval_days (organisation-defined value, NIST SP 800-171A 3.11.1[a]) not supplied or not a number" if {
@@ -84,8 +85,9 @@ violation_3_11_1 contains msg if {
 }
 
 violation_3_11_1 contains msg if {
-	not input.risk.risk_assessment_documented
-	msg := "3.11.1: Risk assessment results are not documented"
+	not input.risk.risk_assessment_documented == true
+	finding := "3.11.1: Risk assessment results are not documented"
+	msg := concat("", [finding, _ev_input("risk.risk_assessment_documented")])
 }
 
 # 3.11.2 — Scan for vulnerabilities in organizational systems and applications
@@ -102,8 +104,9 @@ compliant_3_11_2 if {
 }
 
 violation_3_11_2 contains msg if {
-	not input.risk.vulnerability_scanning_enabled
-	msg := "3.11.2: Vulnerability scanning is not enabled for CUI systems"
+	not input.risk.vulnerability_scanning_enabled == true
+	finding := "3.11.2: Vulnerability scanning is not enabled for CUI systems"
+	msg := concat("", [finding, _ev_input("risk.vulnerability_scanning_enabled")])
 }
 
 violation_3_11_2 contains "3.11.2: evidence missing - input.org_defined.vulnerability_scan_interval_days (organisation-defined value, NIST SP 800-171A 3.11.2[a]) not supplied or not a number" if {
@@ -125,13 +128,15 @@ violation_3_11_2 contains msg if {
 }
 
 violation_3_11_2 contains msg if {
-	not input.risk.scan_results_reviewed
-	msg := "3.11.2: Vulnerability scan results are not reviewed and acted upon"
+	not input.risk.scan_results_reviewed == true
+	finding := "3.11.2: Vulnerability scan results are not reviewed and acted upon"
+	msg := concat("", [finding, _ev_input("risk.scan_results_reviewed")])
 }
 
 violation_3_11_2 contains msg if {
-	not input.risk.new_vuln_scan_triggered
-	msg := "3.11.2: New vulnerability disclosures do not trigger additional scans"
+	not input.risk.new_vuln_scan_triggered == true
+	finding := "3.11.2: New vulnerability disclosures do not trigger additional scans"
+	msg := concat("", [finding, _ev_input("risk.new_vuln_scan_triggered")])
 }
 
 # 3.11.3 — Remediate vulnerabilities in accordance with risk assessments. (L2)
@@ -145,8 +150,9 @@ compliant_3_11_3 if {
 }
 
 violation_3_11_3 contains msg if {
-	not input.risk.vuln_remediation_policy
-	msg := "3.11.3: No vulnerability remediation policy aligned to risk assessment"
+	not input.risk.vuln_remediation_policy == true
+	finding := "3.11.3: No vulnerability remediation policy aligned to risk assessment"
+	msg := concat("", [finding, _ev_input("risk.vuln_remediation_policy")])
 }
 
 violation_3_11_3 contains "3.11.3: evidence missing - input.org_defined.critical_vulnerability_remediation_days (organisation-defined value, NIST SP 800-171A (R2 3.11.3: in accordance with risk assessments)) not supplied or not a number" if {
@@ -176,8 +182,9 @@ violation_3_11_3 contains msg if {
 }
 
 violation_3_11_3 contains msg if {
-	not input.risk.remediation_tracked
-	msg := "3.11.3: Vulnerability remediation status is not tracked to closure"
+	not input.risk.remediation_tracked == true
+	finding := "3.11.3: Vulnerability remediation status is not tracked to closure"
+	msg := concat("", [finding, _ev_input("risk.remediation_tracked")])
 }
 
 # ---------------------------------------------------------------------------
@@ -241,3 +248,25 @@ compliance_report := {
 	"violations": all_violations,
 	"practices": practices,
 }
+
+# ---------------------------------------------------------------------------
+# Evidence rule: only the boolean true passes a yes/no fact. A fact that is
+# absent, null or not a boolean fails its check, and the finding names the
+# evidence problem.
+# ---------------------------------------------------------------------------
+
+default _facts := {}
+
+_facts := input
+
+_evidence_note(value, name) := "" if {
+	is_boolean(value)
+} else := sprintf(" (evidence missing: %s not collected)", [name]) if {
+	value == null
+} else := sprintf(" (evidence invalid: %s is not a boolean, got %s)", [name, type_name(value)])
+
+_ev_input(path) := _evidence_note(object.get(_facts, split(path, "."), null), concat(".", ["input", path]))
+
+_ev_item(item, path) := _evidence_note(object.get(item, split(path, "."), null), path) if {
+	is_object(item)
+} else := sprintf(" (evidence invalid: item is not an object, got %s; %s not collected)", [type_name(item), path])

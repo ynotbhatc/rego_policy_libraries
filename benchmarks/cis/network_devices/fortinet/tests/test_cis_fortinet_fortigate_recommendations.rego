@@ -335,6 +335,58 @@ test_standalone_unit_passes_ha_cluster_checks if {
 	_has_id(vs, "2.5.1")
 }
 
+# Evidence rule: every numeric setting the recommendations compare, replaced by its digits in a string, a boolean
+# or null, fails its recommendation; so does a yes/no setting holding a boolean or null instead of "enable".
+_numeric_facts := [
+	["2.2.1", "/fortigate_config/system/password_policy/minimum_length"],
+	["2.2.2", "/fortigate_config/system/global/admin_lockout_threshold"],
+	["2.2.2", "/fortigate_config/system/global/admin_lockout_duration"],
+	["2.3.4", "/fortigate_config/system/snmp/sysinfo/trap_free_memory_threshold"],
+	["2.3.4", "/fortigate_config/system/snmp/sysinfo/trap_freeable_memory_threshold"],
+	["2.4.4", "/fortigate_config/system/global/admintimeout"],
+	["2.5.4", "/fortigate_config/system/ha/group_id"],
+]
+
+test_numeric_setting_of_a_wrong_type_fails if {
+	every f in _numeric_facts {
+		every bad in ["1", "14", true, false, null, [1]] {
+			vs := b.violations with input as json.patch(green, [{"op": "replace", "path": f[1], "value": bad}])
+			_has_id(vs, f[0])
+		}
+	}
+}
+
+# Every leaf of the green fixture that holds "enable", as a JSON pointer. Left out: three leaves no recommendation
+# reads (the policies' internet_service flags and the FortiAnalyzer status ride along in the fixture), and
+# content_disarm, which 4.2.5 needs on one protocol of a proxy profile while the fixture enables it on two.
+_enable_paths contains path if {
+	some p, v
+	walk(green, [p, v])
+	v == "enable"
+	not p[count(p) - 1] in {"internet_service", "internet_service_src", "content_disarm"}
+	p != ["fortigate_config", "log", "fortianalyzer", "setting", "status"]
+	path := concat("", [sprintf("/%v", [x]) | some x in p])
+}
+
+test_content_disarm_of_a_wrong_type_fails if {
+	every bad in [true, false, null, "true", "yes", 1] {
+		inp := json.patch(green, [
+			{"op": "replace", "path": "/fortigate_config/antivirus/profile/0/http/content_disarm", "value": bad},
+			{"op": "replace", "path": "/fortigate_config/antivirus/profile/0/smtp/content_disarm", "value": bad},
+		])
+		not b.compliant with input as inp
+	}
+}
+
+test_enable_setting_of_a_wrong_type_fails if {
+	count(_enable_paths) >= 20
+	every path in _enable_paths {
+		every bad in [true, false, null, "true", "yes", 1] {
+			not b.compliant with input as json.patch(green, [{"op": "replace", "path": path, "value": bad}])
+		}
+	}
+}
+
 test_1_1_pass if {
 	vs := b.violations with input as green
 	not _has_id(vs, "1.1")

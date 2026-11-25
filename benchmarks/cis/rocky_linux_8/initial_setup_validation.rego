@@ -85,6 +85,15 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -103,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -684,10 +697,10 @@ p_1_8_3 if {
 
 p_1_8_3 if {
 	input.initial_setup.gdm_installed == true
-	num(input.initial_setup.gdm_idle_delay) > 0
-	num(input.initial_setup.gdm_idle_delay) <= 900
-	num(input.initial_setup.gdm_lock_delay) >= 0
-	num(input.initial_setup.gdm_lock_delay) <= 5
+	fnum(input.initial_setup.gdm_idle_delay) > 0
+	fnum(input.initial_setup.gdm_idle_delay) <= 900
+	fnum(input.initial_setup.gdm_lock_delay) >= 0
+	fnum(input.initial_setup.gdm_lock_delay) <= 5
 	input.initial_setup.gdm_lock_override_allowed == false
 }
 

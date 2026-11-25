@@ -1057,6 +1057,9 @@ def controls_table(recs):
 
 
 def emit_rollup(recs):
+    # no recognised profile means every recommendation is in scope: the Level 2 - Server scope has to hold them all
+    if not all(lvl(r) <= 2 for r in recs.values()):
+        raise SystemExit("a recommendation is outside the Level 2 - Server scope: the no-profile scope would miss it")
     controls = controls_table(recs)
     imports = "\n".join(f"import data.{PKG}.{n}" for n, *_ in SECTIONS)
     modv = ",\n".join(f'\t"{n}": {n}.violations' for n, *_ in SECTIONS)
@@ -1086,7 +1089,9 @@ def emit_rollup(recs):
 # Automated/Manual status and profiles are the workbook's. The benchmark has two profiles, Level 1 - Server
 # and Level 2 - Server; each control carries its level.
 #
-# PROFILE: input.profile selects level1_server (default) or level2_server ("level1" / "level2" are accepted).
+# PROFILE: input.profile selects level1_server or level2_server ("level1" / "level2" are accepted). There is no
+# default: an absent or unrecognised profile evaluates every recommendation, reports a PROFILE NOT SELECTED
+# violation and is never compliant.
 # Level 2 includes the Level 1 recommendations.
 #
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
@@ -1107,13 +1112,45 @@ profiles := {json.dumps({k: {"platform": "server", "level": v} for k, v in PROFI
 
 profile_aliases := {{"level1": "level1_server", "level2": "level2_server"}}
 
-default profile := "level1_server"
+default profile := "unrecognised"
 
 profile := input.profile if input.profile in object.keys(profiles)
 
 profile := profile_aliases[input.profile] if not input.profile in object.keys(profiles)
 
-applies(c) if c.level <= profiles[profile].level
+default profile_selected := false
+
+profile_selected if profile in object.keys(profiles)
+
+# What is in scope. Without a recognised profile nothing may be declared not applicable, so the scope is the
+# one that holds every recommendation of the benchmark (Level 2 - Server; the generator checks that it does).
+default scope := {{"platform": "server", "level": 2}}
+
+scope := profiles[profile] if profile_selected
+
+_profile_names := concat(", ", sort(object.keys(profiles)))
+
+_profile_problem := "evidence missing — profile not collected" if object.get(input, "profile", null) == null
+
+_profile_problem := sprintf("profile is not a string (got %s)", [type_name(input.profile)]) if {{
+	object.get(input, "profile", null) != null
+	not is_string(input.profile)
+}}
+
+_profile_problem := sprintf("profile %s is not a recognised profile", [json.marshal(input.profile)]) if {{
+	is_string(input.profile)
+	not profile_selected
+}}
+
+# reported next to the control violations (never one of them: it cites no recommendation id)
+profile_violations := [] if {{
+	profile_selected
+}} else := [sprintf(
+	"PROFILE NOT SELECTED: %s (send one of %s). No recommendation was declared out of scope: every one of the benchmark was evaluated, and the result is not a pass for any profile.",
+	[_profile_problem, _profile_names],
+)]
+
+applies(c) if c.level <= scope.level
 
 applicable_ids := {{id | some id, c in controls; applies(c)}}
 
@@ -1174,7 +1211,35 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / total_sections if total_sections > 0
+compliance_percentage := (compliant_sections * 100) / total_sections if {{
+	total_sections > 0
+	not _percentage_withheld
+}}
+
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {{
+	total_sections > 0
+	_percentage_withheld
+}}
+
+_percentage_withheld if {{
+	not compliant
+	compliant_sections == total_sections
+}}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {{
+	_percentage_withheld
+	not profile_selected
+}}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {{
+	_percentage_withheld
+	profile_selected
+}}
 
 total_controls_covered := count(applicable_ids)
 
@@ -1185,6 +1250,7 @@ compliant if {{
 	count(applicable_ids) > 0
 	count(failing_ids) == 0
 	count(not_assessed_sections) == 0
+	profile_selected
 }}
 
 # =============================================================================
@@ -1213,7 +1279,7 @@ overall_status := "compliant" if {{
 level2_ids := {{id | some id, c in controls; c.level == 2}}
 
 l2_violations_active := [v | some v in all_violations; split(v, ":")[0] in level2_ids] if {{
-	profiles[profile].level == 2
+	scope.level == 2
 }} else := []
 
 executive_summary := {{
@@ -1292,9 +1358,13 @@ default _coverage := 0
 
 _coverage := bench.assessment_coverage_percentage
 
-default _profile := "level1_server"
+default _profile := "unrecognised"
 
 _profile := bench.profile
+
+default _profile_msgs := []
+
+_profile_msgs := bench.profile_violations
 
 default _total_controls := 0
 
@@ -1304,9 +1374,9 @@ default _failing := 0
 
 _failing := count(bench.failing_ids)
 
-_violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
+_violations := array.concat(_bench_violations, array.concat([_no_facts_msg], _profile_msgs)) if not _facts_supplied
 
-_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
+_violations := array.concat(_bench_violations, array.concat(_not_assessed_msgs, _profile_msgs)) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
@@ -1318,9 +1388,46 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
+_percentage := round((_passed * 100000) / _total_controls) / 1000 if {{
+	_total_controls > 0
+	not _percentage_withheld
+}}
 
-compliance_report := {{
+# 100 means compliant. Every recommendation in scope passed but the report is not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED): passed + failed == total stays true, and the percentage is null
+# with a stated reason instead of 100 beside compliant == false.
+_percentage := null if {{
+	_total_controls > 0
+	_percentage_withheld
+}}
+
+_percentage_withheld if {{
+	_total_controls > 0
+	not _compliant
+	_passed == _total_controls
+}}
+
+# The reasons are fields of the report only when a percentage is withheld, so a normal report keeps its shape.
+default _reason_fields := {{}}
+
+_reason_fields := {{"compliance_percentage_reason": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"}} if {{
+	_percentage_withheld
+	_profile == "unrecognised"
+}}
+
+_reason_fields := {{"compliance_percentage_reason": "a finding that cites no recommendation stands although no recommendation failed (see violations)"}} if {{
+	_percentage_withheld
+	_profile != "unrecognised"
+}}
+
+default _section_reason_fields := {{}}
+
+_section_reason_fields := {{"section_compliance_percentage_reason": bench.compliance_percentage_reason}} if {{
+	_section_percentage == null
+	bench.compliance_percentage_reason != null
+}}
+
+_report := {{
 	"framework": "{PKG}",
 	"benchmark": "{BENCH}",
 	"version": "{VERSION}",
@@ -1340,6 +1447,8 @@ compliance_report := {{
 	"missing_inputs": _missing_inputs,
 	"assessment_coverage_percentage": _coverage,
 }}
+
+compliance_report := object.union(_report, object.union(_reason_fields, _section_reason_fields))
 '''
 
 
@@ -1416,7 +1525,7 @@ def emit_rollup_tests(recs):
              "test_empty_input_fails_closed if {", f"\tr := {m} with input as {{}}",
              f"\tcount(object.keys(r)) == {len(keys)}",
              f"\tevery k in {json.dumps(keys)} {{ k in object.keys(r) }}",
-             "\tr.compliant == false", f"\tr.total_controls == {counts['level1_server']}",
+             "\tr.compliant == false", f"\tr.total_controls == {len(recs)}",
              "\tr.failed_controls == r.total_controls", "\tr.passed_controls == 0",
              "\tsome v in r.violations", "\tstartswith(v, \"FAIL-CLOSED: no facts supplied\")", "}", ""]
     for p, n in counts.items():
@@ -1428,9 +1537,20 @@ def emit_rollup_tests(recs):
               f"\tr1.total_controls == {counts['level1_server']}",
               f"\tr2 := {m} with input as {{\"profile\": \"level2\"}}", "\tr2.profile == \"level2_server\"",
               f"\tr2.total_controls == {counts['level2_server']}", "}", "",
-              "test_unknown_profile_defaults_to_level1_server if {",
+              "test_unknown_profile_is_not_selected_and_evaluates_everything if {",
               f"\tr := {m} with input as {{\"profile\": \"bogus\"}}",
-              "\tr.profile == \"level1_server\"", f"\tr.total_controls == {counts['level1_server']}", "}", "",
+              "\tr.profile == \"unrecognised\"", f"\tr.total_controls == {len(recs)}", "\tr.compliant == false",
+              "\tr.failed_controls == r.total_controls",
+              "\tcount([v | some v in r.violations; startswith(v, \"PROFILE NOT SELECTED: \")]) == 1", "}", "",
+              "test_absent_or_mistyped_profile_is_not_selected_and_never_compliant if {",
+              "\tevery p in [null, 1, true, [], {}, \"\", \"Level1_Server\", \"level_1_server\"] {",
+              f"\t\tr := {m} with input as {{\"profile\": p, \"attest\": {{\"x\": true}}}}",
+              "\t\tr.profile == \"unrecognised\"", "\t\tr.compliant == false",
+              f"\t\tr.total_controls == {len(recs)}",
+              "\t\tcount([v | some v in r.violations; startswith(v, \"PROFILE NOT SELECTED: \")]) == 1", "\t}",
+              f"\tr0 := {m} with input as {{\"attest\": {{\"x\": true}}}}",
+              "\tr0.profile == \"unrecognised\"", "\tr0.compliant == false",
+              "\tr0.compliance_percentage < 100", "}", "",
               "test_one_attested_control_passes if {",
               f"\tr := {m} with input as {{\"attest\": {{\"gpg_keys_reviewed\": true}}}}",
               "\tr.passed_controls == 1", "\tr.failed_controls == r.total_controls - 1", "\tr.compliant == false", "}", "",
@@ -1494,9 +1614,11 @@ The roll-up is package `{PKG}` (`cis_amazon_linux_2023_complete.rego`); the brid
 
 ## Profile
 
-`input.profile`: `level1_server` (default, {l1} recommendations) or `level2_server` (all {len(recs)}; Level 2
+`input.profile`: `level1_server` ({l1} recommendations) or `level2_server` (all {len(recs)}; Level 2
 includes Level 1). `level1` and `level2` are accepted. `total_controls` is the number in scope for the profile;
 `standard_total` is {len(recs)}.
+There is no default profile: an absent or unrecognised `profile` evaluates every recommendation, adds a
+`PROFILE NOT SELECTED` violation and is never compliant.
 
 ## Facts
 

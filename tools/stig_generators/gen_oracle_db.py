@@ -28,13 +28,14 @@ def boolfact(path, val=True):
     return ([f"input.{path} == {str(val).lower()}"], [("BOOL", path, val)])
 
 def empty_list(path, sample=None):      # a query that must return no rows; the collector supplies the rows
-    return ([f"count(input.{path}) == 0"], [("BOOL", path, [])])
+    # an array, then empty: count("") and count({}) are 0 too
+    return ([f"is_array(input.{path})", f"count(input.{path}) == 0"], [("BOOL", path, [])])
 
-def num_ge(path, n, fx):
-    return ([f"to_number(input.{path}) >= {n}"], [("BOOL", path, fx)])
+def num_ge(path, n, fx):               # _num is a NUM_HELPERS function, emitted for both platforms
+    return ([f"_whole(input.{path}) >= {n}"], [("BOOL", path, fx)])
 
 def num_gt(path, n, fx):
-    return ([f"to_number(input.{path}) > {n}"], [("BOOL", path, fx)])
+    return ([f"_whole(input.{path}) > {n}"], [("BOOL", path, fx)])
 
 def ora_param(name, val, fx=None):      # V$PARAMETER value, compared case-insensitively
     return ([f'lower(input.oracle.parameters["{name}"]) == "{val.lower()}"'], [("MAP2", "oracle.parameters", name, fx or val)])
@@ -46,8 +47,9 @@ def ora_param_in(name, vals, fx):
 def ora_param_absent_or(name, val):     # parameter may be unset; if set it must equal val
     return ([f'lower(object.get(input.oracle.parameters, "{name}", "{val.lower()}")) == "{val.lower()}"'], [])
 
-def profile_le(resource, n, fx):
-    return ([f'profiles_every_le("{resource}", {n})'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
+def profile_le(resource, n, fx, whole=False):   # whole: a count (not days), a fraction is invalid
+    fn = "profiles_every_le_whole" if whole else "profiles_every_le"
+    return ([f'{fn}("{resource}", {n})'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
 
 def profile_eq(resource, val):
     return ([f'profiles_every_eq("{resource}", "{val}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", val)])
@@ -55,8 +57,8 @@ def profile_eq(resource, val):
 def profile_set(resource, fx):
     return ([f'profiles_every_set("{resource}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
 
-def profile_bounded(resource, fx):      # numeric, not UNLIMITED
-    return ([f'profiles_every_numeric("{resource}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
+def profile_bounded(resource, fx):      # a whole number (a count), not UNLIMITED
+    return ([f'profiles_every_whole("{resource}")'], [("BOOL", f"oracle.profiles.ORA_STIG_PROFILE.{resource}", fx)])
 
 def my_var(name, val, fx=None):
     return ([f'upper(input.mysql.variables["{name}"]) == "{val.upper()}"'], [("MAP2", "mysql.variables", name, fx or val)])
@@ -66,10 +68,10 @@ def my_var_in(name, vals, fx):
     return ([f'upper(input.mysql.variables["{name}"]) in {{{s}}}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_var_num_ge(name, n, fx):
-    return ([f'to_number(input.mysql.variables["{name}"]) >= {n}'], [("MAP2", "mysql.variables", name, fx)])
+    return ([f'_whole(input.mysql.variables["{name}"]) >= {n}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_var_num_gt(name, n, fx):
-    return ([f'to_number(input.mysql.variables["{name}"]) > {n}'], [("MAP2", "mysql.variables", name, fx)])
+    return ([f'_whole(input.mysql.variables["{name}"]) > {n}'], [("MAP2", "mysql.variables", name, fx)])
 
 def my_plugin_active(name):
     return ([f'upper(input.mysql.plugins["{name}"]) == "ACTIVE"'], [("BOOL", f"mysql.plugins.{name}", "ACTIVE")])
@@ -82,13 +84,54 @@ def either(name, *parts):               # OR: emitted as extra rule clauses; fix
 
 
 # Helpers emitted once per platform (shared by rules)
-ORA_HELPERS = """
+NUM_HELPERS = """
+# a numeric value as a JSON number (@EX@).
+# A number sent as text ("3", " 3 ") is not read: the collector converts what @DB@ reports. Undefined for
+# anything else (@NOT@null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
+# never passed to to_number.
+_num(v) := v if is_number(v)
+
+# a numeric value that is a count, length, size or number of minutes: a JSON number with no fractional part.
+# 2.5 sessions or 2.5 failed logins is not a limit the DBMS can hold, so a fraction is evidence invalid and the
+# rule stays Open. Limits expressed in days (PASSWORD_LIFE_TIME and friends) use _num: Oracle accepts fractions of a day.
+_whole(v) := v if {
+	is_number(v)
+	round(v) == v
+}
+
+# a query result that lists names (policies, files): an array whose every member is a non-empty string.
+# count() of a string is its length, so a list is never counted before it is known to be one.
+_named_list(v) if {
+	is_array(v)
+	every s in v {
+		is_string(s)
+		trim_space(s) != ""
+	}
+}
+"""
+
+ORA_HELPERS = NUM_HELPERS.replace("@DB@", "Oracle").replace("@EX@", "3, 0.0034; a limit that is a word stays the word: UNLIMITED, DEFAULT").replace("@NOT@", "UNLIMITED, DEFAULT, ") + """
+# a profile limit that names something (PASSWORD_VERIFY_FUNCTION): a string other than NULL / DEFAULT / empty.
+# DBA_PROFILES.LIMIT is text; a number, a boolean or null is not a function name.
+_limit_set(v) if {
+	is_string(v)
+	not upper(trim_space(v)) in {"NULL", "DEFAULT", ""}
+}
+
 # ── profile helpers: every profile the collector reports must satisfy the limit (DEFAULT must be
 # resolved by the collector to the DEFAULT profile's value; UNLIMITED fails numeric comparisons) ──
 profiles_every_le(resource, max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) <= max
+		_num(p[resource]) <= max
+	}
+}
+
+# the same for a limit that is a count (FAILED_LOGIN_ATTEMPTS): a fraction does not pass
+profiles_every_le_whole(resource, max) if {
+	count(input.oracle.profiles) > 0
+	every _, p in input.oracle.profiles {
+		_whole(p[resource]) <= max
 	}
 }
 
@@ -102,14 +145,14 @@ profiles_every_eq(resource, val) if {
 profiles_every_set(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		not upper(p[resource]) in {"NULL", "DEFAULT", ""}
+		_limit_set(p[resource])
 	}
 }
 
-profiles_every_numeric(resource) if {
+profiles_every_whole(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) >= 0
+		_whole(p[resource]) >= 0
 	}
 }
 
@@ -117,21 +160,26 @@ profiles_every_numeric(resource) if {
 profiles_every_effective_life_le(max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p.PASSWORD_LIFE_TIME) + to_number(p.PASSWORD_GRACE_TIME) <= max
+		_num(p.PASSWORD_LIFE_TIME) + _num(p.PASSWORD_GRACE_TIME) <= max
 	}
 }
 
 # standard auditing on, or at least one unified audit policy enabled
 audit_enabled if {
-	lower(input.oracle.parameters.audit_trail) != "none"
+	is_string(input.oracle.parameters.audit_trail)
+	not lower(trim_space(input.oracle.parameters.audit_trail)) in {"none", ""}
 }
 
 audit_enabled if {
+	_named_list(input.oracle.unified_audit_policies_enabled)
 	count(input.oracle.unified_audit_policies_enabled) > 0
 }
 """
 
-MY_HELPERS = """
+# MySQL: SHOW VARIABLES and performance_schema.global_variables return every value as text (VARIABLE_VALUE is
+# a varchar column); the collector converts the numeric variables (max_user_connections, validate_password.length,
+# audit_log_rotate_on_size) to JSON numbers. A variable sent as text is not a number to the policy.
+MY_HELPERS = NUM_HELPERS.replace("@DB@", "MySQL").replace("@EX@", "50; SHOW VARIABLES returns every value as text, so the collector converts it").replace("@NOT@", '"", ON, ') + """
 # ── audit helpers: the audit_log plugin must be active and at least one audit filter defined ──
 audit_log_active if {
 	upper(input.mysql.plugins.audit_log) == "ACTIVE"
@@ -139,6 +187,7 @@ audit_log_active if {
 
 audit_configured if {
 	audit_log_active
+	_named_list(input.mysql.audit.filters)
 	count(input.mysql.audit.filters) > 0
 }
 
@@ -167,16 +216,16 @@ PLATFORMS = {
     "oracle_database_19c": {
         "pkg": "oracle_database_19c", "platform": "Oracle Database 19c", "domains": "[database, oracle]",
         "contract": [
-            "input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase)",
-            "input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector",
+            "input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase); max_idle_time a JSON number",
+            "input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector; numeric limits JSON numbers, a word (UNLIMITED) text",
             "input.oracle.<query result>                : rows the STIG query must not return (lists), counts, flags",
             "input.oracle.attest.*                      : attestation booleans (documented reviews)",
         ],
         "helpers": ORA_HELPERS,
         "rules": {
-            "O19C-00-000100": profile_bounded("SESSIONS_PER_USER", "10"),
+            "O19C-00-000100": profile_bounded("SESSIONS_PER_USER", 10),
             "O19C-00-000200": boolfact("oracle.listener.rate_limit_configured"),
-            "O19C-00-000300": num_gt("oracle.parameters.max_idle_time", 0, "15"),
+            "O19C-00-000300": num_gt("oracle.parameters.max_idle_time", 0, 15),
             "O19C-00-000500": attest("oracle.attest.security_labeling_implemented_or_not_required"),
             "O19C-00-000800": attest("oracle.attest.org_level_auth_integrated"),
             "O19C-00-001000": attest("oracle.attest.authorizations_enforced"),
@@ -200,7 +249,9 @@ PLATFORMS = {
             "O19C-00-008200": empty_list("oracle.unauthorized_object_owners"),
             "O19C-00-008300": empty_list("oracle.direct_admin_privilege_grantees"),
             "O19C-00-008400": attest("oracle.attest.configured_per_dod_guidance"),
-            "O19C-00-008600": (["not contains(input.oracle.instance_name, split(input.oracle.version, \".\")[0])"],
+            "O19C-00-008600": (["is_string(input.oracle.instance_name)", "trim_space(input.oracle.instance_name) != \"\"",
+                                "is_string(input.oracle.version)", "major := split(trim_space(input.oracle.version), \".\")[0]",
+                                "regex.match(`^[0-9]+$`, major)", "not contains(input.oracle.instance_name, major)"],
                                [("BOOL", "oracle.instance_name", "PRODDB"), ("BOOL", "oracle.version", "19.0.0.0.0")]),
             "O19C-00-008700": empty_list("oracle.unauthorized_db_links"),
             "O19C-00-009000": empty_list("oracle.grantable_privileges_non_dba"),
@@ -221,7 +272,7 @@ PLATFORMS = {
             "O19C-00-010800": attest("oracle.attest.data_log_audit_files_in_dedicated_directories"),
             "O19C-00-011200": boolfact("oracle.network.access_restriction_enforced"),
             "O19C-00-011300": either("sys_audit", ora_param("audit_sys_operations", "TRUE"),
-                                     (["count(input.oracle.unified_audit_sys_policies) > 0"], [])),
+                                     (["_named_list(input.oracle.unified_audit_sys_policies)", "count(input.oracle.unified_audit_sys_policies) > 0"], [])),
             "O19C-00-011500": boolfact("oracle.filesystem.diag_dir_world_accessible", False),
             "O19C-00-011600": either("cman", boolfact("oracle.cman.present", False),
                                      (['lower(input.oracle.cman.remote_admin) == "no"'], [])),
@@ -233,8 +284,8 @@ PLATFORMS = {
             "O19C-00-012100": attest("oracle.attest.temporary_accounts_expire_within_72h"),
             "O19C-00-012200": attest("oracle.attest.developers_no_elevated_privileges_on_shared_hosts"),
             "O19C-00-012300": profile_eq("PASSWORD_LOCK_TIME", "UNLIMITED"),
-            "O19C-00-012400": profile_le("FAILED_LOGIN_ATTEMPTS", 3, "3"),
-            "O19C-00-012500": profile_le("INACTIVE_ACCOUNT_TIME", 35, "35"),
+            "O19C-00-012400": profile_le("FAILED_LOGIN_ATTEMPTS", 3, 3, whole=True),
+            "O19C-00-012500": profile_le("INACTIVE_ACCOUNT_TIME", 35, 35),
             "O19C-00-012900": empty_list("oracle.sample_schemas_present"),
             "O19C-00-013000": empty_list("oracle.unused_components_installed"),
             "O19C-00-013100": empty_list("oracle.unused_integrated_options_enabled"),
@@ -248,8 +299,8 @@ PLATFORMS = {
             "O19C-00-013900": profile_set("PASSWORD_VERIFY_FUNCTION", "ORA12C_STIG_VERIFY_FUNCTION"),
             "O19C-00-014600": attest("oracle.attest.temporary_password_procedures_documented"),
             "O19C-00-014700": (["profiles_every_effective_life_le(180)"],
-                               [("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_LIFE_TIME", "60"),
-                                ("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_GRACE_TIME", "5")]),
+                               [("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_LIFE_TIME", 60),
+                                ("BOOL", "oracle.profiles.ORA_STIG_PROFILE.PASSWORD_GRACE_TIME", 5)]),
             "O19C-00-014800": empty_list("oracle.users_with_10g_password_verifier"),
             "O19C-00-014900": ORA_TLS,
             "O19C-00-015200": attest("oracle.attest.pki_private_key_access_restricted"),
@@ -275,15 +326,16 @@ PLATFORMS = {
             "O19C-00-019800": attest("oracle.attest.compromised_password_list_checked"),
             "O19C-00-019900": attest("oracle.attest.password_change_required_on_account_recovery"),
             "O19C-00-020400": attest("oracle.attest.trust_store_contains_only_approved_anchors"),
-            "O19C-00-020500": (["count(input.oracle.control_files) >= 3"], [("BOOL", "oracle.control_files", ["/u01/oradata/control01.ctl", "/u02/oradata/control02.ctl", "/u03/oradata/control03.ctl"])]),
-            "O19C-00-020600": (["count(input.oracle.redo_log_groups) >= 3", "every g in input.oracle.redo_log_groups { count(g.members) >= 2 }"],
-                               [("BOOL", "oracle.redo_log_groups", [{"group": 1, "members": ["/u01/redo01a.log", "/u02/redo01b.log"]}, {"group": 2, "members": ["/u01/redo02a.log", "/u02/redo02b.log"]}, {"group": 3, "members": ["/u01/redo03a.log", "/u02/redo03b.log"]}])]),
+            "O19C-00-020500": (["_named_list(input.oracle.control_files)", "count(input.oracle.control_files) >= 3"], [("BOOL", "oracle.control_files", ["/u01/oradata/control01.ctl", "/u02/oradata/control02.ctl", "/u03/oradata/control03.ctl"])]),
+            "O19C-00-020600": (["is_array(input.oracle.redo_log_groups)", "count(input.oracle.redo_log_groups) >= 3",
+                                "every g in input.oracle.redo_log_groups {\n\t\t_named_list(g.members)\n\t\tcount(g.members) >= 2\n\t}"],
+                               [("BOOL", "oracle.redo_log_groups", [{"members": ["/u01/redo01a.log", "/u02/redo01b.log"]}, {"members": ["/u01/redo02a.log", "/u02/redo02b.log"]}, {"members": ["/u01/redo03a.log", "/u02/redo03b.log"]}])]),
         },
     },
     "oracle_mysql_8": {
         "pkg": "oracle_mysql_8", "platform": "Oracle MySQL 8.0", "domains": "[database, mysql]",
         "contract": [
-            "input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase)",
+            "input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase); max_user_connections, validate_password.length, audit_log_rotate_on_size JSON numbers",
             "input.mysql.plugins[<name>]    : INFORMATION_SCHEMA.PLUGINS status",
             "input.mysql.audit.*            : audit_log filters and startup mode",
             "input.mysql.users[]            : mysql.user rows {user, host, plugin}",
@@ -294,7 +346,7 @@ PLATFORMS = {
         "rules": {
             "MYS8-00-000100": either("org_auth", (["external_auth_plugin_active"], [("BOOL", "mysql.plugins.authentication_ldap_simple", "ACTIVE")]),
                                      attest("mysql.attest.org_level_auth_integrated")),
-            "MYS8-00-000200": my_var_num_gt("max_user_connections", 0, "50"),
+            "MYS8-00-000200": my_var_num_gt("max_user_connections", 0, 50),
             "MYS8-00-000300": MY_AUDIT, "MYS8-00-000800": MY_AUDIT,
             "MYS8-00-001200": boolfact("mysql.filesystem.audit_log_permissions_restricted"),
             "MYS8-00-001300": boolfact("mysql.filesystem.audit_log_permissions_restricted"),
@@ -308,9 +360,9 @@ PLATFORMS = {
             "MYS8-00-004700": attest("mysql.attest.pki_certificate_path_and_revocation_validated"),
             "MYS8-00-004800": boolfact("mysql.filesystem.ssl_key_permissions_restricted"),
             "MYS8-00-004900": attest("mysql.attest.pki_identity_mapped_to_accounts"),
-            "MYS8-00-005000": both(my_plugin_active("validate_password"), my_var_num_ge("validate_password.length", 15, "15"),
+            "MYS8-00-005000": both(my_plugin_active("validate_password"), my_var_num_ge("validate_password.length", 15, 15),
                                    my_var_in("validate_password.policy", ["MEDIUM", "STRONG"], "STRONG")),
-            "MYS8-00-005100": (['count(input.mysql.users) > 0', 'every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
+            "MYS8-00-005100": (['is_array(input.mysql.users)', 'count(input.mysql.users) > 0', 'every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
                                [("BOOL", "mysql.users", [{"user": "app", "host": "%", "plugin": "caching_sha2_password"}])]),
             "MYS8-00-005200": MY_TLS,
             "MYS8-00-005300": attest("mysql.attest.authentication_feedback_obscured"),
@@ -342,7 +394,7 @@ PLATFORMS = {
             "MYS8-00-009100": empty_list("mysql.unauthorized_create_routine_grantees"),
             "MYS8-00-009200": attest("mysql.attest.configuration_change_access_restricted"),
             "MYS8-00-009300": MY_AUDIT,
-            "MYS8-00-009600": both(my_var_num_gt("audit_log_rotate_on_size", 0, "1073741824"), attest("mysql.attest.audit_storage_capacity_allocated")),
+            "MYS8-00-009600": both(my_var_num_gt("audit_log_rotate_on_size", 0, 1073741824), attest("mysql.attest.audit_storage_capacity_allocated")),
             "MYS8-00-009700": attest("mysql.attest.audit_offloaded_continuously"),
             "MYS8-00-009800": attest("mysql.attest.audit_storage_warning_at_75_percent"),
             "MYS8-00-009900": attest("mysql.attest.audit_failure_realtime_alert"),
@@ -447,6 +499,9 @@ def emit(key, cfg):
          '\t\t"overall_compliant": overall_compliant,', '\t\t"fully_compliant": fully_compliant,', "\t},",
          '\t"findings": all_findings,', "}", "",
          "# Uniform library entrypoint contract.", "compliance_report := {",
+         "\t# every rule's DISA status (Not_a_Finding, Open, Not_Applicable, Not_Reviewed), for rollups such as",
+         "\t# crosswalk.correlation; violations stay the open findings",
+         '\t"rule_results": [{"rule": f.stig_id, "status": f.status} | some f in all_findings],',
          '\t"total_controls": count(all_findings),', '\t"open_findings": open_findings,',
          '\t"passed_controls": count(all_findings) - count(open_findings),', '\t"failed_controls": count(open_findings),',
          '\t"compliant": fully_compliant,', "}"]

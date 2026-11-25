@@ -19,7 +19,10 @@ package sox.main
 import rego.v1
 
 # SOX (Sarbanes-Oxley Act) Compliance Framework — main aggregation policy.
-# Facts are read from data.sox.<area>.<control>.<field> (loaded by the caller), not from input.
+# Facts are read from input.sox.<area>.<control>.<field>, the input document the caller posts. When the input
+# has no "sox" key, facts loaded as data.sox.<area>.<control>.<field> are read instead (the older way to feed
+# this module). The two are never merged and input.sox always wins; the report states which one was read in
+# evidence_source ("input", "data" or "none") and sets data_sox_ignored when both were present.
 #
 # Sources (fetched 2026-11-23):
 #   SOX 302  15 U.S.C. 7241    https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap98-subchapIII-sec7241.htm
@@ -107,91 +110,100 @@ _checks := [
 		"area": "section_302",
 		"section": "302",
 		"control": "CEO Certification",
-		"state": _state(_d_section_302_ceo_certification_provided),
+		"state": _state(_fact("section_302.ceo_certification.provided")),
 		"risk_level": "CRITICAL",
 		"remediation": "Implement executive certification process with legal review",
 		"basis": "15 U.S.C. 7241(a); 17 CFR 240.13a-14(a)",
-		"evidence": "data.sox.section_302.ceo_certification.provided",
+		"evidence": _ref("section_302.ceo_certification.provided"),
+		"path": "section_302.ceo_certification.provided",
 	},
 	{
 		"area": "section_302",
 		"section": "302",
 		"control": "CFO Certification",
-		"state": _state(_d_section_302_cfo_certification_provided),
+		"state": _state(_fact("section_302.cfo_certification.provided")),
 		"risk_level": "CRITICAL",
 		"remediation": "Implement executive certification process with legal review",
 		"basis": "15 U.S.C. 7241(a); 17 CFR 240.13a-14(a)",
-		"evidence": "data.sox.section_302.cfo_certification.provided",
+		"evidence": _ref("section_302.cfo_certification.provided"),
+		"path": "section_302.cfo_certification.provided",
 	},
 	{
 		"area": "section_302",
 		"section": "302",
 		"control": "Disclosure Controls",
-		"state": _state(_d_section_302_disclosure_controls_effective),
+		"state": _state(_fact("section_302.disclosure_controls.effective")),
 		"risk_level": "HIGH",
 		"remediation": "Establish disclosure controls and procedures framework",
 		"basis": "15 U.S.C. 7241(a)(4); 17 CFR 240.13a-15(a)",
-		"evidence": "data.sox.section_302.disclosure_controls.effective",
+		"evidence": _ref("section_302.disclosure_controls.effective"),
+		"path": "section_302.disclosure_controls.effective",
 	},
 	{
 		"area": "section_302",
 		"section": "302",
 		"control": "Material Weaknesses",
-		"state": _state(_d_section_302_material_weaknesses_none_identified),
+		"state": _state(_fact("section_302.material_weaknesses.none_identified")),
 		"risk_level": "HIGH",
 		"remediation": "Conduct comprehensive control testing and remediate identified weaknesses",
 		"basis": "15 U.S.C. 7241(a)(5) (disclosure to the auditors and audit committee); 17 CFR 229.308(a)(3) (no effective-ICFR conclusion with a material weakness)",
-		"evidence": "data.sox.section_302.material_weaknesses.none_identified",
+		"evidence": _ref("section_302.material_weaknesses.none_identified"),
+		"path": "section_302.material_weaknesses.none_identified",
 	},
 	{
 		"area": "section_302",
 		"section": "302",
 		"control": "Quarterly Evaluation",
-		"state": _state(_d_section_302_quarterly_review_completed),
+		"state": _state(_fact("section_302.quarterly_review.completed")),
 		"risk_level": "HIGH",
 		"remediation": "Evaluate disclosure controls and procedures as of the end of each fiscal quarter",
 		"basis": "17 CFR 240.13a-15(b)",
-		"evidence": "data.sox.section_302.quarterly_review.completed",
+		"evidence": _ref("section_302.quarterly_review.completed"),
+		"path": "section_302.quarterly_review.completed",
 	},
 	{
 		"area": "section_302",
 		"section": "302",
 		"control": "Annual Assessment",
-		"state": _state(_d_section_302_annual_assessment_completed),
+		"state": _state(_fact("section_302.annual_assessment.completed")),
 		"risk_level": "HIGH",
 		"remediation": "Complete management's evaluation of internal control over financial reporting as of fiscal year end",
 		"basis": "17 CFR 240.13a-15(c)",
-		"evidence": "data.sox.section_302.annual_assessment.completed",
+		"evidence": _ref("section_302.annual_assessment.completed"),
+		"path": "section_302.annual_assessment.completed",
 	},
 	{
 		"area": "section_404",
 		"section": "404",
 		"control": "Management Assessment",
-		"state": _state(_d_section_404_management_assessment_completed),
+		"state": _state(_fact("section_404.management_assessment.completed")),
 		"risk_level": "CRITICAL",
 		"remediation": "Develop management assessment methodology and documentation",
 		"basis": "15 U.S.C. 7262(a); 17 CFR 229.308(a)",
-		"evidence": "data.sox.section_404.management_assessment.completed",
+		"evidence": _ref("section_404.management_assessment.completed"),
+		"path": "section_404.management_assessment.completed",
 	},
 	{
 		"area": "section_404",
 		"section": "404",
 		"control": "Control Design",
-		"state": _state(_d_section_404_internal_controls_designed_effectively),
+		"state": _state(_fact("section_404.internal_controls.designed_effectively")),
 		"risk_level": "HIGH",
 		"remediation": "Design comprehensive internal control framework",
 		"basis": "15 U.S.C. 7262(a)(2)",
-		"evidence": "data.sox.section_404.internal_controls.designed_effectively",
+		"evidence": _ref("section_404.internal_controls.designed_effectively"),
+		"path": "section_404.internal_controls.designed_effectively",
 	},
 	{
 		"area": "section_404",
 		"section": "404",
 		"control": "Control Operation",
-		"state": _state(_d_section_404_internal_controls_operating_effectively),
+		"state": _state(_fact("section_404.internal_controls.operating_effectively")),
 		"risk_level": "HIGH",
 		"remediation": "Implement control monitoring and testing procedures",
 		"basis": "15 U.S.C. 7262(a)(2)",
-		"evidence": "data.sox.section_404.internal_controls.operating_effectively",
+		"evidence": _ref("section_404.internal_controls.operating_effectively"),
+		"path": "section_404.internal_controls.operating_effectively",
 	},
 	{
 		"area": "section_404",
@@ -201,217 +213,239 @@ _checks := [
 		"risk_level": "CRITICAL",
 		"remediation": "Engage qualified external auditor for Section 404 attestation",
 		"basis": "15 U.S.C. 7262(b); not required of issuers exempt under 7262(b) or (c)",
-		"evidence": "data.sox.section_404.external_auditor_attestation.unqualified",
+		"evidence": _ref("section_404.external_auditor_attestation.unqualified"),
+		"path": "section_404.external_auditor_attestation.unqualified",
 	},
 	{
 		"area": "section_404",
 		"section": "404",
 		"control": "Remediation Plan",
-		"state": _state(_d_section_404_remediation_plan_implemented),
+		"state": _state(_fact("section_404.remediation_plan.implemented")),
 		"risk_level": "MEDIUM",
 		"remediation": "Implement the remediation plan for identified control deficiencies",
 		"basis": "Library criterion (the statute requires the assessment and its disclosure, not a plan)",
-		"evidence": "data.sox.section_404.remediation_plan.implemented",
+		"evidence": _ref("section_404.remediation_plan.implemented"),
+		"path": "section_404.remediation_plan.implemented",
 	},
 	{
 		"area": "section_409",
 		"section": "409",
 		"control": "Timely Disclosure",
-		"state": _state(_d_section_409_material_events_disclosed_timely),
+		"state": _state(_fact("section_409.material_events.disclosed_timely")),
 		"risk_level": "HIGH",
 		"remediation": "Implement event identification and disclosure procedures that meet the Form 8-K deadline",
 		"basis": "15 U.S.C. 78m(l)",
-		"evidence": "data.sox.section_409.material_events.disclosed_timely",
+		"evidence": _ref("section_409.material_events.disclosed_timely"),
+		"path": "section_409.material_events.disclosed_timely",
 	},
 	{
 		"area": "section_409",
 		"section": "409",
 		"control": "Filing Deadlines",
-		"state": _state(_d_section_409_filing_deadlines_met),
+		"state": _state(_fact("section_409.filing_deadlines.met")),
 		"risk_level": "HIGH",
 		"remediation": "File current reports on Form 8-K within four business days of the triggering event",
 		"basis": "Form 8-K General Instruction B.1 (four business days); 17 CFR 240.13a-11(a)",
-		"evidence": "data.sox.section_409.filing_deadlines.met",
+		"evidence": _ref("section_409.filing_deadlines.met"),
+		"path": "section_409.filing_deadlines.met",
 	},
 	{
 		"area": "section_409",
 		"section": "409",
 		"control": "Quarterly Review",
-		"state": _state(_d_section_409_disclosure_controls_reviewed_quarterly),
+		"state": _state(_fact("section_409.disclosure_controls.reviewed_quarterly")),
 		"risk_level": "MEDIUM",
 		"remediation": "Establish quarterly disclosure control review process",
 		"basis": "17 CFR 240.13a-15(b)",
-		"evidence": "data.sox.section_409.disclosure_controls.reviewed_quarterly",
+		"evidence": _ref("section_409.disclosure_controls.reviewed_quarterly"),
+		"path": "section_409.disclosure_controls.reviewed_quarterly",
 	},
 	{
 		"area": "management",
 		"section": "Management",
 		"control": "Assessment Framework",
-		"state": _state(_d_management_assessment_framework_documented),
+		"state": _state(_fact("management.assessment_framework.documented")),
 		"risk_level": "HIGH",
 		"remediation": "Document comprehensive control assessment framework",
 		"basis": "17 CFR 240.13a-15(c) (suitable, recognized control framework)",
-		"evidence": "data.sox.management.assessment_framework.documented",
+		"evidence": _ref("management.assessment_framework.documented"),
+		"path": "management.assessment_framework.documented",
 	},
 	{
 		"area": "management",
 		"section": "Management",
 		"control": "Testing Procedures",
-		"state": _state(_d_management_testing_procedures_comprehensive),
+		"state": _state(_fact("management.testing_procedures.comprehensive")),
 		"risk_level": "MEDIUM",
 		"remediation": "Develop detailed testing procedures and documentation",
 		"basis": "17 CFR 229.308, Instruction 2 (evidential matter supporting the assessment)",
-		"evidence": "data.sox.management.testing_procedures.comprehensive",
+		"evidence": _ref("management.testing_procedures.comprehensive"),
+		"path": "management.testing_procedures.comprehensive",
 	},
 	{
 		"area": "management",
 		"section": "Management",
 		"control": "Deficiency Remediation",
-		"state": _state(_d_management_deficiency_remediation_timely),
+		"state": _state(_fact("management.deficiency_remediation.timely")),
 		"risk_level": "HIGH",
 		"remediation": "Implement deficiency tracking and remediation workflow",
 		"basis": "Library criterion",
-		"evidence": "data.sox.management.deficiency_remediation.timely",
+		"evidence": _ref("management.deficiency_remediation.timely"),
+		"path": "management.deficiency_remediation.timely",
 	},
 	{
 		"area": "management",
 		"section": "Management",
 		"control": "Risk Assessment",
-		"state": _state(_d_management_risk_assessment_annual),
+		"state": _state(_fact("management.risk_assessment.annual")),
 		"risk_level": "MEDIUM",
 		"remediation": "Perform the financial reporting risk assessment each fiscal year",
 		"basis": "Library criterion supporting the annual evaluation (17 CFR 240.13a-15(c))",
-		"evidence": "data.sox.management.risk_assessment.annual",
+		"evidence": _ref("management.risk_assessment.annual"),
+		"path": "management.risk_assessment.annual",
 	},
 	{
 		"area": "management",
 		"section": "Management",
 		"control": "Control Documentation",
-		"state": _state(_d_management_control_documentation_current),
+		"state": _state(_fact("management.control_documentation.current")),
 		"risk_level": "MEDIUM",
 		"remediation": "Bring control documentation up to date",
 		"basis": "17 CFR 229.308, Instruction 2 (documentation supporting the assessment)",
-		"evidence": "data.sox.management.control_documentation.current",
+		"evidence": _ref("management.control_documentation.current"),
+		"path": "management.control_documentation.current",
 	},
 	{
 		"area": "itgc",
 		"section": "ITGC",
 		"control": "Access Controls",
-		"state": _state(_d_itgc_access_controls_implemented),
+		"state": _state(_fact("itgc.access_controls.implemented")),
 		"risk_level": "HIGH",
 		"remediation": "Implement role-based access controls with segregation of duties",
 		"basis": "Library criterion (IT general control)",
-		"evidence": "data.sox.itgc.access_controls.implemented",
+		"evidence": _ref("itgc.access_controls.implemented"),
+		"path": "itgc.access_controls.implemented",
 	},
 	{
 		"area": "itgc",
 		"section": "ITGC",
 		"control": "Change Management",
-		"state": _state(_d_itgc_change_management_controlled),
+		"state": _state(_fact("itgc.change_management.controlled")),
 		"risk_level": "HIGH",
 		"remediation": "Establish formal change management process with approvals",
 		"basis": "Library criterion (IT general control)",
-		"evidence": "data.sox.itgc.change_management.controlled",
+		"evidence": _ref("itgc.change_management.controlled"),
+		"path": "itgc.change_management.controlled",
 	},
 	{
 		"area": "itgc",
 		"section": "ITGC",
 		"control": "Computer Operations",
-		"state": _state(_d_itgc_computer_operations_monitored),
+		"state": _state(_fact("itgc.computer_operations.monitored")),
 		"risk_level": "MEDIUM",
 		"remediation": "Deploy comprehensive system monitoring and alerting",
 		"basis": "Library criterion (IT general control)",
-		"evidence": "data.sox.itgc.computer_operations.monitored",
+		"evidence": _ref("itgc.computer_operations.monitored"),
+		"path": "itgc.computer_operations.monitored",
 	},
 	{
 		"area": "itgc",
 		"section": "ITGC",
 		"control": "System Development",
-		"state": _state(_d_itgc_system_development_secure),
+		"state": _state(_fact("itgc.system_development.secure")),
 		"risk_level": "MEDIUM",
 		"remediation": "Implement secure development lifecycle (SDLC) practices",
 		"basis": "Library criterion (IT general control)",
-		"evidence": "data.sox.itgc.system_development.secure",
+		"evidence": _ref("itgc.system_development.secure"),
+		"path": "itgc.system_development.secure",
 	},
 	{
 		"area": "itgc",
 		"section": "ITGC",
 		"control": "Data Center Operations",
-		"state": _state(_d_itgc_data_center_operations_controlled),
+		"state": _state(_fact("itgc.data_center_operations.controlled")),
 		"risk_level": "MEDIUM",
 		"remediation": "Establish controlled data center operations",
 		"basis": "Library criterion (IT general control)",
-		"evidence": "data.sox.itgc.data_center_operations.controlled",
+		"evidence": _ref("itgc.data_center_operations.controlled"),
+		"path": "itgc.data_center_operations.controlled",
 	},
 	{
 		"area": "itgc",
 		"section": "ITGC",
 		"control": "Backup and Recovery",
-		"state": _state(_d_itgc_backup_recovery_tested),
+		"state": _state(_fact("itgc.backup_recovery.tested")),
 		"risk_level": "MEDIUM",
 		"remediation": "Test backup and recovery procedures",
 		"basis": "Library criterion (IT general control)",
-		"evidence": "data.sox.itgc.backup_recovery.tested",
+		"evidence": _ref("itgc.backup_recovery.tested"),
+		"path": "itgc.backup_recovery.tested",
 	},
 	{
 		"area": "application_controls",
 		"section": "Application Controls",
 		"control": "Input Validation",
-		"state": _state(_d_application_controls_input_validation_comprehensive),
+		"state": _state(_fact("application_controls.input_validation.comprehensive")),
 		"risk_level": "HIGH",
 		"remediation": "Implement comprehensive input validation and sanitization",
 		"basis": "Library criterion (application control)",
-		"evidence": "data.sox.application_controls.input_validation.comprehensive",
+		"evidence": _ref("application_controls.input_validation.comprehensive"),
+		"path": "application_controls.input_validation.comprehensive",
 	},
 	{
 		"area": "application_controls",
 		"section": "Application Controls",
 		"control": "Processing Controls",
-		"state": _state(_d_application_controls_processing_controls_accurate),
+		"state": _state(_fact("application_controls.processing_controls.accurate")),
 		"risk_level": "MEDIUM",
 		"remediation": "Deploy automated processing controls and reconciliation",
 		"basis": "Library criterion (application control)",
-		"evidence": "data.sox.application_controls.processing_controls.accurate",
+		"evidence": _ref("application_controls.processing_controls.accurate"),
+		"path": "application_controls.processing_controls.accurate",
 	},
 	{
 		"area": "application_controls",
 		"section": "Application Controls",
 		"control": "Output Controls",
-		"state": _state(_d_application_controls_output_controls_complete),
+		"state": _state(_fact("application_controls.output_controls.complete")),
 		"risk_level": "MEDIUM",
 		"remediation": "Implement output validation and completeness checks",
 		"basis": "Library criterion (application control)",
-		"evidence": "data.sox.application_controls.output_controls.complete",
+		"evidence": _ref("application_controls.output_controls.complete"),
+		"path": "application_controls.output_controls.complete",
 	},
 	{
 		"area": "application_controls",
 		"section": "Application Controls",
 		"control": "Data Integrity",
-		"state": _state(_d_application_controls_data_integrity_maintained),
+		"state": _state(_fact("application_controls.data_integrity.maintained")),
 		"risk_level": "HIGH",
 		"remediation": "Deploy data integrity monitoring and verification",
 		"basis": "Library criterion (application control)",
-		"evidence": "data.sox.application_controls.data_integrity.maintained",
+		"evidence": _ref("application_controls.data_integrity.maintained"),
+		"path": "application_controls.data_integrity.maintained",
 	},
 	{
 		"area": "application_controls",
 		"section": "Application Controls",
 		"control": "Error Handling",
-		"state": _state(_d_application_controls_error_handling_robust),
+		"state": _state(_fact("application_controls.error_handling.robust")),
 		"risk_level": "MEDIUM",
 		"remediation": "Implement error detection, reporting and correction controls",
 		"basis": "Library criterion (application control)",
-		"evidence": "data.sox.application_controls.error_handling.robust",
+		"evidence": _ref("application_controls.error_handling.robust"),
+		"path": "application_controls.error_handling.robust",
 	},
 	{
 		"area": "application_controls",
 		"section": "Application Controls",
 		"control": "Transaction Logging",
-		"state": _state(_d_application_controls_transaction_logging_complete),
+		"state": _state(_fact("application_controls.transaction_logging.complete")),
 		"risk_level": "MEDIUM",
 		"remediation": "Implement complete transaction logging and audit trails",
 		"basis": "Library criterion (application control)",
-		"evidence": "data.sox.application_controls.transaction_logging.complete",
+		"evidence": _ref("application_controls.transaction_logging.complete"),
+		"path": "application_controls.transaction_logging.complete",
 	},
 ]
 
@@ -420,34 +454,34 @@ advisories := [
 	{
 		"advisory": "Automated Disclosure Process",
 		"sox_section": "409",
-		"status": _advisory_state(_d_section_409_disclosure_process_automated),
+		"status": _advisory_state(_fact("section_409.disclosure_process.automated")),
 		"scored": false,
 		"note": "15 U.S.C. 78m(l) requires disclosure on a rapid and current basis; neither it nor Form 8-K requires an automated process",
-		"evidence": "data.sox.section_409.disclosure_process.automated",
+		"evidence": _ref("section_409.disclosure_process.automated"),
 	},
 	{
 		"advisory": "Real-Time Event Detection",
 		"sox_section": "409",
-		"status": _advisory_state(_d_section_409_event_detection_real_time),
+		"status": _advisory_state(_fact("section_409.event_detection.real_time")),
 		"scored": false,
 		"note": "Form 8-K General Instruction B.1 allows four business days after the event; real-time detection is not required",
-		"evidence": "data.sox.section_409.event_detection.real_time",
+		"evidence": _ref("section_409.event_detection.real_time"),
 	},
 	{
 		"advisory": "Continuous Monitoring",
 		"sox_section": "404",
-		"status": _advisory_state(_d_section_404_continuous_monitoring_active),
+		"status": _advisory_state(_fact("section_404.continuous_monitoring.active")),
 		"scored": false,
 		"note": "15 U.S.C. 7262(a) and 17 CFR 240.13a-15(c) require an assessment as of fiscal year end; continuous monitoring is not required",
-		"evidence": "data.sox.section_404.continuous_monitoring.active",
+		"evidence": _ref("section_404.continuous_monitoring.active"),
 	},
 	{
 		"advisory": "Continuous Monitoring",
 		"sox_section": "Management",
-		"status": _advisory_state(_d_management_continuous_monitoring_implemented),
+		"status": _advisory_state(_fact("management.continuous_monitoring.implemented")),
 		"scored": false,
 		"note": "17 CFR 240.13a-15(c) and (d) require annual and quarterly evaluations; continuous monitoring is not required",
-		"evidence": "data.sox.management.continuous_monitoring.implemented",
+		"evidence": _ref("management.continuous_monitoring.implemented"),
 	},
 ]
 
@@ -467,13 +501,13 @@ _advisory_state(value) := "NOT_REPORTED" if not is_boolean(value)
 default _attestation_exempt := false
 
 _attestation_exempt if {
-	data.sox.section_404.external_auditor_attestation.required == false
-	data.sox.section_404.external_auditor_attestation.exemption in {"emerging_growth_company", "non_accelerated_filer"}
+	_fact("section_404.external_auditor_attestation.required") == false
+	_fact("section_404.external_auditor_attestation.exemption") in {"emerging_growth_company", "non_accelerated_filer"}
 }
 
 _attestation_state := "NOT_APPLICABLE" if {
 	_attestation_exempt
-} else := _state(_d_section_404_external_auditor_attestation_unqualified)
+} else := _state(_fact("section_404.external_auditor_attestation.unqualified"))
 
 _area_checks(area) := [check | some check in _checks; check.area == area]
 
@@ -500,6 +534,7 @@ _area_findings(area) := [finding |
 		"remediation": check.remediation,
 		"basis": check.basis,
 		"evidence": check.evidence,
+		"detail": _detail(check),
 	}
 ]
 
@@ -628,149 +663,110 @@ overall_sox_assessment := assessment if {
 }
 
 # ---------------------------------------------------------------------------
-# Fact accessors. A missing data field reads as null (evidence missing); it must not make the
-# checks list undefined.
+# Evidence source. Facts are posted as the input document, under input.sox, like every other module in
+# this library. A caller that still loads them as the data document data.sox is served only when the
+# input has no "sox" key at all. The two are never merged: once input.sox is posted (even as null, or
+# with one fact), nothing is read from data.sox, so loaded data cannot override or fill in posted input.
 # ---------------------------------------------------------------------------
 
-default _d_section_302_ceo_certification_provided := null
+default _input_has_sox := false
 
-_d_section_302_ceo_certification_provided := data.sox.section_302.ceo_certification.provided
+_input_has_sox if {
+	is_object(input)
+	"sox" in object.keys(input)
+}
 
-default _d_section_302_cfo_certification_provided := null
+# The data.sox areas this module reads, each by a ground reference (data.sox also holds the sox packages,
+# so it is never read whole). An area that is not loaded has no entry.
+_data_area["section_302"] := data.sox.section_302
 
-_d_section_302_cfo_certification_provided := data.sox.section_302.cfo_certification.provided
+_data_area["section_404"] := data.sox.section_404
 
-default _d_section_302_disclosure_controls_effective := null
+_data_area["section_409"] := data.sox.section_409
 
-_d_section_302_disclosure_controls_effective := data.sox.section_302.disclosure_controls.effective
+_data_area["management"] := data.sox.management
 
-default _d_section_302_material_weaknesses_none_identified := null
+_data_area["itgc.access_controls"] := data.sox.itgc.access_controls
 
-_d_section_302_material_weaknesses_none_identified := data.sox.section_302.material_weaknesses.none_identified
+_data_area["itgc.change_management"] := data.sox.itgc.change_management
 
-default _d_section_302_quarterly_review_completed := null
+_data_area["itgc.computer_operations"] := data.sox.itgc.computer_operations
 
-_d_section_302_quarterly_review_completed := data.sox.section_302.quarterly_review.completed
+_data_area["itgc.system_development"] := data.sox.itgc.system_development
 
-default _d_section_302_annual_assessment_completed := null
+_data_area["itgc.data_center_operations"] := data.sox.itgc.data_center_operations
 
-_d_section_302_annual_assessment_completed := data.sox.section_302.annual_assessment.completed
+_data_area["itgc.backup_recovery"] := data.sox.itgc.backup_recovery
 
-default _d_section_404_management_assessment_completed := null
+_data_area["application_controls.input_validation"] := data.sox.application_controls.input_validation
 
-_d_section_404_management_assessment_completed := data.sox.section_404.management_assessment.completed
+_data_area["application_controls.processing_controls"] := data.sox.application_controls.processing_controls
 
-default _d_section_404_internal_controls_designed_effectively := null
+_data_area["application_controls.output_controls"] := data.sox.application_controls.output_controls
 
-_d_section_404_internal_controls_designed_effectively := data.sox.section_404.internal_controls.designed_effectively
+_data_area["application_controls.data_integrity"] := data.sox.application_controls.data_integrity
 
-default _d_section_404_internal_controls_operating_effectively := null
+_data_area["application_controls.error_handling"] := data.sox.application_controls.error_handling
 
-_d_section_404_internal_controls_operating_effectively := data.sox.section_404.internal_controls.operating_effectively
+_data_area["application_controls.transaction_logging"] := data.sox.application_controls.transaction_logging
 
-default _d_section_404_external_auditor_attestation_unqualified := null
+default _data_sox_loaded := false
 
-_d_section_404_external_auditor_attestation_unqualified := data.sox.section_404.external_auditor_attestation.unqualified
+_data_sox_loaded if count(_data_area) > 0
 
-default _d_section_404_remediation_plan_implemented := null
+_nest([area], value) := {area: value}
 
-_d_section_404_remediation_plan_implemented := data.sox.section_404.remediation_plan.implemented
+_nest([package_name, area], value) := {package_name: {area: value}}
 
-default _d_section_409_material_events_disclosed_timely := null
+_data_sox := object.union_n([_nest(split(key, "."), value) | some key, value in _data_area])
 
-_d_section_409_material_events_disclosed_timely := data.sox.section_409.material_events.disclosed_timely
+# "input", "data" or "none" (nothing posted and nothing loaded).
+evidence_source := "input" if {
+	_input_has_sox
+} else := "data" if {
+	_data_sox_loaded
+} else := "none"
 
-default _d_section_409_filing_deadlines_met := null
+# True when data.sox is loaded and was not read because input.sox was posted.
+default data_sox_ignored := false
 
-_d_section_409_filing_deadlines_met := data.sox.section_409.filing_deadlines.met
+data_sox_ignored if {
+	_input_has_sox
+	_data_sox_loaded
+}
 
-default _d_section_409_disclosure_controls_reviewed_quarterly := null
+# An input.sox that is not an object (null, a string) reads as empty: every fact is missing evidence.
+_sox := input.sox if {
+	_input_has_sox
+	is_object(input.sox)
+} else := {} if {
+	_input_has_sox
+} else := _data_sox
 
-_d_section_409_disclosure_controls_reviewed_quarterly := data.sox.section_409.disclosure_controls.reviewed_quarterly
+_source_document := "data" if {
+	evidence_source == "data"
+} else := "input"
 
-default _d_management_assessment_framework_documented := null
+# A fact by its dotted path below sox; null when it is absent or its parent is not an object.
+_fact(path) := object.get(_sox, split(path, "."), null)
 
-_d_management_assessment_framework_documented := data.sox.management.assessment_framework.documented
+# The fact's full name in the document it was read from, for findings.
+_ref(path) := sprintf("%s.sox.%s", [_source_document, path])
 
-default _d_management_testing_procedures_comprehensive := null
+# Only the booleans are evidence. Anything else is named as an evidence problem.
+_problem(path) := sprintf("evidence missing: %s not collected", [_ref(path)]) if {
+	_fact(path) == null
+}
 
-_d_management_testing_procedures_comprehensive := data.sox.management.testing_procedures.comprehensive
+_problem(path) := sprintf("%s is not a boolean (got %s)", [_ref(path), type_name(_fact(path))]) if {
+	_fact(path) != null
+	not is_boolean(_fact(path))
+}
 
-default _d_management_deficiency_remediation_timely := null
-
-_d_management_deficiency_remediation_timely := data.sox.management.deficiency_remediation.timely
-
-default _d_management_risk_assessment_annual := null
-
-_d_management_risk_assessment_annual := data.sox.management.risk_assessment.annual
-
-default _d_management_control_documentation_current := null
-
-_d_management_control_documentation_current := data.sox.management.control_documentation.current
-
-default _d_itgc_access_controls_implemented := null
-
-_d_itgc_access_controls_implemented := data.sox.itgc.access_controls.implemented
-
-default _d_itgc_change_management_controlled := null
-
-_d_itgc_change_management_controlled := data.sox.itgc.change_management.controlled
-
-default _d_itgc_computer_operations_monitored := null
-
-_d_itgc_computer_operations_monitored := data.sox.itgc.computer_operations.monitored
-
-default _d_itgc_system_development_secure := null
-
-_d_itgc_system_development_secure := data.sox.itgc.system_development.secure
-
-default _d_itgc_data_center_operations_controlled := null
-
-_d_itgc_data_center_operations_controlled := data.sox.itgc.data_center_operations.controlled
-
-default _d_itgc_backup_recovery_tested := null
-
-_d_itgc_backup_recovery_tested := data.sox.itgc.backup_recovery.tested
-
-default _d_application_controls_input_validation_comprehensive := null
-
-_d_application_controls_input_validation_comprehensive := data.sox.application_controls.input_validation.comprehensive
-
-default _d_application_controls_processing_controls_accurate := null
-
-_d_application_controls_processing_controls_accurate := data.sox.application_controls.processing_controls.accurate
-
-default _d_application_controls_output_controls_complete := null
-
-_d_application_controls_output_controls_complete := data.sox.application_controls.output_controls.complete
-
-default _d_application_controls_data_integrity_maintained := null
-
-_d_application_controls_data_integrity_maintained := data.sox.application_controls.data_integrity.maintained
-
-default _d_application_controls_error_handling_robust := null
-
-_d_application_controls_error_handling_robust := data.sox.application_controls.error_handling.robust
-
-default _d_application_controls_transaction_logging_complete := null
-
-_d_application_controls_transaction_logging_complete := data.sox.application_controls.transaction_logging.complete
-
-default _d_section_409_disclosure_process_automated := null
-
-_d_section_409_disclosure_process_automated := data.sox.section_409.disclosure_process.automated
-
-default _d_section_409_event_detection_real_time := null
-
-_d_section_409_event_detection_real_time := data.sox.section_409.event_detection.real_time
-
-default _d_section_404_continuous_monitoring_active := null
-
-_d_section_404_continuous_monitoring_active := data.sox.section_404.continuous_monitoring.active
-
-default _d_management_continuous_monitoring_implemented := null
-
-_d_management_continuous_monitoring_implemented := data.sox.management.continuous_monitoring.implemented
+# What a finding says about its fact.
+_detail(check) := sprintf("%s is false", [check.evidence]) if {
+	check.state == "NON_COMPLIANT"
+} else := _problem(check.path)
 
 # Framework-key entrypoint: the product reads /v1/data/sox/main/compliance_report. This package
 # names its report `overall_sox_assessment`; expose it under the shared name with an explicit `compliant` and a
@@ -796,6 +792,8 @@ compliance_report := object.union(overall_sox_assessment, {
 	"failed_controls": _count_in(_open_states),
 	"evidence_missing_controls": _count_in({"EVIDENCE_MISSING"}),
 	"not_applicable_controls": _count_in({"NOT_APPLICABLE"}),
+	"evidence_source": evidence_source,
+	"data_sox_ignored": data_sox_ignored,
 })
 
 default _entrypoint_compliant := false

@@ -162,37 +162,37 @@ violations contains msg if {
 # CIS 6.2.11: checked condition — local interactive users own their home directories
 violations contains msg if {
 	some entry in input.user_group.users_not_owning_home
-	msg := sprintf("CIS 6.2.11: User %s does not own their home directory %s", [entry.user, entry.home])
+	msg := sprintf("CIS 6.2.11: User %s does not own their home directory %s", [object.get(entry, "user", "not collected"), object.get(entry, "home", "not collected")])
 }
 
 # CIS 6.2.12: local interactive user home directories must be mode 750 or more restrictive
 violations contains msg if {
 	some entry in input.user_group.home_dirs_too_permissive
-	msg := sprintf("CIS 6.2.12: User %s home directory %s has permissions %s (should be 750 or more restrictive)", [entry.user, entry.home, entry.mode])
+	msg := sprintf("CIS 6.2.12: User %s home directory %s has permissions %s (should be 750 or more restrictive)", [object.get(entry, "user", "not collected"), object.get(entry, "home", "not collected"), object.get(entry, "mode", "not collected")])
 }
 
 # CIS 6.2.13: local interactive users must not have .netrc files
 violations contains msg if {
 	some entry in input.user_group.users_with_netrc
-	msg := sprintf("CIS 6.2.13: User %s has .netrc file: %s", [entry.user, entry.path])
+	msg := sprintf("CIS 6.2.13: User %s has .netrc file: %s", [object.get(entry, "user", "not collected"), object.get(entry, "path", "not collected")])
 }
 
 # CIS 6.2.14: local interactive users must not have .forward files
 violations contains msg if {
 	some entry in input.user_group.users_with_forward
-	msg := sprintf("CIS 6.2.14: User %s has .forward file: %s", [entry.user, entry.path])
+	msg := sprintf("CIS 6.2.14: User %s has .forward file: %s", [object.get(entry, "user", "not collected"), object.get(entry, "path", "not collected")])
 }
 
 # CIS 6.2.15: local interactive users must not have .rhosts files
 violations contains msg if {
 	some entry in input.user_group.users_with_rhosts
-	msg := sprintf("CIS 6.2.15: User %s has .rhosts file: %s", [entry.user, entry.path])
+	msg := sprintf("CIS 6.2.15: User %s has .rhosts file: %s", [object.get(entry, "user", "not collected"), object.get(entry, "path", "not collected")])
 }
 
 # CIS 6.2.16: local interactive user dot files must be not group or world writable
 violations contains msg if {
 	some entry in input.user_group.dotfiles_group_or_world_writable
-	msg := sprintf("CIS 6.2.16: User %s has group/world writable dot file: %s (mode: %s)", [entry.user, entry.file, entry.mode])
+	msg := sprintf("CIS 6.2.16: User %s has group/world writable dot file: %s (mode: %s)", [object.get(entry, "user", "not collected"), object.get(entry, "file", "not collected"), object.get(entry, "mode", "not collected")])
 }
 
 # Legacy entries

@@ -765,7 +765,21 @@ test_ol09_00_000241_fail_7 if {
 test_ol09_00_000241_fail_8 if {
 	f := data.stig.oracle_linux_9.configuration_management.finding_ol09_00_000241 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}})
 	f.status == "Open"
-	contains(f.detail, "OL09-00-000241: check failed")
+	contains(f.detail, "OL09-00-000241: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)")
+}
+
+test_ol09_00_000241_fail_9 if {
+	f := data.stig.oracle_linux_9.configuration_management.finding_ol09_00_000241 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "3072"}})
+	f.status == "Open"
+	contains(f.detail, "OL09-00-000241: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)")
+}
+
+test_ol09_00_000241_number_as_text_1 if {
+	every text in ["2048", " 2048 "] {
+		f := data.stig.oracle_linux_9.configuration_management.finding_ol09_00_000241 with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": text}})
+		f.status == "Open"
+		f.detail == "OL09-00-000241: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)"
+	}
 }
 
 test_ol09_00_000241_evidence_missing_1 if {
@@ -791,7 +805,7 @@ test_ol09_00_000241_pass_2 if {
 }
 
 test_ol09_00_000241_pass_3 if {
-	data.stig.oracle_linux_9.configuration_management.status_ol09_00_000241 == "Not_a_Finding" with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": "3072"}})
+	data.stig.oracle_linux_9.configuration_management.status_ol09_00_000241 == "Not_a_Finding" with input as object.union(green_fixture, {"crypto_policy_state": {"min_rsa_size": 3072}})
 }
 
 test_ol09_00_000070_pass if {

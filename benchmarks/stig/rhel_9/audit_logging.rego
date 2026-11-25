@@ -48,18 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -837,6 +848,7 @@ space_left_25_percent if {
 	count(missing_rhel_09_653035) == 0
 	n := _p4_percent(["auditd_config", "space_left"])
 	n >= 25
+	is_number(n)
 	n <= 100
 }
 
@@ -1133,12 +1145,16 @@ finding_rhel_09_653070 := {
 # freq as configured in /etc/audit/auditd.conf (null when missing or commented out)
 missing_rhel_09_653095 := [concat(".", p) | some p in [["auditd_config", "freq"]]; not _collected(p)]
 
+invalid_rhel_09_653095 := [m | some p in [["auditd_config", "freq"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default audit_freq_ok := false
 
 audit_freq_ok if {
 	count(missing_rhel_09_653095) == 0
 	n := _num(["auditd_config", "freq"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 100
 }
 
@@ -1149,6 +1165,8 @@ else := "Open"
 detail_rhel_09_653095 := "RHEL-09-653095: Not_a_Finding" if audit_freq_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653095", concat(", ", missing_rhel_09_653095)]) if count(missing_rhel_09_653095) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-653095", concat(", ", invalid_rhel_09_653095)]) if count(invalid_rhel_09_653095) > 0
 
 else := "RHEL-09-653095: check failed — freq in /etc/audit/auditd.conf must be between 1 and 100"
 

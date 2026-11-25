@@ -26,30 +26,22 @@ green_fixture := {
 			"name": "svcacct",
 		},
 	],
-	"interactive_users": [
-		{
-			"home": "/home/disauser",
-			"home_exists": true,
-			"home_gid": 1002,
-			"name": "disauser",
-			"primary_gid": 1002,
-			"shell": "/bin/bash",
-			"uid": 1000,
-		},
-	],
-	"libuser_conf": {
-		"defaults": {
-			"crypt_style": "sha512",
-		},
-	},
-	"limits_maxlogins": [
-		{
-			"domain": "*",
-			"file": "/etc/security/limits.conf",
-			"type": "hard",
-			"value": "10",
-		},
-	],
+	"interactive_users": [{
+		"home": "/home/disauser",
+		"home_exists": true,
+		"home_gid": 1002,
+		"name": "disauser",
+		"primary_gid": 1002,
+		"shell": "/bin/bash",
+		"uid": 1000,
+	}],
+	"libuser_conf": {"defaults": {"crypt_style": "sha512"}},
+	"limits_maxlogins": [{
+		"domain": "*",
+		"file": "/etc/security/limits.conf",
+		"type": "hard",
+		"value": 10,
+	}],
 	"local_accounts_with_empty_passwords": [],
 	"local_interactive_users": [],
 	"login_defs": {
@@ -58,20 +50,12 @@ green_fixture := {
 		"FAIL_DELAY": 4,
 		"UMASK": "077",
 	},
-	"logind_conf": {
-		"StopIdleSessionSec": "600",
-	},
+	"logind_conf": {"StopIdleSessionSec": "600"},
 	"packages": {
 		"libuser": true,
 		"sudo": true,
 	},
-	"pam": {
-		"password_auth": {
-			"pam_unix_password_lines": [
-				"password    sufficient    pam_unix.so sha512 shadow use_authtok",
-			],
-		},
-	},
+	"pam": {"password_auth": {"pam_unix_password_lines": ["password    sufficient    pam_unix.so sha512 shadow use_authtok"]}},
 	"pam_d": {
 		"password-auth": [
 			"auth required pam_env.so",
@@ -126,99 +110,75 @@ green_fixture := {
 		"retry": 3,
 		"ucredit": -1,
 	},
-	"profile_tmout": [
-		{
-			"file": "/etc/profile.d/tmout.sh",
-			"value": "600",
-		},
-	],
+	"profile_tmout": [{
+		"file": "/etc/profile.d/tmout.sh",
+		"value": 600,
+	}],
 	"pwck_no_group_accounts": [],
 	"shadow_maxdays_out_of_range": [],
 	"shadow_min_age_below_one": [],
 	"shell_umask": {
-		"etc_bashrc": [
-			"077",
-		],
-		"etc_csh_cshrc": [
-			"077",
-		],
-		"etc_profile": [
-			"077",
-		],
+		"etc_bashrc": ["077"],
+		"etc_csh_cshrc": ["077"],
+		"etc_profile": ["077"],
 	},
-	"sssd": {
-		"pam_cert_auth": "True",
-	},
-	"sudoers": {
-		"lines": [
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults timestamp_timeout=0",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults !targetpw",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults !rootpw",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults !runaspw",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "root ALL=(ALL) ALL",
-			},
-			{
-				"file": "/etc/sudoers.d/admins",
-				"line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL",
-			},
-		],
-	},
+	"sssd": {"pam_cert_auth": "True"},
+	"sudoers": {"lines": [
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults timestamp_timeout=0",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults !targetpw",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults !rootpw",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults !runaspw",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "root ALL=(ALL) ALL",
+		},
+		{
+			"file": "/etc/sudoers.d/admins",
+			"line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL",
+		},
+	]},
 	"sulogin_lines": {
 		"emergency.service": {
 			"drop_ins": [],
-			"unit_file": [
-				"ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency",
-			],
+			"unit_file": ["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency"],
 		},
 		"rescue.service": {
 			"drop_ins": [],
-			"unit_file": [
-				"ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue",
-			],
+			"unit_file": ["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"],
 		},
 	},
 	"system_accounts_with_interactive_shell": [],
-	"temporary_accounts": [
-		{
-			"expires": "2020-01-04",
-			"name": "tempuser",
-		},
-	],
-	"uid_zero_accounts": [
-		"root",
-	],
+	"temporary_accounts": [{
+		"expires": "2020-01-04",
+		"name": "tempuser",
+	}],
+	"uid_zero_accounts": ["root"],
 	"user_init_files": {
-		"path_statements": [
-			{
-				"entries": [
-					"$HOME/.local/bin",
-					"$HOME/bin",
-					"$PATH",
-				],
-				"file": "/home/disauser/.bash_profile",
-				"home": "/home/disauser",
-			},
-		],
-		"umask_statements": [
-			{
-				"file": "/home/disauser/.bashrc",
-				"umask": "077",
-			},
-		],
+		"path_statements": [{
+			"entries": [
+				"$HOME/.local/bin",
+				"$HOME/bin",
+				"$PATH",
+			],
+			"file": "/home/disauser/.bash_profile",
+			"home": "/home/disauser",
+		}],
+		"umask_statements": [{
+			"file": "/home/disauser/.bashrc",
+			"umask": "077",
+		}],
 	},
 }
 
@@ -293,17 +253,21 @@ test_rhel_09_411075_fail_2 if {
 test_rhel_09_411075_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411075 with input as object.union(green_fixture, {"faillock_conf": {"deny": "three"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-411075: check failed")
+	contains(f.detail, "RHEL-09-411075: evidence invalid — faillock_conf.deny is not a number (got string)")
+}
+
+test_rhel_09_411075_number_as_text_1 if {
+	every text in ["3", " 3 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_411075 with input as object.union(green_fixture, {"faillock_conf": {"deny": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-411075: evidence invalid — faillock_conf.deny is not a number (got string)"
+	}
 }
 
 test_rhel_09_411075_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411075 with input as json.remove(green_fixture, [["faillock_conf", "deny"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-411075: evidence missing — faillock_conf.deny")
-}
-
-test_rhel_09_411075_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411075 == "Not_a_Finding" with input as object.union(green_fixture, {"faillock_conf": {"deny": "3"}})
 }
 
 test_rhel_09_611155_pass if {
@@ -335,17 +299,21 @@ test_rhel_09_611090_fail_1 if {
 test_rhel_09_611090_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611090 with input as object.union(green_fixture, {"password_policy": {"minlen": "8"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611090: check failed")
+	contains(f.detail, "RHEL-09-611090: evidence invalid — password_policy.minlen is not a number (got string)")
+}
+
+test_rhel_09_611090_number_as_text_1 if {
+	every text in ["15", " 15 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611090 with input as object.union(green_fixture, {"password_policy": {"minlen": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611090: evidence invalid — password_policy.minlen is not a number (got string)"
+	}
 }
 
 test_rhel_09_611090_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611090 with input as json.remove(green_fixture, [["password_policy", "minlen"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611090: evidence missing — password_policy.minlen")
-}
-
-test_rhel_09_611090_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611090 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"minlen": "15"}})
 }
 
 test_rhel_09_611110_pass if {
@@ -361,13 +329,33 @@ test_rhel_09_611110_fail_1 if {
 test_rhel_09_611110_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611110 with input as object.union(green_fixture, {"password_policy": {"ucredit": "1"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611110: check failed")
+	contains(f.detail, "RHEL-09-611110: evidence invalid — password_policy.ucredit is not a number (got string)")
 }
 
 test_rhel_09_611110_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611110 with input as object.union(green_fixture, {"password_policy": {"ucredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611110: check failed")
+}
+
+test_rhel_09_611110_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611110 with input as object.union(green_fixture, {"password_policy": {"ucredit": "-1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611110: evidence invalid — password_policy.ucredit is not a number (got string)")
+}
+
+test_rhel_09_611110_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611110 with input as object.union(green_fixture, {"password_policy": {"ucredit": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611110: evidence invalid — password_policy.ucredit is not a number (got string)")
+}
+
+test_rhel_09_611110_number_as_text_1 if {
+	every text in ["-1", " -1 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611110 with input as object.union(green_fixture, {"password_policy": {"ucredit": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611110: evidence invalid — password_policy.ucredit is not a number (got string)"
+	}
 }
 
 test_rhel_09_611110_evidence_missing_1 if {
@@ -377,14 +365,10 @@ test_rhel_09_611110_evidence_missing_1 if {
 }
 
 test_rhel_09_611110_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": "-1"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": 0}})
 }
 
 test_rhel_09_611110_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": "0"}})
-}
-
-test_rhel_09_611110_pass_4 if {
 	data.stig.rhel_9.account_auth.status_rhel_09_611110 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": -2}})
 }
 
@@ -401,13 +385,33 @@ test_rhel_09_611065_fail_1 if {
 test_rhel_09_611065_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611065 with input as object.union(green_fixture, {"password_policy": {"lcredit": "1"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611065: check failed")
+	contains(f.detail, "RHEL-09-611065: evidence invalid — password_policy.lcredit is not a number (got string)")
 }
 
 test_rhel_09_611065_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611065 with input as object.union(green_fixture, {"password_policy": {"lcredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611065: check failed")
+}
+
+test_rhel_09_611065_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611065 with input as object.union(green_fixture, {"password_policy": {"lcredit": "-1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611065: evidence invalid — password_policy.lcredit is not a number (got string)")
+}
+
+test_rhel_09_611065_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611065 with input as object.union(green_fixture, {"password_policy": {"lcredit": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611065: evidence invalid — password_policy.lcredit is not a number (got string)")
+}
+
+test_rhel_09_611065_number_as_text_1 if {
+	every text in ["-1", " -1 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611065 with input as object.union(green_fixture, {"password_policy": {"lcredit": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611065: evidence invalid — password_policy.lcredit is not a number (got string)"
+	}
 }
 
 test_rhel_09_611065_evidence_missing_1 if {
@@ -417,14 +421,10 @@ test_rhel_09_611065_evidence_missing_1 if {
 }
 
 test_rhel_09_611065_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": "-1"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": 0}})
 }
 
 test_rhel_09_611065_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": "0"}})
-}
-
-test_rhel_09_611065_pass_4 if {
 	data.stig.rhel_9.account_auth.status_rhel_09_611065 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": -2}})
 }
 
@@ -441,13 +441,33 @@ test_rhel_09_611070_fail_1 if {
 test_rhel_09_611070_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611070 with input as object.union(green_fixture, {"password_policy": {"dcredit": "1"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611070: check failed")
+	contains(f.detail, "RHEL-09-611070: evidence invalid — password_policy.dcredit is not a number (got string)")
 }
 
 test_rhel_09_611070_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611070 with input as object.union(green_fixture, {"password_policy": {"dcredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611070: check failed")
+}
+
+test_rhel_09_611070_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611070 with input as object.union(green_fixture, {"password_policy": {"dcredit": "-1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611070: evidence invalid — password_policy.dcredit is not a number (got string)")
+}
+
+test_rhel_09_611070_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611070 with input as object.union(green_fixture, {"password_policy": {"dcredit": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611070: evidence invalid — password_policy.dcredit is not a number (got string)")
+}
+
+test_rhel_09_611070_number_as_text_1 if {
+	every text in ["-1", " -1 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611070 with input as object.union(green_fixture, {"password_policy": {"dcredit": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611070: evidence invalid — password_policy.dcredit is not a number (got string)"
+	}
 }
 
 test_rhel_09_611070_evidence_missing_1 if {
@@ -457,14 +477,10 @@ test_rhel_09_611070_evidence_missing_1 if {
 }
 
 test_rhel_09_611070_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": "-1"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": 0}})
 }
 
 test_rhel_09_611070_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": "0"}})
-}
-
-test_rhel_09_611070_pass_4 if {
 	data.stig.rhel_9.account_auth.status_rhel_09_611070 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": -2}})
 }
 
@@ -481,13 +497,33 @@ test_rhel_09_611100_fail_1 if {
 test_rhel_09_611100_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611100 with input as object.union(green_fixture, {"password_policy": {"ocredit": "1"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611100: check failed")
+	contains(f.detail, "RHEL-09-611100: evidence invalid — password_policy.ocredit is not a number (got string)")
 }
 
 test_rhel_09_611100_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611100 with input as object.union(green_fixture, {"password_policy": {"ocredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611100: check failed")
+}
+
+test_rhel_09_611100_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611100 with input as object.union(green_fixture, {"password_policy": {"ocredit": "-1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611100: evidence invalid — password_policy.ocredit is not a number (got string)")
+}
+
+test_rhel_09_611100_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611100 with input as object.union(green_fixture, {"password_policy": {"ocredit": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611100: evidence invalid — password_policy.ocredit is not a number (got string)")
+}
+
+test_rhel_09_611100_number_as_text_1 if {
+	every text in ["-1", " -1 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611100 with input as object.union(green_fixture, {"password_policy": {"ocredit": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611100: evidence invalid — password_policy.ocredit is not a number (got string)"
+	}
 }
 
 test_rhel_09_611100_evidence_missing_1 if {
@@ -497,14 +533,10 @@ test_rhel_09_611100_evidence_missing_1 if {
 }
 
 test_rhel_09_611100_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": "-1"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": 0}})
 }
 
 test_rhel_09_611100_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": "0"}})
-}
-
-test_rhel_09_611100_pass_4 if {
 	data.stig.rhel_9.account_auth.status_rhel_09_611100 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": -2}})
 }
 
@@ -533,7 +565,21 @@ test_rhel_09_411010_fail_3 if {
 test_rhel_09_411010_fail_4 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411010 with input as object.union(green_fixture, {"password_policy": {"maxdays": "99999"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-411010: check failed")
+	contains(f.detail, "RHEL-09-411010: evidence invalid — password_policy.maxdays is not a number (got string)")
+}
+
+test_rhel_09_411010_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411010 with input as object.union(green_fixture, {"password_policy": {"maxdays": "180"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411010: evidence invalid — password_policy.maxdays is not a number (got string)")
+}
+
+test_rhel_09_411010_number_as_text_1 if {
+	every text in ["180", " 180 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_411010 with input as object.union(green_fixture, {"password_policy": {"maxdays": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-411010: evidence invalid — password_policy.maxdays is not a number (got string)"
+	}
 }
 
 test_rhel_09_411010_evidence_missing_1 if {
@@ -547,7 +593,7 @@ test_rhel_09_411010_pass_2 if {
 }
 
 test_rhel_09_411010_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxdays": "180"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxdays": 1}})
 }
 
 test_rhel_09_611075_pass if {
@@ -563,17 +609,21 @@ test_rhel_09_611075_fail_1 if {
 test_rhel_09_611075_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611075 with input as object.union(green_fixture, {"password_policy": {"mindays": "0"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611075: check failed")
+	contains(f.detail, "RHEL-09-611075: evidence invalid — password_policy.mindays is not a number (got string)")
+}
+
+test_rhel_09_611075_number_as_text_1 if {
+	every text in ["1", " 1 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611075 with input as object.union(green_fixture, {"password_policy": {"mindays": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611075: evidence invalid — password_policy.mindays is not a number (got string)"
+	}
 }
 
 test_rhel_09_611075_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611075 with input as json.remove(green_fixture, [["password_policy", "mindays"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611075: evidence missing — password_policy.mindays")
-}
-
-test_rhel_09_611075_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611075 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"mindays": "1"}})
 }
 
 test_rhel_09_411085_pass if {
@@ -595,7 +645,15 @@ test_rhel_09_411085_fail_2 if {
 test_rhel_09_411085_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411085 with input as object.union(green_fixture, {"faillock_conf": {"fail_interval": "900s"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-411085: check failed")
+	contains(f.detail, "RHEL-09-411085: evidence invalid — faillock_conf.fail_interval is not a number (got string)")
+}
+
+test_rhel_09_411085_number_as_text_1 if {
+	every text in ["900", " 900 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_411085 with input as object.union(green_fixture, {"faillock_conf": {"fail_interval": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-411085: evidence invalid — faillock_conf.fail_interval is not a number (got string)"
+	}
 }
 
 test_rhel_09_411085_evidence_missing_1 if {
@@ -607,10 +665,6 @@ test_rhel_09_411085_evidence_missing_1 if {
 test_rhel_09_411085_not_applicable_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411085 with input as object.union(green_fixture, {"faillock_conf": {"fail_interval": null}, "attest": {"rhel_09_411085_central_lockout": true}})
 	f.status == "Not_Applicable"
-}
-
-test_rhel_09_411085_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Not_a_Finding" with input as object.union(green_fixture, {"faillock_conf": {"fail_interval": "900"}})
 }
 
 test_rhel_09_411050_pass if {
@@ -632,17 +686,21 @@ test_rhel_09_411050_fail_2 if {
 test_rhel_09_411050_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411050 with input as object.union(green_fixture, {"password_policy": {"inactive_days": "-1"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-411050: check failed")
+	contains(f.detail, "RHEL-09-411050: evidence invalid — password_policy.inactive_days is not a number (got string)")
+}
+
+test_rhel_09_411050_number_as_text_1 if {
+	every text in ["35", " 35 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_411050 with input as object.union(green_fixture, {"password_policy": {"inactive_days": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-411050: evidence invalid — password_policy.inactive_days is not a number (got string)"
+	}
 }
 
 test_rhel_09_411050_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411050 with input as json.remove(green_fixture, [["password_policy", "inactive_days"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-411050: evidence missing — password_policy.inactive_days")
-}
-
-test_rhel_09_411050_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"inactive_days": "35"}})
 }
 
 test_rhel_09_411030_pass if {
@@ -978,17 +1036,27 @@ test_rhel_09_411090_fail_1 if {
 test_rhel_09_411090_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": "never"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-411090: check failed")
+	contains(f.detail, "RHEL-09-411090: evidence invalid — faillock_conf.unlock_time is not a number (got string)")
+}
+
+test_rhel_09_411090_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411090: evidence invalid — faillock_conf.unlock_time is not a number (got string)")
+}
+
+test_rhel_09_411090_number_as_text_1 if {
+	every text in ["0", " 0 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-411090: evidence invalid — faillock_conf.unlock_time is not a number (got string)"
+	}
 }
 
 test_rhel_09_411090_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as json.remove(green_fixture, [["faillock_conf", "unlock_time"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-411090: evidence missing — faillock_conf.unlock_time")
-}
-
-test_rhel_09_411090_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_411090 == "Not_a_Finding" with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": "0"}})
 }
 
 test_rhel_09_411095_pass if {
@@ -1072,13 +1140,13 @@ test_rhel_09_412035_fail_1 if {
 }
 
 test_rhel_09_412035_fail_2 if {
-	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "900"}]})
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 900}]})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-412035: check failed")
 }
 
 test_rhel_09_412035_fail_3 if {
-	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": "600"}]})
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": 600}]})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-412035: check failed")
 }
@@ -1086,7 +1154,25 @@ test_rhel_09_412035_fail_3 if {
 test_rhel_09_412035_fail_4 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "$IDLE"}]})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-412035: check failed")
+	contains(f.detail, "RHEL-09-412035: evidence invalid — profile_tmout[0].value is not a number (got string)")
+}
+
+test_rhel_09_412035_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "600"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: evidence invalid — profile_tmout[0].value is not a number (got string)")
+}
+
+test_rhel_09_412035_fail_6 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": 900}, {"file": "/etc/profile.d/tmout.sh", "value": " 300 "}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: evidence invalid — profile_tmout[1].value is not a number (got string)")
+}
+
+test_rhel_09_412035_fail_7 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 300.5}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: evidence invalid — profile_tmout[0].value is not a number (got a fraction)")
 }
 
 test_rhel_09_412035_evidence_missing_1 if {
@@ -1096,11 +1182,15 @@ test_rhel_09_412035_evidence_missing_1 if {
 }
 
 test_rhel_09_412035_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "300"}]})
+	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 300}]})
 }
 
 test_rhel_09_412035_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": "900"}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]})
+	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": 900}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]})
+}
+
+test_rhel_09_412035_pass_4 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": "$IDLE"}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]})
 }
 
 test_rhel_09_412040_pass if {
@@ -1114,15 +1204,39 @@ test_rhel_09_412040_fail_1 if {
 }
 
 test_rhel_09_412040_fail_2 if {
-	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "11"}]})
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 11}]})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-412040: check failed")
 }
 
 test_rhel_09_412040_fail_3 if {
-	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "10"}, {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": "50"}]})
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 10}, {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": 50}]})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-412040: check failed")
+}
+
+test_rhel_09_412040_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "10"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: evidence invalid — limits_maxlogins[0].value is not a number (got string)")
+}
+
+test_rhel_09_412040_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 10}, {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": " 5 "}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: evidence invalid — limits_maxlogins[1].value is not a number (got string)")
+}
+
+test_rhel_09_412040_fail_6 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "unlimited"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: evidence invalid — limits_maxlogins[0].value is not a number (got string)")
+}
+
+test_rhel_09_412040_fail_7 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 9.5}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: evidence invalid — limits_maxlogins[0].value is not a number (got a fraction)")
 }
 
 test_rhel_09_412040_evidence_missing_1 if {
@@ -1136,7 +1250,7 @@ test_rhel_09_412040_pass_2 if {
 }
 
 test_rhel_09_412040_pass_3 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_412040 == "Not_a_Finding" with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "50"}], "attest": {"rhel_09_412040_maxlogins_documented": true}})
+	data.stig.rhel_9.account_auth.status_rhel_09_412040 == "Not_a_Finding" with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 50}], "attest": {"rhel_09_412040_maxlogins_documented": true}})
 }
 
 test_rhel_09_412045_pass if {
@@ -1180,7 +1294,21 @@ test_rhel_09_412050_fail_2 if {
 test_rhel_09_412050_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": "four"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-412050: check failed")
+	contains(f.detail, "RHEL-09-412050: evidence invalid — login_defs.FAIL_DELAY is not a number (got string)")
+}
+
+test_rhel_09_412050_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": "5"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412050: evidence invalid — login_defs.FAIL_DELAY is not a number (got string)")
+}
+
+test_rhel_09_412050_number_as_text_1 if {
+	every text in ["4", " 4 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-412050: evidence invalid — login_defs.FAIL_DELAY is not a number (got string)"
+	}
 }
 
 test_rhel_09_412050_evidence_missing_1 if {
@@ -1190,7 +1318,7 @@ test_rhel_09_412050_evidence_missing_1 if {
 }
 
 test_rhel_09_412050_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_412050 == "Not_a_Finding" with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": "5"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_412050 == "Not_a_Finding" with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": 5}})
 }
 
 test_rhel_09_412055_pass if {
@@ -1791,7 +1919,21 @@ test_rhel_09_611010_fail_2 if {
 test_rhel_09_611010_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as object.union(green_fixture, {"password_policy": {"retry": "three"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611010: check failed")
+	contains(f.detail, "RHEL-09-611010: evidence invalid — password_policy.retry is not a number (got string)")
+}
+
+test_rhel_09_611010_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as object.union(green_fixture, {"password_policy": {"retry": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611010: evidence invalid — password_policy.retry is not a number (got string)")
+}
+
+test_rhel_09_611010_number_as_text_1 if {
+	every text in ["3", " 3 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as object.union(green_fixture, {"password_policy": {"retry": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611010: evidence invalid — password_policy.retry is not a number (got string)"
+	}
 }
 
 test_rhel_09_611010_evidence_missing_1 if {
@@ -1801,7 +1943,7 @@ test_rhel_09_611010_evidence_missing_1 if {
 }
 
 test_rhel_09_611010_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611010 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"retry": "1"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611010 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"retry": 1}})
 }
 
 test_rhel_09_611060_pass if {
@@ -1865,13 +2007,27 @@ test_rhel_09_611105_fail_1 if {
 test_rhel_09_611105_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": "0"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611105: check failed")
+	contains(f.detail, "RHEL-09-611105: evidence invalid — password_policy.dictcheck is not a number (got string)")
 }
 
 test_rhel_09_611105_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": "yes"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611105: check failed")
+	contains(f.detail, "RHEL-09-611105: evidence invalid — password_policy.dictcheck is not a number (got string)")
+}
+
+test_rhel_09_611105_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611105: evidence invalid — password_policy.dictcheck is not a number (got string)")
+}
+
+test_rhel_09_611105_number_as_text_1 if {
+	every text in ["1", " 1 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611105: evidence invalid — password_policy.dictcheck is not a number (got string)"
+	}
 }
 
 test_rhel_09_611105_evidence_missing_1 if {
@@ -1881,7 +2037,7 @@ test_rhel_09_611105_evidence_missing_1 if {
 }
 
 test_rhel_09_611105_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611105 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dictcheck": "1"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611105 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dictcheck": 2}})
 }
 
 test_rhel_09_611115_pass if {
@@ -1897,17 +2053,21 @@ test_rhel_09_611115_fail_1 if {
 test_rhel_09_611115_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611115 with input as object.union(green_fixture, {"password_policy": {"difok": "5"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611115: check failed")
+	contains(f.detail, "RHEL-09-611115: evidence invalid — password_policy.difok is not a number (got string)")
+}
+
+test_rhel_09_611115_number_as_text_1 if {
+	every text in ["8", " 8 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611115 with input as object.union(green_fixture, {"password_policy": {"difok": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611115: evidence invalid — password_policy.difok is not a number (got string)"
+	}
 }
 
 test_rhel_09_611115_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611115 with input as json.remove(green_fixture, [["password_policy", "difok"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611115: evidence missing — password_policy.difok")
-}
-
-test_rhel_09_611115_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611115 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"difok": "8"}})
 }
 
 test_rhel_09_611120_pass if {
@@ -1929,17 +2089,21 @@ test_rhel_09_611120_fail_2 if {
 test_rhel_09_611120_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": "0"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611120: check failed")
+	contains(f.detail, "RHEL-09-611120: evidence invalid — password_policy.maxclassrepeat is not a number (got string)")
+}
+
+test_rhel_09_611120_number_as_text_1 if {
+	every text in ["4", " 4 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611120: evidence invalid — password_policy.maxclassrepeat is not a number (got string)"
+	}
 }
 
 test_rhel_09_611120_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as json.remove(green_fixture, [["password_policy", "maxclassrepeat"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611120: evidence missing — password_policy.maxclassrepeat")
-}
-
-test_rhel_09_611120_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611120 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": "4"}})
 }
 
 test_rhel_09_611125_pass if {
@@ -1961,7 +2125,21 @@ test_rhel_09_611125_fail_2 if {
 test_rhel_09_611125_fail_3 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as object.union(green_fixture, {"password_policy": {"maxrepeat": "4"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611125: check failed")
+	contains(f.detail, "RHEL-09-611125: evidence invalid — password_policy.maxrepeat is not a number (got string)")
+}
+
+test_rhel_09_611125_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as object.union(green_fixture, {"password_policy": {"maxrepeat": "3"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611125: evidence invalid — password_policy.maxrepeat is not a number (got string)")
+}
+
+test_rhel_09_611125_number_as_text_1 if {
+	every text in ["3", " 3 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as object.union(green_fixture, {"password_policy": {"maxrepeat": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611125: evidence invalid — password_policy.maxrepeat is not a number (got string)"
+	}
 }
 
 test_rhel_09_611125_evidence_missing_1 if {
@@ -1971,7 +2149,7 @@ test_rhel_09_611125_evidence_missing_1 if {
 }
 
 test_rhel_09_611125_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611125 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxrepeat": "3"}})
+	data.stig.rhel_9.account_auth.status_rhel_09_611125 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxrepeat": 2}})
 }
 
 test_rhel_09_611125_pass_3 if {
@@ -1991,17 +2169,21 @@ test_rhel_09_611130_fail_1 if {
 test_rhel_09_611130_fail_2 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611130 with input as object.union(green_fixture, {"password_policy": {"minclass": "3"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-611130: check failed")
+	contains(f.detail, "RHEL-09-611130: evidence invalid — password_policy.minclass is not a number (got string)")
+}
+
+test_rhel_09_611130_number_as_text_1 if {
+	every text in ["4", " 4 "] {
+		f := data.stig.rhel_9.account_auth.finding_rhel_09_611130 with input as object.union(green_fixture, {"password_policy": {"minclass": text}})
+		f.status == "Open"
+		f.detail == "RHEL-09-611130: evidence invalid — password_policy.minclass is not a number (got string)"
+	}
 }
 
 test_rhel_09_611130_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_611130 with input as json.remove(green_fixture, [["password_policy", "minclass"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-611130: evidence missing — password_policy.minclass")
-}
-
-test_rhel_09_611130_pass_2 if {
-	data.stig.rhel_9.account_auth.status_rhel_09_611130 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"minclass": "4"}})
 }
 
 test_rhel_09_611135_pass if {

@@ -2,21 +2,226 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/apra_cps234/schema.json",
  "title": "Input facts for apra_cps234",
- "description": "Input paths referenced in the sources of frameworks/financial/apra_cps234/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/financial/apra_cps234/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "apra_cps234",
  "x-entrypoint": "data.apra_cps234.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/financial/apra_cps234/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.apra_cps234.main_test._evidence_full",
  "type": "object",
  "properties": {
   "apra_cps234": {
    "description": "Read in cps234_main.rego.",
+   "type": "object",
    "properties": {
     "controls": {
-     "description": "Read in cps234_main.rego."
+     "description": "Read in cps234_main.rego.",
+     "type": "object",
+     "properties": {
+      "13": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "14": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "15": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "16": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "17": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "18": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "19": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "20": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "21": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "22": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "23": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "24": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "25": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "26": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "27": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "28": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "29": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "30": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "31": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "32": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "33": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "34": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "35": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "36": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "third_party_managed_assets": {
+     "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
     }
    }
   }
@@ -24,6 +229,31 @@
  "additionalProperties": true,
  "x-known-paths": [
   "apra_cps234",
-  "apra_cps234.controls"
+  "apra_cps234.controls",
+  "apra_cps234.controls[\"13\"]",
+  "apra_cps234.controls[\"14\"]",
+  "apra_cps234.controls[\"15\"]",
+  "apra_cps234.controls[\"16\"]",
+  "apra_cps234.controls[\"17\"]",
+  "apra_cps234.controls[\"18\"]",
+  "apra_cps234.controls[\"19\"]",
+  "apra_cps234.controls[\"20\"]",
+  "apra_cps234.controls[\"21\"]",
+  "apra_cps234.controls[\"22\"]",
+  "apra_cps234.controls[\"23\"]",
+  "apra_cps234.controls[\"24\"]",
+  "apra_cps234.controls[\"25\"]",
+  "apra_cps234.controls[\"26\"]",
+  "apra_cps234.controls[\"27\"]",
+  "apra_cps234.controls[\"28\"]",
+  "apra_cps234.controls[\"29\"]",
+  "apra_cps234.controls[\"30\"]",
+  "apra_cps234.controls[\"31\"]",
+  "apra_cps234.controls[\"32\"]",
+  "apra_cps234.controls[\"33\"]",
+  "apra_cps234.controls[\"34\"]",
+  "apra_cps234.controls[\"35\"]",
+  "apra_cps234.controls[\"36\"]",
+  "apra_cps234.third_party_managed_assets"
  ]
 }

@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [container]
 #   coverage:
-#     checks: 124
+#     checks: 125
 #     cited: 117
 #     expected: 117
 #     found: 117
@@ -36,7 +36,10 @@ package cis_docker
 #   6.2 stopped_containers_reviewed.
 #
 # Profile (input.cis_profile):
-#   level  : 1 or 2 (Level 2 includes Level 1). Absent or invalid => 2, the stricter selection (level_defaulted: true).
+#   level  : the number 1 or 2 (Level 2 includes Level 1). Absent => 2 (level_defaulted: true) with a PROFILE NOT
+#            SELECTED finding, and the result is never compliant. Any other value
+#            (the strings "1" and "2" included) is invalid evidence: the report is scoped at Level 2 and every
+#            Level 2 recommendation in scope reports it.
 #   swarm  : true forces the Swarm profile in, false leaves it out; absent => decided by the collected fact:
 #            the 9 Swarm recommendations apply unless input.docker.info.Swarm.LocalNodeState is "inactive".
 #            A state that was not collected counts as possibly active, so they apply and report evidence missing.
@@ -72,7 +75,8 @@ package cis_docker
 #   docker.host.data_root_is_mountpoint : `mountpoint` on the Docker data root
 #   docker.docker_group.{members,approved_members}[] : `getent group docker` and the operator's approved list
 #   docker.exec_audit.{privileged_events,root_user_events}[] : `ausearch -k docker` hits for docker exec
-#   docker.swarm.listeners[].{port,address} : listeners on 2377 and 7946; docker.swarm.data_path_addr
+#   docker.swarm.listeners[].address        : the address of each listener on 2377 and 7946 (7.2 reads the address only);
+#                                            docker.swarm.data_path_addr
 #   docker.policy.{allowed_added_capabilities,allowed_sensitive_mounts,allowed_privileged_ports,allowed_host_devices}[],
 #   docker.policy.max_node_cert_expiry_days : optional operator allowances (default: none, 90 days)
 #   docker.attest.*                 : attestation booleans
@@ -85,6 +89,7 @@ compliant if {
 	# fail-closed: no facts, no compliance
 	input.docker
 	count(violations) == 0
+	count(profile_violations) == 0
 }
 
 violations := sort([m | some m in _all_violations])
@@ -125,13 +130,54 @@ swarm_violations := sort([m | some m in _v_swarm])
 _all_violations contains m if some m in _v_swarm
 
 # ── profile and applicability ────────────────────────────────────────────────
+# input.cis_profile.level is the number 1 or 2 (Level 2 includes Level 1); absent => 2. Anything else ("1", "2",
+# 3, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is scoped at
+# Level 2, the stricter, and every Level 2 recommendation in scope carries the finding, because the profile that
+# decides whether it applies was not readable.
 default _level := 2
 
-_level := 1 if input.cis_profile.level in {1, "1"}
+_level := 1 if input.cis_profile.level == 1
 
 default _level_defaulted := true
 
-_level_defaulted := false if input.cis_profile.level in {1, 2, "1", "2"}
+_level_defaulted := false if input.cis_profile.level in {1, 2}
+
+default _level_invalid := false
+
+_level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+# An absent or unrecognised level is not a selection: the scope is the whole benchmark (Level 2), a PROFILE NOT
+# SELECTED finding is reported next to the control violations (it cites no recommendation id) and the result is
+# never compliant (audit 2026-11-24, round 3; before it, an absent level selected 2 with no finding).
+default _level_problem := "evidence missing — cis_profile.level not collected"
+
+_level_problem := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_level_got]) if _level_invalid
+
+profile_violations := [] if {
+	not _level_defaulted
+} else := [sprintf("PROFILE NOT SELECTED: %s (send 1 or 2). Every recommendation of the benchmark was evaluated at Level 2, and the result is not a pass for any profile.", [_level_problem])]
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_all_violations contains sprintf("%s: evidence invalid — cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, _level_got]) if {
+	_level_invalid
+	some id, r in recommendations
+	r.level == 2
+	_applies(id)
+}
 
 # swarm state as collected: "inactive", "active", "pending", "locked", "error"; "unknown" when not collected
 default _swarm_state := "unknown"
@@ -1101,7 +1147,7 @@ default r_2_5 := false
 r_2_5 if {
 	count(_as_list(_d("insecure-registries", []))) == 0
 	every r in _as_list(object.get(input.docker.info.RegistryConfig, "InsecureRegistryCIDRs", [])) { r in _loopback_cidrs }
-	every _, x in object.get(input.docker.info.RegistryConfig, "IndexConfigs", {}) { object.get(x, "Secure", true) == true }
+	every _, x in object.get(input.docker.info.RegistryConfig, "IndexConfigs", {}) { object.get(x, "Secure", null) == true }
 }
 
 default e_2_5 := false
@@ -4964,6 +5010,6 @@ compliance_report := {
 	"section_results": section_results,
 	"offenders": offenders,
 	"compliant": compliant,
-	"violation_count": count(violations),
-	"violations": violations,
+	"violation_count": count(violations) + count(profile_violations),
+	"violations": array.concat(violations, profile_violations),
 }

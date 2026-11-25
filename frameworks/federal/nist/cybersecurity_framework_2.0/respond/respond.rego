@@ -28,26 +28,55 @@ import rego.v1
 # 2.0 subcategory and the check is a fair reading of that text. The other checks were removed; their lineage
 # is the `legacy` data table at the end.
 
+# ── Evidence rule ────────────────────────────────────────────────────────────
+# Only the boolean true passes a yes/no fact. A fact that is missing, null, or any
+# other type ("true", "false", "no", 0, 1) is an evidence problem: the control fails
+# and the finding names the problem. A boolean false keeps the plain finding.
+
+default _input := {}
+
+_input := input if is_object(input)
+
+_fact(path) := object.get(_input, path, null)
+
+_not_true(path) if _fact(path) != true
+
+_finding(msg, path) := msg if _fact(path) == false
+
+_finding(msg, path) := sprintf("%s [evidence missing — input.%s not collected]", [msg, concat(".", path)]) if {
+	_fact(path) == null
+}
+
+_finding(msg, path) := sprintf("%s [evidence invalid — input.%s is not a boolean (got %s)]", [msg, concat(".", path), type_name(_fact(path))]) if {
+	value := _fact(path)
+	value != null
+	not is_boolean(value)
+}
+
 default compliant := false
 
 violation contains msg if {
-	not input.respond.analysis.vulnerability_disclosures_addressed
-	msg := "CSF ID.RA-08: Vulnerability disclosures from internal/external sources not addressed (fact check carried from CSF 1.1 RS.AN-05, which CPRT records as moved to ID.RA-08)"
+	_not_true(["respond", "analysis", "vulnerability_disclosures_addressed"])
+	finding := "CSF ID.RA-08: Vulnerability disclosures from internal/external sources not addressed (fact check carried from CSF 1.1 RS.AN-05, which CPRT records as moved to ID.RA-08)"
+	msg := _finding(finding, ["respond", "analysis", "vulnerability_disclosures_addressed"])
 }
 
 violation contains msg if {
-	not input.respond.communications.events_reported_within_criteria
-	msg := "CSF RS.CO-02: Incidents not reported consistent with established criteria"
+	_not_true(["respond", "communications", "events_reported_within_criteria"])
+	finding := "CSF RS.CO-02: Incidents not reported consistent with established criteria"
+	msg := _finding(finding, ["respond", "communications", "events_reported_within_criteria"])
 }
 
 violation contains msg if {
-	not input.respond.communications.information_shared_with_stakeholders
-	msg := "CSF RS.CO-03: Response information not shared with internal stakeholders"
+	_not_true(["respond", "communications", "information_shared_with_stakeholders"])
+	finding := "CSF RS.CO-03: Response information not shared with internal stakeholders"
+	msg := _finding(finding, ["respond", "communications", "information_shared_with_stakeholders"])
 }
 
 violation contains msg if {
-	not input.respond.mitigation.incidents_contained
-	msg := "CSF RS.MI-01: Incidents not contained"
+	_not_true(["respond", "mitigation", "incidents_contained"])
+	finding := "CSF RS.MI-01: Incidents not contained"
+	msg := _finding(finding, ["respond", "mitigation", "incidents_contained"])
 }
 
 compliant if count(violation) == 0

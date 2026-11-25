@@ -6,8 +6,8 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 8
+#     checks: 22
+#     cited: 22
 #     density: orchestrator
 #     basis: role
 #     tested: true
@@ -22,15 +22,25 @@ package cis_rhel9
 # Automated/Manual status and profiles are the workbook's. Levels differ by platform (e.g. 1.1.1.9 is Level 1
 # Server but Level 2 Workstation), so each control carries its own server/workstation level.
 #
-# PROFILE: input.profile selects one of level1_server (default), level2_server, level1_workstation,
-# level2_workstation ("level1" / "level2", the v2.0.0 values, mean the server profiles). A Level 2 profile
-# includes the Level 1 recommendations of the same platform.
+# PROFILE: input.profile selects one of level1_server, level2_server, level1_workstation, level2_workstation
+# ("level1" / "level2", the v2.0.0 values, mean the server profiles). A Level 2 profile includes the Level 1
+# recommendations of the same platform. There is no default: "this recommendation is outside the profile" is a
+# statement the input has to make. With input.profile absent, null, not a string or not one of those names,
+# no recommendation is declared out of scope (every one is evaluated), profile is "unrecognised", a
+# PROFILE NOT SELECTED finding is reported and the result is never compliant.
 #
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
 # not collected, and every Manual one fails until attested, so a control is counted as passed only when
 # real facts satisfy it. A section none of whose input keys is present is also NOT ASSESSED (listed in
-# not_assessed_sections, never compliant). The section keys are the v2.0.0 ones; each now holds the v3.0.0
-# sections listed in the package title of its module.
+# not_assessed_sections, never compliant), but only where the section is REQUIRED: where a recommendation in
+# the selected scope reads one of its input keys (section_required_from, worked out by the generator from what
+# each recommendation reads). A section no recommendation in scope reads is not a gap when it is absent, and
+# its content is not judged. The section keys are the v2.0.0 ones; each now holds the v3.0.0 sections listed
+# in the package title of its module.
+#
+# 100 MEANS COMPLIANT: compliance_percentage is the share of the required sections that are compliant. When every
+# section is compliant and the result is still not compliant (a finding outside the recommendations stands:
+# PROFILE NOT SELECTED) it is null and compliance_percentage_reason says why: never 100 beside compliant == false.
 
 import rego.v1
 
@@ -4926,13 +4936,45 @@ profiles := {"level1_server": {"platform": "server", "level": 1}, "level2_server
 
 profile_aliases := {"level1": "level1_server", "level2": "level2_server"}
 
-default profile := "level1_server"
+default profile := "unrecognised"
 
 profile := input.profile if input.profile in object.keys(profiles)
 
 profile := profile_aliases[input.profile] if not input.profile in object.keys(profiles)
 
-applies(c) if c.levels[profiles[profile].platform] <= profiles[profile].level
+default profile_selected := false
+
+profile_selected if profile in object.keys(profiles)
+
+# What is in scope. Without a recognised profile nothing may be declared not applicable, so the scope is the
+# one that holds every recommendation of the benchmark (Level 2 - Server; the generator checks that it does).
+default scope := {"platform": "server", "level": 2}
+
+scope := profiles[profile] if profile_selected
+
+_profile_names := concat(", ", sort(object.keys(profiles)))
+
+_profile_problem := "evidence missing — profile not collected" if object.get(input, "profile", null) == null
+
+_profile_problem := sprintf("profile is not a string (got %s)", [type_name(input.profile)]) if {
+	object.get(input, "profile", null) != null
+	not is_string(input.profile)
+}
+
+_profile_problem := sprintf("profile %s is not a recognised profile", [json.marshal(input.profile)]) if {
+	is_string(input.profile)
+	not profile_selected
+}
+
+# reported next to the control violations (never one of them: it cites no recommendation id)
+profile_violations := [] if {
+	profile_selected
+} else := [sprintf(
+	"PROFILE NOT SELECTED: %s (send one of %s). No recommendation was declared out of scope: every one of the benchmark was evaluated, and the result is not a pass for any profile.",
+	[_profile_problem, _profile_names],
+)]
+
+applies(c) if c.levels[scope.platform] <= scope.level
 
 applicable_ids := {id | some id, c in controls; applies(c)}
 
@@ -5018,20 +5060,105 @@ section_inputs := {
 	"section_6_2_user_group": ["user_group"],
 }
 
-section_assessed(name) if {
-	some k in section_inputs[name]
-	input[k]
+# a section input counts as collected unless it is absent, null or false (null used to count as collected,
+# so a nulled section was reported as assessed while a dropped one was NOT ASSESSED)
+input_collected(k) if {
+	v := object.get(input, k, null)
+	v != null
+	v != false
 }
 
-missing_inputs := {name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}
+section_assessed(name) if {
+	some k in section_inputs[name]
+	input_collected(k)
+}
 
-not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+# The lowest level, per platform, at which a recommendation reads one of the section's input keys (generated
+# from what each recommendation reads, whichever module it is in). A section is required when the selected
+# scope reaches that level; without a recognised profile the scope is the whole benchmark, so every section is.
+section_required_from := {
+	"section_1_1_filesystem": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_1_2_1_7_1_8_initial_setup": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_1_3_1_4_1_5_boot_security": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_1_6_selinux": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_2_services": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_3_network": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_4_1_auditd": {
+		"server": 2,
+		"workstation": 2,
+	},
+	"section_4_2_logging": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_1_cron": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_2_ssh": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_3_sudo": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_5_4_5_5_pam": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_6_1_file_permissions": {
+		"server": 1,
+		"workstation": 1,
+	},
+	"section_6_2_user_group": {
+		"server": 1,
+		"workstation": 1,
+	},
+}
 
-assessed_sections := count(section_inputs) - count(not_assessed_sections)
+section_required(name) if scope.level >= section_required_from[name][scope.platform]
 
-assessment_coverage_percentage := round((assessed_sections * 100) / count(section_inputs))
+required_sections := sort([name | some name, _ in section_inputs; section_required(name)])
 
-section_assessment := {name: {"assessed": section_assessed(name) == true, "missing_inputs": missing_inputs[name]} |
+# the input keys a required section did not receive (nothing is missing from a section that is not required)
+missing_inputs := {name: _missing_keys(name) | some name, _ in section_inputs}
+
+_missing_keys(name) := [k | some k in section_inputs[name]; not input_collected(k)] if {
+	section_required(name)
+} else := []
+
+not_assessed_sections := sort([name | some name in required_sections; not section_assessed(name)])
+
+assessed_sections := count(required_sections) - count(not_assessed_sections)
+
+default assessment_coverage_percentage := 0
+
+assessment_coverage_percentage := round((assessed_sections * 100) / count(required_sections)) if count(required_sections) > 0
+
+section_assessment := {name: {
+	"required": section_required(name) == true,
+	"assessed": section_assessed(name) == true,
+	"missing_inputs": missing_inputs[name],
+} |
 	some name, _ in section_inputs
 }
 
@@ -5057,7 +5184,37 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / total_sections if total_sections > 0
+compliance_percentage := (compliant_sections * 100) / total_sections if {
+	is_number(total_sections)
+	total_sections > 0
+	not _percentage_withheld
+}
+
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {
+	is_number(total_sections)
+	total_sections > 0
+	_percentage_withheld
+}
+
+_percentage_withheld if {
+	not compliant
+	compliant_sections == total_sections
+}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {
+	_percentage_withheld
+	not profile_selected
+}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {
+	_percentage_withheld
+	profile_selected
+}
 
 total_controls_covered := count(applicable_ids)
 
@@ -5068,6 +5225,7 @@ compliant if {
 	count(applicable_ids) > 0
 	count(failing_ids) == 0
 	count(not_assessed_sections) == 0
+	profile_selected
 }
 
 # =============================================================================
@@ -5213,18 +5371,18 @@ overall_status := "compliant" if {
 	compliant
 } else := "non_compliant"
 
-level2_ids := {id | some id, c in controls; object.get(c.levels, profiles[profile].platform, 0) == 2}
+level2_ids := {id | some id, c in controls; object.get(c.levels, scope.platform, 0) == 2}
 
 l2_violations_active := [v | some v in all_violations; split(v, ":")[0] in level2_ids] if {
-	profiles[profile].level == 2
+	scope.level == 2
 } else := []
 
 default l2_compliant := false
 
-l2_compliant if profiles[profile].level == 1
+l2_compliant if scope.level == 1
 
 l2_compliant if {
-	profiles[profile].level == 2
+	scope.level == 2
 	count(l2_violations_active) == 0
 }
 
@@ -5250,8 +5408,8 @@ compliance_assessment := {
 	"total_controls": count(applicable_ids),
 	"sections_evaluated": total_sections,
 	"sections_compliant": compliant_sections,
-	"violations": all_violations,
-	"violation_count": count(all_violations),
+	"violations": array.concat(all_violations, profile_violations),
+	"violation_count": count(all_violations) + count(profile_violations),
 	"summary": executive_summary,
 }
 
@@ -5485,7 +5643,7 @@ CONTROL_INDEX := [
 	{"basis": "evidence", "evidence": ["sudo.sudoers_d_files", "sudo.sudoers_group", "sudo.sudoers_mode", "sudo.sudoers_owner"], "id": "5.2.2", "profile": ["Level 1 - Server"]},
 	{"basis": "evidence", "evidence": ["sudo.sudoers_d_dir.group", "sudo.sudoers_d_dir.mode", "sudo.sudoers_d_dir.owner"], "id": "5.2.3", "profile": ["Level 1 - Server"]},
 	{"basis": "evidence", "evidence": ["sudo.sudoers_content"], "id": "5.2.4", "profile": ["Level 1 - Server", "Level 1 - Workstation"]},
-	{"basis": "evidence", "evidence": ["sudo.logfile_exists", "sudo.sudoers_content"], "id": "5.2.5", "profile": ["Level 1 - Server", "Level 1 - Workstation"]},
+	{"basis": "evidence", "evidence": ["sudo.sudoers_content"], "id": "5.2.5", "profile": ["Level 1 - Server", "Level 1 - Workstation"]},
 	{"basis": "evidence", "evidence": ["sudo.sudoers_content"], "id": "5.2.6", "profile": ["Level 2 - Server", "Level 2 - Workstation"]},
 	{"basis": "evidence", "evidence": ["sudo.sudoers_content"], "id": "5.2.7", "profile": ["Level 1 - Server", "Level 1 - Workstation"]},
 	{"basis": "evidence", "evidence": ["sudo.sudoers_content"], "id": "5.2.8", "profile": ["Level 1 - Server"]},

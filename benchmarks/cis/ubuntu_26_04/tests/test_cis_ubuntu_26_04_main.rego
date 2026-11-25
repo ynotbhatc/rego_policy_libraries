@@ -14,7 +14,7 @@ test_empty_input_fails_closed if {
 	count(object.keys(r)) == 17
 	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage"] { k in object.keys(r) }
 	r.compliant == false
-	r.total_controls == 274
+	r.total_controls == 350
 	r.failed_controls == r.total_controls
 	r.passed_controls == 0
 	some v in r.violations
@@ -53,10 +53,72 @@ test_profile_level2_workstation_count if {
 	r.failed_controls == r.total_controls
 }
 
-test_unknown_profile_defaults_to_level1_server if {
+test_unknown_profile_is_not_selected_and_evaluates_everything if {
 	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": "bogus"}
-	r.profile == "level1_server"
-	r.total_controls == 274
+	r.profile == "unrecognised"
+	r.total_controls == 350
+	r.compliant == false
+	r.failed_controls == r.total_controls
+	count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+}
+
+# The mistyped profile values are checked in 4 slices (index modulo 4) and the absent profile on its own, one test each,
+# so that no test runs long enough to meet the suite's per-test timeout on the oldest supported OPA. Every value is
+# in exactly one slice.
+_mistyped_profiles := [null, 1, true, [], {}, "", "Level1_Server", "level_1_server"]
+
+_mistyped_profile_slice(i) := [p | some j, p in _mistyped_profiles; j % 4 == i]
+
+test_the_mistyped_profile_slices_cover_every_value if {
+	sum([count(_mistyped_profile_slice(i)) | some i in numbers.range(0, 3)]) == count(_mistyped_profiles)
+	count(_mistyped_profiles) == 8
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_0 if {
+	every p in _mistyped_profile_slice(0) {
+		r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_1 if {
+	every p in _mistyped_profile_slice(1) {
+		r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_2 if {
+	every p in _mistyped_profile_slice(2) {
+		r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant_slice_3 if {
+	every p in _mistyped_profile_slice(3) {
+		r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+}
+
+test_absent_profile_is_not_selected_and_never_compliant if {
+	r0 := data.cis_ubuntu_26_04.main.compliance_report with input as {"attest": {"x": true}}
+	r0.profile == "unrecognised"
+	r0.compliant == false
+	r0.compliance_percentage < 100
 }
 
 test_one_attested_control_passes if {
@@ -93,4 +155,23 @@ test_not_assessed_message_kept_for_applicable_section if {
 	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"ssh": {"sshd_config_raw": "permitrootlogin no"}, "profile": "level1_server"}
 	some v in r.violations
 	startswith(v, "NOT ASSESSED: ")
+}
+
+# Round 4 (2026-11-24): with every recommendation passing but no profile selected the report is not compliant,
+# passed + failed == total, and the percentage is null with a reason, never 100 beside compliant == false.
+test_unselected_profile_with_nothing_failed_withholds_the_percentage if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"attest": {"x": true}} with data.cis_ubuntu_26_04.failing_ids as set()
+	r.compliant == false
+	r.failed_controls == 0
+	r.passed_controls == r.total_controls
+	r.passed_controls + r.failed_controls == r.total_controls
+	r.compliance_percentage == null
+	startswith(r.compliance_percentage_reason, "no profile selected")
+}
+
+test_percentage_is_a_number_when_a_control_failed if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"attest": {"x": true}}
+	r.failed_controls > 0
+	is_number(r.compliance_percentage)
+	not "compliance_percentage_reason" in object.keys(r)
 }

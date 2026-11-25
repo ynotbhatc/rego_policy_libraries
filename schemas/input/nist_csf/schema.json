@@ -463,7 +463,7 @@
        "description": "Read in detect.rego."
       },
       "detected_events_analyzed": {
-       "description": "Read in detect.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -471,7 +471,7 @@
        ]
       },
       "event_data_aggregated": {
-       "description": "Read in detect.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -479,7 +479,7 @@
        ]
       },
       "impact_determined": {
-       "description": "Read in detect.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -493,7 +493,7 @@
      "type": "object",
      "properties": {
       "external_provider_activity_monitored": {
-       "description": "Read in detect.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -504,7 +504,7 @@
        "description": "Read in detect.rego."
       },
       "network_monitored": {
-       "description": "Read in detect.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -515,7 +515,7 @@
        "description": "Read in detect.rego."
       },
       "physical_environment_monitored": {
-       "description": "Read in detect.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -847,7 +847,7 @@
        "description": "Read in identify.rego."
       },
       "organizational_communication_mapped": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -855,7 +855,7 @@
        ]
       },
       "physical_devices_inventoried": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -863,7 +863,7 @@
        ]
       },
       "resources_prioritized": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -895,7 +895,7 @@
      "type": "object",
      "properties": {
       "asset_vulnerabilities_identified": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -903,7 +903,7 @@
        ]
       },
       "cyber_threat_intelligence_received": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -911,7 +911,7 @@
        ]
       },
       "potential_impacts_identified": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -919,7 +919,7 @@
        ]
       },
       "risk_determined": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -927,7 +927,7 @@
        ]
       },
       "threats_identified_and_documented": {
-       "description": "Read in identify.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -1051,30 +1051,6 @@
      "description": "Read in nist_csf_main.rego.",
      "type": "object",
      "properties": {
-      "DE.AE-02": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "DE.AE-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "DE.AE-04": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "DE.AE-06": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
@@ -1099,31 +1075,7 @@
         true
        ]
       },
-      "DE.CM-01": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "DE.CM-02": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "DE.CM-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "DE.CM-06": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1259,14 +1211,6 @@
         true
        ]
       },
-      "GV.RM-06": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "GV.RM-07": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
@@ -1387,14 +1331,6 @@
         true
        ]
       },
-      "ID.AM-01": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "ID.AM-02": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
@@ -1403,23 +1339,7 @@
         true
        ]
       },
-      "ID.AM-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "ID.AM-04": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "ID.AM-05": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1475,46 +1395,6 @@
         true
        ]
       },
-      "ID.RA-01": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "ID.RA-02": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "ID.RA-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "ID.RA-04": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "ID.RA-05": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "ID.RA-06": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
@@ -1524,14 +1404,6 @@
        ]
       },
       "ID.RA-07": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "ID.RA-08": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1563,47 +1435,7 @@
         true
        ]
       },
-      "PR.AA-02": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.AA-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "PR.AA-04": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.AA-05": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.AA-06": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.AT-01": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1619,31 +1451,7 @@
         true
        ]
       },
-      "PR.DS-01": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.DS-02": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "PR.DS-10": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.DS-11": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1668,14 +1476,6 @@
        ]
       },
       "PR.IR-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "PR.IR-04": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1740,14 +1540,6 @@
        ]
       },
       "RC.CO-04": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "RC.RP-01": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1827,22 +1619,6 @@
         true
        ]
       },
-      "RS.CO-02": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "RS.CO-03": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
       "RS.MA-01": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
@@ -1876,14 +1652,6 @@
        ]
       },
       "RS.MA-05": {
-       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
-       "type": "boolean",
-       "x-type-source": "fixture",
-       "examples": [
-        true
-       ]
-      },
-      "RS.MI-01": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
@@ -1939,7 +1707,7 @@
      "type": "object",
      "properties": {
       "recovery_plan_executed": {
-       "description": "Read in recover.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -1971,7 +1739,7 @@
        "description": "Read in respond.rego."
       },
       "vulnerability_disclosures_addressed": {
-       "description": "Read in respond.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -1988,7 +1756,7 @@
        "description": "Read in respond.rego."
       },
       "events_reported_within_criteria": {
-       "description": "Read in respond.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -1996,7 +1764,7 @@
        ]
       },
       "information_shared_with_stakeholders": {
-       "description": "Read in respond.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -2028,7 +1796,7 @@
      "type": "object",
      "properties": {
       "incidents_contained": {
-       "description": "Read in respond.rego.",
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
        "x-type-source": "fixture",
        "examples": [
@@ -2278,16 +2046,10 @@
   "information_protection.sdlc.security_integrated",
   "nist_csf",
   "nist_csf.subcategories",
-  "nist_csf.subcategories[\"DE.AE-02\"]",
-  "nist_csf.subcategories[\"DE.AE-03\"]",
-  "nist_csf.subcategories[\"DE.AE-04\"]",
   "nist_csf.subcategories[\"DE.AE-06\"]",
   "nist_csf.subcategories[\"DE.AE-07\"]",
   "nist_csf.subcategories[\"DE.AE-08\"]",
-  "nist_csf.subcategories[\"DE.CM-01\"]",
-  "nist_csf.subcategories[\"DE.CM-02\"]",
   "nist_csf.subcategories[\"DE.CM-03\"]",
-  "nist_csf.subcategories[\"DE.CM-06\"]",
   "nist_csf.subcategories[\"DE.CM-09\"]",
   "nist_csf.subcategories[\"GV.OC-01\"]",
   "nist_csf.subcategories[\"GV.OC-02\"]",
@@ -2304,7 +2066,6 @@
   "nist_csf.subcategories[\"GV.RM-03\"]",
   "nist_csf.subcategories[\"GV.RM-04\"]",
   "nist_csf.subcategories[\"GV.RM-05\"]",
-  "nist_csf.subcategories[\"GV.RM-06\"]",
   "nist_csf.subcategories[\"GV.RM-07\"]",
   "nist_csf.subcategories[\"GV.RR-01\"]",
   "nist_csf.subcategories[\"GV.RR-02\"]",
@@ -2320,43 +2081,25 @@
   "nist_csf.subcategories[\"GV.SC-08\"]",
   "nist_csf.subcategories[\"GV.SC-09\"]",
   "nist_csf.subcategories[\"GV.SC-10\"]",
-  "nist_csf.subcategories[\"ID.AM-01\"]",
   "nist_csf.subcategories[\"ID.AM-02\"]",
-  "nist_csf.subcategories[\"ID.AM-03\"]",
   "nist_csf.subcategories[\"ID.AM-04\"]",
-  "nist_csf.subcategories[\"ID.AM-05\"]",
   "nist_csf.subcategories[\"ID.AM-07\"]",
   "nist_csf.subcategories[\"ID.AM-08\"]",
   "nist_csf.subcategories[\"ID.IM-01\"]",
   "nist_csf.subcategories[\"ID.IM-02\"]",
   "nist_csf.subcategories[\"ID.IM-03\"]",
   "nist_csf.subcategories[\"ID.IM-04\"]",
-  "nist_csf.subcategories[\"ID.RA-01\"]",
-  "nist_csf.subcategories[\"ID.RA-02\"]",
-  "nist_csf.subcategories[\"ID.RA-03\"]",
-  "nist_csf.subcategories[\"ID.RA-04\"]",
-  "nist_csf.subcategories[\"ID.RA-05\"]",
   "nist_csf.subcategories[\"ID.RA-06\"]",
   "nist_csf.subcategories[\"ID.RA-07\"]",
-  "nist_csf.subcategories[\"ID.RA-08\"]",
   "nist_csf.subcategories[\"ID.RA-09\"]",
   "nist_csf.subcategories[\"ID.RA-10\"]",
   "nist_csf.subcategories[\"PR.AA-01\"]",
-  "nist_csf.subcategories[\"PR.AA-02\"]",
-  "nist_csf.subcategories[\"PR.AA-03\"]",
   "nist_csf.subcategories[\"PR.AA-04\"]",
-  "nist_csf.subcategories[\"PR.AA-05\"]",
-  "nist_csf.subcategories[\"PR.AA-06\"]",
-  "nist_csf.subcategories[\"PR.AT-01\"]",
   "nist_csf.subcategories[\"PR.AT-02\"]",
-  "nist_csf.subcategories[\"PR.DS-01\"]",
-  "nist_csf.subcategories[\"PR.DS-02\"]",
   "nist_csf.subcategories[\"PR.DS-10\"]",
-  "nist_csf.subcategories[\"PR.DS-11\"]",
   "nist_csf.subcategories[\"PR.IR-01\"]",
   "nist_csf.subcategories[\"PR.IR-02\"]",
   "nist_csf.subcategories[\"PR.IR-03\"]",
-  "nist_csf.subcategories[\"PR.IR-04\"]",
   "nist_csf.subcategories[\"PR.PS-01\"]",
   "nist_csf.subcategories[\"PR.PS-02\"]",
   "nist_csf.subcategories[\"PR.PS-03\"]",
@@ -2365,7 +2108,6 @@
   "nist_csf.subcategories[\"PR.PS-06\"]",
   "nist_csf.subcategories[\"RC.CO-03\"]",
   "nist_csf.subcategories[\"RC.CO-04\"]",
-  "nist_csf.subcategories[\"RC.RP-01\"]",
   "nist_csf.subcategories[\"RC.RP-02\"]",
   "nist_csf.subcategories[\"RC.RP-03\"]",
   "nist_csf.subcategories[\"RC.RP-04\"]",
@@ -2375,14 +2117,11 @@
   "nist_csf.subcategories[\"RS.AN-06\"]",
   "nist_csf.subcategories[\"RS.AN-07\"]",
   "nist_csf.subcategories[\"RS.AN-08\"]",
-  "nist_csf.subcategories[\"RS.CO-02\"]",
-  "nist_csf.subcategories[\"RS.CO-03\"]",
   "nist_csf.subcategories[\"RS.MA-01\"]",
   "nist_csf.subcategories[\"RS.MA-02\"]",
   "nist_csf.subcategories[\"RS.MA-03\"]",
   "nist_csf.subcategories[\"RS.MA-04\"]",
   "nist_csf.subcategories[\"RS.MA-05\"]",
-  "nist_csf.subcategories[\"RS.MI-01\"]",
   "nist_csf.subcategories[\"RS.MI-02\"]",
   "recover",
   "recover.communications",

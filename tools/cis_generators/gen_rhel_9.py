@@ -33,6 +33,7 @@ Rules of the generated code:
     every Automated one.
 """
 import json
+import os
 import pathlib
 import re
 import sys
@@ -529,6 +530,15 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -547,9 +557,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -893,8 +907,8 @@ put("1.8.2", "disable-user-list", gdm(["gdm_disable_user_list", "gdm_disable_use
                                       {"gdm_disable_user_list": True, "gdm_disable_user_list_override_allowed": False},
                                       {"gdm_disable_user_list": False, "gdm_disable_user_list_override_allowed": False}))
 put("1.8.3", "screen lock", gdm(["gdm_idle_delay", "gdm_lock_delay", "gdm_lock_override_allowed"],
-                                [f"num({IS}gdm_idle_delay) > 0", f"num({IS}gdm_idle_delay) <= 900",
-                                 f"num({IS}gdm_lock_delay) >= 0", f"num({IS}gdm_lock_delay) <= 5",
+                                [f"fnum({IS}gdm_idle_delay) > 0", f"fnum({IS}gdm_idle_delay) <= 900",
+                                 f"fnum({IS}gdm_lock_delay) >= 0", f"fnum({IS}gdm_lock_delay) <= 5",
                                  IS + "gdm_lock_override_allowed == false"],
                                 {"gdm_idle_delay": 900, "gdm_lock_delay": 5, "gdm_lock_override_allowed": False},
                                 {"gdm_idle_delay": 0, "gdm_lock_delay": 5, "gdm_lock_override_allowed": False}))
@@ -952,7 +966,7 @@ put("2.1.19", "mail transfer agents", custom(
     {"mta": {"has_mta": True, "non_loopback_listeners": ["0.0.0.0:25"], "inet_interfaces": "all"}},
     {"mta": {"has_mta": True}},
     reads=[["mta", "has_mta"], ["mta", "non_loopback_listeners"], ["mta", "inet_interfaces"]],
-    ev_alts=[['input.mta.has_mta == false'], ['is_array(input.mta.non_loopback_listeners)']]))
+    ev_alts=[['input.mta.has_mta == false'], ['mta_flag_readable', 'is_array(input.mta.non_loopback_listeners)']]))
 put("2.1.20", "graphical user interface", custom(
     None,
     [['input.gui.environment_installed == false'],
@@ -984,8 +998,9 @@ put("2.3.1", "time synchronization is in use", alt(boolean(["chronyd", "installe
                                                    ['is_boolean(input.packages.chrony)'], ['input.packages.chrony == true'],
                                                    [["packages", "chrony"]], "packages.chrony"))
 put("2.3.2", "chrony is configured", custom(
-    [f'{CH}servers_configured != null', f'{CH}pools_configured != null'],
-    [[f'num({CH}servers_configured) > 0'], [f'num({CH}pools_configured) > 0']],
+    # both counts are whole numbers >= 0: 0.5 or -1 sources is not a count, whatever the other field says
+    [f'fnum({CH}servers_configured) >= 0', f'fnum({CH}pools_configured) >= 0'],
+    [[f'fnum({CH}servers_configured) > 0'], [f'fnum({CH}pools_configured) > 0']],
     "chronyd.servers_configured/pools_configured",
     {"chronyd": {"servers_configured": 0, "pools_configured": 1}},
     {"chronyd": {"servers_configured": 0, "pools_configured": 0}},
@@ -1218,9 +1233,12 @@ put("5.2.4", "use pty", custom([f'text_collected({ref(SU)})'],
                                dotted(SU), nest(SU, "Defaults use_pty\nroot ALL=(ALL) ALL"),
                                nest(SU, "Defaults !use_pty\nroot ALL=(ALL) ALL"), reads=[SU]))
 put("5.2.5", "ensure sudo log file exists", custom(
-    [f'text_collected({ref(SU)})'], [['sudo_logfile', f'not {SD}logfile_exists == false']], "sudo.sudoers_content/logfile_exists",
-    {"sudo": {"sudoers_content": 'Defaults logfile="/var/log/sudo.log"', "logfile_exists": True}},
-    {"sudo": {"sudoers_content": "# Defaults logfile=/var/log/sudo.log"}}, reads=[SU, ["sudo", "logfile_exists"]]))
+    # the audit procedure is the `Defaults logfile=<path>` line of the sudoers files and nothing else: whether the
+    # file is on disk yet is not part of it (sudo creates the file at first use), so no existence flag is read
+    [f'text_collected({ref(SU)})'], [['sudo_logfile']],
+    "sudo.sudoers_content",
+    {"sudo": {"sudoers_content": 'Defaults logfile="/var/log/sudo.log"'}},
+    {"sudo": {"sudoers_content": "# Defaults logfile=/var/log/sudo.log"}}, reads=[SU]))
 put("5.2.6", "password for escalation", text_has(SU, "(^|[\\s:,])NOPASSWD\\s*:", False,
                                                  "%wheel ALL=(ALL) ALL", "%wheel ALL=(ALL) NOPASSWD: ALL"))
 put("5.2.7", "re-authentication", text_has(SU, "!authenticate\\b", False, "Defaults use_pty", "Defaults !authenticate"))
@@ -1361,8 +1379,8 @@ def shadow_rule(defs_path, defs_cond, user_cond, good_def, bad_def, good_user):
     """login.defs default AND every user that has a password."""
     dp = ref(defs_path)
     return custom(
-        [f'{dp} != null', f'is_array({ref(SH)})', f'count({ref(SH)}) > 0'],
-        [[f'v := num({dp})'] + defs_cond + [f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ {user_cond} }}']],
+        [f'is_number({dp})', f'is_array({ref(SH)})', f'count({ref(SH)}) > 0', f'every u in {ref(SH)} {{ is_boolean(u.has_password) }}'],
+        [[f'v := fnum({dp})'] + defs_cond + [f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ {user_cond} }}']],
         f"{dotted(defs_path)}/user_group.shadow_entries",
         merge(nest(defs_path, good_def), nest(SH, [dict({"user": "alice", "has_password": True}, **good_user)])),
         merge(nest(defs_path, bad_def), nest(SH, [dict({"user": "alice", "has_password": True}, **good_user)])),
@@ -1370,19 +1388,19 @@ def shadow_rule(defs_path, defs_cond, user_cond, good_def, bad_def, good_user):
 
 
 put("5.4.1.1", "password expiration is", shadow_rule(["pam", "pass_max_days"], ['v >= 1', 'v <= 365'],
-                                                     'num(u.max_days) >= 1; num(u.max_days) <= 365', 365, 99999, {"max_days": 365}))
+                                                     'fnum(u.max_days) >= 1; fnum(u.max_days) <= 365', 365, 99999, {"max_days": 365}))
 put("5.4.1.2", "minimum password days", attest("minimum_password_days_reviewed"))
-put("5.4.1.3", "expiration warning days", shadow_rule(["pam", "pass_warn_age"], ['v >= 7'], 'num(u.warn_days) >= 7', 7, 3,
+put("5.4.1.3", "expiration warning days", shadow_rule(["pam", "pass_warn_age"], ['v >= 7'], 'fnum(u.warn_days) >= 7', 7, 3,
                                                       {"warn_days": 7}))
 put("5.4.1.4", "ensure strong password hashing algorithm", custom(
     [f'text_collected({PA}encrypt_method)'], [[f'upper({PA}encrypt_method) in {{"SHA512", "YESCRYPT"}}']], "pam.encrypt_method",
     {"pam": {"encrypt_method": "SHA512"}}, {"pam": {"encrypt_method": "MD5"}}, reads=[["pam", "encrypt_method"]]))
 # INACTIVE: -1 (and any negative value) disables the lock and fails, like a value over 45 (decisions 2026-10-19)
 put("5.4.1.5", "inactive password lock", shadow_rule(["pam", "inactive_days"], ['v >= 0', 'v <= 45'],
-                                                     'num(u.inactive) >= 0; num(u.inactive) <= 45', 30, -1, {"inactive": 30}))
+                                                     'fnum(u.inactive) >= 0; fnum(u.inactive) <= 45', 30, -1, {"inactive": 30}))
 put("5.4.1.6", "last password change date", custom(
-    [f'is_array({ref(SH)})', f'count({ref(SH)}) > 0'],
-    [[f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ num(u.last_change) <= today_days }}']], dotted(SH),
+    [f'is_array({ref(SH)})', f'count({ref(SH)}) > 0', f'every u in {ref(SH)} {{ is_boolean(u.has_password) }}'],
+    [[f'every u in [u | some u in {ref(SH)}; u.has_password == true] {{ fnum(u.last_change) <= today_days }}']], dotted(SH),
     nest(SH, [{"user": "alice", "has_password": True, "last_change": 19000}]),
     nest(SH, [{"user": "alice", "has_password": True, "last_change": 9999999}]), reads=[SH]))
 UG = "input.user_group."
@@ -1432,8 +1450,8 @@ put("5.4.2.8", "without a valid login shell are locked", custom(
 put("5.4.3.1", "nologin is not listed", text_has(["user_group", "shells_content"], "/nologin\\b", False,
                                                   "/bin/bash\n/bin/sh", "/bin/bash\n/usr/sbin/nologin"))
 put("5.4.3.2", "shell timeout", custom(
-    [f'{PA}tmout != null', f'is_boolean({PA}tmout_readonly_exported)'],
-    [[f'num({PA}tmout) > 0', f'num({PA}tmout) <= 900', f'{PA}tmout_readonly_exported == true']],
+    [f'is_number({PA}tmout)', f'is_boolean({PA}tmout_readonly_exported)'],
+    [[f'fnum({PA}tmout) > 0', f'fnum({PA}tmout) <= 900', f'{PA}tmout_readonly_exported == true']],
     "pam.tmout/tmout_readonly_exported", {"pam": {"tmout": 900, "tmout_readonly_exported": True}},
     {"pam": {"tmout": 0, "tmout_readonly_exported": True}}, {"pam": {"tmout": 900}},
     reads=[["pam", "tmout"], ["pam", "tmout_readonly_exported"]]))
@@ -1744,7 +1762,7 @@ put("7.1.10", "access to /etc/security/opasswd", _op)
 def sweep_ev(lists, counts):
     """ev_alts: the offender lists collected, and either a sweep that finished or something found"""
     base = [f'is_array({x})' for x in lists]
-    finished = [f'not {c.rsplit(".", 1)[0]}.truncated == true' for c in counts]
+    finished = [f'object.get({c.rsplit(".", 1)[0]}, "truncated", false) == false' for c in counts]
     found = [[f'count({x}) > 0'] for x in lists] + [[f'is_number(object.get({c.rsplit(".", 1)[0]}, "count", 0))',
                                                       f'object.get({c.rsplit(".", 1)[0]}, "count", 0) > 0'] for c in counts]
     return [base + finished] + [base + f for f in found]
@@ -1853,8 +1871,21 @@ selinux_config_mode := input.ansible_facts.ansible_selinux.config_mode if {
 }
 ''',
     "services": r'''
+# mta.has_mta is optional beside the listener list (the audit procedure reads the listening sockets), but once
+# sent it is a boolean: "false" or 0 is unreadable evidence, not a statement that an MTA is or is not installed
+mta_flag_readable if object.get(input, ["mta", "has_mta"], null) == null
+
+mta_flag_readable if is_boolean(input.mta.has_mta)
+
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
+
+# sent but not a string (a number, a boolean, a list): unreadable, so not proof of loopback-only
+mta_interfaces_open if {
+	v := object.get(input, ["mta", "inet_interfaces"], null)
+	v != null
+	not is_string(v)
+}
 
 # Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
 # 0.0.0.0 is the wildcard address (all interfaces), not loopback.
@@ -1940,12 +1971,18 @@ banner_flag_collected if is_boolean(input.ssh.banner_contains_sensitive_info)
 
 banner_text_collected if banner_flag_collected
 
+# the initial_setup flag stands in only when the ssh flag was not sent at all (absent or null). A flag that was
+# sent with the wrong type ("false", 0) is unreadable evidence about the banner, not a reason to look elsewhere.
+banner_flag_absent if object.get(input, ["ssh", "banner_contains_sensitive_info"], null) == null
+
 banner_text_collected if {
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue.net"
 	is_boolean(input.initial_setup.issue_net_contains_sensitive_info)
 }
 
 banner_text_collected if {
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue"
 	is_boolean(input.initial_setup.issue_contains_sensitive_info)
 }
@@ -1953,13 +1990,13 @@ banner_text_collected if {
 banner_text_ok if input.ssh.banner_contains_sensitive_info == false
 
 banner_text_ok if {
-	not banner_flag_collected
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue.net"
 	input.initial_setup.issue_net_contains_sensitive_info == false
 }
 
 banner_text_ok if {
-	not banner_flag_collected
+	banner_flag_absent
 	sshd_value("banner") == "/etc/issue"
 	input.initial_setup.issue_contains_sensitive_info == false
 }
@@ -1978,7 +2015,9 @@ sudo_defaults_has(re) if {
 	regex.match(re, l)
 }
 
-sudo_logfile if sudo_defaults_has(`(^|[\s,])logfile\s*=`)
+# a Defaults line that sets logfile to a non-empty path (the audit procedure's own test; `logfile=` with no
+# value sets nothing)
+sudo_logfile if sudo_defaults_has(`(^|[\s,])logfile\s*=\s*["']?[^\s"',]`)
 
 sudo_timeouts := [num(m[1]) |
 	some l in active_lines(input.sudo.sudoers_content)
@@ -2839,11 +2878,48 @@ EXT_IMPORTS = "# Extended hardening modules (STIG / NIST / EDA drift detection)"
 EXT_RULES = "# " + "=" * 77 + "\n# EXTENDED HARDENING"
 
 
+def section_required_from(recs):
+    """Per section, the lowest level of each platform at which a recommendation reads one of its input keys.
+
+    A section's input is required only where a recommendation in scope reads it: at a profile below that level
+    (or on a platform no reader applies to) its absence is not a gap in the assessment. Readers are found from
+    each recommendation's declared reads and from the top-level keys of its passing test input, whichever module
+    the recommendation lives in. Returned as {section key: {"server": level, "workstation": level}}; a platform
+    with no reader is left out."""
+    out = {}
+    for n, *_ in SECTIONS:
+        keys = set(SECTION_INPUTS.get(n) or [])
+        lv = {}
+        for rid, r in recs.items():
+            spec = L[rid]
+            tp = getattr(spec, "tp", None)
+            read = {p[0] for p in spec.reads} | (set(tp) if isinstance(tp, dict) else set())
+            if not keys & read:
+                continue
+            for kind in ("Server", "Workstation"):
+                x = level(r["profiles"], kind)
+                if x is not None:
+                    lv[kind.lower()] = min(x, lv.get(kind.lower(), 99))
+        out[SEC[n][1]] = lv
+        if os.environ.get("CIS_GEN_SECTION_TABLE"):
+            mod = {}
+            for rid, r in recs.items():
+                if section_of(rid) != n:
+                    continue
+                for kind in ("Server", "Workstation"):
+                    x = level(r["profiles"], kind)
+                    if x is not None:
+                        mod[kind.lower()] = min(x, mod.get(kind.lower(), 99))
+            print(f"section {n}: read from {lv}; module recommendations from {mod}", file=sys.stderr)
+    return out
+
+
 def emit_rollup(recs, by_mod):
     controls = controls_table(recs)
     imports = "\n".join(f"import data.{PKG}.{n}" for n, *_ in SECTIONS)
     modv = ",\n".join(f'\t"{n}": {n}.violations' for n, *_ in SECTIONS)
     sec_inputs = {SEC[n][1]: SECTION_INPUTS[n] for n, *_ in SECTIONS}
+    sec_required = section_required_from(recs)
     a = sum(1 for r in recs.values() if r["assessment"] == "Automated")
     prio = {SEC[n][1]: p for n, (p, _, _) in RECOMMEND.items()}
     recs_rules = []
@@ -2869,15 +2945,25 @@ def emit_rollup(recs, by_mod):
 # Automated/Manual status and profiles are the workbook's. Levels differ by platform (e.g. 1.1.1.9 is Level 1
 # Server but Level 2 Workstation), so each control carries its own server/workstation level.
 #
-# PROFILE: input.profile selects one of level1_server (default), level2_server, level1_workstation,
-# level2_workstation ("level1" / "level2", the v2.0.0 values, mean the server profiles). A Level 2 profile
-# includes the Level 1 recommendations of the same platform.
+# PROFILE: input.profile selects one of level1_server, level2_server, level1_workstation, level2_workstation
+# ("level1" / "level2", the v2.0.0 values, mean the server profiles). A Level 2 profile includes the Level 1
+# recommendations of the same platform. There is no default: "this recommendation is outside the profile" is a
+# statement the input has to make. With input.profile absent, null, not a string or not one of those names,
+# no recommendation is declared out of scope (every one is evaluated), profile is "unrecognised", a
+# PROFILE NOT SELECTED finding is reported and the result is never compliant.
 #
 # FAIL CLOSED: every Automated recommendation emits its own evidence-missing violation when its facts were
 # not collected, and every Manual one fails until attested, so a control is counted as passed only when
 # real facts satisfy it. A section none of whose input keys is present is also NOT ASSESSED (listed in
-# not_assessed_sections, never compliant). The section keys are the v2.0.0 ones; each now holds the v3.0.0
-# sections listed in the package title of its module.
+# not_assessed_sections, never compliant), but only where the section is REQUIRED: where a recommendation in
+# the selected scope reads one of its input keys (section_required_from, worked out by the generator from what
+# each recommendation reads). A section no recommendation in scope reads is not a gap when it is absent, and
+# its content is not judged. The section keys are the v2.0.0 ones; each now holds the v3.0.0 sections listed
+# in the package title of its module.
+#
+# 100 MEANS COMPLIANT: compliance_percentage is the share of the required sections that are compliant. When every
+# section is compliant and the result is still not compliant (a finding outside the recommendations stands:
+# PROFILE NOT SELECTED) it is null and compliance_percentage_reason says why: never 100 beside compliant == false.
 
 import rego.v1
 
@@ -2897,13 +2983,45 @@ profiles := {json.dumps({k: {"platform": v[0].lower(), "level": v[1]} for k, v i
 
 profile_aliases := {{"level1": "level1_server", "level2": "level2_server"}}
 
-default profile := "level1_server"
+default profile := "unrecognised"
 
 profile := input.profile if input.profile in object.keys(profiles)
 
 profile := profile_aliases[input.profile] if not input.profile in object.keys(profiles)
 
-applies(c) if c.levels[profiles[profile].platform] <= profiles[profile].level
+default profile_selected := false
+
+profile_selected if profile in object.keys(profiles)
+
+# What is in scope. Without a recognised profile nothing may be declared not applicable, so the scope is the
+# one that holds every recommendation of the benchmark (Level 2 - Server; the generator checks that it does).
+default scope := {{"platform": "server", "level": 2}}
+
+scope := profiles[profile] if profile_selected
+
+_profile_names := concat(", ", sort(object.keys(profiles)))
+
+_profile_problem := "evidence missing — profile not collected" if object.get(input, "profile", null) == null
+
+_profile_problem := sprintf("profile is not a string (got %s)", [type_name(input.profile)]) if {{
+	object.get(input, "profile", null) != null
+	not is_string(input.profile)
+}}
+
+_profile_problem := sprintf("profile %s is not a recognised profile", [json.marshal(input.profile)]) if {{
+	is_string(input.profile)
+	not profile_selected
+}}
+
+# reported next to the control violations (never one of them: it cites no recommendation id)
+profile_violations := [] if {{
+	profile_selected
+}} else := [sprintf(
+	"PROFILE NOT SELECTED: %s (send one of %s). No recommendation was declared out of scope: every one of the benchmark was evaluated, and the result is not a pass for any profile.",
+	[_profile_problem, _profile_names],
+)]
+
+applies(c) if c.levels[scope.platform] <= scope.level
 
 applicable_ids := {{id | some id, c in controls; applies(c)}}
 
@@ -2925,20 +3043,48 @@ failing_ids := {{split(v, ":")[0] | some v in all_violations}}
 
 section_inputs := {json.dumps(sec_inputs, indent=1)}
 
-section_assessed(name) if {{
-	some k in section_inputs[name]
-	input[k]
+# a section input counts as collected unless it is absent, null or false (null used to count as collected,
+# so a nulled section was reported as assessed while a dropped one was NOT ASSESSED)
+input_collected(k) if {{
+	v := object.get(input, k, null)
+	v != null
+	v != false
 }}
 
-missing_inputs := {{name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}}
+section_assessed(name) if {{
+	some k in section_inputs[name]
+	input_collected(k)
+}}
 
-not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+# The lowest level, per platform, at which a recommendation reads one of the section's input keys (generated
+# from what each recommendation reads, whichever module it is in). A section is required when the selected
+# scope reaches that level; without a recognised profile the scope is the whole benchmark, so every section is.
+section_required_from := {json.dumps(sec_required, indent=1)}
 
-assessed_sections := count(section_inputs) - count(not_assessed_sections)
+section_required(name) if scope.level >= section_required_from[name][scope.platform]
 
-assessment_coverage_percentage := round((assessed_sections * 100) / count(section_inputs))
+required_sections := sort([name | some name, _ in section_inputs; section_required(name)])
 
-section_assessment := {{name: {{"assessed": section_assessed(name) == true, "missing_inputs": missing_inputs[name]}} |
+# the input keys a required section did not receive (nothing is missing from a section that is not required)
+missing_inputs := {{name: _missing_keys(name) | some name, _ in section_inputs}}
+
+_missing_keys(name) := [k | some k in section_inputs[name]; not input_collected(k)] if {{
+	section_required(name)
+}} else := []
+
+not_assessed_sections := sort([name | some name in required_sections; not section_assessed(name)])
+
+assessed_sections := count(required_sections) - count(not_assessed_sections)
+
+default assessment_coverage_percentage := 0
+
+assessment_coverage_percentage := round((assessed_sections * 100) / count(required_sections)) if count(required_sections) > 0
+
+section_assessment := {{name: {{
+	"required": section_required(name) == true,
+	"assessed": section_assessed(name) == true,
+	"missing_inputs": missing_inputs[name],
+}} |
 	some name, _ in section_inputs
 }}
 
@@ -2964,7 +3110,35 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := (compliant_sections * 100) / total_sections if total_sections > 0
+compliance_percentage := (compliant_sections * 100) / total_sections if {{
+	total_sections > 0
+	not _percentage_withheld
+}}
+
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {{
+	total_sections > 0
+	_percentage_withheld
+}}
+
+_percentage_withheld if {{
+	not compliant
+	compliant_sections == total_sections
+}}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {{
+	_percentage_withheld
+	not profile_selected
+}}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {{
+	_percentage_withheld
+	profile_selected
+}}
 
 total_controls_covered := count(applicable_ids)
 
@@ -2975,6 +3149,7 @@ compliant if {{
 	count(applicable_ids) > 0
 	count(failing_ids) == 0
 	count(not_assessed_sections) == 0
+	profile_selected
 }}
 
 # =============================================================================
@@ -3000,18 +3175,18 @@ overall_status := "compliant" if {{
 	compliant
 }} else := "non_compliant"
 
-level2_ids := {{id | some id, c in controls; object.get(c.levels, profiles[profile].platform, 0) == 2}}
+level2_ids := {{id | some id, c in controls; object.get(c.levels, scope.platform, 0) == 2}}
 
 l2_violations_active := [v | some v in all_violations; split(v, ":")[0] in level2_ids] if {{
-	profiles[profile].level == 2
+	scope.level == 2
 }} else := []
 
 default l2_compliant := false
 
-l2_compliant if profiles[profile].level == 1
+l2_compliant if scope.level == 1
 
 l2_compliant if {{
-	profiles[profile].level == 2
+	scope.level == 2
 	count(l2_violations_active) == 0
 }}
 
@@ -3037,8 +3212,8 @@ compliance_assessment := {{
 	"total_controls": count(applicable_ids),
 	"sections_evaluated": total_sections,
 	"sections_compliant": compliant_sections,
-	"violations": all_violations,
-	"violation_count": count(all_violations),
+	"violations": array.concat(all_violations, profile_violations),
+	"violation_count": count(all_violations) + count(profile_violations),
 	"summary": executive_summary,
 }}
 
@@ -3151,10 +3326,20 @@ def emit_main(recs):
 #    when real facts (or an attestation) satisfy it, so failed_controls counts distinct failing
 #    recommendation ids, including those whose evidence is missing.
 #
+# 3. compliance_percentage is passed_controls / total_controls, and 100 means compliant. When every recommendation
+#    in scope passed but a finding that cites no recommendation stands (PROFILE NOT SELECTED) the report is not
+#    compliant, passed + failed == total_controls still holds, and compliance_percentage (and
+#    section_compliance_percentage) is null with compliance_percentage_reason (section_compliance_percentage_reason)
+#    stating why. 100 never appears beside compliant == false.
+#
 # FAIL-CLOSED GATE: with no facts at all every control counts as failed and an explicit FAIL-CLOSED
 # violation is reported. PARTIAL INPUT: a section that received none of its input keys is NOT ASSESSED
-# ({PKG}.section_inputs): it is listed, it adds an explicit violation, and its controls fail on their own
-# evidence-missing violations, never as passed.
+# ({PKG}.section_inputs) when a recommendation of the selected profile reads it ({PKG}.section_required_from):
+# it is listed, it adds an explicit violation, and its controls fail on their own evidence-missing
+# violations, never as passed. A section no recommendation of the profile reads (auditd at Level 1) is not
+# required: absent or null it is no finding, and its content is not judged. NO PROFILE: input.profile absent
+# or not a recognised name puts every recommendation in scope, reports "profile": "unrecognised" with a
+# PROFILE NOT SELECTED violation, and is never compliant ({PKG}.profile_violations).
 
 import data.{PKG} as bench
 import rego.v1
@@ -3198,9 +3383,13 @@ default _coverage := 0
 
 _coverage := bench.assessment_coverage_percentage
 
-default _profile := "level1_server"
+default _profile := "unrecognised"
 
 _profile := bench.profile
+
+default _profile_msgs := []
+
+_profile_msgs := bench.profile_violations
 
 default _total_controls := 0
 
@@ -3210,9 +3399,9 @@ default _failing := 0
 
 _failing := count(bench.failing_ids)
 
-_violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
+_violations := array.concat(_bench_violations, array.concat([_no_facts_msg], _profile_msgs)) if not _facts_supplied
 
-_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
+_violations := array.concat(_bench_violations, array.concat(_not_assessed_msgs, _profile_msgs)) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
@@ -3224,7 +3413,44 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
+_percentage := round((_passed * 100000) / _total_controls) / 1000 if {{
+	_total_controls > 0
+	not _percentage_withheld
+}}
+
+# 100 means compliant. Every recommendation in scope passed but the report is not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED): passed + failed == total stays true, and the percentage is null
+# with a stated reason instead of 100 beside compliant == false.
+_percentage := null if {{
+	_total_controls > 0
+	_percentage_withheld
+}}
+
+_percentage_withheld if {{
+	_total_controls > 0
+	not _compliant
+	_passed == _total_controls
+}}
+
+# The reasons are fields of the report only when a percentage is withheld, so a normal report keeps its shape.
+default _reason_fields := {{}}
+
+_reason_fields := {{"compliance_percentage_reason": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"}} if {{
+	_percentage_withheld
+	_profile == "unrecognised"
+}}
+
+_reason_fields := {{"compliance_percentage_reason": "a finding that cites no recommendation stands although no recommendation failed (see violations)"}} if {{
+	_percentage_withheld
+	_profile != "unrecognised"
+}}
+
+default _section_reason_fields := {{}}
+
+_section_reason_fields := {{"section_compliance_percentage_reason": bench.compliance_percentage_reason}} if {{
+	_section_percentage == null
+	bench.compliance_percentage_reason != null
+}}
 
 default _control_results := []
 
@@ -3234,7 +3460,7 @@ default _control_result_counts := {{}}
 
 _control_result_counts := bench.control_result_counts
 
-compliance_report := {{
+_report := {{
 	"framework": "{PKG}",
 	"benchmark": "{BENCH}",
 	"version": "{VERSION}",
@@ -3255,6 +3481,8 @@ compliance_report := {{
 	"control_results": _control_results,
 	"control_result_counts": _control_result_counts,
 {extra}}}
+
+compliance_report := object.union(_report, object.union(_reason_fields, _section_reason_fields))
 '''
 
 
@@ -3336,7 +3564,7 @@ def emit_rollup_tests(recs):
              "test_v3_empty_input_fails_closed if {", f"\tr := {m} with input as {{}}",
              f"\tcount(object.keys(r)) == {len(keys)}",
              f"\tevery k in {json.dumps(keys)} {{ k in object.keys(r) }}",
-             "\tr.compliant == false", f"\tr.total_controls == {counts['level1_server']}",
+             "\tr.compliant == false", "\tr.profile == \"unrecognised\"", f"\tr.total_controls == {len(recs)}",
              "\tr.failed_controls == r.total_controls", "\tr.passed_controls == 0",
              "\tsome v in r.violations", "\tstartswith(v, \"FAIL-CLOSED: no facts supplied\")", "}", ""]
     for p, n in counts.items():
@@ -3348,9 +3576,26 @@ def emit_rollup_tests(recs):
               f"\tr1.total_controls == {counts['level1_server']}",
               f"\tr2 := {m} with input as {{\"profile\": \"level2\"}}", "\tr2.profile == \"level2_server\"",
               f"\tr2.total_controls == {counts['level2_server']}", "}", "",
-              "test_v3_unknown_profile_defaults_to_level1_server if {",
-              f"\tr := {m} with input as {{\"profile\": \"bogus\"}}",
-              "\tr.profile == \"level1_server\"", f"\tr.total_controls == {counts['level1_server']}", "}", "",
+              "# No default profile: absent, null, not a string or an unknown name puts every recommendation in scope,",
+              "# says so in one PROFILE NOT SELECTED violation, and is never compliant.",
+              "test_v3_unrecognised_profile_is_a_finding_and_scopes_every_recommendation if {",
+              "\tevery bad in [{}, {\"profile\": null}, {\"profile\": \"bogus\"}, {\"profile\": \"Level2_Server\"}, "
+              "{\"profile\": \"\"}, {\"profile\": 2}, {\"profile\": true}, {\"profile\": [\"level1_server\"]}] {",
+              f"\t\tr := {m} with input as object.union({{\"attest\": {{\"gpg_keys_reviewed\": true}}}}, bad)",
+              "\t\tr.profile == \"unrecognised\"", f"\t\tr.total_controls == {len(recs)}", "\t\tr.compliant == false",
+              "\t\tcount([v | some v in r.violations; startswith(v, \"PROFILE NOT SELECTED: \")]) == 1",
+              "\t\tcount([c | some c in r.control_results; c.status == \"not_applicable\"]) == 0", "\t}", "}", "",
+              "test_v3_profile_finding_names_the_problem if {",
+              f"\tra := {m} with input as {{\"attest\": {{}}}}", "\tsome a in ra.violations",
+              "\tstartswith(a, \"PROFILE NOT SELECTED: evidence missing — profile not collected\")",
+              f"\trb := {m} with input as {{\"profile\": 2}}", "\tsome b in rb.violations",
+              "\tstartswith(b, \"PROFILE NOT SELECTED: profile is not a string (got number)\")",
+              f"\trc := {m} with input as {{\"profile\": \"bogus\"}}", "\tsome c in rc.violations",
+              "\tstartswith(c, \"PROFILE NOT SELECTED: profile \\\"bogus\\\" is not a recognised profile\")", "}", "",
+              "test_v3_recognised_profile_has_no_profile_finding if {",
+              "\tevery p in [\"level1_server\", \"level2_server\", \"level1_workstation\", \"level2_workstation\", \"level1\", \"level2\"] {",
+              f"\t\tr := {m} with input as {{\"profile\": p}}",
+              "\t\tcount([v | some v in r.violations; startswith(v, \"PROFILE NOT SELECTED\")]) == 0", "\t}", "}", "",
               "test_v3_one_attested_control_passes if {",
               f"\tr := {m} with input as {{\"attest\": {{\"gpg_keys_reviewed\": true}}}}",
               "\tr.passed_controls == 1", "\tr.failed_controls == r.total_controls - 1", "\tr.compliant == false", "}", "",
@@ -3381,7 +3626,17 @@ def emit_control_results_tests(recs, by_mod):
     ids = sorted(recs, key=sort_key)
     counts = {p: sum(1 for r in recs.values() if (level(r["profiles"], kind) or 99) <= lv)
               for p, (kind, lv) in PROFILES.items()}
-    good = good_input(ids)
+    # the all-pass fixtures state their profile (there is no default). level2_server puts every recommendation
+    # in scope; the level1_server one holds only what the Level 1 - Server recommendations read. A section no
+    # Level 1 recommendation reads (auditd) is not in it: such a section is not required at that profile.
+    good = merge_good(good_input(ids), {"profile": "level2_server"})
+    l1_ids = [rid for rid in ids if (level(recs[rid]["profiles"], "Server") or 99) <= 1]
+    good_l1 = merge_good(good_input(l1_ids), {"profile": "level1_server"})
+    req = section_required_from(recs)
+    l1_optional = sorted(n for n, *_ in SECTIONS if req[SEC[n][1]].get("server", 99) > 1)
+    l1_required = [n for n, *_ in SECTIONS if n not in l1_optional]
+    if any(k in good_l1 for n in l1_optional for k in SECTION_INPUTS[n]):
+        raise SystemExit("the level1_server fixture holds input of a section no Level 1 recommendation reads")
     # mixed: one section's input keys removed, one Manual recommendation unattested, one Automated one failing
     gone_sec = [n for n, *_ in SECTIONS if SECTION_INPUTS.get(n)][-1]
     gone = sorted(SECTION_INPUTS[gone_sec])
@@ -3391,6 +3646,7 @@ def emit_control_results_tests(recs, by_mod):
     lines = [f"package {PKG}.control_results_test", "", "import rego.v1", "",
              f"# Generated by {GEN}: the control_results contract of {PKG}.main.compliance_report.", "",
              f"fixture_compliant := {J(good)}", "",
+             f"fixture_compliant_level1_server := {J(good_l1)}", "",
              'FAILING := {"fail", "evidence_missing", "not_attested"}', "",
              '_kind(v) := "evidence_missing" if contains(v, ": evidence missing — ")', "",
              '_kind(v) := "not_attested" if contains(v, ": manual review not attested")', "",
@@ -3429,7 +3685,32 @@ def emit_control_results_tests(recs, by_mod):
                   "}", ""]
     if counts["level2_server"] != len(ids):
         raise SystemExit("level2_server no longer puts every recommendation in scope: extend the compliant test")
-    lines += ["test_control_results_compliant_fixture_every_recommendation_passes if {",
+    lines += ["test_fixtures_pass_at_their_own_profile if {",
+              f"\tr2 := {m} with input as fixture_compliant", "\tr2.compliant == true", "\tr2.profile == \"level2_server\"",
+              "\tr2.compliance_percentage == 100", "\tcount(r2.violations) == 0", f"\tr2.total_controls == {len(ids)}",
+              f"\tr1 := {m} with input as fixture_compliant_level1_server", "\tr1.compliant == true",
+              "\tr1.profile == \"level1_server\"", "\tr1.compliance_percentage == 100", "\tcount(r1.violations) == 0",
+              f"\tr1.total_controls == {counts['level1_server']}", "}", "",
+              "# the same facts with the profile removed or misspelt are not a pass, although every recommendation holds",
+              "test_compliant_fixture_without_a_recognised_profile_is_not_compliant if {",
+              "\tevery op in [{\"op\": \"remove\", \"path\": \"/profile\"}, {\"op\": \"replace\", \"path\": \"/profile\", \"value\": null}, "
+              "{\"op\": \"replace\", \"path\": \"/profile\", \"value\": \"level_2_server\"}] {",
+              f"\t\tr := {m} with input as json.patch(fixture_compliant, [op])", "\t\tr.compliant == false",
+              "\t\tcount(r.violations) == 1", "\t\tstartswith(r.violations[0], \"PROFILE NOT SELECTED: \")",
+              "\t\t# no recommendation failed and passed + failed == total, so the percentage is withheld (null) with a",
+              "\t\t# reason: 100 means compliant and is never shown beside compliant == false",
+              "\t\tr.failed_controls == 0", "\t\tr.passed_controls == r.total_controls",
+              "\t\tr.passed_controls + r.failed_controls == r.total_controls",
+              "\t\tr.compliance_percentage == null", "\t\tr.section_compliance_percentage == null",
+              "\t\tstartswith(r.compliance_percentage_reason, \"no profile selected\")",
+              "\t\tstartswith(r.section_compliance_percentage_reason, \"no profile selected\")", "\t}", "}", "",
+              "# a Level 1 host whose profile is lost is evaluated against every recommendation, not passed at Level 1",
+              "test_level1_fixture_without_profile_fails_the_level2_recommendations if {",
+              f"\tr := {m} with input as json.remove(fixture_compliant_level1_server, [\"/profile\"])",
+              "\tr.compliant == false", f"\tr.total_controls == {len(ids)}", "\tr.failed_controls > 0",
+              "\tr.compliance_percentage < 100",
+              f"\tr.sections_not_assessed == {J(sorted(SEC[n][1] for n in l1_optional))}", "}", "",
+              "test_control_results_compliant_fixture_every_recommendation_passes if {",
               f'\tr := {m} with input as object.union(fixture_compliant, {{"profile": "level2_server"}})',
               f"\tr.total_controls == {len(ids)}"] + agree + [
               '\tevery c in r.control_results { c.status == "pass" }', "}", "",
@@ -3439,6 +3720,54 @@ def emit_control_results_tests(recs, by_mod):
               "\tr.control_result_counts.pass > 0", "\tr.control_result_counts.fail > 0",
               "\tr.control_result_counts.evidence_missing > 0", "\tr.control_result_counts.not_attested > 0",
               "\tr.control_result_counts.not_applicable > 0", "}", ""]
+    # REQUIRED SECTIONS. A section is required only where a recommendation of the selected scope reads it.
+    lines += ["# ── required sections: an input section is required only where a recommendation in scope reads it ──", "",
+              "_consistent(r) if {", "\tr.compliant == true", "\tr.compliance_percentage == 100", "}", "",
+              "_consistent(r) if {", "\tr.compliant == false", "\tr.compliance_percentage < 100",
+              "\tr.section_compliance_percentage < 100", "}", ""]
+    for n in l1_optional:
+        key, skeys = SEC[n][1], sorted(SECTION_INPUTS[n])
+        lines += [f"# no Level 1 recommendation reads {', '.join(skeys)}: absent or null it is no finding at a Level 1 profile, and its",
+                  "# content is not judged there (the fixture does not carry it)",
+                  f"test_section_{n}_is_not_required_at_level1 if {{",
+                  f"\tevery k in {J(skeys)} {{ not k in object.keys(fixture_compliant_level1_server) }}",
+                  f"\tevery prof in [\"level1_server\", \"level1_workstation\"] {{",
+                  f"\t\tnot {J(key)} in data.{PKG}.required_sections with input as {{\"profile\": prof}}", "\t}",
+                  f"\tevery v in [null, {{}}, \"not an object\", [1], false] {{",
+                  f"\t\tr := {m} with input as object.union(fixture_compliant_level1_server, {{k: v | some k in {J(skeys)}}})",
+                  "\t\tr.compliant == true", "\t\tr.compliance_percentage == 100", "\t\tcount(r.violations) == 0",
+                  "\t\tr.sections_not_assessed == []", f"\t\tr.missing_inputs[{J(key)}] == []", "\t}", "}", "",
+                  f"# at Level 2 the same section is evidence: absent or null it is NOT ASSESSED, its recommendations fail on",
+                  "# missing evidence and the percentage drops",
+                  f"test_section_{n}_null_is_evidence_missing_at_level2 if {{",
+                  f"\tr := {m} with input as object.union(fixture_compliant, {{k: null | some k in {J(skeys)}}})",
+                  "\tr.compliant == false", "\tr.failed_controls > 0", "\tr.compliance_percentage < 100",
+                  f"\tr.sections_not_assessed == [{J(key)}]",
+                  f"\tsome v in r.violations", f"\tstartswith(v, \"NOT ASSESSED: {key} \")",
+                  "\tcount([x | some x in r.violations; contains(x, \": evidence missing — \")]) == r.failed_controls",
+                  "\tevery c in r.control_results {", "\t\tc.status in {\"pass\", \"evidence_missing\"}", "\t}", "}", "",
+                  f"# without a recognised profile the scope is the whole benchmark, so the section is required",
+                  f"test_section_{n}_is_required_without_a_profile if {{",
+                  f"\tevery bad in [{{}}, {{\"profile\": null}}, {{\"profile\": \"bogus\"}}] {{",
+                  f"\t\t{J(key)} in data.{PKG}.required_sections with input as bad", "\t}",
+                  f"\tr := {m} with input as json.remove(fixture_compliant, {J(['/profile'] + ['/' + k for k in skeys])})",
+                  "\tr.compliant == false", "\tr.failed_controls > 0", "\tr.compliance_percentage < 100",
+                  f"\t{J(key)} in r.sections_not_assessed", "}", ""]
+    # every section removed from the Level 2 fixture, one test each (a full report is slow): NOT ASSESSED always
+    # comes with failed recommendations, so "100 and not compliant" cannot arise from a missing section
+    for n, *_ in SECTIONS:
+        if not SECTION_INPUTS.get(n):
+            continue
+        key, skeys = SEC[n][1], sorted(SECTION_INPUTS[n])
+        lines += [f"test_section_{n}_removed_at_level2_is_not_assessed_and_scored if {{",
+                  f"\tr := {m} with input as json.remove(fixture_compliant, {J(['/' + k for k in skeys])})",
+                  "\t_consistent(r)", "\tr.compliant == false", "\tr.failed_controls > 0",
+                  f"\tr.sections_not_assessed == [{J(key)}]", "}", ""]
+    lines += ["# the sections a Level 1 profile requires, removed from the Level 1 fixture",
+              "test_required_sections_removed_at_level1_are_not_assessed_and_scored if {",
+              f"\tevery keys in {J([sorted('/' + k for k in SECTION_INPUTS[n]) for n in l1_required if SECTION_INPUTS.get(n)])} {{",
+              f"\t\tr := {m} with input as json.remove(fixture_compliant_level1_server, keys)",
+              "\t\t_consistent(r)", "\t\tr.compliant == false", "\t\tcount(r.sections_not_assessed) == 1", "\t}", "}", ""]
     return "\n".join(lines).rstrip("\n") + "\n"
 
 

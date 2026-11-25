@@ -10,8 +10,10 @@
 Deterministic. Re-run after a family module changes its evaluated ids or after `make oscal` rebuilds the profiles:
     python3 scripts/gen_nist_800_53_index.py            # write
     python3 scripts/gen_nist_800_53_index.py --check    # exit 1 if the committed file is stale
+The OPA binary is $OPA when set (as the Makefile sets it), else `opa` on PATH.
 """
-import json, pathlib, re, subprocess, sys
+import json, os, pathlib, re, subprocess, sys
+OPA = os.environ.get("OPA", "opa")   # the Makefile's OPA; the `opa` on PATH otherwise
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MOD = ROOT / "frameworks/federal/nist/sp_800_53"
 OUT = MOD / "nist_800_53_index.rego"
@@ -37,7 +39,7 @@ def sort_key(i):
 
 def empty_input_run():
     q = 'x := {"e": data.nist.sp800_53.main.evaluated_controls, "v": data.nist.sp800_53.main.violations}'
-    r = subprocess.run(["opa", "eval", "-f", "json", "-d", str(MOD), "--ignore", "tests", "--ignore", OUT.name, "-i", "/dev/stdin", q],
+    r = subprocess.run([OPA, "eval", "-f", "json", "-d", str(MOD), "--ignore", "tests", "--ignore", OUT.name, "-i", "/dev/stdin", q],
                        input="{}", capture_output=True, text=True, check=True)
     x = json.loads(r.stdout)["result"][0]["bindings"]["x"]
     return set(x["e"]), x["v"]
@@ -87,7 +89,7 @@ def build():
     out.append('}')
     # titles apart from the id lists: an object carrying "title" reads as a control to scripts/count_controls.py
     out += ['', 'baseline_titles := {'] + titles + ['}']
-    r = subprocess.run(["opa", "fmt"], input="\n".join(out) + "\n", capture_output=True, text=True, check=True)
+    r = subprocess.run([OPA, "fmt"], input="\n".join(out) + "\n", capture_output=True, text=True, check=True)
     return keep_stamp(r.stdout)
 
 

@@ -48,18 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -89,6 +100,21 @@ _csv(path) := [trim_space(x) | some x in parts] if {
 # input.sshd_config_lines[<Keyword>]: the value of every uncommented <Keyword> line in the files sshd reads
 # (sshd -dd ... | xargs grep -iH), lower-cased; [] when the keyword is not set
 _ssh_vals(kw) := [lower(trim_space(v)) | some v in input.sshd_config_lines[kw]; is_string(v)]
+
+# A whole number as the check text reads it: digits only, no sign, no fraction, no unit. The line lists keep the
+# text sshd read; the comparison reads this number. Anything else is evidence invalid (the rule is Open and its
+# detail says so), never compared as text.
+_ol8_whole(v) := to_number(v) if regex.match(`^[0-9]+$`, v)
+
+_ol8_alive_interval_invalid if {
+	some v in _ssh_vals("ClientAliveInterval")
+	not _ol8_whole(v)
+}
+
+_ol8_alive_count_invalid if {
+	some v in _ssh_vals("ClientAliveCountMax")
+	not _ol8_whole(v)
+}
 
 # =============================================================================
 # CAT I - HIGH SEVERITY
@@ -445,8 +471,7 @@ ssh_client_alive_interval_ok if {
 	count(vals) == count(input.sshd_config_lines.ClientAliveInterval)
 	count(vals) > 0
 	every v in vals {
-		regex.match(`^[0-9]+$`, v)
-		to_number(v) <= 600
+		_ol8_whole(v) <= 600
 	}
 	count({v | some v in vals}) <= 1
 }
@@ -458,6 +483,8 @@ else := "Open"
 detail_ol08_00_010201 := "OL08-00-010201: Not_a_Finding" if ssh_client_alive_interval_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-010201", concat(", ", missing_ol08_00_010201)]) if count(missing_ol08_00_010201) > 0
+
+else := sprintf("%s: evidence invalid — ClientAliveInterval is not a whole number (digits only) on every line sshd reads", ["OL08-00-010201"]) if _ol8_alive_interval_invalid
 
 else := "OL08-00-010201: check failed — ClientAliveInterval must be 600 or less on every line sshd reads, none conflicting"
 
@@ -484,7 +511,7 @@ ssh_client_alive_count_ok if {
 	count(vals) == count(input.sshd_config_lines.ClientAliveCountMax)
 	count(vals) > 0
 	every v in vals {
-		v == "1"
+		_ol8_whole(v) == 1
 	}
 	count({v | some v in vals}) <= 1
 }
@@ -496,6 +523,8 @@ else := "Open"
 detail_ol08_00_010200 := "OL08-00-010200: Not_a_Finding" if ssh_client_alive_count_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-010200", concat(", ", missing_ol08_00_010200)]) if count(missing_ol08_00_010200) > 0
+
+else := sprintf("%s: evidence invalid — ClientAliveCountMax is not a whole number (digits only) on every line sshd reads", ["OL08-00-010200"]) if _ol8_alive_count_invalid
 
 else := "OL08-00-010200: check failed — ClientAliveCountMax must be 1 (none conflicting)"
 

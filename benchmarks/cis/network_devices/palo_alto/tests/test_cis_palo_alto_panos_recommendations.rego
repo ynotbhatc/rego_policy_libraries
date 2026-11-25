@@ -401,6 +401,7 @@ green := {"panos_config": {
 				"news",
 				"business-and-economy",
 			],
+			"log_container_page_only": "no",
 			"log_http_hdr_user_agent": "yes",
 			"log_http_hdr_referer": "yes",
 			"log_http_hdr_xff": "yes",

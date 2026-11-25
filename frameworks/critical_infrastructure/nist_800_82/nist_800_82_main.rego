@@ -66,6 +66,31 @@ import rego.v1
 #             control tables (pp. 227-298). Appendix G is the change log.
 #   Could not read: 0 rows.
 
+# ── Evidence rule ────────────────────────────────────────────────────────────
+# Only the boolean true passes a yes/no fact. A fact that is missing, null, or any
+# other type ("true", "false", "no", 0, 1) is an evidence problem: the control fails
+# and the finding names the problem. A boolean false keeps the plain finding.
+
+default _input := {}
+
+_input := input if is_object(input)
+
+_fact(path) := object.get(_input, path, null)
+
+_not_true(path) if _fact(path) != true
+
+_finding(msg, path) := msg if _fact(path) == false
+
+_finding(msg, path) := sprintf("%s [evidence missing: input.%s not collected]", [msg, concat(".", path)]) if {
+	_fact(path) == null
+}
+
+_finding(msg, path) := sprintf("%s [evidence invalid: input.%s is not a boolean (got %s)]", [msg, concat(".", path), type_name(_fact(path))]) if {
+	value := _fact(path)
+	value != null
+	not is_boolean(value)
+}
+
 default compliant := false
 
 compliant if {
@@ -75,196 +100,231 @@ compliant if {
 # ── OT-Specific Risk Assessment ───────────────────────────────────────────────
 
 violations contains msg if {
-	not input.risk_assessment.ot_specific.conducted
-	msg := "NIST 800-82 RA-3(OT): OT-specific risk assessment not conducted — must account for safety, availability, and process integrity impacts"
+	finding := "NIST 800-82 RA-3(OT): OT-specific risk assessment not conducted — must account for safety, availability, and process integrity impacts"
+	_not_true(["risk_assessment", "ot_specific", "conducted"])
+	msg := _finding(finding, ["risk_assessment", "ot_specific", "conducted"])
 }
 
 violations contains msg if {
-	not input.risk_assessment.consequence_analysis.life_safety
-	msg := "NIST 800-82 RA-3(OT): Risk assessment does not evaluate life-safety consequences of cyber events"
+	finding := "NIST 800-82 RA-3(OT): Risk assessment does not evaluate life-safety consequences of cyber events"
+	_not_true(["risk_assessment", "consequence_analysis", "life_safety"])
+	msg := _finding(finding, ["risk_assessment", "consequence_analysis", "life_safety"])
 }
 
 violations contains msg if {
-	not input.risk_assessment.consequence_analysis.environmental
-	msg := "NIST 800-82 RA-3(OT): Risk assessment does not evaluate environmental impact consequences of cyber events"
+	finding := "NIST 800-82 RA-3(OT): Risk assessment does not evaluate environmental impact consequences of cyber events"
+	_not_true(["risk_assessment", "consequence_analysis", "environmental"])
+	msg := _finding(finding, ["risk_assessment", "consequence_analysis", "environmental"])
 }
 
 violations contains msg if {
-	not input.risk_assessment.asset_inventory.ot_systems
-	msg := "NIST 800-82 CM-8(OT): OT asset inventory not maintained (PLCs, RTUs, HMIs, historians, engineering workstations)"
+	finding := "NIST 800-82 CM-8(OT): OT asset inventory not maintained (PLCs, RTUs, HMIs, historians, engineering workstations)"
+	_not_true(["risk_assessment", "asset_inventory", "ot_systems"])
+	msg := _finding(finding, ["risk_assessment", "asset_inventory", "ot_systems"])
 }
 
 # ── Network Architecture and Segmentation ────────────────────────────────────
 
 violations contains msg if {
-	not input.network.ot_it_segmentation.implemented
-	msg := "NIST 800-82 SC-7(OT): OT network not segmented from IT/corporate network using firewall or DMZ"
+	finding := "NIST 800-82 SC-7(OT): OT network not segmented from IT/corporate network using firewall or DMZ"
+	_not_true(["network", "ot_it_segmentation", "implemented"])
+	msg := _finding(finding, ["network", "ot_it_segmentation", "implemented"])
 }
 
 violations contains msg if {
-	not input.network.demilitarized_zone.exists
-	msg := "NIST 800-82 SC-7(OT): DMZ not established between OT and IT networks for data exchange"
+	finding := "NIST 800-82 SC-7(OT): DMZ not established between OT and IT networks for data exchange"
+	_not_true(["network", "demilitarized_zone", "exists"])
+	msg := _finding(finding, ["network", "demilitarized_zone", "exists"])
 }
 
 violations contains msg if {
-	not input.network.wireless.ot_wireless_restricted
-	msg := "NIST 800-82 SC-8(OT): Wireless access to OT networks not restricted and controlled"
+	finding := "NIST 800-82 SC-8(OT): Wireless access to OT networks not restricted and controlled"
+	_not_true(["network", "wireless", "ot_wireless_restricted"])
+	msg := _finding(finding, ["network", "wireless", "ot_wireless_restricted"])
 }
 
 violations contains msg if {
-	not input.network.remote_access.ot_specific_controls
-	msg := "NIST 800-82 AC-17(OT): Remote access to OT systems not controlled with OT-specific security controls"
+	finding := "NIST 800-82 AC-17(OT): Remote access to OT systems not controlled with OT-specific security controls"
+	_not_true(["network", "remote_access", "ot_specific_controls"])
+	msg := _finding(finding, ["network", "remote_access", "ot_specific_controls"])
 }
 
 violations contains msg if {
-	not input.network.dial_up.disabled_or_controlled
-	msg := "NIST 800-82 SC-7(OT): Dial-up modems connected to OT systems not disabled or controlled"
+	finding := "NIST 800-82 SC-7(OT): Dial-up modems connected to OT systems not disabled or controlled"
+	_not_true(["network", "dial_up", "disabled_or_controlled"])
+	msg := _finding(finding, ["network", "dial_up", "disabled_or_controlled"])
 }
 
 violations contains msg if {
-	not input.network.data_flows.documented
-	msg := "NIST 800-82 SC-7(OT): Data flows between OT zones and to IT/internet not documented"
+	finding := "NIST 800-82 SC-7(OT): Data flows between OT zones and to IT/internet not documented"
+	_not_true(["network", "data_flows", "documented"])
+	msg := _finding(finding, ["network", "data_flows", "documented"])
 }
 
 # ── Access Control ────────────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.access_control.ot_accounts.managed
-	msg := "NIST 800-82 AC-2(OT): OT system accounts not formally managed — shared accounts common but must be documented"
+	finding := "NIST 800-82 AC-2(OT): OT system accounts not formally managed — shared accounts common but must be documented"
+	_not_true(["access_control", "ot_accounts", "managed"])
+	msg := _finding(finding, ["access_control", "ot_accounts", "managed"])
 }
 
 violations contains msg if {
-	not input.access_control.privileged_access.ot.controlled
-	msg := "NIST 800-82 AC-6(OT): Privileged access to OT engineering workstations and HMIs not controlled"
+	finding := "NIST 800-82 AC-6(OT): Privileged access to OT engineering workstations and HMIs not controlled"
+	_not_true(["access_control", "privileged_access", "ot", "controlled"])
+	msg := _finding(finding, ["access_control", "privileged_access", "ot", "controlled"])
 }
 
 violations contains msg if {
-	not input.access_control.vendor_remote.managed
-	msg := "NIST 800-82 AC-17(OT): Vendor and third-party remote access to OT systems not controlled and monitored"
+	finding := "NIST 800-82 AC-17(OT): Vendor and third-party remote access to OT systems not controlled and monitored"
+	_not_true(["access_control", "vendor_remote", "managed"])
+	msg := _finding(finding, ["access_control", "vendor_remote", "managed"])
 }
 
 violations contains msg if {
-	not input.access_control.physical_ot_access.controlled
-	msg := "NIST 800-82 PE-3(OT): Physical access to OT components (field devices, control panels) not controlled"
+	finding := "NIST 800-82 PE-3(OT): Physical access to OT components (field devices, control panels) not controlled"
+	_not_true(["access_control", "physical_ot_access", "controlled"])
+	msg := _finding(finding, ["access_control", "physical_ot_access", "controlled"])
 }
 
 # ── Configuration Management ──────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.configuration.ot_baseline.established
-	msg := "NIST 800-82 CM-2(OT): Secure baseline configuration not established for OT systems"
+	finding := "NIST 800-82 CM-2(OT): Secure baseline configuration not established for OT systems"
+	_not_true(["configuration", "ot_baseline", "established"])
+	msg := _finding(finding, ["configuration", "ot_baseline", "established"])
 }
 
 violations contains msg if {
-	not input.configuration.change_management.ot_process
-	msg := "NIST 800-82 CM-3(OT): Change management process not established for OT system changes — must consider safety impacts"
+	finding := "NIST 800-82 CM-3(OT): Change management process not established for OT system changes — must consider safety impacts"
+	_not_true(["configuration", "change_management", "ot_process"])
+	msg := _finding(finding, ["configuration", "change_management", "ot_process"])
 }
 
 violations contains msg if {
-	not input.configuration.removable_media.controlled
-	msg := "NIST 800-82 MP-7(OT): Removable media (USB drives, laptops) not controlled when connecting to OT systems"
+	finding := "NIST 800-82 MP-7(OT): Removable media (USB drives, laptops) not controlled when connecting to OT systems"
+	_not_true(["configuration", "removable_media", "controlled"])
+	msg := _finding(finding, ["configuration", "removable_media", "controlled"])
 }
 
 violations contains msg if {
-	not input.configuration.software.authorized_only
-	msg := "NIST 800-82 CM-7(OT): Only authorized software permitted to execute on OT systems — whitelisting required"
+	finding := "NIST 800-82 CM-7(OT): Only authorized software permitted to execute on OT systems — whitelisting required"
+	_not_true(["configuration", "software", "authorized_only"])
+	msg := _finding(finding, ["configuration", "software", "authorized_only"])
 }
 
 # ── Patch Management (OT-Specific Challenges) ────────────────────────────────
 
 violations contains msg if {
-	not input.patch_management.ot.policy_exists
-	msg := "NIST 800-82 SI-2(OT): OT-specific patch management policy not established — must account for vendor approval requirements"
+	finding := "NIST 800-82 SI-2(OT): OT-specific patch management policy not established — must account for vendor approval requirements"
+	_not_true(["patch_management", "ot", "policy_exists"])
+	msg := _finding(finding, ["patch_management", "ot", "policy_exists"])
 }
 
 violations contains msg if {
-	not input.patch_management.ot.compensating_controls
-	msg := "NIST 800-82 SI-2(OT): Compensating controls not in place for OT systems that cannot be immediately patched"
+	finding := "NIST 800-82 SI-2(OT): Compensating controls not in place for OT systems that cannot be immediately patched"
+	_not_true(["patch_management", "ot", "compensating_controls"])
+	msg := _finding(finding, ["patch_management", "ot", "compensating_controls"])
 }
 
 violations contains msg if {
-	not input.patch_management.ot.vendor_coordination
-	msg := "NIST 800-82 SI-2(OT): Vendor coordination process not established for OT software updates"
+	finding := "NIST 800-82 SI-2(OT): Vendor coordination process not established for OT software updates"
+	_not_true(["patch_management", "ot", "vendor_coordination"])
+	msg := _finding(finding, ["patch_management", "ot", "vendor_coordination"])
 }
 
 # ── Incident Response ─────────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.incident_response.ot_specific.plan_exists
-	msg := "NIST 800-82 IR-4(OT): OT-specific incident response plan not established — must include safety system recovery"
+	finding := "NIST 800-82 IR-4(OT): OT-specific incident response plan not established — must include safety system recovery"
+	_not_true(["incident_response", "ot_specific", "plan_exists"])
+	msg := _finding(finding, ["incident_response", "ot_specific", "plan_exists"])
 }
 
 violations contains msg if {
-	not input.incident_response.ot_specific.coordination_with_safety
-	msg := "NIST 800-82 IR-4(OT): Incident response plan does not coordinate with safety and engineering teams"
+	finding := "NIST 800-82 IR-4(OT): Incident response plan does not coordinate with safety and engineering teams"
+	_not_true(["incident_response", "ot_specific", "coordination_with_safety"])
+	msg := _finding(finding, ["incident_response", "ot_specific", "coordination_with_safety"])
 }
 
 violations contains msg if {
-	not input.incident_response.ot_specific.forensics_consideration
-	msg := "NIST 800-82 IR-4(OT): OT incident response does not address forensic evidence collection without disrupting operations"
+	finding := "NIST 800-82 IR-4(OT): OT incident response does not address forensic evidence collection without disrupting operations"
+	_not_true(["incident_response", "ot_specific", "forensics_consideration"])
+	msg := _finding(finding, ["incident_response", "ot_specific", "forensics_consideration"])
 }
 
 violations contains msg if {
-	not input.incident_response.reporting.ics_cert
-	msg := "NIST 800-82 IR-6(OT): Process not established to report OT incidents to ICS-CERT / CISA"
+	finding := "NIST 800-82 IR-6(OT): Process not established to report OT incidents to ICS-CERT / CISA"
+	_not_true(["incident_response", "reporting", "ics_cert"])
+	msg := _finding(finding, ["incident_response", "reporting", "ics_cert"])
 }
 
 # ── Audit and Monitoring ──────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.monitoring.ot_network.continuous
-	msg := "NIST 800-82 AU-2(OT): Continuous monitoring not implemented for OT network traffic"
+	finding := "NIST 800-82 AU-2(OT): Continuous monitoring not implemented for OT network traffic"
+	_not_true(["monitoring", "ot_network", "continuous"])
+	msg := _finding(finding, ["monitoring", "ot_network", "continuous"])
 }
 
 violations contains msg if {
-	not input.monitoring.ot_network.protocol_aware
-	msg := "NIST 800-82 AU-2(OT): OT network monitoring not protocol-aware (Modbus, DNP3, IEC 61850, etc.)"
+	finding := "NIST 800-82 AU-2(OT): OT network monitoring not protocol-aware (Modbus, DNP3, IEC 61850, etc.)"
+	_not_true(["monitoring", "ot_network", "protocol_aware"])
+	msg := _finding(finding, ["monitoring", "ot_network", "protocol_aware"])
 }
 
 violations contains msg if {
-	not input.monitoring.historian.log_integrity
-	msg := "NIST 800-82 AU-9(OT): Process historian logs not protected from tampering"
+	finding := "NIST 800-82 AU-9(OT): Process historian logs not protected from tampering"
+	_not_true(["monitoring", "historian", "log_integrity"])
+	msg := _finding(finding, ["monitoring", "historian", "log_integrity"])
 }
 
 # ── System Integrity ──────────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.system_integrity.malware_protection.ot_appropriate
-	msg := "NIST 800-82 SI-3(OT): OT-appropriate malware protection not deployed — must not impact real-time operations"
+	finding := "NIST 800-82 SI-3(OT): OT-appropriate malware protection not deployed — must not impact real-time operations"
+	_not_true(["system_integrity", "malware_protection", "ot_appropriate"])
+	msg := _finding(finding, ["system_integrity", "malware_protection", "ot_appropriate"])
 }
 
 violations contains msg if {
-	not input.system_integrity.firmware.integrity_verified
-	msg := "NIST 800-82 SI-7(OT): Firmware integrity verification not performed for critical OT devices"
+	finding := "NIST 800-82 SI-7(OT): Firmware integrity verification not performed for critical OT devices"
+	_not_true(["system_integrity", "firmware", "integrity_verified"])
+	msg := _finding(finding, ["system_integrity", "firmware", "integrity_verified"])
 }
 
 # ── Contingency Planning ──────────────────────────────────────────────────────
 
 violations contains msg if {
-	not input.contingency.backup.ot_configurations
-	msg := "NIST 800-82 CP-9(OT): OT system configurations (PLC programs, HMI screens, historian data) not backed up"
+	finding := "NIST 800-82 CP-9(OT): OT system configurations (PLC programs, HMI screens, historian data) not backed up"
+	_not_true(["contingency", "backup", "ot_configurations"])
+	msg := _finding(finding, ["contingency", "backup", "ot_configurations"])
 }
 
 violations contains msg if {
-	not input.contingency.recovery.ot_rto_defined
-	msg := "NIST 800-82 CP-2(OT): Recovery Time Objectives not defined for OT systems — must balance safety with cyber recovery"
+	finding := "NIST 800-82 CP-2(OT): Recovery Time Objectives not defined for OT systems — must balance safety with cyber recovery"
+	_not_true(["contingency", "recovery", "ot_rto_defined"])
+	msg := _finding(finding, ["contingency", "recovery", "ot_rto_defined"])
 }
 
 violations contains msg if {
-	not input.contingency.manual_operations.procedures_documented
-	msg := "NIST 800-82 CP-2(OT): Manual/degraded operations procedures not documented for OT systems"
+	finding := "NIST 800-82 CP-2(OT): Manual/degraded operations procedures not documented for OT systems"
+	_not_true(["contingency", "manual_operations", "procedures_documented"])
+	msg := _finding(finding, ["contingency", "manual_operations", "procedures_documented"])
 }
 
 # ── Supply Chain (OT Equipment) ───────────────────────────────────────────────
 
 violations contains msg if {
-	not input.supply_chain.ot_equipment.vendor_assessment
-	msg := "NIST 800-82 SR-3(OT): OT equipment vendor security assessment not performed"
+	finding := "NIST 800-82 SR-3(OT): OT equipment vendor security assessment not performed"
+	_not_true(["supply_chain", "ot_equipment", "vendor_assessment"])
+	msg := _finding(finding, ["supply_chain", "ot_equipment", "vendor_assessment"])
 }
 
 violations contains msg if {
-	not input.supply_chain.ot_equipment.counterfeit_protection
-	msg := "NIST 800-82 SR-4(OT): Process not established to detect counterfeit OT hardware components"
+	finding := "NIST 800-82 SR-4(OT): Process not established to detect counterfeit OT hardware components"
+	_not_true(["supply_chain", "ot_equipment", "counterfeit_protection"])
+	msg := _finding(finding, ["supply_chain", "ot_equipment", "counterfeit_protection"])
 }
 
 # ── Compliance Report ────────────────────────────────────────────────────────

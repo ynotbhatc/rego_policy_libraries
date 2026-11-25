@@ -11,6 +11,17 @@ short description of the check before anything is written. The benchmark
 sentence is not copied into the module, the tests, or the committed keyword
 digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 
+Typed evidence (2026-11-24). `cis_genlib.emit_control` takes two optional keys on a control: `typed`, a list of
+Rego set expressions that name wrong-typed facts the check reads (each becomes `<id>: evidence invalid — <path>
+must be <type>, got <value>` and fails the recommendation in place of the plain finding), and `empty`, a
+`(list expression, wording)` pair for a list that was collected and holds nothing (a failed recommendation with
+its own wording, where an absent key stays "evidence missing"). `cis_genlib.LEVEL_HELPERS` is the shared
+Level 1 / Level 2 selection: `input.cis_profile.level` must be the number 1 or 2; any other value is an evidence
+finding, the report is scoped at Level 2 and every Level 2 recommendation fails with it. `gen_palo_alto.py`,
+`gen_esxi.py` and `gen_cisco_ios_xe_17.py` use it (the first two use all three keys); `gen_ios_27.py` carries the same selector rule for level and ownership. The other
+generators that select a level still default a bad value to Level 2 and should move to `LEVEL_HELPERS` when they
+are next run.
+
 - `gen_oracle_db_23ai.py <23ai.txt>` — CIS Oracle Database 23ai Benchmark v1.0.0,
   all 87 recommendations. Logic is written from each recommendation's audit SQL:
   parameter and profile checks read the queried value, privilege checks read the
@@ -66,6 +77,26 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   every file they write (`remove_generated` and `write_generated` in `gen_windows_server_2022.py`).
   Hand-written files in a module directory, such as the framework-key bridges `cis_windows_2019_key_main.rego`
   and `cis_windows_2022_key_main.rego`, are left in place, and a generator aborts rather than overwrite one.
+
+  Value types (all six Windows generators, 2026-11-24): the type the audit procedure states for a registry value
+  is part of the check. A row with no `vtype` reads a `REG_DWORD` and accepts a JSON number only; `"vtype": "sz"`
+  (a fifth element on a `reg_all` item) is a number held in a `REG_SZ` and accepts the string only;
+  `"vtype": "any"` is a row whose audit procedure states both types or none, where either is read. Numeric
+  `secedit` keys and `auditpol` setting values are numbers; a user right is a list of SID strings. A value of the
+  wrong type fails the row and its finding ends `-- evidence: <input path> is not a number (got string)`.
+  `stated_types`, `vtype` and `typed` in `gen_windows_server_2022.py` derive it; the evaluator side is `_as`,
+  `_reads` and `_type_problem` in `windows_lib.rego.tmpl`. A tier selector (`next_generation`, `bitlocker`) that
+  is supplied but is not a boolean puts its tier's rows in scope as not assessed
+  (`windows_lib_selector.rego.tmpl`, shared by the server template and the Windows 10/11 profile block). The
+  generated fixtures hold each value as the collector sends it, and `test_lib.rego` retypes every number of the
+  all-pass fixture and requires every typed row to fail.
+
+  Regenerating: the committed modules are the generator output plus three things a plain run does not
+  reproduce: the `custom.coverage` stamps (`python3 scripts/coverage_stamp.py`), `opa fmt`, and hand edits
+  made after generation by #337/#338 (`is_number` guards in the `*_main.rego` and 2025 `*_complete.rego`
+  files, the "#300 type traps" tests appended to the lib tests, and `findings` in `control_results`, which the
+  generator emits for every module but only the 2022 module was regenerated with). Diff a regeneration against
+  the tree before committing it.
 
   Per-control results (all six Windows generators): `compliance_report.control_results` holds one object per
   recommendation in natural id order, `{id, status, basis, in_scope, profile, evidence}`, and
@@ -241,6 +272,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   invariants as the Windows modules (ids and order, totals, failing iff cited with the matching message kind, empty
   input, a compliant fixture merged from every logic entry's passing input, a mixed input with every status).
   `emit_control` is unchanged, so `gen_amazon_linux_2023.py` output does not change.
+
+  Profile selection and number typing (rhel_9, rocky_linux_9, rhel_8, rocky_linux_8, 2026-11-24): there is no
+  default profile. `input.profile` that is absent, null, not a string or not a recognised name evaluates every
+  recommendation, reports `"profile": "unrecognised"` and one `PROFILE NOT SELECTED` violation, is never compliant,
+  and reports `compliance_percentage` as null with `compliance_percentage_reason` (no 99.999 cap). Numeric facts the
+  collector sends in their own field (`pam.pass_max_days`, `chronyd.servers_configured`, the shadow aging fields, ...)
+  are whole JSON numbers; a decimal string, a fraction, null or a boolean fails the recommendation with an evidence
+  finding. The generator's compliant fixture states `profile: level2_server` so that every recommendation is in scope.
 - `gen_rocky_linux_9.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 9 Benchmark v3.0.0, 352
   recommendations (329 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_9/`, package
   `cis_rocky_linux_9`. Holds no logic of its own: it configures `gen_rhel_9.py` (`configure()`: output

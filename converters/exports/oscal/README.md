@@ -105,7 +105,7 @@ record the source URL, commit, sha256, OSCAL version, uuid and title; back-matte
 
 Sources, both pinned by commit and sha256 (`SOURCES` in `build_profiles.py`):
 
-- NIST: `usnistgov/oscal-content` at `78650f02ad9321bb7b817846f8fbd4f2bcd620de`, `nist.gov/SP800-53/rev5/json/`
+- NIST: `usnistgov/oscal-content` at `f0de6d8d8c059d374f15e0ae07508d82e370fc1d`, `nist.gov/SP800-53/rev5/json/`
   (the four baseline profiles and `NIST_SP-800-53_rev5_catalog.json`).
 - FedRAMP Rev 5: the GSA `fedramp-automation` repository no longer exists, so this uses the OSCAL Compass project's
   mirror, `oscal-compass-lab/fedramp-automation` at `76d0473eafe60676d4acbd6cd76362092c389c46`,

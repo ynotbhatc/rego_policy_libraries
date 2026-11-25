@@ -85,6 +85,15 @@ conf_last(text, key_re) := vs[count(vs) - 1] if {
 
 num(v) := to_number(trim_space(sprintf("%v", [v]))) if regex.match(`^\s*-?[0-9]+\s*$`, sprintf("%v", [v]))
 
+# a numeric fact the collector reports as its own field (a count, a number of days or seconds): a JSON number
+# only. num() above is for numbers parsed out of collected text (a config line, an sshd value); a string in a
+# numeric field is not evidence, so "365" or "900" there never passes. These facts are whole numbers; a fraction
+# (30.5 days) is not a value the source can hold, so it is not evidence either.
+fnum(v) := v if {
+	is_number(v)
+	v == floor(v)
+}
+
 # ── packages / services ──
 services_collected if {
 	is_object(input.services)
@@ -103,9 +112,13 @@ unit_set_reported(p, us) if {
 	every u in us { unit_reported(u) }
 }
 
+# reported: both halves of the unit's entry are strings. "Not running" is read from state, so a unit whose
+# state is missing, null or not a string has not been shown to be inactive.
 unit_reported(u) if {
 	is_string(input.services[u].status)
 	input.services[u].status != ""
+	is_string(input.services[u].state)
+	input.services[u].state != ""
 }
 
 unit_set_off(p, _) if input.packages[p] == false
@@ -842,18 +855,19 @@ violations contains "5.3.3.4.4: not met — checked condition — pam_unix inclu
 default e_5_4_1_1 := false
 
 e_5_4_1_1 if {
-	input.pam.pass_max_days != null
+	is_number(input.pam.pass_max_days)
 	is_array(input.user_group.shadow_entries)
 	count(input.user_group.shadow_entries) > 0
+	every u in input.user_group.shadow_entries { is_boolean(u.has_password) }
 }
 
 default p_5_4_1_1 := false
 
 p_5_4_1_1 if {
-	v := num(input.pam.pass_max_days)
+	v := fnum(input.pam.pass_max_days)
 	v >= 1
 	v <= 365
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.max_days) >= 1; num(u.max_days) <= 365}
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { fnum(u.max_days) >= 1; fnum(u.max_days) <= 365}
 }
 
 violations contains "5.4.1.1: evidence missing — pam.pass_max_days/user_group.shadow_entries not collected" if not e_5_4_1_1
@@ -878,17 +892,18 @@ violations contains "5.4.1.2: manual review not attested — set attest.minimum_
 default e_5_4_1_3 := false
 
 e_5_4_1_3 if {
-	input.pam.pass_warn_age != null
+	is_number(input.pam.pass_warn_age)
 	is_array(input.user_group.shadow_entries)
 	count(input.user_group.shadow_entries) > 0
+	every u in input.user_group.shadow_entries { is_boolean(u.has_password) }
 }
 
 default p_5_4_1_3 := false
 
 p_5_4_1_3 if {
-	v := num(input.pam.pass_warn_age)
+	v := fnum(input.pam.pass_warn_age)
 	v >= 7
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.warn_days) >= 7 }
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { fnum(u.warn_days) >= 7 }
 }
 
 violations contains "5.4.1.3: evidence missing — pam.pass_warn_age/user_group.shadow_entries not collected" if not e_5_4_1_3
@@ -924,18 +939,19 @@ violations contains "5.4.1.4: not met — strong password hashing algorithm must
 default e_5_4_1_5 := false
 
 e_5_4_1_5 if {
-	input.pam.inactive_days != null
+	is_number(input.pam.inactive_days)
 	is_array(input.user_group.shadow_entries)
 	count(input.user_group.shadow_entries) > 0
+	every u in input.user_group.shadow_entries { is_boolean(u.has_password) }
 }
 
 default p_5_4_1_5 := false
 
 p_5_4_1_5 if {
-	v := num(input.pam.inactive_days)
+	v := fnum(input.pam.inactive_days)
 	v >= 0
 	v <= 45
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.inactive) >= 0; num(u.inactive) <= 45}
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { fnum(u.inactive) >= 0; fnum(u.inactive) <= 45}
 }
 
 violations contains "5.4.1.5: evidence missing — pam.inactive_days/user_group.shadow_entries not collected" if not e_5_4_1_5
@@ -952,12 +968,13 @@ default e_5_4_1_6 := false
 e_5_4_1_6 if {
 	is_array(input.user_group.shadow_entries)
 	count(input.user_group.shadow_entries) > 0
+	every u in input.user_group.shadow_entries { is_boolean(u.has_password) }
 }
 
 default p_5_4_1_6 := false
 
 p_5_4_1_6 if {
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.last_change) <= today_days }
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { fnum(u.last_change) <= today_days }
 }
 
 violations contains "5.4.1.6: evidence missing — user_group.shadow_entries not collected" if not e_5_4_1_6
@@ -1171,15 +1188,15 @@ violations contains "5.4.3.1: not met — nologin must be not listed in /etc/she
 default e_5_4_3_2 := false
 
 e_5_4_3_2 if {
-	input.pam.tmout != null
+	is_number(input.pam.tmout)
 	is_boolean(input.pam.tmout_readonly_exported)
 }
 
 default p_5_4_3_2 := false
 
 p_5_4_3_2 if {
-	num(input.pam.tmout) > 0
-	num(input.pam.tmout) <= 900
+	fnum(input.pam.tmout) > 0
+	fnum(input.pam.tmout) <= 900
 	input.pam.tmout_readonly_exported == true
 }
 

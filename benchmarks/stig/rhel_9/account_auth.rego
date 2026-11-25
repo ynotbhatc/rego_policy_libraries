@@ -48,18 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -150,17 +161,13 @@ _p4_rounds_ok(file) if {
 	}
 }
 
-# a non-negative integer (number, or decimal string) no greater than max
+# a non-negative JSON whole number no greater than max (a value written as something else, e.g. $IDLE or
+# unlimited, arrives as that text and is not a number)
 _p4_int_at_most(v, max) if {
+	_whole_number(v)
 	is_number(v)
 	v >= 0
 	v <= max
-}
-
-_p4_int_at_most(v, max) if {
-	is_string(v)
-	regex.match(`^\s*[0-9]+\s*$`, v)
-	to_number(trim_space(v)) <= max
 }
 
 # the umask values of a shell start-up file: at least one uncommented umask command, every one 077
@@ -341,12 +348,16 @@ finding_rhel_09_611140 := {
 # deny as configured in /etc/security/faillock.conf
 missing_rhel_09_411075 := [concat(".", p) | some p in [["faillock_conf", "deny"]]; not _collected(p)]
 
+invalid_rhel_09_411075 := [m | some p in [["faillock_conf", "deny"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default account_lockout_enabled := false
 
 account_lockout_enabled if {
 	count(missing_rhel_09_411075) == 0
 	n := _num(["faillock_conf", "deny"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -357,6 +368,8 @@ else := "Open"
 detail_rhel_09_411075 := "RHEL-09-411075: Not_a_Finding" if account_lockout_enabled
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411075", concat(", ", missing_rhel_09_411075)]) if count(missing_rhel_09_411075) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-411075", concat(", ", invalid_rhel_09_411075)]) if count(invalid_rhel_09_411075) > 0
 
 else := "RHEL-09-411075: check failed — deny in /etc/security/faillock.conf must be 1 to 3 (not 0)"
 
@@ -409,11 +422,14 @@ finding_rhel_09_611155 := {
 # effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611090 := [concat(".", p) | some p in [["password_policy", "minlen"]]; not _collected(p)]
 
+invalid_rhel_09_611090 := [m | some p in [["password_policy", "minlen"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_minlen := false
 
 password_minlen if {
 	count(missing_rhel_09_611090) == 0
 	n := _num(["password_policy", "minlen"])
+	is_number(n)
 	n >= 15
 }
 
@@ -424,6 +440,8 @@ else := "Open"
 detail_rhel_09_611090 := "RHEL-09-611090: Not_a_Finding" if password_minlen
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611090", concat(", ", missing_rhel_09_611090)]) if count(missing_rhel_09_611090) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611090", concat(", ", invalid_rhel_09_611090)]) if count(invalid_rhel_09_611090) > 0
 
 else := "RHEL-09-611090: check failed — minlen in /etc/security/pwquality.conf(.d) must be 15 or greater"
 
@@ -442,11 +460,14 @@ finding_rhel_09_611090 := {
 # effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611110 := [concat(".", p) | some p in [["password_policy", "ucredit"]]; not _collected(p)]
 
+invalid_rhel_09_611110 := [m | some p in [["password_policy", "ucredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_uppercase := false
 
 password_uppercase if {
 	count(missing_rhel_09_611110) == 0
 	n := _num(["password_policy", "ucredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -457,6 +478,8 @@ else := "Open"
 detail_rhel_09_611110 := "RHEL-09-611110: Not_a_Finding" if password_uppercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611110", concat(", ", missing_rhel_09_611110)]) if count(missing_rhel_09_611110) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611110", concat(", ", invalid_rhel_09_611110)]) if count(invalid_rhel_09_611110) > 0
 
 else := "RHEL-09-611110: check failed — ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character)"
 
@@ -475,11 +498,14 @@ finding_rhel_09_611110 := {
 # effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611065 := [concat(".", p) | some p in [["password_policy", "lcredit"]]; not _collected(p)]
 
+invalid_rhel_09_611065 := [m | some p in [["password_policy", "lcredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_lowercase := false
 
 password_lowercase if {
 	count(missing_rhel_09_611065) == 0
 	n := _num(["password_policy", "lcredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -490,6 +516,8 @@ else := "Open"
 detail_rhel_09_611065 := "RHEL-09-611065: Not_a_Finding" if password_lowercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611065", concat(", ", missing_rhel_09_611065)]) if count(missing_rhel_09_611065) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611065", concat(", ", invalid_rhel_09_611065)]) if count(invalid_rhel_09_611065) > 0
 
 else := "RHEL-09-611065: check failed — lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character)"
 
@@ -508,11 +536,14 @@ finding_rhel_09_611065 := {
 # effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611070 := [concat(".", p) | some p in [["password_policy", "dcredit"]]; not _collected(p)]
 
+invalid_rhel_09_611070 := [m | some p in [["password_policy", "dcredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_numeric := false
 
 password_numeric if {
 	count(missing_rhel_09_611070) == 0
 	n := _num(["password_policy", "dcredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -523,6 +554,8 @@ else := "Open"
 detail_rhel_09_611070 := "RHEL-09-611070: Not_a_Finding" if password_numeric
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611070", concat(", ", missing_rhel_09_611070)]) if count(missing_rhel_09_611070) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611070", concat(", ", invalid_rhel_09_611070)]) if count(invalid_rhel_09_611070) > 0
 
 else := "RHEL-09-611070: check failed — dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character)"
 
@@ -541,11 +574,14 @@ finding_rhel_09_611070 := {
 # effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611100 := [concat(".", p) | some p in [["password_policy", "ocredit"]]; not _collected(p)]
 
+invalid_rhel_09_611100 := [m | some p in [["password_policy", "ocredit"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_special := false
 
 password_special if {
 	count(missing_rhel_09_611100) == 0
 	n := _num(["password_policy", "ocredit"])
+	is_number(n)
 	n <= 0
 }
 
@@ -556,6 +592,8 @@ else := "Open"
 detail_rhel_09_611100 := "RHEL-09-611100: Not_a_Finding" if password_special
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611100", concat(", ", missing_rhel_09_611100)]) if count(missing_rhel_09_611100) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611100", concat(", ", invalid_rhel_09_611100)]) if count(invalid_rhel_09_611100) > 0
 
 else := "RHEL-09-611100: check failed — ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character)"
 
@@ -574,12 +612,16 @@ finding_rhel_09_611100 := {
 # PASS_MAX_DAYS as configured in /etc/login.defs
 missing_rhel_09_411010 := [concat(".", p) | some p in [["password_policy", "maxdays"]]; not _collected(p)]
 
+invalid_rhel_09_411010 := [m | some p in [["password_policy", "maxdays"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_maxage := false
 
 password_maxage if {
 	count(missing_rhel_09_411010) == 0
 	n := _num(["password_policy", "maxdays"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 180
 }
 
@@ -590,6 +632,8 @@ else := "Open"
 detail_rhel_09_411010 := "RHEL-09-411010: Not_a_Finding" if password_maxage
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411010", concat(", ", missing_rhel_09_411010)]) if count(missing_rhel_09_411010) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-411010", concat(", ", invalid_rhel_09_411010)]) if count(invalid_rhel_09_411010) > 0
 
 else := "RHEL-09-411010: check failed — PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit)"
 
@@ -608,11 +652,14 @@ finding_rhel_09_411010 := {
 # PASS_MIN_DAYS as configured in /etc/login.defs
 missing_rhel_09_611075 := [concat(".", p) | some p in [["password_policy", "mindays"]]; not _collected(p)]
 
+invalid_rhel_09_611075 := [m | some p in [["password_policy", "mindays"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default password_minage := false
 
 password_minage if {
 	count(missing_rhel_09_611075) == 0
 	n := _num(["password_policy", "mindays"])
+	is_number(n)
 	n >= 1
 }
 
@@ -623,6 +670,8 @@ else := "Open"
 detail_rhel_09_611075 := "RHEL-09-611075: Not_a_Finding" if password_minage
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611075", concat(", ", missing_rhel_09_611075)]) if count(missing_rhel_09_611075) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611075", concat(", ", invalid_rhel_09_611075)]) if count(invalid_rhel_09_611075) > 0
 
 else := "RHEL-09-611075: check failed — PASS_MIN_DAYS in /etc/login.defs must be 1 or greater"
 
@@ -641,12 +690,16 @@ finding_rhel_09_611075 := {
 # fail_interval as configured in /etc/security/faillock.conf
 missing_rhel_09_411085 := [concat(".", p) | some p in [["faillock_conf", "fail_interval"]]; not _collected(p)]
 
+invalid_rhel_09_411085 := [m | some p in [["faillock_conf", "fail_interval"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default lockout_duration_ok := false
 
 lockout_duration_ok if {
 	count(missing_rhel_09_411085) == 0
 	n := _num(["faillock_conf", "fail_interval"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 900
 }
 
@@ -668,6 +721,8 @@ else := "RHEL-09-411085: Not_Applicable — the SA demonstrated an approved cent
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411085", concat(", ", missing_rhel_09_411085)]) if count(missing_rhel_09_411085) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-411085", concat(", ", invalid_rhel_09_411085)]) if count(invalid_rhel_09_411085) > 0
+
 else := "RHEL-09-411085: check failed — fail_interval in /etc/security/faillock.conf must be 900 or less (not 0)"
 
 finding_rhel_09_411085 := {
@@ -685,12 +740,16 @@ finding_rhel_09_411085 := {
 # INACTIVE as configured in /etc/default/useradd
 missing_rhel_09_411050 := [concat(".", p) | some p in [["password_policy", "inactive_days"]]; not _collected(p)]
 
+invalid_rhel_09_411050 := [m | some p in [["password_policy", "inactive_days"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default inactive_lock_ok := false
 
 inactive_lock_ok if {
 	count(missing_rhel_09_411050) == 0
 	n := _num(["password_policy", "inactive_days"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 35
 }
 
@@ -701,6 +760,8 @@ else := "Open"
 detail_rhel_09_411050 := "RHEL-09-411050: Not_a_Finding" if inactive_lock_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411050", concat(", ", missing_rhel_09_411050)]) if count(missing_rhel_09_411050) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-411050", concat(", ", invalid_rhel_09_411050)]) if count(invalid_rhel_09_411050) > 0
 
 else := "RHEL-09-411050: check failed — INACTIVE in /etc/default/useradd must be 0 to 35 (not -1)"
 
@@ -1141,6 +1202,8 @@ finding_rhel_09_411080 := {
 # unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out)
 missing_rhel_09_411090 := [concat(".", p) | some p in [["faillock_conf", "unlock_time"]]; not _collected(p)]
 
+invalid_rhel_09_411090 := [m | some p in [["faillock_conf", "unlock_time"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default faillock_unlock_time_zero := false
 
 faillock_unlock_time_zero if {
@@ -1155,6 +1218,8 @@ else := "Open"
 detail_rhel_09_411090 := "RHEL-09-411090: Not_a_Finding" if faillock_unlock_time_zero
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411090", concat(", ", missing_rhel_09_411090)]) if count(missing_rhel_09_411090) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-411090", concat(", ", invalid_rhel_09_411090)]) if count(invalid_rhel_09_411090) > 0
 
 else := "RHEL-09-411090: check failed — unlock_time in /etc/security/faillock.conf must be 0 (locked until an administrator releases the account)"
 
@@ -1242,8 +1307,10 @@ finding_rhel_09_411105 := {
 }
 
 # RHEL-09-412035 | V-258068 | CAT II
-# uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value as written)
+# uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value: the seconds as a JSON number; an assignment that is not a decimal integer, e.g. $IDLE, as the text written)
 missing_rhel_09_412035 := [concat(".", p) | some p in [["profile_tmout"]]; not _collected(p)]
+
+invalid_rhel_09_412035 := [m | some i, e in input.profile_tmout; m := _not_a_number(sprintf("profile_tmout[%d].value", [i]), object.get(e, "value", null))]
 
 default shell_tmout_set := false
 
@@ -1263,6 +1330,8 @@ else := "Open"
 detail_rhel_09_412035 := "RHEL-09-412035: Not_a_Finding" if shell_tmout_set
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412035", concat(", ", missing_rhel_09_412035)]) if count(missing_rhel_09_412035) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-412035", concat(", ", invalid_rhel_09_412035)]) if count(invalid_rhel_09_412035) > 0
 
 else := "RHEL-09-412035: check failed — a script in /etc/profile.d/ must set TMOUT to 600 or less (uncommented)"
 
@@ -1313,11 +1382,14 @@ finding_rhel_09_412045 := {
 # FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out)
 missing_rhel_09_412050 := [concat(".", p) | some p in [["login_defs", "FAIL_DELAY"]]; not _collected(p)]
 
+invalid_rhel_09_412050 := [m | some p in [["login_defs", "FAIL_DELAY"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default login_fail_delay := false
 
 login_fail_delay if {
 	count(missing_rhel_09_412050) == 0
 	n := _num(["login_defs", "FAIL_DELAY"])
+	is_number(n)
 	n >= 4
 }
 
@@ -1328,6 +1400,8 @@ else := "Open"
 detail_rhel_09_412050 := "RHEL-09-412050: Not_a_Finding" if login_fail_delay
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412050", concat(", ", missing_rhel_09_412050)]) if count(missing_rhel_09_412050) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-412050", concat(", ", invalid_rhel_09_412050)]) if count(invalid_rhel_09_412050) > 0
 
 else := "RHEL-09-412050: check failed — FAIL_DELAY in /etc/login.defs must be 4 or greater"
 
@@ -1474,6 +1548,8 @@ finding_rhel_09_412065 := {
 # effective (last uncommented) StopIdleSessionSec from systemd-analyze cat-config systemd/logind.conf; a cloud-hosted system with sshd ClientAliveInterval configured is Not Applicable
 missing_rhel_09_412080 := [concat(".", p) | some p in [["logind_conf", "StopIdleSessionSec"]]; not _collected(p)]
 
+invalid_rhel_09_412080 := [m | some p in [["ssh_config", "ClientAliveInterval"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default idle_sessions_terminated := false
 
 idle_sessions_terminated if {
@@ -1486,7 +1562,9 @@ default na_rhel_09_412080 := false
 na_rhel_09_412080 if {
 	_attested("rhel_09_412080_cloud_hosted")
 	n := _num(["ssh_config", "ClientAliveInterval"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 600
 }
 
@@ -1501,6 +1579,8 @@ detail_rhel_09_412080 := "RHEL-09-412080: Not_a_Finding" if idle_sessions_termin
 else := "RHEL-09-412080: Not_Applicable — cloud-hosted system with sshd ClientAliveInterval configured (RHEL-09-255100)" if na_rhel_09_412080
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412080", concat(", ", missing_rhel_09_412080)]) if count(missing_rhel_09_412080) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-412080", concat(", ", invalid_rhel_09_412080)]) if count(invalid_rhel_09_412080) > 0
 
 else := "RHEL-09-412080: check failed — StopIdleSessionSec in the effective logind.conf (systemd-analyze cat-config systemd/logind.conf) must be 600"
 
@@ -2010,12 +2090,16 @@ finding_rhel_09_611055 := {
 # effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out)
 missing_rhel_09_611010 := [concat(".", p) | some p in [["password_policy", "retry"]]; not _collected(p)]
 
+invalid_rhel_09_611010 := [m | some p in [["password_policy", "retry"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default pwquality_retry := false
 
 pwquality_retry if {
 	count(missing_rhel_09_611010) == 0
 	n := _num(["password_policy", "retry"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 3
 }
 
@@ -2026,6 +2110,8 @@ else := "Open"
 detail_rhel_09_611010 := "RHEL-09-611010: Not_a_Finding" if pwquality_retry
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611010", concat(", ", missing_rhel_09_611010)]) if count(missing_rhel_09_611010) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611010", concat(", ", invalid_rhel_09_611010)]) if count(invalid_rhel_09_611010) > 0
 
 else := "RHEL-09-611010: check failed — retry in /etc/security/pwquality.conf(.d) must be 1 to 3"
 
@@ -2110,6 +2196,8 @@ finding_rhel_09_611080 := {
 # effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out)
 missing_rhel_09_611105 := [concat(".", p) | some p in [["password_policy", "dictcheck"]]; not _collected(p)]
 
+invalid_rhel_09_611105 := [m | some p in [["password_policy", "dictcheck"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default pwquality_dictcheck := false
 
 pwquality_dictcheck if {
@@ -2125,6 +2213,8 @@ else := "Open"
 detail_rhel_09_611105 := "RHEL-09-611105: Not_a_Finding" if pwquality_dictcheck
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611105", concat(", ", missing_rhel_09_611105)]) if count(missing_rhel_09_611105) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611105", concat(", ", invalid_rhel_09_611105)]) if count(invalid_rhel_09_611105) > 0
 
 else := "RHEL-09-611105: check failed — dictcheck in /etc/security/pwquality.conf(.d) must be set to a value other than 0"
 
@@ -2143,11 +2233,14 @@ finding_rhel_09_611105 := {
 # effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611115 := [concat(".", p) | some p in [["password_policy", "difok"]]; not _collected(p)]
 
+invalid_rhel_09_611115 := [m | some p in [["password_policy", "difok"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default pwquality_difok := false
 
 pwquality_difok if {
 	count(missing_rhel_09_611115) == 0
 	n := _num(["password_policy", "difok"])
+	is_number(n)
 	n >= 8
 }
 
@@ -2158,6 +2251,8 @@ else := "Open"
 detail_rhel_09_611115 := "RHEL-09-611115: Not_a_Finding" if pwquality_difok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611115", concat(", ", missing_rhel_09_611115)]) if count(missing_rhel_09_611115) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611115", concat(", ", invalid_rhel_09_611115)]) if count(invalid_rhel_09_611115) > 0
 
 else := "RHEL-09-611115: check failed — difok in /etc/security/pwquality.conf(.d) must be 8 or greater"
 
@@ -2176,12 +2271,16 @@ finding_rhel_09_611115 := {
 # effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611120 := [concat(".", p) | some p in [["password_policy", "maxclassrepeat"]]; not _collected(p)]
 
+invalid_rhel_09_611120 := [m | some p in [["password_policy", "maxclassrepeat"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default pwquality_maxclassrepeat := false
 
 pwquality_maxclassrepeat if {
 	count(missing_rhel_09_611120) == 0
 	n := _num(["password_policy", "maxclassrepeat"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 4
 }
 
@@ -2192,6 +2291,8 @@ else := "Open"
 detail_rhel_09_611120 := "RHEL-09-611120: Not_a_Finding" if pwquality_maxclassrepeat
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611120", concat(", ", missing_rhel_09_611120)]) if count(missing_rhel_09_611120) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611120", concat(", ", invalid_rhel_09_611120)]) if count(invalid_rhel_09_611120) > 0
 
 else := "RHEL-09-611120: check failed — maxclassrepeat in /etc/security/pwquality.conf(.d) must be 1 to 4 (not 0)"
 
@@ -2210,12 +2311,16 @@ finding_rhel_09_611120 := {
 # effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611125 := [concat(".", p) | some p in [["password_policy", "maxrepeat"]]; not _collected(p)]
 
+invalid_rhel_09_611125 := [m | some p in [["password_policy", "maxrepeat"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default pwquality_maxrepeat := false
 
 pwquality_maxrepeat if {
 	count(missing_rhel_09_611125) == 0
 	n := _num(["password_policy", "maxrepeat"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 3
 }
 
@@ -2226,6 +2331,8 @@ else := "Open"
 detail_rhel_09_611125 := "RHEL-09-611125: Not_a_Finding" if pwquality_maxrepeat
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611125", concat(", ", missing_rhel_09_611125)]) if count(missing_rhel_09_611125) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611125", concat(", ", invalid_rhel_09_611125)]) if count(invalid_rhel_09_611125) > 0
 
 else := "RHEL-09-611125: check failed — maxrepeat in /etc/security/pwquality.conf(.d) must be set to 3 or less"
 
@@ -2244,11 +2351,14 @@ finding_rhel_09_611125 := {
 # effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
 missing_rhel_09_611130 := [concat(".", p) | some p in [["password_policy", "minclass"]]; not _collected(p)]
 
+invalid_rhel_09_611130 := [m | some p in [["password_policy", "minclass"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default pwquality_minclass := false
 
 pwquality_minclass if {
 	count(missing_rhel_09_611130) == 0
 	n := _num(["password_policy", "minclass"])
+	is_number(n)
 	n >= 4
 }
 
@@ -2259,6 +2369,8 @@ else := "Open"
 detail_rhel_09_611130 := "RHEL-09-611130: Not_a_Finding" if pwquality_minclass
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611130", concat(", ", missing_rhel_09_611130)]) if count(missing_rhel_09_611130) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-611130", concat(", ", invalid_rhel_09_611130)]) if count(invalid_rhel_09_611130) > 0
 
 else := "RHEL-09-611130: check failed — minclass in /etc/security/pwquality.conf(.d) must be 4 or greater"
 
@@ -2472,8 +2584,10 @@ finding_rhel_09_671025 := {
 # =============================================================================
 
 # RHEL-09-412040 | V-258069 | CAT III
-# uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}]
+# uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}] (value: a JSON number; a value that is not a decimal integer as the text written)
 missing_rhel_09_412040 := [concat(".", p) | some p in [["limits_maxlogins"]]; not _collected(p)]
+
+invalid_rhel_09_412040 := [m | some i, e in input.limits_maxlogins; m := _not_a_number(sprintf("limits_maxlogins[%d].value", [i]), object.get(e, "value", null))]
 
 default maxlogins_limited := false
 
@@ -2498,6 +2612,8 @@ else := "Open"
 detail_rhel_09_412040 := "RHEL-09-412040: Not_a_Finding" if maxlogins_limited
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-412040", concat(", ", missing_rhel_09_412040)]) if count(missing_rhel_09_412040) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-412040", concat(", ", invalid_rhel_09_412040)]) if count(invalid_rhel_09_412040) > 0
 
 else := "RHEL-09-412040: check failed — every uncommented maxlogins item in /etc/security/limits.conf and limits.d/*.conf must be 10 or less (at least one item), or the value must be documented with the ISSO as an operational requirement (input.attest.rhel_09_412040_maxlogins_documented)"
 

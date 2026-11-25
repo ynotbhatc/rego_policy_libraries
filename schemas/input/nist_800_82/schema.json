@@ -2,43 +2,64 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/nist_800_82/schema.json",
  "title": "Input facts for nist_800_82",
- "description": "Input paths referenced in the sources of frameworks/critical_infrastructure/nist_800_82/. No all-pass test fixture was found for this key, so no types are given and nothing is marked required. Names the module reads through a local alias are not listed.",
+ "description": "Facts the module in frameworks/critical_infrastructure/nist_800_82/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
  "x-framework-key": "nist_800_82",
  "x-entrypoint": "data.nist_800_82.main.compliance_report",
- "x-derivation": "paths-only",
+ "x-derivation": "static-scan+fixture",
  "x-source": [
   "frameworks/critical_infrastructure/nist_800_82/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.nist_800_82.main_evidence_test.all_pass",
  "type": "object",
  "properties": {
   "access_control": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "ot_accounts": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "managed": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "physical_ot_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "privileged_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
        "properties": {
         "controlled": {
-         "description": "Read in nist_800_82_main.rego."
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
         }
        }
       }
@@ -46,9 +67,15 @@
     },
     "vendor_remote": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "managed": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -58,66 +85,110 @@
    "description": "Read in nist_800_82_main.rego."
   },
   "configuration": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "change_management": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_process": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "ot_baseline": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "established": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "removable_media": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "controlled": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "software": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "authorized_only": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "contingency": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "backup": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_configurations": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "manual_operations": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "procedures_documented": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "recovery": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_rto_defined": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -127,104 +198,182 @@
    "description": "Read in nist_800_82_main.rego."
   },
   "incident_response": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "ot_specific": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "coordination_with_safety": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "forensics_consideration": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "plan_exists": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "reporting": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ics_cert": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "monitoring": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "historian": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "log_integrity": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "ot_network": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "continuous": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "protocol_aware": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "network": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "data_flows": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "documented": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "demilitarized_zone": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "exists": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "dial_up": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "disabled_or_controlled": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "ot_it_segmentation": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "implemented": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "remote_access": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_specific_controls": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "wireless": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_wireless_restricted": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -232,6 +381,7 @@
   },
   "nist_800_82": {
    "description": "Read in nist_800_82_main.rego.",
+   "type": "object",
    "properties": {
     "target_impact": {
      "description": "Read in nist_800_82_main.rego."
@@ -242,51 +392,92 @@
    "description": "Read in nist_800_82_main.rego."
   },
   "patch_management": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "ot": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "compensating_controls": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "policy_exists": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "vendor_coordination": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "risk_assessment": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "asset_inventory": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_systems": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "consequence_analysis": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "environmental": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "life_safety": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "ot_specific": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "conducted": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
@@ -296,37 +487,62 @@
    "description": "Read in nist_800_82_main.rego."
   },
   "supply_chain": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "ot_equipment": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "counterfeit_protection": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       },
       "vendor_assessment": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }
    }
   },
   "system_integrity": {
-   "description": "Read in nist_800_82_main.rego.",
+   "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+   "type": "object",
    "properties": {
     "firmware": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "integrity_verified": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     },
     "malware_protection": {
      "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+     "type": "object",
      "properties": {
       "ot_appropriate": {
-       "description": "Read in nist_800_82_main.rego."
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
       }
      }
     }

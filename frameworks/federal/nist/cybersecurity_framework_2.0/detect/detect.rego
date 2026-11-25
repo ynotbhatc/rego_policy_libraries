@@ -28,36 +28,67 @@ import rego.v1
 # 2.0 subcategory and the check is a fair reading of that text. The other checks were removed; their lineage
 # is the `legacy` data table at the end.
 
+# ── Evidence rule ────────────────────────────────────────────────────────────
+# Only the boolean true passes a yes/no fact. A fact that is missing, null, or any
+# other type ("true", "false", "no", 0, 1) is an evidence problem: the control fails
+# and the finding names the problem. A boolean false keeps the plain finding.
+
+default _input := {}
+
+_input := input if is_object(input)
+
+_fact(path) := object.get(_input, path, null)
+
+_not_true(path) if _fact(path) != true
+
+_finding(msg, path) := msg if _fact(path) == false
+
+_finding(msg, path) := sprintf("%s [evidence missing — input.%s not collected]", [msg, concat(".", path)]) if {
+	_fact(path) == null
+}
+
+_finding(msg, path) := sprintf("%s [evidence invalid — input.%s is not a boolean (got %s)]", [msg, concat(".", path), type_name(_fact(path))]) if {
+	value := _fact(path)
+	value != null
+	not is_boolean(value)
+}
+
 default compliant := false
 
 violation contains msg if {
-	not input.detect.anomalies_events.detected_events_analyzed
-	msg := "CSF DE.AE-02: Detected events not analyzed to understand attack targets/methods"
+	_not_true(["detect", "anomalies_events", "detected_events_analyzed"])
+	finding := "CSF DE.AE-02: Detected events not analyzed to understand attack targets/methods"
+	msg := _finding(finding, ["detect", "anomalies_events", "detected_events_analyzed"])
 }
 
 violation contains msg if {
-	not input.detect.anomalies_events.event_data_aggregated
-	msg := "CSF DE.AE-03: Event data not aggregated and correlated from multiple sources"
+	_not_true(["detect", "anomalies_events", "event_data_aggregated"])
+	finding := "CSF DE.AE-03: Event data not aggregated and correlated from multiple sources"
+	msg := _finding(finding, ["detect", "anomalies_events", "event_data_aggregated"])
 }
 
 violation contains msg if {
-	not input.detect.anomalies_events.impact_determined
-	msg := "CSF DE.AE-04: Impact of events not determined"
+	_not_true(["detect", "anomalies_events", "impact_determined"])
+	finding := "CSF DE.AE-04: Impact of events not determined"
+	msg := _finding(finding, ["detect", "anomalies_events", "impact_determined"])
 }
 
 violation contains msg if {
-	not input.detect.continuous_monitoring.network_monitored
-	msg := "CSF DE.CM-01: Network not monitored to detect potential cybersecurity events"
+	_not_true(["detect", "continuous_monitoring", "network_monitored"])
+	finding := "CSF DE.CM-01: Network not monitored to detect potential cybersecurity events"
+	msg := _finding(finding, ["detect", "continuous_monitoring", "network_monitored"])
 }
 
 violation contains msg if {
-	not input.detect.continuous_monitoring.physical_environment_monitored
-	msg := "CSF DE.CM-02: Physical environment not monitored for unauthorized access"
+	_not_true(["detect", "continuous_monitoring", "physical_environment_monitored"])
+	finding := "CSF DE.CM-02: Physical environment not monitored for unauthorized access"
+	msg := _finding(finding, ["detect", "continuous_monitoring", "physical_environment_monitored"])
 }
 
 violation contains msg if {
-	not input.detect.continuous_monitoring.external_provider_activity_monitored
-	msg := "CSF DE.CM-06: External service provider activity not monitored"
+	_not_true(["detect", "continuous_monitoring", "external_provider_activity_monitored"])
+	finding := "CSF DE.CM-06: External service provider activity not monitored"
+	msg := _finding(finding, ["detect", "continuous_monitoring", "external_provider_activity_monitored"])
 }
 
 compliant if count(violation) == 0

@@ -12,6 +12,7 @@ azure_lib.rego.tmpl. The generator writes only the files listed in OWNED and run
 """
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -27,6 +28,41 @@ EXPECTED = (128, 100, 28)  # recommendations, Automated, Manual
 OWNED = ["cis_azure_foundations.rego", "cis_azure_main.rego", "l2_validation.rego",
          "tests/test_cis_azure_v7_controls.rego", "tests/test_cis_azure_v7_logic.rego",
          "tests/test_cis_azure_v7_reports.rego", "tests/test_cis_azure_v7_l2.rego"]
+
+# profile selection, emitted verbatim into the engine
+LEVEL_REGO = r'''default level := 2
+
+# The level is the number 1 or 2 (Level 2 includes Level 1); absent selects 2. Anything else (the strings "1" and
+# "level1" included, null, a cis_profile that is not an object) is invalid evidence, never a selection: the report is
+# scoped at Level 2, the stricter, and every Level 2 recommendation carries the finding, because the profile that
+# decides whether it applies was not readable.
+level := 1 if input.cis_profile.level == 1
+
+default level_invalid := false
+
+level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_messages contains sprintf("%s: %s — evidence invalid — input.cis_profile.level must be the number 1 or 2, got %s, so this Level 2 recommendation could not be scoped", [id, r.title, _level_got]) if {
+	level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
+'''
 
 
 def load(path):
@@ -243,7 +279,27 @@ def rm(p):
     return {"op": "remove", "path": p}
 
 
+_BOOL_READ = re.compile(r'\bp_(?:true|false)\((\w+(?:\.\w+)*), "(\w+)"\)')
+
+
+def _boolean_findings(rules):
+    """Azure returns the properties read with p_true / p_false as JSON booleans, and only true and false are read. For
+    each such read, one more finding: the property is present but is a string or a number (a collection error)."""
+    out = []
+    for _detail, args, lines in rules:
+        for i, ln in enumerate(lines):
+            m = _BOOL_READ.search(ln)
+            if not m:
+                continue
+            var, prop = m.groups()
+            tail = " (%v)" * len(args)
+            out.append((f"evidence invalid — {prop} must be true or false, got %v" + (" on" + tail if args else ""),
+                        [f'type_name(p({var}, "{prop}"))'] + list(args), lines[:i] + [f'not_boolean({var}, "{prop}")']))
+    return out
+
+
 def F(cid, kw, ev, rules, fail, miss=None):
+    rules = list(rules) + _boolean_findings(rules)
     C.append({"id": cid, "kw": kw, "kind": "fact", "ev": ev, "rules": rules, "fail": fail if isinstance(fail, list) else [fail],
               "miss": miss or [rm("/" + ev[0])]})
 
@@ -272,7 +328,7 @@ F("5.3.3", "user access administrator", ["root_role_assignments"],
   [("%v holds User Access Administrator at the root scope", ['object.get(x, "principalName", object.get(x, "principalId", "a principal"))'],
     [each("root_role_assignments"), 'role_is(x, "User Access Administrator")', 'object.get(x, "scope", "/") == "/"']),
    ("a root-scope role assignment was collected without its role name", [],
-    [each("root_role_assignments"), 'not has_str(x, "roleDefinitionName")'])],
+    [each("root_role_assignments"), 'not has_text(x, "roleDefinitionName")'])],
   add("/root_role_assignments/-", {"roleDefinitionName": "User Access Administrator", "scope": "/", "principalName": "admin@example.com"}))
 A("5.3.4", "privileged", "privileged_role_assignments_reviewed")
 A("5.3.5", "disabled user accounts", "disabled_users_hold_no_roles")
@@ -324,36 +380,55 @@ F("5.12", "role based access control administrator", ["role_assignments"],
    add("/role_assignments/-", {"roleDefinitionName": "User Access Administrator", "scope": SUB, "principalId": "p-9"})])
 
 # Section 6: logging and monitoring
+DIAG_L = 'some l in p(s, "logs")'
+DIAG_NB = 'not is_boolean(object.get(l, "enabled", null))'
+DIAG_INVALID_SUB = ["some s in input.subscription_diagnostic_settings", DIAG_L, DIAG_NB]
 F("6.1.1.1", "diagnostic setting", ["subscription_diagnostic_settings"],
   [("no subscription diagnostic setting sends an enabled activity log category to a destination", [],
-    ["count([s | some s in input.subscription_diagnostic_settings; exporting_setting(s)]) == 0"])],
+    ["count([s | some s in input.subscription_diagnostic_settings; exporting_setting(s)]) == 0"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'], DIAG_INVALID_SUB)],
   add("/subscription_diagnostic_settings", []))
 F("6.1.1.2", "appropriate categories", ["subscription_diagnostic_settings"],
   [("activity log category %s is not exported by any subscription diagnostic setting with a destination", ["cat"],
-    ['some cat in ["Administrative", "Alert", "Policy", "Security"]', "not subscription_category_logged(cat)"])],
+    ['some cat in ["Administrative", "Alert", "Policy", "Security"]', "not subscription_category_logged(cat)"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'], DIAG_INVALID_SUB)],
   add("/subscription_diagnostic_settings/0/logs/3/enabled", False))
 A("6.1.1.3", "customer-managed key", "activity_log_storage_cmk_encrypted")
 F("6.1.1.4", "logging for azure key vault", ["key_vaults"],
   [("key vault %s has no diagnostic setting that sends audit logs to a destination", ["nm(x)"],
     [each("key_vaults"), "is_array(x.diagnostic_settings)", "not audit_logging_on(x)"]),
    ("key vault %s: diagnostic_settings not collected", ["nm(x)"],
-    [each("key_vaults"), "not has_list(x, \"diagnostic_settings\")"])],
+    [each("key_vaults"), "not has_list(x, \"diagnostic_settings\")"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'],
+    [each("key_vaults"), "is_array(x.diagnostic_settings)", "some s in x.diagnostic_settings", DIAG_L, DIAG_NB])],
   [add("/key_vaults/0/diagnostic_settings/0/logs/0/enabled", False), rm("/key_vaults/0/diagnostic_settings")])
 A("6.1.1.5", "network security group flow logs", "nsg_flow_logs_sent_to_log_analytics")
 A("6.1.1.6", "virtual network flow logs", "vnet_flow_logs_sent_to_log_analytics")
 A("6.1.1.7", "microsoft graph activity logs", "graph_activity_logs_exported")
 A("6.1.1.8", "microsoft entra activity logs", "entra_activity_logs_exported")
 A("6.1.1.9", "intune logs", "intune_logs_sent_to_log_analytics")
+ALERT_ENABLED_INVALID = "evidence invalid — activity log alert %v: enabled must be true or false, got %v"
+ALERT_ENABLED_ARGS = ["nm(a)", 'type_name(p(a, "enabled"))']
 for _i, (_cid, _kw, _op, _narrow) in enumerate(ADMIN_OPS):
     F(_cid, _kw, ["activity_log_alerts"],
       [(f"no enabled activity log alert with an action group covers {_op} for the subscription without extra conditions", [],
-        [f'not operation_alerted("{_op}", {"true" if _narrow else "false"})'])],
+        [f'not operation_alerted("{_op}", {"true" if _narrow else "false"})']),
+       # the alert that names this operation carries an `enabled` that is not a boolean: the finding says so
+       (ALERT_ENABLED_INVALID, ALERT_ENABLED_ARGS,
+        [f'not operation_alerted("{_op}", {"true" if _narrow else "false"})', "some a in input.activity_log_alerts",
+         f'admin_alert(a, "{_op}")', 'not_boolean(a, "enabled")'])],
       [add(f"/activity_log_alerts/{_i}/enabled", False),
        add(f"/activity_log_alerts/{_i}/condition/allOf/-", {"field": "resourceGroup", "equals": "rg-core"}),
        add(f"/activity_log_alerts/{_i}/actions/actionGroups", [])])
 F("6.1.2.11", "service health", ["activity_log_alerts"],
   [("no enabled activity log alert with an action group covers Service Health for the subscription without narrowing conditions", [],
-    ["not service_health_alerted"])],
+    ["not service_health_alerted"]),
+   (ALERT_ENABLED_INVALID, ALERT_ENABLED_ARGS,
+    ["not service_health_alerted", "some a in input.activity_log_alerts", "some c in alert_conditions(a)",
+     '_cond_field(c) == "category"', 'lower(c.equals) == "servicehealth"', 'not_boolean(a, "enabled")'])],
   [add(f"/activity_log_alerts/{SH}/scopes", [RG]),
    add(f"/activity_log_alerts/{SH}/condition/allOf/-", {"field": "properties.impactedServices[*].ServiceName", "containsAny": ["Storage"]})])
 F("6.1.3.1", "application insights", ["application_insights"],
@@ -444,6 +519,8 @@ FL = "flow_logs"
 F("7.6", "virtual network flow log retention", [FL],
   [("virtual network flow log %v keeps logs for fewer than 90 days (or retention not collected)", ["nm(x)"],
     [each(FL), "flow_log_target_collected(x)", "not nsg_flow_log(x)", "not retention_ok(x)"]),
+   ("evidence invalid — enabled must be true or false, got %v on (%v)", ['type_name(p(x, "enabled"))', "nm(x)"],
+    [each(FL), "not nsg_flow_log(x)", 'not_boolean(x, "enabled")']),
    ("flow log %v: targetResourceId not collected", ["nm(x)"], [each(FL), "not flow_log_target_collected(x)"])],
   add(f"/{FL}/0/retentionPolicy/days", 30))
 VGW = "virtual_network_gateways"
@@ -455,6 +532,8 @@ F("7.7", "point-to-site", [VGW],
 F("7.8", "virtualnetwork", [NSG],
   [("network security group %v has no %v deny-all rule evaluated after its allow rules", ["nm(x)", "d"],
     [each(NSG), "is_array(nsg_rules(x))", 'some d in ["inbound", "outbound"]', "not deny_all_after_allows(x, d)"]),
+   ("evidence invalid — network security group %v: rule %v has no numeric priority", ["nm(x)", "nm(r)"],
+    [each(NSG), "some r in nsg_rules(x)", "not rule_priority_collected(r)"]),
    ("network security group %v: securityRules not collected", ["nm(x)"], [each(NSG), "not nsg_rules_collected(x)"])],
   add(f"/{NSG}/0/securityRules/3/priority", 50))
 A("7.9", "network security perimeter", "network_security_perimeter_enforced")
@@ -492,7 +571,9 @@ plan("8.1.2.1", "apis", "Api")
 plan("8.1.3.1", "defender for servers", "VirtualMachines")
 A("8.1.3.2", "vulnerability assessment", "defender_vulnerability_assessment_on")
 F("8.1.3.3", "endpoint protection", ["defender_settings"],
-  [("the Defender for Endpoint integration (WDATP setting) is not enabled", [], ['not defender_setting_on("WDATP")'])],
+  [("the Defender for Endpoint integration (WDATP setting) is not enabled", [], ['not defender_setting_on("WDATP")']),
+   ("evidence invalid — Defender setting %v: enabled must be true or false, got %v", ["nm(s)", 'type_name(p(s, "enabled"))'],
+    ['not defender_setting_on("WDATP")', "some s in input.defender_settings", 'lower(s.name) == "wdatp"', 'not_boolean(s, "enabled")'])],
   add("/defender_settings/0/enabled", False))
 F("8.1.3.4", "agentless scanning", [DP],
   [("agentless machine scanning is not on under Defender for Servers Plan 2 or Defender CSPM", [], ["not agentless_scanning_on"])],
@@ -544,7 +625,10 @@ for _cid, _kw, _pred, _what, _fail in [
         ("8.1.17", "attack paths", "contact_attack_path_set", "does not send attack path notifications with a minimum risk level",
          rm(f"/{SC}/0/notificationsSources/1"))]:
     F(_cid, _kw, [SC],
-      [(f"the default security contact {_what}", [], ["some c in default_contacts", f"not {_pred}(c)"]), NO_DEFAULT],
+      [(f"the default security contact {_what}", [], ["some c in default_contacts", f"not {_pred}(c)"]), NO_DEFAULT]
+      # only 8.1.14 reads the contact's isEnabled
+      + ([("evidence invalid — the default security contact's isEnabled must be true or false, got %v", ['type_name(p(c, "isEnabled"))'],
+           ["some c in default_contacts", 'not_boolean(c, "isEnabled")'])] if _cid == "8.1.14" else []),
       _fail)
 A("8.1.18", "easm", "defender_easm_workspace_configured")
 A("8.2.1", "iot hub", "defender_for_iot_hub_on")
@@ -554,13 +638,16 @@ A("8.3.1.1", "used when required", "managed_hsm_used_where_required")
 F("8.3.1.2", "logging for azure key vault managed hsm", [HSM],
   [("Managed HSM %v has no diagnostic setting that sends audit logs to a destination", ["nm(x)"],
     [each(HSM), "is_array(x.diagnostic_settings)", "not audit_logging_on(x)"]),
-   ("Managed HSM %v: diagnostic_settings not collected", ["nm(x)"], [each(HSM), "not has_list(x, \"diagnostic_settings\")"])],
+   ("Managed HSM %v: diagnostic_settings not collected", ["nm(x)"], [each(HSM), "not has_list(x, \"diagnostic_settings\")"]),
+   ("diagnostic setting %v: a logs entry has enabled of type %v, not a boolean, so it enables no log category",
+    ["nm(s)", 'type_name(object.get(l, "enabled", null))'],
+    [each(HSM), "is_array(x.diagnostic_settings)", "some s in x.diagnostic_settings", DIAG_L, DIAG_NB])],
   add(f"/{HSM}/0/diagnostic_settings/0/workspaceId", ""))
 F("8.3.1.3", "hsm-protected", [KV],
   [("premium key vault %v: key %v is not HSM-protected", ["nm(x)", "nm(k)"],
     [each(KV), "kv_premium(x)", "some k in x.keys", "item_in_scope(k)", "not hsm_backed(k)"]),
    ("premium key vault %v: keys not collected", ["nm(x)"], [each(KV), "kv_premium(x)", "not has_list(x, \"keys\")"]),
-   ("key vault %v: sku not collected", ["nm(x)"], [each(KV), "not sku_collected(x)"])],
+   ("key vault %v: sku not collected or not a recognised SKU name", ["nm(x)"], [each(KV), "not sku_collected(x)"])],
   add(f"/{KV}/0/keys/0/kty", "RSA"))
 F("8.3.1.4", "purge protection' is set to 'enabled' for azure key vault managed hsm", [HSM],
   [("Managed HSM %v does not have purge protection enabled", ["nm(x)"], [each(HSM), 'not p_true(x, "enablePurgeProtection")'])],
@@ -579,6 +666,9 @@ for _cid, _kw, _mode, _items, _what, _fail in [
     F(_cid, _kw, [KV],
       [(f"key vault %v: enabled {_what} %v has no expiration date", ["nm(x)", "nm(k)"],
         [each(KV), f"{_mode}(x)", f"some k in x.{_items}", "item_in_scope(k)", "not has_expiry(k)"]),
+       (f"evidence invalid — key vault %v: {_what} %v attributes.enabled must be true or false, got %v",
+        ["nm(x)", "nm(k)", "type_name(k.attributes.enabled)"],
+        [each(KV), f"{_mode}(x)", f"some k in x.{_items}", "item_enabled_invalid(k)"]),
        (f"key vault %v: {_items} not collected", ["nm(x)"], [each(KV), f"{_mode}(x)", f'not has_list(x, "{_items}")']),
        ("key vault %v: enableRbacAuthorization not collected", ["nm(x)"], [each(KV), "not kv_mode_known(x)"])],
       rm(_fail) if _fail else add(f"/{KV}/-", LEGACY_KV))
@@ -609,9 +699,9 @@ BH = "bastion_hosts"
 F("8.4.1", "bastion host exists", [BH],
   [("no Azure Bastion host exists in the subscription", [], [f"count(input.{BH}) == 0"])], add(f"/{BH}", []))
 F("8.4.2", "shareable link", [BH],
-  [("Bastion host %v (Standard or Premium) has shareable links enabled", ["nm(x)"],
-    [each(BH), "shareable_link_capable(x)", 'p_true(x, "enableShareableLink")']),
-   ("Bastion host %v: sku not collected", ["nm(x)"], [each(BH), "not sku_collected(x)"])],
+  [("Bastion host %v (Standard or Premium) does not have shareable links turned off", ["nm(x)"],
+    [each(BH), "shareable_link_capable(x)", 'not p_false(x, "enableShareableLink")']),
+   ("Bastion host %v: sku not collected or not a recognised SKU name", ["nm(x)"], [each(BH), "not sku_collected(x)"])],
   add(f"/{BH}/0/enableShareableLink", True))
 PIP = "public_ip_addresses"
 F("8.5", "ddos protection is enabled on public ip", [PIP],
@@ -643,7 +733,9 @@ for _cid, _kw, _body, _what, _fail in [
          add(f"/{SA}/0/minimumTlsVersion", "TLS1_0")),
         ("9.2.5", "blob anonymous access", 'not p_false(x, "allowBlobPublicAccess")', "does not have anonymous blob access disabled",
          rm(f"/{SA}/1/allowBlobPublicAccess"))]:
-    F(_cid, _kw, [SA], [(f"storage account %v {_what}", ["nm(x)"], [each(SA), _body])], _fail)
+    F(_cid, _kw, [SA], [(f"storage account %v {_what}", ["nm(x)"], [each(SA), _body])] + ([
+        ("evidence invalid — %v must be true or false, got %v on (%v)", ["k", "type_name(p(x, k))", "nm(x)"],
+         [each(SA), 'some k in ["enableHttpsTrafficOnly", "supportsHttpsTrafficOnly"]', "not_boolean(x, k)"])] if _cid == "9.2.3" else []), _fail)
 
 C.sort(key=lambda c: sort_key(c["id"]))
 GREEN["attest"] = {c["attest"]: True for c in C if c["kind"] == "attest"}
@@ -809,7 +901,7 @@ def engine(wb):
              CONTRACT, "", "import rego.v1", "",
              "default compliant := false", "", "compliant if count(violations) == 0", "",
              "# ── profile ──────────────────────────────────────────────────────────────────────────",
-             "default level := 2", "", 'level := 1 if lower(sprintf("%v", [input.cis_profile.level])) in {"1", "level1", "level 1", "level_1"}', "",
+             *LEVEL_REGO.split("\n"),
              "in_scope contains id if {", "\tsome id, r in recommendations", "\tr.level <= level", "}", "",
              "_in_scope(id) if id in in_scope", ""]
     rec = {}
@@ -842,6 +934,9 @@ failing_controls := {{control_id(v) | some v in violations}}
 total_controls := count(in_scope)
 
 evidence_violations := [v | some v in violations; contains(v, ": evidence missing — ")]
+
+# A property that was collected with the wrong type (a string or a number where Azure returns a boolean).
+evidence_invalid := [v | some v in violations; contains(v, " — evidence invalid — ")]
 
 section_names := {json.dumps(SECTION_NAMES)}
 
@@ -973,6 +1068,7 @@ compliance_report := {{
 	"violations": _violations,
 	"violation_count": count(_violations),
 	"evidence_missing_count": count(bench.evidence_violations),
+	"evidence_invalid_count": count(bench.evidence_invalid),
 	"section_results": {{
 		"identity_access": _section("5"),
 		"logging_monitoring": _section("6"),

@@ -44,12 +44,16 @@ CIPHERS_16 = A(
 CIPHERS_18 = A(
     [("ssl.ssl_ciphers", "val"), ("ssl.ssl_tls13_ciphers", "val"), ("ssl.unapproved_cipher_sessions", "arr")],
     ["cs := _cipher_list(pg.ssl.ssl_ciphers)", "count(cs) > 0", "every c in cs { c in _approved_ciphers }",
+     # a string, then its members: _cipher_list of a non-string is [] (the error stays inside its comprehension),
+     # and `every` over [] is true
+     "is_string(pg.ssl.ssl_tls13_ciphers)",
      "every c in _cipher_list(pg.ssl.ssl_tls13_ciphers) { c in _approved_ciphers }",
      "count(pg.ssl.unapproved_cipher_sessions) == 0"],
     [("ssl.ssl_ciphers", "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256"),
      ("ssl.ssl_tls13_ciphers", "TLS_AES_256_GCM_SHA384"), ("ssl.unapproved_cipher_sessions", [])],
     [[("ssl.ssl_ciphers", "HIGH:MEDIUM:+3DES:!aNULL")], [("ssl.ssl_ciphers", "")],
-     [("ssl.ssl_tls13_ciphers", "TLS_CHACHA20_POLY1305_SHA256")],
+     [("ssl.ssl_tls13_ciphers", "TLS_CHACHA20_POLY1305_SHA256")], [("ssl.ssl_tls13_ciphers", 7)],
+     [("ssl.ssl_tls13_ciphers", True)], [("ssl.ssl_tls13_ciphers", ["TLS_AES_256_GCM_SHA384"])],
      [("ssl.unapproved_cipher_sessions", [{"pid": 9, "cipher": "AES128-SHA"}])]])
 
 # 3.1.20 in 18: log_connections is a list in PostgreSQL 18; the benchmark requires `all`.

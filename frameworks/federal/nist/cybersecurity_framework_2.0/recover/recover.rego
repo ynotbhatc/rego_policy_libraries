@@ -28,11 +28,37 @@ import rego.v1
 # 2.0 subcategory and the check is a fair reading of that text. The other checks were removed; their lineage
 # is the `legacy` data table at the end.
 
+# ── Evidence rule ────────────────────────────────────────────────────────────
+# Only the boolean true passes a yes/no fact. A fact that is missing, null, or any
+# other type ("true", "false", "no", 0, 1) is an evidence problem: the control fails
+# and the finding names the problem. A boolean false keeps the plain finding.
+
+default _input := {}
+
+_input := input if is_object(input)
+
+_fact(path) := object.get(_input, path, null)
+
+_not_true(path) if _fact(path) != true
+
+_finding(msg, path) := msg if _fact(path) == false
+
+_finding(msg, path) := sprintf("%s [evidence missing — input.%s not collected]", [msg, concat(".", path)]) if {
+	_fact(path) == null
+}
+
+_finding(msg, path) := sprintf("%s [evidence invalid — input.%s is not a boolean (got %s)]", [msg, concat(".", path), type_name(_fact(path))]) if {
+	value := _fact(path)
+	value != null
+	not is_boolean(value)
+}
+
 default compliant := false
 
 violation contains msg if {
-	not input.recover.recovery_planning.recovery_plan_executed
-	msg := "CSF RC.RP-01: Recovery plan not executed during or after a cybersecurity incident"
+	_not_true(["recover", "recovery_planning", "recovery_plan_executed"])
+	finding := "CSF RC.RP-01: Recovery plan not executed during or after a cybersecurity incident"
+	msg := _finding(finding, ["recover", "recovery_planning", "recovery_plan_executed"])
 }
 
 compliant if count(violation) == 0

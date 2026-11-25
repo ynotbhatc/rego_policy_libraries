@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 29
-#     cited: 29
+#     checks: 30
+#     cited: 30
 #     density: sized
 #     basis: size
 #     tested: true
@@ -22,7 +22,8 @@ import rego.v1
 # (SA-1 to SA-5, SA-8 to SA-11, SA-15 to SA-17, SA-20 to SA-24; SA-6, SA-7, SA-12, SA-13, SA-14, SA-18 and
 # SA-19 are withdrawn), the Moderate-baseline enhancements SA-4(1), SA-4(2), SA-4(9), SA-4(10), SA-9(2) and
 # SA-15(3), and the High-baseline enhancements SA-4(5), SA-9(1), SA-9(5), SA-11(1) and SA-11(2), and the
-# Privacy-baseline enhancement SA-8(33). Each enhancement
+# Privacy-baseline enhancement SA-8(33), and SA-15(13), the enhancement Release 5.2.0 added (in no baseline).
+# Each enhancement
 # is its own requirement with its own finding; a base control never fails on an enhancement's requirement. Facts live under input.sa_controls.
 
 default compliant := false
@@ -486,12 +487,37 @@ violation contains msg if {
 	msg := sprintf("NIST SA-8(33): %s", [_detail(_sa8_33_missing, _sa8_33_unmet)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# Enhancement added by SP 800-53 Release 5.2.0 (27 August 2025). In no SP 800-53B or FedRAMP baseline.
+# ---------------------------------------------------------------------------------------------------------
+
+# SA-15(13) Logging Syntax: input.sa_controls.development_process.logging_syntax.{format_defined,
+# event_types_defined, detail_level_defined, developer_required, components_not_conforming}. The three *_defined
+# facts say the organization-defined secure logging format(s), event types to log and level of detail are set;
+# developer_required is true when the developer of the system, component or service is required (contract,
+# statement of work or internal standard) to log in that format; components_not_conforming counts the developed
+# components whose logs were checked and do not follow it (SP 800-53A examines the developer logs).
+_sa15_13 := {
+	"format_defined": "the organization-defined secure logging format(s) are not defined",
+	"event_types_defined": "the organization-defined event types to log are not defined",
+	"detail_level_defined": "the organization-defined level of detail to log is not defined",
+	"developer_required": "the developer is not required to log the defined event types in the defined secure logging format at the defined level of detail",
+}
+
+violation contains msg if {
+	sec := ["development_process", "logging_syntax"]
+	m := _bool_missing(sec, _sa15_13) | _zero_missing(sec, "components_not_conforming")
+	u := _bool_unmet(sec, _sa15_13) | _zero_unmet(sec, "components_not_conforming", "developed components whose logs do not follow the organization-defined secure logging format, event types and level of detail")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-15(13): %s", [_detail(m, u)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8",
 	"SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)",
 	"SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24",
-	"SA-8(33)",
+	"SA-8(33)", "SA-15(13)",
 }
 
 compliance_report := {

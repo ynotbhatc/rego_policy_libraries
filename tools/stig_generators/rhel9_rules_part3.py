@@ -205,17 +205,17 @@ _gs_bool(path) := "false" if object.get(input, path, null) == false'''
 helpers("configuration_management", GS_HELPERS)
 helpers("pki_crypto", GS_HELPERS)
 helpers("configuration_management", r'''
-# a gsettings unsigned value as printed ("uint32 600"), a bare decimal string, or a number; undefined otherwise
-_gs_uint(path) := n if {
+# a gsettings unsigned value: a whole JSON number, or the text `gsettings get` prints ("uint32 600"); a bare
+# decimal string ("600") is neither and is read as undefined (the rule reports "evidence invalid")
+_gs_uint(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
-	n := v
+	_whole_number(v)
 }
 
 _gs_uint(path) := n if {
 	v := object.get(input, path, null)
 	is_string(v)
-	m := regex.find_all_string_submatch_n(`^\s*(?:uint32\s+)?([0-9]+)\s*$`, v, 1)
+	m := regex.find_all_string_submatch_n(`^\s*uint32\s+([0-9]+)\s*$`, v, 1)
 	n := to_number(m[0][1])
 }
 
@@ -345,11 +345,15 @@ for sid, name, key, schema_key, lo, hi, green, bads, expect, fix in (
          "Set lock-delay=uint32 5 under [org/gnome/desktop/screensaver] in /etc/dconf/db/local.d/00-screensaver and run dconf update")):
     R("configuration_management", sid, name, [("gnome", key)],
       [[f'n := _gs_uint(["gnome", "{key}"])', f"n >= {lo}", f"n <= {hi}"]],
-      {"gnome": {key: green}}, [{"gnome": {key: b}} for b in bads], expect, fix,
+      {"gnome": {key: green}}, [{"gnome": {key: b}} for b in bads]
+      + [("invalid", {"gnome": {key: str(hi)}}, f"gnome.{key} is not a number (got string)"),
+         ("invalid", {"gnome": {key: " " + str(lo) + " "}}, f"gnome.{key} is not a number (got string)")], expect, fix,
       comment=f"gsettings get {schema_key} (\"uint32 <n>\"); no GUI installed is Not Applicable",
-      pass_cases=[{"gnome": {key: "uint32 " + str(max(lo, 1))}}, {"gnome": {key: hi}}, {"gnome": {key: str(hi)}}]
+      pass_cases=[{"gnome": {key: "uint32 " + str(max(lo, 1))}}, {"gnome": {key: " uint32  " + str(hi) + " "}}, {"gnome": {key: hi}}]
       + ([{"gnome": {key: "uint32 0"}}] if lo == 0 else []),
-      na_cases=[{"gnome": {key: None}, "gui_installed": False}], **GUI_NA)
+      na_cases=[{"gnome": {key: None}, "gui_installed": False}],
+      num_items=[f'[m | v := object.get(input, ["gnome", "{key}"], null); is_string(v); regex.match(`^\\s*-?[0-9]+\\s*$`, v); '
+                 f'm := "gnome.{key} is not a number (got string)"]'], **GUI_NA)
 
 R("configuration_management", "RHEL-09-271090", "dconf_databases_current", [("dconf_outdated_databases",)],
   [["xs := input.dconf_outdated_databases", "is_array(xs)", "count(xs) == 0"]],
@@ -554,13 +558,8 @@ R("account_auth", "RHEL-09-411065", "interactive_users_home_exists", [("interact
   pass_cases=[{"interactive_users": []}])
 
 helpers("file_permissions", r'''
-# a numeric id (uid / gid) given as a number or a decimal string; undefined otherwise
-_id_num(v) := v if is_number(v)
-
-_id_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*[0-9]+\s*$`, v)
-}
+# a numeric id (uid / gid): a JSON whole number only (getent's field 4, stat's %g; never the text); undefined otherwise
+_id_num(v) := v if _whole_number(v)
 
 # a login shell the home-directory group check leaves out: awk's $7 !~ /(nologin|false)$/
 _no_login_shell(u) if {
@@ -571,12 +570,18 @@ _no_login_shell(u) if {
 R("file_permissions", "RHEL-09-411070", "home_dirs_group_owned_by_primary_group", [("interactive_users",)],
   [["us := input.interactive_users", "is_array(us)",
     "every u in us {\n\t_home_group_ok(u)\n}"]],
-  _USERS, [_users(home_gid=100), _users(home_gid=None), _users(home_gid="users")],
+  _USERS, [_users(home_gid=100), _users(home_gid=None),
+           ("invalid", _users(home_gid="users"), "interactive_users[0].home_gid is not a number (got string)"),
+           ("invalid", _users(home_gid="1002"), "interactive_users[0].home_gid is not a number (got string)"),
+           ("invalid", _users(primary_gid=" 1002 "), "interactive_users[0].primary_gid is not a number (got string)"),
+           ("invalid", _users(home_gid=1002.5, primary_gid=1002.5), "interactive_users[0].home_gid is not a number (got a fraction)")],
   "the home directory of every local interactive user (UID >= 1000, shell not nologin or false) must be group-owned by "
   "the user's primary GID",
   "Set the group of each listed home directory: chgrp <primary group> <home>",
   comment="primary_gid (getent passwd field 4) against home_gid (stat -c %g <home>) for each entry of input.interactive_users",
-  pass_cases=[{"interactive_users": []}, _users(home_gid="1002"), _users(shell="/bin/false", home_gid=100)])
+  pass_cases=[{"interactive_users": []}, _users(shell="/bin/false", home_gid=100), _users(shell="/sbin/nologin", home_gid=100)],
+  num_items=['[m | some i, u in input.interactive_users; not _no_login_shell(u); some k in ["home_gid", "primary_gid"]; '
+             'm := _not_a_number(sprintf("interactive_users[%d].%s", [i, k]), object.get(u, k, null))]'])
 helpers("file_permissions", r'''
 _home_group_ok(u) if _no_login_shell(u)
 

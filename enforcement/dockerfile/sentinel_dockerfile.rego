@@ -56,19 +56,23 @@ add_instructions := [i | some i in input.instructions; i.cmd == "ADD"]
 expose_instructions := [i | some i in input.instructions; i.cmd == "EXPOSE"]
 user_instructions := [i | some i in input.instructions; i.cmd == "USER"]
 
+# A FROM line without a value is read as "" (not scratch, not approved, no tag): `from_instr.value` is undefined
+# for it, and the line used to drop out of DF-001 and DF-011.
+_from_value(i) := object.get(i, "value", "")
+
 # ---------------------------------------------------------------------------
 # SENTINEL-DF-001 — Approved base images only
 # ---------------------------------------------------------------------------
 
 violation_df_001 contains msg if {
 	some from_instr in from_instructions
-	from_instr.value != "scratch"
-	image_name := split(split(from_instr.value, ":")[0], "@")[0]
+	_from_value(from_instr) != "scratch"
+	image_name := split(split(_from_value(from_instr), ":")[0], "@")[0]
 	count(input.approved_base_images) > 0
 	not image_name in input.approved_base_images
 	msg := sprintf(
 		"SENTINEL-DF-001: Base image '%v' is not in the approved base image list. Use an approved, hardened base image.",
-		[from_instr.value],
+		[_from_value(from_instr)],
 	)
 }
 
@@ -240,22 +244,22 @@ violation_df_010 contains msg if {
 
 violation_df_011 contains msg if {
 	some from_instr in from_instructions
-	from_instr.value != "scratch"
-	endswith(from_instr.value, ":latest")
+	_from_value(from_instr) != "scratch"
+	endswith(_from_value(from_instr), ":latest")
 	msg := sprintf(
 		"SENTINEL-DF-011: Base image '%v' uses ':latest' tag. Pin to a specific version tag or digest for reproducible builds.",
-		[from_instr.value],
+		[_from_value(from_instr)],
 	)
 }
 
 violation_df_011 contains msg if {
 	some from_instr in from_instructions
-	from_instr.value != "scratch"
-	not contains(from_instr.value, ":")
-	not contains(from_instr.value, "@")
+	_from_value(from_instr) != "scratch"
+	not contains(_from_value(from_instr), ":")
+	not contains(_from_value(from_instr), "@")
 	msg := sprintf(
 		"SENTINEL-DF-011: Base image '%v' has no version tag. Specify an explicit tag or SHA256 digest.",
-		[from_instr.value],
+		[_from_value(from_instr)],
 	)
 }
 

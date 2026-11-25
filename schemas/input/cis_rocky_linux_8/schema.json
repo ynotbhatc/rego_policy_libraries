@@ -10,7 +10,7 @@
   "benchmarks/cis/rocky_linux_8/"
  ],
  "x-generated-by": "scripts/gen_input_schemas.py",
- "x-fixture": "data.cis_rocky_linux_8.control_results_test.fixture_compliant",
+ "x-fixture": "data.cis_rocky_linux_8.acceptance_r3.l2",
  "type": "object",
  "properties": {
   "ansible_facts": {
@@ -2298,7 +2298,12 @@
    }
   },
   "profile": {
-   "description": "Read in cis_rocky_linux_8_complete.rego."
+   "description": "Read in cis_rocky_linux_8_complete.rego, cis_rocky_linux_8_main.rego.",
+   "type": "string",
+   "x-type-source": "fixture",
+   "examples": [
+    "level2_server"
+   ]
   },
   "rsyslog": {
    "description": "Read in logging_validation.rego.",
@@ -2818,14 +2823,6 @@
       true
      ]
     },
-    "logfile_exists": {
-     "description": "Read in sudo_validation.rego.",
-     "type": "boolean",
-     "x-type-source": "fixture",
-     "examples": [
-      true
-     ]
-    },
     "su_restricted": {
      "description": "Read in sudo_validation.rego.",
      "type": "boolean",
@@ -3169,9 +3166,6 @@
      "examples": [
       []
      ]
-    },
-    "truncated": {
-     "description": "Read in file_permissions_validation.rego."
     }
    }
   },
@@ -3197,9 +3191,6 @@
      "examples": [
       []
      ]
-    },
-    "truncated": {
-     "description": "Read in file_permissions_validation.rego."
     }
    }
   },
@@ -3644,9 +3635,6 @@
      "examples": [
       []
      ]
-    },
-    "truncated": {
-     "description": "Read in file_permissions_validation.rego."
     }
    }
   },
@@ -4027,7 +4015,6 @@
   "sticky_bit.world_writable_without_sticky",
   "sudo",
   "sudo.installed",
-  "sudo.logfile_exists",
   "sudo.su_restricted",
   "sudo.sudoers_content",
   "sysctl_parameters",
@@ -4071,11 +4058,9 @@
   "ungrouped_files",
   "ungrouped_files.count",
   "ungrouped_files.files",
-  "ungrouped_files.truncated",
   "unowned_files",
   "unowned_files.count",
   "unowned_files.files",
-  "unowned_files.truncated",
   "usb_storage",
   "usb_storage.disabled",
   "usb_storage.loaded",
@@ -4127,7 +4112,6 @@
   "world_writable",
   "world_writable.count",
   "world_writable.files",
-  "world_writable.truncated",
   "x11",
   "x11.any_installed"
  ]

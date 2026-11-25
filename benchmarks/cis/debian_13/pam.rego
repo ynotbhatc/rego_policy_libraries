@@ -222,7 +222,14 @@ pam_has_arg(l, k) if regex.match(concat("", [`\s`, k, `(=|\s|$)`]), l)
 faillock_arg_out_of_range(k, lo, hi) if {
 	some l in faillock_auth_lines
 	pam_has_arg(l, k)
-	not in_range(pam_arg_num(l, k), lo, hi)
+	not pam_arg_in_range(l, k, lo, hi)
+}
+
+# An argument given without a number (`deny` instead of `deny=5`) is out of range: pam_arg_num has no value
+# for it, and `not in_range(pam_arg_num(...))` would be undefined, not true, and let the line pass.
+pam_arg_in_range(l, k, lo, hi) if {
+	n := pam_arg_num(l, k)
+	in_range(n, lo, hi)
 }
 
 in_range(n, lo, hi) if {

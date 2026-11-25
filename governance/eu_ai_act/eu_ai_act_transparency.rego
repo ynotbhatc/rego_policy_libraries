@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 21
+#     checks: 22
 #     cited: 7
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package eu_ai_act.transparency
 
 import rego.v1
@@ -54,6 +54,56 @@ violations contains msg if {
 	some name, article in required_sections
 	not section_declared(name)
 	msg := sprintf("%s: applicability not determined — transparency.%s not declared (use explicit false flags where not applicable)", [article, name])
+}
+
+# =============================================================================
+# Evidence typing (bad input never passes, issue #301)
+# =============================================================================
+# Every fact this module reads is a yes/no. Only the booleans true and false are evidence: a string such
+# as "true", "false" or "no", a number or null is a collection error and is reported as a finding, whether
+# the fact states an obligation or says that one does not apply. (A fact that is absent is handled by the
+# rule that reads it.)
+
+_boolean_facts := {
+	["biometric_categorization", "persons_notified"],
+	["biometric_categorization", "system_deployed"],
+	["chatbot", "disclosure_at_interaction_start"],
+	["chatbot", "impersonates_human"],
+	["chatbot", "interacts_with_natural_persons"],
+	["chatbot", "obvious_ai_context"],
+	["chatbot", "obvious_ai_context_documented"],
+	["chatbot", "users_informed_of_ai_nature"],
+	["deep_fake", "generates_synthetic_audio"],
+	["deep_fake", "generates_synthetic_image"],
+	["deep_fake", "generates_synthetic_video"],
+	["deep_fake", "labeled_as_ai_generated"],
+	["deep_fake", "legitimate_purpose_evident"],
+	["deep_fake", "machine_readable_disclosure_embedded"],
+	["deep_fake", "purpose_documented"],
+	["deployment", "affected_persons_informed"],
+	["deployment", "deployer_of_emotion_recognition"],
+	["deployment", "high_risk_system"],
+	["deployment", "information_provided_before_exposure"],
+	["deployment", "registered_in_eu_database"],
+	["emotion_recognition", "consent_obtained"],
+	["emotion_recognition", "gdpr_compliant"],
+	["emotion_recognition", "persons_notified"],
+	["emotion_recognition", "processes_personal_data"],
+	["emotion_recognition", "requires_consent"],
+	["emotion_recognition", "system_deployed"],
+	["public_interest_text", "disclosure_format_compliant"],
+	["public_interest_text", "editorial_review_process_documented"],
+	["public_interest_text", "generates_text_on_public_interest"],
+	["public_interest_text", "human_editorial_responsibility_taken"],
+	["public_interest_text", "labeled_as_ai_generated"],
+}
+
+violations contains msg if {
+	some path in _boolean_facts
+	value := object.get(input, array.concat(["eu_ai_act", "transparency"], path), "__absent__")
+	value != "__absent__"
+	not is_boolean(value)
+	msg := sprintf("%s: evidence invalid — eu_ai_act.transparency.%s is not a boolean (got %s)", [required_sections[path[0]], concat(".", path), type_name(value)])
 }
 
 # =============================================================================

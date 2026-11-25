@@ -52,18 +52,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -195,6 +206,10 @@ _mount_has_option(m, opt) if {
 	opt in m.options
 }
 
+# /boot and /boot/efi are the two file systems the check leaves out. A helper on the whole entry, because
+# `not f.mount in {...}` is undefined for an entry without a mount and would drop it from the checked list.
+_boot_fs(f) if f.mount in {"/boot", "/boot/efi"}
+
 # the file system has a crypt parent block device whose cryptsetup type is LUKS (LUKS1 / LUKS2)
 _luks_parent(f) if {
 	some c in f.crypt
@@ -209,17 +224,17 @@ _gs_bool(path) := "true" if object.get(input, path, null) == true
 
 _gs_bool(path) := "false" if object.get(input, path, null) == false
 
-# a gsettings unsigned value as printed ("uint32 600"), a bare decimal string, or a number; undefined otherwise
-_gs_uint(path) := n if {
+# a gsettings unsigned value: a whole JSON number, or the text `gsettings get` prints ("uint32 600"); a bare
+# decimal string ("600") is neither and is read as undefined (the rule reports "evidence invalid")
+_gs_uint(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
-	n := v
+	_whole_number(v)
 }
 
 _gs_uint(path) := n if {
 	v := object.get(input, path, null)
 	is_string(v)
-	m := regex.find_all_string_submatch_n(`^\s*(?:uint32\s+)?([0-9]+)\s*$`, v, 1)
+	m := regex.find_all_string_submatch_n(`^\s*uint32\s+([0-9]+)\s*$`, v, 1)
 	n := to_number(m[0][1])
 }
 
@@ -376,6 +391,8 @@ finding_rhel_09_671010 := {
 # systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size
 missing_rhel_09_215105 := [concat(".", p) | some p in [["crypto_policy"], ["crypto_policy_state", "hash"], ["crypto_policy_state", "min_rsa_size"]]; not _collected(p)]
 
+invalid_rhel_09_215105 := [m | some p in [["crypto_policy_state", "min_rsa_size"]]; m := _not_a_number(concat(".", p), object.get(input, p, null))]
+
 default crypto_policy_fips := false
 
 crypto_policy_fips if {
@@ -397,6 +414,8 @@ else := "Open"
 detail_rhel_09_215105 := "RHEL-09-215105: Not_a_Finding" if crypto_policy_fips
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215105", concat(", ", missing_rhel_09_215105)]) if count(missing_rhel_09_215105) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-215105", concat(", ", invalid_rhel_09_215105)]) if count(invalid_rhel_09_215105) > 0
 
 else := "RHEL-09-215105: check failed — update-crypto-policies --show must be FIPS; CURRENT.pol hash must include SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256, nothing with SHA1 or below 224 bits; min_rsa_size must be at least 2048"
 
@@ -521,7 +540,7 @@ persistent_filesystems_encrypted if {
 	count(missing_rhel_09_231190) == 0
 	fss := input.disk_encryption.filesystems
 	is_array(fss)
-	checked := [f | some f in fss; not f.mount in {"/boot", "/boot/efi"}]
+	checked := [f | some f in fss; not _boot_fs(f)]
 	count(checked) > 0
 	every f in checked {
 		_luks_parent(f)
@@ -3698,12 +3717,16 @@ finding_rhel_09_271025 := {
 # gsettings get org.gnome.desktop.session idle-delay ("uint32 <n>"); no GUI installed is Not Applicable
 missing_rhel_09_271065 := [concat(".", p) | some p in [["gnome", "session_idle_delay"]]; not _collected(p)]
 
+invalid_rhel_09_271065 := [m | v := object.get(input, ["gnome", "session_idle_delay"], null); is_string(v); regex.match(`^\s*-?[0-9]+\s*$`, v); m := "gnome.session_idle_delay is not a number (got string)"]
+
 default gui_idle_delay_ok := false
 
 gui_idle_delay_ok if {
 	count(missing_rhel_09_271065) == 0
 	n := _gs_uint(["gnome", "session_idle_delay"])
+	is_number(n)
 	n >= 1
+	is_number(n)
 	n <= 600
 }
 
@@ -3725,6 +3748,8 @@ else := "RHEL-09-271065: Not_Applicable — no graphical user interface is insta
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271065", concat(", ", missing_rhel_09_271065)]) if count(missing_rhel_09_271065) > 0
 
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-271065", concat(", ", invalid_rhel_09_271065)]) if count(invalid_rhel_09_271065) > 0
+
 else := "RHEL-09-271065: check failed — gsettings get org.gnome.desktop.session idle-delay must return 600 or less and not 0"
 
 finding_rhel_09_271065 := {
@@ -3742,12 +3767,16 @@ finding_rhel_09_271065 := {
 # gsettings get org.gnome.desktop.screensaver lock-delay ("uint32 <n>"); no GUI installed is Not Applicable
 missing_rhel_09_271075 := [concat(".", p) | some p in [["gnome", "screensaver_lock_delay"]]; not _collected(p)]
 
+invalid_rhel_09_271075 := [m | v := object.get(input, ["gnome", "screensaver_lock_delay"], null); is_string(v); regex.match(`^\s*-?[0-9]+\s*$`, v); m := "gnome.screensaver_lock_delay is not a number (got string)"]
+
 default gui_lock_delay_ok := false
 
 gui_lock_delay_ok if {
 	count(missing_rhel_09_271075) == 0
 	n := _gs_uint(["gnome", "screensaver_lock_delay"])
+	is_number(n)
 	n >= 0
+	is_number(n)
 	n <= 5
 }
 
@@ -3768,6 +3797,8 @@ detail_rhel_09_271075 := "RHEL-09-271075: Not_a_Finding" if gui_lock_delay_ok
 else := "RHEL-09-271075: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271075
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271075", concat(", ", missing_rhel_09_271075)]) if count(missing_rhel_09_271075) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-271075", concat(", ", invalid_rhel_09_271075)]) if count(invalid_rhel_09_271075) > 0
 
 else := "RHEL-09-271075: check failed — gsettings get org.gnome.desktop.screensaver lock-delay must return 5 or less"
 

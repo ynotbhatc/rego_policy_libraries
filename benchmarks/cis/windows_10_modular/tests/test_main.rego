@@ -36,7 +36,7 @@ test_coverage_accounting_partitions_the_benchmark if {
 }
 
 test_level_1_scope_matches_the_workbook if {
-	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 1}}])
+	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 1, "bitlocker": false, "next_generation": false}}])
 	r := data.cis_windows_10.main.compliance_report with input as fx
 	r.total_controls == 337
 	r.compliant == true
@@ -45,24 +45,28 @@ test_level_1_scope_matches_the_workbook if {
 }
 
 test_level_2_scope_matches_the_workbook if {
-	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 2}}])
+	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 2, "bitlocker": false, "next_generation": false}}])
 	r := data.cis_windows_10.main.compliance_report with input as fx
 	r.total_controls == 439
 	r.compliant == true
 }
 
 test_level_2_with_bitlocker_scope_matches_the_workbook if {
-	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 2, "bitlocker": true}}])
+	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile", "value": {"level": 2, "bitlocker": true, "next_generation": false}}])
 	r := data.cis_windows_10.main.compliance_report with input as fx
 	r.total_controls == 488
 	r.compliant == true
 }
 
-test_missing_profile_defaults_to_level_2_without_the_opt_in_profiles if {
+test_missing_profile_defaults_to_level_2_and_leaves_the_opt_in_profiles_not_assessed if {
 	fx := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["cis_profile"])
 	r := data.cis_windows_10.main.compliance_report with input as fx
-	r.total_controls == 439
+	r.total_controls == 501
 	r.profile.level_defaulted == true
+	r.profile.bitlocker_defaulted == true
+	r.profile.next_generation_defaulted == true
+	r.profile.selectors_not_stated == ["bitlocker", "next_generation"]
+	r.compliant == false
 }
 
 test_level_1_excludes_level_2_recommendations if {
@@ -72,10 +76,23 @@ test_level_1_excludes_level_2_recommendations if {
 }
 
 test_bitlocker_is_opt_in if {
-	fx := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["cis_profile/bitlocker"])
+	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile/bitlocker", "value": false}])
 	r := data.cis_windows_10.admin_templates_computer.compliance_report with input as fx
 	r.results["18.9.7.1.1"] == "not_applicable"
 	data.cis_windows_10.lib.results["18.9.7.1.1"] == "pass" with input as data.cis_windows_10.fixtures_test.fixture_all
+}
+
+# a selector the profile does not state is not an explicit false: the row stays in scope, not assessed, and the
+# report says the selector was not stated (as a missing level is level_defaulted)
+test_a_missing_bitlocker_selector_is_not_assessed if {
+	fx := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["cis_profile/bitlocker"])
+	r := data.cis_windows_10.admin_templates_computer.compliance_report with input as fx
+	r.results["18.9.7.1.1"] == "not_assessed"
+	m := data.cis_windows_10.main.compliance_report with input as fx
+	m.profile.bitlocker_defaulted == true
+	m.profile.bitlocker == false
+	"bitlocker" in m.profile.selectors_not_stated
+	m.compliant == false
 }
 
 test_missing_audit_policy_is_reported_not_assessed if {
@@ -96,8 +113,18 @@ test_a_failed_recommendation_is_counted_and_named if {
 }
 
 test_next_generation_is_opt_in if {
-	fx := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["cis_profile/next_generation"])
+	fx := json.patch(data.cis_windows_10.fixtures_test.fixture_all, [{"op": "replace", "path": "/cis_profile/next_generation", "value": false}])
 	r := data.cis_windows_10.admin_templates_computer.compliance_report with input as fx
 	r.results["18.9.5.1"] == "not_applicable"
 	data.cis_windows_10.lib.results["18.9.5.1"] == "pass" with input as data.cis_windows_10.fixtures_test.fixture_all
+}
+
+test_a_missing_next_generation_selector_is_not_assessed if {
+	fx := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["cis_profile/next_generation"])
+	r := data.cis_windows_10.admin_templates_computer.compliance_report with input as fx
+	r.results["18.9.5.1"] == "not_assessed"
+	m := data.cis_windows_10.main.compliance_report with input as fx
+	m.profile.next_generation_defaulted == true
+	m.profile.selectors_not_stated == ["next_generation"]
+	m.compliant == false
 }

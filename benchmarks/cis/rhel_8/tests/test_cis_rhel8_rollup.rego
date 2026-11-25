@@ -15,7 +15,8 @@ test_empty_input_fails_closed if {
 	count(object.keys(r)) == 20
 	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage", "control_results", "control_result_counts", "violation_count"] { k in object.keys(r) }
 	r.compliant == false
-	r.total_controls == 257
+	r.profile == "unrecognised"
+	r.total_controls == 322
 	r.failed_controls == r.total_controls
 	r.passed_controls == 0
 	some v in r.violations
@@ -63,10 +64,86 @@ test_legacy_profile_values_map_to_server_profiles if {
 	r2.total_controls == 322
 }
 
-test_unknown_profile_defaults_to_level1_server if {
-	r := data.cis_rhel8.main.compliance_report with input as {"profile": "bogus"}
-	r.profile == "level1_server"
-	r.total_controls == 257
+# No default profile: absent, null, not a string or an unknown name puts every recommendation in scope,
+# says so in one PROFILE NOT SELECTED violation, and is never compliant.
+# The unrecognised profiles are checked in 4 slices (index modulo 4); one report evaluation each, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA.
+_unrecognised_profiles := [{}, {"profile": null}, {"profile": "bogus"}, {"profile": "Level2_Server"}, {"profile": ""}, {"profile": 2}, {"profile": true}, {"profile": ["level1_server"]}]
+
+_unrecognised_profile_slice(i) := [x | some j, x in _unrecognised_profiles; j % 4 == i]
+
+test_the_unrecognised_profile_slices_cover_every_value if {
+	sum([count(_unrecognised_profile_slice(i)) | some i in numbers.range(0, 3)]) == count(_unrecognised_profiles)
+	count(_unrecognised_profiles) == 8
+}
+
+test_unrecognised_profile_is_a_finding_and_scopes_every_recommendation_slice_0 if {
+	every bad in _unrecognised_profile_slice(0) {
+		r := data.cis_rhel8.main.compliance_report with input as object.union({"attest": {"gpg_keys_reviewed": true}}, bad)
+		r.profile == "unrecognised"
+		r.total_controls == 322
+		r.compliant == false
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		count([c | some c in r.control_results; c.status == "not_applicable"]) == 0
+	}
+}
+
+test_unrecognised_profile_is_a_finding_and_scopes_every_recommendation_slice_1 if {
+	every bad in _unrecognised_profile_slice(1) {
+		r := data.cis_rhel8.main.compliance_report with input as object.union({"attest": {"gpg_keys_reviewed": true}}, bad)
+		r.profile == "unrecognised"
+		r.total_controls == 322
+		r.compliant == false
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		count([c | some c in r.control_results; c.status == "not_applicable"]) == 0
+	}
+}
+
+test_unrecognised_profile_is_a_finding_and_scopes_every_recommendation_slice_2 if {
+	every bad in _unrecognised_profile_slice(2) {
+		r := data.cis_rhel8.main.compliance_report with input as object.union({"attest": {"gpg_keys_reviewed": true}}, bad)
+		r.profile == "unrecognised"
+		r.total_controls == 322
+		r.compliant == false
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		count([c | some c in r.control_results; c.status == "not_applicable"]) == 0
+	}
+}
+
+test_unrecognised_profile_is_a_finding_and_scopes_every_recommendation_slice_3 if {
+	every bad in _unrecognised_profile_slice(3) {
+		r := data.cis_rhel8.main.compliance_report with input as object.union({"attest": {"gpg_keys_reviewed": true}}, bad)
+		r.profile == "unrecognised"
+		r.total_controls == 322
+		r.compliant == false
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+		count([c | some c in r.control_results; c.status == "not_applicable"]) == 0
+	}
+}
+
+test_profile_finding_names_the_problem_0 if {
+	ra := data.cis_rhel8.main.compliance_report with input as {"attest": {}}
+	some a in ra.violations
+	startswith(a, "PROFILE NOT SELECTED: evidence missing — profile not collected")
+}
+
+test_profile_finding_names_the_problem_1 if {
+	rb := data.cis_rhel8.main.compliance_report with input as {"profile": 2}
+	some b in rb.violations
+	startswith(b, "PROFILE NOT SELECTED: profile is not a string (got number)")
+}
+
+test_profile_finding_names_the_problem_2 if {
+	rc := data.cis_rhel8.main.compliance_report with input as {"profile": "bogus"}
+	some c in rc.violations
+	startswith(c, "PROFILE NOT SELECTED: profile \"bogus\" is not a recognised profile")
+}
+
+test_recognised_profile_has_no_profile_finding if {
+	every p in ["level1_server", "level2_server", "level1_workstation", "level2_workstation", "level1", "level2"] {
+		r := data.cis_rhel8.main.compliance_report with input as {"profile": p}
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED")]) == 0
+	}
 }
 
 test_one_attested_control_passes if {

@@ -14,12 +14,8 @@ green_fixture := {
 			"/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512",
 			"/usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512",
 		],
-		"rule_lines": [
-			"All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux",
-		],
-		"schedule": [
-			"/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil",
-		],
+		"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"],
+		"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"],
 	},
 	"attest": {
 		"rhel_09_211010_release_supported": true,
@@ -107,9 +103,7 @@ green_fixture := {
 		"-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k",
 		"-a always,exit -F arch=b32 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k",
 	],
-	"audit_rules_d": [
-		"-a always,exit -F path=/usr/sbin/shutdown -F perm=x -F auid>=1000 -F auid!=unset -k privileged-shutdown",
-	],
+	"audit_rules_d": ["-a always,exit -F path=/usr/sbin/shutdown -F perm=x -F auid>=1000 -F auid!=unset -k privileged-shutdown"],
 	"audit_rules_file": [
 		"-D",
 		"-b 8192",
@@ -137,20 +131,16 @@ green_fixture := {
 	"chrony_conf": {
 		"cmdport": "0",
 		"port": "0",
-		"sources": [
-			{
-				"address": "0.us.pool.ntp.mil",
-				"directive": "server",
-				"maxpoll": "16",
-			},
-		],
+		"sources": [{
+			"address": "0.us.pool.ntp.mil",
+			"directive": "server",
+			"maxpoll": 16,
+		}],
 	},
-	"cpuinfo": {
-		"flags": [
-			"flags : fpu vme de pse nx lm",
-			"flags : fpu vme de pse nx lm",
-		],
-	},
+	"cpuinfo": {"flags": [
+		"flags : fpu vme de pse nx lm",
+		"flags : fpu vme de pse nx lm",
+	]},
 	"crypto_backends": [
 		{
 			"is_symlink": true,
@@ -169,9 +159,7 @@ green_fixture := {
 		},
 	],
 	"crypto_policy": "FIPS",
-	"crypto_policy_check": {
-		"output": "The configured policy matches the generated policy",
-	},
+	"crypto_policy_check": {"output": "The configured policy matches the generated policy"},
 	"crypto_policy_state": {
 		"hash": [
 			"SHA2-256",
@@ -185,50 +173,40 @@ green_fixture := {
 		],
 		"min_rsa_size": 2048,
 	},
-	"dconf_locks": {
-		"automount_open": [
-			"/org/gnome/desktop/media-handling/automount-open",
-		],
-	},
+	"dconf_locks": {"automount_open": ["/org/gnome/desktop/media-handling/automount-open"]},
 	"dconf_outdated_databases": [],
 	"device_file_labels": {
 		"device_t": [],
 		"unlabeled_t": [],
 	},
-	"disk_encryption": {
-		"filesystems": [
-			{
-				"crypt": [
-					{
-						"name": "luks-b74f6910",
-						"type": "LUKS2",
-					},
-				],
-				"device": "/dev/mapper/rhel-root",
-				"mount": "/",
-			},
-			{
-				"crypt": [
-					{
-						"name": "luks-b74f6910",
-						"type": "LUKS2",
-					},
-				],
-				"device": "/dev/mapper/rhel-home",
-				"mount": "/home",
-			},
-			{
-				"crypt": [],
-				"device": "/dev/nvme0n1p2",
-				"mount": "/boot",
-			},
-			{
-				"crypt": [],
-				"device": "/dev/nvme0n1p1",
-				"mount": "/boot/efi",
-			},
-		],
-	},
+	"disk_encryption": {"filesystems": [
+		{
+			"crypt": [{
+				"name": "luks-b74f6910",
+				"type": "LUKS2",
+			}],
+			"device": "/dev/mapper/rhel-root",
+			"mount": "/",
+		},
+		{
+			"crypt": [{
+				"name": "luks-b74f6910",
+				"type": "LUKS2",
+			}],
+			"device": "/dev/mapper/rhel-home",
+			"mount": "/home",
+		},
+		{
+			"crypt": [],
+			"device": "/dev/nvme0n1p2",
+			"mount": "/boot",
+		},
+		{
+			"crypt": [],
+			"device": "/dev/nvme0n1p1",
+			"mount": "/boot/efi",
+		},
+	]},
 	"dnf_config": {
 		"clean_requirements_on_remove": "True",
 		"gpgcheck": "1",
@@ -268,24 +246,16 @@ green_fixture := {
 		"permissive": "0",
 	},
 	"file_permissions": {
-		"audit_config_files": [
-			{
-				"mode": "600",
-				"path": "/etc/audit/auditd.conf",
-			},
-		],
-		"audit_log": {
-			"group": "root",
-		},
-		"audit_log_dir": {
-			"owner": "root",
-		},
-		"audit_log_files": [
-			{
-				"mode": "600",
-				"path": "/var/log/audit/audit.log",
-			},
-		],
+		"audit_config_files": [{
+			"mode": "600",
+			"path": "/etc/audit/auditd.conf",
+		}],
+		"audit_log": {"group": "root"},
+		"audit_log_dir": {"owner": "root"},
+		"audit_log_files": [{
+			"mode": "600",
+			"path": "/var/log/audit/audit.log",
+		}],
 		"audit_tools": [
 			{
 				"group": "root",
@@ -417,30 +387,24 @@ green_fixture := {
 			"owner": "root",
 		},
 		"init_files_more_permissive_than_0740": [],
-		"interactive_home_dirs": [
-			{
-				"mode": "700",
-				"path": "/home/disauser",
-			},
-		],
+		"interactive_home_dirs": [{
+			"mode": "700",
+			"path": "/home/disauser",
+		}],
 		"library_dirs_group_or_world_writable": [],
 		"library_dirs_not_group_owned_by_root": [],
 		"library_dirs_not_owned_by_root": [],
 		"library_files_group_or_world_writable": [],
 		"library_files_not_group_owned_by_root": [],
 		"library_files_not_owned_by_root": [],
-		"ssh_private_host_keys": [
-			{
-				"mode": "600",
-				"path": "/etc/ssh/ssh_host_ed25519_key",
-			},
-		],
-		"ssh_public_host_keys": [
-			{
-				"mode": "644",
-				"path": "/etc/ssh/ssh_host_ed25519_key.pub",
-			},
-		],
+		"ssh_private_host_keys": [{
+			"mode": "600",
+			"path": "/etc/ssh/ssh_host_ed25519_key",
+		}],
+		"ssh_public_host_keys": [{
+			"mode": "644",
+			"path": "/etc/ssh/ssh_host_ed25519_key.pub",
+		}],
 		"sshd_config_paths": [
 			{
 				"group": "root",
@@ -577,13 +541,9 @@ green_fixture := {
 			],
 		},
 	],
-	"fips": {
-		"fips_enabled": "1",
-	},
+	"fips": {"fips_enabled": "1"},
 	"firewalld": {
-		"active_zones": [
-			"drop",
-		],
+		"active_zones": ["drop"],
 		"default_zone": {
 			"target_permanent": "DROP",
 			"target_runtime": "DROP",
@@ -593,9 +553,7 @@ green_fixture := {
 			"  services: ssh",
 		],
 	},
-	"firewalld_conf": {
-		"FirewallBackend": "nftables",
-	},
+	"firewalld_conf": {"FirewallBackend": "nftables"},
 	"fstab": [
 		{
 			"fs_type": "xfs",
@@ -608,9 +566,7 @@ green_fixture := {
 			"options": "rw,nosuid,nodev,noexec,sync,soft,sec=krb5:krb5i:krb5p",
 		},
 	],
-	"gdm_custom_conf": {
-		"AutomaticLoginEnable": "false",
-	},
+	"gdm_custom_conf": {"AutomaticLoginEnable": "false"},
 	"gnome": {
 		"automount_open": "false",
 		"autorun_never": "true",
@@ -654,22 +610,16 @@ green_fixture := {
 			"name": "svcacct",
 		},
 	],
-	"interactive_users": [
-		{
-			"home": "/home/disauser",
-			"home_exists": true,
-			"home_gid": 1002,
-			"name": "disauser",
-			"primary_gid": 1002,
-			"shell": "/bin/bash",
-			"uid": 1000,
-		},
-	],
-	"ipsec": {
-		"include_lines": [
-			"include /etc/crypto-policies/back-ends/libreswan.config",
-		],
-	},
+	"interactive_users": [{
+		"home": "/home/disauser",
+		"home_exists": true,
+		"home_gid": 1002,
+		"name": "disauser",
+		"primary_gid": 1002,
+		"shell": "/bin/bash",
+		"uid": 1000,
+	}],
+	"ipsec": {"include_lines": ["include /etc/crypto-policies/back-ends/libreswan.config"]},
 	"kernel_params": {
 		"fs.protected_hardlinks": "1",
 		"fs.protected_symlinks": "1",
@@ -705,36 +655,24 @@ green_fixture := {
 		"net.ipv6.conf.default.accept_source_route": "0",
 		"user.max_user_namespaces": "0",
 	},
-	"libuser_conf": {
-		"defaults": {
-			"crypt_style": "sha512",
-		},
-	},
-	"limits_maxlogins": [
-		{
-			"domain": "*",
-			"file": "/etc/security/limits.conf",
-			"type": "hard",
-			"value": "10",
-		},
-	],
+	"libuser_conf": {"defaults": {"crypt_style": "sha512"}},
+	"limits_maxlogins": [{
+		"domain": "*",
+		"file": "/etc/security/limits.conf",
+		"type": "hard",
+		"value": 10,
+	}],
 	"local_accounts_with_empty_passwords": [],
 	"local_interactive_users": [],
-	"login_banner": {
-		"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
-	},
+	"login_banner": {"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."},
 	"login_defs": {
 		"CREATE_HOME": "yes",
 		"ENCRYPT_METHOD": "SHA512",
 		"FAIL_DELAY": 4,
 		"UMASK": "077",
 	},
-	"logind_conf": {
-		"StopIdleSessionSec": "600",
-	},
-	"mail_aliases": {
-		"postmaster": "root",
-	},
+	"logind_conf": {"StopIdleSessionSec": "600"},
+	"mail_aliases": {"postmaster": "root"},
 	"modprobe": {
 		"atm": {
 			"blacklisted": true,
@@ -769,19 +707,9 @@ green_fixture := {
 			"install": "/bin/false",
 		},
 	},
-	"named": {
-		"include_lines": [
-			"include \"/etc/crypto-policies/back-ends/bind.config\";",
-		],
-	},
-	"networkmanager": {
-		"main": {
-			"dns": "none",
-		},
-	},
-	"opensc": {
-		"card_drivers": "cac",
-	},
+	"named": {"include_lines": ["include \"/etc/crypto-policies/back-ends/bind.config\";"]},
+	"networkmanager": {"main": {"dns": "none"}},
+	"opensc": {"card_drivers": "cac"},
 	"openssh_config": {
 		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
 		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
@@ -790,15 +718,11 @@ green_fixture := {
 		"Ciphers": "aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr",
 		"MACs": "hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512",
 	},
-	"openssl_cnf": {
-		"lines": [
-			"[ crypto_policy ]",
-			".include = /etc/crypto-policies/back-ends/opensslcnf.config",
-		],
-	},
-	"os_release": {
-		"redhat_release": "Red Hat Enterprise Linux release 9.6 (Plow)",
-	},
+	"openssl_cnf": {"lines": [
+		"[ crypto_policy ]",
+		".include = /etc/crypto-policies/back-ends/opensslcnf.config",
+	]},
+	"os_release": {"redhat_release": "Red Hat Enterprise Linux release 9.6 (Plow)"},
 	"packages": {
 		"aide": true,
 		"audispd-plugins": true,
@@ -837,13 +761,7 @@ green_fixture := {
 		"vsftpd": false,
 		"xorg-x11-server-common": false,
 	},
-	"pam": {
-		"password_auth": {
-			"pam_unix_password_lines": [
-				"password    sufficient    pam_unix.so sha512 shadow use_authtok",
-			],
-		},
-	},
+	"pam": {"password_auth": {"pam_unix_password_lines": ["password    sufficient    pam_unix.so sha512 shadow use_authtok"]}},
 	"pam_d": {
 		"password-auth": [
 			"auth required pam_env.so",
@@ -902,42 +820,32 @@ green_fixture := {
 		"root_alias": "isso",
 		"smtpd_client_restrictions": "permit_mynetworks,reject",
 	},
-	"profile_tmout": [
-		{
-			"file": "/etc/profile.d/tmout.sh",
-			"value": "600",
-		},
-	],
+	"profile_tmout": [{
+		"file": "/etc/profile.d/tmout.sh",
+		"value": 600,
+	}],
 	"promiscuous_interfaces": [],
 	"pwck_no_group_accounts": [],
-	"redhat_release_key_file": {
-		"fingerprints": [
-			"567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
-			"7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3",
-		],
-	},
-	"removable_media_fstab": [
-		{
-			"fs_type": "vfat",
-			"mount_point": "/mnt/usbflash",
-			"options": "noauto,owner,ro,nosuid,nodev,noexec",
-		},
-	],
-	"resolv_conf": {
-		"nameservers": [
-			"ns1.example.mil",
-			"ns2.example.mil",
-		],
-	},
+	"redhat_release_key_file": {"fingerprints": [
+		"567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
+		"7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3",
+	]},
+	"removable_media_fstab": [{
+		"fs_type": "vfat",
+		"mount_point": "/mnt/usbflash",
+		"options": "noauto,owner,ro,nosuid,nodev,noexec",
+	}],
+	"resolv_conf": {"nameservers": [
+		"ns1.example.mil",
+		"ns2.example.mil",
+	]},
 	"rpm_gpg_pubkeys": [
 		"Red Hat, Inc. (release key 2) <security@redhat.com> public key",
 		"Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key",
 	],
 	"rpm_verify": {
 		"hash_mismatch_files": [],
-		"openssh-server": [
-			"S.5....T.  c /etc/ssh/sshd_config",
-		],
+		"openssh-server": ["S.5....T.  c /etc/ssh/sshd_config"],
 	},
 	"rsyslog": {
 		"config_lines": [
@@ -972,15 +880,9 @@ green_fixture := {
 	"shadow_maxdays_out_of_range": [],
 	"shadow_min_age_below_one": [],
 	"shell_umask": {
-		"etc_bashrc": [
-			"077",
-		],
-		"etc_csh_cshrc": [
-			"077",
-		],
-		"etc_profile": [
-			"077",
-		],
+		"etc_bashrc": ["077"],
+		"etc_csh_cshrc": ["077"],
+		"etc_profile": ["077"],
 	},
 	"shosts_equiv_files": [],
 	"shosts_files": [],
@@ -1007,186 +909,140 @@ green_fixture := {
 	},
 	"ssh_private_keys_without_passphrase": [],
 	"sssd": {
-		"cache_credentials_values": [
-			"true",
-		],
+		"cache_credentials_values": ["true"],
 		"certificate_verification": "ocsp_dgst=sha512",
-		"certmap_rules": [
-			{
-				"domains": "testing.test",
-				"maprule": "(userCertificate;binary={cert!bin})",
-				"matchrule": "<SAN>.*EDIPI@mil",
-				"section": "certmap/testing.test/rule_name",
-			},
-		],
+		"certmap_rules": [{
+			"domains": "testing.test",
+			"maprule": "(userCertificate;binary={cert!bin})",
+			"matchrule": "<SAN>.*EDIPI@mil",
+			"section": "certmap/testing.test/rule_name",
+		}],
 		"offline_credentials_expiration": "1",
 		"pam_cert_auth": "True",
 	},
-	"sssd_ca_db": {
-		"certificates": [
-			{
-				"issuer_rdns": [
-					[
-						"C",
-						"US",
-					],
-					[
-						"O",
-						"U.S. Government",
-					],
-					[
-						"OU",
-						"DoD",
-					],
-					[
-						"OU",
-						"PKI",
-					],
-					[
-						"CN",
-						"DoD Root CA 3",
-					],
-				],
-				"not_after": "2099-12-30T18:46:41Z",
-				"not_before": "2012-03-20T18:46:41Z",
-				"subject_rdns": [
-					[
-						"C",
-						"US",
-					],
-					[
-						"O",
-						"U.S. Government",
-					],
-					[
-						"OU",
-						"DoD",
-					],
-					[
-						"OU",
-						"PKI",
-					],
-					[
-						"CN",
-						"DoD Root CA 3",
-					],
-				],
-			},
+	"sssd_ca_db": {"certificates": [{
+		"issuer_rdns": [
+			[
+				"C",
+				"US",
+			],
+			[
+				"O",
+				"U.S. Government",
+			],
+			[
+				"OU",
+				"DoD",
+			],
+			[
+				"OU",
+				"PKI",
+			],
+			[
+				"CN",
+				"DoD Root CA 3",
+			],
 		],
-	},
-	"sudoers": {
-		"lines": [
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults timestamp_timeout=0",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults !targetpw",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults !rootpw",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "Defaults !runaspw",
-			},
-			{
-				"file": "/etc/sudoers",
-				"line": "root ALL=(ALL) ALL",
-			},
-			{
-				"file": "/etc/sudoers.d/admins",
-				"line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL",
-			},
+		"not_after": "2099-12-30T18:46:41Z",
+		"not_before": "2012-03-20T18:46:41Z",
+		"subject_rdns": [
+			[
+				"C",
+				"US",
+			],
+			[
+				"O",
+				"U.S. Government",
+			],
+			[
+				"OU",
+				"DoD",
+			],
+			[
+				"OU",
+				"PKI",
+			],
+			[
+				"CN",
+				"DoD Root CA 3",
+			],
 		],
-	},
+	}]},
+	"sudoers": {"lines": [
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults timestamp_timeout=0",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults !targetpw",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults !rootpw",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "Defaults !runaspw",
+		},
+		{
+			"file": "/etc/sudoers",
+			"line": "root ALL=(ALL) ALL",
+		},
+		{
+			"file": "/etc/sudoers.d/admins",
+			"line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL",
+		},
+	]},
 	"sulogin_lines": {
 		"emergency.service": {
 			"drop_ins": [],
-			"unit_file": [
-				"ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency",
-			],
+			"unit_file": ["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency"],
 		},
 		"rescue.service": {
 			"drop_ins": [],
-			"unit_file": [
-				"ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue",
-			],
+			"unit_file": ["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"],
 		},
 	},
-	"sysctl_config": {
-		"kernel.randomize_va_space": [
-			"2",
-		],
-	},
+	"sysctl_config": {"kernel.randomize_va_space": ["2"]},
 	"system_accounts_with_interactive_shell": [],
-	"systemd": {
-		"default_target": "multi-user.target",
-	},
-	"systemd_system_conf": {
-		"CtrlAltDelBurstAction": "none",
-	},
+	"systemd": {"default_target": "multi-user.target"},
+	"systemd_system_conf": {"CtrlAltDelBurstAction": "none"},
 	"systemd_units": {
-		"ctrl-alt-del.target": {
-			"load_state": "masked",
-		},
-		"debug-shell.service": {
-			"load_state": "masked",
-		},
-		"kdump.service": {
-			"load_state": "masked",
-		},
+		"ctrl-alt-del.target": {"load_state": "masked"},
+		"debug-shell.service": {"load_state": "masked"},
+		"kdump.service": {"load_state": "masked"},
 	},
-	"temporary_accounts": [
-		{
-			"expires": "2020-01-04",
-			"name": "tempuser",
-		},
-	],
-	"tftp": {
-		"execstart": "/usr/sbin/in.tftpd -s /var/lib/tftpboot",
-	},
-	"uid_zero_accounts": [
-		"root",
-	],
-	"unit_enabled": {
-		"autofs": "masked",
-	},
-	"usbguard_daemon_conf": {
-		"AuditBackend": "LinuxAudit",
-	},
-	"usbguard_rules": [
-		"1: allow id 1d6b:0001 serial \"0000:00:01.2\"",
-	],
+	"temporary_accounts": [{
+		"expires": "2020-01-04",
+		"name": "tempuser",
+	}],
+	"tftp": {"execstart": "/usr/sbin/in.tftpd -s /var/lib/tftpboot"},
+	"uid_zero_accounts": ["root"],
+	"unit_enabled": {"autofs": "masked"},
+	"usbguard_daemon_conf": {"AuditBackend": "LinuxAudit"},
+	"usbguard_rules": ["1: allow id 1d6b:0001 serial \"0000:00:01.2\""],
 	"user_init_files": {
-		"path_statements": [
-			{
-				"entries": [
-					"$HOME/.local/bin",
-					"$HOME/bin",
-					"$PATH",
-				],
-				"file": "/home/disauser/.bash_profile",
-				"home": "/home/disauser",
-			},
-		],
-		"umask_statements": [
-			{
-				"file": "/home/disauser/.bashrc",
-				"umask": "077",
-			},
-		],
+		"path_statements": [{
+			"entries": [
+				"$HOME/.local/bin",
+				"$HOME/bin",
+				"$PATH",
+			],
+			"file": "/home/disauser/.bash_profile",
+			"home": "/home/disauser",
+		}],
+		"umask_statements": [{
+			"file": "/home/disauser/.bashrc",
+			"umask": "077",
+		}],
 	},
 	"wireless_interfaces": [],
-	"yum_repos": [
-		{
-			"file": "/etc/yum.repos.d/redhat.repo",
-			"gpgcheck": "1",
-			"name": "rhel-9-for-x86_64-baseos-rpms",
-		},
-	],
+	"yum_repos": [{
+		"file": "/etc/yum.repos.d/redhat.repo",
+		"gpgcheck": "1",
+		"name": "rhel-9-for-x86_64-baseos-rpms",
+	}],
 }
 
 test_every_rule_not_a_finding_on_green_fixture if {

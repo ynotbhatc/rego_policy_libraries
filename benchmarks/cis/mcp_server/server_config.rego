@@ -135,6 +135,12 @@ default _get(_, _) := null
 
 _get(o, k) := object.get(o, k, null) if is_object(o)
 
+# a count that is a number above zero; a string, null or a missing value is not a count
+_positive(v) if {
+	is_number(v)
+	v > 0
+}
+
 # ── Automated checks ─────────────────────────────────────────────────────────
 _evidence_key := {
 	"5.1.1": "tool_schemas",
@@ -230,7 +236,7 @@ fail contains ["5.1.3", sprintf("prompts/get missing a required argument not rej
 #   minimum interval is a failure.
 _lc := object.get(_ev, "list_changed", {})
 
-fail contains ["5.2.1", "configured minimum listChanged interval not reported"] if not _get(_lc, "min_interval_seconds") > 0
+fail contains ["5.2.1", "configured minimum listChanged interval not reported"] if not _positive(_get(_lc, "min_interval_seconds"))
 
 fail contains ["5.2.1", "listChanged notification record not reported"] if not is_array(_get(_lc, "notifications"))
 
@@ -238,6 +244,11 @@ fail contains ["5.2.1", "evidence missing — configured minimum listChanged int
 	v := _get(_lc, "min_interval_seconds")
 	v != null
 	not is_number(v)
+}
+
+fail contains ["5.2.1", sprintf("listChanged notification %d has no numeric ts", [i])] if {
+	some i, n in _lc.notifications
+	not is_number(_get(n, "ts"))
 }
 
 fail contains ["5.2.1", sprintf("%v notifications emitted %v s apart (minimum %v s)", [t, gap, _lc.min_interval_seconds])] if {
@@ -269,7 +280,7 @@ fail contains ["5.2.3", "the server mints or echoes an Mcp-Session-Id"] if not _
 #   startup_stdout_clean, log_destinations[] ("stderr" | "file")}
 _ss := object.get(_ev, "stdio_stream", {})
 
-fail contains ["5.3.1", "no captured stdout lines were checked"] if not _get(_ss, "stdout_lines_checked") > 0
+fail contains ["5.3.1", "no captured stdout lines were checked"] if not _positive(_get(_ss, "stdout_lines_checked"))
 
 fail contains ["5.3.1", sprintf("stdout carries non-JSON-RPC output (%v lines)", [object.get(_ss, "non_jsonrpc_stdout_lines", "not reported")])] if {
 	not _get(_ss, "non_jsonrpc_stdout_lines") == 0

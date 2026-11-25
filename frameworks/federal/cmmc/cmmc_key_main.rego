@@ -39,13 +39,26 @@ default _target_compliant := false
 
 _target_compliant if _t.compliant == true
 
-default _target_violations := []
+# Rows of the report: the input-contract findings, then one row per failed
+# practice (data.cmmc.practice_rows). Every finding, one per user or system where
+# a practice has several, is listed under "findings".
+default _contract_rows := []
 
-_target_violations := _t.violations
+_contract_rows := sort(_t.input_contract_findings)
 
-_violations := array.concat(_target_violations, [_no_facts_finding]) if not _facts_supplied
+default _practice_rows := []
 
-_violations := _target_violations if _facts_supplied
+_practice_rows := _t.practice_rows
+
+default _findings := []
+
+_findings := _t.violations
+
+_input_contract_violations := array.concat(_contract_rows, [_no_facts_finding]) if not _facts_supplied
+
+_input_contract_violations := _contract_rows if _facts_supplied
+
+_violations := array.concat(_input_contract_violations, _practice_rows)
 
 default _compliant := false
 
@@ -71,14 +84,25 @@ default _failed := 110
 
 _failed := _t.practices_failed
 
+default _stated_level := null
+
+_stated_level := input.cmmc_level
+
+# violation_count == failed_controls + input_contract_violations on every input:
+# one row per failed practice, plus the findings that name no practice (level not
+# stated, Level 3 not evaluated, no facts supplied).
 compliance_report := object.union(_upstream, {
 	"framework_key": "cmmc",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
 	"failed_controls": _failed,
+	"passed_controls": total_controls - _failed,
 	"total_controls": total_controls,
-	"assessed_level": object.get(input, "cmmc_level", null),
+	"input_contract_violations": count(_input_contract_violations),
+	"findings": _findings,
+	"finding_count": count(_findings),
+	"assessed_level": _stated_level,
 	"standard_sizes": _t.standard_sizes,
 	"failed_practices": _failed_practices,
 	"facts_supplied": _facts_supplied,

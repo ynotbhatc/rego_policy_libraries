@@ -9,6 +9,7 @@ good := {
 	"journald": {"forward_to_syslog": "yes", "compress_enabled": "yes", "storage_mode": "persistent", "service_active": true},
 	"log_file_permissions": {"analysis": []},
 	"logrotate": {"installed": true},
+	"require_remote_logging": false,
 }
 
 test_good_input_compliant if {
@@ -17,7 +18,7 @@ test_good_input_compliant if {
 
 test_missing_journald_object_flagged if {
 	v := data.cis_ubuntu_20_04.logging.journald_violations with input as json.remove(good, ["journald"])
-	count({m | some m in v; contains(m, "evidence missing")}) == 3
+	count({m | some m in v; contains(m, "evidence missing")}) == 4
 }
 
 test_missing_rsyslog_mode_and_count_flagged if {

@@ -238,6 +238,9 @@ test_every_finding_names_its_basis if {
 	r := data.sox.main.compliance_report
 	every v in r.violations {
 		v.basis != ""
-		startswith(v.evidence, "data.sox.")
+
+		# nothing posted and nothing loaded: the finding names the input document, where the fact belongs
+		startswith(v.evidence, "input.sox.")
+		startswith(v.detail, "evidence missing: input.sox.")
 	}
 }

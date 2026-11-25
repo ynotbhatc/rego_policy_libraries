@@ -35,8 +35,10 @@ test_no_registry_facts_is_open if {
 
 # Semantic review 2026-11-13 (group D): generator derivation defects.
 
-test_legal_notice_real_banner_is_not_a_finding if {
-	data.stig.windows_server_2019.registry_so.r_wn19_so_000130 == true with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:"}}}
+# Until 2026-11-24 this asserted that these two paragraphs alone pass (any non-empty text did). The check text
+# requires the whole banner; tests/test_stig_*_check_text.rego holds the full text and its variants.
+test_legal_notice_part_of_the_banner_is_open if {
+	data.stig.windows_server_2019.registry_so.r_wn19_so_000130 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:"}}}
 }
 
 test_legal_notice_missing_is_open if {

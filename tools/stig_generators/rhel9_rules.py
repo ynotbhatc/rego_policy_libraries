@@ -30,14 +30,14 @@ def helpers(sec, text):
 
 
 def R(sec, sid, name, ev, alts, green, bad, expect, fix, comment="", kind="machine", attest_alts=(), na=(),
-      na_expect="", na_cases=(), pass_cases=()):
+      na_expect="", na_cases=(), pass_cases=(), num_items=()):
     assert sid not in RULES, f"{sid} defined twice"
     if attest_alts and kind == "machine":
         kind = "machine+attestation"
     RULES[sid] = dict(sec=sec, name=name, ev=[tuple(e) for e in ev], alts=alts, green=green, bad=list(bad),
                       expect=expect, fix=fix, comment=comment, kind=kind,
                       attest_alts=list(attest_alts), na=list(na), na_expect=na_expect, na_cases=list(na_cases),
-                      pass_cases=list(pass_cases))
+                      pass_cases=list(pass_cases), num_items=list(num_items))
 
 
 # ═════════════════════════════════════════════════════════════════════════════════════════════════
@@ -112,12 +112,13 @@ R("configuration_management", "RHEL-09-215105", "crypto_policy_fips",
    {"crypto_policy_state": {"hash": FIPS_HASHES + ["SHA1"]}},
    {"crypto_policy_state": {"hash": FIPS_HASHES[:-1]}},
    {"crypto_policy_state": {"hash": FIPS_HASHES + ["SHAKE-128"]}},
-   {"crypto_policy_state": {"min_rsa_size": 1024}}, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}}],
+   {"crypto_policy_state": {"min_rsa_size": 1024}}, {"crypto_policy_state": {"min_rsa_size": "2048 bits"}},
+   {"crypto_policy_state": {"min_rsa_size": "3072"}}],
   "update-crypto-policies --show must be FIPS; CURRENT.pol hash must include " + " ".join(FIPS_HASHES)
   + ", nothing with SHA1 or below 224 bits; min_rsa_size must be at least 2048",
   "Set the FIPS policy: update-crypto-policies --set FIPS, then reboot",
   comment="systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size",
-  pass_cases=[{"crypto_policy_state": {"min_rsa_size": "3072"}}])
+  pass_cases=[{"crypto_policy_state": {"min_rsa_size": 3072}}])
 
 helpers("pki_crypto", r'''
 # a crypto back-end in /etc/crypto-policies/back-ends/: nss.config is a regular file; every other one is a
@@ -260,12 +261,13 @@ for sid, key, name, want, bad in (("RHEL-09-255040", "PermitEmptyPasswords", "ss
 # ═════════════════════════════════════════════════════════════════════════════════════════════════
 
 def num_rule(sec, sid, name, path, lo, hi, green, bads, expect, fix, comment, **kw):
-    """a numeric setting within [lo, hi] (None = unbounded), type-guarded by _num"""
+    """a numeric setting within [lo, hi] (None = unbounded), read through _num: a JSON whole number only (the
+    generator adds a number-as-text test per _num path, so a decimal string is never a pass case)"""
     p = '["' + '", "'.join(path) + '"]'
     lines = [f"n := _num({p})"] + ([f"n >= {lo}"] if lo is not None else []) + ([f"n <= {hi}"] if hi is not None else [])
     patch = lambda v: nest(path, v)
     R(sec, sid, name, [tuple(path)], [lines], patch(green), [patch(b) for b in bads], expect, fix, comment=comment,
-      pass_cases=kw.pop("pass_cases", [patch(str(green))]), **kw)
+      pass_cases=kw.pop("pass_cases", []), **kw)
 
 
 def nest(path, v):
@@ -320,17 +322,17 @@ for sid, name, key, what in (("RHEL-09-611110", "password_uppercase", "ucredit",
                              ("RHEL-09-611070", "password_numeric", "dcredit", "numeric"),
                              ("RHEL-09-611100", "password_special", "ocredit", "special")):
     # V2R10 check text: only "a positive number or is commented out" is a finding, so 0 and negative values pass
-    num_rule("account_auth", sid, name, ["password_policy", key], None, 0, -1, [1, "1", 2],
+    num_rule("account_auth", sid, name, ["password_policy", key], None, 0, -1, [1, "1", 2, "-1", "0"],
              f"{key} in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one {what} character)",
              f"Set {key} = -1 in /etc/security/pwquality.conf",
              f"effective {key} from /etc/security/pwquality.conf and pwquality.conf.d/*.conf",
-             pass_cases=[{"password_policy": {key: "-1"}}, {"password_policy": {key: "0"}}, {"password_policy": {key: -2}}])
+             pass_cases=[{"password_policy": {key: 0}}, {"password_policy": {key: -2}}])
 
-num_rule("account_auth", "RHEL-09-411010", "password_maxage", ["password_policy", "maxdays"], 1, 180, 180, [181, 365, -1, "99999"],
+num_rule("account_auth", "RHEL-09-411010", "password_maxage", ["password_policy", "maxdays"], 1, 180, 180, [181, 365, -1, "99999", "180"],
          "PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit)",
          "Set PASS_MAX_DAYS 180 in /etc/login.defs",
          "PASS_MAX_DAYS as configured in /etc/login.defs",
-         pass_cases=[{"password_policy": {"maxdays": 60}}, {"password_policy": {"maxdays": "180"}}])
+         pass_cases=[{"password_policy": {"maxdays": 60}}, {"password_policy": {"maxdays": 1}}])
 
 num_rule("account_auth", "RHEL-09-611075", "password_minage", ["password_policy", "mindays"], 1, None, 1, [0, "0"],
          "PASS_MIN_DAYS in /etc/login.defs must be 1 or greater",
@@ -1101,11 +1103,11 @@ R("ssh_config", "RHEL-09-255155", "ssh_no_x11", [("ssh_config", "X11Forwarding")
 
 # V2R10 check text: a finding only when it "does not have a value of "600" or less" (0 is not excluded); a negative
 # value is not a time sshd accepts, so it stays a finding
-num_rule("ssh_config", "RHEL-09-255100", "ssh_client_alive_interval_ok", ["ssh_config", "ClientAliveInterval"], 0, 600, 600, [601, -1, "10m"],
+num_rule("ssh_config", "RHEL-09-255100", "ssh_client_alive_interval_ok", ["ssh_config", "ClientAliveInterval"], 0, 600, 600, [601, -1, "10m", "600", "0"],
          "sshd ClientAliveInterval must be set to 600 or less",
          "Set ClientAliveInterval 600 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
          "effective sshd ClientAliveInterval (sshd -T)",
-         pass_cases=[{"ssh_config": {"ClientAliveInterval": "600"}}, {"ssh_config": {"ClientAliveInterval": "0"}}])
+         pass_cases=[{"ssh_config": {"ClientAliveInterval": 300}}, {"ssh_config": {"ClientAliveInterval": 0}}])
 num_rule("ssh_config", "RHEL-09-255095", "ssh_client_alive_count_ok", ["ssh_config", "ClientAliveCountMax"], 1, 1, 1, [0, 3],
          "sshd ClientAliveCountMax must be 1", "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
          "effective sshd ClientAliveCountMax (sshd -T)")

@@ -22,7 +22,12 @@ has_obj(x, k) if is_object(object.get(x, k, null))
 
 has_str(x, k) if is_string(object.get(x, k, null))
 
-sku_collected(x) if is_string(p(x, "sku").name)
+# a string that says something: "" and whitespace are not a role name, a scope or a SKU name
+has_text(x, k) if nonempty(object.get(x, k, null))
+
+# the SKU names Azure returns for Bastion hosts (Developer, Basic, Standard, Premium) and Key Vaults (Standard, Premium);
+# any other string (""; "false") was not collected as a SKU
+sku_collected(x) if lower(trim_space(p(x, "sku").name)) in {"developer", "basic", "standard", "premium"}
 
 p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
 
@@ -38,11 +43,18 @@ truthy(v) if {
 	lower(trim_space(v)) == "true"
 }
 
-p_true(x, k) if truthy(p(x, k))
+# Azure returns these properties as JSON booleans, so only the booleans are read: the strings "true" and
+# "false" are a collection error (reported through not_boolean), never a met or an unmet setting. truthy is
+# for the two properties the API itself returns as the strings "True" / "False" (Defender plan extensions,
+# the DDoS protection status of a public IP).
+p_true(x, k) if p(x, k) == true
 
 p_false(x, k) if p(x, k) == false
 
-p_false(x, k) if lower(trim_space(p(x, k))) == "false"
+not_boolean(x, k) if {
+	v := p(x, k)
+	not is_boolean(v)
+}
 
 nonempty(s) if {
 	is_string(s)
@@ -99,8 +111,9 @@ assignee(a) := n if {
 } else := "a principal"
 
 assignment_collected(a) if {
-	is_string(a.roleDefinitionName)
+	nonempty(a.roleDefinitionName)
 	is_string(a.scope)
+	startswith(trim_space(a.scope), "/")
 }
 
 # ── scopes and role assignments ───────────────────────────────────────────────────────
@@ -137,7 +150,12 @@ _principal(a) := a.principalName if {
 	is_string(a.principalName)
 }
 
-conditioned(a) if nonempty(a.condition)
+# A role assignment condition is an expression over attributes (@Request[...], @Resource[...], @Principal[...],
+# @Environment[...]); a string with no attribute reference ("false", "none") is not a condition.
+conditioned(a) if {
+	nonempty(a.condition)
+	regex.match(`@(request|resource|principal|environment)\[`, lower(a.condition))
+}
 
 custom_role(r) if not p_ieq(r, "roleType", "BuiltInRole")
 
@@ -408,6 +426,8 @@ allow_priorities(n, direction) := [pr |
 	is_number(pr)
 ]
 
+rule_priority_collected(r) if is_number(p(r, "priority"))
+
 # A deny-all rule in this direction that is evaluated after every custom allow rule and before
 # the platform default rules (priority number above the highest custom allow).
 deny_all_after_allows(n, direction) if {
@@ -672,6 +692,13 @@ kv_premium(v) if lower(p(v, "sku").name) == "premium"
 # Keys, secrets and certificates are checked unless explicitly disabled.
 item_in_scope(k) if object.get(object.get(k, "attributes", {}), "enabled", true) != false
 
+# attributes.enabled, when the item carries it, is a boolean; any other value leaves the item in scope and is reported.
+item_enabled_invalid(k) if {
+	v := k.attributes.enabled
+	not is_null(v)
+	not is_boolean(v)
+}
+
 has_expiry(k) if {
 	some f in ["expires", "exp"]
 	_set(k.attributes[f])
@@ -749,7 +776,8 @@ has_private_endpoint(v) if count(p(v, "privateEndpointConnections")) > 0
 
 shareable_link_capable(b) if lower(p(b, "sku").name) in {"standard", "premium"}
 
-nat_gateway_ip(ip) if nonempty(p(ip, "natGateway").id)
+# the NAT gateway is named by its resource id; any other string does not exempt the address
+nat_gateway_ip(ip) if regex.match(`^/subscriptions/[^/]+/resourcegroups/[^/]+/providers/microsoft\.network/natgateways/[^/]+$`, lower(trim_space(p(ip, "natGateway").id)))
 
 ddos_protected(ip) if lower(p(ip, "ddosSettings").protectionMode) == "enabled"
 

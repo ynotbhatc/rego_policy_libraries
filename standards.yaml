@@ -307,7 +307,7 @@ frameworks:
   # ---------------------------------------------------------------- NIST and US federal
   nist_sp_800_53:
     standards:
-      - {standard: NIST SP 800-53 Rev 5 (OSCAL catalog), version: 5.2.0, publisher: NIST, literal: "SP 800-53 Rev 5 release 5.2.0", check: {method: oscal_catalog, url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"}}
+      - {standard: NIST SP 800-53 Rev 5 (OSCAL catalog), version: 5.2.0, publisher: NIST, literal: "SP 800-53 Rev 5 release 5.2.0", check: {method: oscal_catalog, url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json", note: "Release 5.2.0 of 2025-08-27. Module ids and checks reviewed 2026-11-24 against usnistgov/oscal-content v1.6.0 (commit f0de6d8d8c059d374f15e0ae07508d82e370fc1d, catalog sha256 64ca6b4161de51ab6af098a7d101d326f14c95e1abf721396cd8a049e8115eeb) and the CPRT export of 5.2.0; the catalog metadata.version stays 5.2.0 across oscal-content v1.4.0 to v1.6.0 while the content was corrected, so a newer oscal-content tag needs a look even when this check reports no new version"}}
   nist_sp_800_171:
     standards:
       - {standard: NIST SP 800-171, version: Rev 3, publisher: NIST, literal: "NIST SP 800-171 Rev 3", check: {method: oscal_catalog, implemented: "1.1.0", url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-171/rev3/json/NIST_SP800-171_rev3_catalog.json", note: "implemented = catalog file version reviewed, not the SP revision"}}
@@ -530,7 +530,8 @@ frameworks:
       - {standard: NERC CIP-015, version: CIP-015-1, publisher: NERC, literal: "CIP-015-1", check: {method: manual, url: "https://www.nerc.com/standards/reliability-standards"}}
   iec_62443:
     standards:
-      - {standard: IEC 62443-3-3 (and -2-1, -2-4, -3-2 references), version: unknown, publisher: IEC / ISA, check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "module cites the parts but no edition year"}}
+      - {standard: IEC 62443-3-3 (FR 1-7, 51 SRs), version: "2013", publisher: IEC / ISA, literal: "IEC 62443-3-3:2013", check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "edition 1.0 (2013) is the current edition of part 3-3; an edition 2 is in development"}}
+      - {standard: IEC 62443-2-1 / -2-3 / -2-4 / -3-2 (management, patching, service provider, risk assessment modules), version: unknown, publisher: IEC / ISA, check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "these four modules cite the part but no edition year; 62443-2-1:2024 (ed. 2) replaced the 2010 CSMS edition the part 2-1 module follows"}}
 
   # ---------------------------------------------------------------- EU, UK and international
   gdpr:
@@ -641,3 +642,76 @@ frameworks:
   mcp: {internal: true, note: AAC MCP governance; the CIS MCP benchmark is cis_mcp_server}
   oidc: {internal: true, note: AAC token validation}
   technical_debt: {internal: true, note: AAC debt scoring}
+
+# ---------------------------------------------------------------- STANDARDS_UPDATE_REGISTRY.md rows
+# Which framework keys each row of the registry table speaks for (scripts/check_standard_releases.py --offline,
+# registry_errors). A list of keys: the row's "Implemented version" cell must state, before the word "upstream",
+# every version recorded above for those keys ("current" and "unknown" are not compared). "key:text" limits the
+# comparison to that key's standards whose name contains the text. {family: prefix} is a summary row: every
+# vX.Y.Z / VnRn token it quotes must be a version some key with that prefix records. [] compares nothing.
+registry_rows:
+  "CISA CPG": [cisa_cpg]
+  "TSA Pipeline Security Directives": [tsa_pipeline]
+  "CIS MCP Server Benchmark": [cis_mcp_server]
+  "CIS Windows 10 Enterprise": [cis_windows_10_modular]
+  "CIS Windows 11 Enterprise": [cis_windows_11_modular]
+  "CIS Apache HTTP Server 2.4 Benchmark": [cis_apache]
+  "NIST CSF": [nist_cybersecurity_framework_2_0]
+  "NIST Privacy Framework": [nist_privacy_framework]
+  "NIST SP 800-53": [nist_sp_800_53]
+  "NIST SP 800-171": [nist_sp_800_171, nist_sp_800_171_r2]
+  "CIS Benchmarks (per-OS dirs)": {family: cis_}
+  "DISA STIGs": {family: stig_}
+  "NSA/CISA K8s Hardening": [nsa_cisa_kubernetes]
+  "K8s Pod Security Standards": [pss_kubernetes]
+  "PCI DSS": [pci_dss]
+  "ISO/IEC 27001": [iso27001]
+  "ISO/IEC 42001": [iso_42001]
+  "SOC 2 (TSC)": [soc2]
+  "HIPAA Security Rule": [hipaa]
+  "HIPAA Administrative Simplification (`hipaa.part160`, `hipaa.part162`)": [hipaa]
+  "HIPAA Privacy Rule (`hipaa.privacy_rule`, `hipaa.part160`)": [hipaa]
+  "GLBA Safeguards Rule": [glba]
+  "CCPA/CPRA": [ccpa]
+  "GDPR": [gdpr]
+  "EU AI Act": [eu_ai_act]
+  "EU CRA": [cra]
+  "NIS2": [nis2]
+  "DORA": [dora]
+  "NERC CIP": [nerc_cip]
+  "IEC 62443": [iec_62443]
+  "NIST AI RMF": [nist_ai_rmf, nist_ai_600_1]
+  "CMMC": [cmmc]
+  "NY DFS": [ny_dfs]
+  "MAS TRM (Singapore)": [mas_trm]
+  "CERT-In Directions (India)": [cert_in]
+  "DPDP (India)": [dpdp_india]
+  "METI CSM Guidelines (Japan)": [meti_csm]
+  "APRA CPS 234 (Australia)": [apra_cps234]
+  "BNM RMiT (Malaysia)": [bnm_rmit]
+  "HKMA TM-G-1 / TM-C-1 (Hong Kong)": [hkma_trm]
+  "ITAR": [itar]
+  "COBIT": [cobit]
+  "SWIFT CSP": [swift_csp]
+  "HITRUST CSF": [hitrust]
+  "TISAX": [tisax]
+  "CFR Part 11": [cfr_part_11]
+  "FERPA": [ferpa]
+  "COPPA": [coppa]
+  "FedRAMP": [fedramp]
+  "ISO/IEC 42005": [iso_42005]
+  "OWASP LLM Top 10": ["owasp_llm:OWASP"]
+  "MITRE ATLAS (crosswalk)": ["owasp_llm:MITRE ATLAS"]
+  "FedRAMP 20x KSI": [fedramp_20x]
+  "UK MoD DCC / DEF STAN 05-138": [dcc]
+  "PQC Readiness": ["pqc:FIPS"]   # the row does not speak about CSWP 39
+  "CIS M365 (saas/)": [cis_saas]
+  "CISA SCuBA M365 (scuba/)": [scuba_m365]
+  "CIS EKS": [cis_eks]
+  "CIS AKS": [cis_aks, cis_aks_automatic]
+  "CIS GKE": [cis_gke]
+  "CIS Controls": [cis_controls_v8]
+  "SAE AS9100D (aerospace QMS)": [as9100d]
+  "SAP Security Baseline Template": [sap_abap_baseline]
+  "SLSA": [supply_chain_slsa]
+  "OpenSSF S2C2F": [supply_chain_s2c2f]

@@ -60,48 +60,136 @@ test_intune_defender_av_report_populated if count(data.cis.intune_defender_antiv
 
 # --- counts are internally consistent and non-negative ----------------------
 
-reports := [
-	data.cis_rhel9.main.compliance_report,
-	data.cis_rhel8.main.compliance_report,
-	data.cis_rocky_linux_8.main.compliance_report,
-	data.cis_rocky_linux_9.main.compliance_report,
-	data.cis_amazon_linux_2023.main.compliance_report,
-	data.cis_windows_server_2022.main.compliance_report,
-	data.cis_windows_server_2019.main.compliance_report,
-	data.cis_ubuntu_22_04.main.compliance_report,
-	data.cis_ubuntu_20_04.main.compliance_report,
-	data.cis_ubuntu_24_04.main.compliance_report,
-	data.cis_debian_11.main.compliance_report,
-	data.cis_vyos.main.compliance_report,
-	data.cis_pfsense.main.compliance_report,
-	data.cis_opnsense.main.compliance_report,
-	data.cis_gcp.main.compliance_report,
-	data.cis_eks.main.compliance_report,
-	data.cis_suse16.main.compliance_report,
-	data.cis_ubuntu_26_04.main.compliance_report,
-	data.cis.sql_server_2025.main.compliance_report,
-	data.cis.sql_server_2022.main.compliance_report,
-	data.cis.intune_defender_antivirus.main.compliance_report,
-	data.cis_postgresql.main.compliance_report,
-]
+# Each report is read through `report_at(k)`, so that a test can evaluate a slice of the list (index modulo 4) instead of
+# all of it: one test over all 27 reports took about five seconds on the oldest supported OPA. `reports` and
+# `gated_reports` are built from `report_at`, so they are the same lists as before.
+report_at(0) := data.cis_rhel9.main.compliance_report
+report_at(1) := data.cis_rhel8.main.compliance_report
+report_at(2) := data.cis_rocky_linux_8.main.compliance_report
+report_at(3) := data.cis_rocky_linux_9.main.compliance_report
+report_at(4) := data.cis_amazon_linux_2023.main.compliance_report
+report_at(5) := data.cis_windows_server_2022.main.compliance_report
+report_at(6) := data.cis_windows_server_2019.main.compliance_report
+report_at(7) := data.cis_ubuntu_22_04.main.compliance_report
+report_at(8) := data.cis_ubuntu_20_04.main.compliance_report
+report_at(9) := data.cis_ubuntu_24_04.main.compliance_report
+report_at(10) := data.cis_debian_11.main.compliance_report
+report_at(11) := data.cis_vyos.main.compliance_report
+report_at(12) := data.cis_pfsense.main.compliance_report
+report_at(13) := data.cis_opnsense.main.compliance_report
+report_at(14) := data.cis_gcp.main.compliance_report
+report_at(15) := data.cis_eks.main.compliance_report
+report_at(16) := data.cis_suse16.main.compliance_report
+report_at(17) := data.cis_ubuntu_26_04.main.compliance_report
+report_at(18) := data.cis.sql_server_2025.main.compliance_report
+report_at(19) := data.cis.sql_server_2022.main.compliance_report
+report_at(20) := data.cis.intune_defender_antivirus.main.compliance_report
+report_at(21) := data.cis_postgresql.main.compliance_report
+report_at(22) := data.cis_aws.main.compliance_report
+report_at(23) := data.cis_azure.main.compliance_report
+report_at(24) := data.cis_docker.main.compliance_report
+report_at(25) := data.cis_kubernetes.main.compliance_report
+report_at(26) := data.cis.rhel_10.main.compliance_report
 
-test_no_negative_counts if {
-	every r in reports {
+reports := [report_at(k) | some k in numbers.range(0, 21)]
+
+report_slice(i, ks) := [k | some j, k in ks; j % 4 == i]
+
+test_the_report_slices_cover_every_report if {
+	every i in numbers.range(0, 3) {
+		every j, k in report_slice(i, numbers.range(0, 26)) {
+			k == i + (j * 4)
+		}
+	}
+	sum([count(report_slice(i, numbers.range(0, 26))) | some i in numbers.range(0, 3)]) == 27
+}
+
+test_no_negative_counts_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 21))] {
 		r.passed_controls >= 0
 		r.failed_controls >= 0
 		r.total_controls > 0
 	}
 }
 
-test_percentage_in_range if {
-	every r in reports {
+test_no_negative_counts_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 21))] {
+		r.passed_controls >= 0
+		r.failed_controls >= 0
+		r.total_controls > 0
+	}
+}
+
+test_no_negative_counts_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 21))] {
+		r.passed_controls >= 0
+		r.failed_controls >= 0
+		r.total_controls > 0
+	}
+}
+
+test_no_negative_counts_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 21))] {
+		r.passed_controls >= 0
+		r.failed_controls >= 0
+		r.total_controls > 0
+	}
+}
+
+test_percentage_in_range_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 21))] {
 		r.compliance_percentage >= 0
 		r.compliance_percentage <= 100
 	}
 }
 
-test_required_fields_present if {
-	every r in reports {
+test_percentage_in_range_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 21))] {
+		r.compliance_percentage >= 0
+		r.compliance_percentage <= 100
+	}
+}
+
+test_percentage_in_range_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 21))] {
+		r.compliance_percentage >= 0
+		r.compliance_percentage <= 100
+	}
+}
+
+test_percentage_in_range_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 21))] {
+		r.compliance_percentage >= 0
+		r.compliance_percentage <= 100
+	}
+}
+
+test_required_fields_present_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 21))] {
+		is_string(r.framework)
+		is_boolean(r.compliant)
+		is_array(r.violations)
+	}
+}
+
+test_required_fields_present_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 21))] {
+		is_string(r.framework)
+		is_boolean(r.compliant)
+		is_array(r.violations)
+	}
+}
+
+test_required_fields_present_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 21))] {
+		is_string(r.framework)
+		is_boolean(r.compliant)
+		is_array(r.violations)
+	}
+}
+
+test_required_fields_present_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 21))] {
 		is_string(r.framework)
 		is_boolean(r.compliant)
 		is_array(r.violations)
@@ -114,8 +202,20 @@ test_required_fields_present if {
 # orchestrator's imports pointed at a package that does not exist, so
 # all_violations was always empty and the benchmark reported 100% on any input.
 
-test_empty_input_is_not_compliant if {
-	every r in reports { r.compliant == false }
+test_empty_input_is_not_compliant_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 21))] { r.compliant == false }
+}
+
+test_empty_input_is_not_compliant_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 21))] { r.compliant == false }
+}
+
+test_empty_input_is_not_compliant_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 21))] { r.compliant == false }
+}
+
+test_empty_input_is_not_compliant_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 21))] { r.compliant == false }
 }
 
 test_amazon2023_detects_violations_on_empty_input if {
@@ -169,28 +269,79 @@ test_rocky9_is_its_own_benchmark if {
 # 97.1%, cis_rhel9 71.9%. Two cis_rhel10 rows already in compliance_results
 # carry exactly that empty-input signature.
 
-gated_reports := array.concat(reports, [
-	data.cis_aws.main.compliance_report,
-	data.cis_azure.main.compliance_report,
-	data.cis_docker.main.compliance_report,
-	data.cis_kubernetes.main.compliance_report,
-	data.cis.rhel_10.main.compliance_report,
-])
+gated_reports := array.concat(reports, [report_at(k) | some k in numbers.range(22, 26)])
 
-test_empty_input_reports_zero_percent if {
-	every r in gated_reports { r.compliance_percentage == 0 }
+test_empty_input_reports_zero_percent_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 26))] { r.compliance_percentage == 0 }
 }
 
-test_empty_input_passes_no_controls if {
-	every r in gated_reports { r.passed_controls == 0 }
+test_empty_input_reports_zero_percent_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 26))] { r.compliance_percentage == 0 }
 }
 
-test_empty_input_fails_every_control if {
-	every r in gated_reports { r.failed_controls == r.total_controls }
+test_empty_input_reports_zero_percent_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 26))] { r.compliance_percentage == 0 }
 }
 
-test_empty_input_emits_explicit_fail_closed_violation if {
-	every r in gated_reports {
+test_empty_input_reports_zero_percent_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 26))] { r.compliance_percentage == 0 }
+}
+
+test_empty_input_passes_no_controls_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 26))] { r.passed_controls == 0 }
+}
+
+test_empty_input_passes_no_controls_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 26))] { r.passed_controls == 0 }
+}
+
+test_empty_input_passes_no_controls_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 26))] { r.passed_controls == 0 }
+}
+
+test_empty_input_passes_no_controls_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 26))] { r.passed_controls == 0 }
+}
+
+test_empty_input_fails_every_control_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 26))] { r.failed_controls == r.total_controls }
+}
+
+test_empty_input_fails_every_control_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 26))] { r.failed_controls == r.total_controls }
+}
+
+test_empty_input_fails_every_control_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 26))] { r.failed_controls == r.total_controls }
+}
+
+test_empty_input_fails_every_control_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 26))] { r.failed_controls == r.total_controls }
+}
+
+test_empty_input_emits_explicit_fail_closed_violation_slice_0 if {
+	every r in [report_at(k) | some k in report_slice(0, numbers.range(0, 26))] {
+		some v in r.violations
+		startswith(v, "FAIL-CLOSED: no facts supplied")
+	}
+}
+
+test_empty_input_emits_explicit_fail_closed_violation_slice_1 if {
+	every r in [report_at(k) | some k in report_slice(1, numbers.range(0, 26))] {
+		some v in r.violations
+		startswith(v, "FAIL-CLOSED: no facts supplied")
+	}
+}
+
+test_empty_input_emits_explicit_fail_closed_violation_slice_2 if {
+	every r in [report_at(k) | some k in report_slice(2, numbers.range(0, 26))] {
+		some v in r.violations
+		startswith(v, "FAIL-CLOSED: no facts supplied")
+	}
+}
+
+test_empty_input_emits_explicit_fail_closed_violation_slice_3 if {
+	every r in [report_at(k) | some k in report_slice(3, numbers.range(0, 26))] {
 		some v in r.violations
 		startswith(v, "FAIL-CLOSED: no facts supplied")
 	}

@@ -252,6 +252,17 @@ _gaps["9.3.1"] contains "no management review was held within the past year (man
 	count(_recent_reviews) == 0
 }
 
+# outputs_recorded is a yes/no fact on each review record: when a record carries it, it must be a boolean.
+# (Whether outputs are recorded and retained is decided by the 9.3.3 attestation; here only the type is
+# checked, so a string such as "true" is reported as a collection error instead of being ignored.)
+_gaps["9.3.1"] contains r if {
+	some i, m in input.as9100d.management_review.reviews
+	value := object.get(m, "outputs_recorded", null)
+	value != null
+	not is_boolean(value)
+	r := sprintf("evidence invalid — management_review.reviews[%d].outputs_recorded is not a boolean (got %v)", [i, type_name(value)])
+}
+
 violations contains msg if {
 	some id, it in items
 	it.kind == "fact"

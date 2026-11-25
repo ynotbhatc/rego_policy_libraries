@@ -8,7 +8,12 @@ test_not_clean_without_facts if {
 }
 
 test_clean_host_with_facts_is_compliant if {
-	data.security.crypto_miner_detection.compliant with input as {"running_processes": [], "network_connections": []}
+	data.security.crypto_miner_detection.compliant with input as {"running_processes": [], "installed_packages": [], "network_connections": [], "systemd_services": [], "cron_jobs": [], "suspicious_files": []}
+}
+
+# 2026-11-24: a host is clean only when all six fact lists were collected; two of six is not an evaluation.
+test_partial_facts_are_not_a_clean_host if {
+	not data.security.crypto_miner_detection.compliant with input as {"running_processes": [], "network_connections": []}
 }
 
 # Semantic review 2026-11-13: a detection must not be dropped because a name/pid field is absent.
@@ -27,7 +32,7 @@ test_empty_input_compliant_is_false if {
 }
 
 test_clean_host_compliant_is_true if {
-	data.security.crypto_miner_detection.compliant == true with input as {"running_processes": [{"name": "sshd", "cmdline": "/usr/sbin/sshd -D", "pid": 1}]}
+	data.security.crypto_miner_detection.compliant == true with input as {"running_processes": [{"name": "sshd", "cmdline": "/usr/sbin/sshd -D", "pid": 1}], "installed_packages": [], "network_connections": [], "systemd_services": [], "cron_jobs": [], "suspicious_files": []}
 }
 
 test_miner_host_compliant_is_false if {

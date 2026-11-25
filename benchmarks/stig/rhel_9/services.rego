@@ -48,18 +48,29 @@ _str(path) := format_int(v, 10) if {
 # a keyword value (sshd, auditd, faillock ...), compared case-insensitively
 _kw(path) := lower(s) if s := _str(path)
 
-# the value at path as a number: a number, or a string holding a decimal integer; undefined otherwise
+# the value at path as a number: a whole JSON number only; undefined otherwise. A number sent as text ("900") is
+# not read: the collector converts the configured text, and the finding says "evidence invalid" with the type received
+# (a fraction such as 3.5 is not a value these settings can hold)
 # (in OPA a string compares greater than any number and null <= 60 is true, so never compare raw input)
 _num(path) := v if {
 	v := object.get(input, path, null)
-	is_number(v)
+	_whole_number(v)
 }
 
-_num(path) := n if {
-	v := object.get(input, path, null)
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
-	n := to_number(trim_space(v))
+_whole_number(v) if {
+	is_number(v)
+	v == floor(v)
+}
+
+# what was received where a whole JSON number is required: the JSON type, or "a fraction"
+_got(v) := "a fraction" if is_number(v)
+
+_got(v) := type_name(v) if not is_number(v)
+
+# the "evidence invalid" entry for a fact that is collected but is not a whole JSON number
+_not_a_number(fact, v) := sprintf("%s is not a number (got %s)", [fact, _got(v)]) if {
+	v != null
+	not _whole_number(v)
 }
 
 # a dnf/yum boolean option as written in the file: "1", "true" or "yes" (letters case-insensitive)
@@ -75,16 +86,11 @@ _truthy(v) if {
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
 
-# a maxpoll value the check accepts: a number (or decimal string) not greater than 16
+# a maxpoll value the check accepts: a JSON whole number not greater than 16 (never its text)
 _maxpoll_ok(p) if {
+	_whole_number(p)
 	is_number(p)
 	p <= 16
-}
-
-_maxpoll_ok(p) if {
-	is_string(p)
-	regex.match(`^\s*-?[0-9]+\s*$`, p)
-	to_number(trim_space(p)) <= 16
 }
 
 # =============================================================================
@@ -559,6 +565,8 @@ finding_rhel_09_252015 := {
 # uncommented server / pool / peer lines of /etc/chrony.conf: input.chrony_conf.sources[{directive, address, maxpoll}] (maxpoll null when the line has none); whether the server is an authoritative DoW source is an attestation
 missing_rhel_09_252020 := [concat(".", p) | some p in [["chrony_conf", "sources"]]; not _collected(p)]
 
+invalid_rhel_09_252020 := [m | some i, s in input.chrony_conf.sources; m := _not_a_number(sprintf("chrony_conf.sources[%d].maxpoll", [i]), object.get(s, "maxpoll", null))]
+
 default chrony_maxpoll_and_source := false
 
 chrony_maxpoll_and_source if {
@@ -581,6 +589,8 @@ else := "Open"
 detail_rhel_09_252020 := "RHEL-09-252020: Not_a_Finding" if chrony_maxpoll_and_source
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252020", concat(", ", missing_rhel_09_252020)]) if count(missing_rhel_09_252020) > 0
+
+else := sprintf("%s: evidence invalid — %s", ["RHEL-09-252020", concat(", ", invalid_rhel_09_252020)]) if count(invalid_rhel_09_252020) > 0
 
 else := "RHEL-09-252020: check failed — an uncommented time source line in /etc/chrony.conf must set maxpoll, no maxpoll may exceed 16, a server must be configured, and it must be attested as an authoritative DoW time source (input.attest.rhel_09_252020_authoritative_time_source)"
 

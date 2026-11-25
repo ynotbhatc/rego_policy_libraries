@@ -1555,6 +1555,6 @@ unnecessary_extensions_disabled if {
 	extensions := input.postgresql.extensions
 	enabled_extensions := [ext | ext := extensions[_]; ext.enabled == true]
 	approved_extensions := ["pgaudit", "pg_stat_statements", "uuid-ossp", "citext", "pgcrypto"]
-	unapproved_extensions := [ext | ext := enabled_extensions[_]; not ext.name in approved_extensions]
+	unapproved_extensions := [ext | ext := enabled_extensions[_]; not object.get(ext, "name", null) in approved_extensions]
 	count(unapproved_extensions) == 0
 }

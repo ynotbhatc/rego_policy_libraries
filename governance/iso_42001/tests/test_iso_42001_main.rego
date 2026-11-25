@@ -129,3 +129,89 @@ test_metadata_defaults_populate if {
 	report.organization_role == "unknown"
 	report.standard == "ISO/IEC 42001:2023"
 }
+
+# ── Evidence rule (data-driven): only the boolean true passes a yes/no fact ──
+# Every boolean in the all-pass fixture is replaced in turn by a wrong-typed value, by null, and removed.
+# Each must fail its control and say why; a boolean false keeps the plain finding.
+
+_evidence_bool_paths := [p | walk(conformant_input, [p, v]); is_boolean(v)]
+
+_evidence_bad_values := ["false", "true", "no", "yes", 0, 1, null, [], {}]
+
+test_evidence_fixture_has_every_boolean_fact if {
+	count(_evidence_bool_paths) == 38
+	every p in _evidence_bool_paths {
+		object.get(conformant_input, p, null) == true
+	}
+}
+
+test_evidence_wrong_type_or_null_never_passes if {
+	every p in _evidence_bool_paths {
+		every bad in _evidence_bad_values {
+			report := main.compliance_report with input as json.patch(conformant_input, [{"op": "replace", "path": p, "value": bad}])
+			report.compliant == false
+			report.violation_count == 1
+			some v in report.violations
+			contains(v, "[evidence ")
+			contains(v, concat(".", p))
+		}
+	}
+}
+
+test_evidence_string_names_the_type if {
+	every p in _evidence_bool_paths {
+		report := main.compliance_report with input as json.patch(conformant_input, [{"op": "replace", "path": p, "value": "false"}])
+		some v in report.violations
+		contains(v, "is not a boolean (got string)")
+	}
+}
+
+test_evidence_removed_fact_never_passes if {
+	every p in _evidence_bool_paths {
+		report := main.compliance_report with input as json.remove(conformant_input, [p])
+		report.compliant == false
+		report.violation_count == 1
+		some v in report.violations
+		contains(v, "evidence missing")
+		contains(v, "not collected")
+	}
+}
+
+test_evidence_boolean_false_is_a_plain_finding if {
+	every p in _evidence_bool_paths {
+		report := main.compliance_report with input as json.patch(conformant_input, [{"op": "replace", "path": p, "value": false}])
+		report.compliant == false
+		report.violation_count == 1
+		some v in report.violations
+		not contains(v, "[evidence ")
+	}
+}
+
+test_evidence_null_or_string_sections_never_pass if {
+	every k in {k | some k, section in conformant_input; is_object(section)} {
+		every bad in [null, "true", "1", 1, true] {
+			report := main.compliance_report with input as object.union(conformant_input, {k: bad})
+			report.compliant == false
+		}
+	}
+}
+
+test_evidence_non_object_input_never_passes if {
+	every bad in [null, "true", 1, true, []] {
+		report := main.compliance_report with input as bad
+		report.compliant == false
+		report.violation_count >= report.total_controls
+	}
+}
+
+test_evidence_organization_role_required if {
+	every bad in [null, "", "  ", 1, true, ["deployer"]] {
+		report := main.compliance_report with input as object.union(conformant_input, {"organization_role": bad})
+		report.compliant == false
+		some v in report.violations
+		contains(v, "input.organization_role")
+	}
+	report := main.compliance_report with input as object.remove(conformant_input, ["organization_role"])
+	report.compliant == false
+	"ISO 42001 4.1: The organization's AI role (input.organization_role) is not stated [evidence missing — input.organization_role not collected]" in report.violations
+}

@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 49
-#     cited: 49
+#     checks: 50
+#     cited: 50
 #     density: sized
 #     basis: size
 #     tested: true
@@ -25,7 +25,8 @@ import rego.v1
 # SI-8, SI-8(2), SI-10, SI-11, SI-12, SI-16 (the Moderate baseline), and SI-2(3), SI-4(1), SI-4(10), SI-4(11),
 # SI-4(12), SI-4(14), SI-4(16), SI-4(18), SI-4(19), SI-4(20), SI-4(22), SI-4(23), SI-5(1), SI-7(2), SI-7(5),
 # SI-7(15), SI-13, SI-14, SI-15, SI-17 to SI-23 (the NIST and FedRAMP High-baseline ids and the remaining base
-# controls), and SI-12(1), SI-12(2), SI-12(3), SI-18(4) (the Privacy-baseline enhancements): 49 ids. Each enhancement is its own requirement: a base control never fails on an enhancement's
+# controls), and SI-12(1), SI-12(2), SI-12(3), SI-18(4) (the Privacy-baseline enhancements), and SI-2(7), the enhancement Release
+# 5.2.0 added (in no baseline): 50 ids. Each enhancement is its own requirement: a base control never fails on an enhancement's
 # requirement. Every boolean passes only on true.
 
 default compliant := false
@@ -716,6 +717,36 @@ violation contains msg if {
 	msg := sprintf("NIST SI-18(4): %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# Enhancement added by SP 800-53 Release 5.2.0 (27 August 2025). In no SP 800-53B or FedRAMP baseline.
+# ---------------------------------------------------------------------------------------------------------
+
+# SI-2(7) Root Cause Analysis: input.si_controls.flaw_remediation.root_cause_analysis.{conducted,
+# actions_developed, effectiveness_monitored, issues_without_analysis, actions_not_implemented}. conducted is true
+# when root cause analysis is performed on issues and failures; actions_developed when actions addressing the root
+# cause are written; effectiveness_monitored when the implementation of those actions is monitored for
+# effectiveness. issues_without_analysis counts the issues or failures in the reporting period that the
+# organization's own procedure puts in scope and that have no root cause analysis on record;
+# actions_not_implemented counts the root-cause actions past their due date and not implemented.
+_si2_7 := {
+	"conducted": "root cause analysis is not conducted to identify the underlying causes of issues or failures",
+	"actions_developed": "actions to address the root cause of the issue or failure are not developed",
+	"effectiveness_monitored": "the implementation of the root-cause actions is not monitored for effectiveness",
+}
+
+_si2_7_zeros := {
+	"issues_without_analysis": "issues or failures in scope have no root cause analysis on record",
+	"actions_not_implemented": "root-cause actions are past due and not implemented",
+}
+
+violation contains msg if {
+	sec := ["flaw_remediation", "root_cause_analysis"]
+	m := _bool_missing(sec, _si2_7) | _zeros_missing(sec, _si2_7_zeros)
+	u := _bool_unmet(sec, _si2_7) | _zeros_unmet(sec, _si2_7_zeros)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SI-2(7): %s", [_detail(m, u)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SI-1", "SI-2", "SI-2(2)", "SI-2(3)", "SI-3", "SI-4", "SI-4(1)", "SI-4(2)", "SI-4(4)", "SI-4(5)", "SI-4(10)",
@@ -723,7 +754,7 @@ evaluated_controls := {
 	"SI-5", "SI-5(1)", "SI-6", "SI-7", "SI-7(1)", "SI-7(2)", "SI-7(5)", "SI-7(7)", "SI-7(15)", "SI-8", "SI-8(2)",
 	"SI-10", "SI-11", "SI-12", "SI-13", "SI-14", "SI-15", "SI-16", "SI-17", "SI-18", "SI-19", "SI-20", "SI-21",
 	"SI-22", "SI-23",
-	"SI-12(1)", "SI-12(2)", "SI-12(3)", "SI-18(4)",
+	"SI-12(1)", "SI-12(2)", "SI-12(3)", "SI-18(4)", "SI-2(7)",
 }
 
 compliance_report := {

@@ -6,14 +6,14 @@
 #   source: us-state
 #   domains: [privacy, us-state]
 #   coverage:
-#     checks: 32
+#     checks: 34
 #     cited: 26
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package ccpa.risk_assessments
 
 import rego.v1
@@ -50,7 +50,8 @@ compliant if {
 
 default _in := {}
 
-_in := input.ccpa.risk_assessments
+# A section sent as null or as a non-object reads as empty (object.get on null made the whole report undefined).
+_in := input.ccpa.risk_assessments if is_object(input.ccpa.risk_assessments)
 
 # ── §7150(b) — activities that require a risk assessment before processing ─
 
@@ -70,16 +71,18 @@ _in_use(id) if _in.activities[id].in_use == true
 # assessment regime fails open), so it is a violation until classified.
 violations contains msg if {
 	some id, text in activities
-	not _in.activities[id].in_use == true
+	note := _unmet(_root, ["ccpa", "risk_assessments", "activities", id, "in_use"])
 	not _in.activities[id].in_use == false
-	msg := sprintf("CCPA %v — activity not declared (activities.%v.in_use must be true or false)", [text, id])
+	finding := sprintf("CCPA %v — activity not declared (activities.%v.in_use must be true or false)", [text, id])
+	msg := concat("", [finding, note])
 }
 
 violations contains msg if {
 	some id, text in activities
 	_in_use(id)
-	not _in.activities[id].assessment_completed_before_processing == true
-	msg := sprintf("CCPA %v — no risk assessment conducted and documented before initiating this processing (§7150(a), §7155(a)(1))", [text])
+	note := _unmet(_root, ["ccpa", "risk_assessments", "activities", id, "assessment_completed_before_processing"])
+	finding := sprintf("CCPA %v — no risk assessment conducted and documented before initiating this processing (§7150(a), §7155(a)(1))", [text])
+	msg := concat("", [finding, note])
 }
 
 _any_in_use if {
@@ -91,8 +94,9 @@ _any_in_use if {
 
 violations contains msg if {
 	_any_in_use
-	not _in.stakeholders.processing_employees_included == true
-	msg := "CCPA §7151(a): employees whose duties include the assessed processing were not included in the risk assessment process"
+	note := _unmet(_root, ["ccpa", "risk_assessments", "stakeholders", "processing_employees_included"])
+	text := "CCPA §7151(a): employees whose duties include the assessed processing were not included in the risk assessment process"
+	msg := concat("", [text, note])
 }
 
 # ── §7152(a) — contents of the risk assessment report ─────────────────────
@@ -111,23 +115,26 @@ _report_checks := {
 
 violations contains msg if {
 	_any_in_use
-	some key, msg in _report_checks
-	not _in.report[key] == true
+	some key, text in _report_checks
+	note := _unmet(_root, ["ccpa", "risk_assessments", "report", key])
+	msg := concat("", [text, note])
 }
 
 # ADMT for significant decisions: the assessment must describe the logic and the output (§7152(a)(3)(G)).
 violations contains msg if {
 	_in_use("admt_significant_decision")
-	not _in.report.admt_logic_and_output_documented == true
-	msg := "CCPA §7152(a)(3)(G): for ADMT used in significant decisions, the assessment does not document the logic (assumptions, limitations) and the output and how it drives the decision"
+	note := _unmet(_root, ["ccpa", "risk_assessments", "report", "admt_logic_and_output_documented"])
+	text := "CCPA §7152(a)(3)(G): for ADMT used in significant decisions, the assessment does not document the logic (assumptions, limitations) and the output and how it drives the decision"
+	msg := concat("", [text, note])
 }
 
 # ── §7153 — ADMT made available to other businesses ───────────────────────
 
 violations contains msg if {
 	_in.admt_provider.provides_admt_to_recipient_businesses == true
-	not _in.admt_provider.facts_provided_for_recipient_assessments == true
-	msg := "CCPA §7153(a): business makes ADMT trained on personal information available to other businesses for significant decisions but does not provide them the facts needed for their own risk assessments"
+	note := _unmet(_root, ["ccpa", "risk_assessments", "admt_provider", "facts_provided_for_recipient_assessments"])
+	text := "CCPA §7153(a): business makes ADMT trained on personal information available to other businesses for significant decisions but does not provide them the facts needed for their own risk assessments"
+	msg := concat("", [text, note])
 }
 
 # ── §7155 — timing and retention ──────────────────────────────────────────
@@ -140,8 +147,9 @@ _timing_checks := {
 
 violations contains msg if {
 	_any_in_use
-	some key, msg in _timing_checks
-	not _in.timing[key] == true
+	some key, text in _timing_checks
+	note := _unmet(_root, ["ccpa", "risk_assessments", "timing", key])
+	msg := concat("", [text, note])
 }
 
 legacy_assessment_deadline := "2027-12-31T23:59:59Z"
@@ -149,9 +157,10 @@ legacy_assessment_deadline := "2027-12-31T23:59:59Z"
 # Processing that began before 2026-01-01 and continues: assessed by 2027-12-31.
 violations contains msg if {
 	_in.timing.legacy_processing_continuing == true
-	not _in.timing.legacy_processing_assessed == true
+	note := _unmet(_root, ["ccpa", "risk_assessments", "timing", "legacy_processing_assessed"])
 	time.now_ns() > time.parse_rfc3339_ns(legacy_assessment_deadline)
-	msg := "CCPA §7155(b): processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31"
+	text := "CCPA §7155(b): processing that began before the regulations' effective date and continues was not risk-assessed by 2027-12-31"
+	msg := concat("", [text, note])
 }
 
 violations contains msg if {
@@ -175,11 +184,34 @@ _submission_checks := {
 
 violations contains msg if {
 	_any_in_use
-	some key, msg in _submission_checks
-	not _in.submission[key] == true
+	some key, text in _submission_checks
+	note := _unmet(_root, ["ccpa", "risk_assessments", "submission", key])
+	msg := concat("", [text, note])
 }
 
 # ── Report ────────────────────────────────────────────────────────────────
+
+# Either fact can satisfy §7155(b) before the deadline, so a missing one is not a finding by itself; a value
+# that is present and not a boolean is still a collection error.
+violations contains msg if {
+	_in.timing.legacy_processing_continuing == true
+	some field in ["legacy_processing_assessed", "legacy_assessment_scheduled"]
+	path := ["ccpa", "risk_assessments", "timing", field]
+	_fact(_root, path) != null
+	msg := sprintf("CCPA §7155(b): %s", [_problem(_root, path)])
+}
+
+# ── Facts that switch an obligation on or off ───────────────────────────
+# Each must be stated as true or false wherever its own condition holds. A missing, null or
+# non-boolean value is an evidence problem and is reported; it is never read as "does not apply".
+_conditions contains ["CCPA §7153(a)", ["admt_provider", "provides_admt_to_recipient_businesses"]]
+
+_conditions contains ["CCPA §7155(b)", ["timing", "legacy_processing_continuing"]]
+
+violations contains msg if {
+	some [cite, path] in _conditions
+	msg := sprintf("%s: applicability not determined — %s", [cite, _problem(_root, array.concat(["ccpa", "risk_assessments"], path))])
+}
 
 compliance_report := {
 	"standard": "CCPA Regulations — Article 10 Risk Assessments (11 CCR §§7150–7157, effective 2026-01-01)",
@@ -192,3 +224,30 @@ compliance_report := {
 	"violation_count": count(violations),
 	"violations": violations,
 }
+
+# ── Evidence helpers ─────────────────────────────────────────────────────────
+# Evidence rule: only the boolean true passes a yes/no fact. _unmet is defined when the fact is not the
+# boolean true; its value is appended to the finding and names the evidence problem (missing, null, or a
+# value that is not a boolean, such as the strings "true" and "false"). A collected false adds nothing.
+# _problem names the same evidence problem for a fact that switches an obligation on or off: such a fact
+# must be stated as true or false and is never inferred from a missing field.
+# The input document itself may be absent or not an object: every fact then reads as not collected.
+default _root := {}
+
+_root := input if is_object(input)
+
+_fact(root, path) := value if {
+	is_object(root)
+	value := object.get(root, path, null)
+} else := null
+
+_problem(root, path) := sprintf("evidence missing: %s not collected", [concat(".", path)]) if _fact(root, path) == null
+
+_problem(root, path) := sprintf("evidence invalid: %s is not a boolean (got %s)", [concat(".", path), type_name(_fact(root, path))]) if {
+	_fact(root, path) != null
+	not is_boolean(_fact(root, path))
+}
+
+_unmet(root, path) := "" if _fact(root, path) == false
+
+_unmet(root, path) := concat("", [" — ", _problem(root, path)]) if not is_boolean(_fact(root, path))

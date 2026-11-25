@@ -58,7 +58,7 @@ def cfg(name, want):
     """sys.configurations row: both value_configured and value_in_use must equal `want`"""
     p = ["sql", "configurations", name]
     return spec([[f'_cfg_is("{name}", {want})']], [(p, {"value_configured": want, "value_in_use": want})],
-                [[f'count(_cfg_rows("{name}")) > 0']], f"sql.configurations['{name}']",
+                [[f'_cfg_collected("{name}")']], f"sql.configurations['{name}']",
                 [[rep(p + ["value_in_use"], 1 - want)], [rep(p + ["value_configured"], 1 - want)]], [rm(p)])
 
 
@@ -98,13 +98,34 @@ HELPERS = """
 # sys.configurations rows, matched by lowercased name (the workbook spells names with mixed case)
 _cfg_rows(name) := [v | some k, v in input.sql.configurations; lower(k) == name]
 
+# a numeric catalog column (sys.configurations values, key_length): a JSON number only. Undefined for anything
+# else, so a string such as "0" is not evidence; raw input never reaches to_number (to_number(null) is 0 and
+# to_number(true) is 1, which read as a disabled and an enabled option).
+_n(v) := v if is_number(v)
+
+# the option was collected: at least one row, and both values of every row are numeric
+_cfg_collected(name) if {
+	rows := _cfg_rows(name)
+	count(rows) > 0
+	every v in rows {
+		is_number(_n(v.value_configured))
+		is_number(_n(v.value_in_use))
+	}
+}
+
+# the option was sent but is unreadable: a row whose values are not both numbers
+_cfg_bad(name) if {
+	count(_cfg_rows(name)) > 0
+	not _cfg_collected(name)
+}
+
 # both value_configured and value_in_use must equal want, in every row the collector supplied for that name
 _cfg_is(name, want) if {
 	rows := _cfg_rows(name)
 	count(rows) > 0
 	every v in rows {
-		to_number(v.value_configured) == want
-		to_number(v.value_in_use) == want
+		_n(v.value_configured) == want
+		_n(v.value_in_use) == want
 	}
 }
 
@@ -148,9 +169,10 @@ RULES = {
     "1.1": attest("latest_cumulative_update_installed"),
     "1.2": attest("single_function_member_server"),
     "2.1": cfg("ad hoc distributed queries", 0),
-    "2.2": spec([['_cfg_is("clr strict security", 1)'], ['_cfg_is("clr enabled", 0)']],
+    # clr strict security = 1 satisfies 2.2 on its own, but not beside an unreadable 'clr enabled' row
+    "2.2": spec([['_cfg_is("clr strict security", 1)', 'not _cfg_bad("clr enabled")'], ['_cfg_is("clr enabled", 0)']],
                 [(["sql", "configurations", "clr enabled"], {"value_configured": 0, "value_in_use": 0})],
-                [['_cfg_is("clr strict security", 1)'], ['count(_cfg_rows("clr enabled")) > 0']],
+                [['_cfg_is("clr strict security", 1)', 'not _cfg_bad("clr enabled")'], ['_cfg_collected("clr enabled")']],
                 "sql.configurations['clr enabled']",
                 [[rep(["sql", "configurations", "clr strict security"], {"value_configured": 0, "value_in_use": 0}),
                   rep(["sql", "configurations", "clr enabled"], {"value_configured": 1, "value_in_use": 1})]],
@@ -162,7 +184,7 @@ RULES = {
     "2.6": cfg("remote access", 0),
     "2.7": spec([["input.sql.is_clustered == true"], ['_cfg_is("remote admin connections", 0)']],
                 [("sql.is_clustered", False), (["sql", "configurations", "remote admin connections"], {"value_configured": 0, "value_in_use": 0})],
-                [["input.sql.is_clustered == true"], ["is_boolean(input.sql.is_clustered)", 'count(_cfg_rows("remote admin connections")) > 0']],
+                [["input.sql.is_clustered == true"], ["is_boolean(input.sql.is_clustered)", '_cfg_collected("remote admin connections")']],
                 "sql.is_clustered / sql.configurations['remote admin connections']",
                 [[rep(["sql", "configurations", "remote admin connections"], {"value_configured": 1, "value_in_use": 0})]],
                 [rm("sql.is_clustered")]),
@@ -218,9 +240,10 @@ RULES = {
                 [["is_array(input.sql.symmetric_keys)"]], "sql.symmetric_keys",
                 [[rep("sql.symmetric_keys", [{"database": "AppDB", "name": "OldKey", "algorithm_desc": "TRIPLE_DES"}])]],
                 [rm("sql.symmetric_keys")]),
-    "7.2": spec([["every k in input.sql.asymmetric_keys { to_number(k.key_length) >= 2048 }"]],
+    "7.2": spec([["every k in input.sql.asymmetric_keys { _n(k.key_length) >= 2048 }"]],
                 [("sql.asymmetric_keys", [{"database": "AppDB", "name": "AppAsym", "key_length": 2048}])],
-                [["is_array(input.sql.asymmetric_keys)"]], "sql.asymmetric_keys",
+                [["is_array(input.sql.asymmetric_keys)", "every k in input.sql.asymmetric_keys { is_number(_n(k.key_length)) }"]],
+                "sql.asymmetric_keys",
                 [[rep("sql.asymmetric_keys", [{"database": "AppDB", "name": "WeakAsym", "key_length": 1024}])]],
                 [rm("sql.asymmetric_keys")]),
     "7.3": rows_empty("unencrypted_backups", {"database_name": "AppDB", "backup_finish_date": "2026-10-01T00:00:00"}),
@@ -439,8 +462,20 @@ def main(xlsx, root):
          "\tb.compliant with input as ok", "}", "",
          "test_config_names_match_case_insensitively if {",
          '\tok := json.patch(green, [{"op": "remove", "path": "/sql/configurations/database mail xps"}, '
-         '{"op": "add", "path": "/sql/configurations/Database Mail XPs", "value": {"value_configured": "0", "value_in_use": "0"}}])',
+         '{"op": "add", "path": "/sql/configurations/Database Mail XPs", "value": {"value_configured": 0, "value_in_use": 0}}])',
          "\tb.compliant with input as ok", "}", "",
+         "test_config_values_must_be_numbers if {",
+         '\tevery bad in ["0", "1", "abc", null, true, false, [0]] {',
+         '\t\tinp := json.patch(green, [{"op": "replace", "path": "/sql/configurations/remote access/value_in_use", "value": bad}])',
+         "\t\tnot b.compliant with input as inp",
+         "\t\t\"2.6: evidence missing \u2014 sql.configurations['remote access'] not collected\" in b.violations with input as inp",
+         "\t}", "}", "",
+         "test_7_2_key_length_must_be_a_number if {",
+         '\tevery bad in ["2048", "4096", "abc", null, true] {',
+         '\t\tinp := json.patch(green, [{"op": "replace", "path": "/sql/asymmetric_keys/0/key_length", "value": bad}])',
+         "\t\tnot b.compliant with input as inp",
+         '\t\t"7.2: evidence missing \u2014 sql.asymmetric_keys not collected" in b.violations with input as inp',
+         "\t}", "}", "",
          "test_5_1_unlimited_error_logs_passes if {",
          '\tok := json.patch(green, [{"op": "replace", "path": "/sql/num_error_logs", "value": -1}])', "\tb.compliant with input as ok", "}", "",
          "test_5_3_all_logins_passes if {",

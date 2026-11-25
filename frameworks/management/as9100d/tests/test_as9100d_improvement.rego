@@ -150,3 +150,46 @@ test_10_3_fails_when_not_attested if {
 	startswith(msg, "AS9100D 10.3: ")
 	contains(msg, "not attested")
 }
+
+# Round 4 (2026-11-24): status is a closed vocabulary (open, closed). A record whose status is any other word
+# fails 10.2.2 on its own status, even with the effectiveness review removed, so 10.2.2 cannot pass a record that
+# is closed in all but spelling.
+test_10_2_2_status_outside_the_vocabulary_fails_10_2_2_itself if {
+	every bad in ["Closed", "CLOSED", "done", "false", "no", " closed", "", null, true, 1] {
+		inp := fx.with_patch("corrective_actions", {"records": [{
+			"id": "CA-9",
+			"nonconformity_id": "NCR-5",
+			"root_cause": "worn fixture locator",
+			"human_factors_considered": true,
+			"status": bad,
+			"closed_on": "2026-08-01",
+		}]})
+		not mod.passed["10.2.2"] with input as inp
+		v := mod.violations with input as inp
+		count([m | some m in v; startswith(m, "AS9100D 10.2.2: "); contains(m, "evidence invalid: status")]) == 1
+	}
+}
+
+test_10_2_2_missing_status_is_named if {
+	inp := fx.with_patch("corrective_actions", {"records": [{
+		"id": "CA-9",
+		"nonconformity_id": "NCR-5",
+		"root_cause": "worn fixture locator",
+		"human_factors_considered": true,
+	}]})
+	not mod.passed["10.2.2"] with input as inp
+	v := mod.violations with input as inp
+	count([m | some m in v; startswith(m, "AS9100D 10.2.2: "); contains(m, "(got missing)")]) == 1
+}
+
+test_10_2_2_closed_without_review_fails_10_2_2 if {
+	inp := fx.with_patch("corrective_actions", {"records": [{
+		"id": "CA-9",
+		"nonconformity_id": "NCR-5",
+		"root_cause": "worn fixture locator",
+		"human_factors_considered": true,
+		"status": "closed",
+		"closed_on": "2026-08-01",
+	}]})
+	not mod.passed["10.2.2"] with input as inp
+}

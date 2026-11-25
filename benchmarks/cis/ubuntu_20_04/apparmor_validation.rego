@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 14
+#     checks: 19
 #     cited: 4
 #     density: sized
 #     basis: size
@@ -34,23 +34,23 @@ violations := array.concat(
 
 # CIS 1.6.1.1: AppArmor must be present
 install_violations contains msg if {
-	not input.apparmor.installed
+	input.apparmor.installed == false
 	msg := "CIS 1.6.1.1: AppArmor is not installed"
 }
 
 install_violations contains msg if {
-	not input.apparmor.utils_installed
+	input.apparmor.utils_installed == false
 	msg := "CIS 1.6.1.1: apparmor-utils is not installed"
 }
 
 # CIS 1.6.1.2: AppArmor must be turned on in the bootloader configuration
 service_violations contains msg if {
-	not input.apparmor.bootloader_enabled
+	input.apparmor.bootloader_enabled == false
 	msg := "CIS 1.6.1.2: AppArmor is not enabled in bootloader (apparmor=1 security=apparmor missing from GRUB_CMDLINE_LINUX)"
 }
 
 service_violations contains msg if {
-	input.apparmor.bootloader_enabled
+	input.apparmor.bootloader_enabled == true
 	not contains(input.apparmor.grub_cmdline, "security=apparmor")
 	msg := "CIS 1.6.1.2: AppArmor security= parameter not set to apparmor in bootloader"
 }
@@ -75,7 +75,7 @@ profile_violations contains msg if {
 profile_violations contains msg if {
 	some profile in input.apparmor.profiles
 	profile.mode == "unloaded"
-	msg := sprintf("CIS 1.6.1.3: AppArmor profile '%s' is not loaded", [profile.name])
+	msg := sprintf("CIS 1.6.1.3: AppArmor profile '%s' is not loaded", [object.get(profile, "name", "not collected")])
 }
 
 # CIS 1.6.1.4: all AppArmor Profiles must be enforcing
@@ -98,17 +98,17 @@ profile_violations contains msg if {
 profile_violations contains msg if {
 	some profile in input.apparmor.profiles
 	profile.mode == "complain"
-	msg := sprintf("CIS 1.6.1.4: AppArmor profile '%s' is in complain mode, should be enforce", [profile.name])
+	msg := sprintf("CIS 1.6.1.4: AppArmor profile '%s' is in complain mode, should be enforce", [object.get(profile, "name", "not collected")])
 }
 
 # AppArmor service must be active
 service_violations contains msg if {
-	not input.apparmor.service_active
+	input.apparmor.service_active == false
 	msg := "CIS 1.6.1.2: AppArmor service is not active"
 }
 
 service_violations contains msg if {
-	not input.apparmor.service_enabled
+	input.apparmor.service_enabled == false
 	msg := "CIS 1.6.1.2: AppArmor service is not enabled"
 }
 
@@ -119,6 +119,76 @@ apparmor_status := {
 	"enforce_profiles": object.get(input, ["apparmor", "enforce_profiles"], null),
 	"complain_profiles": object.get(input, ["apparmor", "complain_profiles"], null),
 	"unloaded_profiles": object.get(input, ["apparmor", "unloaded_profiles"], null),
+}
+
+# ---------------------------------------------------------------------------
+# Evidence rule: a yes/no fact is answered only by a JSON boolean. A missing fact, null, a string
+# ("true", "false", "no") or a number is an evidence problem: the control fails and the finding names it.
+# ---------------------------------------------------------------------------
+flag_problem(path) := "not collected" if is_null(object.get(input, path, null))
+
+flag_problem(path) := sprintf("is not a boolean (got %s)", [type_name(v)]) if {
+	v := object.get(input, path, null)
+	not is_null(v)
+	not is_boolean(v)
+}
+
+flag_evidence(prefix, path) := sprintf("%s: evidence missing — %s %s", [prefix, concat(".", path), flag_problem(path)])
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags_install_violations := [
+	["CIS 1.6.1.1", ["apparmor", "installed"]],
+	["CIS 1.6.1.1", ["apparmor", "utils_installed"]],
+]
+
+install_violations contains msg if {
+	some [prefix, path] in required_flags_install_violations
+	msg := flag_evidence(prefix, path)
+}
+
+# yes/no facts read unconditionally: [finding prefix, input path]
+required_flags_service_violations := [
+	["CIS 1.6.1.2", ["apparmor", "bootloader_enabled"]],
+	["CIS 1.6.1.2", ["apparmor", "service_active"]],
+	["CIS 1.6.1.2", ["apparmor", "service_enabled"]],
+]
+
+service_violations contains msg if {
+	some [prefix, path] in required_flags_service_violations
+	msg := flag_evidence(prefix, path)
+}
+
+# the kernel command line is what 1.6.1.2 reads once the bootloader flag says AppArmor is on
+service_violations contains msg if {
+	input.apparmor.bootloader_enabled == true
+	not is_string(object.get(input, ["apparmor", "grub_cmdline"], null))
+	msg := "CIS 1.6.1.2: evidence missing — apparmor.grub_cmdline not collected"
+}
+
+# ---------------------------------------------------------------------------
+# Text facts a rule selects or compares on. A row (or section) that lacks one used to drop out of the check:
+# `row.x == "v"` and `row.x != "v"` are both undefined when x is missing. Each is now an evidence finding
+# under the control that reads it.
+# ---------------------------------------------------------------------------
+text_problem(obj, key) := "not collected" if is_null(object.get(obj, key, null))
+
+text_problem(obj, key) := sprintf("is not a string (got %s)", [type_name(v)]) if {
+	v := object.get(obj, key, null)
+	not is_null(v)
+	not is_string(v)
+}
+
+text_problem(obj, key) := "is empty" if trim_space(object.get(obj, key, null)) == ""
+
+profile_violations contains msg if {
+	some i, profile in input.apparmor.profiles
+	msg := sprintf("CIS 1.6.1.3: evidence missing — apparmor.profiles[%d].mode %s", [i, text_problem(profile, "mode")])
+}
+
+profile_violations contains msg if {
+	some i, profile in input.apparmor.profiles
+	not is_object(profile)
+	msg := sprintf("CIS 1.6.1.3: evidence missing — apparmor.profiles[%d] is not an object (got %s)", [i, type_name(profile)])
 }
 
 report := {

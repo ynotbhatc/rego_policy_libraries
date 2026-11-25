@@ -426,7 +426,7 @@ _input_notes contains sprintf("TISAX ISA2027 input: attestation key %q is not an
 }
 
 _input_notes contains "TISAX ISA2027 input: input.tisax is missing or not an object; no control can be evaluated" if {
-	not is_object(input.tisax)
+	not is_object(object.get(input, "tisax", null))
 }
 
 violations := _control_messages | _input_notes

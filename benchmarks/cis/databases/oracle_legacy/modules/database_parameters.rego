@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 25
+#     checks: 26
 #     cited: 16
 #     density: sized
 #     basis: size
@@ -249,6 +249,12 @@ parameter_violations contains violation if {
 	input.network_encryption.crypto_checksumming != "REQUIRED"
 	input.network_encryption.crypto_checksumming != "REQUESTED"
 	violation := sprintf("CIS 2.2: Network crypto checksumming is '%s' (should be 'REQUIRED' or 'REQUESTED')", [input.network_encryption.crypto_checksumming])
+}
+
+parameter_violations contains violation if {
+	input.network_encryption.enabled
+	not is_string(object.get(input.network_encryption, "crypto_checksumming", null))
+	violation := "CIS 2.2: evidence missing — network_encryption.crypto_checksumming not collected"
 }
 
 # =============================================================================

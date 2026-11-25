@@ -114,3 +114,12 @@ test_sec_max_failed_login_attempts_set_number_type_traps if {
 	not data.cis.oracle_19c.sec_max_failed_login_attempts_set with input as {"oracle": {"init_parameters": {"sec_max_failed_login_attempts": null}}}
 	not data.cis.oracle_19c.sec_max_failed_login_attempts_set with input as {"oracle": {"init_parameters": {"sec_max_failed_login_attempts": "not-a-number"}}}
 }
+
+# An unneeded default account whose status was not collected is not shown to be locked.
+test_unneeded_default_account_without_status_fails if {
+	not p.unneeded_default_accounts_locked with input as {"oracle": {"default_accounts": [{"username": "SCOTT", "needed": false}]}}
+}
+
+test_unneeded_default_account_locked_passes if {
+	p.unneeded_default_accounts_locked with input as {"oracle": {"default_accounts": [{"username": "SCOTT", "needed": false, "status": "LOCKED"}]}}
+}

@@ -56,6 +56,11 @@ def s(uri, check, arg, green, bads):
             "fx": green, "fails": [[rep(name, b)] for b in bads], "miss": [rm(name)]}
 
 
+def is_int(rule):
+    """The rule reads a CSP integer (every helper that does is named _int_* or _absent_or_int_in)."""
+    return "_int_" in rule["body"][0]
+
+
 def int_in(uri, allowed, green, bads):
     return s(uri, '_int_in("{n}", {a})', "{" + ", ".join(str(a) for a in allowed) + "}", green, bads)
 
@@ -168,13 +173,19 @@ _vals(name) := [v | some k, v in _settings; lower(k) == lower(name)]
 
 _set(name) if count(_vals(name)) > 0
 
-# CSP integers arrive as numbers or as numeric strings
+# A CSP integer (REG_DWORD in the benchmark's audit procedure) arrives as a JSON number. The same digits as a
+# string, a boolean or null are a collector fault, not a setting: the recommendation fails and its finding names
+# the type.
 _num(v) := v if is_number(v)
 
-_num(v) := to_number(trim_space(v)) if {
-	is_string(v)
-	regex.match(`^\s*-?[0-9]+\s*$`, v)
+# the types supplied where a number belongs, for the finding; undefined when every value is a number
+_not_number(name) := concat(", ", sort(ts)) if {
+	ts := {type_name(v) | some v in _vals(name); not is_number(v)}
+	count(ts) > 0
 }
+
+# the number inside a "k=v|k=v" CSP string, which is text by definition
+_pair_num(v) := to_number(trim_space(v)) if regex.match(`^\s*-?[0-9]+\s*$`, v)
 
 _int_in(name, allowed) if {
 	_set(name)
@@ -231,14 +242,14 @@ _pairs(name) := {[lower(trim_space(p[0])), trim_space(p[1])] |
 _pair_ok(name, k, allowed) if {
 	some p in _pairs(name)
 	p[0] == k
-	_num(p[1]) in allowed
+	_pair_num(p[1]) in allowed
 	not _pair_conflict(name, k, allowed)
 }
 
 _pair_conflict(name, k, allowed) if {
 	some p in _pairs(name)
 	p[0] == k
-	not _num(p[1]) in allowed
+	not _pair_num(p[1]) in allowed
 }
 
 # ASR rule GUID (lowercase) -> 1 = Block, 2 = Audit, 6 = Warn, 0 = Off
@@ -319,7 +330,7 @@ def main(xlsx, root):
          "# Input contract: the EFFECTIVE Intune policy value of each setting for the assessed device group, keyed by CSP",
          "# node name (the last segment of its OMA-URI; `recommendations[id].oma_uri` gives the full path):",
          "#   input.intune_defender.settings[<CSP node name>] = value     (names match case-insensitively)",
-         "#     Policy/Config/Defender/* and Defender/Configuration/* integers : number or numeric string",
+         "#     Policy/Config/Defender/* and Defender/Configuration/* integers : JSON number (a numeric string is not evidence)",
          "#     ADMX_MicrosoftDefenderAntivirus/* (section 1)                   : policy state \"enabled\" | \"disabled\" (or <enabled/> / <disabled/>)",
          "#     AttackSurfaceReductionRules                                     : CSP string \"<rule guid>=<0|1|2|6>|...\"",
          "#     ThreatSeverityDefaultAction                                     : CSP string \"<1|2|4|5>=<2|3|6>|...\"",
@@ -340,8 +351,17 @@ def main(xlsx, root):
         L += [f"# {rid} ({r['status']}, {r['profiles'][0]}) {x['uri']}", f"default r_{i} := false", f"r_{i} if {{"]
         L += ["\t" + b for b in x["body"]] + ["}", "", f"default e_{i} := false", f"e_{i} if {{"] + ["\t" + b for b in x["ev"]] + ["}", ""]
         L += [f"violations contains {rego_str(rid + ': evidence missing — ' + field + ' not collected')} if {{",
-              f'\t"{rid}" in in_scope', f"\tnot e_{i}", "}", "",
-              f"violations contains {rego_str(rid + ': ' + r['title'])} if {{", f'\t"{rid}" in in_scope', f"\te_{i}", f"\tnot r_{i}", "}", ""]
+              f'\t"{rid}" in in_scope', f"\tnot e_{i}", "}", ""]
+        if is_int(x):
+            # one finding per recommendation: the required value, or, when the value is not a number, its type
+            L += [f"violations contains {rego_str(rid + ': ' + r['title'])} if {{", f'\t"{rid}" in in_scope', f"\te_{i}",
+                  f"\tnot r_{i}", f'\tnot _not_number("{x["name"]}")', "}", "",
+                  "violations contains msg if {", f'\t"{rid}" in in_scope', f"\te_{i}", f"\tnot r_{i}",
+                  f'\tgot := _not_number("{x["name"]}")',
+                  f'\tmsg := sprintf("{rid}: intune_defender.settings.{x["name"]} is not a number (got %s)", [got])', "}", ""]
+        else:
+            L += [f"violations contains {rego_str(rid + ': ' + r['title'])} if {{", f'\t"{rid}" in in_scope', f"\te_{i}",
+                  f"\tnot r_{i}", "}", ""]
         if "guid" in x:
             asr_green[x["guid"]] = 1
         elif "sev" not in x:
@@ -385,6 +405,7 @@ def main(xlsx, root):
             items[guid] = val
         return "|".join(f"{g}={v}" for g, v in items.items())
 
+    cbl = next(rid for rid in ids if RULES[rid].get("name") == "CloudBlockLevel")
     T = [f"package {PKG}_test", "", "import rego.v1", "", f"import data.{PKG} as b", f"import data.{PKG}.main as m", "",
          f"green := {gs}", "",
          "test_green_policy_is_compliant if {", "\tr := b.compliance_report with input as green", "\tr.compliant == true",
@@ -399,12 +420,37 @@ def main(xlsx, root):
          f"\tcount([r | some r in b.recommendations; r.level == 2]) == {len(l2)}", "}", "",
          "test_level_1_scope if {", f'\tcount(b.in_scope) == {len(ids) - len(l2)} with input as object.union(green, {{"cis_profile": {{"level": 1}}}})',
          f'\tb.compliant with input as object.union(json.patch(green, [{{"op": "remove", "path": "{sp("EnableConvertWarnToBlock")}"}}]), {{"cis_profile": {{"level": 1}}}})', "}", "",
-         "test_numeric_strings_and_key_case_are_accepted if {",
-         f'\tok := json.patch(green, [{{"op": "remove", "path": "{sp("CloudBlockLevel")}"}}, {{"op": "add", "path": "{sp("cloudblocklevel")}", "value": " 4 "}}])',
+         "test_key_case_is_accepted if {",
+         f'\tok := json.patch(green, [{{"op": "remove", "path": "{sp("CloudBlockLevel")}"}}, {{"op": "add", "path": "{sp("cloudblocklevel")}", "value": {settings["CloudBlockLevel"]}}}])',
          "\tb.compliant with input as ok", "}", "",
+         "# A CSP integer is a JSON number: the same digits as a string are not evidence, and the finding names the type.",
+         "test_numeric_string_is_not_a_number if {",
+         f'\tbad := json.patch(green, [{{"op": "replace", "path": "{sp("CloudBlockLevel")}", "value": " {settings["CloudBlockLevel"]} "}}])',
+         "\tv := b.violations with input as bad",
+         f'\t"{cbl}: intune_defender.settings.CloudBlockLevel is not a number (got string)" in v',
+         f'\tcount([m | some m in v; startswith(m, "{cbl}:")]) == 1', "\tcount(v) == 1", "}", "",
          "test_non_numeric_value_fails if {",
          f'\tbad := json.patch(green, [{{"op": "replace", "path": "{sp("AllowArchiveScanning")}", "value": "allowed"}}])',
-         f'\t{rego_str("2.1: " + recs["2.1"]["title"])} in b.violations with input as bad', "}", "",
+         '\t"2.1: intune_defender.settings.AllowArchiveScanning is not a number (got string)" in b.violations with input as bad', "}", "",
+         "# Data-driven: every integer setting of the all-pass fixture, sent as its own digits in a string, as text,",
+         "# as a boolean or as null, fails; so does every setting when it is removed (2.3 apart: the benchmark's audit",
+         "# procedure treats AllowCloudProtection as in effect when the value does not exist).",
+         "_integer_settings := {name | some name, v in green.intune_defender.settings; is_number(v)}", "",
+         "test_every_integer_setting_rejects_a_value_that_is_not_a_number if {",
+         f"\tcount(_integer_settings) == {sum(1 for v in settings.values() if isinstance(v, int))}",
+         "\tevery name in _integer_settings {",
+         '\t\tevery bad in [sprintf("%v", [green.intune_defender.settings[name]]), "enabled", true, false, null, [1]] {',
+         '\t\t\tr := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])',
+         "\t\t\tr.compliant == false", "\t\t\tr.violation_count == 1", "\t\t}", "\t}", "}", "",
+         "test_every_setting_removed_fails if {",
+         '\tevery name in object.keys(green.intune_defender.settings) - {"AllowCloudProtection"} {',
+         '\t\tr := m.compliance_report with input as json.remove(green, [sprintf("/intune_defender/settings/%s", [name])])',
+         "\t\tr.compliant == false", "\t}", "}", "",
+         "test_string_settings_reject_other_types if {",
+         "\tevery name in {n | some n, v in green.intune_defender.settings; is_string(v)} {",
+         "\t\tevery bad in [1, true, null] {",
+         '\t\t\tr := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])',
+         "\t\t\tr.compliant == false", "\t\t}", "\t}", "}", "",
          "test_audit_or_higher_rule_accepts_audit if {",
          f'\tok := json.patch(green, [{{"op": "replace", "path": "{sp(ASR)}", "value": {rego_str(asr_str(RULES["2.12"]["guid"], 2))}}}])',
          "\tb.compliant with input as ok", "}", "",

@@ -725,6 +725,7 @@ _facts := {
 	"test_data": {
 		"generators": {"approved_tools": true},
 		"production_data_not_used_for_testing": true,
+		"production_data_used": false,
 		"synthetic_data": {
 			"available": true,
 			"realistic_for_testing": true,
@@ -1126,4 +1127,128 @@ test_org_defined_values_replace_library_limits if {
 	strval := json.patch(_green, [{"op": "replace", "path": "/clock_sync/max_drift_seconds", "value": "0"}])
 	r4 := iso27001.compliance_report with input as strval
 	r4.annex_a["A.8.17"].satisfied == false
+}
+
+# ── Audit 2026-11-24: A.8.33, a missing fact is not "production data was not used" ──────────────────
+
+test_a833_production_data_used_must_be_stated if {
+	r := iso27001.compliance_report with input as json.remove(_green, ["/test_data/production_data_used"])
+	r.compliant == false
+	r.annex_a["A.8.33"].satisfied == false
+	"system_acquisition_maintenance.data_protection_control" in r.annex_a["A.8.33"].fact_checks_failed
+}
+
+test_a833_production_data_used_wrong_type_or_null_fails if {
+	every bad in ["false", "true", "no", 0, 1, null, [], {}] {
+		inp := json.patch(_green, [{"op": "replace", "path": "/test_data/production_data_used", "value": bad}])
+		not data.iso27001.system_acquisition_maintenance.data_protection_control with input as inp
+	}
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": "/test_data/production_data_used", "value": "false"}])
+	r.compliant == false
+	r.annex_a["A.8.33"].satisfied == false
+}
+
+test_a833_explicit_false_passes if {
+	r := iso27001.compliance_report with input as _green
+	r.annex_a["A.8.33"].satisfied == true
+}
+
+# The audit's own input: only production_data_not_used_for_testing: true, production_data_used not collected.
+test_a833_audit_input_no_longer_passes if {
+	inp := {"test_data": {"production_data_not_used_for_testing": true}}
+	not data.iso27001.system_acquisition_maintenance.production_test_data_controls_adequate with input as inp
+	not data.iso27001.system_acquisition_maintenance.data_protection_control with input as inp
+	data.iso27001.system_acquisition_maintenance.data_protection_control with input as {"test_data": {"production_data_not_used_for_testing": true, "production_data_used": false}}
+}
+
+# ── Same shape elsewhere in the tree: a string or a missing list is not an empty list ───────────────
+
+test_list_facts_must_be_lists if {
+	data.iso27001.access_control.user_registration_process with input as _green
+	data.iso27001.access_control.privileged_access_management with input as _green
+	data.iso27001.cryptography.cryptographic_policy with input as _green
+	data.iso27001.cryptography.key_generation_secure with input as _green
+	every bad in ["", {}, "true"] {
+		not data.iso27001.access_control.user_registration_process with input as json.patch(_green, [{"op": "replace", "path": "/user_management/unauthorized_users", "value": bad}])
+		not data.iso27001.access_control.privileged_access_management with input as json.patch(_green, [{"op": "replace", "path": "/privileged_access/shared_accounts", "value": bad}])
+		not data.iso27001.cryptography.cryptographic_policy with input as json.patch(_green, [{"op": "replace", "path": "/cryptography/policy/approved_algorithms", "value": bad}])
+	}
+	not data.iso27001.cryptography.key_generation_secure with input as json.patch(_green, [{"op": "replace", "path": "/key_management/key_specifications", "value": "true"}])
+}
+
+test_weak_algorithm_advisory_needs_the_list if {
+	d := data.iso27001.cryptography.compliance_details with input as {}
+	d.advisory.weak_algorithms_disabled == false
+}
+
+# ── Attestations: only the boolean true attests; the finding names the evidence problem ─────────────
+
+# Bulk form: every id is given the bad value in ONE input, and every id must have its own finding. Findings
+# are per id, so this proves each id separately without one full evaluation per id and value.
+_att_ids := {id | some id, _ in iso27001.annex_a; not iso27001.fact_checks[id]}
+
+_fact_att_ids := {id | some id, _ in iso27001.fact_checks}
+
+test_every_attested_id_rejects_non_boolean if {
+	count(_att_ids) > 0
+	every bad in ["true", null] {
+		r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": bad} | some x in _att_ids])
+		r.compliant == false
+		every id in _att_ids {
+			some v in r.violations
+			contains(v, sprintf("%v ", [id]))
+			contains(v, "[evidence invalid — attestation is not a boolean")
+		}
+	}
+}
+
+test_every_attested_id_missing_is_named if {
+	r := iso27001.compliance_report with input as json.remove(_green, [["iso27001", "annex_a", id] | some id in _att_ids])
+	r.compliant == false
+	every id in _att_ids {
+		some v in r.violations
+		contains(v, sprintf("%v ", [id]))
+		contains(v, "[evidence missing — attestation not collected]")
+	}
+}
+
+test_every_attested_id_false_is_a_plain_finding if {
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": false} | some x in _att_ids])
+	r.compliant == false
+	count([v | some v in r.violations; contains(v, "[evidence")]) == 0
+	every id in _att_ids {
+		some v in r.violations
+		contains(v, sprintf("%v ", [id]))
+	}
+}
+
+test_one_non_boolean_attestation_alone_fails if {
+	some id in _att_ids
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": "true"} | some x in {id}])
+	r.compliant == false
+	r.violation_count == 1
+}
+
+test_non_boolean_attestation_on_a_fact_id_is_reported if {
+	count(_fact_att_ids) > 0
+	every bad in ["true", null] {
+		r := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": bad} | some x in _fact_att_ids])
+		r.compliant == false
+		every id in _fact_att_ids {
+			some v in r.violations
+			contains(v, sprintf("attestation for %v is not a boolean", [id]))
+		}
+	}
+	ok := iso27001.compliance_report with input as json.patch(_green, [{"op": "add", "path": ["iso27001", "annex_a", x], "value": false} | some x in _fact_att_ids])
+	ok.compliant == true
+}
+
+test_report_with_every_fact_as_a_string_fails_every_fact_control if {
+	paths := [p | walk(_green, [p, v]); is_boolean(v); p[0] != "iso27001"]
+	count(paths) > 300
+	r := iso27001.compliance_report with input as json.patch(_green, [{"op": "replace", "path": p, "value": "true"} | some p in paths])
+	r.compliant == false
+	every id, _ in iso27001.fact_checks {
+		r.annex_a[id].satisfied == false
+	}
 }

@@ -7,6 +7,7 @@ good := {
 	"journald": {"forward_to_syslog": "yes", "compress_enabled": "yes", "storage_mode": "persistent", "service_active": true},
 	"log_file_permissions": {"analysis": []},
 	"logrotate": {"installed": true},
+	"require_remote_logging": false,
 }
 
 test_good_compliant if {

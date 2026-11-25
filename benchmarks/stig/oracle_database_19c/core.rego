@@ -23,19 +23,58 @@ package stig.oracle_database_19c.core
 # SRG-STIG library XCCDF on 2026-10-13 (tools/stig_generators/gen_oracle_db.py).
 # Organizational rules are explicit attestation booleans — named for what
 # a human verified, never silently passed. Input contract:
-#   input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase)
-#   input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector
+#   input.oracle.parameters[<name>]            : V$PARAMETER / GV$PARAMETER value (name lowercase); max_idle_time a JSON number
+#   input.oracle.profiles[<profile>][<RESOURCE>]: DBA_PROFILES limits, DEFAULT resolved by the collector; numeric limits JSON numbers, a word (UNLIMITED) text
 #   input.oracle.<query result>                : rows the STIG query must not return (lists), counts, flags
 #   input.oracle.attest.*                      : attestation booleans (documented reviews)
 
 import rego.v1
+
+# a numeric value as a JSON number (3, 0.0034; a limit that is a word stays the word: UNLIMITED, DEFAULT).
+# A number sent as text ("3", " 3 ") is not read: the collector converts what Oracle reports. Undefined for
+# anything else (UNLIMITED, DEFAULT, null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
+# never passed to to_number.
+_num(v) := v if is_number(v)
+
+# a numeric value that is a count, length, size or number of minutes: a JSON number with no fractional part.
+# 2.5 sessions or 2.5 failed logins is not a limit the DBMS can hold, so a fraction is evidence invalid and the
+# rule stays Open. Limits expressed in days (PASSWORD_LIFE_TIME and friends) use _num: Oracle accepts fractions of a day.
+_whole(v) := v if {
+	is_number(v)
+	round(v) == v
+}
+
+# a query result that lists names (policies, files): an array whose every member is a non-empty string.
+# count() of a string is its length, so a list is never counted before it is known to be one.
+_named_list(v) if {
+	is_array(v)
+	every s in v {
+		is_string(s)
+		trim_space(s) != ""
+	}
+}
+
+# a profile limit that names something (PASSWORD_VERIFY_FUNCTION): a string other than NULL / DEFAULT / empty.
+# DBA_PROFILES.LIMIT is text; a number, a boolean or null is not a function name.
+_limit_set(v) if {
+	is_string(v)
+	not upper(trim_space(v)) in {"NULL", "DEFAULT", ""}
+}
 
 # ── profile helpers: every profile the collector reports must satisfy the limit (DEFAULT must be
 # resolved by the collector to the DEFAULT profile's value; UNLIMITED fails numeric comparisons) ──
 profiles_every_le(resource, max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) <= max
+		_num(p[resource]) <= max
+	}
+}
+
+# the same for a limit that is a count (FAILED_LOGIN_ATTEMPTS): a fraction does not pass
+profiles_every_le_whole(resource, max) if {
+	count(input.oracle.profiles) > 0
+	every _, p in input.oracle.profiles {
+		_whole(p[resource]) <= max
 	}
 }
 
@@ -49,14 +88,14 @@ profiles_every_eq(resource, val) if {
 profiles_every_set(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		not upper(p[resource]) in {"NULL", "DEFAULT", ""}
+		_limit_set(p[resource])
 	}
 }
 
-profiles_every_numeric(resource) if {
+profiles_every_whole(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p[resource]) >= 0
+		_whole(p[resource]) >= 0
 	}
 }
 
@@ -64,16 +103,18 @@ profiles_every_numeric(resource) if {
 profiles_every_effective_life_le(max) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		to_number(p.PASSWORD_LIFE_TIME) + to_number(p.PASSWORD_GRACE_TIME) <= max
+		_num(p.PASSWORD_LIFE_TIME) + _num(p.PASSWORD_GRACE_TIME) <= max
 	}
 }
 
 # standard auditing on, or at least one unified audit policy enabled
 audit_enabled if {
-	lower(input.oracle.parameters.audit_trail) != "none"
+	is_string(input.oracle.parameters.audit_trail)
+	not lower(trim_space(input.oracle.parameters.audit_trail)) in {"none", ""}
 }
 
 audit_enabled if {
+	_named_list(input.oracle.unified_audit_policies_enabled)
 	count(input.oracle.unified_audit_policies_enabled) > 0
 }
 
@@ -81,7 +122,7 @@ audit_enabled if {
 default r_o19c_00_000100 := false
 
 r_o19c_00_000100 if {
-	profiles_every_numeric("SESSIONS_PER_USER")
+	profiles_every_whole("SESSIONS_PER_USER")
 }
 
 finding_r_o19c_00_000100 := {
@@ -117,7 +158,7 @@ status_r_o19c_00_000200 := "Open" if not r_o19c_00_000200
 default r_o19c_00_000300 := false
 
 r_o19c_00_000300 if {
-	to_number(input.oracle.parameters.max_idle_time) > 0
+	_whole(input.oracle.parameters.max_idle_time) > 0
 }
 
 finding_r_o19c_00_000300 := {
@@ -496,6 +537,7 @@ status_r_o19c_00_008100 := "Open" if not r_o19c_00_008100
 default r_o19c_00_008200 := false
 
 r_o19c_00_008200 if {
+	is_array(input.oracle.unauthorized_object_owners)
 	count(input.oracle.unauthorized_object_owners) == 0
 }
 
@@ -514,6 +556,7 @@ status_r_o19c_00_008200 := "Open" if not r_o19c_00_008200
 default r_o19c_00_008300 := false
 
 r_o19c_00_008300 if {
+	is_array(input.oracle.direct_admin_privilege_grantees)
 	count(input.oracle.direct_admin_privilege_grantees) == 0
 }
 
@@ -550,7 +593,12 @@ status_r_o19c_00_008400 := "Open" if not r_o19c_00_008400
 default r_o19c_00_008600 := false
 
 r_o19c_00_008600 if {
-	not contains(input.oracle.instance_name, split(input.oracle.version, ".")[0])
+	is_string(input.oracle.instance_name)
+	trim_space(input.oracle.instance_name) != ""
+	is_string(input.oracle.version)
+	major := split(trim_space(input.oracle.version), ".")[0]
+	regex.match(`^[0-9]+$`, major)
+	not contains(input.oracle.instance_name, major)
 }
 
 finding_r_o19c_00_008600 := {
@@ -568,6 +616,7 @@ status_r_o19c_00_008600 := "Open" if not r_o19c_00_008600
 default r_o19c_00_008700 := false
 
 r_o19c_00_008700 if {
+	is_array(input.oracle.unauthorized_db_links)
 	count(input.oracle.unauthorized_db_links) == 0
 }
 
@@ -586,6 +635,7 @@ status_r_o19c_00_008700 := "Open" if not r_o19c_00_008700
 default r_o19c_00_009000 := false
 
 r_o19c_00_009000 if {
+	is_array(input.oracle.grantable_privileges_non_dba)
 	count(input.oracle.grantable_privileges_non_dba) == 0
 }
 
@@ -658,6 +708,7 @@ status_r_o19c_00_009400 := "Open" if not r_o19c_00_009400
 default r_o19c_00_009500 := false
 
 r_o19c_00_009500 if {
+	is_array(input.oracle.unauthorized_admin_option_system_privileges)
 	count(input.oracle.unauthorized_admin_option_system_privileges) == 0
 }
 
@@ -676,6 +727,7 @@ status_r_o19c_00_009500 := "Open" if not r_o19c_00_009500
 default r_o19c_00_009600 := false
 
 r_o19c_00_009600 if {
+	is_array(input.oracle.public_system_privileges)
 	count(input.oracle.public_system_privileges) == 0
 }
 
@@ -694,6 +746,7 @@ status_r_o19c_00_009600 := "Open" if not r_o19c_00_009600
 default r_o19c_00_009700 := false
 
 r_o19c_00_009700 if {
+	is_array(input.oracle.unauthorized_admin_option_roles)
 	count(input.oracle.unauthorized_admin_option_roles) == 0
 }
 
@@ -712,6 +765,7 @@ status_r_o19c_00_009700 := "Open" if not r_o19c_00_009700
 default r_o19c_00_009800 := false
 
 r_o19c_00_009800 if {
+	is_array(input.oracle.unauthorized_public_object_privileges)
 	count(input.oracle.unauthorized_public_object_privileges) == 0
 }
 
@@ -748,6 +802,7 @@ status_r_o19c_00_009900 := "Open" if not r_o19c_00_009900
 default r_o19c_00_010000 := false
 
 r_o19c_00_010000 if {
+	is_array(input.oracle.public_granted_roles)
 	count(input.oracle.public_granted_roles) == 0
 }
 
@@ -766,6 +821,7 @@ status_r_o19c_00_010000 := "Open" if not r_o19c_00_010000
 default r_o19c_00_010100 := false
 
 r_o19c_00_010100 if {
+	is_array(input.oracle.unauthorized_default_admin_roles)
 	count(input.oracle.unauthorized_default_admin_roles) == 0
 }
 
@@ -896,6 +952,7 @@ r_o19c_00_011300 if {
 }
 
 r_o19c_00_011300 if {
+	_named_list(input.oracle.unified_audit_sys_policies)
 	count(input.oracle.unified_audit_sys_policies) > 0
 }
 
@@ -991,6 +1048,7 @@ status_r_o19c_00_011800 := "Open" if not r_o19c_00_011800
 default r_o19c_00_011900 := false
 
 r_o19c_00_011900 if {
+	is_array(input.oracle.users_with_default_password)
 	count(input.oracle.users_with_default_password) == 0
 }
 
@@ -1081,7 +1139,7 @@ status_r_o19c_00_012300 := "Open" if not r_o19c_00_012300
 default r_o19c_00_012400 := false
 
 r_o19c_00_012400 if {
-	profiles_every_le("FAILED_LOGIN_ATTEMPTS", 3)
+	profiles_every_le_whole("FAILED_LOGIN_ATTEMPTS", 3)
 }
 
 finding_r_o19c_00_012400 := {
@@ -1117,6 +1175,7 @@ status_r_o19c_00_012500 := "Open" if not r_o19c_00_012500
 default r_o19c_00_012900 := false
 
 r_o19c_00_012900 if {
+	is_array(input.oracle.sample_schemas_present)
 	count(input.oracle.sample_schemas_present) == 0
 }
 
@@ -1135,6 +1194,7 @@ status_r_o19c_00_012900 := "Open" if not r_o19c_00_012900
 default r_o19c_00_013000 := false
 
 r_o19c_00_013000 if {
+	is_array(input.oracle.unused_components_installed)
 	count(input.oracle.unused_components_installed) == 0
 }
 
@@ -1153,6 +1213,7 @@ status_r_o19c_00_013000 := "Open" if not r_o19c_00_013000
 default r_o19c_00_013100 := false
 
 r_o19c_00_013100 if {
+	is_array(input.oracle.unused_integrated_options_enabled)
 	count(input.oracle.unused_integrated_options_enabled) == 0
 }
 
@@ -1337,6 +1398,7 @@ status_r_o19c_00_014700 := "Open" if not r_o19c_00_014700
 default r_o19c_00_014800 := false
 
 r_o19c_00_014800 if {
+	is_array(input.oracle.users_with_10g_password_verifier)
 	count(input.oracle.users_with_10g_password_verifier) == 0
 }
 
@@ -1799,6 +1861,7 @@ status_r_o19c_00_020400 := "Open" if not r_o19c_00_020400
 default r_o19c_00_020500 := false
 
 r_o19c_00_020500 if {
+	_named_list(input.oracle.control_files)
 	count(input.oracle.control_files) >= 3
 }
 
@@ -1817,8 +1880,12 @@ status_r_o19c_00_020500 := "Open" if not r_o19c_00_020500
 default r_o19c_00_020600 := false
 
 r_o19c_00_020600 if {
+	is_array(input.oracle.redo_log_groups)
 	count(input.oracle.redo_log_groups) >= 3
-	every g in input.oracle.redo_log_groups { count(g.members) >= 2 }
+	every g in input.oracle.redo_log_groups {
+		_named_list(g.members)
+		count(g.members) >= 2
+	}
 }
 
 finding_r_o19c_00_020600 := {

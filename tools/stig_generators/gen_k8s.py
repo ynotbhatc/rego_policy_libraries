@@ -798,7 +798,7 @@ K8_RULES = {
     "CNTR-K8-000940": k8_ppsm("controller_manager"),
     "CNTR-K8-000950": k8_ppsm("etcd"),
     "CNTR-K8-000960": ran(fact(["is_array(input.workloads.user_pod_host_ports)",
-                            "every p in input.workloads.user_pod_host_ports {\n\t\tto_number(p) >= 1024\n\t}"],
+                            "every p in input.workloads.user_pod_host_ports {\n\t\tis_number(p)\n\t\tp >= 1024\n\t}"],
                            [("workloads", "user_pod_host_ports")], {"workloads": {"user_pod_host_ports": [30080]}},
                            {"workloads": {"user_pod_host_ports": [30080, 443]}},
                            "pods in user namespaces must not use privileged (<1024) host ports"), "user_pod_host_ports"),

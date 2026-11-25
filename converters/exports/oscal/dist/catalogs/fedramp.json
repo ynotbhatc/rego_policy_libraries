@@ -142,6 +142,11 @@
         "id": "fedramp-FedRAMP-CA-6_obj.3",
         "name": "assessment-objective",
         "prose": "ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration."
+       },
+       {
+        "id": "fedramp-FedRAMP-CA-6_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.authorization.ato_expiry_days is not a number (got %s)"
        }
       ],
       "class": "compliance"
@@ -184,15 +189,30 @@
        {
         "id": "fedramp-FedRAMP-SC-13_obj.2",
         "name": "assessment-objective",
-        "prose": "Cryptographic algorithm '%v' is not approved or is disallowed for applying protection (NIST SP 800-131A Rev. 2). Use NIST-approved algorithms in FIPS-validated modules, or NSA-approved cryptography."
+        "prose": "evidence missing — input.cryptography.algorithms_in_use is empty; the algorithms in use were not collected"
        },
        {
         "id": "fedramp-FedRAMP-SC-13_obj.3",
         "name": "assessment-objective",
-        "prose": "SHA-1 used for digital signature generation, which NIST SP 800-131A Rev. 2 disallows outside protocol-specific allowances."
+        "prose": "evidence invalid — input.cryptography.algorithms_in_use[%d] names no algorithm (got %s); an entry is a string or {\"algorithm\", \"usage\"}"
        },
        {
         "id": "fedramp-FedRAMP-SC-13_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.cryptography.%s is not a boolean (got %s)"
+       },
+       {
+        "id": "fedramp-FedRAMP-SC-13_obj.5",
+        "name": "assessment-objective",
+        "prose": "Cryptographic algorithm '%v' is not approved or is disallowed for applying protection (NIST SP 800-131A Rev. 2). Use NIST-approved algorithms in FIPS-validated modules, or NSA-approved cryptography."
+       },
+       {
+        "id": "fedramp-FedRAMP-SC-13_obj.6",
+        "name": "assessment-objective",
+        "prose": "SHA-1 used for digital signature generation, which NIST SP 800-131A Rev. 2 disallows outside protocol-specific allowances."
+       },
+       {
+        "id": "fedramp-FedRAMP-SC-13_obj.7",
         "name": "assessment-objective",
         "prose": "evidence missing — usage of SHA-1 not stated (entry %v); SP 800-131A Rev. 2 allows SHA-1 only for signature verification (legacy) and non-signature uses. State usage as one of %v."
        }
@@ -232,12 +252,27 @@
        {
         "id": "fedramp-FedRAMP-SA-9-5_obj.1",
         "name": "assessment-objective",
-        "prose": "Federal data stored in non-US location '%v'. Storage must be in U.S./U.S. Territories or locations under U.S. jurisdiction."
+        "prose": "evidence missing — input.data_residency.us_only_required not stated; send true when the agency requires U.S.-only locations and false when it does not; the location check is applied until it is stated"
        },
        {
         "id": "fedramp-FedRAMP-SA-9-5_obj.2",
         "name": "assessment-objective",
-        "prose": "Federal data processed in non-US location '%v'. Processing must be in U.S./U.S. Territories or locations under U.S. jurisdiction."
+        "prose": "evidence invalid — input.data_residency.us_only_required must be true or false, got %v; the location check is applied until it is"
+       },
+       {
+        "id": "fedramp-FedRAMP-SA-9-5_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.data_residency.%s is empty; no location was collected"
+       },
+       {
+        "id": "fedramp-FedRAMP-SA-9-5_obj.4",
+        "name": "assessment-objective",
+        "prose": "Federal data stored in non-US location '%v'. Storage must be in U.S./U.S. Territories or locations under U.S. jurisdiction.%s"
+       },
+       {
+        "id": "fedramp-FedRAMP-SA-9-5_obj.5",
+        "name": "assessment-objective",
+        "prose": "Federal data processed in non-US location '%v'. Processing must be in U.S./U.S. Territories or locations under U.S. jurisdiction.%s"
        }
       ],
       "class": "compliance"
@@ -275,10 +310,20 @@
        {
         "id": "fedramp-FedRAMP-PS-3_obj.1",
         "name": "assessment-objective",
-        "prose": "evidence invalid — input.personnel[%d].admin_access must be true or false, got %v"
+        "prose": "evidence missing — input.personnel is empty; no personnel record was collected"
        },
        {
         "id": "fedramp-FedRAMP-PS-3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.personnel[%d] is not an object (got %s)"
+       },
+       {
+        "id": "fedramp-FedRAMP-PS-3_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.personnel[%d].admin_access must be true or false, got %v"
+       },
+       {
+        "id": "fedramp-FedRAMP-PS-3_obj.4",
         "name": "assessment-objective",
         "prose": "Personnel '%v' has administrative access without a completed background check. Individuals must be screened before access is authorized."
        }
@@ -287,7 +332,7 @@
      },
      {
       "id": "fedramp-FedRAMP-PS-3-3",
-      "title": "Personnel '%v' has administrative access but is not a US person and has no waiver, and the agency requires US persons for administrative access (input.personnel_requirements.us_persons_required_for_ad",
+      "title": "evidence missing — input.personnel_requirements.us_persons_required_for_admin not stated; send true when the agency requires US persons for administrative access and false when it does not; the US-per",
       "props": [
        {
         "name": "label",
@@ -313,6 +358,16 @@
        {
         "id": "fedramp-FedRAMP-PS-3-3_stmt",
         "name": "statement",
+        "prose": "evidence missing — input.personnel_requirements.us_persons_required_for_admin not stated; send true when the agency requires US persons for administrative access and false when it does not; the US-person check is applied until it is stated"
+       },
+       {
+        "id": "fedramp-FedRAMP-PS-3-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.personnel_requirements.us_persons_required_for_admin must be true or false, got %v; the US-person check is applied until it is"
+       },
+       {
+        "id": "fedramp-FedRAMP-PS-3-3_obj.2",
+        "name": "assessment-objective",
         "prose": "Personnel '%v' has administrative access but is not a US person and has no waiver, and the agency requires US persons for administrative access (input.personnel_requirements.us_persons_required_for_admin)."
        }
       ],
@@ -408,6 +463,26 @@
        },
        {
         "id": "fedramp-FedRAMP-RA-5_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — due_date %v of KEV finding %v is not a YYYY-MM-DD date"
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.6",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.continuous_monitoring.kev_findings[%d] is not an object (got %s)"
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.7",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — remediated of KEV finding %v is not a boolean (got %s)"
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.8",
+        "name": "assessment-objective",
+        "prose": "evidence invalid — input.assessment_date %v is not a YYYY-MM-DD date, so KEV due dates cannot be compared with it"
+       },
+       {
+        "id": "fedramp-FedRAMP-RA-5_obj.9",
         "name": "assessment-objective",
         "prose": "KEV-listed %v is unremediated past its CISA KEV due date %v. KEV due dates take precedence over the 30-day parameter."
        }
@@ -525,7 +600,7 @@
      },
      {
       "id": "fedramp-FedRAMP-CP-7",
-      "title": "No alternate processing site is configured (input.cloud_service.redundant_processing). CP-7 is in the Moderate and High baselines.",
+      "title": "No alternate processing site is configured (input.cloud_service.redundant_processing). CP-7 is in the Moderate and High baselines.%s",
       "props": [
        {
         "name": "label",
@@ -551,7 +626,7 @@
        {
         "id": "fedramp-FedRAMP-CP-7_stmt",
         "name": "statement",
-        "prose": "No alternate processing site is configured (input.cloud_service.redundant_processing). CP-7 is in the Moderate and High baselines."
+        "prose": "No alternate processing site is configured (input.cloud_service.redundant_processing). CP-7 is in the Moderate and High baselines.%s"
        }
       ],
       "class": "compliance"

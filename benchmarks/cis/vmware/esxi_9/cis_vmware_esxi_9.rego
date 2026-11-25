@@ -23,9 +23,12 @@ package cis_vmware_esxi_9
 # Generated from the CIS workbook by tools/cis_generators/gen_esxi.py (one logic table for ESXi 8.0 and 9.0).
 # 134 recommendations (38 Automated, 96 Manual; 116 Level 1, 18 Level 2), every one in the
 # benchmark; ids, levels and assessment status read from the workbook. Messages use our own wording, not CIS text.
-# Profile: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent => 2. total_controls counts the
-# recommendations in the selected profile.
-# Facts missing => "<id>: evidence missing — <field> not collected". Manual recommendations whose audit names an
+# Profile: input.cis_profile.level, the number 1 or 2 (Level 2 includes Level 1); absent => 2; any other value (the
+# string "2" included) => "evidence invalid", scoped at Level 2. total_controls counts the recommendations in the
+# selected profile.
+# Facts missing => "<id>: evidence missing — <field> not collected". Facts of the wrong type => "<id>: evidence
+# invalid — <field> must be <type>, got <value>": host advanced settings and sshd counters that are numbers must be
+# JSON numbers, firewall ruleset and port-group security flags must be booleans. Manual recommendations whose audit names an
 # exact value are checked like Automated ones: 1.2, 1.12, 2.3, 2.5, 2.7, 2.8, 2.9, 2.11, 2.12, 3.4, 3.5, 3.6, 3.10, 3.11, 3.14, 3.16, 3.17, 3.22, 3.23, 4.4, 4.5, 4.6, 4.9, 4.10, 4.11, 5.1, 5.2, 5.3, 5.4, 6.2.2, 6.5.3, 6.5.4, 6.5.5, 6.5.6, 6.5.7, 6.5.8, 6.5.9, 6.5.10, 6.5.11, 6.5.12, 7.1, 7.2, 7.3, 7.5, 7.10, 7.20, 7.23, 7.25, 7.29, 8.7, 8.8, 8.9, 8.10, 8.11, 8.13, 8.15.
 # Attestation booleans under input.esxi.attest (false or absent => violation): 1.1, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 1.10, 1.11, 2.1, 2.2, 3.15, 3.18, 3.19, 3.24, 3.25, 3.26, 4.1, 4.3, 4.7, 4.8, 5.5, 5.11, 6.1.1, 6.2.1, 6.3.2, 6.4.1, 6.5.1, 6.5.2, 7.11, 7.28, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.12, 8.14.
 #
@@ -74,6 +77,7 @@ violations := [v |
 		host_services_violations,
 		virtual_machines_violations,
 		vmware_tools_violations,
+		profile_violations,
 	]
 	some a in arrays
 	some v in a
@@ -103,13 +107,47 @@ virtual_machines_violations := sort([m | some m in _v_virtual_machines])
 # 8 VMware Tools
 vmware_tools_violations := sort([m | some m in _v_vmware_tools])
 
+# cis_profile.level that is not the number 1 or 2 (see _level_invalid)
+profile_violations := sort([m | some m in _v_profile])
+
 # ── helpers ──────────────────────────────────────────────────────────────────
-# profile selection: input.cis_profile.level 1 or 2 (Level 2 includes Level 1); absent or other => 2, the stricter
+# profile selection: input.cis_profile.level is the number 1 or 2 (Level 2 includes Level 1); absent => 2. Anything
+# else ("2", 3, null, a cis_profile that is not an object) is invalid evidence: the report is scoped at Level 2, the
+# stricter, and every Level 2 recommendation carries the finding, because the profile that decides them was not readable.
 default _level := 2
 
 _level := 1 if input.cis_profile.level == 1
 
 _applies(id) if recommendations[id].level <= _level
+
+default _level_invalid := false
+
+_level_invalid if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_invalid if {
+	lv := input.cis_profile.level
+	not lv in {1, 2}
+}
+
+_level_got := json.marshal(input.cis_profile.level) if is_object(input.cis_profile)
+
+_level_got := json.marshal(cp) if {
+	cp := input.cis_profile
+	not is_object(cp)
+}
+
+_level_finding := sprintf("evidence invalid — cis_profile.level must be the number 1 or 2, got %s", [_level_got])
+
+_v_profile contains sprintf("cis_profile.level: %s; the report is scoped at Level 2", [_level_finding]) if _level_invalid
+
+_v_profile contains sprintf("%s: %s, so this Level 2 recommendation could not be scoped", [id, _level_finding]) if {
+	_level_invalid
+	some id, r in recommendations
+	r.level == 2
+}
 
 _nonempty(v) if {
 	is_string(v)
@@ -123,7 +161,8 @@ _istrue(v) if _str(v) == "true"
 
 _isfalse(v) if _str(v) == "false"
 
-# advanced settings come back as strings or numbers depending on the collector
+# VM advanced settings and Tools settings are text in the .vmx / tools.conf, so a VM number may arrive as "4".
+# Host advanced settings and sshd counters are JSON numbers: a string there is invalid evidence (_not_number).
 _num(v) := v if is_number(v)
 
 _num(v) := to_number(trim_space(v)) if {
@@ -162,6 +201,48 @@ _sshd(k) := _str(input.esxi.sshd_config[k]) if input.esxi.sshd_config[k] != null
 _ruleset_open(r) if {
 	r.enabled == true
 	not r.allowed_ip_all == false
+}
+
+# a host number fact that is not a JSON number
+_not_number(label, v) := {sprintf("esxi.%s must be a number, got %s", [label, json.marshal(v)]) | not is_number(v)}
+
+# a TRUE / FALSE setting that is present with any other value (absent has its own meaning per check)
+_not_tf(label, o, k) := {msg |
+	v := o[k]
+	not _istrue(v)
+	not _isfalse(v)
+	msg := sprintf("esxi.%s must be true or false, got %s", [label, json.marshal(v)])
+}
+
+# every firewall ruleset states enabled and allowed_ip_all as booleans; "true" would read as a ruleset that is off
+_bad_rulesets contains msg if {
+	some i, r in input.esxi.firewall.rulesets
+	not is_object(r)
+	msg := sprintf("esxi.firewall.rulesets[%d] must be an object, got %s", [i, json.marshal(r)])
+}
+
+_bad_rulesets contains msg if {
+	some i, r in input.esxi.firewall.rulesets
+	is_object(r)
+	some k in ["enabled", "allowed_ip_all"]
+	v := object.get(r, k, null)
+	not is_boolean(v)
+	msg := sprintf("esxi.firewall.rulesets[%d].%s must be true or false, got %s", [i, k, json.marshal(v)])
+}
+
+# a port group may leave a security setting out (it inherits the switch); one it states must be a boolean
+_bad_pg_security(key) := {msg |
+	some i, sw in input.esxi.vswitches
+	some j, pg in object.get(sw, "portgroups", [])
+	sec := pg.security
+	not is_object(sec)
+	msg := sprintf("esxi.vswitches[%d].portgroups[%d].security must be an object, got %s", [i, j, json.marshal(sec)])
+} | {msg |
+	some i, sw in input.esxi.vswitches
+	some j, pg in object.get(sw, "portgroups", [])
+	v := pg.security[key]
+	not is_boolean(v)
+	msg := sprintf("esxi.vswitches[%d].portgroups[%d].security.%s must be true or false, got %s", [i, j, key, json.marshal(v)])
 }
 
 # VLAN the operator treats as native (default 1)
@@ -353,7 +434,8 @@ default r_1_12 := false
 
 r_1_12 if {
 	v := _adv("Net.BMCNetworkEnable")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 0
 }
 
@@ -368,10 +450,20 @@ _v_hardware contains "1.12: evidence missing — esxi.advanced_settings.Net.BMCN
 	not e_1_12
 }
 
+x_1_12 := _not_number("advanced_settings.Net.BMCNetworkEnable", _adv("Net.BMCNetworkEnable"))
+
+_v_hardware contains msg if {
+	_applies("1.12")
+	e_1_12
+	some m in x_1_12
+	msg := sprintf("%s: evidence invalid — %s", ["1.12", m])
+}
+
 _v_hardware contains "1.12: Net.BMCNetworkEnable must be 0 so the controller has no internal network path" if {
 	_applies("1.12")
 	e_1_12
 	not r_1_12
+	count(x_1_12) == 0
 }
 
 # 2.1 (Manual, Level 1 (L1) - Corporate_Enter)
@@ -554,7 +646,8 @@ default r_2_9 := false
 
 r_2_9 if {
 	v := _adv("UserVars.SuppressHyperthreadWarning")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 0
 }
 
@@ -569,10 +662,20 @@ _v_software_and_boot contains "2.9: evidence missing — esxi.advanced_settings.
 	not e_2_9
 }
 
+x_2_9 := _not_number("advanced_settings.UserVars.SuppressHyperthreadWarning", _adv("UserVars.SuppressHyperthreadWarning"))
+
+_v_software_and_boot contains msg if {
+	_applies("2.9")
+	e_2_9
+	some m in x_2_9
+	msg := sprintf("%s: evidence invalid — %s", ["2.9", m])
+}
+
 _v_software_and_boot contains "2.9: UserVars.SuppressHyperthreadWarning must be 0" if {
 	_applies("2.9")
 	e_2_9
 	not r_2_9
+	count(x_2_9) == 0
 }
 
 # 2.10 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -580,7 +683,8 @@ default r_2_10 := false
 
 r_2_10 if {
 	v := _adv("Mem.ShareForceSalting")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 2
 }
 
@@ -595,10 +699,20 @@ _v_software_and_boot contains "2.10: evidence missing — esxi.advanced_settings
 	not e_2_10
 }
 
+x_2_10 := _not_number("advanced_settings.Mem.ShareForceSalting", _adv("Mem.ShareForceSalting"))
+
+_v_software_and_boot contains msg if {
+	_applies("2.10")
+	e_2_10
+	some m in x_2_10
+	msg := sprintf("%s: evidence invalid — %s", ["2.10", m])
+}
+
 _v_software_and_boot contains "2.10: Mem.ShareForceSalting must be 2 to stop inter-VM page sharing" if {
 	_applies("2.10")
 	e_2_10
 	not r_2_10
+	count(x_2_10) == 0
 }
 
 # 2.11 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -619,10 +733,20 @@ _v_software_and_boot contains "2.11: evidence missing — esxi.kernel_settings n
 	not e_2_11
 }
 
+x_2_11 := _not_tf("kernel_settings.disableHwrng", input.esxi.kernel_settings, "disableHwrng")
+
+_v_software_and_boot contains msg if {
+	_applies("2.11")
+	e_2_11
+	some m in x_2_11
+	msg := sprintf("%s: evidence invalid — %s", ["2.11", m])
+}
+
 _v_software_and_boot contains "2.11: the disableHwrng kernel option must not be TRUE" if {
 	_applies("2.11")
 	e_2_11
 	not r_2_11
+	count(x_2_11) == 0
 }
 
 # 2.12 (Manual, Level 2 (L2) - High Security_S) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -630,7 +754,8 @@ default r_2_12 := false
 
 r_2_12 if {
 	v := _adv("Mem.MemEagerZero")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 1
 }
 
@@ -645,10 +770,20 @@ _v_software_and_boot contains "2.12: evidence missing — esxi.advanced_settings
 	not e_2_12
 }
 
+x_2_12 := _not_number("advanced_settings.Mem.MemEagerZero", _adv("Mem.MemEagerZero"))
+
+_v_software_and_boot contains msg if {
+	_applies("2.12")
+	e_2_12
+	some m in x_2_12
+	msg := sprintf("%s: evidence invalid — %s", ["2.12", m])
+}
+
 _v_software_and_boot contains "2.12: Mem.MemEagerZero must be 1 so freed memory is zeroed" if {
 	_applies("2.12")
 	e_2_12
 	not r_2_12
+	count(x_2_12) == 0
 }
 
 # 3.1 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -730,7 +865,7 @@ _v_access_and_shell contains "3.3: Config.HostAgent.plugins.solo.enableMob must 
 default r_3_4 := false
 
 r_3_4 if {
-	not input.esxi.services.slpd
+	not "slpd" in object.keys(input.esxi.services)
 }
 
 r_3_4 if {
@@ -807,7 +942,8 @@ default r_3_7 := false
 
 r_3_7 if {
 	v := _adv("UserVars.DcuiTimeOut")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n > 0
 	n <= 600
 }
@@ -823,10 +959,20 @@ _v_access_and_shell contains "3.7: evidence missing — esxi.advanced_settings.U
 	not e_3_7
 }
 
+x_3_7 := _not_number("advanced_settings.UserVars.DcuiTimeOut", _adv("UserVars.DcuiTimeOut"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.7")
+	e_3_7
+	some m in x_3_7
+	msg := sprintf("%s: evidence invalid — %s", ["3.7", m])
+}
+
 _v_access_and_shell contains "3.7: UserVars.DcuiTimeOut must be 1 to 600 seconds" if {
 	_applies("3.7")
 	e_3_7
 	not r_3_7
+	count(x_3_7) == 0
 }
 
 # 3.8 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -834,7 +980,8 @@ default r_3_8 := false
 
 r_3_8 if {
 	v := _adv("UserVars.ESXiShellInteractiveTimeOut")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n > 0
 	n <= 300
 }
@@ -850,10 +997,20 @@ _v_access_and_shell contains "3.8: evidence missing — esxi.advanced_settings.U
 	not e_3_8
 }
 
+x_3_8 := _not_number("advanced_settings.UserVars.ESXiShellInteractiveTimeOut", _adv("UserVars.ESXiShellInteractiveTimeOut"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.8")
+	e_3_8
+	some m in x_3_8
+	msg := sprintf("%s: evidence invalid — %s", ["3.8", m])
+}
+
 _v_access_and_shell contains "3.8: UserVars.ESXiShellInteractiveTimeOut must be 1 to 300 seconds" if {
 	_applies("3.8")
 	e_3_8
 	not r_3_8
+	count(x_3_8) == 0
 }
 
 # 3.9 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -861,7 +1018,8 @@ default r_3_9 := false
 
 r_3_9 if {
 	v := _adv("UserVars.ESXiShellTimeOut")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n > 0
 	n <= 3600
 }
@@ -877,10 +1035,20 @@ _v_access_and_shell contains "3.9: evidence missing — esxi.advanced_settings.U
 	not e_3_9
 }
 
+x_3_9 := _not_number("advanced_settings.UserVars.ESXiShellTimeOut", _adv("UserVars.ESXiShellTimeOut"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.9")
+	e_3_9
+	some m in x_3_9
+	msg := sprintf("%s: evidence invalid — %s", ["3.9", m])
+}
+
 _v_access_and_shell contains "3.9: UserVars.ESXiShellTimeOut must be 1 to 3600 seconds" if {
 	_applies("3.9")
 	e_3_9
 	not r_3_9
+	count(x_3_9) == 0
 }
 
 # 3.10 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -888,7 +1056,8 @@ default r_3_10 := false
 
 r_3_10 if {
 	v := _adv("UserVars.SuppressShellWarning")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 0
 }
 
@@ -903,10 +1072,20 @@ _v_access_and_shell contains "3.10: evidence missing — esxi.advanced_settings.
 	not e_3_10
 }
 
+x_3_10 := _not_number("advanced_settings.UserVars.SuppressShellWarning", _adv("UserVars.SuppressShellWarning"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.10")
+	e_3_10
+	some m in x_3_10
+	msg := sprintf("%s: evidence invalid — %s", ["3.10", m])
+}
+
 _v_access_and_shell contains "3.10: UserVars.SuppressShellWarning must be 0" if {
 	_applies("3.10")
 	e_3_10
 	not r_3_10
+	count(x_3_10) == 0
 }
 
 # 3.11 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -938,7 +1117,8 @@ default r_3_12 := false
 
 r_3_12 if {
 	v := _adv("Security.AccountLockFailures")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 5
 }
 
@@ -953,10 +1133,20 @@ _v_access_and_shell contains "3.12: evidence missing — esxi.advanced_settings.
 	not e_3_12
 }
 
+x_3_12 := _not_number("advanced_settings.Security.AccountLockFailures", _adv("Security.AccountLockFailures"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.12")
+	e_3_12
+	some m in x_3_12
+	msg := sprintf("%s: evidence invalid — %s", ["3.12", m])
+}
+
 _v_access_and_shell contains "3.12: Security.AccountLockFailures must be 5" if {
 	_applies("3.12")
 	e_3_12
 	not r_3_12
+	count(x_3_12) == 0
 }
 
 # 3.13 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -964,7 +1154,8 @@ default r_3_13 := false
 
 r_3_13 if {
 	v := _adv("Security.AccountUnlockTime")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 900
 }
 
@@ -979,10 +1170,20 @@ _v_access_and_shell contains "3.13: evidence missing — esxi.advanced_settings.
 	not e_3_13
 }
 
+x_3_13 := _not_number("advanced_settings.Security.AccountUnlockTime", _adv("Security.AccountUnlockTime"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.13")
+	e_3_13
+	some m in x_3_13
+	msg := sprintf("%s: evidence invalid — %s", ["3.13", m])
+}
+
 _v_access_and_shell contains "3.13: Security.AccountUnlockTime must be 900" if {
 	_applies("3.13")
 	e_3_13
 	not r_3_13
+	count(x_3_13) == 0
 }
 
 # 3.14 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -990,7 +1191,8 @@ default r_3_14 := false
 
 r_3_14 if {
 	v := _adv("Security.PasswordHistory")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 5
 }
 
@@ -1005,10 +1207,20 @@ _v_access_and_shell contains "3.14: evidence missing — esxi.advanced_settings.
 	not e_3_14
 }
 
+x_3_14 := _not_number("advanced_settings.Security.PasswordHistory", _adv("Security.PasswordHistory"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.14")
+	e_3_14
+	some m in x_3_14
+	msg := sprintf("%s: evidence invalid — %s", ["3.14", m])
+}
+
 _v_access_and_shell contains "3.14: Security.PasswordHistory must be 5" if {
 	_applies("3.14")
 	e_3_14
 	not r_3_14
+	count(x_3_14) == 0
 }
 
 # 3.15 (Manual, Level 1 (L1) - Corporate_Enter)
@@ -1028,7 +1240,8 @@ default r_3_16 := false
 
 r_3_16 if {
 	v := _adv("Config.HostAgent.vmacore.soap.sessionTimeout")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n > 0
 }
 
@@ -1043,10 +1256,20 @@ _v_access_and_shell contains "3.16: evidence missing — esxi.advanced_settings.
 	not e_3_16
 }
 
+x_3_16 := _not_number("advanced_settings.Config.HostAgent.vmacore.soap.sessionTimeout", _adv("Config.HostAgent.vmacore.soap.sessionTimeout"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.16")
+	e_3_16
+	some m in x_3_16
+	msg := sprintf("%s: evidence invalid — %s", ["3.16", m])
+}
+
 _v_access_and_shell contains "3.16: the API session timeout must be a finite approved value" if {
 	_applies("3.16")
 	e_3_16
 	not r_3_16
+	count(x_3_16) == 0
 }
 
 # 3.17 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -1054,7 +1277,8 @@ default r_3_17 := false
 
 r_3_17 if {
 	v := _adv("UserVars.HostClientSessionTimeout")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n > 0
 }
 
@@ -1069,10 +1293,20 @@ _v_access_and_shell contains "3.17: evidence missing — esxi.advanced_settings.
 	not e_3_17
 }
 
+x_3_17 := _not_number("advanced_settings.UserVars.HostClientSessionTimeout", _adv("UserVars.HostClientSessionTimeout"))
+
+_v_access_and_shell contains msg if {
+	_applies("3.17")
+	e_3_17
+	some m in x_3_17
+	msg := sprintf("%s: evidence invalid — %s", ["3.17", m])
+}
+
 _v_access_and_shell contains "3.17: UserVars.HostClientSessionTimeout must be a finite positive value" if {
 	_applies("3.17")
 	e_3_17
 	not r_3_17
+	count(x_3_17) == 0
 }
 
 # 3.18 (Manual, Level 1 (L1) - Corporate_Enter)
@@ -1467,10 +1701,20 @@ _v_host_network contains "5.1: evidence missing — esxi.firewall.rulesets not c
 	not e_5_1
 }
 
+x_5_1 := _bad_rulesets
+
+_v_host_network contains msg if {
+	_applies("5.1")
+	e_5_1
+	some m in x_5_1
+	msg := sprintf("%s: evidence invalid — %s", ["5.1", m])
+}
+
 _v_host_network contains "5.1: an enabled firewall ruleset must not allow all IP addresses" if {
 	_applies("5.1")
 	e_5_1
 	not r_5_1
+	count(x_5_1) == 0
 }
 
 # 5.2 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
@@ -1529,7 +1773,8 @@ default r_5_4 := false
 
 r_5_4 if {
 	v := _adv("Net.BlockGuestBPDU")
-	n := _num(v)
+	n := v
+	is_number(n)
 	n == 1
 }
 
@@ -1544,10 +1789,20 @@ _v_host_network contains "5.4: evidence missing — esxi.advanced_settings.Net.B
 	not e_5_4
 }
 
+x_5_4 := _not_number("advanced_settings.Net.BlockGuestBPDU", _adv("Net.BlockGuestBPDU"))
+
+_v_host_network contains msg if {
+	_applies("5.4")
+	e_5_4
+	some m in x_5_4
+	msg := sprintf("%s: evidence invalid — %s", ["5.4", m])
+}
+
 _v_host_network contains "5.4: Net.BlockGuestBPDU must be 1" if {
 	_applies("5.4")
 	e_5_4
 	not r_5_4
+	count(x_5_4) == 0
 }
 
 # 5.5 (Manual, Level 2 (L2) - High Security_S)
@@ -1581,10 +1836,20 @@ _v_host_network contains "5.6: evidence missing — esxi.vswitches[].security no
 	not e_5_6
 }
 
+x_5_6 := _bad_pg_security("forged_transmits")
+
+_v_host_network contains msg if {
+	_applies("5.6")
+	e_5_6
+	some m in x_5_6
+	msg := sprintf("%s: evidence invalid — %s", ["5.6", m])
+}
+
 _v_host_network contains "5.6: standard switches and port groups must reject forged transmits" if {
 	_applies("5.6")
 	e_5_6
 	not r_5_6
+	count(x_5_6) == 0
 }
 
 # 5.7 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -1606,10 +1871,20 @@ _v_host_network contains "5.7: evidence missing — esxi.vswitches[].security no
 	not e_5_7
 }
 
+x_5_7 := _bad_pg_security("mac_changes")
+
+_v_host_network contains msg if {
+	_applies("5.7")
+	e_5_7
+	some m in x_5_7
+	msg := sprintf("%s: evidence invalid — %s", ["5.7", m])
+}
+
 _v_host_network contains "5.7: standard switches and port groups must reject MAC address changes" if {
 	_applies("5.7")
 	e_5_7
 	not r_5_7
+	count(x_5_7) == 0
 }
 
 # 5.8 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -1631,10 +1906,20 @@ _v_host_network contains "5.8: evidence missing — esxi.vswitches[].security no
 	not e_5_8
 }
 
+x_5_8 := _bad_pg_security("promiscuous_mode")
+
+_v_host_network contains msg if {
+	_applies("5.8")
+	e_5_8
+	some m in x_5_8
+	msg := sprintf("%s: evidence invalid — %s", ["5.8", m])
+}
+
 _v_host_network contains "5.8: standard switches and port groups must reject promiscuous mode" if {
 	_applies("5.8")
 	e_5_8
 	not r_5_8
+	count(x_5_8) == 0
 }
 
 # 5.9 (Automated, Level 1 (L1) - Corporate_Enter)
@@ -1872,8 +2157,9 @@ _v_host_services contains "6.5.4: sshd HostbasedAuthentication must be no" if {
 default r_6_5_5 := false
 
 r_6_5_5 if {
-	input.esxi.sshd_config.clientalivecountmax != null
-	_num(input.esxi.sshd_config.clientalivecountmax) > 0
+	n := input.esxi.sshd_config.clientalivecountmax
+	is_number(n)
+	n > 0
 }
 
 default e_6_5_5 := false
@@ -1887,18 +2173,29 @@ _v_host_services contains "6.5.5: evidence missing — esxi.sshd_config.cliental
 	not e_6_5_5
 }
 
+x_6_5_5 := _not_number("sshd_config.clientalivecountmax", input.esxi.sshd_config.clientalivecountmax)
+
+_v_host_services contains msg if {
+	_applies("6.5.5")
+	e_6_5_5
+	some m in x_6_5_5
+	msg := sprintf("%s: evidence invalid — %s", ["6.5.5", m])
+}
+
 _v_host_services contains "6.5.5: sshd ClientAliveCountMax must be a positive value" if {
 	_applies("6.5.5")
 	e_6_5_5
 	not r_6_5_5
+	count(x_6_5_5) == 0
 }
 
 # 6.5.6 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated
 default r_6_5_6 := false
 
 r_6_5_6 if {
-	input.esxi.sshd_config.clientaliveinterval != null
-	_num(input.esxi.sshd_config.clientaliveinterval) > 0
+	n := input.esxi.sshd_config.clientaliveinterval
+	is_number(n)
+	n > 0
 }
 
 default e_6_5_6 := false
@@ -1912,10 +2209,20 @@ _v_host_services contains "6.5.6: evidence missing — esxi.sshd_config.cliental
 	not e_6_5_6
 }
 
+x_6_5_6 := _not_number("sshd_config.clientaliveinterval", input.esxi.sshd_config.clientaliveinterval)
+
+_v_host_services contains msg if {
+	_applies("6.5.6")
+	e_6_5_6
+	some m in x_6_5_6
+	msg := sprintf("%s: evidence invalid — %s", ["6.5.6", m])
+}
+
 _v_host_services contains "6.5.6: sshd ClientAliveInterval must be a positive value" if {
 	_applies("6.5.6")
 	e_6_5_6
 	not r_6_5_6
+	count(x_6_5_6) == 0
 }
 
 # 6.5.7 (Manual, Level 1 (L1) - Corporate_Enter) -- Manual in the workbook; decidable from configuration, so checked like Automated

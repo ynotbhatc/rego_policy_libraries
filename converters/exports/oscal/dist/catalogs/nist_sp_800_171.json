@@ -6924,6 +6924,39 @@
       "class": "compliance"
      },
      {
+      "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract-unscored",
+      "title": "evidence invalid — input.%v is not a %v (got %v); it feeds retired Rev 2 check %v %v, which gates no Rev 3 requirement",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-171 Input Contract (unscored)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-171 Input Contract (unscored)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_171.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6797a7b2-615f-578d-9041-1c71c41b5497",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract-unscored_stmt",
+        "name": "statement",
+        "prose": "evidence invalid — input.%v is not a %v (got %v); it feeds retired Rev 2 check %v %v, which gates no Rev 3 requirement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "nist_sp_800_171-NIST-SP-800-171-Rev-3",
       "title": "FAIL-CLOSED - attestations 'input.nist_sp_800_171.requirements' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
       "props": [
@@ -6958,7 +6991,7 @@
      },
      {
       "id": "nist_sp_800_171-nist_800_171.main-1",
-      "title": "NIST SP 800-171 %v %v (%v): not attested — input.nist_sp_800_171.requirements[\"%v\"] must be true",
+      "title": "NIST SP 800-171 %v %v (%v): not attested — input.nist_sp_800_171.requirements[\"%v\"] must be true%v",
       "props": [
        {
         "name": "label",
@@ -6984,7 +7017,50 @@
        {
         "id": "nist_sp_800_171-nist_800_171.main-1_stmt",
         "name": "statement",
-        "prose": "NIST SP 800-171 %v %v (%v): not attested — input.nist_sp_800_171.requirements[\"%v\"] must be true"
+        "prose": "NIST SP 800-171 %v %v (%v): not attested — input.nist_sp_800_171.requirements[\"%v\"] must be true%v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract",
+      "title": "attestation for fact-evaluated requirement %v is not a boolean (got %v) — input.nist_sp_800_171.requirements[\"%v\"] must be true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-171 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-171 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_171.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6797a7b2-615f-578d-9041-1c71c41b5497",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for fact-evaluated requirement %v is not a boolean (got %v) — input.nist_sp_800_171.requirements[\"%v\"] must be true or false"
+       },
+       {
+        "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "%v is withdrawn in Rev 3 (%v) — attest the requirement that replaces it, not the withdrawn id"
+       },
+       {
+        "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown requirement id %v — ids are CPRT Rev 3 element identifiers such as 03.01.01"
        }
       ],
       "class": "compliance"
@@ -7018,44 +7094,6 @@
         "id": "nist_sp_800_171-nist_800_171.main-2_stmt",
         "name": "statement",
         "prose": "NIST SP 800-171 %v %v: fact check failed — Rev 2 %v %v (data.nist.sp800_171.%v)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract",
-      "title": "%v is withdrawn in Rev 3 (%v) — attest the requirement that replaces it, not the withdrawn id",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST SP 800-171 Input Contract"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST SP 800-171 Input Contract"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist_800_171.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6797a7b2-615f-578d-9041-1c71c41b5497",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract_stmt",
-        "name": "statement",
-        "prose": "%v is withdrawn in Rev 3 (%v) — attest the requirement that replaces it, not the withdrawn id"
-       },
-       {
-        "id": "nist_sp_800_171-NIST-SP-800-171-Input-Contract_obj.1",
-        "name": "assessment-objective",
-        "prose": "attestation for unknown requirement id %v — ids are CPRT Rev 3 element identifiers such as 03.01.01"
        }
       ],
       "class": "compliance"

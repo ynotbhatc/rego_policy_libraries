@@ -128,3 +128,48 @@ test_rows_carry_ssdf_and_eo_mapping if {
 	main.attestations["4c"].eo == "4e(iv)"
 	"RV.3.3" in main.attestations["4"].ssdf
 }
+
+# ── Evidence rule (data-driven, audit 2026-11-24) ────────────────────────────────────────────────────
+# Only the boolean true passes a yes/no fact, and a scope flag must be a declared boolean. Every boolean in
+# the widest all-pass fixture is replaced in turn by a wrong-typed value, by null, and removed: none passes.
+# The report is also defined and non-compliant when there is no input or the module's container is not an object.
+
+_evidence_bool_paths := [p | walk(_full, [p, v]); is_boolean(v)]
+
+test_evidence_fixture_passes if {
+	r := main.compliance_report with input as _full
+	r.compliant == true
+	r.violation_count == 0
+	count(_evidence_bool_paths) > 10
+}
+
+test_evidence_wrong_type_or_null_never_passes if {
+	every p in _evidence_bool_paths {
+		every bad in ["false", "true", "no", 0, 1, null] {
+			r := main.compliance_report with input as json.patch(_full, [{"op": "replace", "path": p, "value": bad}])
+			r.compliant == false
+			r.violation_count >= 1
+		}
+	}
+}
+
+test_evidence_removed_never_passes if {
+	every p in _evidence_bool_paths {
+		r := main.compliance_report with input as json.remove(_full, [concat("/", p)])
+		r.compliant == false
+		r.violation_count >= 1
+	}
+}
+
+test_evidence_report_defined_on_no_or_non_object_facts if {
+	some key, _ in _full
+	every bad in [null, "true", "1", 1, true, []] {
+		r := main.compliance_report with input as {key: bad}
+		r.compliant == false
+		r.violation_count >= 1
+		top := main.compliance_report with input as bad
+		top.compliant == false
+	}
+	empty := main.compliance_report with input as {}
+	empty.compliant == false
+}

@@ -32,7 +32,7 @@ Each section module is a `controls` table, one row per recommendation; `lib.rego
 |---|---|---|
 | `role` | `member_server`, `domain_controller` | Recommendations for one role only are **not assessed** and counted as failed; those for both roles are evaluated |
 | `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
-| `next_generation` | `true` to add the Next Generation Windows Security profile | off: CIS publishes it as a separate profile |
+| `next_generation` | `true` to add the Next Generation Windows Security profile | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `next_generation_defaulted: true` |
 
 `total_controls` is the number in scope (378 for a Level 2 member server with Next Generation, 373 for a domain
 controller), out of `benchmark_total_controls` 408.

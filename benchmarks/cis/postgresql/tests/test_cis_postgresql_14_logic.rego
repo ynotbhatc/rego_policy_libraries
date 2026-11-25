@@ -61,3 +61,12 @@ test_account_lockout_type_traps_fail if {
 	not data.cis.postgresql_14.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": null, "lockout_duration": 900}}}
 	not data.cis.postgresql_14.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": "forever"}}}
 }
+
+# An enabled extension whose name was not collected is not an approved extension.
+test_enabled_extension_without_a_name_is_unapproved if {
+	not data.cis.postgresql_14.unnecessary_extensions_disabled with input as {"postgresql": {"extensions": [{"enabled": true}]}}
+}
+
+test_enabled_approved_extension_still_passes if {
+	data.cis.postgresql_14.unnecessary_extensions_disabled with input as {"postgresql": {"extensions": [{"enabled": true, "name": "pgaudit"}]}}
+}

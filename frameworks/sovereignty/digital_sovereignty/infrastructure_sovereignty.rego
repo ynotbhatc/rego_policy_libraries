@@ -18,6 +18,30 @@ package digital_sovereignty.infrastructure_sovereignty
 
 import rego.v1
 
+# `not x.field in list` and `x.pct > limit` are undefined when the field is absent (the reference is hoisted outside
+# the negation), so a row without the field used to drop out of the check. Fields are read with object.get() (absent
+# -> "", never an approved value), the list defaults to [] when missing, and a percentage or limit that is not a
+# number counts as over the limit: absence counts against the row (fail closed).
+approved := object.get(input, "approved_jurisdictions", [])
+
+_foreign(p) if not object.get(p, "hq_country", "") in approved
+
+_exceeds(value, _) if not is_number(value)
+
+_exceeds(_, limit) if not is_number(limit)
+
+_exceeds(value, limit) if {
+	is_number(value)
+	is_number(limit)
+	value > limit
+}
+
+_single_limit := object.get(input, ["concentration_limits", "max_single_provider_pct"], null)
+
+_foreign_limit := object.get(input, ["concentration_limits", "max_foreign_provider_pct"], null)
+
+_pct(p) := object.get(p, "data_processed_pct", null)
+
 # Digital Sovereignty — Infrastructure Sovereignty
 # Ensures the organisation controls its infrastructure, understands cloud provider
 # legal exposure, and avoids unacceptable concentration risk.
@@ -102,19 +126,20 @@ default provider_concentration_within_limits := false
 provider_concentration_within_limits if {
 	violations := [p |
 		p := input.cloud_providers[_]
-		not p.hq_country in input.approved_jurisdictions
-		p.data_processed_pct > input.concentration_limits.max_single_provider_pct
+		_foreign(p)
+		_exceeds(_pct(p), _single_limit)
 	]
 	count(violations) == 0
 }
 
 # Total percentage of data processed by foreign providers must be within limit
 foreign_provider_concentration_within_limits if {
-	total_foreign_pct := sum([p.data_processed_pct |
-		p := input.cloud_providers[_]
-		not p.hq_country in input.approved_jurisdictions
-	])
-	total_foreign_pct <= input.concentration_limits.max_foreign_provider_pct
+	foreign := [_pct(p) | p := input.cloud_providers[_]; _foreign(p)]
+	every x in foreign {
+		is_number(x)
+	}
+	is_number(_foreign_limit)
+	sum(foreign) <= _foreign_limit
 }
 
 # =============================================================================
@@ -128,7 +153,7 @@ hardware_supply_chain_acceptable if {
 	violations := [h |
 		h := input.hardware_components[_]
 		h.component_type in ["server", "network_device", "storage_controller", "hsm"]
-		not h.manufacturer_country in input.approved_jurisdictions
+		not object.get(h, "manufacturer_country", "") in approved
 		not h.supply_chain_audited == true
 	]
 	count(violations) == 0
@@ -152,7 +177,7 @@ firmware_origin_acceptable if {
 	violations := [h |
 		h := input.hardware_components[_]
 		h.component_type in ["server", "network_device", "storage_controller"]
-		not h.firmware_origin_country in input.approved_jurisdictions
+		not object.get(h, "firmware_origin_country", "") in approved
 		not h.supply_chain_audited == true
 	]
 	count(violations) == 0
@@ -193,7 +218,7 @@ sovereign_data_on_sovereign_infra if {
 	violations := [c |
 		c := input.infrastructure_components[_]
 		c.data_classification in ["sovereign", "restricted"]
-		not c.deployment_type in ["on_prem", "sovereign_cloud", "private_cloud"]
+		not object.get(c, "deployment_type", "") in ["on_prem", "sovereign_cloud", "private_cloud"]
 	]
 	count(violations) == 0
 }
@@ -318,15 +343,15 @@ violations contains v if {
 violations contains v if {
 	not provider_concentration_within_limits
 	p := input.cloud_providers[_]
-	not p.hq_country in input.approved_jurisdictions
-	p.data_processed_pct > input.concentration_limits.max_single_provider_pct
+	_foreign(p)
+	_exceeds(_pct(p), _single_limit)
 	v := {
 		"domain": "infrastructure_sovereignty",
 		"control": "IS-003",
 		"severity": "high",
-		"provider": p.provider_name,
-		"description": concat("", ["Single foreign provider concentration exceeds limit: ", p.provider_name, " processes ", format_int(p.data_processed_pct, 10), "% of data"]),
-		"remediation": concat("", ["Reduce dependency on ", p.provider_name, " to below ", format_int(input.concentration_limits.max_single_provider_pct, 10), "%"]),
+		"provider": object.get(p, "provider_name", "unknown"),
+		"description": sprintf("Single foreign provider concentration exceeds the limit (or the share, or the limit, is not recorded as a number): %v processes %v%% of data", [object.get(p, "provider_name", "unknown"), object.get(p, "data_processed_pct", "not recorded")]),
+		"remediation": sprintf("Reduce dependency on %v to below %v%% and record data_processed_pct and concentration_limits.max_single_provider_pct as numbers", [object.get(p, "provider_name", "unknown"), object.get(input, ["concentration_limits", "max_single_provider_pct"], "the limit")]),
 	}
 }
 
@@ -345,14 +370,14 @@ violations contains v if {
 	not hardware_supply_chain_acceptable
 	h := input.hardware_components[_]
 	h.component_type in ["server", "network_device", "storage_controller", "hsm"]
-	not h.manufacturer_country in input.approved_jurisdictions
+	not object.get(h, "manufacturer_country", "") in approved
 	not h.supply_chain_audited == true
 	v := {
 		"domain": "infrastructure_sovereignty",
 		"control": "IS-005",
 		"severity": "high",
-		"component_id": h.component_id,
-		"description": concat("", ["Critical hardware from unapproved country without supply chain audit: ", h.component_id, " (", h.manufacturer_country, ")"]),
+		"component_id": object.get(h, "component_id", "unknown"),
+		"description": concat("", ["Critical hardware from unapproved (or unrecorded) country without supply chain audit: ", object.get(h, "component_id", "unknown"), " (", object.get(h, "manufacturer_country", "not recorded"), ")"]),
 		"remediation": "Conduct supply chain audit or replace with hardware from approved manufacturers",
 	}
 }
@@ -375,13 +400,13 @@ violations contains v if {
 	not sovereign_data_on_sovereign_infra
 	c := input.infrastructure_components[_]
 	c.data_classification in ["sovereign", "restricted"]
-	not c.deployment_type in ["on_prem", "sovereign_cloud", "private_cloud"]
+	not object.get(c, "deployment_type", "") in ["on_prem", "sovereign_cloud", "private_cloud"]
 	v := {
 		"domain": "infrastructure_sovereignty",
 		"control": "IS-007",
 		"severity": "critical",
-		"component_id": c.component_id,
-		"description": concat("", ["Sovereign/restricted data on non-sovereign infrastructure: ", c.component_id, " (", c.deployment_type, ")"]),
+		"component_id": object.get(c, "component_id", "unknown"),
+		"description": concat("", ["Sovereign/restricted data on non-sovereign (or unrecorded) infrastructure: ", object.get(c, "component_id", "unknown"), " (", object.get(c, "deployment_type", "not recorded"), ")"]),
 		"remediation": "Migrate sovereign data to on-premises, private cloud, or certified sovereign cloud",
 	}
 }
@@ -577,7 +602,7 @@ report := {
 	},
 	"provider_summary": {
 		"total_providers": count(object.get(input, ["cloud_providers"], [])),
-		"foreign_providers": count([p | p := input.cloud_providers[_]; not p.hq_country in input.approved_jurisdictions]),
+		"foreign_providers": count([p | p := input.cloud_providers[_]; not object.get(p, "hq_country", "") in approved]),
 		"cloud_act_exposed": count([p | p := input.cloud_providers[_]; p.subject_to_cloud_act == true]),
 	},
 	"violations": violations,

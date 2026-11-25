@@ -220,6 +220,11 @@ green_fixture := {
 	]},
 	"scc": {"items": [
 		{
+			"allowHostDirVolumePlugin": false,
+			"allowHostIPC": false,
+			"allowHostNetwork": false,
+			"allowHostPID": false,
+			"allowHostPorts": false,
 			"allowPrivilegedContainer": false,
 			"groups": ["system:authenticated"],
 			"metadata": {"name": "restricted-v2"},
@@ -227,6 +232,11 @@ green_fixture := {
 			"users": [],
 		},
 		{
+			"allowHostDirVolumePlugin": true,
+			"allowHostIPC": true,
+			"allowHostNetwork": true,
+			"allowHostPID": true,
+			"allowHostPorts": true,
 			"allowPrivilegedContainer": true,
 			"groups": [
 				"system:cluster-admins",

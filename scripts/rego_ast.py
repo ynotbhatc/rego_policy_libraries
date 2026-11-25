@@ -13,7 +13,7 @@ Fields inside an object row ("text": "...") are never checks, whatever the file'
 Tests (test_*, *_test.rego, tests/), converters/ (generated copies and adapters) and non-.rego data are excluded.
 """
 from __future__ import annotations
-import json, re, subprocess, pathlib, concurrent.futures as cf
+import json, os, re, subprocess, pathlib, concurrent.futures as cf
 
 BODY_NAMES = {"violations", "violation", "deny", "warn", "findings", "finding"}
 INCLUDE = re.compile(r"(check|notice|consent|obligation|security|breach|retention|right|transfer|government|lawful|flag|field|timing|submission|report|auditor|certification|sdf|children|appeal|exception|opt_out|access|registration|vasp|reporting|coordination|logging|annexure|requirement|control|item|standard|ksi|activit|component)", re.I)
@@ -43,7 +43,7 @@ def policy_files(root):
 
 
 def parse(path):
-    out = subprocess.run(["opa", "parse", "--format", "json", str(path)], capture_output=True, text=True)
+    out = subprocess.run([os.environ.get("OPA", "opa"), "parse", "--format", "json", str(path)], capture_output=True, text=True)
     if out.returncode != 0:
         raise RuntimeError(f"opa parse failed for {path}: {out.stderr.strip()[:300]}")
     return json.loads(out.stdout)
@@ -77,6 +77,45 @@ def tables(ast):
         if "value" in h and h["value"]["type"] == "object" and "key" not in h and not r.get("default"):
             rows = [(k["value"], v) for k, v in h["value"]["value"] if k["type"] == "string"]
             yield rule_name(r), rows
+
+
+def constants(ast):
+    """{name: integer} for every top-level `name := <integer>` rule (no body, not a default)."""
+    out = {}
+    for r in ast.get("rules", []):
+        h = r["head"]
+        v = h.get("value")
+        if v and v["type"] == "number" and "key" not in h and not h.get("args") and not r.get("default") \
+                and float(v["value"]).is_integer() and _no_body(r):
+            out[rule_name(r)] = int(float(v["value"]))
+    return out
+
+
+def _no_body(rule):
+    body = rule.get("body") or []
+    return all(e.get("terms", {}).get("type") == "boolean" and e["terms"]["value"] is True for e in body
+               if isinstance(e.get("terms"), dict)) and all(isinstance(e.get("terms"), dict) for e in body)
+
+
+def declared_number(term, consts):
+    """The integer a report's total field declares, or None when it declares none.
+      172                                       the literal
+      _declared_controls                        a name the module assigns an integer
+      max([_declared_controls, count(found)])   the declared floor: the one element that is such an integer, when
+                                                every other element is computed (a total that never drops below
+                                                the finding count is still declared by its floor)"""
+    t = term["type"]
+    if t == "number":
+        return int(float(term["value"])) if float(term["value"]).is_integer() else None
+    if t == "var":
+        return consts.get(term["value"])
+    if t == "call":
+        fn, args = term["value"][0], term["value"][1:]
+        name = ".".join(str(x["value"]) for x in fn["value"]) if fn["type"] == "ref" else None
+        if name == "max" and len(args) == 1 and args[0]["type"] in ("array", "set"):
+            fixed = [n for n in (declared_number(a, consts) for a in args[0]["value"] if a["type"] in ("number", "var")) if n is not None]
+            return fixed[0] if len(fixed) == 1 else None
+    return None
 
 
 def bodies(ast):

@@ -57,7 +57,7 @@
    }
   },
   "audit_policy": {
-   "description": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value: 0 none, 1 success, 2 failure, 3 both>}",
+   "description": "{'<subcategory GUID, lower case, braces>': <auditpol /backup Setting Value as a JSON number: 0 none, 1 success, 2 failure, 3 both>}",
    "type": "object",
    "properties": {
     "{0cce9210-69ae-11d9-bed3-505054503030}": {
@@ -365,7 +365,7 @@
    }
   },
   "registry": {
-   "description": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD int | REG_SZ string | REG_MULTI_SZ list>}}; omit a value that does not exist",
+   "description": "{'<HKLM path as listed>': {'<value name>': <REG_DWORD / REG_QWORD: JSON number | REG_SZ / REG_EXPAND_SZ: string, also when it holds a number | REG_MULTI_SZ: list of strings>}}; omit a value that does not exist. The type is evidence: a number sent as a string (or a REG_SZ number sent as a number) fails the recommendation",
    "type": "object",
    "properties": {
     "HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {
@@ -388,18 +388,18 @@
      "properties": {
       "AutoAdminLogon": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       },
       "CachedLogonsCount": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        4
+        "4"
        ]
       },
       "ForceUnlockLogon": {
@@ -420,18 +420,18 @@
       },
       "ScRemoveOption": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        3
+        "3"
        ]
       },
       "ScreenSaverGracePeriod": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        5
+        "5"
        ]
       }
      }
@@ -1291,82 +1291,82 @@
      "properties": {
       "26190899-1602-49e8-8b27-eb1d0a1ce869": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "3b576869-a4ec-4529-8536-b80a7769e899": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "56a863a9-875e-4185-98a7-b882c64b5ce5": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "5beb7efe-fd9a-4556-801d-275e5ffc04cc": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "be9ba2d9-53ea-4cdc-84e5-9b1eeee46550": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       },
       "d4f940ab-401b-4efc-aadc-ad5f3c50688a": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        1
+        "1"
        ]
       }
      }
@@ -2191,10 +2191,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -2213,10 +2213,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -2235,10 +2235,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -2257,10 +2257,10 @@
       },
       "Retention": {
        "description": "Value the benchmark's checks read (collector_manifest.json); omit a value that does not exist.",
-       "type": "number",
+       "type": "string",
        "x-type-source": "fixture",
        "examples": [
-        0
+        "0"
        ]
       }
      }
@@ -4007,7 +4007,7 @@
    "x-variable-key": "<user SID>"
   },
   "secedit": {
-   "description": "{system_access: {<key>: <int|string>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export",
+   "description": "{system_access: {<key>: <JSON number for a numeric key, string for NewAdministratorName / NewGuestName>}, privilege_rights: {<constant>: [<SID without '*'>]}} from secedit /export; omit a right nobody holds",
    "type": "object",
    "properties": {
     "privilege_rights": {

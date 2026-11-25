@@ -14,9 +14,20 @@ test_010020_pass if {
 	data.stig.rhel_8.configuration_management.status_rhel_08_010020 == "Not_a_Finding" with input as i
 }
 
-test_010020_string_rsa_size_pass if {
-	i := {"crypto_policy": "FIPS", "crypto_policy_state": {"hash": fips_hashes, "min_rsa_size": "3072"}}
+test_010020_larger_rsa_size_pass if {
+	i := {"crypto_policy": "FIPS", "crypto_policy_state": {"hash": fips_hashes, "min_rsa_size": 3072}}
 	data.stig.rhel_8.configuration_management.status_rhel_08_010020 == "Not_a_Finding" with input as i
+}
+
+# a number sent as text is not read: evidence invalid, naming the fact and the type (owner ruling 2026-11-24)
+test_010020_string_rsa_size_is_evidence_invalid if {
+	every v in ["3072", " 3072 "] {
+		f := data.stig.rhel_8.configuration_management.finding_rhel_08_010020 with input as {"crypto_policy": "FIPS", "crypto_policy_state": {"hash": fips_hashes, "min_rsa_size": v}}
+		f.status == "Open"
+		f.detail == "RHEL-08-010020: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got string)"
+	}
+	f := data.stig.rhel_8.configuration_management.finding_rhel_08_010020 with input as {"crypto_policy": "FIPS", "crypto_policy_state": {"hash": fips_hashes, "min_rsa_size": 3072.5}}
+	f.detail == "RHEL-08-010020: evidence invalid — crypto_policy_state.min_rsa_size is not a number (got a fraction)"
 }
 
 test_010020_subpolicy_open if {

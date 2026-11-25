@@ -6,7 +6,7 @@ it**. See `docs/CONTROL_CORRELATION_PATTERN.md` for the measured pattern this
 implements.
 
 - `stig_800_53/data.json` — `stig_id → [800-53 control]` for 17 STIG
-  platforms (3,787 rules) (loads at `data.crosswalk.stig_800_53`). Provenance in `.meta`.
+  platform prefixes (4,610 rules) (loads at `data.crosswalk.stig_800_53`). Provenance in `.meta`.
 - `correlation.rego` (`package crosswalk.correlation`) — given
   `input.findings` (any stig aggregator's finding list), emits
   `control_status[<800-53>] = "satisfied" | "gap"` (absent = not evaluated)
@@ -15,6 +15,104 @@ implements.
   `control_status` can be `not_reviewed` or `not_applicable` as well.
 - `framework_overlay.rego` (`package crosswalk.framework_overlay`) reports the frameworks in
   `framework_maps/data.json` from the same spine (authoritative maps only).
+- `framework_maps/data.json` (loads at `data.crosswalk.framework_maps`): `maps.<key>.map` is
+  `framework control id → [800-53 ids]`; `catalog_800_53` lists every control and enhancement id of the
+  NIST SP 800-53 Rev 5.2.0 catalog (1,014 active, 182 withdrawn) so a mapped id can be checked against it.
+
+## What is in `framework_maps`, and what is not
+
+| Map key | Framework ids | Pairs | Source | Status |
+|---|---|---|---|---|
+| `nist_800_53b_low` / `_moderate` / `_high` | 131 / 177 / 188 base controls | identity | NIST OSCAL baseline profiles | authoritative |
+| `fedramp_rev5_low` / `_moderate` / `_high` / `_li_saas` | 156 / 323 / 410 / 156 | identity | FedRAMP OSCAL baseline profiles (below) | authoritative |
+| `nist_csf_2_0` | 106 Subcategories | 736 | NIST OLIR informative reference 186, CSF 2.0 → SP 800-53 Rev 5.2.0 (posted 2025-11-17) | authoritative |
+| `nist_800_171_r3` | 97 requirements | 157 | NIST CPRT export of SP 800-171 Rev 3: each requirement's source controls (published May 2024) | authoritative |
+| `iso_27001_2022` | 91 Annex A controls + 30 clauses | 643 | NIST OLIR informative reference 155, SP 800-53 Rev 5 → ISO/IEC 27001:2022, inverted (posted 2023-11-13) | authoritative |
+| `cis_controls_v8` | 0 shipped | 0 | CIS Controls v8.1 → SP 800-53 Rev 5 workbook, CC BY-NC-ND 4.0 | **pending**: not redistributable here; build it locally (below) |
+| `pci_dss_v4` | 0 | 0 | none whose licence allows it | **pending** |
+
+The three NIST-published maps are written by `scripts/gen_nist_framework_maps.py`: download, verify against a
+pinned sha256, parse, write. Nothing in them is typed by hand or recalled. Each map's `meta` records the source
+URL, its sha256, the publication date, the publisher and licence (works of NIST, a US government agency), the
+relationship NIST states, the counts, and a `map_sha256` over the map itself. `make check-generated` runs the
+script with `--check`: offline it fails when a map no longer matches its `map_sha256` (a hand edit) or the pins;
+when the verified sources are in the local cache it also rebuilds and compares the whole file. A source that
+changes upstream no longer matches its pin and stops the build until someone reviews it.
+
+What the generator does with the sources, so the numbers can be checked against them:
+
+- **CSF 2.0.** Subcategory rows only. Nine rows are not carried and are listed in `meta.not_carried`: three
+  Subcategory references to a whole 800-53 family (`GV.OC-03 → PT`, `PR.IR-03 → CP`, `PR.IR-03 → IR`) and six
+  Category-level rows (`RS.MA`, `RC.RP`). One reference is to a control the catalog marks withdrawn
+  (`DE.AE-06 → RA-4`); it is listed in `meta.withdrawn_references_not_carried` and is not redirected to the
+  control that replaced it, because NIST's file does not say that. The OLIR catalog records a different sha256
+  for this reference than the file NIST serves; the file's Subcategory pairs were checked equal to the
+  "SP 800-53 Rev 5.2.0" references in NIST's CSF 2.0 Reference Tool export (2026-11-24). Both hashes are in `meta`.
+- **SP 800-171 Rev 3.** The 97 current requirements (`03.01.01` … `03.17.03`); the 33 withdrawn ones are not in
+  the map. The export references SP 800-53 Rev 5.1.1; every id is also active in the 5.2.0 catalog.
+- **ISO/IEC 27001:2022.** NIST's table runs 800-53 control → ISO element; the map is that table inverted. Keys are
+  written as NIST writes them: `A.5.1` … `A.8.33` for Annex A, `4.1` … `10.2` for clauses. NIST maps no 800-53
+  control to `A.7.6` or `A.8.34`, so 91 of the 93 Annex A controls have an entry. The file carries ISO
+  identifiers only: no ISO text is in the source and none is reproduced. NIST's own caution applies and is kept in
+  `meta.relationship`: the mappings are not always one-to-one and control equivalency must not be assumed. The
+  file's sha256 equals the hash the OLIR catalog records for it.
+- **CIS Controls v8.1 (not shipped).** The workbook's "License for Use" sheet states CC BY-NC-ND 4.0:
+  non-commercial redistribution only, and modified material may not be distributed. An id map extracted from it is
+  a derivative, and this repository is Apache-2.0, so the map is not vendored. Download the workbook from CIS
+  yourself (the entry's `source` has the page) and build a local copy of the data file:
+
+  ```bash
+  python3 scripts/gen_nist_framework_maps.py --cis-file <workbook.xlsx> --out /somewhere/outside/the/repo/data.json
+  ```
+
+  Load that file at `data.crosswalk.framework_maps` in place of the shipped one. The script refuses an `--out`
+  inside the repository. On the workbook CIS served on 2026-11-24 it gives 143 of 153 Safeguards mapped, 367 pairs.
+- **PCI DSS v4 (pending).** PCI SSC publishes no PCI DSS → SP 800-53 mapping. The one PCI DSS 4.0.1 → CSF 2.0
+  reference in NIST's OLIR catalog (id 183) is from an independent submitter, not PCI SSC or NIST; chaining it
+  through CSF to 800-53 would be a derived mapping from a non-authoritative source, so it is not used.
+
+### Reading a non-identity map
+
+The baselines and FedRAMP maps are the identity. The NIST-published maps send one framework id to several 800-53
+controls **and enhancements**, and the STIG spine is at base-control granularity. The overlay's rules do not
+change, and that has consequences worth knowing before a framework module leans on them:
+
+- One **gap** among the mapped controls is a gap on the framework id. This is the verdict a module can act on.
+- **Satisfied** needs every mapped id evaluated and satisfied. A mapped enhancement is never evaluated, so an id
+  that maps to one reads `not_covered`, with the satisfied base controls under `spine` and the rest under
+  `not_evaluated`. `03.01.08 → [AC-7]` can be satisfied; `03.01.01 → [AC-2, AC-2(3), AC-2(5), AC-2(13)]` cannot.
+- A mapping is the publisher's statement that the controls *relate* to the framework id (informative reference,
+  source control, or NIST's ISO table). It is not a statement that they are the whole of it. Benchmark results
+  never turn a framework control into a pass.
+
+`framework_overlay.inherited_by[<key>][<800-53 id>]` is the reverse index (the framework ids a spine verdict lands
+on) and `framework_overlay.map_info[<key>]` is the map's citation (name, source, granularity, `meta`) for a
+module to print beside the verdicts it takes.
+
+Worked example (asserted in `tests/test_framework_maps_nist.rego` against the shipped data): the RHEL 9 STIG
+account-lockout rule `RHEL-09-411075` maps to `AC-7` (DISA). `AC-7` is the source control of 171 requirement
+`03.01.08`, an informative reference of CSF `PR.AA-03`, and one of four controls NIST maps to ISO `A.8.5`.
+
+| `RHEL-09-411075` is | `03.01.08` | `PR.AA-03` | `A.8.5` |
+|---|---|---|---|
+| Open | gap | gap | gap |
+| Not_a_Finding | satisfied (AC-7 is all it maps to) | not_covered: AC-7 satisfied, 9 controls not evaluated | not_covered: AC-7 satisfied, 3 not evaluated |
+
+Measured reach (shipped maps, 2026-11-24; the spine's 4,610 STIG rules reach 65 base controls):
+
+| Map | Framework ids | reached by at least one STIG rule | can read satisfied (every mapped id is a spine control) |
+|---|---|---|---|
+| `nist_csf_2_0` | 106 | 30 | 2 |
+| `nist_800_171_r3` | 97 | 42 | 26 |
+| `iso_27001_2022` | 121 | 38 | 11 |
+
+Reach is not compliance: it counts framework ids a rule can speak to, not ids that are met.
+
+**Not wired yet.** The CSF 2.0 module (`nist.csf.main`, key `nist_csf`) and the SP 800-171 Rev 3 module
+(`nist_800_171.main`, key `nist_800_171`) do not read these maps; their reports are what they were. Only NIST SP
+800-53 and FedRAMP Rev 5 take benchmark verdicts today. The ids already agree: the maps' keys are exactly the 106
+Subcategory ids and the 97 requirement ids those modules use (`tests/crosswalk_framework_maps`), so wiring needs
+no id translation. The ISO/IEC 27001 module is not checked against `iso_27001_2022` here.
 
 ## Framework modules read the spine
 
@@ -130,7 +228,9 @@ by itself (`-d crosswalk`, `opa build crosswalk`) roots them at `data.stig_800_5
 the crosswalk reads as not loaded, and a framework given benchmark results reports `FAIL-CLOSED`. Use the
 prefixed form, `-d crosswalk:crosswalk`. The wasm bundles (`converters/packaging/wasm/build.py`) do, and check it
 on every build; `make check-converters` runs the same check without the wasm compile
-(`build.py --check-data-paths`). The bundle published to GHCR does not carry `crosswalk/` yet.
+(`build.py --check-data-paths`). The bundle published to GHCR does not carry `crosswalk/` yet: its build step still
+passes `--ignore crosswalk` and `--ignore '*.json'` (`.github/workflows/publish-ghcr.yml`). Built without those two
+flags the bundle carries the three data files under the `crosswalk` root the manifest already declares.
 
 Add a standard: ship its `<id> → 800-53` map in the same shape, then the
 overlap analysis in the pattern doc §7 applies unchanged.

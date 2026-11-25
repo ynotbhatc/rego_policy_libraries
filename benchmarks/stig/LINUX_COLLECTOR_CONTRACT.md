@@ -17,7 +17,20 @@ is not read by any rule: RHEL-09-671010 reports `evidence missing — fips.fips_
   (read only in a branch, e.g. a service's config when its package is installed).
 - **Accepted** (from the helper the rule reads it through):
   `_str` string or integer (decimal text), trimmed; `_kw` the same, compared case-insensitively;
-  `_num` a number or a string holding a decimal integer (anything else is not a pass);
+  `_num` a whole JSON number (`3`, `900`, `-1`) and nothing else. **A number is never read from text:** `"3"`,
+  `" 3 "`, `"3s"`, a fraction (`3.5`), a boolean, a list and an object are not numbers; null or absent is "evidence
+  missing". A fact that is collected but is not a whole JSON number makes the finding `Open` with detail
+  `<STIG-ID>: evidence invalid — <fact> is not a number (got <string|boolean|array|object|a fraction>)`. The
+  collector converts the configured text (`PASS_MAX_DAYS 180`, `minlen = 15`, `sshd -T` output) to a number before
+  it sends it. The same holds for a uid, a gid, a `maxpoll`, a TMOUT or `maxlogins` value and the other numeric
+  fields inside a record (`interactive_users[].primary_gid`, `.home_gid`, `chrony_conf.sources[].maxpoll`,
+  `file_permissions.*[].gid`, `profile_tmout[].value`, `limits_maxlogins[].value`), and for the values of
+  `pwquality_values.<option>[]` (Oracle Linux 8). A gsettings unsigned value (`gnome.session_idle_delay`,
+  `gnome.screensaver_lock_delay`) is a whole JSON number or the text `gsettings get` prints (`"uint32 600"`),
+  never a bare decimal string. Facts that are text stay text: user names, file modes (`"0644"`), unit names,
+  sshd keyword values (`"no"`, `"yes"`, `"prohibit-password"`), sshd lines as written in a file
+  (`sshd_config_files.*[].value`, `sshd_config_lines.*[]`, `sshd_runtime.*`), dnf options (`"1"`, `"yes"`),
+  sysctl and kernel values compared as text with `_str`;
   `_collected` presence only. A path read directly (`input.x`) takes the fixture type; a boolean passes only
   on `true` (or the literal the rule compares with).
 - **Collect the observed value, not a verdict**: the policy holds the expected value (`"1"`, `"masked"`, a
@@ -55,7 +68,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `auditd_config.admin_space_left_action` | string | _kw | R9 | `"SINGLE"` | RHEL-09-653050: admin_space_left_action as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653050 |
 | `auditd_config.disk_error_action` | string | _kw | R9 OL8 | `"HALT"` | RHEL-09-653020: disk_error_action as configured in /etc/audit/auditd.conf | R9: RHEL-09-653020<br>OL8: OL08-00-030040 |
 | `auditd_config.disk_full_action` | string | _kw | R9 OL9 OL8 | `"SYSLOG"` | RHEL-09-653025: disk_full_action as configured in /etc/audit/auditd.conf | R9: RHEL-09-653025<br>OL9: OL09-00-000765<br>OL8: OL08-00-030060 |
-| `auditd_config.freq` | number/string | _num | R9 | `100` | RHEL-09-653095: freq as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653095 |
+| `auditd_config.freq` | number | _num | R9 | `100` | RHEL-09-653095: freq as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653095 |
 | `auditd_config.local_events` | string | _kw | R9 | `"yes"` | RHEL-09-653075: local_events as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653075 |
 | `auditd_config.log_file` | string | _str | R9 OL9 OL8 R10 | `"/var/log/audit/audit.log"` | RHEL-09-231030: the audit data path is the directory of auditd.conf log_file; it must be its own mount | R9: RHEL-09-231030<br>OL9: OL09-00-000002<br>OL8: OL08-00-010542<br>R10: RHEL-10-000520 |
 | `auditd_config.log_format` | string | _kw | R9 | `"ENRICHED"` | RHEL-09-653100: log_format as configured in /etc/audit/auditd.conf (null when missing or commented out) | R9: RHEL-09-653100 |
@@ -73,7 +86,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `chrony_conf.sources` | array of object |  | R9 | `[{"directive": "server", "address": "0.us.pool.ntp.mil", "m…` | RHEL-09-252020: uncommented server / pool / peer lines of /etc/chrony.conf: input.chrony_conf.sources[{directive, address, maxpoll}] (maxpo… | R9: RHEL-09-252020 |
 | `chrony_conf.sources[].address` | string |  |  | `"0.us.pool.ntp.mil"` |  | R9: RHEL-09-252020 |
 | `chrony_conf.sources[].directive` | string |  |  | `"server"` |  | R9: RHEL-09-252020 |
-| `chrony_conf.sources[].maxpoll` | number/string |  |  | `"16"` |  | R9: RHEL-09-252020 |
+| `chrony_conf.sources[].maxpoll` | number |  |  | `16` |  | R9: RHEL-09-252020 |
 | `coredump_conf.ProcessSizeMax` | string | _str | R9 | `"0"` | RHEL-09-213085: ProcessSizeMax as configured in /etc/systemd/coredump.conf (grep -i; null when missing or commented out) | R9: RHEL-09-213085 |
 | `coredump_conf.Storage` | string | _str | R9 | `"none"` | RHEL-09-213090: Storage as configured in /etc/systemd/coredump.conf (grep -i; null when missing or commented out) | R9: RHEL-09-213090 |
 | `cpuinfo.flags` | array of string |  | R9 | `["flags : fpu vme de pse nx lm", "flags : fpu vme de pse nx…` | RHEL-09-213110: input.cpuinfo.flags: the flags lines of /proc/cpuinfo (grep ^flags), one string per processor; input.grub.kernel_args as ab… | R9: RHEL-09-213110 |
@@ -86,7 +99,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `crypto_policy_check.output` | string | _str | R9 R10 | `"The configured policy matches the generated policy"` | RHEL-09-672020: update-crypto-policies --check output and the back-end symlinks (input.crypto_backends[{name, is_symlink, target}]) | R9: RHEL-09-672020<br>R10: RHEL-10-300090 |
 | `crypto_policy_check.pass_output` | string | _str | OL9 | `"The configured policy matches the generated policy\nPASS"` | OL09-00-000242: input.crypto_policy_check.pass_output: output of `update-crypto-policies --check && echo PASS`; input.crypto_backends[{name… | OL9: OL09-00-000242 |
 | `crypto_policy_state.hash` | array of string |  | R9 OL9 OL8 R10 | `["SHA2-256", "SHA2-384", "SHA2-512", "SHA2-224", "SHA3-256"…` | RHEL-09-215105: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size | R9: RHEL-09-215105<br>OL9: OL09-00-000241<br>OL8: OL08-00-010182<br>R10: RHEL-10-300010 |
-| `crypto_policy_state.min_rsa_size` | number/string | _num | R9 OL9 OL8 R10 | `2048` | RHEL-09-215105: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size | R9: RHEL-09-215105<br>OL9: OL09-00-000241<br>OL8: OL08-00-010182<br>R10: RHEL-10-300010 |
+| `crypto_policy_state.min_rsa_size` | number | _num | R9 OL9 OL8 R10 | `2048` | RHEL-09-215105: systemwide crypto policy FIPS; CURRENT.pol hash list and min_rsa_size | R9: RHEL-09-215105<br>OL9: OL09-00-000241<br>OL8: OL08-00-010182<br>R10: RHEL-10-300010 |
 | `dconf_db.removal_action` | array of string |  | OL9 OL8 | `["'lock-screen'"]` | OL09-00-002160: input.dconf_db.removal_action: the values of the uncommented removal-action= lines found by grep -R removal-action /etc/dco… | OL9: OL09-00-002160<br>OL8: OL08-00-020050 |
 | `dconf_local.logout` | array of string |  | OL8 | `["''"]` | OL08-00-040171: input.dconf_local.logout: values of uncommented logout= lines in /etc/dconf/db/local.d/*; the rule title applies it only wh… | OL8: OL08-00-040171 |
 | `dconf_locks.automount_open` | array of string |  | R9 | `["/org/gnome/desktop/media-handling/automount-open"]` | RHEL-09-271025: lines returned by grep 'automount-open' /etc/dconf/db/<db>.d/locks/* for the system-db named in /etc/dconf/profile/user (in… | R9: RHEL-09-271025 |
@@ -113,11 +126,11 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `duplicate_uid_accounts[].name` | string |  |  | `"toor"` |  | R9: RHEL-09-411030<br>OL9: OL09-00-003001<br>OL8: OL08-00-020240<br>R10: RHEL-10-600130 |
 | `duplicate_uid_accounts[].uid` | number |  |  | `0` |  | R9: RHEL-09-411030<br>OL9: OL09-00-003001<br>OL8: OL08-00-020240<br>R10: RHEL-10-600130 |
 | `faillock_conf.audit` | boolean |  | R9 | `true` | RHEL-09-412045: audit option present and uncommented in /etc/security/faillock.conf (boolean) | R9: RHEL-09-412045 |
-| `faillock_conf.deny` | number/string | _num | R9 OL9 OL8 R10 | `3` | RHEL-09-411075: deny as configured in /etc/security/faillock.conf | R9: RHEL-09-411075<br>OL9: OL09-00-003020<br>OL8: OL08-00-020011<br>R10: RHEL-10-600410 |
+| `faillock_conf.deny` | number | _num | R9 OL9 OL8 R10 | `3` | RHEL-09-411075: deny as configured in /etc/security/faillock.conf | R9: RHEL-09-411075<br>OL9: OL09-00-003020<br>OL8: OL08-00-020011<br>R10: RHEL-10-600410 |
 | `faillock_conf.dir` | string | _str | R9 | `"/var/log/faillock"` | RHEL-09-411105: dir as configured in /etc/security/faillock.conf (null when missing or commented out); the default /var/run/faillock does n… | R9: RHEL-09-411105 |
 | `faillock_conf.even_deny_root` | boolean |  | R9 | `true` | RHEL-09-411080: even_deny_root option present and uncommented in /etc/security/faillock.conf (boolean) | R9: RHEL-09-411080 |
-| `faillock_conf.fail_interval` | number/string | _num | R9 OL9 OL8 R10 | `900` | RHEL-09-411085: fail_interval as configured in /etc/security/faillock.conf | R9: RHEL-09-411085<br>OL9: OL09-00-002416<br>OL8: OL08-00-020013<br>R10: RHEL-10-600420 |
-| `faillock_conf.unlock_time` | number/string | _num | R9 | `0` | RHEL-09-411090: unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out) | R9: RHEL-09-411090 |
+| `faillock_conf.fail_interval` | number | _num | R9 OL9 OL8 R10 | `900` | RHEL-09-411085: fail_interval as configured in /etc/security/faillock.conf | R9: RHEL-09-411085<br>OL9: OL09-00-002416<br>OL8: OL08-00-020013<br>R10: RHEL-10-600420 |
+| `faillock_conf.unlock_time` | number | _num | R9 | `0` | RHEL-09-411090: unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out) | R9: RHEL-09-411090 |
 | `faillock_dir.path` | string |  |  | `"/var/log/faillock"` |  | R9: RHEL-09-431020 |
 | `faillock_dir.selinux_type` | string | _str | R9 | `"faillog_t"` | RHEL-09-431020: SELinux type from ls -Zd of the directory named by dir in /etc/security/faillock.conf (input.faillock_dir {path, selinux_ty… | R9: RHEL-09-431020 |
 | `fapolicyd.compiled_rules` | array of string |  | R9 | `["allow perm=any uid=0 : dir=/var/tmp/", "allow perm=open a…` | RHEL-09-433016: permissive as configured in /etc/fapolicyd/fapolicyd.conf; the uncommented rules of /etc/fapolicyd/compiled.rules in file o… | R9: RHEL-09-433016 |
@@ -179,7 +192,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `file_permissions.library_dir_files_not_owned_by_root` | array |  | R10 | `[]` | RHEL-10-400110: input.file_permissions.library_dir_files_not_owned_by_root: the offender list of the RHEL 10 find command (every file, not … | R10: RHEL-10-400110 |
 | `file_permissions.library_dirs_group_or_world_writable` | array |  | R9 | `[]` | RHEL-09-232015: output of find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type d | R9: RHEL-09-232015 |
 | `file_permissions.library_dirs_not_group_owned_by_root` | array of object |  | R9 | `[]` | RHEL-09-232215: find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%G %g %n": input.file_permissions.library_dirs_no… | R9: RHEL-09-232215 |
-| `file_permissions.library_dirs_not_group_owned_by_root[].gid` | number/string |  |  | `5` |  | R9: RHEL-09-232215 |
+| `file_permissions.library_dirs_not_group_owned_by_root[].gid` | number |  |  | `5` |  | R9: RHEL-09-232215 |
 | `file_permissions.library_dirs_not_group_owned_by_root[].group` | string |  |  | `"tty"` |  | R9: RHEL-09-232215 |
 | `file_permissions.library_dirs_not_group_owned_by_root[].path` | string |  |  | `"/usr/bin/write"` |  | R9: RHEL-09-232215 |
 | `file_permissions.library_dirs_not_owned_by_root` | array |  | R9 | `[]` | RHEL-09-232210: output of find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type d | R9: RHEL-09-232210 |
@@ -198,7 +211,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `file_permissions.sshd_config_paths[].path` | string |  |  | `"/etc/ssh/sshd_config"` |  | R9: RHEL-09-255105, RHEL-09-255110 |
 | `file_permissions.system_commands_group_or_world_writable` | array of string |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-232010: output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin -perm /022 | R9: RHEL-09-232010<br>OL9: OL09-00-002506<br>OL8: OL08-00-010300<br>R10: RHEL-10-400205 |
 | `file_permissions.system_commands_not_group_owned_by_root` | array of object |  | R9 | `[]` | RHEL-09-232195: find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -group root -exec stat -L -c "%G %g %n"… | R9: RHEL-09-232195 |
-| `file_permissions.system_commands_not_group_owned_by_root[].gid` | number/string |  |  | `5` |  | R9: RHEL-09-232195 |
+| `file_permissions.system_commands_not_group_owned_by_root[].gid` | number |  |  | `5` |  | R9: RHEL-09-232195 |
 | `file_permissions.system_commands_not_group_owned_by_root[].group` | string |  |  | `"tty"` |  | R9: RHEL-09-232195 |
 | `file_permissions.system_commands_not_group_owned_by_root[].path` | string |  |  | `"/usr/bin/write"` |  | R9: RHEL-09-232195 |
 | `file_permissions.system_commands_not_owned_by_root` | array |  | R9 | `[]` | RHEL-09-232190: output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -user root | R9: RHEL-09-232190 |
@@ -264,7 +277,7 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `interactive_users` | array of object |  | R9 | `[{"name": "disauser", "uid": 1000, "primary_gid": 1002, "sh…` | RHEL-09-411060: home (field 6 of /etc/passwd) of each entry of input.interactive_users | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].home` | string |  |  | `"/home/disauser"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].home_exists` | boolean |  |  | `true` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
-| `interactive_users[].home_gid` | number/string |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
+| `interactive_users[].home_gid` | number |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].name` | string |  |  | `"disauser"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].primary_gid` | number |  |  | `1002` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
 | `interactive_users[].shell` | string |  |  | `"/bin/bash"` |  | R9: RHEL-09-411060, RHEL-09-411065, RHEL-09-411070 |
@@ -312,17 +325,17 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `limits_conf.core[].domain` | string |  |  | `"*"` |  | R9: RHEL-09-213095 |
 | `limits_conf.core[].type` | string |  |  | `"hard"` |  | R9: RHEL-09-213095 |
 | `limits_conf.core[].value` | number/string |  |  | `"0"` |  | R9: RHEL-09-213095 |
-| `limits_maxlogins` | array of object |  | R9 | `[{"file": "/etc/security/limits.conf", "domain": "*", "type…` | RHEL-09-412040: uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}] | R9: RHEL-09-412040 |
+| `limits_maxlogins` | array of object |  | R9 | `[{"file": "/etc/security/limits.conf", "domain": "*", "type…` | RHEL-09-412040: uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}] (value: a JSON … | R9: RHEL-09-412040 |
 | `limits_maxlogins[].domain` | string |  |  | `"*"` |  | R9: RHEL-09-412040 |
 | `limits_maxlogins[].file` | string |  |  | `"/etc/security/limits.conf"` |  | R9: RHEL-09-412040 |
 | `limits_maxlogins[].type` | string |  |  | `"hard"` |  | R9: RHEL-09-412040 |
-| `limits_maxlogins[].value` | number/string |  |  | `"10"` |  | R9: RHEL-09-412040 |
+| `limits_maxlogins[].value` | number |  |  | `10` |  | R9: RHEL-09-412040 |
 | `local_accounts_with_empty_passwords` | array |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-611155: accounts whose /etc/shadow password field is empty (awk -F: '!$2 {print $1}' /etc/shadow) | R9: RHEL-09-611155<br>OL9: OL09-00-001130<br>OL8: OL08-00-010121<br>R10: RHEL-10-600460 |
 | `local_interactive_users` | array of string |  | R9 | `[]` | RHEL-09-411095: local interactive accounts in /etc/passwd (UID >= 1000, interactive shell); the comparison with the authorized list is an a… | R9: RHEL-09-411095 |
 | `login_banner.issue` | string | _str | R9 OL9 OL8 R10 | `"You are accessing a U.S. Government (USG) Information Syst…` | RHEL-09-211020: content of /etc/issue, compared with the banner text in the check (whitespace runs collapsed) | R9: RHEL-09-211020<br>OL9: OL09-00-000090<br>OL8: OL08-00-010060<br>R10: RHEL-10-700040 |
 | `login_defs.CREATE_HOME` | string | _kw | R9 | `"yes"` | RHEL-09-411020: CREATE_HOME as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-411020 |
 | `login_defs.ENCRYPT_METHOD` | string | _str | R9 OL9 OL8 R10 | `"SHA512"` | RHEL-09-611140: ENCRYPT_METHOD as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-611140<br>OL9: OL09-00-001055<br>OL8: OL08-00-010110<br>R10: RHEL-10-600740 |
-| `login_defs.FAIL_DELAY` | number/string | _num | R9 | `4` | RHEL-09-412050: FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-412050 |
+| `login_defs.FAIL_DELAY` | number | _num | R9 | `4` | RHEL-09-412050: FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out) | R9: RHEL-09-412050 |
 | `login_defs.UMASK` | string | _str | R9 | `"077"` | RHEL-09-412065: UMASK as configured in /etc/login.defs, a string so the leading zero survives (null when missing or commented out) | R9: RHEL-09-412065 |
 | `logind_conf.StopIdleSessionSec` | number/string | _str | R9 | `"600"` | RHEL-09-412080: effective (last uncommented) StopIdleSessionSec from systemd-analyze cat-config systemd/logind.conf; a cloud-hosted system … | R9: RHEL-09-412080 |
 | `mail_aliases.postmaster` | string | _str | R9 | `"root"` | RHEL-09-252060: the value of the uncommented postmaster entry of /etc/aliases (grep "postmaster:\s*root$"; null when there is none) | R9: RHEL-09-252060 |
@@ -405,37 +418,37 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `pam_d.su` | array of string |  | R9 | `["auth sufficient pam_rootok.so", "auth required pam_wheel.…` | RHEL-09-432035: uncommented lines of /etc/pam.d/su (input.pam_d.su) naming pam_wheel.so | R9: RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035, RHEL-09-611040 … (+4) |
 | `pam_d.sudo` | array of string |  | R9 | `["auth include system-auth", "account include system-auth",…` | RHEL-09-611145: uncommented lines of /etc/pam.d/sudo (input.pam_d.sudo) naming pam_succeed_if | R9: RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035, RHEL-09-611040 … (+4) |
 | `pam_d["system-auth"]` | array of string |  | R9 | `["auth required pam_env.so", "auth required pam_faillock.so…` | RHEL-09-611025: uncommented lines of /etc/pam.d/system-auth and /etc/pam.d/password-auth carrying nullok (case-insensitive) | R9: RHEL-09-431020, RHEL-09-432035, RHEL-09-611025, RHEL-09-611030, RHEL-09-611035 … (+5) |
-| `password_policy.dcredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611070: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611070<br>OL9: OL09-00-001020<br>R10: RHEL-10-600310 |
-| `password_policy.dictcheck` | number/string | _num | R9 | `1` | RHEL-09-611105: effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out) | R9: RHEL-09-611105 |
-| `password_policy.difok` | number/string | _num | R9 | `8` | RHEL-09-611115: effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611115 |
+| `password_policy.dcredit` | number | _num | R9 OL9 R10 | `-1` | RHEL-09-611070: effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611070<br>OL9: OL09-00-001020<br>R10: RHEL-10-600310 |
+| `password_policy.dictcheck` | number | _num | R9 | `1` | RHEL-09-611105: effective dictcheck from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out) | R9: RHEL-09-611105 |
+| `password_policy.difok` | number | _num | R9 | `8` | RHEL-09-611115: effective difok from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611115 |
 | `password_policy.enforce_for_root` | boolean |  | R9 | `true` | RHEL-09-611060: enforce_for_root option present and uncommented in /etc/security/pwquality.conf or pwquality.conf.d/*.conf (boolean) | R9: RHEL-09-611060 |
-| `password_policy.inactive_days` | number/string | _num | R9 OL9 R10 | `35` | RHEL-09-411050: INACTIVE as configured in /etc/default/useradd | R9: RHEL-09-411050<br>OL9: OL09-00-003065<br>R10: RHEL-10-600160 |
-| `password_policy.lcredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611065: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611065<br>OL9: OL09-00-001015<br>R10: RHEL-10-600240 |
-| `password_policy.maxclassrepeat` | number/string | _num | R9 | `4` | RHEL-09-611120: effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611120 |
-| `password_policy.maxdays` | number/string | _num | R9 OL9 OL8 R10 | `180` | RHEL-09-411010: PASS_MAX_DAYS as configured in /etc/login.defs | R9: RHEL-09-411010<br>OL9: OL09-00-001095<br>OL8: OL08-00-020200<br>R10: RHEL-10-600100 |
-| `password_policy.maxrepeat` | number/string | _num | R9 | `3` | RHEL-09-611125: effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611125 |
-| `password_policy.minclass` | number/string | _num | R9 | `4` | RHEL-09-611130: effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611130 |
-| `password_policy.mindays` | number/string | _num | R9 OL9 OL8 R10 | `1` | RHEL-09-611075: PASS_MIN_DAYS as configured in /etc/login.defs | R9: RHEL-09-611075<br>OL9: OL09-00-001085<br>OL8: OL08-00-020190<br>R10: RHEL-10-600210 |
-| `password_policy.minlen` | number/string | _num | R9 OL9 R10 | `15` | RHEL-09-611090: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611090<br>OL9: OL09-00-001105<br>R10: RHEL-10-600220 |
-| `password_policy.ocredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611100: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611100<br>OL9: OL09-00-001120<br>R10: RHEL-10-600230 |
-| `password_policy.retry` | number/string | _num | R9 | `3` | RHEL-09-611010: effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out) | R9: RHEL-09-611010 |
-| `password_policy.ucredit` | number/string | _num | R9 OL9 R10 | `-1` | RHEL-09-611110: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611110<br>OL9: OL09-00-001005<br>R10: RHEL-10-600250 |
+| `password_policy.inactive_days` | number | _num | R9 OL9 R10 | `35` | RHEL-09-411050: INACTIVE as configured in /etc/default/useradd | R9: RHEL-09-411050<br>OL9: OL09-00-003065<br>R10: RHEL-10-600160 |
+| `password_policy.lcredit` | number | _num | R9 OL9 R10 | `-1` | RHEL-09-611065: effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611065<br>OL9: OL09-00-001015<br>R10: RHEL-10-600240 |
+| `password_policy.maxclassrepeat` | number | _num | R9 | `4` | RHEL-09-611120: effective maxclassrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611120 |
+| `password_policy.maxdays` | number | _num | R9 OL9 OL8 R10 | `180` | RHEL-09-411010: PASS_MAX_DAYS as configured in /etc/login.defs | R9: RHEL-09-411010<br>OL9: OL09-00-001095<br>OL8: OL08-00-020200<br>R10: RHEL-10-600100 |
+| `password_policy.maxrepeat` | number | _num | R9 | `3` | RHEL-09-611125: effective maxrepeat from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611125 |
+| `password_policy.minclass` | number | _num | R9 | `4` | RHEL-09-611130: effective minclass from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611130 |
+| `password_policy.mindays` | number | _num | R9 OL9 OL8 R10 | `1` | RHEL-09-611075: PASS_MIN_DAYS as configured in /etc/login.defs | R9: RHEL-09-611075<br>OL9: OL09-00-001085<br>OL8: OL08-00-020190<br>R10: RHEL-10-600210 |
+| `password_policy.minlen` | number | _num | R9 OL9 R10 | `15` | RHEL-09-611090: effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611090<br>OL9: OL09-00-001105<br>R10: RHEL-10-600220 |
+| `password_policy.ocredit` | number | _num | R9 OL9 R10 | `-1` | RHEL-09-611100: effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611100<br>OL9: OL09-00-001120<br>R10: RHEL-10-600230 |
+| `password_policy.retry` | number | _num | R9 | `3` | RHEL-09-611010: effective retry from /etc/security/pwquality.conf and pwquality.conf.d/*.conf (null when missing or commented out) | R9: RHEL-09-611010 |
+| `password_policy.ucredit` | number | _num | R9 OL9 R10 | `-1` | RHEL-09-611110: effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf | R9: RHEL-09-611110<br>OL9: OL09-00-001005<br>R10: RHEL-10-600250 |
 | `postfix.root_alias` | string | _str | R9 | `"isso"` | RHEL-09-653125: output of postmap -q root <each map of postconf alias_maps>; an empty string when no alias is set | R9: RHEL-09-653125 |
 | `postfix.smtpd_client_restrictions` | string | _str |  | `"permit_mynetworks,reject"` |  | R9: RHEL-09-252050 |
-| `profile_tmout` | array of object |  | R9 | `[{"file": "/etc/profile.d/tmout.sh", "value": "600"}]` | RHEL-09-412035: uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value as written) | R9: RHEL-09-412035 |
+| `profile_tmout` | array of object |  | R9 | `[{"file": "/etc/profile.d/tmout.sh", "value": 600}]` | RHEL-09-412035: uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value: the seconds as a JSON number… | R9: RHEL-09-412035 |
 | `profile_tmout[].file` | string |  |  | `"/etc/profile.d/tmout.sh"` |  | R9: RHEL-09-412035 |
-| `profile_tmout[].value` | number/string |  |  | `"600"` |  | R9: RHEL-09-412035 |
+| `profile_tmout[].value` | number/string |  |  | `600` |  | R9: RHEL-09-412035 |
 | `promiscuous_interfaces` | array of string |  | R9 OL9 OL8 R10 | `[]` | RHEL-09-251040: interfaces flagged PROMISC by ip link | R9: RHEL-09-251040<br>OL9: OL09-00-006004<br>OL8: OL08-00-040330<br>R10: RHEL-10-800020 |
 | `pwck_no_group_accounts` | array of object |  | R9 | `[]` | RHEL-09-411045: accounts pwck -r reports with "no group <gid>", each {name, gid, interactive} | R9: RHEL-09-411045 |
 | `pwck_no_group_accounts[].gid` | number |  |  | `990` |  | R9: RHEL-09-411045 |
 | `pwck_no_group_accounts[].interactive` | boolean |  |  | `false` |  | R9: RHEL-09-411045 |
 | `pwck_no_group_accounts[].name` | string |  |  | `"svc"` |  | R9: RHEL-09-411045 |
 | `pwquality_values` | object |  |  |  |  | OL8: OL08-00-020110, OL08-00-020120, OL08-00-020130, OL08-00-020230, OL08-00-020280 |
-| `pwquality_values.dcredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020130: every dcredit = value line found by grep -r dcredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020130 |
-| `pwquality_values.lcredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020120: every lcredit = value line found by grep -r lcredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020120 |
-| `pwquality_values.minlen` | array of string |  | OL8 | `["15"]` | OL08-00-020230: every minlen = value line found by grep -r minlen /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020230 |
-| `pwquality_values.ocredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020280: every ocredit = value line found by grep -r ocredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020280 |
-| `pwquality_values.ucredit` | array of string |  | OL8 | `["-1"]` | OL08-00-020110: every ucredit = value line found by grep -r ucredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020110 |
+| `pwquality_values.dcredit` | array of number |  | OL8 | `[-1]` | OL08-00-020130: every dcredit = value line found by grep -r dcredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020130 |
+| `pwquality_values.lcredit` | array of number |  | OL8 | `[-1]` | OL08-00-020120: every lcredit = value line found by grep -r lcredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020120 |
+| `pwquality_values.minlen` | array of number |  | OL8 | `[15]` | OL08-00-020230: every minlen = value line found by grep -r minlen /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020230 |
+| `pwquality_values.ocredit` | array of number |  | OL8 | `[-1]` | OL08-00-020280: every ocredit = value line found by grep -r ocredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020280 |
+| `pwquality_values.ucredit` | array of number |  | OL8 | `[-1]` | OL08-00-020110: every ucredit = value line found by grep -r ucredit /etc/security/pwquality.conf* (conflicting results are a finding) | OL8: OL08-00-020110 |
 | `redhat_release_key_file.fingerprints` | array of string |  | R9 R10 | `["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51", "7E4…` | RHEL-09-214010: installed gpg-pubkey summaries and the fingerprints in /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (null if the file is mis… | R9: RHEL-09-214010<br>R10: RHEL-10-001020 |
 | `removable_media_fstab` | array of object |  | R9 | `[{"mount_point": "/mnt/usbflash", "fs_type": "vfat", "optio…` | RHEL-09-231080: input.removable_media_fstab: the /etc/fstab entries that refer to removable media (USB, optical, flash), [{mount_point, fs_… | R9: RHEL-09-231080, RHEL-09-231085, RHEL-09-231090 |
 | `removable_media_fstab[].fs_type` | string |  |  | `"vfat"` |  | R9: RHEL-09-231080, RHEL-09-231085, RHEL-09-231090 |
@@ -480,8 +493,8 @@ Platforms: R9 = RHEL 9, OL9 = Oracle Linux 9, OL8 = Oracle Linux 8, R10 = RHEL 1
 | `ssh_banner_file.exists` | boolean |  | OL9 R10 | `true` | OL09-00-000256: Banner keyword in the sshd configuration; input.ssh_banner_file.exists: the file it names exists | OL9: OL09-00-000256<br>R10: RHEL-10-700010 |
 | `ssh_banner_file.text` | string | _str | OL8 | `"You are accessing a U.S. Government (USG) Information Syst…` | OL08-00-010040: input.sshd_config_lines.Banner (every Banner line sshd reads) and input.ssh_banner_file.text (the file it names) | OL8: OL08-00-010040 |
 | `ssh_config.Banner` | string | _kw | R9 OL9 R10 | `"/etc/issue"` | RHEL-09-255025: effective sshd Banner keyword (sshd -T or the config files sshd -dd reads) | R9: RHEL-09-255025<br>OL9: OL09-00-000256<br>R10: RHEL-10-700010 |
-| `ssh_config.ClientAliveCountMax` | number/string | _num | R9 OL9 | `1` | RHEL-09-255095: effective sshd ClientAliveCountMax (sshd -T) | R9: RHEL-09-255095<br>OL9: OL09-00-002346 |
-| `ssh_config.ClientAliveInterval` | number/string | _num | R9 OL9 | `600` | RHEL-09-255100: effective sshd ClientAliveInterval (sshd -T) | R9: RHEL-09-255100, RHEL-09-412080<br>OL9: OL09-00-002347 |
+| `ssh_config.ClientAliveCountMax` | number | _num | R9 OL9 | `1` | RHEL-09-255095: effective sshd ClientAliveCountMax (sshd -T) | R9: RHEL-09-255095<br>OL9: OL09-00-002346 |
+| `ssh_config.ClientAliveInterval` | number | _num | R9 OL9 | `600` | RHEL-09-255100: effective sshd ClientAliveInterval (sshd -T) | R9: RHEL-09-255100, RHEL-09-412080<br>OL9: OL09-00-002347 |
 | `ssh_config.GSSAPIAuthentication` | string | _kw | R9 | `"no"` | RHEL-09-255135: sshd GSSAPIAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it | R9: RHEL-09-255135 |
 | `ssh_config.HostbasedAuthentication` | string | _kw | R9 OL9 | `"no"` | RHEL-09-255080: effective sshd HostbasedAuthentication (case-insensitive) must be no | R9: RHEL-09-255080<br>OL9: OL09-00-002357 |
 | `ssh_config.IgnoreRhosts` | string | _kw | R9 OL9 | `"yes"` | RHEL-09-255145: effective sshd IgnoreRhosts (case-insensitive) must be yes | R9: RHEL-09-255145<br>OL9: OL09-00-002348 |

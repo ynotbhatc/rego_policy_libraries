@@ -141,7 +141,15 @@ obligations_list := [
 
 obligations := {r.id: r | some r in obligations_list}
 
-_in := object.get(input, "aca_155_260", {})
+# The module's facts. Anything other than an object here (no input at all, null, a string, a number) reads
+# as no facts: every check then reports its finding and the report stays defined and non-compliant.
+# (object.get on a null or string container is an error, which made the whole report undefined.)
+default _in := {}
+
+_in := v if {
+	v := input.aca_155_260
+	is_object(v)
+}
 
 _role := r if {
 	r := _in.exchange_or_non_exchange_entity
@@ -173,7 +181,25 @@ applicable[id] := r if {
 violations contains msg if {
 	some id, r in applicable
 	not _true(id)
-	msg := sprintf("45 CFR %v (%v, %v): not attested — %v", [id, sections[r.section], _role, r.text])
+	msg := sprintf("45 CFR %v (%v, %v): not attested — %v%v", [id, sections[r.section], _role, r.text, _attestation_problem(id)])
+}
+
+# Why a non-true attestation did not count: only the boolean true attests. A boolean false is a plain
+# "not attested"; a missing id and a wrong-typed value are evidence problems and are named.
+_attestation_problem(id) := "" if _given[id] == false
+
+_attestation_problem(id) := " [evidence missing — attestation not collected]" if {
+	not _has_attestation(id)
+}
+
+_attestation_problem(id) := sprintf(" [evidence invalid — attestation is not a boolean (got %v)]", [type_name(_given[id])]) if {
+	_has_attestation(id)
+	not is_boolean(_given[id])
+}
+
+_has_attestation(id) if {
+	some k, _ in _given
+	k == id
 }
 
 violations contains msg if {

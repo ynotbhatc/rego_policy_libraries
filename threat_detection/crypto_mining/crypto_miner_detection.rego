@@ -10,14 +10,14 @@
 #   source: aac
 #   domains: [threat, cryptomining]
 #   coverage:
-#     checks: 17
+#     checks: 22
 #     cited: 1
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package security.crypto_miner_detection
 
 import rego.v1
@@ -211,12 +211,84 @@ violations contains msg if {
 # =============================================================================
 
 # fail-closed: a host with no facts has not been checked, so it is not reported clean
-_facts_present if input.running_processes
-_facts_present if input.installed_packages
-_facts_present if input.network_connections
-_facts_present if input.systemd_services
-_facts_present if input.cron_jobs
-_facts_present if input.suspicious_files
+# A fact is present when it is a list (an empty list says the collector looked and found none), and every
+# one of the six must be sent: a detection whose list was not collected did not run. The fields
+# the detections read, with their types: a fact or a field of another type cannot be searched, so it is
+# reported and the host is not clean.
+fact_names := {"running_processes", "installed_packages", "network_connections", "systemd_services", "cron_jobs", "suspicious_files"}
+
+# [fact, field, type]
+fact_fields := [
+	["running_processes", "name", "string"],
+	["running_processes", "cmdline", "string"],
+	["running_processes", "pid", "number"],
+	["running_processes", "cpu_percent", "number"],
+	["running_processes", "running_time_minutes", "number"],
+	["installed_packages", "name", "string"],
+	["network_connections", "remote_host", "string"],
+	["network_connections", "remote_port", "number"],
+	["systemd_services", "name", "string"],
+	["systemd_services", "exec_start", "string"],
+	["cron_jobs", "command", "string"],
+	["suspicious_files", "path", "string"],
+	["suspicious_files", "content", "string"],
+]
+
+_facts_present if {
+	some fact in fact_names
+	is_array(input[fact])
+}
+
+violations contains msg if {
+	_facts_present
+	some fact in fact_names
+	not fact in object.keys(input)
+	msg := sprintf("EVIDENCE MISSING - %s not collected (a list; empty when there are none); the host was NOT evaluated on it", [fact])
+}
+
+violations contains msg if {
+	some fact in fact_names
+	fact in object.keys(input)
+	not is_array(input[fact])
+	msg := sprintf("EVIDENCE INVALID - %s must be a list, got %s; the host was NOT evaluated on it", [fact, type_name(input[fact])])
+}
+
+violations contains msg if {
+	some fact in fact_names
+	is_array(input[fact])
+	some i, item in input[fact]
+	not is_object(item)
+	msg := sprintf("EVIDENCE INVALID - %s[%d] must be an object, got %s", [fact, i, type_name(item)])
+}
+
+violations contains msg if {
+	some [fact, field, type] in fact_fields
+	is_array(input[fact])
+	some i, item in input[fact]
+	value := item[field]
+	type_name(value) != type
+	msg := sprintf("EVIDENCE INVALID - %s[%d].%s must be a %s, got %s", [fact, i, field, type, type_name(value)])
+}
+
+# The field each detection matches on must be there: an item without it was not searched.
+required_fields := {
+	"running_processes": {"name"},
+	"installed_packages": {"name"},
+	"network_connections": {"remote_host", "remote_port"},
+	"systemd_services": {"name"},
+	"cron_jobs": {"command"},
+	"suspicious_files": {"path"},
+}
+
+violations contains msg if {
+	some fact, fields in required_fields
+	is_array(input[fact])
+	some i, item in input[fact]
+	is_object(item)
+	some field in fields
+	not field in object.keys(item)
+	msg := sprintf("EVIDENCE MISSING - %s[%d].%s not collected; the item was NOT evaluated on it", [fact, i, field])
+}
 
 violations contains "FAIL-CLOSED - no facts supplied (running_processes, installed_packages, network_connections, systemd_services, cron_jobs, suspicious_files); the host was NOT evaluated" if {
 	not _facts_present

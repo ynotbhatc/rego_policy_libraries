@@ -6,7 +6,7 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 49
+#     checks: 50
 #     cited: 17
 #     density: orchestrator
 #     basis: role
@@ -200,6 +200,11 @@ assessed_level := input.cmmc_level if {
 	input.cmmc_level in {1, 2, 3}
 }
 
+# The level as supplied (null when absent, or when OPA received no input document at all).
+default _stated_level := null
+
+_stated_level := input.cmmc_level
+
 default level_valid := false
 
 level_valid if assessed_level
@@ -305,6 +310,35 @@ practice_findings contains msg if {
 	msg := sprintf("CMMC %s: evidence missing or requirement not met - NIST SP 800-171 R2 %s is not shown satisfied by the collected facts", [x.id, r])
 }
 
+# Without a valid level a practice that no domain finding names is still failed; say why.
+practice_findings contains msg if {
+	not level_valid
+	some x in practice_scope
+	every r in x.nist {
+		count(_requirement_findings(r)) == 0
+	}
+	msg := sprintf("CMMC %s: not decided - the assessed level is unknown (input.cmmc_level), so the practice is reported failed", [x.id])
+}
+
+# One row per failed practice: a practice with several findings (one per user,
+# one per system ...) is still one failed practice, so the rows of a report never
+# outnumber the practices it declares. Every finding stays in practice_findings.
+practice_rows := [row |
+	some x in practice_scope
+	x.id in failed_practices
+	prefix := sprintf("CMMC %s: ", [x.id])
+	found := sort([m | some m in practice_findings; startswith(m, prefix)])
+	row := _practice_row(prefix, found)
+]
+
+_practice_row(_, found) := found[0] if count(found) == 1
+
+_practice_row(prefix, found) := row if {
+	count(found) != 1
+	numbered := [sprintf("(%d) %s", [i + 1, trim_prefix(m, prefix)]) | some i, m in found]
+	row := sprintf("%s%d findings - %s", [prefix, count(found), concat(" ", numbered)])
+}
+
 input_contract_findings contains "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed" if {
 	not level_valid
 }
@@ -382,7 +416,7 @@ cmmc_compliance_report := {
 	"regulation": "32 CFR Part 170 / DFARS 252.204-7021",
 	"level_1_source": "FAR 52.204-21(b)(1)",
 	"nist_sp": "NIST SP 800-171 Rev 2",
-	"assessed_level": object.get(input, "cmmc_level", null),
+	"assessed_level": _stated_level,
 	"level_valid": level_valid,
 	"compliant": compliant,
 	"level_1_compliant": cmmc_level_1_compliant,

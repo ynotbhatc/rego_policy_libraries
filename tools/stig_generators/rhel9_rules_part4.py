@@ -125,11 +125,10 @@ flag_rule("account_auth", "RHEL-09-411080", "faillock_even_deny_root", ["failloc
 
 R("account_auth", "RHEL-09-411090", "faillock_unlock_time_zero", [("faillock_conf", "unlock_time")],
   [['_num(["faillock_conf", "unlock_time"]) == 0']],
-  {"faillock_conf": {"unlock_time": 0}}, [{"faillock_conf": {"unlock_time": 900}}, {"faillock_conf": {"unlock_time": "never"}}],
+  {"faillock_conf": {"unlock_time": 0}}, [{"faillock_conf": {"unlock_time": 900}}, {"faillock_conf": {"unlock_time": "never"}}, {"faillock_conf": {"unlock_time": "0"}}],
   "unlock_time in /etc/security/faillock.conf must be 0 (locked until an administrator releases the account)",
   "Set unlock_time = 0 in /etc/security/faillock.conf",
-  comment="unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out)",
-  pass_cases=[{"faillock_conf": {"unlock_time": "0"}}])
+  comment="unlock_time as configured in /etc/security/faillock.conf (null when missing or commented out)")
 
 R("account_auth", "RHEL-09-411095", "no_unauthorized_accounts", [("local_interactive_users",)],
   [["us := input.local_interactive_users", "is_array(us)", "count(us) == 0"]],
@@ -160,44 +159,57 @@ R("account_auth", "RHEL-09-411105", "faillock_dir_persistent", [("faillock_conf"
 R("account_auth", "RHEL-09-412035", "shell_tmout_set", [("profile_tmout",)],
   [["es := input.profile_tmout", "is_array(es)", "some e in es", 'startswith(e.file, "/etc/profile.d/")',
     "_p4_int_at_most(e.value, 600)"]],
-  {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "600"}]},
-  [{"profile_tmout": []}, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "900"}]},
-   {"profile_tmout": [{"file": "/etc/profile", "value": "600"}]},
-   {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "$IDLE"}]}],
+  {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 600}]},
+  [{"profile_tmout": []}, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 900}]},
+   {"profile_tmout": [{"file": "/etc/profile", "value": 600}]},
+   ("invalid", {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "$IDLE"}]}, "profile_tmout[0].value is not a number (got string)"),
+   ("invalid", {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "600"}]}, "profile_tmout[0].value is not a number (got string)"),
+   ("invalid", {"profile_tmout": [{"file": "/etc/profile", "value": 900}, {"file": "/etc/profile.d/tmout.sh", "value": " 300 "}]},
+    "profile_tmout[1].value is not a number (got string)"),
+   ("invalid", {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 300.5}]}, "profile_tmout[0].value is not a number (got a fraction)")],
   "a script in /etc/profile.d/ must set TMOUT to 600 or less (uncommented)",
   "Add declare -xr TMOUT=600 to /etc/profile.d/tmout.sh",
-  comment="uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value as written)",
-  pass_cases=[{"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "300"}]},
-              {"profile_tmout": [{"file": "/etc/profile", "value": "900"}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]}])
+  comment="uncommented TMOUT assignments in /etc/profile and /etc/profile.d/*.sh: [{file, value}] (value: the seconds as a "
+          "JSON number; an assignment that is not a decimal integer, e.g. $IDLE, as the text written)",
+  pass_cases=[{"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": 300}]},
+              {"profile_tmout": [{"file": "/etc/profile", "value": 900}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]},
+              {"profile_tmout": [{"file": "/etc/profile", "value": "$IDLE"}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]}],
+  num_items=['[m | some i, e in input.profile_tmout; m := _not_a_number(sprintf("profile_tmout[%d].value", [i]), object.get(e, "value", null))]'])
 
 R("account_auth", "RHEL-09-412040", "maxlogins_limited", [("limits_maxlogins",)],
   [["es := input.limits_maxlogins", "is_array(es)", "count(es) > 0",
     "every e in es {\n\t_p4_int_at_most(e.value, 10)\n}"]],
-  {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "10"}]},
+  {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 10}]},
   [{"limits_maxlogins": []},
-   {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "11"}]},
-   {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "10"},
-                         {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": "50"}]}],
+   {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 11}]},
+   {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 10},
+                         {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": 50}]},
+   ("invalid", {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "10"}]},
+    "limits_maxlogins[0].value is not a number (got string)"),
+   ("invalid", {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 10},
+                                     {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": " 5 "}]},
+    "limits_maxlogins[1].value is not a number (got string)"),
+   ("invalid", {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "unlimited"}]},
+    "limits_maxlogins[0].value is not a number (got string)"),
+   ("invalid", {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 9.5}]},
+    "limits_maxlogins[0].value is not a number (got a fraction)")],
   "every uncommented maxlogins item in /etc/security/limits.conf and limits.d/*.conf must be 10 or less (at least one item), "
   "or the value must be documented with the ISSO as an operational requirement (input.attest.rhel_09_412040_maxlogins_documented)",
   "Add * hard maxlogins 10 to /etc/security/limits.conf",
-  comment="uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}]",
+  comment="uncommented maxlogins items of /etc/security/limits.conf and limits.d/*.conf: [{file, domain, type, value}] "
+          "(value: a JSON number; a value that is not a decimal integer as the text written)",
   attest_alts=[['_attested("rhel_09_412040_maxlogins_documented")']],
   pass_cases=[{"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 5}]},
-              {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "50"}],
-               "attest": {"rhel_09_412040_maxlogins_documented": True}}])
+              {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 50}],
+               "attest": {"rhel_09_412040_maxlogins_documented": True}}],
+  num_items=['[m | some i, e in input.limits_maxlogins; m := _not_a_number(sprintf("limits_maxlogins[%d].value", [i]), object.get(e, "value", null))]'])
 helpers("account_auth", r'''
-# a non-negative integer (number, or decimal string) no greater than max
+# a non-negative JSON whole number no greater than max (a value written as something else, e.g. $IDLE or
+# unlimited, arrives as that text and is not a number)
 _p4_int_at_most(v, max) if {
-	is_number(v)
+	_whole_number(v)
 	v >= 0
 	v <= max
-}
-
-_p4_int_at_most(v, max) if {
-	is_string(v)
-	regex.match(`^\s*[0-9]+\s*$`, v)
-	to_number(trim_space(v)) <= max
 }
 
 # the umask values of a shell start-up file: at least one uncommented umask command, every one 077
@@ -213,10 +225,10 @@ _p4_umask_077(key) if {
 flag_rule("account_auth", "RHEL-09-412045", "faillock_audit", ["faillock_conf", "audit"],
           "/etc/security/faillock.conf", "the user name is logged on a failed logon")
 
-num_rule("account_auth", "RHEL-09-412050", "login_fail_delay", ["login_defs", "FAIL_DELAY"], 4, None, 4, [3, 0, "four"],
+num_rule("account_auth", "RHEL-09-412050", "login_fail_delay", ["login_defs", "FAIL_DELAY"], 4, None, 4, [3, 0, "four", "5"],
          "FAIL_DELAY in /etc/login.defs must be 4 or greater", "Set FAIL_DELAY 4 in /etc/login.defs",
          "FAIL_DELAY as configured in /etc/login.defs (null when missing or commented out)",
-         pass_cases=[{"login_defs": {"FAIL_DELAY": "5"}}])
+         pass_cases=[{"login_defs": {"FAIL_DELAY": 5}}])
 
 for sid, name, key, f in (("RHEL-09-412055", "umask_bashrc", "etc_bashrc", "/etc/bashrc"),
                           ("RHEL-09-412060", "umask_cshrc", "etc_csh_cshrc", "/etc/csh.cshrc"),
@@ -378,10 +390,10 @@ for sid, f in (("RHEL-09-611050", "password-auth"), ("RHEL-09-611055", "system-a
 
 # ── account_auth: pwquality, shadow, libuser, emergency / rescue ────────────────────────────────
 PWQ = "/etc/security/pwquality.conf"
-num_rule("account_auth", "RHEL-09-611010", "pwquality_retry", ["password_policy", "retry"], 1, 3, 3, [0, 4, "three"],
+num_rule("account_auth", "RHEL-09-611010", "pwquality_retry", ["password_policy", "retry"], 1, 3, 3, [0, 4, "three", "1"],
          f"retry in {PWQ}(.d) must be 1 to 3", f"Set retry = 3 in {PWQ}",
          f"effective retry from {PWQ} and pwquality.conf.d/*.conf (null when missing or commented out)",
-         pass_cases=[{"password_policy": {"retry": "1"}}])
+         pass_cases=[{"password_policy": {"retry": 1}}])
 
 flag_rule("account_auth", "RHEL-09-611060", "pwquality_enforce_for_root", ["password_policy", "enforce_for_root"],
           PWQ + " or pwquality.conf.d/*.conf", "password complexity applies to root")
@@ -400,10 +412,10 @@ R("account_auth", "RHEL-09-611080", "shadow_min_age_one_day", [("shadow_min_age_
 R("account_auth", "RHEL-09-611105", "pwquality_dictcheck", [("password_policy", "dictcheck")],
   [['n := _num(["password_policy", "dictcheck"])', "n != 0"]],
   {"password_policy": {"dictcheck": 1}}, [{"password_policy": {"dictcheck": 0}}, {"password_policy": {"dictcheck": "0"}},
-                                          {"password_policy": {"dictcheck": "yes"}}],
+                                          {"password_policy": {"dictcheck": "yes"}}, {"password_policy": {"dictcheck": "1"}}],
   f"dictcheck in {PWQ}(.d) must be set to a value other than 0", f"Set dictcheck = 1 in {PWQ}",
   comment=f"effective dictcheck from {PWQ} and pwquality.conf.d/*.conf (null when missing or commented out)",
-  pass_cases=[{"password_policy": {"dictcheck": "1"}}])
+  pass_cases=[{"password_policy": {"dictcheck": 2}}])
 
 num_rule("account_auth", "RHEL-09-611115", "pwquality_difok", ["password_policy", "difok"], 8, None, 8, [7, "5"],
          f"difok in {PWQ}(.d) must be 8 or greater", f"Set difok = 8 in {PWQ}",
@@ -412,10 +424,10 @@ num_rule("account_auth", "RHEL-09-611120", "pwquality_maxclassrepeat", ["passwor
          f"maxclassrepeat in {PWQ}(.d) must be 1 to 4 (not 0)", f"Set maxclassrepeat = 4 in {PWQ}",
          f"effective maxclassrepeat from {PWQ} and pwquality.conf.d/*.conf")
 # V2R10 check text: a finding only when "set to more than 3" or commented out (0 is not excluded, unlike maxclassrepeat)
-num_rule("account_auth", "RHEL-09-611125", "pwquality_maxrepeat", ["password_policy", "maxrepeat"], 0, 3, 3, [4, -1, "4"],
+num_rule("account_auth", "RHEL-09-611125", "pwquality_maxrepeat", ["password_policy", "maxrepeat"], 0, 3, 3, [4, -1, "4", "3"],
          f"maxrepeat in {PWQ}(.d) must be set to 3 or less", f"Set maxrepeat = 3 in {PWQ}",
          f"effective maxrepeat from {PWQ} and pwquality.conf.d/*.conf",
-         pass_cases=[{"password_policy": {"maxrepeat": "3"}}, {"password_policy": {"maxrepeat": 0}}])
+         pass_cases=[{"password_policy": {"maxrepeat": 2}}, {"password_policy": {"maxrepeat": 0}}])
 num_rule("account_auth", "RHEL-09-611130", "pwquality_minclass", ["password_policy", "minclass"], 4, None, 4, [3, "3"],
          f"minclass in {PWQ}(.d) must be 4 or greater", f"Set minclass = 4 in {PWQ}",
          f"effective minclass from {PWQ} and pwquality.conf.d/*.conf")

@@ -23,7 +23,7 @@ package stig.oracle_mysql_8.core
 # SRG-STIG library XCCDF on 2026-10-13 (tools/stig_generators/gen_oracle_db.py).
 # Organizational rules are explicit attestation booleans — named for what
 # a human verified, never silently passed. Input contract:
-#   input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase)
+#   input.mysql.variables[<name>]  : performance_schema.global_variables / SHOW VARIABLES (name lowercase); max_user_connections, validate_password.length, audit_log_rotate_on_size JSON numbers
 #   input.mysql.plugins[<name>]    : INFORMATION_SCHEMA.PLUGINS status
 #   input.mysql.audit.*            : audit_log filters and startup mode
 #   input.mysql.users[]            : mysql.user rows {user, host, plugin}
@@ -32,6 +32,30 @@ package stig.oracle_mysql_8.core
 
 import rego.v1
 
+# a numeric value as a JSON number (50; SHOW VARIABLES returns every value as text, so the collector converts it).
+# A number sent as text ("3", " 3 ") is not read: the collector converts what MySQL reports. Undefined for
+# anything else ("", ON, null, a boolean, a list): to_number(null) is 0 and to_number(true) is 1, so raw input is
+# never passed to to_number.
+_num(v) := v if is_number(v)
+
+# a numeric value that is a count, length, size or number of minutes: a JSON number with no fractional part.
+# 2.5 sessions or 2.5 failed logins is not a limit the DBMS can hold, so a fraction is evidence invalid and the
+# rule stays Open. Limits expressed in days (PASSWORD_LIFE_TIME and friends) use _num: Oracle accepts fractions of a day.
+_whole(v) := v if {
+	is_number(v)
+	round(v) == v
+}
+
+# a query result that lists names (policies, files): an array whose every member is a non-empty string.
+# count() of a string is its length, so a list is never counted before it is known to be one.
+_named_list(v) if {
+	is_array(v)
+	every s in v {
+		is_string(s)
+		trim_space(s) != ""
+	}
+}
+
 # ── audit helpers: the audit_log plugin must be active and at least one audit filter defined ──
 audit_log_active if {
 	upper(input.mysql.plugins.audit_log) == "ACTIVE"
@@ -39,6 +63,7 @@ audit_log_active if {
 
 audit_configured if {
 	audit_log_active
+	_named_list(input.mysql.audit.filters)
 	count(input.mysql.audit.filters) > 0
 }
 
@@ -79,7 +104,7 @@ status_r_mys8_00_000100 := "Open" if not r_mys8_00_000100
 default r_mys8_00_000200 := false
 
 r_mys8_00_000200 if {
-	to_number(input.mysql.variables.max_user_connections) > 0
+	_whole(input.mysql.variables.max_user_connections) > 0
 }
 
 finding_r_mys8_00_000200 := {
@@ -223,6 +248,7 @@ status_r_mys8_00_001600 := "Open" if not r_mys8_00_001600
 default r_mys8_00_001700 := false
 
 r_mys8_00_001700 if {
+	is_array(input.mysql.unauthorized_audit_admins)
 	count(input.mysql.unauthorized_audit_admins) == 0
 }
 
@@ -818,7 +844,7 @@ default r_mys8_00_005000 := false
 
 r_mys8_00_005000 if {
 	upper(input.mysql.plugins.validate_password) == "ACTIVE"
-	to_number(input.mysql.variables["validate_password.length"]) >= 15
+	_whole(input.mysql.variables["validate_password.length"]) >= 15
 	upper(input.mysql.variables["validate_password.policy"]) in {"MEDIUM", "STRONG"}
 }
 
@@ -837,6 +863,7 @@ status_r_mys8_00_005000 := "Open" if not r_mys8_00_005000
 default r_mys8_00_005100 := false
 
 r_mys8_00_005100 if {
+	is_array(input.mysql.users)
 	count(input.mysql.users) > 0
 	every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }
 }
@@ -928,6 +955,7 @@ status_r_mys8_00_005500 := "Open" if not r_mys8_00_005500
 default r_mys8_00_005600 := false
 
 r_mys8_00_005600 if {
+	is_array(input.mysql.sample_schemas_present)
 	count(input.mysql.sample_schemas_present) == 0
 }
 
@@ -946,6 +974,7 @@ status_r_mys8_00_005600 := "Open" if not r_mys8_00_005600
 default r_mys8_00_005700 := false
 
 r_mys8_00_005700 if {
+	is_array(input.mysql.unused_plugins_installed)
 	count(input.mysql.unused_plugins_installed) == 0
 }
 
@@ -964,6 +993,7 @@ status_r_mys8_00_005700 := "Open" if not r_mys8_00_005700
 default r_mys8_00_005800 := false
 
 r_mys8_00_005800 if {
+	is_array(input.mysql.unused_integrated_components_enabled)
 	count(input.mysql.unused_integrated_components_enabled) == 0
 }
 
@@ -1240,6 +1270,7 @@ status_r_mys8_00_007800 := "Open" if not r_mys8_00_007800
 default r_mys8_00_008000 := false
 
 r_mys8_00_008000 if {
+	is_array(input.mysql.unauthorized_audit_admins)
 	count(input.mysql.unauthorized_audit_admins) == 0
 }
 
@@ -1258,6 +1289,7 @@ status_r_mys8_00_008000 := "Open" if not r_mys8_00_008000
 default r_mys8_00_008100 := false
 
 r_mys8_00_008100 if {
+	is_array(input.mysql.unauthorized_audit_admins)
 	count(input.mysql.unauthorized_audit_admins) == 0
 }
 
@@ -1276,6 +1308,7 @@ status_r_mys8_00_008100 := "Open" if not r_mys8_00_008100
 default r_mys8_00_008200 := false
 
 r_mys8_00_008200 if {
+	is_array(input.mysql.unauthorized_audit_admins)
 	count(input.mysql.unauthorized_audit_admins) == 0
 }
 
@@ -1348,6 +1381,7 @@ status_r_mys8_00_008500 := "Open" if not r_mys8_00_008500
 default r_mys8_00_008700 := false
 
 r_mys8_00_008700 if {
+	is_array(input.mysql.unauthorized_ddl_grantees)
 	count(input.mysql.unauthorized_ddl_grantees) == 0
 }
 
@@ -1384,6 +1418,7 @@ status_r_mys8_00_009000 := "Open" if not r_mys8_00_009000
 default r_mys8_00_009100 := false
 
 r_mys8_00_009100 if {
+	is_array(input.mysql.unauthorized_create_routine_grantees)
 	count(input.mysql.unauthorized_create_routine_grantees) == 0
 }
 
@@ -1438,7 +1473,7 @@ status_r_mys8_00_009300 := "Open" if not r_mys8_00_009300
 default r_mys8_00_009600 := false
 
 r_mys8_00_009600 if {
-	to_number(input.mysql.variables.audit_log_rotate_on_size) > 0
+	_whole(input.mysql.variables.audit_log_rotate_on_size) > 0
 	input.mysql.attest.audit_storage_capacity_allocated == true
 }
 
@@ -1565,6 +1600,7 @@ status_r_mys8_00_010500 := "Open" if not r_mys8_00_010500
 default r_mys8_00_010600 := false
 
 r_mys8_00_010600 if {
+	is_array(input.mysql.unauthorized_definer_routines)
 	count(input.mysql.unauthorized_definer_routines) == 0
 }
 
@@ -1583,6 +1619,7 @@ status_r_mys8_00_010600 := "Open" if not r_mys8_00_010600
 default r_mys8_00_010700 := false
 
 r_mys8_00_010700 if {
+	is_array(input.mysql.unauthorized_definer_routines)
 	count(input.mysql.unauthorized_definer_routines) == 0
 }
 

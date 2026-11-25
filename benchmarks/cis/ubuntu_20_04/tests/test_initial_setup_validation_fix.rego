@@ -12,6 +12,8 @@ good := {"initial_setup": {
 	"motd_exists": true, "motd_mode": "0644", "motd_owner": "root",
 	"issue_exists": true, "issue_mode": "0644", "issue_owner": "root",
 	"issue_net_exists": true, "issue_net_mode": "644", "issue_net_owner": "root",
+	"motd_contains_sensitive_info": false, "issue_contains_sensitive_info": false, "issue_net_contains_sensitive_info": false,
+	"gdm_installed": false,
 }}
 
 test_good_input_compliant if {

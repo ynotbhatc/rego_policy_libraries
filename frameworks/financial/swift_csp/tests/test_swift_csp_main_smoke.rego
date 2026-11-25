@@ -41,5 +41,5 @@ test_semrev_missing_swift_activities_flag_raises_2_8 if {
 
 test_semrev_explicit_not_applicable_flags_raise_no_applicability_finding if {
 	v := data.swift_csp.main.violations with input as {"infrastructure": {"virtualised": false}, "outsourcing": {"swift_activities": false}}
-	count([m | some m in v; contains(m, "evidence missing")]) == 0
+	count([m | some m in v; contains(m, "applicability of")]) == 0
 }

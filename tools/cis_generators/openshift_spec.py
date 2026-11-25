@@ -169,12 +169,8 @@ _bool(v) := "true" if lower(trim_space(v)) in {"1", "t", "true"}
 
 _bool(v) := "false" if lower(trim_space(v)) in {"0", "f", "false"}
 
+# Endpoint and container ports are numbers in the API objects; a string in their place is not a port.
 _port(p) := p if is_number(p)
-
-_port(p) := to_number(p) if {
-	is_string(p)
-	regex.match(`^[0-9]+$`, p)
-}
 
 # ── OpenShift objects and config files under input.openshift ─────────────────
 _obj(name) := o if {
@@ -443,6 +439,40 @@ _scc_collected if {
 	is_array(input.scc.items)
 	count(input.scc.items) > 0
 	input.collection_status.scc == "ok"
+}
+
+# The SCC allow* fields are booleans in the API object. A string or a number in their place is a collection
+# error: it is not read as a refusal, and it is reported under the recommendation that reads the field.
+_scc_boolean_fields := [
+	["allowPrivilegedContainer", "5.2.1"],
+	["allowHostPID", "5.2.2"],
+	["allowHostIPC", "5.2.3"],
+	["allowHostNetwork", "5.2.4"],
+	["allowPrivilegeEscalation", "5.2.5"],
+]
+
+_v_policies contains sprintf("%s: evidence invalid — SCC %v: %s must be true or false, got %s", [id, object.get(s, ["metadata", "name"], "<unnamed>"), field, type_name(s[field])]) if {
+	some [field, id] in _scc_boolean_fields
+	_applies(id)
+	_scc_collected
+	some s in input.scc.items
+	not is_null(s[field])
+	not is_boolean(s[field])
+}
+
+# allowPrivilegedContainer, allowHostPID, allowHostIPC and allowHostNetwork are required fields of the SCC API
+# object, so `oc get scc -o json` always carries them. An SCC collected without one (or with null) was not
+# collected whole: it is reported under the recommendation that reads the field, even when another SCC meets
+# it. allowPrivilegeEscalation is optional in the API (unset means escalation is allowed) and is not listed.
+_scc_required_fields := {"allowPrivilegedContainer", "allowHostPID", "allowHostIPC", "allowHostNetwork"}
+
+_v_policies contains sprintf("%s: evidence missing — SCC %v: %s not collected", [id, object.get(s, ["metadata", "name"], "<unnamed>"), field]) if {
+	some [field, id] in _scc_boolean_fields
+	field in _scc_required_fields
+	_applies(id)
+	_scc_collected
+	some s in input.scc.items
+	is_null(object.get(s, field, null))
 }
 
 # the audit names exactly two objects as expected in the default namespace: the kubernetes and openshift Services
@@ -851,10 +881,11 @@ def member(name):
 
 def kubelet_node(name):
     return {"name": name, "config": {
-        "authentication": {"anonymous": {"enabled": False}, "x509": {"clientCAFile": "/etc/kubernetes/kubelet-ca.crt"},
-                           "webhook": {"enabled": True}},
+        # only what a recommendation reads: no authentication.webhook (4.2.2 reads anonymous.enabled) and no
+        # kubeAPIQPS (4.2.8 is a manual review decided by its attestation)
+        "authentication": {"anonymous": {"enabled": False}, "x509": {"clientCAFile": "/etc/kubernetes/kubelet-ca.crt"}},
         "authorization": {"mode": "Webhook"}, "streamingConnectionIdleTimeout": "4h0m0s",
-        "makeIPTablesUtilChains": True, "rotateCertificates": True, "kubeAPIQPS": 50,
+        "makeIPTablesUtilChains": True, "rotateCertificates": True,
         "featureGates": {"RotateKubeletServerCertificate": True}}}
 
 
@@ -896,13 +927,14 @@ GREEN = {
             "service-account-private-key-file": [f"{SP}/secrets/service-account-private-key/service-account.key"],
             "root-ca-file": [f"{SP}/configmaps/serviceaccount-ca/ca-bundle.crt"]}},
         "kube_controller_manager_pod": {"spec": {"containers": [
-            {"name": "kube-controller-manager", "livenessProbe": {"httpGet": {"path": "healthz", "port": 10257}},
-             "readinessProbe": {"httpGet": {"path": "healthz", "port": 10257}}}]}},
+            # the probe path is what 1.3.x / 1.4.x read; the probe port is not, so the fixture does not carry it
+            {"name": "kube-controller-manager", "livenessProbe": {"httpGet": {"path": "healthz"}},
+             "readinessProbe": {"httpGet": {"path": "healthz"}}}]}},
         "kube_scheduler_pod": {"spec": {"containers": [
             {"name": "kube-scheduler", "command": ["hyperkube", "kube-scheduler"],
              "args": ["--config=/etc/kubernetes/static-pod-resources/configmaps/config/config.yaml", "--v=2"],
-             "livenessProbe": {"httpGet": {"path": "healthz", "port": 10259}},
-             "readinessProbe": {"httpGet": {"path": "healthz", "port": 10259}}}]}},
+             "livenessProbe": {"httpGet": {"path": "healthz"}},
+             "readinessProbe": {"httpGet": {"path": "healthz"}}}]}},
         "kubeapiserver": {"spec": {"observedConfig": {
             "apiServerArguments": {"feature-gates": ["APIPriorityAndFairness=true", "RotateKubeletServerCertificate=true"]},
             "servingInfo": dict(TLS, bindAddress="0.0.0.0:6443")}}},

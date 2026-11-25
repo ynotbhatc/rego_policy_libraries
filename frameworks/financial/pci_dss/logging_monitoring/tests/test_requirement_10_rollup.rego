@@ -1,5 +1,4 @@
-package pci_dss.logging_monitoring.requirement_10_test
-
+package pci_dss_tests.logging_monitoring.requirement_10_test
 import rego.v1
 
 # Roll-up behaviour (validation 2026-10-17). Controls are mocked with `with ... as` so these tests
