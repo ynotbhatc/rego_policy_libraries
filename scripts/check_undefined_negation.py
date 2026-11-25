@@ -829,7 +829,7 @@ class Scanner:
                              paths=paths or sorted({self._norm(r, ctx["env"]) for r in refs}), guard="", pkg=ctx["pkg"],
                              present=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["present"]
                                         for r in refs),
-                             used=bool(refs) and all("[]" in self._norm(r, ctx["env"]) and self._norm(r, ctx["env"]) in ctx["used"] for r in refs),
+                             used=bool(refs) and all(self._used(self._norm(r, ctx["env"]), ctx["used"]) for r in refs),
                              typed=bool(refs) and all(self._norm(r, ctx["env"]) in ctx["typed"] for r in refs)))
 
     def _body(self, body, env, ctx):
@@ -880,6 +880,8 @@ class Scanner:
         coll = ctx["coll"]
         if op in ("assign", "eq") and len(args) == 2 and args[0].get("type") == "var":
             coll = args[0]["value"]
+        elif op in ("equal", "lt", "lte") and len(args) == 2 and self._zero_count_of_comprehension(op, args):
+            coll = "violations"       # count([x | ...]) == 0: the comprehension collects offenders
         for a in args:
             self._comprehensions(a, env, dict(ctx, coll=coll) if coll != ctx["coll"] else ctx)
 
@@ -891,6 +893,13 @@ class Scanner:
             self._positive(e, op, args, env, ctx)
             if op not in ("assign", "eq"):
                 self._mark_used(args, env, ctx)
+
+    @staticmethod
+    def _used(path, used):
+        """read by an earlier positive line: the same field of an iterated row, or a parent of a field it read"""
+        if "[]" in path and path in used:
+            return True
+        return any(u.startswith(path + ".") or u.startswith(path + "[") for u in used)
 
     def _mark_used(self, args, env, ctx):
         """a fact a positive line reads stops the body when it is missing: a later negation of it adds no new drop"""
@@ -911,6 +920,15 @@ class Scanner:
                     walk(v)
         for a in args:
             walk(a)
+
+    @staticmethod
+    def _zero_count_of_comprehension(op, args):
+        a, b = args
+        if a.get("type") != "call" or _opname(a["value"][0]) != "count" or len(a["value"]) != 2:
+            return False
+        if a["value"][1].get("type") not in COMPREHENSIONS or b.get("type") != "number":
+            return False
+        return (op == "equal" and b["value"] == 0) or (op == "lt" and b["value"] == 1) or (op == "lte" and b["value"] == 0)
 
     def _negated(self, e, op, args, env, ctx):
         if op is None:                                               # not x.y / not v

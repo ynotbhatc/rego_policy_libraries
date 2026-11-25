@@ -127,6 +127,12 @@ violations contains "m" if {
 	not is_object(input.obl)
 }"""), [("neg-call", "guarded")])
 
+    def test_count_zero_of_a_comprehension_collects_offenders_in_a_pass_rule(self):
+        self.assertEqual(self.kinds("""
+all_ok if {
+	count([s | some s in input.systems; not s.level in {"a", "b"}]) == 0
+}"""), [("neg-in", "fail-open")])
+
     def test_not_equal_null_is_a_presence_test(self):
         self.assertEqual(self.kinds("""
 violations contains msg if {
