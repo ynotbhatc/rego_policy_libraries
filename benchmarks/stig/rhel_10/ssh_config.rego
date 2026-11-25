@@ -118,6 +118,31 @@ _r10_ssh_runtime(kw) := lower(trim_space(v)) if {
 	is_string(v)
 }
 
+# A whole number as the check text reads it: digits only, no sign, no fraction, no unit. The line lists keep the
+# text sshd printed; the comparison reads this number. Anything else is evidence invalid (the rule is Open and its
+# detail says so), never compared as text.
+_r10_whole(v) := to_number(v) if regex.match(`^[0-9]+$`, v)
+
+_r10_alive_count_invalid if {
+	v := _r10_ssh_first("ClientAliveCountMax")
+	not _r10_whole(v)
+}
+
+_r10_alive_count_invalid if {
+	v := _r10_ssh_runtime("ClientAliveCountMax")
+	not _r10_whole(v)
+}
+
+_r10_alive_interval_invalid if {
+	v := _r10_ssh_first("ClientAliveInterval")
+	not _r10_whole(v)
+}
+
+_r10_alive_interval_invalid if {
+	v := _r10_ssh_runtime("ClientAliveInterval")
+	not _r10_whole(v)
+}
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -503,8 +528,8 @@ default ssh_client_alive_count_ok := false
 
 ssh_client_alive_count_ok if {
 	count(missing_rhel_10_700660) == 0
-	_r10_ssh_first("ClientAliveCountMax") == "1"
-	_r10_ssh_runtime("ClientAliveCountMax") == "1"
+	_r10_whole(_r10_ssh_first("ClientAliveCountMax")) == 1
+	_r10_whole(_r10_ssh_runtime("ClientAliveCountMax")) == 1
 }
 
 status_rhel_10_700660 := "Not_a_Finding" if ssh_client_alive_count_ok
@@ -514,6 +539,8 @@ else := "Open"
 detail_rhel_10_700660 := "RHEL-10-700660: Not_a_Finding" if ssh_client_alive_count_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-10-700660", concat(", ", missing_rhel_10_700660)]) if count(missing_rhel_10_700660) > 0
+
+else := sprintf("%s: evidence invalid — ClientAliveCountMax is not a whole number (digits only) in the first drop-in value or in the sshd -T output", ["RHEL-10-700660"]) if _r10_alive_count_invalid
 
 else := "RHEL-10-700660: check failed — ClientAliveCountMax must be 1 in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
 
@@ -536,12 +563,8 @@ default ssh_client_alive_interval_ok := false
 
 ssh_client_alive_interval_ok if {
 	count(missing_rhel_10_700930) == 0
-	v := _r10_ssh_first("ClientAliveInterval")
-	regex.match(`^[0-9]+$`, v)
-	to_number(v) <= 600
-	r := _r10_ssh_runtime("ClientAliveInterval")
-	regex.match(`^[0-9]+$`, r)
-	to_number(r) <= 600
+	_r10_whole(_r10_ssh_first("ClientAliveInterval")) <= 600
+	_r10_whole(_r10_ssh_runtime("ClientAliveInterval")) <= 600
 }
 
 status_rhel_10_700930 := "Not_a_Finding" if ssh_client_alive_interval_ok
@@ -551,6 +574,8 @@ else := "Open"
 detail_rhel_10_700930 := "RHEL-10-700930: Not_a_Finding" if ssh_client_alive_interval_ok
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-10-700930", concat(", ", missing_rhel_10_700930)]) if count(missing_rhel_10_700930) > 0
+
+else := sprintf("%s: evidence invalid — ClientAliveInterval is not a whole number (digits only) in the first drop-in value or in the sshd -T output", ["RHEL-10-700930"]) if _r10_alive_interval_invalid
 
 else := "RHEL-10-700930: check failed — ClientAliveInterval must be 600 or less in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
 

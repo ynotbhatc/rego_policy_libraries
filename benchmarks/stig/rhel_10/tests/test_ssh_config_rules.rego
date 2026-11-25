@@ -595,7 +595,7 @@ test_rhel_10_700930_fail_5 if {
 test_rhel_10_700930_fail_6 if {
 	f := data.stig.rhel_10.ssh_config.finding_rhel_10_700930 with input as object.union(green_fixture, {"sshd_config_files": {"ClientAliveInterval": [{"file": "/etc/ssh/sshd_config.d/10-stig.conf", "value": "-1"}]}, "sshd_runtime": {"clientaliveinterval": "-1"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-10-700930: check failed")
+	contains(f.detail, "RHEL-10-700930: evidence invalid")
 }
 
 test_rhel_10_700930_evidence_missing_1 if {
