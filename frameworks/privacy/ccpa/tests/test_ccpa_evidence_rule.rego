@@ -675,11 +675,11 @@ _bad_inputs(fx) := array.concat(
 # test_the_slices_cover_* tests check it.
 _slice(xs, i, n) := [x | some j, x in xs; j % n == i]
 
-test_the_slices_cover_main_bad_inputs_9 if {
-	sum([count(_slice(_main_bad_inputs, i, 9)) | some i in numbers.range(0, 8)]) == count(_main_bad_inputs)
-	every i in numbers.range(0, 8) {
-		every k, x in _slice(_main_bad_inputs, i, 9) {
-			x == _main_bad_inputs[i + (k * 9)]
+test_the_slices_cover_main_bad_inputs_18 if {
+	sum([count(_slice(_main_bad_inputs, i, 18)) | some i in numbers.range(0, 17)]) == count(_main_bad_inputs)
+	every i in numbers.range(0, 17) {
+		every k, x in _slice(_main_bad_inputs, i, 18) {
+			x == _main_bad_inputs[i + (k * 18)]
 		}
 	}
 }
@@ -736,9 +736,13 @@ _either_or := {sprintf("ccpa.risk_assessments.timing.%s%s", [field, suffix]) |
 	some suffix in [" removed", " := null"]
 }
 
-test_no_mutated_fixture_passes if {
-	_passing_mutations == []
-}
+# one test per module of `fixtures` (together they are the whole of _passing_mutations)
+_passing_mutations_of(name) := [bad.case |
+	some bad in _bad_inputs(fixtures[name])
+	not bad.case in _either_or
+	data.ccpa[name].compliant with input as bad.input
+]
+
 
 # The audit's case: every yes/no fact of the business-obligations module sent as the string "false".
 test_business_obligations_string_false_is_not_a_pass if {
@@ -752,6 +756,22 @@ test_business_obligations_string_false_is_not_a_pass if {
 		contains(v, "is not a boolean (got string)")
 	}
 }
+
+test_no_mutated_fixture_passes_admt if _passing_mutations_of("admt") == []
+
+test_no_mutated_fixture_passes_business_obligations if _passing_mutations_of("business_obligations") == []
+
+test_no_mutated_fixture_passes_consumer_rights if _passing_mutations_of("consumer_rights") == []
+
+test_no_mutated_fixture_passes_cybersecurity_audits if _passing_mutations_of("cybersecurity_audits") == []
+
+test_no_mutated_fixture_passes_data_practices if _passing_mutations_of("data_practices") == []
+
+test_no_mutated_fixture_passes_risk_assessments if _passing_mutations_of("risk_assessments") == []
+
+test_no_mutated_fixture_passes_sensitive_data if _passing_mutations_of("sensitive_data") == []
+
+test_the_mutated_fixture_modules_are_all_of_fixtures if object.keys(fixtures) == {"admt", "business_obligations", "consumer_rights", "cybersecurity_audits", "data_practices", "risk_assessments", "sensitive_data"}
 
 test_finding_names_the_evidence_problem if {
 	base := fixtures.consumer_rights
@@ -821,7 +841,7 @@ _main_bad_inputs := _bad_inputs(all_pass_input)
 
 test_main_never_passes_a_mutated_input_slice_0 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 0, 9)
+		some bad in _slice(_main_bad_inputs, 0, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -831,7 +851,7 @@ test_main_never_passes_a_mutated_input_slice_0 if {
 
 test_main_never_passes_a_mutated_input_slice_1 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 1, 9)
+		some bad in _slice(_main_bad_inputs, 1, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -841,7 +861,7 @@ test_main_never_passes_a_mutated_input_slice_1 if {
 
 test_main_never_passes_a_mutated_input_slice_2 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 2, 9)
+		some bad in _slice(_main_bad_inputs, 2, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -851,7 +871,7 @@ test_main_never_passes_a_mutated_input_slice_2 if {
 
 test_main_never_passes_a_mutated_input_slice_3 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 3, 9)
+		some bad in _slice(_main_bad_inputs, 3, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -861,7 +881,7 @@ test_main_never_passes_a_mutated_input_slice_3 if {
 
 test_main_never_passes_a_mutated_input_slice_4 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 4, 9)
+		some bad in _slice(_main_bad_inputs, 4, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -871,7 +891,7 @@ test_main_never_passes_a_mutated_input_slice_4 if {
 
 test_main_never_passes_a_mutated_input_slice_5 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 5, 9)
+		some bad in _slice(_main_bad_inputs, 5, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -881,7 +901,7 @@ test_main_never_passes_a_mutated_input_slice_5 if {
 
 test_main_never_passes_a_mutated_input_slice_6 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 6, 9)
+		some bad in _slice(_main_bad_inputs, 6, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -891,7 +911,7 @@ test_main_never_passes_a_mutated_input_slice_6 if {
 
 test_main_never_passes_a_mutated_input_slice_7 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 7, 9)
+		some bad in _slice(_main_bad_inputs, 7, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
@@ -901,10 +921,101 @@ test_main_never_passes_a_mutated_input_slice_7 if {
 
 test_main_never_passes_a_mutated_input_slice_8 if {
 	passing := [bad.case |
-		some bad in _slice(_main_bad_inputs, 8, 9)
+		some bad in _slice(_main_bad_inputs, 8, 18)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true
 	]
 	passing == []
 }
+
+test_main_never_passes_a_mutated_input_slice_9 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 9, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_10 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 10, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_11 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 11, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_12 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 12, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_13 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 13, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_14 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 14, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_15 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 15, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_16 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 16, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_17 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 17, 18)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
