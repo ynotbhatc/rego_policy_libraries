@@ -38,9 +38,9 @@ package cis_rocky_linux_9
 # its content is not judged. The section keys are the rhel_9 v2.0.0 ones; each now holds the v3.0.0 sections listed
 # in the package title of its module.
 #
-# 100 MEANS COMPLIANT: compliance_percentage is the share of the required sections that are compliant; when
-# the result is not compliant it never reads 100 (it is capped at 99.999). That can only bite when no
-# recommendation failed and a finding outside the recommendations stands (PROFILE NOT SELECTED).
+# 100 MEANS COMPLIANT: compliance_percentage is the share of the required sections that are compliant. When every
+# section is compliant and the result is still not compliant (a finding outside the recommendations stands:
+# PROFILE NOT SELECTED) it is null and compliance_percentage_reason says why: never 100 beside compliant == false.
 
 import rego.v1
 
@@ -5178,12 +5178,35 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := _capped_unless_compliant((compliant_sections * 100) / total_sections) if total_sections > 0
+compliance_percentage := (compliant_sections * 100) / total_sections if {
+	total_sections > 0
+	not _percentage_withheld
+}
 
-# 100 means compliant: a result that is not compliant never reads 100
-_capped_unless_compliant(p) := p if {
-	compliant
-} else := min([p, 99.999])
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {
+	total_sections > 0
+	_percentage_withheld
+}
+
+_percentage_withheld if {
+	not compliant
+	compliant_sections == total_sections
+}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {
+	_percentage_withheld
+	not profile_selected
+}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {
+	_percentage_withheld
+	profile_selected
+}
 
 total_controls_covered := count(applicable_ids)
 

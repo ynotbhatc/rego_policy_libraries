@@ -12,7 +12,10 @@ status(row) := s if {
 	s := data.cis_windows_server_2019.lib.results.T with data.cis_windows_server_2019.account_policies.controls as {"T": row}
 }
 
-ms := {"role": "member_server", "level": 2}
+ms := {"role": "member_server", "level": 2, "next_generation": false}
+
+# the profile without its selector: it is not stated
+ms_unstated := {"role": "member_server", "level": 2}
 
 reg(op, value) := {"kind": "reg", "profiles": ["L1_DC", "L1_MS"], "path": "HKLM\\X", "name": "V", "op": op, "value": value}
 
@@ -214,8 +217,9 @@ test_level_2_row_is_out_of_scope_at_level_1 if {
 	status(row) == "not_applicable" with input as {"cis_profile": {"role": "member_server", "level": 1}, "registry": {"HKLM\\X": {"V": 1}}}
 }
 
-# Only `true` opts a tier in and only `false` (or no selector) leaves it out. A selector of another type decides
-# nothing: the tier's rows are in scope and not assessed, so a mistyped selector cannot shrink the assessment.
+# Only `true` opts a tier in and only an explicit `false` leaves it out. A selector of another type, or one that
+# is not stated, decides nothing: the tier's rows are in scope and not assessed, so a mistyped or missing selector
+# cannot shrink the assessment.
 test_a_mistyped_tier_selector_is_not_assessed if {
 	row := {"kind": "reg", "profiles": ["NG_MS"], "path": "HKLM\\X", "name": "V", "op": "eq", "value": 1, "msg": "CIS T"}
 	reg1 := {"HKLM\\X": {"V": 1}}
@@ -226,6 +230,10 @@ test_a_mistyped_tier_selector_is_not_assessed if {
 		status(row) == "not_assessed" with input as {"cis_profile": object.union(ms, {"next_generation": bad}), "registry": reg1}
 	}
 	status(row) == "not_assessed" with input as {"cis_profile": "level 2", "registry": reg1}
+	status(row) == "not_assessed" with input as {"cis_profile": ms_unstated, "registry": reg1}
+	unstated := findings(row) with input as {"cis_profile": ms_unstated, "registry": reg1}
+	count(unstated) == 1
+	contains(unstated[0], "input.cis_profile.next_generation was not stated (state true or false), so the profile cannot place this recommendation")
 	msgs := findings(row) with input as {"cis_profile": object.union(ms, {"next_generation": "true"}), "registry": reg1}
 	count(msgs) == 1
 	startswith(msgs[0], "CIS T -- ")

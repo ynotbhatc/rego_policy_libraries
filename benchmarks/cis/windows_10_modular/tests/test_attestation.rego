@@ -11,7 +11,7 @@ test_unattested_manual_recommendation_is_a_violation if {
 }
 
 test_manual_recommendations_are_level_1 if {
-	fx := json.patch(json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["attestations"]), [{"op": "replace", "path": "/cis_profile", "value": {"level": 1}}])
+	fx := json.patch(json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["attestations"]), [{"op": "replace", "path": "/cis_profile", "value": {"level": 1, "bitlocker": false, "next_generation": false}}])
 	r := data.cis_windows_10.main.compliance_report with input as fx
 	r.unattested_controls == 2
 }

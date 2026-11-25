@@ -1,9 +1,10 @@
 # Read into lib.rego at {{SELECTOR_BLOCK}} by the Windows generators (windows_lib.rego.tmpl and the Windows 10/11
 # profile block share it) -- not a module on its own.
 # A selector that is supplied but is not a boolean ("true", 1, null), or a cis_profile that is not an object,
-# decides nothing: only `true` opts a tier in and only `false` or an absent selector leaves it out. Its tier's
+# decides nothing: only `true` opts a tier in and only an explicit `false` leaves it out. A selector that is not
+# stated at all decides nothing either (reported as <selector>_defaulted in the profile). Its tier's
 # rows are then in scope and not assessed (counted as failed), as a role-specific row is when no role is given,
-# so a mistyped selector can never shrink the assessment into a pass.
+# so a mistyped or missing selector can never shrink the assessment into a pass.
 _profile_malformed if {
 	p := input.cis_profile
 	not is_object(p)
@@ -22,6 +23,21 @@ _selector_problem(key) := sprintf("input.cis_profile.%s is not a boolean (got %s
 	v := _cis_profile[key]
 	not is_boolean(v)
 }
+
+# A selector the profile does not state at all is not an explicit false: a missing selector must not narrow the
+# assessment (and silently move rows to not applicable), as a missing level is reported level_defaulted. The
+# tier's rows stay in scope and are not assessed until the selector is stated, true or false.
+_selector_problem(key) := sprintf("input.cis_profile.%s was not stated (state true or false)", [key]) if {
+	key in _selectors
+	not _profile_malformed
+	not key in object.keys(_cis_profile)
+}
+
+# The selectors the profile left out, reported in the profile block so the report says so.
+_selectors_not_stated := sort({key |
+	some key in _selectors
+	not key in object.keys(_cis_profile)
+})
 
 _tier_undecided(tier) if _selector_problem(TIER_SELECTOR[tier])
 

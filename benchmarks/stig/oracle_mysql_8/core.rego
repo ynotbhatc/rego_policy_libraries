@@ -38,6 +38,14 @@ import rego.v1
 # never passed to to_number.
 _num(v) := v if is_number(v)
 
+# a numeric value that is a count, length, size or number of minutes: a JSON number with no fractional part.
+# 2.5 sessions or 2.5 failed logins is not a limit the DBMS can hold, so a fraction is evidence invalid and the
+# rule stays Open. Limits expressed in days (PASSWORD_LIFE_TIME and friends) use _num: Oracle accepts fractions of a day.
+_whole(v) := v if {
+	is_number(v)
+	round(v) == v
+}
+
 # a query result that lists names (policies, files): an array whose every member is a non-empty string.
 # count() of a string is its length, so a list is never counted before it is known to be one.
 _named_list(v) if {
@@ -96,7 +104,7 @@ status_r_mys8_00_000100 := "Open" if not r_mys8_00_000100
 default r_mys8_00_000200 := false
 
 r_mys8_00_000200 if {
-	_num(input.mysql.variables.max_user_connections) > 0
+	_whole(input.mysql.variables.max_user_connections) > 0
 }
 
 finding_r_mys8_00_000200 := {
@@ -836,7 +844,7 @@ default r_mys8_00_005000 := false
 
 r_mys8_00_005000 if {
 	upper(input.mysql.plugins.validate_password) == "ACTIVE"
-	_num(input.mysql.variables["validate_password.length"]) >= 15
+	_whole(input.mysql.variables["validate_password.length"]) >= 15
 	upper(input.mysql.variables["validate_password.policy"]) in {"MEDIUM", "STRONG"}
 }
 
@@ -1465,7 +1473,7 @@ status_r_mys8_00_009300 := "Open" if not r_mys8_00_009300
 default r_mys8_00_009600 := false
 
 r_mys8_00_009600 if {
-	_num(input.mysql.variables.audit_log_rotate_on_size) > 0
+	_whole(input.mysql.variables.audit_log_rotate_on_size) > 0
 	input.mysql.attest.audit_storage_capacity_allocated == true
 }
 

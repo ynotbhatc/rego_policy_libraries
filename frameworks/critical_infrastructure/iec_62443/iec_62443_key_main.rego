@@ -73,7 +73,12 @@ total_controls := _t.total_srs + count(_part_flags)
 
 _failed_parts := count([f | some f in _part_flags; f != true])
 
-_failed_srs := _t.total_srs - _t.passing_srs
+# with no input document at all the per-FR reports are undefined, so no requirement is counted as passing
+default _passing_srs := 0
+
+_passing_srs := _t.passing_srs
+
+_failed_srs := _t.total_srs - _passing_srs
 
 _failed_controls := _failed_srs + _failed_parts
 

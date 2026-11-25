@@ -12,7 +12,10 @@ status(row) := s if {
 	s := data.cis_windows_11.lib.results.T with data.cis_windows_11.account_policies.controls as {"T": row}
 }
 
-ms := {"level": 2}
+ms := {"level": 2, "bitlocker": false, "next_generation": false}
+
+# the profile without its selectors: they are not stated
+ms_unstated := {"level": 2}
 
 reg(op, value) := {"kind": "reg", "profiles": ["L1"], "path": "HKLM\\X", "name": "V", "op": op, "value": value}
 
@@ -223,6 +226,8 @@ test_a_mistyped_bitlocker_selector_is_not_assessed if {
 		status(row) == "not_assessed" with input as {"cis_profile": {"level": 2, "bitlocker": bad}, "registry": {"HKLM\\X": {"V": 1}}}
 	}
 	status(row) == "not_applicable" with input as {"cis_profile": {"level": 2, "bitlocker": false}, "registry": {"HKLM\\X": {"V": 1}}}
+	status(row) == "not_assessed" with input as {"cis_profile": {"level": 2}, "registry": {"HKLM\\X": {"V": 1}}}
+	status(row) == "not_assessed" with input as {"registry": {"HKLM\\X": {"V": 1}}}
 	status(row) == "not_assessed" with input as {"cis_profile": "level 2", "registry": {"HKLM\\X": {"V": 1}}}
 }
 
@@ -253,8 +258,9 @@ test_level_number_type_traps if {
 	data.cis_windows_11.lib.level == 2 with input as {"cis_profile": {"level": "one"}}
 }
 
-# Only `true` opts a tier in and only `false` (or no selector) leaves it out. A selector of another type decides
-# nothing: the tier's rows are in scope and not assessed, so a mistyped selector cannot shrink the assessment.
+# Only `true` opts a tier in and only an explicit `false` leaves it out. A selector of another type, or one that
+# is not stated, decides nothing: the tier's rows are in scope and not assessed, so a mistyped or missing selector
+# cannot shrink the assessment.
 test_a_mistyped_tier_selector_is_not_assessed if {
 	row := {"kind": "reg", "profiles": ["NG"], "path": "HKLM\\X", "name": "V", "op": "eq", "value": 1, "msg": "CIS T"}
 	reg1 := {"HKLM\\X": {"V": 1}}
@@ -265,6 +271,10 @@ test_a_mistyped_tier_selector_is_not_assessed if {
 		status(row) == "not_assessed" with input as {"cis_profile": object.union(ms, {"next_generation": bad}), "registry": reg1}
 	}
 	status(row) == "not_assessed" with input as {"cis_profile": "level 2", "registry": reg1}
+	status(row) == "not_assessed" with input as {"cis_profile": ms_unstated, "registry": reg1}
+	unstated := findings(row) with input as {"cis_profile": ms_unstated, "registry": reg1}
+	count(unstated) == 1
+	contains(unstated[0], "input.cis_profile.next_generation was not stated (state true or false), so the profile cannot place this recommendation")
 	msgs := findings(row) with input as {"cis_profile": object.union(ms, {"next_generation": "true"}), "registry": reg1}
 	count(msgs) == 1
 	startswith(msgs[0], "CIS T -- ")

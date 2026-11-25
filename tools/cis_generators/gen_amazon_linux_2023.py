@@ -1211,12 +1211,35 @@ compliant_sections := count([name | some name, s in section_compliance; s.compli
 
 default compliance_percentage := 0
 
-compliance_percentage := _capped_unless_compliant((compliant_sections * 100) / total_sections) if total_sections > 0
+compliance_percentage := (compliant_sections * 100) / total_sections if {{
+	total_sections > 0
+	not _percentage_withheld
+}}
 
-# 100 means compliant: a result that is not compliant never reads 100
-_capped_unless_compliant(p) := p if {{
-	compliant
-}} else := min([p, 99.999])
+# 100 means compliant. When every section is compliant and the result is still not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED) there is no true percentage to report, so the figure is null and
+# compliance_percentage_reason says why. It is never 100 beside compliant == false and never a rounded-down figure.
+compliance_percentage := null if {{
+	total_sections > 0
+	_percentage_withheld
+}}
+
+_percentage_withheld if {{
+	not compliant
+	compliant_sections == total_sections
+}}
+
+default compliance_percentage_reason := null
+
+compliance_percentage_reason := "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected" if {{
+	_percentage_withheld
+	not profile_selected
+}}
+
+compliance_percentage_reason := "a finding that cites no recommendation stands although no section failed (see violations)" if {{
+	_percentage_withheld
+	profile_selected
+}}
 
 total_controls_covered := count(applicable_ids)
 
@@ -1365,14 +1388,46 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := _capped_unless_compliant(round((_passed * 100000) / _total_controls) / 1000) if _total_controls > 0
+_percentage := round((_passed * 100000) / _total_controls) / 1000 if {{
+	_total_controls > 0
+	not _percentage_withheld
+}}
 
-# 100 means compliant: a report that is not compliant never reads 100
-_capped_unless_compliant(p) := p if {{
-	_compliant
-}} else := min([p, 99.999])
+# 100 means compliant. Every recommendation in scope passed but the report is not compliant (a finding that cites
+# no recommendation stands: PROFILE NOT SELECTED): passed + failed == total stays true, and the percentage is null
+# with a stated reason instead of 100 beside compliant == false.
+_percentage := null if {{
+	_total_controls > 0
+	_percentage_withheld
+}}
 
-compliance_report := {{
+_percentage_withheld if {{
+	_total_controls > 0
+	not _compliant
+	_passed == _total_controls
+}}
+
+# The reasons are fields of the report only when a percentage is withheld, so a normal report keeps its shape.
+default _reason_fields := {{}}
+
+_reason_fields := {{"compliance_percentage_reason": "no profile selected: input.profile is absent or not a recognised name, so every recommendation was evaluated and none failed, but the report is not compliant until a profile is selected"}} if {{
+	_percentage_withheld
+	_profile == "unrecognised"
+}}
+
+_reason_fields := {{"compliance_percentage_reason": "a finding that cites no recommendation stands although no recommendation failed (see violations)"}} if {{
+	_percentage_withheld
+	_profile != "unrecognised"
+}}
+
+default _section_reason_fields := {{}}
+
+_section_reason_fields := {{"section_compliance_percentage_reason": bench.compliance_percentage_reason}} if {{
+	_section_percentage == null
+	bench.compliance_percentage_reason != null
+}}
+
+_report := {{
 	"framework": "{PKG}",
 	"benchmark": "{BENCH}",
 	"version": "{VERSION}",
@@ -1392,6 +1447,8 @@ compliance_report := {{
 	"missing_inputs": _missing_inputs,
 	"assessment_coverage_percentage": _coverage,
 }}
+
+compliance_report := object.union(_report, object.union(_reason_fields, _section_reason_fields))
 '''
 
 

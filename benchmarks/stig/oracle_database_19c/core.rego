@@ -36,6 +36,14 @@ import rego.v1
 # never passed to to_number.
 _num(v) := v if is_number(v)
 
+# a numeric value that is a count, length, size or number of minutes: a JSON number with no fractional part.
+# 2.5 sessions or 2.5 failed logins is not a limit the DBMS can hold, so a fraction is evidence invalid and the
+# rule stays Open. Limits expressed in days (PASSWORD_LIFE_TIME and friends) use _num: Oracle accepts fractions of a day.
+_whole(v) := v if {
+	is_number(v)
+	round(v) == v
+}
+
 # a query result that lists names (policies, files): an array whose every member is a non-empty string.
 # count() of a string is its length, so a list is never counted before it is known to be one.
 _named_list(v) if {
@@ -62,6 +70,14 @@ profiles_every_le(resource, max) if {
 	}
 }
 
+# the same for a limit that is a count (FAILED_LOGIN_ATTEMPTS): a fraction does not pass
+profiles_every_le_whole(resource, max) if {
+	count(input.oracle.profiles) > 0
+	every _, p in input.oracle.profiles {
+		_whole(p[resource]) <= max
+	}
+}
+
 profiles_every_eq(resource, val) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
@@ -76,10 +92,10 @@ profiles_every_set(resource) if {
 	}
 }
 
-profiles_every_numeric(resource) if {
+profiles_every_whole(resource) if {
 	count(input.oracle.profiles) > 0
 	every _, p in input.oracle.profiles {
-		_num(p[resource]) >= 0
+		_whole(p[resource]) >= 0
 	}
 }
 
@@ -106,7 +122,7 @@ audit_enabled if {
 default r_o19c_00_000100 := false
 
 r_o19c_00_000100 if {
-	profiles_every_numeric("SESSIONS_PER_USER")
+	profiles_every_whole("SESSIONS_PER_USER")
 }
 
 finding_r_o19c_00_000100 := {
@@ -142,7 +158,7 @@ status_r_o19c_00_000200 := "Open" if not r_o19c_00_000200
 default r_o19c_00_000300 := false
 
 r_o19c_00_000300 if {
-	_num(input.oracle.parameters.max_idle_time) > 0
+	_whole(input.oracle.parameters.max_idle_time) > 0
 }
 
 finding_r_o19c_00_000300 := {
@@ -1123,7 +1139,7 @@ status_r_o19c_00_012300 := "Open" if not r_o19c_00_012300
 default r_o19c_00_012400 := false
 
 r_o19c_00_012400 if {
-	profiles_every_le("FAILED_LOGIN_ATTEMPTS", 3)
+	profiles_every_le_whole("FAILED_LOGIN_ATTEMPTS", 3)
 }
 
 finding_r_o19c_00_012400 := {

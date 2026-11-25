@@ -45,7 +45,6 @@ frameworks/privacy/iso27701/iso27701_main.rego	failed_control_ids	cmp	_status_of
 
 # reason: left for the next pass: not read individually in round 3 (the classifier could not tell a guard from a hole); listed in r3-notf-frameworks.md under 'baselined, not individually proven'
 frameworks/compliance/cra/vulnerability_handling/cra_vulnerability_handling.rego	violation	cmp	input.vulnerability_handling.support_period_years < input.vulnerability_handling.expected_use_years
-frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego	no_tamper_detected	cmp	device.security.tamper_status != "tamper_detected"
 frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_incident_response.rego	incident_reporting_configured	cmp	input.incident_response.reporting.reporting_timeframe_hours <= 24
 frameworks/critical_infrastructure/nerc_cip/cip_012_communications.rego	backup_communication_protected	get-default	count(object.get(input, ["communication_contingency", "backup_links"], [])) == 0
 frameworks/federal/fisma/authority_to_operate.rego	threat_assessment_comprehensive	cmp	threat.threat_events != ""

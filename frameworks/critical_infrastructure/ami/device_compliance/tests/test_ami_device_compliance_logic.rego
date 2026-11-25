@@ -92,3 +92,33 @@ test_reported_status_still_passes if {
 	msgs := c.all_violations with input as {"devices": [good_device], "device_standards": stds}
 	count(msgs) == 0
 }
+
+# Round 4 (2026-11-24): tamper_status has a closed vocabulary (ok, tamper_detected). Only "ok" passes; any
+# other word is an evidence invalid finding, and tamper_detected is critical in any letter case.
+test_unknown_tamper_status_words_fail if {
+	every w in ["tampered", "alarm", "false", "no", "TAMPERED", "okay", "ok?", "OK2"] {
+		d := json.patch(good_device, [{"op": "replace", "path": "/security/tamper_status", "value": w}])
+		msgs := c.all_violations with input as {"devices": [d], "device_standards": stds}
+		not c.no_tamper_detected(d)
+		count([m | some m in msgs; contains(m, "Tamper status not reported")]) == 1
+		count([m | some m in msgs; contains(m, "is not a recognised status")]) == 1
+		count([m | some m in msgs; contains(m, "(got string)")]) == 1
+	}
+}
+
+test_tamper_detected_in_any_case_is_critical if {
+	every w in ["TAMPER_DETECTED", "Tamper_Detected", " tamper_detected "] {
+		d := json.patch(good_device, [{"op": "replace", "path": "/security/tamper_status", "value": w}])
+		msgs := c.all_violations with input as {"devices": [d], "device_standards": stds}
+		not c.no_tamper_detected(d)
+		count([m | some m in msgs; contains(m, "CRITICAL")]) == 1
+	}
+}
+
+test_ok_in_any_case_passes if {
+	every w in ["ok", "OK", " Ok "] {
+		d := json.patch(good_device, [{"op": "replace", "path": "/security/tamper_status", "value": w}])
+		msgs := c.all_violations with input as {"devices": [d], "device_standards": stds}
+		count(msgs) == 0
+	}
+}

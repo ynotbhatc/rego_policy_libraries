@@ -470,7 +470,12 @@ test_level_absent_is_not_selected_and_never_compliant if {
 		r.profile.level_defaulted == true
 		r.compliant == false
 		r.failed_controls == 0
-		data.cis_docker.main.compliance_report.compliance_percentage < 100 with input as inp
+		# every recommendation passed, so passed + failed == total still holds, and the percentage is withheld
+		# (null, with a reason) rather than 100 beside compliant == false
+		m := data.cis_docker.main.compliance_report with input as inp
+		m.compliance_percentage == null
+		startswith(m.compliance_percentage_reason, "no profile level selected")
+		m.passed_controls + m.failed_controls == m.total_controls
 		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
 		not main_compliant(inp)
 	}

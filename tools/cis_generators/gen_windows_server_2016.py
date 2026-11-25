@@ -300,7 +300,7 @@ test_{mod}_fails_closed_without_input if {{
 """
     scope = lambda role, tiers: sum(1 for r in recs.values()  # noqa: E731
                                     if any(p.split("_")[0] in tiers and p.endswith(role) for p in r["profiles"]))
-    any_role = sum(1 for r in recs.values() if not all(p.startswith("NG") for p in r["profiles"]))
+    any_role = len(recs)  # no role and no next_generation selector stated: every recommendation is in scope, not assessed
     period = next(i for i in checks["18.10.93.4.2"]["items"] if i[2] == GE)
     iis = checks["2.2.33"]
     files["test_main_smoke.rego"] = head + f"""package {PKG}.main_test
@@ -433,7 +433,7 @@ Each section module is a `controls` table, one row per recommendation; `lib.rego
 |---|---|---|
 | `role` | `member_server`, `domain_controller` | Recommendations for one role only are **not assessed** and counted as failed; those for both roles are evaluated |
 | `level` | `1`, `2` (Level 2 includes Level 1) | `2`, the stricter selection; the report says `level_defaulted: true` |
-| `next_generation` | `true` to add the Next Generation Windows Security profile ({ng} recommendations, 18.9.5.x) | off: CIS publishes it as a separate profile |
+| `next_generation` | `true` to add the Next Generation Windows Security profile ({ng} recommendations, 18.9.5.x) | state `false` to leave it out (CIS publishes it as a separate profile). Not stated: its recommendations stay in scope as not assessed and the report says `next_generation_defaulted: true` |
 
 `total_controls` is the number in scope, out of `benchmark_total_controls` {len(recs)}:
 

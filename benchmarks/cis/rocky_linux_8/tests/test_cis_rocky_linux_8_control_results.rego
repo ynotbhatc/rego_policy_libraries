@@ -113,11 +113,15 @@ test_compliant_fixture_without_a_recognised_profile_is_not_compliant if {
 		count(r.violations) == 1
 		startswith(r.violations[0], "PROFILE NOT SELECTED: ")
 
-		# no recommendation failed, and still the figure is not 100: 100 means compliant
+		# no recommendation failed and passed + failed == total, so the percentage is withheld (null) with a
+		# reason: 100 means compliant and is never shown beside compliant == false
 		r.failed_controls == 0
 		r.passed_controls == r.total_controls
-		r.compliance_percentage == 99.999
-		r.section_compliance_percentage == 99.999
+		r.passed_controls + r.failed_controls == r.total_controls
+		r.compliance_percentage == null
+		r.section_compliance_percentage == null
+		startswith(r.compliance_percentage_reason, "no profile selected")
+		startswith(r.section_compliance_percentage_reason, "no profile selected")
 	}
 }
 
