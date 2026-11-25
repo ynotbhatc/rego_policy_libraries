@@ -262,7 +262,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 	some cost_center, budget in input.budget_registry
 	is_number(budget)
 	budget > 0
-	actual := object.get(input.current_spend, cost_center, 0)
+	actual := object.get(input, ["current_spend", cost_center], 0)
 	actual > budget * 1.1
 }
 
@@ -270,7 +270,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 # neither rule above or below would fire).
 violations contains sprintf("Budget: Cost center '%s' budget %v or current spend %v is not a number", [cost_center, budget, actual]) if {
 	some cost_center, budget in input.budget_registry
-	actual := object.get(input.current_spend, cost_center, 0)
+	actual := object.get(input, ["current_spend", cost_center], 0)
 	not _both_numbers(budget, actual)
 }
 
@@ -284,7 +284,7 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 	some cost_center, budget in input.budget_registry
 	is_number(budget)
 	budget <= 0
-	actual := object.get(input.current_spend, cost_center, 0)
+	actual := object.get(input, ["current_spend", cost_center], 0)
 	actual > budget * 1.1
 }
 
