@@ -35,9 +35,11 @@ The roll-up is package `cis_amazon_linux_2023` (`cis_amazon_linux_2023_complete.
 
 ## Profile
 
-`input.profile`: `level1_server` (default, 179 recommendations) or `level2_server` (all 243; Level 2
+`input.profile`: `level1_server` (179 recommendations) or `level2_server` (all 243; Level 2
 includes Level 1). `level1` and `level2` are accepted. `total_controls` is the number in scope for the profile;
 `standard_total` is 243.
+There is no default profile: an absent or unrecognised `profile` evaluates every recommendation, adds a
+`PROFILE NOT SELECTED` violation and is never compliant.
 
 ## Facts
 

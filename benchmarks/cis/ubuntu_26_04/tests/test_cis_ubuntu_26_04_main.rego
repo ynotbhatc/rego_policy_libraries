@@ -14,7 +14,7 @@ test_empty_input_fails_closed if {
 	count(object.keys(r)) == 17
 	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage"] { k in object.keys(r) }
 	r.compliant == false
-	r.total_controls == 274
+	r.total_controls == 350
 	r.failed_controls == r.total_controls
 	r.passed_controls == 0
 	some v in r.violations
@@ -53,10 +53,27 @@ test_profile_level2_workstation_count if {
 	r.failed_controls == r.total_controls
 }
 
-test_unknown_profile_defaults_to_level1_server if {
+test_unknown_profile_is_not_selected_and_evaluates_everything if {
 	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": "bogus"}
-	r.profile == "level1_server"
-	r.total_controls == 274
+	r.profile == "unrecognised"
+	r.total_controls == 350
+	r.compliant == false
+	r.failed_controls == r.total_controls
+	count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant if {
+	every p in [null, 1, true, [], {}, "", "Level1_Server", "level_1_server"] {
+		r := data.cis_ubuntu_26_04.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 350
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+	r0 := data.cis_ubuntu_26_04.main.compliance_report with input as {"attest": {"x": true}}
+	r0.profile == "unrecognised"
+	r0.compliant == false
+	r0.compliance_percentage < 100
 }
 
 test_one_attested_control_passes if {

@@ -16,7 +16,7 @@ test_empty_input_fails_closed if {
 	count(object.keys(r)) == 18
 	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "violation_count", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage"] { k in object.keys(r) }
 	r.compliant == false
-	r.total_controls == 179
+	r.total_controls == 243
 	r.failed_controls == r.total_controls
 	r.passed_controls == 0
 	some v in r.violations
@@ -48,10 +48,27 @@ test_short_profile_values_map_to_server_profiles if {
 	r2.total_controls == 243
 }
 
-test_unknown_profile_defaults_to_level1_server if {
+test_unknown_profile_is_not_selected_and_evaluates_everything if {
 	r := data.cis_amazon_linux_2023.main.compliance_report with input as {"profile": "bogus"}
-	r.profile == "level1_server"
-	r.total_controls == 179
+	r.profile == "unrecognised"
+	r.total_controls == 243
+	r.compliant == false
+	r.failed_controls == r.total_controls
+	count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+}
+
+test_absent_or_mistyped_profile_is_not_selected_and_never_compliant if {
+	every p in [null, 1, true, [], {}, "", "Level1_Server", "level_1_server"] {
+		r := data.cis_amazon_linux_2023.main.compliance_report with input as {"profile": p, "attest": {"x": true}}
+		r.profile == "unrecognised"
+		r.compliant == false
+		r.total_controls == 243
+		count([v | some v in r.violations; startswith(v, "PROFILE NOT SELECTED: ")]) == 1
+	}
+	r0 := data.cis_amazon_linux_2023.main.compliance_report with input as {"attest": {"x": true}}
+	r0.profile == "unrecognised"
+	r0.compliant == false
+	r0.compliance_percentage < 100
 }
 
 test_one_attested_control_passes if {

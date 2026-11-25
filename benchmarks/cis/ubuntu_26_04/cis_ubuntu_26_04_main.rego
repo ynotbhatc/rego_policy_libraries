@@ -70,9 +70,13 @@ default _coverage := 0
 
 _coverage := bench.assessment_coverage_percentage
 
-default _profile := "level1_server"
+default _profile := "unrecognised"
 
 _profile := bench.profile
+
+default _profile_msgs := []
+
+_profile_msgs := bench.profile_violations
 
 default _total_controls := 0
 
@@ -82,9 +86,9 @@ default _failing := 0
 
 _failing := count(bench.failing_ids)
 
-_violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
+_violations := array.concat(_bench_violations, array.concat([_no_facts_msg], _profile_msgs)) if not _facts_supplied
 
-_violations := array.concat(_bench_violations, _not_assessed_msgs) if _facts_supplied
+_violations := array.concat(_bench_violations, array.concat(_not_assessed_msgs, _profile_msgs)) if _facts_supplied
 
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
@@ -95,7 +99,12 @@ _passed := max([0, _total_controls - _failed])
 
 default _percentage := 0
 
-_percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
+_percentage := _capped_unless_compliant(round((_passed * 100000) / _total_controls) / 1000) if _total_controls > 0
+
+# 100 means compliant: a report that is not compliant never reads 100
+_capped_unless_compliant(p) := p if {
+	_compliant
+} else := min([p, 99.999])
 
 compliance_report := {
 	"framework": "cis_ubuntu_26_04",
