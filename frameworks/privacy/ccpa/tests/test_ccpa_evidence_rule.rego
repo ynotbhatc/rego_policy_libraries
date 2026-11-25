@@ -670,6 +670,20 @@ _bad_inputs(fx) := array.concat(
 )
 
 # Modules that passed on empty input never existed here; keep it that way.
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_main_bad_inputs_9 if {
+	sum([count(_slice(_main_bad_inputs, i, 9)) | some i in numbers.range(0, 8)]) == count(_main_bad_inputs)
+	every i in numbers.range(0, 8) {
+		every k, x in _slice(_main_bad_inputs, i, 9) {
+			x == _main_bad_inputs[i + (k * 9)]
+		}
+	}
+}
+
 test_empty_input_fails_every_module if {
 	every name, _ in fixtures {
 		not data.ccpa[name].compliant with input as {}
@@ -802,9 +816,92 @@ test_main_one_failing_module_is_one_violation if {
 	contains(r.violations[0], "Sensitive Personal Information")
 }
 
-test_main_never_passes_a_mutated_input if {
+# the mutated inputs of the all-pass input document, built once per test (a rule, so not once per use)
+_main_bad_inputs := _bad_inputs(all_pass_input)
+
+test_main_never_passes_a_mutated_input_slice_0 if {
 	passing := [bad.case |
-		some bad in _bad_inputs(all_pass_input)
+		some bad in _slice(_main_bad_inputs, 0, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_1 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 1, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_2 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 2, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_3 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 3, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_4 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 4, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_5 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 5, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_6 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 6, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_7 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 7, 9)
+		not bad.case in _either_or
+		r := data.ccpa.main.compliance_report with input as bad.input
+		r.compliant == true
+	]
+	passing == []
+}
+
+test_main_never_passes_a_mutated_input_slice_8 if {
+	passing := [bad.case |
+		some bad in _slice(_main_bad_inputs, 8, 9)
 		not bad.case in _either_or
 		r := data.ccpa.main.compliance_report with input as bad.input
 		r.compliant == true

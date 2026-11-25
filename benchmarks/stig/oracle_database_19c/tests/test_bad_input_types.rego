@@ -18,6 +18,29 @@ compliant(inp) := c if {
 
 set(path, v) := json.patch(green, [{"op": "add", "path": path, "value": v}])
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_numeric_text_3 if {
+	sum([count(_slice(numeric_text, i, 3)) | some i in numbers.range(0, 2)]) == count(numeric_text)
+	every i in numbers.range(0, 2) {
+		every k, x in _slice(numeric_text, i, 3) {
+			x == numeric_text[i + (k * 3)]
+		}
+	}
+}
+
+test_the_slices_cover_empty_query_results_5 if {
+	sum([count(_slice(empty_query_results, i, 5)) | some i in numbers.range(0, 4)]) == count(empty_query_results)
+	every i in numbers.range(0, 4) {
+		every k, x in _slice(empty_query_results, i, 5) {
+			x == empty_query_results[i + (k * 5)]
+		}
+	}
+}
+
 test_green_fixture_is_compliant if compliant(green) == true
 
 numeric_text := [
@@ -29,8 +52,24 @@ numeric_text := [
 	"/oracle/parameters/max_idle_time",
 ]
 
-test_numeric_value_of_the_wrong_type_does_not_pass if {
-	every p in numeric_text {
+test_numeric_value_of_the_wrong_type_does_not_pass_slice_0 if {
+	every p in _slice(numeric_text, 0, 3) {
+		every bad in [null, true, false, "UNLIMITED", "DEFAULT", "abc", "", "3", " 3 ", "3\n", "0", ["3"], {"value": 3}] {
+			compliant(set(p, bad)) == false
+		}
+	}
+}
+
+test_numeric_value_of_the_wrong_type_does_not_pass_slice_1 if {
+	every p in _slice(numeric_text, 1, 3) {
+		every bad in [null, true, false, "UNLIMITED", "DEFAULT", "abc", "", "3", " 3 ", "3\n", "0", ["3"], {"value": 3}] {
+			compliant(set(p, bad)) == false
+		}
+	}
+}
+
+test_numeric_value_of_the_wrong_type_does_not_pass_slice_2 if {
+	every p in _slice(numeric_text, 2, 3) {
 		every bad in [null, true, false, "UNLIMITED", "DEFAULT", "abc", "", "3", " 3 ", "3\n", "0", ["3"], {"value": 3}] {
 			compliant(set(p, bad)) == false
 		}
@@ -98,8 +137,40 @@ test_audit_enabled_needs_a_real_policy_list if {
 }
 
 # "the query returns no rows" is an empty array; an empty string or object is not that evidence
-test_empty_query_result_must_be_an_array if {
-	every p in empty_query_results {
+test_empty_query_result_must_be_an_array_slice_0 if {
+	every p in _slice(empty_query_results, 0, 5) {
+		every bad in ["", {}, null, 0, false, "none"] {
+			compliant(set(p, bad)) == false
+		}
+	}
+}
+
+test_empty_query_result_must_be_an_array_slice_1 if {
+	every p in _slice(empty_query_results, 1, 5) {
+		every bad in ["", {}, null, 0, false, "none"] {
+			compliant(set(p, bad)) == false
+		}
+	}
+}
+
+test_empty_query_result_must_be_an_array_slice_2 if {
+	every p in _slice(empty_query_results, 2, 5) {
+		every bad in ["", {}, null, 0, false, "none"] {
+			compliant(set(p, bad)) == false
+		}
+	}
+}
+
+test_empty_query_result_must_be_an_array_slice_3 if {
+	every p in _slice(empty_query_results, 3, 5) {
+		every bad in ["", {}, null, 0, false, "none"] {
+			compliant(set(p, bad)) == false
+		}
+	}
+}
+
+test_empty_query_result_must_be_an_array_slice_4 if {
+	every p in _slice(empty_query_results, 4, 5) {
 		every bad in ["", {}, null, 0, false, "none"] {
 			compliant(set(p, bad)) == false
 		}

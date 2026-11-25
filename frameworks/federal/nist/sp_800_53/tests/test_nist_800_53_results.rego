@@ -11,6 +11,20 @@ _row(r, id) := x if {
 	x.id == id
 }
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_totals_inputs_3 if {
+	sum([count(_slice(_totals_inputs, i, 3)) | some i in numbers.range(0, 2)]) == count(_totals_inputs)
+	every i in numbers.range(0, 2) {
+		every k, x in _slice(_totals_inputs, i, 3) {
+			x == _totals_inputs[i + (k * 3)]
+		}
+	}
+}
+
 test_one_row_per_evaluated_id_in_natural_order if {
 	r := main.compliance_report with input as {}
 	ids := [x.id | some x in r.control_results]
@@ -166,8 +180,38 @@ test_release_5_2_0_string_booleans_do_not_pass if {
 }
 
 # passed + failed + not applicable = total (the module has no not-applicable outcome), and one row per id.
-test_totals_add_up if {
-	every inp in [{}, fully_compliant_input, {"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}] {
+_totals_inputs := [{}, fully_compliant_input, {"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}]
+
+test_totals_add_up_slice_0 if {
+	every inp in _slice(_totals_inputs, 0, 3) {
+		r := main.compliance_report with input as inp
+		c := r.control_result_counts
+		passed := c.pass
+		not_passed := (c.fail + c.evidence_missing) + c.not_attested
+		passed + not_passed == r.total_controls
+		not_passed == r.failed_controls
+		count(r.control_results) == r.total_controls
+		r.total_controls == 544
+		r.coverage.catalog_active_controls_and_enhancements == 1014
+	}
+}
+
+test_totals_add_up_slice_1 if {
+	every inp in _slice(_totals_inputs, 1, 3) {
+		r := main.compliance_report with input as inp
+		c := r.control_result_counts
+		passed := c.pass
+		not_passed := (c.fail + c.evidence_missing) + c.not_attested
+		passed + not_passed == r.total_controls
+		not_passed == r.failed_controls
+		count(r.control_results) == r.total_controls
+		r.total_controls == 544
+		r.coverage.catalog_active_controls_and_enhancements == 1014
+	}
+}
+
+test_totals_add_up_slice_2 if {
+	every inp in _slice(_totals_inputs, 2, 3) {
 		r := main.compliance_report with input as inp
 		c := r.control_result_counts
 		passed := c.pass

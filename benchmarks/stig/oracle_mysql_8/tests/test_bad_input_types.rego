@@ -25,6 +25,20 @@ set(path, v) := json.patch(green, [{"op": "add", "path": path, "value": v}])
 
 drop(path) := json.patch(green, [{"op": "remove", "path": path}])
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_bool_paths_4 if {
+	sum([count(_slice(bool_paths, i, 4)) | some i in numbers.range(0, 3)]) == count(bool_paths)
+	every i in numbers.range(0, 3) {
+		every k, x in _slice(bool_paths, i, 4) {
+			x == bool_paths[i + (k * 4)]
+		}
+	}
+}
+
 test_green_fixture_is_compliant if {
 	compliant(green) == true
 	r := data.stig.oracle_mysql_8.main.compliance_report with input as green
@@ -117,8 +131,35 @@ bool_paths := [p |
 
 test_fixture_has_the_expected_booleans if count(bool_paths) == 39
 
-test_boolean_of_the_wrong_type_does_not_pass if {
-	every p in bool_paths {
+test_boolean_of_the_wrong_type_does_not_pass_slice_0 if {
+	every p in _slice(bool_paths, 0, 4) {
+		every bad in ["true", "false", "yes", "no", null, 0, 1] {
+			compliant(set(p, bad)) == false
+		}
+		compliant(drop(p)) == false
+	}
+}
+
+test_boolean_of_the_wrong_type_does_not_pass_slice_1 if {
+	every p in _slice(bool_paths, 1, 4) {
+		every bad in ["true", "false", "yes", "no", null, 0, 1] {
+			compliant(set(p, bad)) == false
+		}
+		compliant(drop(p)) == false
+	}
+}
+
+test_boolean_of_the_wrong_type_does_not_pass_slice_2 if {
+	every p in _slice(bool_paths, 2, 4) {
+		every bad in ["true", "false", "yes", "no", null, 0, 1] {
+			compliant(set(p, bad)) == false
+		}
+		compliant(drop(p)) == false
+	}
+}
+
+test_boolean_of_the_wrong_type_does_not_pass_slice_3 if {
+	every p in _slice(bool_paths, 3, 4) {
 		every bad in ["true", "false", "yes", "no", null, 0, 1] {
 			compliant(set(p, bad)) == false
 		}

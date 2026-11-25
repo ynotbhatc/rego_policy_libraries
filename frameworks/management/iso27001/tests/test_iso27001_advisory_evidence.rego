@@ -55,8 +55,82 @@ test_green_fixture_has_no_findings_and_passes if {
 	r.advisory_evidence_finding_count == 0
 }
 
-test_each_mistyped_advisory_fact_is_reported_once_and_named if {
-	every path, want in types {
+# The facts are checked in 8 slices (index of the sorted path modulo 8), so that no test runs long enough to meet the
+# suite's per-test timeout on the oldest supported OPA. Every fact is in exactly one slice.
+_type_slice(i) := {path: types[path] | some j, path in sort([k | some k, _ in types]); j % 8 == i}
+
+test_the_slices_cover_every_advisory_fact if {
+	sum([count(_type_slice(i)) | some i in numbers.range(0, 7)]) == count(types)
+	every path, _ in types {
+		count([i | some i in numbers.range(0, 7); path in object.keys(_type_slice(i))]) == 1
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_0 if {
+	every path, want in _type_slice(0) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_1 if {
+	every path, want in _type_slice(1) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_2 if {
+	every path, want in _type_slice(2) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_3 if {
+	every path, want in _type_slice(3) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_4 if {
+	every path, want in _type_slice(4) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_5 if {
+	every path, want in _type_slice(5) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_6 if {
+	every path, want in _type_slice(6) {
+		every bad in _bad(want) {
+			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
+			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}
+		}
+	}
+}
+
+test_each_mistyped_advisory_fact_is_reported_once_and_named_slice_7 if {
+	every path, want in _type_slice(7) {
 		every bad in _bad(want) {
 			f := iso27001.advisory_evidence_findings with input as _set(path, bad)
 			f == {sprintf("ISO/IEC 27001 Input Contract (advisory, not scored): input.%v is not a %v (got %v) — the fact feeds only checks listed in unmapped_fact_rules", [path, want, type_name(bad)])}

@@ -45,6 +45,20 @@ green := {"intune_defender": {"settings": {
 	"ThreatSeverityDefaultAction": "2=2|4=2|5=3",
 }}}
 
+# The sweeps are split into slices (item index modulo the slice count), one test per slice, so that no test runs long
+# enough to meet the suite's per-test timeout on the oldest supported OPA. Every item is in exactly one slice; the
+# test_the_slices_cover_* tests check it.
+_slice(xs, i, n) := [x | some j, x in xs; j % n == i]
+
+test_the_slices_cover_integer_settings_5 if {
+	sum([count(_slice(_integer_setting_list, i, 5)) | some i in numbers.range(0, 4)]) == count(_integer_setting_list)
+	every i in numbers.range(0, 4) {
+		every k, x in _slice(_integer_setting_list, i, 5) {
+			x == _integer_setting_list[i + (k * 5)]
+		}
+	}
+}
+
 test_green_policy_is_compliant if {
 	r := b.compliance_report with input as green
 	r.compliant == true
@@ -107,9 +121,55 @@ test_non_numeric_value_fails if {
 # procedure treats AllowCloudProtection as in effect when the value does not exist).
 _integer_settings := {name | some name, v in green.intune_defender.settings; is_number(v)}
 
-test_every_integer_setting_rejects_a_value_that_is_not_a_number if {
+_integer_setting_list := sort([name | some name in _integer_settings])
+
+test_every_integer_setting_rejects_a_value_that_is_not_a_number_slice_0 if {
 	count(_integer_settings) == 30
-	every name in _integer_settings {
+	every name in _slice(_integer_setting_list, 0, 5) {
+		every bad in [sprintf("%v", [green.intune_defender.settings[name]]), "enabled", true, false, null, [1]] {
+			r := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])
+			r.compliant == false
+			r.violation_count == 1
+		}
+	}
+}
+
+test_every_integer_setting_rejects_a_value_that_is_not_a_number_slice_1 if {
+	count(_integer_settings) == 30
+	every name in _slice(_integer_setting_list, 1, 5) {
+		every bad in [sprintf("%v", [green.intune_defender.settings[name]]), "enabled", true, false, null, [1]] {
+			r := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])
+			r.compliant == false
+			r.violation_count == 1
+		}
+	}
+}
+
+test_every_integer_setting_rejects_a_value_that_is_not_a_number_slice_2 if {
+	count(_integer_settings) == 30
+	every name in _slice(_integer_setting_list, 2, 5) {
+		every bad in [sprintf("%v", [green.intune_defender.settings[name]]), "enabled", true, false, null, [1]] {
+			r := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])
+			r.compliant == false
+			r.violation_count == 1
+		}
+	}
+}
+
+test_every_integer_setting_rejects_a_value_that_is_not_a_number_slice_3 if {
+	count(_integer_settings) == 30
+	every name in _slice(_integer_setting_list, 3, 5) {
+		every bad in [sprintf("%v", [green.intune_defender.settings[name]]), "enabled", true, false, null, [1]] {
+			r := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])
+			r.compliant == false
+			r.violation_count == 1
+		}
+	}
+}
+
+test_every_integer_setting_rejects_a_value_that_is_not_a_number_slice_4 if {
+	count(_integer_settings) == 30
+	every name in _slice(_integer_setting_list, 4, 5) {
 		every bad in [sprintf("%v", [green.intune_defender.settings[name]]), "enabled", true, false, null, [1]] {
 			r := m.compliance_report with input as json.patch(green, [{"op": "replace", "path": sprintf("/intune_defender/settings/%s", [name]), "value": bad}])
 			r.compliant == false
