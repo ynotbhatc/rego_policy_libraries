@@ -28,7 +28,7 @@ import rego.v1
 # enhancements AC-2(2), AC-2(3), AC-2(4), AC-2(5), AC-2(13), AC-6(5), AC-6(7), AC-6(9), AC-6(10), AC-17(3),
 # AC-17(4), AC-18(3), AC-19(5), AC-20(1), AC-20(2), and the NIST / FedRAMP High enhancements AC-2(7), AC-2(9),
 # AC-2(11), AC-2(12), AC-4(4), AC-4(21), AC-6(3), AC-6(8), AC-18(4), AC-18(5), and the Privacy-baseline enhancement
-# AC-3(14) (60 ids).
+# AC-3(14), and AC-17(9) (TX-RAMP Level 2 selects it; in no NIST or FedRAMP baseline) (61 ids).
 # A base control never fails on an enhancement's requirement; each enhancement is its own finding. Not evaluated: AC-13 (withdrawn,
 # incorporated into AC-2 and AU-6) and AC-15 (withdrawn, "incorporated into MP-3" Media Marking; this
 # library has no MP family module, so AC-15 is not assessed and never produces a finding).
@@ -726,6 +726,23 @@ _ac17_4_missing := _ac_bool_missing(_ac17_4) | _ac_list_missing(["remote_access.
 
 _ac17_4_failed := _ac_bool_false(_ac17_4)
 
+# AC-17(9) Disconnect or Disable Access (NIST SP 800-53 Rev 5, OSCAL catalog release 5.2.0, public domain):
+# "Provide the capability to disconnect or disable remote access to the system within [organization-defined time
+# period]." One organization-defined parameter, the time period. Facts (input.ac_controls.remote_access.disconnect):
+# capability_provided (boolean: the capability exists), odp.time_period_minutes (number > 0, the organization-defined
+# period) and measured_minutes (number: the time a test took to disconnect or disable remote access to the system;
+# it may not exceed the period).
+_ac17_9 := "remote_access.disconnect"
+
+_ac17_9_odp := concat(".", [_ac17_9, "odp.time_period_minutes"])
+
+_ac17_9_missing := (_ac_bool_missing([concat(".", [_ac17_9, "capability_provided"])]) | _ac_num_missing([concat(".", [_ac17_9, "measured_minutes"]), _ac17_9_odp])) | {concat("", [_ac_path(_ac17_9_odp), " (a number greater than 0)"]) |
+	is_number(_ac_get(_ac17_9_odp))
+	_ac_get(_ac17_9_odp) <= 0
+}
+
+_ac17_9_failed := _ac_bool_false([concat(".", [_ac17_9, "capability_provided"])]) | _ac_over(concat(".", [_ac17_9, "measured_minutes"]), _ac17_9_odp, "remote access took %v minutes to disconnect or disable; the organization-defined time period is %v minutes")
+
 # AC-18(3) Disable Wireless Networking: embedded wireless capabilities not intended for use are disabled before
 # issuance and deployment. Fact: input.ac_controls.wireless_access.components_with_unused_wireless_enabled (count).
 _ac18_3_missing := _ac_num_missing(["wireless_access.components_with_unused_wireless_enabled"]) | _ac_count_missing(["wireless_access.components_with_unused_wireless_enabled"])
@@ -795,6 +812,8 @@ violation contains sprintf("NIST AC-6(10): %s", [_ac_enh_detail(_ac6_10_missing,
 violation contains sprintf("NIST AC-17(3): %s", [_ac_enh_detail(_ac17_3_missing, _ac17_3_failed)]) if count(_ac17_3_missing | _ac17_3_failed) > 0
 
 violation contains sprintf("NIST AC-17(4): %s", [_ac_enh_detail(_ac17_4_missing, _ac17_4_failed)]) if count(_ac17_4_missing | _ac17_4_failed) > 0
+
+violation contains sprintf("NIST AC-17(9): %s", [_ac_enh_detail(_ac17_9_missing, _ac17_9_failed)]) if count(_ac17_9_missing | _ac17_9_failed) > 0
 
 violation contains sprintf("NIST AC-18(3): %s", [_ac_enh_detail(_ac18_3_missing, _ac18_3_failed)]) if count(_ac18_3_missing | _ac18_3_failed) > 0
 
@@ -978,7 +997,7 @@ evaluated_controls := {
 	"AC-2(12)", "AC-2(13)", "AC-3", "AC-4", "AC-4(1)", "AC-4(4)", "AC-4(21)", "AC-5", "AC-6", "AC-6(1)", "AC-6(2)",
 	"AC-6(3)", "AC-6(5)", "AC-6(7)", "AC-6(8)", "AC-6(9)", "AC-6(10)", "AC-7", "AC-8", "AC-9", "AC-9(1)", "AC-9(4)",
 	"AC-10", "AC-11", "AC-11(1)", "AC-12", "AC-12(1)", "AC-14", "AC-16", "AC-17", "AC-17(1)", "AC-17(2)", "AC-17(3)",
-	"AC-17(4)", "AC-18", "AC-18(1)", "AC-18(3)", "AC-18(4)", "AC-18(5)", "AC-19", "AC-19(5)", "AC-20", "AC-20(1)",
+	"AC-17(4)", "AC-17(9)", "AC-18", "AC-18(1)", "AC-18(3)", "AC-18(4)", "AC-18(5)", "AC-19", "AC-19(5)", "AC-20", "AC-20(1)",
 	"AC-20(2)", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
 	"AC-3(14)",
 }

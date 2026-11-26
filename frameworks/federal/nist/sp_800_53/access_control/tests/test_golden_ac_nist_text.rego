@@ -58,6 +58,7 @@ _green := {"ac_controls": {
 	"permitted_actions": {"unauthenticated_functions": [], "organization_approved_functions": [], "rationale_documented": true},
 	"security_attributes": {"attribute_binding": true, "attribute_association": true, "transmission_preservation": true},
 	"remote_access": {
+		"disconnect": {"capability_provided": true, "measured_minutes": 5, "odp": {"time_period_minutes": 15}},
 		"authorized_only": true, "monitored_controlled": true, "encrypted_connections": true, "unmanaged_access_points": 0,
 		"privileged_commands": {"restricted_to_defined_needs": true, "assessable_evidence_produced": true, "rationale_in_security_plan": true, "odp": {"needs": ["break-glass recovery"]}},
 	},
@@ -430,6 +431,28 @@ test_golden_ac_17_remote_access_unauthorized_fails if {
 	_ids(r) == {"AC-17"}
 	not contains(concat("", r.violations), "evidence missing")
 	not ac.nist_sp800_53_ac_compliant with input as fx
+}
+
+# AC-17(9): "Provide the capability to disconnect or disable remote access to the system within [organization-defined time period]"
+test_golden_ac_17_9_disconnect_slower_than_the_period_fails if {
+	fx := object.union(_green, {"ac_controls": {"remote_access": {"disconnect": {"measured_minutes": 16}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == {"AC-17(9)"}
+	not contains(concat("", r.violations), "evidence missing")
+	not ac.nist_sp800_53_ac_compliant with input as fx
+}
+
+test_golden_ac_17_9_no_capability_fails if {
+	fx := object.union(_green, {"ac_controls": {"remote_access": {"disconnect": {"capability_provided": false}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == {"AC-17(9)"}
+	not contains(concat("", r.violations), "evidence missing")
+}
+
+test_golden_ac_17_9_at_the_period_passes if {
+	fx := object.union(_green, {"ac_controls": {"remote_access": {"disconnect": {"measured_minutes": 15}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == set()
 }
 
 # AC-17(1): "monitor and control remote access methods"

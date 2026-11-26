@@ -51,7 +51,7 @@ test_enhancements_are_evaluated_ids if {
 	every c in _cases {
 		c[1] in ac.evaluated_controls
 	}
-	count(ac.evaluated_controls) == 60
+	count(ac.evaluated_controls) == 61
 }
 
 test_facts_outside_the_statement_not_required if {

@@ -165,8 +165,8 @@ test_ac15_withdrawn_never_a_finding if {
 
 test_ac_one_finding_per_evaluated_id_on_empty_input if {
 	r := ac.compliance_report with input as {}
-	r.controls_evaluated == 60
-	count(r.violations) == 60
+	r.controls_evaluated == 61
+	count(r.violations) == 61
 	every id in ac.evaluated_controls {
 		count(_finding(r, id)) == 1
 	}
@@ -219,6 +219,7 @@ _pass_base := {"ac_controls": {
 	"security_attributes": {"attribute_binding": true, "attribute_association": true, "transmission_preservation": true},
 	"remote_access": {
 		"authorized_only": true, "monitored_controlled": true, "encrypted_connections": true, "unmanaged_access_points": 0,
+		"disconnect": {"capability_provided": true, "measured_minutes": 5, "odp": {"time_period_minutes": 15}},
 		"privileged_commands": {"restricted_to_defined_needs": true, "assessable_evidence_produced": true, "rationale_in_security_plan": true, "odp": {"needs": ["break-glass recovery"]}},
 	},
 	"wireless_access": {
@@ -270,6 +271,7 @@ _new_cases := [
 	["AC-6(9)", {"least_privilege": {"privileged_functions_logged": false}}, {"least_privilege": {"privileged_functions_logged": null}}],
 	["AC-6(10)", {"least_privilege": {"non_privileged_execution_prevented": false}}, {"least_privilege": {"non_privileged_execution_prevented": null}}],
 	["AC-17(3)", {"remote_access": {"unmanaged_access_points": 1}}, {"remote_access": {"unmanaged_access_points": null}}],
+	["AC-17(9)", {"remote_access": {"disconnect": {"measured_minutes": 30}}}, {"remote_access": {"disconnect": {"odp": {"time_period_minutes": null}}}}],
 	["AC-17(4)", {"remote_access": {"privileged_commands": {"assessable_evidence_produced": false}}}, {"remote_access": {"privileged_commands": {"odp": {"needs": null}}}}],
 	["AC-18(3)", {"wireless_access": {"components_with_unused_wireless_enabled": 3}}, {"wireless_access": {"components_with_unused_wireless_enabled": null}}],
 	["AC-19(5)", {"mobile_devices": {"encryption": {"devices_without_required_encryption": 4}}}, {"mobile_devices": {"encryption": {"odp": {"method": "some"}}}}],
@@ -281,7 +283,7 @@ test_new_ids_are_evaluated if {
 	every c in _new_cases {
 		c[0] in ac.evaluated_controls
 	}
-	count(_new_cases) == 15
+	count(_new_cases) == 16
 }
 
 test_each_new_id_failing_case_flips_only_that_id if {
@@ -477,4 +479,93 @@ test_ac_aggregate_false_on_late_enhancement_failure if {
 	not data.nist.sp800_53.access_control.nist_sp800_53_ac_compliant with input as inp
 	r := data.nist.sp800_53.access_control.nist_sp800_53_ac_compliance with input as inp
 	r.overall_compliant == false
+}
+
+# --- AC-17(9) Disconnect or Disable Access (one ODP: the time period) --------------------------------------------
+# The all-pass fixture carries capability_provided true, measured_minutes 5 and odp.time_period_minutes 15.
+
+_ac17_9_with(f, val) := object.union(_pass, {"ac_controls": {"remote_access": {"disconnect": {f: val}}}})
+
+_ac17_9_odp(val) := object.union(_pass, {"ac_controls": {"remote_access": {"disconnect": {"odp": {"time_period_minutes": val}}}}})
+
+_ac17_9_without(path) := json.remove(_pass, [concat("/", array.concat(["", "ac_controls", "remote_access", "disconnect"], path))])
+
+_ac17_9_p := "input.ac_controls.remote_access.disconnect."
+
+_ac17_9_findings(fx) := _finding(r, "AC-17(9)") if {
+	r := ac.compliance_report with input as fx
+}
+
+test_ac17_9_satisfied_passes if {
+	count(_ac17_9_findings(_pass)) == 0
+
+	# at the organization-defined limit still passes
+	count(_ac17_9_findings(_ac17_9_with("measured_minutes", 15))) == 0
+}
+
+test_ac17_9_boolean_false_fails_as_unmet if {
+	f := _ac17_9_findings(_ac17_9_with("capability_provided", false))
+	count(f) == 1
+	not contains(f[0], "evidence missing")
+	contains(f[0], "capability_provided is not true")
+}
+
+test_ac17_9_bad_typed_boolean_is_evidence_missing if {
+	every bad in ["false", "true", "no", "yes", null, 0, 1, [], {}] {
+		f := _ac17_9_findings(_ac17_9_with("capability_provided", bad))
+		count(f) == 1
+		contains(f[0], concat("", ["evidence missing — ", _ac17_9_p, "capability_provided not collected"]))
+	}
+}
+
+test_ac17_9_slower_than_the_defined_period_fails if {
+	f := _ac17_9_findings(_ac17_9_with("measured_minutes", 16))
+	count(f) == 1
+	not contains(f[0], "evidence missing")
+	contains(f[0], "took 16 minutes")
+}
+
+test_ac17_9_numbers_must_be_json_numbers if {
+	every bad in ["5", "15", null, true, false, [], {}] {
+		m := _ac17_9_findings(_ac17_9_with("measured_minutes", bad))
+		count(m) == 1
+		contains(m[0], concat("", [_ac17_9_p, "measured_minutes"]))
+		contains(m[0], "evidence missing")
+		o := _ac17_9_findings(_ac17_9_odp(bad))
+		count(o) == 1
+		contains(o[0], concat("", [_ac17_9_p, "odp.time_period_minutes"]))
+		contains(o[0], "evidence missing")
+	}
+}
+
+test_ac17_9_period_must_be_positive if {
+	every bad in [0, -5] {
+		f := _ac17_9_findings(_ac17_9_odp(bad))
+		count(f) == 1
+		contains(f[0], "a number greater than 0")
+	}
+}
+
+test_ac17_9_removed_fact_is_evidence_missing if {
+	every path in [["capability_provided"], ["measured_minutes"], ["odp", "time_period_minutes"]] {
+		f := _ac17_9_findings(_ac17_9_without(path))
+		count(f) == 1
+		contains(f[0], concat("", ["evidence missing — ", _ac17_9_p, concat(".", path)]))
+	}
+}
+
+test_ac17_9_section_null_or_empty_is_evidence_missing if {
+	every bad in [null, "x"] {
+		f := _ac17_9_findings(object.union(_pass, {"ac_controls": {"remote_access": {"disconnect": bad}}}))
+		count(f) == 1
+		contains(f[0], "evidence missing")
+	}
+}
+
+test_ac17_9_empty_input_names_every_fact if {
+	f := _ac17_9_findings({})
+	count(f) == 1
+	every k in ["capability_provided", "measured_minutes", "odp.time_period_minutes"] {
+		contains(f[0], concat("", [_ac17_9_p, k]))
+	}
 }

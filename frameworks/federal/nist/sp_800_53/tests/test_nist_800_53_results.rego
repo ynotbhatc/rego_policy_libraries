@@ -28,7 +28,7 @@ test_the_slices_cover_totals_inputs_3 if {
 test_one_row_per_evaluated_id_in_natural_order if {
 	r := main.compliance_report with input as {}
 	ids := [x.id | some x in r.control_results]
-	count(ids) == 544
+	count(ids) == 546
 	{i | some i in ids} == main.evaluated_controls
 	ids == index.order
 	array.slice(ids, 0, 3) == ["AC-1", "AC-2", "AC-2(1)"]
@@ -36,7 +36,7 @@ test_one_row_per_evaluated_id_in_natural_order if {
 
 test_empty_input_nothing_passes if {
 	r := main.compliance_report with input as {}
-	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 478, "not_attested": 66}
+	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 480, "not_attested": 66}
 	_row(r, "MA-2").status == "evidence_missing"
 	_row(r, "PM-2").status == "not_attested"
 	_row(r, "AC-2").status == "evidence_missing"
@@ -45,7 +45,7 @@ test_empty_input_nothing_passes if {
 
 test_compliant_input_every_row_passes if {
 	r := main.compliance_report with input as fully_compliant_input
-	r.control_result_counts == {"pass": 544, "fail": 0, "evidence_missing": 0, "not_attested": 0}
+	r.control_result_counts == {"pass": 546, "fail": 0, "evidence_missing": 0, "not_attested": 0}
 	every x in r.control_results {
 		x.status == "pass"
 		x.findings == []
@@ -68,7 +68,7 @@ test_partial_input_passes_only_what_it_proves if {
 test_single_failure_fails_its_rows_only if {
 	inp := object.union(fully_compliant_input, {"sc_controls": object.union(fully_compliant_input.sc_controls, {"secure_dns": {"dnssec_enforced": false}})})
 	r := main.compliance_report with input as inp
-	r.control_result_counts.pass == 542
+	r.control_result_counts.pass == 544
 	r.control_result_counts.fail == 2
 	failed := {x.id | some x in r.control_results; x.status == "fail"}
 	failed == {i | some i in r.failed_control_ids}
@@ -112,8 +112,8 @@ test_row_lists_selecting_baselines if {
 
 test_bridge_carries_results if {
 	r := data.nist_800_53.main.compliance_report with input as fully_compliant_input
-	count(r.control_results) == 544
-	r.control_result_counts.pass == 544
+	count(r.control_results) == 546
+	r.control_result_counts.pass == 546
 	r.baseline_results.nist_moderate.in_scope == 287
 }
 
@@ -191,7 +191,7 @@ test_totals_add_up_slice_0 if {
 		passed + not_passed == r.total_controls
 		not_passed == r.failed_controls
 		count(r.control_results) == r.total_controls
-		r.total_controls == 544
+		r.total_controls == 546
 		r.coverage.catalog_active_controls_and_enhancements == 1014
 	}
 }
@@ -205,7 +205,7 @@ test_totals_add_up_slice_1 if {
 		passed + not_passed == r.total_controls
 		not_passed == r.failed_controls
 		count(r.control_results) == r.total_controls
-		r.total_controls == 544
+		r.total_controls == 546
 		r.coverage.catalog_active_controls_and_enhancements == 1014
 	}
 }
@@ -219,7 +219,43 @@ test_totals_add_up_slice_2 if {
 		passed + not_passed == r.total_controls
 		not_passed == r.failed_controls
 		count(r.control_results) == r.total_controls
-		r.total_controls == 544
+		r.total_controls == 546
 		r.coverage.catalog_active_controls_and_enhancements == 1014
 	}
+}
+
+# --- AC-17(9) and SA-10(1): selected by TX-RAMP Level 2, in no NIST or FedRAMP baseline ----------------------
+
+_txramp_extra := ["AC-17(9)", "SA-10(1)"]
+
+test_txramp_level_2_controls_are_evaluated_and_in_no_baseline if {
+	r := main.compliance_report with input as {}
+	every id in _txramp_extra {
+		id in main.evaluated_controls
+		_row(r, id).basis == "evidence"
+		_row(r, id).status == "evidence_missing"
+		count(_row(r, id).findings) == 1
+		_row(r, id).baselines == []
+	}
+}
+
+test_txramp_level_2_controls_pass_on_the_compliant_input if {
+	ok := main.compliance_report with input as fully_compliant_input
+	every id in _txramp_extra {
+		_row(ok, id).status == "pass"
+	}
+}
+
+test_txramp_level_2_controls_do_not_pass_on_a_string_boolean if {
+	inp := object.union(fully_compliant_input, {
+		"ac_controls": object.union(fully_compliant_input.ac_controls, {"remote_access": object.union(fully_compliant_input.ac_controls.remote_access, {"disconnect": {"capability_provided": "true"}})}),
+		"sa_controls": object.union(fully_compliant_input.sa_controls, {"developer_cm": object.union(fully_compliant_input.sa_controls.developer_cm, {"integrity_verification": {"enabled": "false"}})}),
+	})
+	r := main.compliance_report with input as inp
+	every id in _txramp_extra {
+		_row(r, id).status == "evidence_missing"
+	}
+	_row(r, "AC-17").status == "pass"
+	_row(r, "SA-10").status == "pass"
+	r.failed_control_ids == ["AC-17(9)", "SA-10(1)"]
 }

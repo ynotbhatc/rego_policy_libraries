@@ -29,15 +29,15 @@ opa eval -d frameworks/federal/nist/sp_800_53 -i examples/nist_800_53/facts.json
 
 ## What the output means
 
-**The AC family:** `compliant` is `false`, `controls_evaluated` is 60 (AC base controls and enhancements) and
+**The AC family:** `compliant` is `false`, `controls_evaluated` is 61 (AC base controls and enhancements) and
 `violation_count` is 5. Every violation starts with its control id. None says "evidence missing", because every AC
 fact is present.
 
 **The framework key** (`nist_800_53`):
 
-- `total_controls` is 544, `failed_controls` is 489, `compliant` is `false`.
-- `control_result_counts`: 55 pass, 5 fail, 418 evidence missing, 66 not attested. The 60 AC controls are the
-  55 passes and the 5 fails. Every other family reports evidence missing (no facts were collected) or not attested
+- `total_controls` is 546, `failed_controls` is 490, `compliant` is `false`.
+- `control_result_counts`: 56 pass, 5 fail, 419 evidence missing, 66 not attested. The 61 AC controls are the
+  56 passes and the 5 fails. Every other family reports evidence missing (no facts were collected) or not attested
   (organizational controls that need a signed attestation under `<family>_controls.<topic>.attestation`).
 - `family_summary.AC` is `{"compliant": false, "violations": 5}`; every other family is non-compliant too.
 - `baseline_results` repeats the picture per 800-53B and FedRAMP baseline: for FedRAMP High, 410 controls in scope,

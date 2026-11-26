@@ -45,7 +45,7 @@ test_no_benchmark_input_report_is_unchanged if {
 test_no_benchmark_input_report_is_unchanged_on_empty_input if {
 	empty := main.compliance_report with input as {}
 	not empty.benchmark_evidence
-	empty.violation_count == 544
+	empty.violation_count == 546
 }
 
 test_benchmark_satisfied_is_recorded_and_changes_no_status if {
@@ -62,7 +62,7 @@ test_benchmark_satisfied_is_recorded_and_changes_no_status if {
 	r.benchmark_evidence.satisfied == ["AC-7"]
 	r.benchmark_evidence.gap == []
 	r.benchmark_evidence.spine_loaded
-	r.control_result_counts.pass == 544
+	r.control_result_counts.pass == 546
 }
 
 test_benchmark_satisfied_never_passes_a_control_by_itself if {
@@ -81,7 +81,7 @@ test_benchmark_satisfied_never_passes_a_control_by_itself if {
 	_row(r, "AU-14").status == "not_attested"
 	_row(r, "AU-14").basis == "attestation"
 	_row(r, "AU-14").benchmark.status == "satisfied"
-	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 478, "not_attested": 66}
+	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 480, "not_attested": 66}
 	not r.compliant
 }
 
@@ -109,7 +109,7 @@ test_benchmark_gap_overrides_an_attested_pass if {
 	r.failed_control_ids == ["AC-7", "AU-14"]
 	r.failed_controls == 2
 	r.violation_count == 2
-	r.control_result_counts == {"pass": 542, "fail": 2, "evidence_missing": 0, "not_attested": 0}
+	r.control_result_counts == {"pass": 544, "fail": 2, "evidence_missing": 0, "not_attested": 0}
 	r.family_summary.AU == {"violations": 1, "compliant": false}
 	r.family_summary.AC == {"violations": 1, "compliant": false}
 	r.family_summary.CM == {"violations": 0, "compliant": true}
@@ -163,7 +163,7 @@ test_mixed_verdicts if {
 	every x in r.control_results {
 		x.benchmark.status in {"gap", "satisfied", "not_reviewed", "not_applicable", "not_evaluated"}
 	}
-	count([x | some x in r.control_results; x.benchmark.status == "not_evaluated"]) == 540
+	count([x | some x in r.control_results; x.benchmark.status == "not_evaluated"]) == 542
 }
 
 test_report_without_facts_is_a_fail_closed_finding if {

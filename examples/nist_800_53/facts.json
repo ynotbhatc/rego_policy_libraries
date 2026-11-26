@@ -253,6 +253,13 @@
     },
     "remote_access": {
       "authorized_only": true,
+      "disconnect": {
+        "capability_provided": true,
+        "measured_minutes": 5,
+        "odp": {
+          "time_period_minutes": 15
+        }
+      },
       "encrypted_connections": true,
       "monitored_controlled": true,
       "privileged_commands": {

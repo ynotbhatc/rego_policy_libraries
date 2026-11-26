@@ -1,5 +1,5 @@
 # METADATA
-# title: "NIST SP 800-53 Rev 5 — catalog check: all 300 base controls, every Low/Moderate/High and Privacy baseline control, the Release 5.2.0 additions, 544 ids"
+# title: "NIST SP 800-53 Rev 5 — catalog check: all 300 base controls, every Low/Moderate/High and Privacy baseline control, the Release 5.2.0 additions, AC-17(9) and SA-10(1), 546 ids"
 # custom:
 #   class: compliance
 #   framework: nist_sp_800_53
@@ -30,15 +30,16 @@ import rego.v1
 # usnistgov/oscal-content v1.6.0, commit f0de6d8d; the repo's converters/exports/oscal profiles are built from
 # v1.5.0, commit 78650f02, which has the same ids and baselines): the catalog has 20
 # families and 1,014 controls and enhancements that are not withdrawn (300 base controls). This module
-# evaluates 544 of them: all 300 base controls, in all 20 families, and 244 enhancements, which is every control
+# evaluates 546 of them: all 300 base controls, in all 20 families, and 246 enhancements, which is every control
 # the NIST SP 800-53B Low (149), Moderate (287) and High (370) baselines and the FedRAMP Rev 5 Low (156), Moderate
 # (323) and High (410) baselines select, all 96 ids of the Privacy baseline, and the two enhancements Release
-# 5.2.0 added, SA-15(13) and SI-2(7), which are in no baseline (the release's new base control, SA-24, is one of
-# the 300). The 470 other enhancements (in none of those baselines) are not evaluated; SI-7(12), whose requirement
+# 5.2.0 added, SA-15(13) and SI-2(7), and the two enhancements AC-17(9) and SA-10(1), which TX-RAMP Level 2 selects,
+# all four in no NIST or FedRAMP baseline (the release's new base control, SA-24, is one of
+# the 300). The 468 other enhancements (in none of those baselines) are not evaluated; SI-7(12), whose requirement
 # Release 5.2.0 widened from user-installed software to all organization-defined software, is one of them.
 # A base control never fails on an enhancement's requirement. Organizational controls with no machine-checkable
 # evidence require a signed attestation ({attested: true, by, date}). A compliant result means "no finding in the
-# 544 evaluated ids", nothing more. control_results gives every id's outcome, and baseline_results says, for each
+# 546 evaluated ids", nothing more. control_results gives every id's outcome, and baseline_results says, for each
 # 800-53B and FedRAMP baseline, which of its controls are evaluated and how they came out and which are not
 # evaluated; that is a statement about this module, not a baseline authorization. Withdrawn controls are not assessed.
 #
@@ -354,7 +355,7 @@ compliance_report := object.union(
 		"framework": "NIST SP 800-53 Rev 5",
 		"version": "Rev 5",
 		"release": "5.2.0",
-		"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 544 of 1,014 active controls and enhancements of Release 5.2.0 (all 300 base controls; every 800-53B Low, Moderate, High and Privacy control and every FedRAMP Low, Moderate and High control; the Release 5.2.0 enhancements SA-15(13) and SI-2(7)); per-baseline results, not a baseline authorization",
+		"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 546 of 1,014 active controls and enhancements of Release 5.2.0 (all 300 base controls; every 800-53B Low, Moderate, High and Privacy control and every FedRAMP Low, Moderate and High control; the Release 5.2.0 enhancements SA-15(13) and SI-2(7); AC-17(9) and SA-10(1), which TX-RAMP Level 2 selects); per-baseline results, not a baseline authorization",
 		"assessed_at": assessed_at,
 		"total_controls": total_controls,
 		"failed_controls": failed_controls,
