@@ -58,10 +58,12 @@ test_control_index_lists_every_level_2_control_as_the_findings_write_it if {
 	count(txramp_index.CONTROL_INDEX) == 223
 }
 
-# Every TX-RAMP control is one the 800-53 module evaluates, except these two (both Level 2 only), which the module
-# reports as not_evaluated and counts failed.
-test_only_two_controls_have_no_800_53_check if {
-	not_checked := {id | some id in _ids("txramp_level_2"); not id in index.order}
-	not_checked == {"AC-17(9)", "SA-10(1)"}
-	_ids("txramp_level_1") & not_checked == set()
+# Every TX-RAMP control is one the 800-53 module evaluates (AC-17(9) and SA-10(1), which only Level 2 selects, were added
+# to it for this framework).
+test_every_control_has_an_800_53_check if {
+	every id in _ids("txramp_level_2") {
+		id in index.order
+	}
+	"AC-17(9)" in _ids("txramp_level_2")
+	"SA-10(1)" in _ids("txramp_level_2")
 }

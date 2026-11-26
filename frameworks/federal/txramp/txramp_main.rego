@@ -66,16 +66,17 @@ import rego.v1
 # (maps txramp_level_1 and txramp_level_2, for the crosswalk's coverage report).
 #
 # How a control gets its result. The control checks are the NIST SP 800-53 module's (data.nist.sp800_53.main): every
-# control TX-RAMP selects, except the two named next, is one of the 544 ids that module evaluates, with the same fail-closed
+# control TX-RAMP selects is one of the 546 ids that module evaluates (AC-17(9) and SA-10(1), which only TX-RAMP Level 2
+# selects, were added to it for this module), with the same fail-closed
 # behaviour and the same input contract (its per-family sections of the input). This module takes that module's row for each
 # selected control and does not copy a rule body:
 #   pass              the 800-53 module has no finding for the control
 #   fail              a finding that is not about missing evidence
 #   evidence_missing  the facts the check reads were not collected
 #   not_attested      an organizational control without its signed attestation
-#   not_evaluated     the 800-53 module has no row for the control: AC-17(9) and SA-10(1), both Level 2 only. They are
-#                     counted as failed and listed in not_evaluated_control_ids, so on the assessment path Level 2 cannot
-#                     report compliant until that module evaluates them; Level 1 has none.
+#   not_evaluated     the 800-53 module has no row for the control (none with the shipped index; a future catalog change
+#                     could add one). Counted as failed and listed in not_evaluated_control_ids, so a control that cannot be
+#                     checked never passes on the assessment path.
 # total_controls is a fixed property of the level: Level 1 117, Level 2 223. Only the boolean true passes a yes/no fact (the
 # 800-53 module's rule). passed_controls + failed_controls + not_applicable_controls = total_controls. failed_controls
 # counts every control that is not a pass. not_applicable_controls is always 0: a control is not applicable only by an
@@ -506,7 +507,7 @@ failed_controls := total_controls if not scope_loaded
 
 not_applicable_controls := 0
 
-# The controls of the scope the 800-53 module has no row for (AC-17(9) and SA-10(1) at Level 2).
+# The controls of the scope the 800-53 module has no row for (empty with the shipped index).
 not_evaluated_control_ids := [id | some id in _ordered_ids; not _nist_rows[id]]
 
 # ---------------------------------------------------------------------------

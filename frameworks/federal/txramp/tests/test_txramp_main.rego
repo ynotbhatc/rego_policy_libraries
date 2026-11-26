@@ -64,13 +64,11 @@ _programme := {
 # The all-pass fixtures: the 800-53 module's all-pass input (every control Level 1 selects is one that module evaluates)
 # plus the programme facts. Level 2 has none: AC-17(9) and SA-10(1) are not evaluated by that module, so a Level 2
 # assessment cannot report compliant (test_real_level_2_*).
-# RA-5(5), privileged-access scanning, is a Level 2 control: the Level 1 fixture does not carry its fact, because no Level 1
-# rule reads it and a fact nothing depends on is a fixture artefact for the bad-input check.
-_level_1_controls := _with(fully_compliant_input, "ra_controls", _with(fully_compliant_input.ra_controls, "vulnerability_scanning", object.remove(fully_compliant_input.ra_controls.vulnerability_scanning, ["privileged_access"])))
+# The all-pass fixtures: the 800-53 module's all-pass input (every control either level selects is one that module
+# evaluates) plus the programme facts.
+good_level_1 := object.union(fully_compliant_input, object.union({"certification_level": "level_1"}, _programme))
 
-good_level_1 := object.union(_level_1_controls, object.union({"certification_level": "level_1"}, _programme))
-
-_level_2_facts := object.union(fully_compliant_input, object.union({"certification_level": "level_2"}, _programme))
+good_level_2 := object.union(fully_compliant_input, object.union({"certification_level": "level_2"}, _programme))
 
 # An accepted equivalence stands in for the assessment: only the equivalence and the facts of every certification.
 good_equivalence_level_2 := {
@@ -115,8 +113,8 @@ test_real_empty_input_fails_closed_on_level_2 if {
 	r.certification_basis == "assessment"
 	r.scope == {"certification_level": "level_2", "map": "txramp_level_2", "basis": "assessment"}
 	_arith(r)
-	r.not_evaluated_control_ids == ["AC-17(9)", "SA-10(1)"]
-	r.control_result_counts.not_evaluated == 2
+	r.not_evaluated_control_ids == []
+	r.control_result_counts.not_evaluated == 0
 	_names(r, "TX-RAMP LEVEL: evidence missing or invalid")
 }
 
@@ -167,28 +165,45 @@ test_real_level_1_all_pass if {
 	r.baseline_sizes == {"level_1": 117, "level_2": 223}
 }
 
-test_real_level_2_cannot_pass_while_two_controls_have_no_check if {
-	r := main.compliance_report with input as _level_2_facts
-	r.compliant == false
+test_real_level_2_all_pass if {
+	r := main.compliance_report with input as good_level_2
+	r.compliant
+	r.violations == []
 	r.total_controls == 223
-	r.passed_controls == 221
-	r.failed_controls == 2
-	r.failed_control_ids == ["AC-17(9)", "SA-10(1)"]
-	r.not_evaluated_control_ids == ["AC-17(9)", "SA-10(1)"]
-	r.control_result_counts == {"pass": 221, "fail": 0, "evidence_missing": 0, "not_attested": 0, "not_evaluated": 2}
+	r.passed_controls == 223
+	r.failed_controls == 0
+	r.failed_control_ids == []
+	r.not_evaluated_control_ids == []
+	r.control_result_counts == {"pass": 223, "fail": 0, "evidence_missing": 0, "not_attested": 0, "not_evaluated": 0}
+	r.scope == {"certification_level": "level_2", "map": "txramp_level_2", "basis": "assessment"}
 	_arith(r)
-	_names(r, "TX-RAMP AC-17(9): not evaluated")
-	_names(r, "TX-RAMP SA-10(1): not evaluated")
-	count(r.violations) == 2
+
+	# the two controls added to the 800-53 module for this framework are checked like any other
+	some row in r.control_results
+	row.id == "AC-17(9)"
+	row.status == "pass"
+	row.basis == "evidence"
+}
+
+test_real_level_2_fails_when_ac_17_9_or_sa_10_1_evidence_is_not_true if {
+	inp := object.union(good_level_2, {
+		"ac_controls": object.union(good_level_2.ac_controls, {"remote_access": object.union(good_level_2.ac_controls.remote_access, {"disconnect": {"capability_provided": "true"}})}),
+		"sa_controls": object.union(good_level_2.sa_controls, {"developer_cm": object.union(good_level_2.sa_controls.developer_cm, {"integrity_verification": {"enabled": false}})}),
+	})
+	r := main.compliance_report with input as inp
+	r.compliant == false
+	r.failed_control_ids == ["AC-17(9)", "SA-10(1)"]
+	r.passed_controls == 221
+	_arith(r)
 }
 
 test_level_1_and_level_2_totals_differ_with_the_level if {
 	l1 := _report(good_level_1)
-	l2 := _report(_level_2_facts)
+	l2 := _report(good_level_2)
 	l1.total_controls == 117
 	l2.total_controls == 223
 	l1.compliant
-	l2.compliant == false
+	l2.compliant
 }
 
 # --- programme facts: only the boolean true (or a number) passes ---------------------------------------------------
@@ -262,7 +277,7 @@ test_validity_is_a_number_and_not_expired if {
 test_vulnerability_report_cadence_follows_the_level if {
 	l1 := _report(_set_fact(good_level_1, "continuous_monitoring", "vulnerability_reports_on_schedule", false))
 	_names(l1, "due annual for level_1")
-	l2 := _report(_set_fact(_level_2_facts, "continuous_monitoring", "vulnerability_reports_on_schedule", false))
+	l2 := _report(_set_fact(good_level_2, "continuous_monitoring", "vulnerability_reports_on_schedule", false))
 	_names(l2, "due quarterly for level_2")
 }
 
@@ -331,13 +346,36 @@ _index_of(arr, x) := i if {
 	v == x
 }
 
-test_controls_without_an_800_53_check_are_not_evaluated_and_counted_failed if {
-	r := _report(_level_2_facts)
-	not_eval := {row.id | some row in r.control_results; row.status == "not_evaluated"}
-	not_eval == {"AC-17(9)", "SA-10(1)"}
-	r.passed_controls == 221
-	r.failed_controls == 2
+# A control the 800-53 module has no row for (a synthetic gap: the module's rows without AC-3) is not evaluated, counts
+# failed and is listed; nothing can pass it.
+_rows_without(id) := [_pass_row(i) | some i in index.order; i != id]
+
+test_a_control_without_an_800_53_row_is_not_evaluated_and_counted_failed if {
+	r := _report_rows(good_level_2, _rows_without("AC-3"))
+	r.compliant == false
+	r.not_evaluated_control_ids == ["AC-3"]
+	r.failed_control_ids == ["AC-3"]
+	r.passed_controls == 222
+	r.failed_controls == 1
+	r.control_result_counts.not_evaluated == 1
 	_arith(r)
+	_names(r, "TX-RAMP AC-3: not evaluated")
+	some row in r.control_results
+	row.id == "AC-3"
+	row.status == "not_evaluated"
+	row.basis == "none"
+}
+
+test_a_control_without_an_800_53_row_is_accepted_on_an_equivalence_and_still_listed if {
+	r := _report_rows(good_equivalence_level_2, _rows_without("AC-3"))
+	r.compliant
+	r.passed_controls == 223
+	r.not_evaluated_control_ids == ["AC-3"]
+	some row in r.control_results
+	row.id == "AC-3"
+	row.status == "pass"
+	row.basis == "equivalence"
+	row.evidence_status == "not_evaluated"
 }
 
 # --- equivalence ---------------------------------------------------------------------------------------------------
@@ -364,8 +402,7 @@ test_accepted_equivalence_is_visible_and_needs_no_control_facts if {
 	row.id == "AC-2"
 	row.evidence_status == "fail"
 
-	# the two controls the 800-53 module has no check for are accepted on the equivalence too, and still listed
-	r.not_evaluated_control_ids == ["AC-17(9)", "SA-10(1)"]
+	r.not_evaluated_control_ids == []
 }
 
 test_real_accepted_equivalence_passes_223_with_basis_equivalence if {
