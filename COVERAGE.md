@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**995 of 1072 policy files have tests (93%).** 1672 test files, 77 policies still uncovered.
+**996 of 1074 policy files have tests (93%).** 1673 test files, 78 policies still uncovered.
 
 ## How far each framework has been validated
 
@@ -14,7 +14,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
   covers a subset of the benchmark; the evidence column says what is missing.
 - **experimental**: generated or new, not yet run on real evidence. Treat its results as unverified.
 
-**197 framework keys: 4 validated, 5 partial, 188 experimental.**
+**198 framework keys: 4 validated, 5 partial, 189 experimental.**
 
 | framework key | label | modules | evidence |
 |---|---|---|---|
@@ -158,6 +158,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
 | `nrc_73_54` | experimental |  |  |
 | `nsa_cisa_k8s` | experimental |  |  |
 | `ny_dfs` | experimental |  |  |
+| `owasp_asvs` | experimental |  |  |
 | `owasp_llm` | experimental |  |  |
 | `owasp_top10` | experimental |  |  |
 | `pci_dss` | experimental |  |  |
@@ -247,6 +248,7 @@ took so two people do not write the same test.
 | `frameworks/financial` | 1 |
 | `frameworks/management` | 1 |
 | `governance/ai` | 1 |
+| `governance/owasp_asvs` | 1 |
 | `threat_detection/crypto_mining` | 1 |
 
 ## The queue
@@ -639,6 +641,12 @@ took so two people do not write the same test.
 <details><summary><code>governance/ai</code> — 1 file(s)</summary>
 
 - `ai_governance_main.rego`
+
+</details>
+
+<details><summary><code>governance/owasp_asvs</code> — 1 file(s)</summary>
+
+- `owasp_asvs_index.rego`
 
 </details>
 
