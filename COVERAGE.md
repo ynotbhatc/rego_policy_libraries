@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**994 of 1070 policy files have tests (93%).** 1670 test files, 76 policies still uncovered.
+**995 of 1072 policy files have tests (93%).** 1672 test files, 77 policies still uncovered.
 
 ## How far each framework has been validated
 
@@ -14,7 +14,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
   covers a subset of the benchmark; the evidence column says what is missing.
 - **experimental**: generated or new, not yet run on real evidence. Treat its results as unverified.
 
-**196 framework keys: 4 validated, 5 partial, 187 experimental.**
+**197 framework keys: 4 validated, 5 partial, 188 experimental.**
 
 | framework key | label | modules | evidence |
 |---|---|---|---|
@@ -212,6 +212,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
 | `swift_csp` | experimental |  |  |
 | `tisax` | experimental |  |  |
 | `tsa_pipeline` | experimental |  |  |
+| `txramp` | experimental |  |  |
 | `uk_dpa_2018` | experimental |  |  |
 | `zero_trust` | experimental |  |  |
 
@@ -236,7 +237,7 @@ took so two people do not write the same test.
 |---|---|
 | `benchmarks/cis` | 35 |
 | `benchmarks/stig` | 20 |
-| `frameworks/federal` | 7 |
+| `frameworks/federal` | 8 |
 | `benchmarks/sap` | 4 |
 | `frameworks/critical_infrastructure` | 2 |
 | `enforcement/ansible` | 1 |
@@ -614,6 +615,12 @@ took so two people do not write the same test.
 
 - `nist_800_53_index.rego`
 - `nist_800_53_key_main.rego`
+
+</details>
+
+<details><summary><code>frameworks/federal/txramp</code> — 1 file(s)</summary>
+
+- `txramp_index.rego`
 
 </details>
 

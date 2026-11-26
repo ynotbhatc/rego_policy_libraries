@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 30,908 control-level checks in 1,070 policy files, mapped to 191 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 30,924 control-level checks in 1,072 policy files, mapped to 192 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -39,15 +39,15 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
   (a list of strings, each starting with the control id). Most frameworks add `passed_controls`,
   `compliance_percentage` and per-section results.
 - Missing evidence fails: a control whose facts were not collected reports "evidence missing"; it never passes by default.
-- Size at release 2.5.0: 30,908 control-level checks in 1,070 policy files, mapped to 191 framework catalogs.
+- Size at release 2.5.0: 30,924 control-level checks in 1,072 policy files, mapped to 192 framework catalogs.
 - Release bundle (OCI, built with OPA 1.10.0): `ghcr.io/ynotbhatc/rego_policy_libraries:<version>`, for example
   `oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest`, then `opa run --server --bundle bundle.tar.gz`.
 
 ## Standards
 
 One page per standard directory that holds at least 4 policy files: 83 pages covering 921 of the
-1,070 policy files. The other 149 files sit in smaller directories and in `crosswalk/`; the
-[homepage catalog](https://ynotbhatc.github.io/rego_policy_libraries/) lists every directory, and its sections add up to 1,070.
+1,072 policy files. The other 151 files sit in smaller directories and in `crosswalk/`; the
+[homepage catalog](https://ynotbhatc.github.io/rego_policy_libraries/) lists every directory, and its sections add up to 1,072.
 
 - [AI Governance](https://ynotbhatc.github.io/rego_policy_libraries/standard/governance-ai.html): 5 policy files
 - [AMI / NIST IR 7628](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html): 12 policy files

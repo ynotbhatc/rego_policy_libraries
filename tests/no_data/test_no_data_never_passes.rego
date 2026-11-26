@@ -981,6 +981,11 @@ test_tsa_pipeline_main_fails_on_no_data if {
 	_fails(r)
 }
 
+test_txramp_main_fails_on_no_data if {
+	r := data.txramp.main.compliance_report with input as {}
+	_fails(r)
+}
+
 test_uk_dpa_2018_main_fails_on_no_data if {
 	r := data.uk_dpa_2018.main.compliance_report with input as {}
 	_fails(r)

@@ -5,6 +5,15 @@
 #   framework: txramp
 #   source: txramp
 #   domains: [us-state, cloud]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package txramp.index
 
 import rego.v1

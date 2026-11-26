@@ -5,6 +5,15 @@
 #   framework: txramp
 #   source: txramp
 #   domains: [us-state, cloud]
+#   coverage:
+#     checks: 14
+#     cited: 2
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package txramp.main
 
 import data.nist.sp800_53.index

@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 30
-#     cited: 30
+#     checks: 31
+#     cited: 31
 #     density: sized
 #     basis: size
 #     tested: true

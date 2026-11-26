@@ -21,6 +21,7 @@ keys := {
 	"stig_kubernetes", "stig_ms_sql_2016", "stig_openshift_4", "stig_postgresql_16", "stig_rhel8", "stig_rhel9",
 	"stig_sles_15", "stig_ubuntu_2204", "stig_vsphere_8_esxi", "stig_windows_11", "stig_windows_server_2022",
 	"stig_windows_server_2025", "swift_csp", "tisax", "tsa_pipeline",
+	"txramp",
 }
 
 # One test per product key: the entrypoint resolves on empty input, is an object, is not compliant,
@@ -688,6 +689,13 @@ test_key_tisax if {
 
 test_key_tsa_pipeline if {
 	r := data.tsa_pipeline.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+	_contract(r)
+}
+
+test_key_txramp if {
+	r := data.txramp.main.compliance_report with input as {}
 	is_object(r)
 	r.compliant == false
 	_contract(r)
