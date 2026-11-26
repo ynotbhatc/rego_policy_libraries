@@ -61,26 +61,13 @@ jobs:
 
       - name: Build OPA bundle
         run: |
-          # Bundle mode (-b .) so the committed/generated .manifest roots are
-          # honored. Ignores keep the published bundle to runtime policy only:
-          # test modules (never shipped), sample/fixture JSON (not referenced
-          # by any policy), and non-policy trees. Test files are excluded here
-          # AND from the manifest roots — they must agree, and a mismatch fails
-          # this build loudly before anything is published.
-          opa build -b . --output bundle.tar.gz \
-            --ignore '*_test.rego' \
-            --ignore 'test_*.rego' \
-            --ignore 'tests' \
-            --ignore '_framework_key_tests' \
-            --ignore '*.json' \
-            --ignore 'docs' \
-            --ignore 'scripts' \
-            --ignore 'tools' \
-            --ignore 'standard' \
-            --ignore 'crosswalk' \
-            --ignore '.github' \
-            --ignore '.git' \
-            --ignore '.claude'
+          # One definition of the bundle (scripts/build_bundle.sh, also run by `make check-bundle` on
+          # every pull request), checked before anything is published (scripts/check_bundle.py): the
+          # crosswalk data that nist_800_53 and fedramp read ships, no test module ships, and no data
+          # file ships from anywhere but crosswalk/. The revision is the one the manifest step wrote.
+          REVISION=$(python3 -c 'import json;print(json.load(open(".manifest"))["revision"])')
+          bash scripts/build_bundle.sh bundle.tar.gz "$REVISION"
+          python3 scripts/check_bundle.py bundle.tar.gz
           echo "Bundle size: $(du -sh bundle.tar.gz)"
           echo "Rego files: $(tar -tzf bundle.tar.gz | grep -c '\.rego')"
           echo "Manifest roots: $(tar -xzf bundle.tar.gz -O /.manifest | python3 -c 'import sys,json;print(len(json.load(sys.stdin)["roots"]))')"
