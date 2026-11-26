@@ -25,6 +25,16 @@ https://creativecommons.org/licenses/by-nd/4.0/ plus Section 9 of the ISA workbo
 The Apache License 2.0 above covers this library's own code and text; the ISA numbering and structure used
 in that module and in its OSCAL and crosswalk exports remain under the ISA licence terms, unchanged.
 
+governance/owasp_asvs: OWASP Application Security Verification Standard 5.0.0, Copyright (c) 2008-2025 The OWASP
+Foundation, released under the Creative Commons Attribution-ShareAlike 4.0 International licence
+(https://creativecommons.org/licenses/by-sa/4.0/). The module is an independent work, not issued or endorsed by
+the OWASP Foundation. It takes only the requirement identifiers (V<chapter>.<section>.<requirement>), the
+chapter and section numbers and the level of each requirement from the standard's machine-readable release
+(https://github.com/OWASP/ASVS/releases/tag/v5.0.0_release, sha256 in scripts/owasp_asvs_requirements.json),
+plus short chapter labels written for this library; no requirement text is reproduced. The Apache License 2.0
+above covers this library's own code and text; the ASVS identifiers, numbering and levels used in that module
+and in its OSCAL and crosswalk exports remain under the ASVS licence terms, unchanged.
+
 crosswalk/ (data shipped in the published bundle): the mapping data is taken unchanged from its publishers;
 each data set records its source URL, date and sha256 in its own `meta`.
 - crosswalk/attack_800_53: MITRE ATT&CK (Enterprise) to NIST SP 800-53 Rev 5 mappings from the Center for

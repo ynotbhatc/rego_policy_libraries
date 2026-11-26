@@ -134,7 +134,8 @@ check-coverage:
 # the Linux STIG collector contract matches the rule tables; standards.yaml matches the module versions;
 # the input schemas (schemas/input/) match their sources and pass their self-tests; the site catalog's sections
 # hold every policy file once and add up to the README policy count; the crosswalk framework maps match the
-# FedRAMP profiles, the GovRAMP maps and index match scripts/govramp_baselines.json, and, for the NIST-published maps,
+# FedRAMP profiles, the GovRAMP maps and index match scripts/govramp_baselines.json, the OWASP ASVS index matches
+# scripts/owasp_asvs_requirements.json, and, for the NIST-published maps,
 # their recorded map hash and pinned sources (no network)
 check-generated: check-no-data check-standards
 	@OPA=$(OPA) python3 scripts/gen_nist_800_53_index.py --check
@@ -145,6 +146,7 @@ check-generated: check-no-data check-standards
 	@python3 scripts/gen_pages_catalog.py --check
 	@python3 scripts/gen_fedramp_framework_maps.py --check
 	@OPA=$(OPA) python3 scripts/gen_govramp_framework_maps.py --check
+	@OPA=$(OPA) python3 scripts/gen_owasp_asvs_index.py --check
 	@python3 scripts/gen_nist_framework_maps.py --check
 
 # one JSON Schema per framework key for the facts its module reads, generated from the rule tables, the collector
