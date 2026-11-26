@@ -241,6 +241,12 @@ def build_index(doc):
                 out.append(f'\t\t"{kind}": {rego_set(lv[kind], chr(9) * 3)},')
         out.append('\t},')
     out.append('}')
+    # The findings of the controls are built from the 800-53 module's rows at run time ("GovRAMP AC-2: ..."), so no literal
+    # message carries the ids. The exporters (OSCAL catalog, SARIF, assessment results) learn them from this index.
+    out += ['', '# Every control any GovRAMP baseline selects, as the findings write it. Read by scripts/inventory_controls.py so the',
+            '# OSCAL catalog and the exports know the controls; no rule reads it.', 'CONTROL_INDEX := [']
+    out += [f'\t{{"id": {json.dumps("GovRAMP " + i)}}},' for i in sorted(doc["levels"]["high"]["authorized"], key=sort_key)]
+    out += [']']
     out += ['', '# What FedRAMP Rev 5 selects at the same level and GovRAMP does not.', 'not_selected_from_fedramp_rev5 := {']
     for level in LEVELS:
         ids = sorted(set(fed[f"fedramp_rev5_{level}"]["map"]) - set(doc["levels"][level]["authorized"]), key=sort_key)
