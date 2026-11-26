@@ -496,6 +496,11 @@ test_glba_main_fails_on_no_data if {
 	_fails(r)
 }
 
+test_govramp_main_fails_on_no_data if {
+	r := data.govramp.main.compliance_report with input as {}
+	_fails(r)
+}
+
 test_hipaa_main_fails_on_no_data if {
 	r := data.hipaa.main.compliance_report with input as {}
 	_fails(r)

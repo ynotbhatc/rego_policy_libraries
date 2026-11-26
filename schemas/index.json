@@ -1,11 +1,11 @@
 {
  "generated_by": "scripts/gen_input_schemas.py",
- "entrypoints": 195,
- "with_schema": 195,
+ "entrypoints": 196,
+ "with_schema": 196,
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 134,
+  "static-scan+fixture": 135,
   "paths-only": 48
  },
  "schemas": {
@@ -880,6 +880,15 @@
    "required_paths": 0,
    "source": [
     "frameworks/financial/glba/"
+   ]
+  },
+  "govramp": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/govramp/schema.json",
+   "known_paths": 2294,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/govramp/"
    ]
   },
   "hipaa": {

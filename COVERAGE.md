@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**993 of 1068 policy files have tests (93%).** 1668 test files, 75 policies still uncovered.
+**994 of 1070 policy files have tests (93%).** 1670 test files, 76 policies still uncovered.
 
 ## How far each framework has been validated
 
@@ -14,7 +14,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
   covers a subset of the benchmark; the evidence column says what is missing.
 - **experimental**: generated or new, not yet run on real evidence. Treat its results as unverified.
 
-**195 framework keys: 4 validated, 5 partial, 186 experimental.**
+**196 framework keys: 4 validated, 5 partial, 187 experimental.**
 
 | framework key | label | modules | evidence |
 |---|---|---|---|
@@ -117,6 +117,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
 | `ftc_red_flags` | experimental |  |  |
 | `gdpr` | experimental |  |  |
 | `glba` | experimental |  |  |
+| `govramp` | experimental |  |  |
 | `hipaa` | experimental |  |  |
 | `hitrust` | experimental |  |  |
 | `hkma_trm` | experimental |  |  |
@@ -235,7 +236,7 @@ took so two people do not write the same test.
 |---|---|
 | `benchmarks/cis` | 35 |
 | `benchmarks/stig` | 20 |
-| `frameworks/federal` | 6 |
+| `frameworks/federal` | 7 |
 | `benchmarks/sap` | 4 |
 | `frameworks/critical_infrastructure` | 2 |
 | `enforcement/ansible` | 1 |
@@ -587,6 +588,12 @@ took so two people do not write the same test.
 <details><summary><code>frameworks/federal/cmmc</code> — 1 file(s)</summary>
 
 - `cmmc_key_main.rego`
+
+</details>
+
+<details><summary><code>frameworks/federal/govramp</code> — 1 file(s)</summary>
+
+- `govramp_index.rego`
 
 </details>
 

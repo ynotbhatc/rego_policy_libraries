@@ -18,8 +18,8 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries (after v2.5.0) |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 30,891 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
-| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 190 framework catalogs, 130+ framework directories |
+| Controls / checks | 1,591 controls in 34 domains | 30,908 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
+| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 191 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 25 STIG platforms |
 | Licence | Creative Commons BY-ND, free | open |
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our 190 catalogs and SCF's "83 covered" are different lists.
+those count toward the 237, so our 191 catalogs and SCF's "83 covered" are different lists.
 
 ## How we close it
 

@@ -13,7 +13,7 @@ keys := {
 	"cis_rhel9", "cis_rocky_linux_8", "cis_rocky_linux_9", "cis_ubuntu_2004", "cis_ubuntu_2204",
 	"cis_ubuntu_2404", "cis_vmware_esxi", "cis_vmware_esxi_9", "cis_vyos", "cis_windows_2019", "cis_windows_2022",
 	"cis_windows_server_2025", "cisa_cpg", "cmmc", "cobit", "coppa", "cra", "crypto_miner_detection", "csa_ccm",
-	"digital_sovereignty", "dora", "eu_ai_act", "fedramp", "ferpa", "fisma", "gdpr", "glba", "hipaa", "hitrust",
+	"digital_sovereignty", "dora", "eu_ai_act", "fedramp", "ferpa", "fisma", "gdpr", "glba", "govramp", "hipaa", "hitrust",
 	"iec_62443", "iso27001", "iso27701", "iso_42001", "itar", "k8s_pss", "ncsc_caf", "nerc_cip", "nis2",
 	"nist_800_171", "nist_800_53", "nist_800_82", "nist_ai_rmf", "nist_csf", "nsa_cisa_k8s", "ny_dfs", "pci_dss",
 	"scuba_m365", "sec_cyber", "sentinel_ansible", "sentinel_dockerfile", "sentinel_kubernetes",
@@ -366,6 +366,13 @@ test_key_gdpr if {
 
 test_key_glba if {
 	r := data.glba.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+	_contract(r)
+}
+
+test_key_govramp if {
+	r := data.govramp.main.compliance_report with input as {}
 	is_object(r)
 	r.compliant == false
 	_contract(r)

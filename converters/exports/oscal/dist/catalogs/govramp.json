@@ -1,0 +1,623 @@
+{
+ "catalog": {
+  "uuid": "083723e0-bcd3-59fa-81a9-1beb0f51cbe6",
+  "metadata": {
+   "title": "Rego Policy Libraries — govramp (GovRAMP — static index of the controls each impact level and verified status selects; generated)",
+   "last-modified": "2026-11-13T00:00:00Z",
+   "version": "2.5.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "govramp"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "govramp-govramp_index",
+    "class": "rego-module",
+    "title": "GovRAMP — static index of the controls each impact level and verified status selects; generated",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "govramp.index"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/govramp/govramp_index.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "govramp-high",
+      "title": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_index.rego (package govramp.index); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "high"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "high"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2b79941-a3f9-58ee-9052-50e516dcd156",
+        "rel": "implementation"
+       },
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-high_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_index.rego (package govramp.index); see the rule body."
+       },
+       {
+        "id": "govramp-high_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_main.rego (package govramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-low",
+      "title": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_index.rego (package govramp.index); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "low"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "low"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2b79941-a3f9-58ee-9052-50e516dcd156",
+        "rel": "implementation"
+       },
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-low_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_index.rego (package govramp.index); see the rule body."
+       },
+       {
+        "id": "govramp-low_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_main.rego (package govramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-moderate",
+      "title": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_index.rego (package govramp.index); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "moderate"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "moderate"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2b79941-a3f9-58ee-9052-50e516dcd156",
+        "rel": "implementation"
+       },
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-moderate_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_index.rego (package govramp.index); see the rule body."
+       },
+       {
+        "id": "govramp-moderate_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_main.rego (package govramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "govramp-govramp_main",
+    "class": "rego-module",
+    "title": "GovRAMP (formerly StateRAMP) — baseline and verification-status check",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "govramp.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/govramp/govramp_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "govramp-govramp.main-1",
+      "title": "GovRAMP IMPACT: evidence missing or invalid — input.impact_level must be one of low, moderate, high. The High baseline (406 controls, Authorized) is assessed until the impact level is declared.",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-1_stmt",
+        "name": "statement",
+        "prose": "GovRAMP IMPACT: evidence missing or invalid — input.impact_level must be one of low, moderate, high. The High baseline (406 controls, Authorized) is assessed until the impact level is declared."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-2",
+      "title": "GovRAMP STATUS: evidence missing or invalid — input.verification_status must be one of core, ready, authorized, provisionally_authorized. The Authorized scope is assessed until the status is declared.",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-2_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: evidence missing or invalid — input.verification_status must be one of core, ready, authorized, provisionally_authorized. The Authorized scope is assessed until the status is declared."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-3",
+      "title": "GovRAMP STATUS: Core exists at the Moderate impact level only (the Core controls are a column of the Moderate Controls Matrix). The Authorized scope of the declared level is assessed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-3_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: Core exists at the Moderate impact level only (the Core controls are a column of the Moderate Controls Matrix). The Authorized scope of the declared level is assessed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-4",
+      "title": "GovRAMP STATUS: attestation — Core is assessed by the GovRAMP PMO (Security Assessment Framework 1.5.3); input.verification.pmo_assessment_completed is not true.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-4_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: attestation — Core is assessed by the GovRAMP PMO (Security Assessment Framework 1.5.3); input.verification.pmo_assessment_completed is not true.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-5",
+      "title": "GovRAMP STATUS: attestation — %s requires an independent 3PAO assessment (Security Assessment Framework 1.5.5, 1.5.7, 1.5.11); input.verification.third_party_assessment_completed is not true.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-5_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: attestation — %s requires an independent 3PAO assessment (Security Assessment Framework 1.5.5, 1.5.7, 1.5.11); input.verification.third_party_assessment_completed is not true.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-6",
+      "title": "GovRAMP STATUS: attestation — %s requires approval by a sponsoring government or the Approvals Committee (Security Assessment Framework 1.5.6, 1.5.7); input.verification.sponsoring_body_approved is no",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-6_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: attestation — %s requires approval by a sponsoring government or the Approvals Committee (Security Assessment Framework 1.5.6, 1.5.7); input.verification.sponsoring_body_approved is not true.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-7",
+      "title": "GovRAMP STATUS: evidence missing — input.verification.status_valid_days_remaining (days left of the 12-month validity of the verified status) not collected, or not a number",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-7_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: evidence missing — input.verification.status_valid_days_remaining (days left of the 12-month validity of the verified status) not collected, or not a number"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-8",
+      "title": "GovRAMP STATUS: the verified status expired %v days ago; a verified GovRAMP status is valid for 12 months and is extended by an annual assessment before it expires (Security Assessment Framework 1.5.3",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-8_stmt",
+        "name": "statement",
+        "prose": "GovRAMP STATUS: the verified status expired %v days ago; a verified GovRAMP status is valid for 12 months and is extended by an annual assessment before it expires (Security Assessment Framework 1.5.3)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-9",
+      "title": "GovRAMP CONMON: attestation — continuous monitoring reports are due %s for %s (Continuous Monitoring Guide 3.2); input.continuous_monitoring.reports_submitted_on_schedule is not true.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-9_stmt",
+        "name": "statement",
+        "prose": "GovRAMP CONMON: attestation — continuous monitoring reports are due %s for %s (Continuous Monitoring Guide 3.2); input.continuous_monitoring.reports_submitted_on_schedule is not true.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-govramp.main-10",
+      "title": "FAIL-CLOSED: the GovRAMP control index (govramp_index.rego, generated) or the NIST SP 800-53 module (frameworks/federal/nist/sp_800_53/) is not loaded next to this module, so no control could be evalu",
+      "props": [
+       {
+        "name": "label",
+        "value": "govramp.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "govramp.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-govramp.main-10_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED: the GovRAMP control index (govramp_index.rego, generated) or the NIST SP 800-53 module (frameworks/federal/nist/sp_800_53/) is not loaded next to this module, so no control could be evaluated; this is not a passing result"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "govramp-scope",
+      "title": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_main.rego (package govramp.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "scope"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "scope"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "govramp.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4c746522-6af7-5830-aa7c-01d8730aedf3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "govramp-scope_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/govramp/govramp_main.rego (package govramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c2b79941-a3f9-58ee-9052-50e516dcd156",
+     "title": "GovRAMP — static index of the controls each impact level and verified status selects; generated",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "govramp.index"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/federal/govramp/govramp_index.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4c746522-6af7-5830-aa7c-01d8730aedf3",
+     "title": "GovRAMP (formerly StateRAMP) — baseline and verification-status check",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "govramp.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/federal/govramp/govramp_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
