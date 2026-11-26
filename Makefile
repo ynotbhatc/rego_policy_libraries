@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-no-library-tests check-bad-input check-generated check-coverage check-per-file-load schemas oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
+.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-no-library-tests check-bad-input check-generated check-bundle check-coverage check-per-file-load schemas oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -112,7 +112,15 @@ check-bad-input:
 	@OPA=$(OPA) python3 -m unittest discover -s scripts/tests -q
 	@OPA=$(OPA) python3 scripts/check_bad_input_fails.py --check
 
+# Build the bundle exactly as the publish workflow does (scripts/build_bundle.sh) and check what is in it:
+# the crosswalk data ships, no test module ships, and fedramp reads benchmark results from the bundle.
+# The bundle is built in a temporary directory outside the tree and removed afterwards: a bundle left in the
+# repository would be loaded by `opa test .` and collide with the crosswalk data it carries.
+check-bundle:
+	@D=$$(mktemp -d) && { OPA=$(OPA) bash scripts/build_bundle.sh "$$D/bundle.tar.gz" check && OPA=$(OPA) python3 scripts/check_bundle.py "$$D/bundle.tar.gz"; RC=$$?; rm -rf "$$D"; exit $$RC; }
+
 check-coverage:
+	@$(MAKE) --no-print-directory check-bundle
 	@$(MAKE) --no-print-directory check-no-library-tests
 	@OPA=$(OPA) python3 scripts/coverage_stamp.py --check
 	@python3 scripts/check_numeric_guards.py --check

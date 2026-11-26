@@ -24,3 +24,17 @@ https://creativecommons.org/licenses/by-nd/4.0/ plus Section 9 of the ISA workbo
 (https://portal.enx.com/isa2027-en.xlsx).
 The Apache License 2.0 above covers this library's own code and text; the ISA numbering and structure used
 in that module and in its OSCAL and crosswalk exports remain under the ISA licence terms, unchanged.
+
+crosswalk/ (data shipped in the published bundle): the mapping data is taken unchanged from its publishers;
+each data set records its source URL, date and sha256 in its own `meta`.
+- crosswalk/attack_800_53: MITRE ATT&CK (Enterprise) to NIST SP 800-53 Rev 5 mappings from the Center for
+  Threat-Informed Defense "mappings-explorer" project, licensed under the Apache License 2.0
+  (https://github.com/center-for-threat-informed-defense/mappings-explorer/blob/main/LICENSE.txt).
+  MITRE ATT&CK(R) is a registered trademark of The MITRE Corporation; ATT&CK technique identifiers are used
+  under the ATT&CK Terms of Use (https://attack.mitre.org/resources/legal-and-branding/terms-of-use/).
+- crosswalk/stig_800_53: DISA STIG rule-to-CCI and CCI-to-NIST SP 800-53 references from the DISA SRG-STIG
+  library and CCI list (works of the United States Government).
+- crosswalk/framework_maps: NIST SP 800-53B baselines, the SP 800-53 Rev 5 catalog, SP 800-171 Rev 3 source
+  controls and NIST OLIR informative references (works of the United States Government), and the FedRAMP
+  Rev 5 baseline profiles published by the FedRAMP PMO. ISO/IEC 27001 control identifiers appear only as
+  keys of a NIST-authored mapping; no ISO text is included.
