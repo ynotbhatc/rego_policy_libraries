@@ -28,7 +28,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.system_services_acquisition.evaluated_controls == {"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8", "SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24", "SA-8(33)", "SA-15(13)"}
+	data.nist.sp800_53.system_services_acquisition.evaluated_controls == {"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8", "SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24", "SA-8(33)", "SA-15(13)", "SA-10(1)"}
 }
 
 test_sa1_policy_not_documented_fails if {
@@ -718,7 +718,7 @@ test_high_enhancements_missing_do_not_fail_base if {
 }
 
 # The all-pass fixture with the facts of the Privacy-baseline enhancements.
-_pass := object.union(_pass_base, {"sa_controls": {"engineering_principles": {"minimization": {"odp": {"processes": ["collection limitation review"]}, "processes_implemented": ["collection limitation review"]}}, "development_process": {"logging_syntax": {"format_defined": true, "event_types_defined": true, "detail_level_defined": true, "developer_required": true, "components_not_conforming": 0}}}})
+_pass := object.union(_pass_base, {"sa_controls": {"engineering_principles": {"minimization": {"odp": {"processes": ["collection limitation review"]}, "processes_implemented": ["collection limitation review"]}}, "development_process": {"logging_syntax": {"format_defined": true, "event_types_defined": true, "detail_level_defined": true, "developer_required": true, "components_not_conforming": 0}}, "developer_cm": {"integrity_verification": {"required": true, "enabled": true, "components_unverified": 0}}}})
 
 # --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
 
@@ -843,6 +843,103 @@ test_sa15_13_bad_typed_count_is_evidence_missing if {
 			f := _flagged(v, "SA-15(13)")
 			count(f) == 1
 			contains(f[0], sprintf("evidence missing — %s not collected", [_sa15_13_path(k)]))
+		}
+	}
+}
+
+# --- SA-10(1) Software and Firmware Integrity Verification (selected by TX-RAMP Level 2) ------------------------------------------------------------
+# Data-driven: every fact of the all-pass fixture is replaced in turn by each bad value, and removed.
+
+_sa10_1_bools := ["required", "enabled"]
+
+_sa10_1_counts := ["components_unverified"]
+
+_sa10_1_sec := _pass.sa_controls.developer_cm.integrity_verification
+
+_sa10_1_with(k, val) := object.union(_pass, {"sa_controls": {"developer_cm": {"integrity_verification": {k: val}}}})
+
+_sa10_1_without(k) := json.remove(_pass, [concat("/", ["", "sa_controls", "developer_cm", "integrity_verification", k])])
+
+_sa10_1_path(k) := concat(".", ["input", "sa_controls", "developer_cm", "integrity_verification", k])
+
+test_sa10_1_satisfied_passes if {
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as _pass
+	count(_flagged(v, "SA-10(1)")) == 0
+	every k in _sa10_1_bools {
+		_sa10_1_sec[k] == true
+	}
+	every k in _sa10_1_counts {
+		_sa10_1_sec[k] == 0
+	}
+}
+
+test_sa10_1_empty_input_fails_as_evidence_missing if {
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as {}
+	f := _flagged(v, "SA-10(1)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+	every k in array.concat(_sa10_1_bools, _sa10_1_counts) {
+		contains(f[0], _sa10_1_path(k))
+	}
+}
+
+test_sa10_1_section_null_fails_only_this_id if {
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as object.union(_pass, {"sa_controls": {"developer_cm": {"integrity_verification": null}}})
+	count(v) == 1
+	count(_flagged(v, "SA-10(1)")) == 1
+}
+
+test_sa10_1_boolean_false_fails_as_unmet if {
+	every k in _sa10_1_bools {
+		v := data.nist.sp800_53.system_services_acquisition.violation with input as _sa10_1_with(k, false)
+		count(v) == 1
+		f := _flagged(v, "SA-10(1)")
+		count(f) == 1
+		not contains(f[0], "evidence missing")
+	}
+}
+
+test_sa10_1_bad_typed_boolean_is_evidence_missing if {
+	every k in _sa10_1_bools {
+		every bad in ["false", "true", "no", "yes", null, 0, 1, [], {}] {
+			v := data.nist.sp800_53.system_services_acquisition.violation with input as _sa10_1_with(k, bad)
+			count(v) == 1
+			f := _flagged(v, "SA-10(1)")
+			count(f) == 1
+			contains(f[0], sprintf("evidence missing — %s not collected", [_sa10_1_path(k)]))
+		}
+	}
+}
+
+test_sa10_1_removed_fact_is_evidence_missing if {
+	every k in array.concat(_sa10_1_bools, _sa10_1_counts) {
+		v := data.nist.sp800_53.system_services_acquisition.violation with input as _sa10_1_without(k)
+		count(v) == 1
+		f := _flagged(v, "SA-10(1)")
+		count(f) == 1
+		contains(f[0], sprintf("evidence missing — %s not collected", [_sa10_1_path(k)]))
+	}
+}
+
+test_sa10_1_count_above_zero_fails if {
+	every k in _sa10_1_counts {
+		v := data.nist.sp800_53.system_services_acquisition.violation with input as _sa10_1_with(k, 2)
+		count(v) == 1
+		f := _flagged(v, "SA-10(1)")
+		count(f) == 1
+		not contains(f[0], "evidence missing")
+		contains(f[0], ": 2 ")
+	}
+}
+
+test_sa10_1_bad_typed_count_is_evidence_missing if {
+	every k in _sa10_1_counts {
+		every bad in ["0", "1", null, true, false, -1, 0.5, []] {
+			v := data.nist.sp800_53.system_services_acquisition.violation with input as _sa10_1_with(k, bad)
+			count(v) == 1
+			f := _flagged(v, "SA-10(1)")
+			count(f) == 1
+			contains(f[0], sprintf("evidence missing — %s not collected", [_sa10_1_path(k)]))
 		}
 	}
 }

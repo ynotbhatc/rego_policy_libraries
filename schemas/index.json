@@ -1,11 +1,11 @@
 {
  "generated_by": "scripts/gen_input_schemas.py",
- "entrypoints": 197,
- "with_schema": 197,
+ "entrypoints": 198,
+ "with_schema": 198,
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 136,
+  "static-scan+fixture": 137,
   "paths-only": 48
  },
  "schemas": {
@@ -885,7 +885,7 @@
   "govramp": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/govramp/schema.json",
-   "known_paths": 2294,
+   "known_paths": 2303,
    "required_paths": 0,
    "source": [
     "frameworks/federal/govramp/"
@@ -1155,7 +1155,7 @@
   "nist.sp800_53": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist.sp800_53/schema.json",
-   "known_paths": 2327,
+   "known_paths": 2336,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/sp_800_53/"
@@ -1173,7 +1173,7 @@
   "nist_800_53": {
    "derivation": "static-scan+fixture",
    "schema": "schemas/input/nist_800_53/schema.json",
-   "known_paths": 2327,
+   "known_paths": 2336,
    "required_paths": 0,
    "source": [
     "frameworks/federal/nist/sp_800_53/"
@@ -1767,6 +1767,15 @@
    "required_paths": 0,
    "source": [
     "frameworks/critical_infrastructure/tsa_pipeline/"
+   ]
+  },
+  "txramp": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/txramp/schema.json",
+   "known_paths": 2311,
+   "required_paths": 0,
+   "source": [
+    "frameworks/federal/txramp/"
    ]
   },
   "uk_dpa_2018": {

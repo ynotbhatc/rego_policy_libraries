@@ -1377,6 +1377,42 @@
         true
        ]
       },
+      "disconnect": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "capability_provided": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "measured_minutes": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          5
+         ]
+        },
+        "odp": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "object",
+         "properties": {
+          "time_period_minutes": {
+           "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+           "type": "number",
+           "x-type-source": "fixture",
+           "examples": [
+            15
+           ]
+          }
+         }
+        }
+       }
+      },
       "encrypted_connections": {
        "description": "Read in ac_controls.rego.",
        "type": "boolean",
@@ -13960,6 +13996,36 @@
         true
        ]
       },
+      "integrity_verification": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "components_unverified": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "number",
+         "x-type-source": "fixture",
+         "examples": [
+          0
+         ]
+        },
+        "enabled": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "required": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
       "only_approved_changes": {
        "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
        "type": "boolean",
@@ -17904,6 +17970,11 @@
   "ac_controls.reference_monitor.tamper_proof",
   "ac_controls.remote_access",
   "ac_controls.remote_access.authorized_only",
+  "ac_controls.remote_access.disconnect",
+  "ac_controls.remote_access.disconnect.capability_provided",
+  "ac_controls.remote_access.disconnect.measured_minutes",
+  "ac_controls.remote_access.disconnect.odp",
+  "ac_controls.remote_access.disconnect.odp.time_period_minutes",
   "ac_controls.remote_access.encrypted_connections",
   "ac_controls.remote_access.monitored_controlled",
   "ac_controls.remote_access.privileged_commands",
@@ -19572,6 +19643,10 @@
   "sa_controls.developer_cm.change_integrity_controlled",
   "sa_controls.developer_cm.changes_documented_with_impact",
   "sa_controls.developer_cm.flaws_tracked_and_reported",
+  "sa_controls.developer_cm.integrity_verification",
+  "sa_controls.developer_cm.integrity_verification.components_unverified",
+  "sa_controls.developer_cm.integrity_verification.enabled",
+  "sa_controls.developer_cm.integrity_verification.required",
   "sa_controls.developer_cm.only_approved_changes",
   "sa_controls.developer_cm.performed",
   "sa_controls.developer_screening",

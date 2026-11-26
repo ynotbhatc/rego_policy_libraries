@@ -68,7 +68,7 @@ import rego.v1
 # (maps govramp_<level>[_ready|_core], for the crosswalk's coverage report).
 #
 # How a control gets its result. The control checks are the NIST SP 800-53 module's (data.nist.sp800_53.main): every
-# control GovRAMP selects at the declared level and status is one of the 544 ids that module evaluates, with the same
+# control GovRAMP selects at the declared level and status is one of the 546 ids that module evaluates, with the same
 # fail-closed behaviour and the same input contract (its per-family sections of the input). This module takes that
 # module's row for each selected control and does not copy a rule body:
 #   pass              the 800-53 module has no finding for the control

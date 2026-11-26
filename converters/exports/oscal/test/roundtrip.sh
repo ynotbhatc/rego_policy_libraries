@@ -103,7 +103,7 @@ res = json.loads((tmp / "assessment-results-nist.json").read_text())["assessment
 sat = [f for f in res["findings"] if f["target"]["status"]["state"] == "satisfied"]
 assert [f["target"]["target-id"] for f in sat] == ["nist_sp_800_53-NIST-AC-3_stmt"], [f["target"]["target-id"] for f in sat]
 assert all(f["target"]["target-id"] in parts for f in res["findings"]), "a NIST finding does not target a catalog statement"
-assert len(res["findings"]) == 544, len(res["findings"])  # = the 544 controls the NIST module declares (total_controls)
+assert len(res["findings"]) == 546, len(res["findings"])  # = the 546 controls the NIST module declares (total_controls)
 print(f"PASS roundtrip: assessment-results satisfied only from control_results (NIST 800-53: {len(sat)} satisfied, {len(res['findings']) - len(sat)} not satisfied, all on catalog statements)")
 PY
 # profiles: sources fetched (pinned + sha256-verified, cached), every selected control resolves in the NIST catalog

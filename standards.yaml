@@ -365,6 +365,9 @@ frameworks:
   govramp:
     standards:
       - {standard: GovRAMP Security Assessment Framework (formerly StateRAMP), version: "4.2", publisher: GovRAMP, literal: "Security Assessment Framework, version 4.2", check: {method: manual, url: "https://govramp.org/document-library", note: "also the Controls Matrix versions recorded in scripts/govramp_baselines.json (Low V1.05, Moderate V1.06, High V1.1) and the Federal Overlay v1.0; govramp.org is the publisher, stateramp.org redirects to it"}}
+  txramp:
+    standards:
+      - {standard: TX-RAMP Program Manual (Texas Department of Information Resources), version: "4.0", publisher: Texas DIR, literal: "Program Manual, version 4.0", check: {method: manual, url: "https://dir.texas.gov/resource-library-item/texas-risk-and-authorization-management-program-manual-30", note: "also the TX-RAMP Control Baselines 2.0 workbook recorded in scripts/txramp_baselines.json (https://dir.texas.gov/resource-library-item/tx-ramp-control-baselines-20, last updated 2022-11-14); DIR's cybersecurity functions moved to the Texas Cyber Command (HB 150, 89R), so watch txcc.texas.gov for a new home"}}
   cisa_cpg:
     standards:
       - {standard: CISA Cross-Sector Cybersecurity Performance Goals, version: "2.0", publisher: CISA, literal: "Cybersecurity Performance Goals (CPG) 2.0", check: {method: page_regex, url: "https://www.cisa.gov/cross-sector-cybersecurity-performance-goals", pattern: 'CPG[s]? (\d\.\d(?:\.\d)?)'}}
@@ -711,6 +714,7 @@ registry_rows:
   "OWASP ASVS": [owasp_asvs]
   "FedRAMP 20x KSI": [fedramp_20x]
   "GovRAMP (formerly StateRAMP)": [govramp]
+  "TX-RAMP": [txramp]
   "UK MoD DCC / DEF STAN 05-138": [dcc]
   "PQC Readiness": ["pqc:FIPS"]   # the row does not speak about CSWP 39
   "CIS M365 (saas/)": [cis_saas]

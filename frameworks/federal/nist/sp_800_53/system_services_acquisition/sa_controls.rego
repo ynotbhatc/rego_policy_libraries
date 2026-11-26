@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 30
-#     cited: 30
+#     checks: 31
+#     cited: 31
 #     density: sized
 #     basis: size
 #     tested: true
@@ -22,7 +22,8 @@ import rego.v1
 # (SA-1 to SA-5, SA-8 to SA-11, SA-15 to SA-17, SA-20 to SA-24; SA-6, SA-7, SA-12, SA-13, SA-14, SA-18 and
 # SA-19 are withdrawn), the Moderate-baseline enhancements SA-4(1), SA-4(2), SA-4(9), SA-4(10), SA-9(2) and
 # SA-15(3), and the High-baseline enhancements SA-4(5), SA-9(1), SA-9(5), SA-11(1) and SA-11(2), and the
-# Privacy-baseline enhancement SA-8(33), and SA-15(13), the enhancement Release 5.2.0 added (in no baseline).
+# Privacy-baseline enhancement SA-8(33), SA-15(13), the enhancement Release 5.2.0 added (in no baseline), and SA-10(1)
+# (TX-RAMP Level 2 selects it; in no NIST or FedRAMP baseline).
 # Each enhancement
 # is its own requirement with its own finding; a base control never fails on an enhancement's requirement. Facts live under input.sa_controls.
 
@@ -207,6 +208,25 @@ violation contains msg if {
 	u := _bool_unmet(["developer_cm"], _sa10)
 	count(m) + count(u) > 0
 	msg := sprintf("NIST SA-10: %s", [_detail(m, u)])
+}
+
+# SA-10(1) Software and Firmware Integrity Verification (NIST SP 800-53 Rev 5, OSCAL catalog release 5.2.0, public domain):
+# "Require the developer of the system, system component, or system service to enable integrity verification of
+# software and firmware components." No organization-defined parameter. Facts
+# input.sa_controls.developer_cm.integrity_verification.{required, enabled, components_unverified}: required is true
+# when the developer is required (contract, statement of work or internal standard) to enable it, enabled when it is
+# enabled for the software and firmware components, components_unverified counts the components without it.
+_sa10_1 := {
+	"required": "the developer is not required to enable integrity verification of software and firmware components",
+	"enabled": "integrity verification of software and firmware components is not enabled",
+}
+
+violation contains msg if {
+	sec := ["developer_cm", "integrity_verification"]
+	m := _bool_missing(sec, _sa10_1) | _zero_missing(sec, "components_unverified")
+	u := _bool_unmet(sec, _sa10_1) | _zero_unmet(sec, "components_unverified", "software or firmware components without integrity verification")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-10(1): %s", [_detail(m, u)])
 }
 
 # SA-11 Developer Testing and Evaluation: input.sa_controls.developer_testing.{assessment_plan_implemented,
@@ -517,7 +537,7 @@ evaluated_controls := {
 	"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8",
 	"SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)",
 	"SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24",
-	"SA-8(33)", "SA-15(13)",
+	"SA-8(33)", "SA-15(13)", "SA-10(1)",
 }
 
 compliance_report := {

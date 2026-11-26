@@ -2660,6 +2660,39 @@
       "class": "compliance"
      },
      {
+      "id": "nist_sp_800_53-NIST-AC-17-9",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-17(9)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-17(9)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#633712bc-3829-5e1f-bf69-b24f5c5ce7e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-17-9_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "nist_sp_800_53-NIST-AC-18-3",
       "title": "%s",
       "props": [
@@ -20289,6 +20322,39 @@
       "parts": [
        {
         "id": "nist_sp_800_53-NIST-SA-10_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SA-10-1",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SA-10(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SA-10(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_services_acquisition"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ec48e72-c515-5a11-9c09-8839764a6e94",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SA-10-1_stmt",
         "name": "statement",
         "prose": "%s"
        }
