@@ -701,6 +701,11 @@ test_ny_dfs_main_fails_on_no_data if {
 	_fails(r)
 }
 
+test_owasp_asvs_main_fails_on_no_data if {
+	r := data.owasp_asvs.main.compliance_report with input as {}
+	_fails(r)
+}
+
 test_owasp_llm_main_fails_on_no_data if {
 	r := data.owasp_llm.main.compliance_report with input as {}
 	_fails(r)

@@ -5,6 +5,15 @@
 #   framework: owasp_asvs
 #   source: owasp
 #   domains: [secure-development]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package owasp_asvs.index
 
 import rego.v1

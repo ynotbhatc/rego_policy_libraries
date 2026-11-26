@@ -5,6 +5,15 @@
 #   framework: owasp_asvs
 #   source: owasp
 #   domains: [secure-development]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package owasp_asvs.main
 
 import data.owasp_asvs.index
