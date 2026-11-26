@@ -96,7 +96,7 @@ labelled `over`, not `full`: the label says the directory holds more ids than th
 (the cross-reference tags on the STIG-extension modules), and it does not by itself show that all 352 are present.
 The numeric-id row above is what shows that.
 
-**OSCAL controls.** The catalog exporter's `controls` total in `converters/exports/oscal/dist/catalogs/index.json` (24,080
+**OSCAL controls.** The catalog exporter's `controls` total in `converters/exports/oscal/dist/catalogs/index.json` (24,486
 at the last export) is also a different quantity: the exporter emits one OSCAL control per rule or message it finds in each
 framework's modules, and that includes message templates. SAE AS9100D is the example its own module documents
 (`frameworks/management/as9100d/as9100d_main.rego`): 71 clause rows are exported as 88 controls, because 17 template
