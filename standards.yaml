@@ -588,6 +588,9 @@ frameworks:
     standards:
       - {standard: OWASP Top 10 for LLM Applications, version: "2026", publisher: OWASP GenAI Security Project, literal: "OWASP Top 10 for LLM Applications — 2026 edition", check: {method: manual, url: "https://genai.owasp.org/llm-top-10/"}}
       - {standard: MITRE ATLAS (mitigation crosswalk metadata), version: v2026.10, publisher: MITRE, literal: "atlas-data v2026.10", check: {method: github_release, repo: mitre-atlas/atlas-data}}
+  owasp_asvs:
+    standards:
+      - {standard: OWASP Application Security Verification Standard (ASVS), version: "5.0.0", publisher: OWASP Foundation, literal: "OWASP Application Security Verification Standard 5.0.0", check: {method: github_release, repo: OWASP/ASVS, note: "the repository also publishes a moving 'latest' (bleeding-edge) release rebuilt from master; the stable tag is v5.0.0_release; ids, levels and the sha256 of the release JSON are in scripts/owasp_asvs_requirements.json"}}
   owasp_top10:
     standards:
       - {standard: OWASP Top 10, version: "2025", publisher: OWASP, literal: "OWASP Top 10:2025", check: {method: manual, url: "https://owasp.org/Top10/"}}
@@ -705,6 +708,7 @@ registry_rows:
   "ISO/IEC 42005": [iso_42005]
   "OWASP LLM Top 10": ["owasp_llm:OWASP"]
   "MITRE ATLAS (crosswalk)": ["owasp_llm:MITRE ATLAS"]
+  "OWASP ASVS": [owasp_asvs]
   "FedRAMP 20x KSI": [fedramp_20x]
   "GovRAMP (formerly StateRAMP)": [govramp]
   "UK MoD DCC / DEF STAN 05-138": [dcc]

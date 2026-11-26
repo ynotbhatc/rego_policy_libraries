@@ -1,11 +1,11 @@
 {
  "generated_by": "scripts/gen_input_schemas.py",
- "entrypoints": 196,
- "with_schema": 196,
+ "entrypoints": 197,
+ "with_schema": 197,
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 135,
+  "static-scan+fixture": 136,
   "paths-only": 48
  },
  "schemas": {
@@ -1249,6 +1249,15 @@
    "required_paths": 0,
    "source": [
     "frameworks/financial/ny_dfs/"
+   ]
+  },
+  "owasp_asvs": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/owasp_asvs/schema.json",
+   "known_paths": 350,
+   "required_paths": 0,
+   "source": [
+    "governance/owasp_asvs/"
    ]
   },
   "owasp_llm": {
