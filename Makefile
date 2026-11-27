@@ -135,7 +135,8 @@ check-coverage:
 # the input schemas (schemas/input/) match their sources and pass their self-tests; the site catalog's sections
 # hold every policy file once and add up to the README policy count; the crosswalk framework maps match the
 # FedRAMP profiles, the GovRAMP and TX-RAMP maps and indexes match scripts/govramp_baselines.json and
-# scripts/txramp_baselines.json, the OWASP ASVS index matches scripts/owasp_asvs_requirements.json, and, for the
+# scripts/txramp_baselines.json, the OWASP ASVS index matches scripts/owasp_asvs_requirements.json, the ISO/IEC 27017 and
+# 27018 indexes match scripts/iso_cloud_controls.json, and, for the
 # NIST-published maps,
 # their recorded map hash and pinned sources (no network)
 check-generated: check-no-data check-standards
@@ -149,6 +150,7 @@ check-generated: check-no-data check-standards
 	@OPA=$(OPA) python3 scripts/gen_govramp_framework_maps.py --check
 	@OPA=$(OPA) python3 scripts/gen_txramp_framework_maps.py --check
 	@OPA=$(OPA) python3 scripts/gen_owasp_asvs_index.py --check
+	@OPA=$(OPA) python3 scripts/gen_iso_cloud_index.py --check
 	@python3 scripts/gen_nist_framework_maps.py --check
 
 # one JSON Schema per framework key for the facts its module reads, generated from the rule tables, the collector

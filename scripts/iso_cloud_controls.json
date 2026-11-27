@@ -1,0 +1,155 @@
+{
+ "iso_cloud_controls": {
+  "_comment": "Source table of scripts/gen_iso_cloud_index.py: the additional controls of ISO/IEC 27017 and ISO/IEC 27018 (identifiers and this library's own short labels only, no ISO text). Everything sits under one top-level key because `opa test .` loads the JSON files of scripts/ as data.scripts.<top-level key>.",
+  "iso_27017": {
+   "standard": "ISO/IEC 27017",
+   "edition": "2026",
+   "edition_label": "second edition, 2026-07",
+   "published": "2026-07",
+   "replaces": "ISO/IEC 27017:2015 | ITU-T X.1631:2015 (first edition; its seven CLD.x.y.z controls do not appear in this edition's numbering)",
+   "base": "ISO/IEC 27002:2022 (93 controls); this edition adds 4 cloud-specific controls, marked CLD in its contents",
+   "sources": [
+    {
+     "what": "Publisher's public preview PDF (VDE Verlag): cover (Second edition, 2026-07), contents (clauses 5.38, 5.39, 8.35 and 8.36 marked CLD; Annex A correspondence with the 2015 edition; Annex B monitoring of cloud services), foreword (cancels and replaces the first edition; controls merged, removed and introduced), scope (guidance for cloud service customers and providers)",
+     "url": "https://assets.vde-verlag.de/iec-normen/preview-pdf/info_isoiec27017%7Bed2.0%7Den.pdf",
+     "fetched": "2026-11-27",
+     "sha256": "7572e8ebc67a7c3a5befb73561e3e4db328dec5a705f19cd90431fc609ce06cb"
+    },
+    {
+     "what": "IEC webstore catalogue page: Edition 2.0, publication date 2026-07-27",
+     "url": "https://webstore.iec.ch/en/publication/115400",
+     "fetched": "2026-11-27",
+     "sha256": ""
+    },
+    {
+     "what": "Estonian Centre for Standardisation catalogue page: ISO/IEC 27017:2026, valid from 2026-07-27, earlier entry 27017:2015",
+     "url": "https://www.evs.ee/en/iso-iec-27017-2026",
+     "fetched": "2026-11-27",
+     "sha256": ""
+    },
+    {
+     "what": "Cross-check only (secondary): a vendor blog that lists the same four identifiers",
+     "url": "https://cloudaware.com/blog/iso-27017-cloud-security-controls/",
+     "fetched": "2026-11-27",
+     "sha256": ""
+    },
+    {
+     "what": "iso.org catalogue pages answered HTTP 403 to automated requests and were not worked around; 'published, edition 2, 2026-07' and 'first edition withdrawn' are known from search-engine result text only",
+     "url": "https://www.iso.org/standard/27017",
+     "fetched": "2026-11-27",
+     "sha256": ""
+    }
+   ],
+   "unverified": [
+    "which of the four controls carry guidance for the cloud service customer, for the provider, or for both (the preview contents do not say); the module asks for a result per role for every control in scope",
+    "the correspondence of the 2015 CLD.x.y.z controls to the 2026 numbering (Annex A of the 2026 edition, pages 33 to 37, is not in the preview)",
+    "which ISO/IEC 27002:2022 controls carry added cloud guidance in the 2026 edition (outside this delta module)",
+    "that iso.org lists the 2015 edition as withdrawn (search-result text only)"
+   ],
+   "expected": {
+    "controls": 4,
+    "organizational": 2,
+    "technological": 2
+   },
+   "controls": [
+     ["5.38", "organizational", "Shared cloud responsibilities"],
+     ["5.39", "organizational", "Roles agreed with the cloud service partner"],
+     ["8.35", "technological", "Tenant separation in virtual environments"],
+     ["8.36", "technological", "Misuse of cloud services detected and prevented"]
+    ]
+  },
+  "iso_27018": {
+   "standard": "ISO/IEC 27018",
+   "edition": "2019",
+   "edition_label": "second edition, 2019-01",
+   "published": "2019-01",
+   "newer_edition": "ISO/IEC 27018:2025, third edition, 2025-08 (cancels and replaces the 2019 edition; aligned with ISO/IEC 27002:2022; Annex A informative; Annex B maps to the 2019 edition). Its Annex A control identifiers are NOT verified here and may be renumbered.",
+   "replaces": "ISO/IEC 27018:2014 (first edition; the 2019 edition is a minor revision that corrects an editorial mistake in Annex A)",
+   "base": "ISO/IEC 27002 (2013 clause structure in the 2019 edition); Annex A adds PII-processor controls grouped by privacy principle (ISO/IEC 29100)",
+   "sources": [
+    {
+     "what": "Table of contents of ISO/IEC 27018:2019 as published by DIN (national standards body): Annex A (normative) sub-clauses A.1 to A.12 with the 25 control identifiers A.2.1 to A.12.2",
+     "url": "https://www.din.de/de/mitwirken/normenausschuesse/nia/veroeffentlichungen/wdc-beuth:din21:301539764/toc-3041120/download",
+     "fetched": "2026-11-27",
+     "sha256": "9a2d55e96eaadeb137138706f471bf1d13137cba62db0aa71aa79e10804dfb4b"
+    },
+    {
+     "what": "Publisher's public preview PDF of the 2019 edition (VDE Verlag): cover (Second edition, 2019-01), contents (Annex A normative, page 15), foreword (cancels and replaces 27018:2014; minor revision)",
+     "url": "https://assets.vde-verlag.de/iec-normen/preview-pdf/info_isoiec27018%7Bed2.0%7Den.pdf",
+     "fetched": "2026-11-27",
+     "sha256": "64ed4d71f4b1e4b9dc47159cc31b11608b599e7f9e14bc04e11ea7088869e1e1"
+    },
+    {
+     "what": "Newer edition: publisher's public preview PDF of ISO/IEC 27018:2025 (VDE Verlag): third edition 2025-08; contents list Annex A (informative, page 22) and Annex B (correspondence with the 2019 edition, page 30) without sub-clause identifiers; foreword: cancels and replaces the 2019 edition, aligned with ISO/IEC 27002:2022",
+     "url": "https://assets.vde-verlag.de/iec-normen/preview-pdf/info_isoiec27018%7Bed3.0%7Den.pdf",
+     "fetched": "2026-11-27",
+     "sha256": "347a000d7313c2f0cd9c71fde39d30afe19fff227087ecceed3106788ab26932"
+    },
+    {
+     "what": "Newer edition: DIN table of contents of ISO/IEC 27018:2025-08 (Annex A listed without sub-clauses)",
+     "url": "https://www.din.de/de/mitwirken/normenausschuesse/nia/veroeffentlichungen/wdc-beuth:din21:395326191/toc-3646322/download",
+     "fetched": "2026-11-27",
+     "sha256": "b4773e93047ec63c702046972edb56b698abe06200df794f547a9662eca8513a"
+    },
+    {
+     "what": "Cross-check only (a vendor's own statement of applicability, 2019 numbering): lists the same 25 identifiers",
+     "url": "https://assets.sophos.com/X24WTUEQ/at/wwgtjj6tnzss75n4vsv3b28/sophos-iso-27018-2025-statement-of-applicability.pdf",
+     "fetched": "2026-11-27",
+     "sha256": "75cfb363bfc858033283867602c55294f2f0f6d41d21bbcc05ec5d3bd1754b46"
+    },
+    {
+     "what": "IEC webstore catalogue page of the 2025 edition (publication 2025-08-26), from search results; iso.org pages answered HTTP 403 to automated requests and were not worked around",
+     "url": "https://webstore.iec.ch/en/publication/109374",
+     "fetched": "2026-11-27",
+     "sha256": ""
+    }
+   ],
+   "unverified": [
+    "the Annex A control identifiers of the 2025 third edition (its contents stop at the Annex A heading); this module is the 2019 second edition",
+    "whether the 2025 edition keeps, renumbers, merges or drops any of the 25 controls (its Annex B holds the correspondence)",
+    "the control text (not available in the previews): each of the 25 is one attestation of the declared owner's reading of the standard"
+   ],
+   "expected": {
+    "controls": 25,
+    "groups": 8
+   },
+   "groups": {
+    "A.2": "Consent",
+    "A.3": "Purpose",
+    "A.5": "Minimisation",
+    "A.6": "Use and disclosure",
+    "A.8": "Openness",
+    "A.10": "Accountability",
+    "A.11": "Security",
+    "A.12": "Compliance"
+   },
+   "controls": [
+     ["A.2.1", "A.2", "Help with PII principals' requests"],
+     ["A.3.1", "A.3", "Processing only for the customer's purpose"],
+     ["A.3.2", "A.3", "Processor's own commercial use of PII"],
+     ["A.5.1", "A.5", "Erasure of temporary files"],
+     ["A.6.1", "A.6", "Notice of disclosure requests"],
+     ["A.6.2", "A.6", "Log of PII disclosures"],
+     ["A.8.1", "A.8", "Disclosure of sub-processors"],
+     ["A.10.1", "A.10", "Notice of a PII breach"],
+     ["A.10.2", "A.10", "Retention of security policy records"],
+     ["A.10.3", "A.10", "Return, transfer and disposal of PII"],
+     ["A.11.1", "A.11", "Staff confidentiality commitments"],
+     ["A.11.2", "A.11", "Limits on creating hardcopy"],
+     ["A.11.3", "A.11", "Logging of data restoration"],
+     ["A.11.4", "A.11", "Storage media leaving the premises"],
+     ["A.11.5", "A.11", "Unencrypted portable media and devices"],
+     ["A.11.6", "A.11", "Encryption on public networks"],
+     ["A.11.7", "A.11", "Disposal of hardcopy"],
+     ["A.11.8", "A.11", "Unique user identifiers"],
+     ["A.11.9", "A.11", "Records of authorised users"],
+     ["A.11.10", "A.11", "User identifier management"],
+     ["A.11.11", "A.11", "Security measures in the contract"],
+     ["A.11.12", "A.11", "Sub-contracted processing"],
+     ["A.11.13", "A.11", "Reuse of storage space"],
+     ["A.12.1", "A.12", "Location of PII"],
+     ["A.12.2", "A.12", "Intended destination of PII"]
+    ]
+  }
+ }
+}

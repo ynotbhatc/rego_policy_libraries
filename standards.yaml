@@ -491,6 +491,12 @@ frameworks:
   iso27001:
     standards:
       - {standard: ISO/IEC 27001, version: "2022", publisher: ISO/IEC, literal: "ISO/IEC 27001:2022", check: {method: manual, url: "https://www.iso.org/standard/27001", note: "iso.org blocks scripted fetches (403)"}}
+  iso_27017:
+    standards:
+      - {standard: ISO/IEC 27017, version: "2026", publisher: ISO/IEC, literal: "ISO/IEC 27017:2026", check: {method: manual, url: "https://www.iso.org/standard/27017", note: "second edition 2026-07 (IEC webstore 2026-07-27) replaces the 2015 edition; the 4 additional CLD controls 5.38, 5.39, 8.35, 8.36 read from the publisher's public preview contents 2026-11-27; the 2015 edition (7 CLD.x.y.z controls) is not covered; which role each control addresses is unverified; iso.org blocks scripted fetches (403)"}}
+  iso_27018:
+    standards:
+      - {standard: ISO/IEC 27018, version: "2019", publisher: ISO/IEC, literal: "ISO/IEC 27018:2019", check: {method: manual, url: "https://www.iso.org/standard/27018", note: "2019 second edition, 25 Annex A controls A.2.1 to A.12.2 from DIN's public table of contents 2026-11-27; the third edition ISO/IEC 27018:2025 (2025-08, aligned with 27002:2022, Annex A informative, Annex B maps to 2019) is NOT covered: its Annex A identifiers are unverified; iso.org blocks scripted fetches (403)"}}
   iso27701:
     standards:
       - {standard: ISO/IEC 27701, version: "2019", publisher: ISO/IEC, literal: "27701:2019", check: {method: manual, url: "https://www.iso.org/standard/27701", note: "2019 edition, 108 controls compiled 2026-11-22 from public secondary sources (not the purchased text; 5 ids unconfirmed); the 2025 standalone edition renumbers Annex A and is not covered"}}
@@ -675,6 +681,8 @@ registry_rows:
   "K8s Pod Security Standards": [pss_kubernetes]
   "PCI DSS": [pci_dss]
   "ISO/IEC 27001": [iso27001]
+  "ISO/IEC 27017": [iso_27017]
+  "ISO/IEC 27018": [iso_27018]
   "ISO/IEC 42001": [iso_42001]
   "SOC 2 (TSC)": [soc2]
   "HIPAA Security Rule": [hipaa]
