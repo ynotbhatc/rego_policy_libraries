@@ -5,6 +5,15 @@
 #   framework: iso_27017
 #   source: iso
 #   domains: [cloud, isms]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package iso_27017.main
 
 import data.iso_27017.index

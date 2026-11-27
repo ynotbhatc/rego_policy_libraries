@@ -5,6 +5,15 @@
 #   framework: iso_27018
 #   source: iso
 #   domains: [privacy, cloud]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package iso_27018.index
 
 import rego.v1

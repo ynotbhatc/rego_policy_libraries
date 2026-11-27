@@ -5,6 +5,15 @@
 #   framework: iso_27017
 #   source: iso
 #   domains: [cloud, isms]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package iso_27017.index
 
 import rego.v1

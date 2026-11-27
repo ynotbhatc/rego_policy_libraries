@@ -5,6 +5,15 @@
 #   framework: iso_27018
 #   source: iso
 #   domains: [privacy, cloud]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package iso_27018.main
 
 import data.iso_27018.index

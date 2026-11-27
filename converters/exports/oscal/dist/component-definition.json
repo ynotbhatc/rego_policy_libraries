@@ -419635,6 +419635,759 @@
       ]
      },
      {
+      "uuid": "f40511d1-b5c8-55dc-8d9e-ed80922d6cc2",
+      "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/iso_27017.json",
+      "description": "Controls of iso_27017 evaluated by the Rego Policy Libraries (4 controls, 1 Rego modules).",
+      "props": [
+       {
+        "name": "framework",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_27017"
+       }
+      ],
+      "implemented-requirements": [
+       {
+        "uuid": "824a9b8c-0176-50d5-a099-716ecbf8dc99",
+        "control-id": "iso_27017-ISO-IEC-27017-5.38",
+        "description": "Evaluated by Rego package iso_27017.index (frameworks/management/iso_27017/iso_27017_index.rego): evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27017 5.38"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27017.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/iso_27017/iso_27017_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "96c983d5-89ef-5d57-a771-066947038fc6",
+        "control-id": "iso_27017-ISO-IEC-27017-5.39",
+        "description": "Evaluated by Rego package iso_27017.index (frameworks/management/iso_27017/iso_27017_index.rego): evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27017 5.39"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27017.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/iso_27017/iso_27017_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5e7478f6-3090-535a-b9fa-2a2cbe059c83",
+        "control-id": "iso_27017-ISO-IEC-27017-8.35",
+        "description": "Evaluated by Rego package iso_27017.index (frameworks/management/iso_27017/iso_27017_index.rego): evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27017 8.35"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27017.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/iso_27017/iso_27017_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "68f1198d-760f-5113-8169-08cb8a4f3456",
+        "control-id": "iso_27017-ISO-IEC-27017-8.36",
+        "description": "Evaluated by Rego package iso_27017.index (frameworks/management/iso_27017/iso_27017_index.rego): evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27017 8.36"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27017.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/iso_27017/iso_27017_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "uuid": "44dcf96a-5ad5-5b63-859e-f654bc7de877",
+      "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/iso_27018.json",
+      "description": "Controls of iso_27018 evaluated by the Rego Policy Libraries (25 controls, 1 Rego modules).",
+      "props": [
+       {
+        "name": "framework",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_27018"
+       }
+      ],
+      "implemented-requirements": [
+       {
+        "uuid": "c812b99d-31bf-5641-8c45-e37243764b2f",
+        "control-id": "iso_27018-ISO-IEC-27018-A.2.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "15a5cf62-06c2-5115-a8c5-3a3f9e742406",
+        "control-id": "iso_27018-ISO-IEC-27018-A.3.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.3.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "65d1834f-c2dc-5e54-a7b6-5b4b7efb762b",
+        "control-id": "iso_27018-ISO-IEC-27018-A.3.2",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.3.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "28229cae-db6c-5134-962d-efb3e564b2cb",
+        "control-id": "iso_27018-ISO-IEC-27018-A.5.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.5.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ee62c14d-f429-5950-af2d-233e044b386e",
+        "control-id": "iso_27018-ISO-IEC-27018-A.6.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.6.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "75172c19-78c1-5498-bfdf-c4fb31d70e5c",
+        "control-id": "iso_27018-ISO-IEC-27018-A.6.2",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.6.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ebe9c191-f6ab-5830-8ee1-6ffe4b5beb98",
+        "control-id": "iso_27018-ISO-IEC-27018-A.8.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.8.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1b667885-5679-5a65-9075-9e6f8c0afae9",
+        "control-id": "iso_27018-ISO-IEC-27018-A.10.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.10.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e679a595-ec52-510d-8c82-6e25af7e1a5e",
+        "control-id": "iso_27018-ISO-IEC-27018-A.10.2",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.10.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3388fa17-9052-5d22-b8ef-2bb33168b070",
+        "control-id": "iso_27018-ISO-IEC-27018-A.10.3",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.10.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e218871e-ee6f-50f4-b7bf-da750764818e",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "594f1632-1890-5a35-9b26-e213a17f9473",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.2",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b72e6419-426d-579e-a4a2-e4182cb084fa",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.3",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6d0b782a-32e4-57d5-bfb9-19d3688d6945",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.4",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "90ff9225-8afb-556a-9221-67c88520e6ee",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.5",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "785a1fb6-567d-5855-a01a-c13f2b76d87e",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.6",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "58637422-6d0f-5b55-a302-9d4d5515669f",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.7",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0b557aef-3ebc-5060-8844-a6d48dc2ecfc",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.8",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c15f5185-3f52-54f1-b687-655ca4b82a83",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.9",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "191facba-a815-5b75-a6a1-5e3d49739734",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.10",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ea585ad2-bce7-5977-8649-f2d15c7f6ff2",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.11",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f4bf9eff-fc61-5061-9d96-e51777fe84bf",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.12",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.12"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "80c27245-9356-5b46-bbf9-083d7ee89d5c",
+        "control-id": "iso_27018-ISO-IEC-27018-A.11.13",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.11.13"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b3748c13-1818-5a98-ad14-a9e4322579f8",
+        "control-id": "iso_27018-ISO-IEC-27018-A.12.1",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.12.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cf69e5af-96b5-51d5-be24-6606d70af14e",
+        "control-id": "iso_27018-ISO-IEC-27018-A.12.2",
+        "description": "Evaluated by Rego package iso_27018.index (frameworks/privacy/iso_27018/iso_27018_index.rego): evaluated in frameworks/privacy/iso_27018/iso_27018_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "ISO/IEC 27018 A.12.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso_27018.index"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso_27018/iso_27018_index.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       }
+      ]
+     },
+     {
       "uuid": "6d34aff7-0068-5862-acf4-0842ea9aebad",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/iso_42001.json",
       "description": "Controls of iso_42001 evaluated by the Rego Policy Libraries (38 controls, 1 Rego modules).",

@@ -536,6 +536,16 @@ test_iso27701_main_fails_on_no_data if {
 	_fails(r)
 }
 
+test_iso_27017_main_fails_on_no_data if {
+	r := data.iso_27017.main.compliance_report with input as {}
+	_fails(r)
+}
+
+test_iso_27018_main_fails_on_no_data if {
+	r := data.iso_27018.main.compliance_report with input as {}
+	_fails(r)
+}
+
 test_iso_42001_main_fails_on_no_data if {
 	r := data.iso_42001.main.compliance_report with input as {}
 	_fails(r)
