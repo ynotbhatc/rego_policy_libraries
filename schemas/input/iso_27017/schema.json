@@ -1,0 +1,175 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/iso_27017/schema.json",
+ "title": "Input facts for iso_27017",
+ "description": "Facts the module in frameworks/management/iso_27017/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "iso_27017",
+ "x-entrypoint": "data.iso_27017.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/management/iso_27017/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.iso_27017.main_test.good_both",
+ "type": "object",
+ "properties": {
+  "iso_27017": {
+   "description": "Read in iso_27017_main.rego.",
+   "type": "object",
+   "properties": {
+    "controls": {
+     "description": "Read in iso_27017_main.rego.",
+     "type": "object",
+     "properties": {
+      "5.38": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "customer": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "provider": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "5.39": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "customer": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "provider": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "8.35": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "customer": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "provider": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      },
+      "8.36": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "customer": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        },
+        "provider": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "boolean",
+         "x-type-source": "fixture",
+         "examples": [
+          true
+         ]
+        }
+       }
+      }
+     }
+    },
+    "iso27001_isms_in_place": {
+     "description": "Read in iso_27017_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "not_applicable": {
+     "description": "Read in iso_27017_main.rego.",
+     "type": "object",
+     "properties": {
+      "8.35": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "object",
+       "properties": {
+        "provider": {
+         "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+         "type": "string",
+         "x-type-source": "fixture",
+         "examples": [
+          "the organization does not operate virtual environments for others"
+         ]
+        }
+       }
+      }
+     }
+    },
+    "role": {
+     "description": "Read in iso_27017_main.rego.",
+     "type": "string",
+     "x-type-source": "fixture",
+     "examples": [
+      "both"
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "iso_27017",
+  "iso_27017.controls",
+  "iso_27017.controls[\"5.38\"]",
+  "iso_27017.controls[\"5.38\"].customer",
+  "iso_27017.controls[\"5.38\"].provider",
+  "iso_27017.controls[\"5.39\"]",
+  "iso_27017.controls[\"5.39\"].customer",
+  "iso_27017.controls[\"5.39\"].provider",
+  "iso_27017.controls[\"8.35\"]",
+  "iso_27017.controls[\"8.35\"].customer",
+  "iso_27017.controls[\"8.35\"].provider",
+  "iso_27017.controls[\"8.36\"]",
+  "iso_27017.controls[\"8.36\"].customer",
+  "iso_27017.controls[\"8.36\"].provider",
+  "iso_27017.iso27001_isms_in_place",
+  "iso_27017.not_applicable",
+  "iso_27017.not_applicable[\"8.35\"]",
+  "iso_27017.not_applicable[\"8.35\"].provider",
+  "iso_27017.role"
+ ]
+}

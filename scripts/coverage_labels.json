@@ -338,6 +338,16 @@
     "evidence": "Not validated: 108 controls of ISO/IEC 27701:2019 compiled from public secondary sources (publisher preview table of contents, NQA analyses, NIST crosswalk), not checked against the purchased standard; 5 clause 6 ids unconfirmed. Never run on real evidence.",
     "modules": "frameworks/privacy/iso27701"
    },
+   "iso_27017": {
+    "label": "experimental",
+    "evidence": "Not validated: the control identifiers were read from the publishers' public contents pages, not checked against the purchased standard; 4 cloud controls of the 2026 second edition; which role each control addresses is unverified; the 2015 edition is not covered. Attestation-only delta on ISO/IEC 27001; never run on real evidence.",
+    "modules": "frameworks/management/iso_27017"
+   },
+   "iso_27018": {
+    "label": "experimental",
+    "evidence": "Not validated: the control identifiers were read from the publishers' public contents pages, not checked against the purchased standard; 25 Annex A controls of the 2019 second edition; the 2025 third edition is not covered (its Annex A ids are unverified). Attestation-only delta on ISO/IEC 27001; never run on real evidence.",
+    "modules": "frameworks/privacy/iso_27018"
+   },
    "iso_42001": {
     "label": "experimental"
    },
@@ -610,9 +620,6 @@
     "label": "experimental"
    },
    "tsa_pipeline": {
-    "label": "experimental"
-   },
-   "txramp": {
     "label": "experimental"
    },
    "txramp": {

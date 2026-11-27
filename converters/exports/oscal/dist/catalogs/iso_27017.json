@@ -1,0 +1,225 @@
+{
+ "catalog": {
+  "uuid": "de5bac17-e800-584c-8c91-fbe3667c6d9c",
+  "metadata": {
+   "title": "Rego Policy Libraries — iso_27017 (ISO/IEC 27017:2026 — static index of the 4 additional cloud controls (id, theme, own label); generated)",
+   "last-modified": "2026-11-13T00:00:00Z",
+   "version": "2.5.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "iso_27017"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "iso_27017-iso_27017_index",
+    "class": "rego-module",
+    "title": "ISO/IEC 27017:2026 — static index of the 4 additional cloud controls (id, theme, own label); generated",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iso_27017.index"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/iso_27017/iso_27017_index.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iso_27017-ISO-IEC-27017-5.38",
+      "title": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO/IEC 27017 5.38"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO/IEC 27017 5.38"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_27017.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e47c2a6-1f11-5a3f-b04d-ee8c13d2e2a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_27017-ISO-IEC-27017-5.38_stmt",
+        "name": "statement",
+        "prose": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso_27017-ISO-IEC-27017-5.39",
+      "title": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO/IEC 27017 5.39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO/IEC 27017 5.39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_27017.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e47c2a6-1f11-5a3f-b04d-ee8c13d2e2a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_27017-ISO-IEC-27017-5.39_stmt",
+        "name": "statement",
+        "prose": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso_27017-ISO-IEC-27017-8.35",
+      "title": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO/IEC 27017 8.35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO/IEC 27017 8.35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_27017.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e47c2a6-1f11-5a3f-b04d-ee8c13d2e2a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_27017-ISO-IEC-27017-8.35_stmt",
+        "name": "statement",
+        "prose": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso_27017-ISO-IEC-27017-8.36",
+      "title": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO/IEC 27017 8.36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO/IEC 27017 8.36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_27017.index"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e47c2a6-1f11-5a3f-b04d-ee8c13d2e2a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_27017-ISO-IEC-27017-8.36_stmt",
+        "name": "statement",
+        "prose": "evaluated in frameworks/management/iso_27017/iso_27017_index.rego by a table-driven rule (id from the module's CONTROL_INDEX)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1e47c2a6-1f11-5a3f-b04d-ee8c13d2e2a1",
+     "title": "ISO/IEC 27017:2026 — static index of the 4 additional cloud controls (id, theme, own label); generated",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iso_27017.index"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/management/iso_27017/iso_27017_index.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

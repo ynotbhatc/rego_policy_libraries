@@ -1,0 +1,306 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://ynotbhatc.github.io/rego_policy_libraries/schemas/input/iso_27018/schema.json",
+ "title": "Input facts for iso_27018",
+ "description": "Facts the module in frameworks/privacy/iso_27018/ reads: every input reference found in its sources, with the shape and types of its all-pass test fixture (x-type-source: fixture). Nothing is marked required: a static scan cannot tell required evidence from optional. Names the module reads through a local alias appear only if the fixture carries them.",
+ "x-framework-key": "iso_27018",
+ "x-entrypoint": "data.iso_27018.main.compliance_report",
+ "x-derivation": "static-scan+fixture",
+ "x-source": [
+  "frameworks/privacy/iso_27018/"
+ ],
+ "x-generated-by": "scripts/gen_input_schemas.py",
+ "x-fixture": "data.iso_27018.main_test.good_processor",
+ "type": "object",
+ "properties": {
+  "iso_27018": {
+   "description": "Read in iso_27018_main.rego.",
+   "type": "object",
+   "properties": {
+    "controls": {
+     "description": "Read in iso_27018_main.rego.",
+     "type": "object",
+     "properties": {
+      "A.10.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.10.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.10.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.10": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.11": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.12": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.13": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.3": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.4": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.5": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.6": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.8": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.11.9": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.12.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.12.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.2.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.3.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.3.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.5.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.6.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.6.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      },
+      "A.8.1": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "boolean",
+       "x-type-source": "fixture",
+       "examples": [
+        true
+       ]
+      }
+     }
+    },
+    "iso27001_isms_in_place": {
+     "description": "Read in iso_27018_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    },
+    "not_applicable": {
+     "description": "Read in iso_27018_main.rego.",
+     "type": "object",
+     "properties": {
+      "A.11.2": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no hardcopy is created"
+       ]
+      },
+      "A.11.7": {
+       "description": "From the all-pass test fixture; no direct input reference found by the static scan.",
+       "type": "string",
+       "x-type-source": "fixture",
+       "examples": [
+        "no hardcopy exists"
+       ]
+      }
+     }
+    },
+    "not_applicable_reason": {
+     "description": "Read in iso_27018_main.rego."
+    },
+    "public_cloud_pii_processor": {
+     "description": "Read in iso_27018_main.rego.",
+     "type": "boolean",
+     "x-type-source": "fixture",
+     "examples": [
+      true
+     ]
+    }
+   }
+  }
+ },
+ "additionalProperties": true,
+ "x-known-paths": [
+  "iso_27018",
+  "iso_27018.controls",
+  "iso_27018.controls[\"A.10.1\"]",
+  "iso_27018.controls[\"A.10.2\"]",
+  "iso_27018.controls[\"A.10.3\"]",
+  "iso_27018.controls[\"A.11.1\"]",
+  "iso_27018.controls[\"A.11.10\"]",
+  "iso_27018.controls[\"A.11.11\"]",
+  "iso_27018.controls[\"A.11.12\"]",
+  "iso_27018.controls[\"A.11.13\"]",
+  "iso_27018.controls[\"A.11.2\"]",
+  "iso_27018.controls[\"A.11.3\"]",
+  "iso_27018.controls[\"A.11.4\"]",
+  "iso_27018.controls[\"A.11.5\"]",
+  "iso_27018.controls[\"A.11.6\"]",
+  "iso_27018.controls[\"A.11.7\"]",
+  "iso_27018.controls[\"A.11.8\"]",
+  "iso_27018.controls[\"A.11.9\"]",
+  "iso_27018.controls[\"A.12.1\"]",
+  "iso_27018.controls[\"A.12.2\"]",
+  "iso_27018.controls[\"A.2.1\"]",
+  "iso_27018.controls[\"A.3.1\"]",
+  "iso_27018.controls[\"A.3.2\"]",
+  "iso_27018.controls[\"A.5.1\"]",
+  "iso_27018.controls[\"A.6.1\"]",
+  "iso_27018.controls[\"A.6.2\"]",
+  "iso_27018.controls[\"A.8.1\"]",
+  "iso_27018.iso27001_isms_in_place",
+  "iso_27018.not_applicable",
+  "iso_27018.not_applicable[\"A.11.2\"]",
+  "iso_27018.not_applicable[\"A.11.7\"]",
+  "iso_27018.not_applicable_reason",
+  "iso_27018.public_cloud_pii_processor"
+ ]
+}

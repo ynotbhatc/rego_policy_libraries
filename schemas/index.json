@@ -1,11 +1,11 @@
 {
  "generated_by": "scripts/gen_input_schemas.py",
- "entrypoints": 198,
- "with_schema": 198,
+ "entrypoints": 200,
+ "with_schema": 200,
  "by_derivation": {
   "table": 5,
   "manifest": 8,
-  "static-scan+fixture": 137,
+  "static-scan+fixture": 139,
   "paths-only": 48
  },
  "schemas": {
@@ -952,6 +952,24 @@
    "required_paths": 0,
    "source": [
     "frameworks/privacy/iso27701/"
+   ]
+  },
+  "iso_27017": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/iso_27017/schema.json",
+   "known_paths": 19,
+   "required_paths": 0,
+   "source": [
+    "frameworks/management/iso_27017/"
+   ]
+  },
+  "iso_27018": {
+   "derivation": "static-scan+fixture",
+   "schema": "schemas/input/iso_27018/schema.json",
+   "known_paths": 33,
+   "required_paths": 0,
+   "source": [
+    "frameworks/privacy/iso_27018/"
    ]
   },
   "iso_42001": {

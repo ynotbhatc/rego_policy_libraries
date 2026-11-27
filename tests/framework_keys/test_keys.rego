@@ -14,7 +14,7 @@ keys := {
 	"cis_ubuntu_2404", "cis_vmware_esxi", "cis_vmware_esxi_9", "cis_vyos", "cis_windows_2019", "cis_windows_2022",
 	"cis_windows_server_2025", "cisa_cpg", "cmmc", "cobit", "coppa", "cra", "crypto_miner_detection", "csa_ccm",
 	"digital_sovereignty", "dora", "eu_ai_act", "fedramp", "ferpa", "fisma", "gdpr", "glba", "govramp", "hipaa", "hitrust",
-	"iec_62443", "iso27001", "iso27701", "iso_42001", "itar", "k8s_pss", "ncsc_caf", "nerc_cip", "nis2",
+	"iec_62443", "iso27001", "iso27701", "iso_27017", "iso_27018", "iso_42001", "itar", "k8s_pss", "ncsc_caf", "nerc_cip", "nis2",
 	"nist_800_171", "nist_800_53", "nist_800_82", "nist_ai_rmf", "nist_csf", "nsa_cisa_k8s", "ny_dfs", "owasp_asvs", "pci_dss",
 	"scuba_m365", "sec_cyber", "sentinel_ansible", "sentinel_dockerfile", "sentinel_kubernetes",
 	"sentinel_terraform", "soc2", "sox", "stig_amazon_linux_2023", "stig_apache_2_4", "stig_cisco_ios_xe_router",
@@ -409,6 +409,20 @@ test_key_iso27001 if {
 
 test_key_iso27701 if {
 	r := data.iso27701.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+	_contract(r)
+}
+
+test_key_iso_27017 if {
+	r := data.iso_27017.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+	_contract(r)
+}
+
+test_key_iso_27018 if {
+	r := data.iso_27018.main.compliance_report with input as {}
 	is_object(r)
 	r.compliant == false
 	_contract(r)

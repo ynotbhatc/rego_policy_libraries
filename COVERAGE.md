@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**996 of 1074 policy files have tests (93%).** 1673 test files, 78 policies still uncovered.
+**998 of 1078 policy files have tests (93%).** 1675 test files, 80 policies still uncovered.
 
 ## How far each framework has been validated
 
@@ -14,7 +14,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
   covers a subset of the benchmark; the evidence column says what is missing.
 - **experimental**: generated or new, not yet run on real evidence. Treat its results as unverified.
 
-**198 framework keys: 4 validated, 5 partial, 189 experimental.**
+**200 framework keys: 4 validated, 5 partial, 191 experimental.**
 
 | framework key | label | modules | evidence |
 |---|---|---|---|
@@ -125,6 +125,8 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
 | `irs_1075` | experimental |  |  |
 | `iso27001` | experimental |  |  |
 | `iso27701` | experimental | `frameworks/privacy/iso27701` | Not validated: 108 controls of ISO/IEC 27701:2019 compiled from public secondary sources (publisher preview table of contents, NQA analyses, NIST crosswalk), not checked against the purchased standard; 5 clause 6 ids unconfirmed. Never run on real evidence. |
+| `iso_27017` | experimental | `frameworks/management/iso_27017` | Not validated: the control identifiers were read from the publishers' public contents pages, not checked against the purchased standard; 4 cloud controls of the 2026 second edition; which role each control addresses is unverified; the 2015 edition is not covered. Attestation-only delta on ISO/IEC 27001; never run on real evidence. |
+| `iso_27018` | experimental | `frameworks/privacy/iso_27018` | Not validated: the control identifiers were read from the publishers' public contents pages, not checked against the purchased standard; 25 Annex A controls of the 2019 second edition; the 2025 third edition is not covered (its Annex A ids are unverified). Attestation-only delta on ISO/IEC 27001; never run on real evidence. |
 | `iso_42001` | experimental |  |  |
 | `iso_42005` | experimental |  |  |
 | `itar` | experimental |  |  |
@@ -241,12 +243,13 @@ took so two people do not write the same test.
 | `frameworks/federal` | 8 |
 | `benchmarks/sap` | 4 |
 | `frameworks/critical_infrastructure` | 2 |
+| `frameworks/management` | 2 |
 | `enforcement/ansible` | 1 |
 | `enforcement/dockerfile` | 1 |
 | `enforcement/kubernetes` | 1 |
 | `enforcement/terraform` | 1 |
 | `frameworks/financial` | 1 |
-| `frameworks/management` | 1 |
+| `frameworks/privacy` | 1 |
 | `governance/ai` | 1 |
 | `governance/owasp_asvs` | 1 |
 | `threat_detection/crypto_mining` | 1 |
@@ -635,6 +638,18 @@ took so two people do not write the same test.
 <details><summary><code>frameworks/management/iso27001</code> — 1 file(s)</summary>
 
 - `iso27001_main.rego`
+
+</details>
+
+<details><summary><code>frameworks/management/iso_27017</code> — 1 file(s)</summary>
+
+- `iso_27017_index.rego`
+
+</details>
+
+<details><summary><code>frameworks/privacy/iso_27018</code> — 1 file(s)</summary>
+
+- `iso_27018_index.rego`
 
 </details>
 
